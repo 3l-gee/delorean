@@ -1,0 +1,44 @@
+<jxb:bindings version="3.0"
+    xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace">
+
+    <!-- Handle conflicts in geometryPrimitives.xsd -->
+    <jxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/geometryPrimitives.xsd" node="/xs:schema">       
+        <!-- Customize the "rows" element -->
+        <jxb:bindings node=".//xs:group[@name='PointGrid']//xs:element[@name='rows']">
+            <jxb:property name="RowsElement"/>
+        </jxb:bindings>
+        
+        <!-- Customize the "Row" element within "rows" -->
+        <jxb:bindings node=".//xs:group[@name='PointGrid']//xs:element[@name='rows']//xs:element[@name='Row']">
+            <jxb:property name="RowElement"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <!-- Handle conflicts in xlink.xsd -->
+    <jxb:bindings schemaLocation="http://www.w3.org/1999/xlink.xsd" node="/xs:schema">
+        <!-- Customize the "title" property within attributeGroup "titleAttrs" -->
+        <jxb:bindings node="//xs:attributeGroup[@name='locatorAttrs']">
+            <jxb:bindings node=".//xs:attribute[@ref='xlink:title']">
+                <jxb:property name="title1"/>
+            </jxb:bindings>
+        </jxb:bindings>
+
+        <jxb:bindings node="//xs:attributeGroup[@name='arcAttrs']">           
+            <jxb:bindings node=".//xs:attribute[@ref='xlink:title']">
+                <jxb:property name="title2"/>
+            </jxb:bindings>            
+        </jxb:bindings>              
+    </jxb:bindings>     
+
+    <!-- Rename the SecondDefiningParameter element -->
+    <jxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/datums.xsd">
+        <jxb:bindings node="//xs:element[@name='SecondDefiningParameter']">
+            <jxb:class name="SecondDefiningParameterType"/>
+        </jxb:bindings>
+    </jxb:bindings>     
+
+
+</jxb:bindings>

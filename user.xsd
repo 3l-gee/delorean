@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+           xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+           jaxb:version="2.0"
+           jaxb:extensionBindingPrefixes="xjc">
+
+    <xs:simpleType name="decimalType">
+        <xs:annotation>
+            <xs:appinfo>
+                <xjc:simple />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="intType">
+        <xs:annotation>
+            <xs:appinfo>
+                <xjc:simple />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="integerType">
+        <xs:annotation>
+            <xs:appinfo>
+                <xjc:simple />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Define complex types for person elements -->
+    <xs:complexType name="personType">
+        <xs:sequence>
+            <xs:element name="decimal" type="decimalType" minOccurs="0" nillable="true"/>
+            <xs:element name="int" type="intType" minOccurs="0" nillable="true"/>
+            <xs:element name="integer" type="integerType" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Define the root element -->
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="person" type="personType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

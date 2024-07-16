@@ -1,0 +1,38 @@
+<jxb:bindings version="1.0"
+    xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <jxb:bindings schemaLocation="AIXM_BasicMessage.xsd" node="//xsd:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="com.aixm.delorean.core.schema.aixm_5_1_1.message"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings schemaLocation="AIXM_Features.xsd" node="//xsd:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="com.aixm.delorean.core.schema.aixm_5_1_1.feature"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings schemaLocation="AIXM_DataTypes.xsd" node="//xsd:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="com.aixm.delorean.core.schema.aixm_5_1_1.data_types"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+    <!-- <jxb:bindings 
+        schemaLocation="gml/geometryPrimitives.xsd"
+        node="/xs:schema">
+        <jxb:bindings node="//xs:complexType[@name='ComplexTypeName']/xs:sequence/xs:element[@name='Rows']">
+            <jxb:property name="gml_Rows"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+
+
+    <jxb:bindings 
+        schemaLocation="../xlink/xlink.xsd"
+        node="/xs:schema">
+        <jxb:bindings node="//xs:complexType[@name='ComplexTypeName']/xs:sequence/xs:element[@name='Title']">
+            <jxb:property name="xlink_Title"/>
+        </jxb:bindings>
+    </jxb:bindings> -->
+</jxb:bindings>
