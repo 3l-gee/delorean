@@ -1,0 +1,14 @@
+<jaxb:bindings version="3.0"
+    xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace">
+
+    <!-- Example: Customize conflicting attribute "Title" -->
+    <jaxb:bindings schemaLocation="http://www.w3.org/1999/xlink.xsd">
+        <jaxb:bindings node="//xs:attribute[@name='title']">
+            <jaxb:property name="xlinkTitle"/>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>
