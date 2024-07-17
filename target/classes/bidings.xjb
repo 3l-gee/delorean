@@ -4,11 +4,17 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xml="http://www.w3.org/XML/1998/namespace">
 
-    <!-- Example: Customize conflicting attribute "Title" -->
     <jaxb:bindings schemaLocation="http://www.w3.org/1999/xlink.xsd">
         <jaxb:bindings node="//xs:attribute[@name='title']">
             <jaxb:property name="xlinkTitle"/>
         </jaxb:bindings>
     </jaxb:bindings>
 
+    <!-- Bindings for AIXM_AbstractGML_ObjectTypes.xsd -->
+    <jaxb:bindings schemaLocation="AIXM_AbstractGML_ObjectTypes.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="aero.aixm.schema._5_1.objecttypes"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
 </jaxb:bindings>
