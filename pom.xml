@@ -2,7 +2,7 @@
 <project
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.aixm.delorean</groupId>
 	<artifactId>delorean</artifactId>
@@ -34,8 +34,8 @@
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
 				<executions>
-                    <execution>
-                        <id>generate-annex</id>
+					<execution>
+                        <id>generate_objecttypes</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -43,141 +43,93 @@
                             <verbose>true</verbose>
                             <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
                             <schemaIncludes>
-                                <include>**/*.xsd</include>
+								<include>AIXM_AbstractGML_ObjectTypes.xsd</include>
                             </schemaIncludes>
                             <bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
 							<bindingIncludes>
-								<include>**/*.xjb</include>
+								<include>bidings.xjb</include>
+								<include>gml-v_3_2.xjb</include>
+								<include>objecttypes_bidings.xjb</include>
 							</bindingIncludes>
 							<bindingExcludes>
 								<include>**/*.xsd</include>
 							</bindingExcludes>
-                            <episode>true</episode>
-                            <useDependenciesAsEpisodes>true</useDependenciesAsEpisodes>
-                            <generateDirectory>${project.basedir}/src/java/core</generateDirectory>
+							<generateDirectory>${project.basedir}/src/main/java/com/aixm/delorean/core/schema/a5_1_1</generateDirectory>
                         </configuration>
-                    </execution>
+					</execution>
+
+					<execution>
+                        <id>generate_datatypes</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <verbose>true</verbose>
+                            <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
+                            <schemaIncludes>
+								<include>AIXM_DataTypes.xsd</include>
+                            </schemaIncludes>
+                            <bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
+							<bindingIncludes>
+								<include>bidings.xjb</include>
+								<include>gml-v_3_2.xjb</include>
+								<include>datatypes_bidings.xjb</include>
+							</bindingIncludes>
+							<bindingExcludes>
+								<include>**/*.xsd</include>
+							</bindingExcludes>
+							<generateDirectory>${project.basedir}/src/main/java/com/aixm/delorean/core/schema/a5_1_1</generateDirectory>
+                        </configuration>
+					</execution>
+
+                    <execution>
+                        <id>generate_features</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <verbose>true</verbose>
+                            <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
+                            <schemaIncludes>
+								<include>AIXM_Features.xsd</include>
+                            </schemaIncludes>
+                            <bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
+							<bindingIncludes>
+								<include>bidings.xjb</include>
+								<include>gml-v_3_2.xjb</include>
+								<include>features_bidings.xjb</include>
+							</bindingIncludes>
+							<bindingExcludes>
+								<include>**/*.xsd</include>
+							</bindingExcludes>
+							<generateDirectory>${project.basedir}/src/main/java/com/aixm/delorean/core/schema/a5_1_1</generateDirectory>
+                        </configuration>
+					</execution>
+
+					<!-- <execution>
+                        <id>generate_messages</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <verbose>true</verbose>
+                            <schemaDirectory>${project.basedir}/src/main/resources/message</schemaDirectory>
+                            <schemaIncludes>
+								<include>AIXM_BasicMessage.xsd</include>
+                            </schemaIncludes>
+                            <bindingDirectory>${project.basedir}/src/main/resources/message</bindingDirectory>
+							<bindingIncludes>
+								<include>bidings.xjb</include>
+								<include>gml-v_3_2.xjb</include>
+							</bindingIncludes>
+							<bindingExcludes>
+								<include>**/*.xsd</include>
+							</bindingExcludes>
+							<generateDirectory>${project.basedir}/src/main/java/com/aixm/delorean/core/schema/a5_1_1</generateDirectory>
+                        </configuration>
+					</execution> -->
                 </executions>
             </plugin>
-					<!-- <execution>
-						<id>generate-datatypes</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<verbose>true</verbose>
-							<schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
-							<schemaIncludes>
-								<include>AIXM_DataTypes.xsd</include>
-							</schemaIncludes>
-							<bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
-							<bindingIncludes>
-								<include>**/*.xjb</include>
-							</bindingIncludes>
-							<bindingExcludes>
-								<include>**/*.xsd</include>
-							</bindingExcludes>
-							<generateDirectory>${project.basedir}/target/generated-sources/xjc/jaxb-datatypes</generateDirectory>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>${project.groupId}</groupId>
-                                    <artifactId>${project.artifactId}</artifactId>
-                                    <version>${project.version}</version>
-                                    <scope>compile</scope>
-                                </dependency>
-                            </dependencies>
-						</configuration>
-					</execution>
-					<execution>
-						<id>generate-features</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<verbose>true</verbose>
-							<schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
-							<schemaIncludes>
-								<include>AIXM_Features.xsd</include>
-							</schemaIncludes>
-							<bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
-							<bindingIncludes>
-								<include>**/*.xjb</include>
-							</bindingIncludes>
-							<bindingExcludes>
-								<include>**/*.xsd</include>
-							</bindingExcludes>
-							<generateDirectory>${project.basedir}/target/generated-sources/xjc/jaxb-features</generateDirectory>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>${project.groupId}</groupId>
-                                    <artifactId>${project.artifactId}</artifactId>
-                                    <version>${project.version}</version>
-                                    <scope>compile</scope>
-                                </dependency>
-                            </dependencies>
-                        </configuration>
-					</execution>
-					<execution>
-						<id>generate-basicmessage</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<verbose>true</verbose>
-							<schemaDirectory>${project.basedir}/src/main/resources/message</schemaDirectory>
-							<schemaIncludes>
-								<include>AIXM_BasicMessage.xsd</include>
-							</schemaIncludes>
-							<bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
-							<bindingIncludes>
-								<include>**/*.xjb</include>
-							</bindingIncludes>
-							<bindingExcludes>
-								<include>**/*.xsd</include>
-							</bindingExcludes>
-							<generateDirectory>${project.basedir}/target/generated-sources/xjc/jaxb-basicmessage</generateDirectory>
-						    <dependencies>
-                                <dependency>
-                                    <groupId>${project.groupId}</groupId>
-                                    <artifactId>${project.artifactId}</artifactId>
-                                    <version>${project.version}</version>
-                                    <scope>compile</scope>
-                                </dependency>
-                            </dependencies>
-                        </configuration>
-					</execution>
-				</executions>
-			</plugin> -->
-
-			<!-- <plugin>
-				<groupId>org.jvnet.jaxb</groupId>
-				<artifactId>jaxb-maven-plugin</artifactId>
-				<version>4.0.8</version>
-				<executions>
-					<execution>
-                        <id>generate</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<verbose>true</verbose>
-					<schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
-					<schemaIncludes>
-						<include>**/*.xsd</include>
-					</schemaIncludes>
-					<bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
-					<bindingIncludes>
-						<include>**/*.xjb</include>
-					</bindingIncludes>
-					<bindingExcludes>
-						<include>**/*.xsd</include>
-					</bindingExcludes>
-                    <useDependenciesAsEpisodes>true</useDependenciesAsEpisodes>
-                    <generateDirectory>${project.basedir}/src/java/core</generateDirectory>
-				</configuration>
-			</plugin> -->
 		</plugins>
 	</build>
 </project>
