@@ -1,3 +1,6 @@
 {
-    "java.configuration.updateBuildConfiguration": "disabled"
+    "java.configuration.updateBuildConfiguration": "disabled",
+    "files.associations": {
+        "*.xjb": "xml"
+    }
 }

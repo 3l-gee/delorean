@@ -35,99 +35,26 @@
 				<version>4.0.8</version>
 				<executions>
 					<execution>
-                        <id>generate_objecttypes</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <verbose>true</verbose>
-                            <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
-                            <schemaIncludes>
-								<include>AIXM_AbstractGML_ObjectTypes.xsd</include>
-                            </schemaIncludes>
-                            <bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
-							<bindingIncludes>
-								<include>bidings.xjb</include>
-								<include>gml-v_3_2.xjb</include>
-								<include>objecttypes_bidings.xjb</include>
-							</bindingIncludes>
-							<bindingExcludes>
-								<include>**/*.xsd</include>
-							</bindingExcludes>
-							<generateDirectory>${project.basedir}/src/main/java/com/aixm/delorean/core/schema/a5_1_1</generateDirectory>
-                        </configuration>
-					</execution>
-
-					<execution>
-                        <id>generate_datatypes</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <verbose>true</verbose>
-                            <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
-                            <schemaIncludes>
-								<include>AIXM_DataTypes.xsd</include>
-                            </schemaIncludes>
-                            <bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
-							<bindingIncludes>
-								<include>bidings.xjb</include>
-								<include>gml-v_3_2.xjb</include>
-								<include>datatypes_bidings.xjb</include>
-							</bindingIncludes>
-							<bindingExcludes>
-								<include>**/*.xsd</include>
-							</bindingExcludes>
-							<generateDirectory>${project.basedir}/src/main/java/com/aixm/delorean/core/schema/a5_1_1</generateDirectory>
-                        </configuration>
-					</execution>
-
-                    <execution>
-                        <id>generate_features</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <verbose>true</verbose>
-                            <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
-                            <schemaIncludes>
-								<include>AIXM_Features.xsd</include>
-                            </schemaIncludes>
-                            <bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
-							<bindingIncludes>
-								<include>bidings.xjb</include>
-								<include>gml-v_3_2.xjb</include>
-								<include>features_bidings.xjb</include>
-							</bindingIncludes>
-							<bindingExcludes>
-								<include>**/*.xsd</include>
-							</bindingExcludes>
-							<generateDirectory>${project.basedir}/src/main/java/com/aixm/delorean/core/schema/a5_1_1</generateDirectory>
-                        </configuration>
-					</execution>
-
-					<!-- <execution>
                         <id>generate_messages</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
                             <verbose>true</verbose>
-                            <schemaDirectory>${project.basedir}/src/main/resources/message</schemaDirectory>
+                            <schemaDirectory>${project.basedir}/src/main/resources/a5_1_1/</schemaDirectory>
                             <schemaIncludes>
 								<include>AIXM_BasicMessage.xsd</include>
                             </schemaIncludes>
-                            <bindingDirectory>${project.basedir}/src/main/resources/message</bindingDirectory>
+                            <bindingDirectory>${project.basedir}/src/main/resources/a5_1_1</bindingDirectory>
 							<bindingIncludes>
-								<include>bidings.xjb</include>
-								<include>gml-v_3_2.xjb</include>
+								<include>*.xjb</include>
 							</bindingIncludes>
 							<bindingExcludes>
-								<include>**/*.xsd</include>
+								<include>*.xsd</include>
 							</bindingExcludes>
-							<generateDirectory>${project.basedir}/src/main/java/com/aixm/delorean/core/schema/a5_1_1</generateDirectory>
+							<generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                         </configuration>
-					</execution> -->
+					</execution>
                 </executions>
             </plugin>
 		</plugins>
