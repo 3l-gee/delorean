@@ -1,0 +1,46 @@
+<jaxb:bindings version="3.0"
+    xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    
+    <jaxb:bindings schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gmd/gmd.xsd"
+        node="/xs:schema">
+        <jaxb:schemaBindings>
+            <!-- <jaxb:package name="org.isotc211.gmd.v2007" /> -->
+            <jaxb:package name="com.aixm.delorean.core.org.gmd"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gco/gco.xsd"
+        node="/xs:schema">
+        <jaxb:schemaBindings>
+            <!-- <jaxb:package name="org.isotc211.gco.v2007" /> -->
+            <jaxb:package name="com.aixm.delorean.core.org.gco"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gsr/gsr.xsd"
+        node="/xs:schema">
+        <jaxb:schemaBindings>
+            <!-- <jaxb:package name="org.isotc211.gsr.v2007" /> -->
+            <jaxb:package name="com.aixm.delorean.core.org.gsr"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gss/gss.xsd"
+        node="/xs:schema">
+        <jaxb:schemaBindings>
+            <!-- <jaxb:package name="org.isotc211.gss.v2007" /> -->
+            <jaxb:package name="com.aixm.delorean.core.org.gss"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gts/gts.xsd"
+        node="/xs:schema">
+        <jaxb:schemaBindings>
+            <!-- <jaxb:package name="org.isotc211.gts.v2007" /> -->
+            <jaxb:package name="com.aixm.delorean.core.org.gts"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+</jaxb:bindings>

@@ -1,0 +1,20 @@
+<jaxb:bindings version="3.0"
+    xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace">
+
+    <jaxb:bindings schemaLocation="http://www.w3.org/1999/xlink.xsd">
+    	<jaxb:schemaBindings>
+			<!-- <jaxb:package name="org.w3.xlink.v1999" /> -->
+            <jaxb:package name="com.aixm.delorean.core.org.w3.xlink"/>
+			<jaxb:nameXmlTransform>
+				<jaxb:elementName suffix="Element" />
+			</jaxb:nameXmlTransform>
+		</jaxb:schemaBindings>
+        <jaxb:bindings node="//xs:attribute[@name='title']">
+            <jaxb:property name="titleAttribute"/>
+        </jaxb:bindings>
+    </jaxb:bindings>
+    
+</jaxb:bindings>
