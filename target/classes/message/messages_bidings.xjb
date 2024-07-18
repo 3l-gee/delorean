@@ -1,0 +1,14 @@
+<jaxb:bindings version="3.0"
+    xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    
+    <jaxb:bindings schemaLocation="AIXM_BasicMessage.xsd" node="/xs:schema">
+        <!-- Customize package names to avoid conflicts -->
+        <jaxb:schemaBindings>
+            <jaxb:package name="aero.aixm.message"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>

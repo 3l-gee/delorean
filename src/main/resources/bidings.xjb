@@ -9,12 +9,5 @@
             <jaxb:property name="xlinkTitle"/>
         </jaxb:bindings>
     </jaxb:bindings>
-
-    <!-- Bindings for AIXM_AbstractGML_ObjectTypes.xsd -->
-    <jaxb:bindings schemaLocation="AIXM_AbstractGML_ObjectTypes.xsd">
-        <jaxb:schemaBindings>
-            <jaxb:package name="aero.aixm.schema._5_1.objecttypes"/>
-        </jaxb:schemaBindings>
-    </jaxb:bindings>
     
 </jaxb:bindings>
