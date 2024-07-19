@@ -10,13 +10,23 @@
 	<name>delorean</name>
 	<url>http://www.example.com</url>
 	<dependencies>
-		<!-- Needed for our use of JAXB API bindings. -->
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
 			<artifactId>jakarta.xml.bind-api</artifactId>
 			<version>4.0.2</version>
 		</dependency>
+		    <dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>4.0.2</version>
+		</dependency>
 	</dependencies>
+
+	<properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -30,6 +40,20 @@
 			</plugin>
 
 			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.aixm.delorean.Main</mainClass>
+                        </manifest>
+                    </archive> 	
+                </configuration>
+            </plugin>
+
+			<!-- <plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
@@ -55,6 +79,33 @@
 							<generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                         </configuration>
 					</execution>
+                </executions>
+            </plugin> -->
+
+			<!-- Added maven-shade-plugin to create a fat jar including dependencies -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version> <!-- Use the latest version available -->
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>*:*</include>
+                                </includes>
+                            </artifactSet>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.aixm.delorean.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 		</plugins>

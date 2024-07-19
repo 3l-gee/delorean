@@ -1,0 +1,1018 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ************************************************************************************************
+
+    Project:       	AERONAUTICAL INFORMATION EXCHANGE MODEL (AIXM)
+    Owner:         	EUROCONTROL
+    Title:         	AIXM Exchange Format
+
+    Creation details
+    ================
+    Author:        	EUROCONTROL
+    Address:       	Rue de la Fusee, 96, B-1130 Brussels, Belgium
+    Tel:           	+32 2 729 3326
+    URL:           	http://www.eurocontrol.int/ais/aixm
+
+  
+    File Name: AIXM-Update.xsd
+    
+    Summary:   definition of AIXM update messages;
+    
+    Use: systems implementing the AIXM exchange format
+
+    Copyright (c) 2006, EUROCONTROL
+    ===============================
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of EUROCONTROL nor the names of its contributors  may be used to endorse or promote products derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    ==========================================
+    Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: http://www.opensource.org/licenses/bsd-license.php
+
+    
+    Date        Version  Who     Comment
+    ==========  =======  ======  ==========================================================================
+    2006-10-09	4.5-r2	 EPR	 Bugs correction:
+									- added double 'l' in 'collocation' in AerodromeHeliportCollocationType and AerodromeHeliportCollocationUidType
+									- removed letter 't' from NavaidDistanceIndicationtType
+									- corrected annotation of the use_chg attribute in the AIXM-Update element
+    2006-03-10	4.5-r1	 EPR	 Bugs correction:
+									- no change in this file
+    2005-11-17  4.5      XVI     Proposed version, starting from the previous version
+                                 Changes are:
+                                    - AIXM Change Description 4.0-1: no impact
+                                    - AIXM Change Description 4.0-2: no impact
+                                    - AIXM Change Description 4.0-3: no impact
+                                    - AIXM Change Description 4.0-4: no impact
+                                    - AIXM Change Description 4.0-5: no impact
+                                    - AIXM Change Description 4.0-6: no impact
+                                    - AIXM Change Description 4.0-7: no impact
+                                    - AIXM Change Description 4.0-8: no impact
+                                    - AIXM Change Description 4.0-9: no impact
+                                    - AIXM Change Description 4.0-10: no impact
+                                    - AIXM Change Description 4.0-11: no impact
+                                    - AIXM Change Description 4.0-12: no impact
+                                    - AIXM Change Description 4.0-13: no impact
+                                    - AIXM Change Description 4.0-14: no impact
+                                    - AIXM Change Description 4.0-15: no impact
+                                    - AIXM Change Description 4.0-16: no impact
+                                    - AIXM Change Description 4.0-17: no impact
+                                    - AIXM Change Description 4.0-18: no impact
+                                    - AIXM Change Description 4.0-19: no impact
+                                    - AIXM Change Description 4.0-20: no impact
+                                    - AIXM Change Description 4.0-21: no impact
+                                    - AIXM Change Description 4.0-22: no impact
+                                    - AIXM Change Description 4.0-23: Fao and FaoUid are deprecated and replaced by Fto and FtoUid
+                                    - AIXM Change Description 4.0-24: no impact
+                                    - AIXM Change Description 4.0-25: no impact
+                                    - AIXM Change Description 4.0-26: added Als and AlsUid elements
+                                    - AIXM Change Description 4.0-27: no impact
+                                    - AIXM Change Description 4.0-28: no impact
+                                    - AIXM Change Description 4.0-29: added Oxg and OxgUid elements
+                                    - AIXM Change Description 4.0-30: added Ntg and NtgUid elements
+                                    - AIXM Change Description 4.0-31: no impact
+                                    - AIXM Change Description 4.0-32: no impact
+                                    - AIXM Change Description 4.0-33: no impact
+                                    - AIXM Change Description 4.0-34: no impact
+                                    - AIXM Change Description 4.0-35: no impact
+                                    - AIXM Change Description 4.0-36: no impact
+                                    - AIXM Change Description 4.0-37: no impact
+                                    - AIXM Change Description 4.0-38: no impact
+                                    - AIXM Change Description 4.0-39: no impact
+                                    - AIXM Change Description 4.0-40: no impact
+                                    - AIXM Change Description 4.0-41: no impact
+                                    - AIXM Change Description 4.0-42: no impact
+                                    - AIXM Change Description 4.0-43: no impact
+                                    - AIXM Change Description 4.0-44: no impact
+                                    - AIXM Change Description 4.0-45: no impact
+                                    - AIXM Change Description 4.0-46: no impact
+                                    - AIXM Change Description 4.0-47: no impact
+                                    - AIXM Change Description 4.0-48: no impact
+    2004-12-30  4.0a     SHE     Proposed version, starting from the previous version
+                                 Changes are:
+                                    - changed version number to 4.0a (proposed version 4.0 - alpha)
+                                    - AIXM Change Description 3.3-1.: no impact
+                                    - AIXM Change Description 3.3-2.: no impact
+                                    - AIXM Change Description 3.3-3.: no impact
+                                    - AIXM Change Description 3.3-4.: no impact
+                                    - AIXM Change Description 3.3-5.: no impact
+                                    - AIXM Change Description 3.3-6.: no impact
+									- AIXM Change Description 3.3-7.: 
+										added Aas and Adg are added in the list of features
+										marked Aac as "Deprecated"
+                                    - AIXM Change Description 3.3-8.: no impact
+										added Ahu as child in New, Changed, Withdrawn
+                                    - AIXM Change Description 3.3-9.: no impact
+                                    - AIXM Change Description 3.3-10.: no impact
+                                    - AIXM Change Description 3.3-11.: no impact
+                                    - AIXM Change Description 3.3-12.: no impact
+                                    - AIXM Change Description 3.3-13.: no impact
+                                    - AIXM Change Description 3.3-14.: no impact
+                                    - AIXM Change Description 3.3-15.: no impact
+                                    - AIXM Change Description 3.3-16.: no impact
+                                    - AIXM Change Description 3.3-17.: no impact
+                                    - AIXM Change Description 3.3-18.: no impact
+                                    - AIXM Change Description 3.3-19.: no impact
+                                    - AIXM Change Description 3.3-20.: no impact
+                                    - AIXM Change Description 3.3-21.: 
+										Tli, Vli, Dli and Nli are added in the list of features
+                                    	Tln, Vln, Dln, Nln are marked as "Deprecated"                                    
+                                    - AIXM Change Description 3.3-22.: no impact
+										Acr is added in the list of features
+                                    - AIXM Change Description 3.3-23.: no impact
+                                    - AIXM Change Description 3.3-24.: no impact		
+                                    - AIXM Change Description 3.3-25.: no impact
+
+    2003-02-12  3.3      EPR     Released version, starting from the previous version
+                                 Changes are:
+                                    - changed version number to 3.3 (synchronised with the entity-relationship model)
+                                    - AIXM Change Descriptions 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78
+                                        79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92: no impact
+                                        
+    2002-09-16  1.2      EPR     Released version, starting from the previous version
+                                 There are no changes in this file.
+
+    2002-06-10  1.1      EPR     Released version, starting from the previous version
+                                 There are no changes in this file.
+
+    2002-05-27  1.0      EPR     Released version, starting from the previous version.
+                                 Changes are:
+                                    - changed version number to 1.0
+                                    - attribute (sequence) 'number' of <AIXM-Update> made optional
+                                    - added optional attribute 'use_chg' with default value "0" in <AIXM-Update> element to specify if 
+                                       changed feature attributes are explicitly marked by a 'chg="1"' attribute
+                                    - AIXM Change Description 59: no impact
+                                    - AIXM Change Description 60: no impact
+                                    - AIXM Change Description 61: no impact
+                                    - AIXM Change Description 62: no impact
+                                    - AIXM Change Description 63: no impact
+                                    - AIXM Change Description 64: no impact
+                                    - AIXM Change Description 65: no impact
+                                    - AIXM Change Description 66: no impact
+                                    - AIXM Change Description 67: no impact
+
+    2002-03-28  0.9.1    EPR     Draft, starting from the previous version. 
+                                 Main changes are:
+                                    - inclusion of an annotation containing the version number of the schema
+                                    - inclusion of a 'version' attribute in the <AIXM-Update> element
+                                    - inclusion of a (sequence) 'number' attribute in the <AIXM-Update> element                                    
+                                    - all <AIXM-Update> element attributes have been changed to lower case
+                                    - removed Rpn and RpnUid from the child list in FeatureType, FeatureUidType, FeatureUidFeatureType;
+                                    - AIXM Change Description 57: no impact
+                                    - AIXM Change Description 58: no impact                                    
+
+
+    2002-03-01  0.9      EPR     Draft, completely re-worked, starting from the AIXM Data Model. 
+                                 Main changes are:
+                                    - use of data types instead of global elements;
+                                    - use of a new style for data types and element names
+                                 Includes all AIXM Data Model changes up to and including no. 56
+                           
+    ************************************************************************************************
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:annotation>
+		<xsd:documentation>Version: 4.5-r2</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="AIXM-Features.xsd"/>
+	<xsd:attributeGroup name="Changes">
+		<xsd:attribute name="chg" type="xsd:boolean" use="optional"/>
+	</xsd:attributeGroup>
+	<xsd:element name="AIXM-update">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Group" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:choice maxOccurs="unbounded">
+							<xsd:element name="New" type="FeatureType">
+								<xsd:annotation>
+									<xsd:documentation>New feature</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Changed" type="FeatureUidFeatureType">
+								<xsd:annotation>
+									<xsd:documentation>Changed characteristics of an existing feature (including a mechanism for indicating a change of the unique identifier)</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Withdrawn" type="FeatureUidType">
+								<xsd:annotation>
+									<xsd:documentation>Withdrawn feature</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:choice>
+						<xsd:attribute name="Name" use="optional">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:minLength value="1"/>
+									<xsd:maxLength value="60"/>
+									<xsd:whiteSpace value="preserve"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+						<xsd:attribute name="SubName" use="optional">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:minLength value="1"/>
+									<xsd:maxLength value="60"/>
+									<xsd:whiteSpace value="preserve"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+						<xsd:attribute name="Reason" type="xsd:string" use="optional"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>The version of the AIXM-Update.xsd schema to which the message conforms</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="effective" type="xsd:dateTime" use="required">
+				<xsd:annotation>
+					<xsd:documentation>The effective date and time of the update</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="origin" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>The originator (source) of the message</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="number" type="xsd:unsignedLong" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>A sequential number (unique for all AIXM-Update messages issued by the same originator)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="created" type="xsd:dateTime" use="required">
+				<xsd:annotation>
+					<xsd:documentation>The date and time when the message was created</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="use_chg" type="xsd:boolean" use="optional" default="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates whether the optional 'chg' attributes are used in the current message, to flag elements that contain a changed value (feature property)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="FeatureType">
+		<xsd:choice>
+			<xsd:element name="Aas" type="AirspaceAssociationType"/>
+			<xsd:element name="Abd" type="AirspaceBorderType"/>
+			<xsd:element name="Acr" type="AirspaceCorridorType"/>
+			<xsd:element name="Adg" type="AirspaceDerivedGeometryType"/>
+			<xsd:element name="Aga" type="GroundServiceAddressType"/>
+			<xsd:element name="Agl" type="AeronauticalGroundLightType"/>
+			<xsd:element name="Aha" type="AerodromeHeliportAddressType"/>
+			<xsd:element name="Ahc" type="AerodromeHeliportCollocationType"/>
+			<xsd:element name="Aho" type="AerodromeHeliportObstacleType"/>
+			<xsd:element name="Ahp" type="AerodromeHeliportType"/>
+			<xsd:element name="Ahs" type="GroundServiceType"/>
+			<xsd:element name="Ahu" type="AerodromeHeliportUsageType"/>
+			<xsd:element name="Ain" type="NavaidAngularReferenceType"/>
+			<xsd:element name="Als" type="ApronLightingSystemType"/>
+			<xsd:element name="Ana" type="AerodromeHeliportNavaidType"/>
+			<xsd:element name="Apg" type="ApronGeometryType"/>
+			<xsd:element name="Apn" type="ApronType"/>
+			<xsd:element name="Ase" type="AirspaceType"/>
+			<xsd:element name="Din" type="NavaidDistanceIndicationType"/>
+			<xsd:element name="Dli" type="DmeUsageLimitationType"/>
+			<xsd:element name="Dme" type="DmeType"/>
+			<xsd:element name="Dpn" type="DesignatedPointType"/>
+			<xsd:element name="Fao" type="FatoOldType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.5</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Fto" type="FatoType"/>
+			<xsd:element name="Fcp" type="FatoCentreLinePositionType"/>
+			<xsd:element name="Fda" type="FatoDirectionApproachLightingType"/>
+			<xsd:element name="Fdd" type="FatoDirectionDeclaredDistanceType"/>
+			<xsd:element name="Fdn" type="FatoDirectionType"/>
+			<xsd:element name="Fdo" type="FatoDirectionObstacleType"/>
+			<xsd:element name="Fds" type="FatoDirectionStarType"/>
+			<xsd:element name="Fls" type="FatoLightingSystemType"/>
+			<xsd:element name="Fpa" type="FatoProtectionAreaType"/>
+			<xsd:element name="Fpg" type="FatoProtectionAreaGeometryType"/>
+			<xsd:element name="Fqy" type="FrequencyType"/>
+			<xsd:element name="Ful" type="FuelType"/>
+			<xsd:element name="Gbr" type="GeographicalBorderType"/>
+			<xsd:element name="Gsd" type="GateStandType"/>
+			<xsd:element name="Hpe" type="HoldingProcedureType"/>
+			<xsd:element name="Iap" type="InstrumentApproachType"/>
+			<xsd:element name="Ils" type="IlsType"/>
+			<xsd:element name="Iue" type="InstrumentApproachUsageConditionType"/>
+			<xsd:element name="Mgp" type="MsaGroupType"/>
+			<xsd:element name="Mkr" type="MkrType"/>
+			<xsd:element name="Mls" type="MlsType"/>
+			<xsd:element name="Ndb" type="NdbType"/>
+			<xsd:element name="Nli" type="NdbUsageLimitationType"/>
+			<xsd:element name="Nsc" type="CheckpointType"/>
+			<xsd:element name="Ntg" type="NitrogenType"/>
+			<xsd:element name="Oaa" type="OrganisationAuthorityAddressType"/>
+			<xsd:element name="Oas" type="OrganisationAuthorityAssociationType"/>
+			<xsd:element name="Obs" type="ObstacleType"/>
+			<xsd:element name="Ofa" type="AirspaceAuthorityType"/>
+			<xsd:element name="Oil" type="OilType"/>
+			<xsd:element name="Org" type="OrganisationAuthorityType"/>
+			<xsd:element name="Oxg" type="OxygenType"/>
+			<xsd:element name="Pfy" type="PassengerFacilityType"/>
+			<xsd:element name="Plb" type="CruisingLevelsTableType"/>
+			<xsd:element name="Plc" type="CruisingLevelsColumnType"/>
+			<xsd:element name="Rcp" type="RunwayCentreLinePositionType"/>
+			<xsd:element name="Rda" type="RunwayDirectionApproachLightingSystemType"/>
+			<xsd:element name="Rdd" type="RunwayDirectionDeclaredDistanceType"/>
+			<xsd:element name="Rdn" type="RunwayDirectionType"/>
+			<xsd:element name="Rdo" type="RunwayDirectionObstacleType"/>
+			<xsd:element name="Rds" type="RunwayDirectionStarType"/>
+			<xsd:element name="Rls" type="RunwayDirectionLightingSystemType"/>
+			<xsd:element name="Rpa" type="RunwayProtectionAreaType"/>
+			<xsd:element name="Rpg" type="RunwayProtectionAreaGeometryType"/>
+			<xsd:element name="Rsg" type="RouteSegmentType"/>
+			<xsd:element name="Rsu" type="RouteSegmentUsageType"/>
+			<xsd:element name="Rte" type="EnrouteRouteType"/>
+			<xsd:element name="Rwy" type="RunwayType"/>
+			<xsd:element name="Sae" type="AirspaceServiceType"/>
+			<xsd:element name="Sah" type="AerodromeHeliportServiceType"/>
+			<xsd:element name="Ser" type="ServiceType"/>
+			<xsd:element name="Shp" type="HoldingProcedureServiceType"/>
+			<xsd:element name="Sia" type="StarType"/>
+			<xsd:element name="Sid" type="SidType"/>
+			<xsd:element name="Sip" type="InstrumentApproachServiceType"/>
+			<xsd:element name="Sns" type="SpecialNavigationSystemStationType"/>
+			<xsd:element name="Sny" type="SpecialNavigationSystemType"/>
+			<xsd:element name="Spa" type="SignificantPointAirspaceType"/>
+			<xsd:element name="Spd" type="SpecialDateType"/>
+			<xsd:element name="Srs" type="RouteSegmentServiceType"/>
+			<xsd:element name="Ssd" type="SidServiceType"/>
+			<xsd:element name="Sse" type="StarUsageType"/>
+			<xsd:element name="Ssr" type="StarServiceType"/>
+			<xsd:element name="Sue" type="SidUsageType"/>
+			<xsd:element name="Swy" type="StopwayType"/>
+			<xsd:element name="Tcn" type="TacanType"/>
+			<xsd:element name="Tcp" type="TaxiwayCentreLinePositionType"/>
+			<xsd:element name="Tfr" type="TrafficFlowRestrictionType"/>
+			<xsd:element name="Thp" type="TaxiwayHoldingPositionType"/>
+			<xsd:element name="Tla" type="TlofType"/>
+			<xsd:element name="Tlg" type="TlofGeometryType"/>
+			<xsd:element name="Tli" type="TacanUsageLimitationType"/>
+			<xsd:element name="Tls" type="TlofLightingSystemType"/>
+			<xsd:element name="Tly" type="TaxiwayLightingSystemType"/>
+			<xsd:element name="Tsa" type="TlofSafeAreaType"/>
+			<xsd:element name="Tsg" type="TlofSafeAreaGeometryType"/>
+			<xsd:element name="Twy" type="TaxiwayType"/>
+			<xsd:element name="Uac" type="UnitAssociationType"/>
+			<xsd:element name="Uas" type="UnitContactAddressType"/>
+			<xsd:element name="Uni" type="UnitType"/>
+			<xsd:element name="Vli" type="VorUsageLimitationType"/>
+			<xsd:element name="Vor" type="VorType"/>
+			<xsd:element name="Aac" type="AirspaceAssocType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Dln" type="DmeLimitationType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Nln" type="NdbLimitationType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Tln" type="TacanLimitationType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Vln" type="VorLimitationType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="FeatureUidType">
+		<xsd:choice>
+			<xsd:element name="AasUid" type="AirspaceAssociationUidType"/>
+			<xsd:element name="AbdUid" type="AirspaceBorderUidType"/>
+			<xsd:element name="AcrUid" type="AirspaceCorridorUidType"/>
+			<xsd:element name="AdgUid" type="AirspaceDerivedGeometryUidType"/>
+			<xsd:element name="AgaUid" type="GroundServiceAddressUidType"/>
+			<xsd:element name="AglUid" type="AeronauticalGroundLightUidType"/>
+			<xsd:element name="AhaUid" type="AerodromeHeliportAddressUidType"/>
+			<xsd:element name="AhcUid" type="AerodromeHeliportCollocationUidType"/>
+			<xsd:element name="AhoUid" type="AerodromeHeliportObstacleUidType"/>
+			<xsd:element name="AhpUid" type="AerodromeHeliportUidType"/>
+			<xsd:element name="AhsUid" type="GroundServiceUidType"/>
+			<xsd:element name="AhuUid" type="AerodromeHeliportUsageUidType"/>
+			<xsd:element name="AinUid" type="NavaidAngularReferenceUidType"/>
+			<xsd:element name="AlsUid" type="ApronLightingSystemUidType"/>
+			<xsd:element name="AnaUid" type="AerodromeHeliportNavaidUidType"/>
+			<xsd:element name="ApgUid" type="ApronGeometryUidType"/>
+			<xsd:element name="ApnUid" type="ApronUidType"/>
+			<xsd:element name="AseUid" type="AirspaceUidType"/>
+			<xsd:element name="DinUid" type="NavaidDistanceIndicationUidType"/>
+			<xsd:element name="DliUid" type="DmeUsageLimitationUidType"/>
+			<xsd:element name="DmeUid" type="DmeUidType"/>
+			<xsd:element name="DpnUid" type="DesignatedPointUidType"/>
+			<xsd:element name="FaoUid" type="FatoOldUidType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.5</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FtoUid" type="FatoUidType"/>
+			<xsd:element name="FcpUid" type="FatoCentreLinePositionUidType"/>
+			<xsd:element name="FdaUid" type="FatoDirectionApproachLightingUidType"/>
+			<xsd:element name="FddUid" type="FatoDirectionDeclaredDistanceUidType"/>
+			<xsd:element name="FdnUid" type="FatoDirectionUidType"/>
+			<xsd:element name="FdoUid" type="FatoDirectionObstacleUidType"/>
+			<xsd:element name="FdsUid" type="FatoDirectionStarUidType"/>
+			<xsd:element name="FlsUid" type="FatoLightingSystemUidType"/>
+			<xsd:element name="FpaUid" type="FatoProtectionAreaUidType"/>
+			<xsd:element name="FpgUid" type="FatoProtectionAreaGeometryUidType"/>
+			<xsd:element name="FqyUid" type="FrequencyUidType"/>
+			<xsd:element name="FulUid" type="FuelUidType"/>
+			<xsd:element name="GbrUid" type="GeographicalBorderUidType"/>
+			<xsd:element name="GsdUid" type="GateStandUidType"/>
+			<xsd:element name="HpeUid" type="HoldingProcedureUidType"/>
+			<xsd:element name="IapUid" type="InstrumentApproachUidType"/>
+			<xsd:element name="IlsUid" type="IlsUidType"/>
+			<xsd:element name="IueUid" type="InstrumentApproachUsageConditionUidType"/>
+			<xsd:element name="MgpUid" type="MsaGroupUidType"/>
+			<xsd:element name="MkrUid" type="MkrUidType"/>
+			<xsd:element name="MlsUid" type="MlsUidType"/>
+			<xsd:element name="NdbUid" type="NdbUidType"/>
+			<xsd:element name="NliUid" type="NdbUsageLimitationUidType"/>
+			<xsd:element name="NscUid" type="CheckpointUidType"/>
+			<xsd:element name="NtgUid" type="NitrogenUidType"/>
+			<xsd:element name="OaaUid" type="OrganisationAuthorityAddressUidType"/>
+			<xsd:element name="OasUid" type="OrganisationAuthorityAssociationUidType"/>
+			<xsd:element name="ObsUid" type="ObstacleUidType"/>
+			<xsd:element name="OfaUid" type="AirspaceAuthorityUidType"/>
+			<xsd:element name="OilUid" type="OilUidType"/>
+			<xsd:element name="OrgUid" type="OrganisationAuthorityUidType"/>
+			<xsd:element name="OxgUid" type="OxygenUidType"/>
+			<xsd:element name="PfyUid" type="PassengerFacilityUidType"/>
+			<xsd:element name="PlbUid" type="CruisingLevelsTableUidType"/>
+			<xsd:element name="PlcUid" type="CruisingLevelsColumnUidType"/>
+			<xsd:element name="RcpUid" type="RunwayCentreLinePositionUidType"/>
+			<xsd:element name="RdaUid" type="RunwayDirectionApproachLightingSystemUidType"/>
+			<xsd:element name="RddUid" type="RunwayDirectionDeclaredDistanceUidType"/>
+			<xsd:element name="RdnUid" type="RunwayDirectionUidType"/>
+			<xsd:element name="RdoUid" type="RunwayDirectionObstacleUidType"/>
+			<xsd:element name="RdsUid" type="RunwayDirectionStarUidType"/>
+			<xsd:element name="RlsUid" type="RunwayDirectionLightingSystemUidType"/>
+			<xsd:element name="RpaUid" type="RunwayProtectionAreaUidType"/>
+			<xsd:element name="RpgUid" type="RunwayProtectionAreaGeometryUidType"/>
+			<xsd:element name="RsgUid" type="RouteSegmentUidType"/>
+			<xsd:element name="RsuUid" type="RouteSegmentUsageUidType"/>
+			<xsd:element name="RteUid" type="EnrouteRouteUidType"/>
+			<xsd:element name="RwyUid" type="RunwayUidType"/>
+			<xsd:element name="SaeUid" type="AirspaceServiceUidType"/>
+			<xsd:element name="SahUid" type="AerodromeHeliportServiceUidType"/>
+			<xsd:element name="SerUid" type="ServiceUidType"/>
+			<xsd:element name="ShpUid" type="HoldingProcedureServiceUidType"/>
+			<xsd:element name="SiaUid" type="StarUidType"/>
+			<xsd:element name="SidUid" type="SidUidType"/>
+			<xsd:element name="SipUid" type="InstrumentApproachServiceUidType"/>
+			<xsd:element name="SnsUid" type="SpecialNavigationSystemStationUidType"/>
+			<xsd:element name="SnyUid" type="SpecialNavigationSystemUidType"/>
+			<xsd:element name="SpaUid" type="SignificantPointAirspaceUidType"/>
+			<xsd:element name="SpdUid" type="SpecialDateUidType"/>
+			<xsd:element name="SrsUid" type="RouteSegmentServiceUidType"/>
+			<xsd:element name="SsdUid" type="SidServiceUidType"/>
+			<xsd:element name="SseUid" type="StarUsageUidType"/>
+			<xsd:element name="SsrUid" type="StarServiceUidType"/>
+			<xsd:element name="SueUid" type="SidUsageUidType"/>
+			<xsd:element name="SwyUid" type="StopwayUidType"/>
+			<xsd:element name="TcnUid" type="TacanUidType"/>
+			<xsd:element name="TcpUid" type="TaxiwayCentreLinePositionUidType"/>
+			<xsd:element name="TfrUid" type="TrafficFlowRestrictionUidType"/>
+			<xsd:element name="ThpUid" type="TaxiwayHoldingPositionUidType"/>
+			<xsd:element name="TlaUid" type="TlofUidType"/>
+			<xsd:element name="TlgUid" type="TlofGeometryUidType"/>
+			<xsd:element name="TliUid" type="TacanUsageLimitationUidType"/>
+			<xsd:element name="TlsUid" type="TlofLightingSystemUidType"/>
+			<xsd:element name="TlyUid" type="TaxiwayLightingSystemUidType"/>
+			<xsd:element name="TsaUid" type="TlofSafeAreaUidType"/>
+			<xsd:element name="TsgUid" type="TlofSafeAreaGeometryUidType"/>
+			<xsd:element name="TwyUid" type="TaxiwayUidType"/>
+			<xsd:element name="UacUid" type="UnitAssociationUidType"/>
+			<xsd:element name="UasUid" type="UnitContactAddressUidType"/>
+			<xsd:element name="UniUid" type="UnitUidType"/>
+			<xsd:element name="VliUid" type="VorUsageLimitationUidType"/>
+			<xsd:element name="VorUid" type="VorUidType"/>
+			<xsd:element name="AacUid" type="AirspaceAssocUidType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DlnUid" type="DmeLimitationUidType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NlnUid" type="NdbLimitationUidType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TlnUid" type="TacanLimitationUidType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="VlnUid" type="VorLimitationUidType">
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="FeatureUidFeatureType">
+		<xsd:choice>
+			<xsd:sequence>
+				<xsd:element name="AasUid" type="AirspaceAssociationUidType" minOccurs="0"/>
+				<xsd:element name="Aas" type="AirspaceAssociationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AbdUid" type="AirspaceBorderUidType" minOccurs="0"/>
+				<xsd:element name="Abd" type="AirspaceBorderType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AcrUid" type="AirspaceCorridorUidType" minOccurs="0"/>
+				<xsd:element name="Acr" type="AirspaceCorridorType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AdgUid" type="AirspaceDerivedGeometryUidType" minOccurs="0"/>
+				<xsd:element name="Adg" type="AirspaceDerivedGeometryType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AgaUid" type="GroundServiceAddressUidType" minOccurs="0"/>
+				<xsd:element name="Aga" type="GroundServiceAddressType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AglUid" type="AeronauticalGroundLightUidType" minOccurs="0"/>
+				<xsd:element name="Agl" type="AeronauticalGroundLightType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AhaUid" type="AerodromeHeliportAddressUidType" minOccurs="0"/>
+				<xsd:element name="Aha" type="AerodromeHeliportAddressType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AhcUid" type="AerodromeHeliportCollocationUidType" minOccurs="0"/>
+				<xsd:element name="Ahc" type="AerodromeHeliportCollocationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AhoUid" type="AerodromeHeliportObstacleUidType" minOccurs="0"/>
+				<xsd:element name="Aho" type="AerodromeHeliportObstacleType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AhpUid" type="AerodromeHeliportUidType" minOccurs="0"/>
+				<xsd:element name="Ahp" type="AerodromeHeliportType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AhsUid" type="GroundServiceUidType" minOccurs="0"/>
+				<xsd:element name="Ahs" type="GroundServiceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AhuUid" type="AerodromeHeliportUsageUidType" minOccurs="0"/>
+				<xsd:element name="Ahu" type="AerodromeHeliportUsageType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AinUid" type="NavaidAngularReferenceUidType" minOccurs="0"/>
+				<xsd:element name="Ain" type="NavaidAngularReferenceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AlsUid" type="ApronLightingSystemUidType" minOccurs="0"/>
+				<xsd:element name="Als" type="ApronLightingSystemType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AnaUid" type="AerodromeHeliportNavaidUidType" minOccurs="0"/>
+				<xsd:element name="Ana" type="AerodromeHeliportNavaidType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="ApgUid" type="ApronGeometryUidType" minOccurs="0"/>
+				<xsd:element name="Apg" type="ApronGeometryType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="ApnUid" type="ApronUidType" minOccurs="0"/>
+				<xsd:element name="Apn" type="ApronType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="AseUid" type="AirspaceUidType" minOccurs="0"/>
+				<xsd:element name="Ase" type="AirspaceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="DinUid" type="NavaidDistanceIndicationUidType" minOccurs="0"/>
+				<xsd:element name="Din" type="NavaidDistanceIndicationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="DliUid" type="DmeUsageLimitationUidType" minOccurs="0"/>
+				<xsd:element name="Dli" type="DmeUsageLimitationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="DmeUid" type="DmeUidType" minOccurs="0"/>
+				<xsd:element name="Dme" type="DmeType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="DpnUid" type="DesignatedPointUidType" minOccurs="0"/>
+				<xsd:element name="Dpn" type="DesignatedPointType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.5</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+				<xsd:element name="FaoUid" type="FatoOldUidType" minOccurs="0"/>
+				<xsd:element name="Fao" type="FatoOldType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FtoUid" type="FatoUidType" minOccurs="0"/>
+				<xsd:element name="Fto" type="FatoType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FcpUid" type="FatoCentreLinePositionUidType" minOccurs="0"/>
+				<xsd:element name="Fcp" type="FatoCentreLinePositionType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FdaUid" type="FatoDirectionApproachLightingUidType" minOccurs="0"/>
+				<xsd:element name="Fda" type="FatoDirectionApproachLightingType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FddUid" type="FatoDirectionDeclaredDistanceUidType" minOccurs="0"/>
+				<xsd:element name="Fdd" type="FatoDirectionDeclaredDistanceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FdnUid" type="FatoDirectionUidType" minOccurs="0"/>
+				<xsd:element name="Fdn" type="FatoDirectionType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FdoUid" type="FatoDirectionObstacleUidType" minOccurs="0"/>
+				<xsd:element name="Fdo" type="FatoDirectionObstacleType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FdsUid" type="FatoDirectionStarUidType" minOccurs="0"/>
+				<xsd:element name="Fds" type="FatoDirectionStarType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FlsUid" type="FatoLightingSystemUidType" minOccurs="0"/>
+				<xsd:element name="Fls" type="FatoLightingSystemType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FpaUid" type="FatoProtectionAreaUidType" minOccurs="0"/>
+				<xsd:element name="Fpa" type="FatoProtectionAreaType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FpgUid" type="FatoProtectionAreaGeometryUidType" minOccurs="0"/>
+				<xsd:element name="Fpg" type="FatoProtectionAreaGeometryType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FqyUid" type="FrequencyUidType" minOccurs="0"/>
+				<xsd:element name="Fqy" type="FrequencyType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="FulUid" type="FuelUidType" minOccurs="0"/>
+				<xsd:element name="Ful" type="FuelType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="GbrUid" type="GeographicalBorderUidType" minOccurs="0"/>
+				<xsd:element name="Gbr" type="GeographicalBorderType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="GsdUid" type="GateStandUidType" minOccurs="0"/>
+				<xsd:element name="Gsd" type="GateStandType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="HpeUid" type="HoldingProcedureUidType" minOccurs="0"/>
+				<xsd:element name="Hpe" type="HoldingProcedureType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="IapUid" type="InstrumentApproachUidType" minOccurs="0"/>
+				<xsd:element name="Iap" type="InstrumentApproachType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="IlsUid" type="IlsUidType" minOccurs="0"/>
+				<xsd:element name="Ils" type="IlsType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="IueUid" type="InstrumentApproachUsageConditionUidType" minOccurs="0"/>
+				<xsd:element name="Iue" type="InstrumentApproachUsageConditionType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="MgpUid" type="MsaGroupUidType" minOccurs="0"/>
+				<xsd:element name="Mgp" type="MsaGroupType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="MkrUid" type="MkrUidType" minOccurs="0"/>
+				<xsd:element name="Mkr" type="MkrType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="MlsUid" type="MlsUidType" minOccurs="0"/>
+				<xsd:element name="Mls" type="MlsType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="NdbUid" type="NdbUidType" minOccurs="0"/>
+				<xsd:element name="Ndb" type="NdbType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="NliUid" type="NdbUsageLimitationUidType" minOccurs="0"/>
+				<xsd:element name="Nli" type="NdbUsageLimitationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="NscUid" type="CheckpointUidType" minOccurs="0"/>
+				<xsd:element name="Nsc" type="CheckpointType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="NtgUid" type="NitrogenUidType" minOccurs="0"/>
+				<xsd:element name="Ntg" type="NitrogenType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="OaaUid" type="OrganisationAuthorityAddressUidType" minOccurs="0"/>
+				<xsd:element name="Oaa" type="OrganisationAuthorityAddressType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="OasUid" type="OrganisationAuthorityAssociationUidType" minOccurs="0"/>
+				<xsd:element name="Oas" type="OrganisationAuthorityAssociationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="ObsUid" type="ObstacleUidType" minOccurs="0"/>
+				<xsd:element name="Obs" type="ObstacleType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="OfaUid" type="AirspaceAuthorityUidType" minOccurs="0"/>
+				<xsd:element name="Ofa" type="AirspaceAuthorityType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="OilUid" type="OilUidType" minOccurs="0"/>
+				<xsd:element name="Oil" type="OilType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="OrgUid" type="OrganisationAuthorityUidType" minOccurs="0"/>
+				<xsd:element name="Org" type="OrganisationAuthorityType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="OxgUid" type="OxygenUidType" minOccurs="0"/>
+				<xsd:element name="Oxg" type="OxygenType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="PfyUid" type="PassengerFacilityUidType" minOccurs="0"/>
+				<xsd:element name="Pfy" type="PassengerFacilityType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="PlbUid" type="CruisingLevelsTableUidType" minOccurs="0"/>
+				<xsd:element name="Plb" type="CruisingLevelsTableType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="PlcUid" type="CruisingLevelsColumnUidType" minOccurs="0"/>
+				<xsd:element name="Plc" type="CruisingLevelsColumnType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RcpUid" type="RunwayCentreLinePositionUidType" minOccurs="0"/>
+				<xsd:element name="Rcp" type="RunwayCentreLinePositionType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RdaUid" type="RunwayDirectionApproachLightingSystemUidType" minOccurs="0"/>
+				<xsd:element name="Rda" type="RunwayDirectionApproachLightingSystemType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RddUid" type="RunwayDirectionDeclaredDistanceUidType" minOccurs="0"/>
+				<xsd:element name="Rdd" type="RunwayDirectionDeclaredDistanceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RdnUid" type="RunwayDirectionUidType" minOccurs="0"/>
+				<xsd:element name="Rdn" type="RunwayDirectionType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RdoUid" type="RunwayDirectionObstacleUidType" minOccurs="0"/>
+				<xsd:element name="Rdo" type="RunwayDirectionObstacleType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RdsUid" type="RunwayDirectionStarUidType" minOccurs="0"/>
+				<xsd:element name="Rds" type="RunwayDirectionStarType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RlsUid" type="RunwayDirectionLightingSystemUidType" minOccurs="0"/>
+				<xsd:element name="Rls" type="RunwayDirectionLightingSystemType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RpaUid" type="RunwayProtectionAreaUidType" minOccurs="0"/>
+				<xsd:element name="Rpa" type="RunwayProtectionAreaType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RpgUid" type="RunwayProtectionAreaGeometryUidType" minOccurs="0"/>
+				<xsd:element name="Rpg" type="RunwayProtectionAreaGeometryType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RsgUid" type="RouteSegmentUidType" minOccurs="0"/>
+				<xsd:element name="Rsg" type="RouteSegmentType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RsuUid" type="RouteSegmentUsageUidType" minOccurs="0"/>
+				<xsd:element name="Rsu" type="RouteSegmentUsageType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RteUid" type="EnrouteRouteUidType" minOccurs="0"/>
+				<xsd:element name="Rte" type="EnrouteRouteType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="RwyUid" type="RunwayUidType" minOccurs="0"/>
+				<xsd:element name="Rwy" type="RunwayType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SaeUid" type="AirspaceServiceUidType" minOccurs="0"/>
+				<xsd:element name="Sae" type="AirspaceServiceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SahUid" type="AerodromeHeliportServiceUidType" minOccurs="0"/>
+				<xsd:element name="Sah" type="AerodromeHeliportServiceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SerUid" type="ServiceUidType" minOccurs="0"/>
+				<xsd:element name="Ser" type="ServiceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="ShpUid" type="HoldingProcedureServiceUidType" minOccurs="0"/>
+				<xsd:element name="Shp" type="HoldingProcedureServiceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SiaUid" type="StarUidType" minOccurs="0"/>
+				<xsd:element name="Sia" type="StarType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SidUid" type="SidUidType" minOccurs="0"/>
+				<xsd:element name="Sid" type="SidType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SipUid" type="InstrumentApproachServiceUidType" minOccurs="0"/>
+				<xsd:element name="Sip" type="InstrumentApproachServiceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SnsUid" type="SpecialNavigationSystemStationUidType" minOccurs="0"/>
+				<xsd:element name="Sns" type="SpecialNavigationSystemStationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SnyUid" type="SpecialNavigationSystemUidType" minOccurs="0"/>
+				<xsd:element name="Sny" type="SpecialNavigationSystemType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SpaUid" type="SignificantPointAirspaceUidType" minOccurs="0"/>
+				<xsd:element name="Spa" type="SignificantPointAirspaceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SpdUid" type="SpecialDateUidType" minOccurs="0"/>
+				<xsd:element name="Spd" type="SpecialDateType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SrsUid" type="RouteSegmentServiceUidType" minOccurs="0"/>
+				<xsd:element name="Srs" type="RouteSegmentServiceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SsdUid" type="SidServiceUidType" minOccurs="0"/>
+				<xsd:element name="Ssd" type="SidServiceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SseUid" type="StarUsageUidType" minOccurs="0"/>
+				<xsd:element name="Sse" type="StarUsageType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SsrUid" type="StarServiceUidType" minOccurs="0"/>
+				<xsd:element name="Ssr" type="StarServiceType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SueUid" type="SidUsageUidType" minOccurs="0"/>
+				<xsd:element name="Sue" type="SidUsageType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="SwyUid" type="StopwayUidType" minOccurs="0"/>
+				<xsd:element name="Swy" type="StopwayType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TcnUid" type="TacanUidType" minOccurs="0"/>
+				<xsd:element name="Tcn" type="TacanType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TcpUid" type="TaxiwayCentreLinePositionUidType" minOccurs="0"/>
+				<xsd:element name="Tcp" type="TaxiwayCentreLinePositionType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TfrUid" type="TrafficFlowRestrictionUidType" minOccurs="0"/>
+				<xsd:element name="Tfr" type="TrafficFlowRestrictionType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="ThpUid" type="TaxiwayHoldingPositionUidType" minOccurs="0"/>
+				<xsd:element name="Thp" type="TaxiwayHoldingPositionType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TlaUid" type="TlofUidType" minOccurs="0"/>
+				<xsd:element name="Tla" type="TlofType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TlgUid" type="TlofGeometryUidType" minOccurs="0"/>
+				<xsd:element name="Tlg" type="TlofGeometryType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TliUid" type="TacanUsageLimitationUidType" minOccurs="0"/>
+				<xsd:element name="Tli" type="TacanUsageLimitationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TlsUid" type="TlofLightingSystemUidType" minOccurs="0"/>
+				<xsd:element name="Tls" type="TlofLightingSystemType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TlyUid" type="TaxiwayLightingSystemUidType" minOccurs="0"/>
+				<xsd:element name="Tly" type="TaxiwayLightingSystemType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TsaUid" type="TlofSafeAreaUidType" minOccurs="0"/>
+				<xsd:element name="Tsa" type="TlofSafeAreaType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TsgUid" type="TlofSafeAreaGeometryUidType" minOccurs="0"/>
+				<xsd:element name="Tsg" type="TlofSafeAreaGeometryType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="TwyUid" type="TaxiwayUidType" minOccurs="0"/>
+				<xsd:element name="Twy" type="TaxiwayType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="UacUid" type="UnitAssociationUidType" minOccurs="0"/>
+				<xsd:element name="Uac" type="UnitAssociationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="UasUid" type="UnitContactAddressUidType" minOccurs="0"/>
+				<xsd:element name="Uas" type="UnitContactAddressType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="UniUid" type="UnitUidType" minOccurs="0"/>
+				<xsd:element name="Uni" type="UnitType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="VliUid" type="VorUsageLimitationUidType" minOccurs="0"/>
+				<xsd:element name="Vli" type="VorUsageLimitationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:element name="VorUid" type="VorUidType" minOccurs="0"/>
+				<xsd:element name="Vor" type="VorType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+				<xsd:element name="AacUid" type="AirspaceAssocUidType" minOccurs="0"/>
+				<xsd:element name="Aac" type="AirspaceAssocType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+				<xsd:element name="DlnUid" type="DmeLimitationUidType" minOccurs="0"/>
+				<xsd:element name="Dln" type="DmeLimitationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+				<xsd:element name="NlnUid" type="NdbLimitationUidType" minOccurs="0"/>
+				<xsd:element name="Nln" type="NdbLimitationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+				<xsd:element name="TlnUid" type="TacanLimitationUidType" minOccurs="0"/>
+				<xsd:element name="Tln" type="TacanLimitationType"/>
+			</xsd:sequence>
+			<xsd:sequence>
+				<xsd:annotation>
+					<xsd:appinfo>DEPRECATED-4.0</xsd:appinfo>
+					<xsd:documentation>[Deprecated]</xsd:documentation>
+				</xsd:annotation>
+				<xsd:element name="VlnUid" type="VorLimitationUidType" minOccurs="0"/>
+				<xsd:element name="Vln" type="VorLimitationType"/>
+			</xsd:sequence>
+		</xsd:choice>
+	</xsd:complexType>
+</xsd:schema>
