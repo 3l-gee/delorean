@@ -3,6 +3,8 @@ package com.aixm.delorean;
 import com.aixm.delorean.core.aixm.message.AIXMBasicMessageType;
 import com.aixm.delorean.core.aixm.message.BasicMessageMemberAIXMPropertyType;
 import com.aixm.delorean.core.aixm.AbstractAIXMFeatureType;
+import com.aixm.delorean.core.configuration.AixmVersion;
+import com.aixm.delorean.core.configuration.TemporalityType;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
@@ -14,6 +16,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println(AixmVersion.VERSION_4_5.getRoot().toString());
+        System.out.println(TemporalityType.NO_TEMPORALITY.toString());
+
         try {
             // Create JAXB context
             JAXBContext context = JAXBContext.newInstance(AIXMBasicMessageType.class);
@@ -25,7 +30,8 @@ public class Main {
             InputStream xmlStream = null;
 
             try {
-                xmlStream = new FileInputStream("C:\\Users\\gerth\\source\\repos\\3l-gee\\delorean\\data\\a5_1_1\\Donlon.xml");
+                xmlStream = new FileInputStream("C:\\Users\\rapha\\Documents\\project\\delorean\\data\\a5_1_1\\Donlon.xml");
+                // xmlStream = new FileInputStream("C:\\Users\\gerth\\source\\repos\\3l-gee\\delorean\\data\\a5_1_1\\Donlon.xml");
                 // Use the xmlStream here
             } catch (Exception e) {
                 e.printStackTrace();
