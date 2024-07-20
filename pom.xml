@@ -15,11 +15,19 @@
 			<artifactId>jakarta.xml.bind-api</artifactId>
 			<version>4.0.2</version>
 		</dependency>
-		    <dependency>
+
+		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
 			<version>4.0.2</version>
 		</dependency>
+
+        <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>5.10.3</version>
+                <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 	<properties>
