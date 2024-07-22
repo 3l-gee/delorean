@@ -1,8 +1,8 @@
 package com.aixm.delorean;
 
-import com.aixm.delorean.core.aixm.message.AIXMBasicMessageType;
-import com.aixm.delorean.core.aixm.message.BasicMessageMemberAIXMPropertyType;
-import com.aixm.delorean.core.aixm.AbstractAIXMFeatureType;
+import com.aixm.delorean.core.schema.a5_1_1.message.AIXMBasicMessageType;
+import com.aixm.delorean.core.schema.a5_1_1.message.BasicMessageMemberAIXMPropertyType;
+import com.aixm.delorean.core.schema.a5_1_1.AbstractAIXMFeatureType;
 import com.aixm.delorean.core.configuration.AixmVersion;
 import com.aixm.delorean.core.container.Container;
 import com.aixm.delorean.core.container.ContainerFactory;

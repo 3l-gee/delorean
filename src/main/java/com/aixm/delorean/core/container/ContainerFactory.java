@@ -2,7 +2,7 @@ package com.aixm.delorean.core.container;
 
 import org.glassfish.jaxb.runtime.v2.util.TypeCast;
 
-import com.aixm.delorean.core.aixm.message.AIXMBasicMessageType;
+import com.aixm.delorean.core.schema.a5_1_1.message.AIXMBasicMessageType;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;

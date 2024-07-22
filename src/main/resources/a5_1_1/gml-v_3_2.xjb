@@ -9,7 +9,7 @@
 		node="/xs:schema">
 		<jaxb:schemaBindings>
 			<!-- <jaxb:package name="net.opengis.gml.v_3_2"/> -->
-			<jaxb:package name="com.aixm.delorean.core.org.gml"/>
+			<jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gml"/>
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
 
