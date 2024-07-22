@@ -61,7 +61,7 @@
                 </configuration>
             </plugin>
 
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
@@ -88,7 +88,7 @@
                         </configuration>
 					</execution>
                 </executions>
-            </plugin> -->
+            </plugin>
 
 			<!-- Added maven-shade-plugin to create a fat jar including dependencies -->
             <plugin>
