@@ -1,35 +1,35 @@
 package com.aixm.delorean.core.container;
 
-import org.glassfish.jaxb.runtime.v2.util.TypeCast;
-
-import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
+import com.aixm.delorean.core.configuration.SchemaVersion;
 
 import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.Unmarshaller;
+import javax.xml.validation.Schema;
+
 
 public final class ContainerFactory {
     private ContainerFactory() {
         // Private constructor to prevent instantiation
     }
-    
-    //TODO : version must be seletable by user
-    public static Container createContainer(String version, String schemaPath) {
-        
-        // Create JAXB context
-        JAXBContext context = null;
 
-        // Create an Unmarshaller
-        Unmarshaller unmarshaller = null;
-        try {
-            // Set cotext
-            context = JAXBContext.newInstance(AIXMBasicMessageType.class);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        
-        }
-
-        return new Container(context, AIXMBasicMessageType.class, schemaPath);
+    public static Container createContainer(String version) {
+    SchemaVersion schemaVersion = SchemaVersion.fromString(version);
+    Class<?> schemaVersionClass = null;
+    try {
+        schemaVersionClass = Class.forName(schemaVersion.getRoot());
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
     }
-    
+    Schema schema = schemaVersion.getSchema();
+
+    JAXBContext context = null;
+    try {
+        context = JAXBContext.newInstance(schemaVersionClass);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return new Container(context, schemaVersionClass, schema);
+    }
+       
 }

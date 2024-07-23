@@ -56,10 +56,20 @@ public class Main {
 
         switch (action.toLowerCase()) {
             case "new":
-                this.containerWarehouse.addContainer(ContainerFactory.createContainer(argument, parameter));
+                this.containerWarehouse.addContainer(ContainerFactory.createContainer(argument));
                 System.out.println(this.containerWarehouse.getLastContainerId() + " created");
                 break;
             
+            case "validation" :
+                if (this.containerWarehouse.getIds().contains(argument)) {
+                    this.containerWarehouse.getContainer(argument).setValidationRule();
+                } else if (argument == null) {
+                    this.containerWarehouse.getLastContainer().setValidationRule();
+                } else {
+                    System.err.println("Container " + argument + " does not exist");
+                }
+                break;
+
             case "list" :
                 System.out.println(this.containerWarehouse.getIds());
                 break;
@@ -67,6 +77,8 @@ public class Main {
             case "load" :
                 if (this.containerWarehouse.getIds().contains(argument) && parameter != null) {
                     this.containerWarehouse.getContainer(argument).unmarshal(parameter);
+                } else if (argument == null && parameter != null) {
+                    this.containerWarehouse.getLastContainer().unmarshal(parameter);
                 } else {
                     System.err.println("Container " + argument + " does not exist or parameter is missing");
                 }
@@ -75,7 +87,9 @@ public class Main {
             case "show" :
                 if (this.containerWarehouse.getIds().contains(argument)) {
                     this.containerWarehouse.getContainer(argument).show();
-                }else {
+                } else if (argument == null) {
+                    this.containerWarehouse.getLastContainer().show();
+                } else {
                     System.err.println("Container " + argument + " does not exist or parameter is missing");
                 }
                 break;                

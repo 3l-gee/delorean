@@ -9,9 +9,7 @@ import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.Unmarshaller;
 import jakarta.xml.bind.ValidationEvent;
 import jakarta.xml.bind.ValidationEventHandler;
-import jakarta.xml.bind.ValidationEventLocator;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
@@ -28,18 +26,24 @@ public class Container {
     private SchemaFactory schemaFactory;
     private Schema schema;
 
-
-    public Container(JAXBContext context, Class<?> rootType, String schemaPath) {
+    public Container(JAXBContext context, Class<?> rootType, Schema schema) {
         this.rootType = rootType;
         this.context = context; 
         this.schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         try {
-            this.schema = this.schemaFactory.newSchema(new File(schemaPath));
+            this.schema = schema;
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
             this.unmarshaller = this.context.createUnmarshaller();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setValidationRule() {
+        try {
             this.unmarshaller.setSchema(this.schema);
             this.unmarshaller.setEventHandler(new ValidationEventHandler() {
                 public boolean handleEvent(ValidationEvent event) {

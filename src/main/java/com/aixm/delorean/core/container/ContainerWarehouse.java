@@ -44,4 +44,8 @@ public class ContainerWarehouse {
     public String getLastContainerId() {
         return lastContainerId;
     }
+
+    public Container getLastContainer() {
+        return containers.get(lastContainerId);
+    }
 }
