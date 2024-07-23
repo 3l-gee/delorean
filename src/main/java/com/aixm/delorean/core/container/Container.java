@@ -1,32 +1,62 @@
 package com.aixm.delorean.core.container;
 
-import org.glassfish.jaxb.runtime.v2.util.TypeCast;
-
-import com.aixm.delorean.core.schema.a5_1_1.message.AIXMBasicMessageType;
-import com.aixm.delorean.core.schema.a5_1_1.message.BasicMessageMemberAIXMPropertyType;
-import com.aixm.delorean.core.schema.a5_1_1.AbstractAIXMFeatureType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.BasicMessageMemberAIXMPropertyType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureType;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.Unmarshaller;
+import jakarta.xml.bind.ValidationEvent;
+import jakarta.xml.bind.ValidationEventHandler;
+import jakarta.xml.bind.ValidationEventLocator;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
-import java.util.Scanner;
+
+import javax.xml.validation.SchemaFactory;
+import javax.xml.XMLConstants;
+import javax.xml.validation.Schema;
 
 public class Container {
     private final JAXBContext context;
     private final Class<?> rootType;
     private AIXMBasicMessageType root;
     private Unmarshaller unmarshaller;
+    private SchemaFactory schemaFactory;
+    private Schema schema;
 
 
-    public Container(JAXBContext context, Class<?> rootType) {
+    public Container(JAXBContext context, Class<?> rootType, String schemaPath) {
         this.rootType = rootType;
         this.context = context; 
+        this.schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        try {
+            this.schema = this.schemaFactory.newSchema(new File(schemaPath));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         try {
             this.unmarshaller = this.context.createUnmarshaller();
+            this.unmarshaller.setSchema(this.schema);
+            this.unmarshaller.setEventHandler(new ValidationEventHandler() {
+                public boolean handleEvent(ValidationEvent event) {
+                    System.out.println("\nEVENT");
+                    System.out.println("SEVERITY:  " + event.getSeverity());
+                    System.out.println("MESSAGE:  " + event.getMessage());
+                    System.out.println("LINKED EXCEPTION:  " + event.getLinkedException());
+                    System.out.println("LOCATOR");
+                    System.out.println("    LINE NUMBER:  " + event.getLocator().getLineNumber());
+                    System.out.println("    COLUMN NUMBER:  " + event.getLocator().getColumnNumber());
+                    System.out.println("    OFFSET:  " + event.getLocator().getOffset());
+                    System.out.println("    OBJECT:  " + event.getLocator().getObject());
+                    System.out.println("    NODE:  " + event.getLocator().getNode());
+                    System.out.println("    URL:  " + event.getLocator().getURL());
+                    return true;
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -10,9 +10,9 @@
             <!-- <jaxb:package name="aero.aixm.message"/> -->
 			<jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.aixm.message"/>
 		</jaxb:schemaBindings>
-		<jaxb:bindings node="xs:element[@name='AIXMBasicMessage']">
+		<!-- <jaxb:bindings node="xs:element[@name='AIXMBasicMessage']">
 			<jaxb:class name="AIXMBasicMessage"/>
-		</jaxb:bindings>
+		</jaxb:bindings> -->
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="AIXM_Features.xsd" node="/xs:schema">

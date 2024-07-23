@@ -2,7 +2,7 @@ package com.aixm.delorean.core.container;
 
 import org.glassfish.jaxb.runtime.v2.util.TypeCast;
 
-import com.aixm.delorean.core.schema.a5_1_1.message.AIXMBasicMessageType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
@@ -13,7 +13,7 @@ public final class ContainerFactory {
     }
     
     //TODO : version must be seletable by user
-    public static Container createContainer(String version) {
+    public static Container createContainer(String version, String schemaPath) {
         
         // Create JAXB context
         JAXBContext context = null;
@@ -29,7 +29,7 @@ public final class ContainerFactory {
         
         }
 
-        return new Container(context, AIXMBasicMessageType.class);
+        return new Container(context, AIXMBasicMessageType.class, schemaPath);
     }
     
 }
