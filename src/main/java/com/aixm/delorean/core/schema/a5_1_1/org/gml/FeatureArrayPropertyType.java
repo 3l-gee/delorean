@@ -148,7 +148,7 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.VORType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.VerticalStructureType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.VisualGlideSlopeIndicatorType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.WorkAreaType;
-import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessage;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -202,7 +202,6 @@ public class FeatureArrayPropertyType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AIXMBasicMessage }
      * {@link JAXBElement }{@code <}{@link AbstractAIXMFeatureType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractAirportGroundServiceType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractAirportHeliportProtectionAreaType }{@code >}
@@ -342,6 +341,7 @@ public class FeatureArrayPropertyType {
      * {@link JAXBElement }{@code <}{@link VerticalStructureType }{@code >}
      * {@link JAXBElement }{@code <}{@link VisualGlideSlopeIndicatorType }{@code >}
      * {@link JAXBElement }{@code <}{@link WorkAreaType }{@code >}
+     * {@link JAXBElement }{@code <}{@link AIXMBasicMessageType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractContinuousCoverageType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractCoverageType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractFeatureCollectionType }{@code >}

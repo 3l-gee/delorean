@@ -1,25 +1,9 @@
 package com.aixm.delorean;
 
-import com.aixm.delorean.core.schema.a5_1_1.message.AIXMBasicMessageType;
-import com.aixm.delorean.core.schema.a5_1_1.message.BasicMessageMemberAIXMPropertyType;
-import com.aixm.delorean.core.schema.a5_1_1.AbstractAIXMFeatureType;
-import com.aixm.delorean.core.configuration.AixmVersion;
-import com.aixm.delorean.core.container.Container;
 import com.aixm.delorean.core.container.ContainerFactory;
 import com.aixm.delorean.core.container.ContainerWarehouse;
 
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBElement;
-import jakarta.xml.bind.Unmarshaller;
-
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.List;
 import java.util.Scanner;
-
-import org.glassfish.jaxb.runtime.v2.runtime.output.StAXExStreamWriterOutput;
-
-import java.util.ArrayList;
 
 public class Main {
     ContainerWarehouse containerWarehouse = new ContainerWarehouse();
@@ -72,7 +56,7 @@ public class Main {
 
         switch (action.toLowerCase()) {
             case "new":
-                this.containerWarehouse.addContainer(ContainerFactory.createContainer(argument));
+                this.containerWarehouse.addContainer(ContainerFactory.createContainer(argument, parameter));
                 System.out.println(this.containerWarehouse.getLastContainerId() + " created");
                 break;
             

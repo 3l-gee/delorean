@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm.message;
 
+import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlElementDecl;
 import jakarta.xml.bind.annotation.XmlRegistry;
 
@@ -28,6 +30,7 @@ import jakarta.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private static final QName _AIXMBasicMessage_QNAME = new QName("http://www.aixm.aero/schema/5.1.1/message", "AIXMBasicMessage");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.aixm.delorean.core.schema.a5_1_1.aixm.message
@@ -57,16 +60,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AIXMBasicMessage }
+     * Create an instance of {@link JAXBElement }{@code <}{@link AIXMBasicMessageType }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link AIXMBasicMessage }
+     *     the new instance of {@link JAXBElement }{@code <}{@link AIXMBasicMessageType }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1/message", name = "AIXMBasicMessage", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractFeature")
-    public AIXMBasicMessage createAIXMBasicMessage(AIXMBasicMessageType value) {
-        return new AIXMBasicMessage(value);
+    public JAXBElement<AIXMBasicMessageType> createAIXMBasicMessage(AIXMBasicMessageType value) {
+        return new JAXBElement<>(_AIXMBasicMessage_QNAME, AIXMBasicMessageType.class, null, value);
     }
 
 }

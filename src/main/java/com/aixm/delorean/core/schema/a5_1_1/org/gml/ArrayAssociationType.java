@@ -277,7 +277,7 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.VisualGlideSlopeIndicatorTimeSl
 import com.aixm.delorean.core.schema.a5_1_1.aixm.VisualGlideSlopeIndicatorType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.WorkAreaTimeSliceType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.WorkAreaType;
-import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessage;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -341,7 +341,6 @@ public class ArrayAssociationType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AIXMBasicMessage }
      * {@link JAXBElement }{@code <}{@link AbstractAIXMFeatureType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractAIXMObjectType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractAirportGroundServiceType }{@code >}
@@ -613,6 +612,7 @@ public class ArrayAssociationType {
      * {@link JAXBElement }{@code <}{@link VisualGlideSlopeIndicatorType }{@code >}
      * {@link JAXBElement }{@code <}{@link WorkAreaTimeSliceType }{@code >}
      * {@link JAXBElement }{@code <}{@link WorkAreaType }{@code >}
+     * {@link JAXBElement }{@code <}{@link AIXMBasicMessageType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractCRSType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractCRSType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractContinuousCoverageType }{@code >}

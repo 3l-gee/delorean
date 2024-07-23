@@ -151,7 +151,7 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.VORType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.VerticalStructureType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.VisualGlideSlopeIndicatorType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.WorkAreaType;
-import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessage;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
@@ -234,7 +234,6 @@ public class TargetPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link AIXMBasicMessage }
      *     {@link JAXBElement }{@code <}{@link AbstractAIXMFeatureType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractAirportGroundServiceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractAirportHeliportProtectionAreaType }{@code >}
@@ -374,6 +373,7 @@ public class TargetPropertyType {
      *     {@link JAXBElement }{@code <}{@link VerticalStructureType }{@code >}
      *     {@link JAXBElement }{@code <}{@link VisualGlideSlopeIndicatorType }{@code >}
      *     {@link JAXBElement }{@code <}{@link WorkAreaType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AIXMBasicMessageType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractContinuousCoverageType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractCoverageType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractFeatureCollectionType }{@code >}
@@ -402,7 +402,6 @@ public class TargetPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link AIXMBasicMessage }
      *     {@link JAXBElement }{@code <}{@link AbstractAIXMFeatureType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractAirportGroundServiceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractAirportHeliportProtectionAreaType }{@code >}
@@ -542,6 +541,7 @@ public class TargetPropertyType {
      *     {@link JAXBElement }{@code <}{@link VerticalStructureType }{@code >}
      *     {@link JAXBElement }{@code <}{@link VisualGlideSlopeIndicatorType }{@code >}
      *     {@link JAXBElement }{@code <}{@link WorkAreaType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AIXMBasicMessageType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractContinuousCoverageType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractCoverageType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractFeatureCollectionType }{@code >}
