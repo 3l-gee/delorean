@@ -3,20 +3,33 @@
 	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:annox="urn:jaxb.jvnet.org:annox"
+	jaxb:extensionBindingPrefixes="xjc annox">
     
     <jaxb:bindings schemaLocation="AIXM_BasicMessage.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="aero.aixm.message"/> -->
 			<jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.aixm.message"/>
 		</jaxb:schemaBindings>
-		<!-- <jaxb:bindings node="xs:element[@name='AIXMBasicMessage']">
-			<jaxb:class name="AIXMBasicMessage"/>
-		</jaxb:bindings> -->
+		<jaxb:bindings node="xs:complexType[@name='AIXMBasicMessageType']">
+			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement()</annox:annotate>
+		</jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="AIXM_DataTypes.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:simpleType[@name='CodeNavaidDesignatorBaseType']">
+			<jaxb:bindings node=".//xs:maxLength[@value='4']">
+				<annox:annotate target="field">@jakarta.validation.constraints.Size(max = 4)</annox:annotate>
+			</jaxb:bindings>
+			<jaxb:bindings node=".//xs:minLength[@value='1']">
+				<annox:annotate target="field">@jakarta.validation.constraints.Size(min = 1)</annox:annotate>
+			</jaxb:bindings>
+		</jaxb:bindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="AIXM_Features.xsd" node="/xs:schema">
-		<jaxb:globalBindings fixedAttributeAsConstantProperty="true" typesafeEnumBase="xs:string" typesafeEnumMemberName="generateName" generateIsSetMethod="true">
+		<jaxb:globalBindings fixedAttributeAsConstantProperty="true" typesafeEnumBase="xs:string" typesafeEnumMemberName="generateName" generateIsSetMethod="true" mapSimpleTypeDef="true">
 			<!-- <xjc:noValidator />
 			<xjc:noValidatingUnmarshaller /> -->
 		</jaxb:globalBindings>

@@ -13,8 +13,8 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMMessageType;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -40,7 +40,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlType(name = "AIXMBasicMessageType", propOrder = {
     "hasMember"
 })
-@XmlRootElement()
+@XmlRootElement
 public class AIXMBasicMessageType
     extends AbstractAIXMMessageType
 {

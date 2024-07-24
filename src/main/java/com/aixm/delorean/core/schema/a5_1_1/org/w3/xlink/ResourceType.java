@@ -15,8 +15,6 @@ import jakarta.xml.bind.annotation.XmlAnyElement;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlMixed;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.w3c.dom.Element;
 
 
@@ -50,12 +48,11 @@ public class ResourceType {
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
     public static final TypeType TYPE = TypeType.RESOURCE;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    protected String role;
+    protected RoleType role;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String titleAttribute;
+    protected TitleAttrType titleAttribute;
     @XmlAttribute(name = "label", namespace = "http://www.w3.org/1999/xlink")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String label;
+    protected LabelType label;
 
     /**
      * Gets the value of the content property.
@@ -104,10 +101,10 @@ public class ResourceType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
@@ -116,10 +113,10 @@ public class ResourceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public void setRole(String value) {
+    public void setRole(RoleType value) {
         this.role = value;
     }
 
@@ -132,10 +129,10 @@ public class ResourceType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public String getTitleAttribute() {
+    public TitleAttrType getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -144,10 +141,10 @@ public class ResourceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public void setTitleAttribute(String value) {
+    public void setTitleAttribute(TitleAttrType value) {
         this.titleAttribute = value;
     }
 
@@ -160,10 +157,10 @@ public class ResourceType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link LabelType }
      *     
      */
-    public String getLabel() {
+    public LabelType getLabel() {
         return label;
     }
 
@@ -172,10 +169,10 @@ public class ResourceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link LabelType }
      *     
      */
-    public void setLabel(String value) {
+    public void setLabel(LabelType value) {
         this.label = value;
     }
 

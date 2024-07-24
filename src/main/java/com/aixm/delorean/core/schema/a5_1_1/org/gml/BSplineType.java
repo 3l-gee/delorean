@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.xml.bind.JAXBElement;
@@ -17,9 +16,9 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlElementRefs;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
+import org.w3._2001.xmlschema.NonNegativeInteger;
 
 
 /**
@@ -78,8 +77,7 @@ public class BSplineType
     protected DirectPositionListType posList;
     protected CoordinatesType coordinates;
     @XmlElement(required = true)
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger degree;
+    protected NonNegativeInteger degree;
     @XmlElement(required = true)
     protected List<KnotPropertyType> knot;
     @XmlAttribute(name = "interpolation")
@@ -192,10 +190,10 @@ public class BSplineType
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link NonNegativeInteger }
      *     
      */
-    public BigInteger getDegree() {
+    public NonNegativeInteger getDegree() {
         return degree;
     }
 
@@ -204,10 +202,10 @@ public class BSplineType
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link NonNegativeInteger }
      *     
      */
-    public void setDegree(BigInteger value) {
+    public void setDegree(NonNegativeInteger value) {
         this.degree = value;
     }
 

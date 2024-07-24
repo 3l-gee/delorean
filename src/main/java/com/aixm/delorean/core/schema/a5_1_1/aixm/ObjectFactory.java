@@ -4815,6 +4815,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeBuoyDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeBuoyDesignatorBaseType }
+     */
+    public CodeBuoyDesignatorBaseType createCodeBuoyDesignatorBaseType() {
+        return new CodeBuoyDesignatorBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeBuoyDesignatorType }
      * 
      * @return
@@ -4822,6 +4832,26 @@ public class ObjectFactory {
      */
     public CodeBuoyDesignatorType createCodeBuoyDesignatorType() {
         return new CodeBuoyDesignatorType();
+    }
+
+    /**
+     * Create an instance of {@link CodeDistanceVerticalUomType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDistanceVerticalUomType }
+     */
+    public CodeDistanceVerticalUomType createCodeDistanceVerticalUomType() {
+        return new CodeDistanceVerticalUomType();
+    }
+
+    /**
+     * Create an instance of {@link CodeICAOCountryBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeICAOCountryBaseType }
+     */
+    public CodeICAOCountryBaseType createCodeICAOCountryBaseType() {
+        return new CodeICAOCountryBaseType();
     }
 
     /**
@@ -4835,6 +4865,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeReferencePathIdentifierBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeReferencePathIdentifierBaseType }
+     */
+    public CodeReferencePathIdentifierBaseType createCodeReferencePathIdentifierBaseType() {
+        return new CodeReferencePathIdentifierBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeReferencePathIdentifierType }
      * 
      * @return
@@ -4842,6 +4882,16 @@ public class ObjectFactory {
      */
     public CodeReferencePathIdentifierType createCodeReferencePathIdentifierType() {
         return new CodeReferencePathIdentifierType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRouteIndicatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRouteIndicatorBaseType }
+     */
+    public CodeRouteIndicatorBaseType createCodeRouteIndicatorBaseType() {
+        return new CodeRouteIndicatorBaseType();
     }
 
     /**
@@ -4855,6 +4905,76 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AlphaType }
+     * 
+     * @return
+     *     the new instance of {@link AlphaType }
+     */
+    public AlphaType createAlphaType() {
+        return new AlphaType();
+    }
+
+    /**
+     * Create an instance of {@link AlphanumericType }
+     * 
+     * @return
+     *     the new instance of {@link AlphanumericType }
+     */
+    public AlphanumericType createAlphanumericType() {
+        return new AlphanumericType();
+    }
+
+    /**
+     * Create an instance of {@link Character1Type }
+     * 
+     * @return
+     *     the new instance of {@link Character1Type }
+     */
+    public Character1Type createCharacter1Type() {
+        return new Character1Type();
+    }
+
+    /**
+     * Create an instance of {@link Character2Type }
+     * 
+     * @return
+     *     the new instance of {@link Character2Type }
+     */
+    public Character2Type createCharacter2Type() {
+        return new Character2Type();
+    }
+
+    /**
+     * Create an instance of {@link Character3Type }
+     * 
+     * @return
+     *     the new instance of {@link Character3Type }
+     */
+    public Character3Type createCharacter3Type() {
+        return new Character3Type();
+    }
+
+    /**
+     * Create an instance of {@link CodeAerialRefuellingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAerialRefuellingBaseType }
+     */
+    public CodeAerialRefuellingBaseType createCodeAerialRefuellingBaseType() {
+        return new CodeAerialRefuellingBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAerialRefuellingPointBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAerialRefuellingPointBaseType }
+     */
+    public CodeAerialRefuellingPointBaseType createCodeAerialRefuellingPointBaseType() {
+        return new CodeAerialRefuellingPointBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAerialRefuellingPointType }
      * 
      * @return
@@ -4862,6 +4982,16 @@ public class ObjectFactory {
      */
     public CodeAerialRefuellingPointType createCodeAerialRefuellingPointType() {
         return new CodeAerialRefuellingPointType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAerialRefuellingPrefixBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAerialRefuellingPrefixBaseType }
+     */
+    public CodeAerialRefuellingPrefixBaseType createCodeAerialRefuellingPrefixBaseType() {
+        return new CodeAerialRefuellingPrefixBaseType();
     }
 
     /**
@@ -4885,6 +5015,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAircraftBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAircraftBaseType }
+     */
+    public CodeAircraftBaseType createCodeAircraftBaseType() {
+        return new CodeAircraftBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAircraftCategoryBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAircraftCategoryBaseType }
+     */
+    public CodeAircraftCategoryBaseType createCodeAircraftCategoryBaseType() {
+        return new CodeAircraftCategoryBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAircraftCategoryType }
      * 
      * @return
@@ -4892,6 +5042,26 @@ public class ObjectFactory {
      */
     public CodeAircraftCategoryType createCodeAircraftCategoryType() {
         return new CodeAircraftCategoryType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAircraftEngineBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAircraftEngineBaseType }
+     */
+    public CodeAircraftEngineBaseType createCodeAircraftEngineBaseType() {
+        return new CodeAircraftEngineBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAircraftEngineNumberBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAircraftEngineNumberBaseType }
+     */
+    public CodeAircraftEngineNumberBaseType createCodeAircraftEngineNumberBaseType() {
+        return new CodeAircraftEngineNumberBaseType();
     }
 
     /**
@@ -4915,6 +5085,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAircraftGroundServiceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAircraftGroundServiceBaseType }
+     */
+    public CodeAircraftGroundServiceBaseType createCodeAircraftGroundServiceBaseType() {
+        return new CodeAircraftGroundServiceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAircraftGroundServiceType }
      * 
      * @return
@@ -4925,6 +5105,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAircraftICAOBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAircraftICAOBaseType }
+     */
+    public CodeAircraftICAOBaseType createCodeAircraftICAOBaseType() {
+        return new CodeAircraftICAOBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAircraftICAOType }
      * 
      * @return
@@ -4932,6 +5122,16 @@ public class ObjectFactory {
      */
     public CodeAircraftICAOType createCodeAircraftICAOType() {
         return new CodeAircraftICAOType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAircraftStandBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAircraftStandBaseType }
+     */
+    public CodeAircraftStandBaseType createCodeAircraftStandBaseType() {
+        return new CodeAircraftStandBaseType();
     }
 
     /**
@@ -4955,6 +5155,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAircraftWingspanClassBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAircraftWingspanClassBaseType }
+     */
+    public CodeAircraftWingspanClassBaseType createCodeAircraftWingspanClassBaseType() {
+        return new CodeAircraftWingspanClassBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAircraftWingspanClassType }
      * 
      * @return
@@ -4965,6 +5175,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAirportHeliportBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirportHeliportBaseType }
+     */
+    public CodeAirportHeliportBaseType createCodeAirportHeliportBaseType() {
+        return new CodeAirportHeliportBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAirportHeliportCollocationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirportHeliportCollocationBaseType }
+     */
+    public CodeAirportHeliportCollocationBaseType createCodeAirportHeliportCollocationBaseType() {
+        return new CodeAirportHeliportCollocationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAirportHeliportCollocationType }
      * 
      * @return
@@ -4972,6 +5202,16 @@ public class ObjectFactory {
      */
     public CodeAirportHeliportCollocationType createCodeAirportHeliportCollocationType() {
         return new CodeAirportHeliportCollocationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAirportHeliportDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirportHeliportDesignatorBaseType }
+     */
+    public CodeAirportHeliportDesignatorBaseType createCodeAirportHeliportDesignatorBaseType() {
+        return new CodeAirportHeliportDesignatorBaseType();
     }
 
     /**
@@ -4995,6 +5235,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAirportWarningBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirportWarningBaseType }
+     */
+    public CodeAirportWarningBaseType createCodeAirportWarningBaseType() {
+        return new CodeAirportWarningBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAirportWarningType }
      * 
      * @return
@@ -5002,6 +5252,16 @@ public class ObjectFactory {
      */
     public CodeAirportWarningType createCodeAirportWarningType() {
         return new CodeAirportWarningType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAirspaceActivityBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirspaceActivityBaseType }
+     */
+    public CodeAirspaceActivityBaseType createCodeAirspaceActivityBaseType() {
+        return new CodeAirspaceActivityBaseType();
     }
 
     /**
@@ -5015,6 +5275,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAirspaceAggregationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirspaceAggregationBaseType }
+     */
+    public CodeAirspaceAggregationBaseType createCodeAirspaceAggregationBaseType() {
+        return new CodeAirspaceAggregationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAirspaceAggregationType }
      * 
      * @return
@@ -5022,6 +5292,26 @@ public class ObjectFactory {
      */
     public CodeAirspaceAggregationType createCodeAirspaceAggregationType() {
         return new CodeAirspaceAggregationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAirspaceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirspaceBaseType }
+     */
+    public CodeAirspaceBaseType createCodeAirspaceBaseType() {
+        return new CodeAirspaceBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAirspaceClassificationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirspaceClassificationBaseType }
+     */
+    public CodeAirspaceClassificationBaseType createCodeAirspaceClassificationBaseType() {
+        return new CodeAirspaceClassificationBaseType();
     }
 
     /**
@@ -5035,6 +5325,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAirspaceDependencyBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirspaceDependencyBaseType }
+     */
+    public CodeAirspaceDependencyBaseType createCodeAirspaceDependencyBaseType() {
+        return new CodeAirspaceDependencyBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAirspaceDependencyType }
      * 
      * @return
@@ -5042,6 +5342,16 @@ public class ObjectFactory {
      */
     public CodeAirspaceDependencyType createCodeAirspaceDependencyType() {
         return new CodeAirspaceDependencyType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAirspaceDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirspaceDesignatorBaseType }
+     */
+    public CodeAirspaceDesignatorBaseType createCodeAirspaceDesignatorBaseType() {
+        return new CodeAirspaceDesignatorBaseType();
     }
 
     /**
@@ -5055,6 +5365,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAirspacePointPositionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirspacePointPositionBaseType }
+     */
+    public CodeAirspacePointPositionBaseType createCodeAirspacePointPositionBaseType() {
+        return new CodeAirspacePointPositionBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAirspacePointPositionType }
      * 
      * @return
@@ -5062,6 +5382,16 @@ public class ObjectFactory {
      */
     public CodeAirspacePointPositionType createCodeAirspacePointPositionType() {
         return new CodeAirspacePointPositionType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAirspacePointRoleBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAirspacePointRoleBaseType }
+     */
+    public CodeAirspacePointRoleBaseType createCodeAirspacePointRoleBaseType() {
+        return new CodeAirspacePointRoleBaseType();
     }
 
     /**
@@ -5085,6 +5415,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAltitudeAdjustmentBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAltitudeAdjustmentBaseType }
+     */
+    public CodeAltitudeAdjustmentBaseType createCodeAltitudeAdjustmentBaseType() {
+        return new CodeAltitudeAdjustmentBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAltitudeAdjustmentType }
      * 
      * @return
@@ -5092,6 +5432,16 @@ public class ObjectFactory {
      */
     public CodeAltitudeAdjustmentType createCodeAltitudeAdjustmentType() {
         return new CodeAltitudeAdjustmentType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAltitudeUseBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAltitudeUseBaseType }
+     */
+    public CodeAltitudeUseBaseType createCodeAltitudeUseBaseType() {
+        return new CodeAltitudeUseBaseType();
     }
 
     /**
@@ -5105,6 +5455,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeApproachBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeApproachBaseType }
+     */
+    public CodeApproachBaseType createCodeApproachBaseType() {
+        return new CodeApproachBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeApproachEquipmentAdditionalBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeApproachEquipmentAdditionalBaseType }
+     */
+    public CodeApproachEquipmentAdditionalBaseType createCodeApproachEquipmentAdditionalBaseType() {
+        return new CodeApproachEquipmentAdditionalBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeApproachEquipmentAdditionalType }
      * 
      * @return
@@ -5115,6 +5485,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeApproachGuidanceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeApproachGuidanceBaseType }
+     */
+    public CodeApproachGuidanceBaseType createCodeApproachGuidanceBaseType() {
+        return new CodeApproachGuidanceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeApproachGuidanceType }
      * 
      * @return
@@ -5122,6 +5502,26 @@ public class ObjectFactory {
      */
     public CodeApproachGuidanceType createCodeApproachGuidanceType() {
         return new CodeApproachGuidanceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeApproachLightingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeApproachLightingBaseType }
+     */
+    public CodeApproachLightingBaseType createCodeApproachLightingBaseType() {
+        return new CodeApproachLightingBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeApproachLightingICAOBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeApproachLightingICAOBaseType }
+     */
+    public CodeApproachLightingICAOBaseType createCodeApproachLightingICAOBaseType() {
+        return new CodeApproachLightingICAOBaseType();
     }
 
     /**
@@ -5145,6 +5545,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeApproachPrefixBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeApproachPrefixBaseType }
+     */
+    public CodeApproachPrefixBaseType createCodeApproachPrefixBaseType() {
+        return new CodeApproachPrefixBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeApproachPrefixType }
      * 
      * @return
@@ -5165,6 +5575,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeApprovalBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeApprovalBaseType }
+     */
+    public CodeApprovalBaseType createCodeApprovalBaseType() {
+        return new CodeApprovalBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeApprovalType }
      * 
      * @return
@@ -5172,6 +5592,16 @@ public class ObjectFactory {
      */
     public CodeApprovalType createCodeApprovalType() {
         return new CodeApprovalType();
+    }
+
+    /**
+     * Create an instance of {@link CodeApronElementBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeApronElementBaseType }
+     */
+    public CodeApronElementBaseType createCodeApronElementBaseType() {
+        return new CodeApronElementBaseType();
     }
 
     /**
@@ -5185,6 +5615,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeApronSectionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeApronSectionBaseType }
+     */
+    public CodeApronSectionBaseType createCodeApronSectionBaseType() {
+        return new CodeApronSectionBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeApronSectionType }
      * 
      * @return
@@ -5192,6 +5632,16 @@ public class ObjectFactory {
      */
     public CodeApronSectionType createCodeApronSectionType() {
         return new CodeApronSectionType();
+    }
+
+    /**
+     * Create an instance of {@link CodeArcDirectionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeArcDirectionBaseType }
+     */
+    public CodeArcDirectionBaseType createCodeArcDirectionBaseType() {
+        return new CodeArcDirectionBaseType();
     }
 
     /**
@@ -5205,6 +5655,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeArrestingGearEnergyAbsorbBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeArrestingGearEnergyAbsorbBaseType }
+     */
+    public CodeArrestingGearEnergyAbsorbBaseType createCodeArrestingGearEnergyAbsorbBaseType() {
+        return new CodeArrestingGearEnergyAbsorbBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeArrestingGearEnergyAbsorbType }
      * 
      * @return
@@ -5212,6 +5672,16 @@ public class ObjectFactory {
      */
     public CodeArrestingGearEnergyAbsorbType createCodeArrestingGearEnergyAbsorbType() {
         return new CodeArrestingGearEnergyAbsorbType();
+    }
+
+    /**
+     * Create an instance of {@link CodeArrestingGearEngageDeviceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeArrestingGearEngageDeviceBaseType }
+     */
+    public CodeArrestingGearEngageDeviceBaseType createCodeArrestingGearEngageDeviceBaseType() {
+        return new CodeArrestingGearEngageDeviceBaseType();
     }
 
     /**
@@ -5225,6 +5695,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeATCReportingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeATCReportingBaseType }
+     */
+    public CodeATCReportingBaseType createCodeATCReportingBaseType() {
+        return new CodeATCReportingBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeATCReportingType }
      * 
      * @return
@@ -5235,6 +5715,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAuralMorseBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAuralMorseBaseType }
+     */
+    public CodeAuralMorseBaseType createCodeAuralMorseBaseType() {
+        return new CodeAuralMorseBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAuralMorseType }
      * 
      * @return
@@ -5242,6 +5732,26 @@ public class ObjectFactory {
      */
     public CodeAuralMorseType createCodeAuralMorseType() {
         return new CodeAuralMorseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAuthorityBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAuthorityBaseType }
+     */
+    public CodeAuthorityBaseType createCodeAuthorityBaseType() {
+        return new CodeAuthorityBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeAuthorityRoleBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAuthorityRoleBaseType }
+     */
+    public CodeAuthorityRoleBaseType createCodeAuthorityRoleBaseType() {
+        return new CodeAuthorityRoleBaseType();
     }
 
     /**
@@ -5265,6 +5775,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeAviationStandardsBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeAviationStandardsBaseType }
+     */
+    public CodeAviationStandardsBaseType createCodeAviationStandardsBaseType() {
+        return new CodeAviationStandardsBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeAviationStandardsType }
      * 
      * @return
@@ -5272,6 +5792,16 @@ public class ObjectFactory {
      */
     public CodeAviationStandardsType createCodeAviationStandardsType() {
         return new CodeAviationStandardsType();
+    }
+
+    /**
+     * Create an instance of {@link CodeBearingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeBearingBaseType }
+     */
+    public CodeBearingBaseType createCodeBearingBaseType() {
+        return new CodeBearingBaseType();
     }
 
     /**
@@ -5285,6 +5815,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeBuoyBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeBuoyBaseType }
+     */
+    public CodeBuoyBaseType createCodeBuoyBaseType() {
+        return new CodeBuoyBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeBuoyType }
      * 
      * @return
@@ -5292,6 +5832,16 @@ public class ObjectFactory {
      */
     public CodeBuoyType createCodeBuoyType() {
         return new CodeBuoyType();
+    }
+
+    /**
+     * Create an instance of {@link CodeCardinalDirectionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeCardinalDirectionBaseType }
+     */
+    public CodeCardinalDirectionBaseType createCodeCardinalDirectionBaseType() {
+        return new CodeCardinalDirectionBaseType();
     }
 
     /**
@@ -5305,6 +5855,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeCheckpointCategoryBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeCheckpointCategoryBaseType }
+     */
+    public CodeCheckpointCategoryBaseType createCodeCheckpointCategoryBaseType() {
+        return new CodeCheckpointCategoryBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeCheckpointCategoryType }
      * 
      * @return
@@ -5312,6 +5872,16 @@ public class ObjectFactory {
      */
     public CodeCheckpointCategoryType createCodeCheckpointCategoryType() {
         return new CodeCheckpointCategoryType();
+    }
+
+    /**
+     * Create an instance of {@link CodeColourBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeColourBaseType }
+     */
+    public CodeColourBaseType createCodeColourBaseType() {
+        return new CodeColourBaseType();
     }
 
     /**
@@ -5325,6 +5895,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeCommunicationChannelBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeCommunicationChannelBaseType }
+     */
+    public CodeCommunicationChannelBaseType createCodeCommunicationChannelBaseType() {
+        return new CodeCommunicationChannelBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeCommunicationChannelType }
      * 
      * @return
@@ -5332,6 +5912,16 @@ public class ObjectFactory {
      */
     public CodeCommunicationChannelType createCodeCommunicationChannelType() {
         return new CodeCommunicationChannelType();
+    }
+
+    /**
+     * Create an instance of {@link CodeCommunicationDirectionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeCommunicationDirectionBaseType }
+     */
+    public CodeCommunicationDirectionBaseType createCodeCommunicationDirectionBaseType() {
+        return new CodeCommunicationDirectionBaseType();
     }
 
     /**
@@ -5345,6 +5935,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeCommunicationModeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeCommunicationModeBaseType }
+     */
+    public CodeCommunicationModeBaseType createCodeCommunicationModeBaseType() {
+        return new CodeCommunicationModeBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeCommunicationModeType }
      * 
      * @return
@@ -5352,6 +5952,16 @@ public class ObjectFactory {
      */
     public CodeCommunicationModeType createCodeCommunicationModeType() {
         return new CodeCommunicationModeType();
+    }
+
+    /**
+     * Create an instance of {@link CodeComparisonBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeComparisonBaseType }
+     */
+    public CodeComparisonBaseType createCodeComparisonBaseType() {
+        return new CodeComparisonBaseType();
     }
 
     /**
@@ -5365,6 +5975,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeContaminationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeContaminationBaseType }
+     */
+    public CodeContaminationBaseType createCodeContaminationBaseType() {
+        return new CodeContaminationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeContaminationType }
      * 
      * @return
@@ -5372,6 +5992,26 @@ public class ObjectFactory {
      */
     public CodeContaminationType createCodeContaminationType() {
         return new CodeContaminationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeCourseBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeCourseBaseType }
+     */
+    public CodeCourseBaseType createCodeCourseBaseType() {
+        return new CodeCourseBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeCourseQualityILSBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeCourseQualityILSBaseType }
+     */
+    public CodeCourseQualityILSBaseType createCodeCourseQualityILSBaseType() {
+        return new CodeCourseQualityILSBaseType();
     }
 
     /**
@@ -5395,6 +6035,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeDayBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDayBaseType }
+     */
+    public CodeDayBaseType createCodeDayBaseType() {
+        return new CodeDayBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeDayType }
      * 
      * @return
@@ -5405,6 +6055,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeDeclaredDistanceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDeclaredDistanceBaseType }
+     */
+    public CodeDeclaredDistanceBaseType createCodeDeclaredDistanceBaseType() {
+        return new CodeDeclaredDistanceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeDeclaredDistanceType }
      * 
      * @return
@@ -5412,6 +6072,26 @@ public class ObjectFactory {
      */
     public CodeDeclaredDistanceType createCodeDeclaredDistanceType() {
         return new CodeDeclaredDistanceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeDesignatedPointBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDesignatedPointBaseType }
+     */
+    public CodeDesignatedPointBaseType createCodeDesignatedPointBaseType() {
+        return new CodeDesignatedPointBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeDesignatedPointDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDesignatedPointDesignatorBaseType }
+     */
+    public CodeDesignatedPointDesignatorBaseType createCodeDesignatedPointDesignatorBaseType() {
+        return new CodeDesignatedPointDesignatorBaseType();
     }
 
     /**
@@ -5435,6 +6115,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeDesignStandardBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDesignStandardBaseType }
+     */
+    public CodeDesignStandardBaseType createCodeDesignStandardBaseType() {
+        return new CodeDesignStandardBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeDesignStandardType }
      * 
      * @return
@@ -5445,6 +6135,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeDirectionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDirectionBaseType }
+     */
+    public CodeDirectionBaseType createCodeDirectionBaseType() {
+        return new CodeDirectionBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeDirectionReferenceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDirectionReferenceBaseType }
+     */
+    public CodeDirectionReferenceBaseType createCodeDirectionReferenceBaseType() {
+        return new CodeDirectionReferenceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeDirectionReferenceType }
      * 
      * @return
@@ -5452,6 +6162,16 @@ public class ObjectFactory {
      */
     public CodeDirectionReferenceType createCodeDirectionReferenceType() {
         return new CodeDirectionReferenceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeDirectionTurnBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDirectionTurnBaseType }
+     */
+    public CodeDirectionTurnBaseType createCodeDirectionTurnBaseType() {
+        return new CodeDirectionTurnBaseType();
     }
 
     /**
@@ -5475,6 +6195,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeDistanceIndicationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDistanceIndicationBaseType }
+     */
+    public CodeDistanceIndicationBaseType createCodeDistanceIndicationBaseType() {
+        return new CodeDistanceIndicationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeDistanceIndicationType }
      * 
      * @return
@@ -5482,6 +6212,26 @@ public class ObjectFactory {
      */
     public CodeDistanceIndicationType createCodeDistanceIndicationType() {
         return new CodeDistanceIndicationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeDMEBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDMEBaseType }
+     */
+    public CodeDMEBaseType createCodeDMEBaseType() {
+        return new CodeDMEBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeDMEChannelBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeDMEChannelBaseType }
+     */
+    public CodeDMEChannelBaseType createCodeDMEChannelBaseType() {
+        return new CodeDMEChannelBaseType();
     }
 
     /**
@@ -5505,6 +6255,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeEmissionBandBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeEmissionBandBaseType }
+     */
+    public CodeEmissionBandBaseType createCodeEmissionBandBaseType() {
+        return new CodeEmissionBandBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeEmissionBandType }
      * 
      * @return
@@ -5512,6 +6272,16 @@ public class ObjectFactory {
      */
     public CodeEmissionBandType createCodeEmissionBandType() {
         return new CodeEmissionBandType();
+    }
+
+    /**
+     * Create an instance of {@link CodeEquipmentAntiCollisionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeEquipmentAntiCollisionBaseType }
+     */
+    public CodeEquipmentAntiCollisionBaseType createCodeEquipmentAntiCollisionBaseType() {
+        return new CodeEquipmentAntiCollisionBaseType();
     }
 
     /**
@@ -5525,6 +6295,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeEquipmentUnavailableBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeEquipmentUnavailableBaseType }
+     */
+    public CodeEquipmentUnavailableBaseType createCodeEquipmentUnavailableBaseType() {
+        return new CodeEquipmentUnavailableBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeEquipmentUnavailableType }
      * 
      * @return
@@ -5532,6 +6312,16 @@ public class ObjectFactory {
      */
     public CodeEquipmentUnavailableType createCodeEquipmentUnavailableType() {
         return new CodeEquipmentUnavailableType();
+    }
+
+    /**
+     * Create an instance of {@link CodeFacilityRankingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFacilityRankingBaseType }
+     */
+    public CodeFacilityRankingBaseType createCodeFacilityRankingBaseType() {
+        return new CodeFacilityRankingBaseType();
     }
 
     /**
@@ -5545,6 +6335,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeFinalGuidanceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFinalGuidanceBaseType }
+     */
+    public CodeFinalGuidanceBaseType createCodeFinalGuidanceBaseType() {
+        return new CodeFinalGuidanceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeFinalGuidanceType }
      * 
      * @return
@@ -5552,6 +6352,16 @@ public class ObjectFactory {
      */
     public CodeFinalGuidanceType createCodeFinalGuidanceType() {
         return new CodeFinalGuidanceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeFireFightingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFireFightingBaseType }
+     */
+    public CodeFireFightingBaseType createCodeFireFightingBaseType() {
+        return new CodeFireFightingBaseType();
     }
 
     /**
@@ -5565,6 +6375,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeFlightBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFlightBaseType }
+     */
+    public CodeFlightBaseType createCodeFlightBaseType() {
+        return new CodeFlightBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeFlightDestinationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFlightDestinationBaseType }
+     */
+    public CodeFlightDestinationBaseType createCodeFlightDestinationBaseType() {
+        return new CodeFlightDestinationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeFlightDestinationType }
      * 
      * @return
@@ -5572,6 +6402,16 @@ public class ObjectFactory {
      */
     public CodeFlightDestinationType createCodeFlightDestinationType() {
         return new CodeFlightDestinationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeFlightOriginBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFlightOriginBaseType }
+     */
+    public CodeFlightOriginBaseType createCodeFlightOriginBaseType() {
+        return new CodeFlightOriginBaseType();
     }
 
     /**
@@ -5585,6 +6425,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeFlightPurposeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFlightPurposeBaseType }
+     */
+    public CodeFlightPurposeBaseType createCodeFlightPurposeBaseType() {
+        return new CodeFlightPurposeBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeFlightPurposeType }
      * 
      * @return
@@ -5592,6 +6442,26 @@ public class ObjectFactory {
      */
     public CodeFlightPurposeType createCodeFlightPurposeType() {
         return new CodeFlightPurposeType();
+    }
+
+    /**
+     * Create an instance of {@link CodeFlightRestrictionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFlightRestrictionBaseType }
+     */
+    public CodeFlightRestrictionBaseType createCodeFlightRestrictionBaseType() {
+        return new CodeFlightRestrictionBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeFlightRestrictionDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFlightRestrictionDesignatorBaseType }
+     */
+    public CodeFlightRestrictionDesignatorBaseType createCodeFlightRestrictionDesignatorBaseType() {
+        return new CodeFlightRestrictionDesignatorBaseType();
     }
 
     /**
@@ -5615,6 +6485,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeFlightRuleBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFlightRuleBaseType }
+     */
+    public CodeFlightRuleBaseType createCodeFlightRuleBaseType() {
+        return new CodeFlightRuleBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeFlightRuleType }
      * 
      * @return
@@ -5622,6 +6502,16 @@ public class ObjectFactory {
      */
     public CodeFlightRuleType createCodeFlightRuleType() {
         return new CodeFlightRuleType();
+    }
+
+    /**
+     * Create an instance of {@link CodeFlightStatusBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFlightStatusBaseType }
+     */
+    public CodeFlightStatusBaseType createCodeFlightStatusBaseType() {
+        return new CodeFlightStatusBaseType();
     }
 
     /**
@@ -5645,6 +6535,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeFlowConditionOperationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFlowConditionOperationBaseType }
+     */
+    public CodeFlowConditionOperationBaseType createCodeFlowConditionOperationBaseType() {
+        return new CodeFlowConditionOperationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeFlowConditionOperationType }
      * 
      * @return
@@ -5652,6 +6552,16 @@ public class ObjectFactory {
      */
     public CodeFlowConditionOperationType createCodeFlowConditionOperationType() {
         return new CodeFlowConditionOperationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeFreeFlightBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFreeFlightBaseType }
+     */
+    public CodeFreeFlightBaseType createCodeFreeFlightBaseType() {
+        return new CodeFreeFlightBaseType();
     }
 
     /**
@@ -5665,6 +6575,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeFrictionDeviceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFrictionDeviceBaseType }
+     */
+    public CodeFrictionDeviceBaseType createCodeFrictionDeviceBaseType() {
+        return new CodeFrictionDeviceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeFrictionDeviceType }
      * 
      * @return
@@ -5672,6 +6592,16 @@ public class ObjectFactory {
      */
     public CodeFrictionDeviceType createCodeFrictionDeviceType() {
         return new CodeFrictionDeviceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeFrictionEstimateBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFrictionEstimateBaseType }
+     */
+    public CodeFrictionEstimateBaseType createCodeFrictionEstimateBaseType() {
+        return new CodeFrictionEstimateBaseType();
     }
 
     /**
@@ -5685,6 +6615,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeFuelBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeFuelBaseType }
+     */
+    public CodeFuelBaseType createCodeFuelBaseType() {
+        return new CodeFuelBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeFuelType }
      * 
      * @return
@@ -5692,6 +6632,16 @@ public class ObjectFactory {
      */
     public CodeFuelType createCodeFuelType() {
         return new CodeFuelType();
+    }
+
+    /**
+     * Create an instance of {@link CodeGeoBorderBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeGeoBorderBaseType }
+     */
+    public CodeGeoBorderBaseType createCodeGeoBorderBaseType() {
+        return new CodeGeoBorderBaseType();
     }
 
     /**
@@ -5705,6 +6655,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeGradeSeparationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeGradeSeparationBaseType }
+     */
+    public CodeGradeSeparationBaseType createCodeGradeSeparationBaseType() {
+        return new CodeGradeSeparationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeGradeSeparationType }
      * 
      * @return
@@ -5712,6 +6672,16 @@ public class ObjectFactory {
      */
     public CodeGradeSeparationType createCodeGradeSeparationType() {
         return new CodeGradeSeparationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeGroundLightingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeGroundLightingBaseType }
+     */
+    public CodeGroundLightingBaseType createCodeGroundLightingBaseType() {
+        return new CodeGroundLightingBaseType();
     }
 
     /**
@@ -5725,6 +6695,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeGuidanceLineBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeGuidanceLineBaseType }
+     */
+    public CodeGuidanceLineBaseType createCodeGuidanceLineBaseType() {
+        return new CodeGuidanceLineBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeGuidanceLineType }
      * 
      * @return
@@ -5732,6 +6712,16 @@ public class ObjectFactory {
      */
     public CodeGuidanceLineType createCodeGuidanceLineType() {
         return new CodeGuidanceLineType();
+    }
+
+    /**
+     * Create an instance of {@link CodeHeightReferenceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeHeightReferenceBaseType }
+     */
+    public CodeHeightReferenceBaseType createCodeHeightReferenceBaseType() {
+        return new CodeHeightReferenceBaseType();
     }
 
     /**
@@ -5745,6 +6735,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeHelicopterPerformanceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeHelicopterPerformanceBaseType }
+     */
+    public CodeHelicopterPerformanceBaseType createCodeHelicopterPerformanceBaseType() {
+        return new CodeHelicopterPerformanceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeHelicopterPerformanceType }
      * 
      * @return
@@ -5752,6 +6752,16 @@ public class ObjectFactory {
      */
     public CodeHelicopterPerformanceType createCodeHelicopterPerformanceType() {
         return new CodeHelicopterPerformanceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeHoldingCategoryBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeHoldingCategoryBaseType }
+     */
+    public CodeHoldingCategoryBaseType createCodeHoldingCategoryBaseType() {
+        return new CodeHoldingCategoryBaseType();
     }
 
     /**
@@ -5765,6 +6775,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeHoldingUsageBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeHoldingUsageBaseType }
+     */
+    public CodeHoldingUsageBaseType createCodeHoldingUsageBaseType() {
+        return new CodeHoldingUsageBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeHoldingUsageType }
      * 
      * @return
@@ -5772,6 +6792,16 @@ public class ObjectFactory {
      */
     public CodeHoldingUsageType createCodeHoldingUsageType() {
         return new CodeHoldingUsageType();
+    }
+
+    /**
+     * Create an instance of {@link CodeHoldingUseBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeHoldingUseBaseType }
+     */
+    public CodeHoldingUseBaseType createCodeHoldingUseBaseType() {
+        return new CodeHoldingUseBaseType();
     }
 
     /**
@@ -5785,6 +6815,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeIATABaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeIATABaseType }
+     */
+    public CodeIATABaseType createCodeIATABaseType() {
+        return new CodeIATABaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeIATAType }
      * 
      * @return
@@ -5792,6 +6832,16 @@ public class ObjectFactory {
      */
     public CodeIATAType createCodeIATAType() {
         return new CodeIATAType();
+    }
+
+    /**
+     * Create an instance of {@link CodeICAOBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeICAOBaseType }
+     */
+    public CodeICAOBaseType createCodeICAOBaseType() {
+        return new CodeICAOBaseType();
     }
 
     /**
@@ -5805,6 +6855,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeILSBackCourseBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeILSBackCourseBaseType }
+     */
+    public CodeILSBackCourseBaseType createCodeILSBackCourseBaseType() {
+        return new CodeILSBackCourseBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeILSBackCourseType }
      * 
      * @return
@@ -5812,6 +6872,16 @@ public class ObjectFactory {
      */
     public CodeILSBackCourseType createCodeILSBackCourseType() {
         return new CodeILSBackCourseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeIntegrityLevelILSBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeIntegrityLevelILSBaseType }
+     */
+    public CodeIntegrityLevelILSBaseType createCodeIntegrityLevelILSBaseType() {
+        return new CodeIntegrityLevelILSBaseType();
     }
 
     /**
@@ -5825,6 +6895,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeIntensityStandByBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeIntensityStandByBaseType }
+     */
+    public CodeIntensityStandByBaseType createCodeIntensityStandByBaseType() {
+        return new CodeIntensityStandByBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeIntensityStandByType }
      * 
      * @return
@@ -5832,6 +6912,16 @@ public class ObjectFactory {
      */
     public CodeIntensityStandByType createCodeIntensityStandByType() {
         return new CodeIntensityStandByType();
+    }
+
+    /**
+     * Create an instance of {@link CodeLanguageBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLanguageBaseType }
+     */
+    public CodeLanguageBaseType createCodeLanguageBaseType() {
+        return new CodeLanguageBaseType();
     }
 
     /**
@@ -5845,6 +6935,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeLevelBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLevelBaseType }
+     */
+    public CodeLevelBaseType createCodeLevelBaseType() {
+        return new CodeLevelBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeLevelSeriesBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLevelSeriesBaseType }
+     */
+    public CodeLevelSeriesBaseType createCodeLevelSeriesBaseType() {
+        return new CodeLevelSeriesBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeLevelSeriesType }
      * 
      * @return
@@ -5852,6 +6962,16 @@ public class ObjectFactory {
      */
     public CodeLevelSeriesType createCodeLevelSeriesType() {
         return new CodeLevelSeriesType();
+    }
+
+    /**
+     * Create an instance of {@link CodeLevelTableDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLevelTableDesignatorBaseType }
+     */
+    public CodeLevelTableDesignatorBaseType createCodeLevelTableDesignatorBaseType() {
+        return new CodeLevelTableDesignatorBaseType();
     }
 
     /**
@@ -5875,6 +6995,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeLightHoldingPositionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLightHoldingPositionBaseType }
+     */
+    public CodeLightHoldingPositionBaseType createCodeLightHoldingPositionBaseType() {
+        return new CodeLightHoldingPositionBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeLightHoldingPositionType }
      * 
      * @return
@@ -5882,6 +7012,16 @@ public class ObjectFactory {
      */
     public CodeLightHoldingPositionType createCodeLightHoldingPositionType() {
         return new CodeLightHoldingPositionType();
+    }
+
+    /**
+     * Create an instance of {@link CodeLightingJARBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLightingJARBaseType }
+     */
+    public CodeLightingJARBaseType createCodeLightingJARBaseType() {
+        return new CodeLightingJARBaseType();
     }
 
     /**
@@ -5895,6 +7035,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeLightIntensityBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLightIntensityBaseType }
+     */
+    public CodeLightIntensityBaseType createCodeLightIntensityBaseType() {
+        return new CodeLightIntensityBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeLightIntensityType }
      * 
      * @return
@@ -5902,6 +7052,16 @@ public class ObjectFactory {
      */
     public CodeLightIntensityType createCodeLightIntensityType() {
         return new CodeLightIntensityType();
+    }
+
+    /**
+     * Create an instance of {@link CodeLightSourceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLightSourceBaseType }
+     */
+    public CodeLightSourceBaseType createCodeLightSourceBaseType() {
+        return new CodeLightSourceBaseType();
     }
 
     /**
@@ -5915,6 +7075,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeLoadingBridgeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLoadingBridgeBaseType }
+     */
+    public CodeLoadingBridgeBaseType createCodeLoadingBridgeBaseType() {
+        return new CodeLoadingBridgeBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeLoadingBridgeType }
      * 
      * @return
@@ -5922,6 +7092,16 @@ public class ObjectFactory {
      */
     public CodeLoadingBridgeType createCodeLoadingBridgeType() {
         return new CodeLoadingBridgeType();
+    }
+
+    /**
+     * Create an instance of {@link CodeLocationQualifierBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLocationQualifierBaseType }
+     */
+    public CodeLocationQualifierBaseType createCodeLocationQualifierBaseType() {
+        return new CodeLocationQualifierBaseType();
     }
 
     /**
@@ -5935,6 +7115,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeLogicalOperatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeLogicalOperatorBaseType }
+     */
+    public CodeLogicalOperatorBaseType createCodeLogicalOperatorBaseType() {
+        return new CodeLogicalOperatorBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeLogicalOperatorType }
      * 
      * @return
@@ -5942,6 +7132,16 @@ public class ObjectFactory {
      */
     public CodeLogicalOperatorType createCodeLogicalOperatorType() {
         return new CodeLogicalOperatorType();
+    }
+
+    /**
+     * Create an instance of {@link CodeMarkerBeaconSignalBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMarkerBeaconSignalBaseType }
+     */
+    public CodeMarkerBeaconSignalBaseType createCodeMarkerBeaconSignalBaseType() {
+        return new CodeMarkerBeaconSignalBaseType();
     }
 
     /**
@@ -5955,6 +7155,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeMarkingConditionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMarkingConditionBaseType }
+     */
+    public CodeMarkingConditionBaseType createCodeMarkingConditionBaseType() {
+        return new CodeMarkingConditionBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeMarkingConditionType }
      * 
      * @return
@@ -5962,6 +7172,16 @@ public class ObjectFactory {
      */
     public CodeMarkingConditionType createCodeMarkingConditionType() {
         return new CodeMarkingConditionType();
+    }
+
+    /**
+     * Create an instance of {@link CodeMarkingStyleBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMarkingStyleBaseType }
+     */
+    public CodeMarkingStyleBaseType createCodeMarkingStyleBaseType() {
+        return new CodeMarkingStyleBaseType();
     }
 
     /**
@@ -5975,6 +7195,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeMeteoConditionsBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMeteoConditionsBaseType }
+     */
+    public CodeMeteoConditionsBaseType createCodeMeteoConditionsBaseType() {
+        return new CodeMeteoConditionsBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeMeteoConditionsType }
      * 
      * @return
@@ -5982,6 +7212,16 @@ public class ObjectFactory {
      */
     public CodeMeteoConditionsType createCodeMeteoConditionsType() {
         return new CodeMeteoConditionsType();
+    }
+
+    /**
+     * Create an instance of {@link CodeMilitaryOperationsBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMilitaryOperationsBaseType }
+     */
+    public CodeMilitaryOperationsBaseType createCodeMilitaryOperationsBaseType() {
+        return new CodeMilitaryOperationsBaseType();
     }
 
     /**
@@ -5995,6 +7235,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeMilitaryRoutePointBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMilitaryRoutePointBaseType }
+     */
+    public CodeMilitaryRoutePointBaseType createCodeMilitaryRoutePointBaseType() {
+        return new CodeMilitaryRoutePointBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeMilitaryRoutePointType }
      * 
      * @return
@@ -6002,6 +7252,16 @@ public class ObjectFactory {
      */
     public CodeMilitaryRoutePointType createCodeMilitaryRoutePointType() {
         return new CodeMilitaryRoutePointType();
+    }
+
+    /**
+     * Create an instance of {@link CodeMilitaryStatusBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMilitaryStatusBaseType }
+     */
+    public CodeMilitaryStatusBaseType createCodeMilitaryStatusBaseType() {
+        return new CodeMilitaryStatusBaseType();
     }
 
     /**
@@ -6015,6 +7275,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeMilitaryTrainingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMilitaryTrainingBaseType }
+     */
+    public CodeMilitaryTrainingBaseType createCodeMilitaryTrainingBaseType() {
+        return new CodeMilitaryTrainingBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeMilitaryTrainingType }
      * 
      * @return
@@ -6022,6 +7292,16 @@ public class ObjectFactory {
      */
     public CodeMilitaryTrainingType createCodeMilitaryTrainingType() {
         return new CodeMilitaryTrainingType();
+    }
+
+    /**
+     * Create an instance of {@link CodeMinimaFinalApproachPathBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMinimaFinalApproachPathBaseType }
+     */
+    public CodeMinimaFinalApproachPathBaseType createCodeMinimaFinalApproachPathBaseType() {
+        return new CodeMinimaFinalApproachPathBaseType();
     }
 
     /**
@@ -6035,6 +7315,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeMinimumAltitudeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMinimumAltitudeBaseType }
+     */
+    public CodeMinimumAltitudeBaseType createCodeMinimumAltitudeBaseType() {
+        return new CodeMinimumAltitudeBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeMinimumAltitudeType }
      * 
      * @return
@@ -6042,6 +7332,16 @@ public class ObjectFactory {
      */
     public CodeMinimumAltitudeType createCodeMinimumAltitudeType() {
         return new CodeMinimumAltitudeType();
+    }
+
+    /**
+     * Create an instance of {@link CodeMinimumHeightBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMinimumHeightBaseType }
+     */
+    public CodeMinimumHeightBaseType createCodeMinimumHeightBaseType() {
+        return new CodeMinimumHeightBaseType();
     }
 
     /**
@@ -6055,6 +7355,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeMissedApproachBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMissedApproachBaseType }
+     */
+    public CodeMissedApproachBaseType createCodeMissedApproachBaseType() {
+        return new CodeMissedApproachBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeMissedApproachType }
      * 
      * @return
@@ -6062,6 +7372,16 @@ public class ObjectFactory {
      */
     public CodeMissedApproachType createCodeMissedApproachType() {
         return new CodeMissedApproachType();
+    }
+
+    /**
+     * Create an instance of {@link CodeMLSAzimuthBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMLSAzimuthBaseType }
+     */
+    public CodeMLSAzimuthBaseType createCodeMLSAzimuthBaseType() {
+        return new CodeMLSAzimuthBaseType();
     }
 
     /**
@@ -6075,6 +7395,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeMLSChannelBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeMLSChannelBaseType }
+     */
+    public CodeMLSChannelBaseType createCodeMLSChannelBaseType() {
+        return new CodeMLSChannelBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeMLSChannelType }
      * 
      * @return
@@ -6082,6 +7412,16 @@ public class ObjectFactory {
      */
     public CodeMLSChannelType createCodeMLSChannelType() {
         return new CodeMLSChannelType();
+    }
+
+    /**
+     * Create an instance of {@link CodeNavaidDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNavaidDesignatorBaseType }
+     */
+    public CodeNavaidDesignatorBaseType createCodeNavaidDesignatorBaseType() {
+        return new CodeNavaidDesignatorBaseType();
     }
 
     /**
@@ -6095,6 +7435,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeNavaidPurposeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNavaidPurposeBaseType }
+     */
+    public CodeNavaidPurposeBaseType createCodeNavaidPurposeBaseType() {
+        return new CodeNavaidPurposeBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeNavaidPurposeType }
      * 
      * @return
@@ -6105,6 +7455,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeNavaidServiceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNavaidServiceBaseType }
+     */
+    public CodeNavaidServiceBaseType createCodeNavaidServiceBaseType() {
+        return new CodeNavaidServiceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeNavaidServiceType }
      * 
      * @return
@@ -6112,6 +7472,26 @@ public class ObjectFactory {
      */
     public CodeNavaidServiceType createCodeNavaidServiceType() {
         return new CodeNavaidServiceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeNavigationAreaBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNavigationAreaBaseType }
+     */
+    public CodeNavigationAreaBaseType createCodeNavigationAreaBaseType() {
+        return new CodeNavigationAreaBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeNavigationAreaRestrictionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNavigationAreaRestrictionBaseType }
+     */
+    public CodeNavigationAreaRestrictionBaseType createCodeNavigationAreaRestrictionBaseType() {
+        return new CodeNavigationAreaRestrictionBaseType();
     }
 
     /**
@@ -6135,6 +7515,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeNavigationEquipmentBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNavigationEquipmentBaseType }
+     */
+    public CodeNavigationEquipmentBaseType createCodeNavigationEquipmentBaseType() {
+        return new CodeNavigationEquipmentBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeNavigationEquipmentType }
      * 
      * @return
@@ -6142,6 +7532,16 @@ public class ObjectFactory {
      */
     public CodeNavigationEquipmentType createCodeNavigationEquipmentType() {
         return new CodeNavigationEquipmentType();
+    }
+
+    /**
+     * Create an instance of {@link CodeNavigationSpecificationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNavigationSpecificationBaseType }
+     */
+    public CodeNavigationSpecificationBaseType createCodeNavigationSpecificationBaseType() {
+        return new CodeNavigationSpecificationBaseType();
     }
 
     /**
@@ -6155,6 +7555,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeNDBUsageBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNDBUsageBaseType }
+     */
+    public CodeNDBUsageBaseType createCodeNDBUsageBaseType() {
+        return new CodeNDBUsageBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeNDBUsageType }
      * 
      * @return
@@ -6162,6 +7572,16 @@ public class ObjectFactory {
      */
     public CodeNDBUsageType createCodeNDBUsageType() {
         return new CodeNDBUsageType();
+    }
+
+    /**
+     * Create an instance of {@link CodeNitrogenBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNitrogenBaseType }
+     */
+    public CodeNitrogenBaseType createCodeNitrogenBaseType() {
+        return new CodeNitrogenBaseType();
     }
 
     /**
@@ -6175,6 +7595,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeNorthReferenceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNorthReferenceBaseType }
+     */
+    public CodeNorthReferenceBaseType createCodeNorthReferenceBaseType() {
+        return new CodeNorthReferenceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeNorthReferenceType }
      * 
      * @return
@@ -6182,6 +7612,16 @@ public class ObjectFactory {
      */
     public CodeNorthReferenceType createCodeNorthReferenceType() {
         return new CodeNorthReferenceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeNotePurposeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeNotePurposeBaseType }
+     */
+    public CodeNotePurposeBaseType createCodeNotePurposeBaseType() {
+        return new CodeNotePurposeBaseType();
     }
 
     /**
@@ -6195,6 +7635,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeObstacleAreaBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeObstacleAreaBaseType }
+     */
+    public CodeObstacleAreaBaseType createCodeObstacleAreaBaseType() {
+        return new CodeObstacleAreaBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeObstacleAreaType }
      * 
      * @return
@@ -6202,6 +7652,16 @@ public class ObjectFactory {
      */
     public CodeObstacleAreaType createCodeObstacleAreaType() {
         return new CodeObstacleAreaType();
+    }
+
+    /**
+     * Create an instance of {@link CodeObstacleAssessmentSurfaceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeObstacleAssessmentSurfaceBaseType }
+     */
+    public CodeObstacleAssessmentSurfaceBaseType createCodeObstacleAssessmentSurfaceBaseType() {
+        return new CodeObstacleAssessmentSurfaceBaseType();
     }
 
     /**
@@ -6215,6 +7675,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeObstructionIdSurfaceZoneBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeObstructionIdSurfaceZoneBaseType }
+     */
+    public CodeObstructionIdSurfaceZoneBaseType createCodeObstructionIdSurfaceZoneBaseType() {
+        return new CodeObstructionIdSurfaceZoneBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeObstructionIdSurfaceZoneType }
      * 
      * @return
@@ -6222,6 +7692,16 @@ public class ObjectFactory {
      */
     public CodeObstructionIdSurfaceZoneType createCodeObstructionIdSurfaceZoneType() {
         return new CodeObstructionIdSurfaceZoneType();
+    }
+
+    /**
+     * Create an instance of {@link CodeOilBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeOilBaseType }
+     */
+    public CodeOilBaseType createCodeOilBaseType() {
+        return new CodeOilBaseType();
     }
 
     /**
@@ -6235,6 +7715,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeOperationAirportHeliportBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeOperationAirportHeliportBaseType }
+     */
+    public CodeOperationAirportHeliportBaseType createCodeOperationAirportHeliportBaseType() {
+        return new CodeOperationAirportHeliportBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeOperationAirportHeliportType }
      * 
      * @return
@@ -6242,6 +7732,16 @@ public class ObjectFactory {
      */
     public CodeOperationAirportHeliportType createCodeOperationAirportHeliportType() {
         return new CodeOperationAirportHeliportType();
+    }
+
+    /**
+     * Create an instance of {@link CodeOperationManoeuvringAreaBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeOperationManoeuvringAreaBaseType }
+     */
+    public CodeOperationManoeuvringAreaBaseType createCodeOperationManoeuvringAreaBaseType() {
+        return new CodeOperationManoeuvringAreaBaseType();
     }
 
     /**
@@ -6255,6 +7755,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeOrganisationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeOrganisationBaseType }
+     */
+    public CodeOrganisationBaseType createCodeOrganisationBaseType() {
+        return new CodeOrganisationBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeOrganisationDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeOrganisationDesignatorBaseType }
+     */
+    public CodeOrganisationDesignatorBaseType createCodeOrganisationDesignatorBaseType() {
+        return new CodeOrganisationDesignatorBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeOrganisationDesignatorType }
      * 
      * @return
@@ -6262,6 +7782,16 @@ public class ObjectFactory {
      */
     public CodeOrganisationDesignatorType createCodeOrganisationDesignatorType() {
         return new CodeOrganisationDesignatorType();
+    }
+
+    /**
+     * Create an instance of {@link CodeOrganisationHierarchyBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeOrganisationHierarchyBaseType }
+     */
+    public CodeOrganisationHierarchyBaseType createCodeOrganisationHierarchyBaseType() {
+        return new CodeOrganisationHierarchyBaseType();
     }
 
     /**
@@ -6285,6 +7815,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeOxygenBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeOxygenBaseType }
+     */
+    public CodeOxygenBaseType createCodeOxygenBaseType() {
+        return new CodeOxygenBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeOxygenType }
      * 
      * @return
@@ -6292,6 +7832,16 @@ public class ObjectFactory {
      */
     public CodeOxygenType createCodeOxygenType() {
         return new CodeOxygenType();
+    }
+
+    /**
+     * Create an instance of {@link CodePARBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodePARBaseType }
+     */
+    public CodePARBaseType createCodePARBaseType() {
+        return new CodePARBaseType();
     }
 
     /**
@@ -6305,6 +7855,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodePassengerServiceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodePassengerServiceBaseType }
+     */
+    public CodePassengerServiceBaseType createCodePassengerServiceBaseType() {
+        return new CodePassengerServiceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodePassengerServiceType }
      * 
      * @return
@@ -6312,6 +7872,16 @@ public class ObjectFactory {
      */
     public CodePassengerServiceType createCodePassengerServiceType() {
         return new CodePassengerServiceType();
+    }
+
+    /**
+     * Create an instance of {@link CodePCNMethodBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodePCNMethodBaseType }
+     */
+    public CodePCNMethodBaseType createCodePCNMethodBaseType() {
+        return new CodePCNMethodBaseType();
     }
 
     /**
@@ -6325,6 +7895,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodePCNPavementBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodePCNPavementBaseType }
+     */
+    public CodePCNPavementBaseType createCodePCNPavementBaseType() {
+        return new CodePCNPavementBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodePCNPavementType }
      * 
      * @return
@@ -6332,6 +7912,16 @@ public class ObjectFactory {
      */
     public CodePCNPavementType createCodePCNPavementType() {
         return new CodePCNPavementType();
+    }
+
+    /**
+     * Create an instance of {@link CodePCNSubgradeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodePCNSubgradeBaseType }
+     */
+    public CodePCNSubgradeBaseType createCodePCNSubgradeBaseType() {
+        return new CodePCNSubgradeBaseType();
     }
 
     /**
@@ -6345,6 +7935,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodePCNTyrePressureBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodePCNTyrePressureBaseType }
+     */
+    public CodePCNTyrePressureBaseType createCodePCNTyrePressureBaseType() {
+        return new CodePCNTyrePressureBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodePCNTyrePressureType }
      * 
      * @return
@@ -6352,6 +7952,16 @@ public class ObjectFactory {
      */
     public CodePCNTyrePressureType createCodePCNTyrePressureType() {
         return new CodePCNTyrePressureType();
+    }
+
+    /**
+     * Create an instance of {@link CodePilotControlledLightingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodePilotControlledLightingBaseType }
+     */
+    public CodePilotControlledLightingBaseType createCodePilotControlledLightingBaseType() {
+        return new CodePilotControlledLightingBaseType();
     }
 
     /**
@@ -6365,6 +7975,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodePositionInILSBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodePositionInILSBaseType }
+     */
+    public CodePositionInILSBaseType createCodePositionInILSBaseType() {
+        return new CodePositionInILSBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodePositionInILSType }
      * 
      * @return
@@ -6372,6 +7992,16 @@ public class ObjectFactory {
      */
     public CodePositionInILSType createCodePositionInILSType() {
         return new CodePositionInILSType();
+    }
+
+    /**
+     * Create an instance of {@link CodePrimaryRadarBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodePrimaryRadarBaseType }
+     */
+    public CodePrimaryRadarBaseType createCodePrimaryRadarBaseType() {
+        return new CodePrimaryRadarBaseType();
     }
 
     /**
@@ -6385,6 +8015,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeProcedureAvailabilityBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeProcedureAvailabilityBaseType }
+     */
+    public CodeProcedureAvailabilityBaseType createCodeProcedureAvailabilityBaseType() {
+        return new CodeProcedureAvailabilityBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeProcedureAvailabilityType }
      * 
      * @return
@@ -6392,6 +8032,16 @@ public class ObjectFactory {
      */
     public CodeProcedureAvailabilityType createCodeProcedureAvailabilityType() {
         return new CodeProcedureAvailabilityType();
+    }
+
+    /**
+     * Create an instance of {@link CodeProcedureCodingStandardBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeProcedureCodingStandardBaseType }
+     */
+    public CodeProcedureCodingStandardBaseType createCodeProcedureCodingStandardBaseType() {
+        return new CodeProcedureCodingStandardBaseType();
     }
 
     /**
@@ -6405,6 +8055,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeProcedureDistanceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeProcedureDistanceBaseType }
+     */
+    public CodeProcedureDistanceBaseType createCodeProcedureDistanceBaseType() {
+        return new CodeProcedureDistanceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeProcedureDistanceType }
      * 
      * @return
@@ -6412,6 +8072,16 @@ public class ObjectFactory {
      */
     public CodeProcedureDistanceType createCodeProcedureDistanceType() {
         return new CodeProcedureDistanceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeProcedureFixRoleBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeProcedureFixRoleBaseType }
+     */
+    public CodeProcedureFixRoleBaseType createCodeProcedureFixRoleBaseType() {
+        return new CodeProcedureFixRoleBaseType();
     }
 
     /**
@@ -6425,6 +8095,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeProcedurePhaseBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeProcedurePhaseBaseType }
+     */
+    public CodeProcedurePhaseBaseType createCodeProcedurePhaseBaseType() {
+        return new CodeProcedurePhaseBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeProcedurePhaseType }
      * 
      * @return
@@ -6432,6 +8112,16 @@ public class ObjectFactory {
      */
     public CodeProcedurePhaseType createCodeProcedurePhaseType() {
         return new CodeProcedurePhaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeProtectAreaSectionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeProtectAreaSectionBaseType }
+     */
+    public CodeProtectAreaSectionBaseType createCodeProtectAreaSectionBaseType() {
+        return new CodeProtectAreaSectionBaseType();
     }
 
     /**
@@ -6445,6 +8135,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRadarServiceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRadarServiceBaseType }
+     */
+    public CodeRadarServiceBaseType createCodeRadarServiceBaseType() {
+        return new CodeRadarServiceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRadarServiceType }
      * 
      * @return
@@ -6452,6 +8152,16 @@ public class ObjectFactory {
      */
     public CodeRadarServiceType createCodeRadarServiceType() {
         return new CodeRadarServiceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRadioEmissionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRadioEmissionBaseType }
+     */
+    public CodeRadioEmissionBaseType createCodeRadioEmissionBaseType() {
+        return new CodeRadioEmissionBaseType();
     }
 
     /**
@@ -6465,6 +8175,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRadioFrequencyAreaBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRadioFrequencyAreaBaseType }
+     */
+    public CodeRadioFrequencyAreaBaseType createCodeRadioFrequencyAreaBaseType() {
+        return new CodeRadioFrequencyAreaBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRadioFrequencyAreaType }
      * 
      * @return
@@ -6472,6 +8192,16 @@ public class ObjectFactory {
      */
     public CodeRadioFrequencyAreaType createCodeRadioFrequencyAreaType() {
         return new CodeRadioFrequencyAreaType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRadioSignalBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRadioSignalBaseType }
+     */
+    public CodeRadioSignalBaseType createCodeRadioSignalBaseType() {
+        return new CodeRadioSignalBaseType();
     }
 
     /**
@@ -6485,6 +8215,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeReferenceRoleBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeReferenceRoleBaseType }
+     */
+    public CodeReferenceRoleBaseType createCodeReferenceRoleBaseType() {
+        return new CodeReferenceRoleBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeReferenceRoleType }
      * 
      * @return
@@ -6492,6 +8232,16 @@ public class ObjectFactory {
      */
     public CodeReferenceRoleType createCodeReferenceRoleType() {
         return new CodeReferenceRoleType();
+    }
+
+    /**
+     * Create an instance of {@link CodeReflectorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeReflectorBaseType }
+     */
+    public CodeReflectorBaseType createCodeReflectorBaseType() {
+        return new CodeReflectorBaseType();
     }
 
     /**
@@ -6505,6 +8255,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRelativePositionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRelativePositionBaseType }
+     */
+    public CodeRelativePositionBaseType createCodeRelativePositionBaseType() {
+        return new CodeRelativePositionBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRelativePositionType }
      * 
      * @return
@@ -6512,6 +8272,16 @@ public class ObjectFactory {
      */
     public CodeRelativePositionType createCodeRelativePositionType() {
         return new CodeRelativePositionType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRNPBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRNPBaseType }
+     */
+    public CodeRNPBaseType createCodeRNPBaseType() {
+        return new CodeRNPBaseType();
     }
 
     /**
@@ -6525,6 +8295,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRoadBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRoadBaseType }
+     */
+    public CodeRoadBaseType createCodeRoadBaseType() {
+        return new CodeRoadBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRoadType }
      * 
      * @return
@@ -6532,6 +8312,16 @@ public class ObjectFactory {
      */
     public CodeRoadType createCodeRoadType() {
         return new CodeRoadType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRouteAvailabilityBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRouteAvailabilityBaseType }
+     */
+    public CodeRouteAvailabilityBaseType createCodeRouteAvailabilityBaseType() {
+        return new CodeRouteAvailabilityBaseType();
     }
 
     /**
@@ -6545,6 +8335,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRouteBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRouteBaseType }
+     */
+    public CodeRouteBaseType createCodeRouteBaseType() {
+        return new CodeRouteBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRouteDesignatorLetterBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRouteDesignatorLetterBaseType }
+     */
+    public CodeRouteDesignatorLetterBaseType createCodeRouteDesignatorLetterBaseType() {
+        return new CodeRouteDesignatorLetterBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRouteDesignatorLetterType }
      * 
      * @return
@@ -6552,6 +8362,16 @@ public class ObjectFactory {
      */
     public CodeRouteDesignatorLetterType createCodeRouteDesignatorLetterType() {
         return new CodeRouteDesignatorLetterType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRouteDesignatorPrefixBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRouteDesignatorPrefixBaseType }
+     */
+    public CodeRouteDesignatorPrefixBaseType createCodeRouteDesignatorPrefixBaseType() {
+        return new CodeRouteDesignatorPrefixBaseType();
     }
 
     /**
@@ -6565,6 +8385,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRouteDesignatorSuffixBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRouteDesignatorSuffixBaseType }
+     */
+    public CodeRouteDesignatorSuffixBaseType createCodeRouteDesignatorSuffixBaseType() {
+        return new CodeRouteDesignatorSuffixBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRouteDesignatorSuffixType }
      * 
      * @return
@@ -6572,6 +8402,16 @@ public class ObjectFactory {
      */
     public CodeRouteDesignatorSuffixType createCodeRouteDesignatorSuffixType() {
         return new CodeRouteDesignatorSuffixType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRouteNavigationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRouteNavigationBaseType }
+     */
+    public CodeRouteNavigationBaseType createCodeRouteNavigationBaseType() {
+        return new CodeRouteNavigationBaseType();
     }
 
     /**
@@ -6585,6 +8425,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRouteOriginBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRouteOriginBaseType }
+     */
+    public CodeRouteOriginBaseType createCodeRouteOriginBaseType() {
+        return new CodeRouteOriginBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRouteOriginType }
      * 
      * @return
@@ -6592,6 +8442,16 @@ public class ObjectFactory {
      */
     public CodeRouteOriginType createCodeRouteOriginType() {
         return new CodeRouteOriginType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRouteSegmentPathBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRouteSegmentPathBaseType }
+     */
+    public CodeRouteSegmentPathBaseType createCodeRouteSegmentPathBaseType() {
+        return new CodeRouteSegmentPathBaseType();
     }
 
     /**
@@ -6615,6 +8475,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRuleProcedureBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRuleProcedureBaseType }
+     */
+    public CodeRuleProcedureBaseType createCodeRuleProcedureBaseType() {
+        return new CodeRuleProcedureBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRuleProcedureTitleBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRuleProcedureTitleBaseType }
+     */
+    public CodeRuleProcedureTitleBaseType createCodeRuleProcedureTitleBaseType() {
+        return new CodeRuleProcedureTitleBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRuleProcedureTitleType }
      * 
      * @return
@@ -6635,6 +8515,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRunwayBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRunwayBaseType }
+     */
+    public CodeRunwayBaseType createCodeRunwayBaseType() {
+        return new CodeRunwayBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRunwayElementBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRunwayElementBaseType }
+     */
+    public CodeRunwayElementBaseType createCodeRunwayElementBaseType() {
+        return new CodeRunwayElementBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRunwayElementType }
      * 
      * @return
@@ -6642,6 +8542,16 @@ public class ObjectFactory {
      */
     public CodeRunwayElementType createCodeRunwayElementType() {
         return new CodeRunwayElementType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRunwayMarkingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRunwayMarkingBaseType }
+     */
+    public CodeRunwayMarkingBaseType createCodeRunwayMarkingBaseType() {
+        return new CodeRunwayMarkingBaseType();
     }
 
     /**
@@ -6655,6 +8565,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRunwayPointRoleBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRunwayPointRoleBaseType }
+     */
+    public CodeRunwayPointRoleBaseType createCodeRunwayPointRoleBaseType() {
+        return new CodeRunwayPointRoleBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRunwayPointRoleType }
      * 
      * @return
@@ -6665,6 +8585,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRunwayProtectionAreaBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRunwayProtectionAreaBaseType }
+     */
+    public CodeRunwayProtectionAreaBaseType createCodeRunwayProtectionAreaBaseType() {
+        return new CodeRunwayProtectionAreaBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRunwayProtectionAreaType }
      * 
      * @return
@@ -6672,6 +8602,16 @@ public class ObjectFactory {
      */
     public CodeRunwayProtectionAreaType createCodeRunwayProtectionAreaType() {
         return new CodeRunwayProtectionAreaType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRunwaySectionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRunwaySectionBaseType }
+     */
+    public CodeRunwaySectionBaseType createCodeRunwaySectionBaseType() {
+        return new CodeRunwaySectionBaseType();
     }
 
     /**
@@ -6695,6 +8635,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeRVRReadingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRVRReadingBaseType }
+     */
+    public CodeRVRReadingBaseType createCodeRVRReadingBaseType() {
+        return new CodeRVRReadingBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeRVRReadingType }
      * 
      * @return
@@ -6702,6 +8652,26 @@ public class ObjectFactory {
      */
     public CodeRVRReadingType createCodeRVRReadingType() {
         return new CodeRVRReadingType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRVSMBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRVSMBaseType }
+     */
+    public CodeRVSMBaseType createCodeRVSMBaseType() {
+        return new CodeRVSMBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeRVSMPointRoleBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeRVSMPointRoleBaseType }
+     */
+    public CodeRVSMPointRoleBaseType createCodeRVSMPointRoleBaseType() {
+        return new CodeRVSMPointRoleBaseType();
     }
 
     /**
@@ -6725,6 +8695,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeSafeAltitudeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSafeAltitudeBaseType }
+     */
+    public CodeSafeAltitudeBaseType createCodeSafeAltitudeBaseType() {
+        return new CodeSafeAltitudeBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeSafeAltitudeType }
      * 
      * @return
@@ -6732,6 +8712,16 @@ public class ObjectFactory {
      */
     public CodeSafeAltitudeType createCodeSafeAltitudeType() {
         return new CodeSafeAltitudeType();
+    }
+
+    /**
+     * Create an instance of {@link CodeSegmentPathBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSegmentPathBaseType }
+     */
+    public CodeSegmentPathBaseType createCodeSegmentPathBaseType() {
+        return new CodeSegmentPathBaseType();
     }
 
     /**
@@ -6745,6 +8735,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeSegmentTerminationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSegmentTerminationBaseType }
+     */
+    public CodeSegmentTerminationBaseType createCodeSegmentTerminationBaseType() {
+        return new CodeSegmentTerminationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeSegmentTerminationType }
      * 
      * @return
@@ -6752,6 +8752,16 @@ public class ObjectFactory {
      */
     public CodeSegmentTerminationType createCodeSegmentTerminationType() {
         return new CodeSegmentTerminationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeServiceATCBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeServiceATCBaseType }
+     */
+    public CodeServiceATCBaseType createCodeServiceATCBaseType() {
+        return new CodeServiceATCBaseType();
     }
 
     /**
@@ -6765,6 +8775,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeServiceATFMBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeServiceATFMBaseType }
+     */
+    public CodeServiceATFMBaseType createCodeServiceATFMBaseType() {
+        return new CodeServiceATFMBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeServiceATFMType }
      * 
      * @return
@@ -6772,6 +8792,16 @@ public class ObjectFactory {
      */
     public CodeServiceATFMType createCodeServiceATFMType() {
         return new CodeServiceATFMType();
+    }
+
+    /**
+     * Create an instance of {@link CodeServiceGroundControlBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeServiceGroundControlBaseType }
+     */
+    public CodeServiceGroundControlBaseType createCodeServiceGroundControlBaseType() {
+        return new CodeServiceGroundControlBaseType();
     }
 
     /**
@@ -6785,6 +8815,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeServiceInformationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeServiceInformationBaseType }
+     */
+    public CodeServiceInformationBaseType createCodeServiceInformationBaseType() {
+        return new CodeServiceInformationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeServiceInformationType }
      * 
      * @return
@@ -6792,6 +8832,16 @@ public class ObjectFactory {
      */
     public CodeServiceInformationType createCodeServiceInformationType() {
         return new CodeServiceInformationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeServiceSARBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeServiceSARBaseType }
+     */
+    public CodeServiceSARBaseType createCodeServiceSARBaseType() {
+        return new CodeServiceSARBaseType();
     }
 
     /**
@@ -6805,6 +8855,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeSideBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSideBaseType }
+     */
+    public CodeSideBaseType createCodeSideBaseType() {
+        return new CodeSideBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeSideType }
      * 
      * @return
@@ -6812,6 +8872,16 @@ public class ObjectFactory {
      */
     public CodeSideType createCodeSideType() {
         return new CodeSideType();
+    }
+
+    /**
+     * Create an instance of {@link CodeSignalPerformanceILSBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSignalPerformanceILSBaseType }
+     */
+    public CodeSignalPerformanceILSBaseType createCodeSignalPerformanceILSBaseType() {
+        return new CodeSignalPerformanceILSBaseType();
     }
 
     /**
@@ -6825,6 +8895,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeSpecialDateBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSpecialDateBaseType }
+     */
+    public CodeSpecialDateBaseType createCodeSpecialDateBaseType() {
+        return new CodeSpecialDateBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeSpecialDateType }
      * 
      * @return
@@ -6832,6 +8912,16 @@ public class ObjectFactory {
      */
     public CodeSpecialDateType createCodeSpecialDateType() {
         return new CodeSpecialDateType();
+    }
+
+    /**
+     * Create an instance of {@link CodeSpecialNavigationChainDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSpecialNavigationChainDesignatorBaseType }
+     */
+    public CodeSpecialNavigationChainDesignatorBaseType createCodeSpecialNavigationChainDesignatorBaseType() {
+        return new CodeSpecialNavigationChainDesignatorBaseType();
     }
 
     /**
@@ -6845,6 +8935,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeSpecialNavigationStationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSpecialNavigationStationBaseType }
+     */
+    public CodeSpecialNavigationStationBaseType createCodeSpecialNavigationStationBaseType() {
+        return new CodeSpecialNavigationStationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeSpecialNavigationStationType }
      * 
      * @return
@@ -6852,6 +8952,16 @@ public class ObjectFactory {
      */
     public CodeSpecialNavigationStationType createCodeSpecialNavigationStationType() {
         return new CodeSpecialNavigationStationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeSpecialNavigationSystemBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSpecialNavigationSystemBaseType }
+     */
+    public CodeSpecialNavigationSystemBaseType createCodeSpecialNavigationSystemBaseType() {
+        return new CodeSpecialNavigationSystemBaseType();
     }
 
     /**
@@ -6865,6 +8975,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeSpeedReferenceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSpeedReferenceBaseType }
+     */
+    public CodeSpeedReferenceBaseType createCodeSpeedReferenceBaseType() {
+        return new CodeSpeedReferenceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeSpeedReferenceType }
      * 
      * @return
@@ -6872,6 +8992,16 @@ public class ObjectFactory {
      */
     public CodeSpeedReferenceType createCodeSpeedReferenceType() {
         return new CodeSpeedReferenceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeStandbyPowerBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeStandbyPowerBaseType }
+     */
+    public CodeStandbyPowerBaseType createCodeStandbyPowerBaseType() {
+        return new CodeStandbyPowerBaseType();
     }
 
     /**
@@ -6885,6 +9015,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeStatusAirportBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeStatusAirportBaseType }
+     */
+    public CodeStatusAirportBaseType createCodeStatusAirportBaseType() {
+        return new CodeStatusAirportBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeStatusAirportType }
      * 
      * @return
@@ -6892,6 +9032,16 @@ public class ObjectFactory {
      */
     public CodeStatusAirportType createCodeStatusAirportType() {
         return new CodeStatusAirportType();
+    }
+
+    /**
+     * Create an instance of {@link CodeStatusAirspaceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeStatusAirspaceBaseType }
+     */
+    public CodeStatusAirspaceBaseType createCodeStatusAirspaceBaseType() {
+        return new CodeStatusAirspaceBaseType();
     }
 
     /**
@@ -6905,6 +9055,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeStatusConstructionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeStatusConstructionBaseType }
+     */
+    public CodeStatusConstructionBaseType createCodeStatusConstructionBaseType() {
+        return new CodeStatusConstructionBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeStatusConstructionType }
      * 
      * @return
@@ -6912,6 +9072,16 @@ public class ObjectFactory {
      */
     public CodeStatusConstructionType createCodeStatusConstructionType() {
         return new CodeStatusConstructionType();
+    }
+
+    /**
+     * Create an instance of {@link CodeStatusNavaidBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeStatusNavaidBaseType }
+     */
+    public CodeStatusNavaidBaseType createCodeStatusNavaidBaseType() {
+        return new CodeStatusNavaidBaseType();
     }
 
     /**
@@ -6925,6 +9095,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeStatusOperationsBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeStatusOperationsBaseType }
+     */
+    public CodeStatusOperationsBaseType createCodeStatusOperationsBaseType() {
+        return new CodeStatusOperationsBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeStatusOperationsType }
      * 
      * @return
@@ -6932,6 +9112,16 @@ public class ObjectFactory {
      */
     public CodeStatusOperationsType createCodeStatusOperationsType() {
         return new CodeStatusOperationsType();
+    }
+
+    /**
+     * Create an instance of {@link CodeStatusServiceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeStatusServiceBaseType }
+     */
+    public CodeStatusServiceBaseType createCodeStatusServiceBaseType() {
+        return new CodeStatusServiceBaseType();
     }
 
     /**
@@ -6945,6 +9135,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeSurfaceCompositionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSurfaceCompositionBaseType }
+     */
+    public CodeSurfaceCompositionBaseType createCodeSurfaceCompositionBaseType() {
+        return new CodeSurfaceCompositionBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeSurfaceCompositionType }
      * 
      * @return
@@ -6952,6 +9152,16 @@ public class ObjectFactory {
      */
     public CodeSurfaceCompositionType createCodeSurfaceCompositionType() {
         return new CodeSurfaceCompositionType();
+    }
+
+    /**
+     * Create an instance of {@link CodeSurfaceConditionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSurfaceConditionBaseType }
+     */
+    public CodeSurfaceConditionBaseType createCodeSurfaceConditionBaseType() {
+        return new CodeSurfaceConditionBaseType();
     }
 
     /**
@@ -6965,6 +9175,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeSurfacePreparationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSurfacePreparationBaseType }
+     */
+    public CodeSurfacePreparationBaseType createCodeSurfacePreparationBaseType() {
+        return new CodeSurfacePreparationBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeSurfacePreparationType }
      * 
      * @return
@@ -6972,6 +9192,16 @@ public class ObjectFactory {
      */
     public CodeSurfacePreparationType createCodeSurfacePreparationType() {
         return new CodeSurfacePreparationType();
+    }
+
+    /**
+     * Create an instance of {@link CodeSystemActivationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeSystemActivationBaseType }
+     */
+    public CodeSystemActivationBaseType createCodeSystemActivationBaseType() {
+        return new CodeSystemActivationBaseType();
     }
 
     /**
@@ -6985,6 +9215,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeTAABaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTAABaseType }
+     */
+    public CodeTAABaseType createCodeTAABaseType() {
+        return new CodeTAABaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeTAAType }
      * 
      * @return
@@ -6992,6 +9232,16 @@ public class ObjectFactory {
      */
     public CodeTAAType createCodeTAAType() {
         return new CodeTAAType();
+    }
+
+    /**
+     * Create an instance of {@link CodeTACANChannelBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTACANChannelBaseType }
+     */
+    public CodeTACANChannelBaseType createCodeTACANChannelBaseType() {
+        return new CodeTACANChannelBaseType();
     }
 
     /**
@@ -7005,6 +9255,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeTaxiwayBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTaxiwayBaseType }
+     */
+    public CodeTaxiwayBaseType createCodeTaxiwayBaseType() {
+        return new CodeTaxiwayBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeTaxiwayElementBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTaxiwayElementBaseType }
+     */
+    public CodeTaxiwayElementBaseType createCodeTaxiwayElementBaseType() {
+        return new CodeTaxiwayElementBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeTaxiwayElementType }
      * 
      * @return
@@ -7012,6 +9282,16 @@ public class ObjectFactory {
      */
     public CodeTaxiwayElementType createCodeTaxiwayElementType() {
         return new CodeTaxiwayElementType();
+    }
+
+    /**
+     * Create an instance of {@link CodeTaxiwaySectionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTaxiwaySectionBaseType }
+     */
+    public CodeTaxiwaySectionBaseType createCodeTaxiwaySectionBaseType() {
+        return new CodeTaxiwaySectionBaseType();
     }
 
     /**
@@ -7035,6 +9315,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeTelecomNetworkBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTelecomNetworkBaseType }
+     */
+    public CodeTelecomNetworkBaseType createCodeTelecomNetworkBaseType() {
+        return new CodeTelecomNetworkBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeTelecomNetworkType }
      * 
      * @return
@@ -7042,6 +9332,26 @@ public class ObjectFactory {
      */
     public CodeTelecomNetworkType createCodeTelecomNetworkType() {
         return new CodeTelecomNetworkType();
+    }
+
+    /**
+     * Create an instance of {@link CodeTimeEventBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTimeEventBaseType }
+     */
+    public CodeTimeEventBaseType createCodeTimeEventBaseType() {
+        return new CodeTimeEventBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeTimeEventCombinationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTimeEventCombinationBaseType }
+     */
+    public CodeTimeEventCombinationBaseType createCodeTimeEventCombinationBaseType() {
+        return new CodeTimeEventCombinationBaseType();
     }
 
     /**
@@ -7065,6 +9375,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeTimeReferenceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTimeReferenceBaseType }
+     */
+    public CodeTimeReferenceBaseType createCodeTimeReferenceBaseType() {
+        return new CodeTimeReferenceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeTimeReferenceType }
      * 
      * @return
@@ -7072,6 +9392,16 @@ public class ObjectFactory {
      */
     public CodeTimeReferenceType createCodeTimeReferenceType() {
         return new CodeTimeReferenceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeTLOFSectionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTLOFSectionBaseType }
+     */
+    public CodeTLOFSectionBaseType createCodeTLOFSectionBaseType() {
+        return new CodeTLOFSectionBaseType();
     }
 
     /**
@@ -7085,6 +9415,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeTrajectoryBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTrajectoryBaseType }
+     */
+    public CodeTrajectoryBaseType createCodeTrajectoryBaseType() {
+        return new CodeTrajectoryBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeTrajectoryType }
      * 
      * @return
@@ -7095,6 +9435,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeTransponderBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeTransponderBaseType }
+     */
+    public CodeTransponderBaseType createCodeTransponderBaseType() {
+        return new CodeTransponderBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeTransponderType }
      * 
      * @return
@@ -7102,6 +9452,26 @@ public class ObjectFactory {
      */
     public CodeTransponderType createCodeTransponderType() {
         return new CodeTransponderType();
+    }
+
+    /**
+     * Create an instance of {@link CodeUnitBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeUnitBaseType }
+     */
+    public CodeUnitBaseType createCodeUnitBaseType() {
+        return new CodeUnitBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeUnitDependencyBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeUnitDependencyBaseType }
+     */
+    public CodeUnitDependencyBaseType createCodeUnitDependencyBaseType() {
+        return new CodeUnitDependencyBaseType();
     }
 
     /**
@@ -7125,6 +9495,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeUpperAlphaBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeUpperAlphaBaseType }
+     */
+    public CodeUpperAlphaBaseType createCodeUpperAlphaBaseType() {
+        return new CodeUpperAlphaBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeUpperAlphaType }
      * 
      * @return
@@ -7132,6 +9512,16 @@ public class ObjectFactory {
      */
     public CodeUpperAlphaType createCodeUpperAlphaType() {
         return new CodeUpperAlphaType();
+    }
+
+    /**
+     * Create an instance of {@link CodeUsageLimitationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeUsageLimitationBaseType }
+     */
+    public CodeUsageLimitationBaseType createCodeUsageLimitationBaseType() {
+        return new CodeUsageLimitationBaseType();
     }
 
     /**
@@ -7145,6 +9535,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeUUIDBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeUUIDBaseType }
+     */
+    public CodeUUIDBaseType createCodeUUIDBaseType() {
+        return new CodeUUIDBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeUUIDType }
      * 
      * @return
@@ -7152,6 +9552,16 @@ public class ObjectFactory {
      */
     public CodeUUIDType createCodeUUIDType() {
         return new CodeUUIDType();
+    }
+
+    /**
+     * Create an instance of {@link CodeValueInterpretationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeValueInterpretationBaseType }
+     */
+    public CodeValueInterpretationBaseType createCodeValueInterpretationBaseType() {
+        return new CodeValueInterpretationBaseType();
     }
 
     /**
@@ -7165,6 +9575,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeVASISBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeVASISBaseType }
+     */
+    public CodeVASISBaseType createCodeVASISBaseType() {
+        return new CodeVASISBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeVASISType }
      * 
      * @return
@@ -7172,6 +9592,16 @@ public class ObjectFactory {
      */
     public CodeVASISType createCodeVASISType() {
         return new CodeVASISType();
+    }
+
+    /**
+     * Create an instance of {@link CodeVerticalDatumBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeVerticalDatumBaseType }
+     */
+    public CodeVerticalDatumBaseType createCodeVerticalDatumBaseType() {
+        return new CodeVerticalDatumBaseType();
     }
 
     /**
@@ -7185,6 +9615,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeVerticalReferenceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeVerticalReferenceBaseType }
+     */
+    public CodeVerticalReferenceBaseType createCodeVerticalReferenceBaseType() {
+        return new CodeVerticalReferenceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeVerticalReferenceType }
      * 
      * @return
@@ -7195,6 +9635,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeVerticalStructureBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeVerticalStructureBaseType }
+     */
+    public CodeVerticalStructureBaseType createCodeVerticalStructureBaseType() {
+        return new CodeVerticalStructureBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CodeVerticalStructureMarkingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeVerticalStructureMarkingBaseType }
+     */
+    public CodeVerticalStructureMarkingBaseType createCodeVerticalStructureMarkingBaseType() {
+        return new CodeVerticalStructureMarkingBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeVerticalStructureMarkingType }
      * 
      * @return
@@ -7202,6 +9662,16 @@ public class ObjectFactory {
      */
     public CodeVerticalStructureMarkingType createCodeVerticalStructureMarkingType() {
         return new CodeVerticalStructureMarkingType();
+    }
+
+    /**
+     * Create an instance of {@link CodeVerticalStructureMaterialBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeVerticalStructureMaterialBaseType }
+     */
+    public CodeVerticalStructureMaterialBaseType createCodeVerticalStructureMaterialBaseType() {
+        return new CodeVerticalStructureMaterialBaseType();
     }
 
     /**
@@ -7225,6 +9695,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeVisualDockingGuidanceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeVisualDockingGuidanceBaseType }
+     */
+    public CodeVisualDockingGuidanceBaseType createCodeVisualDockingGuidanceBaseType() {
+        return new CodeVisualDockingGuidanceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeVisualDockingGuidanceType }
      * 
      * @return
@@ -7232,6 +9712,16 @@ public class ObjectFactory {
      */
     public CodeVisualDockingGuidanceType createCodeVisualDockingGuidanceType() {
         return new CodeVisualDockingGuidanceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeVORBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeVORBaseType }
+     */
+    public CodeVORBaseType createCodeVORBaseType() {
+        return new CodeVORBaseType();
     }
 
     /**
@@ -7245,6 +9735,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeWakeTurbulenceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeWakeTurbulenceBaseType }
+     */
+    public CodeWakeTurbulenceBaseType createCodeWakeTurbulenceBaseType() {
+        return new CodeWakeTurbulenceBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeWakeTurbulenceType }
      * 
      * @return
@@ -7252,6 +9752,16 @@ public class ObjectFactory {
      */
     public CodeWakeTurbulenceType createCodeWakeTurbulenceType() {
         return new CodeWakeTurbulenceType();
+    }
+
+    /**
+     * Create an instance of {@link CodeWorkAreaBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeWorkAreaBaseType }
+     */
+    public CodeWorkAreaBaseType createCodeWorkAreaBaseType() {
+        return new CodeWorkAreaBaseType();
     }
 
     /**
@@ -7265,6 +9775,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CodeYesNoBaseType }
+     * 
+     * @return
+     *     the new instance of {@link CodeYesNoBaseType }
+     */
+    public CodeYesNoBaseType createCodeYesNoBaseType() {
+        return new CodeYesNoBaseType();
+    }
+
+    /**
      * Create an instance of {@link CodeYesNoType }
      * 
      * @return
@@ -7275,6 +9795,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DateBaseType }
+     * 
+     * @return
+     *     the new instance of {@link DateBaseType }
+     */
+    public DateBaseType createDateBaseType() {
+        return new DateBaseType();
+    }
+
+    /**
+     * Create an instance of {@link DateMonthDayBaseType }
+     * 
+     * @return
+     *     the new instance of {@link DateMonthDayBaseType }
+     */
+    public DateMonthDayBaseType createDateMonthDayBaseType() {
+        return new DateMonthDayBaseType();
+    }
+
+    /**
      * Create an instance of {@link DateMonthDayType }
      * 
      * @return
@@ -7282,6 +9822,16 @@ public class ObjectFactory {
      */
     public DateMonthDayType createDateMonthDayType() {
         return new DateMonthDayType();
+    }
+
+    /**
+     * Create an instance of {@link DateTimeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link DateTimeBaseType }
+     */
+    public DateTimeBaseType createDateTimeBaseType() {
+        return new DateTimeBaseType();
     }
 
     /**
@@ -7305,6 +9855,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DateYearBaseType }
+     * 
+     * @return
+     *     the new instance of {@link DateYearBaseType }
+     */
+    public DateYearBaseType createDateYearBaseType() {
+        return new DateYearBaseType();
+    }
+
+    /**
      * Create an instance of {@link DateYearType }
      * 
      * @return
@@ -7312,6 +9872,16 @@ public class ObjectFactory {
      */
     public DateYearType createDateYearType() {
         return new DateYearType();
+    }
+
+    /**
+     * Create an instance of {@link NoNumberBaseType }
+     * 
+     * @return
+     *     the new instance of {@link NoNumberBaseType }
+     */
+    public NoNumberBaseType createNoNumberBaseType() {
+        return new NoNumberBaseType();
     }
 
     /**
@@ -7325,6 +9895,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link NoSequenceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link NoSequenceBaseType }
+     */
+    public NoSequenceBaseType createNoSequenceBaseType() {
+        return new NoSequenceBaseType();
+    }
+
+    /**
      * Create an instance of {@link NoSequenceType }
      * 
      * @return
@@ -7332,6 +9912,16 @@ public class ObjectFactory {
      */
     public NoSequenceType createNoSequenceType() {
         return new NoSequenceType();
+    }
+
+    /**
+     * Create an instance of {@link TextAddressBaseType }
+     * 
+     * @return
+     *     the new instance of {@link TextAddressBaseType }
+     */
+    public TextAddressBaseType createTextAddressBaseType() {
+        return new TextAddressBaseType();
     }
 
     /**
@@ -7345,6 +9935,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TextDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link TextDesignatorBaseType }
+     */
+    public TextDesignatorBaseType createTextDesignatorBaseType() {
+        return new TextDesignatorBaseType();
+    }
+
+    /**
      * Create an instance of {@link TextDesignatorType }
      * 
      * @return
@@ -7352,6 +9952,16 @@ public class ObjectFactory {
      */
     public TextDesignatorType createTextDesignatorType() {
         return new TextDesignatorType();
+    }
+
+    /**
+     * Create an instance of {@link TextInstructionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link TextInstructionBaseType }
+     */
+    public TextInstructionBaseType createTextInstructionBaseType() {
+        return new TextInstructionBaseType();
     }
 
     /**
@@ -7365,6 +9975,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TextNameBaseType }
+     * 
+     * @return
+     *     the new instance of {@link TextNameBaseType }
+     */
+    public TextNameBaseType createTextNameBaseType() {
+        return new TextNameBaseType();
+    }
+
+    /**
      * Create an instance of {@link TextNameType }
      * 
      * @return
@@ -7372,6 +9992,16 @@ public class ObjectFactory {
      */
     public TextNameType createTextNameType() {
         return new TextNameType();
+    }
+
+    /**
+     * Create an instance of {@link TextNoteBaseType }
+     * 
+     * @return
+     *     the new instance of {@link TextNoteBaseType }
+     */
+    public TextNoteBaseType createTextNoteBaseType() {
+        return new TextNoteBaseType();
     }
 
     /**
@@ -7385,6 +10015,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TextPhoneBaseType }
+     * 
+     * @return
+     *     the new instance of {@link TextPhoneBaseType }
+     */
+    public TextPhoneBaseType createTextPhoneBaseType() {
+        return new TextPhoneBaseType();
+    }
+
+    /**
      * Create an instance of {@link TextPhoneType }
      * 
      * @return
@@ -7392,6 +10032,16 @@ public class ObjectFactory {
      */
     public TextPhoneType createTextPhoneType() {
         return new TextPhoneType();
+    }
+
+    /**
+     * Create an instance of {@link TextPropertyNameBaseType }
+     * 
+     * @return
+     *     the new instance of {@link TextPropertyNameBaseType }
+     */
+    public TextPropertyNameBaseType createTextPropertyNameBaseType() {
+        return new TextPropertyNameBaseType();
     }
 
     /**
@@ -7405,6 +10055,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TextRemarkBaseType }
+     * 
+     * @return
+     *     the new instance of {@link TextRemarkBaseType }
+     */
+    public TextRemarkBaseType createTextRemarkBaseType() {
+        return new TextRemarkBaseType();
+    }
+
+    /**
      * Create an instance of {@link TextRemarkType }
      * 
      * @return
@@ -7412,6 +10072,16 @@ public class ObjectFactory {
      */
     public TextRemarkType createTextRemarkType() {
         return new TextRemarkType();
+    }
+
+    /**
+     * Create an instance of {@link TextSIDSTARDesignatorBaseType }
+     * 
+     * @return
+     *     the new instance of {@link TextSIDSTARDesignatorBaseType }
+     */
+    public TextSIDSTARDesignatorBaseType createTextSIDSTARDesignatorBaseType() {
+        return new TextSIDSTARDesignatorBaseType();
     }
 
     /**
@@ -7425,6 +10095,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TimeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link TimeBaseType }
+     */
+    public TimeBaseType createTimeBaseType() {
+        return new TimeBaseType();
+    }
+
+    /**
      * Create an instance of {@link TimeType }
      * 
      * @return
@@ -7432,6 +10112,126 @@ public class ObjectFactory {
      */
     public TimeType createTimeType() {
         return new TimeType();
+    }
+
+    /**
+     * Create an instance of {@link UomDepthType }
+     * 
+     * @return
+     *     the new instance of {@link UomDepthType }
+     */
+    public UomDepthType createUomDepthType() {
+        return new UomDepthType();
+    }
+
+    /**
+     * Create an instance of {@link UomDistanceType }
+     * 
+     * @return
+     *     the new instance of {@link UomDistanceType }
+     */
+    public UomDistanceType createUomDistanceType() {
+        return new UomDistanceType();
+    }
+
+    /**
+     * Create an instance of {@link UomDistanceVerticalType }
+     * 
+     * @return
+     *     the new instance of {@link UomDistanceVerticalType }
+     */
+    public UomDistanceVerticalType createUomDistanceVerticalType() {
+        return new UomDistanceVerticalType();
+    }
+
+    /**
+     * Create an instance of {@link UomDurationType }
+     * 
+     * @return
+     *     the new instance of {@link UomDurationType }
+     */
+    public UomDurationType createUomDurationType() {
+        return new UomDurationType();
+    }
+
+    /**
+     * Create an instance of {@link UomFLType }
+     * 
+     * @return
+     *     the new instance of {@link UomFLType }
+     */
+    public UomFLType createUomFLType() {
+        return new UomFLType();
+    }
+
+    /**
+     * Create an instance of {@link UomFrequencyType }
+     * 
+     * @return
+     *     the new instance of {@link UomFrequencyType }
+     */
+    public UomFrequencyType createUomFrequencyType() {
+        return new UomFrequencyType();
+    }
+
+    /**
+     * Create an instance of {@link UomLightIntensityType }
+     * 
+     * @return
+     *     the new instance of {@link UomLightIntensityType }
+     */
+    public UomLightIntensityType createUomLightIntensityType() {
+        return new UomLightIntensityType();
+    }
+
+    /**
+     * Create an instance of {@link UomPressureType }
+     * 
+     * @return
+     *     the new instance of {@link UomPressureType }
+     */
+    public UomPressureType createUomPressureType() {
+        return new UomPressureType();
+    }
+
+    /**
+     * Create an instance of {@link UomSpeedType }
+     * 
+     * @return
+     *     the new instance of {@link UomSpeedType }
+     */
+    public UomSpeedType createUomSpeedType() {
+        return new UomSpeedType();
+    }
+
+    /**
+     * Create an instance of {@link UomTemperatureType }
+     * 
+     * @return
+     *     the new instance of {@link UomTemperatureType }
+     */
+    public UomTemperatureType createUomTemperatureType() {
+        return new UomTemperatureType();
+    }
+
+    /**
+     * Create an instance of {@link UomWeightType }
+     * 
+     * @return
+     *     the new instance of {@link UomWeightType }
+     */
+    public UomWeightType createUomWeightType() {
+        return new UomWeightType();
+    }
+
+    /**
+     * Create an instance of {@link ValAlarmLimitBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValAlarmLimitBaseType }
+     */
+    public ValAlarmLimitBaseType createValAlarmLimitBaseType() {
+        return new ValAlarmLimitBaseType();
     }
 
     /**
@@ -7445,6 +10245,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValAngleBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValAngleBaseType }
+     */
+    public ValAngleBaseType createValAngleBaseType() {
+        return new ValAngleBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValAngleType }
      * 
      * @return
@@ -7452,6 +10262,16 @@ public class ObjectFactory {
      */
     public ValAngleType createValAngleType() {
         return new ValAngleType();
+    }
+
+    /**
+     * Create an instance of {@link ValBearingBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValBearingBaseType }
+     */
+    public ValBearingBaseType createValBearingBaseType() {
+        return new ValBearingBaseType();
     }
 
     /**
@@ -7465,6 +10285,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValChannelNumberBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValChannelNumberBaseType }
+     */
+    public ValChannelNumberBaseType createValChannelNumberBaseType() {
+        return new ValChannelNumberBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValChannelNumberType }
      * 
      * @return
@@ -7475,6 +10305,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValDepthBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValDepthBaseType }
+     */
+    public ValDepthBaseType createValDepthBaseType() {
+        return new ValDepthBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValDepthType }
      * 
      * @return
@@ -7482,6 +10322,26 @@ public class ObjectFactory {
      */
     public ValDepthType createValDepthType() {
         return new ValDepthType();
+    }
+
+    /**
+     * Create an instance of {@link ValDistanceBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValDistanceBaseType }
+     */
+    public ValDistanceBaseType createValDistanceBaseType() {
+        return new ValDistanceBaseType();
+    }
+
+    /**
+     * Create an instance of {@link ValDistanceSignedBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValDistanceSignedBaseType }
+     */
+    public ValDistanceSignedBaseType createValDistanceSignedBaseType() {
+        return new ValDistanceSignedBaseType();
     }
 
     /**
@@ -7505,6 +10365,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValDistanceVerticalBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValDistanceVerticalBaseType }
+     */
+    public ValDistanceVerticalBaseType createValDistanceVerticalBaseType() {
+        return new ValDistanceVerticalBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValDistanceVerticalType }
      * 
      * @return
@@ -7512,6 +10382,16 @@ public class ObjectFactory {
      */
     public ValDistanceVerticalType createValDistanceVerticalType() {
         return new ValDistanceVerticalType();
+    }
+
+    /**
+     * Create an instance of {@link ValDurationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValDurationBaseType }
+     */
+    public ValDurationBaseType createValDurationBaseType() {
+        return new ValDurationBaseType();
     }
 
     /**
@@ -7525,6 +10405,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValFLBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValFLBaseType }
+     */
+    public ValFLBaseType createValFLBaseType() {
+        return new ValFLBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValFLType }
      * 
      * @return
@@ -7532,6 +10422,16 @@ public class ObjectFactory {
      */
     public ValFLType createValFLType() {
         return new ValFLType();
+    }
+
+    /**
+     * Create an instance of {@link ValFrequencyBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValFrequencyBaseType }
+     */
+    public ValFrequencyBaseType createValFrequencyBaseType() {
+        return new ValFrequencyBaseType();
     }
 
     /**
@@ -7545,6 +10445,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValFrictionBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValFrictionBaseType }
+     */
+    public ValFrictionBaseType createValFrictionBaseType() {
+        return new ValFrictionBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValFrictionType }
      * 
      * @return
@@ -7552,6 +10462,16 @@ public class ObjectFactory {
      */
     public ValFrictionType createValFrictionType() {
         return new ValFrictionType();
+    }
+
+    /**
+     * Create an instance of {@link ValHexBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValHexBaseType }
+     */
+    public ValHexBaseType createValHexBaseType() {
+        return new ValHexBaseType();
     }
 
     /**
@@ -7565,6 +10485,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValLCNBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValLCNBaseType }
+     */
+    public ValLCNBaseType createValLCNBaseType() {
+        return new ValLCNBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValLCNType }
      * 
      * @return
@@ -7575,6 +10505,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValLightIntensityBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValLightIntensityBaseType }
+     */
+    public ValLightIntensityBaseType createValLightIntensityBaseType() {
+        return new ValLightIntensityBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValLightIntensityType }
      * 
      * @return
@@ -7582,6 +10522,26 @@ public class ObjectFactory {
      */
     public ValLightIntensityType createValLightIntensityType() {
         return new ValLightIntensityType();
+    }
+
+    /**
+     * Create an instance of {@link ValMagneticVariationBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValMagneticVariationBaseType }
+     */
+    public ValMagneticVariationBaseType createValMagneticVariationBaseType() {
+        return new ValMagneticVariationBaseType();
+    }
+
+    /**
+     * Create an instance of {@link ValMagneticVariationChangeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValMagneticVariationChangeBaseType }
+     */
+    public ValMagneticVariationChangeBaseType createValMagneticVariationChangeBaseType() {
+        return new ValMagneticVariationChangeBaseType();
     }
 
     /**
@@ -7605,6 +10565,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValPCNBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValPCNBaseType }
+     */
+    public ValPCNBaseType createValPCNBaseType() {
+        return new ValPCNBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValPCNType }
      * 
      * @return
@@ -7612,6 +10582,16 @@ public class ObjectFactory {
      */
     public ValPCNType createValPCNType() {
         return new ValPCNType();
+    }
+
+    /**
+     * Create an instance of {@link ValPercentBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValPercentBaseType }
+     */
+    public ValPercentBaseType createValPercentBaseType() {
+        return new ValPercentBaseType();
     }
 
     /**
@@ -7625,6 +10605,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValPressureBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValPressureBaseType }
+     */
+    public ValPressureBaseType createValPressureBaseType() {
+        return new ValPressureBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValPressureType }
      * 
      * @return
@@ -7632,6 +10622,16 @@ public class ObjectFactory {
      */
     public ValPressureType createValPressureType() {
         return new ValPressureType();
+    }
+
+    /**
+     * Create an instance of {@link ValSlopeBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValSlopeBaseType }
+     */
+    public ValSlopeBaseType createValSlopeBaseType() {
+        return new ValSlopeBaseType();
     }
 
     /**
@@ -7645,6 +10645,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValSpeedBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValSpeedBaseType }
+     */
+    public ValSpeedBaseType createValSpeedBaseType() {
+        return new ValSpeedBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValSpeedType }
      * 
      * @return
@@ -7655,6 +10665,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValTemperatureBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValTemperatureBaseType }
+     */
+    public ValTemperatureBaseType createValTemperatureBaseType() {
+        return new ValTemperatureBaseType();
+    }
+
+    /**
      * Create an instance of {@link ValTemperatureType }
      * 
      * @return
@@ -7662,6 +10682,16 @@ public class ObjectFactory {
      */
     public ValTemperatureType createValTemperatureType() {
         return new ValTemperatureType();
+    }
+
+    /**
+     * Create an instance of {@link ValWeightBaseType }
+     * 
+     * @return
+     *     the new instance of {@link ValWeightBaseType }
+     */
+    public ValWeightBaseType createValWeightBaseType() {
+        return new ValWeightBaseType();
     }
 
     /**
@@ -24077,16 +27107,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CodeDistanceVerticalUomType }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link CodeDistanceVerticalUomType }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "unitOfMeasurement", scope = StandardLevelColumnTimeSliceType.class)
-    public JAXBElement<String> createStandardLevelColumnTimeSliceTypeUnitOfMeasurement(String value) {
-        return new JAXBElement<>(_StandardLevelColumnTimeSliceTypeUnitOfMeasurement_QNAME, String.class, StandardLevelColumnTimeSliceType.class, value);
+    public JAXBElement<CodeDistanceVerticalUomType> createStandardLevelColumnTimeSliceTypeUnitOfMeasurement(CodeDistanceVerticalUomType value) {
+        return new JAXBElement<>(_StandardLevelColumnTimeSliceTypeUnitOfMeasurement_QNAME, CodeDistanceVerticalUomType.class, StandardLevelColumnTimeSliceType.class, value);
     }
 
     /**

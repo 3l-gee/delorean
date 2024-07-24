@@ -84,7 +84,7 @@ public class CoordinateSystemAxisType
      * 
      */
     @XmlAttribute(name = "uom", required = true)
-    protected String uom;
+    protected UomIdentifier uom;
 
     /**
      * gml:axisAbbrev is the abbreviation used for this coordinate system axis; this abbreviation is also used to identify the coordinates in the coordinate tuple. The codeSpace attribute may reference a source of more information on a set of standardized abbreviations, or on this abbreviation.
@@ -238,10 +238,10 @@ public class CoordinateSystemAxisType
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomIdentifier }
      *     
      */
-    public String getUom() {
+    public UomIdentifier getUom() {
         return uom;
     }
 
@@ -250,11 +250,11 @@ public class CoordinateSystemAxisType
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomIdentifier }
      *     
      * @see #getUom()
      */
-    public void setUom(String value) {
+    public void setUom(UomIdentifier value) {
         this.uom = value;
     }
 

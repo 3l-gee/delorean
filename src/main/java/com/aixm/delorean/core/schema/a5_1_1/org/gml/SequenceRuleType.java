@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.util.ArrayList;
-import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -47,7 +45,7 @@ public class SequenceRuleType {
     @XmlAttribute(name = "order")
     protected IncrementOrder order;
     @XmlAttribute(name = "axisOrder")
-    protected List<String> axisOrder;
+    protected AxisDirectionList axisOrder;
 
     /**
      * Gets the value of the value property.
@@ -108,41 +106,29 @@ public class SequenceRuleType {
     /**
      * Gets the value of the axisOrder property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the axisOrder property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAxisOrder().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the axisOrder property.
+     *     possible object is
+     *     {@link AxisDirectionList }
+     *     
      */
-    public List<String> getAxisOrder() {
-        if (axisOrder == null) {
-            axisOrder = new ArrayList<>();
-        }
-        return this.axisOrder;
+    public AxisDirectionList getAxisOrder() {
+        return axisOrder;
+    }
+
+    /**
+     * Sets the value of the axisOrder property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AxisDirectionList }
+     *     
+     */
+    public void setAxisOrder(AxisDirectionList value) {
+        this.axisOrder = value;
     }
 
     public boolean isSetAxisOrder() {
-        return ((this.axisOrder!= null)&&(!this.axisOrder.isEmpty()));
-    }
-
-    public void unsetAxisOrder() {
-        this.axisOrder = null;
+        return (this.axisOrder!= null);
     }
 
 }

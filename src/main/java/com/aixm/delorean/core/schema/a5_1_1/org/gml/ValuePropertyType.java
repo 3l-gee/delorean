@@ -7,13 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ArcroleType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.HrefType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.RoleType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TitleAttrType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -21,7 +23,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlList;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -38,8 +39,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <group ref="{http://www.opengis.net/gml/3.2}Value"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -75,30 +76,29 @@ public class ValuePropertyType {
      */
     @XmlElementRef(name = "AbstractTimeObject", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractTimeObjectType> abstractTimeObject;
-    @XmlList
     @XmlElement(name = "Null")
-    protected List<String> _null;
+    protected NilReasonType _null;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
-    protected List<String> nilReason;
+    protected NilReasonType nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
     public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    protected String href;
+    protected HrefType href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    protected String role;
+    protected RoleType role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    protected String arcrole;
+    protected ArcroleType arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String titleAttribute;
+    protected TitleAttrType titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
 
     /**
      * gml:AbstractValue is an abstract element which acts as the head of a substitution group which contains gml:AbstractScalarValue, gml:AbstractScalarValueList, gml:CompositeValue and gml:ValueExtent, and (transitively) the elements in their substitution groups.
@@ -107,11 +107,14 @@ public class ValuePropertyType {
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.org.gml.Boolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanOrNilReasonList }{@code >}
      *     {@link JAXBElement }{@code <}{@link Category }{@code >}
      *     {@link JAXBElement }{@code <}{@link CategoryExtentType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CodeOrNilReasonListType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link Count }{@code >}
+     *     {@link JAXBElement }{@code <}{@link CountExtentType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntegerOrNilReasonList }{@code >}
      *     {@link JAXBElement }{@code <}{@link MeasureOrNilReasonListType }{@code >}
      *     {@link JAXBElement }{@code <}{@link Quantity }{@code >}
      *     {@link JAXBElement }{@code <}{@link QuantityExtentType }{@code >}
@@ -119,9 +122,6 @@ public class ValuePropertyType {
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
-     *     {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
-     *     {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      *     
      */
     public JAXBElement<?> getAbstractValue() {
@@ -134,11 +134,14 @@ public class ValuePropertyType {
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.org.gml.Boolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanOrNilReasonList }{@code >}
      *     {@link JAXBElement }{@code <}{@link Category }{@code >}
      *     {@link JAXBElement }{@code <}{@link CategoryExtentType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CodeOrNilReasonListType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link Count }{@code >}
+     *     {@link JAXBElement }{@code <}{@link CountExtentType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntegerOrNilReasonList }{@code >}
      *     {@link JAXBElement }{@code <}{@link MeasureOrNilReasonListType }{@code >}
      *     {@link JAXBElement }{@code <}{@link Quantity }{@code >}
      *     {@link JAXBElement }{@code <}{@link QuantityExtentType }{@code >}
@@ -146,9 +149,6 @@ public class ValuePropertyType {
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
-     *     {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
-     *     {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      *     
      * @see #getAbstractValue()
      */
@@ -315,81 +315,93 @@ public class ValuePropertyType {
     /**
      * Gets the value of the null property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the null property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNull().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the null property.
+     *     possible object is
+     *     {@link NilReasonType }
+     *     
      */
-    public List<String> getNull() {
-        if (_null == null) {
-            _null = new ArrayList<>();
-        }
-        return this._null;
+    public NilReasonType getNull() {
+        return _null;
+    }
+
+    /**
+     * Sets the value of the null property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NilReasonType }
+     *     
+     */
+    public void setNull(NilReasonType value) {
+        this._null = value;
     }
 
     public boolean isSetNull() {
-        return ((this._null!= null)&&(!this._null.isEmpty()));
+        return (this._null!= null);
     }
 
-    public void unsetNull() {
-        this._null = null;
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
     /**
      * Gets the value of the nilReason property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nilReason property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNilReason().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the nilReason property.
+     *     possible object is
+     *     {@link NilReasonType }
+     *     
      */
-    public List<String> getNilReason() {
-        if (nilReason == null) {
-            nilReason = new ArrayList<>();
-        }
-        return this.nilReason;
+    public NilReasonType getNilReason() {
+        return nilReason;
+    }
+
+    /**
+     * Sets the value of the nilReason property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NilReasonType }
+     *     
+     */
+    public void setNilReason(NilReasonType value) {
+        this.nilReason = value;
     }
 
     public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
+        return (this.nilReason!= null);
     }
 
     /**
@@ -425,10 +437,10 @@ public class ValuePropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link HrefType }
      *     
      */
-    public String getHref() {
+    public HrefType getHref() {
         return href;
     }
 
@@ -437,10 +449,10 @@ public class ValuePropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link HrefType }
      *     
      */
-    public void setHref(String value) {
+    public void setHref(HrefType value) {
         this.href = value;
     }
 
@@ -453,10 +465,10 @@ public class ValuePropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
@@ -465,10 +477,10 @@ public class ValuePropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public void setRole(String value) {
+    public void setRole(RoleType value) {
         this.role = value;
     }
 
@@ -481,10 +493,10 @@ public class ValuePropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public String getArcrole() {
+    public ArcroleType getArcrole() {
         return arcrole;
     }
 
@@ -493,10 +505,10 @@ public class ValuePropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public void setArcrole(String value) {
+    public void setArcrole(ArcroleType value) {
         this.arcrole = value;
     }
 
@@ -509,10 +521,10 @@ public class ValuePropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public String getTitleAttribute() {
+    public TitleAttrType getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -521,10 +533,10 @@ public class ValuePropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public void setTitleAttribute(String value) {
+    public void setTitleAttribute(TitleAttrType value) {
         this.titleAttribute = value;
     }
 
@@ -586,42 +598,6 @@ public class ValuePropertyType {
 
     public boolean isSetActuate() {
         return (this.actuate!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

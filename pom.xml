@@ -61,40 +61,57 @@
                 </configuration>
             </plugin>
 
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
-				<executions>
+                <configuration>
+                    <extension>true</extension>
+                    <args>
+                        <arg>-Xannotate</arg>
+                    </args>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb</groupId>
+                            <artifactId>jaxb-plugin-annotate</artifactId>
+                            <version>4.0.8</version>
+                        </plugin>
+                    </plugins>
+                    <verbose>true</verbose>
+                    <schemaDirectory>${project.basedir}/src/main/resources/a5_1_1/</schemaDirectory>
+                    <schemaIncludes>
+                        <include>AIXM_BasicMessage.xsd</include>
+                    </schemaIncludes>
+                    <bindingDirectory>${project.basedir}/src/main/resources/a5_1_1</bindingDirectory>
+                    <bindingIncludes>
+                        <include>*.xjb</include>
+                    </bindingIncludes>
+                    <bindingExcludes>
+                        <include>*.xsd</include>
+                    </bindingExcludes>
+                    <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+                </configuration>       
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb</groupId>
+                        <artifactId>jaxb-plugin-annotate</artifactId>
+                        <version>4.0.8</version>
+                    </dependency>
+                </dependencies>
+                <executions>
 					<execution>
-                        <id>generate_messages</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
-                        <configuration>
-                            <verbose>true</verbose>
-                            <schemaDirectory>${project.basedir}/src/main/resources/a5_1_1/</schemaDirectory>
-                            <schemaIncludes>
-								<include>AIXM_BasicMessage.xsd</include>
-                            </schemaIncludes>
-                            <bindingDirectory>${project.basedir}/src/main/resources/a5_1_1</bindingDirectory>
-							<bindingIncludes>
-								<include>*.xjb</include>
-							</bindingIncludes>
-							<bindingExcludes>
-								<include>*.xsd</include>
-							</bindingExcludes>
-							<generateDirectory>${project.basedir}/src/main/java</generateDirectory>
-                        </configuration>
-					</execution>
+                    </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
 
 			<!-- Added maven-shade-plugin to create a fat jar including dependencies -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version> <!-- Use the latest version available -->
+                <version>3.2.4</version>
                 <executions>
                     <execution>
                         <phase>package</phase>

@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigDecimal;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -52,10 +51,12 @@ public class DMSAngleType {
 
     @XmlElement(required = true)
     protected DegreesType degrees;
-    protected BigDecimal decimalMinutes;
+    @XmlSchemaType(name = "decimal")
+    protected DecimalMinutesType decimalMinutes;
     @XmlSchemaType(name = "nonNegativeInteger")
-    protected Integer minutes;
-    protected BigDecimal seconds;
+    protected ArcMinutesType minutes;
+    @XmlSchemaType(name = "decimal")
+    protected ArcSecondsType seconds;
 
     /**
      * Gets the value of the degrees property.
@@ -90,10 +91,10 @@ public class DMSAngleType {
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link DecimalMinutesType }
      *     
      */
-    public BigDecimal getDecimalMinutes() {
+    public DecimalMinutesType getDecimalMinutes() {
         return decimalMinutes;
     }
 
@@ -102,10 +103,10 @@ public class DMSAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link DecimalMinutesType }
      *     
      */
-    public void setDecimalMinutes(BigDecimal value) {
+    public void setDecimalMinutes(DecimalMinutesType value) {
         this.decimalMinutes = value;
     }
 
@@ -118,10 +119,10 @@ public class DMSAngleType {
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link ArcMinutesType }
      *     
      */
-    public Integer getMinutes() {
+    public ArcMinutesType getMinutes() {
         return minutes;
     }
 
@@ -130,10 +131,10 @@ public class DMSAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link ArcMinutesType }
      *     
      */
-    public void setMinutes(Integer value) {
+    public void setMinutes(ArcMinutesType value) {
         this.minutes = value;
     }
 
@@ -146,10 +147,10 @@ public class DMSAngleType {
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link ArcSecondsType }
      *     
      */
-    public BigDecimal getSeconds() {
+    public ArcSecondsType getSeconds() {
         return seconds;
     }
 
@@ -158,10 +159,10 @@ public class DMSAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link ArcSecondsType }
      *     
      */
-    public void setSeconds(BigDecimal value) {
+    public void setSeconds(ArcSecondsType value) {
         this.seconds = value;
     }
 

@@ -7,10 +7,12 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ArcroleType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.HrefType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.RoleType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TitleAttrType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -34,8 +36,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}TimeOrdinalEra"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -56,27 +58,27 @@ public class TimeOrdinalEraPropertyType {
      */
     @XmlElement(name = "TimeOrdinalEra")
     protected TimeOrdinalEraType timeOrdinalEra;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
-    protected List<String> nilReason;
+    protected NilReasonType nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
     public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    protected String href;
+    protected HrefType href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    protected String role;
+    protected RoleType role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    protected String arcrole;
+    protected ArcroleType arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String titleAttribute;
+    protected TitleAttrType titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
 
     /**
      * Its content model follows the pattern of gml:TimeEdge, inheriting standard properties from gml:DefinitionType, and adding gml:start, gml:end and gml:extent properties, a set of gml:member properties which indicate ordered gml:TimeOrdinalEra elements, and a gml:group property which points to the parent era.
@@ -109,79 +111,31 @@ public class TimeOrdinalEraPropertyType {
     }
 
     /**
-     * Gets the value of the owns property.
+     * Gets the value of the nilReason property.
      * 
      * @return
      *     possible object is
-     *     {@link java.lang.Boolean }
+     *     {@link NilReasonType }
      *     
      */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
+    public NilReasonType getNilReason() {
+        return nilReason;
     }
 
     /**
-     * Sets the value of the owns property.
+     * Sets the value of the nilReason property.
      * 
      * @param value
      *     allowed object is
-     *     {@link java.lang.Boolean }
+     *     {@link NilReasonType }
      *     
      */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
-    }
-
-    /**
-     * Gets the value of the nilReason property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nilReason property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNilReason().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the nilReason property.
-     */
-    public List<String> getNilReason() {
-        if (nilReason == null) {
-            nilReason = new ArrayList<>();
-        }
-        return this.nilReason;
+    public void setNilReason(NilReasonType value) {
+        this.nilReason = value;
     }
 
     public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
+        return (this.nilReason!= null);
     }
 
     /**
@@ -217,10 +171,10 @@ public class TimeOrdinalEraPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link HrefType }
      *     
      */
-    public String getHref() {
+    public HrefType getHref() {
         return href;
     }
 
@@ -229,10 +183,10 @@ public class TimeOrdinalEraPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link HrefType }
      *     
      */
-    public void setHref(String value) {
+    public void setHref(HrefType value) {
         this.href = value;
     }
 
@@ -245,10 +199,10 @@ public class TimeOrdinalEraPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
@@ -257,10 +211,10 @@ public class TimeOrdinalEraPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public void setRole(String value) {
+    public void setRole(RoleType value) {
         this.role = value;
     }
 
@@ -273,10 +227,10 @@ public class TimeOrdinalEraPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public String getArcrole() {
+    public ArcroleType getArcrole() {
         return arcrole;
     }
 
@@ -285,10 +239,10 @@ public class TimeOrdinalEraPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public void setArcrole(String value) {
+    public void setArcrole(ArcroleType value) {
         this.arcrole = value;
     }
 
@@ -301,10 +255,10 @@ public class TimeOrdinalEraPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public String getTitleAttribute() {
+    public TitleAttrType getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -313,10 +267,10 @@ public class TimeOrdinalEraPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public void setTitleAttribute(String value) {
+    public void setTitleAttribute(TitleAttrType value) {
         this.titleAttribute = value;
     }
 
@@ -378,6 +332,42 @@ public class TimeOrdinalEraPropertyType {
 
     public boolean isSetActuate() {
         return (this.actuate!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

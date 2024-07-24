@@ -7,16 +7,13 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlList;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -79,8 +76,7 @@ public class ParameterValueType
      * gml:integerValue is a positive integer value of an operation parameter, usually used for a count. An integer value does not have an associated unit of measure.
      * 
      */
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger integerValue;
+    protected PositiveInteger integerValue;
     /**
      * gml:booleanValue is a boolean value of an operation parameter. A Boolean value does not have an associated unit of measure.
      * 
@@ -95,8 +91,7 @@ public class ParameterValueType
      * gml:integerValueList is an ordered sequence of two or more integer values of an operation parameter list, usually used for counts. These integer values do not have an associated unit of measure. An element of this type contains a space-separated sequence of integer values.
      * 
      */
-    @XmlList
-    protected List<BigInteger> integerValueList;
+    protected IntegerList integerValueList;
     /**
      * gml:valueFile is a reference to a file or a part of a file containing one or more parameter values, each numeric value with its associated unit of measure. When referencing a part of a file, that file shall contain multiple identified parts, such as an XML encoded document. Furthermore, the referenced file or part of a file may reference another part of the same or different files, as allowed in XML documents.
      * 
@@ -201,10 +196,10 @@ public class ParameterValueType
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public BigInteger getIntegerValue() {
+    public PositiveInteger getIntegerValue() {
         return integerValue;
     }
 
@@ -213,11 +208,11 @@ public class ParameterValueType
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      * @see #getIntegerValue()
      */
-    public void setIntegerValue(BigInteger value) {
+    public void setIntegerValue(PositiveInteger value) {
         this.integerValue = value;
     }
 
@@ -286,43 +281,30 @@ public class ParameterValueType
     /**
      * gml:integerValueList is an ordered sequence of two or more integer values of an operation parameter list, usually used for counts. These integer values do not have an associated unit of measure. An element of this type contains a space-separated sequence of integer values.
      * 
-     * Gets the value of the integerValueList property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the integerValueList property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getIntegerValueList().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link BigInteger }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the integerValueList property.
+     *     possible object is
+     *     {@link IntegerList }
+     *     
      */
-    public List<BigInteger> getIntegerValueList() {
-        if (integerValueList == null) {
-            integerValueList = new ArrayList<>();
-        }
-        return this.integerValueList;
+    public IntegerList getIntegerValueList() {
+        return integerValueList;
+    }
+
+    /**
+     * Sets the value of the integerValueList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link IntegerList }
+     *     
+     * @see #getIntegerValueList()
+     */
+    public void setIntegerValueList(IntegerList value) {
+        this.integerValueList = value;
     }
 
     public boolean isSetIntegerValueList() {
-        return ((this.integerValueList!= null)&&(!this.integerValueList.isEmpty()));
-    }
-
-    public void unsetIntegerValueList() {
-        this.integerValueList = null;
+        return (this.integerValueList!= null);
     }
 
     /**

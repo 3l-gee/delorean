@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.xml.bind.JAXBElement;
@@ -16,8 +15,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -55,8 +54,7 @@ public class PassThroughOperationType
      * 
      */
     @XmlElement(required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected List<BigInteger> modifiedCoordinate;
+    protected List<PositiveInteger> modifiedCoordinate;
     /**
      * gml:coordOperation is an association role to a coordinate operation.
      * 
@@ -86,14 +84,14 @@ public class PassThroughOperationType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link BigInteger }
+     * {@link PositiveInteger }
      * </p>
      * 
      * 
      * @return
      *     The value of the modifiedCoordinate property.
      */
-    public List<BigInteger> getModifiedCoordinate() {
+    public List<PositiveInteger> getModifiedCoordinate() {
         if (modifiedCoordinate == null) {
             modifiedCoordinate = new ArrayList<>();
         }

@@ -12,9 +12,9 @@ import java.math.BigInteger;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
+import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -45,10 +45,9 @@ public class TimeIntervalLengthType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "unit", required = true)
-    protected String unit;
+    protected TimeUnitType unit;
     @XmlAttribute(name = "radix")
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger radix;
+    protected PositiveInteger radix;
     @XmlAttribute(name = "factor")
     protected BigInteger factor;
 
@@ -85,10 +84,10 @@ public class TimeIntervalLengthType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TimeUnitType }
      *     
      */
-    public String getUnit() {
+    public TimeUnitType getUnit() {
         return unit;
     }
 
@@ -97,10 +96,10 @@ public class TimeIntervalLengthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TimeUnitType }
      *     
      */
-    public void setUnit(String value) {
+    public void setUnit(TimeUnitType value) {
         this.unit = value;
     }
 
@@ -113,10 +112,10 @@ public class TimeIntervalLengthType {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public BigInteger getRadix() {
+    public PositiveInteger getRadix() {
         return radix;
     }
 
@@ -125,10 +124,10 @@ public class TimeIntervalLengthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public void setRadix(BigInteger value) {
+    public void setRadix(PositiveInteger value) {
         this.radix = value;
     }
 
