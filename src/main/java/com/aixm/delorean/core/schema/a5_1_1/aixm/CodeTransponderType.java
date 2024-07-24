@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -38,19 +39,19 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTransponderType {
 
     @XmlValue
-    protected String value;
+    protected CodeTransponderBaseType value;
     @XmlAttribute(name = "nilReason")
-    protected String nilReason;
+    protected NilReasonEnumeration nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeTransponderBaseType }
      *     
      */
-    public String getValue() {
+    public CodeTransponderBaseType getValue() {
         return value;
     }
 
@@ -59,10 +60,10 @@ public class CodeTransponderType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeTransponderBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeTransponderBaseType value) {
         this.value = value;
     }
 
@@ -75,10 +76,10 @@ public class CodeTransponderType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public String getNilReason() {
+    public NilReasonEnumeration getNilReason() {
         return nilReason;
     }
 
@@ -87,10 +88,10 @@ public class CodeTransponderType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public void setNilReason(String value) {
+    public void setNilReason(NilReasonEnumeration value) {
         this.nilReason = value;
     }
 

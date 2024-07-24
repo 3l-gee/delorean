@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import java.math.BigDecimal;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,19 +39,19 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValAngleType {
 
     @XmlValue
-    protected BigDecimal value;
+    protected ValAngleBaseType value;
     @XmlAttribute(name = "nilReason")
-    protected String nilReason;
+    protected NilReasonEnumeration nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link ValAngleBaseType }
      *     
      */
-    public BigDecimal getValue() {
+    public ValAngleBaseType getValue() {
         return value;
     }
 
@@ -60,10 +60,10 @@ public class ValAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link ValAngleBaseType }
      *     
      */
-    public void setValue(BigDecimal value) {
+    public void setValue(ValAngleBaseType value) {
         this.value = value;
     }
 
@@ -76,10 +76,10 @@ public class ValAngleType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public String getNilReason() {
+    public NilReasonEnumeration getNilReason() {
         return nilReason;
     }
 
@@ -88,10 +88,10 @@ public class ValAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public void setNilReason(String value) {
+    public void setNilReason(NilReasonEnumeration value) {
         this.nilReason = value;
     }
 

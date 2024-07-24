@@ -7,15 +7,14 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -70,14 +69,12 @@ public class OperationMethodType
      * gml:sourceDimensions is the number of dimensions in the source CRS of this operation method.
      * 
      */
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger sourceDimensions;
+    protected PositiveInteger sourceDimensions;
     /**
      * gml:targetDimensions is the number of dimensions in the target CRS of this operation method.
      * 
      */
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger targetDimensions;
+    protected PositiveInteger targetDimensions;
     /**
      * gml:parameter is an association to an operation parameter or parameter group.
      * 
@@ -150,10 +147,10 @@ public class OperationMethodType
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public BigInteger getSourceDimensions() {
+    public PositiveInteger getSourceDimensions() {
         return sourceDimensions;
     }
 
@@ -162,11 +159,11 @@ public class OperationMethodType
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      * @see #getSourceDimensions()
      */
-    public void setSourceDimensions(BigInteger value) {
+    public void setSourceDimensions(PositiveInteger value) {
         this.sourceDimensions = value;
     }
 
@@ -179,10 +176,10 @@ public class OperationMethodType
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public BigInteger getTargetDimensions() {
+    public PositiveInteger getTargetDimensions() {
         return targetDimensions;
     }
 
@@ -191,11 +188,11 @@ public class OperationMethodType
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      * @see #getTargetDimensions()
      */
-    public void setTargetDimensions(BigInteger value) {
+    public void setTargetDimensions(PositiveInteger value) {
         this.targetDimensions = value;
     }
 

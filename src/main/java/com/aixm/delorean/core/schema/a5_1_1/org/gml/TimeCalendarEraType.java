@@ -50,7 +50,7 @@ public class TimeCalendarEraType
     @XmlElement(required = true)
     protected StringOrRefType referenceEvent;
     @XmlElement(required = true)
-    protected String referenceDate;
+    protected CalDate referenceDate;
     @XmlElement(required = true)
     protected BigDecimal julianReference;
     @XmlElement(required = true)
@@ -89,10 +89,10 @@ public class TimeCalendarEraType
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CalDate }
      *     
      */
-    public String getReferenceDate() {
+    public CalDate getReferenceDate() {
         return referenceDate;
     }
 
@@ -101,10 +101,10 @@ public class TimeCalendarEraType
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CalDate }
      *     
      */
-    public void setReferenceDate(String value) {
+    public void setReferenceDate(CalDate value) {
         this.referenceDate = value;
     }
 

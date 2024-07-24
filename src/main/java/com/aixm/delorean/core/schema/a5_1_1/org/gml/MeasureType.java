@@ -54,7 +54,7 @@ public class MeasureType {
     @XmlValue
     protected double value;
     @XmlAttribute(name = "uom", required = true)
-    protected String uom;
+    protected UomIdentifier uom;
 
     /**
      * Gets the value of the value property.
@@ -81,10 +81,10 @@ public class MeasureType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomIdentifier }
      *     
      */
-    public String getUom() {
+    public UomIdentifier getUom() {
         return uom;
     }
 
@@ -93,10 +93,10 @@ public class MeasureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomIdentifier }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomIdentifier value) {
         this.uom = value;
     }
 

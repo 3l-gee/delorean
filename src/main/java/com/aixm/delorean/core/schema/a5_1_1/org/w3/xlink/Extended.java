@@ -57,9 +57,9 @@ public class Extended {
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
     public static final TypeType TYPE = TypeType.EXTENDED;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    protected String role;
+    protected RoleType role;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String titleAttribute;
+    protected TitleAttrType titleAttribute;
 
     /**
      * Gets the value of the extendedModel property.
@@ -109,10 +109,10 @@ public class Extended {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
@@ -121,10 +121,10 @@ public class Extended {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public void setRole(String value) {
+    public void setRole(RoleType value) {
         this.role = value;
     }
 
@@ -137,10 +137,10 @@ public class Extended {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public String getTitleAttribute() {
+    public TitleAttrType getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -149,10 +149,10 @@ public class Extended {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public void setTitleAttribute(String value) {
+    public void setTitleAttribute(TitleAttrType value) {
         this.titleAttribute = value;
     }
 

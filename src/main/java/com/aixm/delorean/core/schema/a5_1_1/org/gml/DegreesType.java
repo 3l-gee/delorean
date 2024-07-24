@@ -49,28 +49,36 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class DegreesType {
 
     @XmlValue
-    protected int value;
+    protected DegreeValueType value;
     @XmlAttribute(name = "direction")
     protected String direction;
 
     /**
      * Gets the value of the value property.
      * 
+     * @return
+     *     possible object is
+     *     {@link DegreeValueType }
+     *     
      */
-    public int getValue() {
+    public DegreeValueType getValue() {
         return value;
     }
 
     /**
      * Sets the value of the value property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link DegreeValueType }
+     *     
      */
-    public void setValue(int value) {
+    public void setValue(DegreeValueType value) {
         this.value = value;
     }
 
     public boolean isSetValue() {
-        return true;
+        return (this.value!= null);
     }
 
     /**

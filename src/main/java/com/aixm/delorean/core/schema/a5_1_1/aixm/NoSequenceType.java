@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -38,28 +39,36 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class NoSequenceType {
 
     @XmlValue
-    protected long value;
+    protected NoSequenceBaseType value;
     @XmlAttribute(name = "nilReason")
-    protected String nilReason;
+    protected NilReasonEnumeration nilReason;
 
     /**
      * Gets the value of the value property.
      * 
+     * @return
+     *     possible object is
+     *     {@link NoSequenceBaseType }
+     *     
      */
-    public long getValue() {
+    public NoSequenceBaseType getValue() {
         return value;
     }
 
     /**
      * Sets the value of the value property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link NoSequenceBaseType }
+     *     
      */
-    public void setValue(long value) {
+    public void setValue(NoSequenceBaseType value) {
         this.value = value;
     }
 
     public boolean isSetValue() {
-        return true;
+        return (this.value!= null);
     }
 
     /**
@@ -67,10 +76,10 @@ public class NoSequenceType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public String getNilReason() {
+    public NilReasonEnumeration getNilReason() {
         return nilReason;
     }
 
@@ -79,10 +88,10 @@ public class NoSequenceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public void setNilReason(String value) {
+    public void setNilReason(NilReasonEnumeration value) {
         this.nilReason = value;
     }
 

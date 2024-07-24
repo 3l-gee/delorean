@@ -147,11 +147,11 @@ public class RangeSetType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link BooleanOrNilReasonList }{@code >}
      * {@link JAXBElement }{@code <}{@link CodeOrNilReasonListType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IntegerOrNilReasonList }{@code >}
      * {@link JAXBElement }{@code <}{@link MeasureOrNilReasonListType }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
-     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      * </p>
      * 
      * 

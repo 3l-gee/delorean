@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAirportGroundServiceType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAirportHeliportProtectionAreaType;
@@ -153,7 +151,11 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.VisualGlideSlopeIndicatorType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.WorkAreaType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ArcroleType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.HrefType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.RoleType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TitleAttrType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -207,20 +209,20 @@ public class TargetPropertyType {
     @XmlElementRef(name = "AbstractGeometry", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractGeometryType> abstractGeometry;
     @XmlAttribute(name = "nilReason")
-    protected List<String> nilReason;
+    protected NilReasonType nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
     public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    protected String href;
+    protected HrefType href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    protected String role;
+    protected RoleType role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    protected String arcrole;
+    protected ArcroleType arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String titleAttribute;
+    protected TitleAttrType titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
@@ -678,41 +680,29 @@ public class TargetPropertyType {
     /**
      * Gets the value of the nilReason property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nilReason property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNilReason().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the nilReason property.
+     *     possible object is
+     *     {@link NilReasonType }
+     *     
      */
-    public List<String> getNilReason() {
-        if (nilReason == null) {
-            nilReason = new ArrayList<>();
-        }
-        return this.nilReason;
+    public NilReasonType getNilReason() {
+        return nilReason;
+    }
+
+    /**
+     * Sets the value of the nilReason property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NilReasonType }
+     *     
+     */
+    public void setNilReason(NilReasonType value) {
+        this.nilReason = value;
     }
 
     public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
+        return (this.nilReason!= null);
     }
 
     /**
@@ -748,10 +738,10 @@ public class TargetPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link HrefType }
      *     
      */
-    public String getHref() {
+    public HrefType getHref() {
         return href;
     }
 
@@ -760,10 +750,10 @@ public class TargetPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link HrefType }
      *     
      */
-    public void setHref(String value) {
+    public void setHref(HrefType value) {
         this.href = value;
     }
 
@@ -776,10 +766,10 @@ public class TargetPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
@@ -788,10 +778,10 @@ public class TargetPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public void setRole(String value) {
+    public void setRole(RoleType value) {
         this.role = value;
     }
 
@@ -804,10 +794,10 @@ public class TargetPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public String getArcrole() {
+    public ArcroleType getArcrole() {
         return arcrole;
     }
 
@@ -816,10 +806,10 @@ public class TargetPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public void setArcrole(String value) {
+    public void setArcrole(ArcroleType value) {
         this.arcrole = value;
     }
 
@@ -832,10 +822,10 @@ public class TargetPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public String getTitleAttribute() {
+    public TitleAttrType getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -844,10 +834,10 @@ public class TargetPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public void setTitleAttribute(String value) {
+    public void setTitleAttribute(TitleAttrType value) {
         this.titleAttribute = value;
     }
 

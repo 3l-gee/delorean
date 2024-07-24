@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import java.math.BigDecimal;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,21 +40,21 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValTemperatureType {
 
     @XmlValue
-    protected BigDecimal value;
+    protected ValTemperatureBaseType value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomTemperatureType uom;
     @XmlAttribute(name = "nilReason")
-    protected String nilReason;
+    protected NilReasonEnumeration nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link ValTemperatureBaseType }
      *     
      */
-    public BigDecimal getValue() {
+    public ValTemperatureBaseType getValue() {
         return value;
     }
 
@@ -63,10 +63,10 @@ public class ValTemperatureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link ValTemperatureBaseType }
      *     
      */
-    public void setValue(BigDecimal value) {
+    public void setValue(ValTemperatureBaseType value) {
         this.value = value;
     }
 
@@ -79,10 +79,10 @@ public class ValTemperatureType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomTemperatureType }
      *     
      */
-    public String getUom() {
+    public UomTemperatureType getUom() {
         return uom;
     }
 
@@ -91,10 +91,10 @@ public class ValTemperatureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomTemperatureType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomTemperatureType value) {
         this.uom = value;
     }
 
@@ -107,10 +107,10 @@ public class ValTemperatureType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public String getNilReason() {
+    public NilReasonEnumeration getNilReason() {
         return nilReason;
     }
 
@@ -119,10 +119,10 @@ public class ValTemperatureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public void setNilReason(String value) {
+    public void setNilReason(NilReasonEnumeration value) {
         this.nilReason = value;
     }
 
