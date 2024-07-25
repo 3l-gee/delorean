@@ -9,6 +9,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
+import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -51,10 +52,15 @@ public class CIContactType
     extends AbstractObjectType
 {
 
+    @Valid
     protected CITelephonePropertyType phone;
+    @Valid
     protected CIAddressPropertyType address;
+    @Valid
     protected CIOnlineResourcePropertyType onlineResource;
+    @Valid
     protected CharacterStringPropertyType hoursOfService;
+    @Valid
     protected CharacterStringPropertyType contactInstructions;
 
     /**

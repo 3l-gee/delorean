@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,11 +70,17 @@ public class DeicingAreaMarkingTimeSliceType
     @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "markedDeicingArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DeicingAreaPropertyType> markedDeicingArea;
+    @Valid
+    @Size(min = 0)
     protected List<DeicingAreaMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -309,8 +317,10 @@ public class DeicingAreaMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDeicingAreaMarkingExtension")
+        @Valid
         protected AbstractExtensionType abstractDeicingAreaMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
+        @Valid
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

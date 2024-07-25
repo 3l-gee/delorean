@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import java.math.BigDecimal;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,21 +40,21 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDepthType {
 
     @XmlValue
-    protected ValDepthBaseType value;
+    protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected UomDepthType uom;
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link ValDepthBaseType }
+     *     {@link BigDecimal }
      *     
      */
-    public ValDepthBaseType getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
@@ -63,10 +63,10 @@ public class ValDepthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDepthBaseType }
+     *     {@link BigDecimal }
      *     
      */
-    public void setValue(ValDepthBaseType value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 
@@ -79,10 +79,10 @@ public class ValDepthType {
      * 
      * @return
      *     possible object is
-     *     {@link UomDepthType }
+     *     {@link String }
      *     
      */
-    public UomDepthType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -91,10 +91,10 @@ public class ValDepthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomDepthType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomDepthType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 
@@ -107,10 +107,10 @@ public class ValDepthType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -119,10 +119,10 @@ public class ValDepthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

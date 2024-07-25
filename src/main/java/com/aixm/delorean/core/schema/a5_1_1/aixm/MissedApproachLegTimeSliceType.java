@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -154,12 +156,18 @@ public class MissedApproachLegTimeSliceType
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DistanceIndicationPropertyType> distance;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElementRef(name = "holding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<HoldingUsePropertyType> holding;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
@@ -172,7 +180,11 @@ public class MissedApproachLegTimeSliceType
     @XmlElementRef(name = "requiredNavigationPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRNPType> requiredNavigationPerformance;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ApproachConditionPropertyType> condition;
+    @Valid
+    @Size(min = 0)
     protected List<MissedApproachLegTimeSliceType.Extension> extension;
 
     /**
@@ -1359,10 +1371,13 @@ public class MissedApproachLegTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractMissedApproachLegExtension")
+        @Valid
         protected AbstractExtensionType abstractMissedApproachLegExtension;
         @XmlElement(name = "AbstractApproachLegExtension")
+        @Valid
         protected AbstractExtensionType abstractApproachLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
+        @Valid
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

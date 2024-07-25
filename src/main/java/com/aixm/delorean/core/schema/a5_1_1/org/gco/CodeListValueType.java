@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gco;
 
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -44,9 +45,11 @@ public class CodeListValueType {
     protected String value;
     @XmlAttribute(name = "codeList", required = true)
     @XmlSchemaType(name = "anyURI")
+    @NotNull
     protected String codeList;
     @XmlAttribute(name = "codeListValue", required = true)
     @XmlSchemaType(name = "anyURI")
+    @NotNull
     protected String codeListValue;
     @XmlAttribute(name = "codeSpace")
     @XmlSchemaType(name = "anyURI")

@@ -7,12 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
+import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -39,19 +42,22 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class TextPropertyNameType {
 
     @XmlValue
-    protected TextPropertyNameBaseType value;
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @Size(min = 1, max = 60)
+    @Pattern(regexp = "[A-Za-z\\-_]*")
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link TextPropertyNameBaseType }
+     *     {@link String }
      *     
      */
-    public TextPropertyNameBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -60,10 +66,10 @@ public class TextPropertyNameType {
      * 
      * @param value
      *     allowed object is
-     *     {@link TextPropertyNameBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(TextPropertyNameBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -76,10 +82,10 @@ public class TextPropertyNameType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -88,10 +94,10 @@ public class TextPropertyNameType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSchemaType;
@@ -52,8 +53,10 @@ public class DirectionDescriptionType {
 
     @XmlSchemaType(name = "string")
     protected CompassPointEnumeration compassPoint;
+    @Valid
     protected CodeType keyword;
     protected String description;
+    @Valid
     protected ReferenceType reference;
 
     /**

@@ -7,12 +7,14 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gco;
 
+import java.math.BigInteger;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
-import org.w3._2001.xmlschema.NonNegativeInteger;
 
 
 /**
@@ -39,7 +41,9 @@ import org.w3._2001.xmlschema.NonNegativeInteger;
 public class UnlimitedIntegerType {
 
     @XmlValue
-    protected NonNegativeInteger value;
+    @XmlSchemaType(name = "nonNegativeInteger")
+    @DecimalMin(value = "0", inclusive = true)
+    protected BigInteger value;
     @XmlAttribute(name = "isInfinite")
     protected Boolean isInfinite;
 
@@ -48,10 +52,10 @@ public class UnlimitedIntegerType {
      * 
      * @return
      *     possible object is
-     *     {@link NonNegativeInteger }
+     *     {@link BigInteger }
      *     
      */
-    public NonNegativeInteger getValue() {
+    public BigInteger getValue() {
         return value;
     }
 
@@ -60,10 +64,10 @@ public class UnlimitedIntegerType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NonNegativeInteger }
+     *     {@link BigInteger }
      *     
      */
-    public void setValue(NonNegativeInteger value) {
+    public void setValue(BigInteger value) {
         this.value = value;
     }
 

@@ -7,14 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.List;
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlElementDecl;
 import jakarta.xml.bind.annotation.XmlRegistry;
-import org.w3._2001.xmlschema.NonNegativeInteger;
-import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -1642,16 +1643,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BooleanOrNilReasonList }
-     * 
-     * @return
-     *     the new instance of {@link BooleanOrNilReasonList }
-     */
-    public BooleanOrNilReasonList createBooleanOrNilReasonList() {
-        return new BooleanOrNilReasonList();
-    }
-
-    /**
      * Create an instance of {@link Category }
      * 
      * @return
@@ -1679,16 +1670,6 @@ public class ObjectFactory {
      */
     public Count createCount() {
         return new Count();
-    }
-
-    /**
-     * Create an instance of {@link IntegerOrNilReasonList }
-     * 
-     * @return
-     *     the new instance of {@link IntegerOrNilReasonList }
-     */
-    public IntegerOrNilReasonList createIntegerOrNilReasonList() {
-        return new IntegerOrNilReasonList();
     }
 
     /**
@@ -1759,16 +1740,6 @@ public class ObjectFactory {
      */
     public CategoryExtentType createCategoryExtentType() {
         return new CategoryExtentType();
-    }
-
-    /**
-     * Create an instance of {@link CountExtentType }
-     * 
-     * @return
-     *     the new instance of {@link CountExtentType }
-     */
-    public CountExtentType createCountExtentType() {
-        return new CountExtentType();
     }
 
     /**
@@ -1852,16 +1823,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DoubleOrNilReasonList }
-     * 
-     * @return
-     *     the new instance of {@link DoubleOrNilReasonList }
-     */
-    public DoubleOrNilReasonList createDoubleOrNilReasonList() {
-        return new DoubleOrNilReasonList();
-    }
-
-    /**
      * Create an instance of {@link FileType }
      * 
      * @return
@@ -1909,16 +1870,6 @@ public class ObjectFactory {
      */
     public DomainOfValidity createDomainOfValidity() {
         return new DomainOfValidity();
-    }
-
-    /**
-     * Create an instance of {@link NilReasonType }
-     * 
-     * @return
-     *     the new instance of {@link NilReasonType }
-     */
-    public NilReasonType createNilReasonType() {
-        return new NilReasonType();
     }
 
     /**
@@ -2269,16 +2220,6 @@ public class ObjectFactory {
      */
     public MeasureListType createMeasureListType() {
         return new MeasureListType();
-    }
-
-    /**
-     * Create an instance of {@link IntegerList }
-     * 
-     * @return
-     *     the new instance of {@link IntegerList }
-     */
-    public IntegerList createIntegerList() {
-        return new IntegerList();
     }
 
     /**
@@ -3032,36 +2973,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DecimalMinutesType }
-     * 
-     * @return
-     *     the new instance of {@link DecimalMinutesType }
-     */
-    public DecimalMinutesType createDecimalMinutesType() {
-        return new DecimalMinutesType();
-    }
-
-    /**
-     * Create an instance of {@link ArcMinutesType }
-     * 
-     * @return
-     *     the new instance of {@link ArcMinutesType }
-     */
-    public ArcMinutesType createArcMinutesType() {
-        return new ArcMinutesType();
-    }
-
-    /**
-     * Create an instance of {@link ArcSecondsType }
-     * 
-     * @return
-     *     the new instance of {@link ArcSecondsType }
-     */
-    public ArcSecondsType createArcSecondsType() {
-        return new ArcSecondsType();
-    }
-
-    /**
      * Create an instance of {@link ArrayAssociationType }
      * 
      * @return
@@ -3239,156 +3150,6 @@ public class ObjectFactory {
      */
     public MultiGeometryPropertyType createMultiGeometryPropertyType() {
         return new MultiGeometryPropertyType();
-    }
-
-    /**
-     * Create an instance of {@link NilReasonEnumeration }
-     * 
-     * @return
-     *     the new instance of {@link NilReasonEnumeration }
-     */
-    public NilReasonEnumeration createNilReasonEnumeration() {
-        return new NilReasonEnumeration();
-    }
-
-    /**
-     * Create an instance of {@link BooleanOrNilReason }
-     * 
-     * @return
-     *     the new instance of {@link BooleanOrNilReason }
-     */
-    public BooleanOrNilReason createBooleanOrNilReason() {
-        return new BooleanOrNilReason();
-    }
-
-    /**
-     * Create an instance of {@link DoubleOrNilReason }
-     * 
-     * @return
-     *     the new instance of {@link DoubleOrNilReason }
-     */
-    public DoubleOrNilReason createDoubleOrNilReason() {
-        return new DoubleOrNilReason();
-    }
-
-    /**
-     * Create an instance of {@link IntegerOrNilReason }
-     * 
-     * @return
-     *     the new instance of {@link IntegerOrNilReason }
-     */
-    public IntegerOrNilReason createIntegerOrNilReason() {
-        return new IntegerOrNilReason();
-    }
-
-    /**
-     * Create an instance of {@link NameOrNilReason }
-     * 
-     * @return
-     *     the new instance of {@link NameOrNilReason }
-     */
-    public NameOrNilReason createNameOrNilReason() {
-        return new NameOrNilReason();
-    }
-
-    /**
-     * Create an instance of {@link StringOrNilReason }
-     * 
-     * @return
-     *     the new instance of {@link StringOrNilReason }
-     */
-    public StringOrNilReason createStringOrNilReason() {
-        return new StringOrNilReason();
-    }
-
-    /**
-     * Create an instance of {@link UomIdentifier }
-     * 
-     * @return
-     *     the new instance of {@link UomIdentifier }
-     */
-    public UomIdentifier createUomIdentifier() {
-        return new UomIdentifier();
-    }
-
-    /**
-     * Create an instance of {@link UomSymbol }
-     * 
-     * @return
-     *     the new instance of {@link UomSymbol }
-     */
-    public UomSymbol createUomSymbol() {
-        return new UomSymbol();
-    }
-
-    /**
-     * Create an instance of {@link UomURI }
-     * 
-     * @return
-     *     the new instance of {@link UomURI }
-     */
-    public UomURI createUomURI() {
-        return new UomURI();
-    }
-
-    /**
-     * Create an instance of {@link BooleanList }
-     * 
-     * @return
-     *     the new instance of {@link BooleanList }
-     */
-    public BooleanList createBooleanList() {
-        return new BooleanList();
-    }
-
-    /**
-     * Create an instance of {@link DoubleList }
-     * 
-     * @return
-     *     the new instance of {@link DoubleList }
-     */
-    public DoubleList createDoubleList() {
-        return new DoubleList();
-    }
-
-    /**
-     * Create an instance of {@link NameList }
-     * 
-     * @return
-     *     the new instance of {@link NameList }
-     */
-    public NameList createNameList() {
-        return new NameList();
-    }
-
-    /**
-     * Create an instance of {@link NCNameList }
-     * 
-     * @return
-     *     the new instance of {@link NCNameList }
-     */
-    public NCNameList createNCNameList() {
-        return new NCNameList();
-    }
-
-    /**
-     * Create an instance of {@link QNameList }
-     * 
-     * @return
-     *     the new instance of {@link QNameList }
-     */
-    public QNameList createQNameList() {
-        return new QNameList();
-    }
-
-    /**
-     * Create an instance of {@link NameOrNilReasonList }
-     * 
-     * @return
-     *     the new instance of {@link NameOrNilReasonList }
-     */
-    public NameOrNilReasonList createNameOrNilReasonList() {
-        return new NameOrNilReasonList();
     }
 
     /**
@@ -3582,36 +3343,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TimePositionUnion }
-     * 
-     * @return
-     *     the new instance of {@link TimePositionUnion }
-     */
-    public TimePositionUnion createTimePositionUnion() {
-        return new TimePositionUnion();
-    }
-
-    /**
-     * Create an instance of {@link CalDate }
-     * 
-     * @return
-     *     the new instance of {@link CalDate }
-     */
-    public CalDate createCalDate() {
-        return new CalDate();
-    }
-
-    /**
-     * Create an instance of {@link TimeUnitType }
-     * 
-     * @return
-     *     the new instance of {@link TimeUnitType }
-     */
-    public TimeUnitType createTimeUnitType() {
-        return new TimeUnitType();
-    }
-
-    /**
      * Create an instance of {@link DirectionVectorType }
      * 
      * @return
@@ -3752,26 +3483,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AxisDirectionList }
-     * 
-     * @return
-     *     the new instance of {@link AxisDirectionList }
-     */
-    public AxisDirectionList createAxisDirectionList() {
-        return new AxisDirectionList();
-    }
-
-    /**
-     * Create an instance of {@link AxisDirection }
-     * 
-     * @return
-     *     the new instance of {@link AxisDirection }
-     */
-    public AxisDirection createAxisDirection() {
-        return new AxisDirection();
-    }
-
-    /**
      * Create an instance of {@link TimeTopologyPrimitivePropertyType }
      * 
      * @return
@@ -3849,16 +3560,6 @@ public class ObjectFactory {
      */
     public TimeOrdinalEraPropertyType createTimeOrdinalEraPropertyType() {
         return new TimeOrdinalEraPropertyType();
-    }
-
-    /**
-     * Create an instance of {@link DegreeValueType }
-     * 
-     * @return
-     *     the new instance of {@link DegreeValueType }
-     */
-    public DegreeValueType createDegreeValueType() {
-        return new DegreeValueType();
     }
 
     /**
@@ -6008,16 +5709,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BooleanOrNilReasonList }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link BooleanOrNilReasonList }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "BooleanList", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractScalarValueList")
-    public JAXBElement<BooleanOrNilReasonList> createBooleanList(BooleanOrNilReasonList value) {
-        return new JAXBElement<>(_BooleanList_QNAME, BooleanOrNilReasonList.class, null, value);
+    public JAXBElement<List<String>> createBooleanList(List<String> value) {
+        return new JAXBElement<>(_BooleanList_QNAME, ((Class) List.class), null, ((List<String> ) value));
     }
 
     /**
@@ -6073,16 +5774,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IntegerOrNilReasonList }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link IntegerOrNilReasonList }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "CountList", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractScalarValueList")
-    public JAXBElement<IntegerOrNilReasonList> createCountList(IntegerOrNilReasonList value) {
-        return new JAXBElement<>(_CountList_QNAME, IntegerOrNilReasonList.class, null, value);
+    public JAXBElement<List<String>> createCountList(List<String> value) {
+        return new JAXBElement<>(_CountList_QNAME, ((Class) List.class), null, ((List<String> ) value));
     }
 
     /**
@@ -6190,16 +5891,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CountExtentType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CountExtentType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "CountExtent", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractValue")
-    public JAXBElement<CountExtentType> createCountExtent(CountExtentType value) {
-        return new JAXBElement<>(_CountExtent_QNAME, CountExtentType.class, null, value);
+    public JAXBElement<List<String>> createCountExtent(List<String> value) {
+        return new JAXBElement<>(_CountExtent_QNAME, ((Class) List.class), null, ((List<String> ) value));
     }
 
     /**
@@ -6359,16 +6060,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DoubleOrNilReasonList }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DoubleOrNilReasonList }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "doubleOrNilReasonTupleList")
-    public JAXBElement<DoubleOrNilReasonList> createDoubleOrNilReasonTupleList(DoubleOrNilReasonList value) {
-        return new JAXBElement<>(_DoubleOrNilReasonTupleList_QNAME, DoubleOrNilReasonList.class, null, value);
+    public JAXBElement<List<String>> createDoubleOrNilReasonTupleList(List<String> value) {
+        return new JAXBElement<>(_DoubleOrNilReasonTupleList_QNAME, ((Class) List.class), null, ((List<String> ) value));
     }
 
     /**
@@ -7113,16 +6814,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "modifiedCoordinate")
-    public JAXBElement<PositiveInteger> createModifiedCoordinate(PositiveInteger value) {
-        return new JAXBElement<>(_ModifiedCoordinate_QNAME, PositiveInteger.class, null, value);
+    public JAXBElement<BigInteger> createModifiedCoordinate(BigInteger value) {
+        return new JAXBElement<>(_ModifiedCoordinate_QNAME, BigInteger.class, null, value);
     }
 
     /**
@@ -7230,16 +6931,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "integerValue")
-    public JAXBElement<PositiveInteger> createIntegerValue(PositiveInteger value) {
-        return new JAXBElement<>(_IntegerValue_QNAME, PositiveInteger.class, null, value);
+    public JAXBElement<BigInteger> createIntegerValue(BigInteger value) {
+        return new JAXBElement<>(_IntegerValue_QNAME, BigInteger.class, null, value);
     }
 
     /**
@@ -7269,16 +6970,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IntegerList }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link BigInteger }{@code >}{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link IntegerList }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link BigInteger }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "integerValueList")
-    public JAXBElement<IntegerList> createIntegerValueList(IntegerList value) {
-        return new JAXBElement<>(_IntegerValueList_QNAME, IntegerList.class, null, value);
+    public JAXBElement<List<BigInteger>> createIntegerValueList(List<BigInteger> value) {
+        return new JAXBElement<>(_IntegerValueList_QNAME, ((Class) List.class), null, ((List<BigInteger> ) value));
     }
 
     /**
@@ -7360,29 +7061,29 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "sourceDimensions")
-    public JAXBElement<PositiveInteger> createSourceDimensions(PositiveInteger value) {
-        return new JAXBElement<>(_SourceDimensions_QNAME, PositiveInteger.class, null, value);
+    public JAXBElement<BigInteger> createSourceDimensions(BigInteger value) {
+        return new JAXBElement<>(_SourceDimensions_QNAME, BigInteger.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "targetDimensions")
-    public JAXBElement<PositiveInteger> createTargetDimensions(PositiveInteger value) {
-        return new JAXBElement<>(_TargetDimensions_QNAME, PositiveInteger.class, null, value);
+    public JAXBElement<BigInteger> createTargetDimensions(BigInteger value) {
+        return new JAXBElement<>(_TargetDimensions_QNAME, BigInteger.class, null, value);
     }
 
     /**
@@ -7412,16 +7113,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NonNegativeInteger }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NonNegativeInteger }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "minimumOccurs")
-    public JAXBElement<NonNegativeInteger> createMinimumOccurs(NonNegativeInteger value) {
-        return new JAXBElement<>(_MinimumOccurs_QNAME, NonNegativeInteger.class, null, value);
+    public JAXBElement<BigInteger> createMinimumOccurs(BigInteger value) {
+        return new JAXBElement<>(_MinimumOccurs_QNAME, BigInteger.class, null, value);
     }
 
     /**
@@ -7451,16 +7152,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "maximumOccurs")
-    public JAXBElement<PositiveInteger> createMaximumOccurs(PositiveInteger value) {
-        return new JAXBElement<>(_MaximumOccurs_QNAME, PositiveInteger.class, null, value);
+    public JAXBElement<BigInteger> createMaximumOccurs(BigInteger value) {
+        return new JAXBElement<>(_MaximumOccurs_QNAME, BigInteger.class, null, value);
     }
 
     /**
@@ -8101,16 +7802,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NilReasonType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NilReasonType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Null")
-    public JAXBElement<NilReasonType> createNull(NilReasonType value) {
-        return new JAXBElement<>(_Null_QNAME, NilReasonType.class, null, value);
+    public JAXBElement<List<String>> createNull(List<String> value) {
+        return new JAXBElement<>(_Null_QNAME, ((Class) List.class), null, ((List<String> ) value));
     }
 
     /**
@@ -9206,42 +8907,42 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DecimalMinutesType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DecimalMinutesType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "decimalMinutes")
-    public JAXBElement<DecimalMinutesType> createDecimalMinutes(DecimalMinutesType value) {
-        return new JAXBElement<>(_DecimalMinutes_QNAME, DecimalMinutesType.class, null, value);
+    public JAXBElement<BigDecimal> createDecimalMinutes(BigDecimal value) {
+        return new JAXBElement<>(_DecimalMinutes_QNAME, BigDecimal.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArcMinutesType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArcMinutesType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "minutes")
-    public JAXBElement<ArcMinutesType> createMinutes(ArcMinutesType value) {
-        return new JAXBElement<>(_Minutes_QNAME, ArcMinutesType.class, null, value);
+    public JAXBElement<Integer> createMinutes(Integer value) {
+        return new JAXBElement<>(_Minutes_QNAME, Integer.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArcSecondsType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArcSecondsType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "seconds")
-    public JAXBElement<ArcSecondsType> createSeconds(ArcSecondsType value) {
-        return new JAXBElement<>(_Seconds_QNAME, ArcSecondsType.class, null, value);
+    public JAXBElement<BigDecimal> createSeconds(BigDecimal value) {
+        return new JAXBElement<>(_Seconds_QNAME, BigDecimal.class, null, value);
     }
 
     /**

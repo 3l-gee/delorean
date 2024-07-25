@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -46,6 +48,8 @@ public class TopoCurvePropertyType {
      * 
      */
     @XmlElement(name = "TopoCurve", required = true)
+    @NotNull
+    @Valid
     protected TopoCurveType topoCurve;
     @XmlAttribute(name = "owns")
     protected java.lang.Boolean owns;

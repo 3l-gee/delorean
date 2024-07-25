@@ -7,14 +7,16 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
-import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -50,7 +52,9 @@ public class OperationParameterGroupType
      * gml:maximumOccurs is the maximum number of times that values for this parameter group may be included. If this attribute is omitted, the maximum number shall be one.
      * 
      */
-    protected PositiveInteger maximumOccurs;
+    @XmlSchemaType(name = "positiveInteger")
+    @DecimalMin(value = "1", inclusive = true)
+    protected BigInteger maximumOccurs;
     /**
      * gml:parameter is an association to an operation parameter or parameter group.
      * 
@@ -63,10 +67,10 @@ public class OperationParameterGroupType
      * 
      * @return
      *     possible object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public PositiveInteger getMaximumOccurs() {
+    public BigInteger getMaximumOccurs() {
         return maximumOccurs;
     }
 
@@ -75,11 +79,11 @@ public class OperationParameterGroupType
      * 
      * @param value
      *     allowed object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      * @see #getMaximumOccurs()
      */
-    public void setMaximumOccurs(PositiveInteger value) {
+    public void setMaximumOccurs(BigInteger value) {
         this.maximumOccurs = value;
     }
 

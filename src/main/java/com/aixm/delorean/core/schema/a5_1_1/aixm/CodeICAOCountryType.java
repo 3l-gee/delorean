@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,19 +39,20 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeICAOCountryType {
 
     @XmlValue
-    protected CodeICAOCountryBaseType value;
+    @Pattern(regexp = "([A-Z]|\\d)*")
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link CodeICAOCountryBaseType }
+     *     {@link String }
      *     
      */
-    public CodeICAOCountryBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -60,10 +61,10 @@ public class CodeICAOCountryType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeICAOCountryBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeICAOCountryBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -76,10 +77,10 @@ public class CodeICAOCountryType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -88,10 +89,10 @@ public class CodeICAOCountryType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

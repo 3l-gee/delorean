@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,17 +79,27 @@ public class RadarSystemTimeSliceType
     @XmlElementRef(name = "broadcastIdentifier", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextDesignatorType> broadcastIdentifier;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<RadarComponentPropertyType> radarEquipment;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> office;
     @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(name = "PARRunway", nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<RunwayPropertyType> parRunway;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<RadarSystemTimeSliceType.Extension> extension;
 
     /**
@@ -485,6 +498,8 @@ public class RadarSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRadarSystemExtension", required = true)
+        @NotNull
+        @Valid
         protected AbstractExtensionType abstractRadarSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

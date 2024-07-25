@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -55,6 +57,8 @@ public class RangeSetType {
      * 
      */
     @XmlElement(name = "ValueArray")
+    @Valid
+    @Size(min = 1)
     protected List<ValueArrayType> valueArray;
     /**
      * gml:AbstractScalarValueList is an abstract element which acts as the head of a substitution group which contains gml:BooleanList, gml:CategoryList, gml:CountList and gml:QuantityList, and (transitively) the elements in their substitution groups.
@@ -68,6 +72,7 @@ public class RangeSetType {
      * 
      */
     @XmlElement(name = "DataBlock")
+    @Valid
     protected DataBlockType dataBlock;
     /**
      * for efficiency reasons, GML also provides a means of encoding the range set in an arbitrary external encoding, such as a binary file.  This encoding may be "well-known" but this is not required. This mode uses the gml:File element.
@@ -81,6 +86,7 @@ public class RangeSetType {
      * 
      */
     @XmlElement(name = "File")
+    @Valid
     protected FileType file;
 
     /**
@@ -147,11 +153,11 @@ public class RangeSetType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link BooleanOrNilReasonList }{@code >}
      * {@link JAXBElement }{@code <}{@link CodeOrNilReasonListType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IntegerOrNilReasonList }{@code >}
      * {@link JAXBElement }{@code <}{@link MeasureOrNilReasonListType }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
+     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
+     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      * </p>
      * 
      * 

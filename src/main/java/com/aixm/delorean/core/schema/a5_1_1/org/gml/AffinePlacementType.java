@@ -7,13 +7,18 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
-import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -48,13 +53,24 @@ import org.w3._2001.xmlschema.PositiveInteger;
 public class AffinePlacementType {
 
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected DirectPositionType location;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
+    @Size(min = 1)
     protected List<VectorType> refDirection;
     @XmlElement(required = true)
-    protected PositiveInteger inDimension;
+    @XmlSchemaType(name = "positiveInteger")
+    @NotNull
+    @DecimalMin(value = "1", inclusive = true)
+    protected BigInteger inDimension;
     @XmlElement(required = true)
-    protected PositiveInteger outDimension;
+    @XmlSchemaType(name = "positiveInteger")
+    @NotNull
+    @DecimalMin(value = "1", inclusive = true)
+    protected BigInteger outDimension;
 
     /**
      * Gets the value of the location property.
@@ -129,10 +145,10 @@ public class AffinePlacementType {
      * 
      * @return
      *     possible object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public PositiveInteger getInDimension() {
+    public BigInteger getInDimension() {
         return inDimension;
     }
 
@@ -141,10 +157,10 @@ public class AffinePlacementType {
      * 
      * @param value
      *     allowed object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public void setInDimension(PositiveInteger value) {
+    public void setInDimension(BigInteger value) {
         this.inDimension = value;
     }
 
@@ -157,10 +173,10 @@ public class AffinePlacementType {
      * 
      * @return
      *     possible object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public PositiveInteger getOutDimension() {
+    public BigInteger getOutDimension() {
         return outDimension;
     }
 
@@ -169,10 +185,10 @@ public class AffinePlacementType {
      * 
      * @param value
      *     allowed object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public void setOutDimension(PositiveInteger value) {
+    public void setOutDimension(BigInteger value) {
         this.outDimension = value;
     }
 

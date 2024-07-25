@@ -8,6 +8,11 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePrimitivePropertyType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -184,22 +189,30 @@ public abstract class AbstractAIXMTimeSliceType
      * 
      */
     @XmlElement(required = true)
+    @NotNull
+    @Pattern(regexp = "(\\QBASELINE\\E)|(\\QSNAPSHOT\\E)|(\\QTEMPDELTA\\E)|(\\QPERMDELTA\\E)")
     protected String interpretation;
     /**
      * Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details.
      * 
      */
+    @DecimalMin(value = "0", inclusive = true)
+    @DecimalMax(value = "4294967295", inclusive = true)
     protected Long sequenceNumber;
     /**
      * Used for indicating the order of the corrections of a Time Slice. See the AIXM Temporality model for details.
      * 
      */
+    @DecimalMin(value = "0", inclusive = true)
+    @DecimalMax(value = "4294967295", inclusive = true)
     protected Long correctionNumber;
+    @Valid
     protected FeatureTimeSliceMetadataPropertyType timeSliceMetadata;
     /**
      * The start and end of life of the feature. See the AIXM Temporality model for details.
      * 
      */
+    @Valid
     protected TimePrimitivePropertyType featureLifetime;
 
     /**

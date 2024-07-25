@@ -17,19 +17,13 @@
 		</jaxb:bindings>
     </jaxb:bindings>
 
-    <jaxb:bindings schemaLocation="AIXM_DataTypes.xsd" node="/xs:schema">
-        <jaxb:bindings node="//xs:simpleType[@name='CodeNavaidDesignatorBaseType']">
-			<jaxb:bindings node=".//xs:maxLength[@value='4']">
-				<annox:annotate target="field">@jakarta.validation.constraints.Size(max = 4)</annox:annotate>
-			</jaxb:bindings>
-			<jaxb:bindings node=".//xs:minLength[@value='1']">
-				<annox:annotate target="field">@jakarta.validation.constraints.Size(min = 1)</annox:annotate>
-			</jaxb:bindings>
-		</jaxb:bindings>
-    </jaxb:bindings>
-
     <jaxb:bindings schemaLocation="AIXM_Features.xsd" node="/xs:schema">
-		<jaxb:globalBindings fixedAttributeAsConstantProperty="true" typesafeEnumBase="xs:string" typesafeEnumMemberName="generateName" generateIsSetMethod="true" mapSimpleTypeDef="true">
+		<jaxb:globalBindings 
+			fixedAttributeAsConstantProperty="true" 
+			typesafeEnumBase="xs:string" 
+			typesafeEnumMemberName="generateName" 
+			generateIsSetMethod="true">
+		<!-- mapSimpleTypeDef="true" -->
 			<!-- <xjc:noValidator />
 			<xjc:noValidatingUnmarshaller /> -->
 		</jaxb:globalBindings>

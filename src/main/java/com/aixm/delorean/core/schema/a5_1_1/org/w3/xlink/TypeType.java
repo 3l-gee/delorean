@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
+import org.jvnet.jaxb.lang.EnumValue;
 
 
 /**
@@ -34,7 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "typeType")
 @XmlEnum
-public enum TypeType {
+public enum TypeType
+    implements EnumValue<String>
+{
 
     @XmlEnumValue("simple")
     SIMPLE("simple"),
@@ -81,6 +84,11 @@ public enum TypeType {
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    @Override
+    public String enumValue() {
+        return this.value();
     }
 
 }

@@ -45,11 +45,19 @@
             <artifactId>jaxb-plugin-annotate</artifactId>
             <version>4.0.8</version>
           </dependency>
+          <dependency>
+            <groupId>com.fillumina</groupId>
+            <artifactId>krasa-jaxb-tools</artifactId>
+            <version>2.3.3</version>
+          </dependency>
         </dependencies>
         <configuration>
           <extension>true</extension>
           <args>
             <arg>-Xannotate</arg>
+            <arg>-XJsr303Annotations</arg>
+            <arg>-XJsr303Annotations:validationAnnotations=jakarta</arg>
+            <arg>-XJsr303Annotations:generateServiceValidationAnnotations=InOut</arg>
           </args>
           <plugins>
             <plugin>

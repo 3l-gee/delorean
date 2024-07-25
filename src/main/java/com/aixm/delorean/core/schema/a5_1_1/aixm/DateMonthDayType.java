@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,19 +39,20 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class DateMonthDayType {
 
     @XmlValue
-    protected DateMonthDayBaseType value;
+    @Pattern(regexp = "(((0[1-9])|(1[0-9])|(2[0-9]))\\-((0[1-9])|10|11|12))|(30\\-(01|03|04|05|06|07|08|09|10|11|12))|(31\\-(01|03|05|07|08|10|12))|SDLST|EDLST")
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link DateMonthDayBaseType }
+     *     {@link String }
      *     
      */
-    public DateMonthDayBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -60,10 +61,10 @@ public class DateMonthDayType {
      * 
      * @param value
      *     allowed object is
-     *     {@link DateMonthDayBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(DateMonthDayBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -76,10 +77,10 @@ public class DateMonthDayType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -88,10 +89,10 @@ public class DateMonthDayType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

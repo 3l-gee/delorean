@@ -7,6 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -14,7 +18,6 @@ import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
-import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -51,44 +54,59 @@ public class DirectPositionType {
      * 
      */
     @XmlValue
-    protected DoubleList value;
+    protected List<Double> value;
     @XmlAttribute(name = "srsName")
     @XmlSchemaType(name = "anyURI")
     protected String srsName;
     @XmlAttribute(name = "srsDimension")
-    protected PositiveInteger srsDimension;
+    @XmlSchemaType(name = "positiveInteger")
+    @DecimalMin(value = "1", inclusive = true)
+    protected BigInteger srsDimension;
     @XmlAttribute(name = "axisLabels")
-    protected NCNameList axisLabels;
+    protected List<String> axisLabels;
     @XmlAttribute(name = "uomLabels")
-    protected NCNameList uomLabels;
+    protected List<String> uomLabels;
 
     /**
      * A type for a list of values of the respective simple type.
      * 
-     * @return
-     *     possible object is
-     *     {@link DoubleList }
-     *     
-     */
-    public DoubleList getValue() {
-        return value;
-    }
-
-    /**
-     * Sets the value of the value property.
+     * Gets the value of the value property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DoubleList }
-     *     
-     * @see #getValue()
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the value property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getValue().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Double }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the value property.
      */
-    public void setValue(DoubleList value) {
-        this.value = value;
+    public List<Double> getValue() {
+        if (value == null) {
+            value = new ArrayList<>();
+        }
+        return this.value;
     }
 
     public boolean isSetValue() {
-        return (this.value!= null);
+        return ((this.value!= null)&&(!this.value.isEmpty()));
+    }
+
+    public void unsetValue() {
+        this.value = null;
     }
 
     /**
@@ -124,10 +142,10 @@ public class DirectPositionType {
      * 
      * @return
      *     possible object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public PositiveInteger getSrsDimension() {
+    public BigInteger getSrsDimension() {
         return srsDimension;
     }
 
@@ -136,10 +154,10 @@ public class DirectPositionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public void setSrsDimension(PositiveInteger value) {
+    public void setSrsDimension(BigInteger value) {
         this.srsDimension = value;
     }
 
@@ -150,57 +168,81 @@ public class DirectPositionType {
     /**
      * Gets the value of the axisLabels property.
      * 
-     * @return
-     *     possible object is
-     *     {@link NCNameList }
-     *     
-     */
-    public NCNameList getAxisLabels() {
-        return axisLabels;
-    }
-
-    /**
-     * Sets the value of the axisLabels property.
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the axisLabels property.</p>
      * 
-     * @param value
-     *     allowed object is
-     *     {@link NCNameList }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAxisLabels().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the axisLabels property.
      */
-    public void setAxisLabels(NCNameList value) {
-        this.axisLabels = value;
+    public List<String> getAxisLabels() {
+        if (axisLabels == null) {
+            axisLabels = new ArrayList<>();
+        }
+        return this.axisLabels;
     }
 
     public boolean isSetAxisLabels() {
-        return (this.axisLabels!= null);
+        return ((this.axisLabels!= null)&&(!this.axisLabels.isEmpty()));
+    }
+
+    public void unsetAxisLabels() {
+        this.axisLabels = null;
     }
 
     /**
      * Gets the value of the uomLabels property.
      * 
-     * @return
-     *     possible object is
-     *     {@link NCNameList }
-     *     
-     */
-    public NCNameList getUomLabels() {
-        return uomLabels;
-    }
-
-    /**
-     * Sets the value of the uomLabels property.
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the uomLabels property.</p>
      * 
-     * @param value
-     *     allowed object is
-     *     {@link NCNameList }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getUomLabels().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the uomLabels property.
      */
-    public void setUomLabels(NCNameList value) {
-        this.uomLabels = value;
+    public List<String> getUomLabels() {
+        if (uomLabels == null) {
+            uomLabels = new ArrayList<>();
+        }
+        return this.uomLabels;
     }
 
     public boolean isSetUomLabels() {
-        return (this.uomLabels!= null);
+        return ((this.uomLabels!= null)&&(!this.uomLabels.isEmpty()));
+    }
+
+    public void unsetUomLabels() {
+        this.uomLabels = null;
     }
 
 }

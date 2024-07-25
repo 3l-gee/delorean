@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,19 +38,19 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProtectAreaSectionType {
 
     @XmlValue
-    protected CodeProtectAreaSectionBaseType value;
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link CodeProtectAreaSectionBaseType }
+     *     {@link String }
      *     
      */
-    public CodeProtectAreaSectionBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -60,10 +59,10 @@ public class CodeProtectAreaSectionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeProtectAreaSectionBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeProtectAreaSectionBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -76,10 +75,10 @@ public class CodeProtectAreaSectionType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -88,10 +87,10 @@ public class CodeProtectAreaSectionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -73,11 +76,17 @@ public class StandardLevelSectorTimeSliceType
     @XmlElementRef(name = "angleType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeNorthReferenceType> angleType;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AirspacePropertyType> applicableAirspace;
     @XmlElementRef(name = "applicableLevelColumn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<StandardLevelColumnPropertyType> applicableLevelColumn;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<StandardLevelSectorTimeSliceType.Extension> extension;
 
     /**
@@ -368,6 +377,8 @@ public class StandardLevelSectorTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelSectorExtension", required = true)
+        @NotNull
+        @Valid
         protected AbstractExtensionType abstractStandardLevelSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
+import org.jvnet.jaxb.lang.EnumValue;
 
 
 /**
@@ -32,7 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "actuateType")
 @XmlEnum
-public enum ActuateType {
+public enum ActuateType
+    implements EnumValue<String>
+{
 
     @XmlEnumValue("onLoad")
     ON_LOAD("onLoad"),
@@ -75,6 +78,11 @@ public enum ActuateType {
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    @Override
+    public String enumValue() {
+        return this.value();
     }
 
 }

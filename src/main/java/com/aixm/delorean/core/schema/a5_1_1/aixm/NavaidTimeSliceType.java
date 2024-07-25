@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -89,19 +92,33 @@ public class NavaidTimeSliceType
     @XmlElementRef(name = "integrityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeIntegrityLevelILSType> integrityLevel;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<TouchDownLiftOffPropertyType> touchDownLiftOff;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NavaidComponentPropertyType> navaidEquipment;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<RunwayDirectionPropertyType> runwayDirection;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AirportHeliportPropertyType> servedAirport;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<NavaidTimeSliceType.Extension> extension;
 
     /**
@@ -664,6 +681,8 @@ public class NavaidTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidExtension", required = true)
+        @NotNull
+        @Valid
         protected AbstractExtensionType abstractNavaidExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

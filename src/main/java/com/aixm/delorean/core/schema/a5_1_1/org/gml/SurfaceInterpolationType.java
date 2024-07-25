@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
+import org.jvnet.jaxb.lang.EnumValue;
 
 
 /**
@@ -38,7 +39,9 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "SurfaceInterpolationType")
 @XmlEnum
-public enum SurfaceInterpolationType {
+public enum SurfaceInterpolationType
+    implements EnumValue<String>
+{
 
     @XmlEnumValue("none")
     NONE("none"),
@@ -93,6 +96,11 @@ public enum SurfaceInterpolationType {
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    @Override
+    public String enumValue() {
+        return this.value();
     }
 
 }

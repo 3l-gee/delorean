@@ -9,6 +9,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlType;
+import org.jvnet.jaxb.lang.EnumValue;
 
 
 /**
@@ -43,7 +44,9 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "CompassPointEnumeration")
 @XmlEnum
-public enum CompassPointEnumeration {
+public enum CompassPointEnumeration
+    implements EnumValue<String>
+{
 
     N,
     NNE,
@@ -68,6 +71,11 @@ public enum CompassPointEnumeration {
 
     public static CompassPointEnumeration fromValue(String v) {
         return valueOf(v);
+    }
+
+    @Override
+    public String enumValue() {
+        return this.value();
     }
 
 }
