@@ -121,16 +121,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DateType }
-     * 
-     * @return
-     *     the new instance of {@link DateType }
-     */
-    public DateType createDateType() {
-        return new DateType();
-    }
-
-    /**
      * Create an instance of {@link UnlimitedIntegerType }
      * 
      * @return
@@ -699,16 +689,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DateType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DateType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.isotc211.org/2005/gco", name = "Date")
-    public JAXBElement<DateType> createDate(DateType value) {
-        return new JAXBElement<>(_Date_QNAME, DateType.class, null, value);
+    public JAXBElement<String> createDate(String value) {
+        return new JAXBElement<>(_Date_QNAME, String.class, null, value);
     }
 
     /**

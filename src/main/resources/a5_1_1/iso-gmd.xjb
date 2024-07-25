@@ -43,4 +43,12 @@
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gts"/>
         </jaxb:schemaBindings>
     </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="http://www.w3.org/2001/xml.xsd"
+        node="/xs:schema">
+        <jaxb:schemaBindings>
+            <!-- <jaxb:package name="org.w3.x2001" /> -->
+            <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.w3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
 </jaxb:bindings>

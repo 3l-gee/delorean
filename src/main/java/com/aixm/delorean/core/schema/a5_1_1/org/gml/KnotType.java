@@ -7,11 +7,14 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import java.math.BigInteger;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
-import org.w3._2001.xmlschema.NonNegativeInteger;
 
 
 /**
@@ -43,9 +46,14 @@ import org.w3._2001.xmlschema.NonNegativeInteger;
 })
 public class KnotType {
 
+    @NotNull
     protected double value;
     @XmlElement(required = true)
-    protected NonNegativeInteger multiplicity;
+    @XmlSchemaType(name = "nonNegativeInteger")
+    @NotNull
+    @DecimalMin(value = "0", inclusive = true)
+    protected BigInteger multiplicity;
+    @NotNull
     protected double weight;
 
     /**
@@ -73,10 +81,10 @@ public class KnotType {
      * 
      * @return
      *     possible object is
-     *     {@link NonNegativeInteger }
+     *     {@link BigInteger }
      *     
      */
-    public NonNegativeInteger getMultiplicity() {
+    public BigInteger getMultiplicity() {
         return multiplicity;
     }
 
@@ -85,10 +93,10 @@ public class KnotType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NonNegativeInteger }
+     *     {@link BigInteger }
      *     
      */
-    public void setMultiplicity(NonNegativeInteger value) {
+    public void setMultiplicity(BigInteger value) {
         this.multiplicity = value;
     }
 

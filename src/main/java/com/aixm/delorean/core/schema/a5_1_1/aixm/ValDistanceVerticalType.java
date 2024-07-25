@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,21 +40,22 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDistanceVerticalType {
 
     @XmlValue
-    protected ValDistanceVerticalBaseType value;
+    @Pattern(regexp = "((\\+|\\-){0,1}[0-9]{1,8}(\\.[0-9]{1,4}){0,1})|UNL|GND|FLOOR|CEILING")
+    protected String value;
     @XmlAttribute(name = "uom")
-    protected UomDistanceVerticalType uom;
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalBaseType }
+     *     {@link String }
      *     
      */
-    public ValDistanceVerticalBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class ValDistanceVerticalType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(ValDistanceVerticalBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -79,10 +80,10 @@ public class ValDistanceVerticalType {
      * 
      * @return
      *     possible object is
-     *     {@link UomDistanceVerticalType }
+     *     {@link String }
      *     
      */
-    public UomDistanceVerticalType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -91,10 +92,10 @@ public class ValDistanceVerticalType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomDistanceVerticalType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomDistanceVerticalType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 
@@ -107,10 +108,10 @@ public class ValDistanceVerticalType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -119,10 +120,10 @@ public class ValDistanceVerticalType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

@@ -7,7 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,36 +40,30 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class NoSequenceType {
 
     @XmlValue
-    protected NoSequenceBaseType value;
+    @DecimalMin(value = "0", inclusive = true)
+    @DecimalMax(value = "4294967295", inclusive = true)
+    protected long value;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
-     * @return
-     *     possible object is
-     *     {@link NoSequenceBaseType }
-     *     
      */
-    public NoSequenceBaseType getValue() {
+    public long getValue() {
         return value;
     }
 
     /**
      * Sets the value of the value property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link NoSequenceBaseType }
-     *     
      */
-    public void setValue(NoSequenceBaseType value) {
+    public void setValue(long value) {
         this.value = value;
     }
 
     public boolean isSetValue() {
-        return (this.value!= null);
+        return true;
     }
 
     /**
@@ -76,10 +71,10 @@ public class NoSequenceType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -88,10 +83,10 @@ public class NoSequenceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gco;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -45,8 +47,12 @@ public class MemberNameType
 {
 
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected CharacterStringPropertyType aName;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected TypeNamePropertyType attributeType;
 
     /**

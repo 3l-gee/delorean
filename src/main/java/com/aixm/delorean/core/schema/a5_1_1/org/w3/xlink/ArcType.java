@@ -9,10 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -39,25 +44,32 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class ArcType {
 
+    @Valid
+    @Size(min = 0)
     protected List<TitleEltType> title;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
     public static final TypeType TYPE = TypeType.ARC;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    protected ArcroleType arcrole;
+    @Size(min = 1)
+    protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected TitleAttrType titleAttribute;
+    protected String titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
     @XmlAttribute(name = "from", namespace = "http://www.w3.org/1999/xlink")
-    protected FromType from;
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
+    protected String from;
     /**
      * from and to have default behavior when values are missing
      * 
      */
     @XmlAttribute(name = "to", namespace = "http://www.w3.org/1999/xlink")
-    protected ToType to;
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
+    protected String to;
 
     /**
      * Gets the value of the title property.
@@ -104,10 +116,10 @@ public class ArcType {
      * 
      * @return
      *     possible object is
-     *     {@link ArcroleType }
+     *     {@link String }
      *     
      */
-    public ArcroleType getArcrole() {
+    public String getArcrole() {
         return arcrole;
     }
 
@@ -116,10 +128,10 @@ public class ArcType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ArcroleType }
+     *     {@link String }
      *     
      */
-    public void setArcrole(ArcroleType value) {
+    public void setArcrole(String value) {
         this.arcrole = value;
     }
 
@@ -132,10 +144,10 @@ public class ArcType {
      * 
      * @return
      *     possible object is
-     *     {@link TitleAttrType }
+     *     {@link String }
      *     
      */
-    public TitleAttrType getTitleAttribute() {
+    public String getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -144,10 +156,10 @@ public class ArcType {
      * 
      * @param value
      *     allowed object is
-     *     {@link TitleAttrType }
+     *     {@link String }
      *     
      */
-    public void setTitleAttribute(TitleAttrType value) {
+    public void setTitleAttribute(String value) {
         this.titleAttribute = value;
     }
 
@@ -216,10 +228,10 @@ public class ArcType {
      * 
      * @return
      *     possible object is
-     *     {@link FromType }
+     *     {@link String }
      *     
      */
-    public FromType getFrom() {
+    public String getFrom() {
         return from;
     }
 
@@ -228,10 +240,10 @@ public class ArcType {
      * 
      * @param value
      *     allowed object is
-     *     {@link FromType }
+     *     {@link String }
      *     
      */
-    public void setFrom(FromType value) {
+    public void setFrom(String value) {
         this.from = value;
     }
 
@@ -244,10 +256,10 @@ public class ArcType {
      * 
      * @return
      *     possible object is
-     *     {@link ToType }
+     *     {@link String }
      *     
      */
-    public ToType getTo() {
+    public String getTo() {
         return to;
     }
 
@@ -256,11 +268,11 @@ public class ArcType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ToType }
+     *     {@link String }
      *     
      * @see #getTo()
      */
-    public void setTo(ToType value) {
+    public void setTo(String value) {
         this.to = value;
     }
 

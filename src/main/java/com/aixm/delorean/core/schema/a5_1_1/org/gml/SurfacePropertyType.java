@@ -7,14 +7,13 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
-import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ArcroleType;
-import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.HrefType;
-import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.RoleType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
-import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TitleAttrType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -38,8 +37,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}AbstractSurface"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -59,27 +58,29 @@ public class SurfacePropertyType {
      */
     @XmlElementRef(name = "AbstractSurface", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractSurfaceType> abstractSurface;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonType nilReason;
+    protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
     public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    protected HrefType href;
+    protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    protected RoleType role;
+    @Size(min = 1)
+    protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    protected ArcroleType arcrole;
+    @Size(min = 1)
+    protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected TitleAttrType titleAttribute;
+    protected String titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
 
     /**
      * The AbstractSurface element is the abstract head of the substitution group for all (continuous) surface elements.
@@ -131,31 +132,79 @@ public class SurfacePropertyType {
     }
 
     /**
-     * Gets the value of the nilReason property.
+     * Gets the value of the owns property.
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonType }
+     *     {@link java.lang.Boolean }
      *     
      */
-    public NilReasonType getNilReason() {
-        return nilReason;
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
     }
 
     /**
-     * Sets the value of the nilReason property.
+     * Sets the value of the owns property.
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonType }
+     *     {@link java.lang.Boolean }
      *     
      */
-    public void setNilReason(NilReasonType value) {
-        this.nilReason = value;
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
+    }
+
+    /**
+     * Gets the value of the nilReason property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the nilReason property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getNilReason().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the nilReason property.
+     */
+    public List<String> getNilReason() {
+        if (nilReason == null) {
+            nilReason = new ArrayList<>();
+        }
+        return this.nilReason;
     }
 
     public boolean isSetNilReason() {
-        return (this.nilReason!= null);
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
     /**
@@ -191,10 +240,10 @@ public class SurfacePropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link HrefType }
+     *     {@link String }
      *     
      */
-    public HrefType getHref() {
+    public String getHref() {
         return href;
     }
 
@@ -203,10 +252,10 @@ public class SurfacePropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link HrefType }
+     *     {@link String }
      *     
      */
-    public void setHref(HrefType value) {
+    public void setHref(String value) {
         this.href = value;
     }
 
@@ -219,10 +268,10 @@ public class SurfacePropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link RoleType }
+     *     {@link String }
      *     
      */
-    public RoleType getRole() {
+    public String getRole() {
         return role;
     }
 
@@ -231,10 +280,10 @@ public class SurfacePropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link RoleType }
+     *     {@link String }
      *     
      */
-    public void setRole(RoleType value) {
+    public void setRole(String value) {
         this.role = value;
     }
 
@@ -247,10 +296,10 @@ public class SurfacePropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link ArcroleType }
+     *     {@link String }
      *     
      */
-    public ArcroleType getArcrole() {
+    public String getArcrole() {
         return arcrole;
     }
 
@@ -259,10 +308,10 @@ public class SurfacePropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ArcroleType }
+     *     {@link String }
      *     
      */
-    public void setArcrole(ArcroleType value) {
+    public void setArcrole(String value) {
         this.arcrole = value;
     }
 
@@ -275,10 +324,10 @@ public class SurfacePropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link TitleAttrType }
+     *     {@link String }
      *     
      */
-    public TitleAttrType getTitleAttribute() {
+    public String getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -287,10 +336,10 @@ public class SurfacePropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link TitleAttrType }
+     *     {@link String }
      *     
      */
-    public void setTitleAttribute(TitleAttrType value) {
+    public void setTitleAttribute(String value) {
         this.titleAttribute = value;
     }
 
@@ -352,42 +401,6 @@ public class SurfacePropertyType {
 
     public boolean isSetActuate() {
         return (this.actuate!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

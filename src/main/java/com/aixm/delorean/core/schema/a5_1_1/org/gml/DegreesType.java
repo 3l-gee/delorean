@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -49,36 +50,29 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class DegreesType {
 
     @XmlValue
-    protected DegreeValueType value;
+    protected int value;
     @XmlAttribute(name = "direction")
+    @Pattern(regexp = "(\\QN\\E)|(\\QE\\E)|(\\QS\\E)|(\\QW\\E)|(\\Q+\\E)|(\\Q-\\E)")
     protected String direction;
 
     /**
      * Gets the value of the value property.
      * 
-     * @return
-     *     possible object is
-     *     {@link DegreeValueType }
-     *     
      */
-    public DegreeValueType getValue() {
+    public int getValue() {
         return value;
     }
 
     /**
      * Sets the value of the value property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DegreeValueType }
-     *     
      */
-    public void setValue(DegreeValueType value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
     public boolean isSetValue() {
-        return (this.value!= null);
+        return true;
     }
 
     /**

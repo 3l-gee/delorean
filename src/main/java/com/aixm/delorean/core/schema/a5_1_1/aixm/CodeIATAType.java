@@ -7,7 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,19 +40,21 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeIATAType {
 
     @XmlValue
-    protected CodeIATABaseType value;
+    @Size(min = 3, max = 3)
+    @Pattern(regexp = "[A-Z]*")
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link CodeIATABaseType }
+     *     {@link String }
      *     
      */
-    public CodeIATABaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -60,10 +63,10 @@ public class CodeIATAType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeIATABaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeIATABaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -76,10 +79,10 @@ public class CodeIATAType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -88,10 +91,10 @@ public class CodeIATAType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

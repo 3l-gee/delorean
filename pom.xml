@@ -28,6 +28,18 @@
                 <version>5.10.3</version>
                 <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.0.Final</version>
+        </dependency>
 	</dependencies>
 
 	<properties>
@@ -67,8 +79,12 @@
 				<version>4.0.8</version>
                 <configuration>
                     <extension>true</extension>
+                    <!-- <forceRegenerate>true</forceRegenerate> -->
                     <args>
                         <arg>-Xannotate</arg>
+                        <arg>-XJsr303Annotations</arg>
+                        <arg>-XJsr303Annotations:validationAnnotations=jakarta</arg>
+                        <arg>-XJsr303Annotations:generateServiceValidationAnnotations=InOut</arg>
                     </args>
                     <plugins>
                         <plugin>
@@ -92,6 +108,12 @@
                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                 </configuration>       
                 <dependencies>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb</groupId>
+                        <artifactId>jaxb-plugins</artifactId>
+                        <version>4.0.8</version>
+                    </dependency>
+
                     <dependency>
                         <groupId>org.jvnet.jaxb</groupId>
                         <artifactId>jaxb-plugin-annotate</artifactId>

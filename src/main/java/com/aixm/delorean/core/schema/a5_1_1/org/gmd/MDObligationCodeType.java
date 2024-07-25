@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
+import org.jvnet.jaxb.lang.EnumValue;
 
 
 /**
@@ -31,7 +32,8 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "MD_ObligationCode_Type")
 @XmlEnum
-public enum MDObligationCodeType {
+public enum MDObligationCodeType implements EnumValue<String>
+{
 
     @XmlEnumValue("mandatory")
     MANDATORY("mandatory"),
@@ -72,6 +74,11 @@ public enum MDObligationCodeType {
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    @Override
+    public String enumValue() {
+        return this.value();
     }
 
 }

@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
+import org.jvnet.jaxb.lang.EnumValue;
 
 
 /**
@@ -30,7 +31,9 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "SignType")
 @XmlEnum
-public enum SignType {
+public enum SignType
+    implements EnumValue<String>
+{
 
     @XmlEnumValue("-")
     VALUE_1("-"),
@@ -69,6 +72,11 @@ public enum SignType {
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    @Override
+    public String enumValue() {
+        return this.value();
     }
 
 }

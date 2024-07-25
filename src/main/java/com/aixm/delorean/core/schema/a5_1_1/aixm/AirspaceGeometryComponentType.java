@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,9 +68,13 @@ public class AirspaceGeometryComponentType
     @XmlElementRef(name = "operationSequence", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<NoSequenceType> operationSequence;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "theAirspaceVolume", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirspaceVolumePropertyType> theAirspaceVolume;
+    @Valid
+    @Size(min = 0)
     protected List<AirspaceGeometryComponentType.Extension> extension;
 
     /**
@@ -263,6 +269,7 @@ public class AirspaceGeometryComponentType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceGeometryComponentExtension")
+        @Valid
         protected AbstractExtensionType abstractAirspaceGeometryComponentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

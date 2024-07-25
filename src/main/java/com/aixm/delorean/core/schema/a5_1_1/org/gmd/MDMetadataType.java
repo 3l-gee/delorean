@@ -13,6 +13,9 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.DatePropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.ObjectReferencePropertyType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -102,36 +105,85 @@ public class MDMetadataType
     extends AbstractObjectType
 {
 
+    @Valid
     protected CharacterStringPropertyType fileIdentifier;
+    @Valid
     protected CharacterStringPropertyType language;
+    @Valid
     protected MDCharacterSetCodePropertyType characterSet;
+    @Valid
     protected CharacterStringPropertyType parentIdentifier;
+    @Valid
+    @Size(min = 0)
     protected List<MDScopeCodePropertyType> hierarchyLevel;
+    @Valid
+    @Size(min = 0)
     protected List<CharacterStringPropertyType> hierarchyLevelName;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
+    @Size(min = 1)
     protected List<CIResponsiblePartyPropertyType> contact;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected DatePropertyType dateStamp;
+    @Valid
     protected CharacterStringPropertyType metadataStandardName;
+    @Valid
     protected CharacterStringPropertyType metadataStandardVersion;
+    @Valid
     protected CharacterStringPropertyType dataSetURI;
+    @Valid
+    @Size(min = 0)
     protected List<PTLocalePropertyType> locale;
+    @Valid
+    @Size(min = 0)
     protected List<MDSpatialRepresentationPropertyType> spatialRepresentationInfo;
+    @Valid
+    @Size(min = 0)
     protected List<MDReferenceSystemPropertyType> referenceSystemInfo;
+    @Valid
+    @Size(min = 0)
     protected List<MDMetadataExtensionInformationPropertyType> metadataExtensionInfo;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
+    @Size(min = 1)
     protected List<MDIdentificationPropertyType> identificationInfo;
+    @Valid
+    @Size(min = 0)
     protected List<MDContentInformationPropertyType> contentInfo;
+    @Valid
     protected MDDistributionPropertyType distributionInfo;
+    @Valid
+    @Size(min = 0)
     protected List<DQDataQualityPropertyType> dataQualityInfo;
+    @Valid
+    @Size(min = 0)
     protected List<MDPortrayalCatalogueReferencePropertyType> portrayalCatalogueInfo;
+    @Valid
+    @Size(min = 0)
     protected List<MDConstraintsPropertyType> metadataConstraints;
+    @Valid
+    @Size(min = 0)
     protected List<MDApplicationSchemaInformationPropertyType> applicationSchemaInfo;
+    @Valid
     protected MDMaintenanceInformationPropertyType metadataMaintenance;
+    @Valid
+    @Size(min = 0)
     protected List<DSAggregatePropertyType> series;
+    @Valid
+    @Size(min = 0)
     protected List<DSDataSetPropertyType> describes;
+    @Valid
+    @Size(min = 0)
     protected List<ObjectReferencePropertyType> propertyType;
+    @Valid
+    @Size(min = 0)
     protected List<ObjectReferencePropertyType> featureType;
+    @Valid
+    @Size(min = 0)
     protected List<ObjectReferencePropertyType> featureAttribute;
 
     /**

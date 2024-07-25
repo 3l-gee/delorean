@@ -8,6 +8,8 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigDecimal;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -48,12 +50,18 @@ public class TimeCalendarEraType
 {
 
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected StringOrRefType referenceEvent;
     @XmlElement(required = true)
-    protected CalDate referenceDate;
+    @NotNull
+    protected String referenceDate;
     @XmlElement(required = true)
+    @NotNull
     protected BigDecimal julianReference;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected TimePeriodPropertyType epochOfUse;
 
     /**
@@ -89,10 +97,10 @@ public class TimeCalendarEraType
      * 
      * @return
      *     possible object is
-     *     {@link CalDate }
+     *     {@link String }
      *     
      */
-    public CalDate getReferenceDate() {
+    public String getReferenceDate() {
         return referenceDate;
     }
 
@@ -101,10 +109,10 @@ public class TimeCalendarEraType
      * 
      * @param value
      *     allowed object is
-     *     {@link CalDate }
+     *     {@link String }
      *     
      */
-    public void setReferenceDate(CalDate value) {
+    public void setReferenceDate(String value) {
         this.referenceDate = value;
     }
 

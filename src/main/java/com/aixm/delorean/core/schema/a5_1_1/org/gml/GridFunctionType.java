@@ -7,8 +7,14 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlList;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -39,8 +45,12 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class GridFunctionType {
 
+    @Valid
     protected SequenceRuleType sequenceRule;
-    protected IntegerList startPoint;
+    @XmlList
+    @Valid
+    @Size(min = 0, max = 1)
+    protected List<BigInteger> startPoint;
 
     /**
      * Gets the value of the sequenceRule property.
@@ -73,29 +83,41 @@ public class GridFunctionType {
     /**
      * Gets the value of the startPoint property.
      * 
-     * @return
-     *     possible object is
-     *     {@link IntegerList }
-     *     
-     */
-    public IntegerList getStartPoint() {
-        return startPoint;
-    }
-
-    /**
-     * Sets the value of the startPoint property.
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the startPoint property.</p>
      * 
-     * @param value
-     *     allowed object is
-     *     {@link IntegerList }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getStartPoint().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link BigInteger }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the startPoint property.
      */
-    public void setStartPoint(IntegerList value) {
-        this.startPoint = value;
+    public List<BigInteger> getStartPoint() {
+        if (startPoint == null) {
+            startPoint = new ArrayList<>();
+        }
+        return this.startPoint;
     }
 
     public boolean isSetStartPoint() {
-        return (this.startPoint!= null);
+        return ((this.startPoint!= null)&&(!this.startPoint.isEmpty()));
+    }
+
+    public void unsetStartPoint() {
+        this.startPoint = null;
     }
 
 }

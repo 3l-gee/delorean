@@ -7,10 +7,11 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gco;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AngleType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.LengthType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.MeasureType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.ScaleType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -49,7 +50,7 @@ public class MeasurePropertyType {
     @XmlElementRef(name = "Measure", namespace = "http://www.isotc211.org/2005/gco", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends MeasureType> measure;
     @XmlAttribute(name = "nilReason", namespace = "http://www.isotc211.org/2005/gco")
-    protected NilReasonType nilReason;
+    protected List<String> nilReason;
 
     /**
      * Gets the value of the measure property.
@@ -90,29 +91,41 @@ public class MeasurePropertyType {
     /**
      * Gets the value of the nilReason property.
      * 
-     * @return
-     *     possible object is
-     *     {@link NilReasonType }
-     *     
-     */
-    public NilReasonType getNilReason() {
-        return nilReason;
-    }
-
-    /**
-     * Sets the value of the nilReason property.
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the nilReason property.</p>
      * 
-     * @param value
-     *     allowed object is
-     *     {@link NilReasonType }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getNilReason().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the nilReason property.
      */
-    public void setNilReason(NilReasonType value) {
-        this.nilReason = value;
+    public List<String> getNilReason() {
+        if (nilReason == null) {
+            nilReason = new ArrayList<>();
+        }
+        return this.nilReason;
     }
 
     public boolean isSetNilReason() {
-        return (this.nilReason!= null);
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

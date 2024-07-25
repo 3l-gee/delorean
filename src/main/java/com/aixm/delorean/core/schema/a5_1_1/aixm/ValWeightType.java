@@ -7,7 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import java.math.BigDecimal;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,21 +41,22 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValWeightType {
 
     @XmlValue
-    protected ValWeightBaseType value;
+    @DecimalMin(value = "0", inclusive = true)
+    protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected UomWeightType uom;
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link ValWeightBaseType }
+     *     {@link BigDecimal }
      *     
      */
-    public ValWeightBaseType getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
@@ -63,10 +65,10 @@ public class ValWeightType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ValWeightBaseType }
+     *     {@link BigDecimal }
      *     
      */
-    public void setValue(ValWeightBaseType value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 
@@ -79,10 +81,10 @@ public class ValWeightType {
      * 
      * @return
      *     possible object is
-     *     {@link UomWeightType }
+     *     {@link String }
      *     
      */
-    public UomWeightType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -91,10 +93,10 @@ public class ValWeightType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomWeightType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomWeightType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 
@@ -107,10 +109,10 @@ public class ValWeightType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -119,10 +121,10 @@ public class ValWeightType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

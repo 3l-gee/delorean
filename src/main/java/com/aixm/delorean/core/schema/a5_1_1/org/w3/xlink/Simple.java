@@ -9,6 +9,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
@@ -56,13 +57,15 @@ public class Simple {
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
     public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    protected HrefType href;
+    protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    protected RoleType role;
+    @Size(min = 1)
+    protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    protected ArcroleType arcrole;
+    @Size(min = 1)
+    protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected TitleAttrType titleAttribute;
+    protected String titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
@@ -118,10 +121,10 @@ public class Simple {
      * 
      * @return
      *     possible object is
-     *     {@link HrefType }
+     *     {@link String }
      *     
      */
-    public HrefType getHref() {
+    public String getHref() {
         return href;
     }
 
@@ -130,10 +133,10 @@ public class Simple {
      * 
      * @param value
      *     allowed object is
-     *     {@link HrefType }
+     *     {@link String }
      *     
      */
-    public void setHref(HrefType value) {
+    public void setHref(String value) {
         this.href = value;
     }
 
@@ -146,10 +149,10 @@ public class Simple {
      * 
      * @return
      *     possible object is
-     *     {@link RoleType }
+     *     {@link String }
      *     
      */
-    public RoleType getRole() {
+    public String getRole() {
         return role;
     }
 
@@ -158,10 +161,10 @@ public class Simple {
      * 
      * @param value
      *     allowed object is
-     *     {@link RoleType }
+     *     {@link String }
      *     
      */
-    public void setRole(RoleType value) {
+    public void setRole(String value) {
         this.role = value;
     }
 
@@ -174,10 +177,10 @@ public class Simple {
      * 
      * @return
      *     possible object is
-     *     {@link ArcroleType }
+     *     {@link String }
      *     
      */
-    public ArcroleType getArcrole() {
+    public String getArcrole() {
         return arcrole;
     }
 
@@ -186,10 +189,10 @@ public class Simple {
      * 
      * @param value
      *     allowed object is
-     *     {@link ArcroleType }
+     *     {@link String }
      *     
      */
-    public void setArcrole(ArcroleType value) {
+    public void setArcrole(String value) {
         this.arcrole = value;
     }
 
@@ -202,10 +205,10 @@ public class Simple {
      * 
      * @return
      *     possible object is
-     *     {@link TitleAttrType }
+     *     {@link String }
      *     
      */
-    public TitleAttrType getTitleAttribute() {
+    public String getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -214,10 +217,10 @@ public class Simple {
      * 
      * @param value
      *     allowed object is
-     *     {@link TitleAttrType }
+     *     {@link String }
      *     
      */
-    public void setTitleAttribute(TitleAttrType value) {
+    public void setTitleAttribute(String value) {
         this.titleAttribute = value;
     }
 

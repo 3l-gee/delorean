@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -59,11 +61,19 @@ public class LandingTakeoffAreaCollectionType
 {
 
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<RunwayDirectionPropertyType> runway;
     @XmlElement(name = "TLOF", nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<TouchDownLiftOffPropertyType> tlof;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<LandingTakeoffAreaCollectionType.Extension> extension;
 
     /**
@@ -254,6 +264,7 @@ public class LandingTakeoffAreaCollectionType
     public static class Extension {
 
         @XmlElement(name = "AbstractLandingTakeoffAreaCollectionExtension")
+        @Valid
         protected AbstractExtensionType abstractLandingTakeoffAreaCollectionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -7,9 +7,16 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlList;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -40,65 +47,97 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class GridEnvelopeType {
 
+    @XmlList
     @XmlElement(required = true)
-    protected IntegerList low;
+    @NotNull
+    @Valid
+    @Size(min = 1, max = 1)
+    protected List<BigInteger> low;
+    @XmlList
     @XmlElement(required = true)
-    protected IntegerList high;
+    @NotNull
+    @Valid
+    @Size(min = 1, max = 1)
+    protected List<BigInteger> high;
 
     /**
      * Gets the value of the low property.
      * 
-     * @return
-     *     possible object is
-     *     {@link IntegerList }
-     *     
-     */
-    public IntegerList getLow() {
-        return low;
-    }
-
-    /**
-     * Sets the value of the low property.
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the low property.</p>
      * 
-     * @param value
-     *     allowed object is
-     *     {@link IntegerList }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getLow().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link BigInteger }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the low property.
      */
-    public void setLow(IntegerList value) {
-        this.low = value;
+    public List<BigInteger> getLow() {
+        if (low == null) {
+            low = new ArrayList<>();
+        }
+        return this.low;
     }
 
     public boolean isSetLow() {
-        return (this.low!= null);
+        return ((this.low!= null)&&(!this.low.isEmpty()));
+    }
+
+    public void unsetLow() {
+        this.low = null;
     }
 
     /**
      * Gets the value of the high property.
      * 
-     * @return
-     *     possible object is
-     *     {@link IntegerList }
-     *     
-     */
-    public IntegerList getHigh() {
-        return high;
-    }
-
-    /**
-     * Sets the value of the high property.
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the high property.</p>
      * 
-     * @param value
-     *     allowed object is
-     *     {@link IntegerList }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getHigh().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link BigInteger }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the high property.
      */
-    public void setHigh(IntegerList value) {
-        this.high = value;
+    public List<BigInteger> getHigh() {
+        if (high == null) {
+            high = new ArrayList<>();
+        }
+        return this.high;
     }
 
     public boolean isSetHigh() {
-        return (this.high!= null);
+        return ((this.high!= null)&&(!this.high.isEmpty()));
+    }
+
+    public void unsetHigh() {
+        this.high = null;
     }
 
 }

@@ -7,7 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import java.math.BigDecimal;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,19 +41,21 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValMagneticVariationType {
 
     @XmlValue
-    protected ValMagneticVariationBaseType value;
+    @DecimalMin(value = "-180", inclusive = true)
+    @DecimalMax(value = "180", inclusive = true)
+    protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link ValMagneticVariationBaseType }
+     *     {@link BigDecimal }
      *     
      */
-    public ValMagneticVariationBaseType getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
@@ -60,10 +64,10 @@ public class ValMagneticVariationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ValMagneticVariationBaseType }
+     *     {@link BigDecimal }
      *     
      */
-    public void setValue(ValMagneticVariationBaseType value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 
@@ -76,10 +80,10 @@ public class ValMagneticVariationType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -88,10 +92,10 @@ public class ValMagneticVariationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 
