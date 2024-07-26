@@ -10,7 +10,7 @@ import java.net.URL;
 
 public enum SchemaVersion {
     // TODO VERSION_5_1_1("5.1.1", "com.aixm.delorean.core.aixm.v511.message."),
-    AIXM_5_1_1("a5_1_1", "com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType", "C:\\Users\\rapha\\Documents\\project\\delorean\\src\\main\\resources\\a5_1_1\\AIXM_BasicMessage.xsd");
+    AIXM_5_1_1("a5_1_1", "com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType", "src/main/resources/a5_1_1/AIXM_BasicMessage.xsd");
 
     private String version;
     private String root;

@@ -109,6 +109,12 @@
                 </configuration>       
                 <dependencies>
                     <dependency>
+                        <groupId>com.fillumina</groupId>
+                        <artifactId>krasa-jaxb-tools</artifactId>
+                        <version>2.3.3</version>
+                    </dependency>
+                    
+                    <dependency>
                         <groupId>org.jvnet.jaxb</groupId>
                         <artifactId>jaxb-plugins</artifactId>
                         <version>4.0.8</version>

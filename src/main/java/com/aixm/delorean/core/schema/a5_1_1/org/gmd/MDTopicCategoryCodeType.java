@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb.lang.EnumValue;
 
 
 /**
@@ -48,8 +47,7 @@ import org.jvnet.jaxb.lang.EnumValue;
  */
 @XmlType(name = "MD_TopicCategoryCode_Type")
 @XmlEnum
-public enum MDTopicCategoryCodeType implements EnumValue<String>
-{
+public enum MDTopicCategoryCodeType {
 
     @XmlEnumValue("farming")
     FARMING("farming"),
@@ -122,11 +120,6 @@ public enum MDTopicCategoryCodeType implements EnumValue<String>
             }
         }
         throw new IllegalArgumentException(v);
-    }
-
-    @Override
-    public String enumValue() {
-        return this.value();
     }
 
 }
