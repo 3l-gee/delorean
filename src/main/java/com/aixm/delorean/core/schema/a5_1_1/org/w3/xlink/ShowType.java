@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb.lang.EnumValue;
 
 
 /**
@@ -34,9 +33,7 @@ import org.jvnet.jaxb.lang.EnumValue;
  */
 @XmlType(name = "showType")
 @XmlEnum
-public enum ShowType
-    implements EnumValue<String>
-{
+public enum ShowType {
 
     @XmlEnumValue("new")
     NEW("new"),
@@ -81,11 +78,6 @@ public enum ShowType
             }
         }
         throw new IllegalArgumentException(v);
-    }
-
-    @Override
-    public String enumValue() {
-        return this.value();
     }
 
 }

@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb.lang.EnumValue;
 
 
 /**
@@ -33,9 +32,7 @@ import org.jvnet.jaxb.lang.EnumValue;
  */
 @XmlType(name = "IncrementOrder")
 @XmlEnum
-public enum IncrementOrder
-    implements EnumValue<String>
-{
+public enum IncrementOrder {
 
     @XmlEnumValue("+x+y")
     VALUE_1("+x+y"),
@@ -78,11 +75,6 @@ public enum IncrementOrder
             }
         }
         throw new IllegalArgumentException(v);
-    }
-
-    @Override
-    public String enumValue() {
-        return this.value();
     }
 
 }
