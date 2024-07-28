@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLevelSeriesType {
 
     @XmlValue
-    protected String value;
+    protected CodeLevelSeriesBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeLevelSeriesType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeLevelSeriesBaseType }
      *     
      */
-    public String getValue() {
+    public CodeLevelSeriesBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeLevelSeriesType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeLevelSeriesBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeLevelSeriesBaseType value) {
         this.value = value;
     }
 

@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeFlowConditionOperationType {
 
     @XmlValue
-    protected String value;
+    protected CodeFlowConditionOperationBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeFlowConditionOperationType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeFlowConditionOperationBaseType }
      *     
      */
-    public String getValue() {
+    public CodeFlowConditionOperationBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeFlowConditionOperationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeFlowConditionOperationBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeFlowConditionOperationBaseType value) {
         this.value = value;
     }
 

@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLevelTableDesignatorType {
 
     @XmlValue
-    protected String value;
+    protected CodeLevelTableDesignatorBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeLevelTableDesignatorType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeLevelTableDesignatorBaseType }
      *     
      */
-    public String getValue() {
+    public CodeLevelTableDesignatorBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeLevelTableDesignatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeLevelTableDesignatorBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeLevelTableDesignatorBaseType value) {
         this.value = value;
     }
 

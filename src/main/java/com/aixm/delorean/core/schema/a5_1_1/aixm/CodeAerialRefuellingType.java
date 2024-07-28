@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAerialRefuellingType {
 
     @XmlValue
-    protected String value;
+    protected CodeAerialRefuellingBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeAerialRefuellingType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeAerialRefuellingBaseType }
      *     
      */
-    public String getValue() {
+    public CodeAerialRefuellingBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeAerialRefuellingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeAerialRefuellingBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeAerialRefuellingBaseType value) {
         this.value = value;
     }
 

@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeArrestingGearEngageDeviceType {
 
     @XmlValue
-    protected String value;
+    protected CodeArrestingGearEngageDeviceBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeArrestingGearEngageDeviceType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeArrestingGearEngageDeviceBaseType }
      *     
      */
-    public String getValue() {
+    public CodeArrestingGearEngageDeviceBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeArrestingGearEngageDeviceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeArrestingGearEngageDeviceBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeArrestingGearEngageDeviceBaseType value) {
         this.value = value;
     }
 

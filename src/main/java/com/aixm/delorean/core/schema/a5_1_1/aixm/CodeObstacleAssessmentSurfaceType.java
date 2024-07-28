@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeObstacleAssessmentSurfaceType {
 
     @XmlValue
-    protected String value;
+    protected CodeObstacleAssessmentSurfaceBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeObstacleAssessmentSurfaceType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeObstacleAssessmentSurfaceBaseType }
      *     
      */
-    public String getValue() {
+    public CodeObstacleAssessmentSurfaceBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeObstacleAssessmentSurfaceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeObstacleAssessmentSurfaceBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeObstacleAssessmentSurfaceBaseType value) {
         this.value = value;
     }
 

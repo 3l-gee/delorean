@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNitrogenType {
 
     @XmlValue
-    protected String value;
+    protected CodeNitrogenBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeNitrogenType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeNitrogenBaseType }
      *     
      */
-    public String getValue() {
+    public CodeNitrogenBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeNitrogenType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeNitrogenBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeNitrogenBaseType value) {
         this.value = value;
     }
 

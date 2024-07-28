@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLoadingBridgeType {
 
     @XmlValue
-    protected String value;
+    protected CodeLoadingBridgeBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeLoadingBridgeType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeLoadingBridgeBaseType }
      *     
      */
-    public String getValue() {
+    public CodeLoadingBridgeBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeLoadingBridgeType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeLoadingBridgeBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeLoadingBridgeBaseType value) {
         this.value = value;
     }
 

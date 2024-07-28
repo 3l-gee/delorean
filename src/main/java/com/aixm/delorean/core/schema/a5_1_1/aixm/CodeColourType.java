@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeColourType {
 
     @XmlValue
-    protected String value;
+    protected CodeColourBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeColourType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeColourBaseType }
      *     
      */
-    public String getValue() {
+    public CodeColourBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeColourType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeColourBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeColourBaseType value) {
         this.value = value;
     }
 

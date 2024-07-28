@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeEquipmentUnavailableType {
 
     @XmlValue
-    protected String value;
+    protected CodeEquipmentUnavailableBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeEquipmentUnavailableType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeEquipmentUnavailableBaseType }
      *     
      */
-    public String getValue() {
+    public CodeEquipmentUnavailableBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeEquipmentUnavailableType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeEquipmentUnavailableBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeEquipmentUnavailableBaseType value) {
         this.value = value;
     }
 

@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeApproachLightingType {
 
     @XmlValue
-    protected String value;
+    protected CodeApproachLightingBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeApproachLightingType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeApproachLightingBaseType }
      *     
      */
-    public String getValue() {
+    public CodeApproachLightingBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeApproachLightingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeApproachLightingBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeApproachLightingBaseType value) {
         this.value = value;
     }
 

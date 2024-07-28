@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeBuoyType {
 
     @XmlValue
-    protected String value;
+    protected CodeBuoyBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeBuoyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeBuoyBaseType }
      *     
      */
-    public String getValue() {
+    public CodeBuoyBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeBuoyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeBuoyBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeBuoyBaseType value) {
         this.value = value;
     }
 

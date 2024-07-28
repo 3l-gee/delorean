@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLightHoldingPositionType {
 
     @XmlValue
-    protected String value;
+    protected CodeLightHoldingPositionBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeLightHoldingPositionType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeLightHoldingPositionBaseType }
      *     
      */
-    public String getValue() {
+    public CodeLightHoldingPositionBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeLightHoldingPositionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeLightHoldingPositionBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeLightHoldingPositionBaseType value) {
         this.value = value;
     }
 

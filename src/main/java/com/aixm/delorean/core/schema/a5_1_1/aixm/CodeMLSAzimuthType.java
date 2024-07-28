@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMLSAzimuthType {
 
     @XmlValue
-    protected String value;
+    protected CodeMLSAzimuthBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeMLSAzimuthType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeMLSAzimuthBaseType }
      *     
      */
-    public String getValue() {
+    public CodeMLSAzimuthBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeMLSAzimuthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeMLSAzimuthBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeMLSAzimuthBaseType value) {
         this.value = value;
     }
 

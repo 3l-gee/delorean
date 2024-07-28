@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMarkingConditionType {
 
     @XmlValue
-    protected String value;
+    protected CodeMarkingConditionBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeMarkingConditionType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeMarkingConditionBaseType }
      *     
      */
-    public String getValue() {
+    public CodeMarkingConditionBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeMarkingConditionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeMarkingConditionBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeMarkingConditionBaseType value) {
         this.value = value;
     }
 

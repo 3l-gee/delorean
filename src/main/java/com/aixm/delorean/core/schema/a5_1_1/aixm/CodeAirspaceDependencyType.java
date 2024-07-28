@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAirspaceDependencyType {
 
     @XmlValue
-    protected String value;
+    protected CodeAirspaceDependencyBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeAirspaceDependencyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeAirspaceDependencyBaseType }
      *     
      */
-    public String getValue() {
+    public CodeAirspaceDependencyBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeAirspaceDependencyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeAirspaceDependencyBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeAirspaceDependencyBaseType value) {
         this.value = value;
     }
 

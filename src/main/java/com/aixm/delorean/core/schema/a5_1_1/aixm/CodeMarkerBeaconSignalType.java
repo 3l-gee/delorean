@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMarkerBeaconSignalType {
 
     @XmlValue
-    protected String value;
+    protected CodeMarkerBeaconSignalBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeMarkerBeaconSignalType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeMarkerBeaconSignalBaseType }
      *     
      */
-    public String getValue() {
+    public CodeMarkerBeaconSignalBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeMarkerBeaconSignalType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeMarkerBeaconSignalBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeMarkerBeaconSignalBaseType value) {
         this.value = value;
     }
 

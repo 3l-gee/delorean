@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeEmissionBandType {
 
     @XmlValue
-    protected String value;
+    protected CodeEmissionBandBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeEmissionBandType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeEmissionBandBaseType }
      *     
      */
-    public String getValue() {
+    public CodeEmissionBandBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeEmissionBandType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeEmissionBandBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeEmissionBandBaseType value) {
         this.value = value;
     }
 

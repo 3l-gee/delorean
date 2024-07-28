@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDesignatedPointType {
 
     @XmlValue
-    protected String value;
+    protected CodeDesignatedPointBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeDesignatedPointType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeDesignatedPointBaseType }
      *     
      */
-    public String getValue() {
+    public CodeDesignatedPointBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeDesignatedPointType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeDesignatedPointBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeDesignatedPointBaseType value) {
         this.value = value;
     }
 

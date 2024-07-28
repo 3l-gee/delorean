@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNavigationAreaRestrictionType {
 
     @XmlValue
-    protected String value;
+    protected CodeNavigationAreaRestrictionBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeNavigationAreaRestrictionType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeNavigationAreaRestrictionBaseType }
      *     
      */
-    public String getValue() {
+    public CodeNavigationAreaRestrictionBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeNavigationAreaRestrictionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeNavigationAreaRestrictionBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeNavigationAreaRestrictionBaseType value) {
         this.value = value;
     }
 

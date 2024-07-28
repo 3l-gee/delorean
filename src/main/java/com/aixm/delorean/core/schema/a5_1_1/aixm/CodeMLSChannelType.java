@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMLSChannelType {
 
     @XmlValue
-    protected String value;
+    protected CodeMLSChannelBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeMLSChannelType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeMLSChannelBaseType }
      *     
      */
-    public String getValue() {
+    public CodeMLSChannelBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeMLSChannelType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeMLSChannelBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeMLSChannelBaseType value) {
         this.value = value;
     }
 

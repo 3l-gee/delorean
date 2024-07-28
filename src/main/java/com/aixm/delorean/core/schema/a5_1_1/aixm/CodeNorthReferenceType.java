@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNorthReferenceType {
 
     @XmlValue
-    protected String value;
+    protected CodeNorthReferenceBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeNorthReferenceType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeNorthReferenceBaseType }
      *     
      */
-    public String getValue() {
+    public CodeNorthReferenceBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeNorthReferenceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeNorthReferenceBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeNorthReferenceBaseType value) {
         this.value = value;
     }
 

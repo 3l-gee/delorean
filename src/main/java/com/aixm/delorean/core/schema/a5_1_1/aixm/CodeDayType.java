@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDayType {
 
     @XmlValue
-    protected String value;
+    protected CodeDayBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeDayType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeDayBaseType }
      *     
      */
-    public String getValue() {
+    public CodeDayBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeDayType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeDayBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeDayBaseType value) {
         this.value = value;
     }
 

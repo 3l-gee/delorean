@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeComparisonType {
 
     @XmlValue
-    protected String value;
+    protected CodeComparisonBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeComparisonType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeComparisonBaseType }
      *     
      */
-    public String getValue() {
+    public CodeComparisonBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeComparisonType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeComparisonBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeComparisonBaseType value) {
         this.value = value;
     }
 

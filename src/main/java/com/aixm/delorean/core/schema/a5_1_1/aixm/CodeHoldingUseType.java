@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeHoldingUseType {
 
     @XmlValue
-    protected String value;
+    protected CodeHoldingUseBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeHoldingUseType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeHoldingUseBaseType }
      *     
      */
-    public String getValue() {
+    public CodeHoldingUseBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeHoldingUseType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeHoldingUseBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeHoldingUseBaseType value) {
         this.value = value;
     }
 

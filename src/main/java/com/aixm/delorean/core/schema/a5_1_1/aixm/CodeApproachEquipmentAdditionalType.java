@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeApproachEquipmentAdditionalType {
 
     @XmlValue
-    protected String value;
+    protected CodeApproachEquipmentAdditionalBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeApproachEquipmentAdditionalType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeApproachEquipmentAdditionalBaseType }
      *     
      */
-    public String getValue() {
+    public CodeApproachEquipmentAdditionalBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeApproachEquipmentAdditionalType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeApproachEquipmentAdditionalBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeApproachEquipmentAdditionalBaseType value) {
         this.value = value;
     }
 

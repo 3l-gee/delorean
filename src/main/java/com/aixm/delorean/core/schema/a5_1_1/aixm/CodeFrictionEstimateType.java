@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeFrictionEstimateType {
 
     @XmlValue
-    protected String value;
+    protected CodeFrictionEstimateBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeFrictionEstimateType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeFrictionEstimateBaseType }
      *     
      */
-    public String getValue() {
+    public CodeFrictionEstimateBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeFrictionEstimateType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeFrictionEstimateBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeFrictionEstimateBaseType value) {
         this.value = value;
     }
 

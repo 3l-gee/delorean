@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeGuidanceLineType {
 
     @XmlValue
-    protected String value;
+    protected CodeGuidanceLineBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeGuidanceLineType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeGuidanceLineBaseType }
      *     
      */
-    public String getValue() {
+    public CodeGuidanceLineBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeGuidanceLineType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeGuidanceLineBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeGuidanceLineBaseType value) {
         this.value = value;
     }
 
