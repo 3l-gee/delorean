@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAuthorityType {
 
     @XmlValue
-    protected String value;
+    protected CodeAuthorityBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeAuthorityType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeAuthorityBaseType }
      *     
      */
-    public String getValue() {
+    public CodeAuthorityBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeAuthorityType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeAuthorityBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeAuthorityBaseType value) {
         this.value = value;
     }
 

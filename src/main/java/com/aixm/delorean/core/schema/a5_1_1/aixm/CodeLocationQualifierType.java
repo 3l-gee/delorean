@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLocationQualifierType {
 
     @XmlValue
-    protected String value;
+    protected CodeLocationQualifierBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeLocationQualifierType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeLocationQualifierBaseType }
      *     
      */
-    public String getValue() {
+    public CodeLocationQualifierBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeLocationQualifierType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeLocationQualifierBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeLocationQualifierBaseType value) {
         this.value = value;
     }
 

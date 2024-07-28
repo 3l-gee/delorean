@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMinimaFinalApproachPathType {
 
     @XmlValue
-    protected String value;
+    protected CodeMinimaFinalApproachPathBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeMinimaFinalApproachPathType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeMinimaFinalApproachPathBaseType }
      *     
      */
-    public String getValue() {
+    public CodeMinimaFinalApproachPathBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeMinimaFinalApproachPathType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeMinimaFinalApproachPathBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeMinimaFinalApproachPathBaseType value) {
         this.value = value;
     }
 

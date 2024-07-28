@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeHoldingCategoryType {
 
     @XmlValue
-    protected String value;
+    protected CodeHoldingCategoryBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeHoldingCategoryType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeHoldingCategoryBaseType }
      *     
      */
-    public String getValue() {
+    public CodeHoldingCategoryBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeHoldingCategoryType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeHoldingCategoryBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeHoldingCategoryBaseType value) {
         this.value = value;
     }
 

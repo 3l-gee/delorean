@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeOrganisationHierarchyType {
 
     @XmlValue
-    protected String value;
+    protected CodeOrganisationHierarchyBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeOrganisationHierarchyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeOrganisationHierarchyBaseType }
      *     
      */
-    public String getValue() {
+    public CodeOrganisationHierarchyBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeOrganisationHierarchyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeOrganisationHierarchyBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeOrganisationHierarchyBaseType value) {
         this.value = value;
     }
 

@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNotePurposeType {
 
     @XmlValue
-    protected String value;
+    protected CodeNotePurposeBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeNotePurposeType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeNotePurposeBaseType }
      *     
      */
-    public String getValue() {
+    public CodeNotePurposeBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeNotePurposeType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeNotePurposeBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeNotePurposeBaseType value) {
         this.value = value;
     }
 

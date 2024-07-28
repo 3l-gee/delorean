@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeArrestingGearEnergyAbsorbType {
 
     @XmlValue
-    protected String value;
+    protected CodeArrestingGearEnergyAbsorbBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeArrestingGearEnergyAbsorbType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeArrestingGearEnergyAbsorbBaseType }
      *     
      */
-    public String getValue() {
+    public CodeArrestingGearEnergyAbsorbBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeArrestingGearEnergyAbsorbType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeArrestingGearEnergyAbsorbBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeArrestingGearEnergyAbsorbBaseType value) {
         this.value = value;
     }
 

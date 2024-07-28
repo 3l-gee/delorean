@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeGroundLightingType {
 
     @XmlValue
-    protected String value;
+    protected CodeGroundLightingBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeGroundLightingType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeGroundLightingBaseType }
      *     
      */
-    public String getValue() {
+    public CodeGroundLightingBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeGroundLightingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeGroundLightingBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeGroundLightingBaseType value) {
         this.value = value;
     }
 

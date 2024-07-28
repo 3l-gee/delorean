@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeFrictionDeviceType {
 
     @XmlValue
-    protected String value;
+    protected CodeFrictionDeviceBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeFrictionDeviceType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeFrictionDeviceBaseType }
      *     
      */
-    public String getValue() {
+    public CodeFrictionDeviceBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeFrictionDeviceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeFrictionDeviceBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeFrictionDeviceBaseType value) {
         this.value = value;
     }
 

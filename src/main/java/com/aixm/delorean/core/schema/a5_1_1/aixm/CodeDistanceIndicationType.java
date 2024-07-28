@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDistanceIndicationType {
 
     @XmlValue
-    protected String value;
+    protected CodeDistanceIndicationBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeDistanceIndicationType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeDistanceIndicationBaseType }
      *     
      */
-    public String getValue() {
+    public CodeDistanceIndicationBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeDistanceIndicationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeDistanceIndicationBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeDistanceIndicationBaseType value) {
         this.value = value;
     }
 

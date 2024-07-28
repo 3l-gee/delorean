@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLightIntensityType {
 
     @XmlValue
-    protected String value;
+    protected CodeLightIntensityBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeLightIntensityType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeLightIntensityBaseType }
      *     
      */
-    public String getValue() {
+    public CodeLightIntensityBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeLightIntensityType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeLightIntensityBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeLightIntensityBaseType value) {
         this.value = value;
     }
 

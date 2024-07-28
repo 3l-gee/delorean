@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAirportHeliportCollocationType {
 
     @XmlValue
-    protected String value;
+    protected CodeAirportHeliportCollocationBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeAirportHeliportCollocationType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeAirportHeliportCollocationBaseType }
      *     
      */
-    public String getValue() {
+    public CodeAirportHeliportCollocationBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeAirportHeliportCollocationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeAirportHeliportCollocationBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeAirportHeliportCollocationBaseType value) {
         this.value = value;
     }
 

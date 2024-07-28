@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDesignStandardType {
 
     @XmlValue
-    protected String value;
+    protected CodeDesignStandardBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeDesignStandardType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeDesignStandardBaseType }
      *     
      */
-    public String getValue() {
+    public CodeDesignStandardBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeDesignStandardType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeDesignStandardBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeDesignStandardBaseType value) {
         this.value = value;
     }
 

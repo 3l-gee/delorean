@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeEquipmentAntiCollisionType {
 
     @XmlValue
-    protected String value;
+    protected CodeEquipmentAntiCollisionBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeEquipmentAntiCollisionType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeEquipmentAntiCollisionBaseType }
      *     
      */
-    public String getValue() {
+    public CodeEquipmentAntiCollisionBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeEquipmentAntiCollisionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeEquipmentAntiCollisionBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeEquipmentAntiCollisionBaseType value) {
         this.value = value;
     }
 

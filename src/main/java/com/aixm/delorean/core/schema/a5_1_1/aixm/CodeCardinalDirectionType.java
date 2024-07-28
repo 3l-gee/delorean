@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeCardinalDirectionType {
 
     @XmlValue
-    protected String value;
+    protected CodeCardinalDirectionBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeCardinalDirectionType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeCardinalDirectionBaseType }
      *     
      */
-    public String getValue() {
+    public CodeCardinalDirectionBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeCardinalDirectionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeCardinalDirectionBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeCardinalDirectionBaseType value) {
         this.value = value;
     }
 

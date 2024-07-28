@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDMEChannelType {
 
     @XmlValue
-    protected String value;
+    protected CodeDMEChannelBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeDMEChannelType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeDMEChannelBaseType }
      *     
      */
-    public String getValue() {
+    public CodeDMEChannelBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeDMEChannelType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeDMEChannelBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeDMEChannelBaseType value) {
         this.value = value;
     }
 

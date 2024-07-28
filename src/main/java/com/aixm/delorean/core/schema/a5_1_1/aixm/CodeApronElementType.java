@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeApronElementType {
 
     @XmlValue
-    protected String value;
+    protected CodeApronElementBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeApronElementType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeApronElementBaseType }
      *     
      */
-    public String getValue() {
+    public CodeApronElementBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeApronElementType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeApronElementBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeApronElementBaseType value) {
         this.value = value;
     }
 

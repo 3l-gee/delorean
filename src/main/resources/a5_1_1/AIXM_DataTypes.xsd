@@ -95,6 +95,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</restriction>
 	</simpleType>
 	<simpleType name="CodeAerialRefuellingBaseType">
+		<restriction base="string">
+			<enumeration value="TRACK"/>
+			<enumeration value="ANCHOR"/>
+			<enumeration value="BOTH"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAerialRefuellingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -109,8 +117,20 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeAerialRefuellingPointBaseType">
+		<restriction base="string">
+			<enumeration value="INITIAL"/>
+			<enumeration value="CONTROL"/>
+			<enumeration value="CHECK"/>
+			<enumeration value="EXIT"/>
+			<enumeration value="ENTRY"/>
+			<enumeration value="ANCHOR"/>
+			<enumeration value="PATTERN"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAerialRefuellingPointBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -129,7 +149,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAerialRefuellingPointType">
 		<simpleContent>
 			<extension base="aixm:CodeAerialRefuellingPointBaseType">
@@ -138,6 +158,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAerialRefuellingPrefixBaseType">
+		<restriction base="string">
+			<enumeration value="AR"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAerialRefuellingPrefixBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -150,7 +176,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAerialRefuellingPrefixType">
 		<simpleContent>
 			<extension base="aixm:CodeAerialRefuellingPrefixBaseType">
@@ -166,6 +192,25 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAircraftBaseType">
+		<restriction base="string">
+			<enumeration value="LANDPLANE"/>
+			<enumeration value="SEAPLANE"/>
+			<enumeration value="AMPHIBIAN"/>
+			<enumeration value="HELICOPTER"/>
+			<enumeration value="GYROCOPTER"/>
+			<enumeration value="TILT_WING"/>
+			<enumeration value="STOL"/>
+			<enumeration value="GLIDER"/>
+			<enumeration value="HANGGLIDER"/>
+			<enumeration value="PARAGLIDER"/>
+			<enumeration value="ULTRA_LIGHT"/>
+			<enumeration value="BALLOON"/>
+			<enumeration value="UAV"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAircraftBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -191,8 +236,20 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeAircraftCategoryBaseType">
+		<restriction base="string">
+			<enumeration value="A"/>
+			<enumeration value="B"/>
+			<enumeration value="C"/>
+			<enumeration value="D"/>
+			<enumeration value="E"/>
+			<enumeration value="H"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAircraftCategoryBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -211,7 +268,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAircraftCategoryType">
 		<simpleContent>
 			<extension base="aixm:CodeAircraftCategoryBaseType">
@@ -220,6 +277,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAircraftEngineBaseType">
+		<restriction base="string">
+			<enumeration value="JET"/>
+			<enumeration value="PISTON"/>
+			<enumeration value="TURBOPROP"/>
+			<enumeration value="ELECTRIC"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAircraftEngineBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -236,8 +303,20 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeAircraftEngineNumberBaseType">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="6"/>
+			<enumeration value="8"/>
+			<enumeration value="2C"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAircraftEngineNumberBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -256,7 +335,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAircraftEngineNumberType">
 		<simpleContent>
 			<extension base="aixm:CodeAircraftEngineNumberBaseType">
@@ -272,6 +351,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAircraftGroundServiceBaseType">
+		<restriction base="string">
+			<enumeration value="DEICE"/>
+			<enumeration value="HAND"/>
+			<enumeration value="HANGAR"/>
+			<enumeration value="REPAIR"/>
+			<enumeration value="REMOVE"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAircraftGroundServiceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -288,7 +377,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAircraftGroundServiceType">
 		<simpleContent>
 			<extension base="aixm:CodeAircraftGroundServiceBaseType">
@@ -310,6 +399,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAircraftStandBaseType">
+		<restriction base="string">
+			<enumeration value="NI"/>
+			<enumeration value="ANG_NI"/>
+			<enumeration value="ANG_NO"/>
+			<enumeration value="PARL"/>
+			<enumeration value="RMT"/>
+			<enumeration value="ISOL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAircraftStandBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -327,7 +427,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAircraftStandType">
 		<simpleContent>
 			<extension base="aixm:CodeAircraftStandBaseType">
@@ -343,6 +443,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAircraftWingspanClassBaseType">
+		<restriction base="string">
+			<enumeration value="I"/>
+			<enumeration value="II"/>
+			<enumeration value="III"/>
+			<enumeration value="IV"/>
+			<enumeration value="V"/>
+			<enumeration value="VI"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAircraftWingspanClassBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -360,7 +471,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAircraftWingspanClassType">
 		<simpleContent>
 			<extension base="aixm:CodeAircraftWingspanClassBaseType">
@@ -369,6 +480,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAirportHeliportBaseType">
+		<restriction base="string">
+			<enumeration value="AD"/>
+			<enumeration value="AH"/>
+			<enumeration value="HP"/>
+			<enumeration value="LS"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAirportHeliportBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -384,8 +504,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeAirportHeliportCollocationBaseType">
+		<restriction base="string">
+			<enumeration value="FULL"/>
+			<enumeration value="RWY"/>
+			<enumeration value="PARTIAL"/>
+			<enumeration value="UNILATERAL"/>
+			<enumeration value="SEPARATED"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAirportHeliportCollocationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -402,7 +532,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAirportHeliportCollocationType">
 		<simpleContent>
 			<extension base="aixm:CodeAirportHeliportCollocationBaseType">
@@ -431,6 +561,23 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAirportWarningBaseType">
+		<restriction base="string">
+			<enumeration value="WIP"/>
+			<enumeration value="EQUIP"/>
+			<enumeration value="BIRD"/>
+			<enumeration value="ANIMAL"/>
+			<enumeration value="RUBBER_REMOVAL"/>
+			<enumeration value="PARKED_ACFT"/>
+			<enumeration value="RESURFACING"/>
+			<enumeration value="PAVING"/>
+			<enumeration value="PAINTING"/>
+			<enumeration value="INSPECTION"/>
+			<enumeration value="GRASS_CUTTING"/>
+			<enumeration value="CALIBRATION"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAirportWarningBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -454,7 +601,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAirportWarningType">
 		<simpleContent>
 			<extension base="aixm:CodeAirportWarningBaseType">
@@ -463,6 +610,65 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAirspaceActivityBaseType">
+		<restriction base="string">
+			<enumeration value="AD_TFC"/>
+			<enumeration value="HELI_TFC"/>
+			<enumeration value="TRAINING"/>
+			<enumeration value="AEROBATICS"/>
+			<enumeration value="AIRSHOW"/>
+			<enumeration value="SPORT"/>
+			<enumeration value="ULM"/>
+			<enumeration value="GLIDING"/>
+			<enumeration value="PARAGLIDER"/>
+			<enumeration value="HANGGLIDING"/>
+			<enumeration value="PARACHUTE"/>
+			<enumeration value="AIR_DROP"/>
+			<enumeration value="BALLOON"/>
+			<enumeration value="RADIOSONDE"/>
+			<enumeration value="SPACE_FLIGHT"/>
+			<enumeration value="UAV"/>
+			<enumeration value="AERIAL_WORK"/>
+			<enumeration value="CROP_DUSTING"/>
+			<enumeration value="FIRE_FIGHTING"/>
+			<enumeration value="MILOPS"/>
+			<enumeration value="REFUEL"/>
+			<enumeration value="JET_CLIMBING"/>
+			<enumeration value="EXERCISE"/>
+			<enumeration value="TOWING"/>
+			<enumeration value="NAVAL_EXER"/>
+			<enumeration value="MISSILES"/>
+			<enumeration value="AIR_GUN"/>
+			<enumeration value="ARTILLERY"/>
+			<enumeration value="SHOOTING"/>
+			<enumeration value="BLASTING"/>
+			<enumeration value="WATER_BLASTING"/>
+			<enumeration value="ANTI_HAIL"/>
+			<enumeration value="BIRD"/>
+			<enumeration value="BIRD_MIGRATION"/>
+			<enumeration value="FIREWORK"/>
+			<enumeration value="HI_RADIO"/>
+			<enumeration value="HI_LIGHT"/>
+			<enumeration value="LASER"/>
+			<enumeration value="NATURE"/>
+			<enumeration value="FAUNA"/>
+			<enumeration value="NO_NOISE"/>
+			<enumeration value="ACCIDENT"/>
+			<enumeration value="POPULATION"/>
+			<enumeration value="VIP"/>
+			<enumeration value="VIP_PRES"/>
+			<enumeration value="VIP_VICE"/>
+			<enumeration value="OIL"/>
+			<enumeration value="GAS"/>
+			<enumeration value="REFINERY"/>
+			<enumeration value="CHEMICAL"/>
+			<enumeration value="NUCLEAR"/>
+			<enumeration value="TECHNICAL"/>
+			<enumeration value="ATS"/>
+			<enumeration value="PROCEDURE"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAirspaceActivityBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -528,7 +734,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAirspaceActivityType">
 		<simpleContent>
 			<extension base="aixm:CodeAirspaceActivityBaseType">
@@ -537,6 +743,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAirspaceAggregationBaseType">
+		<restriction base="string">
+			<enumeration value="BASE"/>
+			<enumeration value="UNION"/>
+			<enumeration value="INTERS"/>
+			<enumeration value="SUBTR"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAirspaceAggregationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -552,7 +767,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAirspaceAggregationType">
 		<simpleContent>
 			<extension base="aixm:CodeAirspaceAggregationBaseType">
@@ -561,6 +776,56 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAirspaceBaseType">
+		<restriction base="string">
+			<enumeration value="NAS"/>
+			<enumeration value="FIR"/>
+			<enumeration value="FIR_P"/>
+			<enumeration value="UIR"/>
+			<enumeration value="UIR_P"/>
+			<enumeration value="CTA"/>
+			<enumeration value="CTA_P"/>
+			<enumeration value="OCA_P"/>
+			<enumeration value="OCA"/>
+			<enumeration value="UTA"/>
+			<enumeration value="UTA_P"/>
+			<enumeration value="TMA"/>
+			<enumeration value="TMA_P"/>
+			<enumeration value="CTR"/>
+			<enumeration value="CTR_P"/>
+			<enumeration value="OTA"/>
+			<enumeration value="SECTOR"/>
+			<enumeration value="SECTOR_C"/>
+			<enumeration value="TSA"/>
+			<enumeration value="CBA"/>
+			<enumeration value="RCA"/>
+			<enumeration value="RAS"/>
+			<enumeration value="AWY"/>
+			<enumeration value="MTR"/>
+			<enumeration value="P"/>
+			<enumeration value="R"/>
+			<enumeration value="D"/>
+			<enumeration value="ADIZ"/>
+			<enumeration value="NO_FIR"/>
+			<enumeration value="PART"/>
+			<enumeration value="CLASS"/>
+			<enumeration value="POLITICAL"/>
+			<enumeration value="D_OTHER"/>
+			<enumeration value="TRA"/>
+			<enumeration value="A"/>
+			<enumeration value="W"/>
+			<enumeration value="PROTECT"/>
+			<enumeration value="AMA"/>
+			<enumeration value="ASR"/>
+			<enumeration value="ADV"/>
+			<enumeration value="UADV"/>
+			<enumeration value="ATZ"/>
+			<enumeration value="ATZ_P"/>
+			<enumeration value="HTZ"/>
+			<enumeration value="NAS_P"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAirspaceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -617,8 +882,20 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeAirspaceClassificationBaseType">
+		<restriction base="string">
+			<enumeration value="A"/>
+			<enumeration value="B"/>
+			<enumeration value="C"/>
+			<enumeration value="D"/>
+			<enumeration value="E"/>
+			<enumeration value="F"/>
+			<enumeration value="G"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAirspaceClassificationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -637,7 +914,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAirspaceClassificationType">
 		<simpleContent>
 			<extension base="aixm:CodeAirspaceClassificationBaseType">
@@ -646,6 +923,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAirspaceDependencyBaseType">
+		<restriction base="string">
+			<enumeration value="FULL_GEOMETRY"/>
+			<enumeration value="HORZ_PROJECTION"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAirspaceDependencyBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -659,7 +943,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAirspaceDependencyType">
 		<simpleContent>
 			<extension base="aixm:CodeAirspaceDependencyBaseType">
@@ -681,6 +965,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAirspacePointPositionBaseType">
+		<restriction base="string">
+			<enumeration value="IN"/>
+			<enumeration value="OUT"/>
+			<enumeration value="BORDER"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAirspacePointPositionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -695,7 +987,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAirspacePointPositionType">
 		<simpleContent>
 			<extension base="aixm:CodeAirspacePointPositionBaseType">
@@ -704,6 +996,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAirspacePointRoleBaseType">
+		<restriction base="string">
+			<enumeration value="ENTRY"/>
+			<enumeration value="EXIT"/>
+			<enumeration value="ENTRY_EXIT"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAirspacePointRoleBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -718,7 +1018,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAirspacePointRoleType">
 		<simpleContent>
 			<extension base="aixm:CodeAirspacePointRoleBaseType">
@@ -734,6 +1034,29 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAltitudeAdjustmentBaseType">
+		<restriction base="string">
+			<enumeration value="RA"/>
+			<enumeration value="AS"/>
+			<enumeration value="AT"/>
+			<enumeration value="AC"/>
+			<enumeration value="SI"/>
+			<enumeration value="XL"/>
+			<enumeration value="PR"/>
+			<enumeration value="HAA"/>
+			<enumeration value="MA"/>
+			<enumeration value="PT"/>
+			<enumeration value="DG"/>
+			<enumeration value="GS"/>
+			<enumeration value="CA"/>
+			<enumeration value="MT"/>
+			<enumeration value="MAH"/>
+			<enumeration value="SA"/>
+			<enumeration value="AAO"/>
+			<enumeration value="VA"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAltitudeAdjustmentBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -763,7 +1086,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAltitudeAdjustmentType">
 		<simpleContent>
 			<extension base="aixm:CodeAltitudeAdjustmentBaseType">
@@ -772,6 +1095,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAltitudeUseBaseType">
+		<restriction base="string">
+			<enumeration value="ABOVE_LOWER"/>
+			<enumeration value="BELOW_UPPER"/>
+			<enumeration value="AT_LOWER"/>
+			<enumeration value="BETWEEN"/>
+			<enumeration value="RECOMMENDED"/>
+			<enumeration value="EXPECT_LOWER"/>
+			<enumeration value="AS_ASSIGNED"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAltitudeUseBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -790,7 +1125,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAltitudeUseType">
 		<simpleContent>
 			<extension base="aixm:CodeAltitudeUseBaseType">
@@ -799,6 +1134,42 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeApproachBaseType">
+		<restriction base="string">
+			<enumeration value="ASR"/>
+			<enumeration value="ARA"/>
+			<enumeration value="ARSR"/>
+			<enumeration value="PAR"/>
+			<enumeration value="ILS"/>
+			<enumeration value="ILS_DME"/>
+			<enumeration value="ILS_PRM"/>
+			<enumeration value="LDA"/>
+			<enumeration value="LDA_DME"/>
+			<enumeration value="LOC"/>
+			<enumeration value="LOC_BC"/>
+			<enumeration value="LOC_DME"/>
+			<enumeration value="LOC_DME_BC"/>
+			<enumeration value="MLS"/>
+			<enumeration value="MLS_DME"/>
+			<enumeration value="NDB"/>
+			<enumeration value="NDB_DME"/>
+			<enumeration value="SDF"/>
+			<enumeration value="TLS"/>
+			<enumeration value="VOR"/>
+			<enumeration value="VOR_DME"/>
+			<enumeration value="TACAN"/>
+			<enumeration value="VORTAC"/>
+			<enumeration value="DME"/>
+			<enumeration value="DME_DME"/>
+			<enumeration value="RNP"/>
+			<enumeration value="GPS"/>
+			<enumeration value="GLONASS"/>
+			<enumeration value="GALILEO"/>
+			<enumeration value="RNAV"/>
+			<enumeration value="IGS"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeApproachBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -841,8 +1212,27 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeApproachEquipmentAdditionalBaseType">
+		<restriction base="string">
+			<enumeration value="ADF"/>
+			<enumeration value="DME"/>
+			<enumeration value="RADAR"/>
+			<enumeration value="RADARDME"/>
+			<enumeration value="VORLOC"/>
+			<enumeration value="DUALVORDME"/>
+			<enumeration value="DUALADF"/>
+			<enumeration value="ADFMA"/>
+			<enumeration value="SPECIAL"/>
+			<enumeration value="DUALVHF"/>
+			<enumeration value="GPSRNP3"/>
+			<enumeration value="ADFILS"/>
+			<enumeration value="DUALADF_DME"/>
+			<enumeration value="RADAR_RNAV"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeApproachEquipmentAdditionalBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -868,7 +1258,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeApproachEquipmentAdditionalType">
 		<simpleContent>
 			<extension base="aixm:CodeApproachEquipmentAdditionalBaseType">
@@ -877,6 +1267,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeApproachGuidanceBaseType">
+		<restriction base="string">
+			<enumeration value="NON_PRECISION"/>
+			<enumeration value="ILS_PRECISION_CAT_I"/>
+			<enumeration value="ILS_PRECISION_CAT_II"/>
+			<enumeration value="ILS_PRECISION_CAT_IIIA"/>
+			<enumeration value="ILS_PRECISION_CAT_IIIB"/>
+			<enumeration value="ILS_PRECISION_CAT_IIIC"/>
+			<enumeration value="ILS_PRECISION_CAT_IIID"/>
+			<enumeration value="MLS_PRECISION"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeApproachGuidanceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -896,7 +1299,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeApproachGuidanceType">
 		<simpleContent>
 			<extension base="aixm:CodeApproachGuidanceBaseType">
@@ -905,6 +1308,22 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeApproachLightingBaseType">
+		<restriction base="string">
+			<enumeration value="ALSAF"/>
+			<enumeration value="MALS"/>
+			<enumeration value="MALSR"/>
+			<enumeration value="SALS"/>
+			<enumeration value="SSALS"/>
+			<enumeration value="SSALR"/>
+			<enumeration value="LDIN"/>
+			<enumeration value="ODALS"/>
+			<enumeration value="AFOVRN"/>
+			<enumeration value="MILOVRN"/>
+			<enumeration value="CALVERT"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeApproachLightingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -927,8 +1346,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeApproachLightingICAOBaseType">
+		<restriction base="string">
+			<enumeration value="SIMPLE"/>
+			<enumeration value="CAT1"/>
+			<enumeration value="CAT23"/>
+			<enumeration value="CIRCLING"/>
+			<enumeration value="LEADIN"/>
+			<enumeration value="NONE"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeApproachLightingICAOBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -946,7 +1376,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeApproachLightingICAOType">
 		<simpleContent>
 			<extension base="aixm:CodeApproachLightingICAOBaseType">
@@ -962,6 +1392,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeApproachPrefixBaseType">
+		<restriction base="string">
+			<enumeration value="HI"/>
+			<enumeration value="COPTER"/>
+			<enumeration value="CONVERGING"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeApproachPrefixBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -976,7 +1414,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeApproachPrefixType">
 		<simpleContent>
 			<extension base="aixm:CodeApproachPrefixBaseType">
@@ -992,6 +1430,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeApprovalBaseType">
+		<restriction base="string">
+			<enumeration value="APPROVED"/>
+			<enumeration value="DISAPPROVED"/>
+			<enumeration value="NOT_AUTHORISED"/>
+			<enumeration value="RESTRICTED"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeApprovalBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1007,7 +1454,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeApprovalType">
 		<simpleContent>
 			<extension base="aixm:CodeApprovalBaseType">
@@ -1016,6 +1463,24 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeApronElementBaseType">
+		<restriction base="string">
+			<enumeration value="NORMAL"/>
+			<enumeration value="PARKING"/>
+			<enumeration value="RAMP"/>
+			<enumeration value="CARGO"/>
+			<enumeration value="FUEL"/>
+			<enumeration value="HARDSTAND"/>
+			<enumeration value="MAINT"/>
+			<enumeration value="MILITARY"/>
+			<enumeration value="LOADING"/>
+			<enumeration value="TAXILANE"/>
+			<enumeration value="TURNAROUND"/>
+			<enumeration value="TEMPORARY"/>
+			<enumeration value="STAIRS"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeApronElementBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1040,7 +1505,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeApronElementType">
 		<simpleContent>
 			<extension base="aixm:CodeApronElementBaseType">
@@ -1070,6 +1535,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeArcDirectionBaseType">
+		<restriction base="string">
+			<enumeration value="CWA"/>
+			<enumeration value="CCA"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeArcDirectionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1083,7 +1555,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeArcDirectionType">
 		<simpleContent>
 			<extension base="aixm:CodeArcDirectionBaseType">
@@ -1092,6 +1564,84 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeArrestingGearEnergyAbsorbBaseType">
+		<restriction base="string">
+			<enumeration value="ROTARY_1300"/>
+			<enumeration value="ROTARY_2800"/>
+			<enumeration value="ROTARY_34B_1A"/>
+			<enumeration value="ROTARY_34B_1B"/>
+			<enumeration value="ROTARY_34B_1C"/>
+			<enumeration value="ROTARY_34D_1F"/>
+			<enumeration value="ROTARY_44B_2C"/>
+			<enumeration value="ROTARY_44B_2D"/>
+			<enumeration value="ROTARY_44B_2E"/>
+			<enumeration value="ROTARY_44B_2F"/>
+			<enumeration value="ROTARY_44B_2H"/>
+			<enumeration value="ROTARY_44B_2I"/>
+			<enumeration value="ROTARY_44B_2L"/>
+			<enumeration value="ROTARY_44B_3A"/>
+			<enumeration value="ROTARY_44B_3H"/>
+			<enumeration value="ROTARY_44B_3L"/>
+			<enumeration value="ROTARY_44B_4C"/>
+			<enumeration value="ROTARY_44B_4E"/>
+			<enumeration value="ROTARY_44B_4H"/>
+			<enumeration value="ROTARY_500S"/>
+			<enumeration value="ROTARY_500S_4"/>
+			<enumeration value="ROTARY_500S_6"/>
+			<enumeration value="ROTARY_500S_8"/>
+			<enumeration value="ROTARYTRANS_500S_8"/>
+			<enumeration value="ROTARY_AAE_64"/>
+			<enumeration value="ROTARY_BAK_12A"/>
+			<enumeration value="ROTARY_BAK_12B"/>
+			<enumeration value="ROTARY_BAK_13"/>
+			<enumeration value="LINEAR_BAK_6"/>
+			<enumeration value="ROTARY_BAK_9"/>
+			<enumeration value="DISK_BEFAB_12_3"/>
+			<enumeration value="DISK_BEFAB_20_4"/>
+			<enumeration value="DISK_BEFAB_21_2"/>
+			<enumeration value="DISK_BEFAB_24_4"/>
+			<enumeration value="DISK_BEFAB_56_2"/>
+			<enumeration value="DISK_BEFAB_6_3"/>
+			<enumeration value="DISK_BEFAB_60_2"/>
+			<enumeration value="DISK_BEFAB_8_3"/>
+			<enumeration value="CHAIN_CHAG"/>
+			<enumeration value="ROTARY_DUAL_BAK_12"/>
+			<enumeration value="ROTARY_E15"/>
+			<enumeration value="ROTARY_E27"/>
+			<enumeration value="ROTARY_E28"/>
+			<enumeration value="CHAIN_E5"/>
+			<enumeration value="CHAIN_E5_1"/>
+			<enumeration value="CHAIN_E5_2"/>
+			<enumeration value="CHAIN_E5_3"/>
+			<enumeration value="CHAIN_E6"/>
+			<enumeration value="ROTARY_CHAIN_JETSTOP"/>
+			<enumeration value="MOBILROTARY_M21"/>
+			<enumeration value="MOBILROTARY_MAAS"/>
+			<enumeration value="MOBILROTARY_MAG_I"/>
+			<enumeration value="MOBILROTARY_MAG_II"/>
+			<enumeration value="MOBILROTARY_MAG_III"/>
+			<enumeration value="MOBILROTARY_MAG_IV"/>
+			<enumeration value="MOBILROTARY_MAG_IX"/>
+			<enumeration value="MOBILROTARY_MAG_VI"/>
+			<enumeration value="MOBILROTARY_MAG_VII"/>
+			<enumeration value="MOBILROTARY_MAG_VIII"/>
+			<enumeration value="MOBILROTARY_MAG_X"/>
+			<enumeration value="TEXTILE_MB_100"/>
+			<enumeration value="TEXTILE_MB_60"/>
+			<enumeration value="MOBILROTARY_HYDRAULIC_WATER"/>
+			<enumeration value="ROTARY_PUAG_MK_21"/>
+			<enumeration value="DISK_RAF_MK_12A"/>
+			<enumeration value="DISK_RAF_MK_6"/>
+			<enumeration value="RAF_PORTABLE_AGEAR"/>
+			<enumeration value="DISK_RAF_TYPEA_BEFAB_6_3"/>
+			<enumeration value="DISK_RAF_TYPEB_BEFAB_12_3"/>
+			<enumeration value="ROTARY_RHAG_MK_1"/>
+			<enumeration value="ROTARY_HYDRAULIC_WATER"/>
+			<enumeration value="BARRIER_DISK_SAFELAND"/>
+			<enumeration value="LINEAR_SPRAG_MK_1"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeArrestingGearEnergyAbsorbBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1176,7 +1726,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeArrestingGearEnergyAbsorbType">
 		<simpleContent>
 			<extension base="aixm:CodeArrestingGearEnergyAbsorbBaseType">
@@ -1185,6 +1735,30 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeArrestingGearEngageDeviceBaseType">
+		<restriction base="string">
+			<enumeration value="61QSII"/>
+			<enumeration value="62NI"/>
+			<enumeration value="63PI"/>
+			<enumeration value="NET_A30"/>
+			<enumeration value="NET_A40"/>
+			<enumeration value="BAK_11_STRUT"/>
+			<enumeration value="BAK_12"/>
+			<enumeration value="BAK_14_HOOK"/>
+			<enumeration value="BAK_15_STANCHION_NET"/>
+			<enumeration value="BAK_15_HOOK"/>
+			<enumeration value="EMAS"/>
+			<enumeration value="HOOK_CABLE"/>
+			<enumeration value="HP_NET"/>
+			<enumeration value="J_BAR"/>
+			<enumeration value="JET_BARRIER"/>
+			<enumeration value="MA_1_NET"/>
+			<enumeration value="MA_1A_HOOK_CABLE"/>
+			<enumeration value="NET"/>
+			<enumeration value="HOOK_H"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeArrestingGearEngageDeviceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1215,7 +1789,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeArrestingGearEngageDeviceType">
 		<simpleContent>
 			<extension base="aixm:CodeArrestingGearEngageDeviceBaseType">
@@ -1224,6 +1798,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeATCReportingBaseType">
+		<restriction base="string">
+			<enumeration value="COMPULSORY"/>
+			<enumeration value="ON_REQUEST"/>
+			<enumeration value="NO_REPORT"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeATCReportingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1238,7 +1820,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeATCReportingType">
 		<simpleContent>
 			<extension base="aixm:CodeATCReportingBaseType">
@@ -1259,6 +1841,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAuthorityBaseType">
+		<restriction base="string">
+			<enumeration value="OWN"/>
+			<enumeration value="DLGT"/>
+			<enumeration value="AIS"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAuthorityBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1273,8 +1863,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeAuthorityRoleBaseType">
+		<restriction base="string">
+			<enumeration value="OWN"/>
+			<enumeration value="OPERATE"/>
+			<enumeration value="SUPERVISE"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAuthorityRoleBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1289,7 +1887,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAuthorityRoleType">
 		<simpleContent>
 			<extension base="aixm:CodeAuthorityRoleBaseType">
@@ -1305,6 +1903,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeAviationStandardsBaseType">
+		<restriction base="string">
+			<enumeration value="ICAO"/>
+			<enumeration value="IATA"/>
+			<enumeration value="NATO"/>
+			<enumeration value="FAA"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeAviationStandardsBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1320,7 +1927,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeAviationStandardsType">
 		<simpleContent>
 			<extension base="aixm:CodeAviationStandardsBaseType">
@@ -1329,6 +1936,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeBearingBaseType">
+		<restriction base="string">
+			<enumeration value="TRUE"/>
+			<enumeration value="MAG"/>
+			<enumeration value="RDL"/>
+			<enumeration value="TRK"/>
+			<enumeration value="HDG"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeBearingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1345,7 +1962,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeBearingType">
 		<simpleContent>
 			<extension base="aixm:CodeBearingBaseType">
@@ -1354,6 +1971,23 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeBuoyBaseType">
+		<restriction base="string">
+			<enumeration value="BLACK_RED_FL2"/>
+			<enumeration value="GREEN"/>
+			<enumeration value="GREEN_RED_GFL"/>
+			<enumeration value="Q3_VQ3"/>
+			<enumeration value="Q6_VQ6"/>
+			<enumeration value="Q9_VQ9"/>
+			<enumeration value="Q_VQ"/>
+			<enumeration value="RED"/>
+			<enumeration value="RED_GREEN_RFL"/>
+			<enumeration value="RED_WHITE"/>
+			<enumeration value="WHITE"/>
+			<enumeration value="YELLOW"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeBuoyBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1377,7 +2011,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeBuoyType">
 		<simpleContent>
 			<extension base="aixm:CodeBuoyBaseType">
@@ -1386,6 +2020,26 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeCardinalDirectionBaseType">
+		<restriction base="string">
+			<enumeration value="N"/>
+			<enumeration value="NE"/>
+			<enumeration value="E"/>
+			<enumeration value="SE"/>
+			<enumeration value="S"/>
+			<enumeration value="SW"/>
+			<enumeration value="W"/>
+			<enumeration value="NW"/>
+			<enumeration value="NNE"/>
+			<enumeration value="ENE"/>
+			<enumeration value="ESE"/>
+			<enumeration value="SSE"/>
+			<enumeration value="SSW"/>
+			<enumeration value="WSW"/>
+			<enumeration value="WNW"/>
+			<enumeration value="NNW"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeCardinalDirectionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1413,7 +2067,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeCardinalDirectionType">
 		<simpleContent>
 			<extension base="aixm:CodeCardinalDirectionBaseType">
@@ -1422,6 +2076,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeCheckpointCategoryBaseType">
+		<restriction base="string">
+			<enumeration value="A"/>
+			<enumeration value="G"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeCheckpointCategoryBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1435,7 +2096,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeCheckpointCategoryType">
 		<simpleContent>
 			<extension base="aixm:CodeCheckpointCategoryBaseType">
@@ -1444,6 +2105,26 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeColourBaseType">
+		<restriction base="string">
+			<enumeration value="YELLOW"/>
+			<enumeration value="RED"/>
+			<enumeration value="WHITE"/>
+			<enumeration value="BLUE"/>
+			<enumeration value="GREEN"/>
+			<enumeration value="PURPLE"/>
+			<enumeration value="ORANGE"/>
+			<enumeration value="AMBER"/>
+			<enumeration value="BLACK"/>
+			<enumeration value="BROWN"/>
+			<enumeration value="GREY"/>
+			<enumeration value="LIGHT_GREY"/>
+			<enumeration value="MAGENTA"/>
+			<enumeration value="PINK"/>
+			<enumeration value="VIOLET"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeColourBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1470,7 +2151,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeColourType">
 		<simpleContent>
 			<extension base="aixm:CodeColourBaseType">
@@ -1495,6 +2176,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeCommunicationDirectionBaseType">
+		<restriction base="string">
+			<enumeration value="UPLINK"/>
+			<enumeration value="DOWNLINK"/>
+			<enumeration value="BIDIRECTIONAL"/>
+			<enumeration value="UPCAST"/>
+			<enumeration value="DOWNCAST"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeCommunicationDirectionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1511,7 +2202,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeCommunicationDirectionType">
 		<simpleContent>
 			<extension base="aixm:CodeCommunicationDirectionBaseType">
@@ -1520,6 +2211,22 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeCommunicationModeBaseType">
+		<restriction base="string">
+			<enumeration value="HF"/>
+			<enumeration value="VHF"/>
+			<enumeration value="VDL1"/>
+			<enumeration value="VDL2"/>
+			<enumeration value="VDL4"/>
+			<enumeration value="AMSS"/>
+			<enumeration value="ADS_B"/>
+			<enumeration value="ADS_B_VDL"/>
+			<enumeration value="HFDL"/>
+			<enumeration value="VHF_833"/>
+			<enumeration value="UHF"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeCommunicationModeBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1542,7 +2249,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeCommunicationModeType">
 		<simpleContent>
 			<extension base="aixm:CodeCommunicationModeBaseType">
@@ -1551,6 +2258,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeComparisonBaseType">
+		<restriction base="string">
+			<enumeration value="LESS"/>
+			<enumeration value="LESS_OR_EQUAL"/>
+			<enumeration value="EQUAL"/>
+			<enumeration value="GREATER_OR_EQUAL"/>
+			<enumeration value="GREATER"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeComparisonBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1567,7 +2284,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeComparisonType">
 		<simpleContent>
 			<extension base="aixm:CodeComparisonBaseType">
@@ -1576,6 +2293,26 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeContaminationBaseType">
+		<restriction base="string">
+			<enumeration value="NONE"/>
+			<enumeration value="DAMP"/>
+			<enumeration value="WATER"/>
+			<enumeration value="FROST"/>
+			<enumeration value="DRY_SNOW"/>
+			<enumeration value="WET_SNOW"/>
+			<enumeration value="SLUSH"/>
+			<enumeration value="ICE"/>
+			<enumeration value="COMPACT_SNOW"/>
+			<enumeration value="RUT"/>
+			<enumeration value="ASH"/>
+			<enumeration value="SAND"/>
+			<enumeration value="OIL"/>
+			<enumeration value="RUBBER"/>
+			<enumeration value="GRAS"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeContaminationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1602,7 +2339,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeContaminationType">
 		<simpleContent>
 			<extension base="aixm:CodeContaminationBaseType">
@@ -1611,6 +2348,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeCourseBaseType">
+		<restriction base="string">
+			<enumeration value="TRUE_TRACK"/>
+			<enumeration value="MAG_TRACK"/>
+			<enumeration value="TRUE_BRG"/>
+			<enumeration value="MAG_BRG"/>
+			<enumeration value="HDG"/>
+			<enumeration value="RDL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeCourseBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1628,8 +2376,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeCourseQualityILSBaseType">
+		<restriction base="string">
+			<enumeration value="A"/>
+			<enumeration value="B"/>
+			<enumeration value="C"/>
+			<enumeration value="D"/>
+			<enumeration value="E"/>
+			<enumeration value="T"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeCourseQualityILSBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1647,7 +2406,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeCourseQualityILSType">
 		<simpleContent>
 			<extension base="aixm:CodeCourseQualityILSBaseType">
@@ -1663,6 +2422,26 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeDayBaseType">
+		<restriction base="string">
+			<enumeration value="MON"/>
+			<enumeration value="TUE"/>
+			<enumeration value="WED"/>
+			<enumeration value="THU"/>
+			<enumeration value="FRI"/>
+			<enumeration value="SAT"/>
+			<enumeration value="SUN"/>
+			<enumeration value="WORK_DAY"/>
+			<enumeration value="BEF_WORK_DAY"/>
+			<enumeration value="AFT_WORK_DAY"/>
+			<enumeration value="HOL"/>
+			<enumeration value="BEF_HOL"/>
+			<enumeration value="AFT_HOL"/>
+			<enumeration value="ANY"/>
+			<enumeration value="BUSY_FRI"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeDayBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1689,7 +2468,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeDayType">
 		<simpleContent>
 			<extension base="aixm:CodeDayBaseType">
@@ -1698,6 +2477,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeDeclaredDistanceBaseType">
+		<restriction base="string">
+			<enumeration value="LDA"/>
+			<enumeration value="TORA"/>
+			<enumeration value="TODA"/>
+			<enumeration value="ASDA"/>
+			<enumeration value="DTHR"/>
+			<enumeration value="TODAH"/>
+			<enumeration value="RTODAH"/>
+			<enumeration value="LDAH"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeDeclaredDistanceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1717,7 +2509,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeDeclaredDistanceType">
 		<simpleContent>
 			<extension base="aixm:CodeDeclaredDistanceBaseType">
@@ -1726,6 +2518,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeDesignatedPointBaseType">
+		<restriction base="string">
+			<enumeration value="ICAO"/>
+			<enumeration value="COORD"/>
+			<enumeration value="CNF"/>
+			<enumeration value="DESIGNED"/>
+			<enumeration value="MTR"/>
+			<enumeration value="TERMINAL"/>
+			<enumeration value="BRG_DIST"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeDesignatedPointBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1744,7 +2548,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeDesignatedPointDesignatorBaseType">
 		<restriction base="aixm:AlphanumericType">
 			<maxLength value="5"/>
@@ -1766,6 +2570,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeDesignStandardBaseType">
+		<restriction base="string">
+			<enumeration value="PANS_OPS"/>
+			<enumeration value="TERPS"/>
+			<enumeration value="CANADA_TERPS"/>
+			<enumeration value="NATO"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeDesignStandardBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1781,7 +2594,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeDesignStandardType">
 		<simpleContent>
 			<extension base="aixm:CodeDesignStandardBaseType">
@@ -1790,6 +2603,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeDirectionBaseType">
+		<restriction base="string">
+			<enumeration value="FORWARD"/>
+			<enumeration value="BACKWARD"/>
+			<enumeration value="BOTH"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeDirectionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1804,8 +2625,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeDirectionReferenceBaseType">
+		<restriction base="string">
+			<enumeration value="TO"/>
+			<enumeration value="FROM"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeDirectionReferenceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1819,7 +2647,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeDirectionReferenceType">
 		<simpleContent>
 			<extension base="aixm:CodeDirectionReferenceBaseType">
@@ -1828,6 +2656,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeDirectionTurnBaseType">
+		<restriction base="string">
+			<enumeration value="LEFT"/>
+			<enumeration value="RIGHT"/>
+			<enumeration value="EITHER"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeDirectionTurnBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1842,7 +2678,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeDirectionTurnType">
 		<simpleContent>
 			<extension base="aixm:CodeDirectionTurnBaseType">
@@ -1858,6 +2694,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeDistanceIndicationBaseType">
+		<restriction base="string">
+			<enumeration value="DME"/>
+			<enumeration value="GEODETIC"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeDistanceIndicationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1871,7 +2714,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeDistanceIndicationType">
 		<simpleContent>
 			<extension base="aixm:CodeDistanceIndicationBaseType">
@@ -1896,6 +2739,363 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</union>
 	</simpleType>
 	<simpleType name="CodeDMEChannelBaseType">
+		<restriction base="string">
+			<enumeration value="1X"/>
+			<enumeration value="1Y"/>
+			<enumeration value="2X"/>
+			<enumeration value="2Y"/>
+			<enumeration value="3X"/>
+			<enumeration value="3Y"/>
+			<enumeration value="4X"/>
+			<enumeration value="4Y"/>
+			<enumeration value="5X"/>
+			<enumeration value="5Y"/>
+			<enumeration value="6X"/>
+			<enumeration value="6Y"/>
+			<enumeration value="7X"/>
+			<enumeration value="7Y"/>
+			<enumeration value="8X"/>
+			<enumeration value="8Y"/>
+			<enumeration value="9X"/>
+			<enumeration value="9Y"/>
+			<enumeration value="10X"/>
+			<enumeration value="10Y"/>
+			<enumeration value="11X"/>
+			<enumeration value="11Y"/>
+			<enumeration value="12X"/>
+			<enumeration value="12Y"/>
+			<enumeration value="13X"/>
+			<enumeration value="13Y"/>
+			<enumeration value="14X"/>
+			<enumeration value="14Y"/>
+			<enumeration value="15X"/>
+			<enumeration value="15Y"/>
+			<enumeration value="16X"/>
+			<enumeration value="16Y"/>
+			<enumeration value="17X"/>
+			<enumeration value="17Y"/>
+			<enumeration value="17Z"/>
+			<enumeration value="18X"/>
+			<enumeration value="18W"/>
+			<enumeration value="18Y"/>
+			<enumeration value="18Z"/>
+			<enumeration value="19X"/>
+			<enumeration value="19Y"/>
+			<enumeration value="19Z"/>
+			<enumeration value="20X"/>
+			<enumeration value="20W"/>
+			<enumeration value="20Y"/>
+			<enumeration value="20Z"/>
+			<enumeration value="21X"/>
+			<enumeration value="21Y"/>
+			<enumeration value="21Z"/>
+			<enumeration value="22X"/>
+			<enumeration value="22W"/>
+			<enumeration value="22Y"/>
+			<enumeration value="22Z"/>
+			<enumeration value="23X"/>
+			<enumeration value="23Y"/>
+			<enumeration value="23Z"/>
+			<enumeration value="24X"/>
+			<enumeration value="24W"/>
+			<enumeration value="24Y"/>
+			<enumeration value="24Z"/>
+			<enumeration value="25X"/>
+			<enumeration value="25Y"/>
+			<enumeration value="25Z"/>
+			<enumeration value="26X"/>
+			<enumeration value="26W"/>
+			<enumeration value="26Y"/>
+			<enumeration value="26Z"/>
+			<enumeration value="27X"/>
+			<enumeration value="27Y"/>
+			<enumeration value="27Z"/>
+			<enumeration value="28X"/>
+			<enumeration value="28W"/>
+			<enumeration value="28Y"/>
+			<enumeration value="28Z"/>
+			<enumeration value="29X"/>
+			<enumeration value="29Y"/>
+			<enumeration value="29Z"/>
+			<enumeration value="30X"/>
+			<enumeration value="30W"/>
+			<enumeration value="30Y"/>
+			<enumeration value="30Z"/>
+			<enumeration value="31X"/>
+			<enumeration value="31Y"/>
+			<enumeration value="31Z"/>
+			<enumeration value="32X"/>
+			<enumeration value="32W"/>
+			<enumeration value="32Y"/>
+			<enumeration value="32Z"/>
+			<enumeration value="33X"/>
+			<enumeration value="33Y"/>
+			<enumeration value="33Z"/>
+			<enumeration value="34X"/>
+			<enumeration value="34W"/>
+			<enumeration value="34Y"/>
+			<enumeration value="34Z"/>
+			<enumeration value="35X"/>
+			<enumeration value="35Y"/>
+			<enumeration value="35Z"/>
+			<enumeration value="36X"/>
+			<enumeration value="36W"/>
+			<enumeration value="36Y"/>
+			<enumeration value="36Z"/>
+			<enumeration value="37X"/>
+			<enumeration value="37Y"/>
+			<enumeration value="37Z"/>
+			<enumeration value="38X"/>
+			<enumeration value="38W"/>
+			<enumeration value="38Y"/>
+			<enumeration value="38Z"/>
+			<enumeration value="39X"/>
+			<enumeration value="39Y"/>
+			<enumeration value="39Z"/>
+			<enumeration value="40X"/>
+			<enumeration value="40W"/>
+			<enumeration value="40Y"/>
+			<enumeration value="40Z"/>
+			<enumeration value="41X"/>
+			<enumeration value="41Y"/>
+			<enumeration value="41Z"/>
+			<enumeration value="42X"/>
+			<enumeration value="42W"/>
+			<enumeration value="42Y"/>
+			<enumeration value="42Z"/>
+			<enumeration value="43X"/>
+			<enumeration value="43Y"/>
+			<enumeration value="43Z"/>
+			<enumeration value="44X"/>
+			<enumeration value="44W"/>
+			<enumeration value="44Y"/>
+			<enumeration value="44Z"/>
+			<enumeration value="45X"/>
+			<enumeration value="45Y"/>
+			<enumeration value="45Z"/>
+			<enumeration value="46X"/>
+			<enumeration value="46W"/>
+			<enumeration value="46Y"/>
+			<enumeration value="46Z"/>
+			<enumeration value="47X"/>
+			<enumeration value="47Y"/>
+			<enumeration value="47Z"/>
+			<enumeration value="48X"/>
+			<enumeration value="48W"/>
+			<enumeration value="48Y"/>
+			<enumeration value="48Z"/>
+			<enumeration value="49X"/>
+			<enumeration value="49Y"/>
+			<enumeration value="49Z"/>
+			<enumeration value="50X"/>
+			<enumeration value="50W"/>
+			<enumeration value="50Y"/>
+			<enumeration value="50Z"/>
+			<enumeration value="51X"/>
+			<enumeration value="51Y"/>
+			<enumeration value="51Z"/>
+			<enumeration value="52X"/>
+			<enumeration value="52W"/>
+			<enumeration value="52Y"/>
+			<enumeration value="52Z"/>
+			<enumeration value="53X"/>
+			<enumeration value="53Y"/>
+			<enumeration value="53Z"/>
+			<enumeration value="54X"/>
+			<enumeration value="54W"/>
+			<enumeration value="54Y"/>
+			<enumeration value="54Z"/>
+			<enumeration value="55X"/>
+			<enumeration value="55Y"/>
+			<enumeration value="55Z"/>
+			<enumeration value="56X"/>
+			<enumeration value="56W"/>
+			<enumeration value="56Y"/>
+			<enumeration value="56Z"/>
+			<enumeration value="57X"/>
+			<enumeration value="57Y"/>
+			<enumeration value="58X"/>
+			<enumeration value="58Y"/>
+			<enumeration value="59X"/>
+			<enumeration value="59Y"/>
+			<enumeration value="60X"/>
+			<enumeration value="60Y"/>
+			<enumeration value="61X"/>
+			<enumeration value="61Y"/>
+			<enumeration value="62X"/>
+			<enumeration value="62Y"/>
+			<enumeration value="63X"/>
+			<enumeration value="63Y"/>
+			<enumeration value="64X"/>
+			<enumeration value="64Y"/>
+			<enumeration value="65X"/>
+			<enumeration value="65Y"/>
+			<enumeration value="66X"/>
+			<enumeration value="66Y"/>
+			<enumeration value="67X"/>
+			<enumeration value="67Y"/>
+			<enumeration value="68X"/>
+			<enumeration value="68Y"/>
+			<enumeration value="69X"/>
+			<enumeration value="69Y"/>
+			<enumeration value="70X"/>
+			<enumeration value="70Y"/>
+			<enumeration value="71X"/>
+			<enumeration value="71Y"/>
+			<enumeration value="72X"/>
+			<enumeration value="72Y"/>
+			<enumeration value="73X"/>
+			<enumeration value="73Y"/>
+			<enumeration value="74X"/>
+			<enumeration value="74Y"/>
+			<enumeration value="75X"/>
+			<enumeration value="75Y"/>
+			<enumeration value="76X"/>
+			<enumeration value="76Y"/>
+			<enumeration value="77X"/>
+			<enumeration value="77Y"/>
+			<enumeration value="78X"/>
+			<enumeration value="78Y"/>
+			<enumeration value="79X"/>
+			<enumeration value="79Y"/>
+			<enumeration value="80X"/>
+			<enumeration value="80Y"/>
+			<enumeration value="80Z"/>
+			<enumeration value="81X"/>
+			<enumeration value="81Y"/>
+			<enumeration value="81Z"/>
+			<enumeration value="82X"/>
+			<enumeration value="82Y"/>
+			<enumeration value="82Z"/>
+			<enumeration value="83X"/>
+			<enumeration value="83Y"/>
+			<enumeration value="83Z"/>
+			<enumeration value="84X"/>
+			<enumeration value="84Y"/>
+			<enumeration value="84Z"/>
+			<enumeration value="85X"/>
+			<enumeration value="85Y"/>
+			<enumeration value="85Z"/>
+			<enumeration value="86X"/>
+			<enumeration value="86Y"/>
+			<enumeration value="86Z"/>
+			<enumeration value="87X"/>
+			<enumeration value="87Y"/>
+			<enumeration value="87Z"/>
+			<enumeration value="88X"/>
+			<enumeration value="88Y"/>
+			<enumeration value="88Z"/>
+			<enumeration value="89X"/>
+			<enumeration value="89Y"/>
+			<enumeration value="89Z"/>
+			<enumeration value="90X"/>
+			<enumeration value="90Y"/>
+			<enumeration value="90Z"/>
+			<enumeration value="91X"/>
+			<enumeration value="91Y"/>
+			<enumeration value="91Z"/>
+			<enumeration value="92X"/>
+			<enumeration value="92Y"/>
+			<enumeration value="92Z"/>
+			<enumeration value="93X"/>
+			<enumeration value="93Y"/>
+			<enumeration value="93Z"/>
+			<enumeration value="94X"/>
+			<enumeration value="94Y"/>
+			<enumeration value="94Z"/>
+			<enumeration value="95X"/>
+			<enumeration value="95Y"/>
+			<enumeration value="95Z"/>
+			<enumeration value="96X"/>
+			<enumeration value="96Y"/>
+			<enumeration value="96Z"/>
+			<enumeration value="97X"/>
+			<enumeration value="97Y"/>
+			<enumeration value="97Z"/>
+			<enumeration value="98X"/>
+			<enumeration value="98Y"/>
+			<enumeration value="98Z"/>
+			<enumeration value="99X"/>
+			<enumeration value="99Y"/>
+			<enumeration value="99Z"/>
+			<enumeration value="100X"/>
+			<enumeration value="100Y"/>
+			<enumeration value="100Z"/>
+			<enumeration value="101X"/>
+			<enumeration value="101Y"/>
+			<enumeration value="101Z"/>
+			<enumeration value="102X"/>
+			<enumeration value="102Y"/>
+			<enumeration value="102Z"/>
+			<enumeration value="103X"/>
+			<enumeration value="103Y"/>
+			<enumeration value="103Z"/>
+			<enumeration value="104X"/>
+			<enumeration value="104Y"/>
+			<enumeration value="104Z"/>
+			<enumeration value="105X"/>
+			<enumeration value="105Y"/>
+			<enumeration value="105Z"/>
+			<enumeration value="106X"/>
+			<enumeration value="106Y"/>
+			<enumeration value="106Z"/>
+			<enumeration value="107X"/>
+			<enumeration value="107Y"/>
+			<enumeration value="107Z"/>
+			<enumeration value="108X"/>
+			<enumeration value="108Y"/>
+			<enumeration value="108Z"/>
+			<enumeration value="109X"/>
+			<enumeration value="109Y"/>
+			<enumeration value="109Z"/>
+			<enumeration value="110X"/>
+			<enumeration value="110Y"/>
+			<enumeration value="110Z"/>
+			<enumeration value="111X"/>
+			<enumeration value="111Y"/>
+			<enumeration value="111Z"/>
+			<enumeration value="112X"/>
+			<enumeration value="112Y"/>
+			<enumeration value="112Z"/>
+			<enumeration value="113X"/>
+			<enumeration value="113Y"/>
+			<enumeration value="113Z"/>
+			<enumeration value="114X"/>
+			<enumeration value="114Y"/>
+			<enumeration value="114Z"/>
+			<enumeration value="115X"/>
+			<enumeration value="115Y"/>
+			<enumeration value="115Z"/>
+			<enumeration value="116X"/>
+			<enumeration value="116Y"/>
+			<enumeration value="116Z"/>
+			<enumeration value="117X"/>
+			<enumeration value="117Y"/>
+			<enumeration value="117Z"/>
+			<enumeration value="118X"/>
+			<enumeration value="118Y"/>
+			<enumeration value="118Z"/>
+			<enumeration value="119X"/>
+			<enumeration value="119Y"/>
+			<enumeration value="119Z"/>
+			<enumeration value="120X"/>
+			<enumeration value="120Y"/>
+			<enumeration value="121X"/>
+			<enumeration value="121Y"/>
+			<enumeration value="122X"/>
+			<enumeration value="122Y"/>
+			<enumeration value="123X"/>
+			<enumeration value="123Y"/>
+			<enumeration value="124X"/>
+			<enumeration value="124Y"/>
+			<enumeration value="125X"/>
+			<enumeration value="125Y"/>
+			<enumeration value="126X"/>
+			<enumeration value="126Y"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeDMEChannelBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2260,7 +3460,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			</simpleType>
 		</union>
 	</simpleType>
-	<complexType name="CodeDMEChannelType">
+ -->	<complexType name="CodeDMEChannelType">
 		<simpleContent>
 			<extension base="aixm:CodeDMEChannelBaseType">
 				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
@@ -2275,6 +3475,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeEmissionBandBaseType">
+		<restriction base="string">
+			<enumeration value="U"/>
+			<enumeration value="H"/>
+			<enumeration value="M"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeEmissionBandBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2289,7 +3497,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeEmissionBandType">
 		<simpleContent>
 			<extension base="aixm:CodeEmissionBandBaseType">
@@ -2298,6 +3506,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeEquipmentAntiCollisionBaseType">
+		<restriction base="string">
+			<enumeration value="ACAS_I"/>
+			<enumeration value="ACAS_II"/>
+			<enumeration value="GPWS"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeEquipmentAntiCollisionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2312,7 +3528,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeEquipmentAntiCollisionType">
 		<simpleContent>
 			<extension base="aixm:CodeEquipmentAntiCollisionBaseType">
@@ -2321,6 +3537,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeEquipmentUnavailableBaseType">
+		<restriction base="string">
+			<enumeration value="STANDARD"/>
+			<enumeration value="NONSTANDARD"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeEquipmentUnavailableBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2334,7 +3557,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeEquipmentUnavailableType">
 		<simpleContent>
 			<extension base="aixm:CodeEquipmentUnavailableBaseType">
@@ -2343,6 +3566,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFacilityRankingBaseType">
+		<restriction base="string">
+			<enumeration value="PRIMARY"/>
+			<enumeration value="SECONDARY"/>
+			<enumeration value="ALTERNATE"/>
+			<enumeration value="EMERG"/>
+			<enumeration value="GUARD"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFacilityRankingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2359,7 +3592,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFacilityRankingType">
 		<simpleContent>
 			<extension base="aixm:CodeFacilityRankingBaseType">
@@ -2368,6 +3601,40 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFinalGuidanceBaseType">
+		<restriction base="string">
+			<enumeration value="LPV"/>
+			<enumeration value="LNAV_VNAV"/>
+			<enumeration value="LNAV"/>
+			<enumeration value="GLS"/>
+			<enumeration value="ASR"/>
+			<enumeration value="ARA"/>
+			<enumeration value="ARSR"/>
+			<enumeration value="PAR"/>
+			<enumeration value="ILS"/>
+			<enumeration value="ILS_DME"/>
+			<enumeration value="ILS_PRM"/>
+			<enumeration value="LDA"/>
+			<enumeration value="LDA_DME"/>
+			<enumeration value="LOC"/>
+			<enumeration value="LOC_BC"/>
+			<enumeration value="LOC_DME"/>
+			<enumeration value="LOC_DME_BC"/>
+			<enumeration value="MLS"/>
+			<enumeration value="MLS_DME"/>
+			<enumeration value="NDB"/>
+			<enumeration value="NDB_DME"/>
+			<enumeration value="SDF"/>
+			<enumeration value="TLS"/>
+			<enumeration value="VOR"/>
+			<enumeration value="VOR_DME"/>
+			<enumeration value="TACAN"/>
+			<enumeration value="VORTAC"/>
+			<enumeration value="DME"/>
+			<enumeration value="LP"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFinalGuidanceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2408,7 +3675,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFinalGuidanceType">
 		<simpleContent>
 			<extension base="aixm:CodeFinalGuidanceBaseType">
@@ -2417,6 +3684,24 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFireFightingBaseType">
+		<restriction base="string">
+			<enumeration value="H1"/>
+			<enumeration value="H2"/>
+			<enumeration value="H3"/>
+			<enumeration value="A1"/>
+			<enumeration value="A2"/>
+			<enumeration value="A3"/>
+			<enumeration value="A4"/>
+			<enumeration value="A5"/>
+			<enumeration value="A6"/>
+			<enumeration value="A7"/>
+			<enumeration value="A8"/>
+			<enumeration value="A9"/>
+			<enumeration value="A10"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFireFightingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2441,7 +3726,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFireFightingType">
 		<simpleContent>
 			<extension base="aixm:CodeFireFightingBaseType">
@@ -2450,6 +3735,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFlightBaseType">
+		<restriction base="string">
+			<enumeration value="OAT"/>
+			<enumeration value="GAT"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFlightBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2464,8 +3757,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeFlightDestinationBaseType">
+		<restriction base="string">
+			<enumeration value="ARR"/>
+			<enumeration value="DEP"/>
+			<enumeration value="OVERFLY"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFlightDestinationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2481,7 +3783,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFlightDestinationType">
 		<simpleContent>
 			<extension base="aixm:CodeFlightDestinationBaseType">
@@ -2490,6 +3792,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFlightOriginBaseType">
+		<restriction base="string">
+			<enumeration value="NTL"/>
+			<enumeration value="INTL"/>
+			<enumeration value="ALL"/>
+			<enumeration value="HOME_BASED"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFlightOriginBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2505,7 +3816,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFlightOriginType">
 		<simpleContent>
 			<extension base="aixm:CodeFlightOriginBaseType">
@@ -2514,6 +3825,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFlightPurposeBaseType">
+		<restriction base="string">
+			<enumeration value="SCHEDULED"/>
+			<enumeration value="NON_SCHEDULED"/>
+			<enumeration value="PRIVATE"/>
+			<enumeration value="AIR_TRAINING"/>
+			<enumeration value="AIR_WORK"/>
+			<enumeration value="ALL"/>
+			<enumeration value="PARTICIPANT"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFlightPurposeBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2532,7 +3855,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFlightPurposeType">
 		<simpleContent>
 			<extension base="aixm:CodeFlightPurposeBaseType">
@@ -2541,6 +3864,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFlightRestrictionBaseType">
+		<restriction base="string">
+			<enumeration value="FORBID"/>
+			<enumeration value="MANDATORY"/>
+			<enumeration value="CLSD"/>
+			<enumeration value="ALLOWED"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFlightRestrictionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2556,7 +3888,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeFlightRestrictionDesignatorBaseType">
 		<restriction base="aixm:Character1Type">
 			<maxLength value="16"/>
@@ -2578,6 +3910,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFlightRuleBaseType">
+		<restriction base="string">
+			<enumeration value="IFR"/>
+			<enumeration value="VFR"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFlightRuleBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2592,7 +3932,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFlightRuleType">
 		<simpleContent>
 			<extension base="aixm:CodeFlightRuleBaseType">
@@ -2601,6 +3941,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFlightStatusBaseType">
+		<restriction base="string">
+			<enumeration value="HEAD"/>
+			<enumeration value="STATE"/>
+			<enumeration value="HUM"/>
+			<enumeration value="HOSP"/>
+			<enumeration value="SAR"/>
+			<enumeration value="ALL"/>
+			<enumeration value="EMERGENCY"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFlightStatusBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2619,7 +3971,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFlightStatusType">
 		<simpleContent>
 			<extension base="aixm:CodeFlightStatusBaseType">
@@ -2635,6 +3987,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFlowConditionOperationBaseType">
+		<restriction base="string">
+			<enumeration value="AND"/>
+			<enumeration value="ANDNOT"/>
+			<enumeration value="OR"/>
+			<enumeration value="SEQ"/>
+			<enumeration value="NONE"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFlowConditionOperationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2651,7 +4013,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFlowConditionOperationType">
 		<simpleContent>
 			<extension base="aixm:CodeFlowConditionOperationBaseType">
@@ -2660,6 +4022,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFreeFlightBaseType">
+		<restriction base="string">
+			<enumeration value="PITCH"/>
+			<enumeration value="CATCH"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFreeFlightBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2673,7 +4042,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFreeFlightType">
 		<simpleContent>
 			<extension base="aixm:CodeFreeFlightBaseType">
@@ -2682,6 +4051,20 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFrictionDeviceBaseType">
+		<restriction base="string">
+			<enumeration value="BRD"/>
+			<enumeration value="GRT"/>
+			<enumeration value="MUM"/>
+			<enumeration value="RFT"/>
+			<enumeration value="SFH"/>
+			<enumeration value="SFL"/>
+			<enumeration value="SKH"/>
+			<enumeration value="SKL"/>
+			<enumeration value="TAP"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFrictionDeviceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2702,7 +4085,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFrictionDeviceType">
 		<simpleContent>
 			<extension base="aixm:CodeFrictionDeviceBaseType">
@@ -2711,6 +4094,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFrictionEstimateBaseType">
+		<restriction base="string">
+			<enumeration value="GOOD"/>
+			<enumeration value="MEDIUM_GOOD"/>
+			<enumeration value="MEDIUM"/>
+			<enumeration value="MEDIUM_POOR"/>
+			<enumeration value="POOR"/>
+			<enumeration value="UNRELIABLE"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFrictionEstimateBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2728,7 +4122,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFrictionEstimateType">
 		<simpleContent>
 			<extension base="aixm:CodeFrictionEstimateBaseType">
@@ -2737,6 +4131,49 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeFuelBaseType">
+		<restriction base="string">
+			<enumeration value="AVGAS"/>
+			<enumeration value="AVGAS_LL"/>
+			<enumeration value="OCT73"/>
+			<enumeration value="OCT80"/>
+			<enumeration value="OCT82UL"/>
+			<enumeration value="OCT80_87"/>
+			<enumeration value="OCT91_98"/>
+			<enumeration value="OCT100_130"/>
+			<enumeration value="OCT108_135"/>
+			<enumeration value="OCT115_145"/>
+			<enumeration value="MOGAS"/>
+			<enumeration value="JET"/>
+			<enumeration value="A"/>
+			<enumeration value="A1"/>
+			<enumeration value="A1_PLUS"/>
+			<enumeration value="B"/>
+			<enumeration value="JP1"/>
+			<enumeration value="JP2"/>
+			<enumeration value="JP3"/>
+			<enumeration value="JP4"/>
+			<enumeration value="JP5"/>
+			<enumeration value="JP6"/>
+			<enumeration value="JPTS"/>
+			<enumeration value="JP7"/>
+			<enumeration value="JP8"/>
+			<enumeration value="JP8_HIGHER"/>
+			<enumeration value="JP9"/>
+			<enumeration value="JP10"/>
+			<enumeration value="F18"/>
+			<enumeration value="F34"/>
+			<enumeration value="F35"/>
+			<enumeration value="F40"/>
+			<enumeration value="F44"/>
+			<enumeration value="TR0"/>
+			<enumeration value="TR4"/>
+			<enumeration value="TS1"/>
+			<enumeration value="RT"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeFuelBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2786,7 +4223,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeFuelType">
 		<simpleContent>
 			<extension base="aixm:CodeFuelBaseType">
@@ -2795,6 +4232,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeGeoBorderBaseType">
+		<restriction base="string">
+			<enumeration value="STATE"/>
+			<enumeration value="WATER"/>
+			<enumeration value="COAST"/>
+			<enumeration value="RIVER"/>
+			<enumeration value="BANK"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeGeoBorderBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2811,7 +4258,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeGeoBorderType">
 		<simpleContent>
 			<extension base="aixm:CodeGeoBorderBaseType">
@@ -2820,6 +4267,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeGradeSeparationBaseType">
+		<restriction base="string">
+			<enumeration value="UNDERPASS"/>
+			<enumeration value="OVERPASS"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeGradeSeparationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2833,7 +4287,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeGradeSeparationType">
 		<simpleContent>
 			<extension base="aixm:CodeGradeSeparationBaseType">
@@ -2842,6 +4296,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeGroundLightingBaseType">
+		<restriction base="string">
+			<enumeration value="BCN"/>
+			<enumeration value="IBN"/>
+			<enumeration value="HEL_BCN"/>
+			<enumeration value="ABN"/>
+			<enumeration value="MAR_BCN"/>
+			<enumeration value="RSP_BCN"/>
+			<enumeration value="TWR_BCN"/>
+			<enumeration value="HAZ_BCN"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeGroundLightingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2861,7 +4328,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeGroundLightingType">
 		<simpleContent>
 			<extension base="aixm:CodeGroundLightingBaseType">
@@ -2870,6 +4337,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeGuidanceLineBaseType">
+		<restriction base="string">
+			<enumeration value="RWY"/>
+			<enumeration value="TWY"/>
+			<enumeration value="APRON"/>
+			<enumeration value="GATE_TLANE"/>
+			<enumeration value="LI_TLANE"/>
+			<enumeration value="LO_TLANE"/>
+			<enumeration value="AIR_TLANE"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeGuidanceLineBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2888,7 +4367,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeGuidanceLineType">
 		<simpleContent>
 			<extension base="aixm:CodeGuidanceLineBaseType">
@@ -2897,6 +4376,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeHeightReferenceBaseType">
+		<restriction base="string">
+			<enumeration value="HAT"/>
+			<enumeration value="HAA"/>
+			<enumeration value="HAL"/>
+			<enumeration value="HAS"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeHeightReferenceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2912,7 +4400,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeHeightReferenceType">
 		<simpleContent>
 			<extension base="aixm:CodeHeightReferenceBaseType">
@@ -2921,6 +4409,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeHelicopterPerformanceBaseType">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeHelicopterPerformanceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2935,7 +4431,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeHelicopterPerformanceType">
 		<simpleContent>
 			<extension base="aixm:CodeHelicopterPerformanceBaseType">
@@ -2944,6 +4440,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeHoldingCategoryBaseType">
+		<restriction base="string">
+			<enumeration value="NON_PRECISION"/>
+			<enumeration value="CAT_I"/>
+			<enumeration value="CAT_II_III"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeHoldingCategoryBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2958,7 +4462,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeHoldingCategoryType">
 		<simpleContent>
 			<extension base="aixm:CodeHoldingCategoryBaseType">
@@ -2967,6 +4471,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeHoldingUsageBaseType">
+		<restriction base="string">
+			<enumeration value="ENR"/>
+			<enumeration value="TER"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeHoldingUsageBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2980,7 +4491,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeHoldingUsageType">
 		<simpleContent>
 			<extension base="aixm:CodeHoldingUsageBaseType">
@@ -2989,6 +4500,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeHoldingUseBaseType">
+		<restriction base="string">
+			<enumeration value="PT"/>
+			<enumeration value="ARRIVAL"/>
+			<enumeration value="MISSED_APPROACH"/>
+			<enumeration value="CLIMB"/>
+			<enumeration value="ATC"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeHoldingUseBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3005,7 +4526,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeHoldingUseType">
 		<simpleContent>
 			<extension base="aixm:CodeHoldingUseBaseType">
@@ -3040,6 +4561,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeILSBackCourseBaseType">
+		<restriction base="string">
+			<enumeration value="YES"/>
+			<enumeration value="NO"/>
+			<enumeration value="RSTR"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeILSBackCourseBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3054,7 +4583,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeILSBackCourseType">
 		<simpleContent>
 			<extension base="aixm:CodeILSBackCourseBaseType">
@@ -3063,6 +4592,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeIntegrityLevelILSBaseType">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeIntegrityLevelILSBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3078,7 +4616,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeIntegrityLevelILSType">
 		<simpleContent>
 			<extension base="aixm:CodeIntegrityLevelILSBaseType">
@@ -3087,6 +4625,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeIntensityStandByBaseType">
+		<restriction base="string">
+			<enumeration value="OFF"/>
+			<enumeration value="LOW"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeIntensityStandByBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3100,7 +4645,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeIntensityStandByType">
 		<simpleContent>
 			<extension base="aixm:CodeIntensityStandByBaseType">
@@ -3121,6 +4666,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeLevelBaseType">
+		<restriction base="string">
+			<enumeration value="UPPER"/>
+			<enumeration value="LOWER"/>
+			<enumeration value="BOTH"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeLevelBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3135,8 +4687,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeLevelSeriesBaseType">
+		<restriction base="string">
+			<enumeration value="ODD"/>
+			<enumeration value="EVEN"/>
+			<enumeration value="ODD_HALF"/>
+			<enumeration value="EVEN_HALF"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeLevelSeriesBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3152,7 +4713,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeLevelSeriesType">
 		<simpleContent>
 			<extension base="aixm:CodeLevelSeriesBaseType">
@@ -3161,6 +4722,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeLevelTableDesignatorBaseType">
+		<restriction base="string">
+			<enumeration value="IFR"/>
+			<enumeration value="IFR_METRES"/>
+			<enumeration value="VFR"/>
+			<enumeration value="VFR_METRES"/>
+			<enumeration value="IFR_RVSM"/>
+			<enumeration value="IFR_METRES_RVSM"/>
+			<enumeration value="VFR_RVSM"/>
+			<enumeration value="VFR_METRES_RVSM"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeLevelTableDesignatorBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3180,7 +4754,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeLevelTableDesignatorType">
 		<simpleContent>
 			<extension base="aixm:CodeLevelTableDesignatorBaseType">
@@ -3196,6 +4770,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeLightHoldingPositionBaseType">
+		<restriction base="string">
+			<enumeration value="STOP_BAR"/>
+			<enumeration value="SIGN"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeLightHoldingPositionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3209,7 +4790,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeLightHoldingPositionType">
 		<simpleContent>
 			<extension base="aixm:CodeLightHoldingPositionBaseType">
@@ -3218,6 +4799,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeLightingJARBaseType">
+		<restriction base="string">
+			<enumeration value="FALS"/>
+			<enumeration value="IALS"/>
+			<enumeration value="BALS"/>
+			<enumeration value="NALS"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeLightingJARBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3233,7 +4823,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeLightingJARType">
 		<simpleContent>
 			<extension base="aixm:CodeLightingJARBaseType">
@@ -3242,6 +4832,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeLightIntensityBaseType">
+		<restriction base="string">
+			<enumeration value="LIL"/>
+			<enumeration value="LIM"/>
+			<enumeration value="LIH"/>
+			<enumeration value="LIL_LIH"/>
+			<enumeration value="PREDETERMINED"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeLightIntensityBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3258,7 +4858,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeLightIntensityType">
 		<simpleContent>
 			<extension base="aixm:CodeLightIntensityBaseType">
@@ -3267,6 +4867,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeLightSourceBaseType">
+		<restriction base="string">
+			<enumeration value="FLOOD"/>
+			<enumeration value="STROBE"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeLightSourceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3280,7 +4887,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeLightSourceType">
 		<simpleContent>
 			<extension base="aixm:CodeLightSourceBaseType">
@@ -3289,6 +4896,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeLoadingBridgeBaseType">
+		<restriction base="string">
+			<enumeration value="ARM"/>
+			<enumeration value="MOVABLE_ARM"/>
+			<enumeration value="PORTABLE_RAMP"/>
+			<enumeration value="PORTABLE_STAIRS"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeLoadingBridgeBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3304,7 +4920,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeLoadingBridgeType">
 		<simpleContent>
 			<extension base="aixm:CodeLoadingBridgeBaseType">
@@ -3313,6 +4929,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeLocationQualifierBaseType">
+		<restriction base="string">
+			<enumeration value="DEP"/>
+			<enumeration value="XNG"/>
+			<enumeration value="ARR"/>
+			<enumeration value="ACT"/>
+			<enumeration value="AVBL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeLocationQualifierBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3329,7 +4955,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeLocationQualifierType">
 		<simpleContent>
 			<extension base="aixm:CodeLocationQualifierBaseType">
@@ -3338,6 +4964,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeLogicalOperatorBaseType">
+		<restriction base="string">
+			<enumeration value="AND"/>
+			<enumeration value="OR"/>
+			<enumeration value="NOT"/>
+			<enumeration value="NONE"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeLogicalOperatorBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3353,7 +4988,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeLogicalOperatorType">
 		<simpleContent>
 			<extension base="aixm:CodeLogicalOperatorBaseType">
@@ -3362,6 +4997,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMarkerBeaconSignalBaseType">
+		<restriction base="string">
+			<enumeration value="FAN"/>
+			<enumeration value="LOW_PWR_FAN"/>
+			<enumeration value="Z"/>
+			<enumeration value="BONES"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeMarkerBeaconSignalBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3377,7 +5021,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMarkerBeaconSignalType">
 		<simpleContent>
 			<extension base="aixm:CodeMarkerBeaconSignalBaseType">
@@ -3386,6 +5030,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMarkingConditionBaseType">
+		<restriction base="string">
+			<enumeration value="GOOD"/>
+			<enumeration value="FAIR"/>
+			<enumeration value="POOR"/>
+			<enumeration value="EXCELLENT"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeMarkingConditionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3401,7 +5054,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMarkingConditionType">
 		<simpleContent>
 			<extension base="aixm:CodeMarkingConditionBaseType">
@@ -3410,6 +5063,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMarkingStyleBaseType">
+		<restriction base="string">
+			<enumeration value="SOLID"/>
+			<enumeration value="DASHED"/>
+			<enumeration value="DOTTED"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeMarkingStyleBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3424,7 +5085,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMarkingStyleType">
 		<simpleContent>
 			<extension base="aixm:CodeMarkingStyleBaseType">
@@ -3433,6 +5094,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMeteoConditionsBaseType">
+		<restriction base="string">
+			<enumeration value="IMC"/>
+			<enumeration value="VMC"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeMeteoConditionsBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3447,7 +5116,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMeteoConditionsType">
 		<simpleContent>
 			<extension base="aixm:CodeMeteoConditionsBaseType">
@@ -3456,6 +5125,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMilitaryOperationsBaseType">
+		<restriction base="string">
+			<enumeration value="CIVIL"/>
+			<enumeration value="MIL"/>
+			<enumeration value="JOINT"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeMilitaryOperationsBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3470,7 +5147,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMilitaryOperationsType">
 		<simpleContent>
 			<extension base="aixm:CodeMilitaryOperationsBaseType">
@@ -3479,6 +5156,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMilitaryRoutePointBaseType">
+		<restriction base="string">
+			<enumeration value="S"/>
+			<enumeration value="T"/>
+			<enumeration value="X"/>
+			<enumeration value="AS"/>
+			<enumeration value="AX"/>
+			<enumeration value="ASX"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeMilitaryRoutePointBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3496,7 +5184,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMilitaryRoutePointType">
 		<simpleContent>
 			<extension base="aixm:CodeMilitaryRoutePointBaseType">
@@ -3505,6 +5193,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMilitaryStatusBaseType">
+		<restriction base="string">
+			<enumeration value="MIL"/>
+			<enumeration value="CIVIL"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeMilitaryStatusBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3519,7 +5214,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMilitaryStatusType">
 		<simpleContent>
 			<extension base="aixm:CodeMilitaryStatusBaseType">
@@ -3528,6 +5223,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMilitaryTrainingBaseType">
+		<restriction base="string">
+			<enumeration value="IR"/>
+			<enumeration value="VR"/>
+			<enumeration value="SR"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeMilitaryTrainingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3542,7 +5244,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMilitaryTrainingType">
 		<simpleContent>
 			<extension base="aixm:CodeMilitaryTrainingBaseType">
@@ -3551,6 +5253,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMinimaFinalApproachPathBaseType">
+		<restriction base="string">
+			<enumeration value="STRAIGHT_IN"/>
+			<enumeration value="CIRCLING"/>
+			<enumeration value="SIDESTEP"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeMinimaFinalApproachPathBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3565,7 +5274,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMinimaFinalApproachPathType">
 		<simpleContent>
 			<extension base="aixm:CodeMinimaFinalApproachPathBaseType">
@@ -3574,6 +5283,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMinimumAltitudeBaseType">
+		<restriction base="string">
+			<enumeration value="OCA"/>
+			<enumeration value="DA"/>
+			<enumeration value="MDA"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeMinimumAltitudeBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3588,7 +5304,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMinimumAltitudeType">
 		<simpleContent>
 			<extension base="aixm:CodeMinimumAltitudeBaseType">
@@ -3597,6 +5313,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMinimumHeightBaseType">
+		<restriction base="string">
+			<enumeration value="DH"/>
+			<enumeration value="OCH"/>
+			<enumeration value="MDH"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeMinimumHeightBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3611,7 +5334,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMinimumHeightType">
 		<simpleContent>
 			<extension base="aixm:CodeMinimumHeightBaseType">
@@ -3620,6 +5343,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMissedApproachBaseType">
+		<restriction base="string">
+			<enumeration value="PRIMARY"/>
+			<enumeration value="SECONDARY"/>
+			<enumeration value="ALTERNATE"/>
+			<enumeration value="TACAN"/>
+			<enumeration value="TACANALT"/>
+			<enumeration value="ENGINEOUT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeMissedApproachBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3637,7 +5370,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMissedApproachType">
 		<simpleContent>
 			<extension base="aixm:CodeMissedApproachBaseType">
@@ -3646,6 +5379,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMLSAzimuthBaseType">
+		<restriction base="string">
+			<enumeration value="FWD"/>
+			<enumeration value="BWD"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeMLSAzimuthBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3659,7 +5398,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMLSAzimuthType">
 		<simpleContent>
 			<extension base="aixm:CodeMLSAzimuthBaseType">
@@ -3668,6 +5407,210 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeMLSChannelBaseType">
+		<restriction base="string">
+			<enumeration value="500"/>
+			<enumeration value="501"/>
+			<enumeration value="502"/>
+			<enumeration value="503"/>
+			<enumeration value="504"/>
+			<enumeration value="505"/>
+			<enumeration value="506"/>
+			<enumeration value="507"/>
+			<enumeration value="508"/>
+			<enumeration value="509"/>
+			<enumeration value="510"/>
+			<enumeration value="511"/>
+			<enumeration value="512"/>
+			<enumeration value="513"/>
+			<enumeration value="514"/>
+			<enumeration value="515"/>
+			<enumeration value="516"/>
+			<enumeration value="517"/>
+			<enumeration value="518"/>
+			<enumeration value="519"/>
+			<enumeration value="520"/>
+			<enumeration value="521"/>
+			<enumeration value="522"/>
+			<enumeration value="523"/>
+			<enumeration value="524"/>
+			<enumeration value="525"/>
+			<enumeration value="526"/>
+			<enumeration value="527"/>
+			<enumeration value="528"/>
+			<enumeration value="529"/>
+			<enumeration value="530"/>
+			<enumeration value="531"/>
+			<enumeration value="532"/>
+			<enumeration value="533"/>
+			<enumeration value="534"/>
+			<enumeration value="535"/>
+			<enumeration value="536"/>
+			<enumeration value="537"/>
+			<enumeration value="538"/>
+			<enumeration value="539"/>
+			<enumeration value="540"/>
+			<enumeration value="541"/>
+			<enumeration value="542"/>
+			<enumeration value="543"/>
+			<enumeration value="544"/>
+			<enumeration value="545"/>
+			<enumeration value="546"/>
+			<enumeration value="547"/>
+			<enumeration value="548"/>
+			<enumeration value="549"/>
+			<enumeration value="550"/>
+			<enumeration value="551"/>
+			<enumeration value="552"/>
+			<enumeration value="553"/>
+			<enumeration value="554"/>
+			<enumeration value="555"/>
+			<enumeration value="556"/>
+			<enumeration value="557"/>
+			<enumeration value="558"/>
+			<enumeration value="559"/>
+			<enumeration value="560"/>
+			<enumeration value="561"/>
+			<enumeration value="562"/>
+			<enumeration value="563"/>
+			<enumeration value="564"/>
+			<enumeration value="565"/>
+			<enumeration value="566"/>
+			<enumeration value="567"/>
+			<enumeration value="568"/>
+			<enumeration value="569"/>
+			<enumeration value="570"/>
+			<enumeration value="571"/>
+			<enumeration value="572"/>
+			<enumeration value="573"/>
+			<enumeration value="574"/>
+			<enumeration value="575"/>
+			<enumeration value="576"/>
+			<enumeration value="577"/>
+			<enumeration value="578"/>
+			<enumeration value="579"/>
+			<enumeration value="580"/>
+			<enumeration value="581"/>
+			<enumeration value="582"/>
+			<enumeration value="583"/>
+			<enumeration value="584"/>
+			<enumeration value="585"/>
+			<enumeration value="586"/>
+			<enumeration value="587"/>
+			<enumeration value="588"/>
+			<enumeration value="589"/>
+			<enumeration value="590"/>
+			<enumeration value="591"/>
+			<enumeration value="592"/>
+			<enumeration value="593"/>
+			<enumeration value="594"/>
+			<enumeration value="595"/>
+			<enumeration value="596"/>
+			<enumeration value="597"/>
+			<enumeration value="598"/>
+			<enumeration value="599"/>
+			<enumeration value="600"/>
+			<enumeration value="601"/>
+			<enumeration value="602"/>
+			<enumeration value="603"/>
+			<enumeration value="604"/>
+			<enumeration value="605"/>
+			<enumeration value="606"/>
+			<enumeration value="607"/>
+			<enumeration value="608"/>
+			<enumeration value="609"/>
+			<enumeration value="610"/>
+			<enumeration value="611"/>
+			<enumeration value="612"/>
+			<enumeration value="613"/>
+			<enumeration value="614"/>
+			<enumeration value="615"/>
+			<enumeration value="616"/>
+			<enumeration value="617"/>
+			<enumeration value="618"/>
+			<enumeration value="619"/>
+			<enumeration value="620"/>
+			<enumeration value="621"/>
+			<enumeration value="622"/>
+			<enumeration value="623"/>
+			<enumeration value="624"/>
+			<enumeration value="625"/>
+			<enumeration value="626"/>
+			<enumeration value="627"/>
+			<enumeration value="628"/>
+			<enumeration value="629"/>
+			<enumeration value="630"/>
+			<enumeration value="631"/>
+			<enumeration value="632"/>
+			<enumeration value="633"/>
+			<enumeration value="634"/>
+			<enumeration value="635"/>
+			<enumeration value="636"/>
+			<enumeration value="637"/>
+			<enumeration value="638"/>
+			<enumeration value="639"/>
+			<enumeration value="640"/>
+			<enumeration value="641"/>
+			<enumeration value="642"/>
+			<enumeration value="643"/>
+			<enumeration value="644"/>
+			<enumeration value="645"/>
+			<enumeration value="646"/>
+			<enumeration value="647"/>
+			<enumeration value="648"/>
+			<enumeration value="649"/>
+			<enumeration value="650"/>
+			<enumeration value="651"/>
+			<enumeration value="652"/>
+			<enumeration value="653"/>
+			<enumeration value="654"/>
+			<enumeration value="655"/>
+			<enumeration value="656"/>
+			<enumeration value="657"/>
+			<enumeration value="658"/>
+			<enumeration value="659"/>
+			<enumeration value="660"/>
+			<enumeration value="661"/>
+			<enumeration value="662"/>
+			<enumeration value="663"/>
+			<enumeration value="664"/>
+			<enumeration value="665"/>
+			<enumeration value="666"/>
+			<enumeration value="667"/>
+			<enumeration value="668"/>
+			<enumeration value="669"/>
+			<enumeration value="670"/>
+			<enumeration value="671"/>
+			<enumeration value="672"/>
+			<enumeration value="673"/>
+			<enumeration value="674"/>
+			<enumeration value="675"/>
+			<enumeration value="676"/>
+			<enumeration value="677"/>
+			<enumeration value="678"/>
+			<enumeration value="679"/>
+			<enumeration value="680"/>
+			<enumeration value="681"/>
+			<enumeration value="682"/>
+			<enumeration value="683"/>
+			<enumeration value="684"/>
+			<enumeration value="685"/>
+			<enumeration value="686"/>
+			<enumeration value="687"/>
+			<enumeration value="688"/>
+			<enumeration value="689"/>
+			<enumeration value="690"/>
+			<enumeration value="691"/>
+			<enumeration value="692"/>
+			<enumeration value="693"/>
+			<enumeration value="694"/>
+			<enumeration value="695"/>
+			<enumeration value="696"/>
+			<enumeration value="697"/>
+			<enumeration value="698"/>
+			<enumeration value="699"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeMLSChannelBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3879,7 +5822,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeMLSChannelType">
 		<simpleContent>
 			<extension base="aixm:CodeMLSChannelBaseType">
@@ -3901,6 +5844,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeNavaidPurposeBaseType">
+		<restriction base="string">
+			<enumeration value="TERMINAL"/>
+			<enumeration value="ENROUTE"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeNavaidPurposeBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3915,7 +5865,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeNavaidPurposeType">
 		<simpleContent>
 			<extension base="aixm:CodeNavaidPurposeBaseType">
@@ -3924,6 +5874,29 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeNavaidServiceBaseType">
+		<restriction base="string">
+			<enumeration value="VOR"/>
+			<enumeration value="DME"/>
+			<enumeration value="NDB"/>
+			<enumeration value="TACAN"/>
+			<enumeration value="MKR"/>
+			<enumeration value="ILS"/>
+			<enumeration value="ILS_DME"/>
+			<enumeration value="MLS"/>
+			<enumeration value="MLS_DME"/>
+			<enumeration value="VORTAC"/>
+			<enumeration value="VOR_DME"/>
+			<enumeration value="NDB_DME"/>
+			<enumeration value="TLS"/>
+			<enumeration value="LOC"/>
+			<enumeration value="LOC_DME"/>
+			<enumeration value="NDB_MKR"/>
+			<enumeration value="DF"/>
+			<enumeration value="SDF"/>
+		</restriction>
+	</simpleType>
+<!-- #TODO JAXB has no solution for enum and string pattern union in simple type => Converted restrictively to Enum only -->
+<!-- 	<simpleType name="CodeNavaidServiceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3953,7 +5926,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeNavaidServiceType">
 		<simpleContent>
 			<extension base="aixm:CodeNavaidServiceBaseType">
@@ -3962,6 +5935,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeNavigationAreaBaseType">
+		<restriction base="string">
+			<enumeration value="PNA"/>
+			<enumeration value="OMNI"/>
+			<enumeration value="DVA"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeNavigationAreaBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3976,8 +5956,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeNavigationAreaRestrictionBaseType">
+		<restriction base="string">
+			<enumeration value="VECTOR"/>
+			<enumeration value="OMNIDIRECTIONAL"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeNavigationAreaRestrictionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -3991,7 +5977,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeNavigationAreaRestrictionType">
 		<simpleContent>
 			<extension base="aixm:CodeNavigationAreaRestrictionBaseType">
@@ -4007,6 +5993,21 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeNavigationEquipmentBaseType">
+		<restriction base="string">
+			<enumeration value="DME"/>
+			<enumeration value="VOR_DME"/>
+			<enumeration value="DME_DME"/>
+			<enumeration value="TACAN"/>
+			<enumeration value="ILS"/>
+			<enumeration value="MLS"/>
+			<enumeration value="GNSS"/>
+			<enumeration value="WAAS"/>
+			<enumeration value="LORAN"/>
+			<enumeration value="INS"/>
+			<enumeration value="FMS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeNavigationEquipmentBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4029,7 +6030,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeNavigationEquipmentType">
 		<simpleContent>
 			<extension base="aixm:CodeNavigationEquipmentBaseType">
@@ -4038,6 +6039,20 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeNavigationSpecificationBaseType">
+		<restriction base="string">
+			<enumeration value="RNAV_10"/>
+			<enumeration value="RNAV_5"/>
+			<enumeration value="RNAV_2"/>
+			<enumeration value="RNAV_1"/>
+			<enumeration value="RNP_4"/>
+			<enumeration value="RNP_2"/>
+			<enumeration value="BASIC_RNP_1"/>
+			<enumeration value="ADVANCED_RNP_1"/>
+			<enumeration value="RNP_APCH"/>
+			<enumeration value="RNP_AR_APCH"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeNavigationSpecificationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4059,7 +6074,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeNavigationSpecificationType">
 		<simpleContent>
 			<extension base="aixm:CodeNavigationSpecificationBaseType">
@@ -4091,6 +6106,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeNitrogenBaseType">
+		<restriction base="string">
+			<enumeration value="LPNG"/>
+			<enumeration value="HPNG"/>
+			<enumeration value="LHNG"/>
+			<enumeration value="LNG"/>
+			<enumeration value="NGRB"/>
+			<enumeration value="HNGRB"/>
+			<enumeration value="LNGRB"/>
+			<enumeration value="NG"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeNitrogenBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4110,7 +6137,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeNitrogenType">
 		<simpleContent>
 			<extension base="aixm:CodeNitrogenBaseType">
@@ -4119,6 +6146,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeNorthReferenceBaseType">
+		<restriction base="string">
+			<enumeration value="TRUE"/>
+			<enumeration value="MAG"/>
+			<enumeration value="GRID"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeNorthReferenceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4133,7 +6167,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeNorthReferenceType">
 		<simpleContent>
 			<extension base="aixm:CodeNorthReferenceBaseType">
@@ -4142,6 +6176,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeNotePurposeBaseType">
+		<restriction base="string">
+			<enumeration value="DESCRIPTION"/>
+			<enumeration value="REMARK"/>
+			<enumeration value="WARNING"/>
+			<enumeration value="DISCLAIMER"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeNotePurposeBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4157,7 +6199,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeNotePurposeType">
 		<simpleContent>
 			<extension base="aixm:CodeNotePurposeBaseType">
@@ -4166,6 +6208,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeObstacleAreaBaseType">
+		<restriction base="string">
+			<enumeration value="AREA1"/>
+			<enumeration value="AREA2"/>
+			<enumeration value="AREA3"/>
+			<enumeration value="AREA4"/>
+			<enumeration value="OLS"/>
+			<enumeration value="FAR77"/>
+			<enumeration value="MANAGED"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeObstacleAreaBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4184,7 +6237,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeObstacleAreaType">
 		<simpleContent>
 			<extension base="aixm:CodeObstacleAreaBaseType">
@@ -4193,6 +6246,26 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeObstacleAssessmentSurfaceBaseType">
+		<restriction base="string">
+			<enumeration value="40_TO_1"/>
+			<enumeration value="72_TO_1"/>
+			<enumeration value="MA"/>
+			<enumeration value="FINAL"/>
+			<enumeration value="PT_ENTRY_AREA"/>
+			<enumeration value="PRIMARY"/>
+			<enumeration value="SECONDARY"/>
+			<enumeration value="ZONE1"/>
+			<enumeration value="ZONE2"/>
+			<enumeration value="ZONE3"/>
+			<enumeration value="AREA1"/>
+			<enumeration value="AREA2"/>
+			<enumeration value="AREA3"/>
+			<enumeration value="TURN_INITIATION"/>
+			<enumeration value="TURN"/>
+			<enumeration value="DER"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeObstacleAssessmentSurfaceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4220,7 +6293,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeObstacleAssessmentSurfaceType">
 		<simpleContent>
 			<extension base="aixm:CodeObstacleAssessmentSurfaceBaseType">
@@ -4229,6 +6302,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeObstructionIdSurfaceZoneBaseType">
+		<restriction base="string">
+			<enumeration value="APPROACH"/>
+			<enumeration value="CONICAL"/>
+			<enumeration value="HORIZONTAL"/>
+			<enumeration value="PRIMARY"/>
+			<enumeration value="TRANSITION"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeObstructionIdSurfaceZoneBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4245,7 +6327,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeObstructionIdSurfaceZoneType">
 		<simpleContent>
 			<extension base="aixm:CodeObstructionIdSurfaceZoneBaseType">
@@ -4254,6 +6336,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeOilBaseType">
+		<restriction base="string">
+			<enumeration value="PISTON"/>
+			<enumeration value="TURBO"/>
+			<enumeration value="HYDRAULIC"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeOilBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4268,7 +6357,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeOilType">
 		<simpleContent>
 			<extension base="aixm:CodeOilBaseType">
@@ -4277,6 +6366,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeOperationAirportHeliportBaseType">
+		<restriction base="string">
+			<enumeration value="LANDING"/>
+			<enumeration value="TAKEOFF"/>
+			<enumeration value="TOUCHGO"/>
+			<enumeration value="TRAIN_APPROACH"/>
+			<enumeration value="ALTN_LANDING"/>
+			<enumeration value="AIRSHOW"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeOperationAirportHeliportBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4295,7 +6395,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeOperationAirportHeliportType">
 		<simpleContent>
 			<extension base="aixm:CodeOperationAirportHeliportBaseType">
@@ -4304,6 +6404,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeOperationManoeuvringAreaBaseType">
+		<restriction base="string">
+			<enumeration value="LANDING"/>
+			<enumeration value="TAKEOFF"/>
+			<enumeration value="TOUCHGO"/>
+			<enumeration value="TRAIN_APPROACH"/>
+			<enumeration value="TAXIING"/>
+			<enumeration value="CROSSING"/>
+			<enumeration value="AIRSHOW"/>
+			<enumeration value="ALL"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeOperationManoeuvringAreaBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4323,7 +6435,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeOperationManoeuvringAreaType">
 		<simpleContent>
 			<extension base="aixm:CodeOperationManoeuvringAreaBaseType">
@@ -4332,6 +6444,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeOrganisationBaseType">
+		<restriction base="string">
+			<enumeration value="STATE"/>
+			<enumeration value="STATE_GROUP"/>
+			<enumeration value="ORG"/>
+			<enumeration value="INTL_ORG"/>
+			<enumeration value="ACFT_OPR"/>
+			<enumeration value="HANDLING_AGENCY"/>
+			<enumeration value="NTL_AUTH"/>
+			<enumeration value="ATS"/>
+			<enumeration value="COMMERCIAL"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeOrganisationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4352,7 +6477,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeOrganisationDesignatorBaseType">
 		<restriction base="aixm:Character1Type">
 			<maxLength value="12"/>
@@ -4367,6 +6492,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeOrganisationHierarchyBaseType">
+		<restriction base="string">
+			<enumeration value="MEMBER"/>
+			<enumeration value="OWNED_BY"/>
+			<enumeration value="SUPERVISED_BY"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeOrganisationHierarchyBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4381,7 +6513,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeOrganisationHierarchyType">
 		<simpleContent>
 			<extension base="aixm:CodeOrganisationHierarchyBaseType">
@@ -4397,6 +6529,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeOxygenBaseType">
+		<restriction base="string">
+			<enumeration value="LPOX"/>
+			<enumeration value="HPOX"/>
+			<enumeration value="LHOX"/>
+			<enumeration value="LOX"/>
+			<enumeration value="OXRB"/>
+			<enumeration value="HOXRB"/>
+			<enumeration value="LOXRB"/>
+			<enumeration value="OX"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeOxygenBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -4416,7 +6560,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeOxygenType">
 		<simpleContent>
 			<extension base="aixm:CodeOxygenBaseType">
