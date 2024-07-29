@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRuleProcedureTitleType {
 
     @XmlValue
-    protected String value;
+    protected CodeRuleProcedureTitleBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeRuleProcedureTitleType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeRuleProcedureTitleBaseType }
      *     
      */
-    public String getValue() {
+    public CodeRuleProcedureTitleBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeRuleProcedureTitleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeRuleProcedureTitleBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeRuleProcedureTitleBaseType value) {
         this.value = value;
     }
 

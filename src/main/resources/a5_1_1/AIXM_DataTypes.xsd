@@ -6569,6 +6569,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodePARBaseType">
+		<restriction base="string">
+			<enumeration value="FPN16"/>
+			<enumeration value="FPN62"/>
+			<enumeration value="GPN22"/>
+			<enumeration value="GPN25"/>
+			<enumeration value="MPN14K"/>
+			<enumeration value="TPN19"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodePARBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6586,7 +6596,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodePARType">
 		<simpleContent>
 			<extension base="aixm:CodePARBaseType">
@@ -6595,6 +6605,21 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodePassengerServiceBaseType">
+		<restriction base="string">
+			<enumeration value="CUST"/>
+			<enumeration value="SAN"/>
+			<enumeration value="SECUR"/>
+			<enumeration value="VET"/>
+			<enumeration value="HOTEL"/>
+			<enumeration value="TRANSPORT"/>
+			<enumeration value="REST"/>
+			<enumeration value="INFO"/>
+			<enumeration value="BANK"/>
+			<enumeration value="POST"/>
+			<enumeration value="MEDIC"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodePassengerServiceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6617,7 +6642,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodePassengerServiceType">
 		<simpleContent>
 			<extension base="aixm:CodePassengerServiceBaseType">
@@ -6626,6 +6651,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodePCNMethodBaseType">
+		<restriction base="string">
+			<enumeration value="TECH"/>
+			<enumeration value="ACFT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodePCNMethodBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6639,7 +6670,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodePCNMethodType">
 		<simpleContent>
 			<extension base="aixm:CodePCNMethodBaseType">
@@ -6648,6 +6679,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodePCNPavementBaseType">
+		<restriction base="string">
+			<enumeration value="RIGID"/>
+			<enumeration value="FLEXIBLE"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodePCNPavementBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6661,7 +6698,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodePCNPavementType">
 		<simpleContent>
 			<extension base="aixm:CodePCNPavementBaseType">
@@ -6670,6 +6707,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodePCNSubgradeBaseType">
+		<restriction base="string">
+			<enumeration value="A"/>
+			<enumeration value="B"/>
+			<enumeration value="C"/>
+			<enumeration value="D"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodePCNSubgradeBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6685,7 +6730,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodePCNSubgradeType">
 		<simpleContent>
 			<extension base="aixm:CodePCNSubgradeBaseType">
@@ -6694,6 +6739,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodePCNTyrePressureBaseType">
+		<restriction base="string">
+			<enumeration value="W"/>
+			<enumeration value="X"/>
+			<enumeration value="Y"/>
+			<enumeration value="Z"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodePCNTyrePressureBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6709,7 +6762,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodePCNTyrePressureType">
 		<simpleContent>
 			<extension base="aixm:CodePCNTyrePressureBaseType">
@@ -6718,6 +6771,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodePilotControlledLightingBaseType">
+		<restriction base="string">
+			<enumeration value="STANDARD_FAA"/>
+			<enumeration value="NON_STANDARD"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodePilotControlledLightingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6731,7 +6790,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodePilotControlledLightingType">
 		<simpleContent>
 			<extension base="aixm:CodePilotControlledLightingBaseType">
@@ -6740,6 +6799,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodePositionInILSBaseType">
+		<restriction base="string">
+			<enumeration value="OUTER"/>
+			<enumeration value="MIDDLE"/>
+			<enumeration value="INNER"/>
+			<enumeration value="BACKCOURSE"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodePositionInILSBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6755,7 +6822,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodePositionInILSType">
 		<simpleContent>
 			<extension base="aixm:CodePositionInILSBaseType">
@@ -6764,6 +6831,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodePrimaryRadarBaseType">
+		<restriction base="string">
+			<enumeration value="ASR"/>
+			<enumeration value="ARSR"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodePrimaryRadarBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6777,7 +6850,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodePrimaryRadarType">
 		<simpleContent>
 			<extension base="aixm:CodePrimaryRadarBaseType">
@@ -6786,6 +6859,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeProcedureAvailabilityBaseType">
+		<restriction base="string">
+			<enumeration value="USABLE"/>
+			<enumeration value="UNUSABLE"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeProcedureAvailabilityBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6799,7 +6878,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeProcedureAvailabilityType">
 		<simpleContent>
 			<extension base="aixm:CodeProcedureAvailabilityBaseType">
@@ -6808,6 +6887,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeProcedureCodingStandardBaseType">
+		<restriction base="string">
+			<enumeration value="PANS_OPS"/>
+			<enumeration value="ARINC_424_15"/>
+			<enumeration value="ARINC_424_18"/>
+			<enumeration value="ARINC_424_19"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeProcedureCodingStandardBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6823,7 +6910,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeProcedureCodingStandardType">
 		<simpleContent>
 			<extension base="aixm:CodeProcedureCodingStandardBaseType">
@@ -6832,6 +6919,21 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeProcedureDistanceBaseType">
+		<restriction base="string">
+			<enumeration value="HAT"/>
+			<enumeration value="OM"/>
+			<enumeration value="MM"/>
+			<enumeration value="IM"/>
+			<enumeration value="PFAF"/>
+			<enumeration value="GSANT"/>
+			<enumeration value="FAF"/>
+			<enumeration value="MAP"/>
+			<enumeration value="THLD"/>
+			<enumeration value="VDP"/>
+			<enumeration value="RECH"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeProcedureDistanceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6854,7 +6956,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeProcedureDistanceType">
 		<simpleContent>
 			<extension base="aixm:CodeProcedureDistanceBaseType">
@@ -6863,6 +6965,23 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeProcedureFixRoleBaseType">
+		<restriction base="string">
+			<enumeration value="FAF"/>
+			<enumeration value="FPAP"/>
+			<enumeration value="FROP"/>
+			<enumeration value="FTP"/>
+			<enumeration value="IAF"/>
+			<enumeration value="IF"/>
+			<enumeration value="IF_IAF"/>
+			<enumeration value="LTP"/>
+			<enumeration value="MAHF"/>
+			<enumeration value="MAPT"/>
+			<enumeration value="SDF"/>
+			<enumeration value="TP"/>
+			<enumeration value="VDP"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeProcedureFixRoleBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6887,7 +7006,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeProcedureFixRoleType">
 		<simpleContent>
 			<extension base="aixm:CodeProcedureFixRoleBaseType">
@@ -6896,6 +7015,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeProcedurePhaseBaseType">
+		<restriction base="string">
+			<enumeration value="RWY"/>
+			<enumeration value="COMMON"/>
+			<enumeration value="EN_ROUTE"/>
+			<enumeration value="APPROACH"/>
+			<enumeration value="FINAL"/>
+			<enumeration value="MISSED"/>
+			<enumeration value="MISSED_P"/>
+			<enumeration value="MISSED_S"/>
+			<enumeration value="ENGINE_OUT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeProcedurePhaseBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6916,7 +7048,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeProcedurePhaseType">
 		<simpleContent>
 			<extension base="aixm:CodeProcedurePhaseBaseType">
@@ -6925,6 +7057,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeProtectAreaSectionBaseType">
+		<restriction base="string">
+			<enumeration value="EDGE"/>
+			<enumeration value="END"/>
+			<enumeration value="CL"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeProtectAreaSectionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6939,7 +7078,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeProtectAreaSectionType">
 		<simpleContent>
 			<extension base="aixm:CodeProtectAreaSectionBaseType">
@@ -6948,6 +7087,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRadarServiceBaseType">
+		<restriction base="string">
+			<enumeration value="PAR"/>
+			<enumeration value="ARSR"/>
+			<enumeration value="ASR"/>
+			<enumeration value="SSR"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRadarServiceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6963,7 +7110,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRadarServiceType">
 		<simpleContent>
 			<extension base="aixm:CodeRadarServiceBaseType">
@@ -6972,6 +7119,26 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRadioEmissionBaseType">
+		<restriction base="string">
+			<enumeration value="A2"/>
+			<enumeration value="A3A"/>
+			<enumeration value="A3B"/>
+			<enumeration value="A3E"/>
+			<enumeration value="A3H"/>
+			<enumeration value="A3J"/>
+			<enumeration value="A3L"/>
+			<enumeration value="A3U"/>
+			<enumeration value="J3E"/>
+			<enumeration value="NONA1A"/>
+			<enumeration value="NONA2A"/>
+			<enumeration value="PON"/>
+			<enumeration value="A8W"/>
+			<enumeration value="A9W"/>
+			<enumeration value="NOX"/>
+			<enumeration value="G1D"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRadioEmissionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6999,7 +7166,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRadioEmissionType">
 		<simpleContent>
 			<extension base="aixm:CodeRadioEmissionBaseType">
@@ -7008,6 +7175,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRadioFrequencyAreaBaseType">
+		<restriction base="string">
+			<enumeration value="COV"/>
+			<enumeration value="T_COV"/>
+			<enumeration value="SCL"/>
+			<enumeration value="RHG"/>
+			<enumeration value="UNREL"/>
+			<enumeration value="RES"/>
+			<enumeration value="UUS"/>
+			<enumeration value="OUT"/>
+			<enumeration value="ESV"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRadioFrequencyAreaBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7028,7 +7208,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRadioFrequencyAreaType">
 		<simpleContent>
 			<extension base="aixm:CodeRadioFrequencyAreaBaseType">
@@ -7037,6 +7217,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRadioSignalBaseType">
+		<restriction base="string">
+			<enumeration value="AZIMUTH"/>
+			<enumeration value="DISTANCE"/>
+			<enumeration value="BEAM"/>
+			<enumeration value="VOICE"/>
+			<enumeration value="DATALINK"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRadioSignalBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7053,7 +7242,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRadioSignalType">
 		<simpleContent>
 			<extension base="aixm:CodeRadioSignalBaseType">
@@ -7062,6 +7251,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeReferenceRoleBaseType">
+		<restriction base="string">
+			<enumeration value="INTERSECTION"/>
+			<enumeration value="RECNAV"/>
+			<enumeration value="ATD"/>
+			<enumeration value="RAD_DME"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeReferenceRoleBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7077,7 +7274,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeReferenceRoleType">
 		<simpleContent>
 			<extension base="aixm:CodeReferenceRoleBaseType">
@@ -7086,6 +7283,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeReflectorBaseType">
+		<restriction base="string">
+			<enumeration value="TOUCHDOWN"/>
+			<enumeration value="RUNWAY_END"/>
+			<enumeration value="REFERENCE"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeReflectorBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7100,7 +7304,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeReflectorType">
 		<simpleContent>
 			<extension base="aixm:CodeReflectorBaseType">
@@ -7109,6 +7313,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRelativePositionBaseType">
+		<restriction base="string">
+			<enumeration value="BEFORE"/>
+			<enumeration value="AT"/>
+			<enumeration value="AFTER"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRelativePositionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7123,7 +7334,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRelativePositionType">
 		<simpleContent>
 			<extension base="aixm:CodeRelativePositionBaseType">
@@ -7144,6 +7355,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRoadBaseType">
+		<restriction base="string">
+			<enumeration value="SERVICE"/>
+			<enumeration value="PUBLIC"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRoadBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7157,7 +7374,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRoadType">
 		<simpleContent>
 			<extension base="aixm:CodeRoadBaseType">
@@ -7166,6 +7383,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRouteAvailabilityBaseType">
+		<restriction base="string">
+			<enumeration value="OPEN"/>
+			<enumeration value="COND"/>
+			<enumeration value="CLSD"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRouteAvailabilityBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7180,7 +7404,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRouteAvailabilityType">
 		<simpleContent>
 			<extension base="aixm:CodeRouteAvailabilityBaseType">
@@ -7189,6 +7413,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRouteBaseType">
+		<restriction base="string">
+			<enumeration value="ATS"/>
+			<enumeration value="NAT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRouteBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7202,8 +7432,28 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeRouteDesignatorLetterBaseType">
+		<restriction base="string">
+			<enumeration value="A"/>
+			<enumeration value="B"/>
+			<enumeration value="G"/>
+			<enumeration value="H"/>
+			<enumeration value="J"/>
+			<enumeration value="L"/>
+			<enumeration value="M"/>
+			<enumeration value="N"/>
+			<enumeration value="P"/>
+			<enumeration value="Q"/>
+			<enumeration value="R"/>
+			<enumeration value="T"/>
+			<enumeration value="V"/>
+			<enumeration value="W"/>
+			<enumeration value="Y"/>
+			<enumeration value="Z"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRouteDesignatorLetterBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7231,7 +7481,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRouteDesignatorLetterType">
 		<simpleContent>
 			<extension base="aixm:CodeRouteDesignatorLetterBaseType">
@@ -7240,6 +7490,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRouteDesignatorPrefixBaseType">
+		<restriction base="string">
+			<enumeration value="K"/>
+			<enumeration value="U"/>
+			<enumeration value="S"/>
+			<enumeration value="T"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRouteDesignatorPrefixBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7255,7 +7513,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRouteDesignatorPrefixType">
 		<simpleContent>
 			<extension base="aixm:CodeRouteDesignatorPrefixBaseType">
@@ -7264,6 +7522,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRouteDesignatorSuffixBaseType">
+		<restriction base="string">
+			<enumeration value="F"/>
+			<enumeration value="G"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRouteDesignatorSuffixBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7277,7 +7541,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRouteDesignatorSuffixType">
 		<simpleContent>
 			<extension base="aixm:CodeRouteDesignatorSuffixBaseType">
@@ -7286,6 +7550,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRouteNavigationBaseType">
+		<restriction base="string">
+			<enumeration value="CONV"/>
+			<enumeration value="RNAV"/>
+			<enumeration value="TACAN"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRouteNavigationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7300,7 +7571,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRouteNavigationType">
 		<simpleContent>
 			<extension base="aixm:CodeRouteNavigationBaseType">
@@ -7309,6 +7580,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRouteOriginBaseType">
+		<restriction base="string">
+			<enumeration value="INTL"/>
+			<enumeration value="DOM"/>
+			<enumeration value="BOTH"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRouteOriginBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7323,7 +7601,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRouteOriginType">
 		<simpleContent>
 			<extension base="aixm:CodeRouteOriginBaseType">
@@ -7332,6 +7610,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRouteSegmentPathBaseType">
+		<restriction base="string">
+			<enumeration value="GRC"/>
+			<enumeration value="RHL"/>
+			<enumeration value="GDS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRouteSegmentPathBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7346,7 +7631,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRouteSegmentPathType">
 		<simpleContent>
 			<extension base="aixm:CodeRouteSegmentPathBaseType">
@@ -7362,6 +7647,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRuleProcedureBaseType">
+		<restriction base="string">
+			<enumeration value="RULE"/>
+			<enumeration value="LAW"/>
+			<enumeration value="PROCEDURE"/>
+			<enumeration value="PRACTICE"/>
+			<enumeration value="ICAO_DIFF"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRuleProcedureBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7378,8 +7672,48 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeRuleProcedureTitleBaseType">
+		<restriction base="string">
+			<enumeration value="ENTRY_TRANSIT_DEPARTURE_OF_AIRCRAFT"/>
+			<enumeration value="ENTRY_TRANSIT_DEPARTURE_SCHEDULED"/>
+			<enumeration value="ENTRY_TRANSIT_DEPARTURE_NON_SCHEDULED"/>
+			<enumeration value="ENTRY_TRANSIT_DEPARTURE_PRIVATE"/>
+			<enumeration value="PUBLIC_HEALTH_MEASURES_AIRCRAFT"/>
+			<enumeration value="CUSTOMS_REQUIREMENTS"/>
+			<enumeration value="IMMIGRATION_REQUIREMENTS"/>
+			<enumeration value="PUBLIC_HEALTH_MEASURES_PASSENGERS"/>
+			<enumeration value="ENTRY_TRANSIT_DEPARTURE_CARGO"/>
+			<enumeration value="AIRCRAFT_INSTRUMENTS_EQUIPMENT_FLIGHT_DOCUMENTS"/>
+			<enumeration value="NATIONAL_REGULATIONS"/>
+			<enumeration value="INTERNATIONAL_AGREEMENTS_CONVENTIONS"/>
+			<enumeration value="DIFFERENCES_ICAO_STANDARDS_RECOMMENDED_PRACTICES_PROCEDURES"/>
+			<enumeration value="MEASURING_SYSTEM_AIRCRAFT_MARKINGS_HOLIDAYS"/>
+			<enumeration value="ABBREVIATIONS_AIS_PUBLICATIONS"/>
+			<enumeration value="AERODROME_HELIPORT_CHARGES"/>
+			<enumeration value="AIR_NAVIGATION_SERVICES_CHARGES"/>
+			<enumeration value="FLIGHT_RULES_GENERAL"/>
+			<enumeration value="VISUAL_FLIGHT_RULES"/>
+			<enumeration value="INSTRUMENT_FLIGHT_RULES"/>
+			<enumeration value="ATS_AIRSPACE_CLASSIFICATION"/>
+			<enumeration value="HOLDING_APPROACH_DEPARTURE_PROCEDURES"/>
+			<enumeration value="ATS_SURVEILLANCE_SERVICES_PROCEDURES"/>
+			<enumeration value="ALTIMETER_SETTING_PROCEDURES"/>
+			<enumeration value="REGIONAL_SUPPLEMENTARY_PROCEDURES"/>
+			<enumeration value="AIR_TRAFFIC_FLOW_MANAGEMENT"/>
+			<enumeration value="FLIGHT_PLANNING"/>
+			<enumeration value="ADDRESSING_FLIGHT_PLAN_MESSAGES"/>
+			<enumeration value="INTERCEPTION_CIVIL_AIRCRAFT"/>
+			<enumeration value="UNLAWFUL_INTERFERENCE"/>
+			<enumeration value="AIR_TRAFFIC_INCIDENTS"/>
+			<enumeration value="AERODROME_HELIPORT_AVAILABILITY"/>
+			<enumeration value="LOCAL_TRAFFIC_REGULATIONS"/>
+			<enumeration value="NOISE_ABATEMENT_PROCEDURES"/>
+			<enumeration value="AERODROME_FLIGHT_PROCEDURES"/>
+			<enumeration value="AERODROME_BIRD_CONCENTRATION"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRuleProcedureTitleBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7427,7 +7761,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRuleProcedureTitleType">
 		<simpleContent>
 			<extension base="aixm:CodeRuleProcedureTitleBaseType">
@@ -7443,6 +7777,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRunwayBaseType">
+		<restriction base="string">
+			<enumeration value="RWY"/>
+			<enumeration value="FATO"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRunwayBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7456,8 +7796,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeRunwayElementBaseType">
+		<restriction base="string">
+			<enumeration value="NORMAL"/>
+			<enumeration value="INTERSECTION"/>
+			<enumeration value="DISPLACED"/>
+			<enumeration value="SHOULDER"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRunwayElementBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7473,7 +7821,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRunwayElementType">
 		<simpleContent>
 			<extension base="aixm:CodeRunwayElementBaseType">
@@ -7482,6 +7830,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRunwayMarkingBaseType">
+		<restriction base="string">
+			<enumeration value="PRECISION"/>
+			<enumeration value="NONPRECISION"/>
+			<enumeration value="BASIC"/>
+			<enumeration value="NONE"/>
+			<enumeration value="RUNWAY_NUMBERS"/>
+			<enumeration value="NON_STANDARD"/>
+			<enumeration value="HELIPORT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRunwayMarkingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7500,7 +7859,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRunwayMarkingType">
 		<simpleContent>
 			<extension base="aixm:CodeRunwayMarkingBaseType">
@@ -7509,6 +7868,23 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRunwayPointRoleBaseType">
+		<restriction base="string">
+			<enumeration value="START"/>
+			<enumeration value="THR"/>
+			<enumeration value="DISTHR"/>
+			<enumeration value="TDZ"/>
+			<enumeration value="MID"/>
+			<enumeration value="END"/>
+			<enumeration value="START_RUN"/>
+			<enumeration value="LAHSO"/>
+			<enumeration value="ABEAM_GLIDESLOPE"/>
+			<enumeration value="ABEAM_PAR"/>
+			<enumeration value="ABEAM_ELEVATION"/>
+			<enumeration value="ABEAM_TDR"/>
+			<enumeration value="ABEAM_RER"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRunwayPointRoleBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7533,7 +7909,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRunwayPointRoleType">
 		<simpleContent>
 			<extension base="aixm:CodeRunwayPointRoleBaseType">
@@ -7542,6 +7918,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRunwayProtectionAreaBaseType">
+		<restriction base="string">
+			<enumeration value="CWY"/>
+			<enumeration value="RESA"/>
+			<enumeration value="OFZ"/>
+			<enumeration value="IOFZ"/>
+			<enumeration value="POFZ"/>
+			<enumeration value="ILS"/>
+			<enumeration value="VGSI"/>
+			<enumeration value="STOPWAY"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRunwayProtectionAreaBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7561,7 +7949,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRunwayProtectionAreaType">
 		<simpleContent>
 			<extension base="aixm:CodeRunwayProtectionAreaBaseType">
@@ -7570,6 +7958,24 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRunwaySectionBaseType">
+		<restriction base="string">
+			<enumeration value="TDZ"/>
+			<enumeration value="AIM"/>
+			<enumeration value="CL"/>
+			<enumeration value="EDGE"/>
+			<enumeration value="THR"/>
+			<enumeration value="DESIG"/>
+			<enumeration value="AFT_THR"/>
+			<enumeration value="DTHR"/>
+			<enumeration value="END"/>
+			<enumeration value="TWY_INT"/>
+			<enumeration value="RPD_TWY_INT"/>
+			<enumeration value="1_THIRD"/>
+			<enumeration value="2_THIRD"/>
+			<enumeration value="3_THIRD"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRunwaySectionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7595,7 +8001,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRunwaySectionType">
 		<simpleContent>
 			<extension base="aixm:CodeRunwaySectionBaseType">
@@ -7611,6 +8017,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRVRReadingBaseType">
+		<restriction base="string">
+			<enumeration value="TDZ"/>
+			<enumeration value="MID"/>
+			<enumeration value="TO"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRVRReadingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7625,7 +8038,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRVRReadingType">
 		<simpleContent>
 			<extension base="aixm:CodeRVRReadingBaseType">
@@ -7634,6 +8047,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeRVSMBaseType">
+		<restriction base="string">
+			<enumeration value="RVSM"/>
+			<enumeration value="NON_RVSM"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRVSMBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7647,8 +8066,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeRVSMPointRoleBaseType">
+		<restriction base="string">
+			<enumeration value="IN"/>
+			<enumeration value="OUT"/>
+			<enumeration value="IN_OUT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeRVSMPointRoleBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7663,7 +8089,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeRVSMPointRoleType">
 		<simpleContent>
 			<extension base="aixm:CodeRVSMPointRoleBaseType">
@@ -7679,6 +8105,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSafeAltitudeBaseType">
+		<restriction base="string">
+			<enumeration value="MSA"/>
+			<enumeration value="ESA"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSafeAltitudeBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7692,7 +8124,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSafeAltitudeType">
 		<simpleContent>
 			<extension base="aixm:CodeSafeAltitudeBaseType">
@@ -7701,6 +8133,35 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSegmentPathBaseType">
+		<restriction base="string">
+			<enumeration value="AF"/>
+			<enumeration value="HF"/>
+			<enumeration value="HA"/>
+			<enumeration value="HM"/>
+			<enumeration value="IF"/>
+			<enumeration value="PI"/>
+			<enumeration value="PT"/>
+			<enumeration value="TF"/>
+			<enumeration value="CA"/>
+			<enumeration value="CD"/>
+			<enumeration value="CI"/>
+			<enumeration value="CR"/>
+			<enumeration value="CF"/>
+			<enumeration value="DF"/>
+			<enumeration value="FA"/>
+			<enumeration value="FC"/>
+			<enumeration value="FT"/>
+			<enumeration value="FM"/>
+			<enumeration value="VM"/>
+			<enumeration value="FD"/>
+			<enumeration value="VR"/>
+			<enumeration value="VD"/>
+			<enumeration value="VI"/>
+			<enumeration value="VA"/>
+			<enumeration value="RF"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSegmentPathBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7737,7 +8198,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSegmentPathType">
 		<simpleContent>
 			<extension base="aixm:CodeSegmentPathBaseType">
@@ -7746,6 +8207,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSegmentTerminationBaseType">
+		<restriction base="string">
+			<enumeration value="ALTITUDE"/>
+			<enumeration value="DISTANCE"/>
+			<enumeration value="DURATION"/>
+			<enumeration value="INTERCEPT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSegmentTerminationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7761,7 +8230,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSegmentTerminationType">
 		<simpleContent>
 			<extension base="aixm:CodeSegmentTerminationBaseType">
@@ -7770,7 +8239,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeServiceATCBaseType">
-		<union>
+		<restriction base="string">
+			<enumeration value="ACS"/>
+			<enumeration value="UAC"/>
+			<enumeration value="OACS"/>
+			<enumeration value="APP"/>
+			<enumeration value="TWR"/>
+			<enumeration value="ADVS"/>
+			<enumeration value="EFAS"/>
+			<enumeration value="CTAF"/>
+		</restriction>
+	</simpleType>
+	<!-- <simpleType name="CodeServiceATCBaseType"> -->
+<!-- 		<union>
 			<simpleType>
 				<restriction base="string">
 					<enumeration value="ACS"/>
@@ -7789,7 +8270,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeServiceATCType">
 		<simpleContent>
 			<extension base="aixm:CodeServiceATCBaseType">
@@ -7798,6 +8279,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeServiceATFMBaseType">
+		<restriction base="string">
+			<enumeration value="FPL"/>
+			<enumeration value="FPLV"/>
+			<enumeration value="ATFM"/>
+			<enumeration value="CLEARANCE"/>
+			<enumeration value="SCHED"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeServiceATFMBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7814,7 +8304,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeServiceATFMType">
 		<simpleContent>
 			<extension base="aixm:CodeServiceATFMBaseType">
@@ -7823,6 +8313,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeServiceGroundControlBaseType">
+		<restriction base="string">
+			<enumeration value="TWR"/>
+			<enumeration value="SMGCS"/>
+			<enumeration value="TAXI"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeServiceGroundControlBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7837,7 +8334,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeServiceGroundControlType">
 		<simpleContent>
 			<extension base="aixm:CodeServiceGroundControlBaseType">
@@ -7846,6 +8343,28 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeServiceInformationBaseType">
+		<restriction base="string">
+			<enumeration value="AFIS"/>
+			<enumeration value="AIS"/>
+			<enumeration value="ATIS"/>
+			<enumeration value="BRIEFING"/>
+			<enumeration value="FIS"/>
+			<enumeration value="OFIS_VHF"/>
+			<enumeration value="OFIS_HF"/>
+			<enumeration value="NOTAM"/>
+			<enumeration value="INFO"/>
+			<enumeration value="RAF"/>
+			<enumeration value="METAR"/>
+			<enumeration value="SIGMET"/>
+			<enumeration value="TWEB"/>
+			<enumeration value="TAF"/>
+			<enumeration value="VOLMET"/>
+			<enumeration value="ALTIMETER"/>
+			<enumeration value="ASOS"/>
+			<enumeration value="AWOS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeServiceInformationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7875,7 +8394,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeServiceInformationType">
 		<simpleContent>
 			<extension base="aixm:CodeServiceInformationBaseType">
@@ -7884,6 +8403,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeServiceSARBaseType">
+		<restriction base="string">
+			<enumeration value="ALRS"/>
+			<enumeration value="SAR"/>
+			<enumeration value="RCC"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeServiceSARBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7898,7 +8424,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeServiceSARType">
 		<simpleContent>
 			<extension base="aixm:CodeServiceSARBaseType">
@@ -7907,6 +8433,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSideBaseType">
+		<restriction base="string">
+			<enumeration value="LEFT"/>
+			<enumeration value="RIGHT"/>
+			<enumeration value="BOTH"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSideBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7921,7 +8454,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSideType">
 		<simpleContent>
 			<extension base="aixm:CodeSideBaseType">
@@ -7930,6 +8463,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSignalPerformanceILSBaseType">
+		<restriction base="string">
+			<enumeration value="I"/>
+			<enumeration value="II"/>
+			<enumeration value="III"/>
+			<enumeration value="IIIA"/>
+			<enumeration value="IIIB"/>
+			<enumeration value="IIIC"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSignalPerformanceILSBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7947,7 +8490,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSignalPerformanceILSType">
 		<simpleContent>
 			<extension base="aixm:CodeSignalPerformanceILSBaseType">
@@ -7956,6 +8499,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSpecialDateBaseType">
+		<restriction base="string">
+			<enumeration value="HOL"/>
+			<enumeration value="BUSY_FRI"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSpecialDateBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -7969,7 +8518,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSpecialDateType">
 		<simpleContent>
 			<extension base="aixm:CodeSpecialDateBaseType">
@@ -7991,6 +8540,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSpecialNavigationStationBaseType">
+		<restriction base="string">
+			<enumeration value="MASTER"/>
+			<enumeration value="SLAVE"/>
+			<enumeration value="RED_SLAVE"/>
+			<enumeration value="GREEN_SLAVE"/>
+			<enumeration value="PURPLE_SLAVE"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSpecialNavigationStationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8007,7 +8565,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSpecialNavigationStationType">
 		<simpleContent>
 			<extension base="aixm:CodeSpecialNavigationStationBaseType">
@@ -8016,6 +8574,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSpecialNavigationSystemBaseType">
+		<restriction base="string">
+			<enumeration value="LORANA"/>
+			<enumeration value="LORANC"/>
+			<enumeration value="LORAND"/>
+			<enumeration value="DECCA"/>
+			<enumeration value="GNSS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSpecialNavigationSystemBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8032,7 +8599,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSpecialNavigationSystemType">
 		<simpleContent>
 			<extension base="aixm:CodeSpecialNavigationSystemBaseType">
@@ -8041,6 +8608,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSpeedReferenceBaseType">
+		<restriction base="string">
+			<enumeration value="IAS"/>
+			<enumeration value="TAS"/>
+			<enumeration value="GS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSpeedReferenceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8055,7 +8629,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSpeedReferenceType">
 		<simpleContent>
 			<extension base="aixm:CodeSpeedReferenceBaseType">
@@ -8064,6 +8638,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeStandbyPowerBaseType">
+		<restriction base="string">
+			<enumeration value="BATTERY"/>
+			<enumeration value="COMMERCIAL"/>
+			<enumeration value="GENERATOR"/>
+			<enumeration value="UNKNOWN"/>
+			<enumeration value="NONE"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeStandbyPowerBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8080,7 +8663,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeStandbyPowerType">
 		<simpleContent>
 			<extension base="aixm:CodeStandbyPowerBaseType">
@@ -8089,6 +8672,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeStatusAirportBaseType">
+		<restriction base="string">
+			<enumeration value="NORMAL"/>
+			<enumeration value="LIMITED"/>
+			<enumeration value="CLOSED"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeStatusAirportBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8103,7 +8693,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeStatusAirportType">
 		<simpleContent>
 			<extension base="aixm:CodeStatusAirportBaseType">
@@ -8112,6 +8702,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeStatusAirspaceBaseType">
+		<restriction base="string">
+			<enumeration value="AVBL_FOR_ACTIVATION"/>
+			<enumeration value="ACTIVE"/>
+			<enumeration value="IN_USE"/>
+			<enumeration value="INACTIVE"/>
+			<enumeration value="INTERMITTENT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeStatusAirspaceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8128,7 +8727,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeStatusAirspaceType">
 		<simpleContent>
 			<extension base="aixm:CodeStatusAirspaceBaseType">
@@ -8137,6 +8736,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeStatusConstructionBaseType">
+		<restriction base="string">
+			<enumeration value="IN_CONSTRUCTION"/>
+			<enumeration value="COMPLETED"/>
+			<enumeration value="DEMOLITION_PLANNED"/>
+			<enumeration value="IN_DEMOLITION"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeStatusConstructionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8152,7 +8759,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeStatusConstructionType">
 		<simpleContent>
 			<extension base="aixm:CodeStatusConstructionBaseType">
@@ -8161,6 +8768,22 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeStatusNavaidBaseType">
+		<union>
+			<simpleType>
+		<restriction base="string">
+			<enumeration value="OPERATIONAL"/>
+			<enumeration value="UNSERVICEABLE"/>
+			<enumeration value="ONTEST"/>
+			<enumeration value="INTERRUPT"/>
+			<enumeration value="PARTIAL"/>
+			<enumeration value="CONDITIONAL"/>
+			<enumeration value="FALSE_INDICATION"/>
+			<enumeration value="FALSE_POSSIBLE"/>
+			<enumeration value="DISPLACED"/>
+			<enumeration value="IN_CONSTRUCTION"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeStatusNavaidBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8183,7 +8806,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			</simpleType>
 		</union>
 	</simpleType>
-	<complexType name="CodeStatusNavaidType">
+ -->	<complexType name="CodeStatusNavaidType">
 		<simpleContent>
 			<extension base="aixm:CodeStatusNavaidBaseType">
 				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>

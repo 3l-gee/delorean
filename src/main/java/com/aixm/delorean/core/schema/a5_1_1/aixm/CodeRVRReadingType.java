@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRVRReadingType {
 
     @XmlValue
-    protected String value;
+    protected CodeRVRReadingBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeRVRReadingType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeRVRReadingBaseType }
      *     
      */
-    public String getValue() {
+    public CodeRVRReadingBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeRVRReadingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeRVRReadingBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeRVRReadingBaseType value) {
         this.value = value;
     }
 

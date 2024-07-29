@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRVSMType {
 
     @XmlValue
-    protected String value;
+    protected CodeRVSMBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeRVSMType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeRVSMBaseType }
      *     
      */
-    public String getValue() {
+    public CodeRVSMBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeRVSMType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeRVSMBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeRVSMBaseType value) {
         this.value = value;
     }
 

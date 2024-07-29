@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePCNTyrePressureType {
 
     @XmlValue
-    protected String value;
+    protected CodePCNTyrePressureBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodePCNTyrePressureType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodePCNTyrePressureBaseType }
      *     
      */
-    public String getValue() {
+    public CodePCNTyrePressureBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodePCNTyrePressureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodePCNTyrePressureBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodePCNTyrePressureBaseType value) {
         this.value = value;
     }
 

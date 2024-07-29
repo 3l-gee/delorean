@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProcedureCodingStandardType {
 
     @XmlValue
-    protected String value;
+    protected CodeProcedureCodingStandardBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeProcedureCodingStandardType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeProcedureCodingStandardBaseType }
      *     
      */
-    public String getValue() {
+    public CodeProcedureCodingStandardBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeProcedureCodingStandardType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeProcedureCodingStandardBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeProcedureCodingStandardBaseType value) {
         this.value = value;
     }
 

@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProcedurePhaseType {
 
     @XmlValue
-    protected String value;
+    protected CodeProcedurePhaseBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeProcedurePhaseType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeProcedurePhaseBaseType }
      *     
      */
-    public String getValue() {
+    public CodeProcedurePhaseBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeProcedurePhaseType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeProcedurePhaseBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeProcedurePhaseBaseType value) {
         this.value = value;
     }
 

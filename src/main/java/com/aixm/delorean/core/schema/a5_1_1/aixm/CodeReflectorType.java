@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeReflectorType {
 
     @XmlValue
-    protected String value;
+    protected CodeReflectorBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeReflectorType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeReflectorBaseType }
      *     
      */
-    public String getValue() {
+    public CodeReflectorBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeReflectorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeReflectorBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeReflectorBaseType value) {
         this.value = value;
     }
 

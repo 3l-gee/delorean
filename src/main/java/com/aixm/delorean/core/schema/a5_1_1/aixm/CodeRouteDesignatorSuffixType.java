@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRouteDesignatorSuffixType {
 
     @XmlValue
-    protected String value;
+    protected CodeRouteDesignatorSuffixBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeRouteDesignatorSuffixType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeRouteDesignatorSuffixBaseType }
      *     
      */
-    public String getValue() {
+    public CodeRouteDesignatorSuffixBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeRouteDesignatorSuffixType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeRouteDesignatorSuffixBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeRouteDesignatorSuffixBaseType value) {
         this.value = value;
     }
 

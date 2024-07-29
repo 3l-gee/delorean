@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePCNPavementType {
 
     @XmlValue
-    protected String value;
+    protected CodePCNPavementBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodePCNPavementType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodePCNPavementBaseType }
      *     
      */
-    public String getValue() {
+    public CodePCNPavementBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodePCNPavementType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodePCNPavementBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodePCNPavementBaseType value) {
         this.value = value;
     }
 
