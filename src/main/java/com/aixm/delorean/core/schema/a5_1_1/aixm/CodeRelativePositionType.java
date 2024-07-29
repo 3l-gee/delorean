@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRelativePositionType {
 
     @XmlValue
-    protected String value;
+    protected CodeRelativePositionBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeRelativePositionType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeRelativePositionBaseType }
      *     
      */
-    public String getValue() {
+    public CodeRelativePositionBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeRelativePositionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeRelativePositionBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeRelativePositionBaseType value) {
         this.value = value;
     }
 

@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePCNMethodType {
 
     @XmlValue
-    protected String value;
+    protected CodePCNMethodBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodePCNMethodType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodePCNMethodBaseType }
      *     
      */
-    public String getValue() {
+    public CodePCNMethodBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodePCNMethodType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodePCNMethodBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodePCNMethodBaseType value) {
         this.value = value;
     }
 

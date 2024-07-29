@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePilotControlledLightingType {
 
     @XmlValue
-    protected String value;
+    protected CodePilotControlledLightingBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodePilotControlledLightingType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodePilotControlledLightingBaseType }
      *     
      */
-    public String getValue() {
+    public CodePilotControlledLightingBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodePilotControlledLightingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodePilotControlledLightingBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodePilotControlledLightingBaseType value) {
         this.value = value;
     }
 

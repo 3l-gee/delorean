@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProcedureDistanceType {
 
     @XmlValue
-    protected String value;
+    protected CodeProcedureDistanceBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeProcedureDistanceType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeProcedureDistanceBaseType }
      *     
      */
-    public String getValue() {
+    public CodeProcedureDistanceBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeProcedureDistanceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeProcedureDistanceBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeProcedureDistanceBaseType value) {
         this.value = value;
     }
 

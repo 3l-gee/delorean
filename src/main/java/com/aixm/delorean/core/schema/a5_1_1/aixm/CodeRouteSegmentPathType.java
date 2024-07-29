@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRouteSegmentPathType {
 
     @XmlValue
-    protected String value;
+    protected CodeRouteSegmentPathBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeRouteSegmentPathType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeRouteSegmentPathBaseType }
      *     
      */
-    public String getValue() {
+    public CodeRouteSegmentPathBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeRouteSegmentPathType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeRouteSegmentPathBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeRouteSegmentPathBaseType value) {
         this.value = value;
     }
 

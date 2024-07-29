@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRouteDesignatorLetterType {
 
     @XmlValue
-    protected String value;
+    protected CodeRouteDesignatorLetterBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeRouteDesignatorLetterType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeRouteDesignatorLetterBaseType }
      *     
      */
-    public String getValue() {
+    public CodeRouteDesignatorLetterBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeRouteDesignatorLetterType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeRouteDesignatorLetterBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeRouteDesignatorLetterBaseType value) {
         this.value = value;
     }
 

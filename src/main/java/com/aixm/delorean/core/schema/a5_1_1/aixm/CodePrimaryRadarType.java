@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePrimaryRadarType {
 
     @XmlValue
-    protected String value;
+    protected CodePrimaryRadarBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodePrimaryRadarType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodePrimaryRadarBaseType }
      *     
      */
-    public String getValue() {
+    public CodePrimaryRadarBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodePrimaryRadarType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodePrimaryRadarBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodePrimaryRadarBaseType value) {
         this.value = value;
     }
 

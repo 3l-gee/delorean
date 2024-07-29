@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRadioFrequencyAreaType {
 
     @XmlValue
-    protected String value;
+    protected CodeRadioFrequencyAreaBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeRadioFrequencyAreaType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeRadioFrequencyAreaBaseType }
      *     
      */
-    public String getValue() {
+    public CodeRadioFrequencyAreaBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeRadioFrequencyAreaType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeRadioFrequencyAreaBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeRadioFrequencyAreaBaseType value) {
         this.value = value;
     }
 

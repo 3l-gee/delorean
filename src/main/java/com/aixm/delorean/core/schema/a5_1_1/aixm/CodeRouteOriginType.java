@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRouteOriginType {
 
     @XmlValue
-    protected String value;
+    protected CodeRouteOriginBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeRouteOriginType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeRouteOriginBaseType }
      *     
      */
-    public String getValue() {
+    public CodeRouteOriginBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeRouteOriginType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeRouteOriginBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeRouteOriginBaseType value) {
         this.value = value;
     }
 
