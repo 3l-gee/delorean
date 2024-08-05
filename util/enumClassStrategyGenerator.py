@@ -21,138 +21,131 @@ def generate_jaxb_bindings(input_str):
 # Example usage
 input_str_list = [
 """
-	<simpleType name="CodeServiceInformationBaseType">
+	<simpleType name="UomDistanceVerticalType">
 		<restriction base="string">
-			<enumeration value="AFIS"/>
-			<enumeration value="AIS"/>
-			<enumeration value="ATIS"/>
-			<enumeration value="BRIEFING"/>
-			<enumeration value="FIS"/>
-			<enumeration value="OFIS_VHF"/>
-			<enumeration value="OFIS_HF"/>
-			<enumeration value="NOTAM"/>
-			<enumeration value="INFO"/>
-			<enumeration value="RAF"/>
-			<enumeration value="METAR"/>
-			<enumeration value="SIGMET"/>
-			<enumeration value="TWEB"/>
-			<enumeration value="TAF"/>
-			<enumeration value="VOLMET"/>
-			<enumeration value="ALTIMETER"/>
-			<enumeration value="ASOS"/>
-			<enumeration value="AWOS"/>
+			<enumeration value="FT"/>
+			<enumeration value="M"/>
+			<enumeration value="FL"/>
+			<enumeration value="SM"/>
 		</restriction>
 	</simpleType>
 """,
 """
-	<simpleType name="CodeServiceSARBaseType">
+	<simpleType name="UomDurationType">
 		<restriction base="string">
-			<enumeration value="ALRS"/>
-			<enumeration value="SAR"/>
-			<enumeration value="RCC"/>
+			<enumeration value="HR"/>
+			<enumeration value="MIN"/>
+			<enumeration value="SEC"/>
 		</restriction>
 	</simpleType>
 """,
 """
-	<simpleType name="CodeSideBaseType">
+	<simpleType name="UomFLType">
 		<restriction base="string">
-			<enumeration value="LEFT"/>
-			<enumeration value="RIGHT"/>
-			<enumeration value="BOTH"/>
+			<enumeration value="FL"/>
+			<enumeration value="SM"/>
 		</restriction>
 	</simpleType>
 """,
 """ 	
-	<simpleType name="CodeSignalPerformanceILSBaseType">
+	<simpleType name="UomFrequencyType">
 		<restriction base="string">
-			<enumeration value="I"/>
-			<enumeration value="II"/>
-			<enumeration value="III"/>
-			<enumeration value="IIIA"/>
-			<enumeration value="IIIB"/>
-			<enumeration value="IIIC"/>
+			<enumeration value="HZ"/>
+			<enumeration value="KHZ"/>
+			<enumeration value="MHZ"/>
+			<enumeration value="GHZ"/>
 		</restriction>
 	</simpleType>
 """,
 """
-	<simpleType name="CodeSpecialDateBaseType">
+	<simpleType name="UomLightIntensityType">
 		<restriction base="string">
-			<enumeration value="HOL"/>
-			<enumeration value="BUSY_FRI"/>
+			<enumeration value="CD"/>
 		</restriction>
 	</simpleType>
 """,
 """
-	<simpleType name="CodeSpecialNavigationStationBaseType">
+	<simpleType name="UomPressureType">
 		<restriction base="string">
-			<enumeration value="MASTER"/>
-			<enumeration value="SLAVE"/>
-			<enumeration value="RED_SLAVE"/>
-			<enumeration value="GREEN_SLAVE"/>
-			<enumeration value="PURPLE_SLAVE"/>
+			<enumeration value="PA"/>
+			<enumeration value="MPA"/>
+			<enumeration value="PSI"/>
+			<enumeration value="BAR"/>
+			<enumeration value="TORR"/>
+			<enumeration value="ATM"/>
+			<enumeration value="HPA"/>
 		</restriction>
 	</simpleType>
 """,    
 """	
-	<simpleType name="CodeSpecialNavigationSystemBaseType">
+	<simpleType name="UomSpeedType">
 		<restriction base="string">
-			<enumeration value="LORANA"/>
-			<enumeration value="LORANC"/>
-			<enumeration value="LORAND"/>
-			<enumeration value="DECCA"/>
-			<enumeration value="GNSS"/>
+			<enumeration value="KM_H"/>
+			<enumeration value="KT"/>
+			<enumeration value="MACH"/>
+			<enumeration value="M_MIN"/>
+			<enumeration value="FT_MIN"/>
+			<enumeration value="M_SEC"/>
+			<enumeration value="FT_SEC"/>
+			<enumeration value="MPH"/>
 		</restriction>
 	</simpleType>
 """,
 """
-	<simpleType name="CodeSpeedReferenceBaseType">
+	<simpleType name="UomTemperatureType">
 		<restriction base="string">
-			<enumeration value="IAS"/>
-			<enumeration value="TAS"/>
-			<enumeration value="GS"/>
+			<enumeration value="C"/>
+			<enumeration value="F"/>
+			<enumeration value="K"/>
 		</restriction>
-	</simpleType>
+	</simpleType>	
 """,
 """
-	<simpleType name="CodeStandbyPowerBaseType">
+	<simpleType name="UomWeightType">
 		<restriction base="string">
-			<enumeration value="BATTERY"/>
-			<enumeration value="COMMERCIAL"/>
-			<enumeration value="GENERATOR"/>
-			<enumeration value="UNKNOWN"/>
-			<enumeration value="NONE"/>
+			<enumeration value="KG"/>
+			<enumeration value="T"/>
+			<enumeration value="LB"/>
+			<enumeration value="TON"/>
 		</restriction>
 	</simpleType>
+"""]
+
+input_str_list_empty = [
+"""
+
 """,
 """
-	<simpleType name="CodeStatusAirportBaseType">
-		<restriction base="string">
-			<enumeration value="NORMAL"/>
-			<enumeration value="LIMITED"/>
-			<enumeration value="CLOSED"/>
-		</restriction>
-	</simpleType>
+
 """,
 """
-	<simpleType name="CodeStatusAirspaceBaseType">
-		<restriction base="string">
-			<enumeration value="AVBL_FOR_ACTIVATION"/>
-			<enumeration value="ACTIVE"/>
-			<enumeration value="IN_USE"/>
-			<enumeration value="INACTIVE"/>
-			<enumeration value="INTERMITTENT"/>
-		</restriction>
-	</simpleType>
+
+""",
+""" 	
+
 """,
 """
-	<simpleType name="CodeStatusConstructionBaseType">
-		<restriction base="string">
-			<enumeration value="IN_CONSTRUCTION"/>
-			<enumeration value="COMPLETED"/>
-			<enumeration value="DEMOLITION_PLANNED"/>
-			<enumeration value="IN_DEMOLITION"/>
-		</restriction>
-	</simpleType>
+
+""",
+"""
+
+""",    
+"""	
+
+""",
+"""
+
+""",
+"""
+
+""",
+"""
+
+""",
+"""
+
+""",
+"""
 
 """,
 """
@@ -167,7 +160,6 @@ input_str_list = [
 """
 
 """]
-
 
 for input_str in input_str_list:
     print(generate_jaxb_bindings(input_str))

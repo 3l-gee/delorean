@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeStandbyPowerType {
 
     @XmlValue
-    protected String value;
+    protected CodeStandbyPowerBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeStandbyPowerType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeStandbyPowerBaseType }
      *     
      */
-    public String getValue() {
+    public CodeStandbyPowerBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeStandbyPowerType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeStandbyPowerBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeStandbyPowerBaseType value) {
         this.value = value;
     }
 

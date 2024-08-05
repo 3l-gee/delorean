@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTelecomNetworkType {
 
     @XmlValue
-    protected String value;
+    protected CodeTelecomNetworkBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeTelecomNetworkType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeTelecomNetworkBaseType }
      *     
      */
-    public String getValue() {
+    public CodeTelecomNetworkBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeTelecomNetworkType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeTelecomNetworkBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeTelecomNetworkBaseType value) {
         this.value = value;
     }
 

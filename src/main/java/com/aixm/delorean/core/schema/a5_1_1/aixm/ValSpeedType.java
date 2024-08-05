@@ -44,7 +44,7 @@ public class ValSpeedType {
     @DecimalMin(value = "0", inclusive = true)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomSpeedType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -81,10 +81,10 @@ public class ValSpeedType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomSpeedType }
      *     
      */
-    public String getUom() {
+    public UomSpeedType getUom() {
         return uom;
     }
 
@@ -93,10 +93,10 @@ public class ValSpeedType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomSpeedType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomSpeedType value) {
         this.uom = value;
     }
 

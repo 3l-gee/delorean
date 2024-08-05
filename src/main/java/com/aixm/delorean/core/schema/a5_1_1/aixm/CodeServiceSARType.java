@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeServiceSARType {
 
     @XmlValue
-    protected String value;
+    protected CodeServiceSARBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeServiceSARType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeServiceSARBaseType }
      *     
      */
-    public String getValue() {
+    public CodeServiceSARBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeServiceSARType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeServiceSARBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeServiceSARBaseType value) {
         this.value = value;
     }
 

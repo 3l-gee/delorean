@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTimeEventType {
 
     @XmlValue
-    protected String value;
+    protected CodeTimeEventBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeTimeEventType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeTimeEventBaseType }
      *     
      */
-    public String getValue() {
+    public CodeTimeEventBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeTimeEventType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeTimeEventBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeTimeEventBaseType value) {
         this.value = value;
     }
 

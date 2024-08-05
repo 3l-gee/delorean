@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeUpperAlphaType {
 
     @XmlValue
-    protected String value;
+    protected CodeUpperAlphaBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeUpperAlphaType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeUpperAlphaBaseType }
      *     
      */
-    public String getValue() {
+    public CodeUpperAlphaBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeUpperAlphaType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeUpperAlphaBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeUpperAlphaBaseType value) {
         this.value = value;
     }
 

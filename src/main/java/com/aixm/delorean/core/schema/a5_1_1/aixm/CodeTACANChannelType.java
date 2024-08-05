@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTACANChannelType {
 
     @XmlValue
-    protected String value;
+    protected CodeTACANChannelBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeTACANChannelType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeTACANChannelBaseType }
      *     
      */
-    public String getValue() {
+    public CodeTACANChannelBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeTACANChannelType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeTACANChannelBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeTACANChannelBaseType value) {
         this.value = value;
     }
 

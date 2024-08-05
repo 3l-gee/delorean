@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVORType {
 
     @XmlValue
-    protected String value;
+    protected CodeVORBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeVORType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeVORBaseType }
      *     
      */
-    public String getValue() {
+    public CodeVORBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeVORType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeVORBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeVORBaseType value) {
         this.value = value;
     }
 

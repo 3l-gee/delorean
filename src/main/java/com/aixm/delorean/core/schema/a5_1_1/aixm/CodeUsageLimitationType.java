@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeUsageLimitationType {
 
     @XmlValue
-    protected String value;
+    protected CodeUsageLimitationBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeUsageLimitationType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeUsageLimitationBaseType }
      *     
      */
-    public String getValue() {
+    public CodeUsageLimitationBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeUsageLimitationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeUsageLimitationBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeUsageLimitationBaseType value) {
         this.value = value;
     }
 

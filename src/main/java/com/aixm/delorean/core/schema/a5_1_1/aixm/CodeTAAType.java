@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTAAType {
 
     @XmlValue
-    protected String value;
+    protected CodeTAABaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeTAAType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeTAABaseType }
      *     
      */
-    public String getValue() {
+    public CodeTAABaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeTAAType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeTAABaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeTAABaseType value) {
         this.value = value;
     }
 

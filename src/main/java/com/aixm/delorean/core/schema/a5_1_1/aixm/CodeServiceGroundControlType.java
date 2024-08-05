@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeServiceGroundControlType {
 
     @XmlValue
-    protected String value;
+    protected CodeServiceGroundControlBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeServiceGroundControlType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeServiceGroundControlBaseType }
      *     
      */
-    public String getValue() {
+    public CodeServiceGroundControlBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeServiceGroundControlType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeServiceGroundControlBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeServiceGroundControlBaseType value) {
         this.value = value;
     }
 

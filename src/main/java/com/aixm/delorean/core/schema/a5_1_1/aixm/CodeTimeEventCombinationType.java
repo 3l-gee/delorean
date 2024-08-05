@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTimeEventCombinationType {
 
     @XmlValue
-    protected String value;
+    protected CodeTimeEventCombinationBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeTimeEventCombinationType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeTimeEventCombinationBaseType }
      *     
      */
-    public String getValue() {
+    public CodeTimeEventCombinationBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeTimeEventCombinationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeTimeEventCombinationBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeTimeEventCombinationBaseType value) {
         this.value = value;
     }
 

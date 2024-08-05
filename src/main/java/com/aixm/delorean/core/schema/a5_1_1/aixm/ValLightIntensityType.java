@@ -42,7 +42,7 @@ public class ValLightIntensityType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomLightIntensityType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -79,10 +79,10 @@ public class ValLightIntensityType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomLightIntensityType }
      *     
      */
-    public String getUom() {
+    public UomLightIntensityType getUom() {
         return uom;
     }
 
@@ -91,10 +91,10 @@ public class ValLightIntensityType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomLightIntensityType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomLightIntensityType value) {
         this.uom = value;
     }
 

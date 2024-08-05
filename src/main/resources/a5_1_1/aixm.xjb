@@ -2822,6 +2822,1040 @@
 			</jaxb:typesafeEnumClass>
 		</jaxb:bindings>
 
+		<jaxb:bindings node="//xs:simpleType[@name='CodeServiceInformationBaseType']">
+			<jaxb:typesafeEnumClass name="CodeServiceInformationBaseType">
+				<jaxb:typesafeEnumMember name="AFIS" value="AFIS"/>
+				<jaxb:typesafeEnumMember name="AIS" value="AIS"/>
+				<jaxb:typesafeEnumMember name="ATIS" value="ATIS"/>
+				<jaxb:typesafeEnumMember name="BRIEFING" value="BRIEFING"/>
+				<jaxb:typesafeEnumMember name="FIS" value="FIS"/>
+				<jaxb:typesafeEnumMember name="OFIS_VHF" value="OFIS_VHF"/>
+				<jaxb:typesafeEnumMember name="OFIS_HF" value="OFIS_HF"/>
+				<jaxb:typesafeEnumMember name="NOTAM" value="NOTAM"/>
+				<jaxb:typesafeEnumMember name="INFO" value="INFO"/>
+				<jaxb:typesafeEnumMember name="RAF" value="RAF"/>
+				<jaxb:typesafeEnumMember name="METAR" value="METAR"/>
+				<jaxb:typesafeEnumMember name="SIGMET" value="SIGMET"/>
+				<jaxb:typesafeEnumMember name="TWEB" value="TWEB"/>
+				<jaxb:typesafeEnumMember name="TAF" value="TAF"/>
+				<jaxb:typesafeEnumMember name="VOLMET" value="VOLMET"/>
+				<jaxb:typesafeEnumMember name="ALTIMETER" value="ALTIMETER"/>
+				<jaxb:typesafeEnumMember name="ASOS" value="ASOS"/>
+				<jaxb:typesafeEnumMember name="AWOS" value="AWOS"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeServiceSARBaseType']">
+			<jaxb:typesafeEnumClass name="CodeServiceSARBaseType">
+				<jaxb:typesafeEnumMember name="ALRS" value="ALRS"/>
+				<jaxb:typesafeEnumMember name="SAR" value="SAR"/>
+				<jaxb:typesafeEnumMember name="RCC" value="RCC"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeSideBaseType']">
+			<jaxb:typesafeEnumClass name="CodeSideBaseType">
+				<jaxb:typesafeEnumMember name="LEFT" value="LEFT"/>
+				<jaxb:typesafeEnumMember name="RIGHT" value="RIGHT"/>
+				<jaxb:typesafeEnumMember name="BOTH" value="BOTH"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeSignalPerformanceILSBaseType']">
+			<jaxb:typesafeEnumClass name="CodeSignalPerformanceILSBaseType">
+				<jaxb:typesafeEnumMember name="I" value="I"/>
+				<jaxb:typesafeEnumMember name="II" value="II"/>
+				<jaxb:typesafeEnumMember name="III" value="III"/>
+				<jaxb:typesafeEnumMember name="IIIA" value="IIIA"/>
+				<jaxb:typesafeEnumMember name="IIIB" value="IIIB"/>
+				<jaxb:typesafeEnumMember name="IIIC" value="IIIC"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeSpecialDateBaseType']">
+			<jaxb:typesafeEnumClass name="CodeSpecialDateBaseType">
+				<jaxb:typesafeEnumMember name="HOL" value="HOL"/>
+				<jaxb:typesafeEnumMember name="BUSY_FRI" value="BUSY_FRI"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeSpecialNavigationStationBaseType']">
+			<jaxb:typesafeEnumClass name="CodeSpecialNavigationStationBaseType">
+				<jaxb:typesafeEnumMember name="MASTER" value="MASTER"/>
+				<jaxb:typesafeEnumMember name="SLAVE" value="SLAVE"/>
+				<jaxb:typesafeEnumMember name="RED_SLAVE" value="RED_SLAVE"/>
+				<jaxb:typesafeEnumMember name="GREEN_SLAVE" value="GREEN_SLAVE"/>
+				<jaxb:typesafeEnumMember name="PURPLE_SLAVE" value="PURPLE_SLAVE"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeSpecialNavigationSystemBaseType']">
+			<jaxb:typesafeEnumClass name="CodeSpecialNavigationSystemBaseType">
+				<jaxb:typesafeEnumMember name="LORANA" value="LORANA"/>
+				<jaxb:typesafeEnumMember name="LORANC" value="LORANC"/>
+				<jaxb:typesafeEnumMember name="LORAND" value="LORAND"/>
+				<jaxb:typesafeEnumMember name="DECCA" value="DECCA"/>
+				<jaxb:typesafeEnumMember name="GNSS" value="GNSS"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeSpeedReferenceBaseType']">
+			<jaxb:typesafeEnumClass name="CodeSpeedReferenceBaseType">
+				<jaxb:typesafeEnumMember name="IAS" value="IAS"/>
+				<jaxb:typesafeEnumMember name="TAS" value="TAS"/>
+				<jaxb:typesafeEnumMember name="GS" value="GS"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeStandbyPowerBaseType']">
+			<jaxb:typesafeEnumClass name="CodeStandbyPowerBaseType">
+				<jaxb:typesafeEnumMember name="BATTERY" value="BATTERY"/>
+				<jaxb:typesafeEnumMember name="COMMERCIAL" value="COMMERCIAL"/>
+				<jaxb:typesafeEnumMember name="GENERATOR" value="GENERATOR"/>
+				<jaxb:typesafeEnumMember name="UNKNOWN" value="UNKNOWN"/>
+				<jaxb:typesafeEnumMember name="NONE" value="NONE"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeStatusAirportBaseType']">
+			<jaxb:typesafeEnumClass name="CodeStatusAirportBaseType">
+				<jaxb:typesafeEnumMember name="NORMAL" value="NORMAL"/>
+				<jaxb:typesafeEnumMember name="LIMITED" value="LIMITED"/>
+				<jaxb:typesafeEnumMember name="CLOSED" value="CLOSED"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeStatusAirspaceBaseType']">
+			<jaxb:typesafeEnumClass name="CodeStatusAirspaceBaseType">
+				<jaxb:typesafeEnumMember name="AVBL_FOR_ACTIVATION" value="AVBL_FOR_ACTIVATION"/>
+				<jaxb:typesafeEnumMember name="ACTIVE" value="ACTIVE"/>
+				<jaxb:typesafeEnumMember name="IN_USE" value="IN_USE"/>
+				<jaxb:typesafeEnumMember name="INACTIVE" value="INACTIVE"/>
+				<jaxb:typesafeEnumMember name="INTERMITTENT" value="INTERMITTENT"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeStatusConstructionBaseType']">
+			<jaxb:typesafeEnumClass name="CodeStatusConstructionBaseType">
+				<jaxb:typesafeEnumMember name="IN_CONSTRUCTION" value="IN_CONSTRUCTION"/>
+				<jaxb:typesafeEnumMember name="COMPLETED" value="COMPLETED"/>
+				<jaxb:typesafeEnumMember name="DEMOLITION_PLANNED" value="DEMOLITION_PLANNED"/>
+				<jaxb:typesafeEnumMember name="IN_DEMOLITION" value="IN_DEMOLITION"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeStatusNavaidBaseType']">
+			<jaxb:typesafeEnumClass name="CodeStatusNavaidBaseType">
+				<jaxb:typesafeEnumMember name="OPERATIONAL" value="OPERATIONAL"/>
+				<jaxb:typesafeEnumMember name="UNSERVICEABLE" value="UNSERVICEABLE"/>
+				<jaxb:typesafeEnumMember name="ONTEST" value="ONTEST"/>
+				<jaxb:typesafeEnumMember name="INTERRUPT" value="INTERRUPT"/>
+				<jaxb:typesafeEnumMember name="PARTIAL" value="PARTIAL"/>
+				<jaxb:typesafeEnumMember name="CONDITIONAL" value="CONDITIONAL"/>
+				<jaxb:typesafeEnumMember name="FALSE_INDICATION" value="FALSE_INDICATION"/>
+				<jaxb:typesafeEnumMember name="FALSE_POSSIBLE" value="FALSE_POSSIBLE"/>
+				<jaxb:typesafeEnumMember name="DISPLACED" value="DISPLACED"/>
+				<jaxb:typesafeEnumMember name="IN_CONSTRUCTION" value="IN_CONSTRUCTION"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeStatusOperationsBaseType']">
+			<jaxb:typesafeEnumClass name="CodeStatusOperationsBaseType">
+				<jaxb:typesafeEnumMember name="NORMAL" value="NORMAL"/>
+				<jaxb:typesafeEnumMember name="DOWNGRADED" value="DOWNGRADED"/>
+				<jaxb:typesafeEnumMember name="UNSERVICEABLE" value="UNSERVICEABLE"/>
+				<jaxb:typesafeEnumMember name="WORK_IN_PROGRESS" value="WORK_IN_PROGRESS"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeStatusServiceBaseType']">
+			<jaxb:typesafeEnumClass name="CodeStatusServiceBaseType">
+				<jaxb:typesafeEnumMember name="NORMAL" value="NORMAL"/>
+				<jaxb:typesafeEnumMember name="LIMITED" value="LIMITED"/>
+				<jaxb:typesafeEnumMember name="ONTEST" value="ONTEST"/>
+				<jaxb:typesafeEnumMember name="UNSERVICEABLE" value="UNSERVICEABLE"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeSurfaceCompositionBaseType']">
+			<jaxb:typesafeEnumClass name="CodeSurfaceCompositionBaseType">
+				<jaxb:typesafeEnumMember name="ASPH" value="ASPH"/>
+				<jaxb:typesafeEnumMember name="ASPH_GRASS" value="ASPH_GRASS"/>
+				<jaxb:typesafeEnumMember name="CONC" value="CONC"/>
+				<jaxb:typesafeEnumMember name="CONC_ASPH" value="CONC_ASPH"/>
+				<jaxb:typesafeEnumMember name="CONC_GRS" value="CONC_GRS"/>
+				<jaxb:typesafeEnumMember name="GRASS" value="GRASS"/>
+				<jaxb:typesafeEnumMember name="SAND" value="SAND"/>
+				<jaxb:typesafeEnumMember name="WATER" value="WATER"/>
+				<jaxb:typesafeEnumMember name="BITUM" value="BITUM"/>
+				<jaxb:typesafeEnumMember name="BRICK" value="BRICK"/>
+				<jaxb:typesafeEnumMember name="MACADAM" value="MACADAM"/>
+				<jaxb:typesafeEnumMember name="STONE" value="STONE"/>
+				<jaxb:typesafeEnumMember name="CORAL" value="CORAL"/>
+				<jaxb:typesafeEnumMember name="CLAY" value="CLAY"/>
+				<jaxb:typesafeEnumMember name="LATERITE" value="LATERITE"/>
+				<jaxb:typesafeEnumMember name="GRAVEL" value="GRAVEL"/>
+				<jaxb:typesafeEnumMember name="EARTH" value="EARTH"/>
+				<jaxb:typesafeEnumMember name="ICE" value="ICE"/>
+				<jaxb:typesafeEnumMember name="SNOW" value="SNOW"/>
+				<jaxb:typesafeEnumMember name="MEMBRANE" value="MEMBRANE"/>
+				<jaxb:typesafeEnumMember name="METAL" value="METAL"/>
+				<jaxb:typesafeEnumMember name="MATS" value="MATS"/>
+				<jaxb:typesafeEnumMember name="PIERCED_STEEL" value="PIERCED_STEEL"/>
+				<jaxb:typesafeEnumMember name="WOOD" value="WOOD"/>
+				<jaxb:typesafeEnumMember name="NON_BITUM_MIX" value="NON_BITUM_MIX"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeSurfaceConditionBaseType']">
+			<jaxb:typesafeEnumClass name="CodeSurfaceConditionBaseType">
+				<jaxb:typesafeEnumMember name="GOOD" value="GOOD"/>
+				<jaxb:typesafeEnumMember name="FAIR" value="FAIR"/>
+				<jaxb:typesafeEnumMember name="POOR" value="POOR"/>
+				<jaxb:typesafeEnumMember name="UNSAFE" value="UNSAFE"/>
+				<jaxb:typesafeEnumMember name="DEFORMED" value="DEFORMED"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeSurfacePreparationBaseType']">
+			<jaxb:typesafeEnumClass name="CodeSurfacePreparationBaseType">
+				<jaxb:typesafeEnumMember name="NATURAL" value="NATURAL"/>
+				<jaxb:typesafeEnumMember name="ROLLED" value="ROLLED"/>
+				<jaxb:typesafeEnumMember name="COMPACTED" value="COMPACTED"/>
+				<jaxb:typesafeEnumMember name="GRADED" value="GRADED"/>
+				<jaxb:typesafeEnumMember name="GROOVED" value="GROOVED"/>
+				<jaxb:typesafeEnumMember name="OILED" value="OILED"/>
+				<jaxb:typesafeEnumMember name="PAVED" value="PAVED"/>
+				<jaxb:typesafeEnumMember name="PFC" value="PFC"/>
+				<jaxb:typesafeEnumMember name="AFSC" value="AFSC"/>
+				<jaxb:typesafeEnumMember name="RFSC" value="RFSC"/>
+				<jaxb:typesafeEnumMember name="NON_GROOVED" value="NON_GROOVED"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeSystemActivationBaseType']">
+			<jaxb:typesafeEnumClass name="CodeSystemActivationBaseType">
+				<jaxb:typesafeEnumMember name="ON" value="ON"/>
+				<jaxb:typesafeEnumMember name="ON_OR_OFF" value="ON_OR_OFF"/>
+				<jaxb:typesafeEnumMember name="OFF" value="OFF"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTAABaseType']">
+			<jaxb:typesafeEnumClass name="CodeTAABaseType">
+				<jaxb:typesafeEnumMember name="LEFT_BASE" value="LEFT_BASE"/>
+				<jaxb:typesafeEnumMember name="RIGHT_BASE" value="RIGHT_BASE"/>
+				<jaxb:typesafeEnumMember name="STRAIGHT_IN" value="STRAIGHT_IN"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTACANChannelBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTACANChannelBaseType">
+				<jaxb:typesafeEnumMember name="1X" value="1X"/>
+				<jaxb:typesafeEnumMember name="1Y" value="1Y"/>
+				<jaxb:typesafeEnumMember name="2X" value="2X"/>
+				<jaxb:typesafeEnumMember name="2Y" value="2Y"/>
+				<jaxb:typesafeEnumMember name="3X" value="3X"/>
+				<jaxb:typesafeEnumMember name="3Y" value="3Y"/>
+				<jaxb:typesafeEnumMember name="4X" value="4X"/>
+				<jaxb:typesafeEnumMember name="4Y" value="4Y"/>
+				<jaxb:typesafeEnumMember name="5X" value="5X"/>
+				<jaxb:typesafeEnumMember name="5Y" value="5Y"/>
+				<jaxb:typesafeEnumMember name="6X" value="6X"/>
+				<jaxb:typesafeEnumMember name="6Y" value="6Y"/>
+				<jaxb:typesafeEnumMember name="7X" value="7X"/>
+				<jaxb:typesafeEnumMember name="7Y" value="7Y"/>
+				<jaxb:typesafeEnumMember name="8X" value="8X"/>
+				<jaxb:typesafeEnumMember name="8Y" value="8Y"/>
+				<jaxb:typesafeEnumMember name="9X" value="9X"/>
+				<jaxb:typesafeEnumMember name="9Y" value="9Y"/>
+				<jaxb:typesafeEnumMember name="10X" value="10X"/>
+				<jaxb:typesafeEnumMember name="10Y" value="10Y"/>
+				<jaxb:typesafeEnumMember name="11X" value="11X"/>
+				<jaxb:typesafeEnumMember name="11Y" value="11Y"/>
+				<jaxb:typesafeEnumMember name="12X" value="12X"/>
+				<jaxb:typesafeEnumMember name="12Y" value="12Y"/>
+				<jaxb:typesafeEnumMember name="13X" value="13X"/>
+				<jaxb:typesafeEnumMember name="13Y" value="13Y"/>
+				<jaxb:typesafeEnumMember name="14X" value="14X"/>
+				<jaxb:typesafeEnumMember name="14Y" value="14Y"/>
+				<jaxb:typesafeEnumMember name="15X" value="15X"/>
+				<jaxb:typesafeEnumMember name="15Y" value="15Y"/>
+				<jaxb:typesafeEnumMember name="16X" value="16X"/>
+				<jaxb:typesafeEnumMember name="16Y" value="16Y"/>
+				<jaxb:typesafeEnumMember name="17X" value="17X"/>
+				<jaxb:typesafeEnumMember name="17Y" value="17Y"/>
+				<jaxb:typesafeEnumMember name="17Z" value="17Z"/>
+				<jaxb:typesafeEnumMember name="18X" value="18X"/>
+				<jaxb:typesafeEnumMember name="18W" value="18W"/>
+				<jaxb:typesafeEnumMember name="18Y" value="18Y"/>
+				<jaxb:typesafeEnumMember name="18Z" value="18Z"/>
+				<jaxb:typesafeEnumMember name="19X" value="19X"/>
+				<jaxb:typesafeEnumMember name="19Y" value="19Y"/>
+				<jaxb:typesafeEnumMember name="19Z" value="19Z"/>
+				<jaxb:typesafeEnumMember name="20X" value="20X"/>
+				<jaxb:typesafeEnumMember name="20W" value="20W"/>
+				<jaxb:typesafeEnumMember name="20Y" value="20Y"/>
+				<jaxb:typesafeEnumMember name="20Z" value="20Z"/>
+				<jaxb:typesafeEnumMember name="21X" value="21X"/>
+				<jaxb:typesafeEnumMember name="21Y" value="21Y"/>
+				<jaxb:typesafeEnumMember name="21Z" value="21Z"/>
+				<jaxb:typesafeEnumMember name="22X" value="22X"/>
+				<jaxb:typesafeEnumMember name="22W" value="22W"/>
+				<jaxb:typesafeEnumMember name="22Y" value="22Y"/>
+				<jaxb:typesafeEnumMember name="22Z" value="22Z"/>
+				<jaxb:typesafeEnumMember name="23X" value="23X"/>
+				<jaxb:typesafeEnumMember name="23Y" value="23Y"/>
+				<jaxb:typesafeEnumMember name="23Z" value="23Z"/>
+				<jaxb:typesafeEnumMember name="24X" value="24X"/>
+				<jaxb:typesafeEnumMember name="24W" value="24W"/>
+				<jaxb:typesafeEnumMember name="24Y" value="24Y"/>
+				<jaxb:typesafeEnumMember name="24Z" value="24Z"/>
+				<jaxb:typesafeEnumMember name="25X" value="25X"/>
+				<jaxb:typesafeEnumMember name="25Y" value="25Y"/>
+				<jaxb:typesafeEnumMember name="25Z" value="25Z"/>
+				<jaxb:typesafeEnumMember name="26X" value="26X"/>
+				<jaxb:typesafeEnumMember name="26W" value="26W"/>
+				<jaxb:typesafeEnumMember name="26Y" value="26Y"/>
+				<jaxb:typesafeEnumMember name="26Z" value="26Z"/>
+				<jaxb:typesafeEnumMember name="27X" value="27X"/>
+				<jaxb:typesafeEnumMember name="27Y" value="27Y"/>
+				<jaxb:typesafeEnumMember name="27Z" value="27Z"/>
+				<jaxb:typesafeEnumMember name="28X" value="28X"/>
+				<jaxb:typesafeEnumMember name="28W" value="28W"/>
+				<jaxb:typesafeEnumMember name="28Y" value="28Y"/>
+				<jaxb:typesafeEnumMember name="28Z" value="28Z"/>
+				<jaxb:typesafeEnumMember name="29X" value="29X"/>
+				<jaxb:typesafeEnumMember name="29Y" value="29Y"/>
+				<jaxb:typesafeEnumMember name="29Z" value="29Z"/>
+				<jaxb:typesafeEnumMember name="30X" value="30X"/>
+				<jaxb:typesafeEnumMember name="30W" value="30W"/>
+				<jaxb:typesafeEnumMember name="30Y" value="30Y"/>
+				<jaxb:typesafeEnumMember name="30Z" value="30Z"/>
+				<jaxb:typesafeEnumMember name="31X" value="31X"/>
+				<jaxb:typesafeEnumMember name="31Y" value="31Y"/>
+				<jaxb:typesafeEnumMember name="31Z" value="31Z"/>
+				<jaxb:typesafeEnumMember name="32X" value="32X"/>
+				<jaxb:typesafeEnumMember name="32W" value="32W"/>
+				<jaxb:typesafeEnumMember name="32Y" value="32Y"/>
+				<jaxb:typesafeEnumMember name="32Z" value="32Z"/>
+				<jaxb:typesafeEnumMember name="33X" value="33X"/>
+				<jaxb:typesafeEnumMember name="33Y" value="33Y"/>
+				<jaxb:typesafeEnumMember name="33Z" value="33Z"/>
+				<jaxb:typesafeEnumMember name="34X" value="34X"/>
+				<jaxb:typesafeEnumMember name="34W" value="34W"/>
+				<jaxb:typesafeEnumMember name="34Y" value="34Y"/>
+				<jaxb:typesafeEnumMember name="34Z" value="34Z"/>
+				<jaxb:typesafeEnumMember name="35X" value="35X"/>
+				<jaxb:typesafeEnumMember name="35Y" value="35Y"/>
+				<jaxb:typesafeEnumMember name="35Z" value="35Z"/>
+				<jaxb:typesafeEnumMember name="36X" value="36X"/>
+				<jaxb:typesafeEnumMember name="36W" value="36W"/>
+				<jaxb:typesafeEnumMember name="36Y" value="36Y"/>
+				<jaxb:typesafeEnumMember name="36Z" value="36Z"/>
+				<jaxb:typesafeEnumMember name="37X" value="37X"/>
+				<jaxb:typesafeEnumMember name="37Y" value="37Y"/>
+				<jaxb:typesafeEnumMember name="37Z" value="37Z"/>
+				<jaxb:typesafeEnumMember name="38X" value="38X"/>
+				<jaxb:typesafeEnumMember name="38W" value="38W"/>
+				<jaxb:typesafeEnumMember name="38Y" value="38Y"/>
+				<jaxb:typesafeEnumMember name="38Z" value="38Z"/>
+				<jaxb:typesafeEnumMember name="39X" value="39X"/>
+				<jaxb:typesafeEnumMember name="39Y" value="39Y"/>
+				<jaxb:typesafeEnumMember name="39Z" value="39Z"/>
+				<jaxb:typesafeEnumMember name="40X" value="40X"/>
+				<jaxb:typesafeEnumMember name="40W" value="40W"/>
+				<jaxb:typesafeEnumMember name="40Y" value="40Y"/>
+				<jaxb:typesafeEnumMember name="40Z" value="40Z"/>
+				<jaxb:typesafeEnumMember name="41X" value="41X"/>
+				<jaxb:typesafeEnumMember name="41Y" value="41Y"/>
+				<jaxb:typesafeEnumMember name="41Z" value="41Z"/>
+				<jaxb:typesafeEnumMember name="42X" value="42X"/>
+				<jaxb:typesafeEnumMember name="42W" value="42W"/>
+				<jaxb:typesafeEnumMember name="42Y" value="42Y"/>
+				<jaxb:typesafeEnumMember name="42Z" value="42Z"/>
+				<jaxb:typesafeEnumMember name="43X" value="43X"/>
+				<jaxb:typesafeEnumMember name="43Y" value="43Y"/>
+				<jaxb:typesafeEnumMember name="43Z" value="43Z"/>
+				<jaxb:typesafeEnumMember name="44X" value="44X"/>
+				<jaxb:typesafeEnumMember name="44W" value="44W"/>
+				<jaxb:typesafeEnumMember name="44Y" value="44Y"/>
+				<jaxb:typesafeEnumMember name="44Z" value="44Z"/>
+				<jaxb:typesafeEnumMember name="45X" value="45X"/>
+				<jaxb:typesafeEnumMember name="45Y" value="45Y"/>
+				<jaxb:typesafeEnumMember name="45Z" value="45Z"/>
+				<jaxb:typesafeEnumMember name="46X" value="46X"/>
+				<jaxb:typesafeEnumMember name="46W" value="46W"/>
+				<jaxb:typesafeEnumMember name="46Y" value="46Y"/>
+				<jaxb:typesafeEnumMember name="46Z" value="46Z"/>
+				<jaxb:typesafeEnumMember name="47X" value="47X"/>
+				<jaxb:typesafeEnumMember name="47Y" value="47Y"/>
+				<jaxb:typesafeEnumMember name="47Z" value="47Z"/>
+				<jaxb:typesafeEnumMember name="48X" value="48X"/>
+				<jaxb:typesafeEnumMember name="48W" value="48W"/>
+				<jaxb:typesafeEnumMember name="48Y" value="48Y"/>
+				<jaxb:typesafeEnumMember name="48Z" value="48Z"/>
+				<jaxb:typesafeEnumMember name="49X" value="49X"/>
+				<jaxb:typesafeEnumMember name="49Y" value="49Y"/>
+				<jaxb:typesafeEnumMember name="49Z" value="49Z"/>
+				<jaxb:typesafeEnumMember name="50X" value="50X"/>
+				<jaxb:typesafeEnumMember name="50W" value="50W"/>
+				<jaxb:typesafeEnumMember name="50Y" value="50Y"/>
+				<jaxb:typesafeEnumMember name="50Z" value="50Z"/>
+				<jaxb:typesafeEnumMember name="51X" value="51X"/>
+				<jaxb:typesafeEnumMember name="51Y" value="51Y"/>
+				<jaxb:typesafeEnumMember name="51Z" value="51Z"/>
+				<jaxb:typesafeEnumMember name="52X" value="52X"/>
+				<jaxb:typesafeEnumMember name="52W" value="52W"/>
+				<jaxb:typesafeEnumMember name="52Y" value="52Y"/>
+				<jaxb:typesafeEnumMember name="52Z" value="52Z"/>
+				<jaxb:typesafeEnumMember name="53X" value="53X"/>
+				<jaxb:typesafeEnumMember name="53Y" value="53Y"/>
+				<jaxb:typesafeEnumMember name="53Z" value="53Z"/>
+				<jaxb:typesafeEnumMember name="54X" value="54X"/>
+				<jaxb:typesafeEnumMember name="54W" value="54W"/>
+				<jaxb:typesafeEnumMember name="54Y" value="54Y"/>
+				<jaxb:typesafeEnumMember name="54Z" value="54Z"/>
+				<jaxb:typesafeEnumMember name="55X" value="55X"/>
+				<jaxb:typesafeEnumMember name="55Y" value="55Y"/>
+				<jaxb:typesafeEnumMember name="55Z" value="55Z"/>
+				<jaxb:typesafeEnumMember name="56X" value="56X"/>
+				<jaxb:typesafeEnumMember name="56W" value="56W"/>
+				<jaxb:typesafeEnumMember name="56Y" value="56Y"/>
+				<jaxb:typesafeEnumMember name="56Z" value="56Z"/>
+				<jaxb:typesafeEnumMember name="57X" value="57X"/>
+				<jaxb:typesafeEnumMember name="57Y" value="57Y"/>
+				<jaxb:typesafeEnumMember name="58X" value="58X"/>
+				<jaxb:typesafeEnumMember name="58Y" value="58Y"/>
+				<jaxb:typesafeEnumMember name="59X" value="59X"/>
+				<jaxb:typesafeEnumMember name="59Y" value="59Y"/>
+				<jaxb:typesafeEnumMember name="60X" value="60X"/>
+				<jaxb:typesafeEnumMember name="60Y" value="60Y"/>
+				<jaxb:typesafeEnumMember name="61X" value="61X"/>
+				<jaxb:typesafeEnumMember name="61Y" value="61Y"/>
+				<jaxb:typesafeEnumMember name="62X" value="62X"/>
+				<jaxb:typesafeEnumMember name="62Y" value="62Y"/>
+				<jaxb:typesafeEnumMember name="63X" value="63X"/>
+				<jaxb:typesafeEnumMember name="63Y" value="63Y"/>
+				<jaxb:typesafeEnumMember name="64X" value="64X"/>
+				<jaxb:typesafeEnumMember name="64Y" value="64Y"/>
+				<jaxb:typesafeEnumMember name="65X" value="65X"/>
+				<jaxb:typesafeEnumMember name="65Y" value="65Y"/>
+				<jaxb:typesafeEnumMember name="66X" value="66X"/>
+				<jaxb:typesafeEnumMember name="66Y" value="66Y"/>
+				<jaxb:typesafeEnumMember name="67X" value="67X"/>
+				<jaxb:typesafeEnumMember name="67Y" value="67Y"/>
+				<jaxb:typesafeEnumMember name="68X" value="68X"/>
+				<jaxb:typesafeEnumMember name="68Y" value="68Y"/>
+				<jaxb:typesafeEnumMember name="69X" value="69X"/>
+				<jaxb:typesafeEnumMember name="69Y" value="69Y"/>
+				<jaxb:typesafeEnumMember name="70X" value="70X"/>
+				<jaxb:typesafeEnumMember name="70Y" value="70Y"/>
+				<jaxb:typesafeEnumMember name="71X" value="71X"/>
+				<jaxb:typesafeEnumMember name="71Y" value="71Y"/>
+				<jaxb:typesafeEnumMember name="72X" value="72X"/>
+				<jaxb:typesafeEnumMember name="72Y" value="72Y"/>
+				<jaxb:typesafeEnumMember name="73X" value="73X"/>
+				<jaxb:typesafeEnumMember name="73Y" value="73Y"/>
+				<jaxb:typesafeEnumMember name="74X" value="74X"/>
+				<jaxb:typesafeEnumMember name="74Y" value="74Y"/>
+				<jaxb:typesafeEnumMember name="75X" value="75X"/>
+				<jaxb:typesafeEnumMember name="75Y" value="75Y"/>
+				<jaxb:typesafeEnumMember name="76X" value="76X"/>
+				<jaxb:typesafeEnumMember name="76Y" value="76Y"/>
+				<jaxb:typesafeEnumMember name="77X" value="77X"/>
+				<jaxb:typesafeEnumMember name="77Y" value="77Y"/>
+				<jaxb:typesafeEnumMember name="78X" value="78X"/>
+				<jaxb:typesafeEnumMember name="78Y" value="78Y"/>
+				<jaxb:typesafeEnumMember name="79X" value="79X"/>
+				<jaxb:typesafeEnumMember name="79Y" value="79Y"/>
+				<jaxb:typesafeEnumMember name="80X" value="80X"/>
+				<jaxb:typesafeEnumMember name="80Y" value="80Y"/>
+				<jaxb:typesafeEnumMember name="80Z" value="80Z"/>
+				<jaxb:typesafeEnumMember name="81X" value="81X"/>
+				<jaxb:typesafeEnumMember name="81Y" value="81Y"/>
+				<jaxb:typesafeEnumMember name="81Z" value="81Z"/>
+				<jaxb:typesafeEnumMember name="82X" value="82X"/>
+				<jaxb:typesafeEnumMember name="82Y" value="82Y"/>
+				<jaxb:typesafeEnumMember name="82Z" value="82Z"/>
+				<jaxb:typesafeEnumMember name="83X" value="83X"/>
+				<jaxb:typesafeEnumMember name="83Y" value="83Y"/>
+				<jaxb:typesafeEnumMember name="83Z" value="83Z"/>
+				<jaxb:typesafeEnumMember name="84X" value="84X"/>
+				<jaxb:typesafeEnumMember name="84Y" value="84Y"/>
+				<jaxb:typesafeEnumMember name="84Z" value="84Z"/>
+				<jaxb:typesafeEnumMember name="85X" value="85X"/>
+				<jaxb:typesafeEnumMember name="85Y" value="85Y"/>
+				<jaxb:typesafeEnumMember name="85Z" value="85Z"/>
+				<jaxb:typesafeEnumMember name="86X" value="86X"/>
+				<jaxb:typesafeEnumMember name="86Y" value="86Y"/>
+				<jaxb:typesafeEnumMember name="86Z" value="86Z"/>
+				<jaxb:typesafeEnumMember name="87X" value="87X"/>
+				<jaxb:typesafeEnumMember name="87Y" value="87Y"/>
+				<jaxb:typesafeEnumMember name="87Z" value="87Z"/>
+				<jaxb:typesafeEnumMember name="88X" value="88X"/>
+				<jaxb:typesafeEnumMember name="88Y" value="88Y"/>
+				<jaxb:typesafeEnumMember name="88Z" value="88Z"/>
+				<jaxb:typesafeEnumMember name="89X" value="89X"/>
+				<jaxb:typesafeEnumMember name="89Y" value="89Y"/>
+				<jaxb:typesafeEnumMember name="89Z" value="89Z"/>
+				<jaxb:typesafeEnumMember name="90X" value="90X"/>
+				<jaxb:typesafeEnumMember name="90Y" value="90Y"/>
+				<jaxb:typesafeEnumMember name="90Z" value="90Z"/>
+				<jaxb:typesafeEnumMember name="91X" value="91X"/>
+				<jaxb:typesafeEnumMember name="91Y" value="91Y"/>
+				<jaxb:typesafeEnumMember name="91Z" value="91Z"/>
+				<jaxb:typesafeEnumMember name="92X" value="92X"/>
+				<jaxb:typesafeEnumMember name="92Y" value="92Y"/>
+				<jaxb:typesafeEnumMember name="92Z" value="92Z"/>
+				<jaxb:typesafeEnumMember name="93X" value="93X"/>
+				<jaxb:typesafeEnumMember name="93Y" value="93Y"/>
+				<jaxb:typesafeEnumMember name="93Z" value="93Z"/>
+				<jaxb:typesafeEnumMember name="94X" value="94X"/>
+				<jaxb:typesafeEnumMember name="94Y" value="94Y"/>
+				<jaxb:typesafeEnumMember name="94Z" value="94Z"/>
+				<jaxb:typesafeEnumMember name="95X" value="95X"/>
+				<jaxb:typesafeEnumMember name="95Y" value="95Y"/>
+				<jaxb:typesafeEnumMember name="95Z" value="95Z"/>
+				<jaxb:typesafeEnumMember name="96X" value="96X"/>
+				<jaxb:typesafeEnumMember name="96Y" value="96Y"/>
+				<jaxb:typesafeEnumMember name="96Z" value="96Z"/>
+				<jaxb:typesafeEnumMember name="97X" value="97X"/>
+				<jaxb:typesafeEnumMember name="97Y" value="97Y"/>
+				<jaxb:typesafeEnumMember name="97Z" value="97Z"/>
+				<jaxb:typesafeEnumMember name="98X" value="98X"/>
+				<jaxb:typesafeEnumMember name="98Y" value="98Y"/>
+				<jaxb:typesafeEnumMember name="98Z" value="98Z"/>
+				<jaxb:typesafeEnumMember name="99X" value="99X"/>
+				<jaxb:typesafeEnumMember name="99Y" value="99Y"/>
+				<jaxb:typesafeEnumMember name="99Z" value="99Z"/>
+				<jaxb:typesafeEnumMember name="100X" value="100X"/>
+				<jaxb:typesafeEnumMember name="100Y" value="100Y"/>
+				<jaxb:typesafeEnumMember name="100Z" value="100Z"/>
+				<jaxb:typesafeEnumMember name="101X" value="101X"/>
+				<jaxb:typesafeEnumMember name="101Y" value="101Y"/>
+				<jaxb:typesafeEnumMember name="101Z" value="101Z"/>
+				<jaxb:typesafeEnumMember name="102X" value="102X"/>
+				<jaxb:typesafeEnumMember name="102Y" value="102Y"/>
+				<jaxb:typesafeEnumMember name="102Z" value="102Z"/>
+				<jaxb:typesafeEnumMember name="103X" value="103X"/>
+				<jaxb:typesafeEnumMember name="103Y" value="103Y"/>
+				<jaxb:typesafeEnumMember name="103Z" value="103Z"/>
+				<jaxb:typesafeEnumMember name="104X" value="104X"/>
+				<jaxb:typesafeEnumMember name="104Y" value="104Y"/>
+				<jaxb:typesafeEnumMember name="104Z" value="104Z"/>
+				<jaxb:typesafeEnumMember name="105X" value="105X"/>
+				<jaxb:typesafeEnumMember name="105Y" value="105Y"/>
+				<jaxb:typesafeEnumMember name="105Z" value="105Z"/>
+				<jaxb:typesafeEnumMember name="106X" value="106X"/>
+				<jaxb:typesafeEnumMember name="106Y" value="106Y"/>
+				<jaxb:typesafeEnumMember name="106Z" value="106Z"/>
+				<jaxb:typesafeEnumMember name="107X" value="107X"/>
+				<jaxb:typesafeEnumMember name="107Y" value="107Y"/>
+				<jaxb:typesafeEnumMember name="107Z" value="107Z"/>
+				<jaxb:typesafeEnumMember name="108X" value="108X"/>
+				<jaxb:typesafeEnumMember name="108Y" value="108Y"/>
+				<jaxb:typesafeEnumMember name="108Z" value="108Z"/>
+				<jaxb:typesafeEnumMember name="109X" value="109X"/>
+				<jaxb:typesafeEnumMember name="109Y" value="109Y"/>
+				<jaxb:typesafeEnumMember name="109Z" value="109Z"/>
+				<jaxb:typesafeEnumMember name="110X" value="110X"/>
+				<jaxb:typesafeEnumMember name="110Y" value="110Y"/>
+				<jaxb:typesafeEnumMember name="110Z" value="110Z"/>
+				<jaxb:typesafeEnumMember name="111X" value="111X"/>
+				<jaxb:typesafeEnumMember name="111Y" value="111Y"/>
+				<jaxb:typesafeEnumMember name="111Z" value="111Z"/>
+				<jaxb:typesafeEnumMember name="112X" value="112X"/>
+				<jaxb:typesafeEnumMember name="112Y" value="112Y"/>
+				<jaxb:typesafeEnumMember name="112Z" value="112Z"/>
+				<jaxb:typesafeEnumMember name="113X" value="113X"/>
+				<jaxb:typesafeEnumMember name="113Y" value="113Y"/>
+				<jaxb:typesafeEnumMember name="113Z" value="113Z"/>
+				<jaxb:typesafeEnumMember name="114X" value="114X"/>
+				<jaxb:typesafeEnumMember name="114Y" value="114Y"/>
+				<jaxb:typesafeEnumMember name="114Z" value="114Z"/>
+				<jaxb:typesafeEnumMember name="115X" value="115X"/>
+				<jaxb:typesafeEnumMember name="115Y" value="115Y"/>
+				<jaxb:typesafeEnumMember name="115Z" value="115Z"/>
+				<jaxb:typesafeEnumMember name="116X" value="116X"/>
+				<jaxb:typesafeEnumMember name="116Y" value="116Y"/>
+				<jaxb:typesafeEnumMember name="116Z" value="116Z"/>
+				<jaxb:typesafeEnumMember name="117X" value="117X"/>
+				<jaxb:typesafeEnumMember name="117Y" value="117Y"/>
+				<jaxb:typesafeEnumMember name="117Z" value="117Z"/>
+				<jaxb:typesafeEnumMember name="118X" value="118X"/>
+				<jaxb:typesafeEnumMember name="118Y" value="118Y"/>
+				<jaxb:typesafeEnumMember name="118Z" value="118Z"/>
+				<jaxb:typesafeEnumMember name="119X" value="119X"/>
+				<jaxb:typesafeEnumMember name="119Y" value="119Y"/>
+				<jaxb:typesafeEnumMember name="119Z" value="119Z"/>
+				<jaxb:typesafeEnumMember name="120X" value="120X"/>
+				<jaxb:typesafeEnumMember name="120Y" value="120Y"/>
+				<jaxb:typesafeEnumMember name="121X" value="121X"/>
+				<jaxb:typesafeEnumMember name="121Y" value="121Y"/>
+				<jaxb:typesafeEnumMember name="122X" value="122X"/>
+				<jaxb:typesafeEnumMember name="122Y" value="122Y"/>
+				<jaxb:typesafeEnumMember name="123X" value="123X"/>
+				<jaxb:typesafeEnumMember name="123Y" value="123Y"/>
+				<jaxb:typesafeEnumMember name="124X" value="124X"/>
+				<jaxb:typesafeEnumMember name="124Y" value="124Y"/>
+				<jaxb:typesafeEnumMember name="125X" value="125X"/>
+				<jaxb:typesafeEnumMember name="125Y" value="125Y"/>
+				<jaxb:typesafeEnumMember name="126X" value="126X"/>
+				<jaxb:typesafeEnumMember name="126Y" value="126Y"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTaxiwayBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTaxiwayBaseType">
+				<jaxb:typesafeEnumMember name="AIR" value="AIR"/>
+				<jaxb:typesafeEnumMember name="GND" value="GND"/>
+				<jaxb:typesafeEnumMember name="EXIT" value="EXIT"/>
+				<jaxb:typesafeEnumMember name="FASTEXIT" value="FASTEXIT"/>
+				<jaxb:typesafeEnumMember name="STUB" value="STUB"/>
+				<jaxb:typesafeEnumMember name="TURN_AROUND" value="TURN_AROUND"/>
+				<jaxb:typesafeEnumMember name="PARALLEL" value="PARALLEL"/>
+				<jaxb:typesafeEnumMember name="BYPASS" value="BYPASS"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTaxiwayElementBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTaxiwayElementBaseType">
+				<jaxb:typesafeEnumMember name="NORMAL" value="NORMAL"/>
+				<jaxb:typesafeEnumMember name="INTERSECTION" value="INTERSECTION"/>
+				<jaxb:typesafeEnumMember name="SHOULDER" value="SHOULDER"/>
+				<jaxb:typesafeEnumMember name="HOLDING_BAY" value="HOLDING_BAY"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTaxiwaySectionBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTaxiwaySectionBaseType">
+				<jaxb:typesafeEnumMember name="CL" value="CL"/>
+				<jaxb:typesafeEnumMember name="EDGE" value="EDGE"/>
+				<jaxb:typesafeEnumMember name="END" value="END"/>
+				<jaxb:typesafeEnumMember name="RWY_INT" value="RWY_INT"/>
+				<jaxb:typesafeEnumMember name="TWY_INT" value="TWY_INT"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTelecomNetworkBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTelecomNetworkBaseType">
+				<jaxb:typesafeEnumMember name="AFTN" value="AFTN"/>
+				<jaxb:typesafeEnumMember name="AMHS" value="AMHS"/>
+				<jaxb:typesafeEnumMember name="INTERNET" value="INTERNET"/>
+				<jaxb:typesafeEnumMember name="SITA" value="SITA"/>
+				<jaxb:typesafeEnumMember name="ACARS" value="ACARS"/>
+				<jaxb:typesafeEnumMember name="ADNS" value="ADNS"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTimeEventBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTimeEventBaseType">
+				<jaxb:typesafeEnumMember name="SR" value="SR"/>
+				<jaxb:typesafeEnumMember name="SS" value="SS"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTimeEventCombinationBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTimeEventCombinationBaseType">
+				<jaxb:typesafeEnumMember name="EARLIEST" value="EARLIEST"/>
+				<jaxb:typesafeEnumMember name="LATEST" value="LATEST"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTimeReferenceBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTimeReferenceBaseType">
+				<jaxb:typesafeEnumMember name="UTC" value="UTC"/>
+				<jaxb:typesafeEnumMember name="UTC-12" value="UTC-12"/>
+				<jaxb:typesafeEnumMember name="UTC-11" value="UTC-11"/>
+				<jaxb:typesafeEnumMember name="UTC-10" value="UTC-10"/>
+				<jaxb:typesafeEnumMember name="UTC-9" value="UTC-9"/>
+				<jaxb:typesafeEnumMember name="UTC-8" value="UTC-8"/>
+				<jaxb:typesafeEnumMember name="UTC-7" value="UTC-7"/>
+				<jaxb:typesafeEnumMember name="UTC-6" value="UTC-6"/>
+				<jaxb:typesafeEnumMember name="UTC-5" value="UTC-5"/>
+				<jaxb:typesafeEnumMember name="UTC-4" value="UTC-4"/>
+				<jaxb:typesafeEnumMember name="UTC-3" value="UTC-3"/>
+				<jaxb:typesafeEnumMember name="UTC-2" value="UTC-2"/>
+				<jaxb:typesafeEnumMember name="UTC-1" value="UTC-1"/>
+				<jaxb:typesafeEnumMember name="UTC+1" value="UTC+1"/>
+				<jaxb:typesafeEnumMember name="UTC+2" value="UTC+2"/>
+				<jaxb:typesafeEnumMember name="UTC+3" value="UTC+3"/>
+				<jaxb:typesafeEnumMember name="UTC+4" value="UTC+4"/>
+				<jaxb:typesafeEnumMember name="UTC+5" value="UTC+5"/>
+				<jaxb:typesafeEnumMember name="UTC+6" value="UTC+6"/>
+				<jaxb:typesafeEnumMember name="UTC+7" value="UTC+7"/>
+				<jaxb:typesafeEnumMember name="UTC+8" value="UTC+8"/>
+				<jaxb:typesafeEnumMember name="UTC+9" value="UTC+9"/>
+				<jaxb:typesafeEnumMember name="UTC+10" value="UTC+10"/>
+				<jaxb:typesafeEnumMember name="UTC+11" value="UTC+11"/>
+				<jaxb:typesafeEnumMember name="UTC+12" value="UTC+12"/>
+				<jaxb:typesafeEnumMember name="UTC+13" value="UTC+13"/>
+				<jaxb:typesafeEnumMember name="UTC+14" value="UTC+14"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTLOFSectionBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTLOFSectionBaseType">
+				<jaxb:typesafeEnumMember name="AIM" value="AIM"/>
+				<jaxb:typesafeEnumMember name="EDGE" value="EDGE"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTrajectoryBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTrajectoryBaseType">
+				<jaxb:typesafeEnumMember name="STRAIGHT" value="STRAIGHT"/>
+				<jaxb:typesafeEnumMember name="ARC" value="ARC"/>
+				<jaxb:typesafeEnumMember name="PT" value="PT"/>
+				<jaxb:typesafeEnumMember name="BASETURN" value="BASETURN"/>
+				<jaxb:typesafeEnumMember name="HOLDING" value="HOLDING"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeTransponderBaseType']">
+			<jaxb:typesafeEnumClass name="CodeTransponderBaseType">
+				<jaxb:typesafeEnumMember name="MODE_1" value="MODE_1"/>
+				<jaxb:typesafeEnumMember name="MODE_2" value="MODE_2"/>
+				<jaxb:typesafeEnumMember name="MODE_3A" value="MODE_3A"/>
+				<jaxb:typesafeEnumMember name="MODE_4" value="MODE_4"/>
+				<jaxb:typesafeEnumMember name="MODE_5" value="MODE_5"/>
+				<jaxb:typesafeEnumMember name="MODE_C" value="MODE_C"/>
+				<jaxb:typesafeEnumMember name="MODE_S" value="MODE_S"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeUnitDependencyBaseType']">
+			<jaxb:typesafeEnumClass name="CodeUnitDependencyBaseType">
+				<jaxb:typesafeEnumMember name="OWNER" value="OWNER"/>
+				<jaxb:typesafeEnumMember name="PROVIDER" value="PROVIDER"/>
+				<jaxb:typesafeEnumMember name="ALTERNATE" value="ALTERNATE"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeUpperAlphaBaseType']">
+			<jaxb:typesafeEnumClass name="CodeUpperAlphaBaseType">
+				<jaxb:typesafeEnumMember name="A" value="A"/>
+				<jaxb:typesafeEnumMember name="B" value="B"/>
+				<jaxb:typesafeEnumMember name="C" value="C"/>
+				<jaxb:typesafeEnumMember name="D" value="D"/>
+				<jaxb:typesafeEnumMember name="E" value="E"/>
+				<jaxb:typesafeEnumMember name="F" value="F"/>
+				<jaxb:typesafeEnumMember name="G" value="G"/>
+				<jaxb:typesafeEnumMember name="H" value="H"/>
+				<jaxb:typesafeEnumMember name="I" value="I"/>
+				<jaxb:typesafeEnumMember name="J" value="J"/>
+				<jaxb:typesafeEnumMember name="K" value="K"/>
+				<jaxb:typesafeEnumMember name="L" value="L"/>
+				<jaxb:typesafeEnumMember name="M" value="M"/>
+				<jaxb:typesafeEnumMember name="N" value="N"/>
+				<jaxb:typesafeEnumMember name="O" value="O"/>
+				<jaxb:typesafeEnumMember name="P" value="P"/>
+				<jaxb:typesafeEnumMember name="Q" value="Q"/>
+				<jaxb:typesafeEnumMember name="R" value="R"/>
+				<jaxb:typesafeEnumMember name="S" value="S"/>
+				<jaxb:typesafeEnumMember name="T" value="T"/>
+				<jaxb:typesafeEnumMember name="U" value="U"/>
+				<jaxb:typesafeEnumMember name="V" value="V"/>
+				<jaxb:typesafeEnumMember name="W" value="W"/>
+				<jaxb:typesafeEnumMember name="X" value="X"/>
+				<jaxb:typesafeEnumMember name="Y" value="Y"/>
+				<jaxb:typesafeEnumMember name="Z" value="Z"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeUsageLimitationBaseType']">
+			<jaxb:typesafeEnumClass name="CodeUsageLimitationBaseType">
+				<jaxb:typesafeEnumMember name="PERMIT" value="PERMIT"/>
+				<jaxb:typesafeEnumMember name="CONDITIONAL" value="CONDITIONAL"/>
+				<jaxb:typesafeEnumMember name="FORBID" value="FORBID"/>
+				<jaxb:typesafeEnumMember name="RESERV" value="RESERV"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeValueInterpretationBaseType']">
+			<jaxb:typesafeEnumClass name="CodeValueInterpretationBaseType">
+				<jaxb:typesafeEnumMember name="ABOVE" value="ABOVE"/>
+				<jaxb:typesafeEnumMember name="AT_OR_ABOVE" value="AT_OR_ABOVE"/>
+				<jaxb:typesafeEnumMember name="AT_OR_BELOW" value="AT_OR_BELOW"/>
+				<jaxb:typesafeEnumMember name="BELOW" value="BELOW"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeVASISBaseType']">
+			<jaxb:typesafeEnumClass name="CodeVASISBaseType">
+				<jaxb:typesafeEnumMember name="PAPI" value="PAPI"/>
+				<jaxb:typesafeEnumMember name="APAPI" value="APAPI"/>
+				<jaxb:typesafeEnumMember name="HAPI" value="HAPI"/>
+				<jaxb:typesafeEnumMember name="VASIS" value="VASIS"/>
+				<jaxb:typesafeEnumMember name="AVASIS" value="AVASIS"/>
+				<jaxb:typesafeEnumMember name="TVASIS" value="TVASIS"/>
+				<jaxb:typesafeEnumMember name="ATVASIS" value="ATVASIS"/>
+				<jaxb:typesafeEnumMember name="3B_VASIS" value="3B_VASIS"/>
+				<jaxb:typesafeEnumMember name="3B_AVASIS" value="3B_AVASIS"/>
+				<jaxb:typesafeEnumMember name="3B_ATVASIS" value="3B_ATVASIS"/>
+				<jaxb:typesafeEnumMember name="PVASI" value="PVASI"/>
+				<jaxb:typesafeEnumMember name="TRCV" value="TRCV"/>
+				<jaxb:typesafeEnumMember name="PNI" value="PNI"/>
+				<jaxb:typesafeEnumMember name="ILU" value="ILU"/>
+				<jaxb:typesafeEnumMember name="OLS" value="OLS"/>
+				<jaxb:typesafeEnumMember name="LCVASI" value="LCVASI"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeVerticalDatumBaseType']">
+			<jaxb:typesafeEnumClass name="CodeVerticalDatumBaseType">
+				<jaxb:typesafeEnumMember name="EGM_96" value="EGM_96"/>
+				<jaxb:typesafeEnumMember name="AHD" value="AHD"/>
+				<jaxb:typesafeEnumMember name="NAVD88" value="NAVD88"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeVerticalReferenceBaseType']">
+			<jaxb:typesafeEnumClass name="CodeVerticalReferenceBaseType">
+				<jaxb:typesafeEnumMember name="SFC" value="SFC"/>
+				<jaxb:typesafeEnumMember name="MSL" value="MSL"/>
+				<jaxb:typesafeEnumMember name="W84" value="W84"/>
+				<jaxb:typesafeEnumMember name="STD" value="STD"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeVerticalStructureBaseType']">
+			<jaxb:typesafeEnumClass name="CodeVerticalStructureBaseType">
+				<jaxb:typesafeEnumMember name="AG_EQUIP" value="AG_EQUIP"/>
+				<jaxb:typesafeEnumMember name="ANTENNA" value="ANTENNA"/>
+				<jaxb:typesafeEnumMember name="ARCH" value="ARCH"/>
+				<jaxb:typesafeEnumMember name="BRIDGE" value="BRIDGE"/>
+				<jaxb:typesafeEnumMember name="BUILDING" value="BUILDING"/>
+				<jaxb:typesafeEnumMember name="CABLE_CAR" value="CABLE_CAR"/>
+				<jaxb:typesafeEnumMember name="CATENARY" value="CATENARY"/>
+				<jaxb:typesafeEnumMember name="COMPRESSED_AIR_SYSTEM" value="COMPRESSED_AIR_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="CONTROL_MONITORING_SYSTEM" value="CONTROL_MONITORING_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="CONTROL_TOWER" value="CONTROL_TOWER"/>
+				<jaxb:typesafeEnumMember name="COOLING_TOWER" value="COOLING_TOWER"/>
+				<jaxb:typesafeEnumMember name="CRANE" value="CRANE"/>
+				<jaxb:typesafeEnumMember name="DAM" value="DAM"/>
+				<jaxb:typesafeEnumMember name="DOME" value="DOME"/>
+				<jaxb:typesafeEnumMember name="ELECTRICAL_EXIT_LIGHT" value="ELECTRICAL_EXIT_LIGHT"/>
+				<jaxb:typesafeEnumMember name="ELECTRICAL_SYSTEM" value="ELECTRICAL_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="ELEVATOR" value="ELEVATOR"/>
+				<jaxb:typesafeEnumMember name="FENCE" value="FENCE"/>
+				<jaxb:typesafeEnumMember name="FUEL_SYSTEM" value="FUEL_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="GATE" value="GATE"/>
+				<jaxb:typesafeEnumMember name="GENERAL_UTILITY" value="GENERAL_UTILITY"/>
+				<jaxb:typesafeEnumMember name="GRAIN_ELEVATOR" value="GRAIN_ELEVATOR"/>
+				<jaxb:typesafeEnumMember name="HEAT_COOL_SYSTEM" value="HEAT_COOL_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="INDUSTRIAL_SYSTEM" value="INDUSTRIAL_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="LIGHTHOUSE" value="LIGHTHOUSE"/>
+				<jaxb:typesafeEnumMember name="MONUMENT" value="MONUMENT"/>
+				<jaxb:typesafeEnumMember name="NATURAL_GAS_SYSTEM" value="NATURAL_GAS_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="NATURAL_HIGHPOINT" value="NATURAL_HIGHPOINT"/>
+				<jaxb:typesafeEnumMember name="NAVAID" value="NAVAID"/>
+				<jaxb:typesafeEnumMember name="NUCLEAR_REACTOR" value="NUCLEAR_REACTOR"/>
+				<jaxb:typesafeEnumMember name="POLE" value="POLE"/>
+				<jaxb:typesafeEnumMember name="POWER_PLANT" value="POWER_PLANT"/>
+				<jaxb:typesafeEnumMember name="REFINERY" value="REFINERY"/>
+				<jaxb:typesafeEnumMember name="RIG" value="RIG"/>
+				<jaxb:typesafeEnumMember name="SALTWATER_SYSTEM" value="SALTWATER_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="SIGN" value="SIGN"/>
+				<jaxb:typesafeEnumMember name="SPIRE" value="SPIRE"/>
+				<jaxb:typesafeEnumMember name="STACK" value="STACK"/>
+				<jaxb:typesafeEnumMember name="STADIUM" value="STADIUM"/>
+				<jaxb:typesafeEnumMember name="STORM_SYSTEM" value="STORM_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="TANK" value="TANK"/>
+				<jaxb:typesafeEnumMember name="TETHERED_BALLOON" value="TETHERED_BALLOON"/>
+				<jaxb:typesafeEnumMember name="TOWER" value="TOWER"/>
+				<jaxb:typesafeEnumMember name="TRAMWAY" value="TRAMWAY"/>
+				<jaxb:typesafeEnumMember name="TRANSMISSION_LINE" value="TRANSMISSION_LINE"/>
+				<jaxb:typesafeEnumMember name="TREE" value="TREE"/>
+				<jaxb:typesafeEnumMember name="URBAN" value="URBAN"/>
+				<jaxb:typesafeEnumMember name="VEGETATION" value="VEGETATION"/>
+				<jaxb:typesafeEnumMember name="WALL" value="WALL"/>
+				<jaxb:typesafeEnumMember name="WASTEWATER_SYSTEM" value="WASTEWATER_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="WATER_SYSTEM" value="WATER_SYSTEM"/>
+				<jaxb:typesafeEnumMember name="WATER_TOWER" value="WATER_TOWER"/>
+				<jaxb:typesafeEnumMember name="WINDMILL" value="WINDMILL"/>
+				<jaxb:typesafeEnumMember name="WINDMILL_FARMS" value="WINDMILL_FARMS"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeVerticalStructureMarkingBaseType']">
+			<jaxb:typesafeEnumClass name="CodeVerticalStructureMarkingBaseType">
+				<jaxb:typesafeEnumMember name="MONOCOLOUR" value="MONOCOLOUR"/>
+				<jaxb:typesafeEnumMember name="CHEQUERED" value="CHEQUERED"/>
+				<jaxb:typesafeEnumMember name="HBANDS" value="HBANDS"/>
+				<jaxb:typesafeEnumMember name="VBANDS" value="VBANDS"/>
+				<jaxb:typesafeEnumMember name="FLAG" value="FLAG"/>
+				<jaxb:typesafeEnumMember name="MARKERS" value="MARKERS"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeVerticalStructureMaterialBaseType']">
+			<jaxb:typesafeEnumClass name="CodeVerticalStructureMaterialBaseType">
+				<jaxb:typesafeEnumMember name="ADOBE_BRICK" value="ADOBE_BRICK"/>
+				<jaxb:typesafeEnumMember name="ALUMINIUM" value="ALUMINIUM"/>
+				<jaxb:typesafeEnumMember name="BRICK" value="BRICK"/>
+				<jaxb:typesafeEnumMember name="CONCRETE" value="CONCRETE"/>
+				<jaxb:typesafeEnumMember name="FIBREGLASS" value="FIBREGLASS"/>
+				<jaxb:typesafeEnumMember name="GLASS" value="GLASS"/>
+				<jaxb:typesafeEnumMember name="IRON" value="IRON"/>
+				<jaxb:typesafeEnumMember name="MASONRY" value="MASONRY"/>
+				<jaxb:typesafeEnumMember name="METAL" value="METAL"/>
+				<jaxb:typesafeEnumMember name="MUD" value="MUD"/>
+				<jaxb:typesafeEnumMember name="PLANT" value="PLANT"/>
+				<jaxb:typesafeEnumMember name="PRESTRESSED_CONCRETE" value="PRESTRESSED_CONCRETE"/>
+				<jaxb:typesafeEnumMember name="REINFORCED_CONCRETE" value="REINFORCED_CONCRETE"/>
+				<jaxb:typesafeEnumMember name="SOD" value="SOD"/>
+				<jaxb:typesafeEnumMember name="STEEL" value="STEEL"/>
+				<jaxb:typesafeEnumMember name="STONE" value="STONE"/>
+				<jaxb:typesafeEnumMember name="TREATED_TIMBER" value="TREATED_TIMBER"/>
+				<jaxb:typesafeEnumMember name="WOOD" value="WOOD"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeVisualDockingGuidanceBaseType']">
+			<jaxb:typesafeEnumClass name="CodeVisualDockingGuidanceBaseType">
+				<jaxb:typesafeEnumMember name="AGNIS" value="AGNIS"/>
+				<jaxb:typesafeEnumMember name="PAPA" value="PAPA"/>
+				<jaxb:typesafeEnumMember name="SAFE_GATE" value="SAFE_GATE"/>
+				<jaxb:typesafeEnumMember name="SAFE_DOC" value="SAFE_DOC"/>
+				<jaxb:typesafeEnumMember name="APIS" value="APIS"/>
+				<jaxb:typesafeEnumMember name="A_VDGS" value="A_VDGS"/>
+				<jaxb:typesafeEnumMember name="AGNIS_STOP" value="AGNIS_STOP"/>
+				<jaxb:typesafeEnumMember name="AGNIS_PAPA" value="AGNIS_PAPA"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeVORBaseType']">
+			<jaxb:typesafeEnumClass name="CodeVORBaseType">
+				<jaxb:typesafeEnumMember name="VOR" value="VOR"/>
+				<jaxb:typesafeEnumMember name="DVOR" value="DVOR"/>
+				<jaxb:typesafeEnumMember name="VOT" value="VOT"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeWakeTurbulenceBaseType']">
+			<jaxb:typesafeEnumClass name="CodeWakeTurbulenceBaseType">
+				<jaxb:typesafeEnumMember name="LOW" value="LOW"/>
+				<jaxb:typesafeEnumMember name="MEDIUM" value="MEDIUM"/>
+				<jaxb:typesafeEnumMember name="HIGH" value="HIGH"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeWorkAreaBaseType']">
+			<jaxb:typesafeEnumClass name="CodeWorkAreaBaseType">
+				<jaxb:typesafeEnumMember name="CONSTRUCTION" value="CONSTRUCTION"/>
+				<jaxb:typesafeEnumMember name="SURFACEWORK" value="SURFACEWORK"/>
+				<jaxb:typesafeEnumMember name="PARKED" value="PARKED"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='CodeYesNoBaseType']">
+			<jaxb:typesafeEnumClass name="CodeYesNoBaseType">
+				<jaxb:typesafeEnumMember name="YES" value="YES"/>
+				<jaxb:typesafeEnumMember name="NO" value="NO"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='UomDepthType']">
+			<jaxb:typesafeEnumClass name="UomDepthType">
+				<jaxb:typesafeEnumMember name="MM" value="MM"/>
+				<jaxb:typesafeEnumMember name="CM" value="CM"/>
+				<jaxb:typesafeEnumMember name="IN" value="IN"/>
+				<jaxb:typesafeEnumMember name="FT" value="FT"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='UomDistanceType']">
+			<jaxb:typesafeEnumClass name="UomDistanceType">
+				<jaxb:typesafeEnumMember name="NM" value="NM"/>
+				<jaxb:typesafeEnumMember name="KM" value="KM"/>
+				<jaxb:typesafeEnumMember name="M" value="M"/>
+				<jaxb:typesafeEnumMember name="FT" value="FT"/>
+				<jaxb:typesafeEnumMember name="MI" value="MI"/>
+				<jaxb:typesafeEnumMember name="CM" value="CM"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+			<jaxb:bindings node="//xs:simpleType[@name='UomDistanceVerticalType']">
+			<jaxb:typesafeEnumClass name="UomDistanceVerticalType">
+				<jaxb:typesafeEnumMember name="FT" value="FT"/>
+				<jaxb:typesafeEnumMember name="M" value="M"/>
+				<jaxb:typesafeEnumMember name="FL" value="FL"/>
+				<jaxb:typesafeEnumMember name="SM" value="SM"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='UomDurationType']">
+			<jaxb:typesafeEnumClass name="UomDurationType">
+				<jaxb:typesafeEnumMember name="HR" value="HR"/>
+				<jaxb:typesafeEnumMember name="MIN" value="MIN"/>
+				<jaxb:typesafeEnumMember name="SEC" value="SEC"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='UomFLType']">
+			<jaxb:typesafeEnumClass name="UomFLType">
+				<jaxb:typesafeEnumMember name="FL" value="FL"/>
+				<jaxb:typesafeEnumMember name="SM" value="SM"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='UomFrequencyType']">
+			<jaxb:typesafeEnumClass name="UomFrequencyType">
+				<jaxb:typesafeEnumMember name="HZ" value="HZ"/>
+				<jaxb:typesafeEnumMember name="KHZ" value="KHZ"/>
+				<jaxb:typesafeEnumMember name="MHZ" value="MHZ"/>
+				<jaxb:typesafeEnumMember name="GHZ" value="GHZ"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='UomLightIntensityType']">
+			<jaxb:typesafeEnumClass name="UomLightIntensityType">
+				<jaxb:typesafeEnumMember name="CD" value="CD"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='UomPressureType']">
+			<jaxb:typesafeEnumClass name="UomPressureType">
+				<jaxb:typesafeEnumMember name="PA" value="PA"/>
+				<jaxb:typesafeEnumMember name="MPA" value="MPA"/>
+				<jaxb:typesafeEnumMember name="PSI" value="PSI"/>
+				<jaxb:typesafeEnumMember name="BAR" value="BAR"/>
+				<jaxb:typesafeEnumMember name="TORR" value="TORR"/>
+				<jaxb:typesafeEnumMember name="ATM" value="ATM"/>
+				<jaxb:typesafeEnumMember name="HPA" value="HPA"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='UomSpeedType']">
+			<jaxb:typesafeEnumClass name="UomSpeedType">
+				<jaxb:typesafeEnumMember name="KM_H" value="KM_H"/>
+				<jaxb:typesafeEnumMember name="KT" value="KT"/>
+				<jaxb:typesafeEnumMember name="MACH" value="MACH"/>
+				<jaxb:typesafeEnumMember name="M_MIN" value="M_MIN"/>
+				<jaxb:typesafeEnumMember name="FT_MIN" value="FT_MIN"/>
+				<jaxb:typesafeEnumMember name="M_SEC" value="M_SEC"/>
+				<jaxb:typesafeEnumMember name="FT_SEC" value="FT_SEC"/>
+				<jaxb:typesafeEnumMember name="MPH" value="MPH"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='UomTemperatureType']">
+			<jaxb:typesafeEnumClass name="UomTemperatureType">
+				<jaxb:typesafeEnumMember name="C" value="C"/>
+				<jaxb:typesafeEnumMember name="F" value="F"/>
+				<jaxb:typesafeEnumMember name="K" value="K"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:simpleType[@name='UomWeightType']">
+			<jaxb:typesafeEnumClass name="UomWeightType">
+				<jaxb:typesafeEnumMember name="KG" value="KG"/>
+				<jaxb:typesafeEnumMember name="T" value="T"/>
+				<jaxb:typesafeEnumMember name="LB" value="LB"/>
+				<jaxb:typesafeEnumMember name="TON" value="TON"/>
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
 
 	</jaxb:bindings>
 

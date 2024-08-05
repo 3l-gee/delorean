@@ -44,7 +44,7 @@ public class ValWeightType {
     @DecimalMin(value = "0", inclusive = true)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomWeightType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -81,10 +81,10 @@ public class ValWeightType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomWeightType }
      *     
      */
-    public String getUom() {
+    public UomWeightType getUom() {
         return uom;
     }
 
@@ -93,10 +93,10 @@ public class ValWeightType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomWeightType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomWeightType value) {
         this.uom = value;
     }
 

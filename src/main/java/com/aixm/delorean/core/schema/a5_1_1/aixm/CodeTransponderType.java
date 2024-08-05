@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTransponderType {
 
     @XmlValue
-    protected String value;
+    protected CodeTransponderBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeTransponderType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeTransponderBaseType }
      *     
      */
-    public String getValue() {
+    public CodeTransponderBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeTransponderType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeTransponderBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeTransponderBaseType value) {
         this.value = value;
     }
 

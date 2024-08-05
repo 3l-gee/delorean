@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTLOFSectionType {
 
     @XmlValue
-    protected String value;
+    protected CodeTLOFSectionBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeTLOFSectionType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeTLOFSectionBaseType }
      *     
      */
-    public String getValue() {
+    public CodeTLOFSectionBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeTLOFSectionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeTLOFSectionBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeTLOFSectionBaseType value) {
         this.value = value;
     }
 

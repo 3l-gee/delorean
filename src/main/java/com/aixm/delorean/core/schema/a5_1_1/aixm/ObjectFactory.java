@@ -24077,16 +24077,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link UomDistanceVerticalType }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link UomDistanceVerticalType }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "unitOfMeasurement", scope = StandardLevelColumnTimeSliceType.class)
-    public JAXBElement<String> createStandardLevelColumnTimeSliceTypeUnitOfMeasurement(String value) {
-        return new JAXBElement<>(_StandardLevelColumnTimeSliceTypeUnitOfMeasurement_QNAME, String.class, StandardLevelColumnTimeSliceType.class, value);
+    public JAXBElement<UomDistanceVerticalType> createStandardLevelColumnTimeSliceTypeUnitOfMeasurement(UomDistanceVerticalType value) {
+        return new JAXBElement<>(_StandardLevelColumnTimeSliceTypeUnitOfMeasurement_QNAME, UomDistanceVerticalType.class, StandardLevelColumnTimeSliceType.class, value);
     }
 
     /**

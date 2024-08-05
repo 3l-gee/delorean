@@ -8768,8 +8768,6 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeStatusNavaidBaseType">
-		<union>
-			<simpleType>
 		<restriction base="string">
 			<enumeration value="OPERATIONAL"/>
 			<enumeration value="UNSERVICEABLE"/>
@@ -8805,8 +8803,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
- -->	<complexType name="CodeStatusNavaidType">
+	</simpleType> -->	
+	<complexType name="CodeStatusNavaidType">
 		<simpleContent>
 			<extension base="aixm:CodeStatusNavaidBaseType">
 				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
@@ -8814,6 +8812,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeStatusOperationsBaseType">
+		<restriction base="string">
+			<enumeration value="NORMAL"/>
+			<enumeration value="DOWNGRADED"/>
+			<enumeration value="UNSERVICEABLE"/>
+			<enumeration value="WORK_IN_PROGRESS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeStatusOperationsBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8829,7 +8835,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeStatusOperationsType">
 		<simpleContent>
 			<extension base="aixm:CodeStatusOperationsBaseType">
@@ -8838,6 +8844,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeStatusServiceBaseType">
+		<restriction base="string">
+			<enumeration value="NORMAL"/>
+			<enumeration value="LIMITED"/>
+			<enumeration value="ONTEST"/>
+			<enumeration value="UNSERVICEABLE"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeStatusServiceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8853,7 +8867,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeStatusServiceType">
 		<simpleContent>
 			<extension base="aixm:CodeStatusServiceBaseType">
@@ -8862,6 +8876,35 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSurfaceCompositionBaseType">
+		<restriction base="string">
+			<enumeration value="ASPH"/>
+			<enumeration value="ASPH_GRASS"/>
+			<enumeration value="CONC"/>
+			<enumeration value="CONC_ASPH"/>
+			<enumeration value="CONC_GRS"/>
+			<enumeration value="GRASS"/>
+			<enumeration value="SAND"/>
+			<enumeration value="WATER"/>
+			<enumeration value="BITUM"/>
+			<enumeration value="BRICK"/>
+			<enumeration value="MACADAM"/>
+			<enumeration value="STONE"/>
+			<enumeration value="CORAL"/>
+			<enumeration value="CLAY"/>
+			<enumeration value="LATERITE"/>
+			<enumeration value="GRAVEL"/>
+			<enumeration value="EARTH"/>
+			<enumeration value="ICE"/>
+			<enumeration value="SNOW"/>
+			<enumeration value="MEMBRANE"/>
+			<enumeration value="METAL"/>
+			<enumeration value="MATS"/>
+			<enumeration value="PIERCED_STEEL"/>
+			<enumeration value="WOOD"/>
+			<enumeration value="NON_BITUM_MIX"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSurfaceCompositionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8898,7 +8941,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSurfaceCompositionType">
 		<simpleContent>
 			<extension base="aixm:CodeSurfaceCompositionBaseType">
@@ -8907,6 +8950,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSurfaceConditionBaseType">
+		<restriction base="string">
+			<enumeration value="GOOD"/>
+			<enumeration value="FAIR"/>
+			<enumeration value="POOR"/>
+			<enumeration value="UNSAFE"/>
+			<enumeration value="DEFORMED"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSurfaceConditionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8923,7 +8975,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSurfaceConditionType">
 		<simpleContent>
 			<extension base="aixm:CodeSurfaceConditionBaseType">
@@ -8932,6 +8984,21 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSurfacePreparationBaseType">
+		<restriction base="string">
+			<enumeration value="NATURAL"/>
+			<enumeration value="ROLLED"/>
+			<enumeration value="COMPACTED"/>
+			<enumeration value="GRADED"/>
+			<enumeration value="GROOVED"/>
+			<enumeration value="OILED"/>
+			<enumeration value="PAVED"/>
+			<enumeration value="PFC"/>
+			<enumeration value="AFSC"/>
+			<enumeration value="RFSC"/>
+			<enumeration value="NON_GROOVED"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSurfacePreparationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8954,7 +9021,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeSurfacePreparationType">
 		<simpleContent>
 			<extension base="aixm:CodeSurfacePreparationBaseType">
@@ -8963,6 +9030,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeSystemActivationBaseType">
+		<restriction base="string">
+			<enumeration value="ON"/>
+			<enumeration value="ON_OR_OFF"/>
+			<enumeration value="OFF"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeSystemActivationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -8978,7 +9052,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			</simpleType>
 		</union>
 	</simpleType>
-	<complexType name="CodeSystemActivationType">
+ -->	<complexType name="CodeSystemActivationType">
 		<simpleContent>
 			<extension base="aixm:CodeSystemActivationBaseType">
 				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
@@ -8986,6 +9060,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeTAABaseType">
+		<restriction base="string">
+			<enumeration value="LEFT_BASE"/>
+			<enumeration value="RIGHT_BASE"/>
+			<enumeration value="STRAIGHT_IN"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTAABaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9000,7 +9081,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeTAAType">
 		<simpleContent>
 			<extension base="aixm:CodeTAABaseType">
@@ -9009,6 +9090,362 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeTACANChannelBaseType">
+		<restriction base="string">
+			<enumeration value="1X"/>
+			<enumeration value="1Y"/>
+			<enumeration value="2X"/>
+			<enumeration value="2Y"/>
+			<enumeration value="3X"/>
+			<enumeration value="3Y"/>
+			<enumeration value="4X"/>
+			<enumeration value="4Y"/>
+			<enumeration value="5X"/>
+			<enumeration value="5Y"/>
+			<enumeration value="6X"/>
+			<enumeration value="6Y"/>
+			<enumeration value="7X"/>
+			<enumeration value="7Y"/>
+			<enumeration value="8X"/>
+			<enumeration value="8Y"/>
+			<enumeration value="9X"/>
+			<enumeration value="9Y"/>
+			<enumeration value="10X"/>
+			<enumeration value="10Y"/>
+			<enumeration value="11X"/>
+			<enumeration value="11Y"/>
+			<enumeration value="12X"/>
+			<enumeration value="12Y"/>
+			<enumeration value="13X"/>
+			<enumeration value="13Y"/>
+			<enumeration value="14X"/>
+			<enumeration value="14Y"/>
+			<enumeration value="15X"/>
+			<enumeration value="15Y"/>
+			<enumeration value="16X"/>
+			<enumeration value="16Y"/>
+			<enumeration value="17X"/>
+			<enumeration value="17Y"/>
+			<enumeration value="17Z"/>
+			<enumeration value="18X"/>
+			<enumeration value="18W"/>
+			<enumeration value="18Y"/>
+			<enumeration value="18Z"/>
+			<enumeration value="19X"/>
+			<enumeration value="19Y"/>
+			<enumeration value="19Z"/>
+			<enumeration value="20X"/>
+			<enumeration value="20W"/>
+			<enumeration value="20Y"/>
+			<enumeration value="20Z"/>
+			<enumeration value="21X"/>
+			<enumeration value="21Y"/>
+			<enumeration value="21Z"/>
+			<enumeration value="22X"/>
+			<enumeration value="22W"/>
+			<enumeration value="22Y"/>
+			<enumeration value="22Z"/>
+			<enumeration value="23X"/>
+			<enumeration value="23Y"/>
+			<enumeration value="23Z"/>
+			<enumeration value="24X"/>
+			<enumeration value="24W"/>
+			<enumeration value="24Y"/>
+			<enumeration value="24Z"/>
+			<enumeration value="25X"/>
+			<enumeration value="25Y"/>
+			<enumeration value="25Z"/>
+			<enumeration value="26X"/>
+			<enumeration value="26W"/>
+			<enumeration value="26Y"/>
+			<enumeration value="26Z"/>
+			<enumeration value="27X"/>
+			<enumeration value="27Y"/>
+			<enumeration value="27Z"/>
+			<enumeration value="28X"/>
+			<enumeration value="28W"/>
+			<enumeration value="28Y"/>
+			<enumeration value="28Z"/>
+			<enumeration value="29X"/>
+			<enumeration value="29Y"/>
+			<enumeration value="29Z"/>
+			<enumeration value="30X"/>
+			<enumeration value="30W"/>
+			<enumeration value="30Y"/>
+			<enumeration value="30Z"/>
+			<enumeration value="31X"/>
+			<enumeration value="31Y"/>
+			<enumeration value="31Z"/>
+			<enumeration value="32X"/>
+			<enumeration value="32W"/>
+			<enumeration value="32Y"/>
+			<enumeration value="32Z"/>
+			<enumeration value="33X"/>
+			<enumeration value="33Y"/>
+			<enumeration value="33Z"/>
+			<enumeration value="34X"/>
+			<enumeration value="34W"/>
+			<enumeration value="34Y"/>
+			<enumeration value="34Z"/>
+			<enumeration value="35X"/>
+			<enumeration value="35Y"/>
+			<enumeration value="35Z"/>
+			<enumeration value="36X"/>
+			<enumeration value="36W"/>
+			<enumeration value="36Y"/>
+			<enumeration value="36Z"/>
+			<enumeration value="37X"/>
+			<enumeration value="37Y"/>
+			<enumeration value="37Z"/>
+			<enumeration value="38X"/>
+			<enumeration value="38W"/>
+			<enumeration value="38Y"/>
+			<enumeration value="38Z"/>
+			<enumeration value="39X"/>
+			<enumeration value="39Y"/>
+			<enumeration value="39Z"/>
+			<enumeration value="40X"/>
+			<enumeration value="40W"/>
+			<enumeration value="40Y"/>
+			<enumeration value="40Z"/>
+			<enumeration value="41X"/>
+			<enumeration value="41Y"/>
+			<enumeration value="41Z"/>
+			<enumeration value="42X"/>
+			<enumeration value="42W"/>
+			<enumeration value="42Y"/>
+			<enumeration value="42Z"/>
+			<enumeration value="43X"/>
+			<enumeration value="43Y"/>
+			<enumeration value="43Z"/>
+			<enumeration value="44X"/>
+			<enumeration value="44W"/>
+			<enumeration value="44Y"/>
+			<enumeration value="44Z"/>
+			<enumeration value="45X"/>
+			<enumeration value="45Y"/>
+			<enumeration value="45Z"/>
+			<enumeration value="46X"/>
+			<enumeration value="46W"/>
+			<enumeration value="46Y"/>
+			<enumeration value="46Z"/>
+			<enumeration value="47X"/>
+			<enumeration value="47Y"/>
+			<enumeration value="47Z"/>
+			<enumeration value="48X"/>
+			<enumeration value="48W"/>
+			<enumeration value="48Y"/>
+			<enumeration value="48Z"/>
+			<enumeration value="49X"/>
+			<enumeration value="49Y"/>
+			<enumeration value="49Z"/>
+			<enumeration value="50X"/>
+			<enumeration value="50W"/>
+			<enumeration value="50Y"/>
+			<enumeration value="50Z"/>
+			<enumeration value="51X"/>
+			<enumeration value="51Y"/>
+			<enumeration value="51Z"/>
+			<enumeration value="52X"/>
+			<enumeration value="52W"/>
+			<enumeration value="52Y"/>
+			<enumeration value="52Z"/>
+			<enumeration value="53X"/>
+			<enumeration value="53Y"/>
+			<enumeration value="53Z"/>
+			<enumeration value="54X"/>
+			<enumeration value="54W"/>
+			<enumeration value="54Y"/>
+			<enumeration value="54Z"/>
+			<enumeration value="55X"/>
+			<enumeration value="55Y"/>
+			<enumeration value="55Z"/>
+			<enumeration value="56X"/>
+			<enumeration value="56W"/>
+			<enumeration value="56Y"/>
+			<enumeration value="56Z"/>
+			<enumeration value="57X"/>
+			<enumeration value="57Y"/>
+			<enumeration value="58X"/>
+			<enumeration value="58Y"/>
+			<enumeration value="59X"/>
+			<enumeration value="59Y"/>
+			<enumeration value="60X"/>
+			<enumeration value="60Y"/>
+			<enumeration value="61X"/>
+			<enumeration value="61Y"/>
+			<enumeration value="62X"/>
+			<enumeration value="62Y"/>
+			<enumeration value="63X"/>
+			<enumeration value="63Y"/>
+			<enumeration value="64X"/>
+			<enumeration value="64Y"/>
+			<enumeration value="65X"/>
+			<enumeration value="65Y"/>
+			<enumeration value="66X"/>
+			<enumeration value="66Y"/>
+			<enumeration value="67X"/>
+			<enumeration value="67Y"/>
+			<enumeration value="68X"/>
+			<enumeration value="68Y"/>
+			<enumeration value="69X"/>
+			<enumeration value="69Y"/>
+			<enumeration value="70X"/>
+			<enumeration value="70Y"/>
+			<enumeration value="71X"/>
+			<enumeration value="71Y"/>
+			<enumeration value="72X"/>
+			<enumeration value="72Y"/>
+			<enumeration value="73X"/>
+			<enumeration value="73Y"/>
+			<enumeration value="74X"/>
+			<enumeration value="74Y"/>
+			<enumeration value="75X"/>
+			<enumeration value="75Y"/>
+			<enumeration value="76X"/>
+			<enumeration value="76Y"/>
+			<enumeration value="77X"/>
+			<enumeration value="77Y"/>
+			<enumeration value="78X"/>
+			<enumeration value="78Y"/>
+			<enumeration value="79X"/>
+			<enumeration value="79Y"/>
+			<enumeration value="80X"/>
+			<enumeration value="80Y"/>
+			<enumeration value="80Z"/>
+			<enumeration value="81X"/>
+			<enumeration value="81Y"/>
+			<enumeration value="81Z"/>
+			<enumeration value="82X"/>
+			<enumeration value="82Y"/>
+			<enumeration value="82Z"/>
+			<enumeration value="83X"/>
+			<enumeration value="83Y"/>
+			<enumeration value="83Z"/>
+			<enumeration value="84X"/>
+			<enumeration value="84Y"/>
+			<enumeration value="84Z"/>
+			<enumeration value="85X"/>
+			<enumeration value="85Y"/>
+			<enumeration value="85Z"/>
+			<enumeration value="86X"/>
+			<enumeration value="86Y"/>
+			<enumeration value="86Z"/>
+			<enumeration value="87X"/>
+			<enumeration value="87Y"/>
+			<enumeration value="87Z"/>
+			<enumeration value="88X"/>
+			<enumeration value="88Y"/>
+			<enumeration value="88Z"/>
+			<enumeration value="89X"/>
+			<enumeration value="89Y"/>
+			<enumeration value="89Z"/>
+			<enumeration value="90X"/>
+			<enumeration value="90Y"/>
+			<enumeration value="90Z"/>
+			<enumeration value="91X"/>
+			<enumeration value="91Y"/>
+			<enumeration value="91Z"/>
+			<enumeration value="92X"/>
+			<enumeration value="92Y"/>
+			<enumeration value="92Z"/>
+			<enumeration value="93X"/>
+			<enumeration value="93Y"/>
+			<enumeration value="93Z"/>
+			<enumeration value="94X"/>
+			<enumeration value="94Y"/>
+			<enumeration value="94Z"/>
+			<enumeration value="95X"/>
+			<enumeration value="95Y"/>
+			<enumeration value="95Z"/>
+			<enumeration value="96X"/>
+			<enumeration value="96Y"/>
+			<enumeration value="96Z"/>
+			<enumeration value="97X"/>
+			<enumeration value="97Y"/>
+			<enumeration value="97Z"/>
+			<enumeration value="98X"/>
+			<enumeration value="98Y"/>
+			<enumeration value="98Z"/>
+			<enumeration value="99X"/>
+			<enumeration value="99Y"/>
+			<enumeration value="99Z"/>
+			<enumeration value="100X"/>
+			<enumeration value="100Y"/>
+			<enumeration value="100Z"/>
+			<enumeration value="101X"/>
+			<enumeration value="101Y"/>
+			<enumeration value="101Z"/>
+			<enumeration value="102X"/>
+			<enumeration value="102Y"/>
+			<enumeration value="102Z"/>
+			<enumeration value="103X"/>
+			<enumeration value="103Y"/>
+			<enumeration value="103Z"/>
+			<enumeration value="104X"/>
+			<enumeration value="104Y"/>
+			<enumeration value="104Z"/>
+			<enumeration value="105X"/>
+			<enumeration value="105Y"/>
+			<enumeration value="105Z"/>
+			<enumeration value="106X"/>
+			<enumeration value="106Y"/>
+			<enumeration value="106Z"/>
+			<enumeration value="107X"/>
+			<enumeration value="107Y"/>
+			<enumeration value="107Z"/>
+			<enumeration value="108X"/>
+			<enumeration value="108Y"/>
+			<enumeration value="108Z"/>
+			<enumeration value="109X"/>
+			<enumeration value="109Y"/>
+			<enumeration value="109Z"/>
+			<enumeration value="110X"/>
+			<enumeration value="110Y"/>
+			<enumeration value="110Z"/>
+			<enumeration value="111X"/>
+			<enumeration value="111Y"/>
+			<enumeration value="111Z"/>
+			<enumeration value="112X"/>
+			<enumeration value="112Y"/>
+			<enumeration value="112Z"/>
+			<enumeration value="113X"/>
+			<enumeration value="113Y"/>
+			<enumeration value="113Z"/>
+			<enumeration value="114X"/>
+			<enumeration value="114Y"/>
+			<enumeration value="114Z"/>
+			<enumeration value="115X"/>
+			<enumeration value="115Y"/>
+			<enumeration value="115Z"/>
+			<enumeration value="116X"/>
+			<enumeration value="116Y"/>
+			<enumeration value="116Z"/>
+			<enumeration value="117X"/>
+			<enumeration value="117Y"/>
+			<enumeration value="117Z"/>
+			<enumeration value="118X"/>
+			<enumeration value="118Y"/>
+			<enumeration value="118Z"/>
+			<enumeration value="119X"/>
+			<enumeration value="119Y"/>
+			<enumeration value="119Z"/>
+			<enumeration value="120X"/>
+			<enumeration value="120Y"/>
+			<enumeration value="121X"/>
+			<enumeration value="121Y"/>
+			<enumeration value="122X"/>
+			<enumeration value="122Y"/>
+			<enumeration value="123X"/>
+			<enumeration value="123Y"/>
+			<enumeration value="124X"/>
+			<enumeration value="124Y"/>
+			<enumeration value="125X"/>
+			<enumeration value="125Y"/>
+			<enumeration value="126X"/>
+			<enumeration value="126Y"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTACANChannelBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9372,7 +9809,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeTACANChannelType">
 		<simpleContent>
 			<extension base="aixm:CodeTACANChannelBaseType">
@@ -9381,6 +9818,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeTaxiwayBaseType">
+		<restriction base="string">
+			<enumeration value="AIR"/>
+			<enumeration value="GND"/>
+			<enumeration value="EXIT"/>
+			<enumeration value="FASTEXIT"/>
+			<enumeration value="STUB"/>
+			<enumeration value="TURN_AROUND"/>
+			<enumeration value="PARALLEL"/>
+			<enumeration value="BYPASS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTaxiwayBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9400,8 +9849,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeTaxiwayElementBaseType">
+		<restriction base="string">
+			<enumeration value="NORMAL"/>
+			<enumeration value="INTERSECTION"/>
+			<enumeration value="SHOULDER"/>
+			<enumeration value="HOLDING_BAY"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTaxiwayElementBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9417,7 +9874,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeTaxiwayElementType">
 		<simpleContent>
 			<extension base="aixm:CodeTaxiwayElementBaseType">
@@ -9426,6 +9883,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeTaxiwaySectionBaseType">
+		<restriction base="string">
+			<enumeration value="CL"/>
+			<enumeration value="EDGE"/>
+			<enumeration value="END"/>
+			<enumeration value="RWY_INT"/>
+			<enumeration value="TWY_INT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTaxiwaySectionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9442,7 +9908,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeTaxiwaySectionType">
 		<simpleContent>
 			<extension base="aixm:CodeTaxiwaySectionBaseType">
@@ -9458,6 +9924,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeTelecomNetworkBaseType">
+		<restriction base="string">
+			<enumeration value="AFTN"/>
+			<enumeration value="AMHS"/>
+			<enumeration value="INTERNET"/>
+			<enumeration value="SITA"/>
+			<enumeration value="ACARS"/>
+			<enumeration value="ADNS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTelecomNetworkBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9475,7 +9951,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeTelecomNetworkType">
 		<simpleContent>
 			<extension base="aixm:CodeTelecomNetworkBaseType">
@@ -9484,6 +9960,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeTimeEventBaseType">
+		<restriction base="string">
+			<enumeration value="SR"/>
+			<enumeration value="SS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTimeEventBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9497,8 +9979,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeTimeEventCombinationBaseType">
+		<restriction base="string">
+			<enumeration value="EARLIEST"/>
+			<enumeration value="LATEST"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTimeEventCombinationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9512,7 +10000,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeTimeEventCombinationType">
 		<simpleContent>
 			<extension base="aixm:CodeTimeEventCombinationBaseType">
@@ -9528,6 +10016,37 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeTimeReferenceBaseType">
+		<restriction base="string">
+			<enumeration value="UTC"/>
+			<enumeration value="UTC-12"/>
+			<enumeration value="UTC-11"/>
+			<enumeration value="UTC-10"/>
+			<enumeration value="UTC-9"/>
+			<enumeration value="UTC-8"/>
+			<enumeration value="UTC-7"/>
+			<enumeration value="UTC-6"/>
+			<enumeration value="UTC-5"/>
+			<enumeration value="UTC-4"/>
+			<enumeration value="UTC-3"/>
+			<enumeration value="UTC-2"/>
+			<enumeration value="UTC-1"/>
+			<enumeration value="UTC+1"/>
+			<enumeration value="UTC+2"/>
+			<enumeration value="UTC+3"/>
+			<enumeration value="UTC+4"/>
+			<enumeration value="UTC+5"/>
+			<enumeration value="UTC+6"/>
+			<enumeration value="UTC+7"/>
+			<enumeration value="UTC+8"/>
+			<enumeration value="UTC+9"/>
+			<enumeration value="UTC+10"/>
+			<enumeration value="UTC+11"/>
+			<enumeration value="UTC+12"/>
+			<enumeration value="UTC+13"/>
+			<enumeration value="UTC+14"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTimeReferenceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9566,7 +10085,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeTimeReferenceType">
 		<simpleContent>
 			<extension base="aixm:CodeTimeReferenceBaseType">
@@ -9575,6 +10094,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeTLOFSectionBaseType">
+		<restriction base="string">
+			<enumeration value="AIM"/>
+			<enumeration value="EDGE"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTLOFSectionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9588,7 +10113,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeTLOFSectionType">
 		<simpleContent>
 			<extension base="aixm:CodeTLOFSectionBaseType">
@@ -9597,6 +10122,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeTrajectoryBaseType">
+		<restriction base="string">
+			<enumeration value="STRAIGHT"/>
+			<enumeration value="ARC"/>
+			<enumeration value="PT"/>
+			<enumeration value="BASETURN"/>
+			<enumeration value="HOLDING"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTrajectoryBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9613,7 +10147,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeTrajectoryType">
 		<simpleContent>
 			<extension base="aixm:CodeTrajectoryBaseType">
@@ -9622,6 +10156,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeTransponderBaseType">
+		<restriction base="string">
+			<enumeration value="MODE_1"/>
+			<enumeration value="MODE_2"/>
+			<enumeration value="MODE_3A"/>
+			<enumeration value="MODE_4"/>
+			<enumeration value="MODE_5"/>
+			<enumeration value="MODE_C"/>
+			<enumeration value="MODE_S"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeTransponderBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9640,7 +10185,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeTransponderType">
 		<simpleContent>
 			<extension base="aixm:CodeTransponderBaseType">
@@ -9649,6 +10194,55 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeUnitBaseType">
+		<restriction base="string">
+			<enumeration value="ACC"/>
+			<enumeration value="ADSU"/>
+			<enumeration value="ADVC"/>
+			<enumeration value="ALPS"/>
+			<enumeration value="AOF"/>
+			<enumeration value="APP"/>
+			<enumeration value="APP_ARR"/>
+			<enumeration value="APP_DEP"/>
+			<enumeration value="ARO"/>
+			<enumeration value="ATCC"/>
+			<enumeration value="ATFMU"/>
+			<enumeration value="ATMU"/>
+			<enumeration value="ATSU"/>
+			<enumeration value="BOF"/>
+			<enumeration value="BS"/>
+			<enumeration value="COM"/>
+			<enumeration value="FCST"/>
+			<enumeration value="FIC"/>
+			<enumeration value="GCA"/>
+			<enumeration value="MET"/>
+			<enumeration value="MWO"/>
+			<enumeration value="NOF"/>
+			<enumeration value="OAC"/>
+			<enumeration value="PAR"/>
+			<enumeration value="RAD"/>
+			<enumeration value="RAFC"/>
+			<enumeration value="RCC"/>
+			<enumeration value="RSC"/>
+			<enumeration value="SAR"/>
+			<enumeration value="SMC"/>
+			<enumeration value="SMR"/>
+			<enumeration value="SRA"/>
+			<enumeration value="SSR"/>
+			<enumeration value="TAR"/>
+			<enumeration value="TWR"/>
+			<enumeration value="UAC"/>
+			<enumeration value="UDF"/>
+			<enumeration value="UIC"/>
+			<enumeration value="VDF"/>
+			<enumeration value="WAFC"/>
+			<enumeration value="ARTCC"/>
+			<enumeration value="FSS"/>
+			<enumeration value="TRACON"/>
+			<enumeration value="MIL"/>
+			<enumeration value="MILOPS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeUnitBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9705,8 +10299,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeUnitDependencyBaseType">
+		<restriction base="string">
+			<enumeration value="OWNER"/>
+			<enumeration value="PROVIDER"/>
+			<enumeration value="ALTERNATE"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeUnitDependencyBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9721,7 +10322,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeUnitDependencyType">
 		<simpleContent>
 			<extension base="aixm:CodeUnitDependencyBaseType">
@@ -9737,6 +10338,36 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeUpperAlphaBaseType">
+		<restriction base="string">
+			<enumeration value="A"/>
+			<enumeration value="B"/>
+			<enumeration value="C"/>
+			<enumeration value="D"/>
+			<enumeration value="E"/>
+			<enumeration value="F"/>
+			<enumeration value="G"/>
+			<enumeration value="H"/>
+			<enumeration value="I"/>
+			<enumeration value="J"/>
+			<enumeration value="K"/>
+			<enumeration value="L"/>
+			<enumeration value="M"/>
+			<enumeration value="N"/>
+			<enumeration value="O"/>
+			<enumeration value="P"/>
+			<enumeration value="Q"/>
+			<enumeration value="R"/>
+			<enumeration value="S"/>
+			<enumeration value="T"/>
+			<enumeration value="U"/>
+			<enumeration value="V"/>
+			<enumeration value="W"/>
+			<enumeration value="X"/>
+			<enumeration value="Y"/>
+			<enumeration value="Z"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeUpperAlphaBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9774,7 +10405,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeUpperAlphaType">
 		<simpleContent>
 			<extension base="aixm:CodeUpperAlphaBaseType">
@@ -9783,6 +10414,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeUsageLimitationBaseType">
+		<restriction base="string">
+			<enumeration value="PERMIT"/>
+			<enumeration value="CONDITIONAL"/>
+			<enumeration value="FORBID"/>
+			<enumeration value="RESERV"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeUsageLimitationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9798,7 +10437,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeUsageLimitationType">
 		<simpleContent>
 			<extension base="aixm:CodeUsageLimitationBaseType">
@@ -9819,6 +10458,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeValueInterpretationBaseType">
+		<restriction base="string">
+			<enumeration value="ABOVE"/>
+			<enumeration value="AT_OR_ABOVE"/>
+			<enumeration value="AT_OR_BELOW"/>
+			<enumeration value="BELOW"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeValueInterpretationBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9834,7 +10481,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeValueInterpretationType">
 		<simpleContent>
 			<extension base="aixm:CodeValueInterpretationBaseType">
@@ -9843,6 +10490,26 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeVASISBaseType">
+		<restriction base="string">
+			<enumeration value="PAPI"/>
+			<enumeration value="APAPI"/>
+			<enumeration value="HAPI"/>
+			<enumeration value="VASIS"/>
+			<enumeration value="AVASIS"/>
+			<enumeration value="TVASIS"/>
+			<enumeration value="ATVASIS"/>
+			<enumeration value="3B_VASIS"/>
+			<enumeration value="3B_AVASIS"/>
+			<enumeration value="3B_ATVASIS"/>
+			<enumeration value="PVASI"/>
+			<enumeration value="TRCV"/>
+			<enumeration value="PNI"/>
+			<enumeration value="ILU"/>
+			<enumeration value="OLS"/>
+			<enumeration value="LCVASI"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeVASISBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9870,7 +10537,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeVASISType">
 		<simpleContent>
 			<extension base="aixm:CodeVASISBaseType">
@@ -9879,6 +10546,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeVerticalDatumBaseType">
+		<restriction base="string">
+			<enumeration value="EGM_96"/>
+			<enumeration value="AHD"/>
+			<enumeration value="NAVD88"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeVerticalDatumBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9893,7 +10567,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeVerticalDatumType">
 		<simpleContent>
 			<extension base="aixm:CodeVerticalDatumBaseType">
@@ -9902,6 +10576,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeVerticalReferenceBaseType">
+		<restriction base="string">
+			<enumeration value="SFC"/>
+			<enumeration value="MSL"/>
+			<enumeration value="W84"/>
+			<enumeration value="STD"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeVerticalReferenceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9917,7 +10599,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeVerticalReferenceType">
 		<simpleContent>
 			<extension base="aixm:CodeVerticalReferenceBaseType">
@@ -9926,6 +10608,64 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeVerticalStructureBaseType">
+		<restriction base="string">
+			<enumeration value="AG_EQUIP"/>
+			<enumeration value="ANTENNA"/>
+			<enumeration value="ARCH"/>
+			<enumeration value="BRIDGE"/>
+			<enumeration value="BUILDING"/>
+			<enumeration value="CABLE_CAR"/>
+			<enumeration value="CATENARY"/>
+			<enumeration value="COMPRESSED_AIR_SYSTEM"/>
+			<enumeration value="CONTROL_MONITORING_SYSTEM"/>
+			<enumeration value="CONTROL_TOWER"/>
+			<enumeration value="COOLING_TOWER"/>
+			<enumeration value="CRANE"/>
+			<enumeration value="DAM"/>
+			<enumeration value="DOME"/>
+			<enumeration value="ELECTRICAL_EXIT_LIGHT"/>
+			<enumeration value="ELECTRICAL_SYSTEM"/>
+			<enumeration value="ELEVATOR"/>
+			<enumeration value="FENCE"/>
+			<enumeration value="FUEL_SYSTEM"/>
+			<enumeration value="GATE"/>
+			<enumeration value="GENERAL_UTILITY"/>
+			<enumeration value="GRAIN_ELEVATOR"/>
+			<enumeration value="HEAT_COOL_SYSTEM"/>
+			<enumeration value="INDUSTRIAL_SYSTEM"/>
+			<enumeration value="LIGHTHOUSE"/>
+			<enumeration value="MONUMENT"/>
+			<enumeration value="NATURAL_GAS_SYSTEM"/>
+			<enumeration value="NATURAL_HIGHPOINT"/>
+			<enumeration value="NAVAID"/>
+			<enumeration value="NUCLEAR_REACTOR"/>
+			<enumeration value="POLE"/>
+			<enumeration value="POWER_PLANT"/>
+			<enumeration value="REFINERY"/>
+			<enumeration value="RIG"/>
+			<enumeration value="SALTWATER_SYSTEM"/>
+			<enumeration value="SIGN"/>
+			<enumeration value="SPIRE"/>
+			<enumeration value="STACK"/>
+			<enumeration value="STADIUM"/>
+			<enumeration value="STORM_SYSTEM"/>
+			<enumeration value="TANK"/>
+			<enumeration value="TETHERED_BALLOON"/>
+			<enumeration value="TOWER"/>
+			<enumeration value="TRAMWAY"/>
+			<enumeration value="TRANSMISSION_LINE"/>
+			<enumeration value="TREE"/>
+			<enumeration value="URBAN"/>
+			<enumeration value="VEGETATION"/>
+			<enumeration value="WALL"/>
+			<enumeration value="WASTEWATER_SYSTEM"/>
+			<enumeration value="WATER_SYSTEM"/>
+			<enumeration value="WATER_TOWER"/>
+			<enumeration value="WINDMILL"/>
+			<enumeration value="WINDMILL_FARMS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeVerticalStructureBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -9991,8 +10731,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeVerticalStructureMarkingBaseType">
+		<restriction base="string">
+			<enumeration value="MONOCOLOUR"/>
+			<enumeration value="CHEQUERED"/>
+			<enumeration value="HBANDS"/>
+			<enumeration value="VBANDS"/>
+			<enumeration value="FLAG"/>
+			<enumeration value="MARKERS"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeVerticalStructureMarkingBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10010,7 +10760,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeVerticalStructureMarkingType">
 		<simpleContent>
 			<extension base="aixm:CodeVerticalStructureMarkingBaseType">
@@ -10019,6 +10769,28 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeVerticalStructureMaterialBaseType">
+		<restriction base="string">
+			<enumeration value="ADOBE_BRICK"/>
+			<enumeration value="ALUMINIUM"/>
+			<enumeration value="BRICK"/>
+			<enumeration value="CONCRETE"/>
+			<enumeration value="FIBREGLASS"/>
+			<enumeration value="GLASS"/>
+			<enumeration value="IRON"/>
+			<enumeration value="MASONRY"/>
+			<enumeration value="METAL"/>
+			<enumeration value="MUD"/>
+			<enumeration value="PLANT"/>
+			<enumeration value="PRESTRESSED_CONCRETE"/>
+			<enumeration value="REINFORCED_CONCRETE"/>
+			<enumeration value="SOD"/>
+			<enumeration value="STEEL"/>
+			<enumeration value="STONE"/>
+			<enumeration value="TREATED_TIMBER"/>
+			<enumeration value="WOOD"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeVerticalStructureMaterialBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10048,7 +10820,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeVerticalStructureMaterialType">
 		<simpleContent>
 			<extension base="aixm:CodeVerticalStructureMaterialBaseType">
@@ -10064,6 +10836,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeVisualDockingGuidanceBaseType">
+		<restriction base="string">
+			<enumeration value="AGNIS"/>
+			<enumeration value="PAPA"/>
+			<enumeration value="SAFE_GATE"/>
+			<enumeration value="SAFE_DOC"/>
+			<enumeration value="APIS"/>
+			<enumeration value="A_VDGS"/>
+			<enumeration value="AGNIS_STOP"/>
+			<enumeration value="AGNIS_PAPA"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeVisualDockingGuidanceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10083,7 +10867,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeVisualDockingGuidanceType">
 		<simpleContent>
 			<extension base="aixm:CodeVisualDockingGuidanceBaseType">
@@ -10092,6 +10876,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeVORBaseType">
+		<restriction base="string">
+			<enumeration value="VOR"/>
+			<enumeration value="DVOR"/>
+			<enumeration value="VOT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeVORBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10106,7 +10897,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeVORType">
 		<simpleContent>
 			<extension base="aixm:CodeVORBaseType">
@@ -10115,6 +10906,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeWakeTurbulenceBaseType">
+		<restriction base="string">
+			<enumeration value="LOW"/>
+			<enumeration value="MEDIUM"/>
+			<enumeration value="HIGH"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeWakeTurbulenceBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10129,7 +10927,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeWakeTurbulenceType">
 		<simpleContent>
 			<extension base="aixm:CodeWakeTurbulenceBaseType">
@@ -10138,6 +10936,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeWorkAreaBaseType">
+		<restriction base="string">
+			<enumeration value="CONSTRUCTION"/>
+			<enumeration value="SURFACEWORK"/>
+			<enumeration value="PARKED"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeWorkAreaBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10152,7 +10957,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeWorkAreaType">
 		<simpleContent>
 			<extension base="aixm:CodeWorkAreaBaseType">
@@ -10161,6 +10966,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeYesNoBaseType">
+		<restriction base="string">
+			<enumeration value="YES"/>
+			<enumeration value="NO"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="CodeYesNoBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10174,7 +10985,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeYesNoType">
 		<simpleContent>
 			<extension base="aixm:CodeYesNoBaseType">
@@ -10378,6 +11189,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="UomDepthType">
+		<restriction base="string">
+			<enumeration value="MM"/>
+			<enumeration value="CM"/>
+			<enumeration value="IN"/>
+			<enumeration value="FT"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomDepthType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10393,8 +11212,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="UomDistanceType">
+		<restriction base="string">
+			<enumeration value="NM"/>
+			<enumeration value="KM"/>
+			<enumeration value="M"/>
+			<enumeration value="FT"/>
+			<enumeration value="MI"/>
+			<enumeration value="CM"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomDistanceType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10412,8 +11241,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="UomDistanceVerticalType">
+		<restriction base="string">
+			<enumeration value="FT"/>
+			<enumeration value="M"/>
+			<enumeration value="FL"/>
+			<enumeration value="SM"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomDistanceVerticalType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10429,8 +11266,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="UomDurationType">
+		<restriction base="string">
+			<enumeration value="HR"/>
+			<enumeration value="MIN"/>
+			<enumeration value="SEC"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomDurationType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10445,8 +11289,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="UomFLType">
+		<restriction base="string">
+			<enumeration value="FL"/>
+			<enumeration value="SM"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomFLType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10460,8 +11310,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="UomFrequencyType">
+		<restriction base="string">
+			<enumeration value="HZ"/>
+			<enumeration value="KHZ"/>
+			<enumeration value="MHZ"/>
+			<enumeration value="GHZ"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomFrequencyType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10477,8 +11335,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="UomLightIntensityType">
+		<restriction base="string">
+			<enumeration value="CD"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomLightIntensityType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10491,8 +11354,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="UomPressureType">
+		<restriction base="string">
+			<enumeration value="PA"/>
+			<enumeration value="MPA"/>
+			<enumeration value="PSI"/>
+			<enumeration value="BAR"/>
+			<enumeration value="TORR"/>
+			<enumeration value="ATM"/>
+			<enumeration value="HPA"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomPressureType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10511,8 +11385,20 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="UomSpeedType">
+		<restriction base="string">
+			<enumeration value="KM_H"/>
+			<enumeration value="KT"/>
+			<enumeration value="MACH"/>
+			<enumeration value="M_MIN"/>
+			<enumeration value="FT_MIN"/>
+			<enumeration value="M_SEC"/>
+			<enumeration value="FT_SEC"/>
+			<enumeration value="MPH"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomSpeedType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10532,8 +11418,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="UomTemperatureType">
+		<restriction base="string">
+			<enumeration value="C"/>
+			<enumeration value="F"/>
+			<enumeration value="K"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomTemperatureType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10548,8 +11441,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="UomWeightType">
+		<restriction base="string">
+			<enumeration value="KG"/>
+			<enumeration value="T"/>
+			<enumeration value="LB"/>
+			<enumeration value="TON"/>
+		</restriction>
+	</simpleType>
+<!-- 	<simpleType name="UomWeightType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -10565,7 +11466,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="ValAlarmLimitBaseType">
 		<restriction base="decimal">
 			<maxInclusive value="50.8"/>

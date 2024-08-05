@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSignalPerformanceILSType {
 
     @XmlValue
-    protected String value;
+    protected CodeSignalPerformanceILSBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeSignalPerformanceILSType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeSignalPerformanceILSBaseType }
      *     
      */
-    public String getValue() {
+    public CodeSignalPerformanceILSBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeSignalPerformanceILSType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeSignalPerformanceILSBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeSignalPerformanceILSBaseType value) {
         this.value = value;
     }
 

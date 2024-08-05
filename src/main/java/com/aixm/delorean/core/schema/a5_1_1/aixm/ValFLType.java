@@ -45,7 +45,7 @@ public class ValFLType {
     @DecimalMax(value = "999", inclusive = true)
     protected long value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomFLType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -74,10 +74,10 @@ public class ValFLType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomFLType }
      *     
      */
-    public String getUom() {
+    public UomFLType getUom() {
         return uom;
     }
 
@@ -86,10 +86,10 @@ public class ValFLType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomFLType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomFLType value) {
         this.uom = value;
     }
 
