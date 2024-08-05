@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVASISType {
 
     @XmlValue
-    protected String value;
+    protected CodeVASISBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeVASISType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeVASISBaseType }
      *     
      */
-    public String getValue() {
+    public CodeVASISBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeVASISType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeVASISBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeVASISBaseType value) {
         this.value = value;
     }
 

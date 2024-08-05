@@ -44,7 +44,7 @@ public class ValFrequencyType {
     @DecimalMin(value = "0", inclusive = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomFrequencyType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -81,10 +81,10 @@ public class ValFrequencyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomFrequencyType }
      *     
      */
-    public String getUom() {
+    public UomFrequencyType getUom() {
         return uom;
     }
 
@@ -93,10 +93,10 @@ public class ValFrequencyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomFrequencyType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomFrequencyType value) {
         this.uom = value;
     }
 

@@ -69,7 +69,7 @@ public class StandardLevelColumnTimeSliceType
     @XmlElementRef(name = "series", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeLevelSeriesType> series;
     @XmlElementRef(name = "unitOfMeasurement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> unitOfMeasurement;
+    protected JAXBElement<UomDistanceVerticalType> unitOfMeasurement;
     @XmlElementRef(name = "separation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRVSMType> separation;
     @XmlElement(nillable = true)
@@ -119,10 +119,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link JAXBElement }{@code <}{@link UomDistanceVerticalType }{@code >}
      *     
      */
-    public JAXBElement<String> getUnitOfMeasurement() {
+    public JAXBElement<UomDistanceVerticalType> getUnitOfMeasurement() {
         return unitOfMeasurement;
     }
 
@@ -131,10 +131,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link JAXBElement }{@code <}{@link UomDistanceVerticalType }{@code >}
      *     
      */
-    public void setUnitOfMeasurement(JAXBElement<String> value) {
+    public void setUnitOfMeasurement(JAXBElement<UomDistanceVerticalType> value) {
         this.unitOfMeasurement = value;
     }
 

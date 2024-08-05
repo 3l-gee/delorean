@@ -42,7 +42,7 @@ public class ValTemperatureType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomTemperatureType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -79,10 +79,10 @@ public class ValTemperatureType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomTemperatureType }
      *     
      */
-    public String getUom() {
+    public UomTemperatureType getUom() {
         return uom;
     }
 
@@ -91,10 +91,10 @@ public class ValTemperatureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomTemperatureType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomTemperatureType value) {
         this.uom = value;
     }
 

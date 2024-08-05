@@ -42,7 +42,7 @@ public class ValDistanceSignedType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomDistanceType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -79,10 +79,10 @@ public class ValDistanceSignedType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomDistanceType }
      *     
      */
-    public String getUom() {
+    public UomDistanceType getUom() {
         return uom;
     }
 
@@ -91,10 +91,10 @@ public class ValDistanceSignedType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomDistanceType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomDistanceType value) {
         this.uom = value;
     }
 

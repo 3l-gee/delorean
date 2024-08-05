@@ -42,7 +42,7 @@ public class ValDurationType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomDurationType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -79,10 +79,10 @@ public class ValDurationType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomDurationType }
      *     
      */
-    public String getUom() {
+    public UomDurationType getUom() {
         return uom;
     }
 
@@ -91,10 +91,10 @@ public class ValDurationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomDurationType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomDurationType value) {
         this.uom = value;
     }
 

@@ -43,7 +43,7 @@ public class ValDistanceVerticalType {
     @Pattern(regexp = "((\\+|\\-){0,1}[0-9]{1,8}(\\.[0-9]{1,4}){0,1})|UNL|GND|FLOOR|CEILING")
     protected String value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomDistanceVerticalType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -80,10 +80,10 @@ public class ValDistanceVerticalType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomDistanceVerticalType }
      *     
      */
-    public String getUom() {
+    public UomDistanceVerticalType getUom() {
         return uom;
     }
 
@@ -92,10 +92,10 @@ public class ValDistanceVerticalType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomDistanceVerticalType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomDistanceVerticalType value) {
         this.uom = value;
     }
 

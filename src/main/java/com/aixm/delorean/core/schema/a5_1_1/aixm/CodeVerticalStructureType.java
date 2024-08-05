@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVerticalStructureType {
 
     @XmlValue
-    protected String value;
+    protected CodeVerticalStructureBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeVerticalStructureType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeVerticalStructureBaseType }
      *     
      */
-    public String getValue() {
+    public CodeVerticalStructureBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeVerticalStructureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeVerticalStructureBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeVerticalStructureBaseType value) {
         this.value = value;
     }
 

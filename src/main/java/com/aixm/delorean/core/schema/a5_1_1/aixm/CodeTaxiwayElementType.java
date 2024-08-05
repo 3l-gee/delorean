@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTaxiwayElementType {
 
     @XmlValue
-    protected String value;
+    protected CodeTaxiwayElementBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeTaxiwayElementType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeTaxiwayElementBaseType }
      *     
      */
-    public String getValue() {
+    public CodeTaxiwayElementBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeTaxiwayElementType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeTaxiwayElementBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeTaxiwayElementBaseType value) {
         this.value = value;
     }
 

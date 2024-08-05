@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeStatusAirportType {
 
     @XmlValue
-    protected String value;
+    protected CodeStatusAirportBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeStatusAirportType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeStatusAirportBaseType }
      *     
      */
-    public String getValue() {
+    public CodeStatusAirportBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeStatusAirportType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeStatusAirportBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeStatusAirportBaseType value) {
         this.value = value;
     }
 

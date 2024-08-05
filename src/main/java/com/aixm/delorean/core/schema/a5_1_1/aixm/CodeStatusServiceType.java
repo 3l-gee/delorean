@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeStatusServiceType {
 
     @XmlValue
-    protected String value;
+    protected CodeStatusServiceBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeStatusServiceType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeStatusServiceBaseType }
      *     
      */
-    public String getValue() {
+    public CodeStatusServiceBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeStatusServiceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeStatusServiceBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeStatusServiceBaseType value) {
         this.value = value;
     }
 

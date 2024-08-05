@@ -42,7 +42,7 @@ public class ValDepthType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomDepthType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -79,10 +79,10 @@ public class ValDepthType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomDepthType }
      *     
      */
-    public String getUom() {
+    public UomDepthType getUom() {
         return uom;
     }
 
@@ -91,10 +91,10 @@ public class ValDepthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomDepthType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomDepthType value) {
         this.uom = value;
     }
 

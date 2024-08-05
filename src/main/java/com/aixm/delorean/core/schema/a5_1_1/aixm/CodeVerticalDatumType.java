@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVerticalDatumType {
 
     @XmlValue
-    protected String value;
+    protected CodeVerticalDatumBaseType value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -47,10 +47,10 @@ public class CodeVerticalDatumType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeVerticalDatumBaseType }
      *     
      */
-    public String getValue() {
+    public CodeVerticalDatumBaseType getValue() {
         return value;
     }
 
@@ -59,10 +59,10 @@ public class CodeVerticalDatumType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeVerticalDatumBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeVerticalDatumBaseType value) {
         this.value = value;
     }
 

@@ -42,7 +42,7 @@ public class ValPressureType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomPressureType uom;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
 
@@ -79,10 +79,10 @@ public class ValPressureType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomPressureType }
      *     
      */
-    public String getUom() {
+    public UomPressureType getUom() {
         return uom;
     }
 
@@ -91,10 +91,10 @@ public class ValPressureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomPressureType }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomPressureType value) {
         this.uom = value;
     }
 
