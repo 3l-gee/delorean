@@ -71,8 +71,4 @@ public abstract class AbstractGeometricAggregateType
         this.aggregationType = value;
     }
 
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
-    }
-
 }

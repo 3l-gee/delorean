@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -51,13 +48,8 @@ public class DQDataQualityType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected DQScopePropertyType scope;
-    @Valid
-    @Size(min = 0)
     protected List<DQElementPropertyType> report;
-    @Valid
     protected LILineagePropertyType lineage;
 
     /**
@@ -82,10 +74,6 @@ public class DQDataQualityType
      */
     public void setScope(DQScopePropertyType value) {
         this.scope = value;
-    }
-
-    public boolean isSetScope() {
-        return (this.scope!= null);
     }
 
     /**
@@ -120,14 +108,6 @@ public class DQDataQualityType
         return this.report;
     }
 
-    public boolean isSetReport() {
-        return ((this.report!= null)&&(!this.report.isEmpty()));
-    }
-
-    public void unsetReport() {
-        this.report = null;
-    }
-
     /**
      * Gets the value of the lineage property.
      * 
@@ -150,10 +130,6 @@ public class DQDataQualityType
      */
     public void setLineage(LILineagePropertyType value) {
         this.lineage = value;
-    }
-
-    public boolean isSetLineage() {
-        return (this.lineage!= null);
     }
 
 }

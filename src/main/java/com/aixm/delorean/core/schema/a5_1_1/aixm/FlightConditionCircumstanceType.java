@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,11 +65,7 @@ public class FlightConditionCircumstanceType
     @XmlElementRef(name = "relationWithLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeLocationQualifierType> relationWithLocation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<FlightConditionCircumstanceType.Extension> extension;
 
     /**
@@ -98,10 +92,6 @@ public class FlightConditionCircumstanceType
         this.referenceLocation = value;
     }
 
-    public boolean isSetReferenceLocation() {
-        return (this.referenceLocation!= null);
-    }
-
     /**
      * Gets the value of the relationWithLocation property.
      * 
@@ -124,10 +114,6 @@ public class FlightConditionCircumstanceType
      */
     public void setRelationWithLocation(JAXBElement<CodeLocationQualifierType> value) {
         this.relationWithLocation = value;
-    }
-
-    public boolean isSetRelationWithLocation() {
-        return (this.relationWithLocation!= null);
     }
 
     /**
@@ -162,14 +148,6 @@ public class FlightConditionCircumstanceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -202,14 +180,6 @@ public class FlightConditionCircumstanceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -238,7 +208,6 @@ public class FlightConditionCircumstanceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightConditionCircumstanceExtension")
-        @Valid
         protected AbstractExtensionType abstractFlightConditionCircumstanceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -267,10 +236,6 @@ public class FlightConditionCircumstanceType
             this.abstractFlightConditionCircumstanceExtension = value;
         }
 
-        public boolean isSetAbstractFlightConditionCircumstanceExtension() {
-            return (this.abstractFlightConditionCircumstanceExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -295,16 +260,8 @@ public class FlightConditionCircumstanceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSchemaType;
@@ -53,10 +52,8 @@ public class DirectionDescriptionType {
 
     @XmlSchemaType(name = "string")
     protected CompassPointEnumeration compassPoint;
-    @Valid
     protected CodeType keyword;
     protected String description;
-    @Valid
     protected ReferenceType reference;
 
     /**
@@ -83,10 +80,6 @@ public class DirectionDescriptionType {
         this.compassPoint = value;
     }
 
-    public boolean isSetCompassPoint() {
-        return (this.compassPoint!= null);
-    }
-
     /**
      * Gets the value of the keyword property.
      * 
@@ -109,10 +102,6 @@ public class DirectionDescriptionType {
      */
     public void setKeyword(CodeType value) {
         this.keyword = value;
-    }
-
-    public boolean isSetKeyword() {
-        return (this.keyword!= null);
     }
 
     /**
@@ -139,10 +128,6 @@ public class DirectionDescriptionType {
         this.description = value;
     }
 
-    public boolean isSetDescription() {
-        return (this.description!= null);
-    }
-
     /**
      * Gets the value of the reference property.
      * 
@@ -165,10 +150,6 @@ public class DirectionDescriptionType {
      */
     public void setReference(ReferenceType value) {
         this.reference = value;
-    }
-
-    public boolean isSetReference() {
-        return (this.reference!= null);
     }
 
 }

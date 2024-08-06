@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -81,13 +79,9 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "protectedTouchDownLiftOff", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TouchDownLiftOffPropertyType> protectedTouchDownLiftOff;
-    @Valid
-    @Size(min = 0)
     protected List<TouchDownLiftOffSafeAreaTimeSliceType.Extension> extension;
 
     /**
@@ -114,10 +108,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
         this.width = value;
     }
 
-    public boolean isSetWidth() {
-        return (this.width!= null);
-    }
-
     /**
      * Gets the value of the length property.
      * 
@@ -140,10 +130,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
-    }
-
-    public boolean isSetLength() {
-        return (this.length!= null);
     }
 
     /**
@@ -170,10 +156,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
         this.lighting = value;
     }
 
-    public boolean isSetLighting() {
-        return (this.lighting!= null);
-    }
-
     /**
      * Gets the value of the obstacleFree property.
      * 
@@ -196,10 +178,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      */
     public void setObstacleFree(JAXBElement<CodeYesNoType> value) {
         this.obstacleFree = value;
-    }
-
-    public boolean isSetObstacleFree() {
-        return (this.obstacleFree!= null);
     }
 
     /**
@@ -226,10 +204,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
         this.surfaceProperties = value;
     }
 
-    public boolean isSetSurfaceProperties() {
-        return (this.surfaceProperties!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -252,10 +226,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -290,14 +260,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the protectedTouchDownLiftOff property.
      * 
@@ -320,10 +282,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      */
     public void setProtectedTouchDownLiftOff(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.protectedTouchDownLiftOff = value;
-    }
-
-    public boolean isSetProtectedTouchDownLiftOff() {
-        return (this.protectedTouchDownLiftOff!= null);
     }
 
     /**
@@ -358,14 +316,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -396,10 +346,8 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTouchDownLiftOffSafeAreaExtension")
-        @Valid
         protected AbstractExtensionType abstractTouchDownLiftOffSafeAreaExtension;
         @XmlElement(name = "AbstractAirportHeliportProtectionAreaExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportHeliportProtectionAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -428,10 +376,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
             this.abstractTouchDownLiftOffSafeAreaExtension = value;
         }
 
-        public boolean isSetAbstractTouchDownLiftOffSafeAreaExtension() {
-            return (this.abstractTouchDownLiftOffSafeAreaExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractAirportHeliportProtectionAreaExtension property.
          * 
@@ -454,10 +398,6 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
          */
         public void setAbstractAirportHeliportProtectionAreaExtension(AbstractExtensionType value) {
             this.abstractAirportHeliportProtectionAreaExtension = value;
-        }
-
-        public boolean isSetAbstractAirportHeliportProtectionAreaExtension() {
-            return (this.abstractAirportHeliportProtectionAreaExtension!= null);
         }
 
         /**
@@ -484,16 +424,8 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

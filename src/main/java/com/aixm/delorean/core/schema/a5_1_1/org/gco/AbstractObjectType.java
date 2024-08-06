@@ -58,7 +58,6 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gmd.MDStandardOrderProcessType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gmd.MDUsageType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gmd.PTFreeTextType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gmd.PTLocaleType;
-import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -154,7 +153,6 @@ public abstract class AbstractObjectType {
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
     protected String id;
     @XmlAttribute(name = "uuid")
     protected String uuid;
@@ -183,10 +181,6 @@ public abstract class AbstractObjectType {
         this.id = value;
     }
 
-    public boolean isSetId() {
-        return (this.id!= null);
-    }
-
     /**
      * Gets the value of the uuid property.
      * 
@@ -209,10 +203,6 @@ public abstract class AbstractObjectType {
      */
     public void setUuid(String value) {
         this.uuid = value;
-    }
-
-    public boolean isSetUuid() {
-        return (this.uuid!= null);
     }
 
 }

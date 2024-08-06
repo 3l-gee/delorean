@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.BooleanPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -51,16 +49,10 @@ public class DQConformanceResultType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CICitationPropertyType specification;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType explanation;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected BooleanPropertyType pass;
 
     /**
@@ -87,10 +79,6 @@ public class DQConformanceResultType
         this.specification = value;
     }
 
-    public boolean isSetSpecification() {
-        return (this.specification!= null);
-    }
-
     /**
      * Gets the value of the explanation property.
      * 
@@ -115,10 +103,6 @@ public class DQConformanceResultType
         this.explanation = value;
     }
 
-    public boolean isSetExplanation() {
-        return (this.explanation!= null);
-    }
-
     /**
      * Gets the value of the pass property.
      * 
@@ -141,10 +125,6 @@ public class DQConformanceResultType
      */
     public void setPass(BooleanPropertyType value) {
         this.pass = value;
-    }
-
-    public boolean isSetPass() {
-        return (this.pass!= null);
     }
 
 }

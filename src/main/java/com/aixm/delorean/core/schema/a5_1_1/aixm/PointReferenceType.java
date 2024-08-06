@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,21 +74,13 @@ public class PointReferenceType
     @XmlElementRef(name = "point", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DesignatedPointPropertyType> point;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AngleUsePropertyType> facilityAngle;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<DistanceIndicationPropertyType> facilityDistance;
     @XmlElementRef(name = "fixToleranceArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfacePropertyType> fixToleranceArea;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<PointReferenceType.Extension> extension;
 
     /**
@@ -117,10 +107,6 @@ public class PointReferenceType
         this.role = value;
     }
 
-    public boolean isSetRole() {
-        return (this.role!= null);
-    }
-
     /**
      * Gets the value of the priorFixTolerance property.
      * 
@@ -143,10 +129,6 @@ public class PointReferenceType
      */
     public void setPriorFixTolerance(JAXBElement<ValDistanceSignedType> value) {
         this.priorFixTolerance = value;
-    }
-
-    public boolean isSetPriorFixTolerance() {
-        return (this.priorFixTolerance!= null);
     }
 
     /**
@@ -173,10 +155,6 @@ public class PointReferenceType
         this.postFixTolerance = value;
     }
 
-    public boolean isSetPostFixTolerance() {
-        return (this.postFixTolerance!= null);
-    }
-
     /**
      * Gets the value of the point property.
      * 
@@ -199,10 +177,6 @@ public class PointReferenceType
      */
     public void setPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.point = value;
-    }
-
-    public boolean isSetPoint() {
-        return (this.point!= null);
     }
 
     /**
@@ -237,14 +211,6 @@ public class PointReferenceType
         return this.facilityAngle;
     }
 
-    public boolean isSetFacilityAngle() {
-        return ((this.facilityAngle!= null)&&(!this.facilityAngle.isEmpty()));
-    }
-
-    public void unsetFacilityAngle() {
-        this.facilityAngle = null;
-    }
-
     /**
      * Gets the value of the facilityDistance property.
      * 
@@ -277,14 +243,6 @@ public class PointReferenceType
         return this.facilityDistance;
     }
 
-    public boolean isSetFacilityDistance() {
-        return ((this.facilityDistance!= null)&&(!this.facilityDistance.isEmpty()));
-    }
-
-    public void unsetFacilityDistance() {
-        this.facilityDistance = null;
-    }
-
     /**
      * Gets the value of the fixToleranceArea property.
      * 
@@ -307,10 +265,6 @@ public class PointReferenceType
      */
     public void setFixToleranceArea(JAXBElement<SurfacePropertyType> value) {
         this.fixToleranceArea = value;
-    }
-
-    public boolean isSetFixToleranceArea() {
-        return (this.fixToleranceArea!= null);
     }
 
     /**
@@ -345,14 +299,6 @@ public class PointReferenceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -385,14 +331,6 @@ public class PointReferenceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -421,7 +359,6 @@ public class PointReferenceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPointReferenceExtension")
-        @Valid
         protected AbstractExtensionType abstractPointReferenceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -450,10 +387,6 @@ public class PointReferenceType
             this.abstractPointReferenceExtension = value;
         }
 
-        public boolean isSetAbstractPointReferenceExtension() {
-            return (this.abstractPointReferenceExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -478,16 +411,8 @@ public class PointReferenceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

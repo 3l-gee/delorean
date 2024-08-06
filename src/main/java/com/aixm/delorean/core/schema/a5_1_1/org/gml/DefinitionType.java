@@ -75,8 +75,4 @@ public class DefinitionType
         this.remarks = value;
     }
 
-    public boolean isSetRemarks() {
-        return (this.remarks!= null);
-    }
-
 }

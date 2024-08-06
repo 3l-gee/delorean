@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -78,15 +75,9 @@ public class DeicingAreaTimeSliceType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ApronAreaAvailabilityPropertyType> availability;
-    @Valid
-    @Size(min = 0)
     protected List<DeicingAreaTimeSliceType.Extension> extension;
 
     /**
@@ -113,10 +104,6 @@ public class DeicingAreaTimeSliceType
         this.associatedApron = value;
     }
 
-    public boolean isSetAssociatedApron() {
-        return (this.associatedApron!= null);
-    }
-
     /**
      * Gets the value of the taxiwayLocation property.
      * 
@@ -139,10 +126,6 @@ public class DeicingAreaTimeSliceType
      */
     public void setTaxiwayLocation(JAXBElement<TaxiwayPropertyType> value) {
         this.taxiwayLocation = value;
-    }
-
-    public boolean isSetTaxiwayLocation() {
-        return (this.taxiwayLocation!= null);
     }
 
     /**
@@ -169,10 +152,6 @@ public class DeicingAreaTimeSliceType
         this.standLocation = value;
     }
 
-    public boolean isSetStandLocation() {
-        return (this.standLocation!= null);
-    }
-
     /**
      * Gets the value of the surfaceProperties property.
      * 
@@ -197,10 +176,6 @@ public class DeicingAreaTimeSliceType
         this.surfaceProperties = value;
     }
 
-    public boolean isSetSurfaceProperties() {
-        return (this.surfaceProperties!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -223,10 +198,6 @@ public class DeicingAreaTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -261,14 +232,6 @@ public class DeicingAreaTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -299,14 +262,6 @@ public class DeicingAreaTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -341,14 +296,6 @@ public class DeicingAreaTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -377,8 +324,6 @@ public class DeicingAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDeicingAreaExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractDeicingAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -407,10 +352,6 @@ public class DeicingAreaTimeSliceType
             this.abstractDeicingAreaExtension = value;
         }
 
-        public boolean isSetAbstractDeicingAreaExtension() {
-            return (this.abstractDeicingAreaExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -435,16 +376,8 @@ public class DeicingAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

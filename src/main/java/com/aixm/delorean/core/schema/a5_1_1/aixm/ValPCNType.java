@@ -67,10 +67,6 @@ public class ValPCNType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -93,10 +89,6 @@ public class ValPCNType {
      */
     public void setNilReason(String value) {
         this.nilReason = value;
-    }
-
-    public boolean isSetNilReason() {
-        return (this.nilReason!= null);
     }
 
 }

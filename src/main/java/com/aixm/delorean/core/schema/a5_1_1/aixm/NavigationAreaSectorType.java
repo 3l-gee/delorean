@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,21 +65,13 @@ public class NavigationAreaSectorType
     @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<SectorDesignPropertyType> sectorCriteria;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<NavigationAreaSectorType.Extension> extension;
 
     /**
@@ -106,10 +96,6 @@ public class NavigationAreaSectorType
      */
     public void setSectorDefinition(JAXBElement<CircleSectorPropertyType> value) {
         this.sectorDefinition = value;
-    }
-
-    public boolean isSetSectorDefinition() {
-        return (this.sectorDefinition!= null);
     }
 
     /**
@@ -144,14 +130,6 @@ public class NavigationAreaSectorType
         return this.significantObstacle;
     }
 
-    public boolean isSetSignificantObstacle() {
-        return ((this.significantObstacle!= null)&&(!this.significantObstacle.isEmpty()));
-    }
-
-    public void unsetSignificantObstacle() {
-        this.significantObstacle = null;
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -174,10 +152,6 @@ public class NavigationAreaSectorType
      */
     public void setExtent(JAXBElement<SurfacePropertyType> value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -212,14 +186,6 @@ public class NavigationAreaSectorType
         return this.sectorCriteria;
     }
 
-    public boolean isSetSectorCriteria() {
-        return ((this.sectorCriteria!= null)&&(!this.sectorCriteria.isEmpty()));
-    }
-
-    public void unsetSectorCriteria() {
-        this.sectorCriteria = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -250,14 +216,6 @@ public class NavigationAreaSectorType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -292,14 +250,6 @@ public class NavigationAreaSectorType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -328,7 +278,6 @@ public class NavigationAreaSectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavigationAreaSectorExtension")
-        @Valid
         protected AbstractExtensionType abstractNavigationAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -357,10 +306,6 @@ public class NavigationAreaSectorType
             this.abstractNavigationAreaSectorExtension = value;
         }
 
-        public boolean isSetAbstractNavigationAreaSectorExtension() {
-            return (this.abstractNavigationAreaSectorExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -385,16 +330,8 @@ public class NavigationAreaSectorType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

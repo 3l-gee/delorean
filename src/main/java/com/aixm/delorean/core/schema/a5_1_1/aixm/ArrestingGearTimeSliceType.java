@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -88,8 +85,6 @@ public class ArrestingGearTimeSliceType
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RunwayDirectionPropertyType> runwayDirection;
     @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
@@ -100,11 +95,7 @@ public class ArrestingGearTimeSliceType
     @XmlElementRef(name = "extent_pointExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> extentPointExtent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ArrestingGearTimeSliceType.Extension> extension;
 
     /**
@@ -131,10 +122,6 @@ public class ArrestingGearTimeSliceType
         this.status = value;
     }
 
-    public boolean isSetStatus() {
-        return (this.status!= null);
-    }
-
     /**
      * Gets the value of the length property.
      * 
@@ -157,10 +144,6 @@ public class ArrestingGearTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
-    }
-
-    public boolean isSetLength() {
-        return (this.length!= null);
     }
 
     /**
@@ -187,10 +170,6 @@ public class ArrestingGearTimeSliceType
         this.width = value;
     }
 
-    public boolean isSetWidth() {
-        return (this.width!= null);
-    }
-
     /**
      * Gets the value of the engageDevice property.
      * 
@@ -213,10 +192,6 @@ public class ArrestingGearTimeSliceType
      */
     public void setEngageDevice(JAXBElement<CodeArrestingGearEngageDeviceType> value) {
         this.engageDevice = value;
-    }
-
-    public boolean isSetEngageDevice() {
-        return (this.engageDevice!= null);
     }
 
     /**
@@ -243,10 +218,6 @@ public class ArrestingGearTimeSliceType
         this.absorbType = value;
     }
 
-    public boolean isSetAbsorbType() {
-        return (this.absorbType!= null);
-    }
-
     /**
      * Gets the value of the bidirectional property.
      * 
@@ -271,10 +242,6 @@ public class ArrestingGearTimeSliceType
         this.bidirectional = value;
     }
 
-    public boolean isSetBidirectional() {
-        return (this.bidirectional!= null);
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -297,10 +264,6 @@ public class ArrestingGearTimeSliceType
      */
     public void setLocation(JAXBElement<ValDistanceType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -335,14 +298,6 @@ public class ArrestingGearTimeSliceType
         return this.runwayDirection;
     }
 
-    public boolean isSetRunwayDirection() {
-        return ((this.runwayDirection!= null)&&(!this.runwayDirection.isEmpty()));
-    }
-
-    public void unsetRunwayDirection() {
-        this.runwayDirection = null;
-    }
-
     /**
      * Gets the value of the surfaceProperties property.
      * 
@@ -365,10 +320,6 @@ public class ArrestingGearTimeSliceType
      */
     public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
-    }
-
-    public boolean isSetSurfaceProperties() {
-        return (this.surfaceProperties!= null);
     }
 
     /**
@@ -395,10 +346,6 @@ public class ArrestingGearTimeSliceType
         this.extentSurfaceExtent = value;
     }
 
-    public boolean isSetExtentSurfaceExtent() {
-        return (this.extentSurfaceExtent!= null);
-    }
-
     /**
      * Gets the value of the extentCurveExtent property.
      * 
@@ -423,10 +370,6 @@ public class ArrestingGearTimeSliceType
         this.extentCurveExtent = value;
     }
 
-    public boolean isSetExtentCurveExtent() {
-        return (this.extentCurveExtent!= null);
-    }
-
     /**
      * Gets the value of the extentPointExtent property.
      * 
@@ -449,10 +392,6 @@ public class ArrestingGearTimeSliceType
      */
     public void setExtentPointExtent(JAXBElement<ElevatedPointPropertyType> value) {
         this.extentPointExtent = value;
-    }
-
-    public boolean isSetExtentPointExtent() {
-        return (this.extentPointExtent!= null);
     }
 
     /**
@@ -487,14 +426,6 @@ public class ArrestingGearTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -527,14 +458,6 @@ public class ArrestingGearTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -563,8 +486,6 @@ public class ArrestingGearTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractArrestingGearExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractArrestingGearExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -593,10 +514,6 @@ public class ArrestingGearTimeSliceType
             this.abstractArrestingGearExtension = value;
         }
 
-        public boolean isSetAbstractArrestingGearExtension() {
-            return (this.abstractArrestingGearExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -621,16 +538,8 @@ public class ArrestingGearTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -51,13 +48,8 @@ public class DQScopeType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MDScopeCodePropertyType level;
-    @Valid
     protected EXExtentPropertyType extent;
-    @Valid
-    @Size(min = 0)
     protected List<MDScopeDescriptionPropertyType> levelDescription;
 
     /**
@@ -84,10 +76,6 @@ public class DQScopeType
         this.level = value;
     }
 
-    public boolean isSetLevel() {
-        return (this.level!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -110,10 +98,6 @@ public class DQScopeType
      */
     public void setExtent(EXExtentPropertyType value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -146,14 +130,6 @@ public class DQScopeType
             levelDescription = new ArrayList<>();
         }
         return this.levelDescription;
-    }
-
-    public boolean isSetLevelDescription() {
-        return ((this.levelDescription!= null)&&(!this.levelDescription.isEmpty()));
-    }
-
-    public void unsetLevelDescription() {
-        this.levelDescription = null;
     }
 
 }

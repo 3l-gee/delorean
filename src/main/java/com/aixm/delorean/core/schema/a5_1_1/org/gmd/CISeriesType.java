@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -46,11 +45,8 @@ public class CISeriesType
     extends AbstractObjectType
 {
 
-    @Valid
     protected CharacterStringPropertyType name;
-    @Valid
     protected CharacterStringPropertyType issueIdentification;
-    @Valid
     protected CharacterStringPropertyType page;
 
     /**
@@ -77,10 +73,6 @@ public class CISeriesType
         this.name = value;
     }
 
-    public boolean isSetName() {
-        return (this.name!= null);
-    }
-
     /**
      * Gets the value of the issueIdentification property.
      * 
@@ -105,10 +97,6 @@ public class CISeriesType
         this.issueIdentification = value;
     }
 
-    public boolean isSetIssueIdentification() {
-        return (this.issueIdentification!= null);
-    }
-
     /**
      * Gets the value of the page property.
      * 
@@ -131,10 +119,6 @@ public class CISeriesType
      */
     public void setPage(CharacterStringPropertyType value) {
         this.page = value;
-    }
-
-    public boolean isSetPage() {
-        return (this.page!= null);
     }
 
 }

@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -94,19 +91,11 @@ public class RadioCommunicationChannelTimeSliceType
     @XmlElementRef(name = "trafficDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeCommunicationDirectionType> trafficDirection;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RadioCommunicationOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<RadioCommunicationChannelTimeSliceType.Extension> extension;
 
     /**
@@ -133,10 +122,6 @@ public class RadioCommunicationChannelTimeSliceType
         this.mode = value;
     }
 
-    public boolean isSetMode() {
-        return (this.mode!= null);
-    }
-
     /**
      * Gets the value of the rank property.
      * 
@@ -159,10 +144,6 @@ public class RadioCommunicationChannelTimeSliceType
      */
     public void setRank(JAXBElement<CodeFacilityRankingType> value) {
         this.rank = value;
-    }
-
-    public boolean isSetRank() {
-        return (this.rank!= null);
     }
 
     /**
@@ -189,10 +170,6 @@ public class RadioCommunicationChannelTimeSliceType
         this.frequencyTransmission = value;
     }
 
-    public boolean isSetFrequencyTransmission() {
-        return (this.frequencyTransmission!= null);
-    }
-
     /**
      * Gets the value of the frequencyReception property.
      * 
@@ -215,10 +192,6 @@ public class RadioCommunicationChannelTimeSliceType
      */
     public void setFrequencyReception(JAXBElement<ValFrequencyType> value) {
         this.frequencyReception = value;
-    }
-
-    public boolean isSetFrequencyReception() {
-        return (this.frequencyReception!= null);
     }
 
     /**
@@ -245,10 +218,6 @@ public class RadioCommunicationChannelTimeSliceType
         this.channel = value;
     }
 
-    public boolean isSetChannel() {
-        return (this.channel!= null);
-    }
-
     /**
      * Gets the value of the logon property.
      * 
@@ -271,10 +240,6 @@ public class RadioCommunicationChannelTimeSliceType
      */
     public void setLogon(JAXBElement<TextDesignatorType> value) {
         this.logon = value;
-    }
-
-    public boolean isSetLogon() {
-        return (this.logon!= null);
     }
 
     /**
@@ -301,10 +266,6 @@ public class RadioCommunicationChannelTimeSliceType
         this.emissionType = value;
     }
 
-    public boolean isSetEmissionType() {
-        return (this.emissionType!= null);
-    }
-
     /**
      * Gets the value of the selectiveCall property.
      * 
@@ -327,10 +288,6 @@ public class RadioCommunicationChannelTimeSliceType
      */
     public void setSelectiveCall(JAXBElement<CodeYesNoType> value) {
         this.selectiveCall = value;
-    }
-
-    public boolean isSetSelectiveCall() {
-        return (this.selectiveCall!= null);
     }
 
     /**
@@ -357,10 +314,6 @@ public class RadioCommunicationChannelTimeSliceType
         this.flightChecked = value;
     }
 
-    public boolean isSetFlightChecked() {
-        return (this.flightChecked!= null);
-    }
-
     /**
      * Gets the value of the trafficDirection property.
      * 
@@ -383,10 +336,6 @@ public class RadioCommunicationChannelTimeSliceType
      */
     public void setTrafficDirection(JAXBElement<CodeCommunicationDirectionType> value) {
         this.trafficDirection = value;
-    }
-
-    public boolean isSetTrafficDirection() {
-        return (this.trafficDirection!= null);
     }
 
     /**
@@ -421,14 +370,6 @@ public class RadioCommunicationChannelTimeSliceType
         return this.location;
     }
 
-    public boolean isSetLocation() {
-        return ((this.location!= null)&&(!this.location.isEmpty()));
-    }
-
-    public void unsetLocation() {
-        this.location = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -459,14 +400,6 @@ public class RadioCommunicationChannelTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -501,14 +434,6 @@ public class RadioCommunicationChannelTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -541,14 +466,6 @@ public class RadioCommunicationChannelTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -577,8 +494,6 @@ public class RadioCommunicationChannelTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRadioCommunicationChannelExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractRadioCommunicationChannelExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -607,10 +522,6 @@ public class RadioCommunicationChannelTimeSliceType
             this.abstractRadioCommunicationChannelExtension = value;
         }
 
-        public boolean isSetAbstractRadioCommunicationChannelExtension() {
-            return (this.abstractRadioCommunicationChannelExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -635,16 +546,8 @@ public class RadioCommunicationChannelTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -52,23 +49,17 @@ public class TopoSolidType
     extends AbstractTopoPrimitiveType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<NodeOrEdgePropertyType> isolated;
     /**
      * The gml:directedFace property element describes the boundary of topology solids, in the coBoundary of topology edges and is used in the support of surface features via the gml:TopoSurface expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included face is used i.e. inward or outward with respect to the surface normal in any geometric realisation.
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<DirectedFacePropertyType> directedFace;
     /**
      * This property element either references a solid via the XLink-attributes or contains the solid element. solidProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for AbstractSolid.
      * 
      */
-    @Valid
     protected SolidPropertyType solidProperty;
     /**
      * A gml:TopoSolid must indicate whether it is a universal topo-solid or not, to ensure a lossless topology representation as defined by Kuijpers, et. al. (see OGC 05-102 Topology IPR). The optional universal attribute of type boolean is used to indicate this and the default is fault. NOTE The universal topo-solid is normally not part of any feature, and is used to represent the unbounded portion of the data set. Its interior boundary (it has no exterior boundary) would normally be considered the exterior boundary of the data set.
@@ -111,14 +102,6 @@ public class TopoSolidType
         return this.isolated;
     }
 
-    public boolean isSetIsolated() {
-        return ((this.isolated!= null)&&(!this.isolated.isEmpty()));
-    }
-
-    public void unsetIsolated() {
-        this.isolated = null;
-    }
-
     /**
      * The gml:directedFace property element describes the boundary of topology solids, in the coBoundary of topology edges and is used in the support of surface features via the gml:TopoSurface expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included face is used i.e. inward or outward with respect to the surface normal in any geometric realisation.
      * 
@@ -153,14 +136,6 @@ public class TopoSolidType
         return this.directedFace;
     }
 
-    public boolean isSetDirectedFace() {
-        return ((this.directedFace!= null)&&(!this.directedFace.isEmpty()));
-    }
-
-    public void unsetDirectedFace() {
-        this.directedFace = null;
-    }
-
     /**
      * This property element either references a solid via the XLink-attributes or contains the solid element. solidProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for AbstractSolid.
      * 
@@ -184,10 +159,6 @@ public class TopoSolidType
      */
     public void setSolidProperty(SolidPropertyType value) {
         this.solidProperty = value;
-    }
-
-    public boolean isSetSolidProperty() {
-        return (this.solidProperty!= null);
     }
 
     /**
@@ -215,16 +186,8 @@ public class TopoSolidType
      *     
      * @see #isUniversal()
      */
-    public void setUniversal(boolean value) {
+    public void setUniversal(java.lang.Boolean value) {
         this.universal = value;
-    }
-
-    public boolean isSetUniversal() {
-        return (this.universal!= null);
-    }
-
-    public void unsetUniversal() {
-        this.universal = null;
     }
 
     /**
@@ -249,10 +212,6 @@ public class TopoSolidType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
-    }
-
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
     }
 
 }

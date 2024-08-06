@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -70,37 +68,21 @@ public class ConditionCombinationType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "logicalOperator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeLogicalOperatorType> logicalOperator;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<MeteorologyPropertyType> weather;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AircraftCharacteristicPropertyType> aircraft;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<FlightCharacteristicPropertyType> flight;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ConditionCombinationPropertyType> subCondition;
-    @Valid
-    @Size(min = 0)
     protected List<ConditionCombinationType.Extension> extension;
 
     /**
@@ -135,14 +117,6 @@ public class ConditionCombinationType
         return this.timeInterval;
     }
 
-    public boolean isSetTimeInterval() {
-        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
-    }
-
-    public void unsetTimeInterval() {
-        this.timeInterval = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -173,14 +147,6 @@ public class ConditionCombinationType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -215,14 +181,6 @@ public class ConditionCombinationType
         return this.specialDateAuthority;
     }
 
-    public boolean isSetSpecialDateAuthority() {
-        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
-    }
-
-    public void unsetSpecialDateAuthority() {
-        this.specialDateAuthority = null;
-    }
-
     /**
      * Gets the value of the logicalOperator property.
      * 
@@ -245,10 +203,6 @@ public class ConditionCombinationType
      */
     public void setLogicalOperator(JAXBElement<CodeLogicalOperatorType> value) {
         this.logicalOperator = value;
-    }
-
-    public boolean isSetLogicalOperator() {
-        return (this.logicalOperator!= null);
     }
 
     /**
@@ -283,14 +237,6 @@ public class ConditionCombinationType
         return this.weather;
     }
 
-    public boolean isSetWeather() {
-        return ((this.weather!= null)&&(!this.weather.isEmpty()));
-    }
-
-    public void unsetWeather() {
-        this.weather = null;
-    }
-
     /**
      * Gets the value of the aircraft property.
      * 
@@ -321,14 +267,6 @@ public class ConditionCombinationType
             aircraft = new ArrayList<>();
         }
         return this.aircraft;
-    }
-
-    public boolean isSetAircraft() {
-        return ((this.aircraft!= null)&&(!this.aircraft.isEmpty()));
-    }
-
-    public void unsetAircraft() {
-        this.aircraft = null;
     }
 
     /**
@@ -363,14 +301,6 @@ public class ConditionCombinationType
         return this.flight;
     }
 
-    public boolean isSetFlight() {
-        return ((this.flight!= null)&&(!this.flight.isEmpty()));
-    }
-
-    public void unsetFlight() {
-        this.flight = null;
-    }
-
     /**
      * Gets the value of the subCondition property.
      * 
@@ -401,14 +331,6 @@ public class ConditionCombinationType
             subCondition = new ArrayList<>();
         }
         return this.subCondition;
-    }
-
-    public boolean isSetSubCondition() {
-        return ((this.subCondition!= null)&&(!this.subCondition.isEmpty()));
-    }
-
-    public void unsetSubCondition() {
-        this.subCondition = null;
     }
 
     /**
@@ -443,14 +365,6 @@ public class ConditionCombinationType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -481,10 +395,8 @@ public class ConditionCombinationType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractConditionCombinationExtension")
-        @Valid
         protected AbstractExtensionType abstractConditionCombinationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -513,10 +425,6 @@ public class ConditionCombinationType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
-        public boolean isSetAbstractPropertiesWithScheduleExtension() {
-            return (this.abstractPropertiesWithScheduleExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractConditionCombinationExtension property.
          * 
@@ -539,10 +447,6 @@ public class ConditionCombinationType
          */
         public void setAbstractConditionCombinationExtension(AbstractExtensionType value) {
             this.abstractConditionCombinationExtension = value;
-        }
-
-        public boolean isSetAbstractConditionCombinationExtension() {
-            return (this.abstractConditionCombinationExtension!= null);
         }
 
         /**
@@ -569,16 +473,8 @@ public class ConditionCombinationType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

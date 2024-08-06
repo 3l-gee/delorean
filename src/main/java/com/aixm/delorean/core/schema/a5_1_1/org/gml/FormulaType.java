@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -45,9 +44,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class FormulaType {
 
     protected Double a;
-    @NotNull
     protected double b;
-    @NotNull
     protected double c;
     protected Double d;
 
@@ -75,10 +72,6 @@ public class FormulaType {
         this.a = value;
     }
 
-    public boolean isSetA() {
-        return (this.a!= null);
-    }
-
     /**
      * Gets the value of the b property.
      * 
@@ -95,10 +88,6 @@ public class FormulaType {
         this.b = value;
     }
 
-    public boolean isSetB() {
-        return true;
-    }
-
     /**
      * Gets the value of the c property.
      * 
@@ -113,10 +102,6 @@ public class FormulaType {
      */
     public void setC(double value) {
         this.c = value;
-    }
-
-    public boolean isSetC() {
-        return true;
     }
 
     /**
@@ -141,10 +126,6 @@ public class FormulaType {
      */
     public void setD(Double value) {
         this.d = value;
-    }
-
-    public boolean isSetD() {
-        return (this.d!= null);
     }
 
 }

@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -82,19 +79,11 @@ public class PilotControlledLightingTimeSliceType
     @XmlElementRef(name = "activationInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextInstructionType> activationInstruction;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<LightActivationPropertyType> controlledLightIntensity;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<GroundLightSystemPropertyType> activatedGroundLighting;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<PilotControlledLightingTimeSliceType.Extension> extension;
 
     /**
@@ -121,10 +110,6 @@ public class PilotControlledLightingTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the duration property.
      * 
@@ -147,10 +132,6 @@ public class PilotControlledLightingTimeSliceType
      */
     public void setDuration(JAXBElement<ValDurationType> value) {
         this.duration = value;
-    }
-
-    public boolean isSetDuration() {
-        return (this.duration!= null);
     }
 
     /**
@@ -177,10 +158,6 @@ public class PilotControlledLightingTimeSliceType
         this.intensitySteps = value;
     }
 
-    public boolean isSetIntensitySteps() {
-        return (this.intensitySteps!= null);
-    }
-
     /**
      * Gets the value of the standByIntensity property.
      * 
@@ -203,10 +180,6 @@ public class PilotControlledLightingTimeSliceType
      */
     public void setStandByIntensity(JAXBElement<CodeIntensityStandByType> value) {
         this.standByIntensity = value;
-    }
-
-    public boolean isSetStandByIntensity() {
-        return (this.standByIntensity!= null);
     }
 
     /**
@@ -233,10 +206,6 @@ public class PilotControlledLightingTimeSliceType
         this.radioFrequency = value;
     }
 
-    public boolean isSetRadioFrequency() {
-        return (this.radioFrequency!= null);
-    }
-
     /**
      * Gets the value of the activationInstruction property.
      * 
@@ -259,10 +228,6 @@ public class PilotControlledLightingTimeSliceType
      */
     public void setActivationInstruction(JAXBElement<TextInstructionType> value) {
         this.activationInstruction = value;
-    }
-
-    public boolean isSetActivationInstruction() {
-        return (this.activationInstruction!= null);
     }
 
     /**
@@ -297,14 +262,6 @@ public class PilotControlledLightingTimeSliceType
         return this.controlledLightIntensity;
     }
 
-    public boolean isSetControlledLightIntensity() {
-        return ((this.controlledLightIntensity!= null)&&(!this.controlledLightIntensity.isEmpty()));
-    }
-
-    public void unsetControlledLightIntensity() {
-        this.controlledLightIntensity = null;
-    }
-
     /**
      * Gets the value of the activatedGroundLighting property.
      * 
@@ -335,14 +292,6 @@ public class PilotControlledLightingTimeSliceType
             activatedGroundLighting = new ArrayList<>();
         }
         return this.activatedGroundLighting;
-    }
-
-    public boolean isSetActivatedGroundLighting() {
-        return ((this.activatedGroundLighting!= null)&&(!this.activatedGroundLighting.isEmpty()));
-    }
-
-    public void unsetActivatedGroundLighting() {
-        this.activatedGroundLighting = null;
     }
 
     /**
@@ -377,14 +326,6 @@ public class PilotControlledLightingTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -417,14 +358,6 @@ public class PilotControlledLightingTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -453,8 +386,6 @@ public class PilotControlledLightingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPilotControlledLightingExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractPilotControlledLightingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -483,10 +414,6 @@ public class PilotControlledLightingTimeSliceType
             this.abstractPilotControlledLightingExtension = value;
         }
 
-        public boolean isSetAbstractPilotControlledLightingExtension() {
-            return (this.abstractPilotControlledLightingExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -511,16 +438,8 @@ public class PilotControlledLightingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

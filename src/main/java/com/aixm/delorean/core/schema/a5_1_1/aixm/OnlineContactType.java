@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,16 +67,10 @@ public class OnlineContactType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "network", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeTelecomNetworkType> network;
@@ -88,8 +80,6 @@ public class OnlineContactType
     protected JAXBElement<TextNameType> protocol;
     @XmlElementRef(name = "eMail", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextAddressType> eMail;
-    @Valid
-    @Size(min = 0)
     protected List<OnlineContactType.Extension> extension;
 
     /**
@@ -124,14 +114,6 @@ public class OnlineContactType
         return this.timeInterval;
     }
 
-    public boolean isSetTimeInterval() {
-        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
-    }
-
-    public void unsetTimeInterval() {
-        this.timeInterval = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -162,14 +144,6 @@ public class OnlineContactType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -204,14 +178,6 @@ public class OnlineContactType
         return this.specialDateAuthority;
     }
 
-    public boolean isSetSpecialDateAuthority() {
-        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
-    }
-
-    public void unsetSpecialDateAuthority() {
-        this.specialDateAuthority = null;
-    }
-
     /**
      * Gets the value of the network property.
      * 
@@ -234,10 +200,6 @@ public class OnlineContactType
      */
     public void setNetwork(JAXBElement<CodeTelecomNetworkType> value) {
         this.network = value;
-    }
-
-    public boolean isSetNetwork() {
-        return (this.network!= null);
     }
 
     /**
@@ -264,10 +226,6 @@ public class OnlineContactType
         this.linkage = value;
     }
 
-    public boolean isSetLinkage() {
-        return (this.linkage!= null);
-    }
-
     /**
      * Gets the value of the protocol property.
      * 
@@ -292,10 +250,6 @@ public class OnlineContactType
         this.protocol = value;
     }
 
-    public boolean isSetProtocol() {
-        return (this.protocol!= null);
-    }
-
     /**
      * Gets the value of the eMail property.
      * 
@@ -318,10 +272,6 @@ public class OnlineContactType
      */
     public void setEMail(JAXBElement<TextAddressType> value) {
         this.eMail = value;
-    }
-
-    public boolean isSetEMail() {
-        return (this.eMail!= null);
     }
 
     /**
@@ -356,14 +306,6 @@ public class OnlineContactType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -394,10 +336,8 @@ public class OnlineContactType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractOnlineContactExtension")
-        @Valid
         protected AbstractExtensionType abstractOnlineContactExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -426,10 +366,6 @@ public class OnlineContactType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
-        public boolean isSetAbstractPropertiesWithScheduleExtension() {
-            return (this.abstractPropertiesWithScheduleExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractOnlineContactExtension property.
          * 
@@ -452,10 +388,6 @@ public class OnlineContactType
          */
         public void setAbstractOnlineContactExtension(AbstractExtensionType value) {
             this.abstractOnlineContactExtension = value;
-        }
-
-        public boolean isSetAbstractOnlineContactExtension() {
-            return (this.abstractOnlineContactExtension!= null);
         }
 
         /**
@@ -482,16 +414,8 @@ public class OnlineContactType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

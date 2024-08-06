@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -89,11 +86,7 @@ public class SignificantPointInAirspaceTimeSliceType
     @XmlElementRef(name = "location_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> locationAirportReferencePoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<SignificantPointInAirspaceTimeSliceType.Extension> extension;
 
     /**
@@ -120,10 +113,6 @@ public class SignificantPointInAirspaceTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the relativeLocation property.
      * 
@@ -146,10 +135,6 @@ public class SignificantPointInAirspaceTimeSliceType
      */
     public void setRelativeLocation(JAXBElement<CodeAirspacePointPositionType> value) {
         this.relativeLocation = value;
-    }
-
-    public boolean isSetRelativeLocation() {
-        return (this.relativeLocation!= null);
     }
 
     /**
@@ -176,10 +161,6 @@ public class SignificantPointInAirspaceTimeSliceType
         this.containingAirspace = value;
     }
 
-    public boolean isSetContainingAirspace() {
-        return (this.containingAirspace!= null);
-    }
-
     /**
      * Gets the value of the locationFixDesignatedPoint property.
      * 
@@ -202,10 +183,6 @@ public class SignificantPointInAirspaceTimeSliceType
      */
     public void setLocationFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.locationFixDesignatedPoint = value;
-    }
-
-    public boolean isSetLocationFixDesignatedPoint() {
-        return (this.locationFixDesignatedPoint!= null);
     }
 
     /**
@@ -232,10 +209,6 @@ public class SignificantPointInAirspaceTimeSliceType
         this.locationNavaidSystem = value;
     }
 
-    public boolean isSetLocationNavaidSystem() {
-        return (this.locationNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the locationPosition property.
      * 
@@ -258,10 +231,6 @@ public class SignificantPointInAirspaceTimeSliceType
      */
     public void setLocationPosition(JAXBElement<PointPropertyType> value) {
         this.locationPosition = value;
-    }
-
-    public boolean isSetLocationPosition() {
-        return (this.locationPosition!= null);
     }
 
     /**
@@ -288,10 +257,6 @@ public class SignificantPointInAirspaceTimeSliceType
         this.locationRunwayPoint = value;
     }
 
-    public boolean isSetLocationRunwayPoint() {
-        return (this.locationRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the locationAimingPoint property.
      * 
@@ -316,10 +281,6 @@ public class SignificantPointInAirspaceTimeSliceType
         this.locationAimingPoint = value;
     }
 
-    public boolean isSetLocationAimingPoint() {
-        return (this.locationAimingPoint!= null);
-    }
-
     /**
      * Gets the value of the locationAirportReferencePoint property.
      * 
@@ -342,10 +303,6 @@ public class SignificantPointInAirspaceTimeSliceType
      */
     public void setLocationAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.locationAirportReferencePoint = value;
-    }
-
-    public boolean isSetLocationAirportReferencePoint() {
-        return (this.locationAirportReferencePoint!= null);
     }
 
     /**
@@ -380,14 +337,6 @@ public class SignificantPointInAirspaceTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -420,14 +369,6 @@ public class SignificantPointInAirspaceTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -456,8 +397,6 @@ public class SignificantPointInAirspaceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSignificantPointInAirspaceExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractSignificantPointInAirspaceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -486,10 +425,6 @@ public class SignificantPointInAirspaceTimeSliceType
             this.abstractSignificantPointInAirspaceExtension = value;
         }
 
-        public boolean isSetAbstractSignificantPointInAirspaceExtension() {
-            return (this.abstractSignificantPointInAirspaceExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -514,16 +449,8 @@ public class SignificantPointInAirspaceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

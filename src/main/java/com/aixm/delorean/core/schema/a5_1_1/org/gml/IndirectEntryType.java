@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,8 +39,6 @@ import jakarta.xml.bind.annotation.XmlType;
 public class IndirectEntryType {
 
     @XmlElement(name = "DefinitionProxy", required = true)
-    @NotNull
-    @Valid
     protected DefinitionProxyType definitionProxy;
 
     /**
@@ -67,10 +63,6 @@ public class IndirectEntryType {
      */
     public void setDefinitionProxy(DefinitionProxyType value) {
         this.definitionProxy = value;
-    }
-
-    public boolean isSetDefinitionProxy() {
-        return (this.definitionProxy!= null);
     }
 
 }

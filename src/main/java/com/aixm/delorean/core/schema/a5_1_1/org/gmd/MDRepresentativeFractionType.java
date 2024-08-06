@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -45,8 +43,6 @@ public class MDRepresentativeFractionType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected IntegerPropertyType denominator;
 
     /**
@@ -71,10 +67,6 @@ public class MDRepresentativeFractionType
      */
     public void setDenominator(IntegerPropertyType value) {
         this.denominator = value;
-    }
-
-    public boolean isSetDenominator() {
-        return (this.denominator!= null);
     }
 
 }

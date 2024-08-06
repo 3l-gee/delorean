@@ -8,8 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -52,14 +50,9 @@ public class MDSecurityConstraintsType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MDClassificationCodePropertyType classification;
-    @Valid
     protected CharacterStringPropertyType userNote;
-    @Valid
     protected CharacterStringPropertyType classificationSystem;
-    @Valid
     protected CharacterStringPropertyType handlingDescription;
 
     /**
@@ -86,10 +79,6 @@ public class MDSecurityConstraintsType
         this.classification = value;
     }
 
-    public boolean isSetClassification() {
-        return (this.classification!= null);
-    }
-
     /**
      * Gets the value of the userNote property.
      * 
@@ -112,10 +101,6 @@ public class MDSecurityConstraintsType
      */
     public void setUserNote(CharacterStringPropertyType value) {
         this.userNote = value;
-    }
-
-    public boolean isSetUserNote() {
-        return (this.userNote!= null);
     }
 
     /**
@@ -142,10 +127,6 @@ public class MDSecurityConstraintsType
         this.classificationSystem = value;
     }
 
-    public boolean isSetClassificationSystem() {
-        return (this.classificationSystem!= null);
-    }
-
     /**
      * Gets the value of the handlingDescription property.
      * 
@@ -168,10 +149,6 @@ public class MDSecurityConstraintsType
      */
     public void setHandlingDescription(CharacterStringPropertyType value) {
         this.handlingDescription = value;
-    }
-
-    public boolean isSetHandlingDescription() {
-        return (this.handlingDescription!= null);
     }
 
 }

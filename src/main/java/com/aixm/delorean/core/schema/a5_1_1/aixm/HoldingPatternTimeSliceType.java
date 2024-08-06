@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -113,11 +110,7 @@ public class HoldingPatternTimeSliceType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CurvePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<HoldingPatternTimeSliceType.Extension> extension;
 
     /**
@@ -144,10 +137,6 @@ public class HoldingPatternTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the outboundCourse property.
      * 
@@ -170,10 +159,6 @@ public class HoldingPatternTimeSliceType
      */
     public void setOutboundCourse(JAXBElement<ValBearingType> value) {
         this.outboundCourse = value;
-    }
-
-    public boolean isSetOutboundCourse() {
-        return (this.outboundCourse!= null);
     }
 
     /**
@@ -200,10 +185,6 @@ public class HoldingPatternTimeSliceType
         this.outboundCourseType = value;
     }
 
-    public boolean isSetOutboundCourseType() {
-        return (this.outboundCourseType!= null);
-    }
-
     /**
      * Gets the value of the inboundCourse property.
      * 
@@ -226,10 +207,6 @@ public class HoldingPatternTimeSliceType
      */
     public void setInboundCourse(JAXBElement<ValBearingType> value) {
         this.inboundCourse = value;
-    }
-
-    public boolean isSetInboundCourse() {
-        return (this.inboundCourse!= null);
     }
 
     /**
@@ -256,10 +233,6 @@ public class HoldingPatternTimeSliceType
         this.turnDirection = value;
     }
 
-    public boolean isSetTurnDirection() {
-        return (this.turnDirection!= null);
-    }
-
     /**
      * Gets the value of the upperLimit property.
      * 
@@ -282,10 +255,6 @@ public class HoldingPatternTimeSliceType
      */
     public void setUpperLimit(JAXBElement<ValDistanceVerticalType> value) {
         this.upperLimit = value;
-    }
-
-    public boolean isSetUpperLimit() {
-        return (this.upperLimit!= null);
     }
 
     /**
@@ -312,10 +281,6 @@ public class HoldingPatternTimeSliceType
         this.upperLimitReference = value;
     }
 
-    public boolean isSetUpperLimitReference() {
-        return (this.upperLimitReference!= null);
-    }
-
     /**
      * Gets the value of the lowerLimit property.
      * 
@@ -338,10 +303,6 @@ public class HoldingPatternTimeSliceType
      */
     public void setLowerLimit(JAXBElement<ValDistanceVerticalType> value) {
         this.lowerLimit = value;
-    }
-
-    public boolean isSetLowerLimit() {
-        return (this.lowerLimit!= null);
     }
 
     /**
@@ -368,10 +329,6 @@ public class HoldingPatternTimeSliceType
         this.lowerLimitReference = value;
     }
 
-    public boolean isSetLowerLimitReference() {
-        return (this.lowerLimitReference!= null);
-    }
-
     /**
      * Gets the value of the speedLimit property.
      * 
@@ -394,10 +351,6 @@ public class HoldingPatternTimeSliceType
      */
     public void setSpeedLimit(JAXBElement<ValSpeedType> value) {
         this.speedLimit = value;
-    }
-
-    public boolean isSetSpeedLimit() {
-        return (this.speedLimit!= null);
     }
 
     /**
@@ -424,10 +377,6 @@ public class HoldingPatternTimeSliceType
         this.instruction = value;
     }
 
-    public boolean isSetInstruction() {
-        return (this.instruction!= null);
-    }
-
     /**
      * Gets the value of the nonStandardHolding property.
      * 
@@ -450,10 +399,6 @@ public class HoldingPatternTimeSliceType
      */
     public void setNonStandardHolding(JAXBElement<CodeYesNoType> value) {
         this.nonStandardHolding = value;
-    }
-
-    public boolean isSetNonStandardHolding() {
-        return (this.nonStandardHolding!= null);
     }
 
     /**
@@ -480,10 +425,6 @@ public class HoldingPatternTimeSliceType
         this.outboundLegSpanEndPoint = value;
     }
 
-    public boolean isSetOutboundLegSpanEndPoint() {
-        return (this.outboundLegSpanEndPoint!= null);
-    }
-
     /**
      * Gets the value of the outboundLegSpanEndDistance property.
      * 
@@ -506,10 +447,6 @@ public class HoldingPatternTimeSliceType
      */
     public void setOutboundLegSpanEndDistance(JAXBElement<HoldingPatternDistancePropertyType> value) {
         this.outboundLegSpanEndDistance = value;
-    }
-
-    public boolean isSetOutboundLegSpanEndDistance() {
-        return (this.outboundLegSpanEndDistance!= null);
     }
 
     /**
@@ -536,10 +473,6 @@ public class HoldingPatternTimeSliceType
         this.outboundLegSpanEndTime = value;
     }
 
-    public boolean isSetOutboundLegSpanEndTime() {
-        return (this.outboundLegSpanEndTime!= null);
-    }
-
     /**
      * Gets the value of the holdingPoint property.
      * 
@@ -564,10 +497,6 @@ public class HoldingPatternTimeSliceType
         this.holdingPoint = value;
     }
 
-    public boolean isSetHoldingPoint() {
-        return (this.holdingPoint!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -590,10 +519,6 @@ public class HoldingPatternTimeSliceType
      */
     public void setExtent(JAXBElement<CurvePropertyType> value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -628,14 +553,6 @@ public class HoldingPatternTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -668,14 +585,6 @@ public class HoldingPatternTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -704,8 +613,6 @@ public class HoldingPatternTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractHoldingPatternExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractHoldingPatternExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -734,10 +641,6 @@ public class HoldingPatternTimeSliceType
             this.abstractHoldingPatternExtension = value;
         }
 
-        public boolean isSetAbstractHoldingPatternExtension() {
-            return (this.abstractHoldingPatternExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -762,16 +665,8 @@ public class HoldingPatternTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

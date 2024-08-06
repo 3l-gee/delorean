@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -62,8 +60,6 @@ public class LinguisticNoteType
 
     @XmlElementRef(name = "note", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextNoteType> note;
-    @Valid
-    @Size(min = 0)
     protected List<LinguisticNoteType.Extension> extension;
 
     /**
@@ -88,10 +84,6 @@ public class LinguisticNoteType
      */
     public void setNote(JAXBElement<TextNoteType> value) {
         this.note = value;
-    }
-
-    public boolean isSetNote() {
-        return (this.note!= null);
     }
 
     /**
@@ -126,14 +118,6 @@ public class LinguisticNoteType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -162,7 +146,6 @@ public class LinguisticNoteType
     public static class Extension {
 
         @XmlElement(name = "AbstractLinguisticNoteExtension")
-        @Valid
         protected AbstractExtensionType abstractLinguisticNoteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -191,10 +174,6 @@ public class LinguisticNoteType
             this.abstractLinguisticNoteExtension = value;
         }
 
-        public boolean isSetAbstractLinguisticNoteExtension() {
-            return (this.abstractLinguisticNoteExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -219,16 +198,8 @@ public class LinguisticNoteType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

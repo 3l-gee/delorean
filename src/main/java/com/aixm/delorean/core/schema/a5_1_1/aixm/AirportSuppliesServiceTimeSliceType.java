@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -90,47 +88,25 @@ public class AirportSuppliesServiceTimeSliceType
     @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<UnitPropertyType> serviceProvider;
     @XmlElement(name = "call-sign", nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<FuelPropertyType> fuelSupply;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OilPropertyType> oilSupply;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NitrogenPropertyType> nitrogenSupply;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OxygenPropertyType> oxygenSupply;
-    @Valid
-    @Size(min = 0)
     protected List<AirportSuppliesServiceTimeSliceType.Extension> extension;
 
     /**
@@ -157,10 +133,6 @@ public class AirportSuppliesServiceTimeSliceType
         this.flightOperations = value;
     }
 
-    public boolean isSetFlightOperations() {
-        return (this.flightOperations!= null);
-    }
-
     /**
      * Gets the value of the rank property.
      * 
@@ -183,10 +155,6 @@ public class AirportSuppliesServiceTimeSliceType
      */
     public void setRank(JAXBElement<CodeFacilityRankingType> value) {
         this.rank = value;
-    }
-
-    public boolean isSetRank() {
-        return (this.rank!= null);
     }
 
     /**
@@ -213,10 +181,6 @@ public class AirportSuppliesServiceTimeSliceType
         this.compliantICAO = value;
     }
 
-    public boolean isSetCompliantICAO() {
-        return (this.compliantICAO!= null);
-    }
-
     /**
      * Gets the value of the aixmName property.
      * 
@@ -239,10 +203,6 @@ public class AirportSuppliesServiceTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
     }
 
     /**
@@ -269,10 +229,6 @@ public class AirportSuppliesServiceTimeSliceType
         this.location = value;
     }
 
-    public boolean isSetLocation() {
-        return (this.location!= null);
-    }
-
     /**
      * Gets the value of the serviceProvider property.
      * 
@@ -295,10 +251,6 @@ public class AirportSuppliesServiceTimeSliceType
      */
     public void setServiceProvider(JAXBElement<UnitPropertyType> value) {
         this.serviceProvider = value;
-    }
-
-    public boolean isSetServiceProvider() {
-        return (this.serviceProvider!= null);
     }
 
     /**
@@ -333,14 +285,6 @@ public class AirportSuppliesServiceTimeSliceType
         return this.callSign;
     }
 
-    public boolean isSetCallSign() {
-        return ((this.callSign!= null)&&(!this.callSign.isEmpty()));
-    }
-
-    public void unsetCallSign() {
-        this.callSign = null;
-    }
-
     /**
      * Gets the value of the radioCommunication property.
      * 
@@ -371,14 +315,6 @@ public class AirportSuppliesServiceTimeSliceType
             radioCommunication = new ArrayList<>();
         }
         return this.radioCommunication;
-    }
-
-    public boolean isSetRadioCommunication() {
-        return ((this.radioCommunication!= null)&&(!this.radioCommunication.isEmpty()));
-    }
-
-    public void unsetRadioCommunication() {
-        this.radioCommunication = null;
     }
 
     /**
@@ -413,14 +349,6 @@ public class AirportSuppliesServiceTimeSliceType
         return this.groundCommunication;
     }
 
-    public boolean isSetGroundCommunication() {
-        return ((this.groundCommunication!= null)&&(!this.groundCommunication.isEmpty()));
-    }
-
-    public void unsetGroundCommunication() {
-        this.groundCommunication = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -451,14 +379,6 @@ public class AirportSuppliesServiceTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -493,14 +413,6 @@ public class AirportSuppliesServiceTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the airportHeliport property.
      * 
@@ -531,14 +443,6 @@ public class AirportSuppliesServiceTimeSliceType
             airportHeliport = new ArrayList<>();
         }
         return this.airportHeliport;
-    }
-
-    public boolean isSetAirportHeliport() {
-        return ((this.airportHeliport!= null)&&(!this.airportHeliport.isEmpty()));
-    }
-
-    public void unsetAirportHeliport() {
-        this.airportHeliport = null;
     }
 
     /**
@@ -573,14 +477,6 @@ public class AirportSuppliesServiceTimeSliceType
         return this.fuelSupply;
     }
 
-    public boolean isSetFuelSupply() {
-        return ((this.fuelSupply!= null)&&(!this.fuelSupply.isEmpty()));
-    }
-
-    public void unsetFuelSupply() {
-        this.fuelSupply = null;
-    }
-
     /**
      * Gets the value of the oilSupply property.
      * 
@@ -611,14 +507,6 @@ public class AirportSuppliesServiceTimeSliceType
             oilSupply = new ArrayList<>();
         }
         return this.oilSupply;
-    }
-
-    public boolean isSetOilSupply() {
-        return ((this.oilSupply!= null)&&(!this.oilSupply.isEmpty()));
-    }
-
-    public void unsetOilSupply() {
-        this.oilSupply = null;
     }
 
     /**
@@ -653,14 +541,6 @@ public class AirportSuppliesServiceTimeSliceType
         return this.nitrogenSupply;
     }
 
-    public boolean isSetNitrogenSupply() {
-        return ((this.nitrogenSupply!= null)&&(!this.nitrogenSupply.isEmpty()));
-    }
-
-    public void unsetNitrogenSupply() {
-        this.nitrogenSupply = null;
-    }
-
     /**
      * Gets the value of the oxygenSupply property.
      * 
@@ -691,14 +571,6 @@ public class AirportSuppliesServiceTimeSliceType
             oxygenSupply = new ArrayList<>();
         }
         return this.oxygenSupply;
-    }
-
-    public boolean isSetOxygenSupply() {
-        return ((this.oxygenSupply!= null)&&(!this.oxygenSupply.isEmpty()));
-    }
-
-    public void unsetOxygenSupply() {
-        this.oxygenSupply = null;
     }
 
     /**
@@ -733,14 +605,6 @@ public class AirportSuppliesServiceTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -773,13 +637,10 @@ public class AirportSuppliesServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportSuppliesServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportSuppliesServiceExtension;
         @XmlElement(name = "AbstractAirportGroundServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportGroundServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -808,10 +669,6 @@ public class AirportSuppliesServiceTimeSliceType
             this.abstractAirportSuppliesServiceExtension = value;
         }
 
-        public boolean isSetAbstractAirportSuppliesServiceExtension() {
-            return (this.abstractAirportSuppliesServiceExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractAirportGroundServiceExtension property.
          * 
@@ -834,10 +691,6 @@ public class AirportSuppliesServiceTimeSliceType
          */
         public void setAbstractAirportGroundServiceExtension(AbstractExtensionType value) {
             this.abstractAirportGroundServiceExtension = value;
-        }
-
-        public boolean isSetAbstractAirportGroundServiceExtension() {
-            return (this.abstractAirportGroundServiceExtension!= null);
         }
 
         /**
@@ -864,10 +717,6 @@ public class AirportSuppliesServiceTimeSliceType
             this.abstractServiceExtension = value;
         }
 
-        public boolean isSetAbstractServiceExtension() {
-            return (this.abstractServiceExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -892,16 +741,8 @@ public class AirportSuppliesServiceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

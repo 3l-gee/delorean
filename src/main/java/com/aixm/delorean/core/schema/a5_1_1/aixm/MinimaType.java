@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -98,15 +96,9 @@ public class MinimaType
     @XmlElementRef(name = "remoteAltimeterMinima", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> remoteAltimeterMinima;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<EquipmentUnavailableAdjustmentPropertyType> adjustmentINOP;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<MinimaType.Extension> extension;
 
     /**
@@ -133,10 +125,6 @@ public class MinimaType
         this.altitude = value;
     }
 
-    public boolean isSetAltitude() {
-        return (this.altitude!= null);
-    }
-
     /**
      * Gets the value of the altitudeCode property.
      * 
@@ -159,10 +147,6 @@ public class MinimaType
      */
     public void setAltitudeCode(JAXBElement<CodeMinimumAltitudeType> value) {
         this.altitudeCode = value;
-    }
-
-    public boolean isSetAltitudeCode() {
-        return (this.altitudeCode!= null);
     }
 
     /**
@@ -189,10 +173,6 @@ public class MinimaType
         this.altitudeReference = value;
     }
 
-    public boolean isSetAltitudeReference() {
-        return (this.altitudeReference!= null);
-    }
-
     /**
      * Gets the value of the height property.
      * 
@@ -215,10 +195,6 @@ public class MinimaType
      */
     public void setHeight(JAXBElement<ValDistanceVerticalType> value) {
         this.height = value;
-    }
-
-    public boolean isSetHeight() {
-        return (this.height!= null);
     }
 
     /**
@@ -245,10 +221,6 @@ public class MinimaType
         this.militaryHeight = value;
     }
 
-    public boolean isSetMilitaryHeight() {
-        return (this.militaryHeight!= null);
-    }
-
     /**
      * Gets the value of the radioHeight property.
      * 
@@ -271,10 +243,6 @@ public class MinimaType
      */
     public void setRadioHeight(JAXBElement<ValDistanceVerticalType> value) {
         this.radioHeight = value;
-    }
-
-    public boolean isSetRadioHeight() {
-        return (this.radioHeight!= null);
     }
 
     /**
@@ -301,10 +269,6 @@ public class MinimaType
         this.heightCode = value;
     }
 
-    public boolean isSetHeightCode() {
-        return (this.heightCode!= null);
-    }
-
     /**
      * Gets the value of the heightReference property.
      * 
@@ -327,10 +291,6 @@ public class MinimaType
      */
     public void setHeightReference(JAXBElement<CodeHeightReferenceType> value) {
         this.heightReference = value;
-    }
-
-    public boolean isSetHeightReference() {
-        return (this.heightReference!= null);
     }
 
     /**
@@ -357,10 +317,6 @@ public class MinimaType
         this.visibility = value;
     }
 
-    public boolean isSetVisibility() {
-        return (this.visibility!= null);
-    }
-
     /**
      * Gets the value of the militaryVisibility property.
      * 
@@ -383,10 +339,6 @@ public class MinimaType
      */
     public void setMilitaryVisibility(JAXBElement<ValDistanceType> value) {
         this.militaryVisibility = value;
-    }
-
-    public boolean isSetMilitaryVisibility() {
-        return (this.militaryVisibility!= null);
     }
 
     /**
@@ -413,10 +365,6 @@ public class MinimaType
         this.mandatoryRVR = value;
     }
 
-    public boolean isSetMandatoryRVR() {
-        return (this.mandatoryRVR!= null);
-    }
-
     /**
      * Gets the value of the remoteAltimeterMinima property.
      * 
@@ -439,10 +387,6 @@ public class MinimaType
      */
     public void setRemoteAltimeterMinima(JAXBElement<CodeYesNoType> value) {
         this.remoteAltimeterMinima = value;
-    }
-
-    public boolean isSetRemoteAltimeterMinima() {
-        return (this.remoteAltimeterMinima!= null);
     }
 
     /**
@@ -477,14 +421,6 @@ public class MinimaType
         return this.adjustmentINOP;
     }
 
-    public boolean isSetAdjustmentINOP() {
-        return ((this.adjustmentINOP!= null)&&(!this.adjustmentINOP.isEmpty()));
-    }
-
-    public void unsetAdjustmentINOP() {
-        this.adjustmentINOP = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -515,14 +451,6 @@ public class MinimaType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -557,14 +485,6 @@ public class MinimaType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -593,7 +513,6 @@ public class MinimaType
     public static class Extension {
 
         @XmlElement(name = "AbstractMinimaExtension")
-        @Valid
         protected AbstractExtensionType abstractMinimaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -622,10 +541,6 @@ public class MinimaType
             this.abstractMinimaExtension = value;
         }
 
-        public boolean isSetAbstractMinimaExtension() {
-            return (this.abstractMinimaExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -650,16 +565,8 @@ public class MinimaType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

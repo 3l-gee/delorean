@@ -18,18 +18,14 @@
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="AIXM_Features.xsd" node="/xs:schema">
-		<!-- Unused : 
-			typesafeEnumBase="xs:string" 
-			typesafeEnumMemberName="generateName" 
-			-->
 		<jaxb:globalBindings 
 			fixedAttributeAsConstantProperty="true" 
 			typesafeEnumBase="xs:string" 
-			typesafeEnumMemberName="generateName" 
-			generateIsSetMethod="true">
+			typesafeEnumMemberName="generateName">
+		<!-- generateIsSetMethod="true" -->
 		<!-- mapSimpleTypeDef="true" -->
-			<!-- <xjc:noValidator />
-			<xjc:noValidatingUnmarshaller /> -->
+			<xjc:noValidator />
+			<xjc:noValidatingUnmarshaller />
 		</jaxb:globalBindings>
 		<jaxb:bindings>
 			<jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='name']">

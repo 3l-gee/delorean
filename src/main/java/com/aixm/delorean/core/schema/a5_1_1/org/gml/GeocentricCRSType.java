@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -48,13 +46,9 @@ public class GeocentricCRSType
     extends AbstractCRSType
 {
 
-    @Valid
     protected CartesianCSPropertyType usesCartesianCS;
-    @Valid
     protected SphericalCSPropertyType usesSphericalCS;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected GeodeticDatumPropertyType usesGeodeticDatum;
 
     /**
@@ -81,10 +75,6 @@ public class GeocentricCRSType
         this.usesCartesianCS = value;
     }
 
-    public boolean isSetUsesCartesianCS() {
-        return (this.usesCartesianCS!= null);
-    }
-
     /**
      * Gets the value of the usesSphericalCS property.
      * 
@@ -109,10 +99,6 @@ public class GeocentricCRSType
         this.usesSphericalCS = value;
     }
 
-    public boolean isSetUsesSphericalCS() {
-        return (this.usesSphericalCS!= null);
-    }
-
     /**
      * Gets the value of the usesGeodeticDatum property.
      * 
@@ -135,10 +121,6 @@ public class GeocentricCRSType
      */
     public void setUsesGeodeticDatum(GeodeticDatumPropertyType value) {
         this.usesGeodeticDatum = value;
-    }
-
-    public boolean isSetUsesGeodeticDatum() {
-        return (this.usesGeodeticDatum!= null);
     }
 
 }

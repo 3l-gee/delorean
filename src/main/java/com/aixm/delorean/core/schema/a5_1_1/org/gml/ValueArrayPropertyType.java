@@ -154,14 +154,6 @@ public class ValueArrayPropertyType {
         return this.abstractValueOrAbstractGeometryOrAbstractTimeObject;
     }
 
-    public boolean isSetAbstractValueOrAbstractGeometryOrAbstractTimeObject() {
-        return ((this.abstractValueOrAbstractGeometryOrAbstractTimeObject!= null)&&(!this.abstractValueOrAbstractGeometryOrAbstractTimeObject.isEmpty()));
-    }
-
-    public void unsetAbstractValueOrAbstractGeometryOrAbstractTimeObject() {
-        this.abstractValueOrAbstractGeometryOrAbstractTimeObject = null;
-    }
-
     /**
      * Gets the value of the owns property.
      * 
@@ -186,16 +178,8 @@ public class ValueArrayPropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(boolean value) {
+    public void setOwns(java.lang.Boolean value) {
         this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

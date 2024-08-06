@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -54,13 +51,8 @@ public class MDKeywordsType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CharacterStringPropertyType> keyword;
-    @Valid
     protected MDKeywordTypeCodePropertyType type;
-    @Valid
     protected CICitationPropertyType thesaurusName;
 
     /**
@@ -95,14 +87,6 @@ public class MDKeywordsType
         return this.keyword;
     }
 
-    public boolean isSetKeyword() {
-        return ((this.keyword!= null)&&(!this.keyword.isEmpty()));
-    }
-
-    public void unsetKeyword() {
-        this.keyword = null;
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -127,10 +111,6 @@ public class MDKeywordsType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the thesaurusName property.
      * 
@@ -153,10 +133,6 @@ public class MDKeywordsType
      */
     public void setThesaurusName(CICitationPropertyType value) {
         this.thesaurusName = value;
-    }
-
-    public boolean isSetThesaurusName() {
-        return (this.thesaurusName!= null);
     }
 
 }

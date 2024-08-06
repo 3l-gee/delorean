@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -87,33 +85,19 @@ public class AirportClearanceServiceTimeSliceType
     @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<UnitPropertyType> serviceProvider;
     @XmlElement(name = "call-sign", nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElementRef(name = "snowPlan", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextInstructionType> snowPlan;
-    @Valid
-    @Size(min = 0)
     protected List<AirportClearanceServiceTimeSliceType.Extension> extension;
 
     /**
@@ -140,10 +124,6 @@ public class AirportClearanceServiceTimeSliceType
         this.flightOperations = value;
     }
 
-    public boolean isSetFlightOperations() {
-        return (this.flightOperations!= null);
-    }
-
     /**
      * Gets the value of the rank property.
      * 
@@ -166,10 +146,6 @@ public class AirportClearanceServiceTimeSliceType
      */
     public void setRank(JAXBElement<CodeFacilityRankingType> value) {
         this.rank = value;
-    }
-
-    public boolean isSetRank() {
-        return (this.rank!= null);
     }
 
     /**
@@ -196,10 +172,6 @@ public class AirportClearanceServiceTimeSliceType
         this.compliantICAO = value;
     }
 
-    public boolean isSetCompliantICAO() {
-        return (this.compliantICAO!= null);
-    }
-
     /**
      * Gets the value of the aixmName property.
      * 
@@ -222,10 +194,6 @@ public class AirportClearanceServiceTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
     }
 
     /**
@@ -252,10 +220,6 @@ public class AirportClearanceServiceTimeSliceType
         this.location = value;
     }
 
-    public boolean isSetLocation() {
-        return (this.location!= null);
-    }
-
     /**
      * Gets the value of the serviceProvider property.
      * 
@@ -278,10 +242,6 @@ public class AirportClearanceServiceTimeSliceType
      */
     public void setServiceProvider(JAXBElement<UnitPropertyType> value) {
         this.serviceProvider = value;
-    }
-
-    public boolean isSetServiceProvider() {
-        return (this.serviceProvider!= null);
     }
 
     /**
@@ -316,14 +276,6 @@ public class AirportClearanceServiceTimeSliceType
         return this.callSign;
     }
 
-    public boolean isSetCallSign() {
-        return ((this.callSign!= null)&&(!this.callSign.isEmpty()));
-    }
-
-    public void unsetCallSign() {
-        this.callSign = null;
-    }
-
     /**
      * Gets the value of the radioCommunication property.
      * 
@@ -354,14 +306,6 @@ public class AirportClearanceServiceTimeSliceType
             radioCommunication = new ArrayList<>();
         }
         return this.radioCommunication;
-    }
-
-    public boolean isSetRadioCommunication() {
-        return ((this.radioCommunication!= null)&&(!this.radioCommunication.isEmpty()));
-    }
-
-    public void unsetRadioCommunication() {
-        this.radioCommunication = null;
     }
 
     /**
@@ -396,14 +340,6 @@ public class AirportClearanceServiceTimeSliceType
         return this.groundCommunication;
     }
 
-    public boolean isSetGroundCommunication() {
-        return ((this.groundCommunication!= null)&&(!this.groundCommunication.isEmpty()));
-    }
-
-    public void unsetGroundCommunication() {
-        this.groundCommunication = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -434,14 +370,6 @@ public class AirportClearanceServiceTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -476,14 +404,6 @@ public class AirportClearanceServiceTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the airportHeliport property.
      * 
@@ -516,14 +436,6 @@ public class AirportClearanceServiceTimeSliceType
         return this.airportHeliport;
     }
 
-    public boolean isSetAirportHeliport() {
-        return ((this.airportHeliport!= null)&&(!this.airportHeliport.isEmpty()));
-    }
-
-    public void unsetAirportHeliport() {
-        this.airportHeliport = null;
-    }
-
     /**
      * Gets the value of the snowPlan property.
      * 
@@ -546,10 +458,6 @@ public class AirportClearanceServiceTimeSliceType
      */
     public void setSnowPlan(JAXBElement<TextInstructionType> value) {
         this.snowPlan = value;
-    }
-
-    public boolean isSetSnowPlan() {
-        return (this.snowPlan!= null);
     }
 
     /**
@@ -584,14 +492,6 @@ public class AirportClearanceServiceTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -624,13 +524,10 @@ public class AirportClearanceServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportClearanceServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportClearanceServiceExtension;
         @XmlElement(name = "AbstractAirportGroundServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportGroundServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -659,10 +556,6 @@ public class AirportClearanceServiceTimeSliceType
             this.abstractAirportClearanceServiceExtension = value;
         }
 
-        public boolean isSetAbstractAirportClearanceServiceExtension() {
-            return (this.abstractAirportClearanceServiceExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractAirportGroundServiceExtension property.
          * 
@@ -685,10 +578,6 @@ public class AirportClearanceServiceTimeSliceType
          */
         public void setAbstractAirportGroundServiceExtension(AbstractExtensionType value) {
             this.abstractAirportGroundServiceExtension = value;
-        }
-
-        public boolean isSetAbstractAirportGroundServiceExtension() {
-            return (this.abstractAirportGroundServiceExtension!= null);
         }
 
         /**
@@ -715,10 +604,6 @@ public class AirportClearanceServiceTimeSliceType
             this.abstractServiceExtension = value;
         }
 
-        public boolean isSetAbstractServiceExtension() {
-            return (this.abstractServiceExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -743,16 +628,8 @@ public class AirportClearanceServiceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

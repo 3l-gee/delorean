@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -45,10 +43,7 @@ public class BagType
     extends AbstractGMLType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<AssociationRoleType> member;
-    @Valid
     protected ArrayAssociationType members;
 
     /**
@@ -83,14 +78,6 @@ public class BagType
         return this.member;
     }
 
-    public boolean isSetMember() {
-        return ((this.member!= null)&&(!this.member.isEmpty()));
-    }
-
-    public void unsetMember() {
-        this.member = null;
-    }
-
     /**
      * Gets the value of the members property.
      * 
@@ -113,10 +100,6 @@ public class BagType
      */
     public void setMembers(ArrayAssociationType value) {
         this.members = value;
-    }
-
-    public boolean isSetMembers() {
-        return (this.members!= null);
     }
 
 }

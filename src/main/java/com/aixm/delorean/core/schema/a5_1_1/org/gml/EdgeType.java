@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -53,29 +50,22 @@ public class EdgeType
     extends AbstractTopoPrimitiveType
 {
 
-    @Valid
     protected TopoSolidPropertyType container;
     /**
      * A gml:directedNode property element describes the boundary of topology edges and is used in the support of topological point features via the gml:TopoPoint expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included node is used: start ("-") or end ("+") node.
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 2, max = 2)
     protected List<DirectedNodePropertyType> directedNode;
     /**
      * The gml:directedFace property element describes the boundary of topology solids, in the coBoundary of topology edges and is used in the support of surface features via the gml:TopoSurface expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included face is used i.e. inward or outward with respect to the surface normal in any geometric realisation.
      * 
      */
-    @Valid
-    @Size(min = 0)
     protected List<DirectedFacePropertyType> directedFace;
     /**
      * This property element either references a curve via the XLink-attributes or contains the curve element. curveProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for AbstractCurve.
      * 
      */
-    @Valid
     protected CurvePropertyType curveProperty;
     @XmlAttribute(name = "aggregationType")
     protected AggregationType aggregationType;
@@ -102,10 +92,6 @@ public class EdgeType
      */
     public void setContainer(TopoSolidPropertyType value) {
         this.container = value;
-    }
-
-    public boolean isSetContainer() {
-        return (this.container!= null);
     }
 
     /**
@@ -142,14 +128,6 @@ public class EdgeType
         return this.directedNode;
     }
 
-    public boolean isSetDirectedNode() {
-        return ((this.directedNode!= null)&&(!this.directedNode.isEmpty()));
-    }
-
-    public void unsetDirectedNode() {
-        this.directedNode = null;
-    }
-
     /**
      * The gml:directedFace property element describes the boundary of topology solids, in the coBoundary of topology edges and is used in the support of surface features via the gml:TopoSurface expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included face is used i.e. inward or outward with respect to the surface normal in any geometric realisation.
      * 
@@ -184,14 +162,6 @@ public class EdgeType
         return this.directedFace;
     }
 
-    public boolean isSetDirectedFace() {
-        return ((this.directedFace!= null)&&(!this.directedFace.isEmpty()));
-    }
-
-    public void unsetDirectedFace() {
-        this.directedFace = null;
-    }
-
     /**
      * This property element either references a curve via the XLink-attributes or contains the curve element. curveProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for AbstractCurve.
      * 
@@ -217,10 +187,6 @@ public class EdgeType
         this.curveProperty = value;
     }
 
-    public boolean isSetCurveProperty() {
-        return (this.curveProperty!= null);
-    }
-
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -243,10 +209,6 @@ public class EdgeType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
-    }
-
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
     }
 
 }

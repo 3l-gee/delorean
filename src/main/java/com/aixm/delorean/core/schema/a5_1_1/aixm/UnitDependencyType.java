@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,13 +63,8 @@ public class UnitDependencyType
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeUnitDependencyType> type;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
     protected UnitPropertyType theUnit;
-    @Valid
-    @Size(min = 0)
     protected List<UnitDependencyType.Extension> extension;
 
     /**
@@ -96,10 +89,6 @@ public class UnitDependencyType
      */
     public void setType(JAXBElement<CodeUnitDependencyType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -134,14 +123,6 @@ public class UnitDependencyType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the theUnit property.
      * 
@@ -164,10 +145,6 @@ public class UnitDependencyType
      */
     public void setTheUnit(UnitPropertyType value) {
         this.theUnit = value;
-    }
-
-    public boolean isSetTheUnit() {
-        return (this.theUnit!= null);
     }
 
     /**
@@ -202,14 +179,6 @@ public class UnitDependencyType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -238,7 +207,6 @@ public class UnitDependencyType
     public static class Extension {
 
         @XmlElement(name = "AbstractUnitDependencyExtension")
-        @Valid
         protected AbstractExtensionType abstractUnitDependencyExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -267,10 +235,6 @@ public class UnitDependencyType
             this.abstractUnitDependencyExtension = value;
         }
 
-        public boolean isSetAbstractUnitDependencyExtension() {
-            return (this.abstractUnitDependencyExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -295,16 +259,8 @@ public class UnitDependencyType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

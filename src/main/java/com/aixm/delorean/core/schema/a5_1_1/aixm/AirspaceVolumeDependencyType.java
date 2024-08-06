@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,13 +63,8 @@ public class AirspaceVolumeDependencyType
     @XmlElementRef(name = "dependency", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeAirspaceDependencyType> dependency;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
     protected AirspacePropertyType theAirspace;
-    @Valid
-    @Size(min = 0)
     protected List<AirspaceVolumeDependencyType.Extension> extension;
 
     /**
@@ -96,10 +89,6 @@ public class AirspaceVolumeDependencyType
      */
     public void setDependency(JAXBElement<CodeAirspaceDependencyType> value) {
         this.dependency = value;
-    }
-
-    public boolean isSetDependency() {
-        return (this.dependency!= null);
     }
 
     /**
@@ -134,14 +123,6 @@ public class AirspaceVolumeDependencyType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the theAirspace property.
      * 
@@ -164,10 +145,6 @@ public class AirspaceVolumeDependencyType
      */
     public void setTheAirspace(AirspacePropertyType value) {
         this.theAirspace = value;
-    }
-
-    public boolean isSetTheAirspace() {
-        return (this.theAirspace!= null);
     }
 
     /**
@@ -202,14 +179,6 @@ public class AirspaceVolumeDependencyType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -238,7 +207,6 @@ public class AirspaceVolumeDependencyType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceVolumeDependencyExtension")
-        @Valid
         protected AbstractExtensionType abstractAirspaceVolumeDependencyExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -267,10 +235,6 @@ public class AirspaceVolumeDependencyType
             this.abstractAirspaceVolumeDependencyExtension = value;
         }
 
-        public boolean isSetAbstractAirspaceVolumeDependencyExtension() {
-            return (this.abstractAirspaceVolumeDependencyExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -295,16 +259,8 @@ public class AirspaceVolumeDependencyType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

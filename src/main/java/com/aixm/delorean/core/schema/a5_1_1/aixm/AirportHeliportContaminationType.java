@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -95,19 +93,11 @@ public class AirportHeliportContaminationType
     @XmlElementRef(name = "proportion", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValPercentType> proportion;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RidgePropertyType> criticalRidge;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<SurfaceContaminationLayerPropertyType> layer;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportContaminationType.Extension> extension;
 
     /**
@@ -134,10 +124,6 @@ public class AirportHeliportContaminationType
         this.observationTime = value;
     }
 
-    public boolean isSetObservationTime() {
-        return (this.observationTime!= null);
-    }
-
     /**
      * Gets the value of the depth property.
      * 
@@ -160,10 +146,6 @@ public class AirportHeliportContaminationType
      */
     public void setDepth(JAXBElement<ValDepthType> value) {
         this.depth = value;
-    }
-
-    public boolean isSetDepth() {
-        return (this.depth!= null);
     }
 
     /**
@@ -190,10 +172,6 @@ public class AirportHeliportContaminationType
         this.frictionCoefficient = value;
     }
 
-    public boolean isSetFrictionCoefficient() {
-        return (this.frictionCoefficient!= null);
-    }
-
     /**
      * Gets the value of the frictionEstimation property.
      * 
@@ -216,10 +194,6 @@ public class AirportHeliportContaminationType
      */
     public void setFrictionEstimation(JAXBElement<CodeFrictionEstimateType> value) {
         this.frictionEstimation = value;
-    }
-
-    public boolean isSetFrictionEstimation() {
-        return (this.frictionEstimation!= null);
     }
 
     /**
@@ -246,10 +220,6 @@ public class AirportHeliportContaminationType
         this.frictionDevice = value;
     }
 
-    public boolean isSetFrictionDevice() {
-        return (this.frictionDevice!= null);
-    }
-
     /**
      * Gets the value of the obscuredLights property.
      * 
@@ -272,10 +242,6 @@ public class AirportHeliportContaminationType
      */
     public void setObscuredLights(JAXBElement<CodeYesNoType> value) {
         this.obscuredLights = value;
-    }
-
-    public boolean isSetObscuredLights() {
-        return (this.obscuredLights!= null);
     }
 
     /**
@@ -302,10 +268,6 @@ public class AirportHeliportContaminationType
         this.furtherClearanceTime = value;
     }
 
-    public boolean isSetFurtherClearanceTime() {
-        return (this.furtherClearanceTime!= null);
-    }
-
     /**
      * Gets the value of the furtherTotalClearance property.
      * 
@@ -328,10 +290,6 @@ public class AirportHeliportContaminationType
      */
     public void setFurtherTotalClearance(JAXBElement<CodeYesNoType> value) {
         this.furtherTotalClearance = value;
-    }
-
-    public boolean isSetFurtherTotalClearance() {
-        return (this.furtherTotalClearance!= null);
     }
 
     /**
@@ -358,10 +316,6 @@ public class AirportHeliportContaminationType
         this.nextObservationTime = value;
     }
 
-    public boolean isSetNextObservationTime() {
-        return (this.nextObservationTime!= null);
-    }
-
     /**
      * Gets the value of the proportion property.
      * 
@@ -384,10 +338,6 @@ public class AirportHeliportContaminationType
      */
     public void setProportion(JAXBElement<ValPercentType> value) {
         this.proportion = value;
-    }
-
-    public boolean isSetProportion() {
-        return (this.proportion!= null);
     }
 
     /**
@@ -422,14 +372,6 @@ public class AirportHeliportContaminationType
         return this.criticalRidge;
     }
 
-    public boolean isSetCriticalRidge() {
-        return ((this.criticalRidge!= null)&&(!this.criticalRidge.isEmpty()));
-    }
-
-    public void unsetCriticalRidge() {
-        this.criticalRidge = null;
-    }
-
     /**
      * Gets the value of the layer property.
      * 
@@ -460,14 +402,6 @@ public class AirportHeliportContaminationType
             layer = new ArrayList<>();
         }
         return this.layer;
-    }
-
-    public boolean isSetLayer() {
-        return ((this.layer!= null)&&(!this.layer.isEmpty()));
-    }
-
-    public void unsetLayer() {
-        this.layer = null;
     }
 
     /**
@@ -502,14 +436,6 @@ public class AirportHeliportContaminationType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -542,14 +468,6 @@ public class AirportHeliportContaminationType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -580,10 +498,8 @@ public class AirportHeliportContaminationType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceContaminationExtension")
-        @Valid
         protected AbstractExtensionType abstractSurfaceContaminationExtension;
         @XmlElement(name = "AbstractAirportHeliportContaminationExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportHeliportContaminationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -612,10 +528,6 @@ public class AirportHeliportContaminationType
             this.abstractSurfaceContaminationExtension = value;
         }
 
-        public boolean isSetAbstractSurfaceContaminationExtension() {
-            return (this.abstractSurfaceContaminationExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractAirportHeliportContaminationExtension property.
          * 
@@ -638,10 +550,6 @@ public class AirportHeliportContaminationType
          */
         public void setAbstractAirportHeliportContaminationExtension(AbstractExtensionType value) {
             this.abstractAirportHeliportContaminationExtension = value;
-        }
-
-        public boolean isSetAbstractAirportHeliportContaminationExtension() {
-            return (this.abstractAirportHeliportContaminationExtension!= null);
         }
 
         /**
@@ -668,16 +576,8 @@ public class AirportHeliportContaminationType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

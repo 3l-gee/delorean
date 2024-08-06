@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -83,8 +81,6 @@ public class RunwayProtectAreaTimeSliceType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRunwayProtectionAreaType> type;
@@ -92,8 +88,6 @@ public class RunwayProtectAreaTimeSliceType
     protected JAXBElement<CodeStatusOperationsType> status;
     @XmlElementRef(name = "protectedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayDirectionPropertyType> protectedRunwayDirection;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayProtectAreaTimeSliceType.Extension> extension;
 
     /**
@@ -120,10 +114,6 @@ public class RunwayProtectAreaTimeSliceType
         this.width = value;
     }
 
-    public boolean isSetWidth() {
-        return (this.width!= null);
-    }
-
     /**
      * Gets the value of the length property.
      * 
@@ -146,10 +136,6 @@ public class RunwayProtectAreaTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
-    }
-
-    public boolean isSetLength() {
-        return (this.length!= null);
     }
 
     /**
@@ -176,10 +162,6 @@ public class RunwayProtectAreaTimeSliceType
         this.lighting = value;
     }
 
-    public boolean isSetLighting() {
-        return (this.lighting!= null);
-    }
-
     /**
      * Gets the value of the obstacleFree property.
      * 
@@ -202,10 +184,6 @@ public class RunwayProtectAreaTimeSliceType
      */
     public void setObstacleFree(JAXBElement<CodeYesNoType> value) {
         this.obstacleFree = value;
-    }
-
-    public boolean isSetObstacleFree() {
-        return (this.obstacleFree!= null);
     }
 
     /**
@@ -232,10 +210,6 @@ public class RunwayProtectAreaTimeSliceType
         this.surfaceProperties = value;
     }
 
-    public boolean isSetSurfaceProperties() {
-        return (this.surfaceProperties!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -258,10 +232,6 @@ public class RunwayProtectAreaTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -296,14 +266,6 @@ public class RunwayProtectAreaTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -326,10 +288,6 @@ public class RunwayProtectAreaTimeSliceType
      */
     public void setType(JAXBElement<CodeRunwayProtectionAreaType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -356,10 +314,6 @@ public class RunwayProtectAreaTimeSliceType
         this.status = value;
     }
 
-    public boolean isSetStatus() {
-        return (this.status!= null);
-    }
-
     /**
      * Gets the value of the protectedRunwayDirection property.
      * 
@@ -382,10 +336,6 @@ public class RunwayProtectAreaTimeSliceType
      */
     public void setProtectedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
         this.protectedRunwayDirection = value;
-    }
-
-    public boolean isSetProtectedRunwayDirection() {
-        return (this.protectedRunwayDirection!= null);
     }
 
     /**
@@ -420,14 +370,6 @@ public class RunwayProtectAreaTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -458,10 +400,8 @@ public class RunwayProtectAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayProtectAreaExtension")
-        @Valid
         protected AbstractExtensionType abstractRunwayProtectAreaExtension;
         @XmlElement(name = "AbstractAirportHeliportProtectionAreaExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportHeliportProtectionAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -490,10 +430,6 @@ public class RunwayProtectAreaTimeSliceType
             this.abstractRunwayProtectAreaExtension = value;
         }
 
-        public boolean isSetAbstractRunwayProtectAreaExtension() {
-            return (this.abstractRunwayProtectAreaExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractAirportHeliportProtectionAreaExtension property.
          * 
@@ -516,10 +452,6 @@ public class RunwayProtectAreaTimeSliceType
          */
         public void setAbstractAirportHeliportProtectionAreaExtension(AbstractExtensionType value) {
             this.abstractAirportHeliportProtectionAreaExtension = value;
-        }
-
-        public boolean isSetAbstractAirportHeliportProtectionAreaExtension() {
-            return (this.abstractAirportHeliportProtectionAreaExtension!= null);
         }
 
         /**
@@ -546,16 +478,8 @@ public class RunwayProtectAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

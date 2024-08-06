@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -87,37 +85,21 @@ public class SearchRescueServiceTimeSliceType
     @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<UnitPropertyType> serviceProvider;
     @XmlElement(name = "call-sign", nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeServiceSARType> type;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirspacePropertyType> clientAirspace;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RoutePortionPropertyType> clientRoute;
-    @Valid
-    @Size(min = 0)
     protected List<SearchRescueServiceTimeSliceType.Extension> extension;
 
     /**
@@ -144,10 +126,6 @@ public class SearchRescueServiceTimeSliceType
         this.flightOperations = value;
     }
 
-    public boolean isSetFlightOperations() {
-        return (this.flightOperations!= null);
-    }
-
     /**
      * Gets the value of the rank property.
      * 
@@ -170,10 +148,6 @@ public class SearchRescueServiceTimeSliceType
      */
     public void setRank(JAXBElement<CodeFacilityRankingType> value) {
         this.rank = value;
-    }
-
-    public boolean isSetRank() {
-        return (this.rank!= null);
     }
 
     /**
@@ -200,10 +174,6 @@ public class SearchRescueServiceTimeSliceType
         this.compliantICAO = value;
     }
 
-    public boolean isSetCompliantICAO() {
-        return (this.compliantICAO!= null);
-    }
-
     /**
      * Gets the value of the aixmName property.
      * 
@@ -226,10 +196,6 @@ public class SearchRescueServiceTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
     }
 
     /**
@@ -256,10 +222,6 @@ public class SearchRescueServiceTimeSliceType
         this.location = value;
     }
 
-    public boolean isSetLocation() {
-        return (this.location!= null);
-    }
-
     /**
      * Gets the value of the serviceProvider property.
      * 
@@ -282,10 +244,6 @@ public class SearchRescueServiceTimeSliceType
      */
     public void setServiceProvider(JAXBElement<UnitPropertyType> value) {
         this.serviceProvider = value;
-    }
-
-    public boolean isSetServiceProvider() {
-        return (this.serviceProvider!= null);
     }
 
     /**
@@ -320,14 +278,6 @@ public class SearchRescueServiceTimeSliceType
         return this.callSign;
     }
 
-    public boolean isSetCallSign() {
-        return ((this.callSign!= null)&&(!this.callSign.isEmpty()));
-    }
-
-    public void unsetCallSign() {
-        this.callSign = null;
-    }
-
     /**
      * Gets the value of the radioCommunication property.
      * 
@@ -358,14 +308,6 @@ public class SearchRescueServiceTimeSliceType
             radioCommunication = new ArrayList<>();
         }
         return this.radioCommunication;
-    }
-
-    public boolean isSetRadioCommunication() {
-        return ((this.radioCommunication!= null)&&(!this.radioCommunication.isEmpty()));
-    }
-
-    public void unsetRadioCommunication() {
-        this.radioCommunication = null;
     }
 
     /**
@@ -400,14 +342,6 @@ public class SearchRescueServiceTimeSliceType
         return this.groundCommunication;
     }
 
-    public boolean isSetGroundCommunication() {
-        return ((this.groundCommunication!= null)&&(!this.groundCommunication.isEmpty()));
-    }
-
-    public void unsetGroundCommunication() {
-        this.groundCommunication = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -438,14 +372,6 @@ public class SearchRescueServiceTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -480,14 +406,6 @@ public class SearchRescueServiceTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -510,10 +428,6 @@ public class SearchRescueServiceTimeSliceType
      */
     public void setType(JAXBElement<CodeServiceSARType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -548,14 +462,6 @@ public class SearchRescueServiceTimeSliceType
         return this.clientAirspace;
     }
 
-    public boolean isSetClientAirspace() {
-        return ((this.clientAirspace!= null)&&(!this.clientAirspace.isEmpty()));
-    }
-
-    public void unsetClientAirspace() {
-        this.clientAirspace = null;
-    }
-
     /**
      * Gets the value of the clientRoute property.
      * 
@@ -586,14 +492,6 @@ public class SearchRescueServiceTimeSliceType
             clientRoute = new ArrayList<>();
         }
         return this.clientRoute;
-    }
-
-    public boolean isSetClientRoute() {
-        return ((this.clientRoute!= null)&&(!this.clientRoute.isEmpty()));
-    }
-
-    public void unsetClientRoute() {
-        this.clientRoute = null;
     }
 
     /**
@@ -628,14 +526,6 @@ public class SearchRescueServiceTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -666,10 +556,8 @@ public class SearchRescueServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSearchRescueServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractSearchRescueServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -698,10 +586,6 @@ public class SearchRescueServiceTimeSliceType
             this.abstractSearchRescueServiceExtension = value;
         }
 
-        public boolean isSetAbstractSearchRescueServiceExtension() {
-            return (this.abstractSearchRescueServiceExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractServiceExtension property.
          * 
@@ -724,10 +608,6 @@ public class SearchRescueServiceTimeSliceType
          */
         public void setAbstractServiceExtension(AbstractExtensionType value) {
             this.abstractServiceExtension = value;
-        }
-
-        public boolean isSetAbstractServiceExtension() {
-            return (this.abstractServiceExtension!= null);
         }
 
         /**
@@ -754,16 +634,8 @@ public class SearchRescueServiceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

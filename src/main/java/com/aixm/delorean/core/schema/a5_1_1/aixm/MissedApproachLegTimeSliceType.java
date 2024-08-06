@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -156,18 +154,12 @@ public class MissedApproachLegTimeSliceType
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DistanceIndicationPropertyType> distance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElementRef(name = "holding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<HoldingUsePropertyType> holding;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
@@ -180,11 +172,7 @@ public class MissedApproachLegTimeSliceType
     @XmlElementRef(name = "requiredNavigationPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRNPType> requiredNavigationPerformance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ApproachConditionPropertyType> condition;
-    @Valid
-    @Size(min = 0)
     protected List<MissedApproachLegTimeSliceType.Extension> extension;
 
     /**
@@ -211,10 +199,6 @@ public class MissedApproachLegTimeSliceType
         this.endConditionDesignator = value;
     }
 
-    public boolean isSetEndConditionDesignator() {
-        return (this.endConditionDesignator!= null);
-    }
-
     /**
      * Gets the value of the legPath property.
      * 
@@ -237,10 +221,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setLegPath(JAXBElement<CodeTrajectoryType> value) {
         this.legPath = value;
-    }
-
-    public boolean isSetLegPath() {
-        return (this.legPath!= null);
     }
 
     /**
@@ -267,10 +247,6 @@ public class MissedApproachLegTimeSliceType
         this.legTypeARINC = value;
     }
 
-    public boolean isSetLegTypeARINC() {
-        return (this.legTypeARINC!= null);
-    }
-
     /**
      * Gets the value of the course property.
      * 
@@ -293,10 +269,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setCourse(JAXBElement<ValBearingType> value) {
         this.course = value;
-    }
-
-    public boolean isSetCourse() {
-        return (this.course!= null);
     }
 
     /**
@@ -323,10 +295,6 @@ public class MissedApproachLegTimeSliceType
         this.courseType = value;
     }
 
-    public boolean isSetCourseType() {
-        return (this.courseType!= null);
-    }
-
     /**
      * Gets the value of the courseDirection property.
      * 
@@ -349,10 +317,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setCourseDirection(JAXBElement<CodeDirectionReferenceType> value) {
         this.courseDirection = value;
-    }
-
-    public boolean isSetCourseDirection() {
-        return (this.courseDirection!= null);
     }
 
     /**
@@ -379,10 +343,6 @@ public class MissedApproachLegTimeSliceType
         this.turnDirection = value;
     }
 
-    public boolean isSetTurnDirection() {
-        return (this.turnDirection!= null);
-    }
-
     /**
      * Gets the value of the speedLimit property.
      * 
@@ -405,10 +365,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setSpeedLimit(JAXBElement<ValSpeedType> value) {
         this.speedLimit = value;
-    }
-
-    public boolean isSetSpeedLimit() {
-        return (this.speedLimit!= null);
     }
 
     /**
@@ -435,10 +391,6 @@ public class MissedApproachLegTimeSliceType
         this.speedReference = value;
     }
 
-    public boolean isSetSpeedReference() {
-        return (this.speedReference!= null);
-    }
-
     /**
      * Gets the value of the speedInterpretation property.
      * 
@@ -461,10 +413,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setSpeedInterpretation(JAXBElement<CodeAltitudeUseType> value) {
         this.speedInterpretation = value;
-    }
-
-    public boolean isSetSpeedInterpretation() {
-        return (this.speedInterpretation!= null);
     }
 
     /**
@@ -491,10 +439,6 @@ public class MissedApproachLegTimeSliceType
         this.bankAngle = value;
     }
 
-    public boolean isSetBankAngle() {
-        return (this.bankAngle!= null);
-    }
-
     /**
      * Gets the value of the length property.
      * 
@@ -517,10 +461,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
-    }
-
-    public boolean isSetLength() {
-        return (this.length!= null);
     }
 
     /**
@@ -547,10 +487,6 @@ public class MissedApproachLegTimeSliceType
         this.duration = value;
     }
 
-    public boolean isSetDuration() {
-        return (this.duration!= null);
-    }
-
     /**
      * Gets the value of the procedureTurnRequired property.
      * 
@@ -573,10 +509,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setProcedureTurnRequired(JAXBElement<CodeYesNoType> value) {
         this.procedureTurnRequired = value;
-    }
-
-    public boolean isSetProcedureTurnRequired() {
-        return (this.procedureTurnRequired!= null);
     }
 
     /**
@@ -603,10 +535,6 @@ public class MissedApproachLegTimeSliceType
         this.upperLimitAltitude = value;
     }
 
-    public boolean isSetUpperLimitAltitude() {
-        return (this.upperLimitAltitude!= null);
-    }
-
     /**
      * Gets the value of the upperLimitReference property.
      * 
@@ -629,10 +557,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.upperLimitReference = value;
-    }
-
-    public boolean isSetUpperLimitReference() {
-        return (this.upperLimitReference!= null);
     }
 
     /**
@@ -659,10 +583,6 @@ public class MissedApproachLegTimeSliceType
         this.lowerLimitAltitude = value;
     }
 
-    public boolean isSetLowerLimitAltitude() {
-        return (this.lowerLimitAltitude!= null);
-    }
-
     /**
      * Gets the value of the lowerLimitReference property.
      * 
@@ -685,10 +605,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLimitReference = value;
-    }
-
-    public boolean isSetLowerLimitReference() {
-        return (this.lowerLimitReference!= null);
     }
 
     /**
@@ -715,10 +631,6 @@ public class MissedApproachLegTimeSliceType
         this.altitudeInterpretation = value;
     }
 
-    public boolean isSetAltitudeInterpretation() {
-        return (this.altitudeInterpretation!= null);
-    }
-
     /**
      * Gets the value of the altitudeOverrideATC property.
      * 
@@ -741,10 +653,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setAltitudeOverrideATC(JAXBElement<ValDistanceVerticalType> value) {
         this.altitudeOverrideATC = value;
-    }
-
-    public boolean isSetAltitudeOverrideATC() {
-        return (this.altitudeOverrideATC!= null);
     }
 
     /**
@@ -771,10 +679,6 @@ public class MissedApproachLegTimeSliceType
         this.altitudeOverrideReference = value;
     }
 
-    public boolean isSetAltitudeOverrideReference() {
-        return (this.altitudeOverrideReference!= null);
-    }
-
     /**
      * Gets the value of the verticalAngle property.
      * 
@@ -797,10 +701,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setVerticalAngle(JAXBElement<ValAngleType> value) {
         this.verticalAngle = value;
-    }
-
-    public boolean isSetVerticalAngle() {
-        return (this.verticalAngle!= null);
     }
 
     /**
@@ -827,10 +727,6 @@ public class MissedApproachLegTimeSliceType
         this.startPoint = value;
     }
 
-    public boolean isSetStartPoint() {
-        return (this.startPoint!= null);
-    }
-
     /**
      * Gets the value of the endPoint property.
      * 
@@ -853,10 +749,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setEndPoint(JAXBElement<TerminalSegmentPointPropertyType> value) {
         this.endPoint = value;
-    }
-
-    public boolean isSetEndPoint() {
-        return (this.endPoint!= null);
     }
 
     /**
@@ -883,10 +775,6 @@ public class MissedApproachLegTimeSliceType
         this.trajectory = value;
     }
 
-    public boolean isSetTrajectory() {
-        return (this.trajectory!= null);
-    }
-
     /**
      * Gets the value of the arcCentre property.
      * 
@@ -909,10 +797,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setArcCentre(JAXBElement<TerminalSegmentPointPropertyType> value) {
         this.arcCentre = value;
-    }
-
-    public boolean isSetArcCentre() {
-        return (this.arcCentre!= null);
     }
 
     /**
@@ -939,10 +823,6 @@ public class MissedApproachLegTimeSliceType
         this.angle = value;
     }
 
-    public boolean isSetAngle() {
-        return (this.angle!= null);
-    }
-
     /**
      * Gets the value of the distance property.
      * 
@@ -965,10 +845,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setDistance(JAXBElement<DistanceIndicationPropertyType> value) {
         this.distance = value;
-    }
-
-    public boolean isSetDistance() {
-        return (this.distance!= null);
     }
 
     /**
@@ -1003,14 +879,6 @@ public class MissedApproachLegTimeSliceType
         return this.aircraftCategory;
     }
 
-    public boolean isSetAircraftCategory() {
-        return ((this.aircraftCategory!= null)&&(!this.aircraftCategory.isEmpty()));
-    }
-
-    public void unsetAircraftCategory() {
-        this.aircraftCategory = null;
-    }
-
     /**
      * Gets the value of the holding property.
      * 
@@ -1033,10 +901,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setHolding(JAXBElement<HoldingUsePropertyType> value) {
         this.holding = value;
-    }
-
-    public boolean isSetHolding() {
-        return (this.holding!= null);
     }
 
     /**
@@ -1071,14 +935,6 @@ public class MissedApproachLegTimeSliceType
         return this.designSurface;
     }
 
-    public boolean isSetDesignSurface() {
-        return ((this.designSurface!= null)&&(!this.designSurface.isEmpty()));
-    }
-
-    public void unsetDesignSurface() {
-        this.designSurface = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -1111,14 +967,6 @@ public class MissedApproachLegTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the approach property.
      * 
@@ -1141,10 +989,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setApproach(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
         this.approach = value;
-    }
-
-    public boolean isSetApproach() {
-        return (this.approach!= null);
     }
 
     /**
@@ -1171,10 +1015,6 @@ public class MissedApproachLegTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the thresholdAfterMAPT property.
      * 
@@ -1197,10 +1037,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setThresholdAfterMAPT(JAXBElement<CodeYesNoType> value) {
         this.thresholdAfterMAPT = value;
-    }
-
-    public boolean isSetThresholdAfterMAPT() {
-        return (this.thresholdAfterMAPT!= null);
     }
 
     /**
@@ -1227,10 +1063,6 @@ public class MissedApproachLegTimeSliceType
         this.heightMAPT = value;
     }
 
-    public boolean isSetHeightMAPT() {
-        return (this.heightMAPT!= null);
-    }
-
     /**
      * Gets the value of the requiredNavigationPerformance property.
      * 
@@ -1253,10 +1085,6 @@ public class MissedApproachLegTimeSliceType
      */
     public void setRequiredNavigationPerformance(JAXBElement<CodeRNPType> value) {
         this.requiredNavigationPerformance = value;
-    }
-
-    public boolean isSetRequiredNavigationPerformance() {
-        return (this.requiredNavigationPerformance!= null);
     }
 
     /**
@@ -1291,14 +1119,6 @@ public class MissedApproachLegTimeSliceType
         return this.condition;
     }
 
-    public boolean isSetCondition() {
-        return ((this.condition!= null)&&(!this.condition.isEmpty()));
-    }
-
-    public void unsetCondition() {
-        this.condition = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -1329,14 +1149,6 @@ public class MissedApproachLegTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
-    }
-
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
     }
 
 
@@ -1371,13 +1183,10 @@ public class MissedApproachLegTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractMissedApproachLegExtension")
-        @Valid
         protected AbstractExtensionType abstractMissedApproachLegExtension;
         @XmlElement(name = "AbstractApproachLegExtension")
-        @Valid
         protected AbstractExtensionType abstractApproachLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
-        @Valid
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -1406,10 +1215,6 @@ public class MissedApproachLegTimeSliceType
             this.abstractMissedApproachLegExtension = value;
         }
 
-        public boolean isSetAbstractMissedApproachLegExtension() {
-            return (this.abstractMissedApproachLegExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractApproachLegExtension property.
          * 
@@ -1432,10 +1237,6 @@ public class MissedApproachLegTimeSliceType
          */
         public void setAbstractApproachLegExtension(AbstractExtensionType value) {
             this.abstractApproachLegExtension = value;
-        }
-
-        public boolean isSetAbstractApproachLegExtension() {
-            return (this.abstractApproachLegExtension!= null);
         }
 
         /**
@@ -1462,10 +1263,6 @@ public class MissedApproachLegTimeSliceType
             this.abstractSegmentLegExtension = value;
         }
 
-        public boolean isSetAbstractSegmentLegExtension() {
-            return (this.abstractSegmentLegExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -1490,16 +1287,8 @@ public class MissedApproachLegTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

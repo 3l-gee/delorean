@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -95,20 +93,12 @@ public class SDFTimeSliceType
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AuthorityForNavaidEquipmentPropertyType> authority;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidEquipmentMonitoringPropertyType> monitoring;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "frequency", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValFrequencyType> frequency;
@@ -116,8 +106,6 @@ public class SDFTimeSliceType
     protected JAXBElement<ValBearingType> magneticBearing;
     @XmlElementRef(name = "trueBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValBearingType> trueBearing;
-    @Valid
-    @Size(min = 0)
     protected List<SDFTimeSliceType.Extension> extension;
 
     /**
@@ -144,10 +132,6 @@ public class SDFTimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the aixmName property.
      * 
@@ -170,10 +154,6 @@ public class SDFTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
     }
 
     /**
@@ -200,10 +180,6 @@ public class SDFTimeSliceType
         this.emissionClass = value;
     }
 
-    public boolean isSetEmissionClass() {
-        return (this.emissionClass!= null);
-    }
-
     /**
      * Gets the value of the mobile property.
      * 
@@ -226,10 +202,6 @@ public class SDFTimeSliceType
      */
     public void setMobile(JAXBElement<CodeYesNoType> value) {
         this.mobile = value;
-    }
-
-    public boolean isSetMobile() {
-        return (this.mobile!= null);
     }
 
     /**
@@ -256,10 +228,6 @@ public class SDFTimeSliceType
         this.magneticVariation = value;
     }
 
-    public boolean isSetMagneticVariation() {
-        return (this.magneticVariation!= null);
-    }
-
     /**
      * Gets the value of the magneticVariationAccuracy property.
      * 
@@ -282,10 +250,6 @@ public class SDFTimeSliceType
      */
     public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticVariationAccuracy = value;
-    }
-
-    public boolean isSetMagneticVariationAccuracy() {
-        return (this.magneticVariationAccuracy!= null);
     }
 
     /**
@@ -312,10 +276,6 @@ public class SDFTimeSliceType
         this.dateMagneticVariation = value;
     }
 
-    public boolean isSetDateMagneticVariation() {
-        return (this.dateMagneticVariation!= null);
-    }
-
     /**
      * Gets the value of the flightChecked property.
      * 
@@ -340,10 +300,6 @@ public class SDFTimeSliceType
         this.flightChecked = value;
     }
 
-    public boolean isSetFlightChecked() {
-        return (this.flightChecked!= null);
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -366,10 +322,6 @@ public class SDFTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -404,14 +356,6 @@ public class SDFTimeSliceType
         return this.authority;
     }
 
-    public boolean isSetAuthority() {
-        return ((this.authority!= null)&&(!this.authority.isEmpty()));
-    }
-
-    public void unsetAuthority() {
-        this.authority = null;
-    }
-
     /**
      * Gets the value of the monitoring property.
      * 
@@ -442,14 +386,6 @@ public class SDFTimeSliceType
             monitoring = new ArrayList<>();
         }
         return this.monitoring;
-    }
-
-    public boolean isSetMonitoring() {
-        return ((this.monitoring!= null)&&(!this.monitoring.isEmpty()));
-    }
-
-    public void unsetMonitoring() {
-        this.monitoring = null;
     }
 
     /**
@@ -484,14 +420,6 @@ public class SDFTimeSliceType
         return this.availability;
     }
 
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -524,14 +452,6 @@ public class SDFTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the frequency property.
      * 
@@ -554,10 +474,6 @@ public class SDFTimeSliceType
      */
     public void setFrequency(JAXBElement<ValFrequencyType> value) {
         this.frequency = value;
-    }
-
-    public boolean isSetFrequency() {
-        return (this.frequency!= null);
     }
 
     /**
@@ -584,10 +500,6 @@ public class SDFTimeSliceType
         this.magneticBearing = value;
     }
 
-    public boolean isSetMagneticBearing() {
-        return (this.magneticBearing!= null);
-    }
-
     /**
      * Gets the value of the trueBearing property.
      * 
@@ -610,10 +522,6 @@ public class SDFTimeSliceType
      */
     public void setTrueBearing(JAXBElement<ValBearingType> value) {
         this.trueBearing = value;
-    }
-
-    public boolean isSetTrueBearing() {
-        return (this.trueBearing!= null);
     }
 
     /**
@@ -648,14 +556,6 @@ public class SDFTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -686,10 +586,8 @@ public class SDFTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSDFExtension")
-        @Valid
         protected AbstractExtensionType abstractSDFExtension;
         @XmlElement(name = "AbstractNavaidEquipmentExtension")
-        @Valid
         protected AbstractExtensionType abstractNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -718,10 +616,6 @@ public class SDFTimeSliceType
             this.abstractSDFExtension = value;
         }
 
-        public boolean isSetAbstractSDFExtension() {
-            return (this.abstractSDFExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractNavaidEquipmentExtension property.
          * 
@@ -744,10 +638,6 @@ public class SDFTimeSliceType
          */
         public void setAbstractNavaidEquipmentExtension(AbstractExtensionType value) {
             this.abstractNavaidEquipmentExtension = value;
-        }
-
-        public boolean isSetAbstractNavaidEquipmentExtension() {
-            return (this.abstractNavaidEquipmentExtension!= null);
         }
 
         /**
@@ -774,16 +664,8 @@ public class SDFTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

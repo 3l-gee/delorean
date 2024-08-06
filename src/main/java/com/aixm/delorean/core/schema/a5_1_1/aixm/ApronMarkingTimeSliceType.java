@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -71,19 +69,13 @@ public class ApronMarkingTimeSliceType
     @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "markingLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeApronSectionType> markingLocation;
     @XmlElementRef(name = "markedApron", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ApronPropertyType> markedApron;
-    @Valid
-    @Size(min = 0)
     protected List<ApronMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -110,10 +102,6 @@ public class ApronMarkingTimeSliceType
         this.markingICAOStandard = value;
     }
 
-    public boolean isSetMarkingICAOStandard() {
-        return (this.markingICAOStandard!= null);
-    }
-
     /**
      * Gets the value of the condition property.
      * 
@@ -136,10 +124,6 @@ public class ApronMarkingTimeSliceType
      */
     public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
         this.condition = value;
-    }
-
-    public boolean isSetCondition() {
-        return (this.condition!= null);
     }
 
     /**
@@ -174,14 +158,6 @@ public class ApronMarkingTimeSliceType
         return this.element;
     }
 
-    public boolean isSetElement() {
-        return ((this.element!= null)&&(!this.element.isEmpty()));
-    }
-
-    public void unsetElement() {
-        this.element = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -214,14 +190,6 @@ public class ApronMarkingTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the markingLocation property.
      * 
@@ -246,10 +214,6 @@ public class ApronMarkingTimeSliceType
         this.markingLocation = value;
     }
 
-    public boolean isSetMarkingLocation() {
-        return (this.markingLocation!= null);
-    }
-
     /**
      * Gets the value of the markedApron property.
      * 
@@ -272,10 +236,6 @@ public class ApronMarkingTimeSliceType
      */
     public void setMarkedApron(JAXBElement<ApronPropertyType> value) {
         this.markedApron = value;
-    }
-
-    public boolean isSetMarkedApron() {
-        return (this.markedApron!= null);
     }
 
     /**
@@ -310,14 +270,6 @@ public class ApronMarkingTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -348,10 +300,8 @@ public class ApronMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractApronMarkingExtension")
-        @Valid
         protected AbstractExtensionType abstractApronMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
-        @Valid
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -380,10 +330,6 @@ public class ApronMarkingTimeSliceType
             this.abstractApronMarkingExtension = value;
         }
 
-        public boolean isSetAbstractApronMarkingExtension() {
-            return (this.abstractApronMarkingExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractMarkingExtension property.
          * 
@@ -406,10 +352,6 @@ public class ApronMarkingTimeSliceType
          */
         public void setAbstractMarkingExtension(AbstractExtensionType value) {
             this.abstractMarkingExtension = value;
-        }
-
-        public boolean isSetAbstractMarkingExtension() {
-            return (this.abstractMarkingExtension!= null);
         }
 
         /**
@@ -436,16 +378,8 @@ public class ApronMarkingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

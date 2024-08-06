@@ -89,14 +89,6 @@ public class DictionaryType
         return this.dictionaryEntryOrIndirectEntry;
     }
 
-    public boolean isSetDictionaryEntryOrIndirectEntry() {
-        return ((this.dictionaryEntryOrIndirectEntry!= null)&&(!this.dictionaryEntryOrIndirectEntry.isEmpty()));
-    }
-
-    public void unsetDictionaryEntryOrIndirectEntry() {
-        this.dictionaryEntryOrIndirectEntry = null;
-    }
-
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -119,10 +111,6 @@ public class DictionaryType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
-    }
-
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
     }
 
 }

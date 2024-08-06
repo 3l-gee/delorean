@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -73,11 +71,7 @@ public class ObstaclePlacementType
     @XmlElementRef(name = "obstaclePlacement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeSideType> obstaclePlacement;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ObstaclePlacementType.Extension> extension;
 
     /**
@@ -104,10 +98,6 @@ public class ObstaclePlacementType
         this.obstacleBearing = value;
     }
 
-    public boolean isSetObstacleBearing() {
-        return (this.obstacleBearing!= null);
-    }
-
     /**
      * Gets the value of the obstacleDistance property.
      * 
@@ -130,10 +120,6 @@ public class ObstaclePlacementType
      */
     public void setObstacleDistance(JAXBElement<ValDistanceType> value) {
         this.obstacleDistance = value;
-    }
-
-    public boolean isSetObstacleDistance() {
-        return (this.obstacleDistance!= null);
     }
 
     /**
@@ -160,10 +146,6 @@ public class ObstaclePlacementType
         this.pointType = value;
     }
 
-    public boolean isSetPointType() {
-        return (this.pointType!= null);
-    }
-
     /**
      * Gets the value of the obstaclePlacement property.
      * 
@@ -186,10 +168,6 @@ public class ObstaclePlacementType
      */
     public void setObstaclePlacement(JAXBElement<CodeSideType> value) {
         this.obstaclePlacement = value;
-    }
-
-    public boolean isSetObstaclePlacement() {
-        return (this.obstaclePlacement!= null);
     }
 
     /**
@@ -224,14 +202,6 @@ public class ObstaclePlacementType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -264,14 +234,6 @@ public class ObstaclePlacementType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -300,7 +262,6 @@ public class ObstaclePlacementType
     public static class Extension {
 
         @XmlElement(name = "AbstractObstaclePlacementExtension")
-        @Valid
         protected AbstractExtensionType abstractObstaclePlacementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -329,10 +290,6 @@ public class ObstaclePlacementType
             this.abstractObstaclePlacementExtension = value;
         }
 
-        public boolean isSetAbstractObstaclePlacementExtension() {
-            return (this.abstractObstaclePlacementExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -357,16 +314,8 @@ public class ObstaclePlacementType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -77,11 +74,7 @@ public class MarkingBuoyTimeSliceType
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<MarkingBuoyTimeSliceType.Extension> extension;
 
     /**
@@ -108,10 +101,6 @@ public class MarkingBuoyTimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -134,10 +123,6 @@ public class MarkingBuoyTimeSliceType
      */
     public void setType(JAXBElement<CodeBuoyType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -164,10 +149,6 @@ public class MarkingBuoyTimeSliceType
         this.colour = value;
     }
 
-    public boolean isSetColour() {
-        return (this.colour!= null);
-    }
-
     /**
      * Gets the value of the theSeaplaneLandingArea property.
      * 
@@ -192,10 +173,6 @@ public class MarkingBuoyTimeSliceType
         this.theSeaplaneLandingArea = value;
     }
 
-    public boolean isSetTheSeaplaneLandingArea() {
-        return (this.theSeaplaneLandingArea!= null);
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -218,10 +195,6 @@ public class MarkingBuoyTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -256,14 +229,6 @@ public class MarkingBuoyTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -296,14 +261,6 @@ public class MarkingBuoyTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -332,8 +289,6 @@ public class MarkingBuoyTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractMarkingBuoyExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractMarkingBuoyExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -362,10 +317,6 @@ public class MarkingBuoyTimeSliceType
             this.abstractMarkingBuoyExtension = value;
         }
 
-        public boolean isSetAbstractMarkingBuoyExtension() {
-            return (this.abstractMarkingBuoyExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -390,16 +341,8 @@ public class MarkingBuoyTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

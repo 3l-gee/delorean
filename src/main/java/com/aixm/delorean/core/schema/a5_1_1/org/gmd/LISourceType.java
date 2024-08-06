@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -55,19 +53,11 @@ public class LISourceType
     extends AbstractObjectType
 {
 
-    @Valid
     protected CharacterStringPropertyType description;
-    @Valid
     protected MDRepresentativeFractionPropertyType scaleDenominator;
-    @Valid
     protected MDReferenceSystemPropertyType sourceReferenceSystem;
-    @Valid
     protected CICitationPropertyType sourceCitation;
-    @Valid
-    @Size(min = 0)
     protected List<EXExtentPropertyType> sourceExtent;
-    @Valid
-    @Size(min = 0)
     protected List<LIProcessStepPropertyType> sourceStep;
 
     /**
@@ -94,10 +84,6 @@ public class LISourceType
         this.description = value;
     }
 
-    public boolean isSetDescription() {
-        return (this.description!= null);
-    }
-
     /**
      * Gets the value of the scaleDenominator property.
      * 
@@ -120,10 +106,6 @@ public class LISourceType
      */
     public void setScaleDenominator(MDRepresentativeFractionPropertyType value) {
         this.scaleDenominator = value;
-    }
-
-    public boolean isSetScaleDenominator() {
-        return (this.scaleDenominator!= null);
     }
 
     /**
@@ -150,10 +132,6 @@ public class LISourceType
         this.sourceReferenceSystem = value;
     }
 
-    public boolean isSetSourceReferenceSystem() {
-        return (this.sourceReferenceSystem!= null);
-    }
-
     /**
      * Gets the value of the sourceCitation property.
      * 
@@ -176,10 +154,6 @@ public class LISourceType
      */
     public void setSourceCitation(CICitationPropertyType value) {
         this.sourceCitation = value;
-    }
-
-    public boolean isSetSourceCitation() {
-        return (this.sourceCitation!= null);
     }
 
     /**
@@ -214,14 +188,6 @@ public class LISourceType
         return this.sourceExtent;
     }
 
-    public boolean isSetSourceExtent() {
-        return ((this.sourceExtent!= null)&&(!this.sourceExtent.isEmpty()));
-    }
-
-    public void unsetSourceExtent() {
-        this.sourceExtent = null;
-    }
-
     /**
      * Gets the value of the sourceStep property.
      * 
@@ -252,14 +218,6 @@ public class LISourceType
             sourceStep = new ArrayList<>();
         }
         return this.sourceStep;
-    }
-
-    public boolean isSetSourceStep() {
-        return ((this.sourceStep!= null)&&(!this.sourceStep.isEmpty()));
-    }
-
-    public void unsetSourceStep() {
-        this.sourceStep = null;
     }
 
 }

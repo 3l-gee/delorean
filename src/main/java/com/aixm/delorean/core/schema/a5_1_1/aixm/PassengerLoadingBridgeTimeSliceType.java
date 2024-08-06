@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,15 +66,9 @@ public class PassengerLoadingBridgeTimeSliceType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AircraftStandPropertyType> associatedStand;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<PassengerLoadingBridgeTimeSliceType.Extension> extension;
 
     /**
@@ -104,10 +95,6 @@ public class PassengerLoadingBridgeTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -130,10 +117,6 @@ public class PassengerLoadingBridgeTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -168,14 +151,6 @@ public class PassengerLoadingBridgeTimeSliceType
         return this.associatedStand;
     }
 
-    public boolean isSetAssociatedStand() {
-        return ((this.associatedStand!= null)&&(!this.associatedStand.isEmpty()));
-    }
-
-    public void unsetAssociatedStand() {
-        this.associatedStand = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -206,14 +181,6 @@ public class PassengerLoadingBridgeTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -248,14 +215,6 @@ public class PassengerLoadingBridgeTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -284,8 +243,6 @@ public class PassengerLoadingBridgeTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPassengerLoadingBridgeExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractPassengerLoadingBridgeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -314,10 +271,6 @@ public class PassengerLoadingBridgeTimeSliceType
             this.abstractPassengerLoadingBridgeExtension = value;
         }
 
-        public boolean isSetAbstractPassengerLoadingBridgeExtension() {
-            return (this.abstractPassengerLoadingBridgeExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -342,16 +295,8 @@ public class PassengerLoadingBridgeTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

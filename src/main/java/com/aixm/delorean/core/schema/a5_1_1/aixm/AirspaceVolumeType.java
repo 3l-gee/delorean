@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -97,11 +95,7 @@ public class AirspaceVolumeType
     @XmlElementRef(name = "contributorAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirspaceVolumeDependencyPropertyType> contributorAirspace;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AirspaceVolumeType.Extension> extension;
 
     /**
@@ -128,10 +122,6 @@ public class AirspaceVolumeType
         this.upperLimit = value;
     }
 
-    public boolean isSetUpperLimit() {
-        return (this.upperLimit!= null);
-    }
-
     /**
      * Gets the value of the upperLimitReference property.
      * 
@@ -154,10 +144,6 @@ public class AirspaceVolumeType
      */
     public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.upperLimitReference = value;
-    }
-
-    public boolean isSetUpperLimitReference() {
-        return (this.upperLimitReference!= null);
     }
 
     /**
@@ -184,10 +170,6 @@ public class AirspaceVolumeType
         this.maximumLimit = value;
     }
 
-    public boolean isSetMaximumLimit() {
-        return (this.maximumLimit!= null);
-    }
-
     /**
      * Gets the value of the maximumLimitReference property.
      * 
@@ -210,10 +192,6 @@ public class AirspaceVolumeType
      */
     public void setMaximumLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.maximumLimitReference = value;
-    }
-
-    public boolean isSetMaximumLimitReference() {
-        return (this.maximumLimitReference!= null);
     }
 
     /**
@@ -240,10 +218,6 @@ public class AirspaceVolumeType
         this.lowerLimit = value;
     }
 
-    public boolean isSetLowerLimit() {
-        return (this.lowerLimit!= null);
-    }
-
     /**
      * Gets the value of the lowerLimitReference property.
      * 
@@ -266,10 +240,6 @@ public class AirspaceVolumeType
      */
     public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLimitReference = value;
-    }
-
-    public boolean isSetLowerLimitReference() {
-        return (this.lowerLimitReference!= null);
     }
 
     /**
@@ -296,10 +266,6 @@ public class AirspaceVolumeType
         this.minimumLimit = value;
     }
 
-    public boolean isSetMinimumLimit() {
-        return (this.minimumLimit!= null);
-    }
-
     /**
      * Gets the value of the minimumLimitReference property.
      * 
@@ -322,10 +288,6 @@ public class AirspaceVolumeType
      */
     public void setMinimumLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.minimumLimitReference = value;
-    }
-
-    public boolean isSetMinimumLimitReference() {
-        return (this.minimumLimitReference!= null);
     }
 
     /**
@@ -352,10 +314,6 @@ public class AirspaceVolumeType
         this.width = value;
     }
 
-    public boolean isSetWidth() {
-        return (this.width!= null);
-    }
-
     /**
      * Gets the value of the horizontalProjection property.
      * 
@@ -378,10 +336,6 @@ public class AirspaceVolumeType
      */
     public void setHorizontalProjection(JAXBElement<SurfacePropertyType> value) {
         this.horizontalProjection = value;
-    }
-
-    public boolean isSetHorizontalProjection() {
-        return (this.horizontalProjection!= null);
     }
 
     /**
@@ -408,10 +362,6 @@ public class AirspaceVolumeType
         this.centreline = value;
     }
 
-    public boolean isSetCentreline() {
-        return (this.centreline!= null);
-    }
-
     /**
      * Gets the value of the contributorAirspace property.
      * 
@@ -434,10 +384,6 @@ public class AirspaceVolumeType
      */
     public void setContributorAirspace(JAXBElement<AirspaceVolumeDependencyPropertyType> value) {
         this.contributorAirspace = value;
-    }
-
-    public boolean isSetContributorAirspace() {
-        return (this.contributorAirspace!= null);
     }
 
     /**
@@ -472,14 +418,6 @@ public class AirspaceVolumeType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -512,14 +450,6 @@ public class AirspaceVolumeType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -548,7 +478,6 @@ public class AirspaceVolumeType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceVolumeExtension")
-        @Valid
         protected AbstractExtensionType abstractAirspaceVolumeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -577,10 +506,6 @@ public class AirspaceVolumeType
             this.abstractAirspaceVolumeExtension = value;
         }
 
-        public boolean isSetAbstractAirspaceVolumeExtension() {
-            return (this.abstractAirspaceVolumeExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -605,16 +530,8 @@ public class AirspaceVolumeType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

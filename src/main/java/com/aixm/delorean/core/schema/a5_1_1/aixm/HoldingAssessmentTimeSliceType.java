@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -99,15 +96,9 @@ public class HoldingAssessmentTimeSliceType
     @XmlElementRef(name = "assessedHoldingPattern", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<HoldingPatternPropertyType> assessedHoldingPattern;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ObstacleAssessmentAreaPropertyType> obstacleAssessment;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<HoldingAssessmentTimeSliceType.Extension> extension;
 
     /**
@@ -134,10 +125,6 @@ public class HoldingAssessmentTimeSliceType
         this.upperLimit = value;
     }
 
-    public boolean isSetUpperLimit() {
-        return (this.upperLimit!= null);
-    }
-
     /**
      * Gets the value of the upperLimitReference property.
      * 
@@ -160,10 +147,6 @@ public class HoldingAssessmentTimeSliceType
      */
     public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.upperLimitReference = value;
-    }
-
-    public boolean isSetUpperLimitReference() {
-        return (this.upperLimitReference!= null);
     }
 
     /**
@@ -190,10 +173,6 @@ public class HoldingAssessmentTimeSliceType
         this.lowerLimit = value;
     }
 
-    public boolean isSetLowerLimit() {
-        return (this.lowerLimit!= null);
-    }
-
     /**
      * Gets the value of the lowerLimitReference property.
      * 
@@ -216,10 +195,6 @@ public class HoldingAssessmentTimeSliceType
      */
     public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLimitReference = value;
-    }
-
-    public boolean isSetLowerLimitReference() {
-        return (this.lowerLimitReference!= null);
     }
 
     /**
@@ -246,10 +221,6 @@ public class HoldingAssessmentTimeSliceType
         this.speedLimit = value;
     }
 
-    public boolean isSetSpeedLimit() {
-        return (this.speedLimit!= null);
-    }
-
     /**
      * Gets the value of the patternTemplate property.
      * 
@@ -272,10 +243,6 @@ public class HoldingAssessmentTimeSliceType
      */
     public void setPatternTemplate(JAXBElement<TextNameType> value) {
         this.patternTemplate = value;
-    }
-
-    public boolean isSetPatternTemplate() {
-        return (this.patternTemplate!= null);
     }
 
     /**
@@ -302,10 +269,6 @@ public class HoldingAssessmentTimeSliceType
         this.turbulentAir = value;
     }
 
-    public boolean isSetTurbulentAir() {
-        return (this.turbulentAir!= null);
-    }
-
     /**
      * Gets the value of the legLengthToward property.
      * 
@@ -328,10 +291,6 @@ public class HoldingAssessmentTimeSliceType
      */
     public void setLegLengthToward(JAXBElement<ValDistanceType> value) {
         this.legLengthToward = value;
-    }
-
-    public boolean isSetLegLengthToward() {
-        return (this.legLengthToward!= null);
     }
 
     /**
@@ -358,10 +317,6 @@ public class HoldingAssessmentTimeSliceType
         this.legLengthAway = value;
     }
 
-    public boolean isSetLegLengthAway() {
-        return (this.legLengthAway!= null);
-    }
-
     /**
      * Gets the value of the holdingPoint property.
      * 
@@ -384,10 +339,6 @@ public class HoldingAssessmentTimeSliceType
      */
     public void setHoldingPoint(JAXBElement<SegmentPointPropertyType> value) {
         this.holdingPoint = value;
-    }
-
-    public boolean isSetHoldingPoint() {
-        return (this.holdingPoint!= null);
     }
 
     /**
@@ -414,10 +365,6 @@ public class HoldingAssessmentTimeSliceType
         this.unplannedHolding = value;
     }
 
-    public boolean isSetUnplannedHolding() {
-        return (this.unplannedHolding!= null);
-    }
-
     /**
      * Gets the value of the assessedHoldingPattern property.
      * 
@@ -440,10 +387,6 @@ public class HoldingAssessmentTimeSliceType
      */
     public void setAssessedHoldingPattern(JAXBElement<HoldingPatternPropertyType> value) {
         this.assessedHoldingPattern = value;
-    }
-
-    public boolean isSetAssessedHoldingPattern() {
-        return (this.assessedHoldingPattern!= null);
     }
 
     /**
@@ -478,14 +421,6 @@ public class HoldingAssessmentTimeSliceType
         return this.obstacleAssessment;
     }
 
-    public boolean isSetObstacleAssessment() {
-        return ((this.obstacleAssessment!= null)&&(!this.obstacleAssessment.isEmpty()));
-    }
-
-    public void unsetObstacleAssessment() {
-        this.obstacleAssessment = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -516,14 +451,6 @@ public class HoldingAssessmentTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -558,14 +485,6 @@ public class HoldingAssessmentTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -594,8 +513,6 @@ public class HoldingAssessmentTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractHoldingAssessmentExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractHoldingAssessmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -624,10 +541,6 @@ public class HoldingAssessmentTimeSliceType
             this.abstractHoldingAssessmentExtension = value;
         }
 
-        public boolean isSetAbstractHoldingAssessmentExtension() {
-            return (this.abstractHoldingAssessmentExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -652,16 +565,8 @@ public class HoldingAssessmentTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

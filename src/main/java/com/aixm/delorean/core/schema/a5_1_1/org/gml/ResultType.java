@@ -12,7 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
@@ -62,10 +61,8 @@ public class ResultType {
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -98,10 +95,6 @@ public class ResultType {
         this.any = value;
     }
 
-    public boolean isSetAny() {
-        return (this.any!= null);
-    }
-
     /**
      * Gets the value of the owns property.
      * 
@@ -126,16 +119,8 @@ public class ResultType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(boolean value) {
+    public void setOwns(java.lang.Boolean value) {
         this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
     /**
@@ -170,14 +155,6 @@ public class ResultType {
         return this.nilReason;
     }
 
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
-    }
-
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -200,10 +177,6 @@ public class ResultType {
      */
     public void setRemoteSchema(String value) {
         this.remoteSchema = value;
-    }
-
-    public boolean isSetRemoteSchema() {
-        return (this.remoteSchema!= null);
     }
 
     /**
@@ -230,10 +203,6 @@ public class ResultType {
         this.href = value;
     }
 
-    public boolean isSetHref() {
-        return (this.href!= null);
-    }
-
     /**
      * Gets the value of the role property.
      * 
@@ -256,10 +225,6 @@ public class ResultType {
      */
     public void setRole(String value) {
         this.role = value;
-    }
-
-    public boolean isSetRole() {
-        return (this.role!= null);
     }
 
     /**
@@ -286,10 +251,6 @@ public class ResultType {
         this.arcrole = value;
     }
 
-    public boolean isSetArcrole() {
-        return (this.arcrole!= null);
-    }
-
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -312,10 +273,6 @@ public class ResultType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
-    }
-
-    public boolean isSetTitleAttribute() {
-        return (this.titleAttribute!= null);
     }
 
     /**
@@ -342,10 +299,6 @@ public class ResultType {
         this.show = value;
     }
 
-    public boolean isSetShow() {
-        return (this.show!= null);
-    }
-
     /**
      * Gets the value of the actuate property.
      * 
@@ -368,10 +321,6 @@ public class ResultType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
-    }
-
-    public boolean isSetActuate() {
-        return (this.actuate!= null);
     }
 
 }

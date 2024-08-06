@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +41,6 @@ public class TelephoneContactPropertyType
 {
 
     @XmlElement(name = "TelephoneContact", required = true)
-    @NotNull
-    @Valid
     protected TelephoneContactType telephoneContact;
 
     /**
@@ -69,10 +65,6 @@ public class TelephoneContactPropertyType
      */
     public void setTelephoneContact(TelephoneContactType value) {
         this.telephoneContact = value;
-    }
-
-    public boolean isSetTelephoneContact() {
-        return (this.telephoneContact!= null);
     }
 
 }

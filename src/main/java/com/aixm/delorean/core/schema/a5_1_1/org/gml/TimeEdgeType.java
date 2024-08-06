@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -47,14 +45,9 @@ public class TimeEdgeType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected TimeNodePropertyType start;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected TimeNodePropertyType end;
-    @Valid
     protected TimePeriodPropertyType extent;
 
     /**
@@ -81,10 +74,6 @@ public class TimeEdgeType
         this.start = value;
     }
 
-    public boolean isSetStart() {
-        return (this.start!= null);
-    }
-
     /**
      * Gets the value of the end property.
      * 
@@ -109,10 +98,6 @@ public class TimeEdgeType
         this.end = value;
     }
 
-    public boolean isSetEnd() {
-        return (this.end!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -135,10 +120,6 @@ public class TimeEdgeType
      */
     public void setExtent(TimePeriodPropertyType value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
 }

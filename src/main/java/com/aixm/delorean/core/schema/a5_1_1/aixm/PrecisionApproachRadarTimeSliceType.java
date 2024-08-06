@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -110,14 +108,10 @@ public class PrecisionApproachRadarTimeSliceType
     @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DateYearType> dateMagneticVariation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationPropertyType> contact;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "precisionApproachRadarType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodePARType> precisionApproachRadarType;
@@ -126,11 +120,7 @@ public class PrecisionApproachRadarTimeSliceType
     @XmlElementRef(name = "slopeAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValAngleType> slopeAccuracy;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ReflectorPropertyType> reflector;
-    @Valid
-    @Size(min = 0)
     protected List<PrecisionApproachRadarTimeSliceType.Extension> extension;
 
     /**
@@ -157,10 +147,6 @@ public class PrecisionApproachRadarTimeSliceType
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
     /**
      * Gets the value of the serialNumber property.
      * 
@@ -183,10 +169,6 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setSerialNumber(JAXBElement<TextDesignatorType> value) {
         this.serialNumber = value;
-    }
-
-    public boolean isSetSerialNumber() {
-        return (this.serialNumber!= null);
     }
 
     /**
@@ -213,10 +195,6 @@ public class PrecisionApproachRadarTimeSliceType
         this.range = value;
     }
 
-    public boolean isSetRange() {
-        return (this.range!= null);
-    }
-
     /**
      * Gets the value of the rangeAccuracy property.
      * 
@@ -239,10 +217,6 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setRangeAccuracy(JAXBElement<ValDistanceType> value) {
         this.rangeAccuracy = value;
-    }
-
-    public boolean isSetRangeAccuracy() {
-        return (this.rangeAccuracy!= null);
     }
 
     /**
@@ -269,10 +243,6 @@ public class PrecisionApproachRadarTimeSliceType
         this.dualChannel = value;
     }
 
-    public boolean isSetDualChannel() {
-        return (this.dualChannel!= null);
-    }
-
     /**
      * Gets the value of the movingTargetIndicator property.
      * 
@@ -295,10 +265,6 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setMovingTargetIndicator(JAXBElement<CodeYesNoType> value) {
         this.movingTargetIndicator = value;
-    }
-
-    public boolean isSetMovingTargetIndicator() {
-        return (this.movingTargetIndicator!= null);
     }
 
     /**
@@ -325,10 +291,6 @@ public class PrecisionApproachRadarTimeSliceType
         this.standbyPower = value;
     }
 
-    public boolean isSetStandbyPower() {
-        return (this.standbyPower!= null);
-    }
-
     /**
      * Gets the value of the digital property.
      * 
@@ -351,10 +313,6 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setDigital(JAXBElement<CodeYesNoType> value) {
         this.digital = value;
-    }
-
-    public boolean isSetDigital() {
-        return (this.digital!= null);
     }
 
     /**
@@ -381,10 +339,6 @@ public class PrecisionApproachRadarTimeSliceType
         this.militaryUseOnly = value;
     }
 
-    public boolean isSetMilitaryUseOnly() {
-        return (this.militaryUseOnly!= null);
-    }
-
     /**
      * Gets the value of the specialUseOnly property.
      * 
@@ -407,10 +361,6 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setSpecialUseOnly(JAXBElement<CodeYesNoType> value) {
         this.specialUseOnly = value;
-    }
-
-    public boolean isSetSpecialUseOnly() {
-        return (this.specialUseOnly!= null);
     }
 
     /**
@@ -437,10 +387,6 @@ public class PrecisionApproachRadarTimeSliceType
         this.specialAircraftOnly = value;
     }
 
-    public boolean isSetSpecialAircraftOnly() {
-        return (this.specialAircraftOnly!= null);
-    }
-
     /**
      * Gets the value of the magneticVariation property.
      * 
@@ -463,10 +409,6 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setMagneticVariation(JAXBElement<ValMagneticVariationType> value) {
         this.magneticVariation = value;
-    }
-
-    public boolean isSetMagneticVariation() {
-        return (this.magneticVariation!= null);
     }
 
     /**
@@ -493,10 +435,6 @@ public class PrecisionApproachRadarTimeSliceType
         this.magneticVariationAccuracy = value;
     }
 
-    public boolean isSetMagneticVariationAccuracy() {
-        return (this.magneticVariationAccuracy!= null);
-    }
-
     /**
      * Gets the value of the dateMagneticVariation property.
      * 
@@ -519,10 +457,6 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setDateMagneticVariation(JAXBElement<DateYearType> value) {
         this.dateMagneticVariation = value;
-    }
-
-    public boolean isSetDateMagneticVariation() {
-        return (this.dateMagneticVariation!= null);
     }
 
     /**
@@ -557,14 +491,6 @@ public class PrecisionApproachRadarTimeSliceType
         return this.contact;
     }
 
-    public boolean isSetContact() {
-        return ((this.contact!= null)&&(!this.contact.isEmpty()));
-    }
-
-    public void unsetContact() {
-        this.contact = null;
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -587,10 +513,6 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -625,14 +547,6 @@ public class PrecisionApproachRadarTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the precisionApproachRadarType property.
      * 
@@ -655,10 +569,6 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setPrecisionApproachRadarType(JAXBElement<CodePARType> value) {
         this.precisionApproachRadarType = value;
-    }
-
-    public boolean isSetPrecisionApproachRadarType() {
-        return (this.precisionApproachRadarType!= null);
     }
 
     /**
@@ -685,10 +595,6 @@ public class PrecisionApproachRadarTimeSliceType
         this.slope = value;
     }
 
-    public boolean isSetSlope() {
-        return (this.slope!= null);
-    }
-
     /**
      * Gets the value of the slopeAccuracy property.
      * 
@@ -711,10 +617,6 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setSlopeAccuracy(JAXBElement<ValAngleType> value) {
         this.slopeAccuracy = value;
-    }
-
-    public boolean isSetSlopeAccuracy() {
-        return (this.slopeAccuracy!= null);
     }
 
     /**
@@ -749,14 +651,6 @@ public class PrecisionApproachRadarTimeSliceType
         return this.reflector;
     }
 
-    public boolean isSetReflector() {
-        return ((this.reflector!= null)&&(!this.reflector.isEmpty()));
-    }
-
-    public void unsetReflector() {
-        this.reflector = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -789,14 +683,6 @@ public class PrecisionApproachRadarTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -827,10 +713,8 @@ public class PrecisionApproachRadarTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPrecisionApproachRadarExtension")
-        @Valid
         protected AbstractExtensionType abstractPrecisionApproachRadarExtension;
         @XmlElement(name = "AbstractRadarEquipmentExtension")
-        @Valid
         protected AbstractExtensionType abstractRadarEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -859,10 +743,6 @@ public class PrecisionApproachRadarTimeSliceType
             this.abstractPrecisionApproachRadarExtension = value;
         }
 
-        public boolean isSetAbstractPrecisionApproachRadarExtension() {
-            return (this.abstractPrecisionApproachRadarExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractRadarEquipmentExtension property.
          * 
@@ -885,10 +765,6 @@ public class PrecisionApproachRadarTimeSliceType
          */
         public void setAbstractRadarEquipmentExtension(AbstractExtensionType value) {
             this.abstractRadarEquipmentExtension = value;
-        }
-
-        public boolean isSetAbstractRadarEquipmentExtension() {
-            return (this.abstractRadarEquipmentExtension!= null);
         }
 
         /**
@@ -915,16 +791,8 @@ public class PrecisionApproachRadarTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

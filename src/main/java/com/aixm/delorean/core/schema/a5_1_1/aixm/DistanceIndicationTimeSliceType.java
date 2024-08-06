@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -92,11 +89,7 @@ public class DistanceIndicationTimeSliceType
     @XmlElementRef(name = "pointChoice_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> pointChoiceAirportReferencePoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<DistanceIndicationTimeSliceType.Extension> extension;
 
     /**
@@ -123,10 +116,6 @@ public class DistanceIndicationTimeSliceType
         this.distance = value;
     }
 
-    public boolean isSetDistance() {
-        return (this.distance!= null);
-    }
-
     /**
      * Gets the value of the minimumReceptionAltitude property.
      * 
@@ -149,10 +138,6 @@ public class DistanceIndicationTimeSliceType
      */
     public void setMinimumReceptionAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumReceptionAltitude = value;
-    }
-
-    public boolean isSetMinimumReceptionAltitude() {
-        return (this.minimumReceptionAltitude!= null);
     }
 
     /**
@@ -179,10 +164,6 @@ public class DistanceIndicationTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the fix property.
      * 
@@ -205,10 +186,6 @@ public class DistanceIndicationTimeSliceType
      */
     public void setFix(JAXBElement<DesignatedPointPropertyType> value) {
         this.fix = value;
-    }
-
-    public boolean isSetFix() {
-        return (this.fix!= null);
     }
 
     /**
@@ -235,10 +212,6 @@ public class DistanceIndicationTimeSliceType
         this.pointChoiceFixDesignatedPoint = value;
     }
 
-    public boolean isSetPointChoiceFixDesignatedPoint() {
-        return (this.pointChoiceFixDesignatedPoint!= null);
-    }
-
     /**
      * Gets the value of the pointChoiceNavaidSystem property.
      * 
@@ -261,10 +234,6 @@ public class DistanceIndicationTimeSliceType
      */
     public void setPointChoiceNavaidSystem(JAXBElement<NavaidPropertyType> value) {
         this.pointChoiceNavaidSystem = value;
-    }
-
-    public boolean isSetPointChoiceNavaidSystem() {
-        return (this.pointChoiceNavaidSystem!= null);
     }
 
     /**
@@ -291,10 +260,6 @@ public class DistanceIndicationTimeSliceType
         this.pointChoicePosition = value;
     }
 
-    public boolean isSetPointChoicePosition() {
-        return (this.pointChoicePosition!= null);
-    }
-
     /**
      * Gets the value of the pointChoiceRunwayPoint property.
      * 
@@ -317,10 +282,6 @@ public class DistanceIndicationTimeSliceType
      */
     public void setPointChoiceRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
         this.pointChoiceRunwayPoint = value;
-    }
-
-    public boolean isSetPointChoiceRunwayPoint() {
-        return (this.pointChoiceRunwayPoint!= null);
     }
 
     /**
@@ -347,10 +308,6 @@ public class DistanceIndicationTimeSliceType
         this.pointChoiceAimingPoint = value;
     }
 
-    public boolean isSetPointChoiceAimingPoint() {
-        return (this.pointChoiceAimingPoint!= null);
-    }
-
     /**
      * Gets the value of the pointChoiceAirportReferencePoint property.
      * 
@@ -373,10 +330,6 @@ public class DistanceIndicationTimeSliceType
      */
     public void setPointChoiceAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.pointChoiceAirportReferencePoint = value;
-    }
-
-    public boolean isSetPointChoiceAirportReferencePoint() {
-        return (this.pointChoiceAirportReferencePoint!= null);
     }
 
     /**
@@ -411,14 +364,6 @@ public class DistanceIndicationTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -451,14 +396,6 @@ public class DistanceIndicationTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -487,8 +424,6 @@ public class DistanceIndicationTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDistanceIndicationExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractDistanceIndicationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -517,10 +452,6 @@ public class DistanceIndicationTimeSliceType
             this.abstractDistanceIndicationExtension = value;
         }
 
-        public boolean isSetAbstractDistanceIndicationExtension() {
-            return (this.abstractDistanceIndicationExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -545,16 +476,8 @@ public class DistanceIndicationTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

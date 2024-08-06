@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -83,11 +80,7 @@ public class DesignatedPointTimeSliceType
     @XmlElementRef(name = "runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayCentrelinePointPropertyType> runwayPoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<DesignatedPointTimeSliceType.Extension> extension;
 
     /**
@@ -114,10 +107,6 @@ public class DesignatedPointTimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -140,10 +129,6 @@ public class DesignatedPointTimeSliceType
      */
     public void setType(JAXBElement<CodeDesignatedPointType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -170,10 +155,6 @@ public class DesignatedPointTimeSliceType
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -196,10 +177,6 @@ public class DesignatedPointTimeSliceType
      */
     public void setLocation(JAXBElement<PointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -226,10 +203,6 @@ public class DesignatedPointTimeSliceType
         this.aimingPoint = value;
     }
 
-    public boolean isSetAimingPoint() {
-        return (this.aimingPoint!= null);
-    }
-
     /**
      * Gets the value of the airportHeliport property.
      * 
@@ -254,10 +227,6 @@ public class DesignatedPointTimeSliceType
         this.airportHeliport = value;
     }
 
-    public boolean isSetAirportHeliport() {
-        return (this.airportHeliport!= null);
-    }
-
     /**
      * Gets the value of the runwayPoint property.
      * 
@@ -280,10 +249,6 @@ public class DesignatedPointTimeSliceType
      */
     public void setRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
         this.runwayPoint = value;
-    }
-
-    public boolean isSetRunwayPoint() {
-        return (this.runwayPoint!= null);
     }
 
     /**
@@ -318,14 +283,6 @@ public class DesignatedPointTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -358,14 +315,6 @@ public class DesignatedPointTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -394,8 +343,6 @@ public class DesignatedPointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDesignatedPointExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractDesignatedPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -424,10 +371,6 @@ public class DesignatedPointTimeSliceType
             this.abstractDesignatedPointExtension = value;
         }
 
-        public boolean isSetAbstractDesignatedPointExtension() {
-            return (this.abstractDesignatedPointExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -452,16 +395,8 @@ public class DesignatedPointTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -53,16 +51,9 @@ public class EXExtentType
     extends AbstractObjectType
 {
 
-    @Valid
     protected CharacterStringPropertyType description;
-    @Valid
-    @Size(min = 0)
     protected List<EXGeographicExtentPropertyType> geographicElement;
-    @Valid
-    @Size(min = 0)
     protected List<EXTemporalExtentPropertyType> temporalElement;
-    @Valid
-    @Size(min = 0)
     protected List<EXVerticalExtentPropertyType> verticalElement;
 
     /**
@@ -87,10 +78,6 @@ public class EXExtentType
      */
     public void setDescription(CharacterStringPropertyType value) {
         this.description = value;
-    }
-
-    public boolean isSetDescription() {
-        return (this.description!= null);
     }
 
     /**
@@ -125,14 +112,6 @@ public class EXExtentType
         return this.geographicElement;
     }
 
-    public boolean isSetGeographicElement() {
-        return ((this.geographicElement!= null)&&(!this.geographicElement.isEmpty()));
-    }
-
-    public void unsetGeographicElement() {
-        this.geographicElement = null;
-    }
-
     /**
      * Gets the value of the temporalElement property.
      * 
@@ -165,14 +144,6 @@ public class EXExtentType
         return this.temporalElement;
     }
 
-    public boolean isSetTemporalElement() {
-        return ((this.temporalElement!= null)&&(!this.temporalElement.isEmpty()));
-    }
-
-    public void unsetTemporalElement() {
-        this.temporalElement = null;
-    }
-
     /**
      * Gets the value of the verticalElement property.
      * 
@@ -203,14 +174,6 @@ public class EXExtentType
             verticalElement = new ArrayList<>();
         }
         return this.verticalElement;
-    }
-
-    public boolean isSetVerticalElement() {
-        return ((this.verticalElement!= null)&&(!this.verticalElement.isEmpty()));
-    }
-
-    public void unsetVerticalElement() {
-        this.verticalElement = null;
     }
 
 }

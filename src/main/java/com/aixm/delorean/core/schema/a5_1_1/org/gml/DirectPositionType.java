@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -60,7 +59,6 @@ public class DirectPositionType {
     protected String srsName;
     @XmlAttribute(name = "srsDimension")
     @XmlSchemaType(name = "positiveInteger")
-    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger srsDimension;
     @XmlAttribute(name = "axisLabels")
     protected List<String> axisLabels;
@@ -101,14 +99,6 @@ public class DirectPositionType {
         return this.value;
     }
 
-    public boolean isSetValue() {
-        return ((this.value!= null)&&(!this.value.isEmpty()));
-    }
-
-    public void unsetValue() {
-        this.value = null;
-    }
-
     /**
      * Gets the value of the srsName property.
      * 
@@ -133,10 +123,6 @@ public class DirectPositionType {
         this.srsName = value;
     }
 
-    public boolean isSetSrsName() {
-        return (this.srsName!= null);
-    }
-
     /**
      * Gets the value of the srsDimension property.
      * 
@@ -159,10 +145,6 @@ public class DirectPositionType {
      */
     public void setSrsDimension(BigInteger value) {
         this.srsDimension = value;
-    }
-
-    public boolean isSetSrsDimension() {
-        return (this.srsDimension!= null);
     }
 
     /**
@@ -197,14 +179,6 @@ public class DirectPositionType {
         return this.axisLabels;
     }
 
-    public boolean isSetAxisLabels() {
-        return ((this.axisLabels!= null)&&(!this.axisLabels.isEmpty()));
-    }
-
-    public void unsetAxisLabels() {
-        this.axisLabels = null;
-    }
-
     /**
      * Gets the value of the uomLabels property.
      * 
@@ -235,14 +209,6 @@ public class DirectPositionType {
             uomLabels = new ArrayList<>();
         }
         return this.uomLabels;
-    }
-
-    public boolean isSetUomLabels() {
-        return ((this.uomLabels!= null)&&(!this.uomLabels.isEmpty()));
-    }
-
-    public void unsetUomLabels() {
-        this.uomLabels = null;
     }
 
 }

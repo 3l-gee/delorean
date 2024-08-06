@@ -13,9 +13,6 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.DatePropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gts.TMPeriodDurationPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -64,24 +61,12 @@ public class MDMaintenanceInformationType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MDMaintenanceFrequencyCodePropertyType maintenanceAndUpdateFrequency;
-    @Valid
     protected DatePropertyType dateOfNextUpdate;
-    @Valid
     protected TMPeriodDurationPropertyType userDefinedMaintenanceFrequency;
-    @Valid
-    @Size(min = 0)
     protected List<MDScopeCodePropertyType> updateScope;
-    @Valid
-    @Size(min = 0)
     protected List<MDScopeDescriptionPropertyType> updateScopeDescription;
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> maintenanceNote;
-    @Valid
-    @Size(min = 0)
     protected List<CIResponsiblePartyPropertyType> contact;
 
     /**
@@ -108,10 +93,6 @@ public class MDMaintenanceInformationType
         this.maintenanceAndUpdateFrequency = value;
     }
 
-    public boolean isSetMaintenanceAndUpdateFrequency() {
-        return (this.maintenanceAndUpdateFrequency!= null);
-    }
-
     /**
      * Gets the value of the dateOfNextUpdate property.
      * 
@@ -136,10 +117,6 @@ public class MDMaintenanceInformationType
         this.dateOfNextUpdate = value;
     }
 
-    public boolean isSetDateOfNextUpdate() {
-        return (this.dateOfNextUpdate!= null);
-    }
-
     /**
      * Gets the value of the userDefinedMaintenanceFrequency property.
      * 
@@ -162,10 +139,6 @@ public class MDMaintenanceInformationType
      */
     public void setUserDefinedMaintenanceFrequency(TMPeriodDurationPropertyType value) {
         this.userDefinedMaintenanceFrequency = value;
-    }
-
-    public boolean isSetUserDefinedMaintenanceFrequency() {
-        return (this.userDefinedMaintenanceFrequency!= null);
     }
 
     /**
@@ -200,14 +173,6 @@ public class MDMaintenanceInformationType
         return this.updateScope;
     }
 
-    public boolean isSetUpdateScope() {
-        return ((this.updateScope!= null)&&(!this.updateScope.isEmpty()));
-    }
-
-    public void unsetUpdateScope() {
-        this.updateScope = null;
-    }
-
     /**
      * Gets the value of the updateScopeDescription property.
      * 
@@ -238,14 +203,6 @@ public class MDMaintenanceInformationType
             updateScopeDescription = new ArrayList<>();
         }
         return this.updateScopeDescription;
-    }
-
-    public boolean isSetUpdateScopeDescription() {
-        return ((this.updateScopeDescription!= null)&&(!this.updateScopeDescription.isEmpty()));
-    }
-
-    public void unsetUpdateScopeDescription() {
-        this.updateScopeDescription = null;
     }
 
     /**
@@ -280,14 +237,6 @@ public class MDMaintenanceInformationType
         return this.maintenanceNote;
     }
 
-    public boolean isSetMaintenanceNote() {
-        return ((this.maintenanceNote!= null)&&(!this.maintenanceNote.isEmpty()));
-    }
-
-    public void unsetMaintenanceNote() {
-        this.maintenanceNote = null;
-    }
-
     /**
      * Gets the value of the contact property.
      * 
@@ -318,14 +267,6 @@ public class MDMaintenanceInformationType
             contact = new ArrayList<>();
         }
         return this.contact;
-    }
-
-    public boolean isSetContact() {
-        return ((this.contact!= null)&&(!this.contact.isEmpty()));
-    }
-
-    public void unsetContact() {
-        this.contact = null;
     }
 
 }

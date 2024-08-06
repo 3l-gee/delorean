@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -117,14 +115,10 @@ public class SecondarySurveillanceRadarTimeSliceType
     @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DateYearType> dateMagneticVariation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationPropertyType> contact;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "verticalCoverageAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceVerticalType> verticalCoverageAltitude;
@@ -139,8 +133,6 @@ public class SecondarySurveillanceRadarTimeSliceType
     @XmlElementRef(name = "automatedRadarTerminalSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextDesignatorType> automatedRadarTerminalSystem;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<SurveillanceGroundStationPropertyType> groundStation;
     @XmlElementRef(name = "transponder", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeTransponderType> transponder;
@@ -148,8 +140,6 @@ public class SecondarySurveillanceRadarTimeSliceType
     protected JAXBElement<CodeYesNoType> autonomous;
     @XmlElementRef(name = "monopulse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> monopulse;
-    @Valid
-    @Size(min = 0)
     protected List<SecondarySurveillanceRadarTimeSliceType.Extension> extension;
 
     /**
@@ -176,10 +166,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
     /**
      * Gets the value of the serialNumber property.
      * 
@@ -202,10 +188,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setSerialNumber(JAXBElement<TextDesignatorType> value) {
         this.serialNumber = value;
-    }
-
-    public boolean isSetSerialNumber() {
-        return (this.serialNumber!= null);
     }
 
     /**
@@ -232,10 +214,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.range = value;
     }
 
-    public boolean isSetRange() {
-        return (this.range!= null);
-    }
-
     /**
      * Gets the value of the rangeAccuracy property.
      * 
@@ -258,10 +236,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setRangeAccuracy(JAXBElement<ValDistanceType> value) {
         this.rangeAccuracy = value;
-    }
-
-    public boolean isSetRangeAccuracy() {
-        return (this.rangeAccuracy!= null);
     }
 
     /**
@@ -288,10 +262,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.dualChannel = value;
     }
 
-    public boolean isSetDualChannel() {
-        return (this.dualChannel!= null);
-    }
-
     /**
      * Gets the value of the movingTargetIndicator property.
      * 
@@ -314,10 +284,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setMovingTargetIndicator(JAXBElement<CodeYesNoType> value) {
         this.movingTargetIndicator = value;
-    }
-
-    public boolean isSetMovingTargetIndicator() {
-        return (this.movingTargetIndicator!= null);
     }
 
     /**
@@ -344,10 +310,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.standbyPower = value;
     }
 
-    public boolean isSetStandbyPower() {
-        return (this.standbyPower!= null);
-    }
-
     /**
      * Gets the value of the digital property.
      * 
@@ -370,10 +332,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setDigital(JAXBElement<CodeYesNoType> value) {
         this.digital = value;
-    }
-
-    public boolean isSetDigital() {
-        return (this.digital!= null);
     }
 
     /**
@@ -400,10 +358,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.militaryUseOnly = value;
     }
 
-    public boolean isSetMilitaryUseOnly() {
-        return (this.militaryUseOnly!= null);
-    }
-
     /**
      * Gets the value of the specialUseOnly property.
      * 
@@ -426,10 +380,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setSpecialUseOnly(JAXBElement<CodeYesNoType> value) {
         this.specialUseOnly = value;
-    }
-
-    public boolean isSetSpecialUseOnly() {
-        return (this.specialUseOnly!= null);
     }
 
     /**
@@ -456,10 +406,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.specialAircraftOnly = value;
     }
 
-    public boolean isSetSpecialAircraftOnly() {
-        return (this.specialAircraftOnly!= null);
-    }
-
     /**
      * Gets the value of the magneticVariation property.
      * 
@@ -482,10 +428,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setMagneticVariation(JAXBElement<ValMagneticVariationType> value) {
         this.magneticVariation = value;
-    }
-
-    public boolean isSetMagneticVariation() {
-        return (this.magneticVariation!= null);
     }
 
     /**
@@ -512,10 +454,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.magneticVariationAccuracy = value;
     }
 
-    public boolean isSetMagneticVariationAccuracy() {
-        return (this.magneticVariationAccuracy!= null);
-    }
-
     /**
      * Gets the value of the dateMagneticVariation property.
      * 
@@ -538,10 +476,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setDateMagneticVariation(JAXBElement<DateYearType> value) {
         this.dateMagneticVariation = value;
-    }
-
-    public boolean isSetDateMagneticVariation() {
-        return (this.dateMagneticVariation!= null);
     }
 
     /**
@@ -576,14 +510,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         return this.contact;
     }
 
-    public boolean isSetContact() {
-        return ((this.contact!= null)&&(!this.contact.isEmpty()));
-    }
-
-    public void unsetContact() {
-        this.contact = null;
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -606,10 +532,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -644,14 +566,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the verticalCoverageAltitude property.
      * 
@@ -674,10 +588,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setVerticalCoverageAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.verticalCoverageAltitude = value;
-    }
-
-    public boolean isSetVerticalCoverageAltitude() {
-        return (this.verticalCoverageAltitude!= null);
     }
 
     /**
@@ -704,10 +614,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.verticalCoverageDistance = value;
     }
 
-    public boolean isSetVerticalCoverageDistance() {
-        return (this.verticalCoverageDistance!= null);
-    }
-
     /**
      * Gets the value of the verticalCoverageAzimuth property.
      * 
@@ -730,10 +636,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setVerticalCoverageAzimuth(JAXBElement<ValBearingType> value) {
         this.verticalCoverageAzimuth = value;
-    }
-
-    public boolean isSetVerticalCoverageAzimuth() {
-        return (this.verticalCoverageAzimuth!= null);
     }
 
     /**
@@ -760,10 +662,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.antennaTiltFixed = value;
     }
 
-    public boolean isSetAntennaTiltFixed() {
-        return (this.antennaTiltFixed!= null);
-    }
-
     /**
      * Gets the value of the tiltAngle property.
      * 
@@ -788,10 +686,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.tiltAngle = value;
     }
 
-    public boolean isSetTiltAngle() {
-        return (this.tiltAngle!= null);
-    }
-
     /**
      * Gets the value of the automatedRadarTerminalSystem property.
      * 
@@ -814,10 +708,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setAutomatedRadarTerminalSystem(JAXBElement<TextDesignatorType> value) {
         this.automatedRadarTerminalSystem = value;
-    }
-
-    public boolean isSetAutomatedRadarTerminalSystem() {
-        return (this.automatedRadarTerminalSystem!= null);
     }
 
     /**
@@ -852,14 +742,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         return this.groundStation;
     }
 
-    public boolean isSetGroundStation() {
-        return ((this.groundStation!= null)&&(!this.groundStation.isEmpty()));
-    }
-
-    public void unsetGroundStation() {
-        this.groundStation = null;
-    }
-
     /**
      * Gets the value of the transponder property.
      * 
@@ -882,10 +764,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setTransponder(JAXBElement<CodeTransponderType> value) {
         this.transponder = value;
-    }
-
-    public boolean isSetTransponder() {
-        return (this.transponder!= null);
     }
 
     /**
@@ -912,10 +790,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         this.autonomous = value;
     }
 
-    public boolean isSetAutonomous() {
-        return (this.autonomous!= null);
-    }
-
     /**
      * Gets the value of the monopulse property.
      * 
@@ -938,10 +812,6 @@ public class SecondarySurveillanceRadarTimeSliceType
      */
     public void setMonopulse(JAXBElement<CodeYesNoType> value) {
         this.monopulse = value;
-    }
-
-    public boolean isSetMonopulse() {
-        return (this.monopulse!= null);
     }
 
     /**
@@ -976,14 +846,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -1016,13 +878,10 @@ public class SecondarySurveillanceRadarTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSecondarySurveillanceRadarExtension")
-        @Valid
         protected AbstractExtensionType abstractSecondarySurveillanceRadarExtension;
         @XmlElement(name = "AbstractSurveillanceRadarExtension")
-        @Valid
         protected AbstractExtensionType abstractSurveillanceRadarExtension;
         @XmlElement(name = "AbstractRadarEquipmentExtension")
-        @Valid
         protected AbstractExtensionType abstractRadarEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -1051,10 +910,6 @@ public class SecondarySurveillanceRadarTimeSliceType
             this.abstractSecondarySurveillanceRadarExtension = value;
         }
 
-        public boolean isSetAbstractSecondarySurveillanceRadarExtension() {
-            return (this.abstractSecondarySurveillanceRadarExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractSurveillanceRadarExtension property.
          * 
@@ -1077,10 +932,6 @@ public class SecondarySurveillanceRadarTimeSliceType
          */
         public void setAbstractSurveillanceRadarExtension(AbstractExtensionType value) {
             this.abstractSurveillanceRadarExtension = value;
-        }
-
-        public boolean isSetAbstractSurveillanceRadarExtension() {
-            return (this.abstractSurveillanceRadarExtension!= null);
         }
 
         /**
@@ -1107,10 +958,6 @@ public class SecondarySurveillanceRadarTimeSliceType
             this.abstractRadarEquipmentExtension = value;
         }
 
-        public boolean isSetAbstractRadarEquipmentExtension() {
-            return (this.abstractRadarEquipmentExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -1135,16 +982,8 @@ public class SecondarySurveillanceRadarTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

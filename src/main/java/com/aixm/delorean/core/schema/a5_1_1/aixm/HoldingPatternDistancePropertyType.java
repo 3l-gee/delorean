@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +41,6 @@ public class HoldingPatternDistancePropertyType
 {
 
     @XmlElement(name = "HoldingPatternDistance", required = true)
-    @NotNull
-    @Valid
     protected HoldingPatternDistanceType holdingPatternDistance;
 
     /**
@@ -69,10 +65,6 @@ public class HoldingPatternDistancePropertyType
      */
     public void setHoldingPatternDistance(HoldingPatternDistanceType value) {
         this.holdingPatternDistance = value;
-    }
-
-    public boolean isSetHoldingPatternDistance() {
-        return (this.holdingPatternDistance!= null);
     }
 
 }

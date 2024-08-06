@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -55,17 +52,9 @@ public class MDDistributorType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CIResponsiblePartyPropertyType distributorContact;
-    @Valid
-    @Size(min = 0)
     protected List<MDStandardOrderProcessPropertyType> distributionOrderProcess;
-    @Valid
-    @Size(min = 0)
     protected List<MDFormatPropertyType> distributorFormat;
-    @Valid
-    @Size(min = 0)
     protected List<MDDigitalTransferOptionsPropertyType> distributorTransferOptions;
 
     /**
@@ -90,10 +79,6 @@ public class MDDistributorType
      */
     public void setDistributorContact(CIResponsiblePartyPropertyType value) {
         this.distributorContact = value;
-    }
-
-    public boolean isSetDistributorContact() {
-        return (this.distributorContact!= null);
     }
 
     /**
@@ -128,14 +113,6 @@ public class MDDistributorType
         return this.distributionOrderProcess;
     }
 
-    public boolean isSetDistributionOrderProcess() {
-        return ((this.distributionOrderProcess!= null)&&(!this.distributionOrderProcess.isEmpty()));
-    }
-
-    public void unsetDistributionOrderProcess() {
-        this.distributionOrderProcess = null;
-    }
-
     /**
      * Gets the value of the distributorFormat property.
      * 
@@ -168,14 +145,6 @@ public class MDDistributorType
         return this.distributorFormat;
     }
 
-    public boolean isSetDistributorFormat() {
-        return ((this.distributorFormat!= null)&&(!this.distributorFormat.isEmpty()));
-    }
-
-    public void unsetDistributorFormat() {
-        this.distributorFormat = null;
-    }
-
     /**
      * Gets the value of the distributorTransferOptions property.
      * 
@@ -206,14 +175,6 @@ public class MDDistributorType
             distributorTransferOptions = new ArrayList<>();
         }
         return this.distributorTransferOptions;
-    }
-
-    public boolean isSetDistributorTransferOptions() {
-        return ((this.distributorTransferOptions!= null)&&(!this.distributorTransferOptions.isEmpty()));
-    }
-
-    public void unsetDistributorTransferOptions() {
-        this.distributorTransferOptions = null;
     }
 
 }

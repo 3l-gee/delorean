@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -51,23 +48,18 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DataBlockType {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected AssociationRoleType rangeParameters;
     /**
      * gml:CoordinatesType consists of a list of coordinate tuples, with each coordinate tuple separated by the ts or tuple separator (whitespace), and each coordinate in the tuple by the cs or coordinate separator (comma).
      * The gml:tupleList encoding is effectively "band-interleaved".
      * 
      */
-    @Valid
     protected CoordinatesType tupleList;
     /**
      * gml:doubleOrNilReasonList consists of a list of gml:doubleOrNilReason values, each separated by a whitespace. The gml:doubleOrNilReason values are grouped into tuples where the dimension of each tuple in the list is equal to the number of range parameters.
      * 
      */
     @XmlList
-    @Valid
-    @Size(min = 1, max = 1)
     protected List<String> doubleOrNilReasonTupleList;
 
     /**
@@ -94,10 +86,6 @@ public class DataBlockType {
         this.rangeParameters = value;
     }
 
-    public boolean isSetRangeParameters() {
-        return (this.rangeParameters!= null);
-    }
-
     /**
      * gml:CoordinatesType consists of a list of coordinate tuples, with each coordinate tuple separated by the ts or tuple separator (whitespace), and each coordinate in the tuple by the cs or coordinate separator (comma).
      * The gml:tupleList encoding is effectively "band-interleaved".
@@ -122,10 +110,6 @@ public class DataBlockType {
      */
     public void setTupleList(CoordinatesType value) {
         this.tupleList = value;
-    }
-
-    public boolean isSetTupleList() {
-        return (this.tupleList!= null);
     }
 
     /**
@@ -160,14 +144,6 @@ public class DataBlockType {
             doubleOrNilReasonTupleList = new ArrayList<>();
         }
         return this.doubleOrNilReasonTupleList;
-    }
-
-    public boolean isSetDoubleOrNilReasonTupleList() {
-        return ((this.doubleOrNilReasonTupleList!= null)&&(!this.doubleOrNilReasonTupleList.isEmpty()));
-    }
-
-    public void unsetDoubleOrNilReasonTupleList() {
-        this.doubleOrNilReasonTupleList = null;
     }
 
 }

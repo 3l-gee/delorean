@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -96,20 +94,12 @@ public class DMETimeSliceType
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AuthorityForNavaidEquipmentPropertyType> authority;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidEquipmentMonitoringPropertyType> monitoring;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeDMEType> type;
@@ -119,8 +109,6 @@ public class DMETimeSliceType
     protected JAXBElement<ValFrequencyType> ghostFrequency;
     @XmlElementRef(name = "displace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceType> displace;
-    @Valid
-    @Size(min = 0)
     protected List<DMETimeSliceType.Extension> extension;
 
     /**
@@ -147,10 +135,6 @@ public class DMETimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the aixmName property.
      * 
@@ -173,10 +157,6 @@ public class DMETimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
     }
 
     /**
@@ -203,10 +183,6 @@ public class DMETimeSliceType
         this.emissionClass = value;
     }
 
-    public boolean isSetEmissionClass() {
-        return (this.emissionClass!= null);
-    }
-
     /**
      * Gets the value of the mobile property.
      * 
@@ -229,10 +205,6 @@ public class DMETimeSliceType
      */
     public void setMobile(JAXBElement<CodeYesNoType> value) {
         this.mobile = value;
-    }
-
-    public boolean isSetMobile() {
-        return (this.mobile!= null);
     }
 
     /**
@@ -259,10 +231,6 @@ public class DMETimeSliceType
         this.magneticVariation = value;
     }
 
-    public boolean isSetMagneticVariation() {
-        return (this.magneticVariation!= null);
-    }
-
     /**
      * Gets the value of the magneticVariationAccuracy property.
      * 
@@ -285,10 +253,6 @@ public class DMETimeSliceType
      */
     public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticVariationAccuracy = value;
-    }
-
-    public boolean isSetMagneticVariationAccuracy() {
-        return (this.magneticVariationAccuracy!= null);
     }
 
     /**
@@ -315,10 +279,6 @@ public class DMETimeSliceType
         this.dateMagneticVariation = value;
     }
 
-    public boolean isSetDateMagneticVariation() {
-        return (this.dateMagneticVariation!= null);
-    }
-
     /**
      * Gets the value of the flightChecked property.
      * 
@@ -343,10 +303,6 @@ public class DMETimeSliceType
         this.flightChecked = value;
     }
 
-    public boolean isSetFlightChecked() {
-        return (this.flightChecked!= null);
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -369,10 +325,6 @@ public class DMETimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -407,14 +359,6 @@ public class DMETimeSliceType
         return this.authority;
     }
 
-    public boolean isSetAuthority() {
-        return ((this.authority!= null)&&(!this.authority.isEmpty()));
-    }
-
-    public void unsetAuthority() {
-        this.authority = null;
-    }
-
     /**
      * Gets the value of the monitoring property.
      * 
@@ -445,14 +389,6 @@ public class DMETimeSliceType
             monitoring = new ArrayList<>();
         }
         return this.monitoring;
-    }
-
-    public boolean isSetMonitoring() {
-        return ((this.monitoring!= null)&&(!this.monitoring.isEmpty()));
-    }
-
-    public void unsetMonitoring() {
-        this.monitoring = null;
     }
 
     /**
@@ -487,14 +423,6 @@ public class DMETimeSliceType
         return this.availability;
     }
 
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -527,14 +455,6 @@ public class DMETimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -557,10 +477,6 @@ public class DMETimeSliceType
      */
     public void setType(JAXBElement<CodeDMEType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -587,10 +503,6 @@ public class DMETimeSliceType
         this.channel = value;
     }
 
-    public boolean isSetChannel() {
-        return (this.channel!= null);
-    }
-
     /**
      * Gets the value of the ghostFrequency property.
      * 
@@ -615,10 +527,6 @@ public class DMETimeSliceType
         this.ghostFrequency = value;
     }
 
-    public boolean isSetGhostFrequency() {
-        return (this.ghostFrequency!= null);
-    }
-
     /**
      * Gets the value of the displace property.
      * 
@@ -641,10 +549,6 @@ public class DMETimeSliceType
      */
     public void setDisplace(JAXBElement<ValDistanceType> value) {
         this.displace = value;
-    }
-
-    public boolean isSetDisplace() {
-        return (this.displace!= null);
     }
 
     /**
@@ -679,14 +583,6 @@ public class DMETimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -717,10 +613,8 @@ public class DMETimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDMEExtension")
-        @Valid
         protected AbstractExtensionType abstractDMEExtension;
         @XmlElement(name = "AbstractNavaidEquipmentExtension")
-        @Valid
         protected AbstractExtensionType abstractNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -749,10 +643,6 @@ public class DMETimeSliceType
             this.abstractDMEExtension = value;
         }
 
-        public boolean isSetAbstractDMEExtension() {
-            return (this.abstractDMEExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractNavaidEquipmentExtension property.
          * 
@@ -775,10 +665,6 @@ public class DMETimeSliceType
          */
         public void setAbstractNavaidEquipmentExtension(AbstractExtensionType value) {
             this.abstractNavaidEquipmentExtension = value;
-        }
-
-        public boolean isSetAbstractNavaidEquipmentExtension() {
-            return (this.abstractNavaidEquipmentExtension!= null);
         }
 
         /**
@@ -805,16 +691,8 @@ public class DMETimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

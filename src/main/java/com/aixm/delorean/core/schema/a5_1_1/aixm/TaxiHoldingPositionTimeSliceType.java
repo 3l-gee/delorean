@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -73,17 +70,11 @@ public class TaxiHoldingPositionTimeSliceType
     @XmlElementRef(name = "associatedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<GuidanceLinePropertyType> associatedGuidanceLine;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RunwayPropertyType> protectedRunway;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<TaxiHoldingPositionTimeSliceType.Extension> extension;
 
     /**
@@ -110,10 +101,6 @@ public class TaxiHoldingPositionTimeSliceType
         this.landingCategory = value;
     }
 
-    public boolean isSetLandingCategory() {
-        return (this.landingCategory!= null);
-    }
-
     /**
      * Gets the value of the status property.
      * 
@@ -138,10 +125,6 @@ public class TaxiHoldingPositionTimeSliceType
         this.status = value;
     }
 
-    public boolean isSetStatus() {
-        return (this.status!= null);
-    }
-
     /**
      * Gets the value of the associatedGuidanceLine property.
      * 
@@ -164,10 +147,6 @@ public class TaxiHoldingPositionTimeSliceType
      */
     public void setAssociatedGuidanceLine(JAXBElement<GuidanceLinePropertyType> value) {
         this.associatedGuidanceLine = value;
-    }
-
-    public boolean isSetAssociatedGuidanceLine() {
-        return (this.associatedGuidanceLine!= null);
     }
 
     /**
@@ -202,14 +181,6 @@ public class TaxiHoldingPositionTimeSliceType
         return this.protectedRunway;
     }
 
-    public boolean isSetProtectedRunway() {
-        return ((this.protectedRunway!= null)&&(!this.protectedRunway.isEmpty()));
-    }
-
-    public void unsetProtectedRunway() {
-        this.protectedRunway = null;
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -232,10 +203,6 @@ public class TaxiHoldingPositionTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -270,14 +237,6 @@ public class TaxiHoldingPositionTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -310,14 +269,6 @@ public class TaxiHoldingPositionTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -346,8 +297,6 @@ public class TaxiHoldingPositionTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTaxiHoldingPositionExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractTaxiHoldingPositionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -376,10 +325,6 @@ public class TaxiHoldingPositionTimeSliceType
             this.abstractTaxiHoldingPositionExtension = value;
         }
 
-        public boolean isSetAbstractTaxiHoldingPositionExtension() {
-            return (this.abstractTaxiHoldingPositionExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -404,16 +349,8 @@ public class TaxiHoldingPositionTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

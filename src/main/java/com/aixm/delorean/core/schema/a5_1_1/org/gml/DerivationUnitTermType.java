@@ -64,8 +64,4 @@ public class DerivationUnitTermType
         this.exponent = value;
     }
 
-    public boolean isSetExponent() {
-        return (this.exponent!= null);
-    }
-
 }

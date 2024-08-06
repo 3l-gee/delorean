@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -48,9 +47,7 @@ public class PointType
     extends AbstractGeometricPrimitiveType
 {
 
-    @Valid
     protected DirectPositionType pos;
-    @Valid
     protected CoordinatesType coordinates;
 
     /**
@@ -77,10 +74,6 @@ public class PointType
         this.pos = value;
     }
 
-    public boolean isSetPos() {
-        return (this.pos!= null);
-    }
-
     /**
      * Gets the value of the coordinates property.
      * 
@@ -103,10 +96,6 @@ public class PointType
      */
     public void setCoordinates(CoordinatesType value) {
         this.coordinates = value;
-    }
-
-    public boolean isSetCoordinates() {
-        return (this.coordinates!= null);
     }
 
 }

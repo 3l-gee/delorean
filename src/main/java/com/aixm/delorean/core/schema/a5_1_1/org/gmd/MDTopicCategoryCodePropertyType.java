@@ -73,10 +73,6 @@ public class MDTopicCategoryCodePropertyType {
         this.mdTopicCategoryCode = value;
     }
 
-    public boolean isSetMDTopicCategoryCode() {
-        return (this.mdTopicCategoryCode!= null);
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -107,14 +103,6 @@ public class MDTopicCategoryCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
-    }
-
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
     }
 
 }

@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -77,15 +75,9 @@ public class LightElementType
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<LightElementStatusPropertyType> availability;
-    @Valid
-    @Size(min = 0)
     protected List<LightElementType.Extension> extension;
 
     /**
@@ -112,10 +104,6 @@ public class LightElementType
         this.colour = value;
     }
 
-    public boolean isSetColour() {
-        return (this.colour!= null);
-    }
-
     /**
      * Gets the value of the intensityLevel property.
      * 
@@ -138,10 +126,6 @@ public class LightElementType
      */
     public void setIntensityLevel(JAXBElement<CodeLightIntensityType> value) {
         this.intensityLevel = value;
-    }
-
-    public boolean isSetIntensityLevel() {
-        return (this.intensityLevel!= null);
     }
 
     /**
@@ -168,10 +152,6 @@ public class LightElementType
         this.intensity = value;
     }
 
-    public boolean isSetIntensity() {
-        return (this.intensity!= null);
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -196,10 +176,6 @@ public class LightElementType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -222,10 +198,6 @@ public class LightElementType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -260,14 +232,6 @@ public class LightElementType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -298,14 +262,6 @@ public class LightElementType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -340,14 +296,6 @@ public class LightElementType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -376,7 +324,6 @@ public class LightElementType
     public static class Extension {
 
         @XmlElement(name = "AbstractLightElementExtension")
-        @Valid
         protected AbstractExtensionType abstractLightElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -405,10 +352,6 @@ public class LightElementType
             this.abstractLightElementExtension = value;
         }
 
-        public boolean isSetAbstractLightElementExtension() {
-            return (this.abstractLightElementExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -433,16 +376,8 @@ public class LightElementType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

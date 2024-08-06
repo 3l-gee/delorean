@@ -10,8 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -71,17 +69,11 @@ public class CubicSplineType
         @XmlElementRef(name = "pointRep", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> posOrPointPropertyOrPointRep;
-    @Valid
     protected DirectPositionListType posList;
-    @Valid
     protected CoordinatesType coordinates;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected VectorType vectorAtStart;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected VectorType vectorAtEnd;
     @XmlAttribute(name = "interpolation")
     public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CUBIC_SPLINE;
@@ -122,14 +114,6 @@ public class CubicSplineType
         return this.posOrPointPropertyOrPointRep;
     }
 
-    public boolean isSetPosOrPointPropertyOrPointRep() {
-        return ((this.posOrPointPropertyOrPointRep!= null)&&(!this.posOrPointPropertyOrPointRep.isEmpty()));
-    }
-
-    public void unsetPosOrPointPropertyOrPointRep() {
-        this.posOrPointPropertyOrPointRep = null;
-    }
-
     /**
      * Gets the value of the posList property.
      * 
@@ -152,10 +136,6 @@ public class CubicSplineType
      */
     public void setPosList(DirectPositionListType value) {
         this.posList = value;
-    }
-
-    public boolean isSetPosList() {
-        return (this.posList!= null);
     }
 
     /**
@@ -182,10 +162,6 @@ public class CubicSplineType
         this.coordinates = value;
     }
 
-    public boolean isSetCoordinates() {
-        return (this.coordinates!= null);
-    }
-
     /**
      * Gets the value of the vectorAtStart property.
      * 
@@ -210,10 +186,6 @@ public class CubicSplineType
         this.vectorAtStart = value;
     }
 
-    public boolean isSetVectorAtStart() {
-        return (this.vectorAtStart!= null);
-    }
-
     /**
      * Gets the value of the vectorAtEnd property.
      * 
@@ -236,10 +208,6 @@ public class CubicSplineType
      */
     public void setVectorAtEnd(VectorType value) {
         this.vectorAtEnd = value;
-    }
-
-    public boolean isSetVectorAtEnd() {
-        return (this.vectorAtEnd!= null);
     }
 
 }

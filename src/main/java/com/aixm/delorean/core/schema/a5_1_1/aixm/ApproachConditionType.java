@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -78,29 +76,17 @@ public class ApproachConditionType
     @XmlElementRef(name = "minimumSet", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<MinimaPropertyType> minimumSet;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<CirclingRestrictionPropertyType> circlingRestriction;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<LandingTakeoffAreaCollectionPropertyType> landingArea;
     @XmlElementRef(name = "altimeter", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AltimeterSourcePropertyType> altimeter;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ApproachConditionType.Extension> extension;
 
     /**
@@ -127,10 +113,6 @@ public class ApproachConditionType
         this.finalApproachPath = value;
     }
 
-    public boolean isSetFinalApproachPath() {
-        return (this.finalApproachPath!= null);
-    }
-
     /**
      * Gets the value of the requiredNavigationPerformance property.
      * 
@@ -153,10 +135,6 @@ public class ApproachConditionType
      */
     public void setRequiredNavigationPerformance(JAXBElement<CodeRNPType> value) {
         this.requiredNavigationPerformance = value;
-    }
-
-    public boolean isSetRequiredNavigationPerformance() {
-        return (this.requiredNavigationPerformance!= null);
     }
 
     /**
@@ -183,10 +161,6 @@ public class ApproachConditionType
         this.climbGradient = value;
     }
 
-    public boolean isSetClimbGradient() {
-        return (this.climbGradient!= null);
-    }
-
     /**
      * Gets the value of the minimumSet property.
      * 
@@ -209,10 +183,6 @@ public class ApproachConditionType
      */
     public void setMinimumSet(JAXBElement<MinimaPropertyType> value) {
         this.minimumSet = value;
-    }
-
-    public boolean isSetMinimumSet() {
-        return (this.minimumSet!= null);
     }
 
     /**
@@ -247,14 +217,6 @@ public class ApproachConditionType
         return this.circlingRestriction;
     }
 
-    public boolean isSetCirclingRestriction() {
-        return ((this.circlingRestriction!= null)&&(!this.circlingRestriction.isEmpty()));
-    }
-
-    public void unsetCirclingRestriction() {
-        this.circlingRestriction = null;
-    }
-
     /**
      * Gets the value of the aircraftCategory property.
      * 
@@ -285,14 +247,6 @@ public class ApproachConditionType
             aircraftCategory = new ArrayList<>();
         }
         return this.aircraftCategory;
-    }
-
-    public boolean isSetAircraftCategory() {
-        return ((this.aircraftCategory!= null)&&(!this.aircraftCategory.isEmpty()));
-    }
-
-    public void unsetAircraftCategory() {
-        this.aircraftCategory = null;
     }
 
     /**
@@ -327,14 +281,6 @@ public class ApproachConditionType
         return this.landingArea;
     }
 
-    public boolean isSetLandingArea() {
-        return ((this.landingArea!= null)&&(!this.landingArea.isEmpty()));
-    }
-
-    public void unsetLandingArea() {
-        this.landingArea = null;
-    }
-
     /**
      * Gets the value of the altimeter property.
      * 
@@ -357,10 +303,6 @@ public class ApproachConditionType
      */
     public void setAltimeter(JAXBElement<AltimeterSourcePropertyType> value) {
         this.altimeter = value;
-    }
-
-    public boolean isSetAltimeter() {
-        return (this.altimeter!= null);
     }
 
     /**
@@ -395,14 +337,6 @@ public class ApproachConditionType
         return this.designSurface;
     }
 
-    public boolean isSetDesignSurface() {
-        return ((this.designSurface!= null)&&(!this.designSurface.isEmpty()));
-    }
-
-    public void unsetDesignSurface() {
-        this.designSurface = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -433,14 +367,6 @@ public class ApproachConditionType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -475,14 +401,6 @@ public class ApproachConditionType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -511,7 +429,6 @@ public class ApproachConditionType
     public static class Extension {
 
         @XmlElement(name = "AbstractApproachConditionExtension")
-        @Valid
         protected AbstractExtensionType abstractApproachConditionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -540,10 +457,6 @@ public class ApproachConditionType
             this.abstractApproachConditionExtension = value;
         }
 
-        public boolean isSetAbstractApproachConditionExtension() {
-            return (this.abstractApproachConditionExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -568,16 +481,8 @@ public class ApproachConditionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

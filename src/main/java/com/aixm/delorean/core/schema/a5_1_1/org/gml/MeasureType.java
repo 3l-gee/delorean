@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -55,7 +54,6 @@ public class MeasureType {
     @XmlValue
     protected double value;
     @XmlAttribute(name = "uom", required = true)
-    @NotNull
     protected String uom;
 
     /**
@@ -72,10 +70,6 @@ public class MeasureType {
      */
     public void setValue(double value) {
         this.value = value;
-    }
-
-    public boolean isSetValue() {
-        return true;
     }
 
     /**
@@ -100,10 +94,6 @@ public class MeasureType {
      */
     public void setUom(String value) {
         this.uom = value;
-    }
-
-    public boolean isSetUom() {
-        return (this.uom!= null);
     }
 
 }

@@ -13,9 +13,6 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RecordPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RecordTypePropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.UnitOfMeasurePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -57,18 +54,11 @@ public class DQQuantitativeResultType
     extends AbstractDQResultType
 {
 
-    @Valid
     protected RecordTypePropertyType valueType;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected UnitOfMeasurePropertyType valueUnit;
-    @Valid
     protected CharacterStringPropertyType errorStatistic;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<RecordPropertyType> value;
 
     /**
@@ -95,10 +85,6 @@ public class DQQuantitativeResultType
         this.valueType = value;
     }
 
-    public boolean isSetValueType() {
-        return (this.valueType!= null);
-    }
-
     /**
      * Gets the value of the valueUnit property.
      * 
@@ -123,10 +109,6 @@ public class DQQuantitativeResultType
         this.valueUnit = value;
     }
 
-    public boolean isSetValueUnit() {
-        return (this.valueUnit!= null);
-    }
-
     /**
      * Gets the value of the errorStatistic property.
      * 
@@ -149,10 +131,6 @@ public class DQQuantitativeResultType
      */
     public void setErrorStatistic(CharacterStringPropertyType value) {
         this.errorStatistic = value;
-    }
-
-    public boolean isSetErrorStatistic() {
-        return (this.errorStatistic!= null);
     }
 
     /**
@@ -185,14 +163,6 @@ public class DQQuantitativeResultType
             value = new ArrayList<>();
         }
         return this.value;
-    }
-
-    public boolean isSetValue() {
-        return ((this.value!= null)&&(!this.value.isEmpty()));
-    }
-
-    public void unsetValue() {
-        this.value = null;
     }
 
 }

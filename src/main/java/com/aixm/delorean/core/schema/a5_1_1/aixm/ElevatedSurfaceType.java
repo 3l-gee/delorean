@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -71,8 +69,6 @@ public class ElevatedSurfaceType
     protected JAXBElement<CodeVerticalDatumType> verticalDatum;
     @XmlElementRef(name = "verticalAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceType> verticalAccuracy;
-    @Valid
-    @Size(min = 0)
     protected List<ElevatedSurfaceType.Extension> extension;
 
     /**
@@ -99,10 +95,6 @@ public class ElevatedSurfaceType
         this.elevation = value;
     }
 
-    public boolean isSetElevation() {
-        return (this.elevation!= null);
-    }
-
     /**
      * Gets the value of the geoidUndulation property.
      * 
@@ -125,10 +117,6 @@ public class ElevatedSurfaceType
      */
     public void setGeoidUndulation(JAXBElement<ValDistanceSignedType> value) {
         this.geoidUndulation = value;
-    }
-
-    public boolean isSetGeoidUndulation() {
-        return (this.geoidUndulation!= null);
     }
 
     /**
@@ -155,10 +143,6 @@ public class ElevatedSurfaceType
         this.verticalDatum = value;
     }
 
-    public boolean isSetVerticalDatum() {
-        return (this.verticalDatum!= null);
-    }
-
     /**
      * Gets the value of the verticalAccuracy property.
      * 
@@ -181,10 +165,6 @@ public class ElevatedSurfaceType
      */
     public void setVerticalAccuracy(JAXBElement<ValDistanceType> value) {
         this.verticalAccuracy = value;
-    }
-
-    public boolean isSetVerticalAccuracy() {
-        return (this.verticalAccuracy!= null);
     }
 
     /**
@@ -219,14 +199,6 @@ public class ElevatedSurfaceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -255,7 +227,6 @@ public class ElevatedSurfaceType
     public static class Extension {
 
         @XmlElement(name = "AbstractElevatedSurfaceExtension")
-        @Valid
         protected AbstractExtensionType abstractElevatedSurfaceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -284,10 +255,6 @@ public class ElevatedSurfaceType
             this.abstractElevatedSurfaceExtension = value;
         }
 
-        public boolean isSetAbstractElevatedSurfaceExtension() {
-            return (this.abstractElevatedSurfaceExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -312,16 +279,8 @@ public class ElevatedSurfaceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

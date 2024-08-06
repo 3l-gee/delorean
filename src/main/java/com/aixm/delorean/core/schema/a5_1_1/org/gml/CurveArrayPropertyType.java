@@ -92,14 +92,6 @@ public class CurveArrayPropertyType {
         return this.abstractCurve;
     }
 
-    public boolean isSetAbstractCurve() {
-        return ((this.abstractCurve!= null)&&(!this.abstractCurve.isEmpty()));
-    }
-
-    public void unsetAbstractCurve() {
-        this.abstractCurve = null;
-    }
-
     /**
      * Gets the value of the owns property.
      * 
@@ -124,16 +116,8 @@ public class CurveArrayPropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(boolean value) {
+    public void setOwns(java.lang.Boolean value) {
         this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

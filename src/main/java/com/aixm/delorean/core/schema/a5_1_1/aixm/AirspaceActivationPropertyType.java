@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +41,6 @@ public class AirspaceActivationPropertyType
 {
 
     @XmlElement(name = "AirspaceActivation", required = true)
-    @NotNull
-    @Valid
     protected AirspaceActivationType airspaceActivation;
 
     /**
@@ -69,10 +65,6 @@ public class AirspaceActivationPropertyType
      */
     public void setAirspaceActivation(AirspaceActivationType value) {
         this.airspaceActivation = value;
-    }
-
-    public boolean isSetAirspaceActivation() {
-        return (this.airspaceActivation!= null);
     }
 
 }

@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -58,7 +57,6 @@ public class RelatedTimeType
 {
 
     @XmlAttribute(name = "relativePosition")
-    @Pattern(regexp = "(\\QBefore\\E)|(\\QAfter\\E)|(\\QBegins\\E)|(\\QEnds\\E)|(\\QDuring\\E)|(\\QEquals\\E)|(\\QContains\\E)|(\\QOverlaps\\E)|(\\QMeets\\E)|(\\QOverlappedBy\\E)|(\\QMetBy\\E)|(\\QBegunBy\\E)|(\\QEndedBy\\E)")
     protected String relativePosition;
 
     /**
@@ -83,10 +81,6 @@ public class RelatedTimeType
      */
     public void setRelativePosition(String value) {
         this.relativePosition = value;
-    }
-
-    public boolean isSetRelativePosition() {
-        return (this.relativePosition!= null);
     }
 
 }

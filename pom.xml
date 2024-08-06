@@ -23,10 +23,10 @@
 		</dependency>
 
         <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>5.10.3</version>
-                <scope>test</scope>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.3</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -39,6 +39,24 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>8.0.0.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.6.0.CR1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
         </dependency>
 	</dependencies>
 
@@ -80,11 +98,11 @@
                 <configuration>
                     <extension>true</extension>
                     <args>
-                        <arg>-Xannotate</arg>
-                        <arg>-XJsr303Annotations</arg>
+                        <arg>-Xannotate</arg> -->
+                        <!-- <arg>-XJsr303Annotations</arg>
                         <arg>-XJsr303Annotations:validationAnnotations=jakarta</arg>
-                        <arg>-XJsr303Annotations:generateServiceValidationAnnotations=InOut</arg>
-                    </args>
+                        <arg>-XJsr303Annotations:generateServiceValidationAnnotations=InOut</arg> -->
+                    <!-- </args>
                     <plugins>
                         <plugin>
                             <groupId>org.jvnet.jaxb</groupId>

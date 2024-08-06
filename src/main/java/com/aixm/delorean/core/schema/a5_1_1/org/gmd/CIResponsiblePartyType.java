@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -54,17 +52,11 @@ public class CIResponsiblePartyType
     extends AbstractObjectType
 {
 
-    @Valid
     protected CharacterStringPropertyType individualName;
-    @Valid
     protected CharacterStringPropertyType organisationName;
-    @Valid
     protected CharacterStringPropertyType positionName;
-    @Valid
     protected CIContactPropertyType contactInfo;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CIRoleCodePropertyType role;
 
     /**
@@ -91,10 +83,6 @@ public class CIResponsiblePartyType
         this.individualName = value;
     }
 
-    public boolean isSetIndividualName() {
-        return (this.individualName!= null);
-    }
-
     /**
      * Gets the value of the organisationName property.
      * 
@@ -117,10 +105,6 @@ public class CIResponsiblePartyType
      */
     public void setOrganisationName(CharacterStringPropertyType value) {
         this.organisationName = value;
-    }
-
-    public boolean isSetOrganisationName() {
-        return (this.organisationName!= null);
     }
 
     /**
@@ -147,10 +131,6 @@ public class CIResponsiblePartyType
         this.positionName = value;
     }
 
-    public boolean isSetPositionName() {
-        return (this.positionName!= null);
-    }
-
     /**
      * Gets the value of the contactInfo property.
      * 
@@ -175,10 +155,6 @@ public class CIResponsiblePartyType
         this.contactInfo = value;
     }
 
-    public boolean isSetContactInfo() {
-        return (this.contactInfo!= null);
-    }
-
     /**
      * Gets the value of the role property.
      * 
@@ -201,10 +177,6 @@ public class CIResponsiblePartyType
      */
     public void setRole(CIRoleCodePropertyType value) {
         this.role = value;
-    }
-
-    public boolean isSetRole() {
-        return (this.role!= null);
     }
 
 }

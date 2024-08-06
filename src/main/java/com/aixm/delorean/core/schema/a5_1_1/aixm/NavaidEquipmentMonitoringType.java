@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,21 +64,13 @@ public class NavaidEquipmentMonitoringType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "monitored", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> monitored;
-    @Valid
-    @Size(min = 0)
     protected List<NavaidEquipmentMonitoringType.Extension> extension;
 
     /**
@@ -115,14 +105,6 @@ public class NavaidEquipmentMonitoringType
         return this.timeInterval;
     }
 
-    public boolean isSetTimeInterval() {
-        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
-    }
-
-    public void unsetTimeInterval() {
-        this.timeInterval = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -153,14 +135,6 @@ public class NavaidEquipmentMonitoringType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -195,14 +169,6 @@ public class NavaidEquipmentMonitoringType
         return this.specialDateAuthority;
     }
 
-    public boolean isSetSpecialDateAuthority() {
-        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
-    }
-
-    public void unsetSpecialDateAuthority() {
-        this.specialDateAuthority = null;
-    }
-
     /**
      * Gets the value of the monitored property.
      * 
@@ -225,10 +191,6 @@ public class NavaidEquipmentMonitoringType
      */
     public void setMonitored(JAXBElement<CodeYesNoType> value) {
         this.monitored = value;
-    }
-
-    public boolean isSetMonitored() {
-        return (this.monitored!= null);
     }
 
     /**
@@ -263,14 +225,6 @@ public class NavaidEquipmentMonitoringType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -301,10 +255,8 @@ public class NavaidEquipmentMonitoringType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractNavaidEquipmentMonitoringExtension")
-        @Valid
         protected AbstractExtensionType abstractNavaidEquipmentMonitoringExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -333,10 +285,6 @@ public class NavaidEquipmentMonitoringType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
-        public boolean isSetAbstractPropertiesWithScheduleExtension() {
-            return (this.abstractPropertiesWithScheduleExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractNavaidEquipmentMonitoringExtension property.
          * 
@@ -359,10 +307,6 @@ public class NavaidEquipmentMonitoringType
          */
         public void setAbstractNavaidEquipmentMonitoringExtension(AbstractExtensionType value) {
             this.abstractNavaidEquipmentMonitoringExtension = value;
-        }
-
-        public boolean isSetAbstractNavaidEquipmentMonitoringExtension() {
-            return (this.abstractNavaidEquipmentMonitoringExtension!= null);
         }
 
         /**
@@ -389,16 +333,8 @@ public class NavaidEquipmentMonitoringType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

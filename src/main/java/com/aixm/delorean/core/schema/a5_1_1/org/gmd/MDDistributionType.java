@@ -10,8 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -50,14 +48,8 @@ public class MDDistributionType
     extends AbstractObjectType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<MDFormatPropertyType> distributionFormat;
-    @Valid
-    @Size(min = 0)
     protected List<MDDistributorPropertyType> distributor;
-    @Valid
-    @Size(min = 0)
     protected List<MDDigitalTransferOptionsPropertyType> transferOptions;
 
     /**
@@ -92,14 +84,6 @@ public class MDDistributionType
         return this.distributionFormat;
     }
 
-    public boolean isSetDistributionFormat() {
-        return ((this.distributionFormat!= null)&&(!this.distributionFormat.isEmpty()));
-    }
-
-    public void unsetDistributionFormat() {
-        this.distributionFormat = null;
-    }
-
     /**
      * Gets the value of the distributor property.
      * 
@@ -132,14 +116,6 @@ public class MDDistributionType
         return this.distributor;
     }
 
-    public boolean isSetDistributor() {
-        return ((this.distributor!= null)&&(!this.distributor.isEmpty()));
-    }
-
-    public void unsetDistributor() {
-        this.distributor = null;
-    }
-
     /**
      * Gets the value of the transferOptions property.
      * 
@@ -170,14 +146,6 @@ public class MDDistributionType
             transferOptions = new ArrayList<>();
         }
         return this.transferOptions;
-    }
-
-    public boolean isSetTransferOptions() {
-        return ((this.transferOptions!= null)&&(!this.transferOptions.isEmpty()));
-    }
-
-    public void unsetTransferOptions() {
-        this.transferOptions = null;
     }
 
 }

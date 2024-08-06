@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,23 +73,15 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
     @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeLightHoldingPositionType> type;
     @XmlElementRef(name = "taxiHolding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TaxiHoldingPositionPropertyType> taxiHolding;
-    @Valid
-    @Size(min = 0)
     protected List<TaxiHoldingPositionLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -118,10 +108,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
         this.emergencyLighting = value;
     }
 
-    public boolean isSetEmergencyLighting() {
-        return (this.emergencyLighting!= null);
-    }
-
     /**
      * Gets the value of the intensityLevel property.
      * 
@@ -146,10 +132,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
         this.intensityLevel = value;
     }
 
-    public boolean isSetIntensityLevel() {
-        return (this.intensityLevel!= null);
-    }
-
     /**
      * Gets the value of the colour property.
      * 
@@ -172,10 +154,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
      */
     public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
-    }
-
-    public boolean isSetColour() {
-        return (this.colour!= null);
     }
 
     /**
@@ -210,14 +188,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
         return this.element;
     }
 
-    public boolean isSetElement() {
-        return ((this.element!= null)&&(!this.element.isEmpty()));
-    }
-
-    public void unsetElement() {
-        this.element = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -248,14 +218,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -290,14 +252,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -322,10 +276,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the taxiHolding property.
      * 
@@ -348,10 +298,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
      */
     public void setTaxiHolding(JAXBElement<TaxiHoldingPositionPropertyType> value) {
         this.taxiHolding = value;
-    }
-
-    public boolean isSetTaxiHolding() {
-        return (this.taxiHolding!= null);
     }
 
     /**
@@ -386,14 +332,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -424,10 +362,8 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTaxiHoldingPositionLightSystemExtension")
-        @Valid
         protected AbstractExtensionType abstractTaxiHoldingPositionLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @Valid
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -456,10 +392,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
             this.abstractTaxiHoldingPositionLightSystemExtension = value;
         }
 
-        public boolean isSetAbstractTaxiHoldingPositionLightSystemExtension() {
-            return (this.abstractTaxiHoldingPositionLightSystemExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractGroundLightSystemExtension property.
          * 
@@ -482,10 +414,6 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
          */
         public void setAbstractGroundLightSystemExtension(AbstractExtensionType value) {
             this.abstractGroundLightSystemExtension = value;
-        }
-
-        public boolean isSetAbstractGroundLightSystemExtension() {
-            return (this.abstractGroundLightSystemExtension!= null);
         }
 
         /**
@@ -512,16 +440,8 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

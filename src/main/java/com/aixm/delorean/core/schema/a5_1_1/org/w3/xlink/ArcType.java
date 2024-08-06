@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -44,13 +41,10 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class ArcType {
 
-    @Valid
-    @Size(min = 0)
     protected List<TitleEltType> title;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
     public static final TypeType TYPE = TypeType.ARC;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -60,7 +54,6 @@ public class ArcType {
     protected ActuateType actuate;
     @XmlAttribute(name = "from", namespace = "http://www.w3.org/1999/xlink")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
     protected String from;
     /**
      * from and to have default behavior when values are missing
@@ -68,7 +61,6 @@ public class ArcType {
      */
     @XmlAttribute(name = "to", namespace = "http://www.w3.org/1999/xlink")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
     protected String to;
 
     /**
@@ -103,14 +95,6 @@ public class ArcType {
         return this.title;
     }
 
-    public boolean isSetTitle() {
-        return ((this.title!= null)&&(!this.title.isEmpty()));
-    }
-
-    public void unsetTitle() {
-        this.title = null;
-    }
-
     /**
      * Gets the value of the arcrole property.
      * 
@@ -133,10 +117,6 @@ public class ArcType {
      */
     public void setArcrole(String value) {
         this.arcrole = value;
-    }
-
-    public boolean isSetArcrole() {
-        return (this.arcrole!= null);
     }
 
     /**
@@ -163,10 +143,6 @@ public class ArcType {
         this.titleAttribute = value;
     }
 
-    public boolean isSetTitleAttribute() {
-        return (this.titleAttribute!= null);
-    }
-
     /**
      * Gets the value of the show property.
      * 
@@ -189,10 +165,6 @@ public class ArcType {
      */
     public void setShow(ShowType value) {
         this.show = value;
-    }
-
-    public boolean isSetShow() {
-        return (this.show!= null);
     }
 
     /**
@@ -219,10 +191,6 @@ public class ArcType {
         this.actuate = value;
     }
 
-    public boolean isSetActuate() {
-        return (this.actuate!= null);
-    }
-
     /**
      * Gets the value of the from property.
      * 
@@ -245,10 +213,6 @@ public class ArcType {
      */
     public void setFrom(String value) {
         this.from = value;
-    }
-
-    public boolean isSetFrom() {
-        return (this.from!= null);
     }
 
     /**
@@ -274,10 +238,6 @@ public class ArcType {
      */
     public void setTo(String value) {
         this.to = value;
-    }
-
-    public boolean isSetTo() {
-        return (this.to!= null);
     }
 
 }

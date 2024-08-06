@@ -12,9 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.DateTimePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -57,17 +54,10 @@ public class MDUsageType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType specificUsage;
-    @Valid
     protected DateTimePropertyType usageDateTime;
-    @Valid
     protected CharacterStringPropertyType userDeterminedLimitations;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CIResponsiblePartyPropertyType> userContactInfo;
 
     /**
@@ -94,10 +84,6 @@ public class MDUsageType
         this.specificUsage = value;
     }
 
-    public boolean isSetSpecificUsage() {
-        return (this.specificUsage!= null);
-    }
-
     /**
      * Gets the value of the usageDateTime property.
      * 
@@ -122,10 +108,6 @@ public class MDUsageType
         this.usageDateTime = value;
     }
 
-    public boolean isSetUsageDateTime() {
-        return (this.usageDateTime!= null);
-    }
-
     /**
      * Gets the value of the userDeterminedLimitations property.
      * 
@@ -148,10 +130,6 @@ public class MDUsageType
      */
     public void setUserDeterminedLimitations(CharacterStringPropertyType value) {
         this.userDeterminedLimitations = value;
-    }
-
-    public boolean isSetUserDeterminedLimitations() {
-        return (this.userDeterminedLimitations!= null);
     }
 
     /**
@@ -184,14 +162,6 @@ public class MDUsageType
             userContactInfo = new ArrayList<>();
         }
         return this.userContactInfo;
-    }
-
-    public boolean isSetUserContactInfo() {
-        return ((this.userContactInfo!= null)&&(!this.userContactInfo.isEmpty()));
-    }
-
-    public void unsetUserContactInfo() {
-        this.userContactInfo = null;
     }
 
 }

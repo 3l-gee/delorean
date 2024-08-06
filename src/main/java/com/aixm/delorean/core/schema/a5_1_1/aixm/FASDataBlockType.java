@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -97,11 +95,7 @@ public class FASDataBlockType
     @XmlElementRef(name = "codeICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeICAOCountryType> codeICAO;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<FASDataBlockType.Extension> extension;
 
     /**
@@ -128,10 +122,6 @@ public class FASDataBlockType
         this.horizontalAlarmLimit = value;
     }
 
-    public boolean isSetHorizontalAlarmLimit() {
-        return (this.horizontalAlarmLimit!= null);
-    }
-
     /**
      * Gets the value of the verticalAlarmLimit property.
      * 
@@ -154,10 +144,6 @@ public class FASDataBlockType
      */
     public void setVerticalAlarmLimit(JAXBElement<ValAlarmLimitType> value) {
         this.verticalAlarmLimit = value;
-    }
-
-    public boolean isSetVerticalAlarmLimit() {
-        return (this.verticalAlarmLimit!= null);
     }
 
     /**
@@ -184,10 +170,6 @@ public class FASDataBlockType
         this.thresholdCourseWidth = value;
     }
 
-    public boolean isSetThresholdCourseWidth() {
-        return (this.thresholdCourseWidth!= null);
-    }
-
     /**
      * Gets the value of the lengthOffset property.
      * 
@@ -210,10 +192,6 @@ public class FASDataBlockType
      */
     public void setLengthOffset(JAXBElement<ValDistanceType> value) {
         this.lengthOffset = value;
-    }
-
-    public boolean isSetLengthOffset() {
-        return (this.lengthOffset!= null);
     }
 
     /**
@@ -240,10 +218,6 @@ public class FASDataBlockType
         this.crcRemainder = value;
     }
 
-    public boolean isSetCRCRemainder() {
-        return (this.crcRemainder!= null);
-    }
-
     /**
      * Gets the value of the operationType property.
      * 
@@ -266,10 +240,6 @@ public class FASDataBlockType
      */
     public void setOperationType(JAXBElement<NoSequenceType> value) {
         this.operationType = value;
-    }
-
-    public boolean isSetOperationType() {
-        return (this.operationType!= null);
     }
 
     /**
@@ -296,10 +266,6 @@ public class FASDataBlockType
         this.serviceProviderSBAS = value;
     }
 
-    public boolean isSetServiceProviderSBAS() {
-        return (this.serviceProviderSBAS!= null);
-    }
-
     /**
      * Gets the value of the approachPerformanceDesignator property.
      * 
@@ -322,10 +288,6 @@ public class FASDataBlockType
      */
     public void setApproachPerformanceDesignator(JAXBElement<NoSequenceType> value) {
         this.approachPerformanceDesignator = value;
-    }
-
-    public boolean isSetApproachPerformanceDesignator() {
-        return (this.approachPerformanceDesignator!= null);
     }
 
     /**
@@ -352,10 +314,6 @@ public class FASDataBlockType
         this.routeIndicator = value;
     }
 
-    public boolean isSetRouteIndicator() {
-        return (this.routeIndicator!= null);
-    }
-
     /**
      * Gets the value of the referencePathDataSelector property.
      * 
@@ -378,10 +336,6 @@ public class FASDataBlockType
      */
     public void setReferencePathDataSelector(JAXBElement<NoSequenceType> value) {
         this.referencePathDataSelector = value;
-    }
-
-    public boolean isSetReferencePathDataSelector() {
-        return (this.referencePathDataSelector!= null);
     }
 
     /**
@@ -408,10 +362,6 @@ public class FASDataBlockType
         this.referencePathIdentifier = value;
     }
 
-    public boolean isSetReferencePathIdentifier() {
-        return (this.referencePathIdentifier!= null);
-    }
-
     /**
      * Gets the value of the codeICAO property.
      * 
@@ -434,10 +384,6 @@ public class FASDataBlockType
      */
     public void setCodeICAO(JAXBElement<CodeICAOCountryType> value) {
         this.codeICAO = value;
-    }
-
-    public boolean isSetCodeICAO() {
-        return (this.codeICAO!= null);
     }
 
     /**
@@ -472,14 +418,6 @@ public class FASDataBlockType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -512,14 +450,6 @@ public class FASDataBlockType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -548,7 +478,6 @@ public class FASDataBlockType
     public static class Extension {
 
         @XmlElement(name = "AbstractFASDataBlockExtension")
-        @Valid
         protected AbstractExtensionType abstractFASDataBlockExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -577,10 +506,6 @@ public class FASDataBlockType
             this.abstractFASDataBlockExtension = value;
         }
 
-        public boolean isSetAbstractFASDataBlockExtension() {
-            return (this.abstractFASDataBlockExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -605,16 +530,8 @@ public class FASDataBlockType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

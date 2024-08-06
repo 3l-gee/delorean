@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -70,17 +68,11 @@ public class DeicingAreaMarkingTimeSliceType
     @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "markedDeicingArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DeicingAreaPropertyType> markedDeicingArea;
-    @Valid
-    @Size(min = 0)
     protected List<DeicingAreaMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -107,10 +99,6 @@ public class DeicingAreaMarkingTimeSliceType
         this.markingICAOStandard = value;
     }
 
-    public boolean isSetMarkingICAOStandard() {
-        return (this.markingICAOStandard!= null);
-    }
-
     /**
      * Gets the value of the condition property.
      * 
@@ -133,10 +121,6 @@ public class DeicingAreaMarkingTimeSliceType
      */
     public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
         this.condition = value;
-    }
-
-    public boolean isSetCondition() {
-        return (this.condition!= null);
     }
 
     /**
@@ -171,14 +155,6 @@ public class DeicingAreaMarkingTimeSliceType
         return this.element;
     }
 
-    public boolean isSetElement() {
-        return ((this.element!= null)&&(!this.element.isEmpty()));
-    }
-
-    public void unsetElement() {
-        this.element = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -211,14 +187,6 @@ public class DeicingAreaMarkingTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the markedDeicingArea property.
      * 
@@ -241,10 +209,6 @@ public class DeicingAreaMarkingTimeSliceType
      */
     public void setMarkedDeicingArea(JAXBElement<DeicingAreaPropertyType> value) {
         this.markedDeicingArea = value;
-    }
-
-    public boolean isSetMarkedDeicingArea() {
-        return (this.markedDeicingArea!= null);
     }
 
     /**
@@ -279,14 +243,6 @@ public class DeicingAreaMarkingTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -317,10 +273,8 @@ public class DeicingAreaMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDeicingAreaMarkingExtension")
-        @Valid
         protected AbstractExtensionType abstractDeicingAreaMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
-        @Valid
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -349,10 +303,6 @@ public class DeicingAreaMarkingTimeSliceType
             this.abstractDeicingAreaMarkingExtension = value;
         }
 
-        public boolean isSetAbstractDeicingAreaMarkingExtension() {
-            return (this.abstractDeicingAreaMarkingExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractMarkingExtension property.
          * 
@@ -375,10 +325,6 @@ public class DeicingAreaMarkingTimeSliceType
          */
         public void setAbstractMarkingExtension(AbstractExtensionType value) {
             this.abstractMarkingExtension = value;
-        }
-
-        public boolean isSetAbstractMarkingExtension() {
-            return (this.abstractMarkingExtension!= null);
         }
 
         /**
@@ -405,16 +351,8 @@ public class DeicingAreaMarkingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

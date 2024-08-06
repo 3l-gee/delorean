@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -57,8 +55,6 @@ public class RangeSetType {
      * 
      */
     @XmlElement(name = "ValueArray")
-    @Valid
-    @Size(min = 1)
     protected List<ValueArrayType> valueArray;
     /**
      * gml:AbstractScalarValueList is an abstract element which acts as the head of a substitution group which contains gml:BooleanList, gml:CategoryList, gml:CountList and gml:QuantityList, and (transitively) the elements in their substitution groups.
@@ -72,7 +68,6 @@ public class RangeSetType {
      * 
      */
     @XmlElement(name = "DataBlock")
-    @Valid
     protected DataBlockType dataBlock;
     /**
      * for efficiency reasons, GML also provides a means of encoding the range set in an arbitrary external encoding, such as a binary file.  This encoding may be "well-known" but this is not required. This mode uses the gml:File element.
@@ -86,7 +81,6 @@ public class RangeSetType {
      * 
      */
     @XmlElement(name = "File")
-    @Valid
     protected FileType file;
 
     /**
@@ -123,14 +117,6 @@ public class RangeSetType {
             valueArray = new ArrayList<>();
         }
         return this.valueArray;
-    }
-
-    public boolean isSetValueArray() {
-        return ((this.valueArray!= null)&&(!this.valueArray.isEmpty()));
-    }
-
-    public void unsetValueArray() {
-        this.valueArray = null;
     }
 
     /**
@@ -171,14 +157,6 @@ public class RangeSetType {
         return this.abstractScalarValueList;
     }
 
-    public boolean isSetAbstractScalarValueList() {
-        return ((this.abstractScalarValueList!= null)&&(!this.abstractScalarValueList.isEmpty()));
-    }
-
-    public void unsetAbstractScalarValueList() {
-        this.abstractScalarValueList = null;
-    }
-
     /**
      * gml:DataBlock describes the Range as a block of text encoded values similar to a Common Separated Value (CSV) representation.
      * The range set parameterization is described by the property gml:rangeParameters.
@@ -203,10 +181,6 @@ public class RangeSetType {
      */
     public void setDataBlock(DataBlockType value) {
         this.dataBlock = value;
-    }
-
-    public boolean isSetDataBlock() {
-        return (this.dataBlock!= null);
     }
 
     /**
@@ -239,10 +213,6 @@ public class RangeSetType {
      */
     public void setFile(FileType value) {
         this.file = value;
-    }
-
-    public boolean isSetFile() {
-        return (this.file!= null);
     }
 
 }

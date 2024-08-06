@@ -68,10 +68,6 @@ public class BinaryType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the src property.
      * 
@@ -94,10 +90,6 @@ public class BinaryType {
      */
     public void setSrc(String value) {
         this.src = value;
-    }
-
-    public boolean isSetSrc() {
-        return (this.src!= null);
     }
 
 }

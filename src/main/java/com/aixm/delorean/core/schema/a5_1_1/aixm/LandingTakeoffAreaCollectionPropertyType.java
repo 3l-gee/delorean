@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +41,6 @@ public class LandingTakeoffAreaCollectionPropertyType
 {
 
     @XmlElement(name = "LandingTakeoffAreaCollection", required = true)
-    @NotNull
-    @Valid
     protected LandingTakeoffAreaCollectionType landingTakeoffAreaCollection;
 
     /**
@@ -69,10 +65,6 @@ public class LandingTakeoffAreaCollectionPropertyType
      */
     public void setLandingTakeoffAreaCollection(LandingTakeoffAreaCollectionType value) {
         this.landingTakeoffAreaCollection = value;
-    }
-
-    public boolean isSetLandingTakeoffAreaCollection() {
-        return (this.landingTakeoffAreaCollection!= null);
     }
 
 }

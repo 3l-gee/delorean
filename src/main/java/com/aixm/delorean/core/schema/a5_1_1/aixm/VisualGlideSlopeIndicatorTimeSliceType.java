@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -80,16 +78,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeVASISType> type;
@@ -105,8 +97,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     protected JAXBElement<ValDistanceVerticalType> minimumEyeHeightOverThreshold;
     @XmlElementRef(name = "runwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayDirectionPropertyType> runwayDirection;
-    @Valid
-    @Size(min = 0)
     protected List<VisualGlideSlopeIndicatorTimeSliceType.Extension> extension;
 
     /**
@@ -133,10 +123,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         this.emergencyLighting = value;
     }
 
-    public boolean isSetEmergencyLighting() {
-        return (this.emergencyLighting!= null);
-    }
-
     /**
      * Gets the value of the intensityLevel property.
      * 
@@ -161,10 +147,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         this.intensityLevel = value;
     }
 
-    public boolean isSetIntensityLevel() {
-        return (this.intensityLevel!= null);
-    }
-
     /**
      * Gets the value of the colour property.
      * 
@@ -187,10 +169,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      */
     public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
-    }
-
-    public boolean isSetColour() {
-        return (this.colour!= null);
     }
 
     /**
@@ -225,14 +203,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         return this.element;
     }
 
-    public boolean isSetElement() {
-        return ((this.element!= null)&&(!this.element.isEmpty()));
-    }
-
-    public void unsetElement() {
-        this.element = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -263,14 +233,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -305,14 +267,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -335,10 +289,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      */
     public void setType(JAXBElement<CodeVASISType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -365,10 +315,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         this.position = value;
     }
 
-    public boolean isSetPosition() {
-        return (this.position!= null);
-    }
-
     /**
      * Gets the value of the numberBox property.
      * 
@@ -391,10 +337,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      */
     public void setNumberBox(JAXBElement<NoNumberType> value) {
         this.numberBox = value;
-    }
-
-    public boolean isSetNumberBox() {
-        return (this.numberBox!= null);
     }
 
     /**
@@ -421,10 +363,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         this.portable = value;
     }
 
-    public boolean isSetPortable() {
-        return (this.portable!= null);
-    }
-
     /**
      * Gets the value of the slopeAngle property.
      * 
@@ -447,10 +385,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      */
     public void setSlopeAngle(JAXBElement<ValAngleType> value) {
         this.slopeAngle = value;
-    }
-
-    public boolean isSetSlopeAngle() {
-        return (this.slopeAngle!= null);
     }
 
     /**
@@ -477,10 +411,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         this.minimumEyeHeightOverThreshold = value;
     }
 
-    public boolean isSetMinimumEyeHeightOverThreshold() {
-        return (this.minimumEyeHeightOverThreshold!= null);
-    }
-
     /**
      * Gets the value of the runwayDirection property.
      * 
@@ -503,10 +433,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      */
     public void setRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
         this.runwayDirection = value;
-    }
-
-    public boolean isSetRunwayDirection() {
-        return (this.runwayDirection!= null);
     }
 
     /**
@@ -541,14 +467,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -579,10 +497,8 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractVisualGlideSlopeIndicatorExtension")
-        @Valid
         protected AbstractExtensionType abstractVisualGlideSlopeIndicatorExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @Valid
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -611,10 +527,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
             this.abstractVisualGlideSlopeIndicatorExtension = value;
         }
 
-        public boolean isSetAbstractVisualGlideSlopeIndicatorExtension() {
-            return (this.abstractVisualGlideSlopeIndicatorExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractGroundLightSystemExtension property.
          * 
@@ -637,10 +549,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
          */
         public void setAbstractGroundLightSystemExtension(AbstractExtensionType value) {
             this.abstractGroundLightSystemExtension = value;
-        }
-
-        public boolean isSetAbstractGroundLightSystemExtension() {
-            return (this.abstractGroundLightSystemExtension!= null);
         }
 
         /**
@@ -667,16 +575,8 @@ public class VisualGlideSlopeIndicatorTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

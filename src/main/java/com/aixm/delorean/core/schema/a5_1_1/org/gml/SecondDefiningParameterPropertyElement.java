@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -49,8 +47,6 @@ import jakarta.xml.bind.annotation.XmlType;
 public class SecondDefiningParameterPropertyElement {
 
     @XmlElement(name = "SecondDefiningParameter", required = true)
-    @NotNull
-    @Valid
     protected SecondDefiningParameter secondDefiningParameter;
 
     /**
@@ -75,10 +71,6 @@ public class SecondDefiningParameterPropertyElement {
      */
     public void setSecondDefiningParameter(SecondDefiningParameter value) {
         this.secondDefiningParameter = value;
-    }
-
-    public boolean isSetSecondDefiningParameter() {
-        return (this.secondDefiningParameter!= null);
     }
 
 }

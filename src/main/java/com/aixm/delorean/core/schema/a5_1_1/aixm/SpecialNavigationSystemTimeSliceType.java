@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -74,11 +71,7 @@ public class SpecialNavigationSystemTimeSliceType
     @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AuthorityForSpecialNavigationSystemPropertyType> responsibleOrganisation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<SpecialNavigationSystemTimeSliceType.Extension> extension;
 
     /**
@@ -105,10 +98,6 @@ public class SpecialNavigationSystemTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the designator property.
      * 
@@ -131,10 +120,6 @@ public class SpecialNavigationSystemTimeSliceType
      */
     public void setDesignator(JAXBElement<CodeSpecialNavigationChainDesignatorType> value) {
         this.designator = value;
-    }
-
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
     }
 
     /**
@@ -161,10 +146,6 @@ public class SpecialNavigationSystemTimeSliceType
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
     /**
      * Gets the value of the responsibleOrganisation property.
      * 
@@ -187,10 +168,6 @@ public class SpecialNavigationSystemTimeSliceType
      */
     public void setResponsibleOrganisation(JAXBElement<AuthorityForSpecialNavigationSystemPropertyType> value) {
         this.responsibleOrganisation = value;
-    }
-
-    public boolean isSetResponsibleOrganisation() {
-        return (this.responsibleOrganisation!= null);
     }
 
     /**
@@ -225,14 +202,6 @@ public class SpecialNavigationSystemTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -265,14 +234,6 @@ public class SpecialNavigationSystemTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -301,8 +262,6 @@ public class SpecialNavigationSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSpecialNavigationSystemExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractSpecialNavigationSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -331,10 +290,6 @@ public class SpecialNavigationSystemTimeSliceType
             this.abstractSpecialNavigationSystemExtension = value;
         }
 
-        public boolean isSetAbstractSpecialNavigationSystemExtension() {
-            return (this.abstractSpecialNavigationSystemExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -359,16 +314,8 @@ public class SpecialNavigationSystemTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,15 +72,9 @@ public class WorkAreaTimeSliceType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<WorkareaActivityPropertyType> activation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<WorkAreaTimeSliceType.Extension> extension;
 
     /**
@@ -110,10 +101,6 @@ public class WorkAreaTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the plannedOperational property.
      * 
@@ -136,10 +123,6 @@ public class WorkAreaTimeSliceType
      */
     public void setPlannedOperational(JAXBElement<DateType> value) {
         this.plannedOperational = value;
-    }
-
-    public boolean isSetPlannedOperational() {
-        return (this.plannedOperational!= null);
     }
 
     /**
@@ -166,10 +149,6 @@ public class WorkAreaTimeSliceType
         this.associatedAirportHeliport = value;
     }
 
-    public boolean isSetAssociatedAirportHeliport() {
-        return (this.associatedAirportHeliport!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -192,10 +171,6 @@ public class WorkAreaTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -230,14 +205,6 @@ public class WorkAreaTimeSliceType
         return this.activation;
     }
 
-    public boolean isSetActivation() {
-        return ((this.activation!= null)&&(!this.activation.isEmpty()));
-    }
-
-    public void unsetActivation() {
-        this.activation = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -268,14 +235,6 @@ public class WorkAreaTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -310,14 +269,6 @@ public class WorkAreaTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -346,8 +297,6 @@ public class WorkAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractWorkAreaExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractWorkAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -376,10 +325,6 @@ public class WorkAreaTimeSliceType
             this.abstractWorkAreaExtension = value;
         }
 
-        public boolean isSetAbstractWorkAreaExtension() {
-            return (this.abstractWorkAreaExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -404,16 +349,8 @@ public class WorkAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

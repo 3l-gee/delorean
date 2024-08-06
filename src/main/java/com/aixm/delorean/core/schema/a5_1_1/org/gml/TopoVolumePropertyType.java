@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -47,8 +45,6 @@ public class TopoVolumePropertyType {
      * 
      */
     @XmlElement(name = "TopoVolume", required = true)
-    @NotNull
-    @Valid
     protected TopoVolumeType topoVolume;
     @XmlAttribute(name = "owns")
     protected java.lang.Boolean owns;
@@ -78,10 +74,6 @@ public class TopoVolumePropertyType {
         this.topoVolume = value;
     }
 
-    public boolean isSetTopoVolume() {
-        return (this.topoVolume!= null);
-    }
-
     /**
      * Gets the value of the owns property.
      * 
@@ -106,16 +98,8 @@ public class TopoVolumePropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(boolean value) {
+    public void setOwns(java.lang.Boolean value) {
         this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

@@ -78,10 +78,6 @@ public class DatePropertyType {
         this.date = value;
     }
 
-    public boolean isSetDate() {
-        return (this.date!= null);
-    }
-
     /**
      * Gets the value of the dateTime property.
      * 
@@ -104,10 +100,6 @@ public class DatePropertyType {
      */
     public void setDateTime(XMLGregorianCalendar value) {
         this.dateTime = value;
-    }
-
-    public boolean isSetDateTime() {
-        return (this.dateTime!= null);
     }
 
     /**
@@ -140,14 +132,6 @@ public class DatePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
-    }
-
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
     }
 
 }

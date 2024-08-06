@@ -70,8 +70,4 @@ public class CurvePropertyType
         this.curve = value;
     }
 
-    public boolean isSetCurve() {
-        return (this.curve!= null);
-    }
-
 }

@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +41,6 @@ public class ProcedureTransitionLegPropertyType
 {
 
     @XmlElement(name = "ProcedureTransitionLeg", required = true)
-    @NotNull
-    @Valid
     protected ProcedureTransitionLegType procedureTransitionLeg;
 
     /**
@@ -69,10 +65,6 @@ public class ProcedureTransitionLegPropertyType
      */
     public void setProcedureTransitionLeg(ProcedureTransitionLegType value) {
         this.procedureTransitionLeg = value;
-    }
-
-    public boolean isSetProcedureTransitionLeg() {
-        return (this.procedureTransitionLeg!= null);
     }
 
 }

@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -124,11 +122,7 @@ public class AircraftCharacteristicType
     @XmlElementRef(name = "surveillanceEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeTransponderType> surveillanceEquipment;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AircraftCharacteristicType.Extension> extension;
 
     /**
@@ -155,10 +149,6 @@ public class AircraftCharacteristicType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the engine property.
      * 
@@ -181,10 +171,6 @@ public class AircraftCharacteristicType
      */
     public void setEngine(JAXBElement<CodeAircraftEngineType> value) {
         this.engine = value;
-    }
-
-    public boolean isSetEngine() {
-        return (this.engine!= null);
     }
 
     /**
@@ -211,10 +197,6 @@ public class AircraftCharacteristicType
         this.numberEngine = value;
     }
 
-    public boolean isSetNumberEngine() {
-        return (this.numberEngine!= null);
-    }
-
     /**
      * Gets the value of the typeAircraftICAO property.
      * 
@@ -237,10 +219,6 @@ public class AircraftCharacteristicType
      */
     public void setTypeAircraftICAO(JAXBElement<CodeAircraftICAOType> value) {
         this.typeAircraftICAO = value;
-    }
-
-    public boolean isSetTypeAircraftICAO() {
-        return (this.typeAircraftICAO!= null);
     }
 
     /**
@@ -267,10 +245,6 @@ public class AircraftCharacteristicType
         this.aircraftLandingCategory = value;
     }
 
-    public boolean isSetAircraftLandingCategory() {
-        return (this.aircraftLandingCategory!= null);
-    }
-
     /**
      * Gets the value of the wingSpan property.
      * 
@@ -293,10 +267,6 @@ public class AircraftCharacteristicType
      */
     public void setWingSpan(JAXBElement<ValDistanceType> value) {
         this.wingSpan = value;
-    }
-
-    public boolean isSetWingSpan() {
-        return (this.wingSpan!= null);
     }
 
     /**
@@ -323,10 +293,6 @@ public class AircraftCharacteristicType
         this.wingSpanInterpretation = value;
     }
 
-    public boolean isSetWingSpanInterpretation() {
-        return (this.wingSpanInterpretation!= null);
-    }
-
     /**
      * Gets the value of the classWingSpan property.
      * 
@@ -349,10 +315,6 @@ public class AircraftCharacteristicType
      */
     public void setClassWingSpan(JAXBElement<CodeAircraftWingspanClassType> value) {
         this.classWingSpan = value;
-    }
-
-    public boolean isSetClassWingSpan() {
-        return (this.classWingSpan!= null);
     }
 
     /**
@@ -379,10 +341,6 @@ public class AircraftCharacteristicType
         this.weight = value;
     }
 
-    public boolean isSetWeight() {
-        return (this.weight!= null);
-    }
-
     /**
      * Gets the value of the weightInterpretation property.
      * 
@@ -405,10 +363,6 @@ public class AircraftCharacteristicType
      */
     public void setWeightInterpretation(JAXBElement<CodeValueInterpretationType> value) {
         this.weightInterpretation = value;
-    }
-
-    public boolean isSetWeightInterpretation() {
-        return (this.weightInterpretation!= null);
     }
 
     /**
@@ -435,10 +389,6 @@ public class AircraftCharacteristicType
         this.passengers = value;
     }
 
-    public boolean isSetPassengers() {
-        return (this.passengers!= null);
-    }
-
     /**
      * Gets the value of the passengersInterpretation property.
      * 
@@ -461,10 +411,6 @@ public class AircraftCharacteristicType
      */
     public void setPassengersInterpretation(JAXBElement<CodeValueInterpretationType> value) {
         this.passengersInterpretation = value;
-    }
-
-    public boolean isSetPassengersInterpretation() {
-        return (this.passengersInterpretation!= null);
     }
 
     /**
@@ -491,10 +437,6 @@ public class AircraftCharacteristicType
         this.speed = value;
     }
 
-    public boolean isSetSpeed() {
-        return (this.speed!= null);
-    }
-
     /**
      * Gets the value of the speedInterpretation property.
      * 
@@ -517,10 +459,6 @@ public class AircraftCharacteristicType
      */
     public void setSpeedInterpretation(JAXBElement<CodeValueInterpretationType> value) {
         this.speedInterpretation = value;
-    }
-
-    public boolean isSetSpeedInterpretation() {
-        return (this.speedInterpretation!= null);
     }
 
     /**
@@ -547,10 +485,6 @@ public class AircraftCharacteristicType
         this.wakeTurbulence = value;
     }
 
-    public boolean isSetWakeTurbulence() {
-        return (this.wakeTurbulence!= null);
-    }
-
     /**
      * Gets the value of the navigationEquipment property.
      * 
@@ -573,10 +507,6 @@ public class AircraftCharacteristicType
      */
     public void setNavigationEquipment(JAXBElement<CodeNavigationEquipmentType> value) {
         this.navigationEquipment = value;
-    }
-
-    public boolean isSetNavigationEquipment() {
-        return (this.navigationEquipment!= null);
     }
 
     /**
@@ -603,10 +533,6 @@ public class AircraftCharacteristicType
         this.navigationSpecification = value;
     }
 
-    public boolean isSetNavigationSpecification() {
-        return (this.navigationSpecification!= null);
-    }
-
     /**
      * Gets the value of the verticalSeparationCapability property.
      * 
@@ -629,10 +555,6 @@ public class AircraftCharacteristicType
      */
     public void setVerticalSeparationCapability(JAXBElement<CodeRVSMType> value) {
         this.verticalSeparationCapability = value;
-    }
-
-    public boolean isSetVerticalSeparationCapability() {
-        return (this.verticalSeparationCapability!= null);
     }
 
     /**
@@ -659,10 +581,6 @@ public class AircraftCharacteristicType
         this.antiCollisionAndSeparationEquipment = value;
     }
 
-    public boolean isSetAntiCollisionAndSeparationEquipment() {
-        return (this.antiCollisionAndSeparationEquipment!= null);
-    }
-
     /**
      * Gets the value of the communicationEquipment property.
      * 
@@ -687,10 +605,6 @@ public class AircraftCharacteristicType
         this.communicationEquipment = value;
     }
 
-    public boolean isSetCommunicationEquipment() {
-        return (this.communicationEquipment!= null);
-    }
-
     /**
      * Gets the value of the surveillanceEquipment property.
      * 
@@ -713,10 +627,6 @@ public class AircraftCharacteristicType
      */
     public void setSurveillanceEquipment(JAXBElement<CodeTransponderType> value) {
         this.surveillanceEquipment = value;
-    }
-
-    public boolean isSetSurveillanceEquipment() {
-        return (this.surveillanceEquipment!= null);
     }
 
     /**
@@ -751,14 +661,6 @@ public class AircraftCharacteristicType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -791,14 +693,6 @@ public class AircraftCharacteristicType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -827,7 +721,6 @@ public class AircraftCharacteristicType
     public static class Extension {
 
         @XmlElement(name = "AbstractAircraftCharacteristicExtension")
-        @Valid
         protected AbstractExtensionType abstractAircraftCharacteristicExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -856,10 +749,6 @@ public class AircraftCharacteristicType
             this.abstractAircraftCharacteristicExtension = value;
         }
 
-        public boolean isSetAbstractAircraftCharacteristicExtension() {
-            return (this.abstractAircraftCharacteristicExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -884,16 +773,8 @@ public class AircraftCharacteristicType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

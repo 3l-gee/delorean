@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -105,15 +102,9 @@ public class RunwayDirectionTimeSliceType
     @XmlElementRef(name = "startingElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayElementPropertyType> startingElement;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayDirectionTimeSliceType.Extension> extension;
 
     /**
@@ -140,10 +131,6 @@ public class RunwayDirectionTimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the trueBearing property.
      * 
@@ -166,10 +153,6 @@ public class RunwayDirectionTimeSliceType
      */
     public void setTrueBearing(JAXBElement<ValBearingType> value) {
         this.trueBearing = value;
-    }
-
-    public boolean isSetTrueBearing() {
-        return (this.trueBearing!= null);
     }
 
     /**
@@ -196,10 +179,6 @@ public class RunwayDirectionTimeSliceType
         this.trueBearingAccuracy = value;
     }
 
-    public boolean isSetTrueBearingAccuracy() {
-        return (this.trueBearingAccuracy!= null);
-    }
-
     /**
      * Gets the value of the magneticBearing property.
      * 
@@ -222,10 +201,6 @@ public class RunwayDirectionTimeSliceType
      */
     public void setMagneticBearing(JAXBElement<ValBearingType> value) {
         this.magneticBearing = value;
-    }
-
-    public boolean isSetMagneticBearing() {
-        return (this.magneticBearing!= null);
     }
 
     /**
@@ -252,10 +227,6 @@ public class RunwayDirectionTimeSliceType
         this.patternVFR = value;
     }
 
-    public boolean isSetPatternVFR() {
-        return (this.patternVFR!= null);
-    }
-
     /**
      * Gets the value of the slopeTDZ property.
      * 
@@ -278,10 +249,6 @@ public class RunwayDirectionTimeSliceType
      */
     public void setSlopeTDZ(JAXBElement<ValSlopeType> value) {
         this.slopeTDZ = value;
-    }
-
-    public boolean isSetSlopeTDZ() {
-        return (this.slopeTDZ!= null);
     }
 
     /**
@@ -308,10 +275,6 @@ public class RunwayDirectionTimeSliceType
         this.elevationTDZ = value;
     }
 
-    public boolean isSetElevationTDZ() {
-        return (this.elevationTDZ!= null);
-    }
-
     /**
      * Gets the value of the elevationTDZAccuracy property.
      * 
@@ -334,10 +297,6 @@ public class RunwayDirectionTimeSliceType
      */
     public void setElevationTDZAccuracy(JAXBElement<ValDistanceType> value) {
         this.elevationTDZAccuracy = value;
-    }
-
-    public boolean isSetElevationTDZAccuracy() {
-        return (this.elevationTDZAccuracy!= null);
     }
 
     /**
@@ -364,10 +323,6 @@ public class RunwayDirectionTimeSliceType
         this.approachMarkingType = value;
     }
 
-    public boolean isSetApproachMarkingType() {
-        return (this.approachMarkingType!= null);
-    }
-
     /**
      * Gets the value of the approachMarkingCondition property.
      * 
@@ -390,10 +345,6 @@ public class RunwayDirectionTimeSliceType
      */
     public void setApproachMarkingCondition(JAXBElement<CodeMarkingConditionType> value) {
         this.approachMarkingCondition = value;
-    }
-
-    public boolean isSetApproachMarkingCondition() {
-        return (this.approachMarkingCondition!= null);
     }
 
     /**
@@ -420,10 +371,6 @@ public class RunwayDirectionTimeSliceType
         this.classLightingJAR = value;
     }
 
-    public boolean isSetClassLightingJAR() {
-        return (this.classLightingJAR!= null);
-    }
-
     /**
      * Gets the value of the precisionApproachGuidance property.
      * 
@@ -446,10 +393,6 @@ public class RunwayDirectionTimeSliceType
      */
     public void setPrecisionApproachGuidance(JAXBElement<CodeApproachGuidanceType> value) {
         this.precisionApproachGuidance = value;
-    }
-
-    public boolean isSetPrecisionApproachGuidance() {
-        return (this.precisionApproachGuidance!= null);
     }
 
     /**
@@ -476,10 +419,6 @@ public class RunwayDirectionTimeSliceType
         this.usedRunway = value;
     }
 
-    public boolean isSetUsedRunway() {
-        return (this.usedRunway!= null);
-    }
-
     /**
      * Gets the value of the startingElement property.
      * 
@@ -502,10 +441,6 @@ public class RunwayDirectionTimeSliceType
      */
     public void setStartingElement(JAXBElement<RunwayElementPropertyType> value) {
         this.startingElement = value;
-    }
-
-    public boolean isSetStartingElement() {
-        return (this.startingElement!= null);
     }
 
     /**
@@ -540,14 +475,6 @@ public class RunwayDirectionTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -578,14 +505,6 @@ public class RunwayDirectionTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -620,14 +539,6 @@ public class RunwayDirectionTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -656,8 +567,6 @@ public class RunwayDirectionTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayDirectionExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractRunwayDirectionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -686,10 +595,6 @@ public class RunwayDirectionTimeSliceType
             this.abstractRunwayDirectionExtension = value;
         }
 
-        public boolean isSetAbstractRunwayDirectionExtension() {
-            return (this.abstractRunwayDirectionExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -714,16 +619,8 @@ public class RunwayDirectionTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

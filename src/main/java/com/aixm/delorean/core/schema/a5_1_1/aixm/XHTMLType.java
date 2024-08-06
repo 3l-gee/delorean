@@ -80,14 +80,6 @@ public class XHTMLType {
         return this.any;
     }
 
-    public boolean isSetAny() {
-        return ((this.any!= null)&&(!this.any.isEmpty()));
-    }
-
-    public void unsetAny() {
-        this.any = null;
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -110,10 +102,6 @@ public class XHTMLType {
      */
     public void setNilReason(String value) {
         this.nilReason = value;
-    }
-
-    public boolean isSetNilReason() {
-        return (this.nilReason!= null);
     }
 
 }

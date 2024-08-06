@@ -85,10 +85,6 @@ public class ConversionType
         this.method = value;
     }
 
-    public boolean isSetMethod() {
-        return (this.method!= null);
-    }
-
     /**
      * gml:parameterValue is a composition association to a parameter value or group of parameter values used by a coordinate operation.
      * 
@@ -123,14 +119,6 @@ public class ConversionType
             parameterValue = new ArrayList<>();
         }
         return this.parameterValue;
-    }
-
-    public boolean isSetParameterValue() {
-        return ((this.parameterValue!= null)&&(!this.parameterValue.isEmpty()));
-    }
-
-    public void unsetParameterValue() {
-        this.parameterValue = null;
     }
 
 }

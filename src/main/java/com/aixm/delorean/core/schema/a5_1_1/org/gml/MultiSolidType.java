@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -49,14 +47,11 @@ public class MultiSolidType
      * This property element either references a solid via the XLink-attributes or contains the solid element. A solid element is any element, which is substitutable for gml:AbstractSolid.
      * 
      */
-    @Valid
-    @Size(min = 0)
     protected List<SolidPropertyType> solidMember;
     /**
      * This property element contains a list of solids. The order of the elements is significant and shall be preserved when processing the array.
      * 
      */
-    @Valid
     protected SolidArrayPropertyType solidMembers;
 
     /**
@@ -93,14 +88,6 @@ public class MultiSolidType
         return this.solidMember;
     }
 
-    public boolean isSetSolidMember() {
-        return ((this.solidMember!= null)&&(!this.solidMember.isEmpty()));
-    }
-
-    public void unsetSolidMember() {
-        this.solidMember = null;
-    }
-
     /**
      * This property element contains a list of solids. The order of the elements is significant and shall be preserved when processing the array.
      * 
@@ -124,10 +111,6 @@ public class MultiSolidType
      */
     public void setSolidMembers(SolidArrayPropertyType value) {
         this.solidMembers = value;
-    }
-
-    public boolean isSetSolidMembers() {
-        return (this.solidMembers!= null);
     }
 
 }

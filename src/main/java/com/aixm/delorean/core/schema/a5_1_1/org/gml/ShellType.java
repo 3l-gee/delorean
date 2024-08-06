@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -52,9 +49,6 @@ public class ShellType
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<SurfacePropertyType> surfaceMember;
     @XmlAttribute(name = "aggregationType")
     protected AggregationType aggregationType;
@@ -93,14 +87,6 @@ public class ShellType
         return this.surfaceMember;
     }
 
-    public boolean isSetSurfaceMember() {
-        return ((this.surfaceMember!= null)&&(!this.surfaceMember.isEmpty()));
-    }
-
-    public void unsetSurfaceMember() {
-        this.surfaceMember = null;
-    }
-
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -123,10 +109,6 @@ public class ShellType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
-    }
-
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
     }
 
 }

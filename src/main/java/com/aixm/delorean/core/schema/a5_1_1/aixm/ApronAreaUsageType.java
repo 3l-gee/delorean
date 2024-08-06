@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -71,17 +69,11 @@ public class ApronAreaUsageType
     @XmlElementRef(name = "priorPermission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDurationType> priorPermission;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationPropertyType> contact;
     @XmlElementRef(name = "selection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ConditionCombinationPropertyType> selection;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ApronAreaUsageType.Extension> extension;
 
     /**
@@ -108,10 +100,6 @@ public class ApronAreaUsageType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the priorPermission property.
      * 
@@ -134,10 +122,6 @@ public class ApronAreaUsageType
      */
     public void setPriorPermission(JAXBElement<ValDurationType> value) {
         this.priorPermission = value;
-    }
-
-    public boolean isSetPriorPermission() {
-        return (this.priorPermission!= null);
     }
 
     /**
@@ -172,14 +156,6 @@ public class ApronAreaUsageType
         return this.contact;
     }
 
-    public boolean isSetContact() {
-        return ((this.contact!= null)&&(!this.contact.isEmpty()));
-    }
-
-    public void unsetContact() {
-        this.contact = null;
-    }
-
     /**
      * Gets the value of the selection property.
      * 
@@ -202,10 +178,6 @@ public class ApronAreaUsageType
      */
     public void setSelection(JAXBElement<ConditionCombinationPropertyType> value) {
         this.selection = value;
-    }
-
-    public boolean isSetSelection() {
-        return (this.selection!= null);
     }
 
     /**
@@ -240,14 +212,6 @@ public class ApronAreaUsageType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -280,14 +244,6 @@ public class ApronAreaUsageType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -318,10 +274,8 @@ public class ApronAreaUsageType
     public static class Extension {
 
         @XmlElement(name = "AbstractUsageConditionExtension")
-        @Valid
         protected AbstractExtensionType abstractUsageConditionExtension;
         @XmlElement(name = "AbstractApronAreaUsageExtension")
-        @Valid
         protected AbstractExtensionType abstractApronAreaUsageExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -350,10 +304,6 @@ public class ApronAreaUsageType
             this.abstractUsageConditionExtension = value;
         }
 
-        public boolean isSetAbstractUsageConditionExtension() {
-            return (this.abstractUsageConditionExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractApronAreaUsageExtension property.
          * 
@@ -376,10 +326,6 @@ public class ApronAreaUsageType
          */
         public void setAbstractApronAreaUsageExtension(AbstractExtensionType value) {
             this.abstractApronAreaUsageExtension = value;
-        }
-
-        public boolean isSetAbstractApronAreaUsageExtension() {
-            return (this.abstractApronAreaUsageExtension!= null);
         }
 
         /**
@@ -406,16 +352,8 @@ public class ApronAreaUsageType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

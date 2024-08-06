@@ -75,10 +75,6 @@ public class LengthPropertyType {
         this.length = value;
     }
 
-    public boolean isSetLength() {
-        return (this.length!= null);
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -109,14 +105,6 @@ public class LengthPropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
-    }
-
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
     }
 
 }

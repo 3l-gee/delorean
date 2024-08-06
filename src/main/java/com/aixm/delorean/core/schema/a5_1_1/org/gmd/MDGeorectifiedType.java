@@ -12,9 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.BooleanPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gss.GMPointPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -61,24 +58,13 @@ public class MDGeorectifiedType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected BooleanPropertyType checkPointAvailability;
-    @Valid
     protected CharacterStringPropertyType checkPointDescription;
-    @Valid
-    @Size(min = 0)
     protected List<GMPointPropertyType> cornerPoints;
-    @Valid
     protected GMPointPropertyType centerPoint;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MDPixelOrientationCodePropertyType pointInPixel;
-    @Valid
     protected CharacterStringPropertyType transformationDimensionDescription;
-    @Valid
-    @Size(min = 0, max = 2)
     protected List<CharacterStringPropertyType> transformationDimensionMapping;
 
     /**
@@ -105,10 +91,6 @@ public class MDGeorectifiedType
         this.checkPointAvailability = value;
     }
 
-    public boolean isSetCheckPointAvailability() {
-        return (this.checkPointAvailability!= null);
-    }
-
     /**
      * Gets the value of the checkPointDescription property.
      * 
@@ -131,10 +113,6 @@ public class MDGeorectifiedType
      */
     public void setCheckPointDescription(CharacterStringPropertyType value) {
         this.checkPointDescription = value;
-    }
-
-    public boolean isSetCheckPointDescription() {
-        return (this.checkPointDescription!= null);
     }
 
     /**
@@ -169,14 +147,6 @@ public class MDGeorectifiedType
         return this.cornerPoints;
     }
 
-    public boolean isSetCornerPoints() {
-        return ((this.cornerPoints!= null)&&(!this.cornerPoints.isEmpty()));
-    }
-
-    public void unsetCornerPoints() {
-        this.cornerPoints = null;
-    }
-
     /**
      * Gets the value of the centerPoint property.
      * 
@@ -199,10 +169,6 @@ public class MDGeorectifiedType
      */
     public void setCenterPoint(GMPointPropertyType value) {
         this.centerPoint = value;
-    }
-
-    public boolean isSetCenterPoint() {
-        return (this.centerPoint!= null);
     }
 
     /**
@@ -229,10 +195,6 @@ public class MDGeorectifiedType
         this.pointInPixel = value;
     }
 
-    public boolean isSetPointInPixel() {
-        return (this.pointInPixel!= null);
-    }
-
     /**
      * Gets the value of the transformationDimensionDescription property.
      * 
@@ -255,10 +217,6 @@ public class MDGeorectifiedType
      */
     public void setTransformationDimensionDescription(CharacterStringPropertyType value) {
         this.transformationDimensionDescription = value;
-    }
-
-    public boolean isSetTransformationDimensionDescription() {
-        return (this.transformationDimensionDescription!= null);
     }
 
     /**
@@ -291,14 +249,6 @@ public class MDGeorectifiedType
             transformationDimensionMapping = new ArrayList<>();
         }
         return this.transformationDimensionMapping;
-    }
-
-    public boolean isSetTransformationDimensionMapping() {
-        return ((this.transformationDimensionMapping!= null)&&(!this.transformationDimensionMapping.isEmpty()));
-    }
-
-    public void unsetTransformationDimensionMapping() {
-        this.transformationDimensionMapping = null;
     }
 
 }

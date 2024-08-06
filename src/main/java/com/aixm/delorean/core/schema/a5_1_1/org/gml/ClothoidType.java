@@ -8,8 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigDecimal;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -62,15 +60,10 @@ public class ClothoidType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected ClothoidType.RefLocation refLocation;
     @XmlElement(required = true)
-    @NotNull
     protected BigDecimal scaleFactor;
-    @NotNull
     protected double startParameter;
-    @NotNull
     protected double endParameter;
     @XmlAttribute(name = "interpolation")
     public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CLOTHOID;
@@ -99,10 +92,6 @@ public class ClothoidType
         this.refLocation = value;
     }
 
-    public boolean isSetRefLocation() {
-        return (this.refLocation!= null);
-    }
-
     /**
      * Gets the value of the scaleFactor property.
      * 
@@ -127,10 +116,6 @@ public class ClothoidType
         this.scaleFactor = value;
     }
 
-    public boolean isSetScaleFactor() {
-        return (this.scaleFactor!= null);
-    }
-
     /**
      * Gets the value of the startParameter property.
      * 
@@ -147,10 +132,6 @@ public class ClothoidType
         this.startParameter = value;
     }
 
-    public boolean isSetStartParameter() {
-        return true;
-    }
-
     /**
      * Gets the value of the endParameter property.
      * 
@@ -165,10 +146,6 @@ public class ClothoidType
      */
     public void setEndParameter(double value) {
         this.endParameter = value;
-    }
-
-    public boolean isSetEndParameter() {
-        return true;
     }
 
 
@@ -202,8 +179,6 @@ public class ClothoidType
          * 
          */
         @XmlElement(name = "AffinePlacement", required = true)
-        @NotNull
-        @Valid
         protected AffinePlacementType affinePlacement;
 
         /**
@@ -229,10 +204,6 @@ public class ClothoidType
          */
         public void setAffinePlacement(AffinePlacementType value) {
             this.affinePlacement = value;
-        }
-
-        public boolean isSetAffinePlacement() {
-            return (this.affinePlacement!= null);
         }
 
     }

@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -47,8 +45,6 @@ public class TopoSurfacePropertyType {
      * 
      */
     @XmlElement(name = "TopoSurface", required = true)
-    @NotNull
-    @Valid
     protected TopoSurfaceType topoSurface;
     @XmlAttribute(name = "owns")
     protected java.lang.Boolean owns;
@@ -78,10 +74,6 @@ public class TopoSurfacePropertyType {
         this.topoSurface = value;
     }
 
-    public boolean isSetTopoSurface() {
-        return (this.topoSurface!= null);
-    }
-
     /**
      * Gets the value of the owns property.
      * 
@@ -106,16 +98,8 @@ public class TopoSurfacePropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(boolean value) {
+    public void setOwns(java.lang.Boolean value) {
         this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

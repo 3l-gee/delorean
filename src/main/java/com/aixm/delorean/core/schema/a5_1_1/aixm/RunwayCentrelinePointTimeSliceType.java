@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,19 +73,11 @@ public class RunwayCentrelinePointTimeSliceType
     @XmlElementRef(name = "onRunway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayDirectionPropertyType> onRunway;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RunwayDeclaredDistancePropertyType> associatedDeclaredDistance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidEquipmentDistancePropertyType> navaidEquipment;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayCentrelinePointTimeSliceType.Extension> extension;
 
     /**
@@ -115,10 +104,6 @@ public class RunwayCentrelinePointTimeSliceType
         this.role = value;
     }
 
-    public boolean isSetRole() {
-        return (this.role!= null);
-    }
-
     /**
      * Gets the value of the designator property.
      * 
@@ -141,10 +126,6 @@ public class RunwayCentrelinePointTimeSliceType
      */
     public void setDesignator(JAXBElement<TextDesignatorType> value) {
         this.designator = value;
-    }
-
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
     }
 
     /**
@@ -171,10 +152,6 @@ public class RunwayCentrelinePointTimeSliceType
         this.location = value;
     }
 
-    public boolean isSetLocation() {
-        return (this.location!= null);
-    }
-
     /**
      * Gets the value of the onRunway property.
      * 
@@ -197,10 +174,6 @@ public class RunwayCentrelinePointTimeSliceType
      */
     public void setOnRunway(JAXBElement<RunwayDirectionPropertyType> value) {
         this.onRunway = value;
-    }
-
-    public boolean isSetOnRunway() {
-        return (this.onRunway!= null);
     }
 
     /**
@@ -235,14 +208,6 @@ public class RunwayCentrelinePointTimeSliceType
         return this.associatedDeclaredDistance;
     }
 
-    public boolean isSetAssociatedDeclaredDistance() {
-        return ((this.associatedDeclaredDistance!= null)&&(!this.associatedDeclaredDistance.isEmpty()));
-    }
-
-    public void unsetAssociatedDeclaredDistance() {
-        this.associatedDeclaredDistance = null;
-    }
-
     /**
      * Gets the value of the navaidEquipment property.
      * 
@@ -273,14 +238,6 @@ public class RunwayCentrelinePointTimeSliceType
             navaidEquipment = new ArrayList<>();
         }
         return this.navaidEquipment;
-    }
-
-    public boolean isSetNavaidEquipment() {
-        return ((this.navaidEquipment!= null)&&(!this.navaidEquipment.isEmpty()));
-    }
-
-    public void unsetNavaidEquipment() {
-        this.navaidEquipment = null;
     }
 
     /**
@@ -315,14 +272,6 @@ public class RunwayCentrelinePointTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -355,14 +304,6 @@ public class RunwayCentrelinePointTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -391,8 +332,6 @@ public class RunwayCentrelinePointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayCentrelinePointExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractRunwayCentrelinePointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -421,10 +360,6 @@ public class RunwayCentrelinePointTimeSliceType
             this.abstractRunwayCentrelinePointExtension = value;
         }
 
-        public boolean isSetAbstractRunwayCentrelinePointExtension() {
-            return (this.abstractRunwayCentrelinePointExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -449,16 +384,8 @@ public class RunwayCentrelinePointTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

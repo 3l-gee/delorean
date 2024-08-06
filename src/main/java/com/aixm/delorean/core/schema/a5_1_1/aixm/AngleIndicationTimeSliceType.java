@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -101,11 +98,7 @@ public class AngleIndicationTimeSliceType
     @XmlElementRef(name = "pointChoice_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> pointChoiceAirportReferencePoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AngleIndicationTimeSliceType.Extension> extension;
 
     /**
@@ -132,10 +125,6 @@ public class AngleIndicationTimeSliceType
         this.angle = value;
     }
 
-    public boolean isSetAngle() {
-        return (this.angle!= null);
-    }
-
     /**
      * Gets the value of the angleType property.
      * 
@@ -158,10 +147,6 @@ public class AngleIndicationTimeSliceType
      */
     public void setAngleType(JAXBElement<CodeBearingType> value) {
         this.angleType = value;
-    }
-
-    public boolean isSetAngleType() {
-        return (this.angleType!= null);
     }
 
     /**
@@ -188,10 +173,6 @@ public class AngleIndicationTimeSliceType
         this.indicationDirection = value;
     }
 
-    public boolean isSetIndicationDirection() {
-        return (this.indicationDirection!= null);
-    }
-
     /**
      * Gets the value of the trueAngle property.
      * 
@@ -214,10 +195,6 @@ public class AngleIndicationTimeSliceType
      */
     public void setTrueAngle(JAXBElement<ValBearingType> value) {
         this.trueAngle = value;
-    }
-
-    public boolean isSetTrueAngle() {
-        return (this.trueAngle!= null);
     }
 
     /**
@@ -244,10 +221,6 @@ public class AngleIndicationTimeSliceType
         this.cardinalDirection = value;
     }
 
-    public boolean isSetCardinalDirection() {
-        return (this.cardinalDirection!= null);
-    }
-
     /**
      * Gets the value of the minimumReceptionAltitude property.
      * 
@@ -270,10 +243,6 @@ public class AngleIndicationTimeSliceType
      */
     public void setMinimumReceptionAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumReceptionAltitude = value;
-    }
-
-    public boolean isSetMinimumReceptionAltitude() {
-        return (this.minimumReceptionAltitude!= null);
     }
 
     /**
@@ -300,10 +269,6 @@ public class AngleIndicationTimeSliceType
         this.fix = value;
     }
 
-    public boolean isSetFix() {
-        return (this.fix!= null);
-    }
-
     /**
      * Gets the value of the pointChoiceFixDesignatedPoint property.
      * 
@@ -326,10 +291,6 @@ public class AngleIndicationTimeSliceType
      */
     public void setPointChoiceFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.pointChoiceFixDesignatedPoint = value;
-    }
-
-    public boolean isSetPointChoiceFixDesignatedPoint() {
-        return (this.pointChoiceFixDesignatedPoint!= null);
     }
 
     /**
@@ -356,10 +317,6 @@ public class AngleIndicationTimeSliceType
         this.pointChoiceNavaidSystem = value;
     }
 
-    public boolean isSetPointChoiceNavaidSystem() {
-        return (this.pointChoiceNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the pointChoicePosition property.
      * 
@@ -382,10 +339,6 @@ public class AngleIndicationTimeSliceType
      */
     public void setPointChoicePosition(JAXBElement<PointPropertyType> value) {
         this.pointChoicePosition = value;
-    }
-
-    public boolean isSetPointChoicePosition() {
-        return (this.pointChoicePosition!= null);
     }
 
     /**
@@ -412,10 +365,6 @@ public class AngleIndicationTimeSliceType
         this.pointChoiceRunwayPoint = value;
     }
 
-    public boolean isSetPointChoiceRunwayPoint() {
-        return (this.pointChoiceRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the pointChoiceAimingPoint property.
      * 
@@ -440,10 +389,6 @@ public class AngleIndicationTimeSliceType
         this.pointChoiceAimingPoint = value;
     }
 
-    public boolean isSetPointChoiceAimingPoint() {
-        return (this.pointChoiceAimingPoint!= null);
-    }
-
     /**
      * Gets the value of the pointChoiceAirportReferencePoint property.
      * 
@@ -466,10 +411,6 @@ public class AngleIndicationTimeSliceType
      */
     public void setPointChoiceAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.pointChoiceAirportReferencePoint = value;
-    }
-
-    public boolean isSetPointChoiceAirportReferencePoint() {
-        return (this.pointChoiceAirportReferencePoint!= null);
     }
 
     /**
@@ -504,14 +445,6 @@ public class AngleIndicationTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -544,14 +477,6 @@ public class AngleIndicationTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -580,8 +505,6 @@ public class AngleIndicationTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAngleIndicationExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractAngleIndicationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -610,10 +533,6 @@ public class AngleIndicationTimeSliceType
             this.abstractAngleIndicationExtension = value;
         }
 
-        public boolean isSetAbstractAngleIndicationExtension() {
-            return (this.abstractAngleIndicationExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -638,16 +557,8 @@ public class AngleIndicationTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

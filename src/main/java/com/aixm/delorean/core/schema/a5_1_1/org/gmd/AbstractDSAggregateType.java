@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -61,20 +58,10 @@ public abstract class AbstractDSAggregateType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<DSDataSetPropertyType> composedOf;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<MDMetadataPropertyType> seriesMetadata;
-    @Valid
-    @Size(min = 0)
     protected List<DSAggregatePropertyType> subset;
-    @Valid
-    @Size(min = 0)
     protected List<DSAggregatePropertyType> superset;
 
     /**
@@ -109,14 +96,6 @@ public abstract class AbstractDSAggregateType
         return this.composedOf;
     }
 
-    public boolean isSetComposedOf() {
-        return ((this.composedOf!= null)&&(!this.composedOf.isEmpty()));
-    }
-
-    public void unsetComposedOf() {
-        this.composedOf = null;
-    }
-
     /**
      * Gets the value of the seriesMetadata property.
      * 
@@ -147,14 +126,6 @@ public abstract class AbstractDSAggregateType
             seriesMetadata = new ArrayList<>();
         }
         return this.seriesMetadata;
-    }
-
-    public boolean isSetSeriesMetadata() {
-        return ((this.seriesMetadata!= null)&&(!this.seriesMetadata.isEmpty()));
-    }
-
-    public void unsetSeriesMetadata() {
-        this.seriesMetadata = null;
     }
 
     /**
@@ -189,14 +160,6 @@ public abstract class AbstractDSAggregateType
         return this.subset;
     }
 
-    public boolean isSetSubset() {
-        return ((this.subset!= null)&&(!this.subset.isEmpty()));
-    }
-
-    public void unsetSubset() {
-        this.subset = null;
-    }
-
     /**
      * Gets the value of the superset property.
      * 
@@ -227,14 +190,6 @@ public abstract class AbstractDSAggregateType
             superset = new ArrayList<>();
         }
         return this.superset;
-    }
-
-    public boolean isSetSuperset() {
-        return ((this.superset!= null)&&(!this.superset.isEmpty()));
-    }
-
-    public void unsetSuperset() {
-        this.superset = null;
     }
 
 }

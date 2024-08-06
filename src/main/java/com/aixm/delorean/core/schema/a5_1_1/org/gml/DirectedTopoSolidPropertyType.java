@@ -12,8 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -34,8 +32,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}TopoSolid"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attribute name="orientation" type="{http://www.opengis.net/gml/3.2}SignType" default="+" />
  *     </restriction>
  *   </complexContent>
@@ -57,10 +55,11 @@ public class DirectedTopoSolidPropertyType {
      * 
      */
     @XmlElement(name = "TopoSolid")
-    @Valid
     protected TopoSolidType topoSolid;
     @XmlAttribute(name = "orientation")
     protected SignType orientation;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
@@ -71,10 +70,8 @@ public class DirectedTopoSolidPropertyType {
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -82,8 +79,6 @@ public class DirectedTopoSolidPropertyType {
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
 
     /**
      * gml:TopoSolid represents the 3-dimensional topology primitive. 
@@ -110,10 +105,6 @@ public class DirectedTopoSolidPropertyType {
      */
     public void setTopoSolid(TopoSolidType value) {
         this.topoSolid = value;
-    }
-
-    public boolean isSetTopoSolid() {
-        return (this.topoSolid!= null);
     }
 
     /**
@@ -144,8 +135,32 @@ public class DirectedTopoSolidPropertyType {
         this.orientation = value;
     }
 
-    public boolean isSetOrientation() {
-        return (this.orientation!= null);
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(java.lang.Boolean value) {
+        this.owns = value;
     }
 
     /**
@@ -180,14 +195,6 @@ public class DirectedTopoSolidPropertyType {
         return this.nilReason;
     }
 
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
-    }
-
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -210,10 +217,6 @@ public class DirectedTopoSolidPropertyType {
      */
     public void setRemoteSchema(String value) {
         this.remoteSchema = value;
-    }
-
-    public boolean isSetRemoteSchema() {
-        return (this.remoteSchema!= null);
     }
 
     /**
@@ -240,10 +243,6 @@ public class DirectedTopoSolidPropertyType {
         this.href = value;
     }
 
-    public boolean isSetHref() {
-        return (this.href!= null);
-    }
-
     /**
      * Gets the value of the role property.
      * 
@@ -266,10 +265,6 @@ public class DirectedTopoSolidPropertyType {
      */
     public void setRole(String value) {
         this.role = value;
-    }
-
-    public boolean isSetRole() {
-        return (this.role!= null);
     }
 
     /**
@@ -296,10 +291,6 @@ public class DirectedTopoSolidPropertyType {
         this.arcrole = value;
     }
 
-    public boolean isSetArcrole() {
-        return (this.arcrole!= null);
-    }
-
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -322,10 +313,6 @@ public class DirectedTopoSolidPropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
-    }
-
-    public boolean isSetTitleAttribute() {
-        return (this.titleAttribute!= null);
     }
 
     /**
@@ -352,10 +339,6 @@ public class DirectedTopoSolidPropertyType {
         this.show = value;
     }
 
-    public boolean isSetShow() {
-        return (this.show!= null);
-    }
-
     /**
      * Gets the value of the actuate property.
      * 
@@ -378,46 +361,6 @@ public class DirectedTopoSolidPropertyType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
-    }
-
-    public boolean isSetActuate() {
-        return (this.actuate!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

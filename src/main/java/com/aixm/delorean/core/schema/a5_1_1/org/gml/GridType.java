@@ -10,10 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -62,21 +58,13 @@ public class GridType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected GridLimitsType limits;
     @XmlList
     @XmlElement(name = "axisLabels")
-    @Valid
-    @Size(min = 1, max = 1)
     protected List<String> gridAxisLabels;
-    @Valid
-    @Size(min = 1)
     protected List<String> axisName;
     @XmlAttribute(name = "dimension", required = true)
     @XmlSchemaType(name = "positiveInteger")
-    @NotNull
-    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger dimension;
 
     /**
@@ -101,10 +89,6 @@ public class GridType
      */
     public void setLimits(GridLimitsType value) {
         this.limits = value;
-    }
-
-    public boolean isSetLimits() {
-        return (this.limits!= null);
     }
 
     /**
@@ -139,14 +123,6 @@ public class GridType
         return this.gridAxisLabels;
     }
 
-    public boolean isSetGridAxisLabels() {
-        return ((this.gridAxisLabels!= null)&&(!this.gridAxisLabels.isEmpty()));
-    }
-
-    public void unsetGridAxisLabels() {
-        this.gridAxisLabels = null;
-    }
-
     /**
      * Gets the value of the axisName property.
      * 
@@ -179,14 +155,6 @@ public class GridType
         return this.axisName;
     }
 
-    public boolean isSetAxisName() {
-        return ((this.axisName!= null)&&(!this.axisName.isEmpty()));
-    }
-
-    public void unsetAxisName() {
-        this.axisName = null;
-    }
-
     /**
      * Gets the value of the dimension property.
      * 
@@ -209,10 +177,6 @@ public class GridType
      */
     public void setDimension(BigInteger value) {
         this.dimension = value;
-    }
-
-    public boolean isSetDimension() {
-        return (this.dimension!= null);
     }
 
 }

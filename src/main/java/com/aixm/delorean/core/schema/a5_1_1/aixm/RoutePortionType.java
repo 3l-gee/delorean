@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -118,11 +116,7 @@ public class RoutePortionType
     @XmlElementRef(name = "end_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> endAirportReferencePoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<RoutePortionType.Extension> extension;
 
     /**
@@ -149,10 +143,6 @@ public class RoutePortionType
         this.startFixDesignatedPoint = value;
     }
 
-    public boolean isSetStartFixDesignatedPoint() {
-        return (this.startFixDesignatedPoint!= null);
-    }
-
     /**
      * Gets the value of the startNavaidSystem property.
      * 
@@ -175,10 +165,6 @@ public class RoutePortionType
      */
     public void setStartNavaidSystem(JAXBElement<NavaidPropertyType> value) {
         this.startNavaidSystem = value;
-    }
-
-    public boolean isSetStartNavaidSystem() {
-        return (this.startNavaidSystem!= null);
     }
 
     /**
@@ -205,10 +191,6 @@ public class RoutePortionType
         this.startPosition = value;
     }
 
-    public boolean isSetStartPosition() {
-        return (this.startPosition!= null);
-    }
-
     /**
      * Gets the value of the startRunwayPoint property.
      * 
@@ -231,10 +213,6 @@ public class RoutePortionType
      */
     public void setStartRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
         this.startRunwayPoint = value;
-    }
-
-    public boolean isSetStartRunwayPoint() {
-        return (this.startRunwayPoint!= null);
     }
 
     /**
@@ -261,10 +239,6 @@ public class RoutePortionType
         this.startAimingPoint = value;
     }
 
-    public boolean isSetStartAimingPoint() {
-        return (this.startAimingPoint!= null);
-    }
-
     /**
      * Gets the value of the startAirportReferencePoint property.
      * 
@@ -287,10 +261,6 @@ public class RoutePortionType
      */
     public void setStartAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.startAirportReferencePoint = value;
-    }
-
-    public boolean isSetStartAirportReferencePoint() {
-        return (this.startAirportReferencePoint!= null);
     }
 
     /**
@@ -317,10 +287,6 @@ public class RoutePortionType
         this.intermediatePointFixDesignatedPoint = value;
     }
 
-    public boolean isSetIntermediatePointFixDesignatedPoint() {
-        return (this.intermediatePointFixDesignatedPoint!= null);
-    }
-
     /**
      * Gets the value of the intermediatePointNavaidSystem property.
      * 
@@ -343,10 +309,6 @@ public class RoutePortionType
      */
     public void setIntermediatePointNavaidSystem(JAXBElement<NavaidPropertyType> value) {
         this.intermediatePointNavaidSystem = value;
-    }
-
-    public boolean isSetIntermediatePointNavaidSystem() {
-        return (this.intermediatePointNavaidSystem!= null);
     }
 
     /**
@@ -373,10 +335,6 @@ public class RoutePortionType
         this.intermediatePointPosition = value;
     }
 
-    public boolean isSetIntermediatePointPosition() {
-        return (this.intermediatePointPosition!= null);
-    }
-
     /**
      * Gets the value of the intermediatePointRunwayPoint property.
      * 
@@ -399,10 +357,6 @@ public class RoutePortionType
      */
     public void setIntermediatePointRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
         this.intermediatePointRunwayPoint = value;
-    }
-
-    public boolean isSetIntermediatePointRunwayPoint() {
-        return (this.intermediatePointRunwayPoint!= null);
     }
 
     /**
@@ -429,10 +383,6 @@ public class RoutePortionType
         this.intermediatePointAimingPoint = value;
     }
 
-    public boolean isSetIntermediatePointAimingPoint() {
-        return (this.intermediatePointAimingPoint!= null);
-    }
-
     /**
      * Gets the value of the intermediatePointAirportReferencePoint property.
      * 
@@ -455,10 +405,6 @@ public class RoutePortionType
      */
     public void setIntermediatePointAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.intermediatePointAirportReferencePoint = value;
-    }
-
-    public boolean isSetIntermediatePointAirportReferencePoint() {
-        return (this.intermediatePointAirportReferencePoint!= null);
     }
 
     /**
@@ -485,10 +431,6 @@ public class RoutePortionType
         this.referencedRoute = value;
     }
 
-    public boolean isSetReferencedRoute() {
-        return (this.referencedRoute!= null);
-    }
-
     /**
      * Gets the value of the endFixDesignatedPoint property.
      * 
@@ -511,10 +453,6 @@ public class RoutePortionType
      */
     public void setEndFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.endFixDesignatedPoint = value;
-    }
-
-    public boolean isSetEndFixDesignatedPoint() {
-        return (this.endFixDesignatedPoint!= null);
     }
 
     /**
@@ -541,10 +479,6 @@ public class RoutePortionType
         this.endNavaidSystem = value;
     }
 
-    public boolean isSetEndNavaidSystem() {
-        return (this.endNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the endPosition property.
      * 
@@ -567,10 +501,6 @@ public class RoutePortionType
      */
     public void setEndPosition(JAXBElement<PointPropertyType> value) {
         this.endPosition = value;
-    }
-
-    public boolean isSetEndPosition() {
-        return (this.endPosition!= null);
     }
 
     /**
@@ -597,10 +527,6 @@ public class RoutePortionType
         this.endRunwayPoint = value;
     }
 
-    public boolean isSetEndRunwayPoint() {
-        return (this.endRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the endAimingPoint property.
      * 
@@ -625,10 +551,6 @@ public class RoutePortionType
         this.endAimingPoint = value;
     }
 
-    public boolean isSetEndAimingPoint() {
-        return (this.endAimingPoint!= null);
-    }
-
     /**
      * Gets the value of the endAirportReferencePoint property.
      * 
@@ -651,10 +573,6 @@ public class RoutePortionType
      */
     public void setEndAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.endAirportReferencePoint = value;
-    }
-
-    public boolean isSetEndAirportReferencePoint() {
-        return (this.endAirportReferencePoint!= null);
     }
 
     /**
@@ -689,14 +607,6 @@ public class RoutePortionType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -729,14 +639,6 @@ public class RoutePortionType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -765,7 +667,6 @@ public class RoutePortionType
     public static class Extension {
 
         @XmlElement(name = "AbstractRoutePortionExtension")
-        @Valid
         protected AbstractExtensionType abstractRoutePortionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -794,10 +695,6 @@ public class RoutePortionType
             this.abstractRoutePortionExtension = value;
         }
 
-        public boolean isSetAbstractRoutePortionExtension() {
-            return (this.abstractRoutePortionExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -822,16 +719,8 @@ public class RoutePortionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

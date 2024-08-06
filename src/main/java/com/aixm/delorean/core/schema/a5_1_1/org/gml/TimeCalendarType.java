@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -46,9 +43,6 @@ public class TimeCalendarType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<TimeCalendarEraPropertyType> referenceFrame;
 
     /**
@@ -81,14 +75,6 @@ public class TimeCalendarType
             referenceFrame = new ArrayList<>();
         }
         return this.referenceFrame;
-    }
-
-    public boolean isSetReferenceFrame() {
-        return ((this.referenceFrame!= null)&&(!this.referenceFrame.isEmpty()));
-    }
-
-    public void unsetReferenceFrame() {
-        this.referenceFrame = null;
     }
 
 }

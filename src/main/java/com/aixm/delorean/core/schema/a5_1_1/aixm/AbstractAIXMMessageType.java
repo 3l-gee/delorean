@@ -69,8 +69,4 @@ public abstract class AbstractAIXMMessageType
         this.aggregationType = value;
     }
 
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
-    }
-
 }

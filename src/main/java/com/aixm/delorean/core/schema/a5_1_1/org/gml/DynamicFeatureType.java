@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureBaseType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -53,7 +52,6 @@ public class DynamicFeatureType
      * gml:validTime is a convenience property element.
      * 
      */
-    @Valid
     protected TimePrimitivePropertyType validTime;
     /**
      * A generic sequence of events constitute a gml:history of an object.
@@ -66,13 +64,11 @@ public class DynamicFeatureType
      * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data. The remote link attributes of the gml:dataSource element have been deprecated along with its current type.
      * 
      */
-    @Valid
     protected StringOrRefType dataSource;
     /**
      * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data.
      * 
      */
-    @Valid
     protected ReferenceType dataSourceReference;
 
     /**
@@ -98,10 +94,6 @@ public class DynamicFeatureType
      */
     public void setValidTime(TimePrimitivePropertyType value) {
         this.validTime = value;
-    }
-
-    public boolean isSetValidTime() {
-        return (this.validTime!= null);
     }
 
     /**
@@ -132,10 +124,6 @@ public class DynamicFeatureType
         this.history = value;
     }
 
-    public boolean isSetHistory() {
-        return (this.history!= null);
-    }
-
     /**
      * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data. The remote link attributes of the gml:dataSource element have been deprecated along with its current type.
      * 
@@ -161,10 +149,6 @@ public class DynamicFeatureType
         this.dataSource = value;
     }
 
-    public boolean isSetDataSource() {
-        return (this.dataSource!= null);
-    }
-
     /**
      * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data.
      * 
@@ -188,10 +172,6 @@ public class DynamicFeatureType
      */
     public void setDataSourceReference(ReferenceType value) {
         this.dataSourceReference = value;
-    }
-
-    public boolean isSetDataSourceReference() {
-        return (this.dataSourceReference!= null);
     }
 
 }

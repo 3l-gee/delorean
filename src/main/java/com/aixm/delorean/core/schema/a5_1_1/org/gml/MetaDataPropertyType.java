@@ -12,7 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,10 +63,8 @@ public class MetaDataPropertyType {
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -102,10 +99,6 @@ public class MetaDataPropertyType {
         this.abstractMetaData = value;
     }
 
-    public boolean isSetAbstractMetaData() {
-        return (this.abstractMetaData!= null);
-    }
-
     /**
      * Gets the value of the about property.
      * 
@@ -128,10 +121,6 @@ public class MetaDataPropertyType {
      */
     public void setAbout(String value) {
         this.about = value;
-    }
-
-    public boolean isSetAbout() {
-        return (this.about!= null);
     }
 
     /**
@@ -166,14 +155,6 @@ public class MetaDataPropertyType {
         return this.nilReason;
     }
 
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
-    }
-
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -196,10 +177,6 @@ public class MetaDataPropertyType {
      */
     public void setRemoteSchema(String value) {
         this.remoteSchema = value;
-    }
-
-    public boolean isSetRemoteSchema() {
-        return (this.remoteSchema!= null);
     }
 
     /**
@@ -226,10 +203,6 @@ public class MetaDataPropertyType {
         this.href = value;
     }
 
-    public boolean isSetHref() {
-        return (this.href!= null);
-    }
-
     /**
      * Gets the value of the role property.
      * 
@@ -252,10 +225,6 @@ public class MetaDataPropertyType {
      */
     public void setRole(String value) {
         this.role = value;
-    }
-
-    public boolean isSetRole() {
-        return (this.role!= null);
     }
 
     /**
@@ -282,10 +251,6 @@ public class MetaDataPropertyType {
         this.arcrole = value;
     }
 
-    public boolean isSetArcrole() {
-        return (this.arcrole!= null);
-    }
-
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -308,10 +273,6 @@ public class MetaDataPropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
-    }
-
-    public boolean isSetTitleAttribute() {
-        return (this.titleAttribute!= null);
     }
 
     /**
@@ -338,10 +299,6 @@ public class MetaDataPropertyType {
         this.show = value;
     }
 
-    public boolean isSetShow() {
-        return (this.show!= null);
-    }
-
     /**
      * Gets the value of the actuate property.
      * 
@@ -364,10 +321,6 @@ public class MetaDataPropertyType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
-    }
-
-    public boolean isSetActuate() {
-        return (this.actuate!= null);
     }
 
 }

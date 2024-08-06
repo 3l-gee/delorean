@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,11 +74,7 @@ public class MarkingElementType
     @XmlElementRef(name = "extent_location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> extentLocation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<MarkingElementType.Extension> extension;
 
     /**
@@ -107,10 +101,6 @@ public class MarkingElementType
         this.colour = value;
     }
 
-    public boolean isSetColour() {
-        return (this.colour!= null);
-    }
-
     /**
      * Gets the value of the style property.
      * 
@@ -133,10 +123,6 @@ public class MarkingElementType
      */
     public void setStyle(JAXBElement<CodeMarkingStyleType> value) {
         this.style = value;
-    }
-
-    public boolean isSetStyle() {
-        return (this.style!= null);
     }
 
     /**
@@ -163,10 +149,6 @@ public class MarkingElementType
         this.extentCurveExtent = value;
     }
 
-    public boolean isSetExtentCurveExtent() {
-        return (this.extentCurveExtent!= null);
-    }
-
     /**
      * Gets the value of the extentSurfaceExtent property.
      * 
@@ -191,10 +173,6 @@ public class MarkingElementType
         this.extentSurfaceExtent = value;
     }
 
-    public boolean isSetExtentSurfaceExtent() {
-        return (this.extentSurfaceExtent!= null);
-    }
-
     /**
      * Gets the value of the extentLocation property.
      * 
@@ -217,10 +195,6 @@ public class MarkingElementType
      */
     public void setExtentLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.extentLocation = value;
-    }
-
-    public boolean isSetExtentLocation() {
-        return (this.extentLocation!= null);
     }
 
     /**
@@ -255,14 +229,6 @@ public class MarkingElementType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -295,14 +261,6 @@ public class MarkingElementType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -331,7 +289,6 @@ public class MarkingElementType
     public static class Extension {
 
         @XmlElement(name = "AbstractMarkingElementExtension")
-        @Valid
         protected AbstractExtensionType abstractMarkingElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -360,10 +317,6 @@ public class MarkingElementType
             this.abstractMarkingElementExtension = value;
         }
 
-        public boolean isSetAbstractMarkingElementExtension() {
-            return (this.abstractMarkingElementExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -388,16 +341,8 @@ public class MarkingElementType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

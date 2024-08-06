@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -79,11 +77,7 @@ public class DepartureArrivalConditionType
     @XmlElementRef(name = "engineType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AircraftCharacteristicPropertyType> engineType;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<DepartureArrivalConditionType.Extension> extension;
 
     /**
@@ -110,10 +104,6 @@ public class DepartureArrivalConditionType
         this.minimumEnrouteAltitude = value;
     }
 
-    public boolean isSetMinimumEnrouteAltitude() {
-        return (this.minimumEnrouteAltitude!= null);
-    }
-
     /**
      * Gets the value of the minimumCrossingAtEnd property.
      * 
@@ -136,10 +126,6 @@ public class DepartureArrivalConditionType
      */
     public void setMinimumCrossingAtEnd(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumCrossingAtEnd = value;
-    }
-
-    public boolean isSetMinimumCrossingAtEnd() {
-        return (this.minimumCrossingAtEnd!= null);
     }
 
     /**
@@ -166,10 +152,6 @@ public class DepartureArrivalConditionType
         this.minimumCrossingAtEndReference = value;
     }
 
-    public boolean isSetMinimumCrossingAtEndReference() {
-        return (this.minimumCrossingAtEndReference!= null);
-    }
-
     /**
      * Gets the value of the maximumCrossingAtEnd property.
      * 
@@ -192,10 +174,6 @@ public class DepartureArrivalConditionType
      */
     public void setMaximumCrossingAtEnd(JAXBElement<ValDistanceVerticalType> value) {
         this.maximumCrossingAtEnd = value;
-    }
-
-    public boolean isSetMaximumCrossingAtEnd() {
-        return (this.maximumCrossingAtEnd!= null);
     }
 
     /**
@@ -222,10 +200,6 @@ public class DepartureArrivalConditionType
         this.maximumCrossingAtEndReference = value;
     }
 
-    public boolean isSetMaximumCrossingAtEndReference() {
-        return (this.maximumCrossingAtEndReference!= null);
-    }
-
     /**
      * Gets the value of the engineType property.
      * 
@@ -248,10 +222,6 @@ public class DepartureArrivalConditionType
      */
     public void setEngineType(JAXBElement<AircraftCharacteristicPropertyType> value) {
         this.engineType = value;
-    }
-
-    public boolean isSetEngineType() {
-        return (this.engineType!= null);
     }
 
     /**
@@ -286,14 +256,6 @@ public class DepartureArrivalConditionType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -326,14 +288,6 @@ public class DepartureArrivalConditionType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -362,7 +316,6 @@ public class DepartureArrivalConditionType
     public static class Extension {
 
         @XmlElement(name = "AbstractDepartureArrivalConditionExtension")
-        @Valid
         protected AbstractExtensionType abstractDepartureArrivalConditionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -391,10 +344,6 @@ public class DepartureArrivalConditionType
             this.abstractDepartureArrivalConditionExtension = value;
         }
 
-        public boolean isSetAbstractDepartureArrivalConditionExtension() {
-            return (this.abstractDepartureArrivalConditionExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -419,16 +368,8 @@ public class DepartureArrivalConditionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

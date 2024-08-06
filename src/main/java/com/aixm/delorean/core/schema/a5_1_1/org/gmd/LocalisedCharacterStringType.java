@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
-import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -49,7 +48,6 @@ public class LocalisedCharacterStringType {
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
     protected String id;
     @XmlAttribute(name = "locale")
     @XmlSchemaType(name = "anyURI")
@@ -79,10 +77,6 @@ public class LocalisedCharacterStringType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the id property.
      * 
@@ -107,10 +101,6 @@ public class LocalisedCharacterStringType {
         this.id = value;
     }
 
-    public boolean isSetId() {
-        return (this.id!= null);
-    }
-
     /**
      * Gets the value of the locale property.
      * 
@@ -133,10 +123,6 @@ public class LocalisedCharacterStringType {
      */
     public void setLocale(String value) {
         this.locale = value;
-    }
-
-    public boolean isSetLocale() {
-        return (this.locale!= null);
     }
 
 }

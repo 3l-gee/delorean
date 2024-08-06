@@ -7,9 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -52,10 +49,7 @@ public abstract class AbstractAIXMMessageBaseType
      * Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details.
      * 
      */
-    @DecimalMin(value = "0", inclusive = true)
-    @DecimalMax(value = "4294967295", inclusive = true)
     protected Long sequenceNumber;
-    @Valid
     protected MessageMetadataPropertyType messageMetadata;
 
     /**
@@ -83,10 +77,6 @@ public abstract class AbstractAIXMMessageBaseType
         this.sequenceNumber = value;
     }
 
-    public boolean isSetSequenceNumber() {
-        return (this.sequenceNumber!= null);
-    }
-
     /**
      * Gets the value of the messageMetadata property.
      * 
@@ -109,10 +99,6 @@ public abstract class AbstractAIXMMessageBaseType
      */
     public void setMessageMetadata(MessageMetadataPropertyType value) {
         this.messageMetadata = value;
-    }
-
-    public boolean isSetMessageMetadata() {
-        return (this.messageMetadata!= null);
     }
 
 }

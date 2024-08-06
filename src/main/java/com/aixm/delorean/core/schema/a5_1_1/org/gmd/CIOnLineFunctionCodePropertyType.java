@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CodeListValueType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -45,7 +44,6 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CIOnLineFunctionCodePropertyType {
 
     @XmlElement(name = "CI_OnLineFunctionCode")
-    @Valid
     protected CodeListValueType ciOnLineFunctionCode;
     @XmlAttribute(name = "nilReason", namespace = "http://www.isotc211.org/2005/gco")
     protected List<String> nilReason;
@@ -72,10 +70,6 @@ public class CIOnLineFunctionCodePropertyType {
      */
     public void setCIOnLineFunctionCode(CodeListValueType value) {
         this.ciOnLineFunctionCode = value;
-    }
-
-    public boolean isSetCIOnLineFunctionCode() {
-        return (this.ciOnLineFunctionCode!= null);
     }
 
     /**
@@ -108,14 +102,6 @@ public class CIOnLineFunctionCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
-    }
-
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
     }
 
 }

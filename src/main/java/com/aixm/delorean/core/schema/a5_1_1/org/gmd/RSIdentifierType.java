@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -43,9 +42,7 @@ public class RSIdentifierType
     extends MDIdentifierType
 {
 
-    @Valid
     protected CharacterStringPropertyType codeSpace;
-    @Valid
     protected CharacterStringPropertyType version;
 
     /**
@@ -72,10 +69,6 @@ public class RSIdentifierType
         this.codeSpace = value;
     }
 
-    public boolean isSetCodeSpace() {
-        return (this.codeSpace!= null);
-    }
-
     /**
      * Gets the value of the version property.
      * 
@@ -98,10 +91,6 @@ public class RSIdentifierType
      */
     public void setVersion(CharacterStringPropertyType value) {
         this.version = value;
-    }
-
-    public boolean isSetVersion() {
-        return (this.version!= null);
     }
 
 }

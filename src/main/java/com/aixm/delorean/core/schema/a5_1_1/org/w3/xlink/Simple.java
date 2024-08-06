@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
@@ -59,10 +58,8 @@ public class Simple {
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -108,14 +105,6 @@ public class Simple {
         return this.content;
     }
 
-    public boolean isSetContent() {
-        return ((this.content!= null)&&(!this.content.isEmpty()));
-    }
-
-    public void unsetContent() {
-        this.content = null;
-    }
-
     /**
      * Gets the value of the href property.
      * 
@@ -138,10 +127,6 @@ public class Simple {
      */
     public void setHref(String value) {
         this.href = value;
-    }
-
-    public boolean isSetHref() {
-        return (this.href!= null);
     }
 
     /**
@@ -168,10 +153,6 @@ public class Simple {
         this.role = value;
     }
 
-    public boolean isSetRole() {
-        return (this.role!= null);
-    }
-
     /**
      * Gets the value of the arcrole property.
      * 
@@ -194,10 +175,6 @@ public class Simple {
      */
     public void setArcrole(String value) {
         this.arcrole = value;
-    }
-
-    public boolean isSetArcrole() {
-        return (this.arcrole!= null);
     }
 
     /**
@@ -224,10 +201,6 @@ public class Simple {
         this.titleAttribute = value;
     }
 
-    public boolean isSetTitleAttribute() {
-        return (this.titleAttribute!= null);
-    }
-
     /**
      * Gets the value of the show property.
      * 
@@ -252,10 +225,6 @@ public class Simple {
         this.show = value;
     }
 
-    public boolean isSetShow() {
-        return (this.show!= null);
-    }
-
     /**
      * Gets the value of the actuate property.
      * 
@@ -278,10 +247,6 @@ public class Simple {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
-    }
-
-    public boolean isSetActuate() {
-        return (this.actuate!= null);
     }
 
 }

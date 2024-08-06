@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gco;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -45,11 +44,9 @@ public class CodeListValueType {
     protected String value;
     @XmlAttribute(name = "codeList", required = true)
     @XmlSchemaType(name = "anyURI")
-    @NotNull
     protected String codeList;
     @XmlAttribute(name = "codeListValue", required = true)
     @XmlSchemaType(name = "anyURI")
-    @NotNull
     protected String codeListValue;
     @XmlAttribute(name = "codeSpace")
     @XmlSchemaType(name = "anyURI")
@@ -79,10 +76,6 @@ public class CodeListValueType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the codeList property.
      * 
@@ -105,10 +98,6 @@ public class CodeListValueType {
      */
     public void setCodeList(String value) {
         this.codeList = value;
-    }
-
-    public boolean isSetCodeList() {
-        return (this.codeList!= null);
     }
 
     /**
@@ -135,10 +124,6 @@ public class CodeListValueType {
         this.codeListValue = value;
     }
 
-    public boolean isSetCodeListValue() {
-        return (this.codeListValue!= null);
-    }
-
     /**
      * Gets the value of the codeSpace property.
      * 
@@ -161,10 +146,6 @@ public class CodeListValueType {
      */
     public void setCodeSpace(String value) {
         this.codeSpace = value;
-    }
-
-    public boolean isSetCodeSpace() {
-        return (this.codeSpace!= null);
     }
 
 }

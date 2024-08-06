@@ -8,8 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -51,15 +49,10 @@ public class MDAggregateInformationType
     extends AbstractObjectType
 {
 
-    @Valid
     protected CICitationPropertyType aggregateDataSetName;
-    @Valid
     protected MDIdentifierPropertyType aggregateDataSetIdentifier;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected DSAssociationTypeCodePropertyType associationType;
-    @Valid
     protected DSInitiativeTypeCodePropertyType initiativeType;
 
     /**
@@ -86,10 +79,6 @@ public class MDAggregateInformationType
         this.aggregateDataSetName = value;
     }
 
-    public boolean isSetAggregateDataSetName() {
-        return (this.aggregateDataSetName!= null);
-    }
-
     /**
      * Gets the value of the aggregateDataSetIdentifier property.
      * 
@@ -112,10 +101,6 @@ public class MDAggregateInformationType
      */
     public void setAggregateDataSetIdentifier(MDIdentifierPropertyType value) {
         this.aggregateDataSetIdentifier = value;
-    }
-
-    public boolean isSetAggregateDataSetIdentifier() {
-        return (this.aggregateDataSetIdentifier!= null);
     }
 
     /**
@@ -142,10 +127,6 @@ public class MDAggregateInformationType
         this.associationType = value;
     }
 
-    public boolean isSetAssociationType() {
-        return (this.associationType!= null);
-    }
-
     /**
      * Gets the value of the initiativeType property.
      * 
@@ -168,10 +149,6 @@ public class MDAggregateInformationType
      */
     public void setInitiativeType(DSInitiativeTypeCodePropertyType value) {
         this.initiativeType = value;
-    }
-
-    public boolean isSetInitiativeType() {
-        return (this.initiativeType!= null);
     }
 
 }

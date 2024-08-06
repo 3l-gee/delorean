@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -43,8 +41,6 @@ import jakarta.xml.bind.annotation.XmlType;
 public class SignificantPointInAirspaceTimeSlicePropertyType {
 
     @XmlElement(name = "SignificantPointInAirspaceTimeSlice", required = true)
-    @NotNull
-    @Valid
     protected SignificantPointInAirspaceTimeSliceType significantPointInAirspaceTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;
@@ -73,10 +69,6 @@ public class SignificantPointInAirspaceTimeSlicePropertyType {
         this.significantPointInAirspaceTimeSlice = value;
     }
 
-    public boolean isSetSignificantPointInAirspaceTimeSlice() {
-        return (this.significantPointInAirspaceTimeSlice!= null);
-    }
-
     /**
      * Gets the value of the owns property.
      * 
@@ -101,16 +93,8 @@ public class SignificantPointInAirspaceTimeSlicePropertyType {
      *     {@link Boolean }
      *     
      */
-    public void setOwns(boolean value) {
+    public void setOwns(Boolean value) {
         this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

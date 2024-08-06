@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -81,15 +78,9 @@ public class ObstacleAreaTimeSliceType
     @XmlElementRef(name = "surfaceExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfacePropertyType> surfaceExtent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<VerticalStructurePropertyType> obstacle;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ObstacleAreaTimeSliceType.Extension> extension;
 
     /**
@@ -116,10 +107,6 @@ public class ObstacleAreaTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the obstructionIdSurfaceCondition property.
      * 
@@ -142,10 +129,6 @@ public class ObstacleAreaTimeSliceType
      */
     public void setObstructionIdSurfaceCondition(JAXBElement<CodeObstacleAssessmentSurfaceType> value) {
         this.obstructionIdSurfaceCondition = value;
-    }
-
-    public boolean isSetObstructionIdSurfaceCondition() {
-        return (this.obstructionIdSurfaceCondition!= null);
     }
 
     /**
@@ -172,10 +155,6 @@ public class ObstacleAreaTimeSliceType
         this.referenceOwnerOrganisation = value;
     }
 
-    public boolean isSetReferenceOwnerOrganisation() {
-        return (this.referenceOwnerOrganisation!= null);
-    }
-
     /**
      * Gets the value of the referenceOwnerRunway property.
      * 
@@ -198,10 +177,6 @@ public class ObstacleAreaTimeSliceType
      */
     public void setReferenceOwnerRunway(JAXBElement<RunwayDirectionPropertyType> value) {
         this.referenceOwnerRunway = value;
-    }
-
-    public boolean isSetReferenceOwnerRunway() {
-        return (this.referenceOwnerRunway!= null);
     }
 
     /**
@@ -228,10 +203,6 @@ public class ObstacleAreaTimeSliceType
         this.referenceOwnerAirport = value;
     }
 
-    public boolean isSetReferenceOwnerAirport() {
-        return (this.referenceOwnerAirport!= null);
-    }
-
     /**
      * Gets the value of the surfaceExtent property.
      * 
@@ -254,10 +225,6 @@ public class ObstacleAreaTimeSliceType
      */
     public void setSurfaceExtent(JAXBElement<SurfacePropertyType> value) {
         this.surfaceExtent = value;
-    }
-
-    public boolean isSetSurfaceExtent() {
-        return (this.surfaceExtent!= null);
     }
 
     /**
@@ -292,14 +259,6 @@ public class ObstacleAreaTimeSliceType
         return this.obstacle;
     }
 
-    public boolean isSetObstacle() {
-        return ((this.obstacle!= null)&&(!this.obstacle.isEmpty()));
-    }
-
-    public void unsetObstacle() {
-        this.obstacle = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -330,14 +289,6 @@ public class ObstacleAreaTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -372,14 +323,6 @@ public class ObstacleAreaTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -408,8 +351,6 @@ public class ObstacleAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractObstacleAreaExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractObstacleAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -438,10 +379,6 @@ public class ObstacleAreaTimeSliceType
             this.abstractObstacleAreaExtension = value;
         }
 
-        public boolean isSetAbstractObstacleAreaExtension() {
-            return (this.abstractObstacleAreaExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -466,16 +403,8 @@ public class ObstacleAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

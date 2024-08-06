@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,19 +73,11 @@ public class ArcStringByBulgeType
         @XmlElementRef(name = "pointRep", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> posOrPointPropertyOrPointRep;
-    @Valid
     protected DirectPositionListType posList;
-    @Valid
     protected CoordinatesType coordinates;
     @XmlElement(type = Double.class)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<Double> bulge;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<VectorType> normal;
     @XmlAttribute(name = "interpolation")
     public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CIRCULAR_ARC_2_POINT_WITH_BULGE;
@@ -129,14 +118,6 @@ public class ArcStringByBulgeType
         return this.posOrPointPropertyOrPointRep;
     }
 
-    public boolean isSetPosOrPointPropertyOrPointRep() {
-        return ((this.posOrPointPropertyOrPointRep!= null)&&(!this.posOrPointPropertyOrPointRep.isEmpty()));
-    }
-
-    public void unsetPosOrPointPropertyOrPointRep() {
-        this.posOrPointPropertyOrPointRep = null;
-    }
-
     /**
      * Gets the value of the posList property.
      * 
@@ -161,10 +142,6 @@ public class ArcStringByBulgeType
         this.posList = value;
     }
 
-    public boolean isSetPosList() {
-        return (this.posList!= null);
-    }
-
     /**
      * Gets the value of the coordinates property.
      * 
@@ -187,10 +164,6 @@ public class ArcStringByBulgeType
      */
     public void setCoordinates(CoordinatesType value) {
         this.coordinates = value;
-    }
-
-    public boolean isSetCoordinates() {
-        return (this.coordinates!= null);
     }
 
     /**
@@ -225,14 +198,6 @@ public class ArcStringByBulgeType
         return this.bulge;
     }
 
-    public boolean isSetBulge() {
-        return ((this.bulge!= null)&&(!this.bulge.isEmpty()));
-    }
-
-    public void unsetBulge() {
-        this.bulge = null;
-    }
-
     /**
      * Gets the value of the normal property.
      * 
@@ -265,14 +230,6 @@ public class ArcStringByBulgeType
         return this.normal;
     }
 
-    public boolean isSetNormal() {
-        return ((this.normal!= null)&&(!this.normal.isEmpty()));
-    }
-
-    public void unsetNormal() {
-        this.normal = null;
-    }
-
     /**
      * Gets the value of the numArc property.
      * 
@@ -295,10 +252,6 @@ public class ArcStringByBulgeType
      */
     public void setNumArc(BigInteger value) {
         this.numArc = value;
-    }
-
-    public boolean isSetNumArc() {
-        return (this.numArc!= null);
     }
 
 }

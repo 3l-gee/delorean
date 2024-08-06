@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,15 +66,9 @@ public class SurfaceContaminationLayerType
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeContaminationType> type;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<SurfaceContaminationLayerType.Extension> extension;
 
     /**
@@ -103,10 +95,6 @@ public class SurfaceContaminationLayerType
         this.layerOrder = value;
     }
 
-    public boolean isSetLayerOrder() {
-        return (this.layerOrder!= null);
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -129,10 +117,6 @@ public class SurfaceContaminationLayerType
      */
     public void setType(JAXBElement<CodeContaminationType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -167,14 +151,6 @@ public class SurfaceContaminationLayerType
         return this.extent;
     }
 
-    public boolean isSetExtent() {
-        return ((this.extent!= null)&&(!this.extent.isEmpty()));
-    }
-
-    public void unsetExtent() {
-        this.extent = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -205,14 +181,6 @@ public class SurfaceContaminationLayerType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -247,14 +215,6 @@ public class SurfaceContaminationLayerType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -283,7 +243,6 @@ public class SurfaceContaminationLayerType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceContaminationLayerExtension")
-        @Valid
         protected AbstractExtensionType abstractSurfaceContaminationLayerExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -312,10 +271,6 @@ public class SurfaceContaminationLayerType
             this.abstractSurfaceContaminationLayerExtension = value;
         }
 
-        public boolean isSetAbstractSurfaceContaminationLayerExtension() {
-            return (this.abstractSurfaceContaminationLayerExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -340,16 +295,8 @@ public class SurfaceContaminationLayerType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }
