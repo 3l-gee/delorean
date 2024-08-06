@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -92,33 +89,19 @@ public class NavaidTimeSliceType
     @XmlElementRef(name = "integrityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeIntegrityLevelILSType> integrityLevel;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TouchDownLiftOffPropertyType> touchDownLiftOff;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidComponentPropertyType> navaidEquipment;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RunwayDirectionPropertyType> runwayDirection;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportPropertyType> servedAirport;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<NavaidTimeSliceType.Extension> extension;
 
     /**
@@ -145,10 +128,6 @@ public class NavaidTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the designator property.
      * 
@@ -171,10 +150,6 @@ public class NavaidTimeSliceType
      */
     public void setDesignator(JAXBElement<CodeNavaidDesignatorType> value) {
         this.designator = value;
-    }
-
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
     }
 
     /**
@@ -201,10 +176,6 @@ public class NavaidTimeSliceType
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
     /**
      * Gets the value of the flightChecked property.
      * 
@@ -227,10 +198,6 @@ public class NavaidTimeSliceType
      */
     public void setFlightChecked(JAXBElement<CodeYesNoType> value) {
         this.flightChecked = value;
-    }
-
-    public boolean isSetFlightChecked() {
-        return (this.flightChecked!= null);
     }
 
     /**
@@ -257,10 +224,6 @@ public class NavaidTimeSliceType
         this.purpose = value;
     }
 
-    public boolean isSetPurpose() {
-        return (this.purpose!= null);
-    }
-
     /**
      * Gets the value of the signalPerformance property.
      * 
@@ -283,10 +246,6 @@ public class NavaidTimeSliceType
      */
     public void setSignalPerformance(JAXBElement<CodeSignalPerformanceILSType> value) {
         this.signalPerformance = value;
-    }
-
-    public boolean isSetSignalPerformance() {
-        return (this.signalPerformance!= null);
     }
 
     /**
@@ -313,10 +272,6 @@ public class NavaidTimeSliceType
         this.courseQuality = value;
     }
 
-    public boolean isSetCourseQuality() {
-        return (this.courseQuality!= null);
-    }
-
     /**
      * Gets the value of the integrityLevel property.
      * 
@@ -339,10 +294,6 @@ public class NavaidTimeSliceType
      */
     public void setIntegrityLevel(JAXBElement<CodeIntegrityLevelILSType> value) {
         this.integrityLevel = value;
-    }
-
-    public boolean isSetIntegrityLevel() {
-        return (this.integrityLevel!= null);
     }
 
     /**
@@ -377,14 +328,6 @@ public class NavaidTimeSliceType
         return this.touchDownLiftOff;
     }
 
-    public boolean isSetTouchDownLiftOff() {
-        return ((this.touchDownLiftOff!= null)&&(!this.touchDownLiftOff.isEmpty()));
-    }
-
-    public void unsetTouchDownLiftOff() {
-        this.touchDownLiftOff = null;
-    }
-
     /**
      * Gets the value of the navaidEquipment property.
      * 
@@ -417,14 +360,6 @@ public class NavaidTimeSliceType
         return this.navaidEquipment;
     }
 
-    public boolean isSetNavaidEquipment() {
-        return ((this.navaidEquipment!= null)&&(!this.navaidEquipment.isEmpty()));
-    }
-
-    public void unsetNavaidEquipment() {
-        this.navaidEquipment = null;
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -447,10 +382,6 @@ public class NavaidTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -485,14 +416,6 @@ public class NavaidTimeSliceType
         return this.runwayDirection;
     }
 
-    public boolean isSetRunwayDirection() {
-        return ((this.runwayDirection!= null)&&(!this.runwayDirection.isEmpty()));
-    }
-
-    public void unsetRunwayDirection() {
-        this.runwayDirection = null;
-    }
-
     /**
      * Gets the value of the servedAirport property.
      * 
@@ -523,14 +446,6 @@ public class NavaidTimeSliceType
             servedAirport = new ArrayList<>();
         }
         return this.servedAirport;
-    }
-
-    public boolean isSetServedAirport() {
-        return ((this.servedAirport!= null)&&(!this.servedAirport.isEmpty()));
-    }
-
-    public void unsetServedAirport() {
-        this.servedAirport = null;
     }
 
     /**
@@ -565,14 +480,6 @@ public class NavaidTimeSliceType
         return this.availability;
     }
 
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -603,14 +510,6 @@ public class NavaidTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -645,14 +544,6 @@ public class NavaidTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -681,8 +572,6 @@ public class NavaidTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractNavaidExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -711,10 +600,6 @@ public class NavaidTimeSliceType
             this.abstractNavaidExtension = value;
         }
 
-        public boolean isSetAbstractNavaidExtension() {
-            return (this.abstractNavaidExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -739,16 +624,8 @@ public class NavaidTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

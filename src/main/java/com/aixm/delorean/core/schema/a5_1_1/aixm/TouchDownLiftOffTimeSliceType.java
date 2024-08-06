@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -97,19 +94,11 @@ public class TouchDownLiftOffTimeSliceType
     @XmlElementRef(name = "approachTakeOffArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayPropertyType> approachTakeOffArea;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TouchDownLiftOffContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
-    @Valid
-    @Size(min = 0)
     protected List<TouchDownLiftOffTimeSliceType.Extension> extension;
 
     /**
@@ -136,10 +125,6 @@ public class TouchDownLiftOffTimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the length property.
      * 
@@ -162,10 +147,6 @@ public class TouchDownLiftOffTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
-    }
-
-    public boolean isSetLength() {
-        return (this.length!= null);
     }
 
     /**
@@ -192,10 +173,6 @@ public class TouchDownLiftOffTimeSliceType
         this.width = value;
     }
 
-    public boolean isSetWidth() {
-        return (this.width!= null);
-    }
-
     /**
      * Gets the value of the slope property.
      * 
@@ -218,10 +195,6 @@ public class TouchDownLiftOffTimeSliceType
      */
     public void setSlope(JAXBElement<ValSlopeType> value) {
         this.slope = value;
-    }
-
-    public boolean isSetSlope() {
-        return (this.slope!= null);
     }
 
     /**
@@ -248,10 +221,6 @@ public class TouchDownLiftOffTimeSliceType
         this.helicopterClass = value;
     }
 
-    public boolean isSetHelicopterClass() {
-        return (this.helicopterClass!= null);
-    }
-
     /**
      * Gets the value of the abandoned property.
      * 
@@ -274,10 +243,6 @@ public class TouchDownLiftOffTimeSliceType
      */
     public void setAbandoned(JAXBElement<CodeYesNoType> value) {
         this.abandoned = value;
-    }
-
-    public boolean isSetAbandoned() {
-        return (this.abandoned!= null);
     }
 
     /**
@@ -304,10 +269,6 @@ public class TouchDownLiftOffTimeSliceType
         this.aimingPoint = value;
     }
 
-    public boolean isSetAimingPoint() {
-        return (this.aimingPoint!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -330,10 +291,6 @@ public class TouchDownLiftOffTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -360,10 +317,6 @@ public class TouchDownLiftOffTimeSliceType
         this.surfaceProperties = value;
     }
 
-    public boolean isSetSurfaceProperties() {
-        return (this.surfaceProperties!= null);
-    }
-
     /**
      * Gets the value of the associatedAirportHeliport property.
      * 
@@ -388,10 +341,6 @@ public class TouchDownLiftOffTimeSliceType
         this.associatedAirportHeliport = value;
     }
 
-    public boolean isSetAssociatedAirportHeliport() {
-        return (this.associatedAirportHeliport!= null);
-    }
-
     /**
      * Gets the value of the approachTakeOffArea property.
      * 
@@ -414,10 +363,6 @@ public class TouchDownLiftOffTimeSliceType
      */
     public void setApproachTakeOffArea(JAXBElement<RunwayPropertyType> value) {
         this.approachTakeOffArea = value;
-    }
-
-    public boolean isSetApproachTakeOffArea() {
-        return (this.approachTakeOffArea!= null);
     }
 
     /**
@@ -452,14 +397,6 @@ public class TouchDownLiftOffTimeSliceType
         return this.contaminant;
     }
 
-    public boolean isSetContaminant() {
-        return ((this.contaminant!= null)&&(!this.contaminant.isEmpty()));
-    }
-
-    public void unsetContaminant() {
-        this.contaminant = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -490,14 +427,6 @@ public class TouchDownLiftOffTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -532,14 +461,6 @@ public class TouchDownLiftOffTimeSliceType
         return this.availability;
     }
 
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -572,14 +493,6 @@ public class TouchDownLiftOffTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -608,8 +521,6 @@ public class TouchDownLiftOffTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTouchDownLiftOffExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractTouchDownLiftOffExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -638,10 +549,6 @@ public class TouchDownLiftOffTimeSliceType
             this.abstractTouchDownLiftOffExtension = value;
         }
 
-        public boolean isSetAbstractTouchDownLiftOffExtension() {
-            return (this.abstractTouchDownLiftOffExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -666,16 +573,8 @@ public class TouchDownLiftOffTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -80,15 +78,9 @@ public class ProcedureTransitionType
     @XmlElementRef(name = "trajectory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CurvePropertyType> trajectory;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ProcedureTransitionLegPropertyType> transitionLeg;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ProcedureTransitionType.Extension> extension;
 
     /**
@@ -115,10 +107,6 @@ public class ProcedureTransitionType
         this.transitionId = value;
     }
 
-    public boolean isSetTransitionId() {
-        return (this.transitionId!= null);
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -141,10 +129,6 @@ public class ProcedureTransitionType
      */
     public void setType(JAXBElement<CodeProcedurePhaseType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -171,10 +155,6 @@ public class ProcedureTransitionType
         this.instruction = value;
     }
 
-    public boolean isSetInstruction() {
-        return (this.instruction!= null);
-    }
-
     /**
      * Gets the value of the vectorHeading property.
      * 
@@ -197,10 +177,6 @@ public class ProcedureTransitionType
      */
     public void setVectorHeading(JAXBElement<ValBearingType> value) {
         this.vectorHeading = value;
-    }
-
-    public boolean isSetVectorHeading() {
-        return (this.vectorHeading!= null);
     }
 
     /**
@@ -227,10 +203,6 @@ public class ProcedureTransitionType
         this.departureRunwayTransition = value;
     }
 
-    public boolean isSetDepartureRunwayTransition() {
-        return (this.departureRunwayTransition!= null);
-    }
-
     /**
      * Gets the value of the trajectory property.
      * 
@@ -253,10 +225,6 @@ public class ProcedureTransitionType
      */
     public void setTrajectory(JAXBElement<CurvePropertyType> value) {
         this.trajectory = value;
-    }
-
-    public boolean isSetTrajectory() {
-        return (this.trajectory!= null);
     }
 
     /**
@@ -291,14 +259,6 @@ public class ProcedureTransitionType
         return this.transitionLeg;
     }
 
-    public boolean isSetTransitionLeg() {
-        return ((this.transitionLeg!= null)&&(!this.transitionLeg.isEmpty()));
-    }
-
-    public void unsetTransitionLeg() {
-        this.transitionLeg = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -329,14 +289,6 @@ public class ProcedureTransitionType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -371,14 +323,6 @@ public class ProcedureTransitionType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -407,7 +351,6 @@ public class ProcedureTransitionType
     public static class Extension {
 
         @XmlElement(name = "AbstractProcedureTransitionExtension")
-        @Valid
         protected AbstractExtensionType abstractProcedureTransitionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -436,10 +379,6 @@ public class ProcedureTransitionType
             this.abstractProcedureTransitionExtension = value;
         }
 
-        public boolean isSetAbstractProcedureTransitionExtension() {
-            return (this.abstractProcedureTransitionExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -464,16 +403,8 @@ public class ProcedureTransitionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

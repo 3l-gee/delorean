@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -53,21 +51,17 @@ public class ConventionalUnitType
      * The elements gml:conversionToPreferredUnit and gml:roughConversionToPreferredUnit represent parameters used to convert conventional units to preferred units for this physical quantity type.  A preferred unit is either a Base Unit or a Derived Unit that is selected for all values of one physical quantity type.
      * 
      */
-    @Valid
     protected ConversionToPreferredUnitType conversionToPreferredUnit;
     /**
      * The elements gml:conversionToPreferredUnit and gml:roughConversionToPreferredUnit represent parameters used to convert conventional units to preferred units for this physical quantity type.  A preferred unit is either a Base Unit or a Derived Unit that is selected for all values of one physical quantity type.
      * 
      */
-    @Valid
     protected ConversionToPreferredUnitType roughConversionToPreferredUnit;
     /**
      * A set of gml:derivationUnitTerm elements describes a derived unit of measure.  Each element carries an integer exponent.  The terms are combined by raising each referenced unit to the power of its exponent and forming the product.
      * This unit term references another unit of measure (uom) and provides an integer exponent applied to that unit in defining the compound unit. The exponent may be positive or negative, but not zero.
      * 
      */
-    @Valid
-    @Size(min = 0)
     protected List<DerivationUnitTermType> derivationUnitTerm;
 
     /**
@@ -95,10 +89,6 @@ public class ConventionalUnitType
         this.conversionToPreferredUnit = value;
     }
 
-    public boolean isSetConversionToPreferredUnit() {
-        return (this.conversionToPreferredUnit!= null);
-    }
-
     /**
      * The elements gml:conversionToPreferredUnit and gml:roughConversionToPreferredUnit represent parameters used to convert conventional units to preferred units for this physical quantity type.  A preferred unit is either a Base Unit or a Derived Unit that is selected for all values of one physical quantity type.
      * 
@@ -122,10 +112,6 @@ public class ConventionalUnitType
      */
     public void setRoughConversionToPreferredUnit(ConversionToPreferredUnitType value) {
         this.roughConversionToPreferredUnit = value;
-    }
-
-    public boolean isSetRoughConversionToPreferredUnit() {
-        return (this.roughConversionToPreferredUnit!= null);
     }
 
     /**
@@ -161,14 +147,6 @@ public class ConventionalUnitType
             derivationUnitTerm = new ArrayList<>();
         }
         return this.derivationUnitTerm;
-    }
-
-    public boolean isSetDerivationUnitTerm() {
-        return ((this.derivationUnitTerm!= null)&&(!this.derivationUnitTerm.isEmpty()));
-    }
-
-    public void unsetDerivationUnitTerm() {
-        this.derivationUnitTerm = null;
     }
 
 }

@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -58,21 +55,15 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class EnvelopeType {
 
-    @Valid
     protected DirectPositionType lowerCorner;
-    @Valid
     protected DirectPositionType upperCorner;
-    @Valid
-    @Size(min = 2, max = 2)
     protected List<DirectPositionType> pos;
-    @Valid
     protected CoordinatesType coordinates;
     @XmlAttribute(name = "srsName")
     @XmlSchemaType(name = "anyURI")
     protected String srsName;
     @XmlAttribute(name = "srsDimension")
     @XmlSchemaType(name = "positiveInteger")
-    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger srsDimension;
     @XmlAttribute(name = "axisLabels")
     protected List<String> axisLabels;
@@ -103,10 +94,6 @@ public class EnvelopeType {
         this.lowerCorner = value;
     }
 
-    public boolean isSetLowerCorner() {
-        return (this.lowerCorner!= null);
-    }
-
     /**
      * Gets the value of the upperCorner property.
      * 
@@ -129,10 +116,6 @@ public class EnvelopeType {
      */
     public void setUpperCorner(DirectPositionType value) {
         this.upperCorner = value;
-    }
-
-    public boolean isSetUpperCorner() {
-        return (this.upperCorner!= null);
     }
 
     /**
@@ -167,14 +150,6 @@ public class EnvelopeType {
         return this.pos;
     }
 
-    public boolean isSetPos() {
-        return ((this.pos!= null)&&(!this.pos.isEmpty()));
-    }
-
-    public void unsetPos() {
-        this.pos = null;
-    }
-
     /**
      * Gets the value of the coordinates property.
      * 
@@ -197,10 +172,6 @@ public class EnvelopeType {
      */
     public void setCoordinates(CoordinatesType value) {
         this.coordinates = value;
-    }
-
-    public boolean isSetCoordinates() {
-        return (this.coordinates!= null);
     }
 
     /**
@@ -227,10 +198,6 @@ public class EnvelopeType {
         this.srsName = value;
     }
 
-    public boolean isSetSrsName() {
-        return (this.srsName!= null);
-    }
-
     /**
      * Gets the value of the srsDimension property.
      * 
@@ -253,10 +220,6 @@ public class EnvelopeType {
      */
     public void setSrsDimension(BigInteger value) {
         this.srsDimension = value;
-    }
-
-    public boolean isSetSrsDimension() {
-        return (this.srsDimension!= null);
     }
 
     /**
@@ -291,14 +254,6 @@ public class EnvelopeType {
         return this.axisLabels;
     }
 
-    public boolean isSetAxisLabels() {
-        return ((this.axisLabels!= null)&&(!this.axisLabels.isEmpty()));
-    }
-
-    public void unsetAxisLabels() {
-        this.axisLabels = null;
-    }
-
     /**
      * Gets the value of the uomLabels property.
      * 
@@ -329,14 +284,6 @@ public class EnvelopeType {
             uomLabels = new ArrayList<>();
         }
         return this.uomLabels;
-    }
-
-    public boolean isSetUomLabels() {
-        return ((this.uomLabels!= null)&&(!this.uomLabels.isEmpty()));
-    }
-
-    public void unsetUomLabels() {
-        this.uomLabels = null;
     }
 
 }

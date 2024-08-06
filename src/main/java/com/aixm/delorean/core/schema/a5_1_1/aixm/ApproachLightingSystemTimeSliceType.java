@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -79,16 +77,10 @@ public class ApproachLightingSystemTimeSliceType
     @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "classICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeApproachLightingICAOType> classICAO;
@@ -102,8 +94,6 @@ public class ApproachLightingSystemTimeSliceType
     protected JAXBElement<CodeYesNoType> alignmentIndicator;
     @XmlElementRef(name = "servedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayDirectionPropertyType> servedRunwayDirection;
-    @Valid
-    @Size(min = 0)
     protected List<ApproachLightingSystemTimeSliceType.Extension> extension;
 
     /**
@@ -130,10 +120,6 @@ public class ApproachLightingSystemTimeSliceType
         this.emergencyLighting = value;
     }
 
-    public boolean isSetEmergencyLighting() {
-        return (this.emergencyLighting!= null);
-    }
-
     /**
      * Gets the value of the intensityLevel property.
      * 
@@ -158,10 +144,6 @@ public class ApproachLightingSystemTimeSliceType
         this.intensityLevel = value;
     }
 
-    public boolean isSetIntensityLevel() {
-        return (this.intensityLevel!= null);
-    }
-
     /**
      * Gets the value of the colour property.
      * 
@@ -184,10 +166,6 @@ public class ApproachLightingSystemTimeSliceType
      */
     public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
-    }
-
-    public boolean isSetColour() {
-        return (this.colour!= null);
     }
 
     /**
@@ -222,14 +200,6 @@ public class ApproachLightingSystemTimeSliceType
         return this.element;
     }
 
-    public boolean isSetElement() {
-        return ((this.element!= null)&&(!this.element.isEmpty()));
-    }
-
-    public void unsetElement() {
-        this.element = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -260,14 +230,6 @@ public class ApproachLightingSystemTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -302,14 +264,6 @@ public class ApproachLightingSystemTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the classICAO property.
      * 
@@ -332,10 +286,6 @@ public class ApproachLightingSystemTimeSliceType
      */
     public void setClassICAO(JAXBElement<CodeApproachLightingICAOType> value) {
         this.classICAO = value;
-    }
-
-    public boolean isSetClassICAO() {
-        return (this.classICAO!= null);
     }
 
     /**
@@ -362,10 +312,6 @@ public class ApproachLightingSystemTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the length property.
      * 
@@ -388,10 +334,6 @@ public class ApproachLightingSystemTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
-    }
-
-    public boolean isSetLength() {
-        return (this.length!= null);
     }
 
     /**
@@ -418,10 +360,6 @@ public class ApproachLightingSystemTimeSliceType
         this.sequencedFlashing = value;
     }
 
-    public boolean isSetSequencedFlashing() {
-        return (this.sequencedFlashing!= null);
-    }
-
     /**
      * Gets the value of the alignmentIndicator property.
      * 
@@ -446,10 +384,6 @@ public class ApproachLightingSystemTimeSliceType
         this.alignmentIndicator = value;
     }
 
-    public boolean isSetAlignmentIndicator() {
-        return (this.alignmentIndicator!= null);
-    }
-
     /**
      * Gets the value of the servedRunwayDirection property.
      * 
@@ -472,10 +406,6 @@ public class ApproachLightingSystemTimeSliceType
      */
     public void setServedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
         this.servedRunwayDirection = value;
-    }
-
-    public boolean isSetServedRunwayDirection() {
-        return (this.servedRunwayDirection!= null);
     }
 
     /**
@@ -510,14 +440,6 @@ public class ApproachLightingSystemTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -548,10 +470,8 @@ public class ApproachLightingSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractApproachLightingSystemExtension")
-        @Valid
         protected AbstractExtensionType abstractApproachLightingSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @Valid
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -580,10 +500,6 @@ public class ApproachLightingSystemTimeSliceType
             this.abstractApproachLightingSystemExtension = value;
         }
 
-        public boolean isSetAbstractApproachLightingSystemExtension() {
-            return (this.abstractApproachLightingSystemExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractGroundLightSystemExtension property.
          * 
@@ -606,10 +522,6 @@ public class ApproachLightingSystemTimeSliceType
          */
         public void setAbstractGroundLightSystemExtension(AbstractExtensionType value) {
             this.abstractGroundLightSystemExtension = value;
-        }
-
-        public boolean isSetAbstractGroundLightSystemExtension() {
-            return (this.abstractGroundLightSystemExtension!= null);
         }
 
         /**
@@ -636,16 +548,8 @@ public class ApproachLightingSystemTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

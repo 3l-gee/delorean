@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +41,6 @@ public class CircleSectorPropertyType
 {
 
     @XmlElement(name = "CircleSector", required = true)
-    @NotNull
-    @Valid
     protected CircleSectorType circleSector;
 
     /**
@@ -69,10 +65,6 @@ public class CircleSectorPropertyType
      */
     public void setCircleSector(CircleSectorType value) {
         this.circleSector = value;
-    }
-
-    public boolean isSetCircleSector() {
-        return (this.circleSector!= null);
     }
 
 }

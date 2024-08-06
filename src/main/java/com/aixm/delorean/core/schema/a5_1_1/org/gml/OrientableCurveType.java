@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -49,8 +47,6 @@ public class OrientableCurveType
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CurvePropertyType baseCurve;
     @XmlAttribute(name = "orientation")
     protected SignType orientation;
@@ -80,10 +76,6 @@ public class OrientableCurveType
         this.baseCurve = value;
     }
 
-    public boolean isSetBaseCurve() {
-        return (this.baseCurve!= null);
-    }
-
     /**
      * Gets the value of the orientation property.
      * 
@@ -110,10 +102,6 @@ public class OrientableCurveType
      */
     public void setOrientation(SignType value) {
         this.orientation = value;
-    }
-
-    public boolean isSetOrientation() {
-        return (this.orientation!= null);
     }
 
 }

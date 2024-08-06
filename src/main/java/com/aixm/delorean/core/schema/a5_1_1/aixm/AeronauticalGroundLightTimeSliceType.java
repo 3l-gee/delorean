@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -83,11 +80,7 @@ public class AeronauticalGroundLightTimeSliceType
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AeronauticalGroundLightTimeSliceType.Extension> extension;
 
     /**
@@ -114,10 +107,6 @@ public class AeronauticalGroundLightTimeSliceType
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -140,10 +129,6 @@ public class AeronauticalGroundLightTimeSliceType
      */
     public void setType(JAXBElement<CodeGroundLightingType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -170,10 +155,6 @@ public class AeronauticalGroundLightTimeSliceType
         this.colour = value;
     }
 
-    public boolean isSetColour() {
-        return (this.colour!= null);
-    }
-
     /**
      * Gets the value of the flashing property.
      * 
@@ -196,10 +177,6 @@ public class AeronauticalGroundLightTimeSliceType
      */
     public void setFlashing(JAXBElement<CodeYesNoType> value) {
         this.flashing = value;
-    }
-
-    public boolean isSetFlashing() {
-        return (this.flashing!= null);
     }
 
     /**
@@ -226,10 +203,6 @@ public class AeronauticalGroundLightTimeSliceType
         this.structureBeacon = value;
     }
 
-    public boolean isSetStructureBeacon() {
-        return (this.structureBeacon!= null);
-    }
-
     /**
      * Gets the value of the aerodromeBeacon property.
      * 
@@ -254,10 +227,6 @@ public class AeronauticalGroundLightTimeSliceType
         this.aerodromeBeacon = value;
     }
 
-    public boolean isSetAerodromeBeacon() {
-        return (this.aerodromeBeacon!= null);
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -280,10 +249,6 @@ public class AeronauticalGroundLightTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -318,14 +283,6 @@ public class AeronauticalGroundLightTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -358,14 +315,6 @@ public class AeronauticalGroundLightTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -394,8 +343,6 @@ public class AeronauticalGroundLightTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAeronauticalGroundLightExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractAeronauticalGroundLightExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -424,10 +371,6 @@ public class AeronauticalGroundLightTimeSliceType
             this.abstractAeronauticalGroundLightExtension = value;
         }
 
-        public boolean isSetAbstractAeronauticalGroundLightExtension() {
-            return (this.abstractAeronauticalGroundLightExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -452,16 +395,8 @@ public class AeronauticalGroundLightTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

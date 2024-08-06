@@ -12,7 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -36,8 +35,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}AbstractGeometricAggregate"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -57,8 +56,6 @@ public class MultiGeometryPropertyType {
      */
     @XmlElementRef(name = "AbstractGeometricAggregate", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractGeometricAggregateType> abstractGeometricAggregate;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
@@ -69,10 +66,8 @@ public class MultiGeometryPropertyType {
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -80,6 +75,8 @@ public class MultiGeometryPropertyType {
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
 
     /**
      * gml:AbstractGeometricAggregate is the abstract head of the substitution group for all geometric aggregates.
@@ -116,46 +113,6 @@ public class MultiGeometryPropertyType {
         this.abstractGeometricAggregate = value;
     }
 
-    public boolean isSetAbstractGeometricAggregate() {
-        return (this.abstractGeometricAggregate!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -188,14 +145,6 @@ public class MultiGeometryPropertyType {
         return this.nilReason;
     }
 
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
-    }
-
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -218,10 +167,6 @@ public class MultiGeometryPropertyType {
      */
     public void setRemoteSchema(String value) {
         this.remoteSchema = value;
-    }
-
-    public boolean isSetRemoteSchema() {
-        return (this.remoteSchema!= null);
     }
 
     /**
@@ -248,10 +193,6 @@ public class MultiGeometryPropertyType {
         this.href = value;
     }
 
-    public boolean isSetHref() {
-        return (this.href!= null);
-    }
-
     /**
      * Gets the value of the role property.
      * 
@@ -274,10 +215,6 @@ public class MultiGeometryPropertyType {
      */
     public void setRole(String value) {
         this.role = value;
-    }
-
-    public boolean isSetRole() {
-        return (this.role!= null);
     }
 
     /**
@@ -304,10 +241,6 @@ public class MultiGeometryPropertyType {
         this.arcrole = value;
     }
 
-    public boolean isSetArcrole() {
-        return (this.arcrole!= null);
-    }
-
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -330,10 +263,6 @@ public class MultiGeometryPropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
-    }
-
-    public boolean isSetTitleAttribute() {
-        return (this.titleAttribute!= null);
     }
 
     /**
@@ -360,10 +289,6 @@ public class MultiGeometryPropertyType {
         this.show = value;
     }
 
-    public boolean isSetShow() {
-        return (this.show!= null);
-    }
-
     /**
      * Gets the value of the actuate property.
      * 
@@ -388,8 +313,32 @@ public class MultiGeometryPropertyType {
         this.actuate = value;
     }
 
-    public boolean isSetActuate() {
-        return (this.actuate!= null);
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(java.lang.Boolean value) {
+        this.owns = value;
     }
 
 }

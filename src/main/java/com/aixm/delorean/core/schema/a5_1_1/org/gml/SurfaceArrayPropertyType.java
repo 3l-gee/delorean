@@ -93,14 +93,6 @@ public class SurfaceArrayPropertyType {
         return this.abstractSurface;
     }
 
-    public boolean isSetAbstractSurface() {
-        return ((this.abstractSurface!= null)&&(!this.abstractSurface.isEmpty()));
-    }
-
-    public void unsetAbstractSurface() {
-        this.abstractSurface = null;
-    }
-
     /**
      * Gets the value of the owns property.
      * 
@@ -125,16 +117,8 @@ public class SurfaceArrayPropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(boolean value) {
+    public void setOwns(java.lang.Boolean value) {
         this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

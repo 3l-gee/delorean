@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,27 +66,17 @@ public class AirportHeliportAvailabilityType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "operationalStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeStatusAirportType> operationalStatus;
     @XmlElementRef(name = "warning", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeAirportWarningType> warning;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportUsagePropertyType> usage;
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportAvailabilityType.Extension> extension;
 
     /**
@@ -123,14 +111,6 @@ public class AirportHeliportAvailabilityType
         return this.timeInterval;
     }
 
-    public boolean isSetTimeInterval() {
-        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
-    }
-
-    public void unsetTimeInterval() {
-        this.timeInterval = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -161,14 +141,6 @@ public class AirportHeliportAvailabilityType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -203,14 +175,6 @@ public class AirportHeliportAvailabilityType
         return this.specialDateAuthority;
     }
 
-    public boolean isSetSpecialDateAuthority() {
-        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
-    }
-
-    public void unsetSpecialDateAuthority() {
-        this.specialDateAuthority = null;
-    }
-
     /**
      * Gets the value of the operationalStatus property.
      * 
@@ -235,10 +199,6 @@ public class AirportHeliportAvailabilityType
         this.operationalStatus = value;
     }
 
-    public boolean isSetOperationalStatus() {
-        return (this.operationalStatus!= null);
-    }
-
     /**
      * Gets the value of the warning property.
      * 
@@ -261,10 +221,6 @@ public class AirportHeliportAvailabilityType
      */
     public void setWarning(JAXBElement<CodeAirportWarningType> value) {
         this.warning = value;
-    }
-
-    public boolean isSetWarning() {
-        return (this.warning!= null);
     }
 
     /**
@@ -299,14 +255,6 @@ public class AirportHeliportAvailabilityType
         return this.usage;
     }
 
-    public boolean isSetUsage() {
-        return ((this.usage!= null)&&(!this.usage.isEmpty()));
-    }
-
-    public void unsetUsage() {
-        this.usage = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -339,14 +287,6 @@ public class AirportHeliportAvailabilityType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -377,10 +317,8 @@ public class AirportHeliportAvailabilityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractAirportHeliportAvailabilityExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportHeliportAvailabilityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -409,10 +347,6 @@ public class AirportHeliportAvailabilityType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
-        public boolean isSetAbstractPropertiesWithScheduleExtension() {
-            return (this.abstractPropertiesWithScheduleExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractAirportHeliportAvailabilityExtension property.
          * 
@@ -435,10 +369,6 @@ public class AirportHeliportAvailabilityType
          */
         public void setAbstractAirportHeliportAvailabilityExtension(AbstractExtensionType value) {
             this.abstractAirportHeliportAvailabilityExtension = value;
-        }
-
-        public boolean isSetAbstractAirportHeliportAvailabilityExtension() {
-            return (this.abstractAirportHeliportAvailabilityExtension!= null);
         }
 
         /**
@@ -465,16 +395,8 @@ public class AirportHeliportAvailabilityType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.BooleanPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -61,19 +58,11 @@ public class MDGridSpatialRepresentationType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected IntegerPropertyType numberOfDimensions;
-    @Valid
-    @Size(min = 0)
     protected List<MDDimensionPropertyType> axisDimensionProperties;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MDCellGeometryCodePropertyType cellGeometry;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected BooleanPropertyType transformationParameterAvailability;
 
     /**
@@ -98,10 +87,6 @@ public class MDGridSpatialRepresentationType
      */
     public void setNumberOfDimensions(IntegerPropertyType value) {
         this.numberOfDimensions = value;
-    }
-
-    public boolean isSetNumberOfDimensions() {
-        return (this.numberOfDimensions!= null);
     }
 
     /**
@@ -136,14 +121,6 @@ public class MDGridSpatialRepresentationType
         return this.axisDimensionProperties;
     }
 
-    public boolean isSetAxisDimensionProperties() {
-        return ((this.axisDimensionProperties!= null)&&(!this.axisDimensionProperties.isEmpty()));
-    }
-
-    public void unsetAxisDimensionProperties() {
-        this.axisDimensionProperties = null;
-    }
-
     /**
      * Gets the value of the cellGeometry property.
      * 
@@ -168,10 +145,6 @@ public class MDGridSpatialRepresentationType
         this.cellGeometry = value;
     }
 
-    public boolean isSetCellGeometry() {
-        return (this.cellGeometry!= null);
-    }
-
     /**
      * Gets the value of the transformationParameterAvailability property.
      * 
@@ -194,10 +167,6 @@ public class MDGridSpatialRepresentationType
      */
     public void setTransformationParameterAvailability(BooleanPropertyType value) {
         this.transformationParameterAvailability = value;
-    }
-
-    public boolean isSetTransformationParameterAvailability() {
-        return (this.transformationParameterAvailability!= null);
     }
 
 }

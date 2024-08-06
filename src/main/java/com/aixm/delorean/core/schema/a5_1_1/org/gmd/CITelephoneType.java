@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -49,11 +47,7 @@ public class CITelephoneType
     extends AbstractObjectType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> voice;
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> facsimile;
 
     /**
@@ -88,14 +82,6 @@ public class CITelephoneType
         return this.voice;
     }
 
-    public boolean isSetVoice() {
-        return ((this.voice!= null)&&(!this.voice.isEmpty()));
-    }
-
-    public void unsetVoice() {
-        this.voice = null;
-    }
-
     /**
      * Gets the value of the facsimile property.
      * 
@@ -126,14 +112,6 @@ public class CITelephoneType
             facsimile = new ArrayList<>();
         }
         return this.facsimile;
-    }
-
-    public boolean isSetFacsimile() {
-        return ((this.facsimile!= null)&&(!this.facsimile.isEmpty()));
-    }
-
-    public void unsetFacsimile() {
-        this.facsimile = null;
     }
 
 }

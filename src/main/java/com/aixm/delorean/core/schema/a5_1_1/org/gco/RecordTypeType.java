@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gco;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -48,10 +47,8 @@ public class RecordTypeType {
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -84,10 +81,6 @@ public class RecordTypeType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the href property.
      * 
@@ -110,10 +103,6 @@ public class RecordTypeType {
      */
     public void setHref(String value) {
         this.href = value;
-    }
-
-    public boolean isSetHref() {
-        return (this.href!= null);
     }
 
     /**
@@ -140,10 +129,6 @@ public class RecordTypeType {
         this.role = value;
     }
 
-    public boolean isSetRole() {
-        return (this.role!= null);
-    }
-
     /**
      * Gets the value of the arcrole property.
      * 
@@ -166,10 +151,6 @@ public class RecordTypeType {
      */
     public void setArcrole(String value) {
         this.arcrole = value;
-    }
-
-    public boolean isSetArcrole() {
-        return (this.arcrole!= null);
     }
 
     /**
@@ -196,10 +177,6 @@ public class RecordTypeType {
         this.titleAttribute = value;
     }
 
-    public boolean isSetTitleAttribute() {
-        return (this.titleAttribute!= null);
-    }
-
     /**
      * Gets the value of the show property.
      * 
@@ -224,10 +201,6 @@ public class RecordTypeType {
         this.show = value;
     }
 
-    public boolean isSetShow() {
-        return (this.show!= null);
-    }
-
     /**
      * Gets the value of the actuate property.
      * 
@@ -250,10 +223,6 @@ public class RecordTypeType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
-    }
-
-    public boolean isSetActuate() {
-        return (this.actuate!= null);
     }
 
 }

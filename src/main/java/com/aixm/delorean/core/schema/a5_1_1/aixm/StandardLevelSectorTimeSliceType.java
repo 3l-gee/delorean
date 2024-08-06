@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,17 +73,11 @@ public class StandardLevelSectorTimeSliceType
     @XmlElementRef(name = "angleType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeNorthReferenceType> angleType;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirspacePropertyType> applicableAirspace;
     @XmlElementRef(name = "applicableLevelColumn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<StandardLevelColumnPropertyType> applicableLevelColumn;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<StandardLevelSectorTimeSliceType.Extension> extension;
 
     /**
@@ -113,10 +104,6 @@ public class StandardLevelSectorTimeSliceType
         this.flightRule = value;
     }
 
-    public boolean isSetFlightRule() {
-        return (this.flightRule!= null);
-    }
-
     /**
      * Gets the value of the fromTrack property.
      * 
@@ -139,10 +126,6 @@ public class StandardLevelSectorTimeSliceType
      */
     public void setFromTrack(JAXBElement<ValBearingType> value) {
         this.fromTrack = value;
-    }
-
-    public boolean isSetFromTrack() {
-        return (this.fromTrack!= null);
     }
 
     /**
@@ -169,10 +152,6 @@ public class StandardLevelSectorTimeSliceType
         this.toTrack = value;
     }
 
-    public boolean isSetToTrack() {
-        return (this.toTrack!= null);
-    }
-
     /**
      * Gets the value of the angleType property.
      * 
@@ -195,10 +174,6 @@ public class StandardLevelSectorTimeSliceType
      */
     public void setAngleType(JAXBElement<CodeNorthReferenceType> value) {
         this.angleType = value;
-    }
-
-    public boolean isSetAngleType() {
-        return (this.angleType!= null);
     }
 
     /**
@@ -233,14 +208,6 @@ public class StandardLevelSectorTimeSliceType
         return this.applicableAirspace;
     }
 
-    public boolean isSetApplicableAirspace() {
-        return ((this.applicableAirspace!= null)&&(!this.applicableAirspace.isEmpty()));
-    }
-
-    public void unsetApplicableAirspace() {
-        this.applicableAirspace = null;
-    }
-
     /**
      * Gets the value of the applicableLevelColumn property.
      * 
@@ -263,10 +230,6 @@ public class StandardLevelSectorTimeSliceType
      */
     public void setApplicableLevelColumn(JAXBElement<StandardLevelColumnPropertyType> value) {
         this.applicableLevelColumn = value;
-    }
-
-    public boolean isSetApplicableLevelColumn() {
-        return (this.applicableLevelColumn!= null);
     }
 
     /**
@@ -301,14 +264,6 @@ public class StandardLevelSectorTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -341,14 +296,6 @@ public class StandardLevelSectorTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -377,8 +324,6 @@ public class StandardLevelSectorTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelSectorExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractStandardLevelSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -407,10 +352,6 @@ public class StandardLevelSectorTimeSliceType
             this.abstractStandardLevelSectorExtension = value;
         }
 
-        public boolean isSetAbstractStandardLevelSectorExtension() {
-            return (this.abstractStandardLevelSectorExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -435,16 +376,8 @@ public class StandardLevelSectorTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

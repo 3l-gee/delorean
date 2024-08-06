@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -57,19 +55,11 @@ public class CIAddressType
     extends AbstractObjectType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> deliveryPoint;
-    @Valid
     protected CharacterStringPropertyType city;
-    @Valid
     protected CharacterStringPropertyType administrativeArea;
-    @Valid
     protected CharacterStringPropertyType postalCode;
-    @Valid
     protected CharacterStringPropertyType country;
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> electronicMailAddress;
 
     /**
@@ -104,14 +94,6 @@ public class CIAddressType
         return this.deliveryPoint;
     }
 
-    public boolean isSetDeliveryPoint() {
-        return ((this.deliveryPoint!= null)&&(!this.deliveryPoint.isEmpty()));
-    }
-
-    public void unsetDeliveryPoint() {
-        this.deliveryPoint = null;
-    }
-
     /**
      * Gets the value of the city property.
      * 
@@ -134,10 +116,6 @@ public class CIAddressType
      */
     public void setCity(CharacterStringPropertyType value) {
         this.city = value;
-    }
-
-    public boolean isSetCity() {
-        return (this.city!= null);
     }
 
     /**
@@ -164,10 +142,6 @@ public class CIAddressType
         this.administrativeArea = value;
     }
 
-    public boolean isSetAdministrativeArea() {
-        return (this.administrativeArea!= null);
-    }
-
     /**
      * Gets the value of the postalCode property.
      * 
@@ -192,10 +166,6 @@ public class CIAddressType
         this.postalCode = value;
     }
 
-    public boolean isSetPostalCode() {
-        return (this.postalCode!= null);
-    }
-
     /**
      * Gets the value of the country property.
      * 
@@ -218,10 +188,6 @@ public class CIAddressType
      */
     public void setCountry(CharacterStringPropertyType value) {
         this.country = value;
-    }
-
-    public boolean isSetCountry() {
-        return (this.country!= null);
     }
 
     /**
@@ -254,14 +220,6 @@ public class CIAddressType
             electronicMailAddress = new ArrayList<>();
         }
         return this.electronicMailAddress;
-    }
-
-    public boolean isSetElectronicMailAddress() {
-        return ((this.electronicMailAddress!= null)&&(!this.electronicMailAddress.isEmpty()));
-    }
-
-    public void unsetElectronicMailAddress() {
-        this.electronicMailAddress = null;
     }
 
 }

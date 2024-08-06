@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -43,8 +41,6 @@ public class TextPropertyNameType {
 
     @XmlValue
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @Size(min = 1, max = 60)
-    @Pattern(regexp = "[A-Za-z\\-_]*")
     protected String value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
@@ -73,10 +69,6 @@ public class TextPropertyNameType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -99,10 +91,6 @@ public class TextPropertyNameType {
      */
     public void setNilReason(String value) {
         this.nilReason = value;
-    }
-
-    public boolean isSetNilReason() {
-        return (this.nilReason!= null);
     }
 
 }

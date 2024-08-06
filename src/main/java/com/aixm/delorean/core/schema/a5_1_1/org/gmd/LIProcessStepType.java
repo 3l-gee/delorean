@@ -12,9 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.DateTimePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -57,18 +54,10 @@ public class LIProcessStepType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType description;
-    @Valid
     protected CharacterStringPropertyType rationale;
-    @Valid
     protected DateTimePropertyType dateTime;
-    @Valid
-    @Size(min = 0)
     protected List<CIResponsiblePartyPropertyType> processor;
-    @Valid
-    @Size(min = 0)
     protected List<LISourcePropertyType> source;
 
     /**
@@ -95,10 +84,6 @@ public class LIProcessStepType
         this.description = value;
     }
 
-    public boolean isSetDescription() {
-        return (this.description!= null);
-    }
-
     /**
      * Gets the value of the rationale property.
      * 
@@ -123,10 +108,6 @@ public class LIProcessStepType
         this.rationale = value;
     }
 
-    public boolean isSetRationale() {
-        return (this.rationale!= null);
-    }
-
     /**
      * Gets the value of the dateTime property.
      * 
@@ -149,10 +130,6 @@ public class LIProcessStepType
      */
     public void setDateTime(DateTimePropertyType value) {
         this.dateTime = value;
-    }
-
-    public boolean isSetDateTime() {
-        return (this.dateTime!= null);
     }
 
     /**
@@ -187,14 +164,6 @@ public class LIProcessStepType
         return this.processor;
     }
 
-    public boolean isSetProcessor() {
-        return ((this.processor!= null)&&(!this.processor.isEmpty()));
-    }
-
-    public void unsetProcessor() {
-        this.processor = null;
-    }
-
     /**
      * Gets the value of the source property.
      * 
@@ -225,14 +194,6 @@ public class LIProcessStepType
             source = new ArrayList<>();
         }
         return this.source;
-    }
-
-    public boolean isSetSource() {
-        return ((this.source!= null)&&(!this.source.isEmpty()));
-    }
-
-    public void unsetSource() {
-        this.source = null;
     }
 
 }

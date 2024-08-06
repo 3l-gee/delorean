@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -48,13 +45,8 @@ public class RectifiedGridType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected PointPropertyType origin;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<VectorType> offsetVector;
 
     /**
@@ -79,10 +71,6 @@ public class RectifiedGridType
      */
     public void setOrigin(PointPropertyType value) {
         this.origin = value;
-    }
-
-    public boolean isSetOrigin() {
-        return (this.origin!= null);
     }
 
     /**
@@ -115,14 +103,6 @@ public class RectifiedGridType
             offsetVector = new ArrayList<>();
         }
         return this.offsetVector;
-    }
-
-    public boolean isSetOffsetVector() {
-        return ((this.offsetVector!= null)&&(!this.offsetVector.isEmpty()));
-    }
-
-    public void unsetOffsetVector() {
-        this.offsetVector = null;
     }
 
 }

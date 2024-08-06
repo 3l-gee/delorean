@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,11 +65,7 @@ public class AirspaceBorderCrossingTimeSliceType
     @XmlElementRef(name = "enteredAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirspacePropertyType> enteredAirspace;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AirspaceBorderCrossingTimeSliceType.Extension> extension;
 
     /**
@@ -99,10 +92,6 @@ public class AirspaceBorderCrossingTimeSliceType
         this.exitedAirspace = value;
     }
 
-    public boolean isSetExitedAirspace() {
-        return (this.exitedAirspace!= null);
-    }
-
     /**
      * Gets the value of the enteredAirspace property.
      * 
@@ -125,10 +114,6 @@ public class AirspaceBorderCrossingTimeSliceType
      */
     public void setEnteredAirspace(JAXBElement<AirspacePropertyType> value) {
         this.enteredAirspace = value;
-    }
-
-    public boolean isSetEnteredAirspace() {
-        return (this.enteredAirspace!= null);
     }
 
     /**
@@ -163,14 +148,6 @@ public class AirspaceBorderCrossingTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -203,14 +180,6 @@ public class AirspaceBorderCrossingTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -239,8 +208,6 @@ public class AirspaceBorderCrossingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceBorderCrossingExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractAirspaceBorderCrossingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -269,10 +236,6 @@ public class AirspaceBorderCrossingTimeSliceType
             this.abstractAirspaceBorderCrossingExtension = value;
         }
 
-        public boolean isSetAbstractAirspaceBorderCrossingExtension() {
-            return (this.abstractAirspaceBorderCrossingExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -297,16 +260,8 @@ public class AirspaceBorderCrossingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

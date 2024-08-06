@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,19 +75,16 @@ public class EngineeringCRSType
      * gml:cylindricalCS is an association role to the cylindrical coordinate system used by this CRS.
      * 
      */
-    @Valid
     protected CylindricalCSPropertyType cylindricalCS;
     /**
      * gml:linearCS is an association role to the linear coordinate system used by this CRS.
      * 
      */
-    @Valid
     protected LinearCSPropertyType linearCS;
     /**
      * gml:polarCS is an association role to the polar coordinate system used by this CRS.
      * 
      */
-    @Valid
     protected PolarCSPropertyType polarCS;
     /**
      * gml:sphericalCS is an association role to the spherical coordinate system used by this CRS.
@@ -100,7 +96,6 @@ public class EngineeringCRSType
      * gml:userDefinedCS is an association role to the user defined coordinate system used by this CRS.
      * 
      */
-    @Valid
     protected UserDefinedCSPropertyType userDefinedCS;
     @XmlElementRef(name = "coordinateSystem", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<CoordinateSystemPropertyType> coordinateSystem;
@@ -138,10 +133,6 @@ public class EngineeringCRSType
         this.affineCS = value;
     }
 
-    public boolean isSetAffineCS() {
-        return (this.affineCS!= null);
-    }
-
     /**
      * gml:cartesianCS is an association role to the Cartesian coordinate system used by this CRS.
      * 
@@ -169,10 +160,6 @@ public class EngineeringCRSType
         this.cartesianCS = value;
     }
 
-    public boolean isSetCartesianCS() {
-        return (this.cartesianCS!= null);
-    }
-
     /**
      * gml:cylindricalCS is an association role to the cylindrical coordinate system used by this CRS.
      * 
@@ -196,10 +183,6 @@ public class EngineeringCRSType
      */
     public void setCylindricalCS(CylindricalCSPropertyType value) {
         this.cylindricalCS = value;
-    }
-
-    public boolean isSetCylindricalCS() {
-        return (this.cylindricalCS!= null);
     }
 
     /**
@@ -227,10 +210,6 @@ public class EngineeringCRSType
         this.linearCS = value;
     }
 
-    public boolean isSetLinearCS() {
-        return (this.linearCS!= null);
-    }
-
     /**
      * gml:polarCS is an association role to the polar coordinate system used by this CRS.
      * 
@@ -254,10 +233,6 @@ public class EngineeringCRSType
      */
     public void setPolarCS(PolarCSPropertyType value) {
         this.polarCS = value;
-    }
-
-    public boolean isSetPolarCS() {
-        return (this.polarCS!= null);
     }
 
     /**
@@ -287,10 +262,6 @@ public class EngineeringCRSType
         this.sphericalCS = value;
     }
 
-    public boolean isSetSphericalCS() {
-        return (this.sphericalCS!= null);
-    }
-
     /**
      * gml:userDefinedCS is an association role to the user defined coordinate system used by this CRS.
      * 
@@ -314,10 +285,6 @@ public class EngineeringCRSType
      */
     public void setUserDefinedCS(UserDefinedCSPropertyType value) {
         this.userDefinedCS = value;
-    }
-
-    public boolean isSetUserDefinedCS() {
-        return (this.userDefinedCS!= null);
     }
 
     /**
@@ -346,10 +313,6 @@ public class EngineeringCRSType
         this.coordinateSystem = value;
     }
 
-    public boolean isSetCoordinateSystem() {
-        return (this.coordinateSystem!= null);
-    }
-
     /**
      * gml:engineeringDatum is an association role to the engineering datum used by this CRS.
      * 
@@ -375,10 +338,6 @@ public class EngineeringCRSType
      */
     public void setEngineeringDatum(JAXBElement<EngineeringDatumPropertyType> value) {
         this.engineeringDatum = value;
-    }
-
-    public boolean isSetEngineeringDatum() {
-        return (this.engineeringDatum!= null);
     }
 
 }

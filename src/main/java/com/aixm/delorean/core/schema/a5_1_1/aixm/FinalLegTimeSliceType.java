@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -169,18 +167,12 @@ public class FinalLegTimeSliceType
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DistanceIndicationPropertyType> distance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElementRef(name = "holding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<HoldingUsePropertyType> holding;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
@@ -203,8 +195,6 @@ public class FinalLegTimeSliceType
     @XmlElementRef(name = "courseCentrelineIntersect", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRelativePositionType> courseCentrelineIntersect;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ApproachConditionPropertyType> condition;
     @XmlElementRef(name = "finalPathAlignmentPoint_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DesignatedPointPropertyType> finalPathAlignmentPointFixDesignatedPoint;
@@ -222,8 +212,6 @@ public class FinalLegTimeSliceType
     protected JAXBElement<TerminalSegmentPointPropertyType> visualDescentPoint;
     @XmlElementRef(name = "FASData", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<FASDataBlockPropertyType> fasData;
-    @Valid
-    @Size(min = 0)
     protected List<FinalLegTimeSliceType.Extension> extension;
 
     /**
@@ -250,10 +238,6 @@ public class FinalLegTimeSliceType
         this.endConditionDesignator = value;
     }
 
-    public boolean isSetEndConditionDesignator() {
-        return (this.endConditionDesignator!= null);
-    }
-
     /**
      * Gets the value of the legPath property.
      * 
@@ -276,10 +260,6 @@ public class FinalLegTimeSliceType
      */
     public void setLegPath(JAXBElement<CodeTrajectoryType> value) {
         this.legPath = value;
-    }
-
-    public boolean isSetLegPath() {
-        return (this.legPath!= null);
     }
 
     /**
@@ -306,10 +286,6 @@ public class FinalLegTimeSliceType
         this.legTypeARINC = value;
     }
 
-    public boolean isSetLegTypeARINC() {
-        return (this.legTypeARINC!= null);
-    }
-
     /**
      * Gets the value of the course property.
      * 
@@ -332,10 +308,6 @@ public class FinalLegTimeSliceType
      */
     public void setCourse(JAXBElement<ValBearingType> value) {
         this.course = value;
-    }
-
-    public boolean isSetCourse() {
-        return (this.course!= null);
     }
 
     /**
@@ -362,10 +334,6 @@ public class FinalLegTimeSliceType
         this.courseType = value;
     }
 
-    public boolean isSetCourseType() {
-        return (this.courseType!= null);
-    }
-
     /**
      * Gets the value of the courseDirection property.
      * 
@@ -388,10 +356,6 @@ public class FinalLegTimeSliceType
      */
     public void setCourseDirection(JAXBElement<CodeDirectionReferenceType> value) {
         this.courseDirection = value;
-    }
-
-    public boolean isSetCourseDirection() {
-        return (this.courseDirection!= null);
     }
 
     /**
@@ -418,10 +382,6 @@ public class FinalLegTimeSliceType
         this.turnDirection = value;
     }
 
-    public boolean isSetTurnDirection() {
-        return (this.turnDirection!= null);
-    }
-
     /**
      * Gets the value of the speedLimit property.
      * 
@@ -444,10 +404,6 @@ public class FinalLegTimeSliceType
      */
     public void setSpeedLimit(JAXBElement<ValSpeedType> value) {
         this.speedLimit = value;
-    }
-
-    public boolean isSetSpeedLimit() {
-        return (this.speedLimit!= null);
     }
 
     /**
@@ -474,10 +430,6 @@ public class FinalLegTimeSliceType
         this.speedReference = value;
     }
 
-    public boolean isSetSpeedReference() {
-        return (this.speedReference!= null);
-    }
-
     /**
      * Gets the value of the speedInterpretation property.
      * 
@@ -500,10 +452,6 @@ public class FinalLegTimeSliceType
      */
     public void setSpeedInterpretation(JAXBElement<CodeAltitudeUseType> value) {
         this.speedInterpretation = value;
-    }
-
-    public boolean isSetSpeedInterpretation() {
-        return (this.speedInterpretation!= null);
     }
 
     /**
@@ -530,10 +478,6 @@ public class FinalLegTimeSliceType
         this.bankAngle = value;
     }
 
-    public boolean isSetBankAngle() {
-        return (this.bankAngle!= null);
-    }
-
     /**
      * Gets the value of the length property.
      * 
@@ -556,10 +500,6 @@ public class FinalLegTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
-    }
-
-    public boolean isSetLength() {
-        return (this.length!= null);
     }
 
     /**
@@ -586,10 +526,6 @@ public class FinalLegTimeSliceType
         this.duration = value;
     }
 
-    public boolean isSetDuration() {
-        return (this.duration!= null);
-    }
-
     /**
      * Gets the value of the procedureTurnRequired property.
      * 
@@ -612,10 +548,6 @@ public class FinalLegTimeSliceType
      */
     public void setProcedureTurnRequired(JAXBElement<CodeYesNoType> value) {
         this.procedureTurnRequired = value;
-    }
-
-    public boolean isSetProcedureTurnRequired() {
-        return (this.procedureTurnRequired!= null);
     }
 
     /**
@@ -642,10 +574,6 @@ public class FinalLegTimeSliceType
         this.upperLimitAltitude = value;
     }
 
-    public boolean isSetUpperLimitAltitude() {
-        return (this.upperLimitAltitude!= null);
-    }
-
     /**
      * Gets the value of the upperLimitReference property.
      * 
@@ -668,10 +596,6 @@ public class FinalLegTimeSliceType
      */
     public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.upperLimitReference = value;
-    }
-
-    public boolean isSetUpperLimitReference() {
-        return (this.upperLimitReference!= null);
     }
 
     /**
@@ -698,10 +622,6 @@ public class FinalLegTimeSliceType
         this.lowerLimitAltitude = value;
     }
 
-    public boolean isSetLowerLimitAltitude() {
-        return (this.lowerLimitAltitude!= null);
-    }
-
     /**
      * Gets the value of the lowerLimitReference property.
      * 
@@ -724,10 +644,6 @@ public class FinalLegTimeSliceType
      */
     public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLimitReference = value;
-    }
-
-    public boolean isSetLowerLimitReference() {
-        return (this.lowerLimitReference!= null);
     }
 
     /**
@@ -754,10 +670,6 @@ public class FinalLegTimeSliceType
         this.altitudeInterpretation = value;
     }
 
-    public boolean isSetAltitudeInterpretation() {
-        return (this.altitudeInterpretation!= null);
-    }
-
     /**
      * Gets the value of the altitudeOverrideATC property.
      * 
@@ -780,10 +692,6 @@ public class FinalLegTimeSliceType
      */
     public void setAltitudeOverrideATC(JAXBElement<ValDistanceVerticalType> value) {
         this.altitudeOverrideATC = value;
-    }
-
-    public boolean isSetAltitudeOverrideATC() {
-        return (this.altitudeOverrideATC!= null);
     }
 
     /**
@@ -810,10 +718,6 @@ public class FinalLegTimeSliceType
         this.altitudeOverrideReference = value;
     }
 
-    public boolean isSetAltitudeOverrideReference() {
-        return (this.altitudeOverrideReference!= null);
-    }
-
     /**
      * Gets the value of the verticalAngle property.
      * 
@@ -836,10 +740,6 @@ public class FinalLegTimeSliceType
      */
     public void setVerticalAngle(JAXBElement<ValAngleType> value) {
         this.verticalAngle = value;
-    }
-
-    public boolean isSetVerticalAngle() {
-        return (this.verticalAngle!= null);
     }
 
     /**
@@ -866,10 +766,6 @@ public class FinalLegTimeSliceType
         this.startPoint = value;
     }
 
-    public boolean isSetStartPoint() {
-        return (this.startPoint!= null);
-    }
-
     /**
      * Gets the value of the endPoint property.
      * 
@@ -892,10 +788,6 @@ public class FinalLegTimeSliceType
      */
     public void setEndPoint(JAXBElement<TerminalSegmentPointPropertyType> value) {
         this.endPoint = value;
-    }
-
-    public boolean isSetEndPoint() {
-        return (this.endPoint!= null);
     }
 
     /**
@@ -922,10 +814,6 @@ public class FinalLegTimeSliceType
         this.trajectory = value;
     }
 
-    public boolean isSetTrajectory() {
-        return (this.trajectory!= null);
-    }
-
     /**
      * Gets the value of the arcCentre property.
      * 
@@ -948,10 +836,6 @@ public class FinalLegTimeSliceType
      */
     public void setArcCentre(JAXBElement<TerminalSegmentPointPropertyType> value) {
         this.arcCentre = value;
-    }
-
-    public boolean isSetArcCentre() {
-        return (this.arcCentre!= null);
     }
 
     /**
@@ -978,10 +862,6 @@ public class FinalLegTimeSliceType
         this.angle = value;
     }
 
-    public boolean isSetAngle() {
-        return (this.angle!= null);
-    }
-
     /**
      * Gets the value of the distance property.
      * 
@@ -1004,10 +884,6 @@ public class FinalLegTimeSliceType
      */
     public void setDistance(JAXBElement<DistanceIndicationPropertyType> value) {
         this.distance = value;
-    }
-
-    public boolean isSetDistance() {
-        return (this.distance!= null);
     }
 
     /**
@@ -1042,14 +918,6 @@ public class FinalLegTimeSliceType
         return this.aircraftCategory;
     }
 
-    public boolean isSetAircraftCategory() {
-        return ((this.aircraftCategory!= null)&&(!this.aircraftCategory.isEmpty()));
-    }
-
-    public void unsetAircraftCategory() {
-        this.aircraftCategory = null;
-    }
-
     /**
      * Gets the value of the holding property.
      * 
@@ -1072,10 +940,6 @@ public class FinalLegTimeSliceType
      */
     public void setHolding(JAXBElement<HoldingUsePropertyType> value) {
         this.holding = value;
-    }
-
-    public boolean isSetHolding() {
-        return (this.holding!= null);
     }
 
     /**
@@ -1110,14 +974,6 @@ public class FinalLegTimeSliceType
         return this.designSurface;
     }
 
-    public boolean isSetDesignSurface() {
-        return ((this.designSurface!= null)&&(!this.designSurface.isEmpty()));
-    }
-
-    public void unsetDesignSurface() {
-        this.designSurface = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -1150,14 +1006,6 @@ public class FinalLegTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the approach property.
      * 
@@ -1180,10 +1028,6 @@ public class FinalLegTimeSliceType
      */
     public void setApproach(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
         this.approach = value;
-    }
-
-    public boolean isSetApproach() {
-        return (this.approach!= null);
     }
 
     /**
@@ -1210,10 +1054,6 @@ public class FinalLegTimeSliceType
         this.guidanceSystem = value;
     }
 
-    public boolean isSetGuidanceSystem() {
-        return (this.guidanceSystem!= null);
-    }
-
     /**
      * Gets the value of the landingSystemCategory property.
      * 
@@ -1236,10 +1076,6 @@ public class FinalLegTimeSliceType
      */
     public void setLandingSystemCategory(JAXBElement<CodeApproachGuidanceType> value) {
         this.landingSystemCategory = value;
-    }
-
-    public boolean isSetLandingSystemCategory() {
-        return (this.landingSystemCategory!= null);
     }
 
     /**
@@ -1266,10 +1102,6 @@ public class FinalLegTimeSliceType
         this.minimumBaroVnavTemperature = value;
     }
 
-    public boolean isSetMinimumBaroVnavTemperature() {
-        return (this.minimumBaroVnavTemperature!= null);
-    }
-
     /**
      * Gets the value of the rnpDMEAuthorized property.
      * 
@@ -1292,10 +1124,6 @@ public class FinalLegTimeSliceType
      */
     public void setRnpDMEAuthorized(JAXBElement<CodeYesNoType> value) {
         this.rnpDMEAuthorized = value;
-    }
-
-    public boolean isSetRnpDMEAuthorized() {
-        return (this.rnpDMEAuthorized!= null);
     }
 
     /**
@@ -1322,10 +1150,6 @@ public class FinalLegTimeSliceType
         this.courseOffsetAngle = value;
     }
 
-    public boolean isSetCourseOffsetAngle() {
-        return (this.courseOffsetAngle!= null);
-    }
-
     /**
      * Gets the value of the courseOffsetSide property.
      * 
@@ -1348,10 +1172,6 @@ public class FinalLegTimeSliceType
      */
     public void setCourseOffsetSide(JAXBElement<CodeSideType> value) {
         this.courseOffsetSide = value;
-    }
-
-    public boolean isSetCourseOffsetSide() {
-        return (this.courseOffsetSide!= null);
     }
 
     /**
@@ -1378,10 +1198,6 @@ public class FinalLegTimeSliceType
         this.courseCentrelineDistance = value;
     }
 
-    public boolean isSetCourseCentrelineDistance() {
-        return (this.courseCentrelineDistance!= null);
-    }
-
     /**
      * Gets the value of the courseOffsetDistance property.
      * 
@@ -1406,10 +1222,6 @@ public class FinalLegTimeSliceType
         this.courseOffsetDistance = value;
     }
 
-    public boolean isSetCourseOffsetDistance() {
-        return (this.courseOffsetDistance!= null);
-    }
-
     /**
      * Gets the value of the courseCentrelineIntersect property.
      * 
@@ -1432,10 +1244,6 @@ public class FinalLegTimeSliceType
      */
     public void setCourseCentrelineIntersect(JAXBElement<CodeRelativePositionType> value) {
         this.courseCentrelineIntersect = value;
-    }
-
-    public boolean isSetCourseCentrelineIntersect() {
-        return (this.courseCentrelineIntersect!= null);
     }
 
     /**
@@ -1470,14 +1278,6 @@ public class FinalLegTimeSliceType
         return this.condition;
     }
 
-    public boolean isSetCondition() {
-        return ((this.condition!= null)&&(!this.condition.isEmpty()));
-    }
-
-    public void unsetCondition() {
-        this.condition = null;
-    }
-
     /**
      * Gets the value of the finalPathAlignmentPointFixDesignatedPoint property.
      * 
@@ -1500,10 +1300,6 @@ public class FinalLegTimeSliceType
      */
     public void setFinalPathAlignmentPointFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.finalPathAlignmentPointFixDesignatedPoint = value;
-    }
-
-    public boolean isSetFinalPathAlignmentPointFixDesignatedPoint() {
-        return (this.finalPathAlignmentPointFixDesignatedPoint!= null);
     }
 
     /**
@@ -1530,10 +1326,6 @@ public class FinalLegTimeSliceType
         this.finalPathAlignmentPointNavaidSystem = value;
     }
 
-    public boolean isSetFinalPathAlignmentPointNavaidSystem() {
-        return (this.finalPathAlignmentPointNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the finalPathAlignmentPointPosition property.
      * 
@@ -1556,10 +1348,6 @@ public class FinalLegTimeSliceType
      */
     public void setFinalPathAlignmentPointPosition(JAXBElement<PointPropertyType> value) {
         this.finalPathAlignmentPointPosition = value;
-    }
-
-    public boolean isSetFinalPathAlignmentPointPosition() {
-        return (this.finalPathAlignmentPointPosition!= null);
     }
 
     /**
@@ -1586,10 +1374,6 @@ public class FinalLegTimeSliceType
         this.finalPathAlignmentPointRunwayPoint = value;
     }
 
-    public boolean isSetFinalPathAlignmentPointRunwayPoint() {
-        return (this.finalPathAlignmentPointRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the finalPathAlignmentPointAimingPoint property.
      * 
@@ -1612,10 +1396,6 @@ public class FinalLegTimeSliceType
      */
     public void setFinalPathAlignmentPointAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.finalPathAlignmentPointAimingPoint = value;
-    }
-
-    public boolean isSetFinalPathAlignmentPointAimingPoint() {
-        return (this.finalPathAlignmentPointAimingPoint!= null);
     }
 
     /**
@@ -1642,10 +1422,6 @@ public class FinalLegTimeSliceType
         this.finalPathAlignmentPointAirportReferencePoint = value;
     }
 
-    public boolean isSetFinalPathAlignmentPointAirportReferencePoint() {
-        return (this.finalPathAlignmentPointAirportReferencePoint!= null);
-    }
-
     /**
      * Gets the value of the visualDescentPoint property.
      * 
@@ -1670,10 +1446,6 @@ public class FinalLegTimeSliceType
         this.visualDescentPoint = value;
     }
 
-    public boolean isSetVisualDescentPoint() {
-        return (this.visualDescentPoint!= null);
-    }
-
     /**
      * Gets the value of the fasData property.
      * 
@@ -1696,10 +1468,6 @@ public class FinalLegTimeSliceType
      */
     public void setFASData(JAXBElement<FASDataBlockPropertyType> value) {
         this.fasData = value;
-    }
-
-    public boolean isSetFASData() {
-        return (this.fasData!= null);
     }
 
     /**
@@ -1734,14 +1502,6 @@ public class FinalLegTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -1774,13 +1534,10 @@ public class FinalLegTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFinalLegExtension")
-        @Valid
         protected AbstractExtensionType abstractFinalLegExtension;
         @XmlElement(name = "AbstractApproachLegExtension")
-        @Valid
         protected AbstractExtensionType abstractApproachLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
-        @Valid
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -1809,10 +1566,6 @@ public class FinalLegTimeSliceType
             this.abstractFinalLegExtension = value;
         }
 
-        public boolean isSetAbstractFinalLegExtension() {
-            return (this.abstractFinalLegExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractApproachLegExtension property.
          * 
@@ -1835,10 +1588,6 @@ public class FinalLegTimeSliceType
          */
         public void setAbstractApproachLegExtension(AbstractExtensionType value) {
             this.abstractApproachLegExtension = value;
-        }
-
-        public boolean isSetAbstractApproachLegExtension() {
-            return (this.abstractApproachLegExtension!= null);
         }
 
         /**
@@ -1865,10 +1614,6 @@ public class FinalLegTimeSliceType
             this.abstractSegmentLegExtension = value;
         }
 
-        public boolean isSetAbstractSegmentLegExtension() {
-            return (this.abstractSegmentLegExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -1893,16 +1638,8 @@ public class FinalLegTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

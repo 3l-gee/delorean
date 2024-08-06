@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,11 +74,7 @@ public class EquipmentUnavailableAdjustmentColumnType
     @XmlElementRef(name = "approachLightingInoperative", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> approachLightingInoperative;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<EquipmentUnavailableAdjustmentColumnType.Extension> extension;
 
     /**
@@ -107,10 +101,6 @@ public class EquipmentUnavailableAdjustmentColumnType
         this.guidanceEquipment = value;
     }
 
-    public boolean isSetGuidanceEquipment() {
-        return (this.guidanceEquipment!= null);
-    }
-
     /**
      * Gets the value of the landingSystemLights property.
      * 
@@ -133,10 +123,6 @@ public class EquipmentUnavailableAdjustmentColumnType
      */
     public void setLandingSystemLights(JAXBElement<CodeYesNoType> value) {
         this.landingSystemLights = value;
-    }
-
-    public boolean isSetLandingSystemLights() {
-        return (this.landingSystemLights!= null);
     }
 
     /**
@@ -163,10 +149,6 @@ public class EquipmentUnavailableAdjustmentColumnType
         this.equipmentRVR = value;
     }
 
-    public boolean isSetEquipmentRVR() {
-        return (this.equipmentRVR!= null);
-    }
-
     /**
      * Gets the value of the visibilityAdjustment property.
      * 
@@ -191,10 +173,6 @@ public class EquipmentUnavailableAdjustmentColumnType
         this.visibilityAdjustment = value;
     }
 
-    public boolean isSetVisibilityAdjustment() {
-        return (this.visibilityAdjustment!= null);
-    }
-
     /**
      * Gets the value of the approachLightingInoperative property.
      * 
@@ -217,10 +195,6 @@ public class EquipmentUnavailableAdjustmentColumnType
      */
     public void setApproachLightingInoperative(JAXBElement<CodeYesNoType> value) {
         this.approachLightingInoperative = value;
-    }
-
-    public boolean isSetApproachLightingInoperative() {
-        return (this.approachLightingInoperative!= null);
     }
 
     /**
@@ -255,14 +229,6 @@ public class EquipmentUnavailableAdjustmentColumnType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -295,14 +261,6 @@ public class EquipmentUnavailableAdjustmentColumnType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -331,7 +289,6 @@ public class EquipmentUnavailableAdjustmentColumnType
     public static class Extension {
 
         @XmlElement(name = "AbstractEquipmentUnavailableAdjustmentColumnExtension")
-        @Valid
         protected AbstractExtensionType abstractEquipmentUnavailableAdjustmentColumnExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -360,10 +317,6 @@ public class EquipmentUnavailableAdjustmentColumnType
             this.abstractEquipmentUnavailableAdjustmentColumnExtension = value;
         }
 
-        public boolean isSetAbstractEquipmentUnavailableAdjustmentColumnExtension() {
-            return (this.abstractEquipmentUnavailableAdjustmentColumnExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -388,16 +341,8 @@ public class EquipmentUnavailableAdjustmentColumnType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -24,7 +24,6 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gml.VerticalCRSType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,10 +74,8 @@ public class SCCRSPropertyType {
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -136,10 +133,6 @@ public class SCCRSPropertyType {
         this.abstractCRS = value;
     }
 
-    public boolean isSetAbstractCRS() {
-        return (this.abstractCRS!= null);
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -172,14 +165,6 @@ public class SCCRSPropertyType {
         return this.nilReason;
     }
 
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
-    }
-
     /**
      * Gets the value of the uuidref property.
      * 
@@ -202,10 +187,6 @@ public class SCCRSPropertyType {
      */
     public void setUuidref(String value) {
         this.uuidref = value;
-    }
-
-    public boolean isSetUuidref() {
-        return (this.uuidref!= null);
     }
 
     /**
@@ -232,10 +213,6 @@ public class SCCRSPropertyType {
         this.href = value;
     }
 
-    public boolean isSetHref() {
-        return (this.href!= null);
-    }
-
     /**
      * Gets the value of the role property.
      * 
@@ -258,10 +235,6 @@ public class SCCRSPropertyType {
      */
     public void setRole(String value) {
         this.role = value;
-    }
-
-    public boolean isSetRole() {
-        return (this.role!= null);
     }
 
     /**
@@ -288,10 +261,6 @@ public class SCCRSPropertyType {
         this.arcrole = value;
     }
 
-    public boolean isSetArcrole() {
-        return (this.arcrole!= null);
-    }
-
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -314,10 +283,6 @@ public class SCCRSPropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
-    }
-
-    public boolean isSetTitleAttribute() {
-        return (this.titleAttribute!= null);
     }
 
     /**
@@ -344,10 +309,6 @@ public class SCCRSPropertyType {
         this.show = value;
     }
 
-    public boolean isSetShow() {
-        return (this.show!= null);
-    }
-
     /**
      * Gets the value of the actuate property.
      * 
@@ -370,10 +331,6 @@ public class SCCRSPropertyType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
-    }
-
-    public boolean isSetActuate() {
-        return (this.actuate!= null);
     }
 
 }

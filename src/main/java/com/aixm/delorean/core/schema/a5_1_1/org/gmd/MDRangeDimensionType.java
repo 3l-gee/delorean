@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.MemberNamePropertyType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -51,9 +50,7 @@ public class MDRangeDimensionType
     extends AbstractObjectType
 {
 
-    @Valid
     protected MemberNamePropertyType sequenceIdentifier;
-    @Valid
     protected CharacterStringPropertyType descriptor;
 
     /**
@@ -80,10 +77,6 @@ public class MDRangeDimensionType
         this.sequenceIdentifier = value;
     }
 
-    public boolean isSetSequenceIdentifier() {
-        return (this.sequenceIdentifier!= null);
-    }
-
     /**
      * Gets the value of the descriptor property.
      * 
@@ -106,10 +99,6 @@ public class MDRangeDimensionType
      */
     public void setDescriptor(CharacterStringPropertyType value) {
         this.descriptor = value;
-    }
-
-    public boolean isSetDescriptor() {
-        return (this.descriptor!= null);
     }
 
 }

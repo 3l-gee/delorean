@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.math.BigDecimal;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -41,7 +40,6 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValFrequencyType {
 
     @XmlValue
-    @DecimalMin(value = "0", inclusive = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
     protected UomFrequencyType uom;
@@ -72,10 +70,6 @@ public class ValFrequencyType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the uom property.
      * 
@@ -100,10 +94,6 @@ public class ValFrequencyType {
         this.uom = value;
     }
 
-    public boolean isSetUom() {
-        return (this.uom!= null);
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -126,10 +116,6 @@ public class ValFrequencyType {
      */
     public void setNilReason(String value) {
         this.nilReason = value;
-    }
-
-    public boolean isSetNilReason() {
-        return (this.nilReason!= null);
     }
 
 }

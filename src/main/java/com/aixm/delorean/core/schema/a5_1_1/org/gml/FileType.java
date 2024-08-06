@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -54,16 +52,12 @@ import jakarta.xml.bind.annotation.XmlType;
 public class FileType {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected AssociationRoleType rangeParameters;
     @XmlSchemaType(name = "anyURI")
     protected String fileName;
     @XmlSchemaType(name = "anyURI")
     protected String fileReference;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CodeType fileStructure;
     @XmlSchemaType(name = "anyURI")
     protected String mimeType;
@@ -94,10 +88,6 @@ public class FileType {
         this.rangeParameters = value;
     }
 
-    public boolean isSetRangeParameters() {
-        return (this.rangeParameters!= null);
-    }
-
     /**
      * Gets the value of the fileName property.
      * 
@@ -120,10 +110,6 @@ public class FileType {
      */
     public void setFileName(String value) {
         this.fileName = value;
-    }
-
-    public boolean isSetFileName() {
-        return (this.fileName!= null);
     }
 
     /**
@@ -150,10 +136,6 @@ public class FileType {
         this.fileReference = value;
     }
 
-    public boolean isSetFileReference() {
-        return (this.fileReference!= null);
-    }
-
     /**
      * Gets the value of the fileStructure property.
      * 
@@ -176,10 +158,6 @@ public class FileType {
      */
     public void setFileStructure(CodeType value) {
         this.fileStructure = value;
-    }
-
-    public boolean isSetFileStructure() {
-        return (this.fileStructure!= null);
     }
 
     /**
@@ -206,10 +184,6 @@ public class FileType {
         this.mimeType = value;
     }
 
-    public boolean isSetMimeType() {
-        return (this.mimeType!= null);
-    }
-
     /**
      * Gets the value of the compression property.
      * 
@@ -232,10 +206,6 @@ public class FileType {
      */
     public void setCompression(String value) {
         this.compression = value;
-    }
-
-    public boolean isSetCompression() {
-        return (this.compression!= null);
     }
 
 }

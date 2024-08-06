@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -85,8 +83,6 @@ public class AerialRefuellingPointType
     @XmlElementRef(name = "radarGuidance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> radarGuidance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<PointReferencePropertyType> facilityMakeup;
     @XmlElementRef(name = "pointChoice_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DesignatedPointPropertyType> pointChoiceFixDesignatedPoint;
@@ -103,15 +99,11 @@ public class AerialRefuellingPointType
     @XmlElementRef(name = "extendedServiceVolume", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RadioFrequencyAreaPropertyType> extendedServiceVolume;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "sequence", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<NoSequenceType> sequence;
     @XmlElementRef(name = "usageType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeAerialRefuellingPointType> usageType;
-    @Valid
-    @Size(min = 0)
     protected List<AerialRefuellingPointType.Extension> extension;
 
     /**
@@ -138,10 +130,6 @@ public class AerialRefuellingPointType
         this.reportingATC = value;
     }
 
-    public boolean isSetReportingATC() {
-        return (this.reportingATC!= null);
-    }
-
     /**
      * Gets the value of the flyOver property.
      * 
@@ -164,10 +152,6 @@ public class AerialRefuellingPointType
      */
     public void setFlyOver(JAXBElement<CodeYesNoType> value) {
         this.flyOver = value;
-    }
-
-    public boolean isSetFlyOver() {
-        return (this.flyOver!= null);
     }
 
     /**
@@ -194,10 +178,6 @@ public class AerialRefuellingPointType
         this.waypoint = value;
     }
 
-    public boolean isSetWaypoint() {
-        return (this.waypoint!= null);
-    }
-
     /**
      * Gets the value of the radarGuidance property.
      * 
@@ -220,10 +200,6 @@ public class AerialRefuellingPointType
      */
     public void setRadarGuidance(JAXBElement<CodeYesNoType> value) {
         this.radarGuidance = value;
-    }
-
-    public boolean isSetRadarGuidance() {
-        return (this.radarGuidance!= null);
     }
 
     /**
@@ -258,14 +234,6 @@ public class AerialRefuellingPointType
         return this.facilityMakeup;
     }
 
-    public boolean isSetFacilityMakeup() {
-        return ((this.facilityMakeup!= null)&&(!this.facilityMakeup.isEmpty()));
-    }
-
-    public void unsetFacilityMakeup() {
-        this.facilityMakeup = null;
-    }
-
     /**
      * Gets the value of the pointChoiceFixDesignatedPoint property.
      * 
@@ -288,10 +256,6 @@ public class AerialRefuellingPointType
      */
     public void setPointChoiceFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.pointChoiceFixDesignatedPoint = value;
-    }
-
-    public boolean isSetPointChoiceFixDesignatedPoint() {
-        return (this.pointChoiceFixDesignatedPoint!= null);
     }
 
     /**
@@ -318,10 +282,6 @@ public class AerialRefuellingPointType
         this.pointChoiceNavaidSystem = value;
     }
 
-    public boolean isSetPointChoiceNavaidSystem() {
-        return (this.pointChoiceNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the pointChoicePosition property.
      * 
@@ -344,10 +304,6 @@ public class AerialRefuellingPointType
      */
     public void setPointChoicePosition(JAXBElement<PointPropertyType> value) {
         this.pointChoicePosition = value;
-    }
-
-    public boolean isSetPointChoicePosition() {
-        return (this.pointChoicePosition!= null);
     }
 
     /**
@@ -374,10 +330,6 @@ public class AerialRefuellingPointType
         this.pointChoiceRunwayPoint = value;
     }
 
-    public boolean isSetPointChoiceRunwayPoint() {
-        return (this.pointChoiceRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the pointChoiceAimingPoint property.
      * 
@@ -400,10 +352,6 @@ public class AerialRefuellingPointType
      */
     public void setPointChoiceAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.pointChoiceAimingPoint = value;
-    }
-
-    public boolean isSetPointChoiceAimingPoint() {
-        return (this.pointChoiceAimingPoint!= null);
     }
 
     /**
@@ -430,10 +378,6 @@ public class AerialRefuellingPointType
         this.pointChoiceAirportReferencePoint = value;
     }
 
-    public boolean isSetPointChoiceAirportReferencePoint() {
-        return (this.pointChoiceAirportReferencePoint!= null);
-    }
-
     /**
      * Gets the value of the extendedServiceVolume property.
      * 
@@ -456,10 +400,6 @@ public class AerialRefuellingPointType
      */
     public void setExtendedServiceVolume(JAXBElement<RadioFrequencyAreaPropertyType> value) {
         this.extendedServiceVolume = value;
-    }
-
-    public boolean isSetExtendedServiceVolume() {
-        return (this.extendedServiceVolume!= null);
     }
 
     /**
@@ -494,14 +434,6 @@ public class AerialRefuellingPointType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the sequence property.
      * 
@@ -526,10 +458,6 @@ public class AerialRefuellingPointType
         this.sequence = value;
     }
 
-    public boolean isSetSequence() {
-        return (this.sequence!= null);
-    }
-
     /**
      * Gets the value of the usageType property.
      * 
@@ -552,10 +480,6 @@ public class AerialRefuellingPointType
      */
     public void setUsageType(JAXBElement<CodeAerialRefuellingPointType> value) {
         this.usageType = value;
-    }
-
-    public boolean isSetUsageType() {
-        return (this.usageType!= null);
     }
 
     /**
@@ -590,14 +514,6 @@ public class AerialRefuellingPointType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -628,10 +544,8 @@ public class AerialRefuellingPointType
     public static class Extension {
 
         @XmlElement(name = "AbstractSegmentPointExtension")
-        @Valid
         protected AbstractExtensionType abstractSegmentPointExtension;
         @XmlElement(name = "AbstractAerialRefuellingPointExtension")
-        @Valid
         protected AbstractExtensionType abstractAerialRefuellingPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -660,10 +574,6 @@ public class AerialRefuellingPointType
             this.abstractSegmentPointExtension = value;
         }
 
-        public boolean isSetAbstractSegmentPointExtension() {
-            return (this.abstractSegmentPointExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractAerialRefuellingPointExtension property.
          * 
@@ -686,10 +596,6 @@ public class AerialRefuellingPointType
          */
         public void setAbstractAerialRefuellingPointExtension(AbstractExtensionType value) {
             this.abstractAerialRefuellingPointExtension = value;
-        }
-
-        public boolean isSetAbstractAerialRefuellingPointExtension() {
-            return (this.abstractAerialRefuellingPointExtension!= null);
         }
 
         /**
@@ -716,16 +622,8 @@ public class AerialRefuellingPointType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

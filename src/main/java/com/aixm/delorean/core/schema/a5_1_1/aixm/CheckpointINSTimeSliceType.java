@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -92,11 +90,7 @@ public class CheckpointINSTimeSliceType
     @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<CheckpointINSTimeSliceType.Extension> extension;
 
     /**
@@ -123,10 +117,6 @@ public class CheckpointINSTimeSliceType
         this.category = value;
     }
 
-    public boolean isSetCategory() {
-        return (this.category!= null);
-    }
-
     /**
      * Gets the value of the upperLimit property.
      * 
@@ -149,10 +139,6 @@ public class CheckpointINSTimeSliceType
      */
     public void setUpperLimit(JAXBElement<ValDistanceVerticalType> value) {
         this.upperLimit = value;
-    }
-
-    public boolean isSetUpperLimit() {
-        return (this.upperLimit!= null);
     }
 
     /**
@@ -179,10 +165,6 @@ public class CheckpointINSTimeSliceType
         this.upperLimitReference = value;
     }
 
-    public boolean isSetUpperLimitReference() {
-        return (this.upperLimitReference!= null);
-    }
-
     /**
      * Gets the value of the lowerLimit property.
      * 
@@ -205,10 +187,6 @@ public class CheckpointINSTimeSliceType
      */
     public void setLowerLimit(JAXBElement<ValDistanceVerticalType> value) {
         this.lowerLimit = value;
-    }
-
-    public boolean isSetLowerLimit() {
-        return (this.lowerLimit!= null);
     }
 
     /**
@@ -235,10 +213,6 @@ public class CheckpointINSTimeSliceType
         this.lowerLimitReference = value;
     }
 
-    public boolean isSetLowerLimitReference() {
-        return (this.lowerLimitReference!= null);
-    }
-
     /**
      * Gets the value of the altitudeInterpretation property.
      * 
@@ -261,10 +235,6 @@ public class CheckpointINSTimeSliceType
      */
     public void setAltitudeInterpretation(JAXBElement<CodeAltitudeUseType> value) {
         this.altitudeInterpretation = value;
-    }
-
-    public boolean isSetAltitudeInterpretation() {
-        return (this.altitudeInterpretation!= null);
     }
 
     /**
@@ -291,10 +261,6 @@ public class CheckpointINSTimeSliceType
         this.distance = value;
     }
 
-    public boolean isSetDistance() {
-        return (this.distance!= null);
-    }
-
     /**
      * Gets the value of the angle property.
      * 
@@ -317,10 +283,6 @@ public class CheckpointINSTimeSliceType
      */
     public void setAngle(JAXBElement<ValBearingType> value) {
         this.angle = value;
-    }
-
-    public boolean isSetAngle() {
-        return (this.angle!= null);
     }
 
     /**
@@ -347,10 +309,6 @@ public class CheckpointINSTimeSliceType
         this.position = value;
     }
 
-    public boolean isSetPosition() {
-        return (this.position!= null);
-    }
-
     /**
      * Gets the value of the airportHeliport property.
      * 
@@ -373,10 +331,6 @@ public class CheckpointINSTimeSliceType
      */
     public void setAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.airportHeliport = value;
-    }
-
-    public boolean isSetAirportHeliport() {
-        return (this.airportHeliport!= null);
     }
 
     /**
@@ -411,14 +365,6 @@ public class CheckpointINSTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -451,14 +397,6 @@ public class CheckpointINSTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -489,10 +427,8 @@ public class CheckpointINSTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractCheckpointINSExtension")
-        @Valid
         protected AbstractExtensionType abstractCheckpointINSExtension;
         @XmlElement(name = "AbstractNavigationSystemCheckpointExtension")
-        @Valid
         protected AbstractExtensionType abstractNavigationSystemCheckpointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -521,10 +457,6 @@ public class CheckpointINSTimeSliceType
             this.abstractCheckpointINSExtension = value;
         }
 
-        public boolean isSetAbstractCheckpointINSExtension() {
-            return (this.abstractCheckpointINSExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractNavigationSystemCheckpointExtension property.
          * 
@@ -547,10 +479,6 @@ public class CheckpointINSTimeSliceType
          */
         public void setAbstractNavigationSystemCheckpointExtension(AbstractExtensionType value) {
             this.abstractNavigationSystemCheckpointExtension = value;
-        }
-
-        public boolean isSetAbstractNavigationSystemCheckpointExtension() {
-            return (this.abstractNavigationSystemCheckpointExtension!= null);
         }
 
         /**
@@ -577,16 +505,8 @@ public class CheckpointINSTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

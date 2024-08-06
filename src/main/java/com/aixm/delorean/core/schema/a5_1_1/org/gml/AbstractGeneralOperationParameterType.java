@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigInteger;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSchemaType;
@@ -52,7 +51,6 @@ public abstract class AbstractGeneralOperationParameterType
      * 
      */
     @XmlSchemaType(name = "nonNegativeInteger")
-    @DecimalMin(value = "0", inclusive = true)
     protected BigInteger minimumOccurs;
 
     /**
@@ -78,10 +76,6 @@ public abstract class AbstractGeneralOperationParameterType
      */
     public void setMinimumOccurs(BigInteger value) {
         this.minimumOccurs = value;
-    }
-
-    public boolean isSetMinimumOccurs() {
-        return (this.minimumOccurs!= null);
     }
 
 }

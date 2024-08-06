@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -49,7 +48,6 @@ public class ConversionToPreferredUnitType
 {
 
     protected Double factor;
-    @Valid
     protected FormulaType formula;
 
     /**
@@ -76,10 +74,6 @@ public class ConversionToPreferredUnitType
         this.factor = value;
     }
 
-    public boolean isSetFactor() {
-        return (this.factor!= null);
-    }
-
     /**
      * Gets the value of the formula property.
      * 
@@ -102,10 +96,6 @@ public class ConversionToPreferredUnitType
      */
     public void setFormula(FormulaType value) {
         this.formula = value;
-    }
-
-    public boolean isSetFormula() {
-        return (this.formula!= null);
     }
 
 }

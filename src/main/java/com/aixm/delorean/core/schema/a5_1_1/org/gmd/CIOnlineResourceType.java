@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -57,18 +55,11 @@ public class CIOnlineResourceType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected URLPropertyType linkage;
-    @Valid
     protected CharacterStringPropertyType protocol;
-    @Valid
     protected CharacterStringPropertyType applicationProfile;
-    @Valid
     protected CharacterStringPropertyType name;
-    @Valid
     protected CharacterStringPropertyType description;
-    @Valid
     protected CIOnLineFunctionCodePropertyType function;
 
     /**
@@ -95,10 +86,6 @@ public class CIOnlineResourceType
         this.linkage = value;
     }
 
-    public boolean isSetLinkage() {
-        return (this.linkage!= null);
-    }
-
     /**
      * Gets the value of the protocol property.
      * 
@@ -121,10 +108,6 @@ public class CIOnlineResourceType
      */
     public void setProtocol(CharacterStringPropertyType value) {
         this.protocol = value;
-    }
-
-    public boolean isSetProtocol() {
-        return (this.protocol!= null);
     }
 
     /**
@@ -151,10 +134,6 @@ public class CIOnlineResourceType
         this.applicationProfile = value;
     }
 
-    public boolean isSetApplicationProfile() {
-        return (this.applicationProfile!= null);
-    }
-
     /**
      * Gets the value of the name property.
      * 
@@ -177,10 +156,6 @@ public class CIOnlineResourceType
      */
     public void setName(CharacterStringPropertyType value) {
         this.name = value;
-    }
-
-    public boolean isSetName() {
-        return (this.name!= null);
     }
 
     /**
@@ -207,10 +182,6 @@ public class CIOnlineResourceType
         this.description = value;
     }
 
-    public boolean isSetDescription() {
-        return (this.description!= null);
-    }
-
     /**
      * Gets the value of the function property.
      * 
@@ -233,10 +204,6 @@ public class CIOnlineResourceType
      */
     public void setFunction(CIOnLineFunctionCodePropertyType value) {
         this.function = value;
-    }
-
-    public boolean isSetFunction() {
-        return (this.function!= null);
     }
 
 }

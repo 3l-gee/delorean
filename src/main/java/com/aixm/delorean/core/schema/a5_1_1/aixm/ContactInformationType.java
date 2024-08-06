@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -70,23 +68,13 @@ public class ContactInformationType
     @XmlElementRef(name = "title", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextNameType> title;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<PostalAddressPropertyType> address;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OnlineContactPropertyType> networkNode;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TelephoneContactPropertyType> phoneFax;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationType.Extension> extension;
 
     /**
@@ -113,10 +101,6 @@ public class ContactInformationType
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
     /**
      * Gets the value of the title property.
      * 
@@ -139,10 +123,6 @@ public class ContactInformationType
      */
     public void setTitle(JAXBElement<TextNameType> value) {
         this.title = value;
-    }
-
-    public boolean isSetTitle() {
-        return (this.title!= null);
     }
 
     /**
@@ -177,14 +157,6 @@ public class ContactInformationType
         return this.address;
     }
 
-    public boolean isSetAddress() {
-        return ((this.address!= null)&&(!this.address.isEmpty()));
-    }
-
-    public void unsetAddress() {
-        this.address = null;
-    }
-
     /**
      * Gets the value of the networkNode property.
      * 
@@ -215,14 +187,6 @@ public class ContactInformationType
             networkNode = new ArrayList<>();
         }
         return this.networkNode;
-    }
-
-    public boolean isSetNetworkNode() {
-        return ((this.networkNode!= null)&&(!this.networkNode.isEmpty()));
-    }
-
-    public void unsetNetworkNode() {
-        this.networkNode = null;
     }
 
     /**
@@ -257,14 +221,6 @@ public class ContactInformationType
         return this.phoneFax;
     }
 
-    public boolean isSetPhoneFax() {
-        return ((this.phoneFax!= null)&&(!this.phoneFax.isEmpty()));
-    }
-
-    public void unsetPhoneFax() {
-        this.phoneFax = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -295,14 +251,6 @@ public class ContactInformationType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -337,14 +285,6 @@ public class ContactInformationType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -373,7 +313,6 @@ public class ContactInformationType
     public static class Extension {
 
         @XmlElement(name = "AbstractContactInformationExtension")
-        @Valid
         protected AbstractExtensionType abstractContactInformationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -402,10 +341,6 @@ public class ContactInformationType
             this.abstractContactInformationExtension = value;
         }
 
-        public boolean isSetAbstractContactInformationExtension() {
-            return (this.abstractContactInformationExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -430,16 +365,8 @@ public class ContactInformationType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

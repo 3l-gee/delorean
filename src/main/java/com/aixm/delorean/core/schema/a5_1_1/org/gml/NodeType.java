@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -49,20 +47,16 @@ public class NodeType
     extends AbstractTopoPrimitiveType
 {
 
-    @Valid
     protected FaceOrTopoSolidPropertyType container;
     /**
      * In the case of planar topology, a gml:Node must have a clockwise sequence of gml:directedEdge properties, to ensure a lossless topology representation as defined by Kuijpers, et. al. (see OGC 05-102 Topology IPR).
      * 
      */
-    @Valid
-    @Size(min = 0)
     protected List<DirectedEdgePropertyType> directedEdge;
     /**
      * This property element either references a point via the XLink-attributes or contains the point element. pointProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for Point.
      * 
      */
-    @Valid
     protected PointPropertyType pointProperty;
     @XmlAttribute(name = "aggregationType")
     protected AggregationType aggregationType;
@@ -89,10 +83,6 @@ public class NodeType
      */
     public void setContainer(FaceOrTopoSolidPropertyType value) {
         this.container = value;
-    }
-
-    public boolean isSetContainer() {
-        return (this.container!= null);
     }
 
     /**
@@ -129,14 +119,6 @@ public class NodeType
         return this.directedEdge;
     }
 
-    public boolean isSetDirectedEdge() {
-        return ((this.directedEdge!= null)&&(!this.directedEdge.isEmpty()));
-    }
-
-    public void unsetDirectedEdge() {
-        this.directedEdge = null;
-    }
-
     /**
      * This property element either references a point via the XLink-attributes or contains the point element. pointProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for Point.
      * 
@@ -162,10 +144,6 @@ public class NodeType
         this.pointProperty = value;
     }
 
-    public boolean isSetPointProperty() {
-        return (this.pointProperty!= null);
-    }
-
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -188,10 +166,6 @@ public class NodeType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
-    }
-
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
     }
 
 }

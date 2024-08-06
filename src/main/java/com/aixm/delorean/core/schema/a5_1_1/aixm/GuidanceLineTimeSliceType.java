@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -80,33 +77,19 @@ public class GuidanceLineTimeSliceType
     @XmlElementRef(name = "usageDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeDirectionType> usageDirection;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TouchDownLiftOffPropertyType> connectedTouchDownLiftOff;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RunwayCentrelinePointPropertyType> connectedRunwayCentrelinePoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ApronPropertyType> connectedApron;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AircraftStandPropertyType> connectedStand;
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedCurvePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TaxiwayPropertyType> connectedTaxiway;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<GuidanceLineTimeSliceType.Extension> extension;
 
     /**
@@ -133,10 +116,6 @@ public class GuidanceLineTimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -159,10 +138,6 @@ public class GuidanceLineTimeSliceType
      */
     public void setType(JAXBElement<CodeGuidanceLineType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -189,10 +164,6 @@ public class GuidanceLineTimeSliceType
         this.maxSpeed = value;
     }
 
-    public boolean isSetMaxSpeed() {
-        return (this.maxSpeed!= null);
-    }
-
     /**
      * Gets the value of the usageDirection property.
      * 
@@ -215,10 +186,6 @@ public class GuidanceLineTimeSliceType
      */
     public void setUsageDirection(JAXBElement<CodeDirectionType> value) {
         this.usageDirection = value;
-    }
-
-    public boolean isSetUsageDirection() {
-        return (this.usageDirection!= null);
     }
 
     /**
@@ -253,14 +220,6 @@ public class GuidanceLineTimeSliceType
         return this.connectedTouchDownLiftOff;
     }
 
-    public boolean isSetConnectedTouchDownLiftOff() {
-        return ((this.connectedTouchDownLiftOff!= null)&&(!this.connectedTouchDownLiftOff.isEmpty()));
-    }
-
-    public void unsetConnectedTouchDownLiftOff() {
-        this.connectedTouchDownLiftOff = null;
-    }
-
     /**
      * Gets the value of the connectedRunwayCentrelinePoint property.
      * 
@@ -291,14 +250,6 @@ public class GuidanceLineTimeSliceType
             connectedRunwayCentrelinePoint = new ArrayList<>();
         }
         return this.connectedRunwayCentrelinePoint;
-    }
-
-    public boolean isSetConnectedRunwayCentrelinePoint() {
-        return ((this.connectedRunwayCentrelinePoint!= null)&&(!this.connectedRunwayCentrelinePoint.isEmpty()));
-    }
-
-    public void unsetConnectedRunwayCentrelinePoint() {
-        this.connectedRunwayCentrelinePoint = null;
     }
 
     /**
@@ -333,14 +284,6 @@ public class GuidanceLineTimeSliceType
         return this.connectedApron;
     }
 
-    public boolean isSetConnectedApron() {
-        return ((this.connectedApron!= null)&&(!this.connectedApron.isEmpty()));
-    }
-
-    public void unsetConnectedApron() {
-        this.connectedApron = null;
-    }
-
     /**
      * Gets the value of the connectedStand property.
      * 
@@ -373,14 +316,6 @@ public class GuidanceLineTimeSliceType
         return this.connectedStand;
     }
 
-    public boolean isSetConnectedStand() {
-        return ((this.connectedStand!= null)&&(!this.connectedStand.isEmpty()));
-    }
-
-    public void unsetConnectedStand() {
-        this.connectedStand = null;
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -403,10 +338,6 @@ public class GuidanceLineTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedCurvePropertyType> value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -441,14 +372,6 @@ public class GuidanceLineTimeSliceType
         return this.connectedTaxiway;
     }
 
-    public boolean isSetConnectedTaxiway() {
-        return ((this.connectedTaxiway!= null)&&(!this.connectedTaxiway.isEmpty()));
-    }
-
-    public void unsetConnectedTaxiway() {
-        this.connectedTaxiway = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -479,14 +402,6 @@ public class GuidanceLineTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -521,14 +436,6 @@ public class GuidanceLineTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -557,8 +464,6 @@ public class GuidanceLineTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractGuidanceLineExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractGuidanceLineExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -587,10 +492,6 @@ public class GuidanceLineTimeSliceType
             this.abstractGuidanceLineExtension = value;
         }
 
-        public boolean isSetAbstractGuidanceLineExtension() {
-            return (this.abstractGuidanceLineExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -615,16 +516,8 @@ public class GuidanceLineTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

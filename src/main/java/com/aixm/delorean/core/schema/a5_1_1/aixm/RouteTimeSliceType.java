@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -98,11 +95,7 @@ public class RouteTimeSliceType
     @XmlElementRef(name = "userOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<OrganisationAuthorityPropertyType> userOrganisation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<RouteTimeSliceType.Extension> extension;
 
     /**
@@ -129,10 +122,6 @@ public class RouteTimeSliceType
         this.designatorPrefix = value;
     }
 
-    public boolean isSetDesignatorPrefix() {
-        return (this.designatorPrefix!= null);
-    }
-
     /**
      * Gets the value of the designatorSecondLetter property.
      * 
@@ -155,10 +144,6 @@ public class RouteTimeSliceType
      */
     public void setDesignatorSecondLetter(JAXBElement<CodeRouteDesignatorLetterType> value) {
         this.designatorSecondLetter = value;
-    }
-
-    public boolean isSetDesignatorSecondLetter() {
-        return (this.designatorSecondLetter!= null);
     }
 
     /**
@@ -185,10 +170,6 @@ public class RouteTimeSliceType
         this.designatorNumber = value;
     }
 
-    public boolean isSetDesignatorNumber() {
-        return (this.designatorNumber!= null);
-    }
-
     /**
      * Gets the value of the multipleIdentifier property.
      * 
@@ -211,10 +192,6 @@ public class RouteTimeSliceType
      */
     public void setMultipleIdentifier(JAXBElement<CodeUpperAlphaType> value) {
         this.multipleIdentifier = value;
-    }
-
-    public boolean isSetMultipleIdentifier() {
-        return (this.multipleIdentifier!= null);
     }
 
     /**
@@ -241,10 +218,6 @@ public class RouteTimeSliceType
         this.locationDesignator = value;
     }
 
-    public boolean isSetLocationDesignator() {
-        return (this.locationDesignator!= null);
-    }
-
     /**
      * Gets the value of the aixmName property.
      * 
@@ -267,10 +240,6 @@ public class RouteTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
     }
 
     /**
@@ -297,10 +266,6 @@ public class RouteTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the flightRule property.
      * 
@@ -323,10 +288,6 @@ public class RouteTimeSliceType
      */
     public void setFlightRule(JAXBElement<CodeFlightRuleType> value) {
         this.flightRule = value;
-    }
-
-    public boolean isSetFlightRule() {
-        return (this.flightRule!= null);
     }
 
     /**
@@ -353,10 +314,6 @@ public class RouteTimeSliceType
         this.internationalUse = value;
     }
 
-    public boolean isSetInternationalUse() {
-        return (this.internationalUse!= null);
-    }
-
     /**
      * Gets the value of the militaryUse property.
      * 
@@ -379,10 +336,6 @@ public class RouteTimeSliceType
      */
     public void setMilitaryUse(JAXBElement<CodeMilitaryStatusType> value) {
         this.militaryUse = value;
-    }
-
-    public boolean isSetMilitaryUse() {
-        return (this.militaryUse!= null);
     }
 
     /**
@@ -409,10 +362,6 @@ public class RouteTimeSliceType
         this.militaryTrainingType = value;
     }
 
-    public boolean isSetMilitaryTrainingType() {
-        return (this.militaryTrainingType!= null);
-    }
-
     /**
      * Gets the value of the userOrganisation property.
      * 
@@ -435,10 +384,6 @@ public class RouteTimeSliceType
      */
     public void setUserOrganisation(JAXBElement<OrganisationAuthorityPropertyType> value) {
         this.userOrganisation = value;
-    }
-
-    public boolean isSetUserOrganisation() {
-        return (this.userOrganisation!= null);
     }
 
     /**
@@ -473,14 +418,6 @@ public class RouteTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -513,14 +450,6 @@ public class RouteTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -549,8 +478,6 @@ public class RouteTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRouteExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractRouteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -579,10 +506,6 @@ public class RouteTimeSliceType
             this.abstractRouteExtension = value;
         }
 
-        public boolean isSetAbstractRouteExtension() {
-            return (this.abstractRouteExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -607,16 +530,8 @@ public class RouteTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

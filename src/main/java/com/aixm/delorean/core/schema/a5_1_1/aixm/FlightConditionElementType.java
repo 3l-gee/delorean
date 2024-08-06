@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -125,15 +123,9 @@ public class FlightConditionElementType
     @XmlElementRef(name = "operationalCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<FlightConditionCircumstancePropertyType> operationalCondition;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<FlightConditionElementType.Extension> extension;
 
     /**
@@ -160,10 +152,6 @@ public class FlightConditionElementType
         this.index = value;
     }
 
-    public boolean isSetIndex() {
-        return (this.index!= null);
-    }
-
     /**
      * Gets the value of the flightConditionWeather property.
      * 
@@ -186,10 +174,6 @@ public class FlightConditionElementType
      */
     public void setFlightConditionWeather(JAXBElement<MeteorologyPropertyType> value) {
         this.flightConditionWeather = value;
-    }
-
-    public boolean isSetFlightConditionWeather() {
-        return (this.flightConditionWeather!= null);
     }
 
     /**
@@ -216,10 +200,6 @@ public class FlightConditionElementType
         this.flightConditionAircraft = value;
     }
 
-    public boolean isSetFlightConditionAircraft() {
-        return (this.flightConditionAircraft!= null);
-    }
-
     /**
      * Gets the value of the flightConditionFlight property.
      * 
@@ -242,10 +222,6 @@ public class FlightConditionElementType
      */
     public void setFlightConditionFlight(JAXBElement<FlightCharacteristicPropertyType> value) {
         this.flightConditionFlight = value;
-    }
-
-    public boolean isSetFlightConditionFlight() {
-        return (this.flightConditionFlight!= null);
     }
 
     /**
@@ -272,10 +248,6 @@ public class FlightConditionElementType
         this.flightConditionDirectFlightCondition = value;
     }
 
-    public boolean isSetFlightConditionDirectFlightCondition() {
-        return (this.flightConditionDirectFlightCondition!= null);
-    }
-
     /**
      * Gets the value of the flightConditionBorderCrossingCondition property.
      * 
@@ -298,10 +270,6 @@ public class FlightConditionElementType
      */
     public void setFlightConditionBorderCrossingCondition(JAXBElement<AirspaceBorderCrossingPropertyType> value) {
         this.flightConditionBorderCrossingCondition = value;
-    }
-
-    public boolean isSetFlightConditionBorderCrossingCondition() {
-        return (this.flightConditionBorderCrossingCondition!= null);
     }
 
     /**
@@ -328,10 +296,6 @@ public class FlightConditionElementType
         this.flightConditionOperand = value;
     }
 
-    public boolean isSetFlightConditionOperand() {
-        return (this.flightConditionOperand!= null);
-    }
-
     /**
      * Gets the value of the flightConditionRoutePortionCondition property.
      * 
@@ -354,10 +318,6 @@ public class FlightConditionElementType
      */
     public void setFlightConditionRoutePortionCondition(JAXBElement<RoutePortionPropertyType> value) {
         this.flightConditionRoutePortionCondition = value;
-    }
-
-    public boolean isSetFlightConditionRoutePortionCondition() {
-        return (this.flightConditionRoutePortionCondition!= null);
     }
 
     /**
@@ -384,10 +344,6 @@ public class FlightConditionElementType
         this.flightConditionStandardInstrumentDepartureCondition = value;
     }
 
-    public boolean isSetFlightConditionStandardInstrumentDepartureCondition() {
-        return (this.flightConditionStandardInstrumentDepartureCondition!= null);
-    }
-
     /**
      * Gets the value of the flightConditionStandardInstrumentArrivalCondition property.
      * 
@@ -410,10 +366,6 @@ public class FlightConditionElementType
      */
     public void setFlightConditionStandardInstrumentArrivalCondition(JAXBElement<StandardInstrumentArrivalPropertyType> value) {
         this.flightConditionStandardInstrumentArrivalCondition = value;
-    }
-
-    public boolean isSetFlightConditionStandardInstrumentArrivalCondition() {
-        return (this.flightConditionStandardInstrumentArrivalCondition!= null);
     }
 
     /**
@@ -440,10 +392,6 @@ public class FlightConditionElementType
         this.flightConditionOrganisationCondition = value;
     }
 
-    public boolean isSetFlightConditionOrganisationCondition() {
-        return (this.flightConditionOrganisationCondition!= null);
-    }
-
     /**
      * Gets the value of the significantPointConditionFixDesignatedPoint property.
      * 
@@ -466,10 +414,6 @@ public class FlightConditionElementType
      */
     public void setSignificantPointConditionFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.significantPointConditionFixDesignatedPoint = value;
-    }
-
-    public boolean isSetSignificantPointConditionFixDesignatedPoint() {
-        return (this.significantPointConditionFixDesignatedPoint!= null);
     }
 
     /**
@@ -496,10 +440,6 @@ public class FlightConditionElementType
         this.significantPointConditionNavaidSystem = value;
     }
 
-    public boolean isSetSignificantPointConditionNavaidSystem() {
-        return (this.significantPointConditionNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the significantPointConditionPosition property.
      * 
@@ -522,10 +462,6 @@ public class FlightConditionElementType
      */
     public void setSignificantPointConditionPosition(JAXBElement<PointPropertyType> value) {
         this.significantPointConditionPosition = value;
-    }
-
-    public boolean isSetSignificantPointConditionPosition() {
-        return (this.significantPointConditionPosition!= null);
     }
 
     /**
@@ -552,10 +488,6 @@ public class FlightConditionElementType
         this.significantPointConditionRunwayPoint = value;
     }
 
-    public boolean isSetSignificantPointConditionRunwayPoint() {
-        return (this.significantPointConditionRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the significantPointConditionAimingPoint property.
      * 
@@ -578,10 +510,6 @@ public class FlightConditionElementType
      */
     public void setSignificantPointConditionAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.significantPointConditionAimingPoint = value;
-    }
-
-    public boolean isSetSignificantPointConditionAimingPoint() {
-        return (this.significantPointConditionAimingPoint!= null);
     }
 
     /**
@@ -608,10 +536,6 @@ public class FlightConditionElementType
         this.significantPointConditionAirportReferencePoint = value;
     }
 
-    public boolean isSetSignificantPointConditionAirportReferencePoint() {
-        return (this.significantPointConditionAirportReferencePoint!= null);
-    }
-
     /**
      * Gets the value of the flightConditionAirspaceCondition property.
      * 
@@ -634,10 +558,6 @@ public class FlightConditionElementType
      */
     public void setFlightConditionAirspaceCondition(JAXBElement<AirspacePropertyType> value) {
         this.flightConditionAirspaceCondition = value;
-    }
-
-    public boolean isSetFlightConditionAirspaceCondition() {
-        return (this.flightConditionAirspaceCondition!= null);
     }
 
     /**
@@ -664,10 +584,6 @@ public class FlightConditionElementType
         this.flightConditionAirportHeliportCondition = value;
     }
 
-    public boolean isSetFlightConditionAirportHeliportCondition() {
-        return (this.flightConditionAirportHeliportCondition!= null);
-    }
-
     /**
      * Gets the value of the flightConditionAerialRefuellingCondition property.
      * 
@@ -692,10 +608,6 @@ public class FlightConditionElementType
         this.flightConditionAerialRefuellingCondition = value;
     }
 
-    public boolean isSetFlightConditionAerialRefuellingCondition() {
-        return (this.flightConditionAerialRefuellingCondition!= null);
-    }
-
     /**
      * Gets the value of the operationalCondition property.
      * 
@@ -718,10 +630,6 @@ public class FlightConditionElementType
      */
     public void setOperationalCondition(JAXBElement<FlightConditionCircumstancePropertyType> value) {
         this.operationalCondition = value;
-    }
-
-    public boolean isSetOperationalCondition() {
-        return (this.operationalCondition!= null);
     }
 
     /**
@@ -756,14 +664,6 @@ public class FlightConditionElementType
         return this.flightLevel;
     }
 
-    public boolean isSetFlightLevel() {
-        return ((this.flightLevel!= null)&&(!this.flightLevel.isEmpty()));
-    }
-
-    public void unsetFlightLevel() {
-        this.flightLevel = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -794,14 +694,6 @@ public class FlightConditionElementType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -836,14 +728,6 @@ public class FlightConditionElementType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -872,7 +756,6 @@ public class FlightConditionElementType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightConditionElementExtension")
-        @Valid
         protected AbstractExtensionType abstractFlightConditionElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -901,10 +784,6 @@ public class FlightConditionElementType
             this.abstractFlightConditionElementExtension = value;
         }
 
-        public boolean isSetAbstractFlightConditionElementExtension() {
-            return (this.abstractFlightConditionElementExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -929,16 +808,8 @@ public class FlightConditionElementType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

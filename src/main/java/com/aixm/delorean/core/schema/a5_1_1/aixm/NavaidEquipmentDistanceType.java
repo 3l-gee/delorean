@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,13 +66,8 @@ public class NavaidEquipmentDistanceType
     @XmlElementRef(name = "distanceAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceType> distanceAccuracy;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
     protected NavaidEquipmentPropertyType theNavaidEquipment;
-    @Valid
-    @Size(min = 0)
     protected List<NavaidEquipmentDistanceType.Extension> extension;
 
     /**
@@ -101,10 +94,6 @@ public class NavaidEquipmentDistanceType
         this.distance = value;
     }
 
-    public boolean isSetDistance() {
-        return (this.distance!= null);
-    }
-
     /**
      * Gets the value of the distanceAccuracy property.
      * 
@@ -127,10 +116,6 @@ public class NavaidEquipmentDistanceType
      */
     public void setDistanceAccuracy(JAXBElement<ValDistanceType> value) {
         this.distanceAccuracy = value;
-    }
-
-    public boolean isSetDistanceAccuracy() {
-        return (this.distanceAccuracy!= null);
     }
 
     /**
@@ -165,14 +150,6 @@ public class NavaidEquipmentDistanceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the theNavaidEquipment property.
      * 
@@ -195,10 +172,6 @@ public class NavaidEquipmentDistanceType
      */
     public void setTheNavaidEquipment(NavaidEquipmentPropertyType value) {
         this.theNavaidEquipment = value;
-    }
-
-    public boolean isSetTheNavaidEquipment() {
-        return (this.theNavaidEquipment!= null);
     }
 
     /**
@@ -233,14 +206,6 @@ public class NavaidEquipmentDistanceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -269,7 +234,6 @@ public class NavaidEquipmentDistanceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidEquipmentDistanceExtension")
-        @Valid
         protected AbstractExtensionType abstractNavaidEquipmentDistanceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -298,10 +262,6 @@ public class NavaidEquipmentDistanceType
             this.abstractNavaidEquipmentDistanceExtension = value;
         }
 
-        public boolean isSetAbstractNavaidEquipmentDistanceExtension() {
-            return (this.abstractNavaidEquipmentDistanceExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -326,16 +286,8 @@ public class NavaidEquipmentDistanceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

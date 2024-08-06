@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,35 +63,25 @@ public class MovingObjectStatusType
     extends AbstractTimeSliceType
 {
 
-    @Valid
     protected GeometryPropertyType position;
-    @Valid
     protected DirectPositionType pos;
     /**
      * The gml:locationName property element is a convenience property where the text value describes the location of the feature. If the location names are selected from a controlled list, then the list shall be identified in the codeSpace attribute.
      * 
      */
-    @Valid
     protected CodeType locationName;
     /**
      * The gml:locationReference property element is a convenience property where the text value referenced by the xlink:href attribute describes the location of the feature.
      * 
      */
-    @Valid
     protected ReferenceType locationReference;
     @XmlElementRef(name = "location", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends LocationPropertyType> location;
-    @Valid
     protected MeasureType speed;
-    @Valid
     protected DirectionPropertyType bearing;
-    @Valid
     protected MeasureType acceleration;
-    @Valid
     protected MeasureType elevation;
-    @Valid
     protected StringOrRefType status;
-    @Valid
     protected ReferenceType statusReference;
 
     /**
@@ -119,10 +108,6 @@ public class MovingObjectStatusType
         this.position = value;
     }
 
-    public boolean isSetPosition() {
-        return (this.position!= null);
-    }
-
     /**
      * Gets the value of the pos property.
      * 
@@ -145,10 +130,6 @@ public class MovingObjectStatusType
      */
     public void setPos(DirectPositionType value) {
         this.pos = value;
-    }
-
-    public boolean isSetPos() {
-        return (this.pos!= null);
     }
 
     /**
@@ -176,10 +157,6 @@ public class MovingObjectStatusType
         this.locationName = value;
     }
 
-    public boolean isSetLocationName() {
-        return (this.locationName!= null);
-    }
-
     /**
      * The gml:locationReference property element is a convenience property where the text value referenced by the xlink:href attribute describes the location of the feature.
      * 
@@ -203,10 +180,6 @@ public class MovingObjectStatusType
      */
     public void setLocationReference(ReferenceType value) {
         this.locationReference = value;
-    }
-
-    public boolean isSetLocationReference() {
-        return (this.locationReference!= null);
     }
 
     /**
@@ -235,10 +208,6 @@ public class MovingObjectStatusType
         this.location = value;
     }
 
-    public boolean isSetLocation() {
-        return (this.location!= null);
-    }
-
     /**
      * Gets the value of the speed property.
      * 
@@ -261,10 +230,6 @@ public class MovingObjectStatusType
      */
     public void setSpeed(MeasureType value) {
         this.speed = value;
-    }
-
-    public boolean isSetSpeed() {
-        return (this.speed!= null);
     }
 
     /**
@@ -291,10 +256,6 @@ public class MovingObjectStatusType
         this.bearing = value;
     }
 
-    public boolean isSetBearing() {
-        return (this.bearing!= null);
-    }
-
     /**
      * Gets the value of the acceleration property.
      * 
@@ -317,10 +278,6 @@ public class MovingObjectStatusType
      */
     public void setAcceleration(MeasureType value) {
         this.acceleration = value;
-    }
-
-    public boolean isSetAcceleration() {
-        return (this.acceleration!= null);
     }
 
     /**
@@ -347,10 +304,6 @@ public class MovingObjectStatusType
         this.elevation = value;
     }
 
-    public boolean isSetElevation() {
-        return (this.elevation!= null);
-    }
-
     /**
      * Gets the value of the status property.
      * 
@@ -375,10 +328,6 @@ public class MovingObjectStatusType
         this.status = value;
     }
 
-    public boolean isSetStatus() {
-        return (this.status!= null);
-    }
-
     /**
      * Gets the value of the statusReference property.
      * 
@@ -401,10 +350,6 @@ public class MovingObjectStatusType
      */
     public void setStatusReference(ReferenceType value) {
         this.statusReference = value;
-    }
-
-    public boolean isSetStatusReference() {
-        return (this.statusReference!= null);
     }
 
 }

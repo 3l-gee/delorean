@@ -12,9 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -75,45 +72,23 @@ public class MDExtendedElementInformationType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType name;
-    @Valid
     protected CharacterStringPropertyType shortName;
-    @Valid
     protected IntegerPropertyType domainCode;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType definition;
-    @Valid
     protected MDObligationCodePropertyType obligation;
-    @Valid
     protected CharacterStringPropertyType condition;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MDDatatypeCodePropertyType dataType;
-    @Valid
     protected CharacterStringPropertyType maximumOccurrence;
-    @Valid
     protected CharacterStringPropertyType domainValue;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CharacterStringPropertyType> parentEntity;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType rule;
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> rationale;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CIResponsiblePartyPropertyType> source;
 
     /**
@@ -140,10 +115,6 @@ public class MDExtendedElementInformationType
         this.name = value;
     }
 
-    public boolean isSetName() {
-        return (this.name!= null);
-    }
-
     /**
      * Gets the value of the shortName property.
      * 
@@ -166,10 +137,6 @@ public class MDExtendedElementInformationType
      */
     public void setShortName(CharacterStringPropertyType value) {
         this.shortName = value;
-    }
-
-    public boolean isSetShortName() {
-        return (this.shortName!= null);
     }
 
     /**
@@ -196,10 +163,6 @@ public class MDExtendedElementInformationType
         this.domainCode = value;
     }
 
-    public boolean isSetDomainCode() {
-        return (this.domainCode!= null);
-    }
-
     /**
      * Gets the value of the definition property.
      * 
@@ -222,10 +185,6 @@ public class MDExtendedElementInformationType
      */
     public void setDefinition(CharacterStringPropertyType value) {
         this.definition = value;
-    }
-
-    public boolean isSetDefinition() {
-        return (this.definition!= null);
     }
 
     /**
@@ -252,10 +211,6 @@ public class MDExtendedElementInformationType
         this.obligation = value;
     }
 
-    public boolean isSetObligation() {
-        return (this.obligation!= null);
-    }
-
     /**
      * Gets the value of the condition property.
      * 
@@ -278,10 +233,6 @@ public class MDExtendedElementInformationType
      */
     public void setCondition(CharacterStringPropertyType value) {
         this.condition = value;
-    }
-
-    public boolean isSetCondition() {
-        return (this.condition!= null);
     }
 
     /**
@@ -308,10 +259,6 @@ public class MDExtendedElementInformationType
         this.dataType = value;
     }
 
-    public boolean isSetDataType() {
-        return (this.dataType!= null);
-    }
-
     /**
      * Gets the value of the maximumOccurrence property.
      * 
@@ -336,10 +283,6 @@ public class MDExtendedElementInformationType
         this.maximumOccurrence = value;
     }
 
-    public boolean isSetMaximumOccurrence() {
-        return (this.maximumOccurrence!= null);
-    }
-
     /**
      * Gets the value of the domainValue property.
      * 
@@ -362,10 +305,6 @@ public class MDExtendedElementInformationType
      */
     public void setDomainValue(CharacterStringPropertyType value) {
         this.domainValue = value;
-    }
-
-    public boolean isSetDomainValue() {
-        return (this.domainValue!= null);
     }
 
     /**
@@ -400,14 +339,6 @@ public class MDExtendedElementInformationType
         return this.parentEntity;
     }
 
-    public boolean isSetParentEntity() {
-        return ((this.parentEntity!= null)&&(!this.parentEntity.isEmpty()));
-    }
-
-    public void unsetParentEntity() {
-        this.parentEntity = null;
-    }
-
     /**
      * Gets the value of the rule property.
      * 
@@ -430,10 +361,6 @@ public class MDExtendedElementInformationType
      */
     public void setRule(CharacterStringPropertyType value) {
         this.rule = value;
-    }
-
-    public boolean isSetRule() {
-        return (this.rule!= null);
     }
 
     /**
@@ -468,14 +395,6 @@ public class MDExtendedElementInformationType
         return this.rationale;
     }
 
-    public boolean isSetRationale() {
-        return ((this.rationale!= null)&&(!this.rationale.isEmpty()));
-    }
-
-    public void unsetRationale() {
-        this.rationale = null;
-    }
-
     /**
      * Gets the value of the source property.
      * 
@@ -506,14 +425,6 @@ public class MDExtendedElementInformationType
             source = new ArrayList<>();
         }
         return this.source;
-    }
-
-    public boolean isSetSource() {
-        return ((this.source!= null)&&(!this.source.isEmpty()));
-    }
-
-    public void unsetSource() {
-        this.source = null;
     }
 
 }

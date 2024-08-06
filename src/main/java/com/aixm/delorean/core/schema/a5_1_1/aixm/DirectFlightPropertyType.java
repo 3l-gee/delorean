@@ -72,8 +72,4 @@ public class DirectFlightPropertyType
         this.abstractDirectFlight = value;
     }
 
-    public boolean isSetAbstractDirectFlight() {
-        return (this.abstractDirectFlight!= null);
-    }
-
 }

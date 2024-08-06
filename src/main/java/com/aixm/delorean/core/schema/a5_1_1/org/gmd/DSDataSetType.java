@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -51,12 +48,7 @@ public class DSDataSetType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<MDMetadataPropertyType> has;
-    @Valid
-    @Size(min = 0)
     protected List<DSAggregatePropertyType> partOf;
 
     /**
@@ -91,14 +83,6 @@ public class DSDataSetType
         return this.has;
     }
 
-    public boolean isSetHas() {
-        return ((this.has!= null)&&(!this.has.isEmpty()));
-    }
-
-    public void unsetHas() {
-        this.has = null;
-    }
-
     /**
      * Gets the value of the partOf property.
      * 
@@ -129,14 +113,6 @@ public class DSDataSetType
             partOf = new ArrayList<>();
         }
         return this.partOf;
-    }
-
-    public boolean isSetPartOf() {
-        return ((this.partOf!= null)&&(!this.partOf.isEmpty()));
-    }
-
-    public void unsetPartOf() {
-        this.partOf = null;
     }
 
 }

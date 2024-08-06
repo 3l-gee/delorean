@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -106,19 +103,11 @@ public class RunwayTimeSliceType
     @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RunwayContaminationPropertyType> overallContaminant;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RunwaySectionContaminationPropertyType> areaContaminant;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayTimeSliceType.Extension> extension;
 
     /**
@@ -145,10 +134,6 @@ public class RunwayTimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -171,10 +156,6 @@ public class RunwayTimeSliceType
      */
     public void setType(JAXBElement<CodeRunwayType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -201,10 +182,6 @@ public class RunwayTimeSliceType
         this.nominalLength = value;
     }
 
-    public boolean isSetNominalLength() {
-        return (this.nominalLength!= null);
-    }
-
     /**
      * Gets the value of the lengthAccuracy property.
      * 
@@ -227,10 +204,6 @@ public class RunwayTimeSliceType
      */
     public void setLengthAccuracy(JAXBElement<ValDistanceType> value) {
         this.lengthAccuracy = value;
-    }
-
-    public boolean isSetLengthAccuracy() {
-        return (this.lengthAccuracy!= null);
     }
 
     /**
@@ -257,10 +230,6 @@ public class RunwayTimeSliceType
         this.nominalWidth = value;
     }
 
-    public boolean isSetNominalWidth() {
-        return (this.nominalWidth!= null);
-    }
-
     /**
      * Gets the value of the widthAccuracy property.
      * 
@@ -283,10 +252,6 @@ public class RunwayTimeSliceType
      */
     public void setWidthAccuracy(JAXBElement<ValDistanceType> value) {
         this.widthAccuracy = value;
-    }
-
-    public boolean isSetWidthAccuracy() {
-        return (this.widthAccuracy!= null);
     }
 
     /**
@@ -313,10 +278,6 @@ public class RunwayTimeSliceType
         this.widthShoulder = value;
     }
 
-    public boolean isSetWidthShoulder() {
-        return (this.widthShoulder!= null);
-    }
-
     /**
      * Gets the value of the lengthStrip property.
      * 
@@ -339,10 +300,6 @@ public class RunwayTimeSliceType
      */
     public void setLengthStrip(JAXBElement<ValDistanceType> value) {
         this.lengthStrip = value;
-    }
-
-    public boolean isSetLengthStrip() {
-        return (this.lengthStrip!= null);
     }
 
     /**
@@ -369,10 +326,6 @@ public class RunwayTimeSliceType
         this.widthStrip = value;
     }
 
-    public boolean isSetWidthStrip() {
-        return (this.widthStrip!= null);
-    }
-
     /**
      * Gets the value of the lengthOffset property.
      * 
@@ -395,10 +348,6 @@ public class RunwayTimeSliceType
      */
     public void setLengthOffset(JAXBElement<ValDistanceSignedType> value) {
         this.lengthOffset = value;
-    }
-
-    public boolean isSetLengthOffset() {
-        return (this.lengthOffset!= null);
     }
 
     /**
@@ -425,10 +374,6 @@ public class RunwayTimeSliceType
         this.widthOffset = value;
     }
 
-    public boolean isSetWidthOffset() {
-        return (this.widthOffset!= null);
-    }
-
     /**
      * Gets the value of the abandoned property.
      * 
@@ -451,10 +396,6 @@ public class RunwayTimeSliceType
      */
     public void setAbandoned(JAXBElement<CodeYesNoType> value) {
         this.abandoned = value;
-    }
-
-    public boolean isSetAbandoned() {
-        return (this.abandoned!= null);
     }
 
     /**
@@ -481,10 +422,6 @@ public class RunwayTimeSliceType
         this.surfaceProperties = value;
     }
 
-    public boolean isSetSurfaceProperties() {
-        return (this.surfaceProperties!= null);
-    }
-
     /**
      * Gets the value of the associatedAirportHeliport property.
      * 
@@ -507,10 +444,6 @@ public class RunwayTimeSliceType
      */
     public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.associatedAirportHeliport = value;
-    }
-
-    public boolean isSetAssociatedAirportHeliport() {
-        return (this.associatedAirportHeliport!= null);
     }
 
     /**
@@ -545,14 +478,6 @@ public class RunwayTimeSliceType
         return this.overallContaminant;
     }
 
-    public boolean isSetOverallContaminant() {
-        return ((this.overallContaminant!= null)&&(!this.overallContaminant.isEmpty()));
-    }
-
-    public void unsetOverallContaminant() {
-        this.overallContaminant = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -583,14 +508,6 @@ public class RunwayTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -625,14 +542,6 @@ public class RunwayTimeSliceType
         return this.areaContaminant;
     }
 
-    public boolean isSetAreaContaminant() {
-        return ((this.areaContaminant!= null)&&(!this.areaContaminant.isEmpty()));
-    }
-
-    public void unsetAreaContaminant() {
-        this.areaContaminant = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -665,14 +574,6 @@ public class RunwayTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -701,8 +602,6 @@ public class RunwayTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractRunwayExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -731,10 +630,6 @@ public class RunwayTimeSliceType
             this.abstractRunwayExtension = value;
         }
 
-        public boolean isSetAbstractRunwayExtension() {
-            return (this.abstractRunwayExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -759,16 +654,8 @@ public class RunwayTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

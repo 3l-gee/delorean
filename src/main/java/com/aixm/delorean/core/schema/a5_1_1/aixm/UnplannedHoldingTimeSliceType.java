@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -77,11 +74,7 @@ public class UnplannedHoldingTimeSliceType
     @XmlElementRef(name = "holdingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SegmentPointPropertyType> holdingPoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<UnplannedHoldingTimeSliceType.Extension> extension;
 
     /**
@@ -108,10 +101,6 @@ public class UnplannedHoldingTimeSliceType
         this.unplannedHolding = value;
     }
 
-    public boolean isSetUnplannedHolding() {
-        return (this.unplannedHolding!= null);
-    }
-
     /**
      * Gets the value of the authorizedAltitude property.
      * 
@@ -134,10 +123,6 @@ public class UnplannedHoldingTimeSliceType
      */
     public void setAuthorizedAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.authorizedAltitude = value;
-    }
-
-    public boolean isSetAuthorizedAltitude() {
-        return (this.authorizedAltitude!= null);
     }
 
     /**
@@ -164,10 +149,6 @@ public class UnplannedHoldingTimeSliceType
         this.altitudeReference = value;
     }
 
-    public boolean isSetAltitudeReference() {
-        return (this.altitudeReference!= null);
-    }
-
     /**
      * Gets the value of the controlledAirspace property.
      * 
@@ -192,10 +173,6 @@ public class UnplannedHoldingTimeSliceType
         this.controlledAirspace = value;
     }
 
-    public boolean isSetControlledAirspace() {
-        return (this.controlledAirspace!= null);
-    }
-
     /**
      * Gets the value of the holdingPoint property.
      * 
@@ -218,10 +195,6 @@ public class UnplannedHoldingTimeSliceType
      */
     public void setHoldingPoint(JAXBElement<SegmentPointPropertyType> value) {
         this.holdingPoint = value;
-    }
-
-    public boolean isSetHoldingPoint() {
-        return (this.holdingPoint!= null);
     }
 
     /**
@@ -256,14 +229,6 @@ public class UnplannedHoldingTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -296,14 +261,6 @@ public class UnplannedHoldingTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -332,8 +289,6 @@ public class UnplannedHoldingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractUnplannedHoldingExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractUnplannedHoldingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -362,10 +317,6 @@ public class UnplannedHoldingTimeSliceType
             this.abstractUnplannedHoldingExtension = value;
         }
 
-        public boolean isSetAbstractUnplannedHoldingExtension() {
-            return (this.abstractUnplannedHoldingExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -390,16 +341,8 @@ public class UnplannedHoldingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

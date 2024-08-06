@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +41,6 @@ public class AerialRefuellingTrackPropertyType
 {
 
     @XmlElement(name = "AerialRefuellingTrack", required = true)
-    @NotNull
-    @Valid
     protected AerialRefuellingTrackType aerialRefuellingTrack;
 
     /**
@@ -69,10 +65,6 @@ public class AerialRefuellingTrackPropertyType
      */
     public void setAerialRefuellingTrack(AerialRefuellingTrackType value) {
         this.aerialRefuellingTrack = value;
-    }
-
-    public boolean isSetAerialRefuellingTrack() {
-        return (this.aerialRefuellingTrack!= null);
     }
 
 }

@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -94,20 +92,12 @@ public class StandardInstrumentDepartureTimeSliceType
     @XmlElementRef(name = "RNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> rnav;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ProcedureAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ProcedureTransitionPropertyType> flightTransition;
     @XmlElementRef(name = "guidanceFacility_specialNavigationSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SpecialNavigationSystemPropertyType> guidanceFacilitySpecialNavigationSystem;
@@ -116,8 +106,6 @@ public class StandardInstrumentDepartureTimeSliceType
     @XmlElementRef(name = "guidanceFacility_navaid", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<NavaidPropertyType> guidanceFacilityNavaid;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "safeAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SafeAltitudeAreaPropertyType> safeAltitude;
@@ -127,8 +115,6 @@ public class StandardInstrumentDepartureTimeSliceType
     protected JAXBElement<CodeYesNoType> contingencyRoute;
     @XmlElementRef(name = "takeoff", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<LandingTakeoffAreaCollectionPropertyType> takeoff;
-    @Valid
-    @Size(min = 0)
     protected List<StandardInstrumentDepartureTimeSliceType.Extension> extension;
 
     /**
@@ -155,10 +141,6 @@ public class StandardInstrumentDepartureTimeSliceType
         this.communicationFailureInstruction = value;
     }
 
-    public boolean isSetCommunicationFailureInstruction() {
-        return (this.communicationFailureInstruction!= null);
-    }
-
     /**
      * Gets the value of the instruction property.
      * 
@@ -181,10 +163,6 @@ public class StandardInstrumentDepartureTimeSliceType
      */
     public void setInstruction(JAXBElement<TextInstructionType> value) {
         this.instruction = value;
-    }
-
-    public boolean isSetInstruction() {
-        return (this.instruction!= null);
     }
 
     /**
@@ -211,10 +189,6 @@ public class StandardInstrumentDepartureTimeSliceType
         this.designCriteria = value;
     }
 
-    public boolean isSetDesignCriteria() {
-        return (this.designCriteria!= null);
-    }
-
     /**
      * Gets the value of the codingStandard property.
      * 
@@ -237,10 +211,6 @@ public class StandardInstrumentDepartureTimeSliceType
      */
     public void setCodingStandard(JAXBElement<CodeProcedureCodingStandardType> value) {
         this.codingStandard = value;
-    }
-
-    public boolean isSetCodingStandard() {
-        return (this.codingStandard!= null);
     }
 
     /**
@@ -267,10 +237,6 @@ public class StandardInstrumentDepartureTimeSliceType
         this.flightChecked = value;
     }
 
-    public boolean isSetFlightChecked() {
-        return (this.flightChecked!= null);
-    }
-
     /**
      * Gets the value of the aixmName property.
      * 
@@ -295,10 +261,6 @@ public class StandardInstrumentDepartureTimeSliceType
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
     /**
      * Gets the value of the rnav property.
      * 
@@ -321,10 +283,6 @@ public class StandardInstrumentDepartureTimeSliceType
      */
     public void setRNAV(JAXBElement<CodeYesNoType> value) {
         this.rnav = value;
-    }
-
-    public boolean isSetRNAV() {
-        return (this.rnav!= null);
     }
 
     /**
@@ -359,14 +317,6 @@ public class StandardInstrumentDepartureTimeSliceType
         return this.availability;
     }
 
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
-    }
-
     /**
      * Gets the value of the airportHeliport property.
      * 
@@ -397,14 +347,6 @@ public class StandardInstrumentDepartureTimeSliceType
             airportHeliport = new ArrayList<>();
         }
         return this.airportHeliport;
-    }
-
-    public boolean isSetAirportHeliport() {
-        return ((this.airportHeliport!= null)&&(!this.airportHeliport.isEmpty()));
-    }
-
-    public void unsetAirportHeliport() {
-        this.airportHeliport = null;
     }
 
     /**
@@ -439,14 +381,6 @@ public class StandardInstrumentDepartureTimeSliceType
         return this.aircraftCharacteristic;
     }
 
-    public boolean isSetAircraftCharacteristic() {
-        return ((this.aircraftCharacteristic!= null)&&(!this.aircraftCharacteristic.isEmpty()));
-    }
-
-    public void unsetAircraftCharacteristic() {
-        this.aircraftCharacteristic = null;
-    }
-
     /**
      * Gets the value of the flightTransition property.
      * 
@@ -479,14 +413,6 @@ public class StandardInstrumentDepartureTimeSliceType
         return this.flightTransition;
     }
 
-    public boolean isSetFlightTransition() {
-        return ((this.flightTransition!= null)&&(!this.flightTransition.isEmpty()));
-    }
-
-    public void unsetFlightTransition() {
-        this.flightTransition = null;
-    }
-
     /**
      * Gets the value of the guidanceFacilitySpecialNavigationSystem property.
      * 
@@ -509,10 +435,6 @@ public class StandardInstrumentDepartureTimeSliceType
      */
     public void setGuidanceFacilitySpecialNavigationSystem(JAXBElement<SpecialNavigationSystemPropertyType> value) {
         this.guidanceFacilitySpecialNavigationSystem = value;
-    }
-
-    public boolean isSetGuidanceFacilitySpecialNavigationSystem() {
-        return (this.guidanceFacilitySpecialNavigationSystem!= null);
     }
 
     /**
@@ -539,10 +461,6 @@ public class StandardInstrumentDepartureTimeSliceType
         this.guidanceFacilityRadar = value;
     }
 
-    public boolean isSetGuidanceFacilityRadar() {
-        return (this.guidanceFacilityRadar!= null);
-    }
-
     /**
      * Gets the value of the guidanceFacilityNavaid property.
      * 
@@ -565,10 +483,6 @@ public class StandardInstrumentDepartureTimeSliceType
      */
     public void setGuidanceFacilityNavaid(JAXBElement<NavaidPropertyType> value) {
         this.guidanceFacilityNavaid = value;
-    }
-
-    public boolean isSetGuidanceFacilityNavaid() {
-        return (this.guidanceFacilityNavaid!= null);
     }
 
     /**
@@ -603,14 +517,6 @@ public class StandardInstrumentDepartureTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the safeAltitude property.
      * 
@@ -633,10 +539,6 @@ public class StandardInstrumentDepartureTimeSliceType
      */
     public void setSafeAltitude(JAXBElement<SafeAltitudeAreaPropertyType> value) {
         this.safeAltitude = value;
-    }
-
-    public boolean isSetSafeAltitude() {
-        return (this.safeAltitude!= null);
     }
 
     /**
@@ -663,10 +565,6 @@ public class StandardInstrumentDepartureTimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the contingencyRoute property.
      * 
@@ -691,10 +589,6 @@ public class StandardInstrumentDepartureTimeSliceType
         this.contingencyRoute = value;
     }
 
-    public boolean isSetContingencyRoute() {
-        return (this.contingencyRoute!= null);
-    }
-
     /**
      * Gets the value of the takeoff property.
      * 
@@ -717,10 +611,6 @@ public class StandardInstrumentDepartureTimeSliceType
      */
     public void setTakeoff(JAXBElement<LandingTakeoffAreaCollectionPropertyType> value) {
         this.takeoff = value;
-    }
-
-    public boolean isSetTakeoff() {
-        return (this.takeoff!= null);
     }
 
     /**
@@ -755,14 +645,6 @@ public class StandardInstrumentDepartureTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -793,10 +675,8 @@ public class StandardInstrumentDepartureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardInstrumentDepartureExtension")
-        @Valid
         protected AbstractExtensionType abstractStandardInstrumentDepartureExtension;
         @XmlElement(name = "AbstractProcedureExtension")
-        @Valid
         protected AbstractExtensionType abstractProcedureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -825,10 +705,6 @@ public class StandardInstrumentDepartureTimeSliceType
             this.abstractStandardInstrumentDepartureExtension = value;
         }
 
-        public boolean isSetAbstractStandardInstrumentDepartureExtension() {
-            return (this.abstractStandardInstrumentDepartureExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractProcedureExtension property.
          * 
@@ -851,10 +727,6 @@ public class StandardInstrumentDepartureTimeSliceType
          */
         public void setAbstractProcedureExtension(AbstractExtensionType value) {
             this.abstractProcedureExtension = value;
-        }
-
-        public boolean isSetAbstractProcedureExtension() {
-            return (this.abstractProcedureExtension!= null);
         }
 
         /**
@@ -881,16 +753,8 @@ public class StandardInstrumentDepartureTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

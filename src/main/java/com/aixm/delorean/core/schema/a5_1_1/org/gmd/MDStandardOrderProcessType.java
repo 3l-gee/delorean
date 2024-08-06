@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.DateTimePropertyType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -51,13 +50,9 @@ public class MDStandardOrderProcessType
     extends AbstractObjectType
 {
 
-    @Valid
     protected CharacterStringPropertyType fees;
-    @Valid
     protected DateTimePropertyType plannedAvailableDateTime;
-    @Valid
     protected CharacterStringPropertyType orderingInstructions;
-    @Valid
     protected CharacterStringPropertyType turnaround;
 
     /**
@@ -84,10 +79,6 @@ public class MDStandardOrderProcessType
         this.fees = value;
     }
 
-    public boolean isSetFees() {
-        return (this.fees!= null);
-    }
-
     /**
      * Gets the value of the plannedAvailableDateTime property.
      * 
@@ -110,10 +101,6 @@ public class MDStandardOrderProcessType
      */
     public void setPlannedAvailableDateTime(DateTimePropertyType value) {
         this.plannedAvailableDateTime = value;
-    }
-
-    public boolean isSetPlannedAvailableDateTime() {
-        return (this.plannedAvailableDateTime!= null);
     }
 
     /**
@@ -140,10 +127,6 @@ public class MDStandardOrderProcessType
         this.orderingInstructions = value;
     }
 
-    public boolean isSetOrderingInstructions() {
-        return (this.orderingInstructions!= null);
-    }
-
     /**
      * Gets the value of the turnaround property.
      * 
@@ -166,10 +149,6 @@ public class MDStandardOrderProcessType
      */
     public void setTurnaround(CharacterStringPropertyType value) {
         this.turnaround = value;
-    }
-
-    public boolean isSetTurnaround() {
-        return (this.turnaround!= null);
     }
 
 }

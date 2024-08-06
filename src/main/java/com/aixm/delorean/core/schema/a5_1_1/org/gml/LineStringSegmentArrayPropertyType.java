@@ -77,12 +77,4 @@ public class LineStringSegmentArrayPropertyType {
         return this.lineStringSegment;
     }
 
-    public boolean isSetLineStringSegment() {
-        return ((this.lineStringSegment!= null)&&(!this.lineStringSegment.isEmpty()));
-    }
-
-    public void unsetLineStringSegment() {
-        this.lineStringSegment = null;
-    }
-
 }

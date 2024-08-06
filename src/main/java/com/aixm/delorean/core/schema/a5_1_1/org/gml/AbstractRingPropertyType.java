@@ -79,8 +79,4 @@ public class AbstractRingPropertyType {
         this.abstractRing = value;
     }
 
-    public boolean isSetAbstractRing() {
-        return (this.abstractRing!= null);
-    }
-
 }

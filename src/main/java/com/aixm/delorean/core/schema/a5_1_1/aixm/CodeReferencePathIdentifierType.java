@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,7 +38,6 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeReferencePathIdentifierType {
 
     @XmlValue
-    @Pattern(regexp = "([A-Z]|\\d)*")
     protected String value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
@@ -68,10 +66,6 @@ public class CodeReferencePathIdentifierType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -94,10 +88,6 @@ public class CodeReferencePathIdentifierType {
      */
     public void setNilReason(String value) {
         this.nilReason = value;
-    }
-
-    public boolean isSetNilReason() {
-        return (this.nilReason!= null);
     }
 
 }

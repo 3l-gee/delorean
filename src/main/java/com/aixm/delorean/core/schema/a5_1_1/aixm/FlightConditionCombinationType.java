@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,25 +65,15 @@ public class FlightConditionCombinationType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "logicalOperator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeFlowConditionOperationType> logicalOperator;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<FlightConditionElementPropertyType> element;
-    @Valid
-    @Size(min = 0)
     protected List<FlightConditionCombinationType.Extension> extension;
 
     /**
@@ -120,14 +108,6 @@ public class FlightConditionCombinationType
         return this.timeInterval;
     }
 
-    public boolean isSetTimeInterval() {
-        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
-    }
-
-    public void unsetTimeInterval() {
-        this.timeInterval = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -158,14 +138,6 @@ public class FlightConditionCombinationType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -200,14 +172,6 @@ public class FlightConditionCombinationType
         return this.specialDateAuthority;
     }
 
-    public boolean isSetSpecialDateAuthority() {
-        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
-    }
-
-    public void unsetSpecialDateAuthority() {
-        this.specialDateAuthority = null;
-    }
-
     /**
      * Gets the value of the logicalOperator property.
      * 
@@ -230,10 +194,6 @@ public class FlightConditionCombinationType
      */
     public void setLogicalOperator(JAXBElement<CodeFlowConditionOperationType> value) {
         this.logicalOperator = value;
-    }
-
-    public boolean isSetLogicalOperator() {
-        return (this.logicalOperator!= null);
     }
 
     /**
@@ -268,14 +228,6 @@ public class FlightConditionCombinationType
         return this.element;
     }
 
-    public boolean isSetElement() {
-        return ((this.element!= null)&&(!this.element.isEmpty()));
-    }
-
-    public void unsetElement() {
-        this.element = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -308,14 +260,6 @@ public class FlightConditionCombinationType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -346,10 +290,8 @@ public class FlightConditionCombinationType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractFlightConditionCombinationExtension")
-        @Valid
         protected AbstractExtensionType abstractFlightConditionCombinationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -378,10 +320,6 @@ public class FlightConditionCombinationType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
-        public boolean isSetAbstractPropertiesWithScheduleExtension() {
-            return (this.abstractPropertiesWithScheduleExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractFlightConditionCombinationExtension property.
          * 
@@ -404,10 +342,6 @@ public class FlightConditionCombinationType
          */
         public void setAbstractFlightConditionCombinationExtension(AbstractExtensionType value) {
             this.abstractFlightConditionCombinationExtension = value;
-        }
-
-        public boolean isSetAbstractFlightConditionCombinationExtension() {
-            return (this.abstractFlightConditionCombinationExtension!= null);
         }
 
         /**
@@ -434,16 +368,8 @@ public class FlightConditionCombinationType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

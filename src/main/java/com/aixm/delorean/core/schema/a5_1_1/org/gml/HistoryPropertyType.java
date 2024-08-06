@@ -343,14 +343,6 @@ public class HistoryPropertyType {
         return this.abstractTimeSlice;
     }
 
-    public boolean isSetAbstractTimeSlice() {
-        return ((this.abstractTimeSlice!= null)&&(!this.abstractTimeSlice.isEmpty()));
-    }
-
-    public void unsetAbstractTimeSlice() {
-        this.abstractTimeSlice = null;
-    }
-
     /**
      * Gets the value of the owns property.
      * 
@@ -375,16 +367,8 @@ public class HistoryPropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(boolean value) {
+    public void setOwns(java.lang.Boolean value) {
         this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

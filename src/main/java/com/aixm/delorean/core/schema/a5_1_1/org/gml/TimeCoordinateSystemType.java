@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -48,13 +46,9 @@ public class TimeCoordinateSystemType
     extends TimeReferenceSystemType
 {
 
-    @Valid
     protected TimePositionType originPosition;
-    @Valid
     protected TimeInstantPropertyType origin;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected TimeIntervalLengthType interval;
 
     /**
@@ -81,10 +75,6 @@ public class TimeCoordinateSystemType
         this.originPosition = value;
     }
 
-    public boolean isSetOriginPosition() {
-        return (this.originPosition!= null);
-    }
-
     /**
      * Gets the value of the origin property.
      * 
@@ -109,10 +99,6 @@ public class TimeCoordinateSystemType
         this.origin = value;
     }
 
-    public boolean isSetOrigin() {
-        return (this.origin!= null);
-    }
-
     /**
      * Gets the value of the interval property.
      * 
@@ -135,10 +121,6 @@ public class TimeCoordinateSystemType
      */
     public void setInterval(TimeIntervalLengthType value) {
         this.interval = value;
-    }
-
-    public boolean isSetInterval() {
-        return (this.interval!= null);
     }
 
 }

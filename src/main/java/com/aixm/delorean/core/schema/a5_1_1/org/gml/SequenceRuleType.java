@@ -73,10 +73,6 @@ public class SequenceRuleType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the order property.
      * 
@@ -99,10 +95,6 @@ public class SequenceRuleType {
      */
     public void setOrder(IncrementOrder value) {
         this.order = value;
-    }
-
-    public boolean isSetOrder() {
-        return (this.order!= null);
     }
 
     /**
@@ -135,14 +127,6 @@ public class SequenceRuleType {
             axisOrder = new ArrayList<>();
         }
         return this.axisOrder;
-    }
-
-    public boolean isSetAxisOrder() {
-        return ((this.axisOrder!= null)&&(!this.axisOrder.isEmpty()));
-    }
-
-    public void unsetAxisOrder() {
-        this.axisOrder = null;
     }
 
 }

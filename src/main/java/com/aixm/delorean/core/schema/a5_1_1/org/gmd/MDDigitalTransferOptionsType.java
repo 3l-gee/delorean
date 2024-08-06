@@ -12,8 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RealPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -54,14 +52,9 @@ public class MDDigitalTransferOptionsType
     extends AbstractObjectType
 {
 
-    @Valid
     protected CharacterStringPropertyType unitsOfDistribution;
-    @Valid
     protected RealPropertyType transferSize;
-    @Valid
-    @Size(min = 0)
     protected List<CIOnlineResourcePropertyType> onLine;
-    @Valid
     protected MDMediumPropertyType offLine;
 
     /**
@@ -88,10 +81,6 @@ public class MDDigitalTransferOptionsType
         this.unitsOfDistribution = value;
     }
 
-    public boolean isSetUnitsOfDistribution() {
-        return (this.unitsOfDistribution!= null);
-    }
-
     /**
      * Gets the value of the transferSize property.
      * 
@@ -114,10 +103,6 @@ public class MDDigitalTransferOptionsType
      */
     public void setTransferSize(RealPropertyType value) {
         this.transferSize = value;
-    }
-
-    public boolean isSetTransferSize() {
-        return (this.transferSize!= null);
     }
 
     /**
@@ -152,14 +137,6 @@ public class MDDigitalTransferOptionsType
         return this.onLine;
     }
 
-    public boolean isSetOnLine() {
-        return ((this.onLine!= null)&&(!this.onLine.isEmpty()));
-    }
-
-    public void unsetOnLine() {
-        this.onLine = null;
-    }
-
     /**
      * Gets the value of the offLine property.
      * 
@@ -182,10 +159,6 @@ public class MDDigitalTransferOptionsType
      */
     public void setOffLine(MDMediumPropertyType value) {
         this.offLine = value;
-    }
-
-    public boolean isSetOffLine() {
-        return (this.offLine!= null);
     }
 
 }

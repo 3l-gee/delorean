@@ -89,14 +89,6 @@ public class CompoundCRSType
         return this.componentReferenceSystem;
     }
 
-    public boolean isSetComponentReferenceSystem() {
-        return ((this.componentReferenceSystem!= null)&&(!this.componentReferenceSystem.isEmpty()));
-    }
-
-    public void unsetComponentReferenceSystem() {
-        this.componentReferenceSystem = null;
-    }
-
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -119,10 +111,6 @@ public class CompoundCRSType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
-    }
-
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
     }
 
 }

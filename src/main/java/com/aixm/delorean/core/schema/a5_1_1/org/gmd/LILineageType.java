@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -49,13 +47,8 @@ public class LILineageType
     extends AbstractObjectType
 {
 
-    @Valid
     protected CharacterStringPropertyType statement;
-    @Valid
-    @Size(min = 0)
     protected List<LIProcessStepPropertyType> processStep;
-    @Valid
-    @Size(min = 0)
     protected List<LISourcePropertyType> source;
 
     /**
@@ -80,10 +73,6 @@ public class LILineageType
      */
     public void setStatement(CharacterStringPropertyType value) {
         this.statement = value;
-    }
-
-    public boolean isSetStatement() {
-        return (this.statement!= null);
     }
 
     /**
@@ -118,14 +107,6 @@ public class LILineageType
         return this.processStep;
     }
 
-    public boolean isSetProcessStep() {
-        return ((this.processStep!= null)&&(!this.processStep.isEmpty()));
-    }
-
-    public void unsetProcessStep() {
-        this.processStep = null;
-    }
-
     /**
      * Gets the value of the source property.
      * 
@@ -156,14 +137,6 @@ public class LILineageType
             source = new ArrayList<>();
         }
         return this.source;
-    }
-
-    public boolean isSetSource() {
-        return ((this.source!= null)&&(!this.source.isEmpty()));
-    }
-
-    public void unsetSource() {
-        this.source = null;
     }
 
 }

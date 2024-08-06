@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -52,9 +51,7 @@ public class ProjectedCRSType
      * gml:baseGeodeticCRS is an association role to the geodetic coordinate reference system used by this projected CRS.
      * 
      */
-    @Valid
     protected GeodeticCRSPropertyType baseGeodeticCRS;
-    @Valid
     protected GeographicCRSPropertyType baseGeographicCRS;
     /**
      * gml:cartesianCS is an association role to the Cartesian coordinate system used by this CRS.
@@ -88,10 +85,6 @@ public class ProjectedCRSType
         this.baseGeodeticCRS = value;
     }
 
-    public boolean isSetBaseGeodeticCRS() {
-        return (this.baseGeodeticCRS!= null);
-    }
-
     /**
      * Gets the value of the baseGeographicCRS property.
      * 
@@ -114,10 +107,6 @@ public class ProjectedCRSType
      */
     public void setBaseGeographicCRS(GeographicCRSPropertyType value) {
         this.baseGeographicCRS = value;
-    }
-
-    public boolean isSetBaseGeographicCRS() {
-        return (this.baseGeographicCRS!= null);
     }
 
     /**
@@ -145,10 +134,6 @@ public class ProjectedCRSType
      */
     public void setCartesianCS(JAXBElement<CartesianCSPropertyType> value) {
         this.cartesianCS = value;
-    }
-
-    public boolean isSetCartesianCS() {
-        return (this.cartesianCS!= null);
     }
 
 }

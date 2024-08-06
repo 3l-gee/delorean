@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -63,7 +62,6 @@ public abstract class AbstractFeatureType
      * 
      */
     @XmlElement(nillable = true)
-    @Valid
     protected BoundingShapeType boundedBy;
     @XmlElementRef(name = "location", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends LocationPropertyType> location;
@@ -93,10 +91,6 @@ public abstract class AbstractFeatureType
         this.boundedBy = value;
     }
 
-    public boolean isSetBoundedBy() {
-        return (this.boundedBy!= null);
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -121,10 +115,6 @@ public abstract class AbstractFeatureType
      */
     public void setLocation(JAXBElement<? extends LocationPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
 }

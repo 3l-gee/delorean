@@ -12,9 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.DateTimePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -70,26 +67,14 @@ public abstract class AbstractDQElementType
     extends AbstractObjectType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> nameOfMeasure;
-    @Valid
     protected MDIdentifierPropertyType measureIdentification;
-    @Valid
     protected CharacterStringPropertyType measureDescription;
-    @Valid
     protected DQEvaluationMethodTypeCodePropertyType evaluationMethodType;
-    @Valid
     protected CharacterStringPropertyType evaluationMethodDescription;
-    @Valid
     protected CICitationPropertyType evaluationProcedure;
-    @Valid
-    @Size(min = 0)
     protected List<DateTimePropertyType> dateTime;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1, max = 2)
     protected List<DQResultPropertyType> result;
 
     /**
@@ -124,14 +109,6 @@ public abstract class AbstractDQElementType
         return this.nameOfMeasure;
     }
 
-    public boolean isSetNameOfMeasure() {
-        return ((this.nameOfMeasure!= null)&&(!this.nameOfMeasure.isEmpty()));
-    }
-
-    public void unsetNameOfMeasure() {
-        this.nameOfMeasure = null;
-    }
-
     /**
      * Gets the value of the measureIdentification property.
      * 
@@ -154,10 +131,6 @@ public abstract class AbstractDQElementType
      */
     public void setMeasureIdentification(MDIdentifierPropertyType value) {
         this.measureIdentification = value;
-    }
-
-    public boolean isSetMeasureIdentification() {
-        return (this.measureIdentification!= null);
     }
 
     /**
@@ -184,10 +157,6 @@ public abstract class AbstractDQElementType
         this.measureDescription = value;
     }
 
-    public boolean isSetMeasureDescription() {
-        return (this.measureDescription!= null);
-    }
-
     /**
      * Gets the value of the evaluationMethodType property.
      * 
@@ -210,10 +179,6 @@ public abstract class AbstractDQElementType
      */
     public void setEvaluationMethodType(DQEvaluationMethodTypeCodePropertyType value) {
         this.evaluationMethodType = value;
-    }
-
-    public boolean isSetEvaluationMethodType() {
-        return (this.evaluationMethodType!= null);
     }
 
     /**
@@ -240,10 +205,6 @@ public abstract class AbstractDQElementType
         this.evaluationMethodDescription = value;
     }
 
-    public boolean isSetEvaluationMethodDescription() {
-        return (this.evaluationMethodDescription!= null);
-    }
-
     /**
      * Gets the value of the evaluationProcedure property.
      * 
@@ -266,10 +227,6 @@ public abstract class AbstractDQElementType
      */
     public void setEvaluationProcedure(CICitationPropertyType value) {
         this.evaluationProcedure = value;
-    }
-
-    public boolean isSetEvaluationProcedure() {
-        return (this.evaluationProcedure!= null);
     }
 
     /**
@@ -304,14 +261,6 @@ public abstract class AbstractDQElementType
         return this.dateTime;
     }
 
-    public boolean isSetDateTime() {
-        return ((this.dateTime!= null)&&(!this.dateTime.isEmpty()));
-    }
-
-    public void unsetDateTime() {
-        this.dateTime = null;
-    }
-
     /**
      * Gets the value of the result property.
      * 
@@ -342,14 +291,6 @@ public abstract class AbstractDQElementType
             result = new ArrayList<>();
         }
         return this.result;
-    }
-
-    public boolean isSetResult() {
-        return ((this.result!= null)&&(!this.result.isEmpty()));
-    }
-
-    public void unsetResult() {
-        this.result = null;
     }
 
 }

@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -79,11 +77,7 @@ public class AirspaceLayerType
     @XmlElementRef(name = "discreteLevelSeries", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<StandardLevelColumnPropertyType> discreteLevelSeries;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AirspaceLayerType.Extension> extension;
 
     /**
@@ -110,10 +104,6 @@ public class AirspaceLayerType
         this.upperLimit = value;
     }
 
-    public boolean isSetUpperLimit() {
-        return (this.upperLimit!= null);
-    }
-
     /**
      * Gets the value of the upperLimitReference property.
      * 
@@ -136,10 +126,6 @@ public class AirspaceLayerType
      */
     public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.upperLimitReference = value;
-    }
-
-    public boolean isSetUpperLimitReference() {
-        return (this.upperLimitReference!= null);
     }
 
     /**
@@ -166,10 +152,6 @@ public class AirspaceLayerType
         this.lowerLimit = value;
     }
 
-    public boolean isSetLowerLimit() {
-        return (this.lowerLimit!= null);
-    }
-
     /**
      * Gets the value of the lowerLimitReference property.
      * 
@@ -192,10 +174,6 @@ public class AirspaceLayerType
      */
     public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLimitReference = value;
-    }
-
-    public boolean isSetLowerLimitReference() {
-        return (this.lowerLimitReference!= null);
     }
 
     /**
@@ -222,10 +200,6 @@ public class AirspaceLayerType
         this.altitudeInterpretation = value;
     }
 
-    public boolean isSetAltitudeInterpretation() {
-        return (this.altitudeInterpretation!= null);
-    }
-
     /**
      * Gets the value of the discreteLevelSeries property.
      * 
@@ -248,10 +222,6 @@ public class AirspaceLayerType
      */
     public void setDiscreteLevelSeries(JAXBElement<StandardLevelColumnPropertyType> value) {
         this.discreteLevelSeries = value;
-    }
-
-    public boolean isSetDiscreteLevelSeries() {
-        return (this.discreteLevelSeries!= null);
     }
 
     /**
@@ -286,14 +256,6 @@ public class AirspaceLayerType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -326,14 +288,6 @@ public class AirspaceLayerType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -362,7 +316,6 @@ public class AirspaceLayerType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceLayerExtension")
-        @Valid
         protected AbstractExtensionType abstractAirspaceLayerExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -391,10 +344,6 @@ public class AirspaceLayerType
             this.abstractAirspaceLayerExtension = value;
         }
 
-        public boolean isSetAbstractAirspaceLayerExtension() {
-            return (this.abstractAirspaceLayerExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -419,16 +368,8 @@ public class AirspaceLayerType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

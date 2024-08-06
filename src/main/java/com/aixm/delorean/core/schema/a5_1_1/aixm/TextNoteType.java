@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -44,14 +42,12 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class TextNoteType {
 
     @XmlValue
-    @Size(min = 1, max = 10000)
     protected String value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "language")
-    @Pattern(regexp = "([a-zA-Z]{2}|[iI]-[a-zA-Z]+|[xX]-[a-zA-Z]{1,8})(-[a-zA-Z]{1,8})*")
     protected String lang;
 
     /**
@@ -78,10 +74,6 @@ public class TextNoteType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -106,10 +98,6 @@ public class TextNoteType {
         this.nilReason = value;
     }
 
-    public boolean isSetNilReason() {
-        return (this.nilReason!= null);
-    }
-
     /**
      * Gets the value of the lang property.
      * 
@@ -132,10 +120,6 @@ public class TextNoteType {
      */
     public void setLang(String value) {
         this.lang = value;
-    }
-
-    public boolean isSetLang() {
-        return (this.lang!= null);
     }
 
 }

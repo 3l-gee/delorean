@@ -12,8 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -35,8 +33,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element ref="{http://www.opengis.net/gml/3.2}Node"/>
  *         <element ref="{http://www.opengis.net/gml/3.2}Edge"/>
  *       </choice>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -59,7 +57,6 @@ public class NodeOrEdgePropertyType {
      * 
      */
     @XmlElement(name = "Node")
-    @Valid
     protected NodeType node;
     /**
      * gml:Edge represents the 1-dimensional primitive.
@@ -70,10 +67,7 @@ public class NodeOrEdgePropertyType {
      * 
      */
     @XmlElement(name = "Edge")
-    @Valid
     protected EdgeType edge;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
@@ -84,10 +78,8 @@ public class NodeOrEdgePropertyType {
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -95,6 +87,8 @@ public class NodeOrEdgePropertyType {
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
 
     /**
      * gml:Node represents the 0-dimensional primitive.
@@ -124,10 +118,6 @@ public class NodeOrEdgePropertyType {
         this.node = value;
     }
 
-    public boolean isSetNode() {
-        return (this.node!= null);
-    }
-
     /**
      * gml:Edge represents the 1-dimensional primitive.
      * The topological boundary of an Edge (gml:directedNode) consists of a negatively directed start Node and a positively directed end Node.   
@@ -155,46 +145,6 @@ public class NodeOrEdgePropertyType {
      */
     public void setEdge(EdgeType value) {
         this.edge = value;
-    }
-
-    public boolean isSetEdge() {
-        return (this.edge!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
     /**
@@ -229,14 +179,6 @@ public class NodeOrEdgePropertyType {
         return this.nilReason;
     }
 
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
-    }
-
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -259,10 +201,6 @@ public class NodeOrEdgePropertyType {
      */
     public void setRemoteSchema(String value) {
         this.remoteSchema = value;
-    }
-
-    public boolean isSetRemoteSchema() {
-        return (this.remoteSchema!= null);
     }
 
     /**
@@ -289,10 +227,6 @@ public class NodeOrEdgePropertyType {
         this.href = value;
     }
 
-    public boolean isSetHref() {
-        return (this.href!= null);
-    }
-
     /**
      * Gets the value of the role property.
      * 
@@ -315,10 +249,6 @@ public class NodeOrEdgePropertyType {
      */
     public void setRole(String value) {
         this.role = value;
-    }
-
-    public boolean isSetRole() {
-        return (this.role!= null);
     }
 
     /**
@@ -345,10 +275,6 @@ public class NodeOrEdgePropertyType {
         this.arcrole = value;
     }
 
-    public boolean isSetArcrole() {
-        return (this.arcrole!= null);
-    }
-
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -371,10 +297,6 @@ public class NodeOrEdgePropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
-    }
-
-    public boolean isSetTitleAttribute() {
-        return (this.titleAttribute!= null);
     }
 
     /**
@@ -401,10 +323,6 @@ public class NodeOrEdgePropertyType {
         this.show = value;
     }
 
-    public boolean isSetShow() {
-        return (this.show!= null);
-    }
-
     /**
      * Gets the value of the actuate property.
      * 
@@ -429,8 +347,32 @@ public class NodeOrEdgePropertyType {
         this.actuate = value;
     }
 
-    public boolean isSetActuate() {
-        return (this.actuate!= null);
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(java.lang.Boolean value) {
+        this.owns = value;
     }
 
 }

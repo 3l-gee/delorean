@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -55,20 +54,17 @@ public class UnitDefinitionType
      * The use of gml:quantityType for references to remote values is deprecated.
      * 
      */
-    @Valid
     protected StringOrRefType quantityType;
     /**
      * The gml:quantityTypeReference property indicates the phenomenon to which the units apply. The content is a reference to a remote value.
      * 
      */
-    @Valid
     protected ReferenceType quantityTypeReference;
     /**
      * The catalogSymbol is the preferred lexical symbol used for this unit of measure.
      * The codeSpace attribute in gml:CodeType identifies a namespace for the catalog symbol value, and might reference the external catalog. The string value in gml:CodeType contains the value of a symbol that should be unique within this catalog namespace. This symbol often appears explicitly in the catalog, but it could be a combination of symbols using a specified algebra of units.
      * 
      */
-    @Valid
     protected CodeType catalogSymbol;
 
     /**
@@ -97,10 +93,6 @@ public class UnitDefinitionType
         this.quantityType = value;
     }
 
-    public boolean isSetQuantityType() {
-        return (this.quantityType!= null);
-    }
-
     /**
      * The gml:quantityTypeReference property indicates the phenomenon to which the units apply. The content is a reference to a remote value.
      * 
@@ -124,10 +116,6 @@ public class UnitDefinitionType
      */
     public void setQuantityTypeReference(ReferenceType value) {
         this.quantityTypeReference = value;
-    }
-
-    public boolean isSetQuantityTypeReference() {
-        return (this.quantityTypeReference!= null);
     }
 
     /**
@@ -154,10 +142,6 @@ public class UnitDefinitionType
      */
     public void setCatalogSymbol(CodeType value) {
         this.catalogSymbol = value;
-    }
-
-    public boolean isSetCatalogSymbol() {
-        return (this.catalogSymbol!= null);
     }
 
 }

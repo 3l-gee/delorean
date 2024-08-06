@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -47,8 +45,6 @@ public class PrimeMeridianType
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected AngleType greenwichLongitude;
 
     /**
@@ -74,10 +70,6 @@ public class PrimeMeridianType
      */
     public void setGreenwichLongitude(AngleType value) {
         this.greenwichLongitude = value;
-    }
-
-    public boolean isSetGreenwichLongitude() {
-        return (this.greenwichLongitude!= null);
     }
 
 }

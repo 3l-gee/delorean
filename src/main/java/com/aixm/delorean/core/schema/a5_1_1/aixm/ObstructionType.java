@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -84,19 +82,11 @@ public class ObstructionType
     @XmlElementRef(name = "theVerticalStructure", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<VerticalStructurePropertyType> theVerticalStructure;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AltitudeAdjustmentPropertyType> adjustment;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ObstaclePlacementPropertyType> obstaclePlacement;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ObstructionType.Extension> extension;
 
     /**
@@ -123,10 +113,6 @@ public class ObstructionType
         this.requiredClearance = value;
     }
 
-    public boolean isSetRequiredClearance() {
-        return (this.requiredClearance!= null);
-    }
-
     /**
      * Gets the value of the minimumAltitude property.
      * 
@@ -149,10 +135,6 @@ public class ObstructionType
      */
     public void setMinimumAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumAltitude = value;
-    }
-
-    public boolean isSetMinimumAltitude() {
-        return (this.minimumAltitude!= null);
     }
 
     /**
@@ -179,10 +161,6 @@ public class ObstructionType
         this.surfacePenetration = value;
     }
 
-    public boolean isSetSurfacePenetration() {
-        return (this.surfacePenetration!= null);
-    }
-
     /**
      * Gets the value of the slopePenetration property.
      * 
@@ -205,10 +183,6 @@ public class ObstructionType
      */
     public void setSlopePenetration(JAXBElement<ValAngleType> value) {
         this.slopePenetration = value;
-    }
-
-    public boolean isSetSlopePenetration() {
-        return (this.slopePenetration!= null);
     }
 
     /**
@@ -235,10 +209,6 @@ public class ObstructionType
         this.controlling = value;
     }
 
-    public boolean isSetControlling() {
-        return (this.controlling!= null);
-    }
-
     /**
      * Gets the value of the closeIn property.
      * 
@@ -263,10 +233,6 @@ public class ObstructionType
         this.closeIn = value;
     }
 
-    public boolean isSetCloseIn() {
-        return (this.closeIn!= null);
-    }
-
     /**
      * Gets the value of the theVerticalStructure property.
      * 
@@ -289,10 +255,6 @@ public class ObstructionType
      */
     public void setTheVerticalStructure(JAXBElement<VerticalStructurePropertyType> value) {
         this.theVerticalStructure = value;
-    }
-
-    public boolean isSetTheVerticalStructure() {
-        return (this.theVerticalStructure!= null);
     }
 
     /**
@@ -327,14 +289,6 @@ public class ObstructionType
         return this.adjustment;
     }
 
-    public boolean isSetAdjustment() {
-        return ((this.adjustment!= null)&&(!this.adjustment.isEmpty()));
-    }
-
-    public void unsetAdjustment() {
-        this.adjustment = null;
-    }
-
     /**
      * Gets the value of the obstaclePlacement property.
      * 
@@ -365,14 +319,6 @@ public class ObstructionType
             obstaclePlacement = new ArrayList<>();
         }
         return this.obstaclePlacement;
-    }
-
-    public boolean isSetObstaclePlacement() {
-        return ((this.obstaclePlacement!= null)&&(!this.obstaclePlacement.isEmpty()));
-    }
-
-    public void unsetObstaclePlacement() {
-        this.obstaclePlacement = null;
     }
 
     /**
@@ -407,14 +353,6 @@ public class ObstructionType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -447,14 +385,6 @@ public class ObstructionType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -483,7 +413,6 @@ public class ObstructionType
     public static class Extension {
 
         @XmlElement(name = "AbstractObstructionExtension")
-        @Valid
         protected AbstractExtensionType abstractObstructionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -512,10 +441,6 @@ public class ObstructionType
             this.abstractObstructionExtension = value;
         }
 
-        public boolean isSetAbstractObstructionExtension() {
-            return (this.abstractObstructionExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -540,16 +465,8 @@ public class ObstructionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

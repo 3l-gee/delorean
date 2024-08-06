@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,8 +73,6 @@ public class DirectFlightSegmentType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "end_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DesignatedPointPropertyType> endFixDesignatedPoint;
@@ -102,8 +98,6 @@ public class DirectFlightSegmentType
     protected JAXBElement<TouchDownLiftOffPropertyType> startAimingPoint;
     @XmlElementRef(name = "start_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> startAirportReferencePoint;
-    @Valid
-    @Size(min = 0)
     protected List<DirectFlightSegmentType.Extension> extension;
 
     /**
@@ -138,14 +132,6 @@ public class DirectFlightSegmentType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the endFixDesignatedPoint property.
      * 
@@ -168,10 +154,6 @@ public class DirectFlightSegmentType
      */
     public void setEndFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.endFixDesignatedPoint = value;
-    }
-
-    public boolean isSetEndFixDesignatedPoint() {
-        return (this.endFixDesignatedPoint!= null);
     }
 
     /**
@@ -198,10 +180,6 @@ public class DirectFlightSegmentType
         this.endNavaidSystem = value;
     }
 
-    public boolean isSetEndNavaidSystem() {
-        return (this.endNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the endPosition property.
      * 
@@ -224,10 +202,6 @@ public class DirectFlightSegmentType
      */
     public void setEndPosition(JAXBElement<PointPropertyType> value) {
         this.endPosition = value;
-    }
-
-    public boolean isSetEndPosition() {
-        return (this.endPosition!= null);
     }
 
     /**
@@ -254,10 +228,6 @@ public class DirectFlightSegmentType
         this.endRunwayPoint = value;
     }
 
-    public boolean isSetEndRunwayPoint() {
-        return (this.endRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the endAimingPoint property.
      * 
@@ -280,10 +250,6 @@ public class DirectFlightSegmentType
      */
     public void setEndAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.endAimingPoint = value;
-    }
-
-    public boolean isSetEndAimingPoint() {
-        return (this.endAimingPoint!= null);
     }
 
     /**
@@ -310,10 +276,6 @@ public class DirectFlightSegmentType
         this.endAirportReferencePoint = value;
     }
 
-    public boolean isSetEndAirportReferencePoint() {
-        return (this.endAirportReferencePoint!= null);
-    }
-
     /**
      * Gets the value of the startFixDesignatedPoint property.
      * 
@@ -336,10 +298,6 @@ public class DirectFlightSegmentType
      */
     public void setStartFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.startFixDesignatedPoint = value;
-    }
-
-    public boolean isSetStartFixDesignatedPoint() {
-        return (this.startFixDesignatedPoint!= null);
     }
 
     /**
@@ -366,10 +324,6 @@ public class DirectFlightSegmentType
         this.startNavaidSystem = value;
     }
 
-    public boolean isSetStartNavaidSystem() {
-        return (this.startNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the startPosition property.
      * 
@@ -392,10 +346,6 @@ public class DirectFlightSegmentType
      */
     public void setStartPosition(JAXBElement<PointPropertyType> value) {
         this.startPosition = value;
-    }
-
-    public boolean isSetStartPosition() {
-        return (this.startPosition!= null);
     }
 
     /**
@@ -422,10 +372,6 @@ public class DirectFlightSegmentType
         this.startRunwayPoint = value;
     }
 
-    public boolean isSetStartRunwayPoint() {
-        return (this.startRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the startAimingPoint property.
      * 
@@ -450,10 +396,6 @@ public class DirectFlightSegmentType
         this.startAimingPoint = value;
     }
 
-    public boolean isSetStartAimingPoint() {
-        return (this.startAimingPoint!= null);
-    }
-
     /**
      * Gets the value of the startAirportReferencePoint property.
      * 
@@ -476,10 +418,6 @@ public class DirectFlightSegmentType
      */
     public void setStartAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.startAirportReferencePoint = value;
-    }
-
-    public boolean isSetStartAirportReferencePoint() {
-        return (this.startAirportReferencePoint!= null);
     }
 
     /**
@@ -514,14 +452,6 @@ public class DirectFlightSegmentType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -552,10 +482,8 @@ public class DirectFlightSegmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractDirectFlightExtension")
-        @Valid
         protected AbstractExtensionType abstractDirectFlightExtension;
         @XmlElement(name = "AbstractDirectFlightSegmentExtension")
-        @Valid
         protected AbstractExtensionType abstractDirectFlightSegmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -584,10 +512,6 @@ public class DirectFlightSegmentType
             this.abstractDirectFlightExtension = value;
         }
 
-        public boolean isSetAbstractDirectFlightExtension() {
-            return (this.abstractDirectFlightExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractDirectFlightSegmentExtension property.
          * 
@@ -610,10 +534,6 @@ public class DirectFlightSegmentType
          */
         public void setAbstractDirectFlightSegmentExtension(AbstractExtensionType value) {
             this.abstractDirectFlightSegmentExtension = value;
-        }
-
-        public boolean isSetAbstractDirectFlightSegmentExtension() {
-            return (this.abstractDirectFlightSegmentExtension!= null);
         }
 
         /**
@@ -640,16 +560,8 @@ public class DirectFlightSegmentType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

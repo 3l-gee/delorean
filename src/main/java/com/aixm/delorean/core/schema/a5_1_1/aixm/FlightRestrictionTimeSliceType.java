@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,15 +72,9 @@ public class FlightRestrictionTimeSliceType
     @XmlElementRef(name = "flight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<FlightConditionCombinationPropertyType> flight;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<FlightRestrictionRoutePropertyType> regulatedRoute;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<FlightRestrictionTimeSliceType.Extension> extension;
 
     /**
@@ -110,10 +101,6 @@ public class FlightRestrictionTimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -136,10 +123,6 @@ public class FlightRestrictionTimeSliceType
      */
     public void setType(JAXBElement<CodeFlightRestrictionType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -166,10 +149,6 @@ public class FlightRestrictionTimeSliceType
         this.instruction = value;
     }
 
-    public boolean isSetInstruction() {
-        return (this.instruction!= null);
-    }
-
     /**
      * Gets the value of the flight property.
      * 
@@ -192,10 +171,6 @@ public class FlightRestrictionTimeSliceType
      */
     public void setFlight(JAXBElement<FlightConditionCombinationPropertyType> value) {
         this.flight = value;
-    }
-
-    public boolean isSetFlight() {
-        return (this.flight!= null);
     }
 
     /**
@@ -230,14 +205,6 @@ public class FlightRestrictionTimeSliceType
         return this.regulatedRoute;
     }
 
-    public boolean isSetRegulatedRoute() {
-        return ((this.regulatedRoute!= null)&&(!this.regulatedRoute.isEmpty()));
-    }
-
-    public void unsetRegulatedRoute() {
-        this.regulatedRoute = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -268,14 +235,6 @@ public class FlightRestrictionTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -310,14 +269,6 @@ public class FlightRestrictionTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -346,8 +297,6 @@ public class FlightRestrictionTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightRestrictionExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractFlightRestrictionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -376,10 +325,6 @@ public class FlightRestrictionTimeSliceType
             this.abstractFlightRestrictionExtension = value;
         }
 
-        public boolean isSetAbstractFlightRestrictionExtension() {
-            return (this.abstractFlightRestrictionExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -404,16 +349,8 @@ public class FlightRestrictionTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

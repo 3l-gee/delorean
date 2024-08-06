@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +41,6 @@ public class TerminalSegmentPointPropertyType
 {
 
     @XmlElement(name = "TerminalSegmentPoint", required = true)
-    @NotNull
-    @Valid
     protected TerminalSegmentPointType terminalSegmentPoint;
 
     /**
@@ -69,10 +65,6 @@ public class TerminalSegmentPointPropertyType
      */
     public void setTerminalSegmentPoint(TerminalSegmentPointType value) {
         this.terminalSegmentPoint = value;
-    }
-
-    public boolean isSetTerminalSegmentPoint() {
-        return (this.terminalSegmentPoint!= null);
     }
 
 }

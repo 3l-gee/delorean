@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +41,6 @@ public class NavigationAreaSectorPropertyType
 {
 
     @XmlElement(name = "NavigationAreaSector", required = true)
-    @NotNull
-    @Valid
     protected NavigationAreaSectorType navigationAreaSector;
 
     /**
@@ -69,10 +65,6 @@ public class NavigationAreaSectorPropertyType
      */
     public void setNavigationAreaSector(NavigationAreaSectorType value) {
         this.navigationAreaSector = value;
-    }
-
-    public boolean isSetNavigationAreaSector() {
-        return (this.navigationAreaSector!= null);
     }
 
 }

@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -81,8 +78,6 @@ public class NavigationAreaTimeSliceType
     @XmlElementRef(name = "departure", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<StandardInstrumentDeparturePropertyType> departure;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavigationAreaSectorPropertyType> sector;
     @XmlElementRef(name = "centrePoint_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DesignatedPointPropertyType> centrePointFixDesignatedPoint;
@@ -97,11 +92,7 @@ public class NavigationAreaTimeSliceType
     @XmlElementRef(name = "centrePoint_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> centrePointAirportReferencePoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<NavigationAreaTimeSliceType.Extension> extension;
 
     /**
@@ -128,10 +119,6 @@ public class NavigationAreaTimeSliceType
         this.navigationAreaType = value;
     }
 
-    public boolean isSetNavigationAreaType() {
-        return (this.navigationAreaType!= null);
-    }
-
     /**
      * Gets the value of the minimumCeiling property.
      * 
@@ -154,10 +141,6 @@ public class NavigationAreaTimeSliceType
      */
     public void setMinimumCeiling(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumCeiling = value;
-    }
-
-    public boolean isSetMinimumCeiling() {
-        return (this.minimumCeiling!= null);
     }
 
     /**
@@ -184,10 +167,6 @@ public class NavigationAreaTimeSliceType
         this.minimumVisibility = value;
     }
 
-    public boolean isSetMinimumVisibility() {
-        return (this.minimumVisibility!= null);
-    }
-
     /**
      * Gets the value of the departure property.
      * 
@@ -210,10 +189,6 @@ public class NavigationAreaTimeSliceType
      */
     public void setDeparture(JAXBElement<StandardInstrumentDeparturePropertyType> value) {
         this.departure = value;
-    }
-
-    public boolean isSetDeparture() {
-        return (this.departure!= null);
     }
 
     /**
@@ -248,14 +223,6 @@ public class NavigationAreaTimeSliceType
         return this.sector;
     }
 
-    public boolean isSetSector() {
-        return ((this.sector!= null)&&(!this.sector.isEmpty()));
-    }
-
-    public void unsetSector() {
-        this.sector = null;
-    }
-
     /**
      * Gets the value of the centrePointFixDesignatedPoint property.
      * 
@@ -278,10 +245,6 @@ public class NavigationAreaTimeSliceType
      */
     public void setCentrePointFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.centrePointFixDesignatedPoint = value;
-    }
-
-    public boolean isSetCentrePointFixDesignatedPoint() {
-        return (this.centrePointFixDesignatedPoint!= null);
     }
 
     /**
@@ -308,10 +271,6 @@ public class NavigationAreaTimeSliceType
         this.centrePointNavaidSystem = value;
     }
 
-    public boolean isSetCentrePointNavaidSystem() {
-        return (this.centrePointNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the centrePointPosition property.
      * 
@@ -334,10 +293,6 @@ public class NavigationAreaTimeSliceType
      */
     public void setCentrePointPosition(JAXBElement<PointPropertyType> value) {
         this.centrePointPosition = value;
-    }
-
-    public boolean isSetCentrePointPosition() {
-        return (this.centrePointPosition!= null);
     }
 
     /**
@@ -364,10 +319,6 @@ public class NavigationAreaTimeSliceType
         this.centrePointRunwayPoint = value;
     }
 
-    public boolean isSetCentrePointRunwayPoint() {
-        return (this.centrePointRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the centrePointAimingPoint property.
      * 
@@ -392,10 +343,6 @@ public class NavigationAreaTimeSliceType
         this.centrePointAimingPoint = value;
     }
 
-    public boolean isSetCentrePointAimingPoint() {
-        return (this.centrePointAimingPoint!= null);
-    }
-
     /**
      * Gets the value of the centrePointAirportReferencePoint property.
      * 
@@ -418,10 +365,6 @@ public class NavigationAreaTimeSliceType
      */
     public void setCentrePointAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.centrePointAirportReferencePoint = value;
-    }
-
-    public boolean isSetCentrePointAirportReferencePoint() {
-        return (this.centrePointAirportReferencePoint!= null);
     }
 
     /**
@@ -456,14 +399,6 @@ public class NavigationAreaTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -496,14 +431,6 @@ public class NavigationAreaTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -532,8 +459,6 @@ public class NavigationAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavigationAreaExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractNavigationAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -562,10 +487,6 @@ public class NavigationAreaTimeSliceType
             this.abstractNavigationAreaExtension = value;
         }
 
-        public boolean isSetAbstractNavigationAreaExtension() {
-            return (this.abstractNavigationAreaExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -590,16 +511,8 @@ public class NavigationAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

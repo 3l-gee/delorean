@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -73,11 +71,7 @@ public class AltitudeAdjustmentType
     @XmlElementRef(name = "localRemoteCode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> localRemoteCode;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AltitudeAdjustmentType.Extension> extension;
 
     /**
@@ -104,10 +98,6 @@ public class AltitudeAdjustmentType
         this.altitudeAdjustmentType = value;
     }
 
-    public boolean isSetAltitudeAdjustmentType() {
-        return (this.altitudeAdjustmentType!= null);
-    }
-
     /**
      * Gets the value of the primaryAlternateMinimum property.
      * 
@@ -130,10 +120,6 @@ public class AltitudeAdjustmentType
      */
     public void setPrimaryAlternateMinimum(JAXBElement<CodeYesNoType> value) {
         this.primaryAlternateMinimum = value;
-    }
-
-    public boolean isSetPrimaryAlternateMinimum() {
-        return (this.primaryAlternateMinimum!= null);
     }
 
     /**
@@ -160,10 +146,6 @@ public class AltitudeAdjustmentType
         this.altitudeAdjustment = value;
     }
 
-    public boolean isSetAltitudeAdjustment() {
-        return (this.altitudeAdjustment!= null);
-    }
-
     /**
      * Gets the value of the localRemoteCode property.
      * 
@@ -186,10 +168,6 @@ public class AltitudeAdjustmentType
      */
     public void setLocalRemoteCode(JAXBElement<CodeYesNoType> value) {
         this.localRemoteCode = value;
-    }
-
-    public boolean isSetLocalRemoteCode() {
-        return (this.localRemoteCode!= null);
     }
 
     /**
@@ -224,14 +202,6 @@ public class AltitudeAdjustmentType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -264,14 +234,6 @@ public class AltitudeAdjustmentType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -300,7 +262,6 @@ public class AltitudeAdjustmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractAltitudeAdjustmentExtension")
-        @Valid
         protected AbstractExtensionType abstractAltitudeAdjustmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -329,10 +290,6 @@ public class AltitudeAdjustmentType
             this.abstractAltitudeAdjustmentExtension = value;
         }
 
-        public boolean isSetAbstractAltitudeAdjustmentExtension() {
-            return (this.abstractAltitudeAdjustmentExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -357,16 +314,8 @@ public class AltitudeAdjustmentType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

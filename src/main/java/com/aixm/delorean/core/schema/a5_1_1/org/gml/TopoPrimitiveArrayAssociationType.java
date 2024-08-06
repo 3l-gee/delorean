@@ -84,14 +84,6 @@ public class TopoPrimitiveArrayAssociationType {
         return this.abstractTopoPrimitive;
     }
 
-    public boolean isSetAbstractTopoPrimitive() {
-        return ((this.abstractTopoPrimitive!= null)&&(!this.abstractTopoPrimitive.isEmpty()));
-    }
-
-    public void unsetAbstractTopoPrimitive() {
-        this.abstractTopoPrimitive = null;
-    }
-
     /**
      * Gets the value of the owns property.
      * 
@@ -116,16 +108,8 @@ public class TopoPrimitiveArrayAssociationType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(boolean value) {
+    public void setOwns(java.lang.Boolean value) {
         this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

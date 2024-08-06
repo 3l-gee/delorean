@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,19 +73,11 @@ public class ApronTimeSliceType
     @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ApronContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ApronAreaAvailabilityPropertyType> availability;
-    @Valid
-    @Size(min = 0)
     protected List<ApronTimeSliceType.Extension> extension;
 
     /**
@@ -115,10 +104,6 @@ public class ApronTimeSliceType
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
     /**
      * Gets the value of the abandoned property.
      * 
@@ -141,10 +126,6 @@ public class ApronTimeSliceType
      */
     public void setAbandoned(JAXBElement<CodeYesNoType> value) {
         this.abandoned = value;
-    }
-
-    public boolean isSetAbandoned() {
-        return (this.abandoned!= null);
     }
 
     /**
@@ -171,10 +152,6 @@ public class ApronTimeSliceType
         this.surfaceProperties = value;
     }
 
-    public boolean isSetSurfaceProperties() {
-        return (this.surfaceProperties!= null);
-    }
-
     /**
      * Gets the value of the associatedAirportHeliport property.
      * 
@@ -197,10 +174,6 @@ public class ApronTimeSliceType
      */
     public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.associatedAirportHeliport = value;
-    }
-
-    public boolean isSetAssociatedAirportHeliport() {
-        return (this.associatedAirportHeliport!= null);
     }
 
     /**
@@ -235,14 +208,6 @@ public class ApronTimeSliceType
         return this.contaminant;
     }
 
-    public boolean isSetContaminant() {
-        return ((this.contaminant!= null)&&(!this.contaminant.isEmpty()));
-    }
-
-    public void unsetContaminant() {
-        this.contaminant = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -273,14 +238,6 @@ public class ApronTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -315,14 +272,6 @@ public class ApronTimeSliceType
         return this.availability;
     }
 
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -355,14 +304,6 @@ public class ApronTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -391,8 +332,6 @@ public class ApronTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractApronExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractApronExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -421,10 +360,6 @@ public class ApronTimeSliceType
             this.abstractApronExtension = value;
         }
 
-        public boolean isSetAbstractApronExtension() {
-            return (this.abstractApronExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -449,16 +384,8 @@ public class ApronTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

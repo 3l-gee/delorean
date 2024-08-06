@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -63,19 +60,11 @@ public class TinType
     extends SurfaceType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<LineStringSegmentArrayPropertyType> stopLines;
-    @Valid
-    @Size(min = 0)
     protected List<LineStringSegmentArrayPropertyType> breakLines;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected LengthType maxLength;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected TinType.ControlPoint controlPoint;
 
     /**
@@ -110,14 +99,6 @@ public class TinType
         return this.stopLines;
     }
 
-    public boolean isSetStopLines() {
-        return ((this.stopLines!= null)&&(!this.stopLines.isEmpty()));
-    }
-
-    public void unsetStopLines() {
-        this.stopLines = null;
-    }
-
     /**
      * Gets the value of the breakLines property.
      * 
@@ -150,14 +131,6 @@ public class TinType
         return this.breakLines;
     }
 
-    public boolean isSetBreakLines() {
-        return ((this.breakLines!= null)&&(!this.breakLines.isEmpty()));
-    }
-
-    public void unsetBreakLines() {
-        this.breakLines = null;
-    }
-
     /**
      * Gets the value of the maxLength property.
      * 
@@ -182,10 +155,6 @@ public class TinType
         this.maxLength = value;
     }
 
-    public boolean isSetMaxLength() {
-        return (this.maxLength!= null);
-    }
-
     /**
      * Gets the value of the controlPoint property.
      * 
@@ -208,10 +177,6 @@ public class TinType
      */
     public void setControlPoint(TinType.ControlPoint value) {
         this.controlPoint = value;
-    }
-
-    public boolean isSetControlPoint() {
-        return (this.controlPoint!= null);
     }
 
 
@@ -242,7 +207,6 @@ public class TinType
     })
     public static class ControlPoint {
 
-        @Valid
         protected DirectPositionListType posList;
         /**
          * GML supports two different ways to specify a geometric position: either by a direct position (a data type) or a point (a geometric object).
@@ -280,10 +244,6 @@ public class TinType
             this.posList = value;
         }
 
-        public boolean isSetPosList() {
-            return (this.posList!= null);
-        }
-
         /**
          * GML supports two different ways to specify a geometric position: either by a direct position (a data type) or a point (a geometric object).
          * pos elements are positions that are "owned" by the geometric primitive encapsulating this geometric position.
@@ -319,14 +279,6 @@ public class TinType
                 geometricPositionGroup = new ArrayList<>();
             }
             return this.geometricPositionGroup;
-        }
-
-        public boolean isSetGeometricPositionGroup() {
-            return ((this.geometricPositionGroup!= null)&&(!this.geometricPositionGroup.isEmpty()));
-        }
-
-        public void unsetGeometricPositionGroup() {
-            this.geometricPositionGroup = null;
         }
 
     }

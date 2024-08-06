@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -86,11 +83,7 @@ public class ChangeOverPointTimeSliceType
     @XmlElementRef(name = "applicableRoutePortion", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RoutePortionPropertyType> applicableRoutePortion;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ChangeOverPointTimeSliceType.Extension> extension;
 
     /**
@@ -117,10 +110,6 @@ public class ChangeOverPointTimeSliceType
         this.distance = value;
     }
 
-    public boolean isSetDistance() {
-        return (this.distance!= null);
-    }
-
     /**
      * Gets the value of the locationFixDesignatedPoint property.
      * 
@@ -143,10 +132,6 @@ public class ChangeOverPointTimeSliceType
      */
     public void setLocationFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.locationFixDesignatedPoint = value;
-    }
-
-    public boolean isSetLocationFixDesignatedPoint() {
-        return (this.locationFixDesignatedPoint!= null);
     }
 
     /**
@@ -173,10 +158,6 @@ public class ChangeOverPointTimeSliceType
         this.locationNavaidSystem = value;
     }
 
-    public boolean isSetLocationNavaidSystem() {
-        return (this.locationNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the locationPosition property.
      * 
@@ -199,10 +180,6 @@ public class ChangeOverPointTimeSliceType
      */
     public void setLocationPosition(JAXBElement<PointPropertyType> value) {
         this.locationPosition = value;
-    }
-
-    public boolean isSetLocationPosition() {
-        return (this.locationPosition!= null);
     }
 
     /**
@@ -229,10 +206,6 @@ public class ChangeOverPointTimeSliceType
         this.locationRunwayPoint = value;
     }
 
-    public boolean isSetLocationRunwayPoint() {
-        return (this.locationRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the locationAimingPoint property.
      * 
@@ -255,10 +228,6 @@ public class ChangeOverPointTimeSliceType
      */
     public void setLocationAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.locationAimingPoint = value;
-    }
-
-    public boolean isSetLocationAimingPoint() {
-        return (this.locationAimingPoint!= null);
     }
 
     /**
@@ -285,10 +254,6 @@ public class ChangeOverPointTimeSliceType
         this.locationAirportReferencePoint = value;
     }
 
-    public boolean isSetLocationAirportReferencePoint() {
-        return (this.locationAirportReferencePoint!= null);
-    }
-
     /**
      * Gets the value of the applicableRoutePortion property.
      * 
@@ -311,10 +276,6 @@ public class ChangeOverPointTimeSliceType
      */
     public void setApplicableRoutePortion(JAXBElement<RoutePortionPropertyType> value) {
         this.applicableRoutePortion = value;
-    }
-
-    public boolean isSetApplicableRoutePortion() {
-        return (this.applicableRoutePortion!= null);
     }
 
     /**
@@ -349,14 +310,6 @@ public class ChangeOverPointTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -389,14 +342,6 @@ public class ChangeOverPointTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -425,8 +370,6 @@ public class ChangeOverPointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractChangeOverPointExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractChangeOverPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -455,10 +398,6 @@ public class ChangeOverPointTimeSliceType
             this.abstractChangeOverPointExtension = value;
         }
 
-        public boolean isSetAbstractChangeOverPointExtension() {
-            return (this.abstractChangeOverPointExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -483,16 +422,8 @@ public class ChangeOverPointTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

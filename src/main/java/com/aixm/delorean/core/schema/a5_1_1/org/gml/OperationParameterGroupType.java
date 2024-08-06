@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -53,7 +52,6 @@ public class OperationParameterGroupType
      * 
      */
     @XmlSchemaType(name = "positiveInteger")
-    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger maximumOccurs;
     /**
      * gml:parameter is an association to an operation parameter or parameter group.
@@ -85,10 +83,6 @@ public class OperationParameterGroupType
      */
     public void setMaximumOccurs(BigInteger value) {
         this.maximumOccurs = value;
-    }
-
-    public boolean isSetMaximumOccurs() {
-        return (this.maximumOccurs!= null);
     }
 
     /**
@@ -126,14 +120,6 @@ public class OperationParameterGroupType
             parameter = new ArrayList<>();
         }
         return this.parameter;
-    }
-
-    public boolean isSetParameter() {
-        return ((this.parameter!= null)&&(!this.parameter.isEmpty()));
-    }
-
-    public void unsetParameter() {
-        this.parameter = null;
     }
 
 }

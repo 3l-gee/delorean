@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gts.TMPrimitivePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -51,8 +49,6 @@ public class EXTemporalExtentType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected TMPrimitivePropertyType extent;
 
     /**
@@ -77,10 +73,6 @@ public class EXTemporalExtentType
      */
     public void setExtent(TMPrimitivePropertyType value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
 }

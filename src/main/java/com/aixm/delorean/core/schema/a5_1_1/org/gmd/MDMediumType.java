@@ -13,8 +13,6 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RealPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -59,19 +57,11 @@ public class MDMediumType
     extends AbstractObjectType
 {
 
-    @Valid
     protected MDMediumNameCodePropertyType name;
-    @Valid
-    @Size(min = 0)
     protected List<RealPropertyType> density;
-    @Valid
     protected CharacterStringPropertyType densityUnits;
-    @Valid
     protected IntegerPropertyType volumes;
-    @Valid
-    @Size(min = 0)
     protected List<MDMediumFormatCodePropertyType> mediumFormat;
-    @Valid
     protected CharacterStringPropertyType mediumNote;
 
     /**
@@ -96,10 +86,6 @@ public class MDMediumType
      */
     public void setName(MDMediumNameCodePropertyType value) {
         this.name = value;
-    }
-
-    public boolean isSetName() {
-        return (this.name!= null);
     }
 
     /**
@@ -134,14 +120,6 @@ public class MDMediumType
         return this.density;
     }
 
-    public boolean isSetDensity() {
-        return ((this.density!= null)&&(!this.density.isEmpty()));
-    }
-
-    public void unsetDensity() {
-        this.density = null;
-    }
-
     /**
      * Gets the value of the densityUnits property.
      * 
@@ -166,10 +144,6 @@ public class MDMediumType
         this.densityUnits = value;
     }
 
-    public boolean isSetDensityUnits() {
-        return (this.densityUnits!= null);
-    }
-
     /**
      * Gets the value of the volumes property.
      * 
@@ -192,10 +166,6 @@ public class MDMediumType
      */
     public void setVolumes(IntegerPropertyType value) {
         this.volumes = value;
-    }
-
-    public boolean isSetVolumes() {
-        return (this.volumes!= null);
     }
 
     /**
@@ -230,14 +200,6 @@ public class MDMediumType
         return this.mediumFormat;
     }
 
-    public boolean isSetMediumFormat() {
-        return ((this.mediumFormat!= null)&&(!this.mediumFormat.isEmpty()));
-    }
-
-    public void unsetMediumFormat() {
-        this.mediumFormat = null;
-    }
-
     /**
      * Gets the value of the mediumNote property.
      * 
@@ -260,10 +222,6 @@ public class MDMediumType
      */
     public void setMediumNote(CharacterStringPropertyType value) {
         this.mediumNote = value;
-    }
-
-    public boolean isSetMediumNote() {
-        return (this.mediumNote!= null);
     }
 
 }

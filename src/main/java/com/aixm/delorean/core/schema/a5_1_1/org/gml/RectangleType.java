@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -49,8 +47,6 @@ public class RectangleType
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected AbstractRingPropertyType exterior;
     @XmlAttribute(name = "interpolation")
     public static final SurfaceInterpolationType INTERPOLATION = SurfaceInterpolationType.PLANAR;
@@ -78,10 +74,6 @@ public class RectangleType
      */
     public void setExterior(AbstractRingPropertyType value) {
         this.exterior = value;
-    }
-
-    public boolean isSetExterior() {
-        return (this.exterior!= null);
     }
 
 }

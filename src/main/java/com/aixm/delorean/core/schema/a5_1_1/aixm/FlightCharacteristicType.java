@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -79,11 +77,7 @@ public class FlightCharacteristicType
     @XmlElementRef(name = "purpose", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeFlightPurposeType> purpose;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<FlightCharacteristicType.Extension> extension;
 
     /**
@@ -110,10 +104,6 @@ public class FlightCharacteristicType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the rule property.
      * 
@@ -136,10 +126,6 @@ public class FlightCharacteristicType
      */
     public void setRule(JAXBElement<CodeFlightRuleType> value) {
         this.rule = value;
-    }
-
-    public boolean isSetRule() {
-        return (this.rule!= null);
     }
 
     /**
@@ -166,10 +152,6 @@ public class FlightCharacteristicType
         this.status = value;
     }
 
-    public boolean isSetStatus() {
-        return (this.status!= null);
-    }
-
     /**
      * Gets the value of the military property.
      * 
@@ -192,10 +174,6 @@ public class FlightCharacteristicType
      */
     public void setMilitary(JAXBElement<CodeMilitaryStatusType> value) {
         this.military = value;
-    }
-
-    public boolean isSetMilitary() {
-        return (this.military!= null);
     }
 
     /**
@@ -222,10 +200,6 @@ public class FlightCharacteristicType
         this.origin = value;
     }
 
-    public boolean isSetOrigin() {
-        return (this.origin!= null);
-    }
-
     /**
      * Gets the value of the purpose property.
      * 
@@ -248,10 +222,6 @@ public class FlightCharacteristicType
      */
     public void setPurpose(JAXBElement<CodeFlightPurposeType> value) {
         this.purpose = value;
-    }
-
-    public boolean isSetPurpose() {
-        return (this.purpose!= null);
     }
 
     /**
@@ -286,14 +256,6 @@ public class FlightCharacteristicType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -326,14 +288,6 @@ public class FlightCharacteristicType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -362,7 +316,6 @@ public class FlightCharacteristicType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightCharacteristicExtension")
-        @Valid
         protected AbstractExtensionType abstractFlightCharacteristicExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -391,10 +344,6 @@ public class FlightCharacteristicType
             this.abstractFlightCharacteristicExtension = value;
         }
 
-        public boolean isSetAbstractFlightCharacteristicExtension() {
-            return (this.abstractFlightCharacteristicExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -419,16 +368,8 @@ public class FlightCharacteristicType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

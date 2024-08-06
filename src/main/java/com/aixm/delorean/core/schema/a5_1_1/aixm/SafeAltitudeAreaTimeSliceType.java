@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -85,19 +82,11 @@ public class SafeAltitudeAreaTimeSliceType
     @XmlElementRef(name = "centrePoint_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> centrePointAirportReferencePoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<SafeAltitudeAreaSectorPropertyType> sector;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<SafeAltitudeAreaTimeSliceType.Extension> extension;
 
     /**
@@ -124,10 +113,6 @@ public class SafeAltitudeAreaTimeSliceType
         this.safeAreaType = value;
     }
 
-    public boolean isSetSafeAreaType() {
-        return (this.safeAreaType!= null);
-    }
-
     /**
      * Gets the value of the centrePointFixDesignatedPoint property.
      * 
@@ -150,10 +135,6 @@ public class SafeAltitudeAreaTimeSliceType
      */
     public void setCentrePointFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.centrePointFixDesignatedPoint = value;
-    }
-
-    public boolean isSetCentrePointFixDesignatedPoint() {
-        return (this.centrePointFixDesignatedPoint!= null);
     }
 
     /**
@@ -180,10 +161,6 @@ public class SafeAltitudeAreaTimeSliceType
         this.centrePointNavaidSystem = value;
     }
 
-    public boolean isSetCentrePointNavaidSystem() {
-        return (this.centrePointNavaidSystem!= null);
-    }
-
     /**
      * Gets the value of the centrePointPosition property.
      * 
@@ -206,10 +183,6 @@ public class SafeAltitudeAreaTimeSliceType
      */
     public void setCentrePointPosition(JAXBElement<PointPropertyType> value) {
         this.centrePointPosition = value;
-    }
-
-    public boolean isSetCentrePointPosition() {
-        return (this.centrePointPosition!= null);
     }
 
     /**
@@ -236,10 +209,6 @@ public class SafeAltitudeAreaTimeSliceType
         this.centrePointRunwayPoint = value;
     }
 
-    public boolean isSetCentrePointRunwayPoint() {
-        return (this.centrePointRunwayPoint!= null);
-    }
-
     /**
      * Gets the value of the centrePointAimingPoint property.
      * 
@@ -264,10 +233,6 @@ public class SafeAltitudeAreaTimeSliceType
         this.centrePointAimingPoint = value;
     }
 
-    public boolean isSetCentrePointAimingPoint() {
-        return (this.centrePointAimingPoint!= null);
-    }
-
     /**
      * Gets the value of the centrePointAirportReferencePoint property.
      * 
@@ -290,10 +255,6 @@ public class SafeAltitudeAreaTimeSliceType
      */
     public void setCentrePointAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.centrePointAirportReferencePoint = value;
-    }
-
-    public boolean isSetCentrePointAirportReferencePoint() {
-        return (this.centrePointAirportReferencePoint!= null);
     }
 
     /**
@@ -328,14 +289,6 @@ public class SafeAltitudeAreaTimeSliceType
         return this.sector;
     }
 
-    public boolean isSetSector() {
-        return ((this.sector!= null)&&(!this.sector.isEmpty()));
-    }
-
-    public void unsetSector() {
-        this.sector = null;
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -366,14 +319,6 @@ public class SafeAltitudeAreaTimeSliceType
             location = new ArrayList<>();
         }
         return this.location;
-    }
-
-    public boolean isSetLocation() {
-        return ((this.location!= null)&&(!this.location.isEmpty()));
-    }
-
-    public void unsetLocation() {
-        this.location = null;
     }
 
     /**
@@ -408,14 +353,6 @@ public class SafeAltitudeAreaTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -448,14 +385,6 @@ public class SafeAltitudeAreaTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -484,8 +413,6 @@ public class SafeAltitudeAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSafeAltitudeAreaExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractSafeAltitudeAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -514,10 +441,6 @@ public class SafeAltitudeAreaTimeSliceType
             this.abstractSafeAltitudeAreaExtension = value;
         }
 
-        public boolean isSetAbstractSafeAltitudeAreaExtension() {
-            return (this.abstractSafeAltitudeAreaExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -542,16 +465,8 @@ public class SafeAltitudeAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

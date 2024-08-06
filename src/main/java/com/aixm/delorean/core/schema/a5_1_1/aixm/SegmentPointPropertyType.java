@@ -74,8 +74,4 @@ public class SegmentPointPropertyType
         this.abstractSegmentPoint = value;
     }
 
-    public boolean isSetAbstractSegmentPoint() {
-        return (this.abstractSegmentPoint!= null);
-    }
-
 }

@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -51,12 +49,8 @@ public class MDBrowseGraphicType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType fileName;
-    @Valid
     protected CharacterStringPropertyType fileDescription;
-    @Valid
     protected CharacterStringPropertyType fileType;
 
     /**
@@ -83,10 +77,6 @@ public class MDBrowseGraphicType
         this.fileName = value;
     }
 
-    public boolean isSetFileName() {
-        return (this.fileName!= null);
-    }
-
     /**
      * Gets the value of the fileDescription property.
      * 
@@ -111,10 +101,6 @@ public class MDBrowseGraphicType
         this.fileDescription = value;
     }
 
-    public boolean isSetFileDescription() {
-        return (this.fileDescription!= null);
-    }
-
     /**
      * Gets the value of the fileType property.
      * 
@@ -137,10 +123,6 @@ public class MDBrowseGraphicType
      */
     public void setFileType(CharacterStringPropertyType value) {
         this.fileType = value;
-    }
-
-    public boolean isSetFileType() {
-        return (this.fileType!= null);
     }
 
 }

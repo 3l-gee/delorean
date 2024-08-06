@@ -104,14 +104,6 @@ public abstract class AbstractCoordinateSystemType
         return this.axis;
     }
 
-    public boolean isSetAxis() {
-        return ((this.axis!= null)&&(!this.axis.isEmpty()));
-    }
-
-    public void unsetAxis() {
-        this.axis = null;
-    }
-
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -134,10 +126,6 @@ public abstract class AbstractCoordinateSystemType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
-    }
-
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
     }
 
 }

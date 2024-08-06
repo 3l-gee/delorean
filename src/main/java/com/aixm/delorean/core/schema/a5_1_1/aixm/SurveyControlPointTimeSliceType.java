@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -71,11 +68,7 @@ public class SurveyControlPointTimeSliceType
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<SurveyControlPointTimeSliceType.Extension> extension;
 
     /**
@@ -102,10 +95,6 @@ public class SurveyControlPointTimeSliceType
         this.designator = value;
     }
 
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
     /**
      * Gets the value of the associatedAirportHeliport property.
      * 
@@ -130,10 +119,6 @@ public class SurveyControlPointTimeSliceType
         this.associatedAirportHeliport = value;
     }
 
-    public boolean isSetAssociatedAirportHeliport() {
-        return (this.associatedAirportHeliport!= null);
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -156,10 +141,6 @@ public class SurveyControlPointTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -194,14 +175,6 @@ public class SurveyControlPointTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -234,14 +207,6 @@ public class SurveyControlPointTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -270,8 +235,6 @@ public class SurveyControlPointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurveyControlPointExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractSurveyControlPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -300,10 +263,6 @@ public class SurveyControlPointTimeSliceType
             this.abstractSurveyControlPointExtension = value;
         }
 
-        public boolean isSetAbstractSurveyControlPointExtension() {
-            return (this.abstractSurveyControlPointExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -328,16 +287,8 @@ public class SurveyControlPointTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -8,8 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigDecimal;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -50,18 +48,12 @@ public class TimeCalendarEraType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected StringOrRefType referenceEvent;
     @XmlElement(required = true)
-    @NotNull
     protected String referenceDate;
     @XmlElement(required = true)
-    @NotNull
     protected BigDecimal julianReference;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected TimePeriodPropertyType epochOfUse;
 
     /**
@@ -88,10 +80,6 @@ public class TimeCalendarEraType
         this.referenceEvent = value;
     }
 
-    public boolean isSetReferenceEvent() {
-        return (this.referenceEvent!= null);
-    }
-
     /**
      * Gets the value of the referenceDate property.
      * 
@@ -114,10 +102,6 @@ public class TimeCalendarEraType
      */
     public void setReferenceDate(String value) {
         this.referenceDate = value;
-    }
-
-    public boolean isSetReferenceDate() {
-        return (this.referenceDate!= null);
     }
 
     /**
@@ -144,10 +128,6 @@ public class TimeCalendarEraType
         this.julianReference = value;
     }
 
-    public boolean isSetJulianReference() {
-        return (this.julianReference!= null);
-    }
-
     /**
      * Gets the value of the epochOfUse property.
      * 
@@ -170,10 +150,6 @@ public class TimeCalendarEraType
      */
     public void setEpochOfUse(TimePeriodPropertyType value) {
         this.epochOfUse = value;
-    }
-
-    public boolean isSetEpochOfUse() {
-        return (this.epochOfUse!= null);
     }
 
 }

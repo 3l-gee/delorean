@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,7 +39,6 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDistanceVerticalType {
 
     @XmlValue
-    @Pattern(regexp = "((\\+|\\-){0,1}[0-9]{1,8}(\\.[0-9]{1,4}){0,1})|UNL|GND|FLOOR|CEILING")
     protected String value;
     @XmlAttribute(name = "uom")
     protected UomDistanceVerticalType uom;
@@ -71,10 +69,6 @@ public class ValDistanceVerticalType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the uom property.
      * 
@@ -99,10 +93,6 @@ public class ValDistanceVerticalType {
         this.uom = value;
     }
 
-    public boolean isSetUom() {
-        return (this.uom!= null);
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -125,10 +115,6 @@ public class ValDistanceVerticalType {
      */
     public void setNilReason(String value) {
         this.nilReason = value;
-    }
-
-    public boolean isSetNilReason() {
-        return (this.nilReason!= null);
     }
 
 }

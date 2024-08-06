@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -48,9 +45,6 @@ public class RingType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CurvePropertyType> curveMember;
     @XmlAttribute(name = "aggregationType")
     protected AggregationType aggregationType;
@@ -87,14 +81,6 @@ public class RingType
         return this.curveMember;
     }
 
-    public boolean isSetCurveMember() {
-        return ((this.curveMember!= null)&&(!this.curveMember.isEmpty()));
-    }
-
-    public void unsetCurveMember() {
-        this.curveMember = null;
-    }
-
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -117,10 +103,6 @@ public class RingType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
-    }
-
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
     }
 
 }

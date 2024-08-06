@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -74,11 +71,7 @@ public class ProcedureDMETimeSliceType
     @XmlElementRef(name = "segmentLeg", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SegmentLegPropertyType> segmentLeg;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ProcedureDMETimeSliceType.Extension> extension;
 
     /**
@@ -105,10 +98,6 @@ public class ProcedureDMETimeSliceType
         this.criticalDME = value;
     }
 
-    public boolean isSetCriticalDME() {
-        return (this.criticalDME!= null);
-    }
-
     /**
      * Gets the value of the satisfactory property.
      * 
@@ -131,10 +120,6 @@ public class ProcedureDMETimeSliceType
      */
     public void setSatisfactory(JAXBElement<CodeYesNoType> value) {
         this.satisfactory = value;
-    }
-
-    public boolean isSetSatisfactory() {
-        return (this.satisfactory!= null);
     }
 
     /**
@@ -161,10 +146,6 @@ public class ProcedureDMETimeSliceType
         this.dme = value;
     }
 
-    public boolean isSetDME() {
-        return (this.dme!= null);
-    }
-
     /**
      * Gets the value of the segmentLeg property.
      * 
@@ -187,10 +168,6 @@ public class ProcedureDMETimeSliceType
      */
     public void setSegmentLeg(JAXBElement<SegmentLegPropertyType> value) {
         this.segmentLeg = value;
-    }
-
-    public boolean isSetSegmentLeg() {
-        return (this.segmentLeg!= null);
     }
 
     /**
@@ -225,14 +202,6 @@ public class ProcedureDMETimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -265,14 +234,6 @@ public class ProcedureDMETimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -301,8 +262,6 @@ public class ProcedureDMETimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractProcedureDMEExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractProcedureDMEExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -331,10 +290,6 @@ public class ProcedureDMETimeSliceType
             this.abstractProcedureDMEExtension = value;
         }
 
-        public boolean isSetAbstractProcedureDMEExtension() {
-            return (this.abstractProcedureDMEExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -359,16 +314,8 @@ public class ProcedureDMETimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,23 +73,15 @@ public class ApronLightSystemTimeSliceType
     @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeApronSectionType> position;
     @XmlElementRef(name = "lightedApron", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ApronPropertyType> lightedApron;
-    @Valid
-    @Size(min = 0)
     protected List<ApronLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -118,10 +108,6 @@ public class ApronLightSystemTimeSliceType
         this.emergencyLighting = value;
     }
 
-    public boolean isSetEmergencyLighting() {
-        return (this.emergencyLighting!= null);
-    }
-
     /**
      * Gets the value of the intensityLevel property.
      * 
@@ -146,10 +132,6 @@ public class ApronLightSystemTimeSliceType
         this.intensityLevel = value;
     }
 
-    public boolean isSetIntensityLevel() {
-        return (this.intensityLevel!= null);
-    }
-
     /**
      * Gets the value of the colour property.
      * 
@@ -172,10 +154,6 @@ public class ApronLightSystemTimeSliceType
      */
     public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
-    }
-
-    public boolean isSetColour() {
-        return (this.colour!= null);
     }
 
     /**
@@ -210,14 +188,6 @@ public class ApronLightSystemTimeSliceType
         return this.element;
     }
 
-    public boolean isSetElement() {
-        return ((this.element!= null)&&(!this.element.isEmpty()));
-    }
-
-    public void unsetElement() {
-        this.element = null;
-    }
-
     /**
      * Gets the value of the availability property.
      * 
@@ -248,14 +218,6 @@ public class ApronLightSystemTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
     }
 
     /**
@@ -290,14 +252,6 @@ public class ApronLightSystemTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the position property.
      * 
@@ -322,10 +276,6 @@ public class ApronLightSystemTimeSliceType
         this.position = value;
     }
 
-    public boolean isSetPosition() {
-        return (this.position!= null);
-    }
-
     /**
      * Gets the value of the lightedApron property.
      * 
@@ -348,10 +298,6 @@ public class ApronLightSystemTimeSliceType
      */
     public void setLightedApron(JAXBElement<ApronPropertyType> value) {
         this.lightedApron = value;
-    }
-
-    public boolean isSetLightedApron() {
-        return (this.lightedApron!= null);
     }
 
     /**
@@ -386,14 +332,6 @@ public class ApronLightSystemTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -424,10 +362,8 @@ public class ApronLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractApronLightSystemExtension")
-        @Valid
         protected AbstractExtensionType abstractApronLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @Valid
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -456,10 +392,6 @@ public class ApronLightSystemTimeSliceType
             this.abstractApronLightSystemExtension = value;
         }
 
-        public boolean isSetAbstractApronLightSystemExtension() {
-            return (this.abstractApronLightSystemExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractGroundLightSystemExtension property.
          * 
@@ -482,10 +414,6 @@ public class ApronLightSystemTimeSliceType
          */
         public void setAbstractGroundLightSystemExtension(AbstractExtensionType value) {
             this.abstractGroundLightSystemExtension = value;
-        }
-
-        public boolean isSetAbstractGroundLightSystemExtension() {
-            return (this.abstractGroundLightSystemExtension!= null);
         }
 
         /**
@@ -512,16 +440,8 @@ public class ApronLightSystemTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

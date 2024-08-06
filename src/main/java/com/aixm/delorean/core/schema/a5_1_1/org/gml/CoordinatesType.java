@@ -80,10 +80,6 @@ public class CoordinatesType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the decimal property.
      * 
@@ -110,10 +106,6 @@ public class CoordinatesType {
      */
     public void setDecimal(String value) {
         this.decimal = value;
-    }
-
-    public boolean isSetDecimal() {
-        return (this.decimal!= null);
     }
 
     /**
@@ -144,10 +136,6 @@ public class CoordinatesType {
         this.cs = value;
     }
 
-    public boolean isSetCs() {
-        return (this.cs!= null);
-    }
-
     /**
      * Gets the value of the ts property.
      * 
@@ -174,10 +162,6 @@ public class CoordinatesType {
      */
     public void setTs(String value) {
         this.ts = value;
-    }
-
-    public boolean isSetTs() {
-        return (this.ts!= null);
     }
 
 }

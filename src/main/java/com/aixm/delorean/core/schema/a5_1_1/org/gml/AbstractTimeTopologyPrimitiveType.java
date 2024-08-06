@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -45,7 +44,6 @@ public abstract class AbstractTimeTopologyPrimitiveType
     extends AbstractTimePrimitiveType
 {
 
-    @Valid
     protected ReferenceType complex;
 
     /**
@@ -70,10 +68,6 @@ public abstract class AbstractTimeTopologyPrimitiveType
      */
     public void setComplex(ReferenceType value) {
         this.complex = value;
-    }
-
-    public boolean isSetComplex() {
-        return (this.complex!= null);
     }
 
 }

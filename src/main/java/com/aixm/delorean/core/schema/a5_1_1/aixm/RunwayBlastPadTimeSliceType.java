@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -77,11 +74,7 @@ public class RunwayBlastPadTimeSliceType
     @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayBlastPadTimeSliceType.Extension> extension;
 
     /**
@@ -108,10 +101,6 @@ public class RunwayBlastPadTimeSliceType
         this.length = value;
     }
 
-    public boolean isSetLength() {
-        return (this.length!= null);
-    }
-
     /**
      * Gets the value of the status property.
      * 
@@ -134,10 +123,6 @@ public class RunwayBlastPadTimeSliceType
      */
     public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
         this.status = value;
-    }
-
-    public boolean isSetStatus() {
-        return (this.status!= null);
     }
 
     /**
@@ -164,10 +149,6 @@ public class RunwayBlastPadTimeSliceType
         this.usedRunwayDirection = value;
     }
 
-    public boolean isSetUsedRunwayDirection() {
-        return (this.usedRunwayDirection!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -192,10 +173,6 @@ public class RunwayBlastPadTimeSliceType
         this.extent = value;
     }
 
-    public boolean isSetExtent() {
-        return (this.extent!= null);
-    }
-
     /**
      * Gets the value of the surfaceProperties property.
      * 
@@ -218,10 +195,6 @@ public class RunwayBlastPadTimeSliceType
      */
     public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
-    }
-
-    public boolean isSetSurfaceProperties() {
-        return (this.surfaceProperties!= null);
     }
 
     /**
@@ -256,14 +229,6 @@ public class RunwayBlastPadTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -296,14 +261,6 @@ public class RunwayBlastPadTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -332,8 +289,6 @@ public class RunwayBlastPadTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayBlastPadExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractRunwayBlastPadExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -362,10 +317,6 @@ public class RunwayBlastPadTimeSliceType
             this.abstractRunwayBlastPadExtension = value;
         }
 
-        public boolean isSetAbstractRunwayBlastPadExtension() {
-            return (this.abstractRunwayBlastPadExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -390,16 +341,8 @@ public class RunwayBlastPadTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

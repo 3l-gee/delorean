@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -47,10 +45,7 @@ public class MDGeometricObjectsType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MDGeometricObjectTypeCodePropertyType geometricObjectType;
-    @Valid
     protected IntegerPropertyType geometricObjectCount;
 
     /**
@@ -77,10 +72,6 @@ public class MDGeometricObjectsType
         this.geometricObjectType = value;
     }
 
-    public boolean isSetGeometricObjectType() {
-        return (this.geometricObjectType!= null);
-    }
-
     /**
      * Gets the value of the geometricObjectCount property.
      * 
@@ -103,10 +94,6 @@ public class MDGeometricObjectsType
      */
     public void setGeometricObjectCount(IntegerPropertyType value) {
         this.geometricObjectCount = value;
-    }
-
-    public boolean isSetGeometricObjectCount() {
-        return (this.geometricObjectCount!= null);
     }
 
 }

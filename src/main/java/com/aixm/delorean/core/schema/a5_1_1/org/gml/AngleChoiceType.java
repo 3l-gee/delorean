@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -44,9 +43,7 @@ public class AngleChoiceType {
      * The gml:angle property element is used to record the value of an angle quantity as a single number, with its units.
      * 
      */
-    @Valid
     protected AngleType angle;
-    @Valid
     protected DMSAngleType dmsAngle;
 
     /**
@@ -74,10 +71,6 @@ public class AngleChoiceType {
         this.angle = value;
     }
 
-    public boolean isSetAngle() {
-        return (this.angle!= null);
-    }
-
     /**
      * Gets the value of the dmsAngle property.
      * 
@@ -100,10 +93,6 @@ public class AngleChoiceType {
      */
     public void setDmsAngle(DMSAngleType value) {
         this.dmsAngle = value;
-    }
-
-    public boolean isSetDmsAngle() {
-        return (this.dmsAngle!= null);
     }
 
 }

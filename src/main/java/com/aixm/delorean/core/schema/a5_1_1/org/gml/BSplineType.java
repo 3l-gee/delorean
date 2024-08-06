@@ -10,10 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -79,19 +75,12 @@ public class BSplineType
         @XmlElementRef(name = "pointRep", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> posOrPointPropertyOrPointRep;
-    @Valid
     protected DirectPositionListType posList;
-    @Valid
     protected CoordinatesType coordinates;
     @XmlElement(required = true)
     @XmlSchemaType(name = "nonNegativeInteger")
-    @NotNull
-    @DecimalMin(value = "0", inclusive = true)
     protected BigInteger degree;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 2)
     protected List<KnotPropertyType> knot;
     @XmlAttribute(name = "interpolation")
     protected CurveInterpolationType interpolation;
@@ -134,14 +123,6 @@ public class BSplineType
         return this.posOrPointPropertyOrPointRep;
     }
 
-    public boolean isSetPosOrPointPropertyOrPointRep() {
-        return ((this.posOrPointPropertyOrPointRep!= null)&&(!this.posOrPointPropertyOrPointRep.isEmpty()));
-    }
-
-    public void unsetPosOrPointPropertyOrPointRep() {
-        this.posOrPointPropertyOrPointRep = null;
-    }
-
     /**
      * Gets the value of the posList property.
      * 
@@ -164,10 +145,6 @@ public class BSplineType
      */
     public void setPosList(DirectPositionListType value) {
         this.posList = value;
-    }
-
-    public boolean isSetPosList() {
-        return (this.posList!= null);
     }
 
     /**
@@ -194,10 +171,6 @@ public class BSplineType
         this.coordinates = value;
     }
 
-    public boolean isSetCoordinates() {
-        return (this.coordinates!= null);
-    }
-
     /**
      * Gets the value of the degree property.
      * 
@@ -220,10 +193,6 @@ public class BSplineType
      */
     public void setDegree(BigInteger value) {
         this.degree = value;
-    }
-
-    public boolean isSetDegree() {
-        return (this.degree!= null);
     }
 
     /**
@@ -258,14 +227,6 @@ public class BSplineType
         return this.knot;
     }
 
-    public boolean isSetKnot() {
-        return ((this.knot!= null)&&(!this.knot.isEmpty()));
-    }
-
-    public void unsetKnot() {
-        this.knot = null;
-    }
-
     /**
      * Gets the value of the interpolation property.
      * 
@@ -294,10 +255,6 @@ public class BSplineType
         this.interpolation = value;
     }
 
-    public boolean isSetInterpolation() {
-        return (this.interpolation!= null);
-    }
-
     /**
      * Gets the value of the isPolynomial property.
      * 
@@ -306,7 +263,7 @@ public class BSplineType
      *     {@link java.lang.Boolean }
      *     
      */
-    public boolean isIsPolynomial() {
+    public java.lang.Boolean isIsPolynomial() {
         return isPolynomial;
     }
 
@@ -318,16 +275,8 @@ public class BSplineType
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setIsPolynomial(boolean value) {
+    public void setIsPolynomial(java.lang.Boolean value) {
         this.isPolynomial = value;
-    }
-
-    public boolean isSetIsPolynomial() {
-        return (this.isPolynomial!= null);
-    }
-
-    public void unsetIsPolynomial() {
-        this.isPolynomial = null;
     }
 
     /**
@@ -352,10 +301,6 @@ public class BSplineType
      */
     public void setKnotType(KnotTypesType value) {
         this.knotType = value;
-    }
-
-    public boolean isSetKnotType() {
-        return (this.knotType!= null);
     }
 
 }

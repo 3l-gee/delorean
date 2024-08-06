@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CodeListValueType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -45,7 +44,6 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DSInitiativeTypeCodePropertyType {
 
     @XmlElement(name = "DS_InitiativeTypeCode")
-    @Valid
     protected CodeListValueType dsInitiativeTypeCode;
     @XmlAttribute(name = "nilReason", namespace = "http://www.isotc211.org/2005/gco")
     protected List<String> nilReason;
@@ -72,10 +70,6 @@ public class DSInitiativeTypeCodePropertyType {
      */
     public void setDSInitiativeTypeCode(CodeListValueType value) {
         this.dsInitiativeTypeCode = value;
-    }
-
-    public boolean isSetDSInitiativeTypeCode() {
-        return (this.dsInitiativeTypeCode!= null);
     }
 
     /**
@@ -108,14 +102,6 @@ public class DSInitiativeTypeCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
-    }
-
-    public boolean isSetNilReason() {
-        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
-    }
-
-    public void unsetNilReason() {
-        this.nilReason = null;
     }
 
 }

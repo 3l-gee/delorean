@@ -12,9 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.BooleanPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.GenericNamePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -58,22 +55,12 @@ public class MDFeatureCatalogueDescriptionType
     extends AbstractMDContentInformationType
 {
 
-    @Valid
     protected BooleanPropertyType complianceCode;
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> language;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected BooleanPropertyType includedWithDataset;
-    @Valid
-    @Size(min = 0)
     protected List<GenericNamePropertyType> featureTypes;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CICitationPropertyType> featureCatalogueCitation;
 
     /**
@@ -98,10 +85,6 @@ public class MDFeatureCatalogueDescriptionType
      */
     public void setComplianceCode(BooleanPropertyType value) {
         this.complianceCode = value;
-    }
-
-    public boolean isSetComplianceCode() {
-        return (this.complianceCode!= null);
     }
 
     /**
@@ -136,14 +119,6 @@ public class MDFeatureCatalogueDescriptionType
         return this.language;
     }
 
-    public boolean isSetLanguage() {
-        return ((this.language!= null)&&(!this.language.isEmpty()));
-    }
-
-    public void unsetLanguage() {
-        this.language = null;
-    }
-
     /**
      * Gets the value of the includedWithDataset property.
      * 
@@ -166,10 +141,6 @@ public class MDFeatureCatalogueDescriptionType
      */
     public void setIncludedWithDataset(BooleanPropertyType value) {
         this.includedWithDataset = value;
-    }
-
-    public boolean isSetIncludedWithDataset() {
-        return (this.includedWithDataset!= null);
     }
 
     /**
@@ -204,14 +175,6 @@ public class MDFeatureCatalogueDescriptionType
         return this.featureTypes;
     }
 
-    public boolean isSetFeatureTypes() {
-        return ((this.featureTypes!= null)&&(!this.featureTypes.isEmpty()));
-    }
-
-    public void unsetFeatureTypes() {
-        this.featureTypes = null;
-    }
-
     /**
      * Gets the value of the featureCatalogueCitation property.
      * 
@@ -242,14 +205,6 @@ public class MDFeatureCatalogueDescriptionType
             featureCatalogueCitation = new ArrayList<>();
         }
         return this.featureCatalogueCitation;
-    }
-
-    public boolean isSetFeatureCatalogueCitation() {
-        return ((this.featureCatalogueCitation!= null)&&(!this.featureCatalogueCitation.isEmpty()));
-    }
-
-    public void unsetFeatureCatalogueCitation() {
-        this.featureCatalogueCitation = null;
     }
 
 }

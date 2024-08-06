@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -93,19 +91,11 @@ public class AerialRefuellingAnchorType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirspaceLayerPropertyType> verticalExtent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AerialRefuellingPointPropertyType> point;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AerialRefuellingAnchorType.Extension> extension;
 
     /**
@@ -132,10 +122,6 @@ public class AerialRefuellingAnchorType
         this.outboundCourse = value;
     }
 
-    public boolean isSetOutboundCourse() {
-        return (this.outboundCourse!= null);
-    }
-
     /**
      * Gets the value of the outboundCourseType property.
      * 
@@ -158,10 +144,6 @@ public class AerialRefuellingAnchorType
      */
     public void setOutboundCourseType(JAXBElement<CodeCourseType> value) {
         this.outboundCourseType = value;
-    }
-
-    public boolean isSetOutboundCourseType() {
-        return (this.outboundCourseType!= null);
     }
 
     /**
@@ -188,10 +170,6 @@ public class AerialRefuellingAnchorType
         this.inboundCourse = value;
     }
 
-    public boolean isSetInboundCourse() {
-        return (this.inboundCourse!= null);
-    }
-
     /**
      * Gets the value of the turnDirection property.
      * 
@@ -214,10 +192,6 @@ public class AerialRefuellingAnchorType
      */
     public void setTurnDirection(JAXBElement<CodeDirectionTurnType> value) {
         this.turnDirection = value;
-    }
-
-    public boolean isSetTurnDirection() {
-        return (this.turnDirection!= null);
     }
 
     /**
@@ -244,10 +218,6 @@ public class AerialRefuellingAnchorType
         this.speedLimit = value;
     }
 
-    public boolean isSetSpeedLimit() {
-        return (this.speedLimit!= null);
-    }
-
     /**
      * Gets the value of the legSeparation property.
      * 
@@ -270,10 +240,6 @@ public class AerialRefuellingAnchorType
      */
     public void setLegSeparation(JAXBElement<ValDistanceType> value) {
         this.legSeparation = value;
-    }
-
-    public boolean isSetLegSeparation() {
-        return (this.legSeparation!= null);
     }
 
     /**
@@ -300,10 +266,6 @@ public class AerialRefuellingAnchorType
         this.legLength = value;
     }
 
-    public boolean isSetLegLength() {
-        return (this.legLength!= null);
-    }
-
     /**
      * Gets the value of the refuellingBaseLevel property.
      * 
@@ -326,10 +288,6 @@ public class AerialRefuellingAnchorType
      */
     public void setRefuellingBaseLevel(JAXBElement<ValDistanceVerticalType> value) {
         this.refuellingBaseLevel = value;
-    }
-
-    public boolean isSetRefuellingBaseLevel() {
-        return (this.refuellingBaseLevel!= null);
     }
 
     /**
@@ -356,10 +314,6 @@ public class AerialRefuellingAnchorType
         this.refuellingBaseLevelReference = value;
     }
 
-    public boolean isSetRefuellingBaseLevelReference() {
-        return (this.refuellingBaseLevelReference!= null);
-    }
-
     /**
      * Gets the value of the extent property.
      * 
@@ -382,10 +336,6 @@ public class AerialRefuellingAnchorType
      */
     public void setExtent(JAXBElement<SurfacePropertyType> value) {
         this.extent = value;
-    }
-
-    public boolean isSetExtent() {
-        return (this.extent!= null);
     }
 
     /**
@@ -420,14 +370,6 @@ public class AerialRefuellingAnchorType
         return this.verticalExtent;
     }
 
-    public boolean isSetVerticalExtent() {
-        return ((this.verticalExtent!= null)&&(!this.verticalExtent.isEmpty()));
-    }
-
-    public void unsetVerticalExtent() {
-        this.verticalExtent = null;
-    }
-
     /**
      * Gets the value of the point property.
      * 
@@ -458,14 +400,6 @@ public class AerialRefuellingAnchorType
             point = new ArrayList<>();
         }
         return this.point;
-    }
-
-    public boolean isSetPoint() {
-        return ((this.point!= null)&&(!this.point.isEmpty()));
-    }
-
-    public void unsetPoint() {
-        this.point = null;
     }
 
     /**
@@ -500,14 +434,6 @@ public class AerialRefuellingAnchorType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -540,14 +466,6 @@ public class AerialRefuellingAnchorType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -576,7 +494,6 @@ public class AerialRefuellingAnchorType
     public static class Extension {
 
         @XmlElement(name = "AbstractAerialRefuellingAnchorExtension")
-        @Valid
         protected AbstractExtensionType abstractAerialRefuellingAnchorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -605,10 +522,6 @@ public class AerialRefuellingAnchorType
             this.abstractAerialRefuellingAnchorExtension = value;
         }
 
-        public boolean isSetAbstractAerialRefuellingAnchorExtension() {
-            return (this.abstractAerialRefuellingAnchorExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -633,16 +546,8 @@ public class AerialRefuellingAnchorType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

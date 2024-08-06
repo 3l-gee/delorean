@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,13 +72,9 @@ public class SpecialDateTimeSliceType
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextNameType> aixmName;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "authority", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<OrganisationAuthorityPropertyType> authority;
-    @Valid
-    @Size(min = 0)
     protected List<SpecialDateTimeSliceType.Extension> extension;
 
     /**
@@ -108,10 +101,6 @@ public class SpecialDateTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the dateDay property.
      * 
@@ -134,10 +123,6 @@ public class SpecialDateTimeSliceType
      */
     public void setDateDay(JAXBElement<DateMonthDayType> value) {
         this.dateDay = value;
-    }
-
-    public boolean isSetDateDay() {
-        return (this.dateDay!= null);
     }
 
     /**
@@ -164,10 +149,6 @@ public class SpecialDateTimeSliceType
         this.dateYear = value;
     }
 
-    public boolean isSetDateYear() {
-        return (this.dateYear!= null);
-    }
-
     /**
      * Gets the value of the aixmName property.
      * 
@@ -190,10 +171,6 @@ public class SpecialDateTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
     }
 
     /**
@@ -228,14 +205,6 @@ public class SpecialDateTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the authority property.
      * 
@@ -258,10 +227,6 @@ public class SpecialDateTimeSliceType
      */
     public void setAuthority(JAXBElement<OrganisationAuthorityPropertyType> value) {
         this.authority = value;
-    }
-
-    public boolean isSetAuthority() {
-        return (this.authority!= null);
     }
 
     /**
@@ -296,14 +261,6 @@ public class SpecialDateTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -332,8 +289,6 @@ public class SpecialDateTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSpecialDateExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractSpecialDateExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -362,10 +317,6 @@ public class SpecialDateTimeSliceType
             this.abstractSpecialDateExtension = value;
         }
 
-        public boolean isSetAbstractSpecialDateExtension() {
-            return (this.abstractSpecialDateExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -390,16 +341,8 @@ public class SpecialDateTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

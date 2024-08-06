@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -123,7 +122,6 @@ public abstract class AbstractAIXMFeatureType
     extends AbstractAIXMFeatureBaseType
 {
 
-    @Valid
     protected FeatureMetadataPropertyType featureMetadata;
 
     /**
@@ -148,10 +146,6 @@ public abstract class AbstractAIXMFeatureType
      */
     public void setFeatureMetadata(FeatureMetadataPropertyType value) {
         this.featureMetadata = value;
-    }
-
-    public boolean isSetFeatureMetadata() {
-        return (this.featureMetadata!= null);
     }
 
 }

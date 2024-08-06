@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,19 +64,11 @@ public class FlightRestrictionRouteType
     @XmlElementRef(name = "priorPermission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> priorPermission;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<FlightRoutingElementPropertyType> routeElement;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<FlightRestrictionRouteType.Extension> extension;
 
     /**
@@ -103,10 +93,6 @@ public class FlightRestrictionRouteType
      */
     public void setPriorPermission(JAXBElement<CodeYesNoType> value) {
         this.priorPermission = value;
-    }
-
-    public boolean isSetPriorPermission() {
-        return (this.priorPermission!= null);
     }
 
     /**
@@ -141,14 +127,6 @@ public class FlightRestrictionRouteType
         return this.routeElement;
     }
 
-    public boolean isSetRouteElement() {
-        return ((this.routeElement!= null)&&(!this.routeElement.isEmpty()));
-    }
-
-    public void unsetRouteElement() {
-        this.routeElement = null;
-    }
-
     /**
      * Gets the value of the contact property.
      * 
@@ -179,14 +157,6 @@ public class FlightRestrictionRouteType
             contact = new ArrayList<>();
         }
         return this.contact;
-    }
-
-    public boolean isSetContact() {
-        return ((this.contact!= null)&&(!this.contact.isEmpty()));
-    }
-
-    public void unsetContact() {
-        this.contact = null;
     }
 
     /**
@@ -221,14 +191,6 @@ public class FlightRestrictionRouteType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -261,14 +223,6 @@ public class FlightRestrictionRouteType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -297,7 +251,6 @@ public class FlightRestrictionRouteType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightRestrictionRouteExtension")
-        @Valid
         protected AbstractExtensionType abstractFlightRestrictionRouteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -326,10 +279,6 @@ public class FlightRestrictionRouteType
             this.abstractFlightRestrictionRouteExtension = value;
         }
 
-        public boolean isSetAbstractFlightRestrictionRouteExtension() {
-            return (this.abstractFlightRestrictionRouteExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -354,16 +303,8 @@ public class FlightRestrictionRouteType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

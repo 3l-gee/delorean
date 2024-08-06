@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -54,8 +52,6 @@ public class CurveType
     @XmlElementRef(name = "horizontalAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceType> horizontalAccuracy;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
 
     /**
@@ -80,10 +76,6 @@ public class CurveType
      */
     public void setHorizontalAccuracy(JAXBElement<ValDistanceType> value) {
         this.horizontalAccuracy = value;
-    }
-
-    public boolean isSetHorizontalAccuracy() {
-        return (this.horizontalAccuracy!= null);
     }
 
     /**
@@ -116,14 +108,6 @@ public class CurveType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
 }

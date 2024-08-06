@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +41,6 @@ public class ProcedureAvailabilityPropertyType
 {
 
     @XmlElement(name = "ProcedureAvailability", required = true)
-    @NotNull
-    @Valid
     protected ProcedureAvailabilityType procedureAvailability;
 
     /**
@@ -69,10 +65,6 @@ public class ProcedureAvailabilityPropertyType
      */
     public void setProcedureAvailability(ProcedureAvailabilityType value) {
         this.procedureAvailability = value;
-    }
-
-    public boolean isSetProcedureAvailability() {
-        return (this.procedureAvailability!= null);
     }
 
 }

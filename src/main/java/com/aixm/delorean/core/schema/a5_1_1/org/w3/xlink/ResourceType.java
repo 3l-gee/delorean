@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
@@ -52,13 +50,11 @@ public class ResourceType {
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
     public static final TypeType TYPE = TypeType.RESOURCE;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
     @XmlAttribute(name = "label", namespace = "http://www.w3.org/1999/xlink")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
     protected String label;
 
     /**
@@ -95,14 +91,6 @@ public class ResourceType {
         return this.content;
     }
 
-    public boolean isSetContent() {
-        return ((this.content!= null)&&(!this.content.isEmpty()));
-    }
-
-    public void unsetContent() {
-        this.content = null;
-    }
-
     /**
      * Gets the value of the role property.
      * 
@@ -125,10 +113,6 @@ public class ResourceType {
      */
     public void setRole(String value) {
         this.role = value;
-    }
-
-    public boolean isSetRole() {
-        return (this.role!= null);
     }
 
     /**
@@ -155,10 +139,6 @@ public class ResourceType {
         this.titleAttribute = value;
     }
 
-    public boolean isSetTitleAttribute() {
-        return (this.titleAttribute!= null);
-    }
-
     /**
      * Gets the value of the label property.
      * 
@@ -181,10 +161,6 @@ public class ResourceType {
      */
     public void setLabel(String value) {
         this.label = value;
-    }
-
-    public boolean isSetLabel() {
-        return (this.label!= null);
     }
 
 }

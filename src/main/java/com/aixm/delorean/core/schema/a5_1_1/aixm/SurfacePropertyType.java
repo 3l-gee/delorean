@@ -70,8 +70,4 @@ public class SurfacePropertyType
         this.surface = value;
     }
 
-    public boolean isSetSurface() {
-        return (this.surface!= null);
-    }
-
 }

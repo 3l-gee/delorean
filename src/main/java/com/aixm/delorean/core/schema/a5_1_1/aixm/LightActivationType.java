@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -70,11 +68,7 @@ public class LightActivationType
     @XmlElementRef(name = "activation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeSystemActivationType> activation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<LightActivationType.Extension> extension;
 
     /**
@@ -101,10 +95,6 @@ public class LightActivationType
         this.clicks = value;
     }
 
-    public boolean isSetClicks() {
-        return (this.clicks!= null);
-    }
-
     /**
      * Gets the value of the intensityLevel property.
      * 
@@ -129,10 +119,6 @@ public class LightActivationType
         this.intensityLevel = value;
     }
 
-    public boolean isSetIntensityLevel() {
-        return (this.intensityLevel!= null);
-    }
-
     /**
      * Gets the value of the activation property.
      * 
@@ -155,10 +141,6 @@ public class LightActivationType
      */
     public void setActivation(JAXBElement<CodeSystemActivationType> value) {
         this.activation = value;
-    }
-
-    public boolean isSetActivation() {
-        return (this.activation!= null);
     }
 
     /**
@@ -193,14 +175,6 @@ public class LightActivationType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -233,14 +207,6 @@ public class LightActivationType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -269,7 +235,6 @@ public class LightActivationType
     public static class Extension {
 
         @XmlElement(name = "AbstractLightActivationExtension")
-        @Valid
         protected AbstractExtensionType abstractLightActivationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -298,10 +263,6 @@ public class LightActivationType
             this.abstractLightActivationExtension = value;
         }
 
-        public boolean isSetAbstractLightActivationExtension() {
-            return (this.abstractLightActivationExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -326,16 +287,8 @@ public class LightActivationType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

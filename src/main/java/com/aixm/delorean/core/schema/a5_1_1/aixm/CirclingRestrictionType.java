@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,23 +65,15 @@ public class CirclingRestrictionType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "sectorDescription", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CircleSectorPropertyType> sectorDescription;
     @XmlElementRef(name = "restrictionArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfacePropertyType> restrictionArea;
-    @Valid
-    @Size(min = 0)
     protected List<CirclingRestrictionType.Extension> extension;
 
     /**
@@ -118,14 +108,6 @@ public class CirclingRestrictionType
         return this.timeInterval;
     }
 
-    public boolean isSetTimeInterval() {
-        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
-    }
-
-    public void unsetTimeInterval() {
-        this.timeInterval = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -156,14 +138,6 @@ public class CirclingRestrictionType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -198,14 +172,6 @@ public class CirclingRestrictionType
         return this.specialDateAuthority;
     }
 
-    public boolean isSetSpecialDateAuthority() {
-        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
-    }
-
-    public void unsetSpecialDateAuthority() {
-        this.specialDateAuthority = null;
-    }
-
     /**
      * Gets the value of the sectorDescription property.
      * 
@@ -230,10 +196,6 @@ public class CirclingRestrictionType
         this.sectorDescription = value;
     }
 
-    public boolean isSetSectorDescription() {
-        return (this.sectorDescription!= null);
-    }
-
     /**
      * Gets the value of the restrictionArea property.
      * 
@@ -256,10 +218,6 @@ public class CirclingRestrictionType
      */
     public void setRestrictionArea(JAXBElement<SurfacePropertyType> value) {
         this.restrictionArea = value;
-    }
-
-    public boolean isSetRestrictionArea() {
-        return (this.restrictionArea!= null);
     }
 
     /**
@@ -294,14 +252,6 @@ public class CirclingRestrictionType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -332,10 +282,8 @@ public class CirclingRestrictionType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractCirclingRestrictionExtension")
-        @Valid
         protected AbstractExtensionType abstractCirclingRestrictionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -364,10 +312,6 @@ public class CirclingRestrictionType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
-        public boolean isSetAbstractPropertiesWithScheduleExtension() {
-            return (this.abstractPropertiesWithScheduleExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractCirclingRestrictionExtension property.
          * 
@@ -390,10 +334,6 @@ public class CirclingRestrictionType
          */
         public void setAbstractCirclingRestrictionExtension(AbstractExtensionType value) {
             this.abstractCirclingRestrictionExtension = value;
-        }
-
-        public boolean isSetAbstractCirclingRestrictionExtension() {
-            return (this.abstractCirclingRestrictionExtension!= null);
         }
 
         /**
@@ -420,16 +360,8 @@ public class CirclingRestrictionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

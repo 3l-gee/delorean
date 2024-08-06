@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -45,12 +43,8 @@ public class GeographicCRSType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected EllipsoidalCSPropertyType usesEllipsoidalCS;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected GeodeticDatumPropertyType usesGeodeticDatum;
 
     /**
@@ -77,10 +71,6 @@ public class GeographicCRSType
         this.usesEllipsoidalCS = value;
     }
 
-    public boolean isSetUsesEllipsoidalCS() {
-        return (this.usesEllipsoidalCS!= null);
-    }
-
     /**
      * Gets the value of the usesGeodeticDatum property.
      * 
@@ -103,10 +93,6 @@ public class GeographicCRSType
      */
     public void setUsesGeodeticDatum(GeodeticDatumPropertyType value) {
         this.usesGeodeticDatum = value;
-    }
-
-    public boolean isSetUsesGeodeticDatum() {
-        return (this.usesGeodeticDatum!= null);
     }
 
 }

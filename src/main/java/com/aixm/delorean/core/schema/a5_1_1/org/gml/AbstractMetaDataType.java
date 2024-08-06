@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -60,7 +59,6 @@ public abstract class AbstractMetaDataType {
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
     protected String id;
 
     /**
@@ -95,14 +93,6 @@ public abstract class AbstractMetaDataType {
         return this.content;
     }
 
-    public boolean isSetContent() {
-        return ((this.content!= null)&&(!this.content.isEmpty()));
-    }
-
-    public void unsetContent() {
-        this.content = null;
-    }
-
     /**
      * The attribute gml:id supports provision of a handle for the XML element representing a GML Object. Its use is mandatory for all GML objects. It is of XML type ID, so is constrained to be unique in the XML document within which it occurs.
      * 
@@ -126,10 +116,6 @@ public abstract class AbstractMetaDataType {
      */
     public void setId(String value) {
         this.id = value;
-    }
-
-    public boolean isSetId() {
-        return (this.id!= null);
     }
 
 }

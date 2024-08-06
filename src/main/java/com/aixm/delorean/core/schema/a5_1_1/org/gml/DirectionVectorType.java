@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -46,11 +45,8 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class DirectionVectorType {
 
-    @Valid
     protected VectorType vector;
-    @Valid
     protected AngleType horizontalAngle;
-    @Valid
     protected AngleType verticalAngle;
 
     /**
@@ -77,10 +73,6 @@ public class DirectionVectorType {
         this.vector = value;
     }
 
-    public boolean isSetVector() {
-        return (this.vector!= null);
-    }
-
     /**
      * Gets the value of the horizontalAngle property.
      * 
@@ -105,10 +97,6 @@ public class DirectionVectorType {
         this.horizontalAngle = value;
     }
 
-    public boolean isSetHorizontalAngle() {
-        return (this.horizontalAngle!= null);
-    }
-
     /**
      * Gets the value of the verticalAngle property.
      * 
@@ -131,10 +119,6 @@ public class DirectionVectorType {
      */
     public void setVerticalAngle(AngleType value) {
         this.verticalAngle = value;
-    }
-
-    public boolean isSetVerticalAngle() {
-        return (this.verticalAngle!= null);
     }
 
 }

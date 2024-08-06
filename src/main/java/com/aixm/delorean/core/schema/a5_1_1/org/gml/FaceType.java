@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -54,30 +51,22 @@ public class FaceType
     extends AbstractTopoPrimitiveType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<NodePropertyType> isolated;
     /**
      * A gml:directedEdge property element describes the boundary of topology faces, the coBoundary of topology nodes and is used in the support of topological line features via the gml:TopoCurve expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included edge is used, i.e. forward or reverse.
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<DirectedEdgePropertyType> directedEdge;
     /**
      * The gml:directedSolid property element describes the coBoundary of topology faces and is used in the support of volume features via the gml:TopoVolume expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included solid appears in the face coboundary. In the context of a gml:TopoVolume the orientation attribute has no meaning.
      * 
      */
-    @Valid
-    @Size(min = 0, max = 2)
     protected List<DirectedTopoSolidPropertyType> directedTopoSolid;
     /**
      * This property element either references a surface via the XLink-attributes or contains the surface element. surfaceProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for AbstractSurface.
      * 
      */
-    @Valid
     protected SurfacePropertyType surfaceProperty;
     /**
      * If the topological representation exists an unbounded manifold (e.g. Euclidean plane), a gml:Face must indicate whether it is a universal face or not, to ensure a lossless topology representation as defined by Kuijpers, et. al. (see OGC 05-102 Topology IPR). The optional universal attribute of type boolean is used to indicate this. NOTE The universal face is normally not part of any feature, and is used to represent the unbounded portion of the data set. Its interior boundary (it has no exterior boundary) would normally be considered the exterior boundary of the map represented by the data set.
@@ -120,14 +109,6 @@ public class FaceType
         return this.isolated;
     }
 
-    public boolean isSetIsolated() {
-        return ((this.isolated!= null)&&(!this.isolated.isEmpty()));
-    }
-
-    public void unsetIsolated() {
-        this.isolated = null;
-    }
-
     /**
      * A gml:directedEdge property element describes the boundary of topology faces, the coBoundary of topology nodes and is used in the support of topological line features via the gml:TopoCurve expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included edge is used, i.e. forward or reverse.
      * 
@@ -160,14 +141,6 @@ public class FaceType
             directedEdge = new ArrayList<>();
         }
         return this.directedEdge;
-    }
-
-    public boolean isSetDirectedEdge() {
-        return ((this.directedEdge!= null)&&(!this.directedEdge.isEmpty()));
-    }
-
-    public void unsetDirectedEdge() {
-        this.directedEdge = null;
     }
 
     /**
@@ -204,14 +177,6 @@ public class FaceType
         return this.directedTopoSolid;
     }
 
-    public boolean isSetDirectedTopoSolid() {
-        return ((this.directedTopoSolid!= null)&&(!this.directedTopoSolid.isEmpty()));
-    }
-
-    public void unsetDirectedTopoSolid() {
-        this.directedTopoSolid = null;
-    }
-
     /**
      * This property element either references a surface via the XLink-attributes or contains the surface element. surfaceProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for AbstractSurface.
      * 
@@ -235,10 +200,6 @@ public class FaceType
      */
     public void setSurfaceProperty(SurfacePropertyType value) {
         this.surfaceProperty = value;
-    }
-
-    public boolean isSetSurfaceProperty() {
-        return (this.surfaceProperty!= null);
     }
 
     /**
@@ -266,16 +227,8 @@ public class FaceType
      *     
      * @see #isUniversal()
      */
-    public void setUniversal(boolean value) {
+    public void setUniversal(java.lang.Boolean value) {
         this.universal = value;
-    }
-
-    public boolean isSetUniversal() {
-        return (this.universal!= null);
-    }
-
-    public void unsetUniversal() {
-        this.universal = null;
     }
 
     /**
@@ -300,10 +253,6 @@ public class FaceType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
-    }
-
-    public boolean isSetAggregationType() {
-        return (this.aggregationType!= null);
     }
 
 }

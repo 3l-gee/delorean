@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,15 +66,9 @@ public class EquipmentUnavailableAdjustmentType
     @XmlElementRef(name = "approachLightingInoperative", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> approachLightingInoperative;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<EquipmentUnavailableAdjustmentColumnPropertyType> adjustmentINOPCol;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<EquipmentUnavailableAdjustmentType.Extension> extension;
 
     /**
@@ -103,10 +95,6 @@ public class EquipmentUnavailableAdjustmentType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the approachLightingInoperative property.
      * 
@@ -129,10 +117,6 @@ public class EquipmentUnavailableAdjustmentType
      */
     public void setApproachLightingInoperative(JAXBElement<CodeYesNoType> value) {
         this.approachLightingInoperative = value;
-    }
-
-    public boolean isSetApproachLightingInoperative() {
-        return (this.approachLightingInoperative!= null);
     }
 
     /**
@@ -167,14 +151,6 @@ public class EquipmentUnavailableAdjustmentType
         return this.adjustmentINOPCol;
     }
 
-    public boolean isSetAdjustmentINOPCol() {
-        return ((this.adjustmentINOPCol!= null)&&(!this.adjustmentINOPCol.isEmpty()));
-    }
-
-    public void unsetAdjustmentINOPCol() {
-        this.adjustmentINOPCol = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -205,14 +181,6 @@ public class EquipmentUnavailableAdjustmentType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -247,14 +215,6 @@ public class EquipmentUnavailableAdjustmentType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -283,7 +243,6 @@ public class EquipmentUnavailableAdjustmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractEquipmentUnavailableAdjustmentExtension")
-        @Valid
         protected AbstractExtensionType abstractEquipmentUnavailableAdjustmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -312,10 +271,6 @@ public class EquipmentUnavailableAdjustmentType
             this.abstractEquipmentUnavailableAdjustmentExtension = value;
         }
 
-        public boolean isSetAbstractEquipmentUnavailableAdjustmentExtension() {
-            return (this.abstractEquipmentUnavailableAdjustmentExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -340,16 +295,8 @@ public class EquipmentUnavailableAdjustmentType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

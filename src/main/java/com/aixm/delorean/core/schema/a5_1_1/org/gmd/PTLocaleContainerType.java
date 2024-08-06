@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -53,27 +50,14 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PTLocaleContainerType {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType description;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected PTLocalePropertyType locale;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CIDatePropertyType> date;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CIResponsiblePartyPropertyType> responsibleParty;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<LocalisedCharacterStringPropertyType> localisedString;
 
     /**
@@ -100,10 +84,6 @@ public class PTLocaleContainerType {
         this.description = value;
     }
 
-    public boolean isSetDescription() {
-        return (this.description!= null);
-    }
-
     /**
      * Gets the value of the locale property.
      * 
@@ -126,10 +106,6 @@ public class PTLocaleContainerType {
      */
     public void setLocale(PTLocalePropertyType value) {
         this.locale = value;
-    }
-
-    public boolean isSetLocale() {
-        return (this.locale!= null);
     }
 
     /**
@@ -164,14 +140,6 @@ public class PTLocaleContainerType {
         return this.date;
     }
 
-    public boolean isSetDate() {
-        return ((this.date!= null)&&(!this.date.isEmpty()));
-    }
-
-    public void unsetDate() {
-        this.date = null;
-    }
-
     /**
      * Gets the value of the responsibleParty property.
      * 
@@ -204,14 +172,6 @@ public class PTLocaleContainerType {
         return this.responsibleParty;
     }
 
-    public boolean isSetResponsibleParty() {
-        return ((this.responsibleParty!= null)&&(!this.responsibleParty.isEmpty()));
-    }
-
-    public void unsetResponsibleParty() {
-        this.responsibleParty = null;
-    }
-
     /**
      * Gets the value of the localisedString property.
      * 
@@ -242,14 +202,6 @@ public class PTLocaleContainerType {
             localisedString = new ArrayList<>();
         }
         return this.localisedString;
-    }
-
-    public boolean isSetLocalisedString() {
-        return ((this.localisedString!= null)&&(!this.localisedString.isEmpty()));
-    }
-
-    public void unsetLocalisedString() {
-        this.localisedString = null;
     }
 
 }

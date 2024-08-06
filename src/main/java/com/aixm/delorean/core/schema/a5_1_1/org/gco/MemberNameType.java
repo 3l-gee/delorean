@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gco;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -47,12 +45,8 @@ public class MemberNameType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType aName;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected TypeNamePropertyType attributeType;
 
     /**
@@ -79,10 +73,6 @@ public class MemberNameType
         this.aName = value;
     }
 
-    public boolean isSetAName() {
-        return (this.aName!= null);
-    }
-
     /**
      * Gets the value of the attributeType property.
      * 
@@ -105,10 +95,6 @@ public class MemberNameType
      */
     public void setAttributeType(TypeNamePropertyType value) {
         this.attributeType = value;
-    }
-
-    public boolean isSetAttributeType() {
-        return (this.attributeType!= null);
     }
 
 }

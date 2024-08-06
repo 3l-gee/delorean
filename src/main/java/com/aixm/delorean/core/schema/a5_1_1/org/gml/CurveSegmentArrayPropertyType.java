@@ -93,12 +93,4 @@ public class CurveSegmentArrayPropertyType {
         return this.abstractCurveSegment;
     }
 
-    public boolean isSetAbstractCurveSegment() {
-        return ((this.abstractCurveSegment!= null)&&(!this.abstractCurveSegment.isEmpty()));
-    }
-
-    public void unsetAbstractCurveSegment() {
-        this.abstractCurveSegment = null;
-    }
-
 }

@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,23 +65,15 @@ public class RunwayDeclaredDistanceValueType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceType> distance;
     @XmlElementRef(name = "distanceAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceType> distanceAccuracy;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayDeclaredDistanceValueType.Extension> extension;
 
     /**
@@ -118,14 +108,6 @@ public class RunwayDeclaredDistanceValueType
         return this.timeInterval;
     }
 
-    public boolean isSetTimeInterval() {
-        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
-    }
-
-    public void unsetTimeInterval() {
-        this.timeInterval = null;
-    }
-
     /**
      * Gets the value of the annotation property.
      * 
@@ -156,14 +138,6 @@ public class RunwayDeclaredDistanceValueType
             annotation = new ArrayList<>();
         }
         return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
     }
 
     /**
@@ -198,14 +172,6 @@ public class RunwayDeclaredDistanceValueType
         return this.specialDateAuthority;
     }
 
-    public boolean isSetSpecialDateAuthority() {
-        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
-    }
-
-    public void unsetSpecialDateAuthority() {
-        this.specialDateAuthority = null;
-    }
-
     /**
      * Gets the value of the distance property.
      * 
@@ -230,10 +196,6 @@ public class RunwayDeclaredDistanceValueType
         this.distance = value;
     }
 
-    public boolean isSetDistance() {
-        return (this.distance!= null);
-    }
-
     /**
      * Gets the value of the distanceAccuracy property.
      * 
@@ -256,10 +218,6 @@ public class RunwayDeclaredDistanceValueType
      */
     public void setDistanceAccuracy(JAXBElement<ValDistanceType> value) {
         this.distanceAccuracy = value;
-    }
-
-    public boolean isSetDistanceAccuracy() {
-        return (this.distanceAccuracy!= null);
     }
 
     /**
@@ -294,14 +252,6 @@ public class RunwayDeclaredDistanceValueType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -332,10 +282,8 @@ public class RunwayDeclaredDistanceValueType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractRunwayDeclaredDistanceValueExtension")
-        @Valid
         protected AbstractExtensionType abstractRunwayDeclaredDistanceValueExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -364,10 +312,6 @@ public class RunwayDeclaredDistanceValueType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
-        public boolean isSetAbstractPropertiesWithScheduleExtension() {
-            return (this.abstractPropertiesWithScheduleExtension!= null);
-        }
-
         /**
          * Gets the value of the abstractRunwayDeclaredDistanceValueExtension property.
          * 
@@ -390,10 +334,6 @@ public class RunwayDeclaredDistanceValueType
          */
         public void setAbstractRunwayDeclaredDistanceValueExtension(AbstractExtensionType value) {
             this.abstractRunwayDeclaredDistanceValueExtension = value;
-        }
-
-        public boolean isSetAbstractRunwayDeclaredDistanceValueExtension() {
-            return (this.abstractRunwayDeclaredDistanceValueExtension!= null);
         }
 
         /**
@@ -420,16 +360,8 @@ public class RunwayDeclaredDistanceValueType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

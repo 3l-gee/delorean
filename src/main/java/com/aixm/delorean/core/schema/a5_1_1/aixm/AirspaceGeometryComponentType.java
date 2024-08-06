@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,13 +66,9 @@ public class AirspaceGeometryComponentType
     @XmlElementRef(name = "operationSequence", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<NoSequenceType> operationSequence;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "theAirspaceVolume", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirspaceVolumePropertyType> theAirspaceVolume;
-    @Valid
-    @Size(min = 0)
     protected List<AirspaceGeometryComponentType.Extension> extension;
 
     /**
@@ -101,10 +95,6 @@ public class AirspaceGeometryComponentType
         this.operation = value;
     }
 
-    public boolean isSetOperation() {
-        return (this.operation!= null);
-    }
-
     /**
      * Gets the value of the operationSequence property.
      * 
@@ -127,10 +117,6 @@ public class AirspaceGeometryComponentType
      */
     public void setOperationSequence(JAXBElement<NoSequenceType> value) {
         this.operationSequence = value;
-    }
-
-    public boolean isSetOperationSequence() {
-        return (this.operationSequence!= null);
     }
 
     /**
@@ -165,14 +151,6 @@ public class AirspaceGeometryComponentType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the theAirspaceVolume property.
      * 
@@ -195,10 +173,6 @@ public class AirspaceGeometryComponentType
      */
     public void setTheAirspaceVolume(JAXBElement<AirspaceVolumePropertyType> value) {
         this.theAirspaceVolume = value;
-    }
-
-    public boolean isSetTheAirspaceVolume() {
-        return (this.theAirspaceVolume!= null);
     }
 
     /**
@@ -233,14 +207,6 @@ public class AirspaceGeometryComponentType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -269,7 +235,6 @@ public class AirspaceGeometryComponentType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceGeometryComponentExtension")
-        @Valid
         protected AbstractExtensionType abstractAirspaceGeometryComponentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -298,10 +263,6 @@ public class AirspaceGeometryComponentType
             this.abstractAirspaceGeometryComponentExtension = value;
         }
 
-        public boolean isSetAbstractAirspaceGeometryComponentExtension() {
-            return (this.abstractAirspaceGeometryComponentExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -326,16 +287,8 @@ public class AirspaceGeometryComponentType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

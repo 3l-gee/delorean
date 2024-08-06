@@ -70,10 +70,6 @@ public class ValDurationType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the uom property.
      * 
@@ -98,10 +94,6 @@ public class ValDurationType {
         this.uom = value;
     }
 
-    public boolean isSetUom() {
-        return (this.uom!= null);
-    }
-
     /**
      * Gets the value of the nilReason property.
      * 
@@ -124,10 +116,6 @@ public class ValDurationType {
      */
     public void setNilReason(String value) {
         this.nilReason = value;
-    }
-
-    public boolean isSetNilReason() {
-        return (this.nilReason!= null);
     }
 
 }

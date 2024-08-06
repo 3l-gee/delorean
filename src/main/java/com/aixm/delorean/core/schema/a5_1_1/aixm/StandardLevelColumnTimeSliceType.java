@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -73,17 +70,11 @@ public class StandardLevelColumnTimeSliceType
     @XmlElementRef(name = "separation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRVSMType> separation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<StandardLevelPropertyType> level;
     @XmlElementRef(name = "levelTable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<StandardLevelTablePropertyType> levelTable;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<StandardLevelColumnTimeSliceType.Extension> extension;
 
     /**
@@ -110,10 +101,6 @@ public class StandardLevelColumnTimeSliceType
         this.series = value;
     }
 
-    public boolean isSetSeries() {
-        return (this.series!= null);
-    }
-
     /**
      * Gets the value of the unitOfMeasurement property.
      * 
@@ -138,10 +125,6 @@ public class StandardLevelColumnTimeSliceType
         this.unitOfMeasurement = value;
     }
 
-    public boolean isSetUnitOfMeasurement() {
-        return (this.unitOfMeasurement!= null);
-    }
-
     /**
      * Gets the value of the separation property.
      * 
@@ -164,10 +147,6 @@ public class StandardLevelColumnTimeSliceType
      */
     public void setSeparation(JAXBElement<CodeRVSMType> value) {
         this.separation = value;
-    }
-
-    public boolean isSetSeparation() {
-        return (this.separation!= null);
     }
 
     /**
@@ -202,14 +181,6 @@ public class StandardLevelColumnTimeSliceType
         return this.level;
     }
 
-    public boolean isSetLevel() {
-        return ((this.level!= null)&&(!this.level.isEmpty()));
-    }
-
-    public void unsetLevel() {
-        this.level = null;
-    }
-
     /**
      * Gets the value of the levelTable property.
      * 
@@ -232,10 +203,6 @@ public class StandardLevelColumnTimeSliceType
      */
     public void setLevelTable(JAXBElement<StandardLevelTablePropertyType> value) {
         this.levelTable = value;
-    }
-
-    public boolean isSetLevelTable() {
-        return (this.levelTable!= null);
     }
 
     /**
@@ -270,14 +237,6 @@ public class StandardLevelColumnTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -310,14 +269,6 @@ public class StandardLevelColumnTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -346,8 +297,6 @@ public class StandardLevelColumnTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelColumnExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractStandardLevelColumnExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -376,10 +325,6 @@ public class StandardLevelColumnTimeSliceType
             this.abstractStandardLevelColumnExtension = value;
         }
 
-        public boolean isSetAbstractStandardLevelColumnExtension() {
-            return (this.abstractStandardLevelColumnExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -404,16 +349,8 @@ public class StandardLevelColumnTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

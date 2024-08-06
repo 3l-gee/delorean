@@ -102,14 +102,6 @@ public class TimePositionType {
         return this.value;
     }
 
-    public boolean isSetValue() {
-        return ((this.value!= null)&&(!this.value.isEmpty()));
-    }
-
-    public void unsetValue() {
-        this.value = null;
-    }
-
     /**
      * Gets the value of the frame property.
      * 
@@ -138,10 +130,6 @@ public class TimePositionType {
         this.frame = value;
     }
 
-    public boolean isSetFrame() {
-        return (this.frame!= null);
-    }
-
     /**
      * Gets the value of the calendarEraName property.
      * 
@@ -166,10 +154,6 @@ public class TimePositionType {
         this.calendarEraName = value;
     }
 
-    public boolean isSetCalendarEraName() {
-        return (this.calendarEraName!= null);
-    }
-
     /**
      * Gets the value of the indeterminatePosition property.
      * 
@@ -192,10 +176,6 @@ public class TimePositionType {
      */
     public void setIndeterminatePosition(TimeIndeterminateValueType value) {
         this.indeterminatePosition = value;
-    }
-
-    public boolean isSetIndeterminatePosition() {
-        return (this.indeterminatePosition!= null);
     }
 
 }

@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -47,14 +45,9 @@ public class OffsetCurveType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CurvePropertyType offsetBase;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected LengthType distance;
-    @Valid
     protected VectorType refDirection;
 
     /**
@@ -81,10 +74,6 @@ public class OffsetCurveType
         this.offsetBase = value;
     }
 
-    public boolean isSetOffsetBase() {
-        return (this.offsetBase!= null);
-    }
-
     /**
      * Gets the value of the distance property.
      * 
@@ -109,10 +98,6 @@ public class OffsetCurveType
         this.distance = value;
     }
 
-    public boolean isSetDistance() {
-        return (this.distance!= null);
-    }
-
     /**
      * Gets the value of the refDirection property.
      * 
@@ -135,10 +120,6 @@ public class OffsetCurveType
      */
     public void setRefDirection(VectorType value) {
         this.refDirection = value;
-    }
-
-    public boolean isSetRefDirection() {
-        return (this.refDirection!= null);
     }
 
 }

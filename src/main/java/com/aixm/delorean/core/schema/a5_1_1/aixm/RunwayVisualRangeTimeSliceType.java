@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,17 +64,11 @@ public class RunwayVisualRangeTimeSliceType
     @XmlElementRef(name = "readingPosition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRVRReadingType> readingPosition;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RunwayDirectionPropertyType> associatedRunwayDirection;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayVisualRangeTimeSliceType.Extension> extension;
 
     /**
@@ -102,10 +93,6 @@ public class RunwayVisualRangeTimeSliceType
      */
     public void setReadingPosition(JAXBElement<CodeRVRReadingType> value) {
         this.readingPosition = value;
-    }
-
-    public boolean isSetReadingPosition() {
-        return (this.readingPosition!= null);
     }
 
     /**
@@ -140,14 +127,6 @@ public class RunwayVisualRangeTimeSliceType
         return this.associatedRunwayDirection;
     }
 
-    public boolean isSetAssociatedRunwayDirection() {
-        return ((this.associatedRunwayDirection!= null)&&(!this.associatedRunwayDirection.isEmpty()));
-    }
-
-    public void unsetAssociatedRunwayDirection() {
-        this.associatedRunwayDirection = null;
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -170,10 +149,6 @@ public class RunwayVisualRangeTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -208,14 +183,6 @@ public class RunwayVisualRangeTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -248,14 +215,6 @@ public class RunwayVisualRangeTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -284,8 +243,6 @@ public class RunwayVisualRangeTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayVisualRangeExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractRunwayVisualRangeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -314,10 +271,6 @@ public class RunwayVisualRangeTimeSliceType
             this.abstractRunwayVisualRangeExtension = value;
         }
 
-        public boolean isSetAbstractRunwayVisualRangeExtension() {
-            return (this.abstractRunwayVisualRangeExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -342,16 +295,8 @@ public class RunwayVisualRangeTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

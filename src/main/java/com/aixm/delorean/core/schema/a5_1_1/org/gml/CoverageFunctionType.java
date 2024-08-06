@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -44,7 +43,6 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CoverageFunctionType {
 
     @XmlElement(name = "MappingRule")
-    @Valid
     protected StringOrRefType mappingRule;
     /**
      * gml:CoverageMappingRule provides a formal or informal description of the coverage function.
@@ -53,7 +51,6 @@ public class CoverageFunctionType {
      * 
      */
     @XmlElement(name = "CoverageMappingRule")
-    @Valid
     protected MappingRuleType coverageMappingRule;
     /**
      * gml:GridFunction provides an explicit mapping rule for grid geometries, i.e. the domain shall be a geometry of type grid.  It describes the mapping of grid posts (discrete point grid coverage) or grid cells (discrete surface coverage) to the values in the range set.
@@ -61,7 +58,6 @@ public class CoverageFunctionType {
      * 
      */
     @XmlElement(name = "GridFunction")
-    @Valid
     protected GridFunctionType gridFunction;
 
     /**
@@ -86,10 +82,6 @@ public class CoverageFunctionType {
      */
     public void setMappingRule(StringOrRefType value) {
         this.mappingRule = value;
-    }
-
-    public boolean isSetMappingRule() {
-        return (this.mappingRule!= null);
     }
 
     /**
@@ -119,10 +111,6 @@ public class CoverageFunctionType {
         this.coverageMappingRule = value;
     }
 
-    public boolean isSetCoverageMappingRule() {
-        return (this.coverageMappingRule!= null);
-    }
-
     /**
      * gml:GridFunction provides an explicit mapping rule for grid geometries, i.e. the domain shall be a geometry of type grid.  It describes the mapping of grid posts (discrete point grid coverage) or grid cells (discrete surface coverage) to the values in the range set.
      * The gml:startPoint is the index position of a point in the grid that is mapped to the first point in the range set (this is also the index position of the first grid post).  If the gml:startPoint property is omitted the gml:startPoint is assumed to be equal to the value of gml:low in the gml:Grid geometry. Subsequent points in the mapping are determined by the value of the gml:sequenceRule.
@@ -147,10 +135,6 @@ public class CoverageFunctionType {
      */
     public void setGridFunction(GridFunctionType value) {
         this.gridFunction = value;
-    }
-
-    public boolean isSetGridFunction() {
-        return (this.gridFunction!= null);
     }
 
 }

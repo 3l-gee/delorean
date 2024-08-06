@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RealPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.UomLengthPropertyType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -57,21 +56,13 @@ public class MDBandType
     extends MDRangeDimensionType
 {
 
-    @Valid
     protected RealPropertyType maxValue;
-    @Valid
     protected RealPropertyType minValue;
-    @Valid
     protected UomLengthPropertyType units;
-    @Valid
     protected RealPropertyType peakResponse;
-    @Valid
     protected IntegerPropertyType bitsPerValue;
-    @Valid
     protected IntegerPropertyType toneGradation;
-    @Valid
     protected RealPropertyType scaleFactor;
-    @Valid
     protected RealPropertyType offset;
 
     /**
@@ -98,10 +89,6 @@ public class MDBandType
         this.maxValue = value;
     }
 
-    public boolean isSetMaxValue() {
-        return (this.maxValue!= null);
-    }
-
     /**
      * Gets the value of the minValue property.
      * 
@@ -124,10 +111,6 @@ public class MDBandType
      */
     public void setMinValue(RealPropertyType value) {
         this.minValue = value;
-    }
-
-    public boolean isSetMinValue() {
-        return (this.minValue!= null);
     }
 
     /**
@@ -154,10 +137,6 @@ public class MDBandType
         this.units = value;
     }
 
-    public boolean isSetUnits() {
-        return (this.units!= null);
-    }
-
     /**
      * Gets the value of the peakResponse property.
      * 
@@ -180,10 +159,6 @@ public class MDBandType
      */
     public void setPeakResponse(RealPropertyType value) {
         this.peakResponse = value;
-    }
-
-    public boolean isSetPeakResponse() {
-        return (this.peakResponse!= null);
     }
 
     /**
@@ -210,10 +185,6 @@ public class MDBandType
         this.bitsPerValue = value;
     }
 
-    public boolean isSetBitsPerValue() {
-        return (this.bitsPerValue!= null);
-    }
-
     /**
      * Gets the value of the toneGradation property.
      * 
@@ -236,10 +207,6 @@ public class MDBandType
      */
     public void setToneGradation(IntegerPropertyType value) {
         this.toneGradation = value;
-    }
-
-    public boolean isSetToneGradation() {
-        return (this.toneGradation!= null);
     }
 
     /**
@@ -266,10 +233,6 @@ public class MDBandType
         this.scaleFactor = value;
     }
 
-    public boolean isSetScaleFactor() {
-        return (this.scaleFactor!= null);
-    }
-
     /**
      * Gets the value of the offset property.
      * 
@@ -292,10 +255,6 @@ public class MDBandType
      */
     public void setOffset(RealPropertyType value) {
         this.offset = value;
-    }
-
-    public boolean isSetOffset() {
-        return (this.offset!= null);
     }
 
 }

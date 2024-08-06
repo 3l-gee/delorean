@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -45,14 +43,11 @@ public class MultiCurveType
     extends AbstractGeometricAggregateType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<CurvePropertyType> curveMember;
     /**
      * This property element contains a list of curves. The order of the elements is significant and shall be preserved when processing the array.
      * 
      */
-    @Valid
     protected CurveArrayPropertyType curveMembers;
 
     /**
@@ -87,14 +82,6 @@ public class MultiCurveType
         return this.curveMember;
     }
 
-    public boolean isSetCurveMember() {
-        return ((this.curveMember!= null)&&(!this.curveMember.isEmpty()));
-    }
-
-    public void unsetCurveMember() {
-        this.curveMember = null;
-    }
-
     /**
      * This property element contains a list of curves. The order of the elements is significant and shall be preserved when processing the array.
      * 
@@ -118,10 +105,6 @@ public class MultiCurveType
      */
     public void setCurveMembers(CurveArrayPropertyType value) {
         this.curveMembers = value;
-    }
-
-    public boolean isSetCurveMembers() {
-        return (this.curveMembers!= null);
     }
 
 }

@@ -8,8 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigInteger;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -68,27 +66,18 @@ public class ArcByCenterPointType
     extends AbstractCurveSegmentType
 {
 
-    @Valid
     protected DirectPositionType pos;
     /**
      * This property element either references a point via the XLink-attributes or contains the point element. pointProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for Point.
      * 
      */
-    @Valid
     protected PointPropertyType pointProperty;
-    @Valid
     protected PointPropertyType pointRep;
-    @Valid
     protected DirectPositionListType posList;
-    @Valid
     protected CoordinatesType coordinates;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected LengthType radius;
-    @Valid
     protected AngleType startAngle;
-    @Valid
     protected AngleType endAngle;
     @XmlAttribute(name = "interpolation")
     public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CIRCULAR_ARC_CENTER_POINT_WITH_RADIUS;
@@ -119,10 +108,6 @@ public class ArcByCenterPointType
         this.pos = value;
     }
 
-    public boolean isSetPos() {
-        return (this.pos!= null);
-    }
-
     /**
      * This property element either references a point via the XLink-attributes or contains the point element. pointProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for Point.
      * 
@@ -146,10 +131,6 @@ public class ArcByCenterPointType
      */
     public void setPointProperty(PointPropertyType value) {
         this.pointProperty = value;
-    }
-
-    public boolean isSetPointProperty() {
-        return (this.pointProperty!= null);
     }
 
     /**
@@ -176,10 +157,6 @@ public class ArcByCenterPointType
         this.pointRep = value;
     }
 
-    public boolean isSetPointRep() {
-        return (this.pointRep!= null);
-    }
-
     /**
      * Gets the value of the posList property.
      * 
@@ -202,10 +179,6 @@ public class ArcByCenterPointType
      */
     public void setPosList(DirectPositionListType value) {
         this.posList = value;
-    }
-
-    public boolean isSetPosList() {
-        return (this.posList!= null);
     }
 
     /**
@@ -232,10 +205,6 @@ public class ArcByCenterPointType
         this.coordinates = value;
     }
 
-    public boolean isSetCoordinates() {
-        return (this.coordinates!= null);
-    }
-
     /**
      * Gets the value of the radius property.
      * 
@@ -258,10 +227,6 @@ public class ArcByCenterPointType
      */
     public void setRadius(LengthType value) {
         this.radius = value;
-    }
-
-    public boolean isSetRadius() {
-        return (this.radius!= null);
     }
 
     /**
@@ -288,10 +253,6 @@ public class ArcByCenterPointType
         this.startAngle = value;
     }
 
-    public boolean isSetStartAngle() {
-        return (this.startAngle!= null);
-    }
-
     /**
      * Gets the value of the endAngle property.
      * 
@@ -314,10 +275,6 @@ public class ArcByCenterPointType
      */
     public void setEndAngle(AngleType value) {
         this.endAngle = value;
-    }
-
-    public boolean isSetEndAngle() {
-        return (this.endAngle!= null);
     }
 
 }

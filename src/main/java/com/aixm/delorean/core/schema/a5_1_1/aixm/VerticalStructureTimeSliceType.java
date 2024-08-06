@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -104,47 +101,25 @@ public class VerticalStructureTimeSliceType
     @XmlElementRef(name = "marker", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<MarkerBeaconPropertyType> marker;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<VerticalStructurePartPropertyType> part;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<PassengerServicePropertyType> hostedPassengerService;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<GroundLightSystemPropertyType> supportedGroundLight;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidEquipmentPropertyType> hostedNavaidEquipment;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<SpecialNavigationStationPropertyType> hostedSpecialNavStation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<UnitPropertyType> hostedUnit;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> hostedOrganisation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ServicePropertyType> supportedService;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<VerticalStructureLightingStatusPropertyType> lightingAvailability;
-    @Valid
-    @Size(min = 0)
     protected List<VerticalStructureTimeSliceType.Extension> extension;
 
     /**
@@ -171,10 +146,6 @@ public class VerticalStructureTimeSliceType
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
     /**
      * Gets the value of the type property.
      * 
@@ -197,10 +168,6 @@ public class VerticalStructureTimeSliceType
      */
     public void setType(JAXBElement<CodeVerticalStructureType> value) {
         this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -227,10 +194,6 @@ public class VerticalStructureTimeSliceType
         this.lighted = value;
     }
 
-    public boolean isSetLighted() {
-        return (this.lighted!= null);
-    }
-
     /**
      * Gets the value of the markingICAOStandard property.
      * 
@@ -253,10 +216,6 @@ public class VerticalStructureTimeSliceType
      */
     public void setMarkingICAOStandard(JAXBElement<CodeYesNoType> value) {
         this.markingICAOStandard = value;
-    }
-
-    public boolean isSetMarkingICAOStandard() {
-        return (this.markingICAOStandard!= null);
     }
 
     /**
@@ -283,10 +242,6 @@ public class VerticalStructureTimeSliceType
         this.group = value;
     }
 
-    public boolean isSetGroup() {
-        return (this.group!= null);
-    }
-
     /**
      * Gets the value of the length property.
      * 
@@ -309,10 +264,6 @@ public class VerticalStructureTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
-    }
-
-    public boolean isSetLength() {
-        return (this.length!= null);
     }
 
     /**
@@ -339,10 +290,6 @@ public class VerticalStructureTimeSliceType
         this.width = value;
     }
 
-    public boolean isSetWidth() {
-        return (this.width!= null);
-    }
-
     /**
      * Gets the value of the radius property.
      * 
@@ -365,10 +312,6 @@ public class VerticalStructureTimeSliceType
      */
     public void setRadius(JAXBElement<ValDistanceType> value) {
         this.radius = value;
-    }
-
-    public boolean isSetRadius() {
-        return (this.radius!= null);
     }
 
     /**
@@ -395,10 +338,6 @@ public class VerticalStructureTimeSliceType
         this.lightingICAOStandard = value;
     }
 
-    public boolean isSetLightingICAOStandard() {
-        return (this.lightingICAOStandard!= null);
-    }
-
     /**
      * Gets the value of the synchronisedLighting property.
      * 
@@ -423,10 +362,6 @@ public class VerticalStructureTimeSliceType
         this.synchronisedLighting = value;
     }
 
-    public boolean isSetSynchronisedLighting() {
-        return (this.synchronisedLighting!= null);
-    }
-
     /**
      * Gets the value of the marker property.
      * 
@@ -449,10 +384,6 @@ public class VerticalStructureTimeSliceType
      */
     public void setMarker(JAXBElement<MarkerBeaconPropertyType> value) {
         this.marker = value;
-    }
-
-    public boolean isSetMarker() {
-        return (this.marker!= null);
     }
 
     /**
@@ -487,14 +418,6 @@ public class VerticalStructureTimeSliceType
         return this.part;
     }
 
-    public boolean isSetPart() {
-        return ((this.part!= null)&&(!this.part.isEmpty()));
-    }
-
-    public void unsetPart() {
-        this.part = null;
-    }
-
     /**
      * Gets the value of the hostedPassengerService property.
      * 
@@ -525,14 +448,6 @@ public class VerticalStructureTimeSliceType
             hostedPassengerService = new ArrayList<>();
         }
         return this.hostedPassengerService;
-    }
-
-    public boolean isSetHostedPassengerService() {
-        return ((this.hostedPassengerService!= null)&&(!this.hostedPassengerService.isEmpty()));
-    }
-
-    public void unsetHostedPassengerService() {
-        this.hostedPassengerService = null;
     }
 
     /**
@@ -567,14 +482,6 @@ public class VerticalStructureTimeSliceType
         return this.supportedGroundLight;
     }
 
-    public boolean isSetSupportedGroundLight() {
-        return ((this.supportedGroundLight!= null)&&(!this.supportedGroundLight.isEmpty()));
-    }
-
-    public void unsetSupportedGroundLight() {
-        this.supportedGroundLight = null;
-    }
-
     /**
      * Gets the value of the hostedNavaidEquipment property.
      * 
@@ -605,14 +512,6 @@ public class VerticalStructureTimeSliceType
             hostedNavaidEquipment = new ArrayList<>();
         }
         return this.hostedNavaidEquipment;
-    }
-
-    public boolean isSetHostedNavaidEquipment() {
-        return ((this.hostedNavaidEquipment!= null)&&(!this.hostedNavaidEquipment.isEmpty()));
-    }
-
-    public void unsetHostedNavaidEquipment() {
-        this.hostedNavaidEquipment = null;
     }
 
     /**
@@ -647,14 +546,6 @@ public class VerticalStructureTimeSliceType
         return this.hostedSpecialNavStation;
     }
 
-    public boolean isSetHostedSpecialNavStation() {
-        return ((this.hostedSpecialNavStation!= null)&&(!this.hostedSpecialNavStation.isEmpty()));
-    }
-
-    public void unsetHostedSpecialNavStation() {
-        this.hostedSpecialNavStation = null;
-    }
-
     /**
      * Gets the value of the hostedUnit property.
      * 
@@ -685,14 +576,6 @@ public class VerticalStructureTimeSliceType
             hostedUnit = new ArrayList<>();
         }
         return this.hostedUnit;
-    }
-
-    public boolean isSetHostedUnit() {
-        return ((this.hostedUnit!= null)&&(!this.hostedUnit.isEmpty()));
-    }
-
-    public void unsetHostedUnit() {
-        this.hostedUnit = null;
     }
 
     /**
@@ -727,14 +610,6 @@ public class VerticalStructureTimeSliceType
         return this.hostedOrganisation;
     }
 
-    public boolean isSetHostedOrganisation() {
-        return ((this.hostedOrganisation!= null)&&(!this.hostedOrganisation.isEmpty()));
-    }
-
-    public void unsetHostedOrganisation() {
-        this.hostedOrganisation = null;
-    }
-
     /**
      * Gets the value of the supportedService property.
      * 
@@ -765,14 +640,6 @@ public class VerticalStructureTimeSliceType
             supportedService = new ArrayList<>();
         }
         return this.supportedService;
-    }
-
-    public boolean isSetSupportedService() {
-        return ((this.supportedService!= null)&&(!this.supportedService.isEmpty()));
-    }
-
-    public void unsetSupportedService() {
-        this.supportedService = null;
     }
 
     /**
@@ -807,14 +674,6 @@ public class VerticalStructureTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the lightingAvailability property.
      * 
@@ -845,14 +704,6 @@ public class VerticalStructureTimeSliceType
             lightingAvailability = new ArrayList<>();
         }
         return this.lightingAvailability;
-    }
-
-    public boolean isSetLightingAvailability() {
-        return ((this.lightingAvailability!= null)&&(!this.lightingAvailability.isEmpty()));
-    }
-
-    public void unsetLightingAvailability() {
-        this.lightingAvailability = null;
     }
 
     /**
@@ -887,14 +738,6 @@ public class VerticalStructureTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -923,8 +766,6 @@ public class VerticalStructureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractVerticalStructureExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractVerticalStructureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -953,10 +794,6 @@ public class VerticalStructureTimeSliceType
             this.abstractVerticalStructureExtension = value;
         }
 
-        public boolean isSetAbstractVerticalStructureExtension() {
-            return (this.abstractVerticalStructureExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -981,16 +818,8 @@ public class VerticalStructureTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

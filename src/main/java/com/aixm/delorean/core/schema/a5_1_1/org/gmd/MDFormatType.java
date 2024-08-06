@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -60,21 +57,12 @@ public class MDFormatType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType name;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType version;
-    @Valid
     protected CharacterStringPropertyType amendmentNumber;
-    @Valid
     protected CharacterStringPropertyType specification;
-    @Valid
     protected CharacterStringPropertyType fileDecompressionTechnique;
-    @Valid
-    @Size(min = 0)
     protected List<MDDistributorPropertyType> formatDistributor;
 
     /**
@@ -101,10 +89,6 @@ public class MDFormatType
         this.name = value;
     }
 
-    public boolean isSetName() {
-        return (this.name!= null);
-    }
-
     /**
      * Gets the value of the version property.
      * 
@@ -127,10 +111,6 @@ public class MDFormatType
      */
     public void setVersion(CharacterStringPropertyType value) {
         this.version = value;
-    }
-
-    public boolean isSetVersion() {
-        return (this.version!= null);
     }
 
     /**
@@ -157,10 +137,6 @@ public class MDFormatType
         this.amendmentNumber = value;
     }
 
-    public boolean isSetAmendmentNumber() {
-        return (this.amendmentNumber!= null);
-    }
-
     /**
      * Gets the value of the specification property.
      * 
@@ -185,10 +161,6 @@ public class MDFormatType
         this.specification = value;
     }
 
-    public boolean isSetSpecification() {
-        return (this.specification!= null);
-    }
-
     /**
      * Gets the value of the fileDecompressionTechnique property.
      * 
@@ -211,10 +183,6 @@ public class MDFormatType
      */
     public void setFileDecompressionTechnique(CharacterStringPropertyType value) {
         this.fileDecompressionTechnique = value;
-    }
-
-    public boolean isSetFileDecompressionTechnique() {
-        return (this.fileDecompressionTechnique!= null);
     }
 
     /**
@@ -247,14 +215,6 @@ public class MDFormatType
             formatDistributor = new ArrayList<>();
         }
         return this.formatDistributor;
-    }
-
-    public boolean isSetFormatDistributor() {
-        return ((this.formatDistributor!= null)&&(!this.formatDistributor.isEmpty()));
-    }
-
-    public void unsetFormatDistributor() {
-        this.formatDistributor = null;
     }
 
 }

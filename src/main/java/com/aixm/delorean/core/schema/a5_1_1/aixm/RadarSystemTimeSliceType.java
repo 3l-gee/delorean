@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -79,27 +76,17 @@ public class RadarSystemTimeSliceType
     @XmlElementRef(name = "broadcastIdentifier", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextDesignatorType> broadcastIdentifier;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RadarComponentPropertyType> radarEquipment;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> office;
     @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(name = "PARRunway", nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RunwayPropertyType> parRunway;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<RadarSystemTimeSliceType.Extension> extension;
 
     /**
@@ -126,10 +113,6 @@ public class RadarSystemTimeSliceType
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the model property.
      * 
@@ -152,10 +135,6 @@ public class RadarSystemTimeSliceType
      */
     public void setModel(JAXBElement<TextNameType> value) {
         this.model = value;
-    }
-
-    public boolean isSetModel() {
-        return (this.model!= null);
     }
 
     /**
@@ -182,10 +161,6 @@ public class RadarSystemTimeSliceType
         this.generalTerrainMonitor = value;
     }
 
-    public boolean isSetGeneralTerrainMonitor() {
-        return (this.generalTerrainMonitor!= null);
-    }
-
     /**
      * Gets the value of the broadcastIdentifier property.
      * 
@@ -208,10 +183,6 @@ public class RadarSystemTimeSliceType
      */
     public void setBroadcastIdentifier(JAXBElement<TextDesignatorType> value) {
         this.broadcastIdentifier = value;
-    }
-
-    public boolean isSetBroadcastIdentifier() {
-        return (this.broadcastIdentifier!= null);
     }
 
     /**
@@ -246,14 +217,6 @@ public class RadarSystemTimeSliceType
         return this.radarEquipment;
     }
 
-    public boolean isSetRadarEquipment() {
-        return ((this.radarEquipment!= null)&&(!this.radarEquipment.isEmpty()));
-    }
-
-    public void unsetRadarEquipment() {
-        this.radarEquipment = null;
-    }
-
     /**
      * Gets the value of the office property.
      * 
@@ -286,14 +249,6 @@ public class RadarSystemTimeSliceType
         return this.office;
     }
 
-    public boolean isSetOffice() {
-        return ((this.office!= null)&&(!this.office.isEmpty()));
-    }
-
-    public void unsetOffice() {
-        this.office = null;
-    }
-
     /**
      * Gets the value of the airportHeliport property.
      * 
@@ -316,10 +271,6 @@ public class RadarSystemTimeSliceType
      */
     public void setAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.airportHeliport = value;
-    }
-
-    public boolean isSetAirportHeliport() {
-        return (this.airportHeliport!= null);
     }
 
     /**
@@ -354,14 +305,6 @@ public class RadarSystemTimeSliceType
         return this.parRunway;
     }
 
-    public boolean isSetPARRunway() {
-        return ((this.parRunway!= null)&&(!this.parRunway.isEmpty()));
-    }
-
-    public void unsetPARRunway() {
-        this.parRunway = null;
-    }
-
     /**
      * Gets the value of the location property.
      * 
@@ -384,10 +327,6 @@ public class RadarSystemTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
     }
 
     /**
@@ -422,14 +361,6 @@ public class RadarSystemTimeSliceType
         return this.annotation;
     }
 
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
     /**
      * Gets the value of the extension property.
      * 
@@ -462,14 +393,6 @@ public class RadarSystemTimeSliceType
         return this.extension;
     }
 
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type</p>.
@@ -498,8 +421,6 @@ public class RadarSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRadarSystemExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractRadarSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
@@ -528,10 +449,6 @@ public class RadarSystemTimeSliceType
             this.abstractRadarSystemExtension = value;
         }
 
-        public boolean isSetAbstractRadarSystemExtension() {
-            return (this.abstractRadarSystemExtension!= null);
-        }
-
         /**
          * Gets the value of the owns property.
          * 
@@ -556,16 +473,8 @@ public class RadarSystemTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(boolean value) {
+        public void setOwns(Boolean value) {
             this.owns = value;
-        }
-
-        public boolean isSetOwns() {
-            return (this.owns!= null);
-        }
-
-        public void unsetOwns() {
-            this.owns = null;
         }
 
     }

@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -47,11 +45,9 @@ public class TimeIntervalLengthType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "unit", required = true)
-    @NotNull
     protected String unit;
     @XmlAttribute(name = "radix")
     @XmlSchemaType(name = "positiveInteger")
-    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger radix;
     @XmlAttribute(name = "factor")
     protected BigInteger factor;
@@ -80,10 +76,6 @@ public class TimeIntervalLengthType {
         this.value = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
-    }
-
     /**
      * Gets the value of the unit property.
      * 
@@ -106,10 +98,6 @@ public class TimeIntervalLengthType {
      */
     public void setUnit(String value) {
         this.unit = value;
-    }
-
-    public boolean isSetUnit() {
-        return (this.unit!= null);
     }
 
     /**
@@ -136,10 +124,6 @@ public class TimeIntervalLengthType {
         this.radix = value;
     }
 
-    public boolean isSetRadix() {
-        return (this.radix!= null);
-    }
-
     /**
      * Gets the value of the factor property.
      * 
@@ -162,10 +146,6 @@ public class TimeIntervalLengthType {
      */
     public void setFactor(BigInteger value) {
         this.factor = value;
-    }
-
-    public boolean isSetFactor() {
-        return (this.factor!= null);
     }
 
 }
