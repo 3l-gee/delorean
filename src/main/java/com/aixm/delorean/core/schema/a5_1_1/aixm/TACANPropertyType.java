@@ -12,12 +12,14 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
+import jakarta.persistence.*;
 
 /**
  * <p>Java class for TACANPropertyType complex type</p>.
@@ -39,27 +41,52 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TACANPropertyType")
+@Entity
+@Table(name = "dlrn_tacan_property_type")
 public class TACANPropertyType {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Assuming the ID is of type Long
+
+    @ElementCollection
+    @CollectionTable(name = "dlrn_TACANProperty_nilReason") // Add prefix to table name
+    @Column(name = "dlrn_nilReason") // Add prefix to column name
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
+
+    @Column(name = "dlrn_remoteSchema") // Add prefix to column name
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
-    @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    public static final TypeType TYPE = TypeType.SIMPLE;
+
+    @Column(name = "dlrn_href") // Add prefix to column name
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
+
+    @Column(name = "dlrn_role") // Add prefix to column name
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
     protected String role;
+
+    @Column(name = "dlrn_arcrole") // Add prefix to column name
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
     protected String arcrole;
+
+    @Column(name = "dlrn_titleAttribute") // Add prefix to column name
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "dlrn_show") // Add prefix to column name
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
     protected ShowType show;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "dlrn_actuate") // Add prefix to column name
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
+
+    @Column(name = "dlrn_owns") // Add prefix to column name
     @XmlAttribute(name = "owns")
     protected Boolean owns;
 
