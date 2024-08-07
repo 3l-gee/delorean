@@ -10,15 +10,10 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.persistence.*;
 
 
 /**
@@ -44,15 +39,9 @@ import jakarta.persistence.*;
 @XmlType(name = "NavaidType", propOrder = {
     "timeSlice"
 })
-@Entity
-@Table(name = "NavaidType")
 public class NavaidType
     extends AbstractAIXMFeatureType
 {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
     @XmlElement(required = true)
     protected List<NavaidTimeSlicePropertyType> timeSlice;

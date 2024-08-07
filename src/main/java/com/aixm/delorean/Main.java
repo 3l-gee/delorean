@@ -2,8 +2,15 @@ package com.aixm.delorean;
 
 import com.aixm.delorean.core.container.ContainerFactory;
 import com.aixm.delorean.core.container.ContainerWarehouse;
+import com.aixm.delorean.core.database.DatabaseSchemaBuilder;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TACANPropertyType;
 
 import java.util.Scanner;
+import java.util.Arrays;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 public class Main {
     ContainerWarehouse containerWarehouse = new ContainerWarehouse();
@@ -82,6 +89,37 @@ public class Main {
                 } else {
                     System.err.println("Container " + argument + " does not exist or parameter is missing");
                 }
+                break;
+
+            case "format" :
+                // Get the session factory
+                SessionFactory sessionFactory = DatabaseSchemaBuilder.getSessionFactory();
+
+                // // Open a session
+                // Session session = sessionFactory.openSession();
+                // Transaction transaction = null;
+
+                // try {
+                //     transaction = session.beginTransaction();
+
+                //     TACANPropertyType tacan = new TACANPropertyType();
+                //     tacan.setOwns(true);
+
+                //     session.persist(tacan);
+
+                //     transaction.commit();
+                // } catch (Exception e) {
+                //     if (transaction != null) {
+                //         transaction.rollback();
+                //     }
+                //     e.printStackTrace();
+                // } finally {
+                //     // Close the session
+                //     session.close();
+                // }
+
+                // Shutdown the session factory
+                DatabaseSchemaBuilder.shutdown();
                 break;
 
             case "show" :

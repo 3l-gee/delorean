@@ -28,6 +28,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Specify annotated class -->
-        <mapping class="com.aixm.delorean.core.schema.a5_1_1.aixm.NavaidType"/>
+        <mapping class="com.aixm.delorean.core.schema.a5_1_1.aixm.TACANPropertyType"/>
     </session-factory>
 </hibernate-configuration>
