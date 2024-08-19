@@ -1,5 +1,7 @@
 package com.aixm.delorean;
 
+import com.aixm.delorean.core.configuration.RootStructure;
+import com.aixm.delorean.core.configuration.DatabaseSchema;
 import com.aixm.delorean.core.container.ContainerFactory;
 import com.aixm.delorean.core.container.ContainerWarehouse;
 import com.aixm.delorean.core.database.DatabaseSchemaBuilder;
@@ -11,6 +13,7 @@ import java.util.Arrays;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 public class Main {
     ContainerWarehouse containerWarehouse = new ContainerWarehouse();
@@ -23,7 +26,7 @@ public class Main {
     private void run() {
         Scanner scanner = new Scanner(System.in);
         String command;
-        
+
         //TODO jar information and version
         System.err.println("Delorean 1.0.0- alpha");
 
@@ -46,7 +49,7 @@ public class Main {
         String[] parts = command.split(" ");
         String action = parts[0];
         String argument = null;
-        String parameter = null;   
+        String parameter = null;
         String option = null;
 
         if (parts.length > 1) {
@@ -63,74 +66,136 @@ public class Main {
 
         switch (action.toLowerCase()) {
             case "new":
-                this.containerWarehouse.addContainer(ContainerFactory.createContainer(argument));
-                System.out.println(this.containerWarehouse.getLastContainerId() + " created");
-                break;
-            
-            case "validation" :
-                if (this.containerWarehouse.getIds().contains(argument)) {
-                    this.containerWarehouse.getContainer(argument).setValidationRule();
-                } else if (argument == null) {
-                    this.containerWarehouse.getLastContainer().setValidationRule();
-                } else {
-                    System.err.println("Container " + argument + " does not exist");
-                }
+                executeNewCommand(argument, parameter);
                 break;
 
-            case "list" :
-                System.out.println(this.containerWarehouse.getIds());
+            case "validation_config":
+                executeValidationCommand(argument);
                 break;
 
-            case "load" :
-                if (this.containerWarehouse.getIds().contains(argument) && parameter != null) {
-                    this.containerWarehouse.getContainer(argument).unmarshal(parameter);
-                } else if (argument == null && parameter != null) {
-                    this.containerWarehouse.getLastContainer().unmarshal(parameter);
-                } else {
-                    System.err.println("Container " + argument + " does not exist or parameter is missing");
-                }
+            case "database_config":
+                executeValidationCommand(argument);
                 break;
 
-            case "format" :
-                // Get the session factory
-                SessionFactory sessionFactory = DatabaseSchemaBuilder.getSessionFactory();
-
-                // // Open a session
-                // Session session = sessionFactory.openSession();
-                // Transaction transaction = null;
-
-                // try {
-                //     transaction = session.beginTransaction();
-
-                //     TACANPropertyType tacan = new TACANPropertyType();
-                //     tacan.setOwns(true);
-
-                //     session.persist(tacan);
-
-                //     transaction.commit();
-                // } catch (Exception e) {
-                //     if (transaction != null) {
-                //         transaction.rollback();
-                //     }
-                //     e.printStackTrace();
-                // } finally {
-                //     // Close the session
-                //     session.close();
-                // }
-
-                // Shutdown the session factory
-                DatabaseSchemaBuilder.shutdown();
+            case "list":
+                executeListCommand();
                 break;
 
-            case "show" :
-                if (this.containerWarehouse.getIds().contains(argument)) {
-                    this.containerWarehouse.getContainer(argument).show();
-                } else if (argument == null) {
-                    this.containerWarehouse.getLastContainer().show();
-                } else {
-                    System.err.println("Container " + argument + " does not exist or parameter is missing");
-                }
-                break;                
+            case "load":
+                executeLoadCommand(argument, parameter);
+                break;
+
+            case "format":
+                executeFormatCommand();
+                break;
+
+            case "show":
+                executeShowCommand(argument);
+                break;
+        }
+    }
+
+    private void executeNewCommand(String argument, String parameter) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+
+        if (parameter == null) {
+            throw new IllegalArgumentException("parameter is null");
+        }
+        
+        try {
+            RootStructure Structure = RootStructure.fromString(argument);
+            this.containerWarehouse.addContainer(ContainerFactory.createContainer(Structure));
+            System.out.println(this.containerWarehouse.getLastContainerId() + " created");
+
+        } catch (IllegalArgumentException e) {
+            System.err.println("Invalid argument: " + e.getMessage());
+        }
+
+        try {
+            Configuration configuration = DatabaseSchema.fromString(parameter);
+            this.containerWarehouse.getLastContainer().setConfiguration(configuration);
+        } catch (IllegalArgumentException e) {
+            System.err.println("Invalid argument: " + e.getMessage());
+        }
+    }
+
+    private void executeValidationCommand(String argument) {
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            this.containerWarehouse.getContainer(argument).setValidationRule();
+        } else if (argument == null) {
+            this.containerWarehouse.getLastContainer().setValidationRule();
+        } else {
+            System.err.println("Container " + argument + " does not exist");
+        }
+    }
+
+    private void executeDatabaseCommand(String argument, String parameter, String option) {
+    }
+
+    private void executeListCommand() {
+        System.out.println(this.containerWarehouse.getIds());
+    }
+
+    private void executeLoadCommand(String argument, String parameter) {
+        if (this.containerWarehouse.getIds().contains(argument) && parameter != null) {
+            this.containerWarehouse.getContainer(argument).unmarshal(parameter);
+        } else if (argument == null && parameter != null) {
+            this.containerWarehouse.getLastContainer().unmarshal(parameter);
+        } else {
+            System.err.println("Container " + argument + " does not exist or parameter is missing");
+        }
+    }
+
+    private void executeFormatCommand(String argument) {
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            this.containerWarehouse.getContainer(argument).getConfiguration()
+        } else if (argument == null) {
+            this.containerWarehouse.getLastContainer().setValidationRule();
+        } else {
+            System.err.println("Container " + argument + " does not exist");
+        }
+    }
+
+    private void executeFormatCommand() {
+        // Get the session factory
+        SessionFactory sessionFactory = DatabaseSchemaBuilder.getSessionFactory();
+
+        // // Open a session
+        // Session session = sessionFactory.openSession();
+        // Transaction transaction = null;
+
+        // try {
+        //     transaction = session.beginTransaction();
+
+        //     TACANPropertyType tacan = new TACANPropertyType();
+        //     tacan.setOwns(true);
+
+        //     session.persist(tacan);
+
+        //     transaction.commit();
+        // } catch (Exception e) {
+        //     if (transaction != null) {
+        //         transaction.rollback();
+        //     }
+        //     e.printStackTrace();
+        // } finally {
+        //     // Close the session
+        //     session.close();
+        // }
+
+        // Shutdown the session factory
+        DatabaseSchemaBuilder.shutdown();
+    }
+
+    private void executeShowCommand(String argument) {
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            this.containerWarehouse.getContainer(argument).show();
+        } else if (argument == null) {
+            this.containerWarehouse.getLastContainer().show();
+        } else {
+            System.err.println("Container " + argument + " does not exist or parameter is missing");
         }
     }
 }

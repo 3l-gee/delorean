@@ -15,16 +15,24 @@ import java.io.InputStream;
 import java.util.List;
 
 import javax.xml.validation.SchemaFactory;
+
+import org.hibernate.cfg.Configuration;
+
 import javax.xml.XMLConstants;
 import javax.xml.validation.Schema;
 
 public class Container {
+    // JAXB required fields
     private final JAXBContext context;
     private final Class<?> rootType;
     private AIXMBasicMessageType root;
     private Unmarshaller unmarshaller;
     private SchemaFactory schemaFactory;
     private Schema schema;
+    private Configuration configuration;
+    //Hibernate required fields
+
+
 
     public Container(JAXBContext context, Class<?> rootType, Schema schema) {
         this.rootType = rootType;
@@ -82,6 +90,15 @@ public class Container {
         return rootType;
     }
 
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public void setConfiguration(Configuration configuration) {
+        this.configuration = configuration;
+    }
+
+
     public void unmarshal(String path) {
         try {
             InputStream xmlStream = null;
@@ -111,39 +128,3 @@ public class Container {
         } 
     }
 }
-
-        // try {
-        //     // Create JAXB context
-        //     JAXBContext context = JAXBContext.newInstance(AIXMBasicMessageType.class);
-
-        //     // Create an Unmarshaller
-        //     Unmarshaller unmarshaller = context.createUnmarshaller();
-
-        //     // Load XML file into AIXMBasicMessageType instance using InputStream
-        //     InputStream xmlStream = null;
-
-        //     try {
-        //         xmlStream = new FileInputStream("C:\\Users\\rapha\\Documents\\project\\delorean\\data\\a5_1_1\\Donlon.xml");
-        //         // xmlStream = new FileInputStream("C:\\Users\\gerth\\source\\repos\\3l-gee\\delorean\\data\\a5_1_1\\Donlon.xml");
-        //         // Use the xmlStream here
-        //     } catch (Exception e) {
-        //         e.printStackTrace();
-        //     }
-
-        //     JAXBElement<AIXMBasicMessageType> rootElement = (JAXBElement<AIXMBasicMessageType>) unmarshaller.unmarshal(xmlStream);
-
-        //     // Get the AIXMBasicMessageType instance
-        //     AIXMBasicMessageType root = rootElement.getValue();
-
-        //     // Here you can use 'root' as needed
-        //     List<BasicMessageMemberAIXMPropertyType> list = root.getHasMember();
-
-        //     for (int i = 0; i < list.size(); i++) {
-        //         AbstractAIXMFeatureType item = (AbstractAIXMFeatureType) list.get(i).getAbstractAIXMFeature().getValue();
-        //         System.err.println(item.getIdentifier().getValue());
-        //     } 
-            
-        // } catch (Exception e) {
-        //         e.printStackTrace(); 
-        // }
-//     }
