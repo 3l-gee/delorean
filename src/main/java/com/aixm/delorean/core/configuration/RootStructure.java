@@ -3,14 +3,15 @@ package com.aixm.delorean.core.configuration;
 import javax.xml.XMLConstants;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-import javax.xml.transform.stream.StreamSource;
 import java.io.File;
-import java.io.InputStream;
-import java.net.URL;
 
-public enum SchemaVersion {
+public enum RootStructure {
     // TODO VERSION_5_1_1("5.1.1", "com.aixm.delorean.core.aixm.v511.message."),
-    AIXM_5_1_1("a5_1_1", "com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType", "src/main/resources/a5_1_1/AIXM_BasicMessage.xsd");
+    AIXM_5_1_1(
+        "a5_1_1", 
+        "com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType",
+        "src/main/resources/a5_1_1/AIXM_BasicMessage.xsd"
+        );
 
     private String version;
     private String root;
@@ -18,7 +19,7 @@ public enum SchemaVersion {
     private Schema schema;
     private SchemaFactory schemaFactory;
 
-    private SchemaVersion(String version, String root, String xsd) {
+    private RootStructure(String version, String root, String xsd) {
         this.version = version;
         this.root = root;
         this.xsd = xsd;
@@ -54,21 +55,8 @@ public enum SchemaVersion {
         }
     }
 
-    // private Schema loadSchema(String xsdPath) {
-    //     try (InputStream xsdStream = SchemaVersion.class.getResourceAsStream(xsdPath)) {
-    //         if (xsdStream == null) {
-    //             throw new IllegalArgumentException("Schema file not found in classpath: " + xsdPath);
-    //         }
-            
-    //         return this.schemaFactory.newSchema(new StreamSource(xsdStream));
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //         throw new RuntimeException("Failed to load schema: " + xsdPath, e);
-    //     }
-    // }
-
-    public static SchemaVersion fromString(String version) {
-        for (SchemaVersion schemaVersion : SchemaVersion.values()) {
+    public static RootStructure fromString(String version) {
+        for (RootStructure schemaVersion : RootStructure.values()) {
             if (schemaVersion.getVersion().equals(version)) {
                 return schemaVersion;
             }
