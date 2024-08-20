@@ -6,22 +6,19 @@ import javax.xml.validation.SchemaFactory;
 import java.io.File;
 
 public enum XMLConfig {
-    // TODO VERSION_5_1_1("5.1.1", "com.aixm.delorean.core.aixm.v511.message."),
+
     AIXM_5_1_1(
         "a5_1_1", 
-        "com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType",
         "src/main/resources/a5_1_1/AIXM_BasicMessage.xsd"
         );
 
-    private String version;
-    private String root;
-    private String xsd;
-    private Schema schema;
-    private SchemaFactory schemaFactory;
+    private final String version;
+    private final String xsd;
+    private final Schema schema;
+    private final SchemaFactory schemaFactory;
 
-    private XMLConfig(String version, String root, String xsd) {
+    private XMLConfig(String version, String xsd) {
         this.version = version;
-        this.root = root;
         this.xsd = xsd;
         this.schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         this.schema = loadSchema(xsd);
@@ -30,15 +27,7 @@ public enum XMLConfig {
     public String getVersion() {
         return version;
     }
-    
-    public String getRoot() {
-        return root;
-    }
-    
-    public String getXsd() {
-        return xsd;
-    }
-
+        
     public Schema getSchema() {
         return schema;
     }

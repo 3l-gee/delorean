@@ -4,123 +4,53 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.message.BasicMessageMemberAIXMPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureType;
 
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBElement;
-import jakarta.xml.bind.Unmarshaller;
-import jakarta.xml.bind.ValidationEvent;
-import jakarta.xml.bind.ValidationEventHandler;
-
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.List;
 
-import javax.xml.validation.SchemaFactory;
-
-import org.hibernate.cfg.Configuration;
-
-import javax.xml.XMLConstants;
-import javax.xml.validation.Schema;
-
 public class Container {
-    // JAXB required fields
-    private final JAXBContext context;
-    private final Class<?> rootType;
-    private AIXMBasicMessageType root;
-    private Unmarshaller unmarshaller;
-    private SchemaFactory schemaFactory;
-    private Schema schema;
-    private Configuration configuration;
-    //Hibernate required fields
+    private final Class<?> structure;
+    private XMLBinding xmlBinding;
+    private DBBinding dbBinding;
+    private AIXMBasicMessageType record;
 
+    public Container(Class<?> structure) {
+        this.structure = structure;
+    }
 
+    public Class<?> getStructure() {
+        return this.structure;
+    }
 
-    public Container(JAXBContext context, Class<?> rootType, Schema schema) {
-        this.rootType = rootType;
-        this.context = context; 
-        this.schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        try {
-            this.schema = schema;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            this.unmarshaller = this.context.createUnmarshaller();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void setXmlBinding(XMLBinding xmlBinding) {
+        this.xmlBinding = xmlBinding;
+    }
+
+    public void setDbBiding(DBBinding dbBinding) {
+        this.dbBinding = dbBinding;
     }
 
     public void setValidationRule() {
-        try {
-            this.unmarshaller.setSchema(this.schema);
-            this.unmarshaller.setEventHandler(new ValidationEventHandler() {
-                public boolean handleEvent(ValidationEvent event) {
-                    System.out.println("\nEVENT");
-                    System.out.println("SEVERITY:  " + event.getSeverity());
-                    System.out.println("MESSAGE:  " + event.getMessage());
-                    System.out.println("LINKED EXCEPTION:  " + event.getLinkedException());
-                    System.out.println("LOCATOR");
-                    System.out.println("    LINE NUMBER:  " + event.getLocator().getLineNumber());
-                    System.out.println("    COLUMN NUMBER:  " + event.getLocator().getColumnNumber());
-                    System.out.println("    OFFSET:  " + event.getLocator().getOffset());
-                    System.out.println("    OBJECT:  " + event.getLocator().getObject());
-                    System.out.println("    NODE:  " + event.getLocator().getNode());
-                    System.out.println("    URL:  " + event.getLocator().getURL());
-                    return true;
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (this.xmlBinding == null) {
+            throw new RuntimeException("XMLBinding is not set");
         }
+        this.xmlBinding.setValidationRule();
     }
-
-    public void setRoot(AIXMBasicMessageType root) {
-        this.root = root;
-    }
-
-    public Object getRoot() {
-        return root;
-    }
-
-    public JAXBContext getContext() {
-        return context;
-    }
-
-    public Class<?> getTypes() {
-        return rootType;
-    }
-
-    public Configuration getConfiguration() {
-        return configuration;
-    }
-
-    public void setConfiguration(Configuration configuration) {
-        this.configuration = configuration;
-    }
-
 
     public void unmarshal(String path) {
-        try {
-            InputStream xmlStream = null;
-
-            try { 
-                xmlStream = new FileInputStream(path);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            
-            // TODO this must become dynamic
-            JAXBElement<AIXMBasicMessageType> rootElement = (JAXBElement<AIXMBasicMessageType>) this.unmarshaller.unmarshal(xmlStream);
-            this.root = rootElement.getValue();
-            
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (this.xmlBinding == null) {
+            throw new RuntimeException("XMLBinding is not set");
         }
+        this.record = this.xmlBinding.unmarshal(path);
+    }
+
+    public void marshal(String path) {
+        if (this.xmlBinding == null) {
+            throw new RuntimeException("XMLBinding is not set");
+        }
+        this.xmlBinding.marshal(this.record, path);
     }
 
     public void show() {
-        List<BasicMessageMemberAIXMPropertyType> list = root.getHasMember();
+        List<BasicMessageMemberAIXMPropertyType> list = record.getHasMember();
 
         for (int i = 0; i < list.size(); i++) {
                 AbstractAIXMFeatureType item = (AbstractAIXMFeatureType) list.get(i).getAbstractAIXMFeature().getValue();

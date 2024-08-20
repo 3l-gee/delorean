@@ -25,8 +25,8 @@ public enum DatabaseConfig {
     private final boolean showSql;
     private final String hbm2ddlAuto;
     private final Class<?>[] mappingClasses;
+    private final Configuration configuration;
 
-    // Enum constructor
     DatabaseConfig(String version, String url, String username, String password, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String hbm2ddlAuto, Class<?>[] mappingClasses) {
         this.version = version;
         this.url = url;
@@ -37,10 +37,15 @@ public enum DatabaseConfig {
         this.showSql = showSql;
         this.hbm2ddlAuto = hbm2ddlAuto;
         this.mappingClasses = mappingClasses;
+        this.configuration = getHibernateConfiguration();
     }
 
     public String getVersion() {
         return version;
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
     }
 
     // Method to get a pre-configured Hibernate Configuration object

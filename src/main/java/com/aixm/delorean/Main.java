@@ -1,9 +1,12 @@
 package com.aixm.delorean;
 
-import com.aixm.delorean.core.configuration.RootStructure;
-import com.aixm.delorean.core.configuration.DatabaseSchema;
+import com.aixm.delorean.core.configuration.XMLConfig;
+import com.aixm.delorean.core.configuration.StructureConfig;
+import com.aixm.delorean.core.configuration.DatabaseConfig;
 import com.aixm.delorean.core.container.ContainerFactory;
 import com.aixm.delorean.core.container.ContainerWarehouse;
+import com.aixm.delorean.core.container.XMLBinding;
+import com.aixm.delorean.core.container.DBBinding;
 import com.aixm.delorean.core.database.DatabaseSchemaBuilder;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.TACANPropertyType;
 
@@ -66,7 +69,11 @@ public class Main {
 
         switch (action.toLowerCase()) {
             case "new":
-                executeNewCommand(argument, parameter);
+                executeNewCommand(argument);
+                break;
+
+            case "xml_config":
+                excuteXmlConfigurationCommand(argument, parameter);
                 break;
 
             // case "validation_config":
@@ -77,13 +84,17 @@ public class Main {
             //     executeValidationCommand(argument);
             //     break;
 
-            // case "list":
-            //     executeListCommand();
-            //     break;
+            case "list":
+                executeListCommand();
+                break;
 
-            // case "load":
-            //     executeLoadCommand(argument, parameter);
-            //     break;
+            case "load":
+                executeLoadCommand(argument, parameter);
+                break;
+
+            case "export":
+                executeExportCommand(argument, parameter);
+                break;
 
             // case "format":
             //     executeFormatCommand();
@@ -95,7 +106,22 @@ public class Main {
         }
     }
 
-    private void executeNewCommand(String argument, String parameter) {
+    private void executeNewCommand(String argument) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+        
+        try {
+            StructureConfig Structure = StructureConfig.fromString(argument);
+            this.containerWarehouse.addContainer(ContainerFactory.createContainer(Structure));
+            System.out.println(this.containerWarehouse.getLastContainerId() + " created");
+
+        } catch (IllegalArgumentException e) {
+            System.err.println("Invalid argument: " + e.getMessage());
+        }
+    }
+
+    private void excuteXmlConfigurationCommand(String argument, String parameter) {
         if (argument == null) {
             throw new IllegalArgumentException("Argument is null");
         }
@@ -103,29 +129,25 @@ public class Main {
         if (parameter == null) {
             throw new IllegalArgumentException("parameter is null");
         }
-        
-        try {
-            RootStructure Structure = RootStructure.fromString(argument);
-            this.containerWarehouse.addContainer(ContainerFactory.createContainer(Structure));
-            System.out.println(this.containerWarehouse.getLastContainerId() + " created");
 
-        } catch (IllegalArgumentException e) {
-            System.err.println("Invalid argument: " + e.getMessage());
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            XMLConfig xmlConfig = XMLConfig.fromString(parameter);
+            XMLBinding xmlBinding = new XMLBinding(xmlConfig, this.containerWarehouse.getContainer(argument).getStructure());
+            this.containerWarehouse.getContainer(argument).setXmlBinding(xmlBinding);
+        } else {
+            System.err.println("Container " + argument + " does not exist or parameter is missing");
         }
 
-        try {
-            Configuration configuration = DatabaseSchema.fromString(parameter);
-            this.containerWarehouse.getLastContainer().setConfiguration(configuration);
-        } catch (IllegalArgumentException e) {
-            System.err.println("Invalid argument: " + e.getMessage());
-        }
+
     }
 
     private void executeValidationCommand(String argument) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+
         if (this.containerWarehouse.getIds().contains(argument)) {
             this.containerWarehouse.getContainer(argument).setValidationRule();
-        } else if (argument == null) {
-            this.containerWarehouse.getLastContainer().setValidationRule();
         } else {
             System.err.println("Container " + argument + " does not exist");
         }
@@ -139,24 +161,37 @@ public class Main {
     }
 
     private void executeLoadCommand(String argument, String parameter) {
-        if (this.containerWarehouse.getIds().contains(argument) && parameter != null) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+
+        if (parameter == null) {
+            throw new IllegalArgumentException("parameter is null");
+        }
+
+        if (this.containerWarehouse.getIds().contains(argument)) {
             this.containerWarehouse.getContainer(argument).unmarshal(parameter);
-        } else if (argument == null && parameter != null) {
-            this.containerWarehouse.getLastContainer().unmarshal(parameter);
         } else {
             System.err.println("Container " + argument + " does not exist or parameter is missing");
         }
     }
 
-    private void executeFormatCommand(String argument) {
+    private void executeExportCommand(String argument, String parameter) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+
+        if (parameter == null) {
+            throw new IllegalArgumentException("parameter is null");
+        }
+
         if (this.containerWarehouse.getIds().contains(argument)) {
-            this.containerWarehouse.getContainer(argument).getConfiguration()
-        } else if (argument == null) {
-            this.containerWarehouse.getLastContainer().setValidationRule();
+            this.containerWarehouse.getContainer(argument).marshal(parameter);
         } else {
-            System.err.println("Container " + argument + " does not exist");
+            System.err.println("Container " + argument + " does not exist or parameter is missing");
         }
     }
+
 
     private void executeFormatCommand() {
         // Get the session factory
