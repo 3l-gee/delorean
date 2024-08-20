@@ -5,7 +5,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.File;
 
-public enum RootStructure {
+public enum XMLConfig {
     // TODO VERSION_5_1_1("5.1.1", "com.aixm.delorean.core.aixm.v511.message."),
     AIXM_5_1_1(
         "a5_1_1", 
@@ -19,7 +19,7 @@ public enum RootStructure {
     private Schema schema;
     private SchemaFactory schemaFactory;
 
-    private RootStructure(String version, String root, String xsd) {
+    private XMLConfig(String version, String root, String xsd) {
         this.version = version;
         this.root = root;
         this.xsd = xsd;
@@ -55,8 +55,8 @@ public enum RootStructure {
         }
     }
 
-    public static RootStructure fromString(String version) {
-        for (RootStructure schemaVersion : RootStructure.values()) {
+    public static XMLConfig fromString(String version) {
+        for (XMLConfig schemaVersion : XMLConfig.values()) {
             if (schemaVersion.getVersion().equals(version)) {
                 return schemaVersion;
             }
