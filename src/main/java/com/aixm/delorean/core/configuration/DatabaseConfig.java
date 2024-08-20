@@ -2,7 +2,7 @@ package com.aixm.delorean.core.configuration;
 
 import org.hibernate.cfg.Configuration;
 
-public enum DatabaseSchema {
+public enum DatabaseConfig {
 
     AIXM_5_1_1(
         "a5_1_1",                                    // version
@@ -27,7 +27,7 @@ public enum DatabaseSchema {
     private final Class<?>[] mappingClasses;
 
     // Enum constructor
-    DatabaseSchema(String version, String url, String username, String password, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String hbm2ddlAuto, Class<?>[] mappingClasses) {
+    DatabaseConfig(String version, String url, String username, String password, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String hbm2ddlAuto, Class<?>[] mappingClasses) {
         this.version = version;
         this.url = url;
         this.username = username;
@@ -70,7 +70,7 @@ public enum DatabaseSchema {
     }
 
     public static Configuration fromString(String version) {
-        for (DatabaseSchema Schema : DatabaseSchema.values()) {
+        for (DatabaseConfig Schema : DatabaseConfig.values()) {
             if (Schema.getVersion().equals(version)) {
                 return Schema.getHibernateConfiguration();
             }

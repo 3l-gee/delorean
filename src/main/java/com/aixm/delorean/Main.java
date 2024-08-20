@@ -69,29 +69,29 @@ public class Main {
                 executeNewCommand(argument, parameter);
                 break;
 
-            case "validation_config":
-                executeValidationCommand(argument);
-                break;
+            // case "validation_config":
+            //     executeValidationCommand(argument);
+            //     break;
 
-            case "database_config":
-                executeValidationCommand(argument);
-                break;
+            // case "database_config":
+            //     executeValidationCommand(argument);
+            //     break;
 
-            case "list":
-                executeListCommand();
-                break;
+            // case "list":
+            //     executeListCommand();
+            //     break;
 
-            case "load":
-                executeLoadCommand(argument, parameter);
-                break;
+            // case "load":
+            //     executeLoadCommand(argument, parameter);
+            //     break;
 
-            case "format":
-                executeFormatCommand();
-                break;
+            // case "format":
+            //     executeFormatCommand();
+            //     break;
 
-            case "show":
-                executeShowCommand(argument);
-                break;
+            // case "show":
+            //     executeShowCommand(argument);
+            //     break;
         }
     }
 
