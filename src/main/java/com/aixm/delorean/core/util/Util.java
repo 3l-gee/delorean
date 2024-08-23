@@ -13,4 +13,6 @@ public final class Util {
     public static String generateShortId() {
         return UUID.randomUUID().toString().substring(0, 6);
     }
+
+    //Input : "{"url":"jdbc:postgresql://localhost:5432/delorean", "username":"postgres", "password":"postgres"}"
 }

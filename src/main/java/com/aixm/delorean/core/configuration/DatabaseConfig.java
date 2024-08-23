@@ -2,6 +2,8 @@ package com.aixm.delorean.core.configuration;
 
 import org.hibernate.cfg.Configuration;
 
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.Boolean;
+
 public enum DatabaseConfig {
 
     AIXM_5_1_1(
