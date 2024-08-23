@@ -75,31 +75,19 @@ public class Main {
                 excuteXmlConfigurationCommand(argument, parameter);
                 break;
 
+            case "xml" :
+                executeXmlActionCommand(argument, parameter, option);
+
             case "db_config":
                 executeDbConfigurationCommand(argument,parameter, option);
                 break;
 
             case "db" :
                 executeDbActionCommand(argument,parameter, option);
-
-            // case "validation_config":
-            //     executeValidationCommand(argument);
-            //     break;
-
-            // case "database_config":
-            //     executeValidationCommand(argument);
-            //     break;
+                break;
 
             case "list":
                 executeListCommand();
-                break;
-
-            case "load":
-                executeLoadCommand(argument, parameter);
-                break;
-
-            case "export":
-                executeExportCommand(argument, parameter);
                 break;
 
             // case "format":
@@ -144,6 +132,31 @@ public class Main {
             this.containerWarehouse.getContainer(argument).setXmlBinding(xmlBinding);
         } else {
             System.err.println("Container " + argument + " does not exist or parameter is missing");
+        }
+    }
+
+    private void executeXmlActionCommand(String argument, String parameter, String option){
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+
+        if (parameter == null) {
+            throw new IllegalArgumentException("parameter is null");
+        }
+
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            switch (parameter.toLowerCase()) {
+                case "laod":
+                    this.containerWarehouse.getContainer(argument).unmarshal(option);
+                    break;
+
+                case "export":
+                    this.containerWarehouse.getContainer(argument).marshal(option);
+                    break;
+            
+                default:
+                    break;
+            }
         }
     }
 
@@ -207,75 +220,9 @@ public class Main {
         }
     }
 
-    private void executeDatabaseCommand(String argument, String parameter, String option) {
-    }
 
     private void executeListCommand() {
         System.out.println(this.containerWarehouse.getIds());
-    }
-
-    private void executeLoadCommand(String argument, String parameter) {
-        if (argument == null) {
-            throw new IllegalArgumentException("Argument is null");
-        }
-
-        if (parameter == null) {
-            throw new IllegalArgumentException("parameter is null");
-        }
-
-        if (this.containerWarehouse.getIds().contains(argument)) {
-            this.containerWarehouse.getContainer(argument).unmarshal(parameter);
-        } else {
-            System.err.println("Container " + argument + " does not exist or parameter is missing");
-        }
-    }
-
-    private void executeExportCommand(String argument, String parameter) {
-        if (argument == null) {
-            throw new IllegalArgumentException("Argument is null");
-        }
-
-        if (parameter == null) {
-            throw new IllegalArgumentException("parameter is null");
-        }
-
-        if (this.containerWarehouse.getIds().contains(argument)) {
-            this.containerWarehouse.getContainer(argument).marshal(parameter);
-        } else {
-            System.err.println("Container " + argument + " does not exist or parameter is missing");
-        }
-    }
-
-
-    private void executeFormatCommand() {
-        // Get the session factory
-        SessionFactory sessionFactory = DatabaseSchemaBuilder.getSessionFactory();
-
-        // // Open a session
-        // Session session = sessionFactory.openSession();
-        // Transaction transaction = null;
-
-        // try {
-        //     transaction = session.beginTransaction();
-
-        //     TACANPropertyType tacan = new TACANPropertyType();
-        //     tacan.setOwns(true);
-
-        //     session.persist(tacan);
-
-        //     transaction.commit();
-        // } catch (Exception e) {
-        //     if (transaction != null) {
-        //         transaction.rollback();
-        //     }
-        //     e.printStackTrace();
-        // } finally {
-        //     // Close the session
-        //     session.close();
-        // }
-
-        // Shutdown the session factory
-        DatabaseSchemaBuilder.shutdown();
     }
 
     private void executeShowCommand(String argument) {
@@ -288,40 +235,3 @@ public class Main {
         }
     }
 }
-
-        // try {
-        //     // Create JAXB context
-        //     JAXBContext context = JAXBContext.newInstance(AIXMBasicMessageType.class);
-
-        //     // Create an Unmarshaller
-        //     Unmarshaller unmarshaller = context.createUnmarshaller();
-
-        //     // Load XML file into AIXMBasicMessageType instance using InputStream
-        //     InputStream xmlStream = null;
-
-        //     try {
-        //         xmlStream = new FileInputStream("C:\\Users\\rapha\\Documents\\project\\delorean\\data\\a5_1_1\\Donlon.xml");
-        //         // xmlStream = new FileInputStream("C:\\Users\\gerth\\source\\repos\\3l-gee\\delorean\\data\\a5_1_1\\Donlon.xml");
-        //         // Use the xmlStream here
-        //     } catch (Exception e) {
-        //         e.printStackTrace();
-        //     }
-
-        //     JAXBElement<AIXMBasicMessageType> rootElement = (JAXBElement<AIXMBasicMessageType>) unmarshaller.unmarshal(xmlStream);
-
-        //     // Get the AIXMBasicMessageType instance
-        //     AIXMBasicMessageType root = rootElement.getValue();
-
-        //     // Here you can use 'root' as needed
-        //     List<BasicMessageMemberAIXMPropertyType> list = root.getHasMember();
-
-        //     for (int i = 0; i < list.size(); i++) {
-        //         AbstractAIXMFeatureType item = (AbstractAIXMFeatureType) list.get(i).getAbstractAIXMFeature().getValue();
-        //         System.err.println(item.getIdentifier().getValue());
-        //     } 
-            
-        // } catch (Exception e) {
-        //         e.printStackTrace(); 
-        // }
-//     }
-// }
