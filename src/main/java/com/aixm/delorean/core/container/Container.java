@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Container {
     private final Class<?> structure;
-    private XMLBinding xmlBinding;
-    private DBBinding dbBinding;
+    public XMLBinding xmlBinding;
+    public DatabaseBinding databaseBinding;
     private AIXMBasicMessageType record;
 
     public Container(Class<?> structure) {
@@ -24,8 +24,8 @@ public class Container {
         this.xmlBinding = xmlBinding;
     }
 
-    public void setDbBiding(DBBinding dbBinding) {
-        this.dbBinding = dbBinding;
+    public void setDbBiding(DatabaseBinding databaseBinding) {
+        this.databaseBinding = databaseBinding;
     }
 
     public void setValidationRule() {

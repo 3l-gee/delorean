@@ -3,19 +3,18 @@ package com.aixm.delorean;
 import com.aixm.delorean.core.configuration.XMLConfig;
 import com.aixm.delorean.core.configuration.StructureConfig;
 import com.aixm.delorean.core.configuration.DatabaseConfig;
+
 import com.aixm.delorean.core.container.ContainerFactory;
 import com.aixm.delorean.core.container.ContainerWarehouse;
+
 import com.aixm.delorean.core.container.XMLBinding;
-import com.aixm.delorean.core.container.DBBinding;
+import com.aixm.delorean.core.container.DatabaseBinding;
+
 import com.aixm.delorean.core.database.DatabaseSchemaBuilder;
-import com.aixm.delorean.core.schema.a5_1_1.aixm.TACANPropertyType;
 
 import java.util.Scanner;
-import java.util.Arrays;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class Main {
@@ -76,6 +75,13 @@ public class Main {
                 excuteXmlConfigurationCommand(argument, parameter);
                 break;
 
+            case "db_config":
+                executeDbConfigurationCommand(argument,parameter, option);
+                break;
+
+            case "db" :
+                executeDbActionCommand(argument,parameter, option);
+
             // case "validation_config":
             //     executeValidationCommand(argument);
             //     break;
@@ -103,6 +109,8 @@ public class Main {
             // case "show":
             //     executeShowCommand(argument);
             //     break;
+            default:
+                break;
         }
     }
 
@@ -137,8 +145,54 @@ public class Main {
         } else {
             System.err.println("Container " + argument + " does not exist or parameter is missing");
         }
+    }
 
+    private void executeDbConfigurationCommand(String argument, String parameter, String option){
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
 
+        if (parameter == null) {
+            throw new IllegalArgumentException("parameter is null");
+        }
+
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            Configuration databaseConfiguration = DatabaseConfig.fromString(parameter);
+            String url = "jdbc:postgresql://localhost:5432/delorean";
+            String username = "postgres";
+            String password = "postgres";
+            DatabaseBinding dbBinding = new DatabaseBinding(databaseConfiguration, url, username, password);
+            this.containerWarehouse.getContainer(argument).setDbBiding(dbBinding);
+        } else {
+            System.err.println("Container " + argument + " does not exist or parameter is missing");
+        }
+    }
+
+    private void executeDbActionCommand(String argument, String parameter, String option) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+
+        if (parameter == null) {
+            throw new IllegalArgumentException("parameter is null");
+        }
+
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            switch (parameter.toLowerCase()) {
+                case "startup":
+                    this.containerWarehouse.getContainer(argument).databaseBinding.startup();
+                    break;
+                
+                case "shutdown":
+                    this.containerWarehouse.getContainer(argument).databaseBinding.shutdown();
+                    break;
+
+                default:
+                    break;
+            }
+        } else {
+            System.err.println("Container " + argument + " does not exist or parameter is missing");
+        }
     }
 
     private void executeValidationCommand(String argument) {
