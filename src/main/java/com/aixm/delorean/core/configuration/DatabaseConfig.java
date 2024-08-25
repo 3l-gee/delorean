@@ -85,5 +85,9 @@ public enum DatabaseConfig {
         throw new IllegalArgumentException("Unsupported schema version: " + version);
     }
 
+    public static Class<?>[] getMappedClasses() {
+        return mappingClasses;
+    }
+
 
 }

@@ -5,6 +5,7 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.message.BasicMessageMemberAIXMP
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureType;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Container {
     private final Class<?> structure;
@@ -56,5 +57,16 @@ public class Container {
                 AbstractAIXMFeatureType item = (AbstractAIXMFeatureType) list.get(i).getAbstractAIXMFeature().getValue();
                 System.out.println(item.getIdentifier().getValue());
         } 
+    }
+
+    public List<AbstractAIXMFeatureType> getDbLoadReady() {
+        List<BasicMessageMemberAIXMPropertyType> list = record.getHasMember();
+        List<AbstractAIXMFeatureType> res = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+                AbstractAIXMFeatureType item = (AbstractAIXMFeatureType) list.get(i).getAbstractAIXMFeature().getValue();
+        } 
+
+        return res;
     }
 }

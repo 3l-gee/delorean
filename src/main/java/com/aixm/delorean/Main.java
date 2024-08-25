@@ -16,6 +16,7 @@ import java.util.Scanner;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.mapping.List;
 
 public class Main {
     ContainerWarehouse containerWarehouse = new ContainerWarehouse();
@@ -77,6 +78,7 @@ public class Main {
 
             case "xml" :
                 executeXmlActionCommand(argument, parameter, option);
+                break;
 
             case "db_config":
                 executeDbConfigurationCommand(argument,parameter, option);
@@ -89,6 +91,7 @@ public class Main {
             case "list":
                 executeListCommand();
                 break;
+            
 
             // case "format":
             //     executeFormatCommand();
@@ -199,6 +202,13 @@ public class Main {
                 case "shutdown":
                     this.containerWarehouse.getContainer(argument).databaseBinding.shutdown();
                     break;
+
+                case "laod":
+                    this.containerWarehouse.getContainer(argument).databaseBinding.load(this.containerWarehouse.getContainer(argument).getDbLoadReady());
+                    break; 
+                    
+                case "export" : 
+
 
                 default:
                     break;
