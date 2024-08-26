@@ -4,6 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.validator.constraints.URL;
+
+import com.aixm.delorean.core.configuration.DatabaseConfig;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -17,13 +20,25 @@ import java.util.ArrayList;
 public class DatabaseBinding {
     private SessionFactory sessionFactory;
     private Configuration configuration;
+    private DatabaseConfig databaseConfig;
 
-    public DatabaseBinding(Configuration configuration, String url, String username, String password){
-        configuration.setProperty("hibernate.connection.username", username);
-        configuration.setProperty("hibernate.connection.password", password);
-        configuration.setProperty("hibernate.connection.url", url);
+    public DatabaseBinding(DatabaseConfig databaseConfig){
+        this.databaseConfig = databaseConfig;
+        Configuration configuration = databaseConfig.getConfiguration();
         this.configuration = configuration;
         this.sessionFactory = null;
+    }
+
+    public void setUrl(String url){
+        this.configuration.setProperty("hibernate.connection.url", url);
+    }
+
+    public void setUsername(String username){
+        this.configuration.setProperty("hibernate.connection.username", username);
+    }
+
+    public void setPassword(String password){
+        this.configuration.setProperty("hibernate.connection.password", password);
     }
 
     public void startup() {
@@ -74,7 +89,7 @@ public class DatabaseBinding {
 
     private boolean isMappedClass(Object object){
         Class<?> clazz = object.getClass();
-        Class<?>[] metamodel = this.configuration.getMappedClasses();
+        Class<?>[] metamodel = this.configuration.();
 
         for (Class<?> mappedClass : databaseConfig.getMappedClasses()) {
             if (mappedClass.equals(clazz)) {
