@@ -47,7 +47,11 @@ public enum DatabaseConfig {
     }
 
     public Configuration getConfiguration() {
-        return configuration;
+        return configuration;  
+    }
+
+    public Class<?>[] getMappedClasses() {
+        return mappingClasses;
     }
 
     // Method to get a pre-configured Hibernate Configuration object
@@ -76,18 +80,12 @@ public enum DatabaseConfig {
         return configuration;
     }
 
-    public static Configuration fromString(String version) {
+    public static DatabaseConfig fromString(String version) {
         for (DatabaseConfig Schema : DatabaseConfig.values()) {
             if (Schema.getVersion().equals(version)) {
-                return Schema.getHibernateConfiguration();
+                return Schema;
             }
         }
         throw new IllegalArgumentException("Unsupported schema version: " + version);
     }
-
-    public static Class<?>[] getMappedClasses() {
-        return mappingClasses;
-    }
-
-
 }

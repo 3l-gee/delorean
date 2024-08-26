@@ -173,12 +173,15 @@ public class Main {
         }
 
         if (this.containerWarehouse.getIds().contains(argument)) {
-            Configuration databaseConfiguration = DatabaseConfig.fromString(parameter);
+            DatabaseConfig databaseConfiguration = DatabaseConfig.fromString(parameter);
             String url = "jdbc:postgresql://localhost:5432/delorean";
             String username = "postgres";
             String password = "postgres";
-            DatabaseBinding dbBinding = new DatabaseBinding(databaseConfiguration, url, username, password);
+            DatabaseBinding dbBinding = new DatabaseBinding(databaseConfiguration);
             this.containerWarehouse.getContainer(argument).setDbBiding(dbBinding);
+            this.containerWarehouse.getContainer(argument).databaseBinding.setUrl(url);
+            this.containerWarehouse.getContainer(argument).databaseBinding.setUsername(username);
+            this.containerWarehouse.getContainer(argument).databaseBinding.setPassword(password);
         } else {
             System.err.println("Container " + argument + " does not exist or parameter is missing");
         }
