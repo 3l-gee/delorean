@@ -149,7 +149,7 @@ public class Main {
 
         if (this.containerWarehouse.getIds().contains(argument)) {
             switch (parameter.toLowerCase()) {
-                case "laod":
+                case "load":
                     this.containerWarehouse.getContainer(argument).unmarshal(option);
                     break;
 
@@ -206,7 +206,7 @@ public class Main {
                     this.containerWarehouse.getContainer(argument).databaseBinding.shutdown();
                     break;
 
-                case "laod":
+                case "load":
                     this.containerWarehouse.getContainer(argument).databaseBinding.load(this.containerWarehouse.getContainer(argument).getDbLoadReady());
                     break; 
                     
