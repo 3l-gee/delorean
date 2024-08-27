@@ -4,6 +4,9 @@ import org.hibernate.cfg.Configuration;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.Boolean;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum DatabaseConfig {
 
     AIXM_5_1_1(
@@ -50,8 +53,8 @@ public enum DatabaseConfig {
         return configuration;  
     }
 
-    public Class<?>[] getMappedClasses() {
-        return mappingClasses;
+    public List<Class<?>> getMappedClasses() {
+        return Arrays.asList(mappingClasses);
     }
 
     // Method to get a pre-configured Hibernate Configuration object
