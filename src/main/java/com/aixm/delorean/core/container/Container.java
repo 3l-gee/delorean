@@ -65,7 +65,8 @@ public class Container {
 
         for (int i = 0; i < list.size(); i++) {
                 AbstractAIXMFeatureType item = (AbstractAIXMFeatureType) list.get(i).getAbstractAIXMFeature().getValue();
-        } 
+                res.add(item);
+            }      
 
         return res;
     }

@@ -89,9 +89,8 @@ public class DatabaseBinding {
 
     private boolean isMappedClass(Object object){
         Class<?> clazz = object.getClass();
-        Class<?>[] metamodel = this.configuration.();
 
-        for (Class<?> mappedClass : databaseConfig.getMappedClasses()) {
+        for (Class<?> mappedClass : this.databaseConfig.getMappedClasses()) {
             if (mappedClass.equals(clazz)) {
                 return true;
             }
