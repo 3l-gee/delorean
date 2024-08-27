@@ -59,7 +59,7 @@ public class Container {
         } 
     }
 
-    public List<AbstractAIXMFeatureType> getDbLoadReady() {
+    public List<?> getDbLoadReady() {
         List<BasicMessageMemberAIXMPropertyType> list = record.getHasMember();
         List<AbstractAIXMFeatureType> res = new ArrayList<>();
 

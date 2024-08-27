@@ -54,7 +54,7 @@ public class DatabaseBinding {
         this.sessionFactory.close();
     }
 
-    public void load(Object... objects){
+    public void load(List<?> objects){
         if (this.sessionFactory == null){
             throw new IllegalArgumentException("sessionfactory is not init");
         }
@@ -88,14 +88,13 @@ public class DatabaseBinding {
     }
 
     private boolean isMappedClass(Object object){
-        Class<?> clazz = object.getClass();
-
-        for (Class<?> mappedClass : this.databaseConfig.getMappedClasses()) {
-            if (mappedClass.equals(clazz)) {
-                return true;
-            }
+        System.err.println(object.getClass());   
+        if (this.databaseConfig.getMappedClasses().contains(object.getClass())){
+            System.err.println("true");
+            return true;
         }
 
+        System.err.println("false");
         return false;
     }
 }
