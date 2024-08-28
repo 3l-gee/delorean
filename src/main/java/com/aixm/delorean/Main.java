@@ -160,6 +160,8 @@ public class Main {
                 default:
                     break;
             }
+        } else {
+            System.err.println("Container " + argument + " does not exist or parameter is missing");
         }
     }
 
@@ -210,9 +212,6 @@ public class Main {
                     this.containerWarehouse.getContainer(argument).databaseBinding.load(this.containerWarehouse.getContainer(argument).getDbLoadReady());
                     break; 
                     
-                case "export" : 
-
-
                 default:
                     break;
             }

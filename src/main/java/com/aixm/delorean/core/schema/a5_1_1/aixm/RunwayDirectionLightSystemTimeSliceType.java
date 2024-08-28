@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -73,15 +75,23 @@ public class RunwayDirectionLightSystemTimeSliceType
     @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRunwaySectionType> position;
     @XmlElementRef(name = "associatedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayDirectionPropertyType> associatedRunwayDirection;
+    @Valid
+    @Size(min = 0)
     protected List<RunwayDirectionLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -362,8 +372,10 @@ public class RunwayDirectionLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayDirectionLightSystemExtension")
+        @Valid
         protected AbstractExtensionType abstractRunwayDirectionLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
+        @Valid
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -63,25 +64,35 @@ public class MovingObjectStatusType
     extends AbstractTimeSliceType
 {
 
+    @Valid
     protected GeometryPropertyType position;
+    @Valid
     protected DirectPositionType pos;
     /**
      * The gml:locationName property element is a convenience property where the text value describes the location of the feature. If the location names are selected from a controlled list, then the list shall be identified in the codeSpace attribute.
      * 
      */
+    @Valid
     protected CodeType locationName;
     /**
      * The gml:locationReference property element is a convenience property where the text value referenced by the xlink:href attribute describes the location of the feature.
      * 
      */
+    @Valid
     protected ReferenceType locationReference;
     @XmlElementRef(name = "location", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends LocationPropertyType> location;
+    @Valid
     protected MeasureType speed;
+    @Valid
     protected DirectionPropertyType bearing;
+    @Valid
     protected MeasureType acceleration;
+    @Valid
     protected MeasureType elevation;
+    @Valid
     protected StringOrRefType status;
+    @Valid
     protected ReferenceType statusReference;
 
     /**

@@ -13,6 +13,8 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RealPropertyType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -57,11 +59,19 @@ public class MDMediumType
     extends AbstractObjectType
 {
 
+    @Valid
     protected MDMediumNameCodePropertyType name;
+    @Valid
+    @Size(min = 0)
     protected List<RealPropertyType> density;
+    @Valid
     protected CharacterStringPropertyType densityUnits;
+    @Valid
     protected IntegerPropertyType volumes;
+    @Valid
+    @Size(min = 0)
     protected List<MDMediumFormatCodePropertyType> mediumFormat;
+    @Valid
     protected CharacterStringPropertyType mediumNote;
 
     /**

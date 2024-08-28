@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -38,6 +39,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class DateMonthDayType {
 
     @XmlValue
+    @Pattern(regexp = "(((0[1-9])|(1[0-9])|(2[0-9]))\\-((0[1-9])|10|11|12))|(30\\-(01|03|04|05|06|07|08|09|10|11|12))|(31\\-(01|03|05|07|08|10|12))|SDLST|EDLST")
     protected String value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;

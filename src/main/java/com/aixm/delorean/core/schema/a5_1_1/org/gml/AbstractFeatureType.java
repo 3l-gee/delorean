@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -62,6 +64,7 @@ public abstract class AbstractFeatureType
      * 
      */
     @XmlElement(nillable = true)
+    @Valid
     protected BoundingShapeType boundedBy;
     @XmlElementRef(name = "location", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends LocationPropertyType> location;

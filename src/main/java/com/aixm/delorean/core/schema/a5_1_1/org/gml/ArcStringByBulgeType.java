@@ -10,6 +10,9 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -73,11 +76,19 @@ public class ArcStringByBulgeType
         @XmlElementRef(name = "pointRep", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> posOrPointPropertyOrPointRep;
+    @Valid
     protected DirectPositionListType posList;
+    @Valid
     protected CoordinatesType coordinates;
     @XmlElement(type = Double.class)
+    @NotNull
+    @Valid
+    @Size(min = 1)
     protected List<Double> bulge;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
+    @Size(min = 1)
     protected List<VectorType> normal;
     @XmlAttribute(name = "interpolation")
     public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CIRCULAR_ARC_2_POINT_WITH_BULGE;

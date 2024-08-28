@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -109,11 +112,17 @@ public class TerminalArrivalAreaTimeSliceType
     @XmlElementRef(name = "buffer", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfacePropertyType> buffer;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<TerminalArrivalAreaSectorPropertyType> sector;
     @XmlElementRef(name = "approachRNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<InstrumentApproachProcedurePropertyType> approachRNAV;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<TerminalArrivalAreaTimeSliceType.Extension> extension;
 
     /**
@@ -648,6 +657,8 @@ public class TerminalArrivalAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTerminalArrivalAreaExtension", required = true)
+        @NotNull
+        @Valid
         protected AbstractExtensionType abstractTerminalArrivalAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

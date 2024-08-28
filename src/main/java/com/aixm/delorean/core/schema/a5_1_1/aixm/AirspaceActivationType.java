@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,21 +70,35 @@ public class AirspaceActivationType
 {
 
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "activity", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeAirspaceActivityType> activity;
     @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeStatusAirspaceType> status;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AirspaceLayerPropertyType> levels;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> user;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AircraftCharacteristicPropertyType> aircraft;
+    @Valid
+    @Size(min = 0)
     protected List<AirspaceActivationType.Extension> extension;
 
     /**
@@ -387,8 +403,10 @@ public class AirspaceActivationType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
+        @Valid
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractAirspaceActivationExtension")
+        @Valid
         protected AbstractExtensionType abstractAirspaceActivationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -94,13 +96,21 @@ public class TaxiwayContaminationType
     @XmlElementRef(name = "proportion", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValPercentType> proportion;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<RidgePropertyType> criticalRidge;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<SurfaceContaminationLayerPropertyType> layer;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "clearedWidth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceType> clearedWidth;
+    @Valid
+    @Size(min = 0)
     protected List<TaxiwayContaminationType.Extension> extension;
 
     /**
@@ -525,8 +535,10 @@ public class TaxiwayContaminationType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceContaminationExtension")
+        @Valid
         protected AbstractExtensionType abstractSurfaceContaminationExtension;
         @XmlElement(name = "AbstractTaxiwayContaminationExtension")
+        @Valid
         protected AbstractExtensionType abstractTaxiwayContaminationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

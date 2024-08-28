@@ -12,6 +12,9 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.DateTimePropertyType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -67,14 +70,26 @@ public abstract class AbstractDQElementType
     extends AbstractObjectType
 {
 
+    @Valid
+    @Size(min = 0)
     protected List<CharacterStringPropertyType> nameOfMeasure;
+    @Valid
     protected MDIdentifierPropertyType measureIdentification;
+    @Valid
     protected CharacterStringPropertyType measureDescription;
+    @Valid
     protected DQEvaluationMethodTypeCodePropertyType evaluationMethodType;
+    @Valid
     protected CharacterStringPropertyType evaluationMethodDescription;
+    @Valid
     protected CICitationPropertyType evaluationProcedure;
+    @Valid
+    @Size(min = 0)
     protected List<DateTimePropertyType> dateTime;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
+    @Size(min = 1, max = 2)
     protected List<DQResultPropertyType> result;
 
     /**

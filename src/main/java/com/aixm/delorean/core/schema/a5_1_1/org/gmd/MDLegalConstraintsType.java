@@ -10,6 +10,8 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -48,8 +50,14 @@ public class MDLegalConstraintsType
     extends MDConstraintsType
 {
 
+    @Valid
+    @Size(min = 0)
     protected List<MDRestrictionCodePropertyType> accessConstraints;
+    @Valid
+    @Size(min = 0)
     protected List<MDRestrictionCodePropertyType> useConstraints;
+    @Valid
+    @Size(min = 0)
     protected List<CharacterStringPropertyType> otherConstraints;
 
     /**

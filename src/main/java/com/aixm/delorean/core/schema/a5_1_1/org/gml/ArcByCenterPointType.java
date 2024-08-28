@@ -8,6 +8,8 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigInteger;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -66,18 +68,27 @@ public class ArcByCenterPointType
     extends AbstractCurveSegmentType
 {
 
+    @Valid
     protected DirectPositionType pos;
     /**
      * This property element either references a point via the XLink-attributes or contains the point element. pointProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for Point.
      * 
      */
+    @Valid
     protected PointPropertyType pointProperty;
+    @Valid
     protected PointPropertyType pointRep;
+    @Valid
     protected DirectPositionListType posList;
+    @Valid
     protected CoordinatesType coordinates;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected LengthType radius;
+    @Valid
     protected AngleType startAngle;
+    @Valid
     protected AngleType endAngle;
     @XmlAttribute(name = "interpolation")
     public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CIRCULAR_ARC_CENTER_POINT_WITH_RADIUS;

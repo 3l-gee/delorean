@@ -8,6 +8,7 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gco;
 
 import java.math.BigInteger;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -41,6 +42,7 @@ public class UnlimitedIntegerType {
 
     @XmlValue
     @XmlSchemaType(name = "nonNegativeInteger")
+    @DecimalMin(value = "0", inclusive = true)
     protected BigInteger value;
     @XmlAttribute(name = "isInfinite")
     protected Boolean isInfinite;

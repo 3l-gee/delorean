@@ -98,11 +98,11 @@
                 <configuration>
                     <extension>true</extension>
                     <args>
-                        <arg>-Xannotate</arg> -->
-                        <!-- <arg>-XJsr303Annotations</arg>
+                        <arg>-Xannotate</arg>
+                        <arg>-XJsr303Annotations</arg>
                         <arg>-XJsr303Annotations:validationAnnotations=jakarta</arg>
-                        <arg>-XJsr303Annotations:generateServiceValidationAnnotations=InOut</arg> -->
-                    <!-- </args>
+                        <arg>-XJsr303Annotations:generateServiceValidationAnnotations=InOut</arg>
+                    </args>
                     <plugins>
                         <plugin>
                             <groupId>org.jvnet.jaxb</groupId>

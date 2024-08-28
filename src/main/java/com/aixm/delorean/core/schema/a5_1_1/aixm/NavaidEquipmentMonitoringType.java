@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,13 +66,21 @@ public class NavaidEquipmentMonitoringType
 {
 
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "monitored", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> monitored;
+    @Valid
+    @Size(min = 0)
     protected List<NavaidEquipmentMonitoringType.Extension> extension;
 
     /**
@@ -255,8 +265,10 @@ public class NavaidEquipmentMonitoringType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
+        @Valid
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractNavaidEquipmentMonitoringExtension")
+        @Valid
         protected AbstractExtensionType abstractNavaidEquipmentMonitoringExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

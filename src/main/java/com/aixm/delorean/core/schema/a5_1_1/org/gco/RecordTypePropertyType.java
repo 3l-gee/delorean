@@ -9,6 +9,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gco;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -43,6 +44,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class RecordTypePropertyType {
 
     @XmlElement(name = "RecordType")
+    @Valid
     protected RecordTypeType recordType;
     @XmlAttribute(name = "nilReason", namespace = "http://www.isotc211.org/2005/gco")
     protected List<String> nilReason;

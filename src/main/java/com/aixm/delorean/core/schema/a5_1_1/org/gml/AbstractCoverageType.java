@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,6 +68,8 @@ public abstract class AbstractCoverageType
      * 
      */
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected RangeSetType rangeSet;
 
     /**
