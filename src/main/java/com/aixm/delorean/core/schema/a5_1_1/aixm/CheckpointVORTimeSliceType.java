@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -91,9 +93,13 @@ public class CheckpointVORTimeSliceType
     @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "checkPointFacility", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<VORPropertyType> checkPointFacility;
+    @Valid
+    @Size(min = 0)
     protected List<CheckpointVORTimeSliceType.Extension> extension;
 
     /**
@@ -454,8 +460,10 @@ public class CheckpointVORTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractCheckpointVORExtension")
+        @Valid
         protected AbstractExtensionType abstractCheckpointVORExtension;
         @XmlElement(name = "AbstractNavigationSystemCheckpointExtension")
+        @Valid
         protected AbstractExtensionType abstractNavigationSystemCheckpointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

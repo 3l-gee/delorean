@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -61,6 +62,7 @@ public class ImageCRSType
      */
     @XmlElementRef(name = "affineCS", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<AffineCSPropertyType> affineCS;
+    @Valid
     protected ObliqueCartesianCSPropertyType usesObliqueCartesianCS;
     /**
      * gml:imageDatum is an association role to the image datum used by this CRS.

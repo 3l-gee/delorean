@@ -10,6 +10,9 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,7 +71,9 @@ public class ParameterValueType
      * gml:value is a numeric value of an operation parameter, with its associated unit of measure.
      * 
      */
+    @Valid
     protected MeasureType value;
+    @Valid
     protected DMSAngleType dmsAngleValue;
     /**
      * gml:stringValue is a character string value of an operation parameter. A string value does not have an associated unit of measure.
@@ -80,6 +85,7 @@ public class ParameterValueType
      * 
      */
     @XmlSchemaType(name = "positiveInteger")
+    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger integerValue;
     /**
      * gml:booleanValue is a boolean value of an operation parameter. A Boolean value does not have an associated unit of measure.
@@ -90,12 +96,15 @@ public class ParameterValueType
      * gml:valueList is an ordered sequence of two or more numeric values of an operation parameter list, where each value has the same associated unit of measure. An element of this type contains a space-separated sequence of double values.
      * 
      */
+    @Valid
     protected MeasureListType valueList;
     /**
      * gml:integerValueList is an ordered sequence of two or more integer values of an operation parameter list, usually used for counts. These integer values do not have an associated unit of measure. An element of this type contains a space-separated sequence of integer values.
      * 
      */
     @XmlList
+    @Valid
+    @Size(min = 1, max = 1)
     protected List<BigInteger> integerValueList;
     /**
      * gml:valueFile is a reference to a file or a part of a file containing one or more parameter values, each numeric value with its associated unit of measure. When referencing a part of a file, that file shall contain multiple identified parts, such as an XML encoded document. Furthermore, the referenced file or part of a file may reference another part of the same or different files, as allowed in XML documents.

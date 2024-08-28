@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -86,21 +88,35 @@ public class FireFightingServiceTimeSliceType
     @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<UnitPropertyType> serviceProvider;
     @XmlElement(name = "call-sign", nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElementRef(name = "category", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeFireFightingType> category;
     @XmlElementRef(name = "standard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeAviationStandardsType> standard;
+    @Valid
+    @Size(min = 0)
     protected List<FireFightingServiceTimeSliceType.Extension> extension;
 
     /**
@@ -551,10 +567,13 @@ public class FireFightingServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFireFightingServiceExtension")
+        @Valid
         protected AbstractExtensionType abstractFireFightingServiceExtension;
         @XmlElement(name = "AbstractAirportGroundServiceExtension")
+        @Valid
         protected AbstractExtensionType abstractAirportGroundServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
+        @Valid
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,6 +71,8 @@ public class ElevatedPointType
     protected JAXBElement<CodeVerticalDatumType> verticalDatum;
     @XmlElementRef(name = "verticalAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceType> verticalAccuracy;
+    @Valid
+    @Size(min = 0)
     protected List<ElevatedPointType.Extension> extension;
 
     /**
@@ -227,6 +231,7 @@ public class ElevatedPointType
     public static class Extension {
 
         @XmlElement(name = "AbstractElevatedPointExtension")
+        @Valid
         protected AbstractExtensionType abstractElevatedPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

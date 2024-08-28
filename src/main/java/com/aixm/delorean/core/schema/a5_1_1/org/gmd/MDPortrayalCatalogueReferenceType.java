@@ -10,6 +10,9 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -46,6 +49,9 @@ public class MDPortrayalCatalogueReferenceType
 {
 
     @XmlElement(required = true)
+    @NotNull
+    @Valid
+    @Size(min = 1)
     protected List<CICitationPropertyType> portrayalCatalogueCitation;
 
     /**

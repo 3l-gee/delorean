@@ -2,8 +2,6 @@ package com.aixm.delorean.core.configuration;
 
 import org.hibernate.cfg.Configuration;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.Boolean;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +16,7 @@ public enum DatabaseConfig {
         20,                        // Connection pool max size
         true,                                    // Hibernate show_sql
         "update",                            // Hibernate hbm2ddl.auto
-        new Class<?>[]{com.aixm.delorean.core.schema.a5_1_1.aixm.TACANPropertyType.class} // Mapping classes
+        new Class<?>[]{com.aixm.delorean.core.schema.a5_1_1.aixm.NavaidType.class} // Mapping classes
     );
 
     private final String version;

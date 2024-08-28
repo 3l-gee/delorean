@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -60,11 +63,19 @@ public class TinType
     extends SurfaceType
 {
 
+    @Valid
+    @Size(min = 0)
     protected List<LineStringSegmentArrayPropertyType> stopLines;
+    @Valid
+    @Size(min = 0)
     protected List<LineStringSegmentArrayPropertyType> breakLines;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected LengthType maxLength;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected TinType.ControlPoint controlPoint;
 
     /**
@@ -207,6 +218,7 @@ public class TinType
     })
     public static class ControlPoint {
 
+        @Valid
         protected DirectPositionListType posList;
         /**
          * GML supports two different ways to specify a geometric position: either by a direct position (a data type) or a point (a geometric object).

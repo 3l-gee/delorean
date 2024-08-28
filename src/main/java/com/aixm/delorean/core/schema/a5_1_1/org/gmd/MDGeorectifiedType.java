@@ -12,6 +12,9 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.BooleanPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gss.GMPointPropertyType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -58,13 +61,24 @@ public class MDGeorectifiedType
 {
 
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected BooleanPropertyType checkPointAvailability;
+    @Valid
     protected CharacterStringPropertyType checkPointDescription;
+    @Valid
+    @Size(min = 0)
     protected List<GMPointPropertyType> cornerPoints;
+    @Valid
     protected GMPointPropertyType centerPoint;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected MDPixelOrientationCodePropertyType pointInPixel;
+    @Valid
     protected CharacterStringPropertyType transformationDimensionDescription;
+    @Valid
+    @Size(min = 0, max = 2)
     protected List<CharacterStringPropertyType> transformationDimensionMapping;
 
     /**

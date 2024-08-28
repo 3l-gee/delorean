@@ -10,6 +10,8 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,6 +61,7 @@ public class OperationMethodType
      * gml:formulaCitation provides a reference to a publication giving the formula(s) or procedure used by an coordinate operation method.
      * 
      */
+    @Valid
     protected FormulaCitation formulaCitation;
     /**
      * gml:formula Formula(s) or procedure used by an operation method. The use of the codespace attribite has been deprecated. The property value shall be a character string.
@@ -71,12 +74,14 @@ public class OperationMethodType
      * 
      */
     @XmlSchemaType(name = "positiveInteger")
+    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger sourceDimensions;
     /**
      * gml:targetDimensions is the number of dimensions in the target CRS of this operation method.
      * 
      */
     @XmlSchemaType(name = "positiveInteger")
+    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger targetDimensions;
     /**
      * gml:parameter is an association to an operation parameter or parameter group.

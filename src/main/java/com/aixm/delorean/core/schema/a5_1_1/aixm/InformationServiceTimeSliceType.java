@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -93,14 +95,24 @@ public class InformationServiceTimeSliceType
     @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<UnitPropertyType> serviceProvider;
     @XmlElement(name = "call-sign", nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeServiceInformationType> type;
@@ -111,19 +123,35 @@ public class InformationServiceTimeSliceType
     @XmlElementRef(name = "recorded", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> recorded;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<VORPropertyType> navaidBroadcast;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AirspacePropertyType> clientAirspace;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AirportHeliportPropertyType> clientAirport;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<RoutePortionPropertyType> clientRoute;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ProcedurePropertyType> clientProcedure;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<HoldingPatternPropertyType> clientHolding;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AerialRefuellingPropertyType> clientAerialRefuelling;
+    @Valid
+    @Size(min = 0)
     protected List<InformationServiceTimeSliceType.Extension> extension;
 
     /**
@@ -812,8 +840,10 @@ public class InformationServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractInformationServiceExtension")
+        @Valid
         protected AbstractExtensionType abstractInformationServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
+        @Valid
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

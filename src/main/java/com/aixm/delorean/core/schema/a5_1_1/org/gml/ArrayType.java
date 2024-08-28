@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -39,6 +40,7 @@ public class ArrayType
     extends AbstractGMLType
 {
 
+    @Valid
     protected ArrayAssociationType members;
 
     /**

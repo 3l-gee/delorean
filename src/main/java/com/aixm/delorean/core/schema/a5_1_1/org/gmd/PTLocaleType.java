@@ -8,6 +8,8 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -46,9 +48,14 @@ public class PTLocaleType
 {
 
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected LanguageCodePropertyType languageCode;
+    @Valid
     protected CountryPropertyType country;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected MDCharacterSetCodePropertyType characterEncoding;
 
     /**

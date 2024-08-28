@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,9 +69,15 @@ public class PassengerLoadingBridgeTimeSliceType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AircraftStandPropertyType> associatedStand;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<PassengerLoadingBridgeTimeSliceType.Extension> extension;
 
     /**
@@ -243,6 +252,8 @@ public class PassengerLoadingBridgeTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPassengerLoadingBridgeExtension", required = true)
+        @NotNull
+        @Valid
         protected AbstractExtensionType abstractPassengerLoadingBridgeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,17 +68,27 @@ public class ManoeuvringAreaAvailabilityType
 {
 
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "operationalStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeStatusAirportType> operationalStatus;
     @XmlElementRef(name = "warning", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeAirportWarningType> warning;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ManoeuvringAreaUsagePropertyType> usage;
+    @Valid
+    @Size(min = 0)
     protected List<ManoeuvringAreaAvailabilityType.Extension> extension;
 
     /**
@@ -317,8 +329,10 @@ public class ManoeuvringAreaAvailabilityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
+        @Valid
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractManoeuvringAreaAvailabilityExtension")
+        @Valid
         protected AbstractExtensionType abstractManoeuvringAreaAvailabilityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

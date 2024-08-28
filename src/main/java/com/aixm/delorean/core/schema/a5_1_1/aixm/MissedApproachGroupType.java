@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,9 +71,15 @@ public class MissedApproachGroupType
     @XmlElementRef(name = "alternateClimbAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceVerticalType> alternateClimbAltitude;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<AltimeterSourcePropertyType> altimeter;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<MissedApproachGroupType.Extension> extension;
 
     /**
@@ -270,6 +278,7 @@ public class MissedApproachGroupType
     public static class Extension {
 
         @XmlElement(name = "AbstractMissedApproachGroupExtension")
+        @Valid
         protected AbstractExtensionType abstractMissedApproachGroupExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

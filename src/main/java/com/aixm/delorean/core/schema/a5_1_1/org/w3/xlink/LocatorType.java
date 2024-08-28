@@ -9,6 +9,10 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -41,12 +45,16 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class LocatorType {
 
+    @Valid
+    @Size(min = 0)
     protected List<TitleEltType> title;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
     public static final TypeType TYPE = TypeType.LOCATOR;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink", required = true)
+    @NotNull
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
+    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -57,6 +65,7 @@ public class LocatorType {
      */
     @XmlAttribute(name = "label", namespace = "http://www.w3.org/1999/xlink")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
     protected String label;
 
     /**

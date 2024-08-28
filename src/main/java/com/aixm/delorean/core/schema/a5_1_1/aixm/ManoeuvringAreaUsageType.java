@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -70,13 +72,19 @@ public class ManoeuvringAreaUsageType
     @XmlElementRef(name = "priorPermission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDurationType> priorPermission;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ContactInformationPropertyType> contact;
     @XmlElementRef(name = "selection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ConditionCombinationPropertyType> selection;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "operation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeOperationManoeuvringAreaType> operation;
+    @Valid
+    @Size(min = 0)
     protected List<ManoeuvringAreaUsageType.Extension> extension;
 
     /**
@@ -301,8 +309,10 @@ public class ManoeuvringAreaUsageType
     public static class Extension {
 
         @XmlElement(name = "AbstractUsageConditionExtension")
+        @Valid
         protected AbstractExtensionType abstractUsageConditionExtension;
         @XmlElement(name = "AbstractManoeuvringAreaUsageExtension")
+        @Valid
         protected AbstractExtensionType abstractManoeuvringAreaUsageExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

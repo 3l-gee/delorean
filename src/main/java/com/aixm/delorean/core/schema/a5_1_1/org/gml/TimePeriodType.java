@@ -8,6 +8,7 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import javax.xml.datatype.Duration;
+import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -53,9 +54,13 @@ public class TimePeriodType
     extends AbstractTimeGeometricPrimitiveType
 {
 
+    @Valid
     protected TimePositionType beginPosition;
+    @Valid
     protected TimeInstantPropertyType begin;
+    @Valid
     protected TimePositionType endPosition;
+    @Valid
     protected TimeInstantPropertyType end;
     /**
      * gml:duration conforms to the ISO 8601 syntax for temporal length as implemented by the XML Schema duration type.
@@ -68,6 +73,7 @@ public class TimePeriodType
      * The value of the unit is either selected from the units for time intervals from ISO 31-1:1992, or is another suitable unit.  The encoding is defined for GML in gml:TimeUnitType. The second component of this union type provides a method for indicating time units other than the six standard units given in the enumeration.
      * 
      */
+    @Valid
     protected TimeIntervalLengthType timeInterval;
 
     /**

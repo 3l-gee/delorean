@@ -10,6 +10,9 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -54,6 +57,8 @@ public abstract class AbstractGriddedSurfaceType
 {
 
     @XmlElement(name = "rows", required = true)
+    @NotNull
+    @Valid
     protected AbstractGriddedSurfaceType.Rows pointGridRows;
     @XmlAttribute(name = "rows")
     protected BigInteger rows;
@@ -167,6 +172,9 @@ public abstract class AbstractGriddedSurfaceType
     public static class Rows {
 
         @XmlElement(name = "Row", required = true)
+        @NotNull
+        @Valid
+        @Size(min = 1)
         protected List<AbstractGriddedSurfaceType.Rows.Row> row;
 
         /**
@@ -226,6 +234,7 @@ public abstract class AbstractGriddedSurfaceType
         })
         public static class Row {
 
+            @Valid
             protected DirectPositionListType posList;
             /**
              * GML supports two different ways to specify a geometric position: either by a direct position (a data type) or a point (a geometric object).

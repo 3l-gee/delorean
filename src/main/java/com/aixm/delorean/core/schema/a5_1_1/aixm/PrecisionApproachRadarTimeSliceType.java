@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -108,10 +110,14 @@ public class PrecisionApproachRadarTimeSliceType
     @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DateYearType> dateMagneticVariation;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ContactInformationPropertyType> contact;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "precisionApproachRadarType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodePARType> precisionApproachRadarType;
@@ -120,7 +126,11 @@ public class PrecisionApproachRadarTimeSliceType
     @XmlElementRef(name = "slopeAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValAngleType> slopeAccuracy;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<ReflectorPropertyType> reflector;
+    @Valid
+    @Size(min = 0)
     protected List<PrecisionApproachRadarTimeSliceType.Extension> extension;
 
     /**
@@ -713,8 +723,10 @@ public class PrecisionApproachRadarTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPrecisionApproachRadarExtension")
+        @Valid
         protected AbstractExtensionType abstractPrecisionApproachRadarExtension;
         @XmlElement(name = "AbstractRadarEquipmentExtension")
+        @Valid
         protected AbstractExtensionType abstractRadarEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

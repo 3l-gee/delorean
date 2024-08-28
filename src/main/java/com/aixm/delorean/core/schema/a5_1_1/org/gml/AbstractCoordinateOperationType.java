@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -63,12 +66,16 @@ public abstract class AbstractCoordinateOperationType
      * The gml:domainOfValidity property implements an association role to an EX_Extent object as encoded in ISO/TS 19139, either referencing or containing the definition of that extent.
      * 
      */
+    @Valid
     protected DomainOfValidity domainOfValidity;
     /**
      * The gml:scope property provides a description of the usage, or limitations of usage, for which this CRS-related object is valid. If unknown, enter "not known".
      * 
      */
     @XmlElement(required = true)
+    @NotNull
+    @Valid
+    @Size(min = 1)
     protected List<String> scope;
     /**
      * gml:operationVersion is the version of the coordinate transformation (i.e., instantiation due to the stochastic nature of the parameters). Mandatory when describing a transformation, and should not be supplied for a conversion.
@@ -79,16 +86,20 @@ public abstract class AbstractCoordinateOperationType
      * gml:coordinateOperationAccuracy is an association role to a DQ_PositionalAccuracy object as encoded in ISO/TS 19139, either referencing or containing the definition of that positional accuracy. That object contains an estimate of the impact of this coordinate operation on point accuracy. That is, it gives position error estimates for the target coordinates of this coordinate operation, assuming no errors in the source coordinates.
      * 
      */
+    @Valid
+    @Size(min = 0)
     protected List<CoordinateOperationAccuracy> coordinateOperationAccuracy;
     /**
      * gml:sourceCRS is an association role to the source CRS (coordinate reference system) of this coordinate operation.
      * 
      */
+    @Valid
     protected CRSPropertyType sourceCRS;
     /**
      * gml:targetCRS is an association role to the target CRS (coordinate reference system) of this coordinate operation.
      * 
      */
+    @Valid
     protected CRSPropertyType targetCRS;
 
     /**

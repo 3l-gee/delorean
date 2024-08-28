@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -78,10 +80,16 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeVASISType> type;
@@ -97,6 +105,8 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     protected JAXBElement<ValDistanceVerticalType> minimumEyeHeightOverThreshold;
     @XmlElementRef(name = "runwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayDirectionPropertyType> runwayDirection;
+    @Valid
+    @Size(min = 0)
     protected List<VisualGlideSlopeIndicatorTimeSliceType.Extension> extension;
 
     /**
@@ -497,8 +507,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractVisualGlideSlopeIndicatorExtension")
+        @Valid
         protected AbstractExtensionType abstractVisualGlideSlopeIndicatorExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
+        @Valid
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
