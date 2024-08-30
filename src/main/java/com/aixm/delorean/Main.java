@@ -10,42 +10,93 @@ import com.aixm.delorean.core.container.ContainerWarehouse;
 import com.aixm.delorean.core.container.XMLBinding;
 import com.aixm.delorean.core.container.DatabaseBinding;
 
-import com.aixm.delorean.core.database.DatabaseSchemaBuilder;
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
 
+import java.io.Console;
 import java.util.Scanner;
-
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.mapping.List;
 
 public class Main {
     ContainerWarehouse containerWarehouse = new ContainerWarehouse();
+    ConsoleLogger logger = new ConsoleLogger(LogLevel.INFO);
+    private boolean unsafe = false;
+    private boolean testOption = false;
 
     public static void main(String[] args) {
         Main mainInstance = new Main();  // Create an instance of Main
-        mainInstance.run();  // Call the instance method run
+
+        for (String arg : args) {
+            switch (arg) {
+                case "--test":
+                case "-t":
+                    mainInstance.testOption = true;
+                    break;
+                case "--verbose":
+                case "-v":
+                mainInstance.logger.setLevel(LogLevel.DEBUG);
+
+                    break;
+                case "--unsafe":
+                case "-u":
+                    mainInstance.unsafe = true;
+
+                    break;
+            }
+        }
+
+        if (mainInstance.testOption) {
+            mainInstance.testRun();
+        } else {
+            mainInstance.run();
+        }
     }
 
     private void run() {
         Scanner scanner = new Scanner(System.in);
         String command;
 
-        //TODO jar information and version
-        System.err.println("Delorean 1.0.0- alpha");
+        logger.log(LogLevel.INFO, "Delorean 1.0.0- alpha");
 
         while (true) {
             System.out.print("> ");
             command = scanner.nextLine().trim();
 
             if (command.equalsIgnoreCase("exit")) {
-                System.out.println("Exiting...");
+                logger.log(LogLevel.INFO, "Exiting...");
                 break;
             }
 
-            executeCommand(command);
+            try {
+                executeCommand(command);
+            } catch (IllegalArgumentException e) {
+                logger.log(LogLevel.ERROR,"Invalid arguments: " + e.getMessage());
+                logger.log(LogLevel.INFO,"Please try again.");
+            }
         }
 
         scanner.close();
+    }
+
+    private void testRun() {
+        logger.log(LogLevel.INFO, "new a5_1_1");
+        executeNewCommand("a5_1_1");
+
+        logger.log(LogLevel.INFO, "xml_config - a5_1_1");
+        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
+
+        logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/a5_1_1_dataset.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/a5_1_1_dataset.xml");
+        
+        logger.log(LogLevel.INFO, "db_config - a5_1_1");
+        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", "");
+
+        logger.log(LogLevel.INFO, "db - startup");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
+
+        logger.log(LogLevel.INFO, "db - load");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"load", "");
+
+        logger.log(LogLevel.INFO, "Exiting...");
     }
 
     private void executeCommand(String command) {
@@ -57,6 +108,9 @@ public class Main {
 
         if (parts.length > 1) {
             argument = parts[1];
+            if ("-".equals(argument)) {
+                argument = this.containerWarehouse.getLastContainerId();
+            }
         }
 
         if (parts.length > 2) {
@@ -90,8 +144,7 @@ public class Main {
 
             case "list":
                 executeListCommand();
-                break;
-            
+                break;          
 
             // case "format":
             //     executeFormatCommand();
