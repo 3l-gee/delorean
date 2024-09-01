@@ -71,4 +71,8 @@ public class LinguisticNotePropertyType
         this.linguisticNote = value;
     }
 
+    public boolean isSetLinguisticNote() {
+        return (this.linguisticNote!= null);
+    }
+
 }

@@ -118,6 +118,10 @@ public class TaxiwayLightSystemTimeSliceType
         this.emergencyLighting = value;
     }
 
+    public boolean isSetEmergencyLighting() {
+        return (this.emergencyLighting!= null);
+    }
+
     /**
      * Gets the value of the intensityLevel property.
      * 
@@ -142,6 +146,10 @@ public class TaxiwayLightSystemTimeSliceType
         this.intensityLevel = value;
     }
 
+    public boolean isSetIntensityLevel() {
+        return (this.intensityLevel!= null);
+    }
+
     /**
      * Gets the value of the colour property.
      * 
@@ -164,6 +172,10 @@ public class TaxiwayLightSystemTimeSliceType
      */
     public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
+    }
+
+    public boolean isSetColour() {
+        return (this.colour!= null);
     }
 
     /**
@@ -198,6 +210,14 @@ public class TaxiwayLightSystemTimeSliceType
         return this.element;
     }
 
+    public boolean isSetElement() {
+        return ((this.element!= null)&&(!this.element.isEmpty()));
+    }
+
+    public void unsetElement() {
+        this.element = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -228,6 +248,14 @@ public class TaxiwayLightSystemTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
     }
 
     /**
@@ -262,6 +290,14 @@ public class TaxiwayLightSystemTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the position property.
      * 
@@ -286,6 +322,10 @@ public class TaxiwayLightSystemTimeSliceType
         this.position = value;
     }
 
+    public boolean isSetPosition() {
+        return (this.position!= null);
+    }
+
     /**
      * Gets the value of the lightedTaxiway property.
      * 
@@ -308,6 +348,10 @@ public class TaxiwayLightSystemTimeSliceType
      */
     public void setLightedTaxiway(JAXBElement<TaxiwayPropertyType> value) {
         this.lightedTaxiway = value;
+    }
+
+    public boolean isSetLightedTaxiway() {
+        return (this.lightedTaxiway!= null);
     }
 
     /**
@@ -340,6 +384,14 @@ public class TaxiwayLightSystemTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -404,6 +456,10 @@ public class TaxiwayLightSystemTimeSliceType
             this.abstractTaxiwayLightSystemExtension = value;
         }
 
+        public boolean isSetAbstractTaxiwayLightSystemExtension() {
+            return (this.abstractTaxiwayLightSystemExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractGroundLightSystemExtension property.
          * 
@@ -426,6 +482,10 @@ public class TaxiwayLightSystemTimeSliceType
          */
         public void setAbstractGroundLightSystemExtension(AbstractExtensionType value) {
             this.abstractGroundLightSystemExtension = value;
+        }
+
+        public boolean isSetAbstractGroundLightSystemExtension() {
+            return (this.abstractGroundLightSystemExtension!= null);
         }
 
         /**
@@ -452,8 +512,16 @@ public class TaxiwayLightSystemTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

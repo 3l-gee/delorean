@@ -71,4 +71,8 @@ public class ApronAreaUsagePropertyType
         this.apronAreaUsage = value;
     }
 
+    public boolean isSetApronAreaUsage() {
+        return (this.apronAreaUsage!= null);
+    }
+
 }

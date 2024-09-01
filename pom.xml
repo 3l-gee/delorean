@@ -91,7 +91,7 @@
                 </configuration>
             </plugin>
 
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
@@ -99,14 +99,20 @@
                     <extension>true</extension>
                     <args>
                         <arg>-Xannotate</arg>
-                        <arg>-XJsr303Annotations</arg>
+                        <arg>-Xhyperjaxb3-ejb</arg>
+                        <!-- <arg>-XJsr303Annotations</arg>
                         <arg>-XJsr303Annotations:validationAnnotations=jakarta</arg>
-                        <arg>-XJsr303Annotations:generateServiceValidationAnnotations=InOut</arg>
+                        <arg>-XJsr303Annotations:generateServiceValidationAnnotations=InOut</arg> -->
                     </args>
                     <plugins>
                         <plugin>
                             <groupId>org.jvnet.jaxb</groupId>
                             <artifactId>jaxb-plugin-annotate</artifactId>
+                            <version>4.0.8</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb</groupId>
+                            <artifactId>hyperjaxb3-maven-plugin</artifactId>
                             <version>4.0.8</version>
                         </plugin>
                     </plugins>
@@ -142,15 +148,21 @@
                         <artifactId>jaxb-plugin-annotate</artifactId>
                         <version>4.0.8</version>
                     </dependency>
+
+                    <dependency>
+                        <groupId>org.jvnet.jaxb</groupId>
+                        <artifactId>hyperjaxb3-ejb-plugin</artifactId>
+                        <version>4.0.8</version>
+                    </dependency>
                 </dependencies>
                 <executions>
-					<execution>
+                    <execution>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
 
 			<!-- Added maven-shade-plugin to create a fat jar including dependencies -->
             <plugin>

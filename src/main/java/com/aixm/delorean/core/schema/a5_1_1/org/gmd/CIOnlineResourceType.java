@@ -95,6 +95,10 @@ public class CIOnlineResourceType
         this.linkage = value;
     }
 
+    public boolean isSetLinkage() {
+        return (this.linkage!= null);
+    }
+
     /**
      * Gets the value of the protocol property.
      * 
@@ -117,6 +121,10 @@ public class CIOnlineResourceType
      */
     public void setProtocol(CharacterStringPropertyType value) {
         this.protocol = value;
+    }
+
+    public boolean isSetProtocol() {
+        return (this.protocol!= null);
     }
 
     /**
@@ -143,6 +151,10 @@ public class CIOnlineResourceType
         this.applicationProfile = value;
     }
 
+    public boolean isSetApplicationProfile() {
+        return (this.applicationProfile!= null);
+    }
+
     /**
      * Gets the value of the name property.
      * 
@@ -165,6 +177,10 @@ public class CIOnlineResourceType
      */
     public void setName(CharacterStringPropertyType value) {
         this.name = value;
+    }
+
+    public boolean isSetName() {
+        return (this.name!= null);
     }
 
     /**
@@ -191,6 +207,10 @@ public class CIOnlineResourceType
         this.description = value;
     }
 
+    public boolean isSetDescription() {
+        return (this.description!= null);
+    }
+
     /**
      * Gets the value of the function property.
      * 
@@ -213,6 +233,10 @@ public class CIOnlineResourceType
      */
     public void setFunction(CIOnLineFunctionCodePropertyType value) {
         this.function = value;
+    }
+
+    public boolean isSetFunction() {
+        return (this.function!= null);
     }
 
 }

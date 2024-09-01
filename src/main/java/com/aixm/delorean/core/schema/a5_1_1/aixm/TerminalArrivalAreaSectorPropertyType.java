@@ -71,4 +71,8 @@ public class TerminalArrivalAreaSectorPropertyType
         this.terminalArrivalAreaSector = value;
     }
 
+    public boolean isSetTerminalArrivalAreaSector() {
+        return (this.terminalArrivalAreaSector!= null);
+    }
+
 }

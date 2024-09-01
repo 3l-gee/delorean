@@ -100,6 +100,10 @@ public class MDFeatureCatalogueDescriptionType
         this.complianceCode = value;
     }
 
+    public boolean isSetComplianceCode() {
+        return (this.complianceCode!= null);
+    }
+
     /**
      * Gets the value of the language property.
      * 
@@ -132,6 +136,14 @@ public class MDFeatureCatalogueDescriptionType
         return this.language;
     }
 
+    public boolean isSetLanguage() {
+        return ((this.language!= null)&&(!this.language.isEmpty()));
+    }
+
+    public void unsetLanguage() {
+        this.language = null;
+    }
+
     /**
      * Gets the value of the includedWithDataset property.
      * 
@@ -154,6 +166,10 @@ public class MDFeatureCatalogueDescriptionType
      */
     public void setIncludedWithDataset(BooleanPropertyType value) {
         this.includedWithDataset = value;
+    }
+
+    public boolean isSetIncludedWithDataset() {
+        return (this.includedWithDataset!= null);
     }
 
     /**
@@ -188,6 +204,14 @@ public class MDFeatureCatalogueDescriptionType
         return this.featureTypes;
     }
 
+    public boolean isSetFeatureTypes() {
+        return ((this.featureTypes!= null)&&(!this.featureTypes.isEmpty()));
+    }
+
+    public void unsetFeatureTypes() {
+        this.featureTypes = null;
+    }
+
     /**
      * Gets the value of the featureCatalogueCitation property.
      * 
@@ -218,6 +242,14 @@ public class MDFeatureCatalogueDescriptionType
             featureCatalogueCitation = new ArrayList<>();
         }
         return this.featureCatalogueCitation;
+    }
+
+    public boolean isSetFeatureCatalogueCitation() {
+        return ((this.featureCatalogueCitation!= null)&&(!this.featureCatalogueCitation.isEmpty()));
+    }
+
+    public void unsetFeatureCatalogueCitation() {
+        this.featureCatalogueCitation = null;
     }
 
 }

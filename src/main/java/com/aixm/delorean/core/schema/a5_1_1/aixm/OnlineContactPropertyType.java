@@ -71,4 +71,8 @@ public class OnlineContactPropertyType
         this.onlineContact = value;
     }
 
+    public boolean isSetOnlineContact() {
+        return (this.onlineContact!= null);
+    }
+
 }

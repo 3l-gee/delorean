@@ -101,6 +101,10 @@ public class NavaidEquipmentDistanceType
         this.distance = value;
     }
 
+    public boolean isSetDistance() {
+        return (this.distance!= null);
+    }
+
     /**
      * Gets the value of the distanceAccuracy property.
      * 
@@ -123,6 +127,10 @@ public class NavaidEquipmentDistanceType
      */
     public void setDistanceAccuracy(JAXBElement<ValDistanceType> value) {
         this.distanceAccuracy = value;
+    }
+
+    public boolean isSetDistanceAccuracy() {
+        return (this.distanceAccuracy!= null);
     }
 
     /**
@@ -157,6 +165,14 @@ public class NavaidEquipmentDistanceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the theNavaidEquipment property.
      * 
@@ -179,6 +195,10 @@ public class NavaidEquipmentDistanceType
      */
     public void setTheNavaidEquipment(NavaidEquipmentPropertyType value) {
         this.theNavaidEquipment = value;
+    }
+
+    public boolean isSetTheNavaidEquipment() {
+        return (this.theNavaidEquipment!= null);
     }
 
     /**
@@ -211,6 +231,14 @@ public class NavaidEquipmentDistanceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -270,6 +298,10 @@ public class NavaidEquipmentDistanceType
             this.abstractNavaidEquipmentDistanceExtension = value;
         }
 
+        public boolean isSetAbstractNavaidEquipmentDistanceExtension() {
+            return (this.abstractNavaidEquipmentDistanceExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -294,8 +326,16 @@ public class NavaidEquipmentDistanceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

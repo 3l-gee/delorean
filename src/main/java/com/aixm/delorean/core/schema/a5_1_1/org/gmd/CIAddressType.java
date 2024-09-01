@@ -104,6 +104,14 @@ public class CIAddressType
         return this.deliveryPoint;
     }
 
+    public boolean isSetDeliveryPoint() {
+        return ((this.deliveryPoint!= null)&&(!this.deliveryPoint.isEmpty()));
+    }
+
+    public void unsetDeliveryPoint() {
+        this.deliveryPoint = null;
+    }
+
     /**
      * Gets the value of the city property.
      * 
@@ -126,6 +134,10 @@ public class CIAddressType
      */
     public void setCity(CharacterStringPropertyType value) {
         this.city = value;
+    }
+
+    public boolean isSetCity() {
+        return (this.city!= null);
     }
 
     /**
@@ -152,6 +164,10 @@ public class CIAddressType
         this.administrativeArea = value;
     }
 
+    public boolean isSetAdministrativeArea() {
+        return (this.administrativeArea!= null);
+    }
+
     /**
      * Gets the value of the postalCode property.
      * 
@@ -176,6 +192,10 @@ public class CIAddressType
         this.postalCode = value;
     }
 
+    public boolean isSetPostalCode() {
+        return (this.postalCode!= null);
+    }
+
     /**
      * Gets the value of the country property.
      * 
@@ -198,6 +218,10 @@ public class CIAddressType
      */
     public void setCountry(CharacterStringPropertyType value) {
         this.country = value;
+    }
+
+    public boolean isSetCountry() {
+        return (this.country!= null);
     }
 
     /**
@@ -230,6 +254,14 @@ public class CIAddressType
             electronicMailAddress = new ArrayList<>();
         }
         return this.electronicMailAddress;
+    }
+
+    public boolean isSetElectronicMailAddress() {
+        return ((this.electronicMailAddress!= null)&&(!this.electronicMailAddress.isEmpty()));
+    }
+
+    public void unsetElectronicMailAddress() {
+        this.electronicMailAddress = null;
     }
 
 }

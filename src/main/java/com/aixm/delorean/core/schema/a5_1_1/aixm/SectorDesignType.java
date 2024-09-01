@@ -104,6 +104,10 @@ public class SectorDesignType
         this.turnDirection = value;
     }
 
+    public boolean isSetTurnDirection() {
+        return (this.turnDirection!= null);
+    }
+
     /**
      * Gets the value of the designGradient property.
      * 
@@ -126,6 +130,10 @@ public class SectorDesignType
      */
     public void setDesignGradient(JAXBElement<ValSlopeType> value) {
         this.designGradient = value;
+    }
+
+    public boolean isSetDesignGradient() {
+        return (this.designGradient!= null);
     }
 
     /**
@@ -152,6 +160,10 @@ public class SectorDesignType
         this.terminationAltitude = value;
     }
 
+    public boolean isSetTerminationAltitude() {
+        return (this.terminationAltitude!= null);
+    }
+
     /**
      * Gets the value of the turnPermitted property.
      * 
@@ -174,6 +186,10 @@ public class SectorDesignType
      */
     public void setTurnPermitted(JAXBElement<CodeYesNoType> value) {
         this.turnPermitted = value;
+    }
+
+    public boolean isSetTurnPermitted() {
+        return (this.turnPermitted!= null);
     }
 
     /**
@@ -208,6 +224,14 @@ public class SectorDesignType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -238,6 +262,14 @@ public class SectorDesignType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -297,6 +329,10 @@ public class SectorDesignType
             this.abstractSectorDesignExtension = value;
         }
 
+        public boolean isSetAbstractSectorDesignExtension() {
+            return (this.abstractSectorDesignExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -321,8 +357,16 @@ public class SectorDesignType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

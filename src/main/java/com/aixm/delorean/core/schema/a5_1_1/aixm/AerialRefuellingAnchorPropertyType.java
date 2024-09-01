@@ -71,4 +71,8 @@ public class AerialRefuellingAnchorPropertyType
         this.aerialRefuellingAnchor = value;
     }
 
+    public boolean isSetAerialRefuellingAnchor() {
+        return (this.aerialRefuellingAnchor!= null);
+    }
+
 }

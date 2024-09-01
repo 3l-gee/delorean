@@ -86,6 +86,10 @@ public class MDSecurityConstraintsType
         this.classification = value;
     }
 
+    public boolean isSetClassification() {
+        return (this.classification!= null);
+    }
+
     /**
      * Gets the value of the userNote property.
      * 
@@ -108,6 +112,10 @@ public class MDSecurityConstraintsType
      */
     public void setUserNote(CharacterStringPropertyType value) {
         this.userNote = value;
+    }
+
+    public boolean isSetUserNote() {
+        return (this.userNote!= null);
     }
 
     /**
@@ -134,6 +142,10 @@ public class MDSecurityConstraintsType
         this.classificationSystem = value;
     }
 
+    public boolean isSetClassificationSystem() {
+        return (this.classificationSystem!= null);
+    }
+
     /**
      * Gets the value of the handlingDescription property.
      * 
@@ -156,6 +168,10 @@ public class MDSecurityConstraintsType
      */
     public void setHandlingDescription(CharacterStringPropertyType value) {
         this.handlingDescription = value;
+    }
+
+    public boolean isSetHandlingDescription() {
+        return (this.handlingDescription!= null);
     }
 
 }

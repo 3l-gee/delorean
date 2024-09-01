@@ -118,6 +118,14 @@ public class CirclingRestrictionType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -148,6 +156,14 @@ public class CirclingRestrictionType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -182,6 +198,14 @@ public class CirclingRestrictionType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the sectorDescription property.
      * 
@@ -206,6 +230,10 @@ public class CirclingRestrictionType
         this.sectorDescription = value;
     }
 
+    public boolean isSetSectorDescription() {
+        return (this.sectorDescription!= null);
+    }
+
     /**
      * Gets the value of the restrictionArea property.
      * 
@@ -228,6 +256,10 @@ public class CirclingRestrictionType
      */
     public void setRestrictionArea(JAXBElement<SurfacePropertyType> value) {
         this.restrictionArea = value;
+    }
+
+    public boolean isSetRestrictionArea() {
+        return (this.restrictionArea!= null);
     }
 
     /**
@@ -260,6 +292,14 @@ public class CirclingRestrictionType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -324,6 +364,10 @@ public class CirclingRestrictionType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractCirclingRestrictionExtension property.
          * 
@@ -346,6 +390,10 @@ public class CirclingRestrictionType
          */
         public void setAbstractCirclingRestrictionExtension(AbstractExtensionType value) {
             this.abstractCirclingRestrictionExtension = value;
+        }
+
+        public boolean isSetAbstractCirclingRestrictionExtension() {
+            return (this.abstractCirclingRestrictionExtension!= null);
         }
 
         /**
@@ -372,8 +420,16 @@ public class CirclingRestrictionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

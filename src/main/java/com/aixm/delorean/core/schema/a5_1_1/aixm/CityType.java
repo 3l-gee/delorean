@@ -95,6 +95,10 @@ public class CityType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -127,6 +131,14 @@ public class CityType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -157,6 +169,14 @@ public class CityType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -216,6 +236,10 @@ public class CityType
             this.abstractCityExtension = value;
         }
 
+        public boolean isSetAbstractCityExtension() {
+            return (this.abstractCityExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -240,8 +264,16 @@ public class CityType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

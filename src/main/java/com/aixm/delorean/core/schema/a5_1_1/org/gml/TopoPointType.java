@@ -76,4 +76,8 @@ public class TopoPointType
         this.directedNode = value;
     }
 
+    public boolean isSetDirectedNode() {
+        return (this.directedNode!= null);
+    }
+
 }

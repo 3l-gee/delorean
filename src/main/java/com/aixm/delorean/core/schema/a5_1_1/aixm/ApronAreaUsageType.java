@@ -108,6 +108,10 @@ public class ApronAreaUsageType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the priorPermission property.
      * 
@@ -130,6 +134,10 @@ public class ApronAreaUsageType
      */
     public void setPriorPermission(JAXBElement<ValDurationType> value) {
         this.priorPermission = value;
+    }
+
+    public boolean isSetPriorPermission() {
+        return (this.priorPermission!= null);
     }
 
     /**
@@ -164,6 +172,14 @@ public class ApronAreaUsageType
         return this.contact;
     }
 
+    public boolean isSetContact() {
+        return ((this.contact!= null)&&(!this.contact.isEmpty()));
+    }
+
+    public void unsetContact() {
+        this.contact = null;
+    }
+
     /**
      * Gets the value of the selection property.
      * 
@@ -186,6 +202,10 @@ public class ApronAreaUsageType
      */
     public void setSelection(JAXBElement<ConditionCombinationPropertyType> value) {
         this.selection = value;
+    }
+
+    public boolean isSetSelection() {
+        return (this.selection!= null);
     }
 
     /**
@@ -220,6 +240,14 @@ public class ApronAreaUsageType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -250,6 +278,14 @@ public class ApronAreaUsageType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -314,6 +350,10 @@ public class ApronAreaUsageType
             this.abstractUsageConditionExtension = value;
         }
 
+        public boolean isSetAbstractUsageConditionExtension() {
+            return (this.abstractUsageConditionExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractApronAreaUsageExtension property.
          * 
@@ -336,6 +376,10 @@ public class ApronAreaUsageType
          */
         public void setAbstractApronAreaUsageExtension(AbstractExtensionType value) {
             this.abstractApronAreaUsageExtension = value;
+        }
+
+        public boolean isSetAbstractApronAreaUsageExtension() {
+            return (this.abstractApronAreaUsageExtension!= null);
         }
 
         /**
@@ -362,8 +406,16 @@ public class ApronAreaUsageType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

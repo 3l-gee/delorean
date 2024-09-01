@@ -184,6 +184,10 @@ public class InstrumentApproachProcedureTimeSliceType
         this.communicationFailureInstruction = value;
     }
 
+    public boolean isSetCommunicationFailureInstruction() {
+        return (this.communicationFailureInstruction!= null);
+    }
+
     /**
      * Gets the value of the instruction property.
      * 
@@ -206,6 +210,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setInstruction(JAXBElement<TextInstructionType> value) {
         this.instruction = value;
+    }
+
+    public boolean isSetInstruction() {
+        return (this.instruction!= null);
     }
 
     /**
@@ -232,6 +240,10 @@ public class InstrumentApproachProcedureTimeSliceType
         this.designCriteria = value;
     }
 
+    public boolean isSetDesignCriteria() {
+        return (this.designCriteria!= null);
+    }
+
     /**
      * Gets the value of the codingStandard property.
      * 
@@ -254,6 +266,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setCodingStandard(JAXBElement<CodeProcedureCodingStandardType> value) {
         this.codingStandard = value;
+    }
+
+    public boolean isSetCodingStandard() {
+        return (this.codingStandard!= null);
     }
 
     /**
@@ -280,6 +296,10 @@ public class InstrumentApproachProcedureTimeSliceType
         this.flightChecked = value;
     }
 
+    public boolean isSetFlightChecked() {
+        return (this.flightChecked!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -304,6 +324,10 @@ public class InstrumentApproachProcedureTimeSliceType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the rnav property.
      * 
@@ -326,6 +350,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setRNAV(JAXBElement<CodeYesNoType> value) {
         this.rnav = value;
+    }
+
+    public boolean isSetRNAV() {
+        return (this.rnav!= null);
     }
 
     /**
@@ -360,6 +388,14 @@ public class InstrumentApproachProcedureTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the airportHeliport property.
      * 
@@ -390,6 +426,14 @@ public class InstrumentApproachProcedureTimeSliceType
             airportHeliport = new ArrayList<>();
         }
         return this.airportHeliport;
+    }
+
+    public boolean isSetAirportHeliport() {
+        return ((this.airportHeliport!= null)&&(!this.airportHeliport.isEmpty()));
+    }
+
+    public void unsetAirportHeliport() {
+        this.airportHeliport = null;
     }
 
     /**
@@ -424,6 +468,14 @@ public class InstrumentApproachProcedureTimeSliceType
         return this.aircraftCharacteristic;
     }
 
+    public boolean isSetAircraftCharacteristic() {
+        return ((this.aircraftCharacteristic!= null)&&(!this.aircraftCharacteristic.isEmpty()));
+    }
+
+    public void unsetAircraftCharacteristic() {
+        this.aircraftCharacteristic = null;
+    }
+
     /**
      * Gets the value of the flightTransition property.
      * 
@@ -456,6 +508,14 @@ public class InstrumentApproachProcedureTimeSliceType
         return this.flightTransition;
     }
 
+    public boolean isSetFlightTransition() {
+        return ((this.flightTransition!= null)&&(!this.flightTransition.isEmpty()));
+    }
+
+    public void unsetFlightTransition() {
+        this.flightTransition = null;
+    }
+
     /**
      * Gets the value of the guidanceFacilitySpecialNavigationSystem property.
      * 
@@ -478,6 +538,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setGuidanceFacilitySpecialNavigationSystem(JAXBElement<SpecialNavigationSystemPropertyType> value) {
         this.guidanceFacilitySpecialNavigationSystem = value;
+    }
+
+    public boolean isSetGuidanceFacilitySpecialNavigationSystem() {
+        return (this.guidanceFacilitySpecialNavigationSystem!= null);
     }
 
     /**
@@ -504,6 +568,10 @@ public class InstrumentApproachProcedureTimeSliceType
         this.guidanceFacilityRadar = value;
     }
 
+    public boolean isSetGuidanceFacilityRadar() {
+        return (this.guidanceFacilityRadar!= null);
+    }
+
     /**
      * Gets the value of the guidanceFacilityNavaid property.
      * 
@@ -526,6 +594,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setGuidanceFacilityNavaid(JAXBElement<NavaidPropertyType> value) {
         this.guidanceFacilityNavaid = value;
+    }
+
+    public boolean isSetGuidanceFacilityNavaid() {
+        return (this.guidanceFacilityNavaid!= null);
     }
 
     /**
@@ -560,6 +632,14 @@ public class InstrumentApproachProcedureTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the safeAltitude property.
      * 
@@ -582,6 +662,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setSafeAltitude(JAXBElement<SafeAltitudeAreaPropertyType> value) {
         this.safeAltitude = value;
+    }
+
+    public boolean isSetSafeAltitude() {
+        return (this.safeAltitude!= null);
     }
 
     /**
@@ -608,6 +692,10 @@ public class InstrumentApproachProcedureTimeSliceType
         this.approachPrefix = value;
     }
 
+    public boolean isSetApproachPrefix() {
+        return (this.approachPrefix!= null);
+    }
+
     /**
      * Gets the value of the approachType property.
      * 
@@ -630,6 +718,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setApproachType(JAXBElement<CodeApproachType> value) {
         this.approachType = value;
+    }
+
+    public boolean isSetApproachType() {
+        return (this.approachType!= null);
     }
 
     /**
@@ -656,6 +748,10 @@ public class InstrumentApproachProcedureTimeSliceType
         this.multipleIdentification = value;
     }
 
+    public boolean isSetMultipleIdentification() {
+        return (this.multipleIdentification!= null);
+    }
+
     /**
      * Gets the value of the copterTrack property.
      * 
@@ -678,6 +774,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setCopterTrack(JAXBElement<ValBearingType> value) {
         this.copterTrack = value;
+    }
+
+    public boolean isSetCopterTrack() {
+        return (this.copterTrack!= null);
     }
 
     /**
@@ -704,6 +804,10 @@ public class InstrumentApproachProcedureTimeSliceType
         this.circlingIdentification = value;
     }
 
+    public boolean isSetCirclingIdentification() {
+        return (this.circlingIdentification!= null);
+    }
+
     /**
      * Gets the value of the courseReversalInstruction property.
      * 
@@ -726,6 +830,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setCourseReversalInstruction(JAXBElement<TextInstructionType> value) {
         this.courseReversalInstruction = value;
+    }
+
+    public boolean isSetCourseReversalInstruction() {
+        return (this.courseReversalInstruction!= null);
     }
 
     /**
@@ -752,6 +860,10 @@ public class InstrumentApproachProcedureTimeSliceType
         this.additionalEquipment = value;
     }
 
+    public boolean isSetAdditionalEquipment() {
+        return (this.additionalEquipment!= null);
+    }
+
     /**
      * Gets the value of the channelGNSS property.
      * 
@@ -774,6 +886,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setChannelGNSS(JAXBElement<ValChannelNumberType> value) {
         this.channelGNSS = value;
+    }
+
+    public boolean isSetChannelGNSS() {
+        return (this.channelGNSS!= null);
     }
 
     /**
@@ -800,6 +916,10 @@ public class InstrumentApproachProcedureTimeSliceType
         this.waasReliable = value;
     }
 
+    public boolean isSetWAASReliable() {
+        return (this.waasReliable!= null);
+    }
+
     /**
      * Gets the value of the landing property.
      * 
@@ -822,6 +942,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setLanding(JAXBElement<LandingTakeoffAreaCollectionPropertyType> value) {
         this.landing = value;
+    }
+
+    public boolean isSetLanding() {
+        return (this.landing!= null);
     }
 
     /**
@@ -856,6 +980,14 @@ public class InstrumentApproachProcedureTimeSliceType
         return this.missedInstruction;
     }
 
+    public boolean isSetMissedInstruction() {
+        return ((this.missedInstruction!= null)&&(!this.missedInstruction.isEmpty()));
+    }
+
+    public void unsetMissedInstruction() {
+        this.missedInstruction = null;
+    }
+
     /**
      * Gets the value of the finalProfile property.
      * 
@@ -878,6 +1010,10 @@ public class InstrumentApproachProcedureTimeSliceType
      */
     public void setFinalProfile(JAXBElement<FinalProfilePropertyType> value) {
         this.finalProfile = value;
+    }
+
+    public boolean isSetFinalProfile() {
+        return (this.finalProfile!= null);
     }
 
     /**
@@ -910,6 +1046,14 @@ public class InstrumentApproachProcedureTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -974,6 +1118,10 @@ public class InstrumentApproachProcedureTimeSliceType
             this.abstractInstrumentApproachProcedureExtension = value;
         }
 
+        public boolean isSetAbstractInstrumentApproachProcedureExtension() {
+            return (this.abstractInstrumentApproachProcedureExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractProcedureExtension property.
          * 
@@ -996,6 +1144,10 @@ public class InstrumentApproachProcedureTimeSliceType
          */
         public void setAbstractProcedureExtension(AbstractExtensionType value) {
             this.abstractProcedureExtension = value;
+        }
+
+        public boolean isSetAbstractProcedureExtension() {
+            return (this.abstractProcedureExtension!= null);
         }
 
         /**
@@ -1022,8 +1174,16 @@ public class InstrumentApproachProcedureTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

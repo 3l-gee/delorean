@@ -7,13 +7,11 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigInteger;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
+import org.w3._2001.xmlschema.NonNegativeInteger;
 
 
 /**
@@ -51,19 +49,17 @@ public abstract class AbstractGeneralOperationParameterType
      * gml:minimumOccurs is the minimum number of times that values for this parameter group or parameter are required. If this attribute is omitted, the minimum number shall be one.
      * 
      */
-    @XmlSchemaType(name = "nonNegativeInteger")
-    @DecimalMin(value = "0", inclusive = true)
-    protected BigInteger minimumOccurs;
+    protected NonNegativeInteger minimumOccurs;
 
     /**
      * gml:minimumOccurs is the minimum number of times that values for this parameter group or parameter are required. If this attribute is omitted, the minimum number shall be one.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link NonNegativeInteger }
      *     
      */
-    public BigInteger getMinimumOccurs() {
+    public NonNegativeInteger getMinimumOccurs() {
         return minimumOccurs;
     }
 
@@ -72,12 +68,16 @@ public abstract class AbstractGeneralOperationParameterType
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link NonNegativeInteger }
      *     
      * @see #getMinimumOccurs()
      */
-    public void setMinimumOccurs(BigInteger value) {
+    public void setMinimumOccurs(NonNegativeInteger value) {
         this.minimumOccurs = value;
+    }
+
+    public boolean isSetMinimumOccurs() {
+        return (this.minimumOccurs!= null);
     }
 
 }

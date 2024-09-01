@@ -117,6 +117,10 @@ public class PointReferenceType
         this.role = value;
     }
 
+    public boolean isSetRole() {
+        return (this.role!= null);
+    }
+
     /**
      * Gets the value of the priorFixTolerance property.
      * 
@@ -139,6 +143,10 @@ public class PointReferenceType
      */
     public void setPriorFixTolerance(JAXBElement<ValDistanceSignedType> value) {
         this.priorFixTolerance = value;
+    }
+
+    public boolean isSetPriorFixTolerance() {
+        return (this.priorFixTolerance!= null);
     }
 
     /**
@@ -165,6 +173,10 @@ public class PointReferenceType
         this.postFixTolerance = value;
     }
 
+    public boolean isSetPostFixTolerance() {
+        return (this.postFixTolerance!= null);
+    }
+
     /**
      * Gets the value of the point property.
      * 
@@ -187,6 +199,10 @@ public class PointReferenceType
      */
     public void setPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.point = value;
+    }
+
+    public boolean isSetPoint() {
+        return (this.point!= null);
     }
 
     /**
@@ -221,6 +237,14 @@ public class PointReferenceType
         return this.facilityAngle;
     }
 
+    public boolean isSetFacilityAngle() {
+        return ((this.facilityAngle!= null)&&(!this.facilityAngle.isEmpty()));
+    }
+
+    public void unsetFacilityAngle() {
+        this.facilityAngle = null;
+    }
+
     /**
      * Gets the value of the facilityDistance property.
      * 
@@ -253,6 +277,14 @@ public class PointReferenceType
         return this.facilityDistance;
     }
 
+    public boolean isSetFacilityDistance() {
+        return ((this.facilityDistance!= null)&&(!this.facilityDistance.isEmpty()));
+    }
+
+    public void unsetFacilityDistance() {
+        this.facilityDistance = null;
+    }
+
     /**
      * Gets the value of the fixToleranceArea property.
      * 
@@ -275,6 +307,10 @@ public class PointReferenceType
      */
     public void setFixToleranceArea(JAXBElement<SurfacePropertyType> value) {
         this.fixToleranceArea = value;
+    }
+
+    public boolean isSetFixToleranceArea() {
+        return (this.fixToleranceArea!= null);
     }
 
     /**
@@ -309,6 +345,14 @@ public class PointReferenceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -339,6 +383,14 @@ public class PointReferenceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -398,6 +450,10 @@ public class PointReferenceType
             this.abstractPointReferenceExtension = value;
         }
 
+        public boolean isSetAbstractPointReferenceExtension() {
+            return (this.abstractPointReferenceExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -422,8 +478,16 @@ public class PointReferenceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -104,6 +104,10 @@ public class AltitudeAdjustmentType
         this.altitudeAdjustmentType = value;
     }
 
+    public boolean isSetAltitudeAdjustmentType() {
+        return (this.altitudeAdjustmentType!= null);
+    }
+
     /**
      * Gets the value of the primaryAlternateMinimum property.
      * 
@@ -126,6 +130,10 @@ public class AltitudeAdjustmentType
      */
     public void setPrimaryAlternateMinimum(JAXBElement<CodeYesNoType> value) {
         this.primaryAlternateMinimum = value;
+    }
+
+    public boolean isSetPrimaryAlternateMinimum() {
+        return (this.primaryAlternateMinimum!= null);
     }
 
     /**
@@ -152,6 +160,10 @@ public class AltitudeAdjustmentType
         this.altitudeAdjustment = value;
     }
 
+    public boolean isSetAltitudeAdjustment() {
+        return (this.altitudeAdjustment!= null);
+    }
+
     /**
      * Gets the value of the localRemoteCode property.
      * 
@@ -174,6 +186,10 @@ public class AltitudeAdjustmentType
      */
     public void setLocalRemoteCode(JAXBElement<CodeYesNoType> value) {
         this.localRemoteCode = value;
+    }
+
+    public boolean isSetLocalRemoteCode() {
+        return (this.localRemoteCode!= null);
     }
 
     /**
@@ -208,6 +224,14 @@ public class AltitudeAdjustmentType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -238,6 +262,14 @@ public class AltitudeAdjustmentType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -297,6 +329,10 @@ public class AltitudeAdjustmentType
             this.abstractAltitudeAdjustmentExtension = value;
         }
 
+        public boolean isSetAbstractAltitudeAdjustmentExtension() {
+            return (this.abstractAltitudeAdjustmentExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -321,8 +357,16 @@ public class AltitudeAdjustmentType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

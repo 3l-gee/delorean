@@ -115,6 +115,10 @@ public class ProcedureTransitionType
         this.transitionId = value;
     }
 
+    public boolean isSetTransitionId() {
+        return (this.transitionId!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -137,6 +141,10 @@ public class ProcedureTransitionType
      */
     public void setType(JAXBElement<CodeProcedurePhaseType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -163,6 +171,10 @@ public class ProcedureTransitionType
         this.instruction = value;
     }
 
+    public boolean isSetInstruction() {
+        return (this.instruction!= null);
+    }
+
     /**
      * Gets the value of the vectorHeading property.
      * 
@@ -185,6 +197,10 @@ public class ProcedureTransitionType
      */
     public void setVectorHeading(JAXBElement<ValBearingType> value) {
         this.vectorHeading = value;
+    }
+
+    public boolean isSetVectorHeading() {
+        return (this.vectorHeading!= null);
     }
 
     /**
@@ -211,6 +227,10 @@ public class ProcedureTransitionType
         this.departureRunwayTransition = value;
     }
 
+    public boolean isSetDepartureRunwayTransition() {
+        return (this.departureRunwayTransition!= null);
+    }
+
     /**
      * Gets the value of the trajectory property.
      * 
@@ -233,6 +253,10 @@ public class ProcedureTransitionType
      */
     public void setTrajectory(JAXBElement<CurvePropertyType> value) {
         this.trajectory = value;
+    }
+
+    public boolean isSetTrajectory() {
+        return (this.trajectory!= null);
     }
 
     /**
@@ -267,6 +291,14 @@ public class ProcedureTransitionType
         return this.transitionLeg;
     }
 
+    public boolean isSetTransitionLeg() {
+        return ((this.transitionLeg!= null)&&(!this.transitionLeg.isEmpty()));
+    }
+
+    public void unsetTransitionLeg() {
+        this.transitionLeg = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -299,6 +331,14 @@ public class ProcedureTransitionType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -329,6 +369,14 @@ public class ProcedureTransitionType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -388,6 +436,10 @@ public class ProcedureTransitionType
             this.abstractProcedureTransitionExtension = value;
         }
 
+        public boolean isSetAbstractProcedureTransitionExtension() {
+            return (this.abstractProcedureTransitionExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -412,8 +464,16 @@ public class ProcedureTransitionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

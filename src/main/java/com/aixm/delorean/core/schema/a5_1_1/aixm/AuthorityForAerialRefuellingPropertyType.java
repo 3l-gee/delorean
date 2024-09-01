@@ -71,4 +71,8 @@ public class AuthorityForAerialRefuellingPropertyType
         this.authorityForAerialRefuelling = value;
     }
 
+    public boolean isSetAuthorityForAerialRefuelling() {
+        return (this.authorityForAerialRefuelling!= null);
+    }
+
 }

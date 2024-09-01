@@ -112,6 +112,10 @@ public class CirclingAreaTimeSliceType
         this.extent = value;
     }
 
+    public boolean isSetExtent() {
+        return (this.extent!= null);
+    }
+
     /**
      * Gets the value of the approach property.
      * 
@@ -134,6 +138,10 @@ public class CirclingAreaTimeSliceType
      */
     public void setApproach(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
         this.approach = value;
+    }
+
+    public boolean isSetApproach() {
+        return (this.approach!= null);
     }
 
     /**
@@ -168,6 +176,14 @@ public class CirclingAreaTimeSliceType
         return this.condition;
     }
 
+    public boolean isSetCondition() {
+        return ((this.condition!= null)&&(!this.condition.isEmpty()));
+    }
+
+    public void unsetCondition() {
+        this.condition = null;
+    }
+
     /**
      * Gets the value of the aircraftCategory property.
      * 
@@ -190,6 +206,10 @@ public class CirclingAreaTimeSliceType
      */
     public void setAircraftCategory(JAXBElement<AircraftCharacteristicPropertyType> value) {
         this.aircraftCategory = value;
+    }
+
+    public boolean isSetAircraftCategory() {
+        return (this.aircraftCategory!= null);
     }
 
     /**
@@ -224,6 +244,14 @@ public class CirclingAreaTimeSliceType
         return this.designSurface;
     }
 
+    public boolean isSetDesignSurface() {
+        return ((this.designSurface!= null)&&(!this.designSurface.isEmpty()));
+    }
+
+    public void unsetDesignSurface() {
+        this.designSurface = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -256,6 +284,14 @@ public class CirclingAreaTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -286,6 +322,14 @@ public class CirclingAreaTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -346,6 +390,10 @@ public class CirclingAreaTimeSliceType
             this.abstractCirclingAreaExtension = value;
         }
 
+        public boolean isSetAbstractCirclingAreaExtension() {
+            return (this.abstractCirclingAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -370,8 +418,16 @@ public class CirclingAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

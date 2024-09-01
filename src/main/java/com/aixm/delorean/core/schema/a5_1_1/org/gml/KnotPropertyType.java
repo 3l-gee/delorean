@@ -82,4 +82,8 @@ public class KnotPropertyType {
         this.knot = value;
     }
 
+    public boolean isSetKnot() {
+        return (this.knot!= null);
+    }
+
 }

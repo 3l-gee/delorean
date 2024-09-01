@@ -90,6 +90,10 @@ public class LinguisticNoteType
         this.note = value;
     }
 
+    public boolean isSetNote() {
+        return (this.note!= null);
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -120,6 +124,14 @@ public class LinguisticNoteType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -179,6 +191,10 @@ public class LinguisticNoteType
             this.abstractLinguisticNoteExtension = value;
         }
 
+        public boolean isSetAbstractLinguisticNoteExtension() {
+            return (this.abstractLinguisticNoteExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -203,8 +219,16 @@ public class LinguisticNoteType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

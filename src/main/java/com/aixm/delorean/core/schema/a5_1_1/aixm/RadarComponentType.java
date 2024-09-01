@@ -98,6 +98,10 @@ public class RadarComponentType
         this.collocationGroup = value;
     }
 
+    public boolean isSetCollocationGroup() {
+        return (this.collocationGroup!= null);
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -130,6 +134,14 @@ public class RadarComponentType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the theRadarEquipment property.
      * 
@@ -152,6 +164,10 @@ public class RadarComponentType
      */
     public void setTheRadarEquipment(RadarEquipmentPropertyType value) {
         this.theRadarEquipment = value;
+    }
+
+    public boolean isSetTheRadarEquipment() {
+        return (this.theRadarEquipment!= null);
     }
 
     /**
@@ -184,6 +200,14 @@ public class RadarComponentType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -243,6 +267,10 @@ public class RadarComponentType
             this.abstractRadarComponentExtension = value;
         }
 
+        public boolean isSetAbstractRadarComponentExtension() {
+            return (this.abstractRadarComponentExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -267,8 +295,16 @@ public class RadarComponentType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

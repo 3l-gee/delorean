@@ -102,6 +102,10 @@ public class AirportHeliportCollocationTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the hostAirport property.
      * 
@@ -126,6 +130,10 @@ public class AirportHeliportCollocationTimeSliceType
         this.hostAirport = value;
     }
 
+    public boolean isSetHostAirport() {
+        return (this.hostAirport!= null);
+    }
+
     /**
      * Gets the value of the dependentAirport property.
      * 
@@ -148,6 +156,10 @@ public class AirportHeliportCollocationTimeSliceType
      */
     public void setDependentAirport(JAXBElement<AirportHeliportPropertyType> value) {
         this.dependentAirport = value;
+    }
+
+    public boolean isSetDependentAirport() {
+        return (this.dependentAirport!= null);
     }
 
     /**
@@ -182,6 +194,14 @@ public class AirportHeliportCollocationTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -212,6 +232,14 @@ public class AirportHeliportCollocationTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -272,6 +300,10 @@ public class AirportHeliportCollocationTimeSliceType
             this.abstractAirportHeliportCollocationExtension = value;
         }
 
+        public boolean isSetAbstractAirportHeliportCollocationExtension() {
+            return (this.abstractAirportHeliportCollocationExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -296,8 +328,16 @@ public class AirportHeliportCollocationTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

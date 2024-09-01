@@ -7,21 +7,18 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlList;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
+import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -65,19 +62,14 @@ public class GridType
     @NotNull
     @Valid
     protected GridLimitsType limits;
-    @XmlList
     @XmlElement(name = "axisLabels")
-    @Valid
-    @Size(min = 1, max = 1)
-    protected List<String> gridAxisLabels;
+    protected NCNameList gridAxisLabels;
     @Valid
     @Size(min = 1)
     protected List<String> axisName;
     @XmlAttribute(name = "dimension", required = true)
-    @XmlSchemaType(name = "positiveInteger")
     @NotNull
-    @DecimalMin(value = "1", inclusive = true)
-    protected BigInteger dimension;
+    protected PositiveInteger dimension;
 
     /**
      * Gets the value of the limits property.
@@ -103,36 +95,36 @@ public class GridType
         this.limits = value;
     }
 
+    public boolean isSetLimits() {
+        return (this.limits!= null);
+    }
+
     /**
      * Gets the value of the gridAxisLabels property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the gridAxisLabels property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getGridAxisLabels().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the gridAxisLabels property.
+     *     possible object is
+     *     {@link NCNameList }
+     *     
      */
-    public List<String> getGridAxisLabels() {
-        if (gridAxisLabels == null) {
-            gridAxisLabels = new ArrayList<>();
-        }
-        return this.gridAxisLabels;
+    public NCNameList getGridAxisLabels() {
+        return gridAxisLabels;
+    }
+
+    /**
+     * Sets the value of the gridAxisLabels property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NCNameList }
+     *     
+     */
+    public void setGridAxisLabels(NCNameList value) {
+        this.gridAxisLabels = value;
+    }
+
+    public boolean isSetGridAxisLabels() {
+        return (this.gridAxisLabels!= null);
     }
 
     /**
@@ -167,15 +159,23 @@ public class GridType
         return this.axisName;
     }
 
+    public boolean isSetAxisName() {
+        return ((this.axisName!= null)&&(!this.axisName.isEmpty()));
+    }
+
+    public void unsetAxisName() {
+        this.axisName = null;
+    }
+
     /**
      * Gets the value of the dimension property.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public BigInteger getDimension() {
+    public PositiveInteger getDimension() {
         return dimension;
     }
 
@@ -184,11 +184,15 @@ public class GridType
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public void setDimension(BigInteger value) {
+    public void setDimension(PositiveInteger value) {
         this.dimension = value;
+    }
+
+    public boolean isSetDimension() {
+        return (this.dimension!= null);
     }
 
 }

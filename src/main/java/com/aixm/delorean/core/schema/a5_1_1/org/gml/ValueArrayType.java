@@ -41,7 +41,7 @@ public class ValueArrayType
     @XmlSchemaType(name = "anyURI")
     protected String codeSpace;
     @XmlAttribute(name = "uom")
-    protected String uom;
+    protected UomIdentifier uom;
 
     /**
      * Gets the value of the codeSpace property.
@@ -67,15 +67,19 @@ public class ValueArrayType
         this.codeSpace = value;
     }
 
+    public boolean isSetCodeSpace() {
+        return (this.codeSpace!= null);
+    }
+
     /**
      * Gets the value of the uom property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomIdentifier }
      *     
      */
-    public String getUom() {
+    public UomIdentifier getUom() {
         return uom;
     }
 
@@ -84,11 +88,15 @@ public class ValueArrayType
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomIdentifier }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomIdentifier value) {
         this.uom = value;
+    }
+
+    public boolean isSetUom() {
+        return (this.uom!= null);
     }
 
 }

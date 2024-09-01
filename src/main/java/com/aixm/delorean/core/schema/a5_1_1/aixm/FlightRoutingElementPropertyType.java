@@ -71,4 +71,8 @@ public class FlightRoutingElementPropertyType
         this.flightRoutingElement = value;
     }
 
+    public boolean isSetFlightRoutingElement() {
+        return (this.flightRoutingElement!= null);
+    }
+
 }

@@ -95,6 +95,14 @@ public abstract class AbstractMetaDataType {
         return this.content;
     }
 
+    public boolean isSetContent() {
+        return ((this.content!= null)&&(!this.content.isEmpty()));
+    }
+
+    public void unsetContent() {
+        this.content = null;
+    }
+
     /**
      * The attribute gml:id supports provision of a handle for the XML element representing a GML Object. Its use is mandatory for all GML objects. It is of XML type ID, so is constrained to be unique in the XML document within which it occurs.
      * 
@@ -118,6 +126,10 @@ public abstract class AbstractMetaDataType {
      */
     public void setId(String value) {
         this.id = value;
+    }
+
+    public boolean isSetId() {
+        return (this.id!= null);
     }
 
 }

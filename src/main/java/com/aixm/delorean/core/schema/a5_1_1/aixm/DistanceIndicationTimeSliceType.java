@@ -123,6 +123,10 @@ public class DistanceIndicationTimeSliceType
         this.distance = value;
     }
 
+    public boolean isSetDistance() {
+        return (this.distance!= null);
+    }
+
     /**
      * Gets the value of the minimumReceptionAltitude property.
      * 
@@ -145,6 +149,10 @@ public class DistanceIndicationTimeSliceType
      */
     public void setMinimumReceptionAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumReceptionAltitude = value;
+    }
+
+    public boolean isSetMinimumReceptionAltitude() {
+        return (this.minimumReceptionAltitude!= null);
     }
 
     /**
@@ -171,6 +179,10 @@ public class DistanceIndicationTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the fix property.
      * 
@@ -193,6 +205,10 @@ public class DistanceIndicationTimeSliceType
      */
     public void setFix(JAXBElement<DesignatedPointPropertyType> value) {
         this.fix = value;
+    }
+
+    public boolean isSetFix() {
+        return (this.fix!= null);
     }
 
     /**
@@ -219,6 +235,10 @@ public class DistanceIndicationTimeSliceType
         this.pointChoiceFixDesignatedPoint = value;
     }
 
+    public boolean isSetPointChoiceFixDesignatedPoint() {
+        return (this.pointChoiceFixDesignatedPoint!= null);
+    }
+
     /**
      * Gets the value of the pointChoiceNavaidSystem property.
      * 
@@ -241,6 +261,10 @@ public class DistanceIndicationTimeSliceType
      */
     public void setPointChoiceNavaidSystem(JAXBElement<NavaidPropertyType> value) {
         this.pointChoiceNavaidSystem = value;
+    }
+
+    public boolean isSetPointChoiceNavaidSystem() {
+        return (this.pointChoiceNavaidSystem!= null);
     }
 
     /**
@@ -267,6 +291,10 @@ public class DistanceIndicationTimeSliceType
         this.pointChoicePosition = value;
     }
 
+    public boolean isSetPointChoicePosition() {
+        return (this.pointChoicePosition!= null);
+    }
+
     /**
      * Gets the value of the pointChoiceRunwayPoint property.
      * 
@@ -289,6 +317,10 @@ public class DistanceIndicationTimeSliceType
      */
     public void setPointChoiceRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
         this.pointChoiceRunwayPoint = value;
+    }
+
+    public boolean isSetPointChoiceRunwayPoint() {
+        return (this.pointChoiceRunwayPoint!= null);
     }
 
     /**
@@ -315,6 +347,10 @@ public class DistanceIndicationTimeSliceType
         this.pointChoiceAimingPoint = value;
     }
 
+    public boolean isSetPointChoiceAimingPoint() {
+        return (this.pointChoiceAimingPoint!= null);
+    }
+
     /**
      * Gets the value of the pointChoiceAirportReferencePoint property.
      * 
@@ -337,6 +373,10 @@ public class DistanceIndicationTimeSliceType
      */
     public void setPointChoiceAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.pointChoiceAirportReferencePoint = value;
+    }
+
+    public boolean isSetPointChoiceAirportReferencePoint() {
+        return (this.pointChoiceAirportReferencePoint!= null);
     }
 
     /**
@@ -371,6 +411,14 @@ public class DistanceIndicationTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -401,6 +449,14 @@ public class DistanceIndicationTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -461,6 +517,10 @@ public class DistanceIndicationTimeSliceType
             this.abstractDistanceIndicationExtension = value;
         }
 
+        public boolean isSetAbstractDistanceIndicationExtension() {
+            return (this.abstractDistanceIndicationExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -485,8 +545,16 @@ public class DistanceIndicationTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

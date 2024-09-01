@@ -150,6 +150,10 @@ public class GlidepathTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -172,6 +176,10 @@ public class GlidepathTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -198,6 +206,10 @@ public class GlidepathTimeSliceType
         this.emissionClass = value;
     }
 
+    public boolean isSetEmissionClass() {
+        return (this.emissionClass!= null);
+    }
+
     /**
      * Gets the value of the mobile property.
      * 
@@ -220,6 +232,10 @@ public class GlidepathTimeSliceType
      */
     public void setMobile(JAXBElement<CodeYesNoType> value) {
         this.mobile = value;
+    }
+
+    public boolean isSetMobile() {
+        return (this.mobile!= null);
     }
 
     /**
@@ -246,6 +262,10 @@ public class GlidepathTimeSliceType
         this.magneticVariation = value;
     }
 
+    public boolean isSetMagneticVariation() {
+        return (this.magneticVariation!= null);
+    }
+
     /**
      * Gets the value of the magneticVariationAccuracy property.
      * 
@@ -268,6 +288,10 @@ public class GlidepathTimeSliceType
      */
     public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticVariationAccuracy = value;
+    }
+
+    public boolean isSetMagneticVariationAccuracy() {
+        return (this.magneticVariationAccuracy!= null);
     }
 
     /**
@@ -294,6 +318,10 @@ public class GlidepathTimeSliceType
         this.dateMagneticVariation = value;
     }
 
+    public boolean isSetDateMagneticVariation() {
+        return (this.dateMagneticVariation!= null);
+    }
+
     /**
      * Gets the value of the flightChecked property.
      * 
@@ -318,6 +346,10 @@ public class GlidepathTimeSliceType
         this.flightChecked = value;
     }
 
+    public boolean isSetFlightChecked() {
+        return (this.flightChecked!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -340,6 +372,10 @@ public class GlidepathTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -374,6 +410,14 @@ public class GlidepathTimeSliceType
         return this.authority;
     }
 
+    public boolean isSetAuthority() {
+        return ((this.authority!= null)&&(!this.authority.isEmpty()));
+    }
+
+    public void unsetAuthority() {
+        this.authority = null;
+    }
+
     /**
      * Gets the value of the monitoring property.
      * 
@@ -404,6 +448,14 @@ public class GlidepathTimeSliceType
             monitoring = new ArrayList<>();
         }
         return this.monitoring;
+    }
+
+    public boolean isSetMonitoring() {
+        return ((this.monitoring!= null)&&(!this.monitoring.isEmpty()));
+    }
+
+    public void unsetMonitoring() {
+        this.monitoring = null;
     }
 
     /**
@@ -438,6 +490,14 @@ public class GlidepathTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -470,6 +530,14 @@ public class GlidepathTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the frequency property.
      * 
@@ -492,6 +560,10 @@ public class GlidepathTimeSliceType
      */
     public void setFrequency(JAXBElement<ValFrequencyType> value) {
         this.frequency = value;
+    }
+
+    public boolean isSetFrequency() {
+        return (this.frequency!= null);
     }
 
     /**
@@ -518,6 +590,10 @@ public class GlidepathTimeSliceType
         this.slope = value;
     }
 
+    public boolean isSetSlope() {
+        return (this.slope!= null);
+    }
+
     /**
      * Gets the value of the angleAccuracy property.
      * 
@@ -540,6 +616,10 @@ public class GlidepathTimeSliceType
      */
     public void setAngleAccuracy(JAXBElement<ValAngleType> value) {
         this.angleAccuracy = value;
+    }
+
+    public boolean isSetAngleAccuracy() {
+        return (this.angleAccuracy!= null);
     }
 
     /**
@@ -566,6 +646,10 @@ public class GlidepathTimeSliceType
         this.rdh = value;
     }
 
+    public boolean isSetRdh() {
+        return (this.rdh!= null);
+    }
+
     /**
      * Gets the value of the rdhAccuracy property.
      * 
@@ -588,6 +672,10 @@ public class GlidepathTimeSliceType
      */
     public void setRdhAccuracy(JAXBElement<ValDistanceVerticalType> value) {
         this.rdhAccuracy = value;
+    }
+
+    public boolean isSetRdhAccuracy() {
+        return (this.rdhAccuracy!= null);
     }
 
     /**
@@ -620,6 +708,14 @@ public class GlidepathTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -684,6 +780,10 @@ public class GlidepathTimeSliceType
             this.abstractGlidepathExtension = value;
         }
 
+        public boolean isSetAbstractGlidepathExtension() {
+            return (this.abstractGlidepathExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractNavaidEquipmentExtension property.
          * 
@@ -706,6 +806,10 @@ public class GlidepathTimeSliceType
          */
         public void setAbstractNavaidEquipmentExtension(AbstractExtensionType value) {
             this.abstractNavaidEquipmentExtension = value;
+        }
+
+        public boolean isSetAbstractNavaidEquipmentExtension() {
+            return (this.abstractNavaidEquipmentExtension!= null);
         }
 
         /**
@@ -732,8 +836,16 @@ public class GlidepathTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

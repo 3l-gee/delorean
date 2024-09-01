@@ -110,6 +110,14 @@ public abstract class AbstractCRSType
         return this.domainOfValidity;
     }
 
+    public boolean isSetDomainOfValidity() {
+        return ((this.domainOfValidity!= null)&&(!this.domainOfValidity.isEmpty()));
+    }
+
+    public void unsetDomainOfValidity() {
+        this.domainOfValidity = null;
+    }
+
     /**
      * The gml:scope property provides a description of the usage, or limitations of usage, for which this CRS-related object is valid. If unknown, enter "not known".
      * 
@@ -142,6 +150,14 @@ public abstract class AbstractCRSType
             scope = new ArrayList<>();
         }
         return this.scope;
+    }
+
+    public boolean isSetScope() {
+        return ((this.scope!= null)&&(!this.scope.isEmpty()));
+    }
+
+    public void unsetScope() {
+        this.scope = null;
     }
 
 }

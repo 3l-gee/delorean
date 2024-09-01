@@ -73,6 +73,10 @@ public class StandardLevelSectorTimeSlicePropertyType {
         this.standardLevelSectorTimeSlice = value;
     }
 
+    public boolean isSetStandardLevelSectorTimeSlice() {
+        return (this.standardLevelSectorTimeSlice!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -97,8 +101,16 @@ public class StandardLevelSectorTimeSlicePropertyType {
      *     {@link Boolean }
      *     
      */
-    public void setOwns(Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

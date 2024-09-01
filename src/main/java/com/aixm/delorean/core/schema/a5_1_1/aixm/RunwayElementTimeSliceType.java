@@ -121,6 +121,10 @@ public class RunwayElementTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the length property.
      * 
@@ -143,6 +147,10 @@ public class RunwayElementTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
+    }
+
+    public boolean isSetLength() {
+        return (this.length!= null);
     }
 
     /**
@@ -169,6 +177,10 @@ public class RunwayElementTimeSliceType
         this.width = value;
     }
 
+    public boolean isSetWidth() {
+        return (this.width!= null);
+    }
+
     /**
      * Gets the value of the gradeSeparation property.
      * 
@@ -193,6 +205,10 @@ public class RunwayElementTimeSliceType
         this.gradeSeparation = value;
     }
 
+    public boolean isSetGradeSeparation() {
+        return (this.gradeSeparation!= null);
+    }
+
     /**
      * Gets the value of the surfaceProperties property.
      * 
@@ -215,6 +231,10 @@ public class RunwayElementTimeSliceType
      */
     public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
+    }
+
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
     }
 
     /**
@@ -249,6 +269,14 @@ public class RunwayElementTimeSliceType
         return this.associatedRunway;
     }
 
+    public boolean isSetAssociatedRunway() {
+        return ((this.associatedRunway!= null)&&(!this.associatedRunway.isEmpty()));
+    }
+
+    public void unsetAssociatedRunway() {
+        this.associatedRunway = null;
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -271,6 +299,10 @@ public class RunwayElementTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -305,6 +337,14 @@ public class RunwayElementTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -337,6 +377,14 @@ public class RunwayElementTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -367,6 +415,14 @@ public class RunwayElementTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -427,6 +483,10 @@ public class RunwayElementTimeSliceType
             this.abstractRunwayElementExtension = value;
         }
 
+        public boolean isSetAbstractRunwayElementExtension() {
+            return (this.abstractRunwayElementExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -451,8 +511,16 @@ public class RunwayElementTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

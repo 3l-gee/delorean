@@ -122,6 +122,14 @@ public class CubicSplineType
         return this.posOrPointPropertyOrPointRep;
     }
 
+    public boolean isSetPosOrPointPropertyOrPointRep() {
+        return ((this.posOrPointPropertyOrPointRep!= null)&&(!this.posOrPointPropertyOrPointRep.isEmpty()));
+    }
+
+    public void unsetPosOrPointPropertyOrPointRep() {
+        this.posOrPointPropertyOrPointRep = null;
+    }
+
     /**
      * Gets the value of the posList property.
      * 
@@ -144,6 +152,10 @@ public class CubicSplineType
      */
     public void setPosList(DirectPositionListType value) {
         this.posList = value;
+    }
+
+    public boolean isSetPosList() {
+        return (this.posList!= null);
     }
 
     /**
@@ -170,6 +182,10 @@ public class CubicSplineType
         this.coordinates = value;
     }
 
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
+    }
+
     /**
      * Gets the value of the vectorAtStart property.
      * 
@@ -194,6 +210,10 @@ public class CubicSplineType
         this.vectorAtStart = value;
     }
 
+    public boolean isSetVectorAtStart() {
+        return (this.vectorAtStart!= null);
+    }
+
     /**
      * Gets the value of the vectorAtEnd property.
      * 
@@ -216,6 +236,10 @@ public class CubicSplineType
      */
     public void setVectorAtEnd(VectorType value) {
         this.vectorAtEnd = value;
+    }
+
+    public boolean isSetVectorAtEnd() {
+        return (this.vectorAtEnd!= null);
     }
 
 }

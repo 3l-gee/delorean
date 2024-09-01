@@ -71,4 +71,8 @@ public class NavaidEquipmentDistancePropertyType
         this.navaidEquipmentDistance = value;
     }
 
+    public boolean isSetNavaidEquipmentDistance() {
+        return (this.navaidEquipmentDistance!= null);
+    }
+
 }

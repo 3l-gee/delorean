@@ -117,6 +117,14 @@ public class MDDataIdentificationType
         return this.spatialRepresentationType;
     }
 
+    public boolean isSetSpatialRepresentationType() {
+        return ((this.spatialRepresentationType!= null)&&(!this.spatialRepresentationType.isEmpty()));
+    }
+
+    public void unsetSpatialRepresentationType() {
+        this.spatialRepresentationType = null;
+    }
+
     /**
      * Gets the value of the spatialResolution property.
      * 
@@ -147,6 +155,14 @@ public class MDDataIdentificationType
             spatialResolution = new ArrayList<>();
         }
         return this.spatialResolution;
+    }
+
+    public boolean isSetSpatialResolution() {
+        return ((this.spatialResolution!= null)&&(!this.spatialResolution.isEmpty()));
+    }
+
+    public void unsetSpatialResolution() {
+        this.spatialResolution = null;
     }
 
     /**
@@ -181,6 +197,14 @@ public class MDDataIdentificationType
         return this.language;
     }
 
+    public boolean isSetLanguage() {
+        return ((this.language!= null)&&(!this.language.isEmpty()));
+    }
+
+    public void unsetLanguage() {
+        this.language = null;
+    }
+
     /**
      * Gets the value of the characterSet property.
      * 
@@ -211,6 +235,14 @@ public class MDDataIdentificationType
             characterSet = new ArrayList<>();
         }
         return this.characterSet;
+    }
+
+    public boolean isSetCharacterSet() {
+        return ((this.characterSet!= null)&&(!this.characterSet.isEmpty()));
+    }
+
+    public void unsetCharacterSet() {
+        this.characterSet = null;
     }
 
     /**
@@ -245,6 +277,14 @@ public class MDDataIdentificationType
         return this.topicCategory;
     }
 
+    public boolean isSetTopicCategory() {
+        return ((this.topicCategory!= null)&&(!this.topicCategory.isEmpty()));
+    }
+
+    public void unsetTopicCategory() {
+        this.topicCategory = null;
+    }
+
     /**
      * Gets the value of the environmentDescription property.
      * 
@@ -267,6 +307,10 @@ public class MDDataIdentificationType
      */
     public void setEnvironmentDescription(CharacterStringPropertyType value) {
         this.environmentDescription = value;
+    }
+
+    public boolean isSetEnvironmentDescription() {
+        return (this.environmentDescription!= null);
     }
 
     /**
@@ -301,6 +345,14 @@ public class MDDataIdentificationType
         return this.extent;
     }
 
+    public boolean isSetExtent() {
+        return ((this.extent!= null)&&(!this.extent.isEmpty()));
+    }
+
+    public void unsetExtent() {
+        this.extent = null;
+    }
+
     /**
      * Gets the value of the supplementalInformation property.
      * 
@@ -323,6 +375,10 @@ public class MDDataIdentificationType
      */
     public void setSupplementalInformation(CharacterStringPropertyType value) {
         this.supplementalInformation = value;
+    }
+
+    public boolean isSetSupplementalInformation() {
+        return (this.supplementalInformation!= null);
     }
 
 }

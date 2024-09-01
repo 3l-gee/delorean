@@ -71,4 +71,8 @@ public class VerticalStructureLightingStatusPropertyType
         this.verticalStructureLightingStatus = value;
     }
 
+    public boolean isSetVerticalStructureLightingStatus() {
+        return (this.verticalStructureLightingStatus!= null);
+    }
+
 }

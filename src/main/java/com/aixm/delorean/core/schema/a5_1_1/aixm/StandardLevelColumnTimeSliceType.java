@@ -69,7 +69,7 @@ public class StandardLevelColumnTimeSliceType
     @XmlElementRef(name = "series", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeLevelSeriesType> series;
     @XmlElementRef(name = "unitOfMeasurement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<UomDistanceVerticalType> unitOfMeasurement;
+    protected JAXBElement<CodeDistanceVerticalUomType> unitOfMeasurement;
     @XmlElementRef(name = "separation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRVSMType> separation;
     @XmlElement(nillable = true)
@@ -110,15 +110,19 @@ public class StandardLevelColumnTimeSliceType
         this.series = value;
     }
 
+    public boolean isSetSeries() {
+        return (this.series!= null);
+    }
+
     /**
      * Gets the value of the unitOfMeasurement property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link UomDistanceVerticalType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link CodeDistanceVerticalUomType }{@code >}
      *     
      */
-    public JAXBElement<UomDistanceVerticalType> getUnitOfMeasurement() {
+    public JAXBElement<CodeDistanceVerticalUomType> getUnitOfMeasurement() {
         return unitOfMeasurement;
     }
 
@@ -127,11 +131,15 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link UomDistanceVerticalType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link CodeDistanceVerticalUomType }{@code >}
      *     
      */
-    public void setUnitOfMeasurement(JAXBElement<UomDistanceVerticalType> value) {
+    public void setUnitOfMeasurement(JAXBElement<CodeDistanceVerticalUomType> value) {
         this.unitOfMeasurement = value;
+    }
+
+    public boolean isSetUnitOfMeasurement() {
+        return (this.unitOfMeasurement!= null);
     }
 
     /**
@@ -156,6 +164,10 @@ public class StandardLevelColumnTimeSliceType
      */
     public void setSeparation(JAXBElement<CodeRVSMType> value) {
         this.separation = value;
+    }
+
+    public boolean isSetSeparation() {
+        return (this.separation!= null);
     }
 
     /**
@@ -190,6 +202,14 @@ public class StandardLevelColumnTimeSliceType
         return this.level;
     }
 
+    public boolean isSetLevel() {
+        return ((this.level!= null)&&(!this.level.isEmpty()));
+    }
+
+    public void unsetLevel() {
+        this.level = null;
+    }
+
     /**
      * Gets the value of the levelTable property.
      * 
@@ -212,6 +232,10 @@ public class StandardLevelColumnTimeSliceType
      */
     public void setLevelTable(JAXBElement<StandardLevelTablePropertyType> value) {
         this.levelTable = value;
+    }
+
+    public boolean isSetLevelTable() {
+        return (this.levelTable!= null);
     }
 
     /**
@@ -246,6 +270,14 @@ public class StandardLevelColumnTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -276,6 +308,14 @@ public class StandardLevelColumnTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -336,6 +376,10 @@ public class StandardLevelColumnTimeSliceType
             this.abstractStandardLevelColumnExtension = value;
         }
 
+        public boolean isSetAbstractStandardLevelColumnExtension() {
+            return (this.abstractStandardLevelColumnExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -360,8 +404,16 @@ public class StandardLevelColumnTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

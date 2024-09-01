@@ -71,4 +71,8 @@ public class MessageMetadataPropertyType
         this.mdMetadata = value;
     }
 
+    public boolean isSetMDMetadata() {
+        return (this.mdMetadata!= null);
+    }
+
 }

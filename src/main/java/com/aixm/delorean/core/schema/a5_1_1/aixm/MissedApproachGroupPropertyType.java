@@ -71,4 +71,8 @@ public class MissedApproachGroupPropertyType
         this.missedApproachGroup = value;
     }
 
+    public boolean isSetMissedApproachGroup() {
+        return (this.missedApproachGroup!= null);
+    }
+
 }

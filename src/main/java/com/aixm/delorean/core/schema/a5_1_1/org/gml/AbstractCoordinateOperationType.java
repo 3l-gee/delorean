@@ -127,6 +127,10 @@ public abstract class AbstractCoordinateOperationType
         this.domainOfValidity = value;
     }
 
+    public boolean isSetDomainOfValidity() {
+        return (this.domainOfValidity!= null);
+    }
+
     /**
      * The gml:scope property provides a description of the usage, or limitations of usage, for which this CRS-related object is valid. If unknown, enter "not known".
      * 
@@ -161,6 +165,14 @@ public abstract class AbstractCoordinateOperationType
         return this.scope;
     }
 
+    public boolean isSetScope() {
+        return ((this.scope!= null)&&(!this.scope.isEmpty()));
+    }
+
+    public void unsetScope() {
+        this.scope = null;
+    }
+
     /**
      * gml:operationVersion is the version of the coordinate transformation (i.e., instantiation due to the stochastic nature of the parameters). Mandatory when describing a transformation, and should not be supplied for a conversion.
      * 
@@ -184,6 +196,10 @@ public abstract class AbstractCoordinateOperationType
      */
     public void setOperationVersion(String value) {
         this.operationVersion = value;
+    }
+
+    public boolean isSetOperationVersion() {
+        return (this.operationVersion!= null);
     }
 
     /**
@@ -220,6 +236,14 @@ public abstract class AbstractCoordinateOperationType
         return this.coordinateOperationAccuracy;
     }
 
+    public boolean isSetCoordinateOperationAccuracy() {
+        return ((this.coordinateOperationAccuracy!= null)&&(!this.coordinateOperationAccuracy.isEmpty()));
+    }
+
+    public void unsetCoordinateOperationAccuracy() {
+        this.coordinateOperationAccuracy = null;
+    }
+
     /**
      * gml:sourceCRS is an association role to the source CRS (coordinate reference system) of this coordinate operation.
      * 
@@ -245,6 +269,10 @@ public abstract class AbstractCoordinateOperationType
         this.sourceCRS = value;
     }
 
+    public boolean isSetSourceCRS() {
+        return (this.sourceCRS!= null);
+    }
+
     /**
      * gml:targetCRS is an association role to the target CRS (coordinate reference system) of this coordinate operation.
      * 
@@ -268,6 +296,10 @@ public abstract class AbstractCoordinateOperationType
      */
     public void setTargetCRS(CRSPropertyType value) {
         this.targetCRS = value;
+    }
+
+    public boolean isSetTargetCRS() {
+        return (this.targetCRS!= null);
     }
 
 }

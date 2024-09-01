@@ -91,6 +91,10 @@ public class CIResponsiblePartyType
         this.individualName = value;
     }
 
+    public boolean isSetIndividualName() {
+        return (this.individualName!= null);
+    }
+
     /**
      * Gets the value of the organisationName property.
      * 
@@ -113,6 +117,10 @@ public class CIResponsiblePartyType
      */
     public void setOrganisationName(CharacterStringPropertyType value) {
         this.organisationName = value;
+    }
+
+    public boolean isSetOrganisationName() {
+        return (this.organisationName!= null);
     }
 
     /**
@@ -139,6 +147,10 @@ public class CIResponsiblePartyType
         this.positionName = value;
     }
 
+    public boolean isSetPositionName() {
+        return (this.positionName!= null);
+    }
+
     /**
      * Gets the value of the contactInfo property.
      * 
@@ -163,6 +175,10 @@ public class CIResponsiblePartyType
         this.contactInfo = value;
     }
 
+    public boolean isSetContactInfo() {
+        return (this.contactInfo!= null);
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -185,6 +201,10 @@ public class CIResponsiblePartyType
      */
     public void setRole(CIRoleCodePropertyType value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
 }

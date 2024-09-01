@@ -126,6 +126,14 @@ public class RouteAvailabilityType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -156,6 +164,14 @@ public class RouteAvailabilityType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -190,6 +206,14 @@ public class RouteAvailabilityType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the direction property.
      * 
@@ -212,6 +236,10 @@ public class RouteAvailabilityType
      */
     public void setDirection(JAXBElement<CodeDirectionType> value) {
         this.direction = value;
+    }
+
+    public boolean isSetDirection() {
+        return (this.direction!= null);
     }
 
     /**
@@ -238,6 +266,10 @@ public class RouteAvailabilityType
         this.cardinalDirection = value;
     }
 
+    public boolean isSetCardinalDirection() {
+        return (this.cardinalDirection!= null);
+    }
+
     /**
      * Gets the value of the status property.
      * 
@@ -260,6 +292,10 @@ public class RouteAvailabilityType
      */
     public void setStatus(JAXBElement<CodeRouteAvailabilityType> value) {
         this.status = value;
+    }
+
+    public boolean isSetStatus() {
+        return (this.status!= null);
     }
 
     /**
@@ -294,6 +330,14 @@ public class RouteAvailabilityType
         return this.levels;
     }
 
+    public boolean isSetLevels() {
+        return ((this.levels!= null)&&(!this.levels.isEmpty()));
+    }
+
+    public void unsetLevels() {
+        this.levels = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -324,6 +368,14 @@ public class RouteAvailabilityType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -388,6 +440,10 @@ public class RouteAvailabilityType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractRouteAvailabilityExtension property.
          * 
@@ -410,6 +466,10 @@ public class RouteAvailabilityType
          */
         public void setAbstractRouteAvailabilityExtension(AbstractExtensionType value) {
             this.abstractRouteAvailabilityExtension = value;
+        }
+
+        public boolean isSetAbstractRouteAvailabilityExtension() {
+            return (this.abstractRouteAvailabilityExtension!= null);
         }
 
         /**
@@ -436,8 +496,16 @@ public class RouteAvailabilityType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -83,4 +83,12 @@ public abstract class TimeTopologyComplexType
         return this.primitive;
     }
 
+    public boolean isSetPrimitive() {
+        return ((this.primitive!= null)&&(!this.primitive.isEmpty()));
+    }
+
+    public void unsetPrimitive() {
+        this.primitive = null;
+    }
+
 }

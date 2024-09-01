@@ -71,4 +71,8 @@ public class OilPropertyType
         this.oil = value;
     }
 
+    public boolean isSetOil() {
+        return (this.oil!= null);
+    }
+
 }

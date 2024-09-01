@@ -81,6 +81,10 @@ public class OffsetCurveType
         this.offsetBase = value;
     }
 
+    public boolean isSetOffsetBase() {
+        return (this.offsetBase!= null);
+    }
+
     /**
      * Gets the value of the distance property.
      * 
@@ -105,6 +109,10 @@ public class OffsetCurveType
         this.distance = value;
     }
 
+    public boolean isSetDistance() {
+        return (this.distance!= null);
+    }
+
     /**
      * Gets the value of the refDirection property.
      * 
@@ -127,6 +135,10 @@ public class OffsetCurveType
      */
     public void setRefDirection(VectorType value) {
         this.refDirection = value;
+    }
+
+    public boolean isSetRefDirection() {
+        return (this.refDirection!= null);
     }
 
 }

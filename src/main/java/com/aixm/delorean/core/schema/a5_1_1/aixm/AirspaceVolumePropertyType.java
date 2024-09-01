@@ -71,4 +71,8 @@ public class AirspaceVolumePropertyType
         this.airspaceVolume = value;
     }
 
+    public boolean isSetAirspaceVolume() {
+        return (this.airspaceVolume!= null);
+    }
+
 }

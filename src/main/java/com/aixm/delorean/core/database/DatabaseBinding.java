@@ -1,12 +1,9 @@
-package com.aixm.delorean.core.container;
+package com.aixm.delorean.core.database;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.validator.constraints.URL;
-
-import com.aixm.delorean.core.configuration.DatabaseConfig;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

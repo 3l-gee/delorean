@@ -71,4 +71,8 @@ public class AirspaceVolumeDependencyPropertyType
         this.airspaceVolumeDependency = value;
     }
 
+    public boolean isSetAirspaceVolumeDependency() {
+        return (this.airspaceVolumeDependency!= null);
+    }
+
 }

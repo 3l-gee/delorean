@@ -162,6 +162,10 @@ public class AzimuthTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -184,6 +188,10 @@ public class AzimuthTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -210,6 +218,10 @@ public class AzimuthTimeSliceType
         this.emissionClass = value;
     }
 
+    public boolean isSetEmissionClass() {
+        return (this.emissionClass!= null);
+    }
+
     /**
      * Gets the value of the mobile property.
      * 
@@ -232,6 +244,10 @@ public class AzimuthTimeSliceType
      */
     public void setMobile(JAXBElement<CodeYesNoType> value) {
         this.mobile = value;
+    }
+
+    public boolean isSetMobile() {
+        return (this.mobile!= null);
     }
 
     /**
@@ -258,6 +274,10 @@ public class AzimuthTimeSliceType
         this.magneticVariation = value;
     }
 
+    public boolean isSetMagneticVariation() {
+        return (this.magneticVariation!= null);
+    }
+
     /**
      * Gets the value of the magneticVariationAccuracy property.
      * 
@@ -280,6 +300,10 @@ public class AzimuthTimeSliceType
      */
     public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticVariationAccuracy = value;
+    }
+
+    public boolean isSetMagneticVariationAccuracy() {
+        return (this.magneticVariationAccuracy!= null);
     }
 
     /**
@@ -306,6 +330,10 @@ public class AzimuthTimeSliceType
         this.dateMagneticVariation = value;
     }
 
+    public boolean isSetDateMagneticVariation() {
+        return (this.dateMagneticVariation!= null);
+    }
+
     /**
      * Gets the value of the flightChecked property.
      * 
@@ -330,6 +358,10 @@ public class AzimuthTimeSliceType
         this.flightChecked = value;
     }
 
+    public boolean isSetFlightChecked() {
+        return (this.flightChecked!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -352,6 +384,10 @@ public class AzimuthTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -386,6 +422,14 @@ public class AzimuthTimeSliceType
         return this.authority;
     }
 
+    public boolean isSetAuthority() {
+        return ((this.authority!= null)&&(!this.authority.isEmpty()));
+    }
+
+    public void unsetAuthority() {
+        this.authority = null;
+    }
+
     /**
      * Gets the value of the monitoring property.
      * 
@@ -416,6 +460,14 @@ public class AzimuthTimeSliceType
             monitoring = new ArrayList<>();
         }
         return this.monitoring;
+    }
+
+    public boolean isSetMonitoring() {
+        return ((this.monitoring!= null)&&(!this.monitoring.isEmpty()));
+    }
+
+    public void unsetMonitoring() {
+        this.monitoring = null;
     }
 
     /**
@@ -450,6 +502,14 @@ public class AzimuthTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -482,6 +542,14 @@ public class AzimuthTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -504,6 +572,10 @@ public class AzimuthTimeSliceType
      */
     public void setType(JAXBElement<CodeMLSAzimuthType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -530,6 +602,10 @@ public class AzimuthTimeSliceType
         this.trueBearing = value;
     }
 
+    public boolean isSetTrueBearing() {
+        return (this.trueBearing!= null);
+    }
+
     /**
      * Gets the value of the trueBearingAccuracy property.
      * 
@@ -552,6 +628,10 @@ public class AzimuthTimeSliceType
      */
     public void setTrueBearingAccuracy(JAXBElement<ValAngleType> value) {
         this.trueBearingAccuracy = value;
+    }
+
+    public boolean isSetTrueBearingAccuracy() {
+        return (this.trueBearingAccuracy!= null);
     }
 
     /**
@@ -578,6 +658,10 @@ public class AzimuthTimeSliceType
         this.magneticBearing = value;
     }
 
+    public boolean isSetMagneticBearing() {
+        return (this.magneticBearing!= null);
+    }
+
     /**
      * Gets the value of the angleProportionalLeft property.
      * 
@@ -600,6 +684,10 @@ public class AzimuthTimeSliceType
      */
     public void setAngleProportionalLeft(JAXBElement<ValAngleType> value) {
         this.angleProportionalLeft = value;
+    }
+
+    public boolean isSetAngleProportionalLeft() {
+        return (this.angleProportionalLeft!= null);
     }
 
     /**
@@ -626,6 +714,10 @@ public class AzimuthTimeSliceType
         this.angleProportionalRight = value;
     }
 
+    public boolean isSetAngleProportionalRight() {
+        return (this.angleProportionalRight!= null);
+    }
+
     /**
      * Gets the value of the angleCoverLeft property.
      * 
@@ -648,6 +740,10 @@ public class AzimuthTimeSliceType
      */
     public void setAngleCoverLeft(JAXBElement<ValAngleType> value) {
         this.angleCoverLeft = value;
+    }
+
+    public boolean isSetAngleCoverLeft() {
+        return (this.angleCoverLeft!= null);
     }
 
     /**
@@ -674,6 +770,10 @@ public class AzimuthTimeSliceType
         this.angleCoverRight = value;
     }
 
+    public boolean isSetAngleCoverRight() {
+        return (this.angleCoverRight!= null);
+    }
+
     /**
      * Gets the value of the channel property.
      * 
@@ -696,6 +796,10 @@ public class AzimuthTimeSliceType
      */
     public void setChannel(JAXBElement<CodeMLSChannelType> value) {
         this.channel = value;
+    }
+
+    public boolean isSetChannel() {
+        return (this.channel!= null);
     }
 
     /**
@@ -728,6 +832,14 @@ public class AzimuthTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -792,6 +904,10 @@ public class AzimuthTimeSliceType
             this.abstractAzimuthExtension = value;
         }
 
+        public boolean isSetAbstractAzimuthExtension() {
+            return (this.abstractAzimuthExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractNavaidEquipmentExtension property.
          * 
@@ -814,6 +930,10 @@ public class AzimuthTimeSliceType
          */
         public void setAbstractNavaidEquipmentExtension(AbstractExtensionType value) {
             this.abstractNavaidEquipmentExtension = value;
+        }
+
+        public boolean isSetAbstractNavaidEquipmentExtension() {
+            return (this.abstractNavaidEquipmentExtension!= null);
         }
 
         /**
@@ -840,8 +960,16 @@ public class AzimuthTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

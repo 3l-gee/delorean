@@ -101,6 +101,10 @@ public class RidgeType
         this.side = value;
     }
 
+    public boolean isSetSide() {
+        return (this.side!= null);
+    }
+
     /**
      * Gets the value of the distance property.
      * 
@@ -125,6 +129,10 @@ public class RidgeType
         this.distance = value;
     }
 
+    public boolean isSetDistance() {
+        return (this.distance!= null);
+    }
+
     /**
      * Gets the value of the depth property.
      * 
@@ -147,6 +155,10 @@ public class RidgeType
      */
     public void setDepth(JAXBElement<ValDepthType> value) {
         this.depth = value;
+    }
+
+    public boolean isSetDepth() {
+        return (this.depth!= null);
     }
 
     /**
@@ -181,6 +193,14 @@ public class RidgeType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -211,6 +231,14 @@ public class RidgeType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -270,6 +298,10 @@ public class RidgeType
             this.abstractRidgeExtension = value;
         }
 
+        public boolean isSetAbstractRidgeExtension() {
+            return (this.abstractRidgeExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -294,8 +326,16 @@ public class RidgeType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

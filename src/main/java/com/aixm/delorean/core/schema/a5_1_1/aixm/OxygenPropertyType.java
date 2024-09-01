@@ -71,4 +71,8 @@ public class OxygenPropertyType
         this.oxygen = value;
     }
 
+    public boolean isSetOxygen() {
+        return (this.oxygen!= null);
+    }
+
 }

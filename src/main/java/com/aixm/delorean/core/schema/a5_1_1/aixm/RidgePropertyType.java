@@ -71,4 +71,8 @@ public class RidgePropertyType
         this.ridge = value;
     }
 
+    public boolean isSetRidge() {
+        return (this.ridge!= null);
+    }
+
 }

@@ -88,6 +88,14 @@ public class CITelephoneType
         return this.voice;
     }
 
+    public boolean isSetVoice() {
+        return ((this.voice!= null)&&(!this.voice.isEmpty()));
+    }
+
+    public void unsetVoice() {
+        this.voice = null;
+    }
+
     /**
      * Gets the value of the facsimile property.
      * 
@@ -118,6 +126,14 @@ public class CITelephoneType
             facsimile = new ArrayList<>();
         }
         return this.facsimile;
+    }
+
+    public boolean isSetFacsimile() {
+        return ((this.facsimile!= null)&&(!this.facsimile.isEmpty()));
+    }
+
+    public void unsetFacsimile() {
+        this.facsimile = null;
     }
 
 }

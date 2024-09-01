@@ -159,6 +159,14 @@ public class VerticalStructurePartType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -189,6 +197,14 @@ public class VerticalStructurePartType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -223,6 +239,14 @@ public class VerticalStructurePartType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the verticalExtent property.
      * 
@@ -245,6 +269,10 @@ public class VerticalStructurePartType
      */
     public void setVerticalExtent(JAXBElement<ValDistanceType> value) {
         this.verticalExtent = value;
+    }
+
+    public boolean isSetVerticalExtent() {
+        return (this.verticalExtent!= null);
     }
 
     /**
@@ -271,6 +299,10 @@ public class VerticalStructurePartType
         this.verticalExtentAccuracy = value;
     }
 
+    public boolean isSetVerticalExtentAccuracy() {
+        return (this.verticalExtentAccuracy!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -293,6 +325,10 @@ public class VerticalStructurePartType
      */
     public void setType(JAXBElement<CodeVerticalStructureType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -319,6 +355,10 @@ public class VerticalStructurePartType
         this.constructionStatus = value;
     }
 
+    public boolean isSetConstructionStatus() {
+        return (this.constructionStatus!= null);
+    }
+
     /**
      * Gets the value of the markingPattern property.
      * 
@@ -341,6 +381,10 @@ public class VerticalStructurePartType
      */
     public void setMarkingPattern(JAXBElement<CodeVerticalStructureMarkingType> value) {
         this.markingPattern = value;
+    }
+
+    public boolean isSetMarkingPattern() {
+        return (this.markingPattern!= null);
     }
 
     /**
@@ -367,6 +411,10 @@ public class VerticalStructurePartType
         this.markingFirstColour = value;
     }
 
+    public boolean isSetMarkingFirstColour() {
+        return (this.markingFirstColour!= null);
+    }
+
     /**
      * Gets the value of the markingSecondColour property.
      * 
@@ -389,6 +437,10 @@ public class VerticalStructurePartType
      */
     public void setMarkingSecondColour(JAXBElement<CodeColourType> value) {
         this.markingSecondColour = value;
+    }
+
+    public boolean isSetMarkingSecondColour() {
+        return (this.markingSecondColour!= null);
     }
 
     /**
@@ -415,6 +467,10 @@ public class VerticalStructurePartType
         this.mobile = value;
     }
 
+    public boolean isSetMobile() {
+        return (this.mobile!= null);
+    }
+
     /**
      * Gets the value of the frangible property.
      * 
@@ -437,6 +493,10 @@ public class VerticalStructurePartType
      */
     public void setFrangible(JAXBElement<CodeYesNoType> value) {
         this.frangible = value;
+    }
+
+    public boolean isSetFrangible() {
+        return (this.frangible!= null);
     }
 
     /**
@@ -463,6 +523,10 @@ public class VerticalStructurePartType
         this.visibleMaterial = value;
     }
 
+    public boolean isSetVisibleMaterial() {
+        return (this.visibleMaterial!= null);
+    }
+
     /**
      * Gets the value of the designator property.
      * 
@@ -485,6 +549,10 @@ public class VerticalStructurePartType
      */
     public void setDesignator(JAXBElement<TextDesignatorType> value) {
         this.designator = value;
+    }
+
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
     }
 
     /**
@@ -511,6 +579,10 @@ public class VerticalStructurePartType
         this.horizontalProjectionSurfaceExtent = value;
     }
 
+    public boolean isSetHorizontalProjectionSurfaceExtent() {
+        return (this.horizontalProjectionSurfaceExtent!= null);
+    }
+
     /**
      * Gets the value of the horizontalProjectionLinearExtent property.
      * 
@@ -535,6 +607,10 @@ public class VerticalStructurePartType
         this.horizontalProjectionLinearExtent = value;
     }
 
+    public boolean isSetHorizontalProjectionLinearExtent() {
+        return (this.horizontalProjectionLinearExtent!= null);
+    }
+
     /**
      * Gets the value of the horizontalProjectionLocation property.
      * 
@@ -557,6 +633,10 @@ public class VerticalStructurePartType
      */
     public void setHorizontalProjectionLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.horizontalProjectionLocation = value;
+    }
+
+    public boolean isSetHorizontalProjectionLocation() {
+        return (this.horizontalProjectionLocation!= null);
     }
 
     /**
@@ -591,6 +671,14 @@ public class VerticalStructurePartType
         return this.lighting;
     }
 
+    public boolean isSetLighting() {
+        return ((this.lighting!= null)&&(!this.lighting.isEmpty()));
+    }
+
+    public void unsetLighting() {
+        this.lighting = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -621,6 +709,14 @@ public class VerticalStructurePartType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -685,6 +781,10 @@ public class VerticalStructurePartType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractVerticalStructurePartExtension property.
          * 
@@ -707,6 +807,10 @@ public class VerticalStructurePartType
          */
         public void setAbstractVerticalStructurePartExtension(AbstractExtensionType value) {
             this.abstractVerticalStructurePartExtension = value;
+        }
+
+        public boolean isSetAbstractVerticalStructurePartExtension() {
+            return (this.abstractVerticalStructurePartExtension!= null);
         }
 
         /**
@@ -733,8 +837,16 @@ public class VerticalStructurePartType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

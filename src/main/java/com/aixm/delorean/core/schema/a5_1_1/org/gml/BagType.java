@@ -83,6 +83,14 @@ public class BagType
         return this.member;
     }
 
+    public boolean isSetMember() {
+        return ((this.member!= null)&&(!this.member.isEmpty()));
+    }
+
+    public void unsetMember() {
+        this.member = null;
+    }
+
     /**
      * Gets the value of the members property.
      * 
@@ -105,6 +113,10 @@ public class BagType
      */
     public void setMembers(ArrayAssociationType value) {
         this.members = value;
+    }
+
+    public boolean isSetMembers() {
+        return (this.members!= null);
     }
 
 }

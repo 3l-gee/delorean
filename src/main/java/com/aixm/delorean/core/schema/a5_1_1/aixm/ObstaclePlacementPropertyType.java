@@ -71,4 +71,8 @@ public class ObstaclePlacementPropertyType
         this.obstaclePlacement = value;
     }
 
+    public boolean isSetObstaclePlacement() {
+        return (this.obstaclePlacement!= null);
+    }
+
 }

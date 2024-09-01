@@ -71,4 +71,8 @@ public class SafeAltitudeAreaSectorPropertyType
         this.safeAltitudeAreaSector = value;
     }
 
+    public boolean isSetSafeAltitudeAreaSector() {
+        return (this.safeAltitudeAreaSector!= null);
+    }
+
 }

@@ -185,6 +185,10 @@ public class RouteSegmentTimeSliceType
         this.level = value;
     }
 
+    public boolean isSetLevel() {
+        return (this.level!= null);
+    }
+
     /**
      * Gets the value of the upperLimit property.
      * 
@@ -207,6 +211,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setUpperLimit(JAXBElement<ValDistanceVerticalType> value) {
         this.upperLimit = value;
+    }
+
+    public boolean isSetUpperLimit() {
+        return (this.upperLimit!= null);
     }
 
     /**
@@ -233,6 +241,10 @@ public class RouteSegmentTimeSliceType
         this.upperLimitReference = value;
     }
 
+    public boolean isSetUpperLimitReference() {
+        return (this.upperLimitReference!= null);
+    }
+
     /**
      * Gets the value of the lowerLimit property.
      * 
@@ -255,6 +267,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setLowerLimit(JAXBElement<ValDistanceVerticalType> value) {
         this.lowerLimit = value;
+    }
+
+    public boolean isSetLowerLimit() {
+        return (this.lowerLimit!= null);
     }
 
     /**
@@ -281,6 +297,10 @@ public class RouteSegmentTimeSliceType
         this.lowerLimitReference = value;
     }
 
+    public boolean isSetLowerLimitReference() {
+        return (this.lowerLimitReference!= null);
+    }
+
     /**
      * Gets the value of the minimumObstacleClearanceAltitude property.
      * 
@@ -303,6 +323,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setMinimumObstacleClearanceAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumObstacleClearanceAltitude = value;
+    }
+
+    public boolean isSetMinimumObstacleClearanceAltitude() {
+        return (this.minimumObstacleClearanceAltitude!= null);
     }
 
     /**
@@ -329,6 +353,10 @@ public class RouteSegmentTimeSliceType
         this.pathType = value;
     }
 
+    public boolean isSetPathType() {
+        return (this.pathType!= null);
+    }
+
     /**
      * Gets the value of the trueTrack property.
      * 
@@ -351,6 +379,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setTrueTrack(JAXBElement<ValBearingType> value) {
         this.trueTrack = value;
+    }
+
+    public boolean isSetTrueTrack() {
+        return (this.trueTrack!= null);
     }
 
     /**
@@ -377,6 +409,10 @@ public class RouteSegmentTimeSliceType
         this.magneticTrack = value;
     }
 
+    public boolean isSetMagneticTrack() {
+        return (this.magneticTrack!= null);
+    }
+
     /**
      * Gets the value of the reverseTrueTrack property.
      * 
@@ -399,6 +435,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setReverseTrueTrack(JAXBElement<ValBearingType> value) {
         this.reverseTrueTrack = value;
+    }
+
+    public boolean isSetReverseTrueTrack() {
+        return (this.reverseTrueTrack!= null);
     }
 
     /**
@@ -425,6 +465,10 @@ public class RouteSegmentTimeSliceType
         this.reverseMagneticTrack = value;
     }
 
+    public boolean isSetReverseMagneticTrack() {
+        return (this.reverseMagneticTrack!= null);
+    }
+
     /**
      * Gets the value of the length property.
      * 
@@ -447,6 +491,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
+    }
+
+    public boolean isSetLength() {
+        return (this.length!= null);
     }
 
     /**
@@ -473,6 +521,10 @@ public class RouteSegmentTimeSliceType
         this.widthLeft = value;
     }
 
+    public boolean isSetWidthLeft() {
+        return (this.widthLeft!= null);
+    }
+
     /**
      * Gets the value of the widthRight property.
      * 
@@ -495,6 +547,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setWidthRight(JAXBElement<ValDistanceType> value) {
         this.widthRight = value;
+    }
+
+    public boolean isSetWidthRight() {
+        return (this.widthRight!= null);
     }
 
     /**
@@ -521,6 +577,10 @@ public class RouteSegmentTimeSliceType
         this.turnDirection = value;
     }
 
+    public boolean isSetTurnDirection() {
+        return (this.turnDirection!= null);
+    }
+
     /**
      * Gets the value of the signalGap property.
      * 
@@ -543,6 +603,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setSignalGap(JAXBElement<CodeYesNoType> value) {
         this.signalGap = value;
+    }
+
+    public boolean isSetSignalGap() {
+        return (this.signalGap!= null);
     }
 
     /**
@@ -569,6 +633,10 @@ public class RouteSegmentTimeSliceType
         this.minimumEnrouteAltitude = value;
     }
 
+    public boolean isSetMinimumEnrouteAltitude() {
+        return (this.minimumEnrouteAltitude!= null);
+    }
+
     /**
      * Gets the value of the minimumCrossingAtEnd property.
      * 
@@ -591,6 +659,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setMinimumCrossingAtEnd(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumCrossingAtEnd = value;
+    }
+
+    public boolean isSetMinimumCrossingAtEnd() {
+        return (this.minimumCrossingAtEnd!= null);
     }
 
     /**
@@ -617,6 +689,10 @@ public class RouteSegmentTimeSliceType
         this.minimumCrossingAtEndReference = value;
     }
 
+    public boolean isSetMinimumCrossingAtEndReference() {
+        return (this.minimumCrossingAtEndReference!= null);
+    }
+
     /**
      * Gets the value of the maximumCrossingAtEnd property.
      * 
@@ -639,6 +715,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setMaximumCrossingAtEnd(JAXBElement<ValDistanceVerticalType> value) {
         this.maximumCrossingAtEnd = value;
+    }
+
+    public boolean isSetMaximumCrossingAtEnd() {
+        return (this.maximumCrossingAtEnd!= null);
     }
 
     /**
@@ -665,6 +745,10 @@ public class RouteSegmentTimeSliceType
         this.maximumCrossingAtEndReference = value;
     }
 
+    public boolean isSetMaximumCrossingAtEndReference() {
+        return (this.maximumCrossingAtEndReference!= null);
+    }
+
     /**
      * Gets the value of the navigationType property.
      * 
@@ -687,6 +771,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setNavigationType(JAXBElement<CodeRouteNavigationType> value) {
         this.navigationType = value;
+    }
+
+    public boolean isSetNavigationType() {
+        return (this.navigationType!= null);
     }
 
     /**
@@ -713,6 +801,10 @@ public class RouteSegmentTimeSliceType
         this.requiredNavigationPerformance = value;
     }
 
+    public boolean isSetRequiredNavigationPerformance() {
+        return (this.requiredNavigationPerformance!= null);
+    }
+
     /**
      * Gets the value of the designatorSuffix property.
      * 
@@ -735,6 +827,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setDesignatorSuffix(JAXBElement<CodeRouteDesignatorSuffixType> value) {
         this.designatorSuffix = value;
+    }
+
+    public boolean isSetDesignatorSuffix() {
+        return (this.designatorSuffix!= null);
     }
 
     /**
@@ -761,6 +857,10 @@ public class RouteSegmentTimeSliceType
         this.start = value;
     }
 
+    public boolean isSetStart() {
+        return (this.start!= null);
+    }
+
     /**
      * Gets the value of the routeFormed property.
      * 
@@ -783,6 +883,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setRouteFormed(JAXBElement<RoutePropertyType> value) {
         this.routeFormed = value;
+    }
+
+    public boolean isSetRouteFormed() {
+        return (this.routeFormed!= null);
     }
 
     /**
@@ -809,6 +913,10 @@ public class RouteSegmentTimeSliceType
         this.evaluationArea = value;
     }
 
+    public boolean isSetEvaluationArea() {
+        return (this.evaluationArea!= null);
+    }
+
     /**
      * Gets the value of the curveExtent property.
      * 
@@ -833,6 +941,10 @@ public class RouteSegmentTimeSliceType
         this.curveExtent = value;
     }
 
+    public boolean isSetCurveExtent() {
+        return (this.curveExtent!= null);
+    }
+
     /**
      * Gets the value of the end property.
      * 
@@ -855,6 +967,10 @@ public class RouteSegmentTimeSliceType
      */
     public void setEnd(JAXBElement<EnRouteSegmentPointPropertyType> value) {
         this.end = value;
+    }
+
+    public boolean isSetEnd() {
+        return (this.end!= null);
     }
 
     /**
@@ -889,6 +1005,14 @@ public class RouteSegmentTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -921,6 +1045,14 @@ public class RouteSegmentTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -951,6 +1083,14 @@ public class RouteSegmentTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -1011,6 +1151,10 @@ public class RouteSegmentTimeSliceType
             this.abstractRouteSegmentExtension = value;
         }
 
+        public boolean isSetAbstractRouteSegmentExtension() {
+            return (this.abstractRouteSegmentExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -1035,8 +1179,16 @@ public class RouteSegmentTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

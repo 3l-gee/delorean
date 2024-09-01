@@ -71,4 +71,8 @@ public class LightElementPropertyType
         this.lightElement = value;
     }
 
+    public boolean isSetLightElement() {
+        return (this.lightElement!= null);
+    }
+
 }

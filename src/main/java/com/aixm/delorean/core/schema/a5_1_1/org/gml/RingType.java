@@ -87,6 +87,14 @@ public class RingType
         return this.curveMember;
     }
 
+    public boolean isSetCurveMember() {
+        return ((this.curveMember!= null)&&(!this.curveMember.isEmpty()));
+    }
+
+    public void unsetCurveMember() {
+        this.curveMember = null;
+    }
+
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -109,6 +117,10 @@ public class RingType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

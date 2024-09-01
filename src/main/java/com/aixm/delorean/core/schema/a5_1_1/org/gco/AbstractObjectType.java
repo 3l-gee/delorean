@@ -183,6 +183,10 @@ public abstract class AbstractObjectType {
         this.id = value;
     }
 
+    public boolean isSetId() {
+        return (this.id!= null);
+    }
+
     /**
      * Gets the value of the uuid property.
      * 
@@ -205,6 +209,10 @@ public abstract class AbstractObjectType {
      */
     public void setUuid(String value) {
         this.uuid = value;
+    }
+
+    public boolean isSetUuid() {
+        return (this.uuid!= null);
     }
 
 }

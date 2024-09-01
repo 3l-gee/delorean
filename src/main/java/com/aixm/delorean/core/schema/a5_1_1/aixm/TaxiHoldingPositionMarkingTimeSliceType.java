@@ -107,6 +107,10 @@ public class TaxiHoldingPositionMarkingTimeSliceType
         this.markingICAOStandard = value;
     }
 
+    public boolean isSetMarkingICAOStandard() {
+        return (this.markingICAOStandard!= null);
+    }
+
     /**
      * Gets the value of the condition property.
      * 
@@ -129,6 +133,10 @@ public class TaxiHoldingPositionMarkingTimeSliceType
      */
     public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
         this.condition = value;
+    }
+
+    public boolean isSetCondition() {
+        return (this.condition!= null);
     }
 
     /**
@@ -163,6 +171,14 @@ public class TaxiHoldingPositionMarkingTimeSliceType
         return this.element;
     }
 
+    public boolean isSetElement() {
+        return ((this.element!= null)&&(!this.element.isEmpty()));
+    }
+
+    public void unsetElement() {
+        this.element = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -195,6 +211,14 @@ public class TaxiHoldingPositionMarkingTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the markedTaxiHold property.
      * 
@@ -217,6 +241,10 @@ public class TaxiHoldingPositionMarkingTimeSliceType
      */
     public void setMarkedTaxiHold(JAXBElement<TaxiHoldingPositionPropertyType> value) {
         this.markedTaxiHold = value;
+    }
+
+    public boolean isSetMarkedTaxiHold() {
+        return (this.markedTaxiHold!= null);
     }
 
     /**
@@ -249,6 +277,14 @@ public class TaxiHoldingPositionMarkingTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -313,6 +349,10 @@ public class TaxiHoldingPositionMarkingTimeSliceType
             this.abstractTaxiHoldingPositionMarkingExtension = value;
         }
 
+        public boolean isSetAbstractTaxiHoldingPositionMarkingExtension() {
+            return (this.abstractTaxiHoldingPositionMarkingExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractMarkingExtension property.
          * 
@@ -335,6 +375,10 @@ public class TaxiHoldingPositionMarkingTimeSliceType
          */
         public void setAbstractMarkingExtension(AbstractExtensionType value) {
             this.abstractMarkingExtension = value;
+        }
+
+        public boolean isSetAbstractMarkingExtension() {
+            return (this.abstractMarkingExtension!= null);
         }
 
         /**
@@ -361,8 +405,16 @@ public class TaxiHoldingPositionMarkingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -127,6 +127,14 @@ public class PostalAddressType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -157,6 +165,14 @@ public class PostalAddressType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -191,6 +207,14 @@ public class PostalAddressType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the deliveryPoint property.
      * 
@@ -213,6 +237,10 @@ public class PostalAddressType
      */
     public void setDeliveryPoint(JAXBElement<TextAddressType> value) {
         this.deliveryPoint = value;
+    }
+
+    public boolean isSetDeliveryPoint() {
+        return (this.deliveryPoint!= null);
     }
 
     /**
@@ -239,6 +267,10 @@ public class PostalAddressType
         this.city = value;
     }
 
+    public boolean isSetCity() {
+        return (this.city!= null);
+    }
+
     /**
      * Gets the value of the administrativeArea property.
      * 
@@ -261,6 +293,10 @@ public class PostalAddressType
      */
     public void setAdministrativeArea(JAXBElement<TextNameType> value) {
         this.administrativeArea = value;
+    }
+
+    public boolean isSetAdministrativeArea() {
+        return (this.administrativeArea!= null);
     }
 
     /**
@@ -287,6 +323,10 @@ public class PostalAddressType
         this.postalCode = value;
     }
 
+    public boolean isSetPostalCode() {
+        return (this.postalCode!= null);
+    }
+
     /**
      * Gets the value of the country property.
      * 
@@ -309,6 +349,10 @@ public class PostalAddressType
      */
     public void setCountry(JAXBElement<TextNameType> value) {
         this.country = value;
+    }
+
+    public boolean isSetCountry() {
+        return (this.country!= null);
     }
 
     /**
@@ -341,6 +385,14 @@ public class PostalAddressType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -405,6 +457,10 @@ public class PostalAddressType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractPostalAddressExtension property.
          * 
@@ -427,6 +483,10 @@ public class PostalAddressType
          */
         public void setAbstractPostalAddressExtension(AbstractExtensionType value) {
             this.abstractPostalAddressExtension = value;
+        }
+
+        public boolean isSetAbstractPostalAddressExtension() {
+            return (this.abstractPostalAddressExtension!= null);
         }
 
         /**
@@ -453,8 +513,16 @@ public class PostalAddressType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

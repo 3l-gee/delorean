@@ -71,4 +71,8 @@ public class RouteAvailabilityPropertyType
         this.routeAvailability = value;
     }
 
+    public boolean isSetRouteAvailability() {
+        return (this.routeAvailability!= null);
+    }
+
 }

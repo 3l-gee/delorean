@@ -83,6 +83,10 @@ public class EnvelopeWithTimePeriodType
         this.beginPosition = value;
     }
 
+    public boolean isSetBeginPosition() {
+        return (this.beginPosition!= null);
+    }
+
     /**
      * Gets the value of the endPosition property.
      * 
@@ -105,6 +109,10 @@ public class EnvelopeWithTimePeriodType
      */
     public void setEndPosition(TimePositionType value) {
         this.endPosition = value;
+    }
+
+    public boolean isSetEndPosition() {
+        return (this.endPosition!= null);
     }
 
     /**
@@ -133,6 +141,10 @@ public class EnvelopeWithTimePeriodType
      */
     public void setFrame(String value) {
         this.frame = value;
+    }
+
+    public boolean isSetFrame() {
+        return (this.frame!= null);
     }
 
 }

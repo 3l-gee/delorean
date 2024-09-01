@@ -77,4 +77,8 @@ public class TemporalDatumType
         this.origin = value;
     }
 
+    public boolean isSetOrigin() {
+        return (this.origin!= null);
+    }
+
 }

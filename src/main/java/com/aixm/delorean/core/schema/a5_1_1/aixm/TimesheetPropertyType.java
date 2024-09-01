@@ -71,4 +71,8 @@ public class TimesheetPropertyType
         this.timesheet = value;
     }
 
+    public boolean isSetTimesheet() {
+        return (this.timesheet!= null);
+    }
+
 }

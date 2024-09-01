@@ -99,6 +99,10 @@ public class ElevatedCurveType
         this.elevation = value;
     }
 
+    public boolean isSetElevation() {
+        return (this.elevation!= null);
+    }
+
     /**
      * Gets the value of the geoidUndulation property.
      * 
@@ -121,6 +125,10 @@ public class ElevatedCurveType
      */
     public void setGeoidUndulation(JAXBElement<ValDistanceSignedType> value) {
         this.geoidUndulation = value;
+    }
+
+    public boolean isSetGeoidUndulation() {
+        return (this.geoidUndulation!= null);
     }
 
     /**
@@ -147,6 +155,10 @@ public class ElevatedCurveType
         this.verticalDatum = value;
     }
 
+    public boolean isSetVerticalDatum() {
+        return (this.verticalDatum!= null);
+    }
+
     /**
      * Gets the value of the verticalAccuracy property.
      * 
@@ -169,6 +181,10 @@ public class ElevatedCurveType
      */
     public void setVerticalAccuracy(JAXBElement<ValDistanceType> value) {
         this.verticalAccuracy = value;
+    }
+
+    public boolean isSetVerticalAccuracy() {
+        return (this.verticalAccuracy!= null);
     }
 
     /**
@@ -201,6 +217,14 @@ public class ElevatedCurveType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -260,6 +284,10 @@ public class ElevatedCurveType
             this.abstractElevatedCurveExtension = value;
         }
 
+        public boolean isSetAbstractElevatedCurveExtension() {
+            return (this.abstractElevatedCurveExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -284,8 +312,16 @@ public class ElevatedCurveType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

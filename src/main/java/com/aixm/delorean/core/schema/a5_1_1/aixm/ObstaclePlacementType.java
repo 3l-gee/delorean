@@ -104,6 +104,10 @@ public class ObstaclePlacementType
         this.obstacleBearing = value;
     }
 
+    public boolean isSetObstacleBearing() {
+        return (this.obstacleBearing!= null);
+    }
+
     /**
      * Gets the value of the obstacleDistance property.
      * 
@@ -126,6 +130,10 @@ public class ObstaclePlacementType
      */
     public void setObstacleDistance(JAXBElement<ValDistanceType> value) {
         this.obstacleDistance = value;
+    }
+
+    public boolean isSetObstacleDistance() {
+        return (this.obstacleDistance!= null);
     }
 
     /**
@@ -152,6 +160,10 @@ public class ObstaclePlacementType
         this.pointType = value;
     }
 
+    public boolean isSetPointType() {
+        return (this.pointType!= null);
+    }
+
     /**
      * Gets the value of the obstaclePlacement property.
      * 
@@ -174,6 +186,10 @@ public class ObstaclePlacementType
      */
     public void setObstaclePlacement(JAXBElement<CodeSideType> value) {
         this.obstaclePlacement = value;
+    }
+
+    public boolean isSetObstaclePlacement() {
+        return (this.obstaclePlacement!= null);
     }
 
     /**
@@ -208,6 +224,14 @@ public class ObstaclePlacementType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -238,6 +262,14 @@ public class ObstaclePlacementType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -297,6 +329,10 @@ public class ObstaclePlacementType
             this.abstractObstaclePlacementExtension = value;
         }
 
+        public boolean isSetAbstractObstaclePlacementExtension() {
+            return (this.abstractObstaclePlacementExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -321,8 +357,16 @@ public class ObstaclePlacementType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -73,4 +73,8 @@ public class MDRepresentativeFractionType
         this.denominator = value;
     }
 
+    public boolean isSetDenominator() {
+        return (this.denominator!= null);
+    }
+
 }

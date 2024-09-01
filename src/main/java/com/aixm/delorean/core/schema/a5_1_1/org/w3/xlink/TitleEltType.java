@@ -90,6 +90,14 @@ public class TitleEltType {
         return this.content;
     }
 
+    public boolean isSetContent() {
+        return ((this.content!= null)&&(!this.content.isEmpty()));
+    }
+
+    public void unsetContent() {
+        this.content = null;
+    }
+
     /**
      * xml:lang is not required, but provides much of the
      *      motivation for title elements in addition to attributes, and so
@@ -115,6 +123,10 @@ public class TitleEltType {
      */
     public void setLang(String value) {
         this.lang = value;
+    }
+
+    public boolean isSetLang() {
+        return (this.lang!= null);
     }
 
 }

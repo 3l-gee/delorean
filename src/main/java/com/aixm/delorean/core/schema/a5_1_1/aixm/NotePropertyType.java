@@ -71,4 +71,8 @@ public class NotePropertyType
         this.note = value;
     }
 
+    public boolean isSetNote() {
+        return (this.note!= null);
+    }
+
 }

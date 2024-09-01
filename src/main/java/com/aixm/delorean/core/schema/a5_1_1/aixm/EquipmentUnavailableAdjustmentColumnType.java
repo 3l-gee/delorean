@@ -107,6 +107,10 @@ public class EquipmentUnavailableAdjustmentColumnType
         this.guidanceEquipment = value;
     }
 
+    public boolean isSetGuidanceEquipment() {
+        return (this.guidanceEquipment!= null);
+    }
+
     /**
      * Gets the value of the landingSystemLights property.
      * 
@@ -129,6 +133,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      */
     public void setLandingSystemLights(JAXBElement<CodeYesNoType> value) {
         this.landingSystemLights = value;
+    }
+
+    public boolean isSetLandingSystemLights() {
+        return (this.landingSystemLights!= null);
     }
 
     /**
@@ -155,6 +163,10 @@ public class EquipmentUnavailableAdjustmentColumnType
         this.equipmentRVR = value;
     }
 
+    public boolean isSetEquipmentRVR() {
+        return (this.equipmentRVR!= null);
+    }
+
     /**
      * Gets the value of the visibilityAdjustment property.
      * 
@@ -179,6 +191,10 @@ public class EquipmentUnavailableAdjustmentColumnType
         this.visibilityAdjustment = value;
     }
 
+    public boolean isSetVisibilityAdjustment() {
+        return (this.visibilityAdjustment!= null);
+    }
+
     /**
      * Gets the value of the approachLightingInoperative property.
      * 
@@ -201,6 +217,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      */
     public void setApproachLightingInoperative(JAXBElement<CodeYesNoType> value) {
         this.approachLightingInoperative = value;
+    }
+
+    public boolean isSetApproachLightingInoperative() {
+        return (this.approachLightingInoperative!= null);
     }
 
     /**
@@ -235,6 +255,14 @@ public class EquipmentUnavailableAdjustmentColumnType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -265,6 +293,14 @@ public class EquipmentUnavailableAdjustmentColumnType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -324,6 +360,10 @@ public class EquipmentUnavailableAdjustmentColumnType
             this.abstractEquipmentUnavailableAdjustmentColumnExtension = value;
         }
 
+        public boolean isSetAbstractEquipmentUnavailableAdjustmentColumnExtension() {
+            return (this.abstractEquipmentUnavailableAdjustmentColumnExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -348,8 +388,16 @@ public class EquipmentUnavailableAdjustmentColumnType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

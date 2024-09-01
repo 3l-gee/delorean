@@ -118,6 +118,14 @@ public class TelephoneContactType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -148,6 +156,14 @@ public class TelephoneContactType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -182,6 +198,14 @@ public class TelephoneContactType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the voice property.
      * 
@@ -206,6 +230,10 @@ public class TelephoneContactType
         this.voice = value;
     }
 
+    public boolean isSetVoice() {
+        return (this.voice!= null);
+    }
+
     /**
      * Gets the value of the facsimile property.
      * 
@@ -228,6 +256,10 @@ public class TelephoneContactType
      */
     public void setFacsimile(JAXBElement<TextPhoneType> value) {
         this.facsimile = value;
+    }
+
+    public boolean isSetFacsimile() {
+        return (this.facsimile!= null);
     }
 
     /**
@@ -260,6 +292,14 @@ public class TelephoneContactType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -324,6 +364,10 @@ public class TelephoneContactType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractTelephoneContactExtension property.
          * 
@@ -346,6 +390,10 @@ public class TelephoneContactType
          */
         public void setAbstractTelephoneContactExtension(AbstractExtensionType value) {
             this.abstractTelephoneContactExtension = value;
+        }
+
+        public boolean isSetAbstractTelephoneContactExtension() {
+            return (this.abstractTelephoneContactExtension!= null);
         }
 
         /**
@@ -372,8 +420,16 @@ public class TelephoneContactType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

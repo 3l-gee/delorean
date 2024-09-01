@@ -99,6 +99,10 @@ public class ClothoidType
         this.refLocation = value;
     }
 
+    public boolean isSetRefLocation() {
+        return (this.refLocation!= null);
+    }
+
     /**
      * Gets the value of the scaleFactor property.
      * 
@@ -123,6 +127,10 @@ public class ClothoidType
         this.scaleFactor = value;
     }
 
+    public boolean isSetScaleFactor() {
+        return (this.scaleFactor!= null);
+    }
+
     /**
      * Gets the value of the startParameter property.
      * 
@@ -139,6 +147,10 @@ public class ClothoidType
         this.startParameter = value;
     }
 
+    public boolean isSetStartParameter() {
+        return true;
+    }
+
     /**
      * Gets the value of the endParameter property.
      * 
@@ -153,6 +165,10 @@ public class ClothoidType
      */
     public void setEndParameter(double value) {
         this.endParameter = value;
+    }
+
+    public boolean isSetEndParameter() {
+        return true;
     }
 
 
@@ -213,6 +229,10 @@ public class ClothoidType
          */
         public void setAffinePlacement(AffinePlacementType value) {
             this.affinePlacement = value;
+        }
+
+        public boolean isSetAffinePlacement() {
+            return (this.affinePlacement!= null);
         }
 
     }

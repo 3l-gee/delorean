@@ -100,6 +100,14 @@ public class TimeOrdinalEraType
         return this.relatedTime;
     }
 
+    public boolean isSetRelatedTime() {
+        return ((this.relatedTime!= null)&&(!this.relatedTime.isEmpty()));
+    }
+
+    public void unsetRelatedTime() {
+        this.relatedTime = null;
+    }
+
     /**
      * Gets the value of the start property.
      * 
@@ -122,6 +130,10 @@ public class TimeOrdinalEraType
      */
     public void setStart(TimeNodePropertyType value) {
         this.start = value;
+    }
+
+    public boolean isSetStart() {
+        return (this.start!= null);
     }
 
     /**
@@ -148,6 +160,10 @@ public class TimeOrdinalEraType
         this.end = value;
     }
 
+    public boolean isSetEnd() {
+        return (this.end!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -170,6 +186,10 @@ public class TimeOrdinalEraType
      */
     public void setExtent(TimePeriodPropertyType value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -204,6 +224,14 @@ public class TimeOrdinalEraType
         return this.member;
     }
 
+    public boolean isSetMember() {
+        return ((this.member!= null)&&(!this.member.isEmpty()));
+    }
+
+    public void unsetMember() {
+        this.member = null;
+    }
+
     /**
      * Gets the value of the group property.
      * 
@@ -226,6 +254,10 @@ public class TimeOrdinalEraType
      */
     public void setGroup(ReferenceType value) {
         this.group = value;
+    }
+
+    public boolean isSetGroup() {
+        return (this.group!= null);
     }
 
 }

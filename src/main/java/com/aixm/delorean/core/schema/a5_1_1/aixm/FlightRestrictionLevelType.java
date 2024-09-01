@@ -104,6 +104,10 @@ public class FlightRestrictionLevelType
         this.upperLevel = value;
     }
 
+    public boolean isSetUpperLevel() {
+        return (this.upperLevel!= null);
+    }
+
     /**
      * Gets the value of the upperLevelReference property.
      * 
@@ -126,6 +130,10 @@ public class FlightRestrictionLevelType
      */
     public void setUpperLevelReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.upperLevelReference = value;
+    }
+
+    public boolean isSetUpperLevelReference() {
+        return (this.upperLevelReference!= null);
     }
 
     /**
@@ -152,6 +160,10 @@ public class FlightRestrictionLevelType
         this.lowerLevel = value;
     }
 
+    public boolean isSetLowerLevel() {
+        return (this.lowerLevel!= null);
+    }
+
     /**
      * Gets the value of the lowerLevelReference property.
      * 
@@ -174,6 +186,10 @@ public class FlightRestrictionLevelType
      */
     public void setLowerLevelReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLevelReference = value;
+    }
+
+    public boolean isSetLowerLevelReference() {
+        return (this.lowerLevelReference!= null);
     }
 
     /**
@@ -208,6 +224,14 @@ public class FlightRestrictionLevelType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -238,6 +262,14 @@ public class FlightRestrictionLevelType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -297,6 +329,10 @@ public class FlightRestrictionLevelType
             this.abstractFlightRestrictionLevelExtension = value;
         }
 
+        public boolean isSetAbstractFlightRestrictionLevelExtension() {
+            return (this.abstractFlightRestrictionLevelExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -321,8 +357,16 @@ public class FlightRestrictionLevelType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

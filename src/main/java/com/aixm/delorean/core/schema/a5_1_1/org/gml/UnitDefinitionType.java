@@ -97,6 +97,10 @@ public class UnitDefinitionType
         this.quantityType = value;
     }
 
+    public boolean isSetQuantityType() {
+        return (this.quantityType!= null);
+    }
+
     /**
      * The gml:quantityTypeReference property indicates the phenomenon to which the units apply. The content is a reference to a remote value.
      * 
@@ -120,6 +124,10 @@ public class UnitDefinitionType
      */
     public void setQuantityTypeReference(ReferenceType value) {
         this.quantityTypeReference = value;
+    }
+
+    public boolean isSetQuantityTypeReference() {
+        return (this.quantityTypeReference!= null);
     }
 
     /**
@@ -146,6 +154,10 @@ public class UnitDefinitionType
      */
     public void setCatalogSymbol(CodeType value) {
         this.catalogSymbol = value;
+    }
+
+    public boolean isSetCatalogSymbol() {
+        return (this.catalogSymbol!= null);
     }
 
 }

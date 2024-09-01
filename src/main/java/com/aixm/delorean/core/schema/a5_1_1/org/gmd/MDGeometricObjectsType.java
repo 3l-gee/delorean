@@ -77,6 +77,10 @@ public class MDGeometricObjectsType
         this.geometricObjectType = value;
     }
 
+    public boolean isSetGeometricObjectType() {
+        return (this.geometricObjectType!= null);
+    }
+
     /**
      * Gets the value of the geometricObjectCount property.
      * 
@@ -99,6 +103,10 @@ public class MDGeometricObjectsType
      */
     public void setGeometricObjectCount(IntegerPropertyType value) {
         this.geometricObjectCount = value;
+    }
+
+    public boolean isSetGeometricObjectCount() {
+        return (this.geometricObjectCount!= null);
     }
 
 }

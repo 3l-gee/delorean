@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.constraints.Pattern;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,20 +39,19 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class DateMonthDayType {
 
     @XmlValue
-    @Pattern(regexp = "(((0[1-9])|(1[0-9])|(2[0-9]))\\-((0[1-9])|10|11|12))|(30\\-(01|03|04|05|06|07|08|09|10|11|12))|(31\\-(01|03|05|07|08|10|12))|SDLST|EDLST")
-    protected String value;
+    protected DateMonthDayBaseType value;
     @XmlAttribute(name = "nilReason")
-    protected String nilReason;
+    protected NilReasonEnumeration nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link DateMonthDayBaseType }
      *     
      */
-    public String getValue() {
+    public DateMonthDayBaseType getValue() {
         return value;
     }
 
@@ -61,11 +60,15 @@ public class DateMonthDayType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link DateMonthDayBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(DateMonthDayBaseType value) {
         this.value = value;
+    }
+
+    public boolean isSetValue() {
+        return (this.value!= null);
     }
 
     /**
@@ -73,10 +76,10 @@ public class DateMonthDayType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public String getNilReason() {
+    public NilReasonEnumeration getNilReason() {
         return nilReason;
     }
 
@@ -85,11 +88,15 @@ public class DateMonthDayType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public void setNilReason(String value) {
+    public void setNilReason(NilReasonEnumeration value) {
         this.nilReason = value;
+    }
+
+    public boolean isSetNilReason() {
+        return (this.nilReason!= null);
     }
 
 }

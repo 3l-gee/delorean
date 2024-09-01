@@ -71,4 +71,8 @@ public class MinimaPropertyType
         this.minima = value;
     }
 
+    public boolean isSetMinima() {
+        return (this.minima!= null);
+    }
+
 }

@@ -108,6 +108,10 @@ public class UnplannedHoldingTimeSliceType
         this.unplannedHolding = value;
     }
 
+    public boolean isSetUnplannedHolding() {
+        return (this.unplannedHolding!= null);
+    }
+
     /**
      * Gets the value of the authorizedAltitude property.
      * 
@@ -130,6 +134,10 @@ public class UnplannedHoldingTimeSliceType
      */
     public void setAuthorizedAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.authorizedAltitude = value;
+    }
+
+    public boolean isSetAuthorizedAltitude() {
+        return (this.authorizedAltitude!= null);
     }
 
     /**
@@ -156,6 +164,10 @@ public class UnplannedHoldingTimeSliceType
         this.altitudeReference = value;
     }
 
+    public boolean isSetAltitudeReference() {
+        return (this.altitudeReference!= null);
+    }
+
     /**
      * Gets the value of the controlledAirspace property.
      * 
@@ -180,6 +192,10 @@ public class UnplannedHoldingTimeSliceType
         this.controlledAirspace = value;
     }
 
+    public boolean isSetControlledAirspace() {
+        return (this.controlledAirspace!= null);
+    }
+
     /**
      * Gets the value of the holdingPoint property.
      * 
@@ -202,6 +218,10 @@ public class UnplannedHoldingTimeSliceType
      */
     public void setHoldingPoint(JAXBElement<SegmentPointPropertyType> value) {
         this.holdingPoint = value;
+    }
+
+    public boolean isSetHoldingPoint() {
+        return (this.holdingPoint!= null);
     }
 
     /**
@@ -236,6 +256,14 @@ public class UnplannedHoldingTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -266,6 +294,14 @@ public class UnplannedHoldingTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -326,6 +362,10 @@ public class UnplannedHoldingTimeSliceType
             this.abstractUnplannedHoldingExtension = value;
         }
 
+        public boolean isSetAbstractUnplannedHoldingExtension() {
+            return (this.abstractUnplannedHoldingExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -350,8 +390,16 @@ public class UnplannedHoldingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -112,6 +112,14 @@ public class ArcStringType
         return this.posOrPointPropertyOrPointRep;
     }
 
+    public boolean isSetPosOrPointPropertyOrPointRep() {
+        return ((this.posOrPointPropertyOrPointRep!= null)&&(!this.posOrPointPropertyOrPointRep.isEmpty()));
+    }
+
+    public void unsetPosOrPointPropertyOrPointRep() {
+        this.posOrPointPropertyOrPointRep = null;
+    }
+
     /**
      * Gets the value of the posList property.
      * 
@@ -134,6 +142,10 @@ public class ArcStringType
      */
     public void setPosList(DirectPositionListType value) {
         this.posList = value;
+    }
+
+    public boolean isSetPosList() {
+        return (this.posList!= null);
     }
 
     /**
@@ -160,6 +172,10 @@ public class ArcStringType
         this.coordinates = value;
     }
 
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
+    }
+
     /**
      * Gets the value of the numArc property.
      * 
@@ -182,6 +198,10 @@ public class ArcStringType
      */
     public void setNumArc(BigInteger value) {
         this.numArc = value;
+    }
+
+    public boolean isSetNumArc() {
+        return (this.numArc!= null);
     }
 
 }

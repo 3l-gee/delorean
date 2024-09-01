@@ -99,6 +99,10 @@ public class AirspaceBorderCrossingTimeSliceType
         this.exitedAirspace = value;
     }
 
+    public boolean isSetExitedAirspace() {
+        return (this.exitedAirspace!= null);
+    }
+
     /**
      * Gets the value of the enteredAirspace property.
      * 
@@ -121,6 +125,10 @@ public class AirspaceBorderCrossingTimeSliceType
      */
     public void setEnteredAirspace(JAXBElement<AirspacePropertyType> value) {
         this.enteredAirspace = value;
+    }
+
+    public boolean isSetEnteredAirspace() {
+        return (this.enteredAirspace!= null);
     }
 
     /**
@@ -155,6 +163,14 @@ public class AirspaceBorderCrossingTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -185,6 +201,14 @@ public class AirspaceBorderCrossingTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -245,6 +269,10 @@ public class AirspaceBorderCrossingTimeSliceType
             this.abstractAirspaceBorderCrossingExtension = value;
         }
 
+        public boolean isSetAbstractAirspaceBorderCrossingExtension() {
+            return (this.abstractAirspaceBorderCrossingExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -269,8 +297,16 @@ public class AirspaceBorderCrossingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

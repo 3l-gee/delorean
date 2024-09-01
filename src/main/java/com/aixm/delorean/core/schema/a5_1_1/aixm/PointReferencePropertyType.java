@@ -71,4 +71,8 @@ public class PointReferencePropertyType
         this.pointReference = value;
     }
 
+    public boolean isSetPointReference() {
+        return (this.pointReference!= null);
+    }
+
 }

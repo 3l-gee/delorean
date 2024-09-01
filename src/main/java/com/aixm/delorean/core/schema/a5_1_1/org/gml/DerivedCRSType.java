@@ -96,6 +96,10 @@ public class DerivedCRSType
         this.baseCRS = value;
     }
 
+    public boolean isSetBaseCRS() {
+        return (this.baseCRS!= null);
+    }
+
     /**
      * The gml:derivedCRSType property describes the type of a derived coordinate reference system. The required codeSpace attribute shall reference a source of information specifying the values and meanings of all the allowed string values for this property.
      * 
@@ -119,6 +123,10 @@ public class DerivedCRSType
      */
     public void setDerivedCRSType(CodeWithAuthorityType value) {
         this.derivedCRSType = value;
+    }
+
+    public boolean isSetDerivedCRSType() {
+        return (this.derivedCRSType!= null);
     }
 
     /**
@@ -146,6 +154,10 @@ public class DerivedCRSType
      */
     public void setCoordinateSystem(JAXBElement<CoordinateSystemPropertyType> value) {
         this.coordinateSystem = value;
+    }
+
+    public boolean isSetCoordinateSystem() {
+        return (this.coordinateSystem!= null);
     }
 
 }

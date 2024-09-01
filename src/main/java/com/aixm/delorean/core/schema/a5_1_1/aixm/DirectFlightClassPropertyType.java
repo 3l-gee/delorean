@@ -71,4 +71,8 @@ public class DirectFlightClassPropertyType
         this.directFlightClass = value;
     }
 
+    public boolean isSetDirectFlightClass() {
+        return (this.directFlightClass!= null);
+    }
+
 }

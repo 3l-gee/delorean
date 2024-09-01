@@ -71,4 +71,8 @@ public class TelephoneContactPropertyType
         this.telephoneContact = value;
     }
 
+    public boolean isSetTelephoneContact() {
+        return (this.telephoneContact!= null);
+    }
+
 }

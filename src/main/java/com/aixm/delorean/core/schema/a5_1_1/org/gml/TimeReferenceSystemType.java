@@ -76,4 +76,8 @@ public class TimeReferenceSystemType
         this.domainOfValidity = value;
     }
 
+    public boolean isSetDomainOfValidity() {
+        return (this.domainOfValidity!= null);
+    }
+
 }

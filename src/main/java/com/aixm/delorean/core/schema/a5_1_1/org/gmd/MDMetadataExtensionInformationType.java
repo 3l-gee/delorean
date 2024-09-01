@@ -78,6 +78,10 @@ public class MDMetadataExtensionInformationType
         this.extensionOnLineResource = value;
     }
 
+    public boolean isSetExtensionOnLineResource() {
+        return (this.extensionOnLineResource!= null);
+    }
+
     /**
      * Gets the value of the extendedElementInformation property.
      * 
@@ -108,6 +112,14 @@ public class MDMetadataExtensionInformationType
             extendedElementInformation = new ArrayList<>();
         }
         return this.extendedElementInformation;
+    }
+
+    public boolean isSetExtendedElementInformation() {
+        return ((this.extendedElementInformation!= null)&&(!this.extendedElementInformation.isEmpty()));
+    }
+
+    public void unsetExtendedElementInformation() {
+        this.extendedElementInformation = null;
     }
 
 }

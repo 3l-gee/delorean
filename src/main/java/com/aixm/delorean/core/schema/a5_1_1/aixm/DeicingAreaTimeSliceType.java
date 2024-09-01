@@ -113,6 +113,10 @@ public class DeicingAreaTimeSliceType
         this.associatedApron = value;
     }
 
+    public boolean isSetAssociatedApron() {
+        return (this.associatedApron!= null);
+    }
+
     /**
      * Gets the value of the taxiwayLocation property.
      * 
@@ -135,6 +139,10 @@ public class DeicingAreaTimeSliceType
      */
     public void setTaxiwayLocation(JAXBElement<TaxiwayPropertyType> value) {
         this.taxiwayLocation = value;
+    }
+
+    public boolean isSetTaxiwayLocation() {
+        return (this.taxiwayLocation!= null);
     }
 
     /**
@@ -161,6 +169,10 @@ public class DeicingAreaTimeSliceType
         this.standLocation = value;
     }
 
+    public boolean isSetStandLocation() {
+        return (this.standLocation!= null);
+    }
+
     /**
      * Gets the value of the surfaceProperties property.
      * 
@@ -185,6 +197,10 @@ public class DeicingAreaTimeSliceType
         this.surfaceProperties = value;
     }
 
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -207,6 +223,10 @@ public class DeicingAreaTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -241,6 +261,14 @@ public class DeicingAreaTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -273,6 +301,14 @@ public class DeicingAreaTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -303,6 +339,14 @@ public class DeicingAreaTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -363,6 +407,10 @@ public class DeicingAreaTimeSliceType
             this.abstractDeicingAreaExtension = value;
         }
 
+        public boolean isSetAbstractDeicingAreaExtension() {
+            return (this.abstractDeicingAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -387,8 +435,16 @@ public class DeicingAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

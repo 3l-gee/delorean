@@ -71,4 +71,8 @@ public class SurveillanceGroundStationPropertyType
         this.surveillanceGroundStation = value;
     }
 
+    public boolean isSetSurveillanceGroundStation() {
+        return (this.surveillanceGroundStation!= null);
+    }
+
 }

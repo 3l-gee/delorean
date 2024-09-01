@@ -71,4 +71,8 @@ public class RunwayContaminationPropertyType
         this.runwayContamination = value;
     }
 
+    public boolean isSetRunwayContamination() {
+        return (this.runwayContamination!= null);
+    }
+
 }

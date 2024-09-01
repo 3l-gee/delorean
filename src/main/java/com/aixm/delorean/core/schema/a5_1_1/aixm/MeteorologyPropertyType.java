@@ -71,4 +71,8 @@ public class MeteorologyPropertyType
         this.meteorology = value;
     }
 
+    public boolean isSetMeteorology() {
+        return (this.meteorology!= null);
+    }
+
 }

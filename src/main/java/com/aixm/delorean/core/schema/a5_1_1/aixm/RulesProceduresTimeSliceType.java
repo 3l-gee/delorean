@@ -112,6 +112,10 @@ public class RulesProceduresTimeSliceType
         this.category = value;
     }
 
+    public boolean isSetCategory() {
+        return (this.category!= null);
+    }
+
     /**
      * Gets the value of the title property.
      * 
@@ -136,6 +140,10 @@ public class RulesProceduresTimeSliceType
         this.title = value;
     }
 
+    public boolean isSetTitle() {
+        return (this.title!= null);
+    }
+
     /**
      * Gets the value of the content property.
      * 
@@ -158,6 +166,10 @@ public class RulesProceduresTimeSliceType
      */
     public void setContent(JAXBElement<XHTMLType> value) {
         this.content = value;
+    }
+
+    public boolean isSetContent() {
+        return (this.content!= null);
     }
 
     /**
@@ -192,6 +204,14 @@ public class RulesProceduresTimeSliceType
         return this.affectedLocation;
     }
 
+    public boolean isSetAffectedLocation() {
+        return ((this.affectedLocation!= null)&&(!this.affectedLocation.isEmpty()));
+    }
+
+    public void unsetAffectedLocation() {
+        this.affectedLocation = null;
+    }
+
     /**
      * Gets the value of the affectedArea property.
      * 
@@ -222,6 +242,14 @@ public class RulesProceduresTimeSliceType
             affectedArea = new ArrayList<>();
         }
         return this.affectedArea;
+    }
+
+    public boolean isSetAffectedArea() {
+        return ((this.affectedArea!= null)&&(!this.affectedArea.isEmpty()));
+    }
+
+    public void unsetAffectedArea() {
+        this.affectedArea = null;
     }
 
     /**
@@ -256,6 +284,14 @@ public class RulesProceduresTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -286,6 +322,14 @@ public class RulesProceduresTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -346,6 +390,10 @@ public class RulesProceduresTimeSliceType
             this.abstractRulesProceduresExtension = value;
         }
 
+        public boolean isSetAbstractRulesProceduresExtension() {
+            return (this.abstractRulesProceduresExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -370,8 +418,16 @@ public class RulesProceduresTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

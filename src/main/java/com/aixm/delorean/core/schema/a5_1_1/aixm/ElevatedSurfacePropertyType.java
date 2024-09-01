@@ -71,4 +71,8 @@ public class ElevatedSurfacePropertyType
         this.elevatedSurface = value;
     }
 
+    public boolean isSetElevatedSurface() {
+        return (this.elevatedSurface!= null);
+    }
+
 }

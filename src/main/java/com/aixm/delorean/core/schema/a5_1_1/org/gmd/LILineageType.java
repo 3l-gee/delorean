@@ -82,6 +82,10 @@ public class LILineageType
         this.statement = value;
     }
 
+    public boolean isSetStatement() {
+        return (this.statement!= null);
+    }
+
     /**
      * Gets the value of the processStep property.
      * 
@@ -114,6 +118,14 @@ public class LILineageType
         return this.processStep;
     }
 
+    public boolean isSetProcessStep() {
+        return ((this.processStep!= null)&&(!this.processStep.isEmpty()));
+    }
+
+    public void unsetProcessStep() {
+        this.processStep = null;
+    }
+
     /**
      * Gets the value of the source property.
      * 
@@ -144,6 +156,14 @@ public class LILineageType
             source = new ArrayList<>();
         }
         return this.source;
+    }
+
+    public boolean isSetSource() {
+        return ((this.source!= null)&&(!this.source.isEmpty()));
+    }
+
+    public void unsetSource() {
+        this.source = null;
     }
 
 }

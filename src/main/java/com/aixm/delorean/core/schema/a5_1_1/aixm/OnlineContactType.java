@@ -124,6 +124,14 @@ public class OnlineContactType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -154,6 +162,14 @@ public class OnlineContactType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -188,6 +204,14 @@ public class OnlineContactType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the network property.
      * 
@@ -210,6 +234,10 @@ public class OnlineContactType
      */
     public void setNetwork(JAXBElement<CodeTelecomNetworkType> value) {
         this.network = value;
+    }
+
+    public boolean isSetNetwork() {
+        return (this.network!= null);
     }
 
     /**
@@ -236,6 +264,10 @@ public class OnlineContactType
         this.linkage = value;
     }
 
+    public boolean isSetLinkage() {
+        return (this.linkage!= null);
+    }
+
     /**
      * Gets the value of the protocol property.
      * 
@@ -260,6 +292,10 @@ public class OnlineContactType
         this.protocol = value;
     }
 
+    public boolean isSetProtocol() {
+        return (this.protocol!= null);
+    }
+
     /**
      * Gets the value of the eMail property.
      * 
@@ -282,6 +318,10 @@ public class OnlineContactType
      */
     public void setEMail(JAXBElement<TextAddressType> value) {
         this.eMail = value;
+    }
+
+    public boolean isSetEMail() {
+        return (this.eMail!= null);
     }
 
     /**
@@ -314,6 +354,14 @@ public class OnlineContactType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -378,6 +426,10 @@ public class OnlineContactType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractOnlineContactExtension property.
          * 
@@ -400,6 +452,10 @@ public class OnlineContactType
          */
         public void setAbstractOnlineContactExtension(AbstractExtensionType value) {
             this.abstractOnlineContactExtension = value;
+        }
+
+        public boolean isSetAbstractOnlineContactExtension() {
+            return (this.abstractOnlineContactExtension!= null);
         }
 
         /**
@@ -426,8 +482,16 @@ public class OnlineContactType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

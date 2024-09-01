@@ -144,6 +144,10 @@ public class TerminalSegmentPointType
         this.reportingATC = value;
     }
 
+    public boolean isSetReportingATC() {
+        return (this.reportingATC!= null);
+    }
+
     /**
      * Gets the value of the flyOver property.
      * 
@@ -166,6 +170,10 @@ public class TerminalSegmentPointType
      */
     public void setFlyOver(JAXBElement<CodeYesNoType> value) {
         this.flyOver = value;
+    }
+
+    public boolean isSetFlyOver() {
+        return (this.flyOver!= null);
     }
 
     /**
@@ -192,6 +200,10 @@ public class TerminalSegmentPointType
         this.waypoint = value;
     }
 
+    public boolean isSetWaypoint() {
+        return (this.waypoint!= null);
+    }
+
     /**
      * Gets the value of the radarGuidance property.
      * 
@@ -214,6 +226,10 @@ public class TerminalSegmentPointType
      */
     public void setRadarGuidance(JAXBElement<CodeYesNoType> value) {
         this.radarGuidance = value;
+    }
+
+    public boolean isSetRadarGuidance() {
+        return (this.radarGuidance!= null);
     }
 
     /**
@@ -248,6 +264,14 @@ public class TerminalSegmentPointType
         return this.facilityMakeup;
     }
 
+    public boolean isSetFacilityMakeup() {
+        return ((this.facilityMakeup!= null)&&(!this.facilityMakeup.isEmpty()));
+    }
+
+    public void unsetFacilityMakeup() {
+        this.facilityMakeup = null;
+    }
+
     /**
      * Gets the value of the pointChoiceFixDesignatedPoint property.
      * 
@@ -270,6 +294,10 @@ public class TerminalSegmentPointType
      */
     public void setPointChoiceFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.pointChoiceFixDesignatedPoint = value;
+    }
+
+    public boolean isSetPointChoiceFixDesignatedPoint() {
+        return (this.pointChoiceFixDesignatedPoint!= null);
     }
 
     /**
@@ -296,6 +324,10 @@ public class TerminalSegmentPointType
         this.pointChoiceNavaidSystem = value;
     }
 
+    public boolean isSetPointChoiceNavaidSystem() {
+        return (this.pointChoiceNavaidSystem!= null);
+    }
+
     /**
      * Gets the value of the pointChoicePosition property.
      * 
@@ -318,6 +350,10 @@ public class TerminalSegmentPointType
      */
     public void setPointChoicePosition(JAXBElement<PointPropertyType> value) {
         this.pointChoicePosition = value;
+    }
+
+    public boolean isSetPointChoicePosition() {
+        return (this.pointChoicePosition!= null);
     }
 
     /**
@@ -344,6 +380,10 @@ public class TerminalSegmentPointType
         this.pointChoiceRunwayPoint = value;
     }
 
+    public boolean isSetPointChoiceRunwayPoint() {
+        return (this.pointChoiceRunwayPoint!= null);
+    }
+
     /**
      * Gets the value of the pointChoiceAimingPoint property.
      * 
@@ -366,6 +406,10 @@ public class TerminalSegmentPointType
      */
     public void setPointChoiceAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.pointChoiceAimingPoint = value;
+    }
+
+    public boolean isSetPointChoiceAimingPoint() {
+        return (this.pointChoiceAimingPoint!= null);
     }
 
     /**
@@ -392,6 +436,10 @@ public class TerminalSegmentPointType
         this.pointChoiceAirportReferencePoint = value;
     }
 
+    public boolean isSetPointChoiceAirportReferencePoint() {
+        return (this.pointChoiceAirportReferencePoint!= null);
+    }
+
     /**
      * Gets the value of the extendedServiceVolume property.
      * 
@@ -414,6 +462,10 @@ public class TerminalSegmentPointType
      */
     public void setExtendedServiceVolume(JAXBElement<RadioFrequencyAreaPropertyType> value) {
         this.extendedServiceVolume = value;
+    }
+
+    public boolean isSetExtendedServiceVolume() {
+        return (this.extendedServiceVolume!= null);
     }
 
     /**
@@ -448,6 +500,14 @@ public class TerminalSegmentPointType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -470,6 +530,10 @@ public class TerminalSegmentPointType
      */
     public void setRole(JAXBElement<CodeProcedureFixRoleType> value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -496,6 +560,10 @@ public class TerminalSegmentPointType
         this.leadRadial = value;
     }
 
+    public boolean isSetLeadRadial() {
+        return (this.leadRadial!= null);
+    }
+
     /**
      * Gets the value of the leadDME property.
      * 
@@ -520,6 +588,10 @@ public class TerminalSegmentPointType
         this.leadDME = value;
     }
 
+    public boolean isSetLeadDME() {
+        return (this.leadDME!= null);
+    }
+
     /**
      * Gets the value of the indicatorFACF property.
      * 
@@ -542,6 +614,10 @@ public class TerminalSegmentPointType
      */
     public void setIndicatorFACF(JAXBElement<CodeYesNoType> value) {
         this.indicatorFACF = value;
+    }
+
+    public boolean isSetIndicatorFACF() {
+        return (this.indicatorFACF!= null);
     }
 
     /**
@@ -574,6 +650,14 @@ public class TerminalSegmentPointType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -638,6 +722,10 @@ public class TerminalSegmentPointType
             this.abstractSegmentPointExtension = value;
         }
 
+        public boolean isSetAbstractSegmentPointExtension() {
+            return (this.abstractSegmentPointExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractTerminalSegmentPointExtension property.
          * 
@@ -660,6 +748,10 @@ public class TerminalSegmentPointType
          */
         public void setAbstractTerminalSegmentPointExtension(AbstractExtensionType value) {
             this.abstractTerminalSegmentPointExtension = value;
+        }
+
+        public boolean isSetAbstractTerminalSegmentPointExtension() {
+            return (this.abstractTerminalSegmentPointExtension!= null);
         }
 
         /**
@@ -686,8 +778,16 @@ public class TerminalSegmentPointType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -108,6 +108,10 @@ public class NavigationAreaSectorType
         this.sectorDefinition = value;
     }
 
+    public boolean isSetSectorDefinition() {
+        return (this.sectorDefinition!= null);
+    }
+
     /**
      * Gets the value of the significantObstacle property.
      * 
@@ -140,6 +144,14 @@ public class NavigationAreaSectorType
         return this.significantObstacle;
     }
 
+    public boolean isSetSignificantObstacle() {
+        return ((this.significantObstacle!= null)&&(!this.significantObstacle.isEmpty()));
+    }
+
+    public void unsetSignificantObstacle() {
+        this.significantObstacle = null;
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -162,6 +174,10 @@ public class NavigationAreaSectorType
      */
     public void setExtent(JAXBElement<SurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -196,6 +212,14 @@ public class NavigationAreaSectorType
         return this.sectorCriteria;
     }
 
+    public boolean isSetSectorCriteria() {
+        return ((this.sectorCriteria!= null)&&(!this.sectorCriteria.isEmpty()));
+    }
+
+    public void unsetSectorCriteria() {
+        this.sectorCriteria = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -228,6 +252,14 @@ public class NavigationAreaSectorType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -258,6 +290,14 @@ public class NavigationAreaSectorType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -317,6 +357,10 @@ public class NavigationAreaSectorType
             this.abstractNavigationAreaSectorExtension = value;
         }
 
+        public boolean isSetAbstractNavigationAreaSectorExtension() {
+            return (this.abstractNavigationAreaSectorExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -341,8 +385,16 @@ public class NavigationAreaSectorType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

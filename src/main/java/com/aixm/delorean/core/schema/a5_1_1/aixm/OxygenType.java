@@ -95,6 +95,10 @@ public class OxygenType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -127,6 +131,14 @@ public class OxygenType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -157,6 +169,14 @@ public class OxygenType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -216,6 +236,10 @@ public class OxygenType
             this.abstractOxygenExtension = value;
         }
 
+        public boolean isSetAbstractOxygenExtension() {
+            return (this.abstractOxygenExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -240,8 +264,16 @@ public class OxygenType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

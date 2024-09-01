@@ -71,4 +71,8 @@ public class ApproachTimingTablePropertyType
         this.approachTimingTable = value;
     }
 
+    public boolean isSetApproachTimingTable() {
+        return (this.approachTimingTable!= null);
+    }
+
 }

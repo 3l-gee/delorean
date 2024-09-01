@@ -98,6 +98,10 @@ public class SurveillanceGroundStationType
         this.videoMap = value;
     }
 
+    public boolean isSetVideoMap() {
+        return (this.videoMap!= null);
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -130,6 +134,14 @@ public class SurveillanceGroundStationType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the theUnit property.
      * 
@@ -152,6 +164,10 @@ public class SurveillanceGroundStationType
      */
     public void setTheUnit(UnitPropertyType value) {
         this.theUnit = value;
+    }
+
+    public boolean isSetTheUnit() {
+        return (this.theUnit!= null);
     }
 
     /**
@@ -184,6 +200,14 @@ public class SurveillanceGroundStationType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -243,6 +267,10 @@ public class SurveillanceGroundStationType
             this.abstractSurveillanceGroundStationExtension = value;
         }
 
+        public boolean isSetAbstractSurveillanceGroundStationExtension() {
+            return (this.abstractSurveillanceGroundStationExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -267,8 +295,16 @@ public class SurveillanceGroundStationType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

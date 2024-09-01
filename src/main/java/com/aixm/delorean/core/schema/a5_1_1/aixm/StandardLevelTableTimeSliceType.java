@@ -99,6 +99,10 @@ public class StandardLevelTableTimeSliceType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the standardICAO property.
      * 
@@ -121,6 +125,10 @@ public class StandardLevelTableTimeSliceType
      */
     public void setStandardICAO(JAXBElement<CodeYesNoType> value) {
         this.standardICAO = value;
+    }
+
+    public boolean isSetStandardICAO() {
+        return (this.standardICAO!= null);
     }
 
     /**
@@ -155,6 +163,14 @@ public class StandardLevelTableTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -185,6 +201,14 @@ public class StandardLevelTableTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -245,6 +269,10 @@ public class StandardLevelTableTimeSliceType
             this.abstractStandardLevelTableExtension = value;
         }
 
+        public boolean isSetAbstractStandardLevelTableExtension() {
+            return (this.abstractStandardLevelTableExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -269,8 +297,16 @@ public class StandardLevelTableTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

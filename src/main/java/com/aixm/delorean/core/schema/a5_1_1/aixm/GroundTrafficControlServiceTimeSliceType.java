@@ -147,6 +147,10 @@ public class GroundTrafficControlServiceTimeSliceType
         this.flightOperations = value;
     }
 
+    public boolean isSetFlightOperations() {
+        return (this.flightOperations!= null);
+    }
+
     /**
      * Gets the value of the rank property.
      * 
@@ -169,6 +173,10 @@ public class GroundTrafficControlServiceTimeSliceType
      */
     public void setRank(JAXBElement<CodeFacilityRankingType> value) {
         this.rank = value;
+    }
+
+    public boolean isSetRank() {
+        return (this.rank!= null);
     }
 
     /**
@@ -195,6 +203,10 @@ public class GroundTrafficControlServiceTimeSliceType
         this.compliantICAO = value;
     }
 
+    public boolean isSetCompliantICAO() {
+        return (this.compliantICAO!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -217,6 +229,10 @@ public class GroundTrafficControlServiceTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -243,6 +259,10 @@ public class GroundTrafficControlServiceTimeSliceType
         this.location = value;
     }
 
+    public boolean isSetLocation() {
+        return (this.location!= null);
+    }
+
     /**
      * Gets the value of the serviceProvider property.
      * 
@@ -265,6 +285,10 @@ public class GroundTrafficControlServiceTimeSliceType
      */
     public void setServiceProvider(JAXBElement<UnitPropertyType> value) {
         this.serviceProvider = value;
+    }
+
+    public boolean isSetServiceProvider() {
+        return (this.serviceProvider!= null);
     }
 
     /**
@@ -299,6 +323,14 @@ public class GroundTrafficControlServiceTimeSliceType
         return this.callSign;
     }
 
+    public boolean isSetCallSign() {
+        return ((this.callSign!= null)&&(!this.callSign.isEmpty()));
+    }
+
+    public void unsetCallSign() {
+        this.callSign = null;
+    }
+
     /**
      * Gets the value of the radioCommunication property.
      * 
@@ -329,6 +361,14 @@ public class GroundTrafficControlServiceTimeSliceType
             radioCommunication = new ArrayList<>();
         }
         return this.radioCommunication;
+    }
+
+    public boolean isSetRadioCommunication() {
+        return ((this.radioCommunication!= null)&&(!this.radioCommunication.isEmpty()));
+    }
+
+    public void unsetRadioCommunication() {
+        this.radioCommunication = null;
     }
 
     /**
@@ -363,6 +403,14 @@ public class GroundTrafficControlServiceTimeSliceType
         return this.groundCommunication;
     }
 
+    public boolean isSetGroundCommunication() {
+        return ((this.groundCommunication!= null)&&(!this.groundCommunication.isEmpty()));
+    }
+
+    public void unsetGroundCommunication() {
+        this.groundCommunication = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -393,6 +441,14 @@ public class GroundTrafficControlServiceTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
     }
 
     /**
@@ -427,6 +483,14 @@ public class GroundTrafficControlServiceTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the radarAssisted property.
      * 
@@ -449,6 +513,10 @@ public class GroundTrafficControlServiceTimeSliceType
      */
     public void setRadarAssisted(JAXBElement<CodeYesNoType> value) {
         this.radarAssisted = value;
+    }
+
+    public boolean isSetRadarAssisted() {
+        return (this.radarAssisted!= null);
     }
 
     /**
@@ -475,6 +543,10 @@ public class GroundTrafficControlServiceTimeSliceType
         this.dataLinkEnabled = value;
     }
 
+    public boolean isSetDataLinkEnabled() {
+        return (this.dataLinkEnabled!= null);
+    }
+
     /**
      * Gets the value of the dataLinkChannel property.
      * 
@@ -497,6 +569,10 @@ public class GroundTrafficControlServiceTimeSliceType
      */
     public void setDataLinkChannel(JAXBElement<CodeCommunicationChannelType> value) {
         this.dataLinkChannel = value;
+    }
+
+    public boolean isSetDataLinkChannel() {
+        return (this.dataLinkChannel!= null);
     }
 
     /**
@@ -523,6 +599,10 @@ public class GroundTrafficControlServiceTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the clientAirport property.
      * 
@@ -545,6 +625,10 @@ public class GroundTrafficControlServiceTimeSliceType
      */
     public void setClientAirport(JAXBElement<AirportHeliportPropertyType> value) {
         this.clientAirport = value;
+    }
+
+    public boolean isSetClientAirport() {
+        return (this.clientAirport!= null);
     }
 
     /**
@@ -577,6 +661,14 @@ public class GroundTrafficControlServiceTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -646,6 +738,10 @@ public class GroundTrafficControlServiceTimeSliceType
             this.abstractGroundTrafficControlServiceExtension = value;
         }
 
+        public boolean isSetAbstractGroundTrafficControlServiceExtension() {
+            return (this.abstractGroundTrafficControlServiceExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractTrafficSeparationServiceExtension property.
          * 
@@ -668,6 +764,10 @@ public class GroundTrafficControlServiceTimeSliceType
          */
         public void setAbstractTrafficSeparationServiceExtension(AbstractExtensionType value) {
             this.abstractTrafficSeparationServiceExtension = value;
+        }
+
+        public boolean isSetAbstractTrafficSeparationServiceExtension() {
+            return (this.abstractTrafficSeparationServiceExtension!= null);
         }
 
         /**
@@ -694,6 +794,10 @@ public class GroundTrafficControlServiceTimeSliceType
             this.abstractServiceExtension = value;
         }
 
+        public boolean isSetAbstractServiceExtension() {
+            return (this.abstractServiceExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -718,8 +822,16 @@ public class GroundTrafficControlServiceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

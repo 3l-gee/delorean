@@ -9,14 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
+import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -48,11 +47,9 @@ public class TimeIntervalLengthType {
     protected BigDecimal value;
     @XmlAttribute(name = "unit", required = true)
     @NotNull
-    protected String unit;
+    protected TimeUnitType unit;
     @XmlAttribute(name = "radix")
-    @XmlSchemaType(name = "positiveInteger")
-    @DecimalMin(value = "1", inclusive = true)
-    protected BigInteger radix;
+    protected PositiveInteger radix;
     @XmlAttribute(name = "factor")
     protected BigInteger factor;
 
@@ -80,15 +77,19 @@ public class TimeIntervalLengthType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return (this.value!= null);
+    }
+
     /**
      * Gets the value of the unit property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TimeUnitType }
      *     
      */
-    public String getUnit() {
+    public TimeUnitType getUnit() {
         return unit;
     }
 
@@ -97,11 +98,15 @@ public class TimeIntervalLengthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TimeUnitType }
      *     
      */
-    public void setUnit(String value) {
+    public void setUnit(TimeUnitType value) {
         this.unit = value;
+    }
+
+    public boolean isSetUnit() {
+        return (this.unit!= null);
     }
 
     /**
@@ -109,10 +114,10 @@ public class TimeIntervalLengthType {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public BigInteger getRadix() {
+    public PositiveInteger getRadix() {
         return radix;
     }
 
@@ -121,11 +126,15 @@ public class TimeIntervalLengthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public void setRadix(BigInteger value) {
+    public void setRadix(PositiveInteger value) {
         this.radix = value;
+    }
+
+    public boolean isSetRadix() {
+        return (this.radix!= null);
     }
 
     /**
@@ -150,6 +159,10 @@ public class TimeIntervalLengthType {
      */
     public void setFactor(BigInteger value) {
         this.factor = value;
+    }
+
+    public boolean isSetFactor() {
+        return (this.factor!= null);
     }
 
 }

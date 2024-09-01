@@ -113,6 +113,14 @@ public class FinalProfileType
         return this.altitude;
     }
 
+    public boolean isSetAltitude() {
+        return ((this.altitude!= null)&&(!this.altitude.isEmpty()));
+    }
+
+    public void unsetAltitude() {
+        this.altitude = null;
+    }
+
     /**
      * Gets the value of the distance property.
      * 
@@ -143,6 +151,14 @@ public class FinalProfileType
             distance = new ArrayList<>();
         }
         return this.distance;
+    }
+
+    public boolean isSetDistance() {
+        return ((this.distance!= null)&&(!this.distance.isEmpty()));
+    }
+
+    public void unsetDistance() {
+        this.distance = null;
     }
 
     /**
@@ -177,6 +193,14 @@ public class FinalProfileType
         return this.timing;
     }
 
+    public boolean isSetTiming() {
+        return ((this.timing!= null)&&(!this.timing.isEmpty()));
+    }
+
+    public void unsetTiming() {
+        this.timing = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -209,6 +233,14 @@ public class FinalProfileType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -239,6 +271,14 @@ public class FinalProfileType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -298,6 +338,10 @@ public class FinalProfileType
             this.abstractFinalProfileExtension = value;
         }
 
+        public boolean isSetAbstractFinalProfileExtension() {
+            return (this.abstractFinalProfileExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -322,8 +366,16 @@ public class FinalProfileType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -112,6 +112,10 @@ public class TerminalArrivalAreaSectorType
         this.flyByCode = value;
     }
 
+    public boolean isSetFlyByCode() {
+        return (this.flyByCode!= null);
+    }
+
     /**
      * Gets the value of the procedureTurnRequired property.
      * 
@@ -134,6 +138,10 @@ public class TerminalArrivalAreaSectorType
      */
     public void setProcedureTurnRequired(JAXBElement<CodeYesNoType> value) {
         this.procedureTurnRequired = value;
+    }
+
+    public boolean isSetProcedureTurnRequired() {
+        return (this.procedureTurnRequired!= null);
     }
 
     /**
@@ -160,6 +168,10 @@ public class TerminalArrivalAreaSectorType
         this.altitudeDescription = value;
     }
 
+    public boolean isSetAltitudeDescription() {
+        return (this.altitudeDescription!= null);
+    }
+
     /**
      * Gets the value of the sectorDefinition property.
      * 
@@ -184,6 +196,10 @@ public class TerminalArrivalAreaSectorType
         this.sectorDefinition = value;
     }
 
+    public boolean isSetSectorDefinition() {
+        return (this.sectorDefinition!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -206,6 +222,10 @@ public class TerminalArrivalAreaSectorType
      */
     public void setExtent(JAXBElement<SurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -240,6 +260,14 @@ public class TerminalArrivalAreaSectorType
         return this.significantObstacle;
     }
 
+    public boolean isSetSignificantObstacle() {
+        return ((this.significantObstacle!= null)&&(!this.significantObstacle.isEmpty()));
+    }
+
+    public void unsetSignificantObstacle() {
+        this.significantObstacle = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -272,6 +300,14 @@ public class TerminalArrivalAreaSectorType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -302,6 +338,14 @@ public class TerminalArrivalAreaSectorType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -361,6 +405,10 @@ public class TerminalArrivalAreaSectorType
             this.abstractTerminalArrivalAreaSectorExtension = value;
         }
 
+        public boolean isSetAbstractTerminalArrivalAreaSectorExtension() {
+            return (this.abstractTerminalArrivalAreaSectorExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -385,8 +433,16 @@ public class TerminalArrivalAreaSectorType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -144,6 +144,10 @@ public class NDBTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -166,6 +170,10 @@ public class NDBTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -192,6 +200,10 @@ public class NDBTimeSliceType
         this.emissionClass = value;
     }
 
+    public boolean isSetEmissionClass() {
+        return (this.emissionClass!= null);
+    }
+
     /**
      * Gets the value of the mobile property.
      * 
@@ -214,6 +226,10 @@ public class NDBTimeSliceType
      */
     public void setMobile(JAXBElement<CodeYesNoType> value) {
         this.mobile = value;
+    }
+
+    public boolean isSetMobile() {
+        return (this.mobile!= null);
     }
 
     /**
@@ -240,6 +256,10 @@ public class NDBTimeSliceType
         this.magneticVariation = value;
     }
 
+    public boolean isSetMagneticVariation() {
+        return (this.magneticVariation!= null);
+    }
+
     /**
      * Gets the value of the magneticVariationAccuracy property.
      * 
@@ -262,6 +282,10 @@ public class NDBTimeSliceType
      */
     public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticVariationAccuracy = value;
+    }
+
+    public boolean isSetMagneticVariationAccuracy() {
+        return (this.magneticVariationAccuracy!= null);
     }
 
     /**
@@ -288,6 +312,10 @@ public class NDBTimeSliceType
         this.dateMagneticVariation = value;
     }
 
+    public boolean isSetDateMagneticVariation() {
+        return (this.dateMagneticVariation!= null);
+    }
+
     /**
      * Gets the value of the flightChecked property.
      * 
@@ -312,6 +340,10 @@ public class NDBTimeSliceType
         this.flightChecked = value;
     }
 
+    public boolean isSetFlightChecked() {
+        return (this.flightChecked!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -334,6 +366,10 @@ public class NDBTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -368,6 +404,14 @@ public class NDBTimeSliceType
         return this.authority;
     }
 
+    public boolean isSetAuthority() {
+        return ((this.authority!= null)&&(!this.authority.isEmpty()));
+    }
+
+    public void unsetAuthority() {
+        this.authority = null;
+    }
+
     /**
      * Gets the value of the monitoring property.
      * 
@@ -398,6 +442,14 @@ public class NDBTimeSliceType
             monitoring = new ArrayList<>();
         }
         return this.monitoring;
+    }
+
+    public boolean isSetMonitoring() {
+        return ((this.monitoring!= null)&&(!this.monitoring.isEmpty()));
+    }
+
+    public void unsetMonitoring() {
+        this.monitoring = null;
     }
 
     /**
@@ -432,6 +484,14 @@ public class NDBTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -464,6 +524,14 @@ public class NDBTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the frequency property.
      * 
@@ -486,6 +554,10 @@ public class NDBTimeSliceType
      */
     public void setFrequency(JAXBElement<ValFrequencyType> value) {
         this.frequency = value;
+    }
+
+    public boolean isSetFrequency() {
+        return (this.frequency!= null);
     }
 
     /**
@@ -512,6 +584,10 @@ public class NDBTimeSliceType
         this.clazz = value;
     }
 
+    public boolean isSetClazz() {
+        return (this.clazz!= null);
+    }
+
     /**
      * Gets the value of the emissionBand property.
      * 
@@ -534,6 +610,10 @@ public class NDBTimeSliceType
      */
     public void setEmissionBand(JAXBElement<CodeEmissionBandType> value) {
         this.emissionBand = value;
+    }
+
+    public boolean isSetEmissionBand() {
+        return (this.emissionBand!= null);
     }
 
     /**
@@ -566,6 +646,14 @@ public class NDBTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -630,6 +718,10 @@ public class NDBTimeSliceType
             this.abstractNDBExtension = value;
         }
 
+        public boolean isSetAbstractNDBExtension() {
+            return (this.abstractNDBExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractNavaidEquipmentExtension property.
          * 
@@ -652,6 +744,10 @@ public class NDBTimeSliceType
          */
         public void setAbstractNavaidEquipmentExtension(AbstractExtensionType value) {
             this.abstractNavaidEquipmentExtension = value;
+        }
+
+        public boolean isSetAbstractNavaidEquipmentExtension() {
+            return (this.abstractNavaidEquipmentExtension!= null);
         }
 
         /**
@@ -678,8 +774,16 @@ public class NDBTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

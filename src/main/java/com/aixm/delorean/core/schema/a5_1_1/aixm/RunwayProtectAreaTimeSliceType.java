@@ -120,6 +120,10 @@ public class RunwayProtectAreaTimeSliceType
         this.width = value;
     }
 
+    public boolean isSetWidth() {
+        return (this.width!= null);
+    }
+
     /**
      * Gets the value of the length property.
      * 
@@ -142,6 +146,10 @@ public class RunwayProtectAreaTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
+    }
+
+    public boolean isSetLength() {
+        return (this.length!= null);
     }
 
     /**
@@ -168,6 +176,10 @@ public class RunwayProtectAreaTimeSliceType
         this.lighting = value;
     }
 
+    public boolean isSetLighting() {
+        return (this.lighting!= null);
+    }
+
     /**
      * Gets the value of the obstacleFree property.
      * 
@@ -190,6 +202,10 @@ public class RunwayProtectAreaTimeSliceType
      */
     public void setObstacleFree(JAXBElement<CodeYesNoType> value) {
         this.obstacleFree = value;
+    }
+
+    public boolean isSetObstacleFree() {
+        return (this.obstacleFree!= null);
     }
 
     /**
@@ -216,6 +232,10 @@ public class RunwayProtectAreaTimeSliceType
         this.surfaceProperties = value;
     }
 
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -238,6 +258,10 @@ public class RunwayProtectAreaTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -272,6 +296,14 @@ public class RunwayProtectAreaTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -294,6 +326,10 @@ public class RunwayProtectAreaTimeSliceType
      */
     public void setType(JAXBElement<CodeRunwayProtectionAreaType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -320,6 +356,10 @@ public class RunwayProtectAreaTimeSliceType
         this.status = value;
     }
 
+    public boolean isSetStatus() {
+        return (this.status!= null);
+    }
+
     /**
      * Gets the value of the protectedRunwayDirection property.
      * 
@@ -342,6 +382,10 @@ public class RunwayProtectAreaTimeSliceType
      */
     public void setProtectedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
         this.protectedRunwayDirection = value;
+    }
+
+    public boolean isSetProtectedRunwayDirection() {
+        return (this.protectedRunwayDirection!= null);
     }
 
     /**
@@ -374,6 +418,14 @@ public class RunwayProtectAreaTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -438,6 +490,10 @@ public class RunwayProtectAreaTimeSliceType
             this.abstractRunwayProtectAreaExtension = value;
         }
 
+        public boolean isSetAbstractRunwayProtectAreaExtension() {
+            return (this.abstractRunwayProtectAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractAirportHeliportProtectionAreaExtension property.
          * 
@@ -460,6 +516,10 @@ public class RunwayProtectAreaTimeSliceType
          */
         public void setAbstractAirportHeliportProtectionAreaExtension(AbstractExtensionType value) {
             this.abstractAirportHeliportProtectionAreaExtension = value;
+        }
+
+        public boolean isSetAbstractAirportHeliportProtectionAreaExtension() {
+            return (this.abstractAirportHeliportProtectionAreaExtension!= null);
         }
 
         /**
@@ -486,8 +546,16 @@ public class RunwayProtectAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

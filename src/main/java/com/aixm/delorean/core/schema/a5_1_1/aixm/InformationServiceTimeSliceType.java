@@ -178,6 +178,10 @@ public class InformationServiceTimeSliceType
         this.flightOperations = value;
     }
 
+    public boolean isSetFlightOperations() {
+        return (this.flightOperations!= null);
+    }
+
     /**
      * Gets the value of the rank property.
      * 
@@ -200,6 +204,10 @@ public class InformationServiceTimeSliceType
      */
     public void setRank(JAXBElement<CodeFacilityRankingType> value) {
         this.rank = value;
+    }
+
+    public boolean isSetRank() {
+        return (this.rank!= null);
     }
 
     /**
@@ -226,6 +234,10 @@ public class InformationServiceTimeSliceType
         this.compliantICAO = value;
     }
 
+    public boolean isSetCompliantICAO() {
+        return (this.compliantICAO!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -248,6 +260,10 @@ public class InformationServiceTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -274,6 +290,10 @@ public class InformationServiceTimeSliceType
         this.location = value;
     }
 
+    public boolean isSetLocation() {
+        return (this.location!= null);
+    }
+
     /**
      * Gets the value of the serviceProvider property.
      * 
@@ -296,6 +316,10 @@ public class InformationServiceTimeSliceType
      */
     public void setServiceProvider(JAXBElement<UnitPropertyType> value) {
         this.serviceProvider = value;
+    }
+
+    public boolean isSetServiceProvider() {
+        return (this.serviceProvider!= null);
     }
 
     /**
@@ -330,6 +354,14 @@ public class InformationServiceTimeSliceType
         return this.callSign;
     }
 
+    public boolean isSetCallSign() {
+        return ((this.callSign!= null)&&(!this.callSign.isEmpty()));
+    }
+
+    public void unsetCallSign() {
+        this.callSign = null;
+    }
+
     /**
      * Gets the value of the radioCommunication property.
      * 
@@ -360,6 +392,14 @@ public class InformationServiceTimeSliceType
             radioCommunication = new ArrayList<>();
         }
         return this.radioCommunication;
+    }
+
+    public boolean isSetRadioCommunication() {
+        return ((this.radioCommunication!= null)&&(!this.radioCommunication.isEmpty()));
+    }
+
+    public void unsetRadioCommunication() {
+        this.radioCommunication = null;
     }
 
     /**
@@ -394,6 +434,14 @@ public class InformationServiceTimeSliceType
         return this.groundCommunication;
     }
 
+    public boolean isSetGroundCommunication() {
+        return ((this.groundCommunication!= null)&&(!this.groundCommunication.isEmpty()));
+    }
+
+    public void unsetGroundCommunication() {
+        this.groundCommunication = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -424,6 +472,14 @@ public class InformationServiceTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
     }
 
     /**
@@ -458,6 +514,14 @@ public class InformationServiceTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -480,6 +544,10 @@ public class InformationServiceTimeSliceType
      */
     public void setType(JAXBElement<CodeServiceInformationType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -506,6 +574,10 @@ public class InformationServiceTimeSliceType
         this.voice = value;
     }
 
+    public boolean isSetVoice() {
+        return (this.voice!= null);
+    }
+
     /**
      * Gets the value of the dataLink property.
      * 
@@ -530,6 +602,10 @@ public class InformationServiceTimeSliceType
         this.dataLink = value;
     }
 
+    public boolean isSetDataLink() {
+        return (this.dataLink!= null);
+    }
+
     /**
      * Gets the value of the recorded property.
      * 
@@ -552,6 +628,10 @@ public class InformationServiceTimeSliceType
      */
     public void setRecorded(JAXBElement<CodeYesNoType> value) {
         this.recorded = value;
+    }
+
+    public boolean isSetRecorded() {
+        return (this.recorded!= null);
     }
 
     /**
@@ -586,6 +666,14 @@ public class InformationServiceTimeSliceType
         return this.navaidBroadcast;
     }
 
+    public boolean isSetNavaidBroadcast() {
+        return ((this.navaidBroadcast!= null)&&(!this.navaidBroadcast.isEmpty()));
+    }
+
+    public void unsetNavaidBroadcast() {
+        this.navaidBroadcast = null;
+    }
+
     /**
      * Gets the value of the clientAirspace property.
      * 
@@ -616,6 +704,14 @@ public class InformationServiceTimeSliceType
             clientAirspace = new ArrayList<>();
         }
         return this.clientAirspace;
+    }
+
+    public boolean isSetClientAirspace() {
+        return ((this.clientAirspace!= null)&&(!this.clientAirspace.isEmpty()));
+    }
+
+    public void unsetClientAirspace() {
+        this.clientAirspace = null;
     }
 
     /**
@@ -650,6 +746,14 @@ public class InformationServiceTimeSliceType
         return this.clientAirport;
     }
 
+    public boolean isSetClientAirport() {
+        return ((this.clientAirport!= null)&&(!this.clientAirport.isEmpty()));
+    }
+
+    public void unsetClientAirport() {
+        this.clientAirport = null;
+    }
+
     /**
      * Gets the value of the clientRoute property.
      * 
@@ -680,6 +784,14 @@ public class InformationServiceTimeSliceType
             clientRoute = new ArrayList<>();
         }
         return this.clientRoute;
+    }
+
+    public boolean isSetClientRoute() {
+        return ((this.clientRoute!= null)&&(!this.clientRoute.isEmpty()));
+    }
+
+    public void unsetClientRoute() {
+        this.clientRoute = null;
     }
 
     /**
@@ -714,6 +826,14 @@ public class InformationServiceTimeSliceType
         return this.clientProcedure;
     }
 
+    public boolean isSetClientProcedure() {
+        return ((this.clientProcedure!= null)&&(!this.clientProcedure.isEmpty()));
+    }
+
+    public void unsetClientProcedure() {
+        this.clientProcedure = null;
+    }
+
     /**
      * Gets the value of the clientHolding property.
      * 
@@ -744,6 +864,14 @@ public class InformationServiceTimeSliceType
             clientHolding = new ArrayList<>();
         }
         return this.clientHolding;
+    }
+
+    public boolean isSetClientHolding() {
+        return ((this.clientHolding!= null)&&(!this.clientHolding.isEmpty()));
+    }
+
+    public void unsetClientHolding() {
+        this.clientHolding = null;
     }
 
     /**
@@ -778,6 +906,14 @@ public class InformationServiceTimeSliceType
         return this.clientAerialRefuelling;
     }
 
+    public boolean isSetClientAerialRefuelling() {
+        return ((this.clientAerialRefuelling!= null)&&(!this.clientAerialRefuelling.isEmpty()));
+    }
+
+    public void unsetClientAerialRefuelling() {
+        this.clientAerialRefuelling = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -808,6 +944,14 @@ public class InformationServiceTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -872,6 +1016,10 @@ public class InformationServiceTimeSliceType
             this.abstractInformationServiceExtension = value;
         }
 
+        public boolean isSetAbstractInformationServiceExtension() {
+            return (this.abstractInformationServiceExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractServiceExtension property.
          * 
@@ -894,6 +1042,10 @@ public class InformationServiceTimeSliceType
          */
         public void setAbstractServiceExtension(AbstractExtensionType value) {
             this.abstractServiceExtension = value;
+        }
+
+        public boolean isSetAbstractServiceExtension() {
+            return (this.abstractServiceExtension!= null);
         }
 
         /**
@@ -920,8 +1072,16 @@ public class InformationServiceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

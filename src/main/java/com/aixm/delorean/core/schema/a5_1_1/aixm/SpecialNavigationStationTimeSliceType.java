@@ -119,6 +119,10 @@ public class SpecialNavigationStationTimeSliceType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -141,6 +145,10 @@ public class SpecialNavigationStationTimeSliceType
      */
     public void setType(JAXBElement<CodeSpecialNavigationStationType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -167,6 +175,10 @@ public class SpecialNavigationStationTimeSliceType
         this.frequency = value;
     }
 
+    public boolean isSetFrequency() {
+        return (this.frequency!= null);
+    }
+
     /**
      * Gets the value of the emission property.
      * 
@@ -189,6 +201,10 @@ public class SpecialNavigationStationTimeSliceType
      */
     public void setEmission(JAXBElement<CodeRadioEmissionType> value) {
         this.emission = value;
+    }
+
+    public boolean isSetEmission() {
+        return (this.emission!= null);
     }
 
     /**
@@ -215,6 +231,10 @@ public class SpecialNavigationStationTimeSliceType
         this.systemChain = value;
     }
 
+    public boolean isSetSystemChain() {
+        return (this.systemChain!= null);
+    }
+
     /**
      * Gets the value of the responsibleOrganisation property.
      * 
@@ -239,6 +259,10 @@ public class SpecialNavigationStationTimeSliceType
         this.responsibleOrganisation = value;
     }
 
+    public boolean isSetResponsibleOrganisation() {
+        return (this.responsibleOrganisation!= null);
+    }
+
     /**
      * Gets the value of the position property.
      * 
@@ -261,6 +285,10 @@ public class SpecialNavigationStationTimeSliceType
      */
     public void setPosition(JAXBElement<ElevatedPointPropertyType> value) {
         this.position = value;
+    }
+
+    public boolean isSetPosition() {
+        return (this.position!= null);
     }
 
     /**
@@ -295,6 +323,14 @@ public class SpecialNavigationStationTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -327,6 +363,14 @@ public class SpecialNavigationStationTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -357,6 +401,14 @@ public class SpecialNavigationStationTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -417,6 +469,10 @@ public class SpecialNavigationStationTimeSliceType
             this.abstractSpecialNavigationStationExtension = value;
         }
 
+        public boolean isSetAbstractSpecialNavigationStationExtension() {
+            return (this.abstractSpecialNavigationStationExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -441,8 +497,16 @@ public class SpecialNavigationStationTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

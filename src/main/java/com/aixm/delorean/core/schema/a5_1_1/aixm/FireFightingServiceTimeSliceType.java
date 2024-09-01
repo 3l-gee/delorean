@@ -143,6 +143,10 @@ public class FireFightingServiceTimeSliceType
         this.flightOperations = value;
     }
 
+    public boolean isSetFlightOperations() {
+        return (this.flightOperations!= null);
+    }
+
     /**
      * Gets the value of the rank property.
      * 
@@ -165,6 +169,10 @@ public class FireFightingServiceTimeSliceType
      */
     public void setRank(JAXBElement<CodeFacilityRankingType> value) {
         this.rank = value;
+    }
+
+    public boolean isSetRank() {
+        return (this.rank!= null);
     }
 
     /**
@@ -191,6 +199,10 @@ public class FireFightingServiceTimeSliceType
         this.compliantICAO = value;
     }
 
+    public boolean isSetCompliantICAO() {
+        return (this.compliantICAO!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -213,6 +225,10 @@ public class FireFightingServiceTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -239,6 +255,10 @@ public class FireFightingServiceTimeSliceType
         this.location = value;
     }
 
+    public boolean isSetLocation() {
+        return (this.location!= null);
+    }
+
     /**
      * Gets the value of the serviceProvider property.
      * 
@@ -261,6 +281,10 @@ public class FireFightingServiceTimeSliceType
      */
     public void setServiceProvider(JAXBElement<UnitPropertyType> value) {
         this.serviceProvider = value;
+    }
+
+    public boolean isSetServiceProvider() {
+        return (this.serviceProvider!= null);
     }
 
     /**
@@ -295,6 +319,14 @@ public class FireFightingServiceTimeSliceType
         return this.callSign;
     }
 
+    public boolean isSetCallSign() {
+        return ((this.callSign!= null)&&(!this.callSign.isEmpty()));
+    }
+
+    public void unsetCallSign() {
+        this.callSign = null;
+    }
+
     /**
      * Gets the value of the radioCommunication property.
      * 
@@ -325,6 +357,14 @@ public class FireFightingServiceTimeSliceType
             radioCommunication = new ArrayList<>();
         }
         return this.radioCommunication;
+    }
+
+    public boolean isSetRadioCommunication() {
+        return ((this.radioCommunication!= null)&&(!this.radioCommunication.isEmpty()));
+    }
+
+    public void unsetRadioCommunication() {
+        this.radioCommunication = null;
     }
 
     /**
@@ -359,6 +399,14 @@ public class FireFightingServiceTimeSliceType
         return this.groundCommunication;
     }
 
+    public boolean isSetGroundCommunication() {
+        return ((this.groundCommunication!= null)&&(!this.groundCommunication.isEmpty()));
+    }
+
+    public void unsetGroundCommunication() {
+        this.groundCommunication = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -389,6 +437,14 @@ public class FireFightingServiceTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
     }
 
     /**
@@ -423,6 +479,14 @@ public class FireFightingServiceTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the airportHeliport property.
      * 
@@ -455,6 +519,14 @@ public class FireFightingServiceTimeSliceType
         return this.airportHeliport;
     }
 
+    public boolean isSetAirportHeliport() {
+        return ((this.airportHeliport!= null)&&(!this.airportHeliport.isEmpty()));
+    }
+
+    public void unsetAirportHeliport() {
+        this.airportHeliport = null;
+    }
+
     /**
      * Gets the value of the category property.
      * 
@@ -479,6 +551,10 @@ public class FireFightingServiceTimeSliceType
         this.category = value;
     }
 
+    public boolean isSetCategory() {
+        return (this.category!= null);
+    }
+
     /**
      * Gets the value of the standard property.
      * 
@@ -501,6 +577,10 @@ public class FireFightingServiceTimeSliceType
      */
     public void setStandard(JAXBElement<CodeAviationStandardsType> value) {
         this.standard = value;
+    }
+
+    public boolean isSetStandard() {
+        return (this.standard!= null);
     }
 
     /**
@@ -533,6 +613,14 @@ public class FireFightingServiceTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -602,6 +690,10 @@ public class FireFightingServiceTimeSliceType
             this.abstractFireFightingServiceExtension = value;
         }
 
+        public boolean isSetAbstractFireFightingServiceExtension() {
+            return (this.abstractFireFightingServiceExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractAirportGroundServiceExtension property.
          * 
@@ -624,6 +716,10 @@ public class FireFightingServiceTimeSliceType
          */
         public void setAbstractAirportGroundServiceExtension(AbstractExtensionType value) {
             this.abstractAirportGroundServiceExtension = value;
+        }
+
+        public boolean isSetAbstractAirportGroundServiceExtension() {
+            return (this.abstractAirportGroundServiceExtension!= null);
         }
 
         /**
@@ -650,6 +746,10 @@ public class FireFightingServiceTimeSliceType
             this.abstractServiceExtension = value;
         }
 
+        public boolean isSetAbstractServiceExtension() {
+            return (this.abstractServiceExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -674,8 +774,16 @@ public class FireFightingServiceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

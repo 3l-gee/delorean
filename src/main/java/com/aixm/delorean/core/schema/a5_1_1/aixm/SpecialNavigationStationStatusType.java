@@ -115,6 +115,14 @@ public class SpecialNavigationStationStatusType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -145,6 +153,14 @@ public class SpecialNavigationStationStatusType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -179,6 +195,14 @@ public class SpecialNavigationStationStatusType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the operationalStatus property.
      * 
@@ -201,6 +225,10 @@ public class SpecialNavigationStationStatusType
      */
     public void setOperationalStatus(JAXBElement<CodeStatusNavaidType> value) {
         this.operationalStatus = value;
+    }
+
+    public boolean isSetOperationalStatus() {
+        return (this.operationalStatus!= null);
     }
 
     /**
@@ -233,6 +261,14 @@ public class SpecialNavigationStationStatusType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -297,6 +333,10 @@ public class SpecialNavigationStationStatusType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractSpecialNavigationStationStatusExtension property.
          * 
@@ -319,6 +359,10 @@ public class SpecialNavigationStationStatusType
          */
         public void setAbstractSpecialNavigationStationStatusExtension(AbstractExtensionType value) {
             this.abstractSpecialNavigationStationStatusExtension = value;
+        }
+
+        public boolean isSetAbstractSpecialNavigationStationStatusExtension() {
+            return (this.abstractSpecialNavigationStationStatusExtension!= null);
         }
 
         /**
@@ -345,8 +389,16 @@ public class SpecialNavigationStationStatusType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

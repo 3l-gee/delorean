@@ -70,4 +70,8 @@ public class PointPropertyType
         this.point = value;
     }
 
+    public boolean isSetPoint() {
+        return (this.point!= null);
+    }
+
 }

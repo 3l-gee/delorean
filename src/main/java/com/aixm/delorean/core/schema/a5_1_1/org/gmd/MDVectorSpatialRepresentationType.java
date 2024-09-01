@@ -77,6 +77,10 @@ public class MDVectorSpatialRepresentationType
         this.topologyLevel = value;
     }
 
+    public boolean isSetTopologyLevel() {
+        return (this.topologyLevel!= null);
+    }
+
     /**
      * Gets the value of the geometricObjects property.
      * 
@@ -107,6 +111,14 @@ public class MDVectorSpatialRepresentationType
             geometricObjects = new ArrayList<>();
         }
         return this.geometricObjects;
+    }
+
+    public boolean isSetGeometricObjects() {
+        return ((this.geometricObjects!= null)&&(!this.geometricObjects.isEmpty()));
+    }
+
+    public void unsetGeometricObjects() {
+        this.geometricObjects = null;
     }
 
 }

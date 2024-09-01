@@ -82,4 +82,8 @@ public class SurfaceContaminationPropertyType
         this.abstractSurfaceContamination = value;
     }
 
+    public boolean isSetAbstractSurfaceContamination() {
+        return (this.abstractSurfaceContamination!= null);
+    }
+
 }

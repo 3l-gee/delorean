@@ -71,4 +71,8 @@ public class SpecialNavigationStationStatusPropertyType
         this.specialNavigationStationStatus = value;
     }
 
+    public boolean isSetSpecialNavigationStationStatus() {
+        return (this.specialNavigationStationStatus!= null);
+    }
+
 }

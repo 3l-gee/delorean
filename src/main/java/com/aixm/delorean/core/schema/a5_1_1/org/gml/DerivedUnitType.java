@@ -91,4 +91,12 @@ public class DerivedUnitType
         return this.derivationUnitTerm;
     }
 
+    public boolean isSetDerivationUnitTerm() {
+        return ((this.derivationUnitTerm!= null)&&(!this.derivationUnitTerm.isEmpty()));
+    }
+
+    public void unsetDerivationUnitTerm() {
+        this.derivationUnitTerm = null;
+    }
+
 }

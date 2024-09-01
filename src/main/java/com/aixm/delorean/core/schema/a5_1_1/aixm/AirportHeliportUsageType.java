@@ -111,6 +111,10 @@ public class AirportHeliportUsageType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the priorPermission property.
      * 
@@ -133,6 +137,10 @@ public class AirportHeliportUsageType
      */
     public void setPriorPermission(JAXBElement<ValDurationType> value) {
         this.priorPermission = value;
+    }
+
+    public boolean isSetPriorPermission() {
+        return (this.priorPermission!= null);
     }
 
     /**
@@ -167,6 +175,14 @@ public class AirportHeliportUsageType
         return this.contact;
     }
 
+    public boolean isSetContact() {
+        return ((this.contact!= null)&&(!this.contact.isEmpty()));
+    }
+
+    public void unsetContact() {
+        this.contact = null;
+    }
+
     /**
      * Gets the value of the selection property.
      * 
@@ -189,6 +205,10 @@ public class AirportHeliportUsageType
      */
     public void setSelection(JAXBElement<ConditionCombinationPropertyType> value) {
         this.selection = value;
+    }
+
+    public boolean isSetSelection() {
+        return (this.selection!= null);
     }
 
     /**
@@ -223,6 +243,14 @@ public class AirportHeliportUsageType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the operation property.
      * 
@@ -245,6 +273,10 @@ public class AirportHeliportUsageType
      */
     public void setOperation(JAXBElement<CodeOperationAirportHeliportType> value) {
         this.operation = value;
+    }
+
+    public boolean isSetOperation() {
+        return (this.operation!= null);
     }
 
     /**
@@ -277,6 +309,14 @@ public class AirportHeliportUsageType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -341,6 +381,10 @@ public class AirportHeliportUsageType
             this.abstractUsageConditionExtension = value;
         }
 
+        public boolean isSetAbstractUsageConditionExtension() {
+            return (this.abstractUsageConditionExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractAirportHeliportUsageExtension property.
          * 
@@ -363,6 +407,10 @@ public class AirportHeliportUsageType
          */
         public void setAbstractAirportHeliportUsageExtension(AbstractExtensionType value) {
             this.abstractAirportHeliportUsageExtension = value;
+        }
+
+        public boolean isSetAbstractAirportHeliportUsageExtension() {
+            return (this.abstractAirportHeliportUsageExtension!= null);
         }
 
         /**
@@ -389,8 +437,16 @@ public class AirportHeliportUsageType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

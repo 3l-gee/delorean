@@ -88,4 +88,12 @@ public class MDConstraintsType
         return this.useLimitation;
     }
 
+    public boolean isSetUseLimitation() {
+        return ((this.useLimitation!= null)&&(!this.useLimitation.isEmpty()));
+    }
+
+    public void unsetUseLimitation() {
+        this.useLimitation = null;
+    }
+
 }

@@ -88,6 +88,10 @@ public class PolygonPatchType
         this.exterior = value;
     }
 
+    public boolean isSetExterior() {
+        return (this.exterior!= null);
+    }
+
     /**
      * A boundary of a surface consists of a number of rings. The "interior" rings separate the surface / surface patch from the area enclosed by the rings.
      * 
@@ -120,6 +124,14 @@ public class PolygonPatchType
             interior = new ArrayList<>();
         }
         return this.interior;
+    }
+
+    public boolean isSetInterior() {
+        return ((this.interior!= null)&&(!this.interior.isEmpty()));
+    }
+
+    public void unsetInterior() {
+        this.interior = null;
     }
 
 }

@@ -72,4 +72,8 @@ public abstract class AbstractTimeTopologyPrimitiveType
         this.complex = value;
     }
 
+    public boolean isSetComplex() {
+        return (this.complex!= null);
+    }
+
 }

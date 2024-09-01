@@ -113,6 +113,10 @@ public class ContactInformationType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the title property.
      * 
@@ -135,6 +139,10 @@ public class ContactInformationType
      */
     public void setTitle(JAXBElement<TextNameType> value) {
         this.title = value;
+    }
+
+    public boolean isSetTitle() {
+        return (this.title!= null);
     }
 
     /**
@@ -169,6 +177,14 @@ public class ContactInformationType
         return this.address;
     }
 
+    public boolean isSetAddress() {
+        return ((this.address!= null)&&(!this.address.isEmpty()));
+    }
+
+    public void unsetAddress() {
+        this.address = null;
+    }
+
     /**
      * Gets the value of the networkNode property.
      * 
@@ -199,6 +215,14 @@ public class ContactInformationType
             networkNode = new ArrayList<>();
         }
         return this.networkNode;
+    }
+
+    public boolean isSetNetworkNode() {
+        return ((this.networkNode!= null)&&(!this.networkNode.isEmpty()));
+    }
+
+    public void unsetNetworkNode() {
+        this.networkNode = null;
     }
 
     /**
@@ -233,6 +257,14 @@ public class ContactInformationType
         return this.phoneFax;
     }
 
+    public boolean isSetPhoneFax() {
+        return ((this.phoneFax!= null)&&(!this.phoneFax.isEmpty()));
+    }
+
+    public void unsetPhoneFax() {
+        this.phoneFax = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -265,6 +297,14 @@ public class ContactInformationType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -295,6 +335,14 @@ public class ContactInformationType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -354,6 +402,10 @@ public class ContactInformationType
             this.abstractContactInformationExtension = value;
         }
 
+        public boolean isSetAbstractContactInformationExtension() {
+            return (this.abstractContactInformationExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -378,8 +430,16 @@ public class ContactInformationType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

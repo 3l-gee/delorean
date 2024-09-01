@@ -71,4 +71,8 @@ public class AerialRefuellingTrackPropertyType
         this.aerialRefuellingTrack = value;
     }
 
+    public boolean isSetAerialRefuellingTrack() {
+        return (this.aerialRefuellingTrack!= null);
+    }
+
 }

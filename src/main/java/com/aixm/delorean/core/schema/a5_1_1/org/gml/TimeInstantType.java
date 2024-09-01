@@ -76,4 +76,8 @@ public class TimeInstantType
         this.timePosition = value;
     }
 
+    public boolean isSetTimePosition() {
+        return (this.timePosition!= null);
+    }
+
 }

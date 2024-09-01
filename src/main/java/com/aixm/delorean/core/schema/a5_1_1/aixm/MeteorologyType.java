@@ -107,6 +107,10 @@ public class MeteorologyType
         this.flightConditions = value;
     }
 
+    public boolean isSetFlightConditions() {
+        return (this.flightConditions!= null);
+    }
+
     /**
      * Gets the value of the visibility property.
      * 
@@ -129,6 +133,10 @@ public class MeteorologyType
      */
     public void setVisibility(JAXBElement<ValDistanceType> value) {
         this.visibility = value;
+    }
+
+    public boolean isSetVisibility() {
+        return (this.visibility!= null);
     }
 
     /**
@@ -155,6 +163,10 @@ public class MeteorologyType
         this.visibilityInterpretation = value;
     }
 
+    public boolean isSetVisibilityInterpretation() {
+        return (this.visibilityInterpretation!= null);
+    }
+
     /**
      * Gets the value of the runwayVisualRange property.
      * 
@@ -179,6 +191,10 @@ public class MeteorologyType
         this.runwayVisualRange = value;
     }
 
+    public boolean isSetRunwayVisualRange() {
+        return (this.runwayVisualRange!= null);
+    }
+
     /**
      * Gets the value of the runwayVisualRangeInterpretation property.
      * 
@@ -201,6 +217,10 @@ public class MeteorologyType
      */
     public void setRunwayVisualRangeInterpretation(JAXBElement<CodeValueInterpretationType> value) {
         this.runwayVisualRangeInterpretation = value;
+    }
+
+    public boolean isSetRunwayVisualRangeInterpretation() {
+        return (this.runwayVisualRangeInterpretation!= null);
     }
 
     /**
@@ -235,6 +255,14 @@ public class MeteorologyType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -265,6 +293,14 @@ public class MeteorologyType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -324,6 +360,10 @@ public class MeteorologyType
             this.abstractMeteorologyExtension = value;
         }
 
+        public boolean isSetAbstractMeteorologyExtension() {
+            return (this.abstractMeteorologyExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -348,8 +388,16 @@ public class MeteorologyType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

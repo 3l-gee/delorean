@@ -71,4 +71,8 @@ public class FlightConditionCombinationPropertyType
         this.flightConditionCombination = value;
     }
 
+    public boolean isSetFlightConditionCombination() {
+        return (this.flightConditionCombination!= null);
+    }
+
 }

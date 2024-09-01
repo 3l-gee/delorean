@@ -102,6 +102,10 @@ public class AuthorityForAirspaceTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the responsibleOrganisation property.
      * 
@@ -126,6 +130,10 @@ public class AuthorityForAirspaceTimeSliceType
         this.responsibleOrganisation = value;
     }
 
+    public boolean isSetResponsibleOrganisation() {
+        return (this.responsibleOrganisation!= null);
+    }
+
     /**
      * Gets the value of the assignedAirspace property.
      * 
@@ -148,6 +156,10 @@ public class AuthorityForAirspaceTimeSliceType
      */
     public void setAssignedAirspace(JAXBElement<AirspacePropertyType> value) {
         this.assignedAirspace = value;
+    }
+
+    public boolean isSetAssignedAirspace() {
+        return (this.assignedAirspace!= null);
     }
 
     /**
@@ -182,6 +194,14 @@ public class AuthorityForAirspaceTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -212,6 +232,14 @@ public class AuthorityForAirspaceTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -272,6 +300,10 @@ public class AuthorityForAirspaceTimeSliceType
             this.abstractAuthorityForAirspaceExtension = value;
         }
 
+        public boolean isSetAbstractAuthorityForAirspaceExtension() {
+            return (this.abstractAuthorityForAirspaceExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -296,8 +328,16 @@ public class AuthorityForAirspaceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

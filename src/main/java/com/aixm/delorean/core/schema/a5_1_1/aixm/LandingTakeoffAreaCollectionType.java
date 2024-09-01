@@ -108,6 +108,14 @@ public class LandingTakeoffAreaCollectionType
         return this.runway;
     }
 
+    public boolean isSetRunway() {
+        return ((this.runway!= null)&&(!this.runway.isEmpty()));
+    }
+
+    public void unsetRunway() {
+        this.runway = null;
+    }
+
     /**
      * Gets the value of the tlof property.
      * 
@@ -138,6 +146,14 @@ public class LandingTakeoffAreaCollectionType
             tlof = new ArrayList<>();
         }
         return this.tlof;
+    }
+
+    public boolean isSetTLOF() {
+        return ((this.tlof!= null)&&(!this.tlof.isEmpty()));
+    }
+
+    public void unsetTLOF() {
+        this.tlof = null;
     }
 
     /**
@@ -172,6 +188,14 @@ public class LandingTakeoffAreaCollectionType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -202,6 +226,14 @@ public class LandingTakeoffAreaCollectionType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -261,6 +293,10 @@ public class LandingTakeoffAreaCollectionType
             this.abstractLandingTakeoffAreaCollectionExtension = value;
         }
 
+        public boolean isSetAbstractLandingTakeoffAreaCollectionExtension() {
+            return (this.abstractLandingTakeoffAreaCollectionExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -285,8 +321,16 @@ public class LandingTakeoffAreaCollectionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

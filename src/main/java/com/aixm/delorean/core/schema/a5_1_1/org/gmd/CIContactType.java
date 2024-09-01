@@ -87,6 +87,10 @@ public class CIContactType
         this.phone = value;
     }
 
+    public boolean isSetPhone() {
+        return (this.phone!= null);
+    }
+
     /**
      * Gets the value of the address property.
      * 
@@ -109,6 +113,10 @@ public class CIContactType
      */
     public void setAddress(CIAddressPropertyType value) {
         this.address = value;
+    }
+
+    public boolean isSetAddress() {
+        return (this.address!= null);
     }
 
     /**
@@ -135,6 +143,10 @@ public class CIContactType
         this.onlineResource = value;
     }
 
+    public boolean isSetOnlineResource() {
+        return (this.onlineResource!= null);
+    }
+
     /**
      * Gets the value of the hoursOfService property.
      * 
@@ -159,6 +171,10 @@ public class CIContactType
         this.hoursOfService = value;
     }
 
+    public boolean isSetHoursOfService() {
+        return (this.hoursOfService!= null);
+    }
+
     /**
      * Gets the value of the contactInstructions property.
      * 
@@ -181,6 +197,10 @@ public class CIContactType
      */
     public void setContactInstructions(CharacterStringPropertyType value) {
         this.contactInstructions = value;
+    }
+
+    public boolean isSetContactInstructions() {
+        return (this.contactInstructions!= null);
     }
 
 }

@@ -94,6 +94,14 @@ public class ParameterValueGroupType
         return this.parameterValue;
     }
 
+    public boolean isSetParameterValue() {
+        return ((this.parameterValue!= null)&&(!this.parameterValue.isEmpty()));
+    }
+
+    public void unsetParameterValue() {
+        this.parameterValue = null;
+    }
+
     /**
      * gml:group is an association role to the operation parameter group for which this element provides parameter values.
      * 
@@ -119,6 +127,10 @@ public class ParameterValueGroupType
      */
     public void setGroup(JAXBElement<OperationParameterGroupPropertyType> value) {
         this.group = value;
+    }
+
+    public boolean isSetGroup() {
+        return (this.group!= null);
     }
 
 }

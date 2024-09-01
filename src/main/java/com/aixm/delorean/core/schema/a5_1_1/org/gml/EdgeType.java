@@ -104,6 +104,10 @@ public class EdgeType
         this.container = value;
     }
 
+    public boolean isSetContainer() {
+        return (this.container!= null);
+    }
+
     /**
      * A gml:directedNode property element describes the boundary of topology edges and is used in the support of topological point features via the gml:TopoPoint expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included node is used: start ("-") or end ("+") node.
      * 
@@ -136,6 +140,14 @@ public class EdgeType
             directedNode = new ArrayList<>();
         }
         return this.directedNode;
+    }
+
+    public boolean isSetDirectedNode() {
+        return ((this.directedNode!= null)&&(!this.directedNode.isEmpty()));
+    }
+
+    public void unsetDirectedNode() {
+        this.directedNode = null;
     }
 
     /**
@@ -172,6 +184,14 @@ public class EdgeType
         return this.directedFace;
     }
 
+    public boolean isSetDirectedFace() {
+        return ((this.directedFace!= null)&&(!this.directedFace.isEmpty()));
+    }
+
+    public void unsetDirectedFace() {
+        this.directedFace = null;
+    }
+
     /**
      * This property element either references a curve via the XLink-attributes or contains the curve element. curveProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for AbstractCurve.
      * 
@@ -197,6 +217,10 @@ public class EdgeType
         this.curveProperty = value;
     }
 
+    public boolean isSetCurveProperty() {
+        return (this.curveProperty!= null);
+    }
+
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -219,6 +243,10 @@ public class EdgeType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

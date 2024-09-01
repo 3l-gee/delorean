@@ -124,6 +124,10 @@ public class SafeAltitudeAreaTimeSliceType
         this.safeAreaType = value;
     }
 
+    public boolean isSetSafeAreaType() {
+        return (this.safeAreaType!= null);
+    }
+
     /**
      * Gets the value of the centrePointFixDesignatedPoint property.
      * 
@@ -146,6 +150,10 @@ public class SafeAltitudeAreaTimeSliceType
      */
     public void setCentrePointFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.centrePointFixDesignatedPoint = value;
+    }
+
+    public boolean isSetCentrePointFixDesignatedPoint() {
+        return (this.centrePointFixDesignatedPoint!= null);
     }
 
     /**
@@ -172,6 +180,10 @@ public class SafeAltitudeAreaTimeSliceType
         this.centrePointNavaidSystem = value;
     }
 
+    public boolean isSetCentrePointNavaidSystem() {
+        return (this.centrePointNavaidSystem!= null);
+    }
+
     /**
      * Gets the value of the centrePointPosition property.
      * 
@@ -194,6 +206,10 @@ public class SafeAltitudeAreaTimeSliceType
      */
     public void setCentrePointPosition(JAXBElement<PointPropertyType> value) {
         this.centrePointPosition = value;
+    }
+
+    public boolean isSetCentrePointPosition() {
+        return (this.centrePointPosition!= null);
     }
 
     /**
@@ -220,6 +236,10 @@ public class SafeAltitudeAreaTimeSliceType
         this.centrePointRunwayPoint = value;
     }
 
+    public boolean isSetCentrePointRunwayPoint() {
+        return (this.centrePointRunwayPoint!= null);
+    }
+
     /**
      * Gets the value of the centrePointAimingPoint property.
      * 
@@ -244,6 +264,10 @@ public class SafeAltitudeAreaTimeSliceType
         this.centrePointAimingPoint = value;
     }
 
+    public boolean isSetCentrePointAimingPoint() {
+        return (this.centrePointAimingPoint!= null);
+    }
+
     /**
      * Gets the value of the centrePointAirportReferencePoint property.
      * 
@@ -266,6 +290,10 @@ public class SafeAltitudeAreaTimeSliceType
      */
     public void setCentrePointAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.centrePointAirportReferencePoint = value;
+    }
+
+    public boolean isSetCentrePointAirportReferencePoint() {
+        return (this.centrePointAirportReferencePoint!= null);
     }
 
     /**
@@ -300,6 +328,14 @@ public class SafeAltitudeAreaTimeSliceType
         return this.sector;
     }
 
+    public boolean isSetSector() {
+        return ((this.sector!= null)&&(!this.sector.isEmpty()));
+    }
+
+    public void unsetSector() {
+        this.sector = null;
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -330,6 +366,14 @@ public class SafeAltitudeAreaTimeSliceType
             location = new ArrayList<>();
         }
         return this.location;
+    }
+
+    public boolean isSetLocation() {
+        return ((this.location!= null)&&(!this.location.isEmpty()));
+    }
+
+    public void unsetLocation() {
+        this.location = null;
     }
 
     /**
@@ -364,6 +408,14 @@ public class SafeAltitudeAreaTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -394,6 +446,14 @@ public class SafeAltitudeAreaTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -454,6 +514,10 @@ public class SafeAltitudeAreaTimeSliceType
             this.abstractSafeAltitudeAreaExtension = value;
         }
 
+        public boolean isSetAbstractSafeAltitudeAreaExtension() {
+            return (this.abstractSafeAltitudeAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -478,8 +542,16 @@ public class SafeAltitudeAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

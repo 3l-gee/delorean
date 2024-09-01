@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.util.ArrayList;
-import java.util.List;
 import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -47,43 +45,38 @@ public class MeasureListType {
      * 
      */
     @XmlValue
-    protected List<Double> value;
+    protected DoubleList value;
     @XmlAttribute(name = "uom", required = true)
     @NotNull
-    protected String uom;
+    protected UomIdentifier uom;
 
     /**
      * A type for a list of values of the respective simple type.
      * 
-     * Gets the value of the value property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the value property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getValue().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Double }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the value property.
+     *     possible object is
+     *     {@link DoubleList }
+     *     
      */
-    public List<Double> getValue() {
-        if (value == null) {
-            value = new ArrayList<>();
-        }
-        return this.value;
+    public DoubleList getValue() {
+        return value;
+    }
+
+    /**
+     * Sets the value of the value property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DoubleList }
+     *     
+     * @see #getValue()
+     */
+    public void setValue(DoubleList value) {
+        this.value = value;
+    }
+
+    public boolean isSetValue() {
+        return (this.value!= null);
     }
 
     /**
@@ -91,10 +84,10 @@ public class MeasureListType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomIdentifier }
      *     
      */
-    public String getUom() {
+    public UomIdentifier getUom() {
         return uom;
     }
 
@@ -103,11 +96,15 @@ public class MeasureListType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomIdentifier }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomIdentifier value) {
         this.uom = value;
+    }
+
+    public boolean isSetUom() {
+        return (this.uom!= null);
     }
 
 }

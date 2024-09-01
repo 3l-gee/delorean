@@ -7,17 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -73,16 +71,12 @@ public class OperationMethodType
      * gml:sourceDimensions is the number of dimensions in the source CRS of this operation method.
      * 
      */
-    @XmlSchemaType(name = "positiveInteger")
-    @DecimalMin(value = "1", inclusive = true)
-    protected BigInteger sourceDimensions;
+    protected PositiveInteger sourceDimensions;
     /**
      * gml:targetDimensions is the number of dimensions in the target CRS of this operation method.
      * 
      */
-    @XmlSchemaType(name = "positiveInteger")
-    @DecimalMin(value = "1", inclusive = true)
-    protected BigInteger targetDimensions;
+    protected PositiveInteger targetDimensions;
     /**
      * gml:parameter is an association to an operation parameter or parameter group.
      * 
@@ -115,6 +109,10 @@ public class OperationMethodType
         this.formulaCitation = value;
     }
 
+    public boolean isSetFormulaCitation() {
+        return (this.formulaCitation!= null);
+    }
+
     /**
      * gml:formula Formula(s) or procedure used by an operation method. The use of the codespace attribite has been deprecated. The property value shall be a character string.
      * 
@@ -142,15 +140,19 @@ public class OperationMethodType
         this.formula = value;
     }
 
+    public boolean isSetFormula() {
+        return (this.formula!= null);
+    }
+
     /**
      * gml:sourceDimensions is the number of dimensions in the source CRS of this operation method.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public BigInteger getSourceDimensions() {
+    public PositiveInteger getSourceDimensions() {
         return sourceDimensions;
     }
 
@@ -159,12 +161,16 @@ public class OperationMethodType
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      * @see #getSourceDimensions()
      */
-    public void setSourceDimensions(BigInteger value) {
+    public void setSourceDimensions(PositiveInteger value) {
         this.sourceDimensions = value;
+    }
+
+    public boolean isSetSourceDimensions() {
+        return (this.sourceDimensions!= null);
     }
 
     /**
@@ -172,10 +178,10 @@ public class OperationMethodType
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public BigInteger getTargetDimensions() {
+    public PositiveInteger getTargetDimensions() {
         return targetDimensions;
     }
 
@@ -184,12 +190,16 @@ public class OperationMethodType
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      * @see #getTargetDimensions()
      */
-    public void setTargetDimensions(BigInteger value) {
+    public void setTargetDimensions(PositiveInteger value) {
         this.targetDimensions = value;
+    }
+
+    public boolean isSetTargetDimensions() {
+        return (this.targetDimensions!= null);
     }
 
     /**
@@ -227,6 +237,14 @@ public class OperationMethodType
             parameter = new ArrayList<>();
         }
         return this.parameter;
+    }
+
+    public boolean isSetParameter() {
+        return ((this.parameter!= null)&&(!this.parameter.isEmpty()));
+    }
+
+    public void unsetParameter() {
+        this.parameter = null;
     }
 
 }

@@ -81,6 +81,10 @@ public class TimeEdgeType
         this.start = value;
     }
 
+    public boolean isSetStart() {
+        return (this.start!= null);
+    }
+
     /**
      * Gets the value of the end property.
      * 
@@ -105,6 +109,10 @@ public class TimeEdgeType
         this.end = value;
     }
 
+    public boolean isSetEnd() {
+        return (this.end!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -127,6 +135,10 @@ public class TimeEdgeType
      */
     public void setExtent(TimePeriodPropertyType value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
 }

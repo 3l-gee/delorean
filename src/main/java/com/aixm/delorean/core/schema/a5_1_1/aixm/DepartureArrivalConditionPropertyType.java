@@ -71,4 +71,8 @@ public class DepartureArrivalConditionPropertyType
         this.departureArrivalCondition = value;
     }
 
+    public boolean isSetDepartureArrivalCondition() {
+        return (this.departureArrivalCondition!= null);
+    }
+
 }

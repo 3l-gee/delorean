@@ -71,4 +71,8 @@ public class HoldingPatternDurationPropertyType
         this.holdingPatternDuration = value;
     }
 
+    public boolean isSetHoldingPatternDuration() {
+        return (this.holdingPatternDuration!= null);
+    }
+
 }

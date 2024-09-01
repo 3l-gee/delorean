@@ -79,6 +79,10 @@ public class MemberNameType
         this.aName = value;
     }
 
+    public boolean isSetAName() {
+        return (this.aName!= null);
+    }
+
     /**
      * Gets the value of the attributeType property.
      * 
@@ -101,6 +105,10 @@ public class MemberNameType
      */
     public void setAttributeType(TypeNamePropertyType value) {
         this.attributeType = value;
+    }
+
+    public boolean isSetAttributeType() {
+        return (this.attributeType!= null);
     }
 
 }

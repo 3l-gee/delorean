@@ -98,6 +98,10 @@ public class NoteType
         this.propertyName = value;
     }
 
+    public boolean isSetPropertyName() {
+        return (this.propertyName!= null);
+    }
+
     /**
      * Gets the value of the purpose property.
      * 
@@ -120,6 +124,10 @@ public class NoteType
      */
     public void setPurpose(JAXBElement<CodeNotePurposeType> value) {
         this.purpose = value;
+    }
+
+    public boolean isSetPurpose() {
+        return (this.purpose!= null);
     }
 
     /**
@@ -154,6 +162,14 @@ public class NoteType
         return this.translatedNote;
     }
 
+    public boolean isSetTranslatedNote() {
+        return ((this.translatedNote!= null)&&(!this.translatedNote.isEmpty()));
+    }
+
+    public void unsetTranslatedNote() {
+        this.translatedNote = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -184,6 +200,14 @@ public class NoteType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -243,6 +267,10 @@ public class NoteType
             this.abstractNoteExtension = value;
         }
 
+        public boolean isSetAbstractNoteExtension() {
+            return (this.abstractNoteExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -267,8 +295,16 @@ public class NoteType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

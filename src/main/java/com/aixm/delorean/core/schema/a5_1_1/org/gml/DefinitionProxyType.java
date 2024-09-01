@@ -71,4 +71,8 @@ public class DefinitionProxyType
         this.definitionRef = value;
     }
 
+    public boolean isSetDefinitionRef() {
+        return (this.definitionRef!= null);
+    }
+
 }

@@ -71,4 +71,8 @@ public class AerialRefuellingPointPropertyType
         this.aerialRefuellingPoint = value;
     }
 
+    public boolean isSetAerialRefuellingPoint() {
+        return (this.aerialRefuellingPoint!= null);
+    }
+
 }

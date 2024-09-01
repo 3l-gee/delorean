@@ -71,4 +71,8 @@ public class DynamicFeatureCollectionType
         this.dynamicMembers = value;
     }
 
+    public boolean isSetDynamicMembers() {
+        return (this.dynamicMembers!= null);
+    }
+
 }

@@ -71,4 +71,8 @@ public class FlightConditionElementPropertyType
         this.flightConditionElement = value;
     }
 
+    public boolean isSetFlightConditionElement() {
+        return (this.flightConditionElement!= null);
+    }
+
 }

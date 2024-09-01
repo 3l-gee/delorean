@@ -119,6 +119,10 @@ public class TaxiwayElementTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the length property.
      * 
@@ -141,6 +145,10 @@ public class TaxiwayElementTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
+    }
+
+    public boolean isSetLength() {
+        return (this.length!= null);
     }
 
     /**
@@ -167,6 +175,10 @@ public class TaxiwayElementTimeSliceType
         this.width = value;
     }
 
+    public boolean isSetWidth() {
+        return (this.width!= null);
+    }
+
     /**
      * Gets the value of the gradeSeparation property.
      * 
@@ -189,6 +201,10 @@ public class TaxiwayElementTimeSliceType
      */
     public void setGradeSeparation(JAXBElement<CodeGradeSeparationType> value) {
         this.gradeSeparation = value;
+    }
+
+    public boolean isSetGradeSeparation() {
+        return (this.gradeSeparation!= null);
     }
 
     /**
@@ -215,6 +231,10 @@ public class TaxiwayElementTimeSliceType
         this.surfaceProperties = value;
     }
 
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
+    }
+
     /**
      * Gets the value of the associatedTaxiway property.
      * 
@@ -239,6 +259,10 @@ public class TaxiwayElementTimeSliceType
         this.associatedTaxiway = value;
     }
 
+    public boolean isSetAssociatedTaxiway() {
+        return (this.associatedTaxiway!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -261,6 +285,10 @@ public class TaxiwayElementTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -295,6 +323,14 @@ public class TaxiwayElementTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -327,6 +363,14 @@ public class TaxiwayElementTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -357,6 +401,14 @@ public class TaxiwayElementTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -417,6 +469,10 @@ public class TaxiwayElementTimeSliceType
             this.abstractTaxiwayElementExtension = value;
         }
 
+        public boolean isSetAbstractTaxiwayElementExtension() {
+            return (this.abstractTaxiwayElementExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -441,8 +497,16 @@ public class TaxiwayElementTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

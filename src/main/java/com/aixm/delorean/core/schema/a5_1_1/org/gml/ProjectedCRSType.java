@@ -88,6 +88,10 @@ public class ProjectedCRSType
         this.baseGeodeticCRS = value;
     }
 
+    public boolean isSetBaseGeodeticCRS() {
+        return (this.baseGeodeticCRS!= null);
+    }
+
     /**
      * Gets the value of the baseGeographicCRS property.
      * 
@@ -110,6 +114,10 @@ public class ProjectedCRSType
      */
     public void setBaseGeographicCRS(GeographicCRSPropertyType value) {
         this.baseGeographicCRS = value;
+    }
+
+    public boolean isSetBaseGeographicCRS() {
+        return (this.baseGeographicCRS!= null);
     }
 
     /**
@@ -137,6 +145,10 @@ public class ProjectedCRSType
      */
     public void setCartesianCS(JAXBElement<CartesianCSPropertyType> value) {
         this.cartesianCS = value;
+    }
+
+    public boolean isSetCartesianCS() {
+        return (this.cartesianCS!= null);
     }
 
 }

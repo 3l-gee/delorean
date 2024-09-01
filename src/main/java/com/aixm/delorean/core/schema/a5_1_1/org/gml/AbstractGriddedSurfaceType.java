@@ -89,6 +89,10 @@ public abstract class AbstractGriddedSurfaceType
         this.pointGridRows = value;
     }
 
+    public boolean isSetPointGridRows() {
+        return (this.pointGridRows!= null);
+    }
+
     /**
      * Gets the value of the rows property.
      * 
@@ -113,6 +117,10 @@ public abstract class AbstractGriddedSurfaceType
         this.rows = value;
     }
 
+    public boolean isSetRows() {
+        return (this.rows!= null);
+    }
+
     /**
      * Gets the value of the columns property.
      * 
@@ -135,6 +143,10 @@ public abstract class AbstractGriddedSurfaceType
      */
     public void setColumns(BigInteger value) {
         this.columns = value;
+    }
+
+    public boolean isSetColumns() {
+        return (this.columns!= null);
     }
 
 
@@ -209,6 +221,14 @@ public abstract class AbstractGriddedSurfaceType
             return this.row;
         }
 
+        public boolean isSetRow() {
+            return ((this.row!= null)&&(!this.row.isEmpty()));
+        }
+
+        public void unsetRow() {
+            this.row = null;
+        }
+
 
         /**
          * <p>Java class for anonymous complex type</p>.
@@ -272,6 +292,10 @@ public abstract class AbstractGriddedSurfaceType
                 this.posList = value;
             }
 
+            public boolean isSetPosList() {
+                return (this.posList!= null);
+            }
+
             /**
              * GML supports two different ways to specify a geometric position: either by a direct position (a data type) or a point (a geometric object).
              * pos elements are positions that are "owned" by the geometric primitive encapsulating this geometric position.
@@ -307,6 +331,14 @@ public abstract class AbstractGriddedSurfaceType
                     geometricPositionGroup = new ArrayList<>();
                 }
                 return this.geometricPositionGroup;
+            }
+
+            public boolean isSetGeometricPositionGroup() {
+                return ((this.geometricPositionGroup!= null)&&(!this.geometricPositionGroup.isEmpty()));
+            }
+
+            public void unsetGeometricPositionGroup() {
+                this.geometricPositionGroup = null;
             }
 
         }

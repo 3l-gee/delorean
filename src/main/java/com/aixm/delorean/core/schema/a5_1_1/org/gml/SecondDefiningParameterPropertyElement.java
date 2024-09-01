@@ -77,4 +77,8 @@ public class SecondDefiningParameterPropertyElement {
         this.secondDefiningParameter = value;
     }
 
+    public boolean isSetSecondDefiningParameter() {
+        return (this.secondDefiningParameter!= null);
+    }
+
 }

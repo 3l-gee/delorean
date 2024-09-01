@@ -119,6 +119,10 @@ public class MovingObjectStatusType
         this.position = value;
     }
 
+    public boolean isSetPosition() {
+        return (this.position!= null);
+    }
+
     /**
      * Gets the value of the pos property.
      * 
@@ -141,6 +145,10 @@ public class MovingObjectStatusType
      */
     public void setPos(DirectPositionType value) {
         this.pos = value;
+    }
+
+    public boolean isSetPos() {
+        return (this.pos!= null);
     }
 
     /**
@@ -168,6 +176,10 @@ public class MovingObjectStatusType
         this.locationName = value;
     }
 
+    public boolean isSetLocationName() {
+        return (this.locationName!= null);
+    }
+
     /**
      * The gml:locationReference property element is a convenience property where the text value referenced by the xlink:href attribute describes the location of the feature.
      * 
@@ -191,6 +203,10 @@ public class MovingObjectStatusType
      */
     public void setLocationReference(ReferenceType value) {
         this.locationReference = value;
+    }
+
+    public boolean isSetLocationReference() {
+        return (this.locationReference!= null);
     }
 
     /**
@@ -219,6 +235,10 @@ public class MovingObjectStatusType
         this.location = value;
     }
 
+    public boolean isSetLocation() {
+        return (this.location!= null);
+    }
+
     /**
      * Gets the value of the speed property.
      * 
@@ -241,6 +261,10 @@ public class MovingObjectStatusType
      */
     public void setSpeed(MeasureType value) {
         this.speed = value;
+    }
+
+    public boolean isSetSpeed() {
+        return (this.speed!= null);
     }
 
     /**
@@ -267,6 +291,10 @@ public class MovingObjectStatusType
         this.bearing = value;
     }
 
+    public boolean isSetBearing() {
+        return (this.bearing!= null);
+    }
+
     /**
      * Gets the value of the acceleration property.
      * 
@@ -289,6 +317,10 @@ public class MovingObjectStatusType
      */
     public void setAcceleration(MeasureType value) {
         this.acceleration = value;
+    }
+
+    public boolean isSetAcceleration() {
+        return (this.acceleration!= null);
     }
 
     /**
@@ -315,6 +347,10 @@ public class MovingObjectStatusType
         this.elevation = value;
     }
 
+    public boolean isSetElevation() {
+        return (this.elevation!= null);
+    }
+
     /**
      * Gets the value of the status property.
      * 
@@ -339,6 +375,10 @@ public class MovingObjectStatusType
         this.status = value;
     }
 
+    public boolean isSetStatus() {
+        return (this.status!= null);
+    }
+
     /**
      * Gets the value of the statusReference property.
      * 
@@ -361,6 +401,10 @@ public class MovingObjectStatusType
      */
     public void setStatusReference(ReferenceType value) {
         this.statusReference = value;
+    }
+
+    public boolean isSetStatusReference() {
+        return (this.statusReference!= null);
     }
 
 }

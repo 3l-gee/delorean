@@ -140,6 +140,10 @@ public class PassengerServiceTimeSliceType
         this.flightOperations = value;
     }
 
+    public boolean isSetFlightOperations() {
+        return (this.flightOperations!= null);
+    }
+
     /**
      * Gets the value of the rank property.
      * 
@@ -162,6 +166,10 @@ public class PassengerServiceTimeSliceType
      */
     public void setRank(JAXBElement<CodeFacilityRankingType> value) {
         this.rank = value;
+    }
+
+    public boolean isSetRank() {
+        return (this.rank!= null);
     }
 
     /**
@@ -188,6 +196,10 @@ public class PassengerServiceTimeSliceType
         this.compliantICAO = value;
     }
 
+    public boolean isSetCompliantICAO() {
+        return (this.compliantICAO!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -210,6 +222,10 @@ public class PassengerServiceTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -236,6 +252,10 @@ public class PassengerServiceTimeSliceType
         this.location = value;
     }
 
+    public boolean isSetLocation() {
+        return (this.location!= null);
+    }
+
     /**
      * Gets the value of the serviceProvider property.
      * 
@@ -258,6 +278,10 @@ public class PassengerServiceTimeSliceType
      */
     public void setServiceProvider(JAXBElement<UnitPropertyType> value) {
         this.serviceProvider = value;
+    }
+
+    public boolean isSetServiceProvider() {
+        return (this.serviceProvider!= null);
     }
 
     /**
@@ -292,6 +316,14 @@ public class PassengerServiceTimeSliceType
         return this.callSign;
     }
 
+    public boolean isSetCallSign() {
+        return ((this.callSign!= null)&&(!this.callSign.isEmpty()));
+    }
+
+    public void unsetCallSign() {
+        this.callSign = null;
+    }
+
     /**
      * Gets the value of the radioCommunication property.
      * 
@@ -322,6 +354,14 @@ public class PassengerServiceTimeSliceType
             radioCommunication = new ArrayList<>();
         }
         return this.radioCommunication;
+    }
+
+    public boolean isSetRadioCommunication() {
+        return ((this.radioCommunication!= null)&&(!this.radioCommunication.isEmpty()));
+    }
+
+    public void unsetRadioCommunication() {
+        this.radioCommunication = null;
     }
 
     /**
@@ -356,6 +396,14 @@ public class PassengerServiceTimeSliceType
         return this.groundCommunication;
     }
 
+    public boolean isSetGroundCommunication() {
+        return ((this.groundCommunication!= null)&&(!this.groundCommunication.isEmpty()));
+    }
+
+    public void unsetGroundCommunication() {
+        this.groundCommunication = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -386,6 +434,14 @@ public class PassengerServiceTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
     }
 
     /**
@@ -420,6 +476,14 @@ public class PassengerServiceTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the airportHeliport property.
      * 
@@ -452,6 +516,14 @@ public class PassengerServiceTimeSliceType
         return this.airportHeliport;
     }
 
+    public boolean isSetAirportHeliport() {
+        return ((this.airportHeliport!= null)&&(!this.airportHeliport.isEmpty()));
+    }
+
+    public void unsetAirportHeliport() {
+        this.airportHeliport = null;
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -474,6 +546,10 @@ public class PassengerServiceTimeSliceType
      */
     public void setType(JAXBElement<CodePassengerServiceType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -506,6 +582,14 @@ public class PassengerServiceTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -575,6 +659,10 @@ public class PassengerServiceTimeSliceType
             this.abstractPassengerServiceExtension = value;
         }
 
+        public boolean isSetAbstractPassengerServiceExtension() {
+            return (this.abstractPassengerServiceExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractAirportGroundServiceExtension property.
          * 
@@ -597,6 +685,10 @@ public class PassengerServiceTimeSliceType
          */
         public void setAbstractAirportGroundServiceExtension(AbstractExtensionType value) {
             this.abstractAirportGroundServiceExtension = value;
+        }
+
+        public boolean isSetAbstractAirportGroundServiceExtension() {
+            return (this.abstractAirportGroundServiceExtension!= null);
         }
 
         /**
@@ -623,6 +715,10 @@ public class PassengerServiceTimeSliceType
             this.abstractServiceExtension = value;
         }
 
+        public boolean isSetAbstractServiceExtension() {
+            return (this.abstractServiceExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -647,8 +743,16 @@ public class PassengerServiceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

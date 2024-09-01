@@ -80,4 +80,8 @@ public class DirectedObservationType
         this.direction = value;
     }
 
+    public boolean isSetDirection() {
+        return (this.direction!= null);
+    }
+
 }

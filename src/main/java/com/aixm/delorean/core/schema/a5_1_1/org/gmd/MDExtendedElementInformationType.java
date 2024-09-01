@@ -140,6 +140,10 @@ public class MDExtendedElementInformationType
         this.name = value;
     }
 
+    public boolean isSetName() {
+        return (this.name!= null);
+    }
+
     /**
      * Gets the value of the shortName property.
      * 
@@ -162,6 +166,10 @@ public class MDExtendedElementInformationType
      */
     public void setShortName(CharacterStringPropertyType value) {
         this.shortName = value;
+    }
+
+    public boolean isSetShortName() {
+        return (this.shortName!= null);
     }
 
     /**
@@ -188,6 +196,10 @@ public class MDExtendedElementInformationType
         this.domainCode = value;
     }
 
+    public boolean isSetDomainCode() {
+        return (this.domainCode!= null);
+    }
+
     /**
      * Gets the value of the definition property.
      * 
@@ -210,6 +222,10 @@ public class MDExtendedElementInformationType
      */
     public void setDefinition(CharacterStringPropertyType value) {
         this.definition = value;
+    }
+
+    public boolean isSetDefinition() {
+        return (this.definition!= null);
     }
 
     /**
@@ -236,6 +252,10 @@ public class MDExtendedElementInformationType
         this.obligation = value;
     }
 
+    public boolean isSetObligation() {
+        return (this.obligation!= null);
+    }
+
     /**
      * Gets the value of the condition property.
      * 
@@ -258,6 +278,10 @@ public class MDExtendedElementInformationType
      */
     public void setCondition(CharacterStringPropertyType value) {
         this.condition = value;
+    }
+
+    public boolean isSetCondition() {
+        return (this.condition!= null);
     }
 
     /**
@@ -284,6 +308,10 @@ public class MDExtendedElementInformationType
         this.dataType = value;
     }
 
+    public boolean isSetDataType() {
+        return (this.dataType!= null);
+    }
+
     /**
      * Gets the value of the maximumOccurrence property.
      * 
@@ -308,6 +336,10 @@ public class MDExtendedElementInformationType
         this.maximumOccurrence = value;
     }
 
+    public boolean isSetMaximumOccurrence() {
+        return (this.maximumOccurrence!= null);
+    }
+
     /**
      * Gets the value of the domainValue property.
      * 
@@ -330,6 +362,10 @@ public class MDExtendedElementInformationType
      */
     public void setDomainValue(CharacterStringPropertyType value) {
         this.domainValue = value;
+    }
+
+    public boolean isSetDomainValue() {
+        return (this.domainValue!= null);
     }
 
     /**
@@ -364,6 +400,14 @@ public class MDExtendedElementInformationType
         return this.parentEntity;
     }
 
+    public boolean isSetParentEntity() {
+        return ((this.parentEntity!= null)&&(!this.parentEntity.isEmpty()));
+    }
+
+    public void unsetParentEntity() {
+        this.parentEntity = null;
+    }
+
     /**
      * Gets the value of the rule property.
      * 
@@ -386,6 +430,10 @@ public class MDExtendedElementInformationType
      */
     public void setRule(CharacterStringPropertyType value) {
         this.rule = value;
+    }
+
+    public boolean isSetRule() {
+        return (this.rule!= null);
     }
 
     /**
@@ -420,6 +468,14 @@ public class MDExtendedElementInformationType
         return this.rationale;
     }
 
+    public boolean isSetRationale() {
+        return ((this.rationale!= null)&&(!this.rationale.isEmpty()));
+    }
+
+    public void unsetRationale() {
+        this.rationale = null;
+    }
+
     /**
      * Gets the value of the source property.
      * 
@@ -450,6 +506,14 @@ public class MDExtendedElementInformationType
             source = new ArrayList<>();
         }
         return this.source;
+    }
+
+    public boolean isSetSource() {
+        return ((this.source!= null)&&(!this.source.isEmpty()));
+    }
+
+    public void unsetSource() {
+        this.source = null;
     }
 
 }

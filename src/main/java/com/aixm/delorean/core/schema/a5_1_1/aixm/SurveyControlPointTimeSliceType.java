@@ -102,6 +102,10 @@ public class SurveyControlPointTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the associatedAirportHeliport property.
      * 
@@ -126,6 +130,10 @@ public class SurveyControlPointTimeSliceType
         this.associatedAirportHeliport = value;
     }
 
+    public boolean isSetAssociatedAirportHeliport() {
+        return (this.associatedAirportHeliport!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -148,6 +156,10 @@ public class SurveyControlPointTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -182,6 +194,14 @@ public class SurveyControlPointTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -212,6 +232,14 @@ public class SurveyControlPointTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -272,6 +300,10 @@ public class SurveyControlPointTimeSliceType
             this.abstractSurveyControlPointExtension = value;
         }
 
+        public boolean isSetAbstractSurveyControlPointExtension() {
+            return (this.abstractSurveyControlPointExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -296,8 +328,16 @@ public class SurveyControlPointTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

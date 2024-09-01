@@ -106,6 +106,10 @@ public class MissedApproachGroupType
         this.instruction = value;
     }
 
+    public boolean isSetInstruction() {
+        return (this.instruction!= null);
+    }
+
     /**
      * Gets the value of the alternateClimbInstruction property.
      * 
@@ -130,6 +134,10 @@ public class MissedApproachGroupType
         this.alternateClimbInstruction = value;
     }
 
+    public boolean isSetAlternateClimbInstruction() {
+        return (this.alternateClimbInstruction!= null);
+    }
+
     /**
      * Gets the value of the alternateClimbAltitude property.
      * 
@@ -152,6 +160,10 @@ public class MissedApproachGroupType
      */
     public void setAlternateClimbAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.alternateClimbAltitude = value;
+    }
+
+    public boolean isSetAlternateClimbAltitude() {
+        return (this.alternateClimbAltitude!= null);
     }
 
     /**
@@ -186,6 +198,14 @@ public class MissedApproachGroupType
         return this.altimeter;
     }
 
+    public boolean isSetAltimeter() {
+        return ((this.altimeter!= null)&&(!this.altimeter.isEmpty()));
+    }
+
+    public void unsetAltimeter() {
+        this.altimeter = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -218,6 +238,14 @@ public class MissedApproachGroupType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -248,6 +276,14 @@ public class MissedApproachGroupType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -307,6 +343,10 @@ public class MissedApproachGroupType
             this.abstractMissedApproachGroupExtension = value;
         }
 
+        public boolean isSetAbstractMissedApproachGroupExtension() {
+            return (this.abstractMissedApproachGroupExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -331,8 +371,16 @@ public class MissedApproachGroupType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

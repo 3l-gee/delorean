@@ -71,4 +71,8 @@ public class StandardLevelPropertyType
         this.standardLevel = value;
     }
 
+    public boolean isSetStandardLevel() {
+        return (this.standardLevel!= null);
+    }
+
 }

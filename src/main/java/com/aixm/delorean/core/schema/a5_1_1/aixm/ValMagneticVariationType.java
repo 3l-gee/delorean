@@ -7,9 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import java.math.BigDecimal;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -41,21 +39,19 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValMagneticVariationType {
 
     @XmlValue
-    @DecimalMin(value = "-180", inclusive = true)
-    @DecimalMax(value = "180", inclusive = true)
-    protected BigDecimal value;
+    protected ValMagneticVariationBaseType value;
     @XmlAttribute(name = "nilReason")
-    protected String nilReason;
+    protected NilReasonEnumeration nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link ValMagneticVariationBaseType }
      *     
      */
-    public BigDecimal getValue() {
+    public ValMagneticVariationBaseType getValue() {
         return value;
     }
 
@@ -64,11 +60,15 @@ public class ValMagneticVariationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link ValMagneticVariationBaseType }
      *     
      */
-    public void setValue(BigDecimal value) {
+    public void setValue(ValMagneticVariationBaseType value) {
         this.value = value;
+    }
+
+    public boolean isSetValue() {
+        return (this.value!= null);
     }
 
     /**
@@ -76,10 +76,10 @@ public class ValMagneticVariationType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public String getNilReason() {
+    public NilReasonEnumeration getNilReason() {
         return nilReason;
     }
 
@@ -88,11 +88,15 @@ public class ValMagneticVariationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public void setNilReason(String value) {
+    public void setNilReason(NilReasonEnumeration value) {
         this.nilReason = value;
+    }
+
+    public boolean isSetNilReason() {
+        return (this.nilReason!= null);
     }
 
 }

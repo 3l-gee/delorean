@@ -69,4 +69,8 @@ public class IndirectEntryType {
         this.definitionProxy = value;
     }
 
+    public boolean isSetDefinitionProxy() {
+        return (this.definitionProxy!= null);
+    }
+
 }

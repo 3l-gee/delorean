@@ -71,4 +71,8 @@ public class AircraftCharacteristicPropertyType
         this.aircraftCharacteristic = value;
     }
 
+    public boolean isSetAircraftCharacteristic() {
+        return (this.aircraftCharacteristic!= null);
+    }
+
 }

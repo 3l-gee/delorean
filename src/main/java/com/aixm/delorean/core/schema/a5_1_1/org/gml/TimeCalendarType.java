@@ -83,4 +83,12 @@ public class TimeCalendarType
         return this.referenceFrame;
     }
 
+    public boolean isSetReferenceFrame() {
+        return ((this.referenceFrame!= null)&&(!this.referenceFrame.isEmpty()));
+    }
+
+    public void unsetReferenceFrame() {
+        this.referenceFrame = null;
+    }
+
 }

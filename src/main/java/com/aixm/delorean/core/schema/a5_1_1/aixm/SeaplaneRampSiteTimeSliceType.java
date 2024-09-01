@@ -99,6 +99,10 @@ public class SeaplaneRampSiteTimeSliceType
         this.extent = value;
     }
 
+    public boolean isSetExtent() {
+        return (this.extent!= null);
+    }
+
     /**
      * Gets the value of the centreline property.
      * 
@@ -121,6 +125,10 @@ public class SeaplaneRampSiteTimeSliceType
      */
     public void setCentreline(JAXBElement<ElevatedCurvePropertyType> value) {
         this.centreline = value;
+    }
+
+    public boolean isSetCentreline() {
+        return (this.centreline!= null);
     }
 
     /**
@@ -155,6 +163,14 @@ public class SeaplaneRampSiteTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -185,6 +201,14 @@ public class SeaplaneRampSiteTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -245,6 +269,10 @@ public class SeaplaneRampSiteTimeSliceType
             this.abstractSeaplaneRampSiteExtension = value;
         }
 
+        public boolean isSetAbstractSeaplaneRampSiteExtension() {
+            return (this.abstractSeaplaneRampSiteExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -269,8 +297,16 @@ public class SeaplaneRampSiteTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

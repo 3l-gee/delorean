@@ -71,4 +71,8 @@ public class NavaidOperationalStatusPropertyType
         this.navaidOperationalStatus = value;
     }
 
+    public boolean isSetNavaidOperationalStatus() {
+        return (this.navaidOperationalStatus!= null);
+    }
+
 }

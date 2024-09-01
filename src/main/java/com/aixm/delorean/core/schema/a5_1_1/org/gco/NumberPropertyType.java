@@ -9,8 +9,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gco;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonType;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -55,7 +54,7 @@ public class NumberPropertyType {
     @XmlElement(name = "Integer")
     protected BigInteger integer;
     @XmlAttribute(name = "nilReason", namespace = "http://www.isotc211.org/2005/gco")
-    protected List<String> nilReason;
+    protected NilReasonType nilReason;
 
     /**
      * Gets the value of the real property.
@@ -79,6 +78,10 @@ public class NumberPropertyType {
      */
     public void setReal(Double value) {
         this.real = value;
+    }
+
+    public boolean isSetReal() {
+        return (this.real!= null);
     }
 
     /**
@@ -105,6 +108,10 @@ public class NumberPropertyType {
         this.decimal = value;
     }
 
+    public boolean isSetDecimal() {
+        return (this.decimal!= null);
+    }
+
     /**
      * Gets the value of the integer property.
      * 
@@ -129,36 +136,36 @@ public class NumberPropertyType {
         this.integer = value;
     }
 
+    public boolean isSetInteger() {
+        return (this.integer!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nilReason property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNilReason().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the nilReason property.
+     *     possible object is
+     *     {@link NilReasonType }
+     *     
      */
-    public List<String> getNilReason() {
-        if (nilReason == null) {
-            nilReason = new ArrayList<>();
-        }
-        return this.nilReason;
+    public NilReasonType getNilReason() {
+        return nilReason;
+    }
+
+    /**
+     * Sets the value of the nilReason property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NilReasonType }
+     *     
+     */
+    public void setNilReason(NilReasonType value) {
+        this.nilReason = value;
+    }
+
+    public boolean isSetNilReason() {
+        return (this.nilReason!= null);
     }
 
 }

@@ -123,6 +123,14 @@ public class AirportHeliportAvailabilityType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -153,6 +161,14 @@ public class AirportHeliportAvailabilityType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -187,6 +203,14 @@ public class AirportHeliportAvailabilityType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the operationalStatus property.
      * 
@@ -211,6 +235,10 @@ public class AirportHeliportAvailabilityType
         this.operationalStatus = value;
     }
 
+    public boolean isSetOperationalStatus() {
+        return (this.operationalStatus!= null);
+    }
+
     /**
      * Gets the value of the warning property.
      * 
@@ -233,6 +261,10 @@ public class AirportHeliportAvailabilityType
      */
     public void setWarning(JAXBElement<CodeAirportWarningType> value) {
         this.warning = value;
+    }
+
+    public boolean isSetWarning() {
+        return (this.warning!= null);
     }
 
     /**
@@ -267,6 +299,14 @@ public class AirportHeliportAvailabilityType
         return this.usage;
     }
 
+    public boolean isSetUsage() {
+        return ((this.usage!= null)&&(!this.usage.isEmpty()));
+    }
+
+    public void unsetUsage() {
+        this.usage = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -297,6 +337,14 @@ public class AirportHeliportAvailabilityType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -361,6 +409,10 @@ public class AirportHeliportAvailabilityType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractAirportHeliportAvailabilityExtension property.
          * 
@@ -383,6 +435,10 @@ public class AirportHeliportAvailabilityType
          */
         public void setAbstractAirportHeliportAvailabilityExtension(AbstractExtensionType value) {
             this.abstractAirportHeliportAvailabilityExtension = value;
+        }
+
+        public boolean isSetAbstractAirportHeliportAvailabilityExtension() {
+            return (this.abstractAirportHeliportAvailabilityExtension!= null);
         }
 
         /**
@@ -409,8 +465,16 @@ public class AirportHeliportAvailabilityType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

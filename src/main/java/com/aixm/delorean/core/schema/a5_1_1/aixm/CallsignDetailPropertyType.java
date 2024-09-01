@@ -71,4 +71,8 @@ public class CallsignDetailPropertyType
         this.callsignDetail = value;
     }
 
+    public boolean isSetCallsignDetail() {
+        return (this.callsignDetail!= null);
+    }
+
 }

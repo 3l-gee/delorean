@@ -71,4 +71,8 @@ public class CircleSectorPropertyType
         this.circleSector = value;
     }
 
+    public boolean isSetCircleSector() {
+        return (this.circleSector!= null);
+    }
+
 }

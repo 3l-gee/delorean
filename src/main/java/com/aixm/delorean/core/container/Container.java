@@ -1,19 +1,18 @@
 package com.aixm.delorean.core.container;
 
-import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
-import com.aixm.delorean.core.schema.a5_1_1.aixm.message.BasicMessageMemberAIXMPropertyType;
-import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureType;
+import com.aixm.delorean.core.xml.XMLBinding;
+import com.aixm.delorean.core.database.DatabaseBinding;
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class Container {
-    private final Class<?> structure;
+public class Container<T> {
+    private final Class<T> structure;
     public XMLBinding xmlBinding;
     public DatabaseBinding databaseBinding;
-    private AIXMBasicMessageType record;
+    private T record;
 
-    public Container(Class<?> structure) {
+    public Container(Class<T> structure) {
         this.structure = structure;
     }
 
@@ -40,34 +39,34 @@ public class Container {
         if (this.xmlBinding == null) {
             throw new RuntimeException("XMLBinding is not set");
         }
-        this.record = this.xmlBinding.unmarshal(path);
+        this.record = (T) this.xmlBinding.unmarshal(path);
     }
 
     public void marshal(String path) {
         if (this.xmlBinding == null) {
             throw new RuntimeException("XMLBinding is not set");
         }
-        this.xmlBinding.marshal(this.record, path);
+        this.xmlBinding.marshal(this.record, path, this.structure);
     }
 
-    public void show() {
-        List<BasicMessageMemberAIXMPropertyType> list = record.getHasMember();
+    // public void show() {
+    //     List<T> list = record.getHasMember();
 
-        for (int i = 0; i < list.size(); i++) {
-                AbstractAIXMFeatureType item = (AbstractAIXMFeatureType) list.get(i).getAbstractAIXMFeature().getValue();
-                System.out.println(item.getIdentifier().getValue());
-        } 
-    }
+    //     for (int i = 0; i < list.size(); i++) {
+    //             T item = (T) list.get(i).getAbstractAIXMFeature().getValue();
+    //             System.out.println(item.getIdentifier().getValue());
+    //     } 
+    // }
 
-    public List<?> getDbLoadReady() {
-        List<BasicMessageMemberAIXMPropertyType> list = record.getHasMember();
-        List<AbstractAIXMFeatureType> res = new ArrayList<>();
+    // public List<?> getDbLoadReady() {
+    //     List<T> list = record.getHasMember();
+    //     List<T> res = new ArrayList<>();
 
-        for (int i = 0; i < list.size(); i++) {
-                AbstractAIXMFeatureType item = (AbstractAIXMFeatureType) list.get(i).getAbstractAIXMFeature().getValue();
-                res.add(item);
-            }      
+    //     for (int i = 0; i < list.size(); i++) {
+    //             T item = (T) list.get(i).getAbstractAIXMFeature().getValue();
+    //             res.add(item);
+    //         }      
 
-        return res;
-    }
+    //     return res;
+    // }
 }

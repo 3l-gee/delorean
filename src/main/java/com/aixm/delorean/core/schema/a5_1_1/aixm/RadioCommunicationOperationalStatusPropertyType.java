@@ -71,4 +71,8 @@ public class RadioCommunicationOperationalStatusPropertyType
         this.radioCommunicationOperationalStatus = value;
     }
 
+    public boolean isSetRadioCommunicationOperationalStatus() {
+        return (this.radioCommunicationOperationalStatus!= null);
+    }
+
 }

@@ -71,4 +71,8 @@ public class LandingTakeoffAreaCollectionPropertyType
         this.landingTakeoffAreaCollection = value;
     }
 
+    public boolean isSetLandingTakeoffAreaCollection() {
+        return (this.landingTakeoffAreaCollection!= null);
+    }
+
 }

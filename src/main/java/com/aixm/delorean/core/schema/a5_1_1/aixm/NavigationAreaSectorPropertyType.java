@@ -71,4 +71,8 @@ public class NavigationAreaSectorPropertyType
         this.navigationAreaSector = value;
     }
 
+    public boolean isSetNavigationAreaSector() {
+        return (this.navigationAreaSector!= null);
+    }
+
 }

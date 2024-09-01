@@ -71,4 +71,8 @@ public class EquipmentUnavailableAdjustmentColumnPropertyType
         this.equipmentUnavailableAdjustmentColumn = value;
     }
 
+    public boolean isSetEquipmentUnavailableAdjustmentColumn() {
+        return (this.equipmentUnavailableAdjustmentColumn!= null);
+    }
+
 }

@@ -71,4 +71,8 @@ public class AirportHeliportAvailabilityPropertyType
         this.airportHeliportAvailability = value;
     }
 
+    public boolean isSetAirportHeliportAvailability() {
+        return (this.airportHeliportAvailability!= null);
+    }
+
 }

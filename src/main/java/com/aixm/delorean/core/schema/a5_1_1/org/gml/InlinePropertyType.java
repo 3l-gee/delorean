@@ -69,6 +69,10 @@ public class InlinePropertyType {
         this.any = value;
     }
 
+    public boolean isSetAny() {
+        return (this.any!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -93,8 +97,16 @@ public class InlinePropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

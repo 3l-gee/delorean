@@ -114,6 +114,10 @@ public class AeronauticalGroundLightTimeSliceType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -136,6 +140,10 @@ public class AeronauticalGroundLightTimeSliceType
      */
     public void setType(JAXBElement<CodeGroundLightingType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -162,6 +170,10 @@ public class AeronauticalGroundLightTimeSliceType
         this.colour = value;
     }
 
+    public boolean isSetColour() {
+        return (this.colour!= null);
+    }
+
     /**
      * Gets the value of the flashing property.
      * 
@@ -184,6 +196,10 @@ public class AeronauticalGroundLightTimeSliceType
      */
     public void setFlashing(JAXBElement<CodeYesNoType> value) {
         this.flashing = value;
+    }
+
+    public boolean isSetFlashing() {
+        return (this.flashing!= null);
     }
 
     /**
@@ -210,6 +226,10 @@ public class AeronauticalGroundLightTimeSliceType
         this.structureBeacon = value;
     }
 
+    public boolean isSetStructureBeacon() {
+        return (this.structureBeacon!= null);
+    }
+
     /**
      * Gets the value of the aerodromeBeacon property.
      * 
@@ -234,6 +254,10 @@ public class AeronauticalGroundLightTimeSliceType
         this.aerodromeBeacon = value;
     }
 
+    public boolean isSetAerodromeBeacon() {
+        return (this.aerodromeBeacon!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -256,6 +280,10 @@ public class AeronauticalGroundLightTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -290,6 +318,14 @@ public class AeronauticalGroundLightTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -320,6 +356,14 @@ public class AeronauticalGroundLightTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -380,6 +424,10 @@ public class AeronauticalGroundLightTimeSliceType
             this.abstractAeronauticalGroundLightExtension = value;
         }
 
+        public boolean isSetAbstractAeronauticalGroundLightExtension() {
+            return (this.abstractAeronauticalGroundLightExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -404,8 +452,16 @@ public class AeronauticalGroundLightTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

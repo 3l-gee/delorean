@@ -108,6 +108,10 @@ public class MDMaintenanceInformationType
         this.maintenanceAndUpdateFrequency = value;
     }
 
+    public boolean isSetMaintenanceAndUpdateFrequency() {
+        return (this.maintenanceAndUpdateFrequency!= null);
+    }
+
     /**
      * Gets the value of the dateOfNextUpdate property.
      * 
@@ -132,6 +136,10 @@ public class MDMaintenanceInformationType
         this.dateOfNextUpdate = value;
     }
 
+    public boolean isSetDateOfNextUpdate() {
+        return (this.dateOfNextUpdate!= null);
+    }
+
     /**
      * Gets the value of the userDefinedMaintenanceFrequency property.
      * 
@@ -154,6 +162,10 @@ public class MDMaintenanceInformationType
      */
     public void setUserDefinedMaintenanceFrequency(TMPeriodDurationPropertyType value) {
         this.userDefinedMaintenanceFrequency = value;
+    }
+
+    public boolean isSetUserDefinedMaintenanceFrequency() {
+        return (this.userDefinedMaintenanceFrequency!= null);
     }
 
     /**
@@ -188,6 +200,14 @@ public class MDMaintenanceInformationType
         return this.updateScope;
     }
 
+    public boolean isSetUpdateScope() {
+        return ((this.updateScope!= null)&&(!this.updateScope.isEmpty()));
+    }
+
+    public void unsetUpdateScope() {
+        this.updateScope = null;
+    }
+
     /**
      * Gets the value of the updateScopeDescription property.
      * 
@@ -218,6 +238,14 @@ public class MDMaintenanceInformationType
             updateScopeDescription = new ArrayList<>();
         }
         return this.updateScopeDescription;
+    }
+
+    public boolean isSetUpdateScopeDescription() {
+        return ((this.updateScopeDescription!= null)&&(!this.updateScopeDescription.isEmpty()));
+    }
+
+    public void unsetUpdateScopeDescription() {
+        this.updateScopeDescription = null;
     }
 
     /**
@@ -252,6 +280,14 @@ public class MDMaintenanceInformationType
         return this.maintenanceNote;
     }
 
+    public boolean isSetMaintenanceNote() {
+        return ((this.maintenanceNote!= null)&&(!this.maintenanceNote.isEmpty()));
+    }
+
+    public void unsetMaintenanceNote() {
+        this.maintenanceNote = null;
+    }
+
     /**
      * Gets the value of the contact property.
      * 
@@ -282,6 +318,14 @@ public class MDMaintenanceInformationType
             contact = new ArrayList<>();
         }
         return this.contact;
+    }
+
+    public boolean isSetContact() {
+        return ((this.contact!= null)&&(!this.contact.isEmpty()));
+    }
+
+    public void unsetContact() {
+        this.contact = null;
     }
 
 }

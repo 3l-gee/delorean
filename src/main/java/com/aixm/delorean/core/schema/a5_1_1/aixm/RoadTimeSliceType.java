@@ -119,6 +119,10 @@ public class RoadTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the status property.
      * 
@@ -141,6 +145,10 @@ public class RoadTimeSliceType
      */
     public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
         this.status = value;
+    }
+
+    public boolean isSetStatus() {
+        return (this.status!= null);
     }
 
     /**
@@ -167,6 +175,10 @@ public class RoadTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the abandoned property.
      * 
@@ -189,6 +201,10 @@ public class RoadTimeSliceType
      */
     public void setAbandoned(JAXBElement<CodeYesNoType> value) {
         this.abandoned = value;
+    }
+
+    public boolean isSetAbandoned() {
+        return (this.abandoned!= null);
     }
 
     /**
@@ -215,6 +231,10 @@ public class RoadTimeSliceType
         this.associatedAirport = value;
     }
 
+    public boolean isSetAssociatedAirport() {
+        return (this.associatedAirport!= null);
+    }
+
     /**
      * Gets the value of the surfaceProperties property.
      * 
@@ -237,6 +257,10 @@ public class RoadTimeSliceType
      */
     public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
+    }
+
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
     }
 
     /**
@@ -271,6 +295,14 @@ public class RoadTimeSliceType
         return this.accessibleStand;
     }
 
+    public boolean isSetAccessibleStand() {
+        return ((this.accessibleStand!= null)&&(!this.accessibleStand.isEmpty()));
+    }
+
+    public void unsetAccessibleStand() {
+        this.accessibleStand = null;
+    }
+
     /**
      * Gets the value of the surfaceExtent property.
      * 
@@ -293,6 +325,10 @@ public class RoadTimeSliceType
      */
     public void setSurfaceExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.surfaceExtent = value;
+    }
+
+    public boolean isSetSurfaceExtent() {
+        return (this.surfaceExtent!= null);
     }
 
     /**
@@ -327,6 +363,14 @@ public class RoadTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -357,6 +401,14 @@ public class RoadTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -417,6 +469,10 @@ public class RoadTimeSliceType
             this.abstractRoadExtension = value;
         }
 
+        public boolean isSetAbstractRoadExtension() {
+            return (this.abstractRoadExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -441,8 +497,16 @@ public class RoadTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

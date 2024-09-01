@@ -127,6 +127,10 @@ public class RadioFrequencyAreaTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the angleScallop property.
      * 
@@ -149,6 +153,10 @@ public class RadioFrequencyAreaTimeSliceType
      */
     public void setAngleScallop(JAXBElement<ValAngleType> value) {
         this.angleScallop = value;
+    }
+
+    public boolean isSetAngleScallop() {
+        return (this.angleScallop!= null);
     }
 
     /**
@@ -175,6 +183,10 @@ public class RadioFrequencyAreaTimeSliceType
         this.signalType = value;
     }
 
+    public boolean isSetSignalType() {
+        return (this.signalType!= null);
+    }
+
     /**
      * Gets the value of the equipmentRadar property.
      * 
@@ -197,6 +209,10 @@ public class RadioFrequencyAreaTimeSliceType
      */
     public void setEquipmentRadar(JAXBElement<SecondarySurveillanceRadarPropertyType> value) {
         this.equipmentRadar = value;
+    }
+
+    public boolean isSetEquipmentRadar() {
+        return (this.equipmentRadar!= null);
     }
 
     /**
@@ -223,6 +239,10 @@ public class RadioFrequencyAreaTimeSliceType
         this.equipmentPrecisionApproachRadar = value;
     }
 
+    public boolean isSetEquipmentPrecisionApproachRadar() {
+        return (this.equipmentPrecisionApproachRadar!= null);
+    }
+
     /**
      * Gets the value of the equipmentFrequency property.
      * 
@@ -245,6 +265,10 @@ public class RadioFrequencyAreaTimeSliceType
      */
     public void setEquipmentFrequency(JAXBElement<RadioCommunicationChannelPropertyType> value) {
         this.equipmentFrequency = value;
+    }
+
+    public boolean isSetEquipmentFrequency() {
+        return (this.equipmentFrequency!= null);
     }
 
     /**
@@ -271,6 +295,10 @@ public class RadioFrequencyAreaTimeSliceType
         this.equipmentSpecialNavigationStation = value;
     }
 
+    public boolean isSetEquipmentSpecialNavigationStation() {
+        return (this.equipmentSpecialNavigationStation!= null);
+    }
+
     /**
      * Gets the value of the equipmentNavaidEquipment property.
      * 
@@ -293,6 +321,10 @@ public class RadioFrequencyAreaTimeSliceType
      */
     public void setEquipmentNavaidEquipment(JAXBElement<NavaidEquipmentPropertyType> value) {
         this.equipmentNavaidEquipment = value;
+    }
+
+    public boolean isSetEquipmentNavaidEquipment() {
+        return (this.equipmentNavaidEquipment!= null);
     }
 
     /**
@@ -327,6 +359,14 @@ public class RadioFrequencyAreaTimeSliceType
         return this.sector;
     }
 
+    public boolean isSetSector() {
+        return ((this.sector!= null)&&(!this.sector.isEmpty()));
+    }
+
+    public void unsetSector() {
+        this.sector = null;
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -357,6 +397,14 @@ public class RadioFrequencyAreaTimeSliceType
             extent = new ArrayList<>();
         }
         return this.extent;
+    }
+
+    public boolean isSetExtent() {
+        return ((this.extent!= null)&&(!this.extent.isEmpty()));
+    }
+
+    public void unsetExtent() {
+        this.extent = null;
     }
 
     /**
@@ -391,6 +439,14 @@ public class RadioFrequencyAreaTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -421,6 +477,14 @@ public class RadioFrequencyAreaTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -481,6 +545,10 @@ public class RadioFrequencyAreaTimeSliceType
             this.abstractRadioFrequencyAreaExtension = value;
         }
 
+        public boolean isSetAbstractRadioFrequencyAreaExtension() {
+            return (this.abstractRadioFrequencyAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -505,8 +573,16 @@ public class RadioFrequencyAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

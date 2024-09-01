@@ -79,4 +79,8 @@ public class AbstractGeneralParameterValuePropertyType {
         this.abstractGeneralParameterValue = value;
     }
 
+    public boolean isSetAbstractGeneralParameterValue() {
+        return (this.abstractGeneralParameterValue!= null);
+    }
+
 }

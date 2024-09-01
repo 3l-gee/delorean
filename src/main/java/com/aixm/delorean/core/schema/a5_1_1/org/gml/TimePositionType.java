@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.util.ArrayList;
-import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -57,7 +55,7 @@ public class TimePositionType {
      * 
      */
     @XmlValue
-    protected List<String> value;
+    protected TimePositionUnion value;
     @XmlAttribute(name = "frame")
     @XmlSchemaType(name = "anyURI")
     protected String frame;
@@ -71,35 +69,30 @@ public class TimePositionType {
      *  An ordinal era may be referenced via URI.  A decimal value may be used to indicate the distance from the scale origin .  time is used for a position that recurs daily (see ISO 19108:2002 5.4.4.2).
      *  Finally, calendar and clock forms that support the representation of time in systems based on years, months, days, hours, minutes and seconds, in a notation following ISO 8601, are assembled by gml:CalDate
      * 
-     * Gets the value of the value property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the value property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getValue().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the value property.
+     *     possible object is
+     *     {@link TimePositionUnion }
+     *     
      */
-    public List<String> getValue() {
-        if (value == null) {
-            value = new ArrayList<>();
-        }
-        return this.value;
+    public TimePositionUnion getValue() {
+        return value;
+    }
+
+    /**
+     * Sets the value of the value property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TimePositionUnion }
+     *     
+     * @see #getValue()
+     */
+    public void setValue(TimePositionUnion value) {
+        this.value = value;
+    }
+
+    public boolean isSetValue() {
+        return (this.value!= null);
     }
 
     /**
@@ -130,6 +123,10 @@ public class TimePositionType {
         this.frame = value;
     }
 
+    public boolean isSetFrame() {
+        return (this.frame!= null);
+    }
+
     /**
      * Gets the value of the calendarEraName property.
      * 
@@ -154,6 +151,10 @@ public class TimePositionType {
         this.calendarEraName = value;
     }
 
+    public boolean isSetCalendarEraName() {
+        return (this.calendarEraName!= null);
+    }
+
     /**
      * Gets the value of the indeterminatePosition property.
      * 
@@ -176,6 +177,10 @@ public class TimePositionType {
      */
     public void setIndeterminatePosition(TimeIndeterminateValueType value) {
         this.indeterminatePosition = value;
+    }
+
+    public boolean isSetIndeterminatePosition() {
+        return (this.indeterminatePosition!= null);
     }
 
 }

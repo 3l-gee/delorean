@@ -93,6 +93,14 @@ public class TopoCurveType
         return this.directedEdge;
     }
 
+    public boolean isSetDirectedEdge() {
+        return ((this.directedEdge!= null)&&(!this.directedEdge.isEmpty()));
+    }
+
+    public void unsetDirectedEdge() {
+        this.directedEdge = null;
+    }
+
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -115,6 +123,10 @@ public class TopoCurveType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

@@ -149,6 +149,10 @@ public class TerminalArrivalAreaTimeSliceType
         this.arrivalAreaType = value;
     }
 
+    public boolean isSetArrivalAreaType() {
+        return (this.arrivalAreaType!= null);
+    }
+
     /**
      * Gets the value of the outerBufferWidth property.
      * 
@@ -171,6 +175,10 @@ public class TerminalArrivalAreaTimeSliceType
      */
     public void setOuterBufferWidth(JAXBElement<ValDistanceType> value) {
         this.outerBufferWidth = value;
+    }
+
+    public boolean isSetOuterBufferWidth() {
+        return (this.outerBufferWidth!= null);
     }
 
     /**
@@ -197,6 +205,10 @@ public class TerminalArrivalAreaTimeSliceType
         this.lateralBufferWidth = value;
     }
 
+    public boolean isSetLateralBufferWidth() {
+        return (this.lateralBufferWidth!= null);
+    }
+
     /**
      * Gets the value of the ifFixDesignatedPoint property.
      * 
@@ -219,6 +231,10 @@ public class TerminalArrivalAreaTimeSliceType
      */
     public void setIFFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.ifFixDesignatedPoint = value;
+    }
+
+    public boolean isSetIFFixDesignatedPoint() {
+        return (this.ifFixDesignatedPoint!= null);
     }
 
     /**
@@ -245,6 +261,10 @@ public class TerminalArrivalAreaTimeSliceType
         this.ifNavaidSystem = value;
     }
 
+    public boolean isSetIFNavaidSystem() {
+        return (this.ifNavaidSystem!= null);
+    }
+
     /**
      * Gets the value of the ifPosition property.
      * 
@@ -267,6 +287,10 @@ public class TerminalArrivalAreaTimeSliceType
      */
     public void setIFPosition(JAXBElement<PointPropertyType> value) {
         this.ifPosition = value;
+    }
+
+    public boolean isSetIFPosition() {
+        return (this.ifPosition!= null);
     }
 
     /**
@@ -293,6 +317,10 @@ public class TerminalArrivalAreaTimeSliceType
         this.ifRunwayPoint = value;
     }
 
+    public boolean isSetIFRunwayPoint() {
+        return (this.ifRunwayPoint!= null);
+    }
+
     /**
      * Gets the value of the ifAimingPoint property.
      * 
@@ -315,6 +343,10 @@ public class TerminalArrivalAreaTimeSliceType
      */
     public void setIFAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.ifAimingPoint = value;
+    }
+
+    public boolean isSetIFAimingPoint() {
+        return (this.ifAimingPoint!= null);
     }
 
     /**
@@ -341,6 +373,10 @@ public class TerminalArrivalAreaTimeSliceType
         this.ifAirportReferencePoint = value;
     }
 
+    public boolean isSetIFAirportReferencePoint() {
+        return (this.ifAirportReferencePoint!= null);
+    }
+
     /**
      * Gets the value of the iafFixDesignatedPoint property.
      * 
@@ -363,6 +399,10 @@ public class TerminalArrivalAreaTimeSliceType
      */
     public void setIAFFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.iafFixDesignatedPoint = value;
+    }
+
+    public boolean isSetIAFFixDesignatedPoint() {
+        return (this.iafFixDesignatedPoint!= null);
     }
 
     /**
@@ -389,6 +429,10 @@ public class TerminalArrivalAreaTimeSliceType
         this.iafNavaidSystem = value;
     }
 
+    public boolean isSetIAFNavaidSystem() {
+        return (this.iafNavaidSystem!= null);
+    }
+
     /**
      * Gets the value of the iafPosition property.
      * 
@@ -411,6 +455,10 @@ public class TerminalArrivalAreaTimeSliceType
      */
     public void setIAFPosition(JAXBElement<PointPropertyType> value) {
         this.iafPosition = value;
+    }
+
+    public boolean isSetIAFPosition() {
+        return (this.iafPosition!= null);
     }
 
     /**
@@ -437,6 +485,10 @@ public class TerminalArrivalAreaTimeSliceType
         this.iafRunwayPoint = value;
     }
 
+    public boolean isSetIAFRunwayPoint() {
+        return (this.iafRunwayPoint!= null);
+    }
+
     /**
      * Gets the value of the iafAimingPoint property.
      * 
@@ -459,6 +511,10 @@ public class TerminalArrivalAreaTimeSliceType
      */
     public void setIAFAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.iafAimingPoint = value;
+    }
+
+    public boolean isSetIAFAimingPoint() {
+        return (this.iafAimingPoint!= null);
     }
 
     /**
@@ -485,6 +541,10 @@ public class TerminalArrivalAreaTimeSliceType
         this.iafAirportReferencePoint = value;
     }
 
+    public boolean isSetIAFAirportReferencePoint() {
+        return (this.iafAirportReferencePoint!= null);
+    }
+
     /**
      * Gets the value of the buffer property.
      * 
@@ -507,6 +567,10 @@ public class TerminalArrivalAreaTimeSliceType
      */
     public void setBuffer(JAXBElement<SurfacePropertyType> value) {
         this.buffer = value;
+    }
+
+    public boolean isSetBuffer() {
+        return (this.buffer!= null);
     }
 
     /**
@@ -541,6 +605,14 @@ public class TerminalArrivalAreaTimeSliceType
         return this.sector;
     }
 
+    public boolean isSetSector() {
+        return ((this.sector!= null)&&(!this.sector.isEmpty()));
+    }
+
+    public void unsetSector() {
+        this.sector = null;
+    }
+
     /**
      * Gets the value of the approachRNAV property.
      * 
@@ -563,6 +635,10 @@ public class TerminalArrivalAreaTimeSliceType
      */
     public void setApproachRNAV(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
         this.approachRNAV = value;
+    }
+
+    public boolean isSetApproachRNAV() {
+        return (this.approachRNAV!= null);
     }
 
     /**
@@ -597,6 +673,14 @@ public class TerminalArrivalAreaTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -627,6 +711,14 @@ public class TerminalArrivalAreaTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -687,6 +779,10 @@ public class TerminalArrivalAreaTimeSliceType
             this.abstractTerminalArrivalAreaExtension = value;
         }
 
+        public boolean isSetAbstractTerminalArrivalAreaExtension() {
+            return (this.abstractTerminalArrivalAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -711,8 +807,16 @@ public class TerminalArrivalAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

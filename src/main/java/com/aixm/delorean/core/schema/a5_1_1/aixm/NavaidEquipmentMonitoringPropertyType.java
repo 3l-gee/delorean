@@ -71,4 +71,8 @@ public class NavaidEquipmentMonitoringPropertyType
         this.navaidEquipmentMonitoring = value;
     }
 
+    public boolean isSetNavaidEquipmentMonitoring() {
+        return (this.navaidEquipmentMonitoring!= null);
+    }
+
 }

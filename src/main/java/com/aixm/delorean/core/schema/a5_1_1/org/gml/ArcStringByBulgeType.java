@@ -129,6 +129,14 @@ public class ArcStringByBulgeType
         return this.posOrPointPropertyOrPointRep;
     }
 
+    public boolean isSetPosOrPointPropertyOrPointRep() {
+        return ((this.posOrPointPropertyOrPointRep!= null)&&(!this.posOrPointPropertyOrPointRep.isEmpty()));
+    }
+
+    public void unsetPosOrPointPropertyOrPointRep() {
+        this.posOrPointPropertyOrPointRep = null;
+    }
+
     /**
      * Gets the value of the posList property.
      * 
@@ -153,6 +161,10 @@ public class ArcStringByBulgeType
         this.posList = value;
     }
 
+    public boolean isSetPosList() {
+        return (this.posList!= null);
+    }
+
     /**
      * Gets the value of the coordinates property.
      * 
@@ -175,6 +187,10 @@ public class ArcStringByBulgeType
      */
     public void setCoordinates(CoordinatesType value) {
         this.coordinates = value;
+    }
+
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
     }
 
     /**
@@ -209,6 +225,14 @@ public class ArcStringByBulgeType
         return this.bulge;
     }
 
+    public boolean isSetBulge() {
+        return ((this.bulge!= null)&&(!this.bulge.isEmpty()));
+    }
+
+    public void unsetBulge() {
+        this.bulge = null;
+    }
+
     /**
      * Gets the value of the normal property.
      * 
@@ -241,6 +265,14 @@ public class ArcStringByBulgeType
         return this.normal;
     }
 
+    public boolean isSetNormal() {
+        return ((this.normal!= null)&&(!this.normal.isEmpty()));
+    }
+
+    public void unsetNormal() {
+        this.normal = null;
+    }
+
     /**
      * Gets the value of the numArc property.
      * 
@@ -263,6 +295,10 @@ public class ArcStringByBulgeType
      */
     public void setNumArc(BigInteger value) {
         this.numArc = value;
+    }
+
+    public boolean isSetNumArc() {
+        return (this.numArc!= null);
     }
 
 }

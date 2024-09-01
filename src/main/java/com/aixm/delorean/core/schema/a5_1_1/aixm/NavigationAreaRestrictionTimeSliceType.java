@@ -107,6 +107,10 @@ public class NavigationAreaRestrictionTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the procedure property.
      * 
@@ -139,6 +143,14 @@ public class NavigationAreaRestrictionTimeSliceType
         return this.procedure;
     }
 
+    public boolean isSetProcedure() {
+        return ((this.procedure!= null)&&(!this.procedure.isEmpty()));
+    }
+
+    public void unsetProcedure() {
+        this.procedure = null;
+    }
+
     /**
      * Gets the value of the designSurface property.
      * 
@@ -163,6 +175,10 @@ public class NavigationAreaRestrictionTimeSliceType
         this.designSurface = value;
     }
 
+    public boolean isSetDesignSurface() {
+        return (this.designSurface!= null);
+    }
+
     /**
      * Gets the value of the sectorDefinition property.
      * 
@@ -185,6 +201,10 @@ public class NavigationAreaRestrictionTimeSliceType
      */
     public void setSectorDefinition(JAXBElement<CircleSectorPropertyType> value) {
         this.sectorDefinition = value;
+    }
+
+    public boolean isSetSectorDefinition() {
+        return (this.sectorDefinition!= null);
     }
 
     /**
@@ -219,6 +239,14 @@ public class NavigationAreaRestrictionTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -249,6 +277,14 @@ public class NavigationAreaRestrictionTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -309,6 +345,10 @@ public class NavigationAreaRestrictionTimeSliceType
             this.abstractNavigationAreaRestrictionExtension = value;
         }
 
+        public boolean isSetAbstractNavigationAreaRestrictionExtension() {
+            return (this.abstractNavigationAreaRestrictionExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -333,8 +373,16 @@ public class NavigationAreaRestrictionTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

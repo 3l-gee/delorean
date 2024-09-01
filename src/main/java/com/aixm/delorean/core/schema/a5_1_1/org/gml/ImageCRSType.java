@@ -98,6 +98,10 @@ public class ImageCRSType
         this.cartesianCS = value;
     }
 
+    public boolean isSetCartesianCS() {
+        return (this.cartesianCS!= null);
+    }
+
     /**
      * gml:affineCS is an association role to the affine coordinate system used by this CRS.
      * 
@@ -125,6 +129,10 @@ public class ImageCRSType
         this.affineCS = value;
     }
 
+    public boolean isSetAffineCS() {
+        return (this.affineCS!= null);
+    }
+
     /**
      * Gets the value of the usesObliqueCartesianCS property.
      * 
@@ -147,6 +155,10 @@ public class ImageCRSType
      */
     public void setUsesObliqueCartesianCS(ObliqueCartesianCSPropertyType value) {
         this.usesObliqueCartesianCS = value;
+    }
+
+    public boolean isSetUsesObliqueCartesianCS() {
+        return (this.usesObliqueCartesianCS!= null);
     }
 
     /**
@@ -174,6 +186,10 @@ public class ImageCRSType
      */
     public void setImageDatum(JAXBElement<ImageDatumPropertyType> value) {
         this.imageDatum = value;
+    }
+
+    public boolean isSetImageDatum() {
+        return (this.imageDatum!= null);
     }
 
 }

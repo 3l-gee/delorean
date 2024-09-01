@@ -71,4 +71,8 @@ public class ConditionCombinationPropertyType
         this.conditionCombination = value;
     }
 
+    public boolean isSetConditionCombination() {
+        return (this.conditionCombination!= null);
+    }
+
 }

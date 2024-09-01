@@ -104,6 +104,10 @@ public class RunwayVisualRangeTimeSliceType
         this.readingPosition = value;
     }
 
+    public boolean isSetReadingPosition() {
+        return (this.readingPosition!= null);
+    }
+
     /**
      * Gets the value of the associatedRunwayDirection property.
      * 
@@ -136,6 +140,14 @@ public class RunwayVisualRangeTimeSliceType
         return this.associatedRunwayDirection;
     }
 
+    public boolean isSetAssociatedRunwayDirection() {
+        return ((this.associatedRunwayDirection!= null)&&(!this.associatedRunwayDirection.isEmpty()));
+    }
+
+    public void unsetAssociatedRunwayDirection() {
+        this.associatedRunwayDirection = null;
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -158,6 +170,10 @@ public class RunwayVisualRangeTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -192,6 +208,14 @@ public class RunwayVisualRangeTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -222,6 +246,14 @@ public class RunwayVisualRangeTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -282,6 +314,10 @@ public class RunwayVisualRangeTimeSliceType
             this.abstractRunwayVisualRangeExtension = value;
         }
 
+        public boolean isSetAbstractRunwayVisualRangeExtension() {
+            return (this.abstractRunwayVisualRangeExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -306,8 +342,16 @@ public class RunwayVisualRangeTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

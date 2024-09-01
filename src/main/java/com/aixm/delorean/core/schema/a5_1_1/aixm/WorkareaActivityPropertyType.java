@@ -71,4 +71,8 @@ public class WorkareaActivityPropertyType
         this.workareaActivity = value;
     }
 
+    public boolean isSetWorkareaActivity() {
+        return (this.workareaActivity!= null);
+    }
+
 }

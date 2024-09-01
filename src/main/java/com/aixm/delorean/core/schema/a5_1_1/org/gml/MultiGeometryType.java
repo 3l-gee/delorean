@@ -93,6 +93,14 @@ public class MultiGeometryType
         return this.geometryMember;
     }
 
+    public boolean isSetGeometryMember() {
+        return ((this.geometryMember!= null)&&(!this.geometryMember.isEmpty()));
+    }
+
+    public void unsetGeometryMember() {
+        this.geometryMember = null;
+    }
+
     /**
      * This property element contains a list of geometry elements. The order of the elements is significant and shall be preserved when processing the array.
      * 
@@ -116,6 +124,10 @@ public class MultiGeometryType
      */
     public void setGeometryMembers(GeometryArrayPropertyType value) {
         this.geometryMembers = value;
+    }
+
+    public boolean isSetGeometryMembers() {
+        return (this.geometryMembers!= null);
     }
 
 }

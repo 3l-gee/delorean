@@ -372,4 +372,12 @@ public class FeatureArrayPropertyType {
         return this.abstractFeature;
     }
 
+    public boolean isSetAbstractFeature() {
+        return ((this.abstractFeature!= null)&&(!this.abstractFeature.isEmpty()));
+    }
+
+    public void unsetAbstractFeature() {
+        this.abstractFeature = null;
+    }
+
 }

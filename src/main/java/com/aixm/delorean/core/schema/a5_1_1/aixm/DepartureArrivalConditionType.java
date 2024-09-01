@@ -110,6 +110,10 @@ public class DepartureArrivalConditionType
         this.minimumEnrouteAltitude = value;
     }
 
+    public boolean isSetMinimumEnrouteAltitude() {
+        return (this.minimumEnrouteAltitude!= null);
+    }
+
     /**
      * Gets the value of the minimumCrossingAtEnd property.
      * 
@@ -132,6 +136,10 @@ public class DepartureArrivalConditionType
      */
     public void setMinimumCrossingAtEnd(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumCrossingAtEnd = value;
+    }
+
+    public boolean isSetMinimumCrossingAtEnd() {
+        return (this.minimumCrossingAtEnd!= null);
     }
 
     /**
@@ -158,6 +166,10 @@ public class DepartureArrivalConditionType
         this.minimumCrossingAtEndReference = value;
     }
 
+    public boolean isSetMinimumCrossingAtEndReference() {
+        return (this.minimumCrossingAtEndReference!= null);
+    }
+
     /**
      * Gets the value of the maximumCrossingAtEnd property.
      * 
@@ -180,6 +192,10 @@ public class DepartureArrivalConditionType
      */
     public void setMaximumCrossingAtEnd(JAXBElement<ValDistanceVerticalType> value) {
         this.maximumCrossingAtEnd = value;
+    }
+
+    public boolean isSetMaximumCrossingAtEnd() {
+        return (this.maximumCrossingAtEnd!= null);
     }
 
     /**
@@ -206,6 +222,10 @@ public class DepartureArrivalConditionType
         this.maximumCrossingAtEndReference = value;
     }
 
+    public boolean isSetMaximumCrossingAtEndReference() {
+        return (this.maximumCrossingAtEndReference!= null);
+    }
+
     /**
      * Gets the value of the engineType property.
      * 
@@ -228,6 +248,10 @@ public class DepartureArrivalConditionType
      */
     public void setEngineType(JAXBElement<AircraftCharacteristicPropertyType> value) {
         this.engineType = value;
+    }
+
+    public boolean isSetEngineType() {
+        return (this.engineType!= null);
     }
 
     /**
@@ -262,6 +286,14 @@ public class DepartureArrivalConditionType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -292,6 +324,14 @@ public class DepartureArrivalConditionType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -351,6 +391,10 @@ public class DepartureArrivalConditionType
             this.abstractDepartureArrivalConditionExtension = value;
         }
 
+        public boolean isSetAbstractDepartureArrivalConditionExtension() {
+            return (this.abstractDepartureArrivalConditionExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -375,8 +419,16 @@ public class DepartureArrivalConditionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -105,6 +105,10 @@ public class FlightRestrictionRouteType
         this.priorPermission = value;
     }
 
+    public boolean isSetPriorPermission() {
+        return (this.priorPermission!= null);
+    }
+
     /**
      * Gets the value of the routeElement property.
      * 
@@ -135,6 +139,14 @@ public class FlightRestrictionRouteType
             routeElement = new ArrayList<>();
         }
         return this.routeElement;
+    }
+
+    public boolean isSetRouteElement() {
+        return ((this.routeElement!= null)&&(!this.routeElement.isEmpty()));
+    }
+
+    public void unsetRouteElement() {
+        this.routeElement = null;
     }
 
     /**
@@ -169,6 +181,14 @@ public class FlightRestrictionRouteType
         return this.contact;
     }
 
+    public boolean isSetContact() {
+        return ((this.contact!= null)&&(!this.contact.isEmpty()));
+    }
+
+    public void unsetContact() {
+        this.contact = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -201,6 +221,14 @@ public class FlightRestrictionRouteType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -231,6 +259,14 @@ public class FlightRestrictionRouteType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -290,6 +326,10 @@ public class FlightRestrictionRouteType
             this.abstractFlightRestrictionRouteExtension = value;
         }
 
+        public boolean isSetAbstractFlightRestrictionRouteExtension() {
+            return (this.abstractFlightRestrictionRouteExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -314,8 +354,16 @@ public class FlightRestrictionRouteType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -71,4 +71,8 @@ public class AltimeterSourceStatusPropertyType
         this.altimeterSourceStatus = value;
     }
 
+    public boolean isSetAltimeterSourceStatus() {
+        return (this.altimeterSourceStatus!= null);
+    }
+
 }

@@ -105,6 +105,10 @@ public class ProcedureDMETimeSliceType
         this.criticalDME = value;
     }
 
+    public boolean isSetCriticalDME() {
+        return (this.criticalDME!= null);
+    }
+
     /**
      * Gets the value of the satisfactory property.
      * 
@@ -127,6 +131,10 @@ public class ProcedureDMETimeSliceType
      */
     public void setSatisfactory(JAXBElement<CodeYesNoType> value) {
         this.satisfactory = value;
+    }
+
+    public boolean isSetSatisfactory() {
+        return (this.satisfactory!= null);
     }
 
     /**
@@ -153,6 +161,10 @@ public class ProcedureDMETimeSliceType
         this.dme = value;
     }
 
+    public boolean isSetDME() {
+        return (this.dme!= null);
+    }
+
     /**
      * Gets the value of the segmentLeg property.
      * 
@@ -175,6 +187,10 @@ public class ProcedureDMETimeSliceType
      */
     public void setSegmentLeg(JAXBElement<SegmentLegPropertyType> value) {
         this.segmentLeg = value;
+    }
+
+    public boolean isSetSegmentLeg() {
+        return (this.segmentLeg!= null);
     }
 
     /**
@@ -209,6 +225,14 @@ public class ProcedureDMETimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -239,6 +263,14 @@ public class ProcedureDMETimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -299,6 +331,10 @@ public class ProcedureDMETimeSliceType
             this.abstractProcedureDMEExtension = value;
         }
 
+        public boolean isSetAbstractProcedureDMEExtension() {
+            return (this.abstractProcedureDMEExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -323,8 +359,16 @@ public class ProcedureDMETimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

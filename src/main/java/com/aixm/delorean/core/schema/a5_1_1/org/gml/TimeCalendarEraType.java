@@ -55,7 +55,7 @@ public class TimeCalendarEraType
     protected StringOrRefType referenceEvent;
     @XmlElement(required = true)
     @NotNull
-    protected String referenceDate;
+    protected CalDate referenceDate;
     @XmlElement(required = true)
     @NotNull
     protected BigDecimal julianReference;
@@ -88,15 +88,19 @@ public class TimeCalendarEraType
         this.referenceEvent = value;
     }
 
+    public boolean isSetReferenceEvent() {
+        return (this.referenceEvent!= null);
+    }
+
     /**
      * Gets the value of the referenceDate property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CalDate }
      *     
      */
-    public String getReferenceDate() {
+    public CalDate getReferenceDate() {
         return referenceDate;
     }
 
@@ -105,11 +109,15 @@ public class TimeCalendarEraType
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CalDate }
      *     
      */
-    public void setReferenceDate(String value) {
+    public void setReferenceDate(CalDate value) {
         this.referenceDate = value;
+    }
+
+    public boolean isSetReferenceDate() {
+        return (this.referenceDate!= null);
     }
 
     /**
@@ -136,6 +144,10 @@ public class TimeCalendarEraType
         this.julianReference = value;
     }
 
+    public boolean isSetJulianReference() {
+        return (this.julianReference!= null);
+    }
+
     /**
      * Gets the value of the epochOfUse property.
      * 
@@ -158,6 +170,10 @@ public class TimeCalendarEraType
      */
     public void setEpochOfUse(TimePeriodPropertyType value) {
         this.epochOfUse = value;
+    }
+
+    public boolean isSetEpochOfUse() {
+        return (this.epochOfUse!= null);
     }
 
 }

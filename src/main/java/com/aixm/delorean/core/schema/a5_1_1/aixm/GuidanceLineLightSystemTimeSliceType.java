@@ -115,6 +115,10 @@ public class GuidanceLineLightSystemTimeSliceType
         this.emergencyLighting = value;
     }
 
+    public boolean isSetEmergencyLighting() {
+        return (this.emergencyLighting!= null);
+    }
+
     /**
      * Gets the value of the intensityLevel property.
      * 
@@ -139,6 +143,10 @@ public class GuidanceLineLightSystemTimeSliceType
         this.intensityLevel = value;
     }
 
+    public boolean isSetIntensityLevel() {
+        return (this.intensityLevel!= null);
+    }
+
     /**
      * Gets the value of the colour property.
      * 
@@ -161,6 +169,10 @@ public class GuidanceLineLightSystemTimeSliceType
      */
     public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
+    }
+
+    public boolean isSetColour() {
+        return (this.colour!= null);
     }
 
     /**
@@ -195,6 +207,14 @@ public class GuidanceLineLightSystemTimeSliceType
         return this.element;
     }
 
+    public boolean isSetElement() {
+        return ((this.element!= null)&&(!this.element.isEmpty()));
+    }
+
+    public void unsetElement() {
+        this.element = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -225,6 +245,14 @@ public class GuidanceLineLightSystemTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
     }
 
     /**
@@ -259,6 +287,14 @@ public class GuidanceLineLightSystemTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the lightedGuidanceLine property.
      * 
@@ -281,6 +317,10 @@ public class GuidanceLineLightSystemTimeSliceType
      */
     public void setLightedGuidanceLine(JAXBElement<GuidanceLinePropertyType> value) {
         this.lightedGuidanceLine = value;
+    }
+
+    public boolean isSetLightedGuidanceLine() {
+        return (this.lightedGuidanceLine!= null);
     }
 
     /**
@@ -313,6 +353,14 @@ public class GuidanceLineLightSystemTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -377,6 +425,10 @@ public class GuidanceLineLightSystemTimeSliceType
             this.abstractGuidanceLineLightSystemExtension = value;
         }
 
+        public boolean isSetAbstractGuidanceLineLightSystemExtension() {
+            return (this.abstractGuidanceLineLightSystemExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractGroundLightSystemExtension property.
          * 
@@ -399,6 +451,10 @@ public class GuidanceLineLightSystemTimeSliceType
          */
         public void setAbstractGroundLightSystemExtension(AbstractExtensionType value) {
             this.abstractGroundLightSystemExtension = value;
+        }
+
+        public boolean isSetAbstractGroundLightSystemExtension() {
+            return (this.abstractGroundLightSystemExtension!= null);
         }
 
         /**
@@ -425,8 +481,16 @@ public class GuidanceLineLightSystemTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

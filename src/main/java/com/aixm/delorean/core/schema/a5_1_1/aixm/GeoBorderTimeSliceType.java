@@ -102,6 +102,10 @@ public class GeoBorderTimeSliceType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -126,6 +130,10 @@ public class GeoBorderTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the border property.
      * 
@@ -148,6 +156,10 @@ public class GeoBorderTimeSliceType
      */
     public void setBorder(JAXBElement<CurvePropertyType> value) {
         this.border = value;
+    }
+
+    public boolean isSetBorder() {
+        return (this.border!= null);
     }
 
     /**
@@ -182,6 +194,14 @@ public class GeoBorderTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -212,6 +232,14 @@ public class GeoBorderTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -272,6 +300,10 @@ public class GeoBorderTimeSliceType
             this.abstractGeoBorderExtension = value;
         }
 
+        public boolean isSetAbstractGeoBorderExtension() {
+            return (this.abstractGeoBorderExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -296,8 +328,16 @@ public class GeoBorderTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }
