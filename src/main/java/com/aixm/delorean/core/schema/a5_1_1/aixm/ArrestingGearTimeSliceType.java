@@ -131,6 +131,10 @@ public class ArrestingGearTimeSliceType
         this.status = value;
     }
 
+    public boolean isSetStatus() {
+        return (this.status!= null);
+    }
+
     /**
      * Gets the value of the length property.
      * 
@@ -153,6 +157,10 @@ public class ArrestingGearTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
+    }
+
+    public boolean isSetLength() {
+        return (this.length!= null);
     }
 
     /**
@@ -179,6 +187,10 @@ public class ArrestingGearTimeSliceType
         this.width = value;
     }
 
+    public boolean isSetWidth() {
+        return (this.width!= null);
+    }
+
     /**
      * Gets the value of the engageDevice property.
      * 
@@ -201,6 +213,10 @@ public class ArrestingGearTimeSliceType
      */
     public void setEngageDevice(JAXBElement<CodeArrestingGearEngageDeviceType> value) {
         this.engageDevice = value;
+    }
+
+    public boolean isSetEngageDevice() {
+        return (this.engageDevice!= null);
     }
 
     /**
@@ -227,6 +243,10 @@ public class ArrestingGearTimeSliceType
         this.absorbType = value;
     }
 
+    public boolean isSetAbsorbType() {
+        return (this.absorbType!= null);
+    }
+
     /**
      * Gets the value of the bidirectional property.
      * 
@@ -251,6 +271,10 @@ public class ArrestingGearTimeSliceType
         this.bidirectional = value;
     }
 
+    public boolean isSetBidirectional() {
+        return (this.bidirectional!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -273,6 +297,10 @@ public class ArrestingGearTimeSliceType
      */
     public void setLocation(JAXBElement<ValDistanceType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -307,6 +335,14 @@ public class ArrestingGearTimeSliceType
         return this.runwayDirection;
     }
 
+    public boolean isSetRunwayDirection() {
+        return ((this.runwayDirection!= null)&&(!this.runwayDirection.isEmpty()));
+    }
+
+    public void unsetRunwayDirection() {
+        this.runwayDirection = null;
+    }
+
     /**
      * Gets the value of the surfaceProperties property.
      * 
@@ -329,6 +365,10 @@ public class ArrestingGearTimeSliceType
      */
     public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
+    }
+
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
     }
 
     /**
@@ -355,6 +395,10 @@ public class ArrestingGearTimeSliceType
         this.extentSurfaceExtent = value;
     }
 
+    public boolean isSetExtentSurfaceExtent() {
+        return (this.extentSurfaceExtent!= null);
+    }
+
     /**
      * Gets the value of the extentCurveExtent property.
      * 
@@ -379,6 +423,10 @@ public class ArrestingGearTimeSliceType
         this.extentCurveExtent = value;
     }
 
+    public boolean isSetExtentCurveExtent() {
+        return (this.extentCurveExtent!= null);
+    }
+
     /**
      * Gets the value of the extentPointExtent property.
      * 
@@ -401,6 +449,10 @@ public class ArrestingGearTimeSliceType
      */
     public void setExtentPointExtent(JAXBElement<ElevatedPointPropertyType> value) {
         this.extentPointExtent = value;
+    }
+
+    public boolean isSetExtentPointExtent() {
+        return (this.extentPointExtent!= null);
     }
 
     /**
@@ -435,6 +487,14 @@ public class ArrestingGearTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -465,6 +525,14 @@ public class ArrestingGearTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -525,6 +593,10 @@ public class ArrestingGearTimeSliceType
             this.abstractArrestingGearExtension = value;
         }
 
+        public boolean isSetAbstractArrestingGearExtension() {
+            return (this.abstractArrestingGearExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -549,8 +621,16 @@ public class ArrestingGearTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

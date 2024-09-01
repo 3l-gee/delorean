@@ -98,6 +98,10 @@ public class FlightConditionCircumstanceType
         this.referenceLocation = value;
     }
 
+    public boolean isSetReferenceLocation() {
+        return (this.referenceLocation!= null);
+    }
+
     /**
      * Gets the value of the relationWithLocation property.
      * 
@@ -120,6 +124,10 @@ public class FlightConditionCircumstanceType
      */
     public void setRelationWithLocation(JAXBElement<CodeLocationQualifierType> value) {
         this.relationWithLocation = value;
+    }
+
+    public boolean isSetRelationWithLocation() {
+        return (this.relationWithLocation!= null);
     }
 
     /**
@@ -154,6 +162,14 @@ public class FlightConditionCircumstanceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -184,6 +200,14 @@ public class FlightConditionCircumstanceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -243,6 +267,10 @@ public class FlightConditionCircumstanceType
             this.abstractFlightConditionCircumstanceExtension = value;
         }
 
+        public boolean isSetAbstractFlightConditionCircumstanceExtension() {
+            return (this.abstractFlightConditionCircumstanceExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -267,8 +295,16 @@ public class FlightConditionCircumstanceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

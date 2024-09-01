@@ -108,6 +108,10 @@ public class SpecialDateTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the dateDay property.
      * 
@@ -130,6 +134,10 @@ public class SpecialDateTimeSliceType
      */
     public void setDateDay(JAXBElement<DateMonthDayType> value) {
         this.dateDay = value;
+    }
+
+    public boolean isSetDateDay() {
+        return (this.dateDay!= null);
     }
 
     /**
@@ -156,6 +164,10 @@ public class SpecialDateTimeSliceType
         this.dateYear = value;
     }
 
+    public boolean isSetDateYear() {
+        return (this.dateYear!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -178,6 +190,10 @@ public class SpecialDateTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -212,6 +228,14 @@ public class SpecialDateTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the authority property.
      * 
@@ -234,6 +258,10 @@ public class SpecialDateTimeSliceType
      */
     public void setAuthority(JAXBElement<OrganisationAuthorityPropertyType> value) {
         this.authority = value;
+    }
+
+    public boolean isSetAuthority() {
+        return (this.authority!= null);
     }
 
     /**
@@ -266,6 +294,14 @@ public class SpecialDateTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -326,6 +362,10 @@ public class SpecialDateTimeSliceType
             this.abstractSpecialDateExtension = value;
         }
 
+        public boolean isSetAbstractSpecialDateExtension() {
+            return (this.abstractSpecialDateExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -350,8 +390,16 @@ public class SpecialDateTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

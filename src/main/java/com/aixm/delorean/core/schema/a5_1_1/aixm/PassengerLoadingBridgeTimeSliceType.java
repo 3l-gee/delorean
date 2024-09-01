@@ -104,6 +104,10 @@ public class PassengerLoadingBridgeTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -126,6 +130,10 @@ public class PassengerLoadingBridgeTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -160,6 +168,14 @@ public class PassengerLoadingBridgeTimeSliceType
         return this.associatedStand;
     }
 
+    public boolean isSetAssociatedStand() {
+        return ((this.associatedStand!= null)&&(!this.associatedStand.isEmpty()));
+    }
+
+    public void unsetAssociatedStand() {
+        this.associatedStand = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -192,6 +208,14 @@ public class PassengerLoadingBridgeTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -222,6 +246,14 @@ public class PassengerLoadingBridgeTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -282,6 +314,10 @@ public class PassengerLoadingBridgeTimeSliceType
             this.abstractPassengerLoadingBridgeExtension = value;
         }
 
+        public boolean isSetAbstractPassengerLoadingBridgeExtension() {
+            return (this.abstractPassengerLoadingBridgeExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -306,8 +342,16 @@ public class PassengerLoadingBridgeTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

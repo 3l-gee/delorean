@@ -88,6 +88,10 @@ public class CoverageFunctionType {
         this.mappingRule = value;
     }
 
+    public boolean isSetMappingRule() {
+        return (this.mappingRule!= null);
+    }
+
     /**
      * gml:CoverageMappingRule provides a formal or informal description of the coverage function.
      * The mapping rule may be defined as an in-line string (gml:ruleDefinition) or via a remote reference through xlink:href (gml:ruleReference).  
@@ -115,6 +119,10 @@ public class CoverageFunctionType {
         this.coverageMappingRule = value;
     }
 
+    public boolean isSetCoverageMappingRule() {
+        return (this.coverageMappingRule!= null);
+    }
+
     /**
      * gml:GridFunction provides an explicit mapping rule for grid geometries, i.e. the domain shall be a geometry of type grid.  It describes the mapping of grid posts (discrete point grid coverage) or grid cells (discrete surface coverage) to the values in the range set.
      * The gml:startPoint is the index position of a point in the grid that is mapped to the first point in the range set (this is also the index position of the first grid post).  If the gml:startPoint property is omitted the gml:startPoint is assumed to be equal to the value of gml:low in the gml:Grid geometry. Subsequent points in the mapping are determined by the value of the gml:sequenceRule.
@@ -139,6 +147,10 @@ public class CoverageFunctionType {
      */
     public void setGridFunction(GridFunctionType value) {
         this.gridFunction = value;
+    }
+
+    public boolean isSetGridFunction() {
+        return (this.gridFunction!= null);
     }
 
 }

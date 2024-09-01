@@ -69,4 +69,8 @@ public class GridLimitsType {
         this.gridEnvelope = value;
     }
 
+    public boolean isSetGridEnvelope() {
+        return (this.gridEnvelope!= null);
+    }
+
 }

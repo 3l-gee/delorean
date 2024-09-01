@@ -71,4 +71,8 @@ public class EquipmentUnavailableAdjustmentPropertyType
         this.equipmentUnavailableAdjustment = value;
     }
 
+    public boolean isSetEquipmentUnavailableAdjustment() {
+        return (this.equipmentUnavailableAdjustment!= null);
+    }
+
 }

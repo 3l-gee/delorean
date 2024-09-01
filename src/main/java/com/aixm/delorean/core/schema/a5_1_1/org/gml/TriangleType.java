@@ -80,4 +80,8 @@ public class TriangleType
         this.exterior = value;
     }
 
+    public boolean isSetExterior() {
+        return (this.exterior!= null);
+    }
+
 }

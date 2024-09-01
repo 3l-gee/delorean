@@ -71,4 +71,8 @@ public class VerticalStructurePartPropertyType
         this.verticalStructurePart = value;
     }
 
+    public boolean isSetVerticalStructurePart() {
+        return (this.verticalStructurePart!= null);
+    }
+
 }

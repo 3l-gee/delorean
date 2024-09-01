@@ -105,6 +105,10 @@ public class SpecialNavigationSystemTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the designator property.
      * 
@@ -127,6 +131,10 @@ public class SpecialNavigationSystemTimeSliceType
      */
     public void setDesignator(JAXBElement<CodeSpecialNavigationChainDesignatorType> value) {
         this.designator = value;
+    }
+
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
     }
 
     /**
@@ -153,6 +161,10 @@ public class SpecialNavigationSystemTimeSliceType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the responsibleOrganisation property.
      * 
@@ -175,6 +187,10 @@ public class SpecialNavigationSystemTimeSliceType
      */
     public void setResponsibleOrganisation(JAXBElement<AuthorityForSpecialNavigationSystemPropertyType> value) {
         this.responsibleOrganisation = value;
+    }
+
+    public boolean isSetResponsibleOrganisation() {
+        return (this.responsibleOrganisation!= null);
     }
 
     /**
@@ -209,6 +225,14 @@ public class SpecialNavigationSystemTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -239,6 +263,14 @@ public class SpecialNavigationSystemTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -299,6 +331,10 @@ public class SpecialNavigationSystemTimeSliceType
             this.abstractSpecialNavigationSystemExtension = value;
         }
 
+        public boolean isSetAbstractSpecialNavigationSystemExtension() {
+            return (this.abstractSpecialNavigationSystemExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -323,8 +359,16 @@ public class SpecialNavigationSystemTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

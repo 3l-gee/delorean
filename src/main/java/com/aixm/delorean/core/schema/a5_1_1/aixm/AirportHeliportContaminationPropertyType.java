@@ -71,4 +71,8 @@ public class AirportHeliportContaminationPropertyType
         this.airportHeliportContamination = value;
     }
 
+    public boolean isSetAirportHeliportContamination() {
+        return (this.airportHeliportContamination!= null);
+    }
+
 }

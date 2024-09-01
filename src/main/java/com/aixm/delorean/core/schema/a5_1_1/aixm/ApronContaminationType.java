@@ -134,6 +134,10 @@ public class ApronContaminationType
         this.observationTime = value;
     }
 
+    public boolean isSetObservationTime() {
+        return (this.observationTime!= null);
+    }
+
     /**
      * Gets the value of the depth property.
      * 
@@ -156,6 +160,10 @@ public class ApronContaminationType
      */
     public void setDepth(JAXBElement<ValDepthType> value) {
         this.depth = value;
+    }
+
+    public boolean isSetDepth() {
+        return (this.depth!= null);
     }
 
     /**
@@ -182,6 +190,10 @@ public class ApronContaminationType
         this.frictionCoefficient = value;
     }
 
+    public boolean isSetFrictionCoefficient() {
+        return (this.frictionCoefficient!= null);
+    }
+
     /**
      * Gets the value of the frictionEstimation property.
      * 
@@ -204,6 +216,10 @@ public class ApronContaminationType
      */
     public void setFrictionEstimation(JAXBElement<CodeFrictionEstimateType> value) {
         this.frictionEstimation = value;
+    }
+
+    public boolean isSetFrictionEstimation() {
+        return (this.frictionEstimation!= null);
     }
 
     /**
@@ -230,6 +246,10 @@ public class ApronContaminationType
         this.frictionDevice = value;
     }
 
+    public boolean isSetFrictionDevice() {
+        return (this.frictionDevice!= null);
+    }
+
     /**
      * Gets the value of the obscuredLights property.
      * 
@@ -252,6 +272,10 @@ public class ApronContaminationType
      */
     public void setObscuredLights(JAXBElement<CodeYesNoType> value) {
         this.obscuredLights = value;
+    }
+
+    public boolean isSetObscuredLights() {
+        return (this.obscuredLights!= null);
     }
 
     /**
@@ -278,6 +302,10 @@ public class ApronContaminationType
         this.furtherClearanceTime = value;
     }
 
+    public boolean isSetFurtherClearanceTime() {
+        return (this.furtherClearanceTime!= null);
+    }
+
     /**
      * Gets the value of the furtherTotalClearance property.
      * 
@@ -300,6 +328,10 @@ public class ApronContaminationType
      */
     public void setFurtherTotalClearance(JAXBElement<CodeYesNoType> value) {
         this.furtherTotalClearance = value;
+    }
+
+    public boolean isSetFurtherTotalClearance() {
+        return (this.furtherTotalClearance!= null);
     }
 
     /**
@@ -326,6 +358,10 @@ public class ApronContaminationType
         this.nextObservationTime = value;
     }
 
+    public boolean isSetNextObservationTime() {
+        return (this.nextObservationTime!= null);
+    }
+
     /**
      * Gets the value of the proportion property.
      * 
@@ -348,6 +384,10 @@ public class ApronContaminationType
      */
     public void setProportion(JAXBElement<ValPercentType> value) {
         this.proportion = value;
+    }
+
+    public boolean isSetProportion() {
+        return (this.proportion!= null);
     }
 
     /**
@@ -382,6 +422,14 @@ public class ApronContaminationType
         return this.criticalRidge;
     }
 
+    public boolean isSetCriticalRidge() {
+        return ((this.criticalRidge!= null)&&(!this.criticalRidge.isEmpty()));
+    }
+
+    public void unsetCriticalRidge() {
+        this.criticalRidge = null;
+    }
+
     /**
      * Gets the value of the layer property.
      * 
@@ -412,6 +460,14 @@ public class ApronContaminationType
             layer = new ArrayList<>();
         }
         return this.layer;
+    }
+
+    public boolean isSetLayer() {
+        return ((this.layer!= null)&&(!this.layer.isEmpty()));
+    }
+
+    public void unsetLayer() {
+        this.layer = null;
     }
 
     /**
@@ -446,6 +502,14 @@ public class ApronContaminationType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -476,6 +540,14 @@ public class ApronContaminationType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -540,6 +612,10 @@ public class ApronContaminationType
             this.abstractSurfaceContaminationExtension = value;
         }
 
+        public boolean isSetAbstractSurfaceContaminationExtension() {
+            return (this.abstractSurfaceContaminationExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractApronContaminationExtension property.
          * 
@@ -562,6 +638,10 @@ public class ApronContaminationType
          */
         public void setAbstractApronContaminationExtension(AbstractExtensionType value) {
             this.abstractApronContaminationExtension = value;
+        }
+
+        public boolean isSetAbstractApronContaminationExtension() {
+            return (this.abstractApronContaminationExtension!= null);
         }
 
         /**
@@ -588,8 +668,16 @@ public class ApronContaminationType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

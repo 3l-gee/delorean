@@ -100,6 +100,10 @@ public class RunwayDeclaredDistanceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the declaredValue property.
      * 
@@ -130,6 +134,14 @@ public class RunwayDeclaredDistanceType
             declaredValue = new ArrayList<>();
         }
         return this.declaredValue;
+    }
+
+    public boolean isSetDeclaredValue() {
+        return ((this.declaredValue!= null)&&(!this.declaredValue.isEmpty()));
+    }
+
+    public void unsetDeclaredValue() {
+        this.declaredValue = null;
     }
 
     /**
@@ -164,6 +176,14 @@ public class RunwayDeclaredDistanceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -194,6 +214,14 @@ public class RunwayDeclaredDistanceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -253,6 +281,10 @@ public class RunwayDeclaredDistanceType
             this.abstractRunwayDeclaredDistanceExtension = value;
         }
 
+        public boolean isSetAbstractRunwayDeclaredDistanceExtension() {
+            return (this.abstractRunwayDeclaredDistanceExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -277,8 +309,16 @@ public class RunwayDeclaredDistanceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

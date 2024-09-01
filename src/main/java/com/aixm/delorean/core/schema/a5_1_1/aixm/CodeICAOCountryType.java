@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.constraints.Pattern;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,20 +39,19 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeICAOCountryType {
 
     @XmlValue
-    @Pattern(regexp = "([A-Z]|\\d)*")
-    protected String value;
+    protected CodeICAOCountryBaseType value;
     @XmlAttribute(name = "nilReason")
-    protected String nilReason;
+    protected NilReasonEnumeration nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeICAOCountryBaseType }
      *     
      */
-    public String getValue() {
+    public CodeICAOCountryBaseType getValue() {
         return value;
     }
 
@@ -61,11 +60,15 @@ public class CodeICAOCountryType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeICAOCountryBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeICAOCountryBaseType value) {
         this.value = value;
+    }
+
+    public boolean isSetValue() {
+        return (this.value!= null);
     }
 
     /**
@@ -73,10 +76,10 @@ public class CodeICAOCountryType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public String getNilReason() {
+    public NilReasonEnumeration getNilReason() {
         return nilReason;
     }
 
@@ -85,11 +88,15 @@ public class CodeICAOCountryType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public void setNilReason(String value) {
+    public void setNilReason(NilReasonEnumeration value) {
         this.nilReason = value;
+    }
+
+    public boolean isSetNilReason() {
+        return (this.nilReason!= null);
     }
 
 }

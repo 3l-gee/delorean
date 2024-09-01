@@ -98,6 +98,10 @@ public class MDMediumType
         this.name = value;
     }
 
+    public boolean isSetName() {
+        return (this.name!= null);
+    }
+
     /**
      * Gets the value of the density property.
      * 
@@ -130,6 +134,14 @@ public class MDMediumType
         return this.density;
     }
 
+    public boolean isSetDensity() {
+        return ((this.density!= null)&&(!this.density.isEmpty()));
+    }
+
+    public void unsetDensity() {
+        this.density = null;
+    }
+
     /**
      * Gets the value of the densityUnits property.
      * 
@@ -154,6 +166,10 @@ public class MDMediumType
         this.densityUnits = value;
     }
 
+    public boolean isSetDensityUnits() {
+        return (this.densityUnits!= null);
+    }
+
     /**
      * Gets the value of the volumes property.
      * 
@@ -176,6 +192,10 @@ public class MDMediumType
      */
     public void setVolumes(IntegerPropertyType value) {
         this.volumes = value;
+    }
+
+    public boolean isSetVolumes() {
+        return (this.volumes!= null);
     }
 
     /**
@@ -210,6 +230,14 @@ public class MDMediumType
         return this.mediumFormat;
     }
 
+    public boolean isSetMediumFormat() {
+        return ((this.mediumFormat!= null)&&(!this.mediumFormat.isEmpty()));
+    }
+
+    public void unsetMediumFormat() {
+        this.mediumFormat = null;
+    }
+
     /**
      * Gets the value of the mediumNote property.
      * 
@@ -232,6 +260,10 @@ public class MDMediumType
      */
     public void setMediumNote(CharacterStringPropertyType value) {
         this.mediumNote = value;
+    }
+
+    public boolean isSetMediumNote() {
+        return (this.mediumNote!= null);
     }
 
 }

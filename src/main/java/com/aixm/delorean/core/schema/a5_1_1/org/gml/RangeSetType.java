@@ -125,6 +125,14 @@ public class RangeSetType {
         return this.valueArray;
     }
 
+    public boolean isSetValueArray() {
+        return ((this.valueArray!= null)&&(!this.valueArray.isEmpty()));
+    }
+
+    public void unsetValueArray() {
+        this.valueArray = null;
+    }
+
     /**
      * gml:AbstractScalarValueList is an abstract element which acts as the head of a substitution group which contains gml:BooleanList, gml:CategoryList, gml:CountList and gml:QuantityList, and (transitively) the elements in their substitution groups.
      * 
@@ -145,11 +153,11 @@ public class RangeSetType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link BooleanOrNilReasonList }{@code >}
      * {@link JAXBElement }{@code <}{@link CodeOrNilReasonListType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IntegerOrNilReasonList }{@code >}
      * {@link JAXBElement }{@code <}{@link MeasureOrNilReasonListType }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
-     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      * </p>
      * 
      * 
@@ -161,6 +169,14 @@ public class RangeSetType {
             abstractScalarValueList = new ArrayList<>();
         }
         return this.abstractScalarValueList;
+    }
+
+    public boolean isSetAbstractScalarValueList() {
+        return ((this.abstractScalarValueList!= null)&&(!this.abstractScalarValueList.isEmpty()));
+    }
+
+    public void unsetAbstractScalarValueList() {
+        this.abstractScalarValueList = null;
     }
 
     /**
@@ -187,6 +203,10 @@ public class RangeSetType {
      */
     public void setDataBlock(DataBlockType value) {
         this.dataBlock = value;
+    }
+
+    public boolean isSetDataBlock() {
+        return (this.dataBlock!= null);
     }
 
     /**
@@ -219,6 +239,10 @@ public class RangeSetType {
      */
     public void setFile(FileType value) {
         this.file = value;
+    }
+
+    public boolean isSetFile() {
+        return (this.file!= null);
     }
 
 }

@@ -71,4 +71,8 @@ public class FlightRestrictionLevelPropertyType
         this.flightRestrictionLevel = value;
     }
 
+    public boolean isSetFlightRestrictionLevel() {
+        return (this.flightRestrictionLevel!= null);
+    }
+
 }

@@ -121,6 +121,10 @@ public class TopoComplexType
         this.maximalComplex = value;
     }
 
+    public boolean isSetMaximalComplex() {
+        return (this.maximalComplex!= null);
+    }
+
     /**
      * The property elements gml:subComplex, gml:superComplex and gml:maximalComplex provide an encoding for relationships between topology complexes as described for gml:TopoComplex above.
      * 
@@ -153,6 +157,14 @@ public class TopoComplexType
             superComplex = new ArrayList<>();
         }
         return this.superComplex;
+    }
+
+    public boolean isSetSuperComplex() {
+        return ((this.superComplex!= null)&&(!this.superComplex.isEmpty()));
+    }
+
+    public void unsetSuperComplex() {
+        this.superComplex = null;
     }
 
     /**
@@ -189,6 +201,14 @@ public class TopoComplexType
         return this.subComplex;
     }
 
+    public boolean isSetSubComplex() {
+        return ((this.subComplex!= null)&&(!this.subComplex.isEmpty()));
+    }
+
+    public void unsetSubComplex() {
+        this.subComplex = null;
+    }
+
     /**
      * The gml:topoPrimitiveMember property element encodes for the relationship between a topology complex and a single topology primitive.
      * 
@@ -223,6 +243,14 @@ public class TopoComplexType
         return this.topoPrimitiveMember;
     }
 
+    public boolean isSetTopoPrimitiveMember() {
+        return ((this.topoPrimitiveMember!= null)&&(!this.topoPrimitiveMember.isEmpty()));
+    }
+
+    public void unsetTopoPrimitiveMember() {
+        this.topoPrimitiveMember = null;
+    }
+
     /**
      * The gml:topoPrimitiveMembers property element encodes the relationship between a topology complex and an arbitrary number of topology primitives.
      * 
@@ -246,6 +274,10 @@ public class TopoComplexType
      */
     public void setTopoPrimitiveMembers(TopoPrimitiveArrayAssociationType value) {
         this.topoPrimitiveMembers = value;
+    }
+
+    public boolean isSetTopoPrimitiveMembers() {
+        return (this.topoPrimitiveMembers!= null);
     }
 
     /**
@@ -272,8 +304,16 @@ public class TopoComplexType
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setIsMaximal(java.lang.Boolean value) {
+    public void setIsMaximal(boolean value) {
         this.isMaximal = value;
+    }
+
+    public boolean isSetIsMaximal() {
+        return (this.isMaximal!= null);
+    }
+
+    public void unsetIsMaximal() {
+        this.isMaximal = null;
     }
 
     /**
@@ -298,6 +338,10 @@ public class TopoComplexType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

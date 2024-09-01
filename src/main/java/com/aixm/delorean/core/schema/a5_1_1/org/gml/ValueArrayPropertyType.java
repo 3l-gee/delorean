@@ -95,6 +95,7 @@ public class ValueArrayPropertyType {
      * {@link JAXBElement }{@code <}{@link AbstractTimePrimitiveType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractTimeTopologyPrimitiveType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.org.gml.Boolean }{@code >}
+     * {@link JAXBElement }{@code <}{@link BooleanOrNilReasonList }{@code >}
      * {@link JAXBElement }{@code <}{@link Category }{@code >}
      * {@link JAXBElement }{@code <}{@link CategoryExtentType }{@code >}
      * {@link JAXBElement }{@code <}{@link CodeOrNilReasonListType }{@code >}
@@ -103,9 +104,11 @@ public class ValueArrayPropertyType {
      * {@link JAXBElement }{@code <}{@link CompositeSurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link CompositeValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link Count }{@code >}
+     * {@link JAXBElement }{@code <}{@link CountExtentType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link GeometricComplexType }{@code >}
      * {@link JAXBElement }{@code <}{@link GridType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IntegerOrNilReasonList }{@code >}
      * {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
      * {@link JAXBElement }{@code <}{@link LinearRingType }{@code >}
      * {@link JAXBElement }{@code <}{@link MeasureOrNilReasonListType }{@code >}
@@ -114,6 +117,7 @@ public class ValueArrayPropertyType {
      * {@link JAXBElement }{@code <}{@link MultiPointType }{@code >}
      * {@link JAXBElement }{@code <}{@link MultiSolidType }{@code >}
      * {@link JAXBElement }{@code <}{@link MultiSurfaceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NilReasonType }{@code >}
      * {@link JAXBElement }{@code <}{@link OrientableCurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link OrientableSurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.org.gml.PointType }{@code >}
@@ -137,10 +141,6 @@ public class ValueArrayPropertyType {
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
-     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
-     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
-     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      * </p>
      * 
      * 
@@ -152,6 +152,14 @@ public class ValueArrayPropertyType {
             abstractValueOrAbstractGeometryOrAbstractTimeObject = new ArrayList<>();
         }
         return this.abstractValueOrAbstractGeometryOrAbstractTimeObject;
+    }
+
+    public boolean isSetAbstractValueOrAbstractGeometryOrAbstractTimeObject() {
+        return ((this.abstractValueOrAbstractGeometryOrAbstractTimeObject!= null)&&(!this.abstractValueOrAbstractGeometryOrAbstractTimeObject.isEmpty()));
+    }
+
+    public void unsetAbstractValueOrAbstractGeometryOrAbstractTimeObject() {
+        this.abstractValueOrAbstractGeometryOrAbstractTimeObject = null;
     }
 
     /**
@@ -178,8 +186,16 @@ public class ValueArrayPropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

@@ -147,6 +147,10 @@ public class ElevationTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -169,6 +173,10 @@ public class ElevationTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -195,6 +203,10 @@ public class ElevationTimeSliceType
         this.emissionClass = value;
     }
 
+    public boolean isSetEmissionClass() {
+        return (this.emissionClass!= null);
+    }
+
     /**
      * Gets the value of the mobile property.
      * 
@@ -217,6 +229,10 @@ public class ElevationTimeSliceType
      */
     public void setMobile(JAXBElement<CodeYesNoType> value) {
         this.mobile = value;
+    }
+
+    public boolean isSetMobile() {
+        return (this.mobile!= null);
     }
 
     /**
@@ -243,6 +259,10 @@ public class ElevationTimeSliceType
         this.magneticVariation = value;
     }
 
+    public boolean isSetMagneticVariation() {
+        return (this.magneticVariation!= null);
+    }
+
     /**
      * Gets the value of the magneticVariationAccuracy property.
      * 
@@ -265,6 +285,10 @@ public class ElevationTimeSliceType
      */
     public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticVariationAccuracy = value;
+    }
+
+    public boolean isSetMagneticVariationAccuracy() {
+        return (this.magneticVariationAccuracy!= null);
     }
 
     /**
@@ -291,6 +315,10 @@ public class ElevationTimeSliceType
         this.dateMagneticVariation = value;
     }
 
+    public boolean isSetDateMagneticVariation() {
+        return (this.dateMagneticVariation!= null);
+    }
+
     /**
      * Gets the value of the flightChecked property.
      * 
@@ -315,6 +343,10 @@ public class ElevationTimeSliceType
         this.flightChecked = value;
     }
 
+    public boolean isSetFlightChecked() {
+        return (this.flightChecked!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -337,6 +369,10 @@ public class ElevationTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -371,6 +407,14 @@ public class ElevationTimeSliceType
         return this.authority;
     }
 
+    public boolean isSetAuthority() {
+        return ((this.authority!= null)&&(!this.authority.isEmpty()));
+    }
+
+    public void unsetAuthority() {
+        this.authority = null;
+    }
+
     /**
      * Gets the value of the monitoring property.
      * 
@@ -401,6 +445,14 @@ public class ElevationTimeSliceType
             monitoring = new ArrayList<>();
         }
         return this.monitoring;
+    }
+
+    public boolean isSetMonitoring() {
+        return ((this.monitoring!= null)&&(!this.monitoring.isEmpty()));
+    }
+
+    public void unsetMonitoring() {
+        this.monitoring = null;
     }
 
     /**
@@ -435,6 +487,14 @@ public class ElevationTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -467,6 +527,14 @@ public class ElevationTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the angleNominal property.
      * 
@@ -489,6 +557,10 @@ public class ElevationTimeSliceType
      */
     public void setAngleNominal(JAXBElement<ValAngleType> value) {
         this.angleNominal = value;
+    }
+
+    public boolean isSetAngleNominal() {
+        return (this.angleNominal!= null);
     }
 
     /**
@@ -515,6 +587,10 @@ public class ElevationTimeSliceType
         this.angleMinimum = value;
     }
 
+    public boolean isSetAngleMinimum() {
+        return (this.angleMinimum!= null);
+    }
+
     /**
      * Gets the value of the angleSpan property.
      * 
@@ -539,6 +615,10 @@ public class ElevationTimeSliceType
         this.angleSpan = value;
     }
 
+    public boolean isSetAngleSpan() {
+        return (this.angleSpan!= null);
+    }
+
     /**
      * Gets the value of the angleAccuracy property.
      * 
@@ -561,6 +641,10 @@ public class ElevationTimeSliceType
      */
     public void setAngleAccuracy(JAXBElement<ValAngleType> value) {
         this.angleAccuracy = value;
+    }
+
+    public boolean isSetAngleAccuracy() {
+        return (this.angleAccuracy!= null);
     }
 
     /**
@@ -593,6 +677,14 @@ public class ElevationTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -657,6 +749,10 @@ public class ElevationTimeSliceType
             this.abstractElevationExtension = value;
         }
 
+        public boolean isSetAbstractElevationExtension() {
+            return (this.abstractElevationExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractNavaidEquipmentExtension property.
          * 
@@ -679,6 +775,10 @@ public class ElevationTimeSliceType
          */
         public void setAbstractNavaidEquipmentExtension(AbstractExtensionType value) {
             this.abstractNavaidEquipmentExtension = value;
+        }
+
+        public boolean isSetAbstractNavaidEquipmentExtension() {
+            return (this.abstractNavaidEquipmentExtension!= null);
         }
 
         /**
@@ -705,8 +805,16 @@ public class ElevationTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

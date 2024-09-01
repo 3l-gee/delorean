@@ -81,6 +81,10 @@ public class GeocentricCRSType
         this.usesCartesianCS = value;
     }
 
+    public boolean isSetUsesCartesianCS() {
+        return (this.usesCartesianCS!= null);
+    }
+
     /**
      * Gets the value of the usesSphericalCS property.
      * 
@@ -105,6 +109,10 @@ public class GeocentricCRSType
         this.usesSphericalCS = value;
     }
 
+    public boolean isSetUsesSphericalCS() {
+        return (this.usesSphericalCS!= null);
+    }
+
     /**
      * Gets the value of the usesGeodeticDatum property.
      * 
@@ -127,6 +135,10 @@ public class GeocentricCRSType
      */
     public void setUsesGeodeticDatum(GeodeticDatumPropertyType value) {
         this.usesGeodeticDatum = value;
+    }
+
+    public boolean isSetUsesGeodeticDatum() {
+        return (this.usesGeodeticDatum!= null);
     }
 
 }

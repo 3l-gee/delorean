@@ -104,6 +104,10 @@ public class NavaidComponentType
         this.collocationGroup = value;
     }
 
+    public boolean isSetCollocationGroup() {
+        return (this.collocationGroup!= null);
+    }
+
     /**
      * Gets the value of the markerPosition property.
      * 
@@ -128,6 +132,10 @@ public class NavaidComponentType
         this.markerPosition = value;
     }
 
+    public boolean isSetMarkerPosition() {
+        return (this.markerPosition!= null);
+    }
+
     /**
      * Gets the value of the providesNavigableLocation property.
      * 
@@ -150,6 +158,10 @@ public class NavaidComponentType
      */
     public void setProvidesNavigableLocation(JAXBElement<CodeYesNoType> value) {
         this.providesNavigableLocation = value;
+    }
+
+    public boolean isSetProvidesNavigableLocation() {
+        return (this.providesNavigableLocation!= null);
     }
 
     /**
@@ -184,6 +196,14 @@ public class NavaidComponentType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the theNavaidEquipment property.
      * 
@@ -206,6 +226,10 @@ public class NavaidComponentType
      */
     public void setTheNavaidEquipment(NavaidEquipmentPropertyType value) {
         this.theNavaidEquipment = value;
+    }
+
+    public boolean isSetTheNavaidEquipment() {
+        return (this.theNavaidEquipment!= null);
     }
 
     /**
@@ -238,6 +262,14 @@ public class NavaidComponentType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -297,6 +329,10 @@ public class NavaidComponentType
             this.abstractNavaidComponentExtension = value;
         }
 
+        public boolean isSetAbstractNavaidComponentExtension() {
+            return (this.abstractNavaidComponentExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -321,8 +357,16 @@ public class NavaidComponentType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

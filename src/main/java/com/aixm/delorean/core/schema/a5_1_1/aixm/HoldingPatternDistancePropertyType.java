@@ -71,4 +71,8 @@ public class HoldingPatternDistancePropertyType
         this.holdingPatternDistance = value;
     }
 
+    public boolean isSetHoldingPatternDistance() {
+        return (this.holdingPatternDistance!= null);
+    }
+
 }

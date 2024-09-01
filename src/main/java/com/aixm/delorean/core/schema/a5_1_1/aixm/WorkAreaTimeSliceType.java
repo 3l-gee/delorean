@@ -110,6 +110,10 @@ public class WorkAreaTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the plannedOperational property.
      * 
@@ -132,6 +136,10 @@ public class WorkAreaTimeSliceType
      */
     public void setPlannedOperational(JAXBElement<DateType> value) {
         this.plannedOperational = value;
+    }
+
+    public boolean isSetPlannedOperational() {
+        return (this.plannedOperational!= null);
     }
 
     /**
@@ -158,6 +166,10 @@ public class WorkAreaTimeSliceType
         this.associatedAirportHeliport = value;
     }
 
+    public boolean isSetAssociatedAirportHeliport() {
+        return (this.associatedAirportHeliport!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -180,6 +192,10 @@ public class WorkAreaTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -214,6 +230,14 @@ public class WorkAreaTimeSliceType
         return this.activation;
     }
 
+    public boolean isSetActivation() {
+        return ((this.activation!= null)&&(!this.activation.isEmpty()));
+    }
+
+    public void unsetActivation() {
+        this.activation = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -246,6 +270,14 @@ public class WorkAreaTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -276,6 +308,14 @@ public class WorkAreaTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -336,6 +376,10 @@ public class WorkAreaTimeSliceType
             this.abstractWorkAreaExtension = value;
         }
 
+        public boolean isSetAbstractWorkAreaExtension() {
+            return (this.abstractWorkAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -360,8 +404,16 @@ public class WorkAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -71,4 +71,8 @@ public class ObstacleAssessmentAreaPropertyType
         this.obstacleAssessmentArea = value;
     }
 
+    public boolean isSetObstacleAssessmentArea() {
+        return (this.obstacleAssessmentArea!= null);
+    }
+
 }

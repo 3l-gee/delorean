@@ -7,14 +7,12 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigInteger;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import org.w3._2001.xmlschema.NonNegativeInteger;
 
 
 /**
@@ -49,10 +47,8 @@ public class KnotType {
     @NotNull
     protected double value;
     @XmlElement(required = true)
-    @XmlSchemaType(name = "nonNegativeInteger")
     @NotNull
-    @DecimalMin(value = "0", inclusive = true)
-    protected BigInteger multiplicity;
+    protected NonNegativeInteger multiplicity;
     @NotNull
     protected double weight;
 
@@ -72,15 +68,19 @@ public class KnotType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return true;
+    }
+
     /**
      * Gets the value of the multiplicity property.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link NonNegativeInteger }
      *     
      */
-    public BigInteger getMultiplicity() {
+    public NonNegativeInteger getMultiplicity() {
         return multiplicity;
     }
 
@@ -89,11 +89,15 @@ public class KnotType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link NonNegativeInteger }
      *     
      */
-    public void setMultiplicity(BigInteger value) {
+    public void setMultiplicity(NonNegativeInteger value) {
         this.multiplicity = value;
+    }
+
+    public boolean isSetMultiplicity() {
+        return (this.multiplicity!= null);
     }
 
     /**
@@ -110,6 +114,10 @@ public class KnotType {
      */
     public void setWeight(double value) {
         this.weight = value;
+    }
+
+    public boolean isSetWeight() {
+        return true;
     }
 
 }

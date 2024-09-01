@@ -71,4 +71,8 @@ public class DirectedObservationAtDistanceType
         this.distance = value;
     }
 
+    public boolean isSetDistance() {
+        return (this.distance!= null);
+    }
+
 }

@@ -71,4 +71,8 @@ public class UnitAvailabilityPropertyType
         this.unitAvailability = value;
     }
 
+    public boolean isSetUnitAvailability() {
+        return (this.unitAvailability!= null);
+    }
+
 }

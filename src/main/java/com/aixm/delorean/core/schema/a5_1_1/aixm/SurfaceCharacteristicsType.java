@@ -128,6 +128,10 @@ public class SurfaceCharacteristicsType
         this.composition = value;
     }
 
+    public boolean isSetComposition() {
+        return (this.composition!= null);
+    }
+
     /**
      * Gets the value of the preparation property.
      * 
@@ -150,6 +154,10 @@ public class SurfaceCharacteristicsType
      */
     public void setPreparation(JAXBElement<CodeSurfacePreparationType> value) {
         this.preparation = value;
+    }
+
+    public boolean isSetPreparation() {
+        return (this.preparation!= null);
     }
 
     /**
@@ -176,6 +184,10 @@ public class SurfaceCharacteristicsType
         this.surfaceCondition = value;
     }
 
+    public boolean isSetSurfaceCondition() {
+        return (this.surfaceCondition!= null);
+    }
+
     /**
      * Gets the value of the classPCN property.
      * 
@@ -198,6 +210,10 @@ public class SurfaceCharacteristicsType
      */
     public void setClassPCN(JAXBElement<ValPCNType> value) {
         this.classPCN = value;
+    }
+
+    public boolean isSetClassPCN() {
+        return (this.classPCN!= null);
     }
 
     /**
@@ -224,6 +240,10 @@ public class SurfaceCharacteristicsType
         this.pavementTypePCN = value;
     }
 
+    public boolean isSetPavementTypePCN() {
+        return (this.pavementTypePCN!= null);
+    }
+
     /**
      * Gets the value of the pavementSubgradePCN property.
      * 
@@ -246,6 +266,10 @@ public class SurfaceCharacteristicsType
      */
     public void setPavementSubgradePCN(JAXBElement<CodePCNSubgradeType> value) {
         this.pavementSubgradePCN = value;
+    }
+
+    public boolean isSetPavementSubgradePCN() {
+        return (this.pavementSubgradePCN!= null);
     }
 
     /**
@@ -272,6 +296,10 @@ public class SurfaceCharacteristicsType
         this.maxTyrePressurePCN = value;
     }
 
+    public boolean isSetMaxTyrePressurePCN() {
+        return (this.maxTyrePressurePCN!= null);
+    }
+
     /**
      * Gets the value of the evaluationMethodPCN property.
      * 
@@ -294,6 +322,10 @@ public class SurfaceCharacteristicsType
      */
     public void setEvaluationMethodPCN(JAXBElement<CodePCNMethodType> value) {
         this.evaluationMethodPCN = value;
+    }
+
+    public boolean isSetEvaluationMethodPCN() {
+        return (this.evaluationMethodPCN!= null);
     }
 
     /**
@@ -320,6 +352,10 @@ public class SurfaceCharacteristicsType
         this.classLCN = value;
     }
 
+    public boolean isSetClassLCN() {
+        return (this.classLCN!= null);
+    }
+
     /**
      * Gets the value of the weightSIWL property.
      * 
@@ -342,6 +378,10 @@ public class SurfaceCharacteristicsType
      */
     public void setWeightSIWL(JAXBElement<ValWeightType> value) {
         this.weightSIWL = value;
+    }
+
+    public boolean isSetWeightSIWL() {
+        return (this.weightSIWL!= null);
     }
 
     /**
@@ -368,6 +408,10 @@ public class SurfaceCharacteristicsType
         this.tyrePressureSIWL = value;
     }
 
+    public boolean isSetTyrePressureSIWL() {
+        return (this.tyrePressureSIWL!= null);
+    }
+
     /**
      * Gets the value of the weightAUW property.
      * 
@@ -390,6 +434,10 @@ public class SurfaceCharacteristicsType
      */
     public void setWeightAUW(JAXBElement<ValWeightType> value) {
         this.weightAUW = value;
+    }
+
+    public boolean isSetWeightAUW() {
+        return (this.weightAUW!= null);
     }
 
     /**
@@ -424,6 +472,14 @@ public class SurfaceCharacteristicsType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -454,6 +510,14 @@ public class SurfaceCharacteristicsType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -513,6 +577,10 @@ public class SurfaceCharacteristicsType
             this.abstractSurfaceCharacteristicsExtension = value;
         }
 
+        public boolean isSetAbstractSurfaceCharacteristicsExtension() {
+            return (this.abstractSurfaceCharacteristicsExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -537,8 +605,16 @@ public class SurfaceCharacteristicsType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

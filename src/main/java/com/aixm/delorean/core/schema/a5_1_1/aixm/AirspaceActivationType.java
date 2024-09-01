@@ -133,6 +133,14 @@ public class AirspaceActivationType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -163,6 +171,14 @@ public class AirspaceActivationType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -197,6 +213,14 @@ public class AirspaceActivationType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the activity property.
      * 
@@ -221,6 +245,10 @@ public class AirspaceActivationType
         this.activity = value;
     }
 
+    public boolean isSetActivity() {
+        return (this.activity!= null);
+    }
+
     /**
      * Gets the value of the status property.
      * 
@@ -243,6 +271,10 @@ public class AirspaceActivationType
      */
     public void setStatus(JAXBElement<CodeStatusAirspaceType> value) {
         this.status = value;
+    }
+
+    public boolean isSetStatus() {
+        return (this.status!= null);
     }
 
     /**
@@ -277,6 +309,14 @@ public class AirspaceActivationType
         return this.levels;
     }
 
+    public boolean isSetLevels() {
+        return ((this.levels!= null)&&(!this.levels.isEmpty()));
+    }
+
+    public void unsetLevels() {
+        this.levels = null;
+    }
+
     /**
      * Gets the value of the user property.
      * 
@@ -307,6 +347,14 @@ public class AirspaceActivationType
             user = new ArrayList<>();
         }
         return this.user;
+    }
+
+    public boolean isSetUser() {
+        return ((this.user!= null)&&(!this.user.isEmpty()));
+    }
+
+    public void unsetUser() {
+        this.user = null;
     }
 
     /**
@@ -341,6 +389,14 @@ public class AirspaceActivationType
         return this.aircraft;
     }
 
+    public boolean isSetAircraft() {
+        return ((this.aircraft!= null)&&(!this.aircraft.isEmpty()));
+    }
+
+    public void unsetAircraft() {
+        this.aircraft = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -371,6 +427,14 @@ public class AirspaceActivationType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -435,6 +499,10 @@ public class AirspaceActivationType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractAirspaceActivationExtension property.
          * 
@@ -457,6 +525,10 @@ public class AirspaceActivationType
          */
         public void setAbstractAirspaceActivationExtension(AbstractExtensionType value) {
             this.abstractAirspaceActivationExtension = value;
+        }
+
+        public boolean isSetAbstractAirspaceActivationExtension() {
+            return (this.abstractAirspaceActivationExtension!= null);
         }
 
         /**
@@ -483,8 +555,16 @@ public class AirspaceActivationType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

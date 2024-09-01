@@ -71,4 +71,8 @@ public class FuelPropertyType
         this.fuel = value;
     }
 
+    public boolean isSetFuel() {
+        return (this.fuel!= null);
+    }
+
 }

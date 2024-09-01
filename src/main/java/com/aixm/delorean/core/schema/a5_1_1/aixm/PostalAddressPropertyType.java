@@ -71,4 +71,8 @@ public class PostalAddressPropertyType
         this.postalAddress = value;
     }
 
+    public boolean isSetPostalAddress() {
+        return (this.postalAddress!= null);
+    }
+
 }

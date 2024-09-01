@@ -119,6 +119,14 @@ public class SeaplaneLandingAreaTimeSliceType
         return this.rampSite;
     }
 
+    public boolean isSetRampSite() {
+        return ((this.rampSite!= null)&&(!this.rampSite.isEmpty()));
+    }
+
+    public void unsetRampSite() {
+        this.rampSite = null;
+    }
+
     /**
      * Gets the value of the dockSite property.
      * 
@@ -151,6 +159,14 @@ public class SeaplaneLandingAreaTimeSliceType
         return this.dockSite;
     }
 
+    public boolean isSetDockSite() {
+        return ((this.dockSite!= null)&&(!this.dockSite.isEmpty()));
+    }
+
+    public void unsetDockSite() {
+        this.dockSite = null;
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -173,6 +189,10 @@ public class SeaplaneLandingAreaTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -207,6 +227,14 @@ public class SeaplaneLandingAreaTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -239,6 +267,14 @@ public class SeaplaneLandingAreaTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -269,6 +305,14 @@ public class SeaplaneLandingAreaTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -329,6 +373,10 @@ public class SeaplaneLandingAreaTimeSliceType
             this.abstractSeaplaneLandingAreaExtension = value;
         }
 
+        public boolean isSetAbstractSeaplaneLandingAreaExtension() {
+            return (this.abstractSeaplaneLandingAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -353,8 +401,16 @@ public class SeaplaneLandingAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

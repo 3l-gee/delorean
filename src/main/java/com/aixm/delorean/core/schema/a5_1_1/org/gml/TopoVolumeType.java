@@ -93,6 +93,14 @@ public class TopoVolumeType
         return this.directedTopoSolid;
     }
 
+    public boolean isSetDirectedTopoSolid() {
+        return ((this.directedTopoSolid!= null)&&(!this.directedTopoSolid.isEmpty()));
+    }
+
+    public void unsetDirectedTopoSolid() {
+        this.directedTopoSolid = null;
+    }
+
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -115,6 +123,10 @@ public class TopoVolumeType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

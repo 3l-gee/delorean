@@ -71,4 +71,8 @@ public class ApronAreaAvailabilityPropertyType
         this.apronAreaAvailability = value;
     }
 
+    public boolean isSetApronAreaAvailability() {
+        return (this.apronAreaAvailability!= null);
+    }
+
 }

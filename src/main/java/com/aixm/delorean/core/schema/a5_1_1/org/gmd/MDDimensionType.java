@@ -84,6 +84,10 @@ public class MDDimensionType
         this.dimensionName = value;
     }
 
+    public boolean isSetDimensionName() {
+        return (this.dimensionName!= null);
+    }
+
     /**
      * Gets the value of the dimensionSize property.
      * 
@@ -108,6 +112,10 @@ public class MDDimensionType
         this.dimensionSize = value;
     }
 
+    public boolean isSetDimensionSize() {
+        return (this.dimensionSize!= null);
+    }
+
     /**
      * Gets the value of the resolution property.
      * 
@@ -130,6 +138,10 @@ public class MDDimensionType
      */
     public void setResolution(MeasurePropertyType value) {
         this.resolution = value;
+    }
+
+    public boolean isSetResolution() {
+        return (this.resolution!= null);
     }
 
 }

@@ -82,6 +82,10 @@ public class PointType
         this.horizontalAccuracy = value;
     }
 
+    public boolean isSetHorizontalAccuracy() {
+        return (this.horizontalAccuracy!= null);
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -112,6 +116,14 @@ public class PointType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
 }

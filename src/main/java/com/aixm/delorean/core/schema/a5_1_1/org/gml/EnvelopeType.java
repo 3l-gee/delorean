@@ -7,11 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -19,6 +17,7 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
+import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -71,13 +70,11 @@ public class EnvelopeType {
     @XmlSchemaType(name = "anyURI")
     protected String srsName;
     @XmlAttribute(name = "srsDimension")
-    @XmlSchemaType(name = "positiveInteger")
-    @DecimalMin(value = "1", inclusive = true)
-    protected BigInteger srsDimension;
+    protected PositiveInteger srsDimension;
     @XmlAttribute(name = "axisLabels")
-    protected List<String> axisLabels;
+    protected NCNameList axisLabels;
     @XmlAttribute(name = "uomLabels")
-    protected List<String> uomLabels;
+    protected NCNameList uomLabels;
 
     /**
      * Gets the value of the lowerCorner property.
@@ -103,6 +100,10 @@ public class EnvelopeType {
         this.lowerCorner = value;
     }
 
+    public boolean isSetLowerCorner() {
+        return (this.lowerCorner!= null);
+    }
+
     /**
      * Gets the value of the upperCorner property.
      * 
@@ -125,6 +126,10 @@ public class EnvelopeType {
      */
     public void setUpperCorner(DirectPositionType value) {
         this.upperCorner = value;
+    }
+
+    public boolean isSetUpperCorner() {
+        return (this.upperCorner!= null);
     }
 
     /**
@@ -159,6 +164,14 @@ public class EnvelopeType {
         return this.pos;
     }
 
+    public boolean isSetPos() {
+        return ((this.pos!= null)&&(!this.pos.isEmpty()));
+    }
+
+    public void unsetPos() {
+        this.pos = null;
+    }
+
     /**
      * Gets the value of the coordinates property.
      * 
@@ -181,6 +194,10 @@ public class EnvelopeType {
      */
     public void setCoordinates(CoordinatesType value) {
         this.coordinates = value;
+    }
+
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
     }
 
     /**
@@ -207,15 +224,19 @@ public class EnvelopeType {
         this.srsName = value;
     }
 
+    public boolean isSetSrsName() {
+        return (this.srsName!= null);
+    }
+
     /**
      * Gets the value of the srsDimension property.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public BigInteger getSrsDimension() {
+    public PositiveInteger getSrsDimension() {
         return srsDimension;
     }
 
@@ -224,75 +245,71 @@ public class EnvelopeType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link PositiveInteger }
      *     
      */
-    public void setSrsDimension(BigInteger value) {
+    public void setSrsDimension(PositiveInteger value) {
         this.srsDimension = value;
+    }
+
+    public boolean isSetSrsDimension() {
+        return (this.srsDimension!= null);
     }
 
     /**
      * Gets the value of the axisLabels property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the axisLabels property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAxisLabels().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the axisLabels property.
+     *     possible object is
+     *     {@link NCNameList }
+     *     
      */
-    public List<String> getAxisLabels() {
-        if (axisLabels == null) {
-            axisLabels = new ArrayList<>();
-        }
-        return this.axisLabels;
+    public NCNameList getAxisLabels() {
+        return axisLabels;
+    }
+
+    /**
+     * Sets the value of the axisLabels property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NCNameList }
+     *     
+     */
+    public void setAxisLabels(NCNameList value) {
+        this.axisLabels = value;
+    }
+
+    public boolean isSetAxisLabels() {
+        return (this.axisLabels!= null);
     }
 
     /**
      * Gets the value of the uomLabels property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the uomLabels property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getUomLabels().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the uomLabels property.
+     *     possible object is
+     *     {@link NCNameList }
+     *     
      */
-    public List<String> getUomLabels() {
-        if (uomLabels == null) {
-            uomLabels = new ArrayList<>();
-        }
-        return this.uomLabels;
+    public NCNameList getUomLabels() {
+        return uomLabels;
+    }
+
+    /**
+     * Sets the value of the uomLabels property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NCNameList }
+     *     
+     */
+    public void setUomLabels(NCNameList value) {
+        this.uomLabels = value;
+    }
+
+    public boolean isSetUomLabels() {
+        return (this.uomLabels!= null);
     }
 
 }

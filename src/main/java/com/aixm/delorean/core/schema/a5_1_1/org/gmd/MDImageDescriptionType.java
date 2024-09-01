@@ -116,6 +116,10 @@ public class MDImageDescriptionType
         this.illuminationElevationAngle = value;
     }
 
+    public boolean isSetIlluminationElevationAngle() {
+        return (this.illuminationElevationAngle!= null);
+    }
+
     /**
      * Gets the value of the illuminationAzimuthAngle property.
      * 
@@ -138,6 +142,10 @@ public class MDImageDescriptionType
      */
     public void setIlluminationAzimuthAngle(RealPropertyType value) {
         this.illuminationAzimuthAngle = value;
+    }
+
+    public boolean isSetIlluminationAzimuthAngle() {
+        return (this.illuminationAzimuthAngle!= null);
     }
 
     /**
@@ -164,6 +172,10 @@ public class MDImageDescriptionType
         this.imagingCondition = value;
     }
 
+    public boolean isSetImagingCondition() {
+        return (this.imagingCondition!= null);
+    }
+
     /**
      * Gets the value of the imageQualityCode property.
      * 
@@ -186,6 +198,10 @@ public class MDImageDescriptionType
      */
     public void setImageQualityCode(MDIdentifierPropertyType value) {
         this.imageQualityCode = value;
+    }
+
+    public boolean isSetImageQualityCode() {
+        return (this.imageQualityCode!= null);
     }
 
     /**
@@ -212,6 +228,10 @@ public class MDImageDescriptionType
         this.cloudCoverPercentage = value;
     }
 
+    public boolean isSetCloudCoverPercentage() {
+        return (this.cloudCoverPercentage!= null);
+    }
+
     /**
      * Gets the value of the processingLevelCode property.
      * 
@@ -234,6 +254,10 @@ public class MDImageDescriptionType
      */
     public void setProcessingLevelCode(MDIdentifierPropertyType value) {
         this.processingLevelCode = value;
+    }
+
+    public boolean isSetProcessingLevelCode() {
+        return (this.processingLevelCode!= null);
     }
 
     /**
@@ -260,6 +284,10 @@ public class MDImageDescriptionType
         this.compressionGenerationQuantity = value;
     }
 
+    public boolean isSetCompressionGenerationQuantity() {
+        return (this.compressionGenerationQuantity!= null);
+    }
+
     /**
      * Gets the value of the triangulationIndicator property.
      * 
@@ -282,6 +310,10 @@ public class MDImageDescriptionType
      */
     public void setTriangulationIndicator(BooleanPropertyType value) {
         this.triangulationIndicator = value;
+    }
+
+    public boolean isSetTriangulationIndicator() {
+        return (this.triangulationIndicator!= null);
     }
 
     /**
@@ -308,6 +340,10 @@ public class MDImageDescriptionType
         this.radiometricCalibrationDataAvailability = value;
     }
 
+    public boolean isSetRadiometricCalibrationDataAvailability() {
+        return (this.radiometricCalibrationDataAvailability!= null);
+    }
+
     /**
      * Gets the value of the cameraCalibrationInformationAvailability property.
      * 
@@ -330,6 +366,10 @@ public class MDImageDescriptionType
      */
     public void setCameraCalibrationInformationAvailability(BooleanPropertyType value) {
         this.cameraCalibrationInformationAvailability = value;
+    }
+
+    public boolean isSetCameraCalibrationInformationAvailability() {
+        return (this.cameraCalibrationInformationAvailability!= null);
     }
 
     /**
@@ -356,6 +396,10 @@ public class MDImageDescriptionType
         this.filmDistortionInformationAvailability = value;
     }
 
+    public boolean isSetFilmDistortionInformationAvailability() {
+        return (this.filmDistortionInformationAvailability!= null);
+    }
+
     /**
      * Gets the value of the lensDistortionInformationAvailability property.
      * 
@@ -378,6 +422,10 @@ public class MDImageDescriptionType
      */
     public void setLensDistortionInformationAvailability(BooleanPropertyType value) {
         this.lensDistortionInformationAvailability = value;
+    }
+
+    public boolean isSetLensDistortionInformationAvailability() {
+        return (this.lensDistortionInformationAvailability!= null);
     }
 
 }

@@ -149,6 +149,10 @@ public class AirTrafficManagementServiceTimeSliceType
         this.flightOperations = value;
     }
 
+    public boolean isSetFlightOperations() {
+        return (this.flightOperations!= null);
+    }
+
     /**
      * Gets the value of the rank property.
      * 
@@ -171,6 +175,10 @@ public class AirTrafficManagementServiceTimeSliceType
      */
     public void setRank(JAXBElement<CodeFacilityRankingType> value) {
         this.rank = value;
+    }
+
+    public boolean isSetRank() {
+        return (this.rank!= null);
     }
 
     /**
@@ -197,6 +205,10 @@ public class AirTrafficManagementServiceTimeSliceType
         this.compliantICAO = value;
     }
 
+    public boolean isSetCompliantICAO() {
+        return (this.compliantICAO!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -219,6 +231,10 @@ public class AirTrafficManagementServiceTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -245,6 +261,10 @@ public class AirTrafficManagementServiceTimeSliceType
         this.location = value;
     }
 
+    public boolean isSetLocation() {
+        return (this.location!= null);
+    }
+
     /**
      * Gets the value of the serviceProvider property.
      * 
@@ -267,6 +287,10 @@ public class AirTrafficManagementServiceTimeSliceType
      */
     public void setServiceProvider(JAXBElement<UnitPropertyType> value) {
         this.serviceProvider = value;
+    }
+
+    public boolean isSetServiceProvider() {
+        return (this.serviceProvider!= null);
     }
 
     /**
@@ -301,6 +325,14 @@ public class AirTrafficManagementServiceTimeSliceType
         return this.callSign;
     }
 
+    public boolean isSetCallSign() {
+        return ((this.callSign!= null)&&(!this.callSign.isEmpty()));
+    }
+
+    public void unsetCallSign() {
+        this.callSign = null;
+    }
+
     /**
      * Gets the value of the radioCommunication property.
      * 
@@ -331,6 +363,14 @@ public class AirTrafficManagementServiceTimeSliceType
             radioCommunication = new ArrayList<>();
         }
         return this.radioCommunication;
+    }
+
+    public boolean isSetRadioCommunication() {
+        return ((this.radioCommunication!= null)&&(!this.radioCommunication.isEmpty()));
+    }
+
+    public void unsetRadioCommunication() {
+        this.radioCommunication = null;
     }
 
     /**
@@ -365,6 +405,14 @@ public class AirTrafficManagementServiceTimeSliceType
         return this.groundCommunication;
     }
 
+    public boolean isSetGroundCommunication() {
+        return ((this.groundCommunication!= null)&&(!this.groundCommunication.isEmpty()));
+    }
+
+    public void unsetGroundCommunication() {
+        this.groundCommunication = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -395,6 +443,14 @@ public class AirTrafficManagementServiceTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
     }
 
     /**
@@ -429,6 +485,14 @@ public class AirTrafficManagementServiceTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -451,6 +515,10 @@ public class AirTrafficManagementServiceTimeSliceType
      */
     public void setType(JAXBElement<CodeServiceATFMType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -485,6 +553,14 @@ public class AirTrafficManagementServiceTimeSliceType
         return this.clientAirspace;
     }
 
+    public boolean isSetClientAirspace() {
+        return ((this.clientAirspace!= null)&&(!this.clientAirspace.isEmpty()));
+    }
+
+    public void unsetClientAirspace() {
+        this.clientAirspace = null;
+    }
+
     /**
      * Gets the value of the clientAerialRefuelling property.
      * 
@@ -515,6 +591,14 @@ public class AirTrafficManagementServiceTimeSliceType
             clientAerialRefuelling = new ArrayList<>();
         }
         return this.clientAerialRefuelling;
+    }
+
+    public boolean isSetClientAerialRefuelling() {
+        return ((this.clientAerialRefuelling!= null)&&(!this.clientAerialRefuelling.isEmpty()));
+    }
+
+    public void unsetClientAerialRefuelling() {
+        this.clientAerialRefuelling = null;
     }
 
     /**
@@ -549,6 +633,14 @@ public class AirTrafficManagementServiceTimeSliceType
         return this.clientRoute;
     }
 
+    public boolean isSetClientRoute() {
+        return ((this.clientRoute!= null)&&(!this.clientRoute.isEmpty()));
+    }
+
+    public void unsetClientRoute() {
+        this.clientRoute = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -579,6 +671,14 @@ public class AirTrafficManagementServiceTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -643,6 +743,10 @@ public class AirTrafficManagementServiceTimeSliceType
             this.abstractAirTrafficManagementServiceExtension = value;
         }
 
+        public boolean isSetAbstractAirTrafficManagementServiceExtension() {
+            return (this.abstractAirTrafficManagementServiceExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractServiceExtension property.
          * 
@@ -665,6 +769,10 @@ public class AirTrafficManagementServiceTimeSliceType
          */
         public void setAbstractServiceExtension(AbstractExtensionType value) {
             this.abstractServiceExtension = value;
+        }
+
+        public boolean isSetAbstractServiceExtension() {
+            return (this.abstractServiceExtension!= null);
         }
 
         /**
@@ -691,8 +799,16 @@ public class AirTrafficManagementServiceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

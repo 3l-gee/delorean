@@ -80,6 +80,10 @@ public class OrientableSurfaceType
         this.baseSurface = value;
     }
 
+    public boolean isSetBaseSurface() {
+        return (this.baseSurface!= null);
+    }
+
     /**
      * Gets the value of the orientation property.
      * 
@@ -106,6 +110,10 @@ public class OrientableSurfaceType
      */
     public void setOrientation(SignType value) {
         this.orientation = value;
+    }
+
+    public boolean isSetOrientation() {
+        return (this.orientation!= null);
     }
 
 }

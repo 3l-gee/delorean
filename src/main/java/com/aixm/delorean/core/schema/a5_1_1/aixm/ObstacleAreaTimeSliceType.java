@@ -116,6 +116,10 @@ public class ObstacleAreaTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the obstructionIdSurfaceCondition property.
      * 
@@ -138,6 +142,10 @@ public class ObstacleAreaTimeSliceType
      */
     public void setObstructionIdSurfaceCondition(JAXBElement<CodeObstacleAssessmentSurfaceType> value) {
         this.obstructionIdSurfaceCondition = value;
+    }
+
+    public boolean isSetObstructionIdSurfaceCondition() {
+        return (this.obstructionIdSurfaceCondition!= null);
     }
 
     /**
@@ -164,6 +172,10 @@ public class ObstacleAreaTimeSliceType
         this.referenceOwnerOrganisation = value;
     }
 
+    public boolean isSetReferenceOwnerOrganisation() {
+        return (this.referenceOwnerOrganisation!= null);
+    }
+
     /**
      * Gets the value of the referenceOwnerRunway property.
      * 
@@ -186,6 +198,10 @@ public class ObstacleAreaTimeSliceType
      */
     public void setReferenceOwnerRunway(JAXBElement<RunwayDirectionPropertyType> value) {
         this.referenceOwnerRunway = value;
+    }
+
+    public boolean isSetReferenceOwnerRunway() {
+        return (this.referenceOwnerRunway!= null);
     }
 
     /**
@@ -212,6 +228,10 @@ public class ObstacleAreaTimeSliceType
         this.referenceOwnerAirport = value;
     }
 
+    public boolean isSetReferenceOwnerAirport() {
+        return (this.referenceOwnerAirport!= null);
+    }
+
     /**
      * Gets the value of the surfaceExtent property.
      * 
@@ -234,6 +254,10 @@ public class ObstacleAreaTimeSliceType
      */
     public void setSurfaceExtent(JAXBElement<SurfacePropertyType> value) {
         this.surfaceExtent = value;
+    }
+
+    public boolean isSetSurfaceExtent() {
+        return (this.surfaceExtent!= null);
     }
 
     /**
@@ -268,6 +292,14 @@ public class ObstacleAreaTimeSliceType
         return this.obstacle;
     }
 
+    public boolean isSetObstacle() {
+        return ((this.obstacle!= null)&&(!this.obstacle.isEmpty()));
+    }
+
+    public void unsetObstacle() {
+        this.obstacle = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -300,6 +332,14 @@ public class ObstacleAreaTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -330,6 +370,14 @@ public class ObstacleAreaTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -390,6 +438,10 @@ public class ObstacleAreaTimeSliceType
             this.abstractObstacleAreaExtension = value;
         }
 
+        public boolean isSetAbstractObstacleAreaExtension() {
+            return (this.abstractObstacleAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -414,8 +466,16 @@ public class ObstacleAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

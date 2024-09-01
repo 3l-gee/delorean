@@ -71,4 +71,8 @@ public class ApronContaminationPropertyType
         this.apronContamination = value;
     }
 
+    public boolean isSetApronContamination() {
+        return (this.apronContamination!= null);
+    }
+
 }

@@ -132,6 +132,10 @@ public class AirspaceTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the designator property.
      * 
@@ -154,6 +158,10 @@ public class AirspaceTimeSliceType
      */
     public void setDesignator(JAXBElement<CodeAirspaceDesignatorType> value) {
         this.designator = value;
+    }
+
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
     }
 
     /**
@@ -180,6 +188,10 @@ public class AirspaceTimeSliceType
         this.localType = value;
     }
 
+    public boolean isSetLocalType() {
+        return (this.localType!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -202,6 +214,10 @@ public class AirspaceTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -228,6 +244,10 @@ public class AirspaceTimeSliceType
         this.designatorICAO = value;
     }
 
+    public boolean isSetDesignatorICAO() {
+        return (this.designatorICAO!= null);
+    }
+
     /**
      * Gets the value of the controlType property.
      * 
@@ -252,6 +272,10 @@ public class AirspaceTimeSliceType
         this.controlType = value;
     }
 
+    public boolean isSetControlType() {
+        return (this.controlType!= null);
+    }
+
     /**
      * Gets the value of the upperLowerSeparation property.
      * 
@@ -274,6 +298,10 @@ public class AirspaceTimeSliceType
      */
     public void setUpperLowerSeparation(JAXBElement<ValFLType> value) {
         this.upperLowerSeparation = value;
+    }
+
+    public boolean isSetUpperLowerSeparation() {
+        return (this.upperLowerSeparation!= null);
     }
 
     /**
@@ -308,6 +336,14 @@ public class AirspaceTimeSliceType
         return this.clazz;
     }
 
+    public boolean isSetClazz() {
+        return ((this.clazz!= null)&&(!this.clazz.isEmpty()));
+    }
+
+    public void unsetClazz() {
+        this.clazz = null;
+    }
+
     /**
      * Gets the value of the protectedRoute property.
      * 
@@ -330,6 +366,10 @@ public class AirspaceTimeSliceType
      */
     public void setProtectedRoute(JAXBElement<RoutePropertyType> value) {
         this.protectedRoute = value;
+    }
+
+    public boolean isSetProtectedRoute() {
+        return (this.protectedRoute!= null);
     }
 
     /**
@@ -364,6 +404,14 @@ public class AirspaceTimeSliceType
         return this.geometryComponent;
     }
 
+    public boolean isSetGeometryComponent() {
+        return ((this.geometryComponent!= null)&&(!this.geometryComponent.isEmpty()));
+    }
+
+    public void unsetGeometryComponent() {
+        this.geometryComponent = null;
+    }
+
     /**
      * Gets the value of the activation property.
      * 
@@ -394,6 +442,14 @@ public class AirspaceTimeSliceType
             activation = new ArrayList<>();
         }
         return this.activation;
+    }
+
+    public boolean isSetActivation() {
+        return ((this.activation!= null)&&(!this.activation.isEmpty()));
+    }
+
+    public void unsetActivation() {
+        this.activation = null;
     }
 
     /**
@@ -428,6 +484,14 @@ public class AirspaceTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -458,6 +522,14 @@ public class AirspaceTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -518,6 +590,10 @@ public class AirspaceTimeSliceType
             this.abstractAirspaceExtension = value;
         }
 
+        public boolean isSetAbstractAirspaceExtension() {
+            return (this.abstractAirspaceExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -542,8 +618,16 @@ public class AirspaceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

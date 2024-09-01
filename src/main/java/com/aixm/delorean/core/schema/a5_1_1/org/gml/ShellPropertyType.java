@@ -80,4 +80,8 @@ public class ShellPropertyType {
         this.shell = value;
     }
 
+    public boolean isSetShell() {
+        return (this.shell!= null);
+    }
+
 }

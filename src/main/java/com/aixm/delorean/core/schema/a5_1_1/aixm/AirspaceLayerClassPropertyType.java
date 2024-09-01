@@ -71,4 +71,8 @@ public class AirspaceLayerClassPropertyType
         this.airspaceLayerClass = value;
     }
 
+    public boolean isSetAirspaceLayerClass() {
+        return (this.airspaceLayerClass!= null);
+    }
+
 }

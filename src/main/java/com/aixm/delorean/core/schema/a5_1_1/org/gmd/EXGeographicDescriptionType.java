@@ -71,4 +71,8 @@ public class EXGeographicDescriptionType
         this.geographicIdentifier = value;
     }
 
+    public boolean isSetGeographicIdentifier() {
+        return (this.geographicIdentifier!= null);
+    }
+
 }

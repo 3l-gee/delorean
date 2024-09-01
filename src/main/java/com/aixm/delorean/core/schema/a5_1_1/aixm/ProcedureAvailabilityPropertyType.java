@@ -71,4 +71,8 @@ public class ProcedureAvailabilityPropertyType
         this.procedureAvailability = value;
     }
 
+    public boolean isSetProcedureAvailability() {
+        return (this.procedureAvailability!= null);
+    }
+
 }

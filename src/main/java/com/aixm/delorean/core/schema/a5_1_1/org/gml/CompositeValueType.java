@@ -101,6 +101,14 @@ public class CompositeValueType
         return this.valueComponent;
     }
 
+    public boolean isSetValueComponent() {
+        return ((this.valueComponent!= null)&&(!this.valueComponent.isEmpty()));
+    }
+
+    public void unsetValueComponent() {
+        this.valueComponent = null;
+    }
+
     /**
      * Property that contains Values.
      * 
@@ -126,6 +134,10 @@ public class CompositeValueType
         this.valueComponents = value;
     }
 
+    public boolean isSetValueComponents() {
+        return (this.valueComponents!= null);
+    }
+
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -148,6 +160,10 @@ public class CompositeValueType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

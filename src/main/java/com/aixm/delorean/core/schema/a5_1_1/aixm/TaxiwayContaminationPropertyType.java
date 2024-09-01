@@ -71,4 +71,8 @@ public class TaxiwayContaminationPropertyType
         this.taxiwayContamination = value;
     }
 
+    public boolean isSetTaxiwayContamination() {
+        return (this.taxiwayContamination!= null);
+    }
+
 }

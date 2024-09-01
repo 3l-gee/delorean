@@ -123,6 +123,10 @@ public class ObstructionType
         this.requiredClearance = value;
     }
 
+    public boolean isSetRequiredClearance() {
+        return (this.requiredClearance!= null);
+    }
+
     /**
      * Gets the value of the minimumAltitude property.
      * 
@@ -145,6 +149,10 @@ public class ObstructionType
      */
     public void setMinimumAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumAltitude = value;
+    }
+
+    public boolean isSetMinimumAltitude() {
+        return (this.minimumAltitude!= null);
     }
 
     /**
@@ -171,6 +179,10 @@ public class ObstructionType
         this.surfacePenetration = value;
     }
 
+    public boolean isSetSurfacePenetration() {
+        return (this.surfacePenetration!= null);
+    }
+
     /**
      * Gets the value of the slopePenetration property.
      * 
@@ -193,6 +205,10 @@ public class ObstructionType
      */
     public void setSlopePenetration(JAXBElement<ValAngleType> value) {
         this.slopePenetration = value;
+    }
+
+    public boolean isSetSlopePenetration() {
+        return (this.slopePenetration!= null);
     }
 
     /**
@@ -219,6 +235,10 @@ public class ObstructionType
         this.controlling = value;
     }
 
+    public boolean isSetControlling() {
+        return (this.controlling!= null);
+    }
+
     /**
      * Gets the value of the closeIn property.
      * 
@@ -243,6 +263,10 @@ public class ObstructionType
         this.closeIn = value;
     }
 
+    public boolean isSetCloseIn() {
+        return (this.closeIn!= null);
+    }
+
     /**
      * Gets the value of the theVerticalStructure property.
      * 
@@ -265,6 +289,10 @@ public class ObstructionType
      */
     public void setTheVerticalStructure(JAXBElement<VerticalStructurePropertyType> value) {
         this.theVerticalStructure = value;
+    }
+
+    public boolean isSetTheVerticalStructure() {
+        return (this.theVerticalStructure!= null);
     }
 
     /**
@@ -299,6 +327,14 @@ public class ObstructionType
         return this.adjustment;
     }
 
+    public boolean isSetAdjustment() {
+        return ((this.adjustment!= null)&&(!this.adjustment.isEmpty()));
+    }
+
+    public void unsetAdjustment() {
+        this.adjustment = null;
+    }
+
     /**
      * Gets the value of the obstaclePlacement property.
      * 
@@ -329,6 +365,14 @@ public class ObstructionType
             obstaclePlacement = new ArrayList<>();
         }
         return this.obstaclePlacement;
+    }
+
+    public boolean isSetObstaclePlacement() {
+        return ((this.obstaclePlacement!= null)&&(!this.obstaclePlacement.isEmpty()));
+    }
+
+    public void unsetObstaclePlacement() {
+        this.obstaclePlacement = null;
     }
 
     /**
@@ -363,6 +407,14 @@ public class ObstructionType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -393,6 +445,14 @@ public class ObstructionType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -452,6 +512,10 @@ public class ObstructionType
             this.abstractObstructionExtension = value;
         }
 
+        public boolean isSetAbstractObstructionExtension() {
+            return (this.abstractObstructionExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -476,8 +540,16 @@ public class ObstructionType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

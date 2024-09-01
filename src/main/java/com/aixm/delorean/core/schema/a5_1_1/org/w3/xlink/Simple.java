@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
@@ -57,15 +56,13 @@ public class Simple {
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
     public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    protected String href;
+    protected HrefType href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
-    protected String role;
+    protected RoleType role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
-    protected String arcrole;
+    protected ArcroleType arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String titleAttribute;
+    protected TitleAttrType titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
@@ -108,15 +105,23 @@ public class Simple {
         return this.content;
     }
 
+    public boolean isSetContent() {
+        return ((this.content!= null)&&(!this.content.isEmpty()));
+    }
+
+    public void unsetContent() {
+        this.content = null;
+    }
+
     /**
      * Gets the value of the href property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link HrefType }
      *     
      */
-    public String getHref() {
+    public HrefType getHref() {
         return href;
     }
 
@@ -125,11 +130,15 @@ public class Simple {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link HrefType }
      *     
      */
-    public void setHref(String value) {
+    public void setHref(HrefType value) {
         this.href = value;
+    }
+
+    public boolean isSetHref() {
+        return (this.href!= null);
     }
 
     /**
@@ -137,10 +146,10 @@ public class Simple {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
@@ -149,11 +158,15 @@ public class Simple {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public void setRole(String value) {
+    public void setRole(RoleType value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -161,10 +174,10 @@ public class Simple {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public String getArcrole() {
+    public ArcroleType getArcrole() {
         return arcrole;
     }
 
@@ -173,11 +186,15 @@ public class Simple {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public void setArcrole(String value) {
+    public void setArcrole(ArcroleType value) {
         this.arcrole = value;
+    }
+
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
     }
 
     /**
@@ -185,10 +202,10 @@ public class Simple {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public String getTitleAttribute() {
+    public TitleAttrType getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -197,11 +214,15 @@ public class Simple {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public void setTitleAttribute(String value) {
+    public void setTitleAttribute(TitleAttrType value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -228,6 +249,10 @@ public class Simple {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -250,6 +275,10 @@ public class Simple {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
+    }
+
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
 }

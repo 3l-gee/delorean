@@ -7,10 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.math.BigDecimal;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -58,16 +55,12 @@ public class DMSAngleType {
     @NotNull
     @Valid
     protected DegreesType degrees;
-    @DecimalMin(value = "0.00", inclusive = true)
-    @DecimalMax(value = "60.00", inclusive = false)
-    protected BigDecimal decimalMinutes;
+    @XmlSchemaType(name = "decimal")
+    protected DecimalMinutesType decimalMinutes;
     @XmlSchemaType(name = "nonNegativeInteger")
-    @DecimalMin(value = "0", inclusive = true)
-    @DecimalMax(value = "59", inclusive = true)
-    protected Integer minutes;
-    @DecimalMin(value = "0.00", inclusive = true)
-    @DecimalMax(value = "60.00", inclusive = false)
-    protected BigDecimal seconds;
+    protected ArcMinutesType minutes;
+    @XmlSchemaType(name = "decimal")
+    protected ArcSecondsType seconds;
 
     /**
      * Gets the value of the degrees property.
@@ -93,15 +86,19 @@ public class DMSAngleType {
         this.degrees = value;
     }
 
+    public boolean isSetDegrees() {
+        return (this.degrees!= null);
+    }
+
     /**
      * Gets the value of the decimalMinutes property.
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link DecimalMinutesType }
      *     
      */
-    public BigDecimal getDecimalMinutes() {
+    public DecimalMinutesType getDecimalMinutes() {
         return decimalMinutes;
     }
 
@@ -110,11 +107,15 @@ public class DMSAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link DecimalMinutesType }
      *     
      */
-    public void setDecimalMinutes(BigDecimal value) {
+    public void setDecimalMinutes(DecimalMinutesType value) {
         this.decimalMinutes = value;
+    }
+
+    public boolean isSetDecimalMinutes() {
+        return (this.decimalMinutes!= null);
     }
 
     /**
@@ -122,10 +123,10 @@ public class DMSAngleType {
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link ArcMinutesType }
      *     
      */
-    public Integer getMinutes() {
+    public ArcMinutesType getMinutes() {
         return minutes;
     }
 
@@ -134,11 +135,15 @@ public class DMSAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link ArcMinutesType }
      *     
      */
-    public void setMinutes(Integer value) {
+    public void setMinutes(ArcMinutesType value) {
         this.minutes = value;
+    }
+
+    public boolean isSetMinutes() {
+        return (this.minutes!= null);
     }
 
     /**
@@ -146,10 +151,10 @@ public class DMSAngleType {
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link ArcSecondsType }
      *     
      */
-    public BigDecimal getSeconds() {
+    public ArcSecondsType getSeconds() {
         return seconds;
     }
 
@@ -158,11 +163,15 @@ public class DMSAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link ArcSecondsType }
      *     
      */
-    public void setSeconds(BigDecimal value) {
+    public void setSeconds(ArcSecondsType value) {
         this.seconds = value;
+    }
+
+    public boolean isSetSeconds() {
+        return (this.seconds!= null);
     }
 
 }

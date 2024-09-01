@@ -124,6 +124,10 @@ public class AircraftStandTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -146,6 +150,10 @@ public class AircraftStandTimeSliceType
      */
     public void setType(JAXBElement<CodeAircraftStandType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -172,6 +180,10 @@ public class AircraftStandTimeSliceType
         this.visualDockingSystem = value;
     }
 
+    public boolean isSetVisualDockingSystem() {
+        return (this.visualDockingSystem!= null);
+    }
+
     /**
      * Gets the value of the surfaceProperties property.
      * 
@@ -194,6 +206,10 @@ public class AircraftStandTimeSliceType
      */
     public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
+    }
+
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
     }
 
     /**
@@ -220,6 +236,10 @@ public class AircraftStandTimeSliceType
         this.location = value;
     }
 
+    public boolean isSetLocation() {
+        return (this.location!= null);
+    }
+
     /**
      * Gets the value of the apronLocation property.
      * 
@@ -244,6 +264,10 @@ public class AircraftStandTimeSliceType
         this.apronLocation = value;
     }
 
+    public boolean isSetApronLocation() {
+        return (this.apronLocation!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -266,6 +290,10 @@ public class AircraftStandTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -300,6 +328,14 @@ public class AircraftStandTimeSliceType
         return this.contaminant;
     }
 
+    public boolean isSetContaminant() {
+        return ((this.contaminant!= null)&&(!this.contaminant.isEmpty()));
+    }
+
+    public void unsetContaminant() {
+        this.contaminant = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -330,6 +366,14 @@ public class AircraftStandTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -364,6 +408,14 @@ public class AircraftStandTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -394,6 +446,14 @@ public class AircraftStandTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -454,6 +514,10 @@ public class AircraftStandTimeSliceType
             this.abstractAircraftStandExtension = value;
         }
 
+        public boolean isSetAbstractAircraftStandExtension() {
+            return (this.abstractAircraftStandExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -478,8 +542,16 @@ public class AircraftStandTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

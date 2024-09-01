@@ -93,6 +93,14 @@ public class MultiPointType
         return this.pointMember;
     }
 
+    public boolean isSetPointMember() {
+        return ((this.pointMember!= null)&&(!this.pointMember.isEmpty()));
+    }
+
+    public void unsetPointMember() {
+        this.pointMember = null;
+    }
+
     /**
      * This property element contains a list of points. The order of the elements is significant and shall be preserved when processing the array.
      * 
@@ -116,6 +124,10 @@ public class MultiPointType
      */
     public void setPointMembers(PointArrayPropertyType value) {
         this.pointMembers = value;
+    }
+
+    public boolean isSetPointMembers() {
+        return (this.pointMembers!= null);
     }
 
 }

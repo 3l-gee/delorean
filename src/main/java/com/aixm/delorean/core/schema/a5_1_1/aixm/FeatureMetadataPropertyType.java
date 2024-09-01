@@ -71,4 +71,8 @@ public class FeatureMetadataPropertyType
         this.mdMetadata = value;
     }
 
+    public boolean isSetMDMetadata() {
+        return (this.mdMetadata!= null);
+    }
+
 }

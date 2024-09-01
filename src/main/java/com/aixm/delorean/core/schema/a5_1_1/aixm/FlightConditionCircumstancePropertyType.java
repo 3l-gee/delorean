@@ -71,4 +71,8 @@ public class FlightConditionCircumstancePropertyType
         this.flightConditionCircumstance = value;
     }
 
+    public boolean isSetFlightConditionCircumstance() {
+        return (this.flightConditionCircumstance!= null);
+    }
+
 }

@@ -107,6 +107,10 @@ public class MarkingElementType
         this.colour = value;
     }
 
+    public boolean isSetColour() {
+        return (this.colour!= null);
+    }
+
     /**
      * Gets the value of the style property.
      * 
@@ -129,6 +133,10 @@ public class MarkingElementType
      */
     public void setStyle(JAXBElement<CodeMarkingStyleType> value) {
         this.style = value;
+    }
+
+    public boolean isSetStyle() {
+        return (this.style!= null);
     }
 
     /**
@@ -155,6 +163,10 @@ public class MarkingElementType
         this.extentCurveExtent = value;
     }
 
+    public boolean isSetExtentCurveExtent() {
+        return (this.extentCurveExtent!= null);
+    }
+
     /**
      * Gets the value of the extentSurfaceExtent property.
      * 
@@ -179,6 +191,10 @@ public class MarkingElementType
         this.extentSurfaceExtent = value;
     }
 
+    public boolean isSetExtentSurfaceExtent() {
+        return (this.extentSurfaceExtent!= null);
+    }
+
     /**
      * Gets the value of the extentLocation property.
      * 
@@ -201,6 +217,10 @@ public class MarkingElementType
      */
     public void setExtentLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.extentLocation = value;
+    }
+
+    public boolean isSetExtentLocation() {
+        return (this.extentLocation!= null);
     }
 
     /**
@@ -235,6 +255,14 @@ public class MarkingElementType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -265,6 +293,14 @@ public class MarkingElementType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -324,6 +360,10 @@ public class MarkingElementType
             this.abstractMarkingElementExtension = value;
         }
 
+        public boolean isSetAbstractMarkingElementExtension() {
+            return (this.abstractMarkingElementExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -348,8 +388,16 @@ public class MarkingElementType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

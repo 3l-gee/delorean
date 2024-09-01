@@ -71,4 +71,8 @@ public class AltitudeAdjustmentPropertyType
         this.altitudeAdjustment = value;
     }
 
+    public boolean isSetAltitudeAdjustment() {
+        return (this.altitudeAdjustment!= null);
+    }
+
 }

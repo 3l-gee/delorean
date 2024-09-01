@@ -120,6 +120,14 @@ public class FlightConditionCombinationType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -150,6 +158,14 @@ public class FlightConditionCombinationType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -184,6 +200,14 @@ public class FlightConditionCombinationType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the logicalOperator property.
      * 
@@ -206,6 +230,10 @@ public class FlightConditionCombinationType
      */
     public void setLogicalOperator(JAXBElement<CodeFlowConditionOperationType> value) {
         this.logicalOperator = value;
+    }
+
+    public boolean isSetLogicalOperator() {
+        return (this.logicalOperator!= null);
     }
 
     /**
@@ -240,6 +268,14 @@ public class FlightConditionCombinationType
         return this.element;
     }
 
+    public boolean isSetElement() {
+        return ((this.element!= null)&&(!this.element.isEmpty()));
+    }
+
+    public void unsetElement() {
+        this.element = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -270,6 +306,14 @@ public class FlightConditionCombinationType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -334,6 +378,10 @@ public class FlightConditionCombinationType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractFlightConditionCombinationExtension property.
          * 
@@ -356,6 +404,10 @@ public class FlightConditionCombinationType
          */
         public void setAbstractFlightConditionCombinationExtension(AbstractExtensionType value) {
             this.abstractFlightConditionCombinationExtension = value;
+        }
+
+        public boolean isSetAbstractFlightConditionCombinationExtension() {
+            return (this.abstractFlightConditionCombinationExtension!= null);
         }
 
         /**
@@ -382,8 +434,16 @@ public class FlightConditionCombinationType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

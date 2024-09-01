@@ -98,6 +98,10 @@ public class CallsignDetailType
         this.callSign = value;
     }
 
+    public boolean isSetCallSign() {
+        return (this.callSign!= null);
+    }
+
     /**
      * Gets the value of the language property.
      * 
@@ -120,6 +124,10 @@ public class CallsignDetailType
      */
     public void setLanguage(JAXBElement<CodeLanguageType> value) {
         this.language = value;
+    }
+
+    public boolean isSetLanguage() {
+        return (this.language!= null);
     }
 
     /**
@@ -154,6 +162,14 @@ public class CallsignDetailType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -184,6 +200,14 @@ public class CallsignDetailType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -243,6 +267,10 @@ public class CallsignDetailType
             this.abstractCallsignDetailExtension = value;
         }
 
+        public boolean isSetAbstractCallsignDetailExtension() {
+            return (this.abstractCallsignDetailExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -267,8 +295,16 @@ public class CallsignDetailType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

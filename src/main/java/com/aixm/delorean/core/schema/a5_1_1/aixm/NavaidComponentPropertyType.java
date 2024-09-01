@@ -71,4 +71,8 @@ public class NavaidComponentPropertyType
         this.navaidComponent = value;
     }
 
+    public boolean isSetNavaidComponent() {
+        return (this.navaidComponent!= null);
+    }
+
 }

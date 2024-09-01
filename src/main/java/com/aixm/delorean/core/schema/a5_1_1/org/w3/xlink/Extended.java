@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -58,10 +57,9 @@ public class Extended {
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
     public static final TypeType TYPE = TypeType.EXTENDED;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
-    protected String role;
+    protected RoleType role;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String titleAttribute;
+    protected TitleAttrType titleAttribute;
 
     /**
      * Gets the value of the extendedModel property.
@@ -98,15 +96,23 @@ public class Extended {
         return this.extendedModel;
     }
 
+    public boolean isSetExtendedModel() {
+        return ((this.extendedModel!= null)&&(!this.extendedModel.isEmpty()));
+    }
+
+    public void unsetExtendedModel() {
+        this.extendedModel = null;
+    }
+
     /**
      * Gets the value of the role property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
@@ -115,11 +121,15 @@ public class Extended {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public void setRole(String value) {
+    public void setRole(RoleType value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -127,10 +137,10 @@ public class Extended {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public String getTitleAttribute() {
+    public TitleAttrType getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -139,11 +149,15 @@ public class Extended {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public void setTitleAttribute(String value) {
+    public void setTitleAttribute(TitleAttrType value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
 }

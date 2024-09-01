@@ -101,6 +101,10 @@ public class AirspaceGeometryComponentType
         this.operation = value;
     }
 
+    public boolean isSetOperation() {
+        return (this.operation!= null);
+    }
+
     /**
      * Gets the value of the operationSequence property.
      * 
@@ -123,6 +127,10 @@ public class AirspaceGeometryComponentType
      */
     public void setOperationSequence(JAXBElement<NoSequenceType> value) {
         this.operationSequence = value;
+    }
+
+    public boolean isSetOperationSequence() {
+        return (this.operationSequence!= null);
     }
 
     /**
@@ -157,6 +165,14 @@ public class AirspaceGeometryComponentType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the theAirspaceVolume property.
      * 
@@ -179,6 +195,10 @@ public class AirspaceGeometryComponentType
      */
     public void setTheAirspaceVolume(JAXBElement<AirspaceVolumePropertyType> value) {
         this.theAirspaceVolume = value;
+    }
+
+    public boolean isSetTheAirspaceVolume() {
+        return (this.theAirspaceVolume!= null);
     }
 
     /**
@@ -211,6 +231,14 @@ public class AirspaceGeometryComponentType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -270,6 +298,10 @@ public class AirspaceGeometryComponentType
             this.abstractAirspaceGeometryComponentExtension = value;
         }
 
+        public boolean isSetAbstractAirspaceGeometryComponentExtension() {
+            return (this.abstractAirspaceGeometryComponentExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -294,8 +326,16 @@ public class AirspaceGeometryComponentType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

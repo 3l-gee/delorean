@@ -10,14 +10,11 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -50,26 +47,21 @@ public class ArcType {
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
     public static final TypeType TYPE = TypeType.ARC;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
-    protected String arcrole;
+    protected ArcroleType arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String titleAttribute;
+    protected TitleAttrType titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
     @XmlAttribute(name = "from", namespace = "http://www.w3.org/1999/xlink")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
-    protected String from;
+    protected FromType from;
     /**
      * from and to have default behavior when values are missing
      * 
      */
     @XmlAttribute(name = "to", namespace = "http://www.w3.org/1999/xlink")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
-    protected String to;
+    protected ToType to;
 
     /**
      * Gets the value of the title property.
@@ -103,15 +95,23 @@ public class ArcType {
         return this.title;
     }
 
+    public boolean isSetTitle() {
+        return ((this.title!= null)&&(!this.title.isEmpty()));
+    }
+
+    public void unsetTitle() {
+        this.title = null;
+    }
+
     /**
      * Gets the value of the arcrole property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public String getArcrole() {
+    public ArcroleType getArcrole() {
         return arcrole;
     }
 
@@ -120,11 +120,15 @@ public class ArcType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public void setArcrole(String value) {
+    public void setArcrole(ArcroleType value) {
         this.arcrole = value;
+    }
+
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
     }
 
     /**
@@ -132,10 +136,10 @@ public class ArcType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public String getTitleAttribute() {
+    public TitleAttrType getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -144,11 +148,15 @@ public class ArcType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public void setTitleAttribute(String value) {
+    public void setTitleAttribute(TitleAttrType value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -175,6 +183,10 @@ public class ArcType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -199,15 +211,19 @@ public class ArcType {
         this.actuate = value;
     }
 
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
+    }
+
     /**
      * Gets the value of the from property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link FromType }
      *     
      */
-    public String getFrom() {
+    public FromType getFrom() {
         return from;
     }
 
@@ -216,11 +232,15 @@ public class ArcType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link FromType }
      *     
      */
-    public void setFrom(String value) {
+    public void setFrom(FromType value) {
         this.from = value;
+    }
+
+    public boolean isSetFrom() {
+        return (this.from!= null);
     }
 
     /**
@@ -228,10 +248,10 @@ public class ArcType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ToType }
      *     
      */
-    public String getTo() {
+    public ToType getTo() {
         return to;
     }
 
@@ -240,12 +260,16 @@ public class ArcType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ToType }
      *     
      * @see #getTo()
      */
-    public void setTo(String value) {
+    public void setTo(ToType value) {
         this.to = value;
+    }
+
+    public boolean isSetTo() {
+        return (this.to!= null);
     }
 
 }

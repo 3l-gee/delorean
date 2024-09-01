@@ -210,6 +210,10 @@ public class MDMetadataType
         this.fileIdentifier = value;
     }
 
+    public boolean isSetFileIdentifier() {
+        return (this.fileIdentifier!= null);
+    }
+
     /**
      * Gets the value of the language property.
      * 
@@ -232,6 +236,10 @@ public class MDMetadataType
      */
     public void setLanguage(CharacterStringPropertyType value) {
         this.language = value;
+    }
+
+    public boolean isSetLanguage() {
+        return (this.language!= null);
     }
 
     /**
@@ -258,6 +266,10 @@ public class MDMetadataType
         this.characterSet = value;
     }
 
+    public boolean isSetCharacterSet() {
+        return (this.characterSet!= null);
+    }
+
     /**
      * Gets the value of the parentIdentifier property.
      * 
@@ -280,6 +292,10 @@ public class MDMetadataType
      */
     public void setParentIdentifier(CharacterStringPropertyType value) {
         this.parentIdentifier = value;
+    }
+
+    public boolean isSetParentIdentifier() {
+        return (this.parentIdentifier!= null);
     }
 
     /**
@@ -314,6 +330,14 @@ public class MDMetadataType
         return this.hierarchyLevel;
     }
 
+    public boolean isSetHierarchyLevel() {
+        return ((this.hierarchyLevel!= null)&&(!this.hierarchyLevel.isEmpty()));
+    }
+
+    public void unsetHierarchyLevel() {
+        this.hierarchyLevel = null;
+    }
+
     /**
      * Gets the value of the hierarchyLevelName property.
      * 
@@ -344,6 +368,14 @@ public class MDMetadataType
             hierarchyLevelName = new ArrayList<>();
         }
         return this.hierarchyLevelName;
+    }
+
+    public boolean isSetHierarchyLevelName() {
+        return ((this.hierarchyLevelName!= null)&&(!this.hierarchyLevelName.isEmpty()));
+    }
+
+    public void unsetHierarchyLevelName() {
+        this.hierarchyLevelName = null;
     }
 
     /**
@@ -378,6 +410,14 @@ public class MDMetadataType
         return this.contact;
     }
 
+    public boolean isSetContact() {
+        return ((this.contact!= null)&&(!this.contact.isEmpty()));
+    }
+
+    public void unsetContact() {
+        this.contact = null;
+    }
+
     /**
      * Gets the value of the dateStamp property.
      * 
@@ -400,6 +440,10 @@ public class MDMetadataType
      */
     public void setDateStamp(DatePropertyType value) {
         this.dateStamp = value;
+    }
+
+    public boolean isSetDateStamp() {
+        return (this.dateStamp!= null);
     }
 
     /**
@@ -426,6 +470,10 @@ public class MDMetadataType
         this.metadataStandardName = value;
     }
 
+    public boolean isSetMetadataStandardName() {
+        return (this.metadataStandardName!= null);
+    }
+
     /**
      * Gets the value of the metadataStandardVersion property.
      * 
@@ -450,6 +498,10 @@ public class MDMetadataType
         this.metadataStandardVersion = value;
     }
 
+    public boolean isSetMetadataStandardVersion() {
+        return (this.metadataStandardVersion!= null);
+    }
+
     /**
      * Gets the value of the dataSetURI property.
      * 
@@ -472,6 +524,10 @@ public class MDMetadataType
      */
     public void setDataSetURI(CharacterStringPropertyType value) {
         this.dataSetURI = value;
+    }
+
+    public boolean isSetDataSetURI() {
+        return (this.dataSetURI!= null);
     }
 
     /**
@@ -506,6 +562,14 @@ public class MDMetadataType
         return this.locale;
     }
 
+    public boolean isSetLocale() {
+        return ((this.locale!= null)&&(!this.locale.isEmpty()));
+    }
+
+    public void unsetLocale() {
+        this.locale = null;
+    }
+
     /**
      * Gets the value of the spatialRepresentationInfo property.
      * 
@@ -536,6 +600,14 @@ public class MDMetadataType
             spatialRepresentationInfo = new ArrayList<>();
         }
         return this.spatialRepresentationInfo;
+    }
+
+    public boolean isSetSpatialRepresentationInfo() {
+        return ((this.spatialRepresentationInfo!= null)&&(!this.spatialRepresentationInfo.isEmpty()));
+    }
+
+    public void unsetSpatialRepresentationInfo() {
+        this.spatialRepresentationInfo = null;
     }
 
     /**
@@ -570,6 +642,14 @@ public class MDMetadataType
         return this.referenceSystemInfo;
     }
 
+    public boolean isSetReferenceSystemInfo() {
+        return ((this.referenceSystemInfo!= null)&&(!this.referenceSystemInfo.isEmpty()));
+    }
+
+    public void unsetReferenceSystemInfo() {
+        this.referenceSystemInfo = null;
+    }
+
     /**
      * Gets the value of the metadataExtensionInfo property.
      * 
@@ -600,6 +680,14 @@ public class MDMetadataType
             metadataExtensionInfo = new ArrayList<>();
         }
         return this.metadataExtensionInfo;
+    }
+
+    public boolean isSetMetadataExtensionInfo() {
+        return ((this.metadataExtensionInfo!= null)&&(!this.metadataExtensionInfo.isEmpty()));
+    }
+
+    public void unsetMetadataExtensionInfo() {
+        this.metadataExtensionInfo = null;
     }
 
     /**
@@ -634,6 +722,14 @@ public class MDMetadataType
         return this.identificationInfo;
     }
 
+    public boolean isSetIdentificationInfo() {
+        return ((this.identificationInfo!= null)&&(!this.identificationInfo.isEmpty()));
+    }
+
+    public void unsetIdentificationInfo() {
+        this.identificationInfo = null;
+    }
+
     /**
      * Gets the value of the contentInfo property.
      * 
@@ -666,6 +762,14 @@ public class MDMetadataType
         return this.contentInfo;
     }
 
+    public boolean isSetContentInfo() {
+        return ((this.contentInfo!= null)&&(!this.contentInfo.isEmpty()));
+    }
+
+    public void unsetContentInfo() {
+        this.contentInfo = null;
+    }
+
     /**
      * Gets the value of the distributionInfo property.
      * 
@@ -688,6 +792,10 @@ public class MDMetadataType
      */
     public void setDistributionInfo(MDDistributionPropertyType value) {
         this.distributionInfo = value;
+    }
+
+    public boolean isSetDistributionInfo() {
+        return (this.distributionInfo!= null);
     }
 
     /**
@@ -722,6 +830,14 @@ public class MDMetadataType
         return this.dataQualityInfo;
     }
 
+    public boolean isSetDataQualityInfo() {
+        return ((this.dataQualityInfo!= null)&&(!this.dataQualityInfo.isEmpty()));
+    }
+
+    public void unsetDataQualityInfo() {
+        this.dataQualityInfo = null;
+    }
+
     /**
      * Gets the value of the portrayalCatalogueInfo property.
      * 
@@ -752,6 +868,14 @@ public class MDMetadataType
             portrayalCatalogueInfo = new ArrayList<>();
         }
         return this.portrayalCatalogueInfo;
+    }
+
+    public boolean isSetPortrayalCatalogueInfo() {
+        return ((this.portrayalCatalogueInfo!= null)&&(!this.portrayalCatalogueInfo.isEmpty()));
+    }
+
+    public void unsetPortrayalCatalogueInfo() {
+        this.portrayalCatalogueInfo = null;
     }
 
     /**
@@ -786,6 +910,14 @@ public class MDMetadataType
         return this.metadataConstraints;
     }
 
+    public boolean isSetMetadataConstraints() {
+        return ((this.metadataConstraints!= null)&&(!this.metadataConstraints.isEmpty()));
+    }
+
+    public void unsetMetadataConstraints() {
+        this.metadataConstraints = null;
+    }
+
     /**
      * Gets the value of the applicationSchemaInfo property.
      * 
@@ -818,6 +950,14 @@ public class MDMetadataType
         return this.applicationSchemaInfo;
     }
 
+    public boolean isSetApplicationSchemaInfo() {
+        return ((this.applicationSchemaInfo!= null)&&(!this.applicationSchemaInfo.isEmpty()));
+    }
+
+    public void unsetApplicationSchemaInfo() {
+        this.applicationSchemaInfo = null;
+    }
+
     /**
      * Gets the value of the metadataMaintenance property.
      * 
@@ -840,6 +980,10 @@ public class MDMetadataType
      */
     public void setMetadataMaintenance(MDMaintenanceInformationPropertyType value) {
         this.metadataMaintenance = value;
+    }
+
+    public boolean isSetMetadataMaintenance() {
+        return (this.metadataMaintenance!= null);
     }
 
     /**
@@ -874,6 +1018,14 @@ public class MDMetadataType
         return this.series;
     }
 
+    public boolean isSetSeries() {
+        return ((this.series!= null)&&(!this.series.isEmpty()));
+    }
+
+    public void unsetSeries() {
+        this.series = null;
+    }
+
     /**
      * Gets the value of the describes property.
      * 
@@ -904,6 +1056,14 @@ public class MDMetadataType
             describes = new ArrayList<>();
         }
         return this.describes;
+    }
+
+    public boolean isSetDescribes() {
+        return ((this.describes!= null)&&(!this.describes.isEmpty()));
+    }
+
+    public void unsetDescribes() {
+        this.describes = null;
     }
 
     /**
@@ -938,6 +1098,14 @@ public class MDMetadataType
         return this.propertyType;
     }
 
+    public boolean isSetPropertyType() {
+        return ((this.propertyType!= null)&&(!this.propertyType.isEmpty()));
+    }
+
+    public void unsetPropertyType() {
+        this.propertyType = null;
+    }
+
     /**
      * Gets the value of the featureType property.
      * 
@@ -970,6 +1138,14 @@ public class MDMetadataType
         return this.featureType;
     }
 
+    public boolean isSetFeatureType() {
+        return ((this.featureType!= null)&&(!this.featureType.isEmpty()));
+    }
+
+    public void unsetFeatureType() {
+        this.featureType = null;
+    }
+
     /**
      * Gets the value of the featureAttribute property.
      * 
@@ -1000,6 +1176,14 @@ public class MDMetadataType
             featureAttribute = new ArrayList<>();
         }
         return this.featureAttribute;
+    }
+
+    public boolean isSetFeatureAttribute() {
+        return ((this.featureAttribute!= null)&&(!this.featureAttribute.isEmpty()));
+    }
+
+    public void unsetFeatureAttribute() {
+        this.featureAttribute = null;
     }
 
 }

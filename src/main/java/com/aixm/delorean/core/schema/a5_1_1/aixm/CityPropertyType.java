@@ -71,4 +71,8 @@ public class CityPropertyType
         this.city = value;
     }
 
+    public boolean isSetCity() {
+        return (this.city!= null);
+    }
+
 }

@@ -71,4 +71,8 @@ public class ServiceOperationalStatusPropertyType
         this.serviceOperationalStatus = value;
     }
 
+    public boolean isSetServiceOperationalStatus() {
+        return (this.serviceOperationalStatus!= null);
+    }
+
 }

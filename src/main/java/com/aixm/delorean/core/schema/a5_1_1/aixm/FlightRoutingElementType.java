@@ -148,6 +148,10 @@ public class FlightRoutingElementType
         this.orderNumber = value;
     }
 
+    public boolean isSetOrderNumber() {
+        return (this.orderNumber!= null);
+    }
+
     /**
      * Gets the value of the speed property.
      * 
@@ -170,6 +174,10 @@ public class FlightRoutingElementType
      */
     public void setSpeed(JAXBElement<ValSpeedType> value) {
         this.speed = value;
+    }
+
+    public boolean isSetSpeed() {
+        return (this.speed!= null);
     }
 
     /**
@@ -196,6 +204,10 @@ public class FlightRoutingElementType
         this.speedReference = value;
     }
 
+    public boolean isSetSpeedReference() {
+        return (this.speedReference!= null);
+    }
+
     /**
      * Gets the value of the speedCriteria property.
      * 
@@ -218,6 +230,10 @@ public class FlightRoutingElementType
      */
     public void setSpeedCriteria(JAXBElement<CodeComparisonType> value) {
         this.speedCriteria = value;
+    }
+
+    public boolean isSetSpeedCriteria() {
+        return (this.speedCriteria!= null);
     }
 
     /**
@@ -252,6 +268,14 @@ public class FlightRoutingElementType
         return this.flightLevel;
     }
 
+    public boolean isSetFlightLevel() {
+        return ((this.flightLevel!= null)&&(!this.flightLevel.isEmpty()));
+    }
+
+    public void unsetFlightLevel() {
+        this.flightLevel = null;
+    }
+
     /**
      * Gets the value of the elementDirectFlightElement property.
      * 
@@ -274,6 +298,10 @@ public class FlightRoutingElementType
      */
     public void setElementDirectFlightElement(JAXBElement<DirectFlightSegmentPropertyType> value) {
         this.elementDirectFlightElement = value;
+    }
+
+    public boolean isSetElementDirectFlightElement() {
+        return (this.elementDirectFlightElement!= null);
     }
 
     /**
@@ -300,6 +328,10 @@ public class FlightRoutingElementType
         this.elementRoutePortionElement = value;
     }
 
+    public boolean isSetElementRoutePortionElement() {
+        return (this.elementRoutePortionElement!= null);
+    }
+
     /**
      * Gets the value of the elementStandardInstrumentDepartureElement property.
      * 
@@ -322,6 +354,10 @@ public class FlightRoutingElementType
      */
     public void setElementStandardInstrumentDepartureElement(JAXBElement<StandardInstrumentDeparturePropertyType> value) {
         this.elementStandardInstrumentDepartureElement = value;
+    }
+
+    public boolean isSetElementStandardInstrumentDepartureElement() {
+        return (this.elementStandardInstrumentDepartureElement!= null);
     }
 
     /**
@@ -348,6 +384,10 @@ public class FlightRoutingElementType
         this.elementStandardInstrumentArrivalElement = value;
     }
 
+    public boolean isSetElementStandardInstrumentArrivalElement() {
+        return (this.elementStandardInstrumentArrivalElement!= null);
+    }
+
     /**
      * Gets the value of the pointElementFixDesignatedPoint property.
      * 
@@ -370,6 +410,10 @@ public class FlightRoutingElementType
      */
     public void setPointElementFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.pointElementFixDesignatedPoint = value;
+    }
+
+    public boolean isSetPointElementFixDesignatedPoint() {
+        return (this.pointElementFixDesignatedPoint!= null);
     }
 
     /**
@@ -396,6 +440,10 @@ public class FlightRoutingElementType
         this.pointElementNavaidSystem = value;
     }
 
+    public boolean isSetPointElementNavaidSystem() {
+        return (this.pointElementNavaidSystem!= null);
+    }
+
     /**
      * Gets the value of the pointElementPosition property.
      * 
@@ -418,6 +466,10 @@ public class FlightRoutingElementType
      */
     public void setPointElementPosition(JAXBElement<PointPropertyType> value) {
         this.pointElementPosition = value;
+    }
+
+    public boolean isSetPointElementPosition() {
+        return (this.pointElementPosition!= null);
     }
 
     /**
@@ -444,6 +496,10 @@ public class FlightRoutingElementType
         this.pointElementRunwayPoint = value;
     }
 
+    public boolean isSetPointElementRunwayPoint() {
+        return (this.pointElementRunwayPoint!= null);
+    }
+
     /**
      * Gets the value of the pointElementAimingPoint property.
      * 
@@ -466,6 +522,10 @@ public class FlightRoutingElementType
      */
     public void setPointElementAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.pointElementAimingPoint = value;
+    }
+
+    public boolean isSetPointElementAimingPoint() {
+        return (this.pointElementAimingPoint!= null);
     }
 
     /**
@@ -492,6 +552,10 @@ public class FlightRoutingElementType
         this.pointElementAirportReferencePoint = value;
     }
 
+    public boolean isSetPointElementAirportReferencePoint() {
+        return (this.pointElementAirportReferencePoint!= null);
+    }
+
     /**
      * Gets the value of the elementAirspaceElement property.
      * 
@@ -514,6 +578,10 @@ public class FlightRoutingElementType
      */
     public void setElementAirspaceElement(JAXBElement<AirspacePropertyType> value) {
         this.elementAirspaceElement = value;
+    }
+
+    public boolean isSetElementAirspaceElement() {
+        return (this.elementAirspaceElement!= null);
     }
 
     /**
@@ -540,6 +608,10 @@ public class FlightRoutingElementType
         this.elementAirportHeliportElement = value;
     }
 
+    public boolean isSetElementAirportHeliportElement() {
+        return (this.elementAirportHeliportElement!= null);
+    }
+
     /**
      * Gets the value of the elementAerialRefuellingElement property.
      * 
@@ -562,6 +634,10 @@ public class FlightRoutingElementType
      */
     public void setElementAerialRefuellingElement(JAXBElement<AerialRefuellingPropertyType> value) {
         this.elementAerialRefuellingElement = value;
+    }
+
+    public boolean isSetElementAerialRefuellingElement() {
+        return (this.elementAerialRefuellingElement!= null);
     }
 
     /**
@@ -596,6 +672,14 @@ public class FlightRoutingElementType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -626,6 +710,14 @@ public class FlightRoutingElementType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -685,6 +777,10 @@ public class FlightRoutingElementType
             this.abstractFlightRoutingElementExtension = value;
         }
 
+        public boolean isSetAbstractFlightRoutingElementExtension() {
+            return (this.abstractFlightRoutingElementExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -709,8 +805,16 @@ public class FlightRoutingElementType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

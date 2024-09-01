@@ -80,4 +80,8 @@ public class RectangleType
         this.exterior = value;
     }
 
+    public boolean isSetExterior() {
+        return (this.exterior!= null);
+    }
+
 }

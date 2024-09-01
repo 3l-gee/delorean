@@ -71,4 +71,8 @@ public class SurfaceContaminationLayerPropertyType
         this.surfaceContaminationLayer = value;
     }
 
+    public boolean isSetSurfaceContaminationLayer() {
+        return (this.surfaceContaminationLayer!= null);
+    }
+
 }

@@ -71,4 +71,8 @@ public class DirectFlightSegmentPropertyType
         this.directFlightSegment = value;
     }
 
+    public boolean isSetDirectFlightSegment() {
+        return (this.directFlightSegment!= null);
+    }
+
 }

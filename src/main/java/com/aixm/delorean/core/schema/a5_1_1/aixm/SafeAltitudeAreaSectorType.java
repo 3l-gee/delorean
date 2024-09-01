@@ -106,6 +106,10 @@ public class SafeAltitudeAreaSectorType
         this.bufferWidth = value;
     }
 
+    public boolean isSetBufferWidth() {
+        return (this.bufferWidth!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -128,6 +132,10 @@ public class SafeAltitudeAreaSectorType
      */
     public void setExtent(JAXBElement<SurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -162,6 +170,14 @@ public class SafeAltitudeAreaSectorType
         return this.significantObstacle;
     }
 
+    public boolean isSetSignificantObstacle() {
+        return ((this.significantObstacle!= null)&&(!this.significantObstacle.isEmpty()));
+    }
+
+    public void unsetSignificantObstacle() {
+        this.significantObstacle = null;
+    }
+
     /**
      * Gets the value of the sectorDefinition property.
      * 
@@ -184,6 +200,10 @@ public class SafeAltitudeAreaSectorType
      */
     public void setSectorDefinition(JAXBElement<CircleSectorPropertyType> value) {
         this.sectorDefinition = value;
+    }
+
+    public boolean isSetSectorDefinition() {
+        return (this.sectorDefinition!= null);
     }
 
     /**
@@ -218,6 +238,14 @@ public class SafeAltitudeAreaSectorType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -248,6 +276,14 @@ public class SafeAltitudeAreaSectorType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -307,6 +343,10 @@ public class SafeAltitudeAreaSectorType
             this.abstractSafeAltitudeAreaSectorExtension = value;
         }
 
+        public boolean isSetAbstractSafeAltitudeAreaSectorExtension() {
+            return (this.abstractSafeAltitudeAreaSectorExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -331,8 +371,16 @@ public class SafeAltitudeAreaSectorType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

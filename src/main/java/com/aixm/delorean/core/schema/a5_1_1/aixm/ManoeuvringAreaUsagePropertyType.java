@@ -71,4 +71,8 @@ public class ManoeuvringAreaUsagePropertyType
         this.manoeuvringAreaUsage = value;
     }
 
+    public boolean isSetManoeuvringAreaUsage() {
+        return (this.manoeuvringAreaUsage!= null);
+    }
+
 }

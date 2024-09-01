@@ -196,6 +196,10 @@ public class ArrivalLegTimeSliceType
         this.endConditionDesignator = value;
     }
 
+    public boolean isSetEndConditionDesignator() {
+        return (this.endConditionDesignator!= null);
+    }
+
     /**
      * Gets the value of the legPath property.
      * 
@@ -218,6 +222,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setLegPath(JAXBElement<CodeTrajectoryType> value) {
         this.legPath = value;
+    }
+
+    public boolean isSetLegPath() {
+        return (this.legPath!= null);
     }
 
     /**
@@ -244,6 +252,10 @@ public class ArrivalLegTimeSliceType
         this.legTypeARINC = value;
     }
 
+    public boolean isSetLegTypeARINC() {
+        return (this.legTypeARINC!= null);
+    }
+
     /**
      * Gets the value of the course property.
      * 
@@ -266,6 +278,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setCourse(JAXBElement<ValBearingType> value) {
         this.course = value;
+    }
+
+    public boolean isSetCourse() {
+        return (this.course!= null);
     }
 
     /**
@@ -292,6 +308,10 @@ public class ArrivalLegTimeSliceType
         this.courseType = value;
     }
 
+    public boolean isSetCourseType() {
+        return (this.courseType!= null);
+    }
+
     /**
      * Gets the value of the courseDirection property.
      * 
@@ -314,6 +334,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setCourseDirection(JAXBElement<CodeDirectionReferenceType> value) {
         this.courseDirection = value;
+    }
+
+    public boolean isSetCourseDirection() {
+        return (this.courseDirection!= null);
     }
 
     /**
@@ -340,6 +364,10 @@ public class ArrivalLegTimeSliceType
         this.turnDirection = value;
     }
 
+    public boolean isSetTurnDirection() {
+        return (this.turnDirection!= null);
+    }
+
     /**
      * Gets the value of the speedLimit property.
      * 
@@ -362,6 +390,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setSpeedLimit(JAXBElement<ValSpeedType> value) {
         this.speedLimit = value;
+    }
+
+    public boolean isSetSpeedLimit() {
+        return (this.speedLimit!= null);
     }
 
     /**
@@ -388,6 +420,10 @@ public class ArrivalLegTimeSliceType
         this.speedReference = value;
     }
 
+    public boolean isSetSpeedReference() {
+        return (this.speedReference!= null);
+    }
+
     /**
      * Gets the value of the speedInterpretation property.
      * 
@@ -410,6 +446,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setSpeedInterpretation(JAXBElement<CodeAltitudeUseType> value) {
         this.speedInterpretation = value;
+    }
+
+    public boolean isSetSpeedInterpretation() {
+        return (this.speedInterpretation!= null);
     }
 
     /**
@@ -436,6 +476,10 @@ public class ArrivalLegTimeSliceType
         this.bankAngle = value;
     }
 
+    public boolean isSetBankAngle() {
+        return (this.bankAngle!= null);
+    }
+
     /**
      * Gets the value of the length property.
      * 
@@ -458,6 +502,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
+    }
+
+    public boolean isSetLength() {
+        return (this.length!= null);
     }
 
     /**
@@ -484,6 +532,10 @@ public class ArrivalLegTimeSliceType
         this.duration = value;
     }
 
+    public boolean isSetDuration() {
+        return (this.duration!= null);
+    }
+
     /**
      * Gets the value of the procedureTurnRequired property.
      * 
@@ -506,6 +558,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setProcedureTurnRequired(JAXBElement<CodeYesNoType> value) {
         this.procedureTurnRequired = value;
+    }
+
+    public boolean isSetProcedureTurnRequired() {
+        return (this.procedureTurnRequired!= null);
     }
 
     /**
@@ -532,6 +588,10 @@ public class ArrivalLegTimeSliceType
         this.upperLimitAltitude = value;
     }
 
+    public boolean isSetUpperLimitAltitude() {
+        return (this.upperLimitAltitude!= null);
+    }
+
     /**
      * Gets the value of the upperLimitReference property.
      * 
@@ -554,6 +614,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.upperLimitReference = value;
+    }
+
+    public boolean isSetUpperLimitReference() {
+        return (this.upperLimitReference!= null);
     }
 
     /**
@@ -580,6 +644,10 @@ public class ArrivalLegTimeSliceType
         this.lowerLimitAltitude = value;
     }
 
+    public boolean isSetLowerLimitAltitude() {
+        return (this.lowerLimitAltitude!= null);
+    }
+
     /**
      * Gets the value of the lowerLimitReference property.
      * 
@@ -602,6 +670,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLimitReference = value;
+    }
+
+    public boolean isSetLowerLimitReference() {
+        return (this.lowerLimitReference!= null);
     }
 
     /**
@@ -628,6 +700,10 @@ public class ArrivalLegTimeSliceType
         this.altitudeInterpretation = value;
     }
 
+    public boolean isSetAltitudeInterpretation() {
+        return (this.altitudeInterpretation!= null);
+    }
+
     /**
      * Gets the value of the altitudeOverrideATC property.
      * 
@@ -650,6 +726,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setAltitudeOverrideATC(JAXBElement<ValDistanceVerticalType> value) {
         this.altitudeOverrideATC = value;
+    }
+
+    public boolean isSetAltitudeOverrideATC() {
+        return (this.altitudeOverrideATC!= null);
     }
 
     /**
@@ -676,6 +756,10 @@ public class ArrivalLegTimeSliceType
         this.altitudeOverrideReference = value;
     }
 
+    public boolean isSetAltitudeOverrideReference() {
+        return (this.altitudeOverrideReference!= null);
+    }
+
     /**
      * Gets the value of the verticalAngle property.
      * 
@@ -698,6 +782,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setVerticalAngle(JAXBElement<ValAngleType> value) {
         this.verticalAngle = value;
+    }
+
+    public boolean isSetVerticalAngle() {
+        return (this.verticalAngle!= null);
     }
 
     /**
@@ -724,6 +812,10 @@ public class ArrivalLegTimeSliceType
         this.startPoint = value;
     }
 
+    public boolean isSetStartPoint() {
+        return (this.startPoint!= null);
+    }
+
     /**
      * Gets the value of the endPoint property.
      * 
@@ -746,6 +838,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setEndPoint(JAXBElement<TerminalSegmentPointPropertyType> value) {
         this.endPoint = value;
+    }
+
+    public boolean isSetEndPoint() {
+        return (this.endPoint!= null);
     }
 
     /**
@@ -772,6 +868,10 @@ public class ArrivalLegTimeSliceType
         this.trajectory = value;
     }
 
+    public boolean isSetTrajectory() {
+        return (this.trajectory!= null);
+    }
+
     /**
      * Gets the value of the arcCentre property.
      * 
@@ -794,6 +894,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setArcCentre(JAXBElement<TerminalSegmentPointPropertyType> value) {
         this.arcCentre = value;
+    }
+
+    public boolean isSetArcCentre() {
+        return (this.arcCentre!= null);
     }
 
     /**
@@ -820,6 +924,10 @@ public class ArrivalLegTimeSliceType
         this.angle = value;
     }
 
+    public boolean isSetAngle() {
+        return (this.angle!= null);
+    }
+
     /**
      * Gets the value of the distance property.
      * 
@@ -842,6 +950,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setDistance(JAXBElement<DistanceIndicationPropertyType> value) {
         this.distance = value;
+    }
+
+    public boolean isSetDistance() {
+        return (this.distance!= null);
     }
 
     /**
@@ -876,6 +988,14 @@ public class ArrivalLegTimeSliceType
         return this.aircraftCategory;
     }
 
+    public boolean isSetAircraftCategory() {
+        return ((this.aircraftCategory!= null)&&(!this.aircraftCategory.isEmpty()));
+    }
+
+    public void unsetAircraftCategory() {
+        this.aircraftCategory = null;
+    }
+
     /**
      * Gets the value of the holding property.
      * 
@@ -898,6 +1018,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setHolding(JAXBElement<HoldingUsePropertyType> value) {
         this.holding = value;
+    }
+
+    public boolean isSetHolding() {
+        return (this.holding!= null);
     }
 
     /**
@@ -932,6 +1056,14 @@ public class ArrivalLegTimeSliceType
         return this.designSurface;
     }
 
+    public boolean isSetDesignSurface() {
+        return ((this.designSurface!= null)&&(!this.designSurface.isEmpty()));
+    }
+
+    public void unsetDesignSurface() {
+        this.designSurface = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -964,6 +1096,14 @@ public class ArrivalLegTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the requiredNavigationPerformance property.
      * 
@@ -988,6 +1128,10 @@ public class ArrivalLegTimeSliceType
         this.requiredNavigationPerformance = value;
     }
 
+    public boolean isSetRequiredNavigationPerformance() {
+        return (this.requiredNavigationPerformance!= null);
+    }
+
     /**
      * Gets the value of the arrival property.
      * 
@@ -1010,6 +1154,10 @@ public class ArrivalLegTimeSliceType
      */
     public void setArrival(JAXBElement<StandardInstrumentArrivalPropertyType> value) {
         this.arrival = value;
+    }
+
+    public boolean isSetArrival() {
+        return (this.arrival!= null);
     }
 
     /**
@@ -1042,6 +1190,14 @@ public class ArrivalLegTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -1106,6 +1262,10 @@ public class ArrivalLegTimeSliceType
             this.abstractArrivalLegExtension = value;
         }
 
+        public boolean isSetAbstractArrivalLegExtension() {
+            return (this.abstractArrivalLegExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractSegmentLegExtension property.
          * 
@@ -1128,6 +1288,10 @@ public class ArrivalLegTimeSliceType
          */
         public void setAbstractSegmentLegExtension(AbstractExtensionType value) {
             this.abstractSegmentLegExtension = value;
+        }
+
+        public boolean isSetAbstractSegmentLegExtension() {
+            return (this.abstractSegmentLegExtension!= null);
         }
 
         /**
@@ -1154,8 +1318,16 @@ public class ArrivalLegTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

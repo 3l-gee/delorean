@@ -1,4 +1,4 @@
-package com.aixm.delorean.core.configuration;
+package com.aixm.delorean.core.database;
 
 import org.hibernate.cfg.Configuration;
 
@@ -16,7 +16,7 @@ public enum DatabaseConfig {
         20,                        // Connection pool max size
         true,                                    // Hibernate show_sql
         "update",                            // Hibernate hbm2ddl.auto
-        new Class<?>[]{com.aixm.delorean.core.schema.a5_1_1.aixm.NavaidType.class} // Mapping classes
+        new Class<?>[]{} // Mapping classes
     );
 
     private final String version;

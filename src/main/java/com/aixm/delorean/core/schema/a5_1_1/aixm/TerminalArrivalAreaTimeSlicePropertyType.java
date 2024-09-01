@@ -73,6 +73,10 @@ public class TerminalArrivalAreaTimeSlicePropertyType {
         this.terminalArrivalAreaTimeSlice = value;
     }
 
+    public boolean isSetTerminalArrivalAreaTimeSlice() {
+        return (this.terminalArrivalAreaTimeSlice!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -97,8 +101,16 @@ public class TerminalArrivalAreaTimeSlicePropertyType {
      *     {@link Boolean }
      *     
      */
-    public void setOwns(Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

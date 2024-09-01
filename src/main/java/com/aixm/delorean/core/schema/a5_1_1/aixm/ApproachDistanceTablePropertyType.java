@@ -71,4 +71,8 @@ public class ApproachDistanceTablePropertyType
         this.approachDistanceTable = value;
     }
 
+    public boolean isSetApproachDistanceTable() {
+        return (this.approachDistanceTable!= null);
+    }
+
 }

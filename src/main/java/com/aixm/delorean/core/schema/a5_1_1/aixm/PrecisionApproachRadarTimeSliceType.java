@@ -157,6 +157,10 @@ public class PrecisionApproachRadarTimeSliceType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the serialNumber property.
      * 
@@ -179,6 +183,10 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setSerialNumber(JAXBElement<TextDesignatorType> value) {
         this.serialNumber = value;
+    }
+
+    public boolean isSetSerialNumber() {
+        return (this.serialNumber!= null);
     }
 
     /**
@@ -205,6 +213,10 @@ public class PrecisionApproachRadarTimeSliceType
         this.range = value;
     }
 
+    public boolean isSetRange() {
+        return (this.range!= null);
+    }
+
     /**
      * Gets the value of the rangeAccuracy property.
      * 
@@ -227,6 +239,10 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setRangeAccuracy(JAXBElement<ValDistanceType> value) {
         this.rangeAccuracy = value;
+    }
+
+    public boolean isSetRangeAccuracy() {
+        return (this.rangeAccuracy!= null);
     }
 
     /**
@@ -253,6 +269,10 @@ public class PrecisionApproachRadarTimeSliceType
         this.dualChannel = value;
     }
 
+    public boolean isSetDualChannel() {
+        return (this.dualChannel!= null);
+    }
+
     /**
      * Gets the value of the movingTargetIndicator property.
      * 
@@ -275,6 +295,10 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setMovingTargetIndicator(JAXBElement<CodeYesNoType> value) {
         this.movingTargetIndicator = value;
+    }
+
+    public boolean isSetMovingTargetIndicator() {
+        return (this.movingTargetIndicator!= null);
     }
 
     /**
@@ -301,6 +325,10 @@ public class PrecisionApproachRadarTimeSliceType
         this.standbyPower = value;
     }
 
+    public boolean isSetStandbyPower() {
+        return (this.standbyPower!= null);
+    }
+
     /**
      * Gets the value of the digital property.
      * 
@@ -323,6 +351,10 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setDigital(JAXBElement<CodeYesNoType> value) {
         this.digital = value;
+    }
+
+    public boolean isSetDigital() {
+        return (this.digital!= null);
     }
 
     /**
@@ -349,6 +381,10 @@ public class PrecisionApproachRadarTimeSliceType
         this.militaryUseOnly = value;
     }
 
+    public boolean isSetMilitaryUseOnly() {
+        return (this.militaryUseOnly!= null);
+    }
+
     /**
      * Gets the value of the specialUseOnly property.
      * 
@@ -371,6 +407,10 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setSpecialUseOnly(JAXBElement<CodeYesNoType> value) {
         this.specialUseOnly = value;
+    }
+
+    public boolean isSetSpecialUseOnly() {
+        return (this.specialUseOnly!= null);
     }
 
     /**
@@ -397,6 +437,10 @@ public class PrecisionApproachRadarTimeSliceType
         this.specialAircraftOnly = value;
     }
 
+    public boolean isSetSpecialAircraftOnly() {
+        return (this.specialAircraftOnly!= null);
+    }
+
     /**
      * Gets the value of the magneticVariation property.
      * 
@@ -419,6 +463,10 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setMagneticVariation(JAXBElement<ValMagneticVariationType> value) {
         this.magneticVariation = value;
+    }
+
+    public boolean isSetMagneticVariation() {
+        return (this.magneticVariation!= null);
     }
 
     /**
@@ -445,6 +493,10 @@ public class PrecisionApproachRadarTimeSliceType
         this.magneticVariationAccuracy = value;
     }
 
+    public boolean isSetMagneticVariationAccuracy() {
+        return (this.magneticVariationAccuracy!= null);
+    }
+
     /**
      * Gets the value of the dateMagneticVariation property.
      * 
@@ -467,6 +519,10 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setDateMagneticVariation(JAXBElement<DateYearType> value) {
         this.dateMagneticVariation = value;
+    }
+
+    public boolean isSetDateMagneticVariation() {
+        return (this.dateMagneticVariation!= null);
     }
 
     /**
@@ -501,6 +557,14 @@ public class PrecisionApproachRadarTimeSliceType
         return this.contact;
     }
 
+    public boolean isSetContact() {
+        return ((this.contact!= null)&&(!this.contact.isEmpty()));
+    }
+
+    public void unsetContact() {
+        this.contact = null;
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -523,6 +587,10 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -557,6 +625,14 @@ public class PrecisionApproachRadarTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the precisionApproachRadarType property.
      * 
@@ -579,6 +655,10 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setPrecisionApproachRadarType(JAXBElement<CodePARType> value) {
         this.precisionApproachRadarType = value;
+    }
+
+    public boolean isSetPrecisionApproachRadarType() {
+        return (this.precisionApproachRadarType!= null);
     }
 
     /**
@@ -605,6 +685,10 @@ public class PrecisionApproachRadarTimeSliceType
         this.slope = value;
     }
 
+    public boolean isSetSlope() {
+        return (this.slope!= null);
+    }
+
     /**
      * Gets the value of the slopeAccuracy property.
      * 
@@ -627,6 +711,10 @@ public class PrecisionApproachRadarTimeSliceType
      */
     public void setSlopeAccuracy(JAXBElement<ValAngleType> value) {
         this.slopeAccuracy = value;
+    }
+
+    public boolean isSetSlopeAccuracy() {
+        return (this.slopeAccuracy!= null);
     }
 
     /**
@@ -661,6 +749,14 @@ public class PrecisionApproachRadarTimeSliceType
         return this.reflector;
     }
 
+    public boolean isSetReflector() {
+        return ((this.reflector!= null)&&(!this.reflector.isEmpty()));
+    }
+
+    public void unsetReflector() {
+        this.reflector = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -691,6 +787,14 @@ public class PrecisionApproachRadarTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -755,6 +859,10 @@ public class PrecisionApproachRadarTimeSliceType
             this.abstractPrecisionApproachRadarExtension = value;
         }
 
+        public boolean isSetAbstractPrecisionApproachRadarExtension() {
+            return (this.abstractPrecisionApproachRadarExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractRadarEquipmentExtension property.
          * 
@@ -777,6 +885,10 @@ public class PrecisionApproachRadarTimeSliceType
          */
         public void setAbstractRadarEquipmentExtension(AbstractExtensionType value) {
             this.abstractRadarEquipmentExtension = value;
+        }
+
+        public boolean isSetAbstractRadarEquipmentExtension() {
+            return (this.abstractRadarEquipmentExtension!= null);
         }
 
         /**
@@ -803,8 +915,16 @@ public class PrecisionApproachRadarTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

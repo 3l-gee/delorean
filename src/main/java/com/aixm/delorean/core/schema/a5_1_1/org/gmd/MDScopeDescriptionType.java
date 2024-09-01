@@ -104,6 +104,14 @@ public class MDScopeDescriptionType {
         return this.attributes;
     }
 
+    public boolean isSetAttributes() {
+        return ((this.attributes!= null)&&(!this.attributes.isEmpty()));
+    }
+
+    public void unsetAttributes() {
+        this.attributes = null;
+    }
+
     /**
      * Gets the value of the features property.
      * 
@@ -134,6 +142,14 @@ public class MDScopeDescriptionType {
             features = new ArrayList<>();
         }
         return this.features;
+    }
+
+    public boolean isSetFeatures() {
+        return ((this.features!= null)&&(!this.features.isEmpty()));
+    }
+
+    public void unsetFeatures() {
+        this.features = null;
     }
 
     /**
@@ -168,6 +184,14 @@ public class MDScopeDescriptionType {
         return this.featureInstances;
     }
 
+    public boolean isSetFeatureInstances() {
+        return ((this.featureInstances!= null)&&(!this.featureInstances.isEmpty()));
+    }
+
+    public void unsetFeatureInstances() {
+        this.featureInstances = null;
+    }
+
     /**
      * Gets the value of the attributeInstances property.
      * 
@@ -200,6 +224,14 @@ public class MDScopeDescriptionType {
         return this.attributeInstances;
     }
 
+    public boolean isSetAttributeInstances() {
+        return ((this.attributeInstances!= null)&&(!this.attributeInstances.isEmpty()));
+    }
+
+    public void unsetAttributeInstances() {
+        this.attributeInstances = null;
+    }
+
     /**
      * Gets the value of the dataset property.
      * 
@@ -224,6 +256,10 @@ public class MDScopeDescriptionType {
         this.dataset = value;
     }
 
+    public boolean isSetDataset() {
+        return (this.dataset!= null);
+    }
+
     /**
      * Gets the value of the other property.
      * 
@@ -246,6 +282,10 @@ public class MDScopeDescriptionType {
      */
     public void setOther(CharacterStringPropertyType value) {
         this.other = value;
+    }
+
+    public boolean isSetOther() {
+        return (this.other!= null);
     }
 
 }

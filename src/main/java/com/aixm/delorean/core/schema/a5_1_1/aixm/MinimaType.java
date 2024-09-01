@@ -133,6 +133,10 @@ public class MinimaType
         this.altitude = value;
     }
 
+    public boolean isSetAltitude() {
+        return (this.altitude!= null);
+    }
+
     /**
      * Gets the value of the altitudeCode property.
      * 
@@ -155,6 +159,10 @@ public class MinimaType
      */
     public void setAltitudeCode(JAXBElement<CodeMinimumAltitudeType> value) {
         this.altitudeCode = value;
+    }
+
+    public boolean isSetAltitudeCode() {
+        return (this.altitudeCode!= null);
     }
 
     /**
@@ -181,6 +189,10 @@ public class MinimaType
         this.altitudeReference = value;
     }
 
+    public boolean isSetAltitudeReference() {
+        return (this.altitudeReference!= null);
+    }
+
     /**
      * Gets the value of the height property.
      * 
@@ -203,6 +215,10 @@ public class MinimaType
      */
     public void setHeight(JAXBElement<ValDistanceVerticalType> value) {
         this.height = value;
+    }
+
+    public boolean isSetHeight() {
+        return (this.height!= null);
     }
 
     /**
@@ -229,6 +245,10 @@ public class MinimaType
         this.militaryHeight = value;
     }
 
+    public boolean isSetMilitaryHeight() {
+        return (this.militaryHeight!= null);
+    }
+
     /**
      * Gets the value of the radioHeight property.
      * 
@@ -251,6 +271,10 @@ public class MinimaType
      */
     public void setRadioHeight(JAXBElement<ValDistanceVerticalType> value) {
         this.radioHeight = value;
+    }
+
+    public boolean isSetRadioHeight() {
+        return (this.radioHeight!= null);
     }
 
     /**
@@ -277,6 +301,10 @@ public class MinimaType
         this.heightCode = value;
     }
 
+    public boolean isSetHeightCode() {
+        return (this.heightCode!= null);
+    }
+
     /**
      * Gets the value of the heightReference property.
      * 
@@ -299,6 +327,10 @@ public class MinimaType
      */
     public void setHeightReference(JAXBElement<CodeHeightReferenceType> value) {
         this.heightReference = value;
+    }
+
+    public boolean isSetHeightReference() {
+        return (this.heightReference!= null);
     }
 
     /**
@@ -325,6 +357,10 @@ public class MinimaType
         this.visibility = value;
     }
 
+    public boolean isSetVisibility() {
+        return (this.visibility!= null);
+    }
+
     /**
      * Gets the value of the militaryVisibility property.
      * 
@@ -347,6 +383,10 @@ public class MinimaType
      */
     public void setMilitaryVisibility(JAXBElement<ValDistanceType> value) {
         this.militaryVisibility = value;
+    }
+
+    public boolean isSetMilitaryVisibility() {
+        return (this.militaryVisibility!= null);
     }
 
     /**
@@ -373,6 +413,10 @@ public class MinimaType
         this.mandatoryRVR = value;
     }
 
+    public boolean isSetMandatoryRVR() {
+        return (this.mandatoryRVR!= null);
+    }
+
     /**
      * Gets the value of the remoteAltimeterMinima property.
      * 
@@ -395,6 +439,10 @@ public class MinimaType
      */
     public void setRemoteAltimeterMinima(JAXBElement<CodeYesNoType> value) {
         this.remoteAltimeterMinima = value;
+    }
+
+    public boolean isSetRemoteAltimeterMinima() {
+        return (this.remoteAltimeterMinima!= null);
     }
 
     /**
@@ -429,6 +477,14 @@ public class MinimaType
         return this.adjustmentINOP;
     }
 
+    public boolean isSetAdjustmentINOP() {
+        return ((this.adjustmentINOP!= null)&&(!this.adjustmentINOP.isEmpty()));
+    }
+
+    public void unsetAdjustmentINOP() {
+        this.adjustmentINOP = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -461,6 +517,14 @@ public class MinimaType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -491,6 +555,14 @@ public class MinimaType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -550,6 +622,10 @@ public class MinimaType
             this.abstractMinimaExtension = value;
         }
 
+        public boolean isSetAbstractMinimaExtension() {
+            return (this.abstractMinimaExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -574,8 +650,16 @@ public class MinimaType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

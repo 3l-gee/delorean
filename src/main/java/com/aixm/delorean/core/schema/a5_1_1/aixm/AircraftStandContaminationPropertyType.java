@@ -71,4 +71,8 @@ public class AircraftStandContaminationPropertyType
         this.aircraftStandContamination = value;
     }
 
+    public boolean isSetAircraftStandContamination() {
+        return (this.aircraftStandContamination!= null);
+    }
+
 }

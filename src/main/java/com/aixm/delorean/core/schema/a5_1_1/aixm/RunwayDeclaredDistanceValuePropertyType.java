@@ -71,4 +71,8 @@ public class RunwayDeclaredDistanceValuePropertyType
         this.runwayDeclaredDistanceValue = value;
     }
 
+    public boolean isSetRunwayDeclaredDistanceValue() {
+        return (this.runwayDeclaredDistanceValue!= null);
+    }
+
 }

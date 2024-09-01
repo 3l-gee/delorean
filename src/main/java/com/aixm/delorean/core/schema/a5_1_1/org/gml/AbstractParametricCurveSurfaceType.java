@@ -67,4 +67,8 @@ public abstract class AbstractParametricCurveSurfaceType
         this.aggregationType = value;
     }
 
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
+    }
+
 }

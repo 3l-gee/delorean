@@ -98,6 +98,10 @@ public class ReflectorType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the touchdownReflector property.
      * 
@@ -120,6 +124,10 @@ public class ReflectorType
      */
     public void setTouchdownReflector(JAXBElement<ElevatedPointPropertyType> value) {
         this.touchdownReflector = value;
+    }
+
+    public boolean isSetTouchdownReflector() {
+        return (this.touchdownReflector!= null);
     }
 
     /**
@@ -154,6 +162,14 @@ public class ReflectorType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -184,6 +200,14 @@ public class ReflectorType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -243,6 +267,10 @@ public class ReflectorType
             this.abstractReflectorExtension = value;
         }
 
+        public boolean isSetAbstractReflectorExtension() {
+            return (this.abstractReflectorExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -267,8 +295,16 @@ public class ReflectorType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

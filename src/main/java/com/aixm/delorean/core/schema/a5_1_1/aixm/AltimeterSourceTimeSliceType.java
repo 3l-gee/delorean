@@ -104,6 +104,10 @@ public class AltimeterSourceTimeSliceType
         this.isRemote = value;
     }
 
+    public boolean isSetIsRemote() {
+        return (this.isRemote!= null);
+    }
+
     /**
      * Gets the value of the isPrimary property.
      * 
@@ -126,6 +130,10 @@ public class AltimeterSourceTimeSliceType
      */
     public void setIsPrimary(JAXBElement<CodeYesNoType> value) {
         this.isPrimary = value;
+    }
+
+    public boolean isSetIsPrimary() {
+        return (this.isPrimary!= null);
     }
 
     /**
@@ -160,6 +168,14 @@ public class AltimeterSourceTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -192,6 +208,14 @@ public class AltimeterSourceTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -222,6 +246,14 @@ public class AltimeterSourceTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -282,6 +314,10 @@ public class AltimeterSourceTimeSliceType
             this.abstractAltimeterSourceExtension = value;
         }
 
+        public boolean isSetAbstractAltimeterSourceExtension() {
+            return (this.abstractAltimeterSourceExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -306,8 +342,16 @@ public class AltimeterSourceTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

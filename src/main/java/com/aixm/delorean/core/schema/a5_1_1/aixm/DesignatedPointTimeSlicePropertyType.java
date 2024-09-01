@@ -73,6 +73,10 @@ public class DesignatedPointTimeSlicePropertyType {
         this.designatedPointTimeSlice = value;
     }
 
+    public boolean isSetDesignatedPointTimeSlice() {
+        return (this.designatedPointTimeSlice!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -97,8 +101,16 @@ public class DesignatedPointTimeSlicePropertyType {
      *     {@link Boolean }
      *     
      */
-    public void setOwns(Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

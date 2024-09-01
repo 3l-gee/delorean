@@ -71,4 +71,8 @@ public class MarkingElementPropertyType
         this.markingElement = value;
     }
 
+    public boolean isSetMarkingElement() {
+        return (this.markingElement!= null);
+    }
+
 }

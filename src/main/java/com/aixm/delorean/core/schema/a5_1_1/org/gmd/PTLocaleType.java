@@ -82,6 +82,10 @@ public class PTLocaleType
         this.languageCode = value;
     }
 
+    public boolean isSetLanguageCode() {
+        return (this.languageCode!= null);
+    }
+
     /**
      * Gets the value of the country property.
      * 
@@ -106,6 +110,10 @@ public class PTLocaleType
         this.country = value;
     }
 
+    public boolean isSetCountry() {
+        return (this.country!= null);
+    }
+
     /**
      * Gets the value of the characterEncoding property.
      * 
@@ -128,6 +136,10 @@ public class PTLocaleType
      */
     public void setCharacterEncoding(MDCharacterSetCodePropertyType value) {
         this.characterEncoding = value;
+    }
+
+    public boolean isSetCharacterEncoding() {
+        return (this.characterEncoding!= null);
     }
 
 }

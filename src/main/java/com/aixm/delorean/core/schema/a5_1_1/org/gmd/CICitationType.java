@@ -136,6 +136,10 @@ public class CICitationType
         this.title = value;
     }
 
+    public boolean isSetTitle() {
+        return (this.title!= null);
+    }
+
     /**
      * Gets the value of the alternateTitle property.
      * 
@@ -166,6 +170,14 @@ public class CICitationType
             alternateTitle = new ArrayList<>();
         }
         return this.alternateTitle;
+    }
+
+    public boolean isSetAlternateTitle() {
+        return ((this.alternateTitle!= null)&&(!this.alternateTitle.isEmpty()));
+    }
+
+    public void unsetAlternateTitle() {
+        this.alternateTitle = null;
     }
 
     /**
@@ -200,6 +212,14 @@ public class CICitationType
         return this.date;
     }
 
+    public boolean isSetDate() {
+        return ((this.date!= null)&&(!this.date.isEmpty()));
+    }
+
+    public void unsetDate() {
+        this.date = null;
+    }
+
     /**
      * Gets the value of the edition property.
      * 
@@ -224,6 +244,10 @@ public class CICitationType
         this.edition = value;
     }
 
+    public boolean isSetEdition() {
+        return (this.edition!= null);
+    }
+
     /**
      * Gets the value of the editionDate property.
      * 
@@ -246,6 +270,10 @@ public class CICitationType
      */
     public void setEditionDate(DatePropertyType value) {
         this.editionDate = value;
+    }
+
+    public boolean isSetEditionDate() {
+        return (this.editionDate!= null);
     }
 
     /**
@@ -280,6 +308,14 @@ public class CICitationType
         return this.identifier;
     }
 
+    public boolean isSetIdentifier() {
+        return ((this.identifier!= null)&&(!this.identifier.isEmpty()));
+    }
+
+    public void unsetIdentifier() {
+        this.identifier = null;
+    }
+
     /**
      * Gets the value of the citedResponsibleParty property.
      * 
@@ -310,6 +346,14 @@ public class CICitationType
             citedResponsibleParty = new ArrayList<>();
         }
         return this.citedResponsibleParty;
+    }
+
+    public boolean isSetCitedResponsibleParty() {
+        return ((this.citedResponsibleParty!= null)&&(!this.citedResponsibleParty.isEmpty()));
+    }
+
+    public void unsetCitedResponsibleParty() {
+        this.citedResponsibleParty = null;
     }
 
     /**
@@ -344,6 +388,14 @@ public class CICitationType
         return this.presentationForm;
     }
 
+    public boolean isSetPresentationForm() {
+        return ((this.presentationForm!= null)&&(!this.presentationForm.isEmpty()));
+    }
+
+    public void unsetPresentationForm() {
+        this.presentationForm = null;
+    }
+
     /**
      * Gets the value of the series property.
      * 
@@ -366,6 +418,10 @@ public class CICitationType
      */
     public void setSeries(CISeriesPropertyType value) {
         this.series = value;
+    }
+
+    public boolean isSetSeries() {
+        return (this.series!= null);
     }
 
     /**
@@ -392,6 +448,10 @@ public class CICitationType
         this.otherCitationDetails = value;
     }
 
+    public boolean isSetOtherCitationDetails() {
+        return (this.otherCitationDetails!= null);
+    }
+
     /**
      * Gets the value of the collectiveTitle property.
      * 
@@ -414,6 +474,10 @@ public class CICitationType
      */
     public void setCollectiveTitle(CharacterStringPropertyType value) {
         this.collectiveTitle = value;
+    }
+
+    public boolean isSetCollectiveTitle() {
+        return (this.collectiveTitle!= null);
     }
 
     /**
@@ -440,6 +504,10 @@ public class CICitationType
         this.isbn = value;
     }
 
+    public boolean isSetISBN() {
+        return (this.isbn!= null);
+    }
+
     /**
      * Gets the value of the issn property.
      * 
@@ -462,6 +530,10 @@ public class CICitationType
      */
     public void setISSN(CharacterStringPropertyType value) {
         this.issn = value;
+    }
+
+    public boolean isSetISSN() {
+        return (this.issn!= null);
     }
 
 }

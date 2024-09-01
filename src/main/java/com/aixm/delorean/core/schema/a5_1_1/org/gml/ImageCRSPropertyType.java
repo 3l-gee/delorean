@@ -7,13 +7,14 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ArcroleType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.HrefType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.RoleType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
+import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TitleAttrType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -58,22 +59,20 @@ public class ImageCRSPropertyType {
     @Valid
     protected ImageCRSType imageCRS;
     @XmlAttribute(name = "nilReason")
-    protected List<String> nilReason;
+    protected NilReasonType nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
     public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    protected String href;
+    protected HrefType href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
-    protected String role;
+    protected RoleType role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @Size(min = 1)
-    protected String arcrole;
+    protected ArcroleType arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String titleAttribute;
+    protected TitleAttrType titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
@@ -104,36 +103,36 @@ public class ImageCRSPropertyType {
         this.imageCRS = value;
     }
 
+    public boolean isSetImageCRS() {
+        return (this.imageCRS!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nilReason property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNilReason().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the nilReason property.
+     *     possible object is
+     *     {@link NilReasonType }
+     *     
      */
-    public List<String> getNilReason() {
-        if (nilReason == null) {
-            nilReason = new ArrayList<>();
-        }
-        return this.nilReason;
+    public NilReasonType getNilReason() {
+        return nilReason;
+    }
+
+    /**
+     * Sets the value of the nilReason property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NilReasonType }
+     *     
+     */
+    public void setNilReason(NilReasonType value) {
+        this.nilReason = value;
+    }
+
+    public boolean isSetNilReason() {
+        return (this.nilReason!= null);
     }
 
     /**
@@ -160,15 +159,19 @@ public class ImageCRSPropertyType {
         this.remoteSchema = value;
     }
 
+    public boolean isSetRemoteSchema() {
+        return (this.remoteSchema!= null);
+    }
+
     /**
      * Gets the value of the href property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link HrefType }
      *     
      */
-    public String getHref() {
+    public HrefType getHref() {
         return href;
     }
 
@@ -177,11 +180,15 @@ public class ImageCRSPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link HrefType }
      *     
      */
-    public void setHref(String value) {
+    public void setHref(HrefType value) {
         this.href = value;
+    }
+
+    public boolean isSetHref() {
+        return (this.href!= null);
     }
 
     /**
@@ -189,10 +196,10 @@ public class ImageCRSPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
@@ -201,11 +208,15 @@ public class ImageCRSPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link RoleType }
      *     
      */
-    public void setRole(String value) {
+    public void setRole(RoleType value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -213,10 +224,10 @@ public class ImageCRSPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public String getArcrole() {
+    public ArcroleType getArcrole() {
         return arcrole;
     }
 
@@ -225,11 +236,15 @@ public class ImageCRSPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ArcroleType }
      *     
      */
-    public void setArcrole(String value) {
+    public void setArcrole(ArcroleType value) {
         this.arcrole = value;
+    }
+
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
     }
 
     /**
@@ -237,10 +252,10 @@ public class ImageCRSPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public String getTitleAttribute() {
+    public TitleAttrType getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -249,11 +264,15 @@ public class ImageCRSPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TitleAttrType }
      *     
      */
-    public void setTitleAttribute(String value) {
+    public void setTitleAttribute(TitleAttrType value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -280,6 +299,10 @@ public class ImageCRSPropertyType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -302,6 +325,10 @@ public class ImageCRSPropertyType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
+    }
+
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
 }

@@ -79,6 +79,10 @@ public class LocalisedCharacterStringType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return (this.value!= null);
+    }
+
     /**
      * Gets the value of the id property.
      * 
@@ -103,6 +107,10 @@ public class LocalisedCharacterStringType {
         this.id = value;
     }
 
+    public boolean isSetId() {
+        return (this.id!= null);
+    }
+
     /**
      * Gets the value of the locale property.
      * 
@@ -125,6 +133,10 @@ public class LocalisedCharacterStringType {
      */
     public void setLocale(String value) {
         this.locale = value;
+    }
+
+    public boolean isSetLocale() {
+        return (this.locale!= null);
     }
 
 }

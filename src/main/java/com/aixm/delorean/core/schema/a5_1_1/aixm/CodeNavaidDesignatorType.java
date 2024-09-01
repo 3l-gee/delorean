@@ -7,8 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,21 +39,19 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNavaidDesignatorType {
 
     @XmlValue
-    @Size(min = 1, max = 4)
-    @Pattern(regexp = "([A-Z]|\\d)*")
-    protected String value;
+    protected CodeNavaidDesignatorBaseType value;
     @XmlAttribute(name = "nilReason")
-    protected String nilReason;
+    protected NilReasonEnumeration nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeNavaidDesignatorBaseType }
      *     
      */
-    public String getValue() {
+    public CodeNavaidDesignatorBaseType getValue() {
         return value;
     }
 
@@ -63,11 +60,15 @@ public class CodeNavaidDesignatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeNavaidDesignatorBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeNavaidDesignatorBaseType value) {
         this.value = value;
+    }
+
+    public boolean isSetValue() {
+        return (this.value!= null);
     }
 
     /**
@@ -75,10 +76,10 @@ public class CodeNavaidDesignatorType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public String getNilReason() {
+    public NilReasonEnumeration getNilReason() {
         return nilReason;
     }
 
@@ -87,11 +88,15 @@ public class CodeNavaidDesignatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link NilReasonEnumeration }
      *     
      */
-    public void setNilReason(String value) {
+    public void setNilReason(NilReasonEnumeration value) {
         this.nilReason = value;
+    }
+
+    public boolean isSetNilReason() {
+        return (this.nilReason!= null);
     }
 
 }

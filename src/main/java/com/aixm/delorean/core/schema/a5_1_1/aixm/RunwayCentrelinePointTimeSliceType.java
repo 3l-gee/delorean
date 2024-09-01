@@ -115,6 +115,10 @@ public class RunwayCentrelinePointTimeSliceType
         this.role = value;
     }
 
+    public boolean isSetRole() {
+        return (this.role!= null);
+    }
+
     /**
      * Gets the value of the designator property.
      * 
@@ -137,6 +141,10 @@ public class RunwayCentrelinePointTimeSliceType
      */
     public void setDesignator(JAXBElement<TextDesignatorType> value) {
         this.designator = value;
+    }
+
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
     }
 
     /**
@@ -163,6 +171,10 @@ public class RunwayCentrelinePointTimeSliceType
         this.location = value;
     }
 
+    public boolean isSetLocation() {
+        return (this.location!= null);
+    }
+
     /**
      * Gets the value of the onRunway property.
      * 
@@ -185,6 +197,10 @@ public class RunwayCentrelinePointTimeSliceType
      */
     public void setOnRunway(JAXBElement<RunwayDirectionPropertyType> value) {
         this.onRunway = value;
+    }
+
+    public boolean isSetOnRunway() {
+        return (this.onRunway!= null);
     }
 
     /**
@@ -219,6 +235,14 @@ public class RunwayCentrelinePointTimeSliceType
         return this.associatedDeclaredDistance;
     }
 
+    public boolean isSetAssociatedDeclaredDistance() {
+        return ((this.associatedDeclaredDistance!= null)&&(!this.associatedDeclaredDistance.isEmpty()));
+    }
+
+    public void unsetAssociatedDeclaredDistance() {
+        this.associatedDeclaredDistance = null;
+    }
+
     /**
      * Gets the value of the navaidEquipment property.
      * 
@@ -249,6 +273,14 @@ public class RunwayCentrelinePointTimeSliceType
             navaidEquipment = new ArrayList<>();
         }
         return this.navaidEquipment;
+    }
+
+    public boolean isSetNavaidEquipment() {
+        return ((this.navaidEquipment!= null)&&(!this.navaidEquipment.isEmpty()));
+    }
+
+    public void unsetNavaidEquipment() {
+        this.navaidEquipment = null;
     }
 
     /**
@@ -283,6 +315,14 @@ public class RunwayCentrelinePointTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -313,6 +353,14 @@ public class RunwayCentrelinePointTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -373,6 +421,10 @@ public class RunwayCentrelinePointTimeSliceType
             this.abstractRunwayCentrelinePointExtension = value;
         }
 
+        public boolean isSetAbstractRunwayCentrelinePointExtension() {
+            return (this.abstractRunwayCentrelinePointExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -397,8 +449,16 @@ public class RunwayCentrelinePointTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

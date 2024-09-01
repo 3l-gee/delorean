@@ -71,4 +71,8 @@ public class RoutePortionPropertyType
         this.routePortion = value;
     }
 
+    public boolean isSetRoutePortion() {
+        return (this.routePortion!= null);
+    }
+
 }

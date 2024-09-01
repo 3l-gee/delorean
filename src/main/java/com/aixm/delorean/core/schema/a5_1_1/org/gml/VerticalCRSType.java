@@ -83,6 +83,10 @@ public class VerticalCRSType
         this.verticalCS = value;
     }
 
+    public boolean isSetVerticalCS() {
+        return (this.verticalCS!= null);
+    }
+
     /**
      * gml:verticalDatum is an association role to the vertical datum used by this CRS.
      * 
@@ -108,6 +112,10 @@ public class VerticalCRSType
      */
     public void setVerticalDatum(JAXBElement<VerticalDatumPropertyType> value) {
         this.verticalDatum = value;
+    }
+
+    public boolean isSetVerticalDatum() {
+        return (this.verticalDatum!= null);
     }
 
 }

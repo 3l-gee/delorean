@@ -110,6 +110,10 @@ public class AirportProtectionAreaMarkingTimeSliceType
         this.markingICAOStandard = value;
     }
 
+    public boolean isSetMarkingICAOStandard() {
+        return (this.markingICAOStandard!= null);
+    }
+
     /**
      * Gets the value of the condition property.
      * 
@@ -132,6 +136,10 @@ public class AirportProtectionAreaMarkingTimeSliceType
      */
     public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
         this.condition = value;
+    }
+
+    public boolean isSetCondition() {
+        return (this.condition!= null);
     }
 
     /**
@@ -166,6 +174,14 @@ public class AirportProtectionAreaMarkingTimeSliceType
         return this.element;
     }
 
+    public boolean isSetElement() {
+        return ((this.element!= null)&&(!this.element.isEmpty()));
+    }
+
+    public void unsetElement() {
+        this.element = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -198,6 +214,14 @@ public class AirportProtectionAreaMarkingTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the markingLocation property.
      * 
@@ -222,6 +246,10 @@ public class AirportProtectionAreaMarkingTimeSliceType
         this.markingLocation = value;
     }
 
+    public boolean isSetMarkingLocation() {
+        return (this.markingLocation!= null);
+    }
+
     /**
      * Gets the value of the markedProtectionArea property.
      * 
@@ -244,6 +272,10 @@ public class AirportProtectionAreaMarkingTimeSliceType
      */
     public void setMarkedProtectionArea(JAXBElement<AirportHeliportProtectionAreaPropertyType> value) {
         this.markedProtectionArea = value;
+    }
+
+    public boolean isSetMarkedProtectionArea() {
+        return (this.markedProtectionArea!= null);
     }
 
     /**
@@ -276,6 +308,14 @@ public class AirportProtectionAreaMarkingTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -340,6 +380,10 @@ public class AirportProtectionAreaMarkingTimeSliceType
             this.abstractAirportProtectionAreaMarkingExtension = value;
         }
 
+        public boolean isSetAbstractAirportProtectionAreaMarkingExtension() {
+            return (this.abstractAirportProtectionAreaMarkingExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractMarkingExtension property.
          * 
@@ -362,6 +406,10 @@ public class AirportProtectionAreaMarkingTimeSliceType
          */
         public void setAbstractMarkingExtension(AbstractExtensionType value) {
             this.abstractMarkingExtension = value;
+        }
+
+        public boolean isSetAbstractMarkingExtension() {
+            return (this.abstractMarkingExtension!= null);
         }
 
         /**
@@ -388,8 +436,16 @@ public class AirportProtectionAreaMarkingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

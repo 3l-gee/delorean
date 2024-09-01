@@ -71,4 +71,8 @@ public class GroundLightingAvailabilityPropertyType
         this.groundLightingAvailability = value;
     }
 
+    public boolean isSetGroundLightingAvailability() {
+        return (this.groundLightingAvailability!= null);
+    }
+
 }

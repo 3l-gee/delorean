@@ -98,6 +98,10 @@ public class AngleUseType
         this.alongCourseGuidance = value;
     }
 
+    public boolean isSetAlongCourseGuidance() {
+        return (this.alongCourseGuidance!= null);
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -130,6 +134,14 @@ public class AngleUseType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the theAngleIndication property.
      * 
@@ -152,6 +164,10 @@ public class AngleUseType
      */
     public void setTheAngleIndication(AngleIndicationPropertyType value) {
         this.theAngleIndication = value;
+    }
+
+    public boolean isSetTheAngleIndication() {
+        return (this.theAngleIndication!= null);
     }
 
     /**
@@ -184,6 +200,14 @@ public class AngleUseType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -243,6 +267,10 @@ public class AngleUseType
             this.abstractAngleUseExtension = value;
         }
 
+        public boolean isSetAbstractAngleUseExtension() {
+            return (this.abstractAngleUseExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -267,8 +295,16 @@ public class AngleUseType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -113,6 +113,10 @@ public class StandardLevelSectorTimeSliceType
         this.flightRule = value;
     }
 
+    public boolean isSetFlightRule() {
+        return (this.flightRule!= null);
+    }
+
     /**
      * Gets the value of the fromTrack property.
      * 
@@ -135,6 +139,10 @@ public class StandardLevelSectorTimeSliceType
      */
     public void setFromTrack(JAXBElement<ValBearingType> value) {
         this.fromTrack = value;
+    }
+
+    public boolean isSetFromTrack() {
+        return (this.fromTrack!= null);
     }
 
     /**
@@ -161,6 +169,10 @@ public class StandardLevelSectorTimeSliceType
         this.toTrack = value;
     }
 
+    public boolean isSetToTrack() {
+        return (this.toTrack!= null);
+    }
+
     /**
      * Gets the value of the angleType property.
      * 
@@ -183,6 +195,10 @@ public class StandardLevelSectorTimeSliceType
      */
     public void setAngleType(JAXBElement<CodeNorthReferenceType> value) {
         this.angleType = value;
+    }
+
+    public boolean isSetAngleType() {
+        return (this.angleType!= null);
     }
 
     /**
@@ -217,6 +233,14 @@ public class StandardLevelSectorTimeSliceType
         return this.applicableAirspace;
     }
 
+    public boolean isSetApplicableAirspace() {
+        return ((this.applicableAirspace!= null)&&(!this.applicableAirspace.isEmpty()));
+    }
+
+    public void unsetApplicableAirspace() {
+        this.applicableAirspace = null;
+    }
+
     /**
      * Gets the value of the applicableLevelColumn property.
      * 
@@ -239,6 +263,10 @@ public class StandardLevelSectorTimeSliceType
      */
     public void setApplicableLevelColumn(JAXBElement<StandardLevelColumnPropertyType> value) {
         this.applicableLevelColumn = value;
+    }
+
+    public boolean isSetApplicableLevelColumn() {
+        return (this.applicableLevelColumn!= null);
     }
 
     /**
@@ -273,6 +301,14 @@ public class StandardLevelSectorTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -303,6 +339,14 @@ public class StandardLevelSectorTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -363,6 +407,10 @@ public class StandardLevelSectorTimeSliceType
             this.abstractStandardLevelSectorExtension = value;
         }
 
+        public boolean isSetAbstractStandardLevelSectorExtension() {
+            return (this.abstractStandardLevelSectorExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -387,8 +435,16 @@ public class StandardLevelSectorTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -71,4 +71,8 @@ public class FlightRestrictionRoutePropertyType
         this.flightRestrictionRoute = value;
     }
 
+    public boolean isSetFlightRestrictionRoute() {
+        return (this.flightRestrictionRoute!= null);
+    }
+
 }

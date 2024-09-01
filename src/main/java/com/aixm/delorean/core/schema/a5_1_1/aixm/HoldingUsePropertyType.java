@@ -71,4 +71,8 @@ public class HoldingUsePropertyType
         this.holdingUse = value;
     }
 
+    public boolean isSetHoldingUse() {
+        return (this.holdingUse!= null);
+    }
+
 }

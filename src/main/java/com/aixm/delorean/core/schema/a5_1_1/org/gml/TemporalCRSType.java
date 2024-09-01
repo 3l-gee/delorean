@@ -90,6 +90,10 @@ public class TemporalCRSType
         this.timeCS = value;
     }
 
+    public boolean isSetTimeCS() {
+        return (this.timeCS!= null);
+    }
+
     /**
      * Gets the value of the usesTemporalCS property.
      * 
@@ -112,6 +116,10 @@ public class TemporalCRSType
      */
     public void setUsesTemporalCS(TemporalCSPropertyType value) {
         this.usesTemporalCS = value;
+    }
+
+    public boolean isSetUsesTemporalCS() {
+        return (this.usesTemporalCS!= null);
     }
 
     /**
@@ -139,6 +147,10 @@ public class TemporalCRSType
      */
     public void setTemporalDatum(JAXBElement<TemporalDatumPropertyType> value) {
         this.temporalDatum = value;
+    }
+
+    public boolean isSetTemporalDatum() {
+        return (this.temporalDatum!= null);
     }
 
 }

@@ -122,4 +122,8 @@ public class PropertiesWithSchedulePropertyType
         this.abstractPropertiesWithSchedule = value;
     }
 
+    public boolean isSetAbstractPropertiesWithSchedule() {
+        return (this.abstractPropertiesWithSchedule!= null);
+    }
+
 }

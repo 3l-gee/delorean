@@ -100,6 +100,10 @@ public class MDGridSpatialRepresentationType
         this.numberOfDimensions = value;
     }
 
+    public boolean isSetNumberOfDimensions() {
+        return (this.numberOfDimensions!= null);
+    }
+
     /**
      * Gets the value of the axisDimensionProperties property.
      * 
@@ -132,6 +136,14 @@ public class MDGridSpatialRepresentationType
         return this.axisDimensionProperties;
     }
 
+    public boolean isSetAxisDimensionProperties() {
+        return ((this.axisDimensionProperties!= null)&&(!this.axisDimensionProperties.isEmpty()));
+    }
+
+    public void unsetAxisDimensionProperties() {
+        this.axisDimensionProperties = null;
+    }
+
     /**
      * Gets the value of the cellGeometry property.
      * 
@@ -156,6 +168,10 @@ public class MDGridSpatialRepresentationType
         this.cellGeometry = value;
     }
 
+    public boolean isSetCellGeometry() {
+        return (this.cellGeometry!= null);
+    }
+
     /**
      * Gets the value of the transformationParameterAvailability property.
      * 
@@ -178,6 +194,10 @@ public class MDGridSpatialRepresentationType
      */
     public void setTransformationParameterAvailability(BooleanPropertyType value) {
         this.transformationParameterAvailability = value;
+    }
+
+    public boolean isSetTransformationParameterAvailability() {
+        return (this.transformationParameterAvailability!= null);
     }
 
 }

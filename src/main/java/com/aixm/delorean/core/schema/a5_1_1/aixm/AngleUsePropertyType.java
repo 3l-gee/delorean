@@ -71,4 +71,8 @@ public class AngleUsePropertyType
         this.angleUse = value;
     }
 
+    public boolean isSetAngleUse() {
+        return (this.angleUse!= null);
+    }
+
 }

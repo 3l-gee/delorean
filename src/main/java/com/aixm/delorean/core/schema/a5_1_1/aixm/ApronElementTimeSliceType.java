@@ -133,6 +133,10 @@ public class ApronElementTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the jetwayAvailability property.
      * 
@@ -155,6 +159,10 @@ public class ApronElementTimeSliceType
      */
     public void setJetwayAvailability(JAXBElement<CodeYesNoType> value) {
         this.jetwayAvailability = value;
+    }
+
+    public boolean isSetJetwayAvailability() {
+        return (this.jetwayAvailability!= null);
     }
 
     /**
@@ -181,6 +189,10 @@ public class ApronElementTimeSliceType
         this.towingAvailability = value;
     }
 
+    public boolean isSetTowingAvailability() {
+        return (this.towingAvailability!= null);
+    }
+
     /**
      * Gets the value of the dockingAvailability property.
      * 
@@ -203,6 +215,10 @@ public class ApronElementTimeSliceType
      */
     public void setDockingAvailability(JAXBElement<CodeYesNoType> value) {
         this.dockingAvailability = value;
+    }
+
+    public boolean isSetDockingAvailability() {
+        return (this.dockingAvailability!= null);
     }
 
     /**
@@ -229,6 +245,10 @@ public class ApronElementTimeSliceType
         this.groundPowerAvailability = value;
     }
 
+    public boolean isSetGroundPowerAvailability() {
+        return (this.groundPowerAvailability!= null);
+    }
+
     /**
      * Gets the value of the length property.
      * 
@@ -251,6 +271,10 @@ public class ApronElementTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
+    }
+
+    public boolean isSetLength() {
+        return (this.length!= null);
     }
 
     /**
@@ -277,6 +301,10 @@ public class ApronElementTimeSliceType
         this.width = value;
     }
 
+    public boolean isSetWidth() {
+        return (this.width!= null);
+    }
+
     /**
      * Gets the value of the associatedApron property.
      * 
@@ -299,6 +327,10 @@ public class ApronElementTimeSliceType
      */
     public void setAssociatedApron(JAXBElement<ApronPropertyType> value) {
         this.associatedApron = value;
+    }
+
+    public boolean isSetAssociatedApron() {
+        return (this.associatedApron!= null);
     }
 
     /**
@@ -325,6 +357,10 @@ public class ApronElementTimeSliceType
         this.surfaceProperties = value;
     }
 
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -347,6 +383,10 @@ public class ApronElementTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -381,6 +421,14 @@ public class ApronElementTimeSliceType
         return this.supplyService;
     }
 
+    public boolean isSetSupplyService() {
+        return ((this.supplyService!= null)&&(!this.supplyService.isEmpty()));
+    }
+
+    public void unsetSupplyService() {
+        this.supplyService = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -411,6 +459,14 @@ public class ApronElementTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -445,6 +501,14 @@ public class ApronElementTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -475,6 +539,14 @@ public class ApronElementTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -535,6 +607,10 @@ public class ApronElementTimeSliceType
             this.abstractApronElementExtension = value;
         }
 
+        public boolean isSetAbstractApronElementExtension() {
+            return (this.abstractApronElementExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -559,8 +635,16 @@ public class ApronElementTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

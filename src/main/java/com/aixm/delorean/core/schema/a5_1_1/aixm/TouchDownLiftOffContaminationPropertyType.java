@@ -71,4 +71,8 @@ public class TouchDownLiftOffContaminationPropertyType
         this.touchDownLiftOffContamination = value;
     }
 
+    public boolean isSetTouchDownLiftOffContamination() {
+        return (this.touchDownLiftOffContamination!= null);
+    }
+
 }

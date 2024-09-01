@@ -71,4 +71,8 @@ public class ApproachConditionPropertyType
         this.approachCondition = value;
     }
 
+    public boolean isSetApproachCondition() {
+        return (this.approachCondition!= null);
+    }
+
 }

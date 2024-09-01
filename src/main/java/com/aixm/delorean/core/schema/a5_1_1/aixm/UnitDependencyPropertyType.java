@@ -71,4 +71,8 @@ public class UnitDependencyPropertyType
         this.unitDependency = value;
     }
 
+    public boolean isSetUnitDependency() {
+        return (this.unitDependency!= null);
+    }
+
 }

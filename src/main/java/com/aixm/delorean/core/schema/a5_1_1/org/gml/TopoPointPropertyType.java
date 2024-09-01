@@ -78,6 +78,10 @@ public class TopoPointPropertyType {
         this.topoPoint = value;
     }
 
+    public boolean isSetTopoPoint() {
+        return (this.topoPoint!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -102,8 +106,16 @@ public class TopoPointPropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

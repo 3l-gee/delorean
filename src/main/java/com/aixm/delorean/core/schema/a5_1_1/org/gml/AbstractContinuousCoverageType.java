@@ -76,4 +76,8 @@ public abstract class AbstractContinuousCoverageType
         this.coverageFunction = value;
     }
 
+    public boolean isSetCoverageFunction() {
+        return (this.coverageFunction!= null);
+    }
+
 }

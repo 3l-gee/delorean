@@ -108,6 +108,10 @@ public class MarkingBuoyTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -130,6 +134,10 @@ public class MarkingBuoyTimeSliceType
      */
     public void setType(JAXBElement<CodeBuoyType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -156,6 +164,10 @@ public class MarkingBuoyTimeSliceType
         this.colour = value;
     }
 
+    public boolean isSetColour() {
+        return (this.colour!= null);
+    }
+
     /**
      * Gets the value of the theSeaplaneLandingArea property.
      * 
@@ -180,6 +192,10 @@ public class MarkingBuoyTimeSliceType
         this.theSeaplaneLandingArea = value;
     }
 
+    public boolean isSetTheSeaplaneLandingArea() {
+        return (this.theSeaplaneLandingArea!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -202,6 +218,10 @@ public class MarkingBuoyTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -236,6 +256,14 @@ public class MarkingBuoyTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -266,6 +294,14 @@ public class MarkingBuoyTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -326,6 +362,10 @@ public class MarkingBuoyTimeSliceType
             this.abstractMarkingBuoyExtension = value;
         }
 
+        public boolean isSetAbstractMarkingBuoyExtension() {
+            return (this.abstractMarkingBuoyExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -350,8 +390,16 @@ public class MarkingBuoyTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

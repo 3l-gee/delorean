@@ -94,6 +94,10 @@ public class MDUsageType
         this.specificUsage = value;
     }
 
+    public boolean isSetSpecificUsage() {
+        return (this.specificUsage!= null);
+    }
+
     /**
      * Gets the value of the usageDateTime property.
      * 
@@ -118,6 +122,10 @@ public class MDUsageType
         this.usageDateTime = value;
     }
 
+    public boolean isSetUsageDateTime() {
+        return (this.usageDateTime!= null);
+    }
+
     /**
      * Gets the value of the userDeterminedLimitations property.
      * 
@@ -140,6 +148,10 @@ public class MDUsageType
      */
     public void setUserDeterminedLimitations(CharacterStringPropertyType value) {
         this.userDeterminedLimitations = value;
+    }
+
+    public boolean isSetUserDeterminedLimitations() {
+        return (this.userDeterminedLimitations!= null);
     }
 
     /**
@@ -172,6 +184,14 @@ public class MDUsageType
             userContactInfo = new ArrayList<>();
         }
         return this.userContactInfo;
+    }
+
+    public boolean isSetUserContactInfo() {
+        return ((this.userContactInfo!= null)&&(!this.userContactInfo.isEmpty()));
+    }
+
+    public void unsetUserContactInfo() {
+        this.userContactInfo = null;
     }
 
 }

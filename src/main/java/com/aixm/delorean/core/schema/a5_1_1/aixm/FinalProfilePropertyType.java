@@ -71,4 +71,8 @@ public class FinalProfilePropertyType
         this.finalProfile = value;
     }
 
+    public boolean isSetFinalProfile() {
+        return (this.finalProfile!= null);
+    }
+
 }

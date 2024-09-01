@@ -73,6 +73,10 @@ public class LocalizerTimeSlicePropertyType {
         this.localizerTimeSlice = value;
     }
 
+    public boolean isSetLocalizerTimeSlice() {
+        return (this.localizerTimeSlice!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -97,8 +101,16 @@ public class LocalizerTimeSlicePropertyType {
      *     {@link Boolean }
      *     
      */
-    public void setOwns(Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

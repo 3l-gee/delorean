@@ -71,4 +71,8 @@ public class LightElementStatusPropertyType
         this.lightElementStatus = value;
     }
 
+    public boolean isSetLightElementStatus() {
+        return (this.lightElementStatus!= null);
+    }
+
 }

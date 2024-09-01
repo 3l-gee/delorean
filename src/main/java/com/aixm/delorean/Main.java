@@ -2,16 +2,13 @@ package com.aixm.delorean;
 
 import com.aixm.delorean.core.configuration.XMLConfig;
 import com.aixm.delorean.core.configuration.StructureConfig;
-import com.aixm.delorean.core.configuration.DatabaseConfig;
-
 import com.aixm.delorean.core.container.ContainerFactory;
 import com.aixm.delorean.core.container.ContainerWarehouse;
-
-import com.aixm.delorean.core.container.XMLBinding;
-import com.aixm.delorean.core.container.DatabaseBinding;
-
+import com.aixm.delorean.core.database.DatabaseBinding;
+import com.aixm.delorean.core.database.DatabaseConfig;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
+import com.aixm.delorean.core.xml.XMLBinding;
 
 import java.io.Console;
 import java.util.Scanner;
@@ -262,7 +259,7 @@ public class Main {
                     break;
 
                 case "load":
-                    this.containerWarehouse.getContainer(argument).databaseBinding.load(this.containerWarehouse.getContainer(argument).getDbLoadReady());
+                    // this.containerWarehouse.getContainer(argument).databaseBinding.load(this.containerWarehouse.getContainer(argument).getDbLoadReady());
                     break; 
                     
                 default:
@@ -290,13 +287,13 @@ public class Main {
         System.out.println(this.containerWarehouse.getIds());
     }
 
-    private void executeShowCommand(String argument) {
-        if (this.containerWarehouse.getIds().contains(argument)) {
-            this.containerWarehouse.getContainer(argument).show();
-        } else if (argument == null) {
-            this.containerWarehouse.getLastContainer().show();
-        } else {
-            System.err.println("Container " + argument + " does not exist or parameter is missing");
-        }
-    }
+    // private void executeShowCommand(String argument) {
+    //     if (this.containerWarehouse.getIds().contains(argument)) {
+    //         this.containerWarehouse.getContainer(argument).show();
+    //     } else if (argument == null) {
+    //         this.containerWarehouse.getLastContainer().show();
+    //     } else {
+    //         System.err.println("Container " + argument + " does not exist or parameter is missing");
+    //     }
+    // }
 }

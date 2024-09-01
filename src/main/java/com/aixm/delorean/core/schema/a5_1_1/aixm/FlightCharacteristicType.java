@@ -110,6 +110,10 @@ public class FlightCharacteristicType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the rule property.
      * 
@@ -132,6 +136,10 @@ public class FlightCharacteristicType
      */
     public void setRule(JAXBElement<CodeFlightRuleType> value) {
         this.rule = value;
+    }
+
+    public boolean isSetRule() {
+        return (this.rule!= null);
     }
 
     /**
@@ -158,6 +166,10 @@ public class FlightCharacteristicType
         this.status = value;
     }
 
+    public boolean isSetStatus() {
+        return (this.status!= null);
+    }
+
     /**
      * Gets the value of the military property.
      * 
@@ -180,6 +192,10 @@ public class FlightCharacteristicType
      */
     public void setMilitary(JAXBElement<CodeMilitaryStatusType> value) {
         this.military = value;
+    }
+
+    public boolean isSetMilitary() {
+        return (this.military!= null);
     }
 
     /**
@@ -206,6 +222,10 @@ public class FlightCharacteristicType
         this.origin = value;
     }
 
+    public boolean isSetOrigin() {
+        return (this.origin!= null);
+    }
+
     /**
      * Gets the value of the purpose property.
      * 
@@ -228,6 +248,10 @@ public class FlightCharacteristicType
      */
     public void setPurpose(JAXBElement<CodeFlightPurposeType> value) {
         this.purpose = value;
+    }
+
+    public boolean isSetPurpose() {
+        return (this.purpose!= null);
     }
 
     /**
@@ -262,6 +286,14 @@ public class FlightCharacteristicType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -292,6 +324,14 @@ public class FlightCharacteristicType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -351,6 +391,10 @@ public class FlightCharacteristicType
             this.abstractFlightCharacteristicExtension = value;
         }
 
+        public boolean isSetAbstractFlightCharacteristicExtension() {
+            return (this.abstractFlightCharacteristicExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -375,8 +419,16 @@ public class FlightCharacteristicType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -7,9 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CodeListValueType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonType;
 import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -48,7 +47,7 @@ public class MDScopeCodePropertyType {
     @Valid
     protected CodeListValueType mdScopeCode;
     @XmlAttribute(name = "nilReason", namespace = "http://www.isotc211.org/2005/gco")
-    protected List<String> nilReason;
+    protected NilReasonType nilReason;
 
     /**
      * Gets the value of the mdScopeCode property.
@@ -74,36 +73,36 @@ public class MDScopeCodePropertyType {
         this.mdScopeCode = value;
     }
 
+    public boolean isSetMDScopeCode() {
+        return (this.mdScopeCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nilReason property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNilReason().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the nilReason property.
+     *     possible object is
+     *     {@link NilReasonType }
+     *     
      */
-    public List<String> getNilReason() {
-        if (nilReason == null) {
-            nilReason = new ArrayList<>();
-        }
-        return this.nilReason;
+    public NilReasonType getNilReason() {
+        return nilReason;
+    }
+
+    /**
+     * Sets the value of the nilReason property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NilReasonType }
+     *     
+     */
+    public void setNilReason(NilReasonType value) {
+        this.nilReason = value;
+    }
+
+    public boolean isSetNilReason() {
+        return (this.nilReason!= null);
     }
 
 }

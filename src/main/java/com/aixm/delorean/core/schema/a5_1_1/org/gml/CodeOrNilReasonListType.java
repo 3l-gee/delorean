@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.util.ArrayList;
-import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -51,7 +49,7 @@ public class CodeOrNilReasonListType {
      * 
      */
     @XmlValue
-    protected List<String> value;
+    protected NameOrNilReasonList value;
     @XmlAttribute(name = "codeSpace")
     @XmlSchemaType(name = "anyURI")
     protected String codeSpace;
@@ -59,35 +57,30 @@ public class CodeOrNilReasonListType {
     /**
      * A type for a list of values of the respective simple type.
      * 
-     * Gets the value of the value property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the value property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getValue().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the value property.
+     *     possible object is
+     *     {@link NameOrNilReasonList }
+     *     
      */
-    public List<String> getValue() {
-        if (value == null) {
-            value = new ArrayList<>();
-        }
-        return this.value;
+    public NameOrNilReasonList getValue() {
+        return value;
+    }
+
+    /**
+     * Sets the value of the value property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NameOrNilReasonList }
+     *     
+     * @see #getValue()
+     */
+    public void setValue(NameOrNilReasonList value) {
+        this.value = value;
+    }
+
+    public boolean isSetValue() {
+        return (this.value!= null);
     }
 
     /**
@@ -112,6 +105,10 @@ public class CodeOrNilReasonListType {
      */
     public void setCodeSpace(String value) {
         this.codeSpace = value;
+    }
+
+    public boolean isSetCodeSpace() {
+        return (this.codeSpace!= null);
     }
 
 }

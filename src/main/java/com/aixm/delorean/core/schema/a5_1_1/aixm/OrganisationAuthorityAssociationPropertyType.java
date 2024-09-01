@@ -71,4 +71,8 @@ public class OrganisationAuthorityAssociationPropertyType
         this.organisationAuthorityAssociation = value;
     }
 
+    public boolean isSetOrganisationAuthorityAssociation() {
+        return (this.organisationAuthorityAssociation!= null);
+    }
+
 }

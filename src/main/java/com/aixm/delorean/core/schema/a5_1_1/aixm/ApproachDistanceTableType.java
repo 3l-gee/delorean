@@ -104,6 +104,10 @@ public class ApproachDistanceTableType
         this.startingMeasurementPoint = value;
     }
 
+    public boolean isSetStartingMeasurementPoint() {
+        return (this.startingMeasurementPoint!= null);
+    }
+
     /**
      * Gets the value of the valueHAT property.
      * 
@@ -126,6 +130,10 @@ public class ApproachDistanceTableType
      */
     public void setValueHAT(JAXBElement<ValDistanceVerticalType> value) {
         this.valueHAT = value;
+    }
+
+    public boolean isSetValueHAT() {
+        return (this.valueHAT!= null);
     }
 
     /**
@@ -152,6 +160,10 @@ public class ApproachDistanceTableType
         this.endingMeasurementPoint = value;
     }
 
+    public boolean isSetEndingMeasurementPoint() {
+        return (this.endingMeasurementPoint!= null);
+    }
+
     /**
      * Gets the value of the distance property.
      * 
@@ -174,6 +186,10 @@ public class ApproachDistanceTableType
      */
     public void setDistance(JAXBElement<ValDistanceType> value) {
         this.distance = value;
+    }
+
+    public boolean isSetDistance() {
+        return (this.distance!= null);
     }
 
     /**
@@ -208,6 +224,14 @@ public class ApproachDistanceTableType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -238,6 +262,14 @@ public class ApproachDistanceTableType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -297,6 +329,10 @@ public class ApproachDistanceTableType
             this.abstractApproachDistanceTableExtension = value;
         }
 
+        public boolean isSetAbstractApproachDistanceTableExtension() {
+            return (this.abstractApproachDistanceTableExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -321,8 +357,16 @@ public class ApproachDistanceTableType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -121,6 +121,10 @@ public class PilotControlledLightingTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the duration property.
      * 
@@ -143,6 +147,10 @@ public class PilotControlledLightingTimeSliceType
      */
     public void setDuration(JAXBElement<ValDurationType> value) {
         this.duration = value;
+    }
+
+    public boolean isSetDuration() {
+        return (this.duration!= null);
     }
 
     /**
@@ -169,6 +177,10 @@ public class PilotControlledLightingTimeSliceType
         this.intensitySteps = value;
     }
 
+    public boolean isSetIntensitySteps() {
+        return (this.intensitySteps!= null);
+    }
+
     /**
      * Gets the value of the standByIntensity property.
      * 
@@ -191,6 +203,10 @@ public class PilotControlledLightingTimeSliceType
      */
     public void setStandByIntensity(JAXBElement<CodeIntensityStandByType> value) {
         this.standByIntensity = value;
+    }
+
+    public boolean isSetStandByIntensity() {
+        return (this.standByIntensity!= null);
     }
 
     /**
@@ -217,6 +233,10 @@ public class PilotControlledLightingTimeSliceType
         this.radioFrequency = value;
     }
 
+    public boolean isSetRadioFrequency() {
+        return (this.radioFrequency!= null);
+    }
+
     /**
      * Gets the value of the activationInstruction property.
      * 
@@ -239,6 +259,10 @@ public class PilotControlledLightingTimeSliceType
      */
     public void setActivationInstruction(JAXBElement<TextInstructionType> value) {
         this.activationInstruction = value;
+    }
+
+    public boolean isSetActivationInstruction() {
+        return (this.activationInstruction!= null);
     }
 
     /**
@@ -273,6 +297,14 @@ public class PilotControlledLightingTimeSliceType
         return this.controlledLightIntensity;
     }
 
+    public boolean isSetControlledLightIntensity() {
+        return ((this.controlledLightIntensity!= null)&&(!this.controlledLightIntensity.isEmpty()));
+    }
+
+    public void unsetControlledLightIntensity() {
+        this.controlledLightIntensity = null;
+    }
+
     /**
      * Gets the value of the activatedGroundLighting property.
      * 
@@ -303,6 +335,14 @@ public class PilotControlledLightingTimeSliceType
             activatedGroundLighting = new ArrayList<>();
         }
         return this.activatedGroundLighting;
+    }
+
+    public boolean isSetActivatedGroundLighting() {
+        return ((this.activatedGroundLighting!= null)&&(!this.activatedGroundLighting.isEmpty()));
+    }
+
+    public void unsetActivatedGroundLighting() {
+        this.activatedGroundLighting = null;
     }
 
     /**
@@ -337,6 +377,14 @@ public class PilotControlledLightingTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -367,6 +415,14 @@ public class PilotControlledLightingTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -427,6 +483,10 @@ public class PilotControlledLightingTimeSliceType
             this.abstractPilotControlledLightingExtension = value;
         }
 
+        public boolean isSetAbstractPilotControlledLightingExtension() {
+            return (this.abstractPilotControlledLightingExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -451,8 +511,16 @@ public class PilotControlledLightingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

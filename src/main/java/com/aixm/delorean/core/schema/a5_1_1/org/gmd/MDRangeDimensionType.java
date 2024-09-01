@@ -80,6 +80,10 @@ public class MDRangeDimensionType
         this.sequenceIdentifier = value;
     }
 
+    public boolean isSetSequenceIdentifier() {
+        return (this.sequenceIdentifier!= null);
+    }
+
     /**
      * Gets the value of the descriptor property.
      * 
@@ -102,6 +106,10 @@ public class MDRangeDimensionType
      */
     public void setDescriptor(CharacterStringPropertyType value) {
         this.descriptor = value;
+    }
+
+    public boolean isSetDescriptor() {
+        return (this.descriptor!= null);
     }
 
 }

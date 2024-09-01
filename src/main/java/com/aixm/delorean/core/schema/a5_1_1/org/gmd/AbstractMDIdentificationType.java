@@ -143,6 +143,10 @@ public abstract class AbstractMDIdentificationType
         this.citation = value;
     }
 
+    public boolean isSetCitation() {
+        return (this.citation!= null);
+    }
+
     /**
      * Gets the value of the abstract property.
      * 
@@ -167,6 +171,10 @@ public abstract class AbstractMDIdentificationType
         this._abstract = value;
     }
 
+    public boolean isSetAbstract() {
+        return (this._abstract!= null);
+    }
+
     /**
      * Gets the value of the purpose property.
      * 
@@ -189,6 +197,10 @@ public abstract class AbstractMDIdentificationType
      */
     public void setPurpose(CharacterStringPropertyType value) {
         this.purpose = value;
+    }
+
+    public boolean isSetPurpose() {
+        return (this.purpose!= null);
     }
 
     /**
@@ -223,6 +235,14 @@ public abstract class AbstractMDIdentificationType
         return this.credit;
     }
 
+    public boolean isSetCredit() {
+        return ((this.credit!= null)&&(!this.credit.isEmpty()));
+    }
+
+    public void unsetCredit() {
+        this.credit = null;
+    }
+
     /**
      * Gets the value of the status property.
      * 
@@ -253,6 +273,14 @@ public abstract class AbstractMDIdentificationType
             status = new ArrayList<>();
         }
         return this.status;
+    }
+
+    public boolean isSetStatus() {
+        return ((this.status!= null)&&(!this.status.isEmpty()));
+    }
+
+    public void unsetStatus() {
+        this.status = null;
     }
 
     /**
@@ -287,6 +315,14 @@ public abstract class AbstractMDIdentificationType
         return this.pointOfContact;
     }
 
+    public boolean isSetPointOfContact() {
+        return ((this.pointOfContact!= null)&&(!this.pointOfContact.isEmpty()));
+    }
+
+    public void unsetPointOfContact() {
+        this.pointOfContact = null;
+    }
+
     /**
      * Gets the value of the resourceMaintenance property.
      * 
@@ -317,6 +353,14 @@ public abstract class AbstractMDIdentificationType
             resourceMaintenance = new ArrayList<>();
         }
         return this.resourceMaintenance;
+    }
+
+    public boolean isSetResourceMaintenance() {
+        return ((this.resourceMaintenance!= null)&&(!this.resourceMaintenance.isEmpty()));
+    }
+
+    public void unsetResourceMaintenance() {
+        this.resourceMaintenance = null;
     }
 
     /**
@@ -351,6 +395,14 @@ public abstract class AbstractMDIdentificationType
         return this.graphicOverview;
     }
 
+    public boolean isSetGraphicOverview() {
+        return ((this.graphicOverview!= null)&&(!this.graphicOverview.isEmpty()));
+    }
+
+    public void unsetGraphicOverview() {
+        this.graphicOverview = null;
+    }
+
     /**
      * Gets the value of the resourceFormat property.
      * 
@@ -381,6 +433,14 @@ public abstract class AbstractMDIdentificationType
             resourceFormat = new ArrayList<>();
         }
         return this.resourceFormat;
+    }
+
+    public boolean isSetResourceFormat() {
+        return ((this.resourceFormat!= null)&&(!this.resourceFormat.isEmpty()));
+    }
+
+    public void unsetResourceFormat() {
+        this.resourceFormat = null;
     }
 
     /**
@@ -415,6 +475,14 @@ public abstract class AbstractMDIdentificationType
         return this.descriptiveKeywords;
     }
 
+    public boolean isSetDescriptiveKeywords() {
+        return ((this.descriptiveKeywords!= null)&&(!this.descriptiveKeywords.isEmpty()));
+    }
+
+    public void unsetDescriptiveKeywords() {
+        this.descriptiveKeywords = null;
+    }
+
     /**
      * Gets the value of the resourceSpecificUsage property.
      * 
@@ -445,6 +513,14 @@ public abstract class AbstractMDIdentificationType
             resourceSpecificUsage = new ArrayList<>();
         }
         return this.resourceSpecificUsage;
+    }
+
+    public boolean isSetResourceSpecificUsage() {
+        return ((this.resourceSpecificUsage!= null)&&(!this.resourceSpecificUsage.isEmpty()));
+    }
+
+    public void unsetResourceSpecificUsage() {
+        this.resourceSpecificUsage = null;
     }
 
     /**
@@ -479,6 +555,14 @@ public abstract class AbstractMDIdentificationType
         return this.resourceConstraints;
     }
 
+    public boolean isSetResourceConstraints() {
+        return ((this.resourceConstraints!= null)&&(!this.resourceConstraints.isEmpty()));
+    }
+
+    public void unsetResourceConstraints() {
+        this.resourceConstraints = null;
+    }
+
     /**
      * Gets the value of the aggregationInfo property.
      * 
@@ -509,6 +593,14 @@ public abstract class AbstractMDIdentificationType
             aggregationInfo = new ArrayList<>();
         }
         return this.aggregationInfo;
+    }
+
+    public boolean isSetAggregationInfo() {
+        return ((this.aggregationInfo!= null)&&(!this.aggregationInfo.isEmpty()));
+    }
+
+    public void unsetAggregationInfo() {
+        this.aggregationInfo = null;
     }
 
 }

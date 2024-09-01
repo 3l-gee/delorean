@@ -71,4 +71,8 @@ public class FASDataBlockPropertyType
         this.fasDataBlock = value;
     }
 
+    public boolean isSetFASDataBlock() {
+        return (this.fasDataBlock!= null);
+    }
+
 }

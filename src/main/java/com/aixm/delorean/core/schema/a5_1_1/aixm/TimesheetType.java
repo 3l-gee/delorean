@@ -137,6 +137,10 @@ public class TimesheetType
         this.timeReference = value;
     }
 
+    public boolean isSetTimeReference() {
+        return (this.timeReference!= null);
+    }
+
     /**
      * Gets the value of the startDate property.
      * 
@@ -159,6 +163,10 @@ public class TimesheetType
      */
     public void setStartDate(JAXBElement<DateMonthDayType> value) {
         this.startDate = value;
+    }
+
+    public boolean isSetStartDate() {
+        return (this.startDate!= null);
     }
 
     /**
@@ -185,6 +193,10 @@ public class TimesheetType
         this.endDate = value;
     }
 
+    public boolean isSetEndDate() {
+        return (this.endDate!= null);
+    }
+
     /**
      * Gets the value of the day property.
      * 
@@ -207,6 +219,10 @@ public class TimesheetType
      */
     public void setDay(JAXBElement<CodeDayType> value) {
         this.day = value;
+    }
+
+    public boolean isSetDay() {
+        return (this.day!= null);
     }
 
     /**
@@ -233,6 +249,10 @@ public class TimesheetType
         this.dayTil = value;
     }
 
+    public boolean isSetDayTil() {
+        return (this.dayTil!= null);
+    }
+
     /**
      * Gets the value of the startTime property.
      * 
@@ -255,6 +275,10 @@ public class TimesheetType
      */
     public void setStartTime(JAXBElement<TimeType> value) {
         this.startTime = value;
+    }
+
+    public boolean isSetStartTime() {
+        return (this.startTime!= null);
     }
 
     /**
@@ -281,6 +305,10 @@ public class TimesheetType
         this.startEvent = value;
     }
 
+    public boolean isSetStartEvent() {
+        return (this.startEvent!= null);
+    }
+
     /**
      * Gets the value of the startTimeRelativeEvent property.
      * 
@@ -303,6 +331,10 @@ public class TimesheetType
      */
     public void setStartTimeRelativeEvent(JAXBElement<ValDurationType> value) {
         this.startTimeRelativeEvent = value;
+    }
+
+    public boolean isSetStartTimeRelativeEvent() {
+        return (this.startTimeRelativeEvent!= null);
     }
 
     /**
@@ -329,6 +361,10 @@ public class TimesheetType
         this.startEventInterpretation = value;
     }
 
+    public boolean isSetStartEventInterpretation() {
+        return (this.startEventInterpretation!= null);
+    }
+
     /**
      * Gets the value of the endTime property.
      * 
@@ -351,6 +387,10 @@ public class TimesheetType
      */
     public void setEndTime(JAXBElement<TimeType> value) {
         this.endTime = value;
+    }
+
+    public boolean isSetEndTime() {
+        return (this.endTime!= null);
     }
 
     /**
@@ -377,6 +417,10 @@ public class TimesheetType
         this.endEvent = value;
     }
 
+    public boolean isSetEndEvent() {
+        return (this.endEvent!= null);
+    }
+
     /**
      * Gets the value of the endTimeRelativeEvent property.
      * 
@@ -399,6 +443,10 @@ public class TimesheetType
      */
     public void setEndTimeRelativeEvent(JAXBElement<ValDurationType> value) {
         this.endTimeRelativeEvent = value;
+    }
+
+    public boolean isSetEndTimeRelativeEvent() {
+        return (this.endTimeRelativeEvent!= null);
     }
 
     /**
@@ -425,6 +473,10 @@ public class TimesheetType
         this.endEventInterpretation = value;
     }
 
+    public boolean isSetEndEventInterpretation() {
+        return (this.endEventInterpretation!= null);
+    }
+
     /**
      * Gets the value of the daylightSavingAdjust property.
      * 
@@ -449,6 +501,10 @@ public class TimesheetType
         this.daylightSavingAdjust = value;
     }
 
+    public boolean isSetDaylightSavingAdjust() {
+        return (this.daylightSavingAdjust!= null);
+    }
+
     /**
      * Gets the value of the excluded property.
      * 
@@ -471,6 +527,10 @@ public class TimesheetType
      */
     public void setExcluded(JAXBElement<CodeYesNoType> value) {
         this.excluded = value;
+    }
+
+    public boolean isSetExcluded() {
+        return (this.excluded!= null);
     }
 
     /**
@@ -505,6 +565,14 @@ public class TimesheetType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -535,6 +603,14 @@ public class TimesheetType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -594,6 +670,10 @@ public class TimesheetType
             this.abstractTimesheetExtension = value;
         }
 
+        public boolean isSetAbstractTimesheetExtension() {
+            return (this.abstractTimesheetExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -618,8 +698,16 @@ public class TimesheetType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

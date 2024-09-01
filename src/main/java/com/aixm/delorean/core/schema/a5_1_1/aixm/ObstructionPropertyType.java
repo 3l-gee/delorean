@@ -71,4 +71,8 @@ public class ObstructionPropertyType
         this.obstruction = value;
     }
 
+    public boolean isSetObstruction() {
+        return (this.obstruction!= null);
+    }
+
 }

@@ -163,6 +163,10 @@ public class AerialRefuellingTimeSliceType
         this.designatorPrefix = value;
     }
 
+    public boolean isSetDesignatorPrefix() {
+        return (this.designatorPrefix!= null);
+    }
+
     /**
      * Gets the value of the designatorNumber property.
      * 
@@ -185,6 +189,10 @@ public class AerialRefuellingTimeSliceType
      */
     public void setDesignatorNumber(JAXBElement<NoNumberType> value) {
         this.designatorNumber = value;
+    }
+
+    public boolean isSetDesignatorNumber() {
+        return (this.designatorNumber!= null);
     }
 
     /**
@@ -211,6 +219,10 @@ public class AerialRefuellingTimeSliceType
         this.designatorSuffix = value;
     }
 
+    public boolean isSetDesignatorSuffix() {
+        return (this.designatorSuffix!= null);
+    }
+
     /**
      * Gets the value of the designatorDirection property.
      * 
@@ -233,6 +245,10 @@ public class AerialRefuellingTimeSliceType
      */
     public void setDesignatorDirection(JAXBElement<CodeCardinalDirectionType> value) {
         this.designatorDirection = value;
+    }
+
+    public boolean isSetDesignatorDirection() {
+        return (this.designatorDirection!= null);
     }
 
     /**
@@ -259,6 +275,10 @@ public class AerialRefuellingTimeSliceType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -281,6 +301,10 @@ public class AerialRefuellingTimeSliceType
      */
     public void setType(JAXBElement<CodeAerialRefuellingType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -307,6 +331,10 @@ public class AerialRefuellingTimeSliceType
         this.radarBeaconSetting = value;
     }
 
+    public boolean isSetRadarBeaconSetting() {
+        return (this.radarBeaconSetting!= null);
+    }
+
     /**
      * Gets the value of the xbandRadarSetting property.
      * 
@@ -329,6 +357,10 @@ public class AerialRefuellingTimeSliceType
      */
     public void setXbandRadarSetting(JAXBElement<NoNumberType> value) {
         this.xbandRadarSetting = value;
+    }
+
+    public boolean isSetXbandRadarSetting() {
+        return (this.xbandRadarSetting!= null);
     }
 
     /**
@@ -355,6 +387,10 @@ public class AerialRefuellingTimeSliceType
         this.tankerChannel = value;
     }
 
+    public boolean isSetTankerChannel() {
+        return (this.tankerChannel!= null);
+    }
+
     /**
      * Gets the value of the receiverChannel property.
      * 
@@ -377,6 +413,10 @@ public class AerialRefuellingTimeSliceType
      */
     public void setReceiverChannel(JAXBElement<CodeTACANChannelType> value) {
         this.receiverChannel = value;
+    }
+
+    public boolean isSetReceiverChannel() {
+        return (this.receiverChannel!= null);
     }
 
     /**
@@ -403,6 +443,10 @@ public class AerialRefuellingTimeSliceType
         this.helicopterRoute = value;
     }
 
+    public boolean isSetHelicopterRoute() {
+        return (this.helicopterRoute!= null);
+    }
+
     /**
      * Gets the value of the specialRefuelling property.
      * 
@@ -425,6 +469,10 @@ public class AerialRefuellingTimeSliceType
      */
     public void setSpecialRefuelling(JAXBElement<CodeYesNoType> value) {
         this.specialRefuelling = value;
+    }
+
+    public boolean isSetSpecialRefuelling() {
+        return (this.specialRefuelling!= null);
     }
 
     /**
@@ -451,6 +499,10 @@ public class AerialRefuellingTimeSliceType
         this.bidirectionalUse = value;
     }
 
+    public boolean isSetBidirectionalUse() {
+        return (this.bidirectionalUse!= null);
+    }
+
     /**
      * Gets the value of the reverseDirectionTurn property.
      * 
@@ -473,6 +525,10 @@ public class AerialRefuellingTimeSliceType
      */
     public void setReverseDirectionTurn(JAXBElement<CodeDirectionTurnType> value) {
         this.reverseDirectionTurn = value;
+    }
+
+    public boolean isSetReverseDirectionTurn() {
+        return (this.reverseDirectionTurn!= null);
     }
 
     /**
@@ -507,6 +563,14 @@ public class AerialRefuellingTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the protectingAirspace property.
      * 
@@ -537,6 +601,14 @@ public class AerialRefuellingTimeSliceType
             protectingAirspace = new ArrayList<>();
         }
         return this.protectingAirspace;
+    }
+
+    public boolean isSetProtectingAirspace() {
+        return ((this.protectingAirspace!= null)&&(!this.protectingAirspace.isEmpty()));
+    }
+
+    public void unsetProtectingAirspace() {
+        this.protectingAirspace = null;
     }
 
     /**
@@ -571,6 +643,14 @@ public class AerialRefuellingTimeSliceType
         return this.track;
     }
 
+    public boolean isSetTrack() {
+        return ((this.track!= null)&&(!this.track.isEmpty()));
+    }
+
+    public void unsetTrack() {
+        this.track = null;
+    }
+
     /**
      * Gets the value of the anchor property.
      * 
@@ -603,6 +683,14 @@ public class AerialRefuellingTimeSliceType
         return this.anchor;
     }
 
+    public boolean isSetAnchor() {
+        return ((this.anchor!= null)&&(!this.anchor.isEmpty()));
+    }
+
+    public void unsetAnchor() {
+        this.anchor = null;
+    }
+
     /**
      * Gets the value of the oppositeTrack property.
      * 
@@ -625,6 +713,10 @@ public class AerialRefuellingTimeSliceType
      */
     public void setOppositeTrack(JAXBElement<AerialRefuellingPropertyType> value) {
         this.oppositeTrack = value;
+    }
+
+    public boolean isSetOppositeTrack() {
+        return (this.oppositeTrack!= null);
     }
 
     /**
@@ -659,6 +751,14 @@ public class AerialRefuellingTimeSliceType
         return this.managingOrganisation;
     }
 
+    public boolean isSetManagingOrganisation() {
+        return ((this.managingOrganisation!= null)&&(!this.managingOrganisation.isEmpty()));
+    }
+
+    public void unsetManagingOrganisation() {
+        this.managingOrganisation = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -691,6 +791,14 @@ public class AerialRefuellingTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -721,6 +829,14 @@ public class AerialRefuellingTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -781,6 +897,10 @@ public class AerialRefuellingTimeSliceType
             this.abstractAerialRefuellingExtension = value;
         }
 
+        public boolean isSetAbstractAerialRefuellingExtension() {
+            return (this.abstractAerialRefuellingExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -805,8 +925,16 @@ public class AerialRefuellingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

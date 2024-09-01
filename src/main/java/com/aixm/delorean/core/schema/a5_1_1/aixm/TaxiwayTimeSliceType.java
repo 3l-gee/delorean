@@ -127,6 +127,10 @@ public class TaxiwayTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -149,6 +153,10 @@ public class TaxiwayTimeSliceType
      */
     public void setType(JAXBElement<CodeTaxiwayType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -175,6 +183,10 @@ public class TaxiwayTimeSliceType
         this.width = value;
     }
 
+    public boolean isSetWidth() {
+        return (this.width!= null);
+    }
+
     /**
      * Gets the value of the widthShoulder property.
      * 
@@ -197,6 +209,10 @@ public class TaxiwayTimeSliceType
      */
     public void setWidthShoulder(JAXBElement<ValDistanceType> value) {
         this.widthShoulder = value;
+    }
+
+    public boolean isSetWidthShoulder() {
+        return (this.widthShoulder!= null);
     }
 
     /**
@@ -223,6 +239,10 @@ public class TaxiwayTimeSliceType
         this.length = value;
     }
 
+    public boolean isSetLength() {
+        return (this.length!= null);
+    }
+
     /**
      * Gets the value of the abandoned property.
      * 
@@ -245,6 +265,10 @@ public class TaxiwayTimeSliceType
      */
     public void setAbandoned(JAXBElement<CodeYesNoType> value) {
         this.abandoned = value;
+    }
+
+    public boolean isSetAbandoned() {
+        return (this.abandoned!= null);
     }
 
     /**
@@ -271,6 +295,10 @@ public class TaxiwayTimeSliceType
         this.surfaceProperties = value;
     }
 
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
+    }
+
     /**
      * Gets the value of the associatedAirportHeliport property.
      * 
@@ -293,6 +321,10 @@ public class TaxiwayTimeSliceType
      */
     public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.associatedAirportHeliport = value;
+    }
+
+    public boolean isSetAssociatedAirportHeliport() {
+        return (this.associatedAirportHeliport!= null);
     }
 
     /**
@@ -327,6 +359,14 @@ public class TaxiwayTimeSliceType
         return this.contaminant;
     }
 
+    public boolean isSetContaminant() {
+        return ((this.contaminant!= null)&&(!this.contaminant.isEmpty()));
+    }
+
+    public void unsetContaminant() {
+        this.contaminant = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -357,6 +397,14 @@ public class TaxiwayTimeSliceType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -391,6 +439,14 @@ public class TaxiwayTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -421,6 +477,14 @@ public class TaxiwayTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -481,6 +545,10 @@ public class TaxiwayTimeSliceType
             this.abstractTaxiwayExtension = value;
         }
 
+        public boolean isSetAbstractTaxiwayExtension() {
+            return (this.abstractTaxiwayExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -505,8 +573,16 @@ public class TaxiwayTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

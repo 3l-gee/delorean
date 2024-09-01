@@ -73,6 +73,10 @@ public class PilotControlledLightingTimeSlicePropertyType {
         this.pilotControlledLightingTimeSlice = value;
     }
 
+    public boolean isSetPilotControlledLightingTimeSlice() {
+        return (this.pilotControlledLightingTimeSlice!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -97,8 +101,16 @@ public class PilotControlledLightingTimeSlicePropertyType {
      *     {@link Boolean }
      *     
      */
-    public void setOwns(Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

@@ -92,6 +92,10 @@ public class MDDistributorType
         this.distributorContact = value;
     }
 
+    public boolean isSetDistributorContact() {
+        return (this.distributorContact!= null);
+    }
+
     /**
      * Gets the value of the distributionOrderProcess property.
      * 
@@ -122,6 +126,14 @@ public class MDDistributorType
             distributionOrderProcess = new ArrayList<>();
         }
         return this.distributionOrderProcess;
+    }
+
+    public boolean isSetDistributionOrderProcess() {
+        return ((this.distributionOrderProcess!= null)&&(!this.distributionOrderProcess.isEmpty()));
+    }
+
+    public void unsetDistributionOrderProcess() {
+        this.distributionOrderProcess = null;
     }
 
     /**
@@ -156,6 +168,14 @@ public class MDDistributorType
         return this.distributorFormat;
     }
 
+    public boolean isSetDistributorFormat() {
+        return ((this.distributorFormat!= null)&&(!this.distributorFormat.isEmpty()));
+    }
+
+    public void unsetDistributorFormat() {
+        this.distributorFormat = null;
+    }
+
     /**
      * Gets the value of the distributorTransferOptions property.
      * 
@@ -186,6 +206,14 @@ public class MDDistributorType
             distributorTransferOptions = new ArrayList<>();
         }
         return this.distributorTransferOptions;
+    }
+
+    public boolean isSetDistributorTransferOptions() {
+        return ((this.distributorTransferOptions!= null)&&(!this.distributorTransferOptions.isEmpty()));
+    }
+
+    public void unsetDistributorTransferOptions() {
+        this.distributorTransferOptions = null;
     }
 
 }

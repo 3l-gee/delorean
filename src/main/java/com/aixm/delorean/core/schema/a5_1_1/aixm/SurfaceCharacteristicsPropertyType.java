@@ -71,4 +71,8 @@ public class SurfaceCharacteristicsPropertyType
         this.surfaceCharacteristics = value;
     }
 
+    public boolean isSetSurfaceCharacteristics() {
+        return (this.surfaceCharacteristics!= null);
+    }
+
 }

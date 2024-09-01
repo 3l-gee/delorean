@@ -88,6 +88,14 @@ public class TimeNodeType
         return this.previousEdge;
     }
 
+    public boolean isSetPreviousEdge() {
+        return ((this.previousEdge!= null)&&(!this.previousEdge.isEmpty()));
+    }
+
+    public void unsetPreviousEdge() {
+        this.previousEdge = null;
+    }
+
     /**
      * Gets the value of the nextEdge property.
      * 
@@ -120,6 +128,14 @@ public class TimeNodeType
         return this.nextEdge;
     }
 
+    public boolean isSetNextEdge() {
+        return ((this.nextEdge!= null)&&(!this.nextEdge.isEmpty()));
+    }
+
+    public void unsetNextEdge() {
+        this.nextEdge = null;
+    }
+
     /**
      * Gets the value of the position property.
      * 
@@ -142,6 +158,10 @@ public class TimeNodeType
      */
     public void setPosition(TimeInstantPropertyType value) {
         this.position = value;
+    }
+
+    public boolean isSetPosition() {
+        return (this.position!= null);
     }
 
 }

@@ -114,6 +114,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
         this.width = value;
     }
 
+    public boolean isSetWidth() {
+        return (this.width!= null);
+    }
+
     /**
      * Gets the value of the length property.
      * 
@@ -136,6 +140,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      */
     public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
+    }
+
+    public boolean isSetLength() {
+        return (this.length!= null);
     }
 
     /**
@@ -162,6 +170,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
         this.lighting = value;
     }
 
+    public boolean isSetLighting() {
+        return (this.lighting!= null);
+    }
+
     /**
      * Gets the value of the obstacleFree property.
      * 
@@ -184,6 +196,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      */
     public void setObstacleFree(JAXBElement<CodeYesNoType> value) {
         this.obstacleFree = value;
+    }
+
+    public boolean isSetObstacleFree() {
+        return (this.obstacleFree!= null);
     }
 
     /**
@@ -210,6 +226,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
         this.surfaceProperties = value;
     }
 
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -232,6 +252,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      */
     public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -266,6 +290,14 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the protectedTouchDownLiftOff property.
      * 
@@ -288,6 +320,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      */
     public void setProtectedTouchDownLiftOff(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.protectedTouchDownLiftOff = value;
+    }
+
+    public boolean isSetProtectedTouchDownLiftOff() {
+        return (this.protectedTouchDownLiftOff!= null);
     }
 
     /**
@@ -320,6 +356,14 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -384,6 +428,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
             this.abstractTouchDownLiftOffSafeAreaExtension = value;
         }
 
+        public boolean isSetAbstractTouchDownLiftOffSafeAreaExtension() {
+            return (this.abstractTouchDownLiftOffSafeAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractAirportHeliportProtectionAreaExtension property.
          * 
@@ -406,6 +454,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
          */
         public void setAbstractAirportHeliportProtectionAreaExtension(AbstractExtensionType value) {
             this.abstractAirportHeliportProtectionAreaExtension = value;
+        }
+
+        public boolean isSetAbstractAirportHeliportProtectionAreaExtension() {
+            return (this.abstractAirportHeliportProtectionAreaExtension!= null);
         }
 
         /**
@@ -432,8 +484,16 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

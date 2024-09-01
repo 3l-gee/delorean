@@ -205,6 +205,10 @@ public class AirportHeliportTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -227,6 +231,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -253,6 +261,10 @@ public class AirportHeliportTimeSliceType
         this.locationIndicatorICAO = value;
     }
 
+    public boolean isSetLocationIndicatorICAO() {
+        return (this.locationIndicatorICAO!= null);
+    }
+
     /**
      * Gets the value of the designatorIATA property.
      * 
@@ -275,6 +287,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setDesignatorIATA(JAXBElement<CodeIATAType> value) {
         this.designatorIATA = value;
+    }
+
+    public boolean isSetDesignatorIATA() {
+        return (this.designatorIATA!= null);
     }
 
     /**
@@ -301,6 +317,10 @@ public class AirportHeliportTimeSliceType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the certifiedICAO property.
      * 
@@ -323,6 +343,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setCertifiedICAO(JAXBElement<CodeYesNoType> value) {
         this.certifiedICAO = value;
+    }
+
+    public boolean isSetCertifiedICAO() {
+        return (this.certifiedICAO!= null);
     }
 
     /**
@@ -349,6 +373,10 @@ public class AirportHeliportTimeSliceType
         this.privateUse = value;
     }
 
+    public boolean isSetPrivateUse() {
+        return (this.privateUse!= null);
+    }
+
     /**
      * Gets the value of the controlType property.
      * 
@@ -371,6 +399,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setControlType(JAXBElement<CodeMilitaryOperationsType> value) {
         this.controlType = value;
+    }
+
+    public boolean isSetControlType() {
+        return (this.controlType!= null);
     }
 
     /**
@@ -397,6 +429,10 @@ public class AirportHeliportTimeSliceType
         this.fieldElevation = value;
     }
 
+    public boolean isSetFieldElevation() {
+        return (this.fieldElevation!= null);
+    }
+
     /**
      * Gets the value of the fieldElevationAccuracy property.
      * 
@@ -419,6 +455,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setFieldElevationAccuracy(JAXBElement<ValDistanceVerticalType> value) {
         this.fieldElevationAccuracy = value;
+    }
+
+    public boolean isSetFieldElevationAccuracy() {
+        return (this.fieldElevationAccuracy!= null);
     }
 
     /**
@@ -445,6 +485,10 @@ public class AirportHeliportTimeSliceType
         this.verticalDatum = value;
     }
 
+    public boolean isSetVerticalDatum() {
+        return (this.verticalDatum!= null);
+    }
+
     /**
      * Gets the value of the magneticVariation property.
      * 
@@ -467,6 +511,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setMagneticVariation(JAXBElement<ValMagneticVariationType> value) {
         this.magneticVariation = value;
+    }
+
+    public boolean isSetMagneticVariation() {
+        return (this.magneticVariation!= null);
     }
 
     /**
@@ -493,6 +541,10 @@ public class AirportHeliportTimeSliceType
         this.magneticVariationAccuracy = value;
     }
 
+    public boolean isSetMagneticVariationAccuracy() {
+        return (this.magneticVariationAccuracy!= null);
+    }
+
     /**
      * Gets the value of the dateMagneticVariation property.
      * 
@@ -515,6 +567,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setDateMagneticVariation(JAXBElement<DateYearType> value) {
         this.dateMagneticVariation = value;
+    }
+
+    public boolean isSetDateMagneticVariation() {
+        return (this.dateMagneticVariation!= null);
     }
 
     /**
@@ -541,6 +597,10 @@ public class AirportHeliportTimeSliceType
         this.magneticVariationChange = value;
     }
 
+    public boolean isSetMagneticVariationChange() {
+        return (this.magneticVariationChange!= null);
+    }
+
     /**
      * Gets the value of the referenceTemperature property.
      * 
@@ -563,6 +623,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setReferenceTemperature(JAXBElement<ValTemperatureType> value) {
         this.referenceTemperature = value;
+    }
+
+    public boolean isSetReferenceTemperature() {
+        return (this.referenceTemperature!= null);
     }
 
     /**
@@ -589,6 +653,10 @@ public class AirportHeliportTimeSliceType
         this.altimeterCheckLocation = value;
     }
 
+    public boolean isSetAltimeterCheckLocation() {
+        return (this.altimeterCheckLocation!= null);
+    }
+
     /**
      * Gets the value of the secondaryPowerSupply property.
      * 
@@ -611,6 +679,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setSecondaryPowerSupply(JAXBElement<CodeYesNoType> value) {
         this.secondaryPowerSupply = value;
+    }
+
+    public boolean isSetSecondaryPowerSupply() {
+        return (this.secondaryPowerSupply!= null);
     }
 
     /**
@@ -637,6 +709,10 @@ public class AirportHeliportTimeSliceType
         this.windDirectionIndicator = value;
     }
 
+    public boolean isSetWindDirectionIndicator() {
+        return (this.windDirectionIndicator!= null);
+    }
+
     /**
      * Gets the value of the landingDirectionIndicator property.
      * 
@@ -659,6 +735,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setLandingDirectionIndicator(JAXBElement<CodeYesNoType> value) {
         this.landingDirectionIndicator = value;
+    }
+
+    public boolean isSetLandingDirectionIndicator() {
+        return (this.landingDirectionIndicator!= null);
     }
 
     /**
@@ -685,6 +765,10 @@ public class AirportHeliportTimeSliceType
         this.transitionAltitude = value;
     }
 
+    public boolean isSetTransitionAltitude() {
+        return (this.transitionAltitude!= null);
+    }
+
     /**
      * Gets the value of the transitionLevel property.
      * 
@@ -707,6 +791,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setTransitionLevel(JAXBElement<ValFLType> value) {
         this.transitionLevel = value;
+    }
+
+    public boolean isSetTransitionLevel() {
+        return (this.transitionLevel!= null);
     }
 
     /**
@@ -733,6 +821,10 @@ public class AirportHeliportTimeSliceType
         this.lowestTemperature = value;
     }
 
+    public boolean isSetLowestTemperature() {
+        return (this.lowestTemperature!= null);
+    }
+
     /**
      * Gets the value of the abandoned property.
      * 
@@ -755,6 +847,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setAbandoned(JAXBElement<CodeYesNoType> value) {
         this.abandoned = value;
+    }
+
+    public boolean isSetAbandoned() {
+        return (this.abandoned!= null);
     }
 
     /**
@@ -781,6 +877,10 @@ public class AirportHeliportTimeSliceType
         this.certificationDate = value;
     }
 
+    public boolean isSetCertificationDate() {
+        return (this.certificationDate!= null);
+    }
+
     /**
      * Gets the value of the certificationExpirationDate property.
      * 
@@ -803,6 +903,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setCertificationExpirationDate(JAXBElement<DateType> value) {
         this.certificationExpirationDate = value;
+    }
+
+    public boolean isSetCertificationExpirationDate() {
+        return (this.certificationExpirationDate!= null);
     }
 
     /**
@@ -837,6 +941,14 @@ public class AirportHeliportTimeSliceType
         return this.contaminant;
     }
 
+    public boolean isSetContaminant() {
+        return ((this.contaminant!= null)&&(!this.contaminant.isEmpty()));
+    }
+
+    public void unsetContaminant() {
+        this.contaminant = null;
+    }
+
     /**
      * Gets the value of the servedCity property.
      * 
@@ -869,6 +981,14 @@ public class AirportHeliportTimeSliceType
         return this.servedCity;
     }
 
+    public boolean isSetServedCity() {
+        return ((this.servedCity!= null)&&(!this.servedCity.isEmpty()));
+    }
+
+    public void unsetServedCity() {
+        this.servedCity = null;
+    }
+
     /**
      * Gets the value of the responsibleOrganisation property.
      * 
@@ -891,6 +1011,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setResponsibleOrganisation(JAXBElement<AirportHeliportResponsibilityOrganisationPropertyType> value) {
         this.responsibleOrganisation = value;
+    }
+
+    public boolean isSetResponsibleOrganisation() {
+        return (this.responsibleOrganisation!= null);
     }
 
     /**
@@ -917,6 +1041,10 @@ public class AirportHeliportTimeSliceType
         this.arp = value;
     }
 
+    public boolean isSetARP() {
+        return (this.arp!= null);
+    }
+
     /**
      * Gets the value of the aviationBoundary property.
      * 
@@ -939,6 +1067,10 @@ public class AirportHeliportTimeSliceType
      */
     public void setAviationBoundary(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.aviationBoundary = value;
+    }
+
+    public boolean isSetAviationBoundary() {
+        return (this.aviationBoundary!= null);
     }
 
     /**
@@ -973,6 +1105,14 @@ public class AirportHeliportTimeSliceType
         return this.altimeterSource;
     }
 
+    public boolean isSetAltimeterSource() {
+        return ((this.altimeterSource!= null)&&(!this.altimeterSource.isEmpty()));
+    }
+
+    public void unsetAltimeterSource() {
+        this.altimeterSource = null;
+    }
+
     /**
      * Gets the value of the contact property.
      * 
@@ -1003,6 +1143,14 @@ public class AirportHeliportTimeSliceType
             contact = new ArrayList<>();
         }
         return this.contact;
+    }
+
+    public boolean isSetContact() {
+        return ((this.contact!= null)&&(!this.contact.isEmpty()));
+    }
+
+    public void unsetContact() {
+        this.contact = null;
     }
 
     /**
@@ -1037,6 +1185,14 @@ public class AirportHeliportTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -1069,6 +1225,14 @@ public class AirportHeliportTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -1099,6 +1263,14 @@ public class AirportHeliportTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -1159,6 +1331,10 @@ public class AirportHeliportTimeSliceType
             this.abstractAirportHeliportExtension = value;
         }
 
+        public boolean isSetAbstractAirportHeliportExtension() {
+            return (this.abstractAirportHeliportExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -1183,8 +1359,16 @@ public class AirportHeliportTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

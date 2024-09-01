@@ -83,6 +83,10 @@ public class GeodeticDatumType
         this.primeMeridian = value;
     }
 
+    public boolean isSetPrimeMeridian() {
+        return (this.primeMeridian!= null);
+    }
+
     /**
      * gml:ellipsoid is an association role to the ellipsoid used by this geodetic datum.
      * 
@@ -108,6 +112,10 @@ public class GeodeticDatumType
      */
     public void setEllipsoid(JAXBElement<EllipsoidPropertyType> value) {
         this.ellipsoid = value;
+    }
+
+    public boolean isSetEllipsoid() {
+        return (this.ellipsoid!= null);
     }
 
 }

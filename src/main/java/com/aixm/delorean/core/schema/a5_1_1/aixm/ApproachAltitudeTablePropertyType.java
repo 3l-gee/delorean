@@ -71,4 +71,8 @@ public class ApproachAltitudeTablePropertyType
         this.approachAltitudeTable = value;
     }
 
+    public boolean isSetApproachAltitudeTable() {
+        return (this.approachAltitudeTable!= null);
+    }
+
 }

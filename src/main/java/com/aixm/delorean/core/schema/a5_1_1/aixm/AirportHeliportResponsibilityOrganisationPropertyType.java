@@ -71,4 +71,8 @@ public class AirportHeliportResponsibilityOrganisationPropertyType
         this.airportHeliportResponsibilityOrganisation = value;
     }
 
+    public boolean isSetAirportHeliportResponsibilityOrganisation() {
+        return (this.airportHeliportResponsibilityOrganisation!= null);
+    }
+
 }

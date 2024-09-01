@@ -125,6 +125,10 @@ public class CircleSectorType
         this.arcDirection = value;
     }
 
+    public boolean isSetArcDirection() {
+        return (this.arcDirection!= null);
+    }
+
     /**
      * Gets the value of the fromAngle property.
      * 
@@ -147,6 +151,10 @@ public class CircleSectorType
      */
     public void setFromAngle(JAXBElement<ValBearingType> value) {
         this.fromAngle = value;
+    }
+
+    public boolean isSetFromAngle() {
+        return (this.fromAngle!= null);
     }
 
     /**
@@ -173,6 +181,10 @@ public class CircleSectorType
         this.toAngle = value;
     }
 
+    public boolean isSetToAngle() {
+        return (this.toAngle!= null);
+    }
+
     /**
      * Gets the value of the angleType property.
      * 
@@ -195,6 +207,10 @@ public class CircleSectorType
      */
     public void setAngleType(JAXBElement<CodeBearingType> value) {
         this.angleType = value;
+    }
+
+    public boolean isSetAngleType() {
+        return (this.angleType!= null);
     }
 
     /**
@@ -221,6 +237,10 @@ public class CircleSectorType
         this.angleDirectionReference = value;
     }
 
+    public boolean isSetAngleDirectionReference() {
+        return (this.angleDirectionReference!= null);
+    }
+
     /**
      * Gets the value of the innerDistance property.
      * 
@@ -243,6 +263,10 @@ public class CircleSectorType
      */
     public void setInnerDistance(JAXBElement<ValDistanceType> value) {
         this.innerDistance = value;
+    }
+
+    public boolean isSetInnerDistance() {
+        return (this.innerDistance!= null);
     }
 
     /**
@@ -269,6 +293,10 @@ public class CircleSectorType
         this.outerDistance = value;
     }
 
+    public boolean isSetOuterDistance() {
+        return (this.outerDistance!= null);
+    }
+
     /**
      * Gets the value of the upperLimit property.
      * 
@@ -291,6 +319,10 @@ public class CircleSectorType
      */
     public void setUpperLimit(JAXBElement<ValDistanceVerticalType> value) {
         this.upperLimit = value;
+    }
+
+    public boolean isSetUpperLimit() {
+        return (this.upperLimit!= null);
     }
 
     /**
@@ -317,6 +349,10 @@ public class CircleSectorType
         this.upperLimitReference = value;
     }
 
+    public boolean isSetUpperLimitReference() {
+        return (this.upperLimitReference!= null);
+    }
+
     /**
      * Gets the value of the lowerLimit property.
      * 
@@ -341,6 +377,10 @@ public class CircleSectorType
         this.lowerLimit = value;
     }
 
+    public boolean isSetLowerLimit() {
+        return (this.lowerLimit!= null);
+    }
+
     /**
      * Gets the value of the lowerLimitReference property.
      * 
@@ -363,6 +403,10 @@ public class CircleSectorType
      */
     public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLimitReference = value;
+    }
+
+    public boolean isSetLowerLimitReference() {
+        return (this.lowerLimitReference!= null);
     }
 
     /**
@@ -397,6 +441,14 @@ public class CircleSectorType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -427,6 +479,14 @@ public class CircleSectorType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -486,6 +546,10 @@ public class CircleSectorType
             this.abstractCircleSectorExtension = value;
         }
 
+        public boolean isSetAbstractCircleSectorExtension() {
+            return (this.abstractCircleSectorExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -510,8 +574,16 @@ public class CircleSectorType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

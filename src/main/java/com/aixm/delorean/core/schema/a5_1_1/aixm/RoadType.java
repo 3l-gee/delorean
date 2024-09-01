@@ -83,4 +83,12 @@ public class RoadType
         return this.timeSlice;
     }
 
+    public boolean isSetTimeSlice() {
+        return ((this.timeSlice!= null)&&(!this.timeSlice.isEmpty()));
+    }
+
+    public void unsetTimeSlice() {
+        this.timeSlice = null;
+    }
+
 }

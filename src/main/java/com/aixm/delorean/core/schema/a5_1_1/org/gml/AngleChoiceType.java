@@ -74,6 +74,10 @@ public class AngleChoiceType {
         this.angle = value;
     }
 
+    public boolean isSetAngle() {
+        return (this.angle!= null);
+    }
+
     /**
      * Gets the value of the dmsAngle property.
      * 
@@ -96,6 +100,10 @@ public class AngleChoiceType {
      */
     public void setDmsAngle(DMSAngleType value) {
         this.dmsAngle = value;
+    }
+
+    public boolean isSetDmsAngle() {
+        return (this.dmsAngle!= null);
     }
 
 }

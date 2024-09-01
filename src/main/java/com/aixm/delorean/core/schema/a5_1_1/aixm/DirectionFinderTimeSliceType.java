@@ -143,6 +143,10 @@ public class DirectionFinderTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -165,6 +169,10 @@ public class DirectionFinderTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -191,6 +199,10 @@ public class DirectionFinderTimeSliceType
         this.emissionClass = value;
     }
 
+    public boolean isSetEmissionClass() {
+        return (this.emissionClass!= null);
+    }
+
     /**
      * Gets the value of the mobile property.
      * 
@@ -213,6 +225,10 @@ public class DirectionFinderTimeSliceType
      */
     public void setMobile(JAXBElement<CodeYesNoType> value) {
         this.mobile = value;
+    }
+
+    public boolean isSetMobile() {
+        return (this.mobile!= null);
     }
 
     /**
@@ -239,6 +255,10 @@ public class DirectionFinderTimeSliceType
         this.magneticVariation = value;
     }
 
+    public boolean isSetMagneticVariation() {
+        return (this.magneticVariation!= null);
+    }
+
     /**
      * Gets the value of the magneticVariationAccuracy property.
      * 
@@ -261,6 +281,10 @@ public class DirectionFinderTimeSliceType
      */
     public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticVariationAccuracy = value;
+    }
+
+    public boolean isSetMagneticVariationAccuracy() {
+        return (this.magneticVariationAccuracy!= null);
     }
 
     /**
@@ -287,6 +311,10 @@ public class DirectionFinderTimeSliceType
         this.dateMagneticVariation = value;
     }
 
+    public boolean isSetDateMagneticVariation() {
+        return (this.dateMagneticVariation!= null);
+    }
+
     /**
      * Gets the value of the flightChecked property.
      * 
@@ -311,6 +339,10 @@ public class DirectionFinderTimeSliceType
         this.flightChecked = value;
     }
 
+    public boolean isSetFlightChecked() {
+        return (this.flightChecked!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -333,6 +365,10 @@ public class DirectionFinderTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -367,6 +403,14 @@ public class DirectionFinderTimeSliceType
         return this.authority;
     }
 
+    public boolean isSetAuthority() {
+        return ((this.authority!= null)&&(!this.authority.isEmpty()));
+    }
+
+    public void unsetAuthority() {
+        this.authority = null;
+    }
+
     /**
      * Gets the value of the monitoring property.
      * 
@@ -397,6 +441,14 @@ public class DirectionFinderTimeSliceType
             monitoring = new ArrayList<>();
         }
         return this.monitoring;
+    }
+
+    public boolean isSetMonitoring() {
+        return ((this.monitoring!= null)&&(!this.monitoring.isEmpty()));
+    }
+
+    public void unsetMonitoring() {
+        this.monitoring = null;
     }
 
     /**
@@ -431,6 +483,14 @@ public class DirectionFinderTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -463,6 +523,14 @@ public class DirectionFinderTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the doppler property.
      * 
@@ -485,6 +553,10 @@ public class DirectionFinderTimeSliceType
      */
     public void setDoppler(JAXBElement<CodeYesNoType> value) {
         this.doppler = value;
+    }
+
+    public boolean isSetDoppler() {
+        return (this.doppler!= null);
     }
 
     /**
@@ -519,6 +591,14 @@ public class DirectionFinderTimeSliceType
         return this.informationProvision;
     }
 
+    public boolean isSetInformationProvision() {
+        return ((this.informationProvision!= null)&&(!this.informationProvision.isEmpty()));
+    }
+
+    public void unsetInformationProvision() {
+        this.informationProvision = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -549,6 +629,14 @@ public class DirectionFinderTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -613,6 +701,10 @@ public class DirectionFinderTimeSliceType
             this.abstractDirectionFinderExtension = value;
         }
 
+        public boolean isSetAbstractDirectionFinderExtension() {
+            return (this.abstractDirectionFinderExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractNavaidEquipmentExtension property.
          * 
@@ -635,6 +727,10 @@ public class DirectionFinderTimeSliceType
          */
         public void setAbstractNavaidEquipmentExtension(AbstractExtensionType value) {
             this.abstractNavaidEquipmentExtension = value;
+        }
+
+        public boolean isSetAbstractNavaidEquipmentExtension() {
+            return (this.abstractNavaidEquipmentExtension!= null);
         }
 
         /**
@@ -661,8 +757,16 @@ public class DirectionFinderTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

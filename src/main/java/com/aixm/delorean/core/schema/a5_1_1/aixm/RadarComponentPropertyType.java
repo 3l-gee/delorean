@@ -71,4 +71,8 @@ public class RadarComponentPropertyType
         this.radarComponent = value;
     }
 
+    public boolean isSetRadarComponent() {
+        return (this.radarComponent!= null);
+    }
+
 }

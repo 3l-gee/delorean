@@ -92,6 +92,10 @@ public class GeodesicStringType
         this.posList = value;
     }
 
+    public boolean isSetPosList() {
+        return (this.posList!= null);
+    }
+
     /**
      * GML supports two different ways to specify a geometric position: either by a direct position (a data type) or a point (a geometric object).
      * pos elements are positions that are "owned" by the geometric primitive encapsulating this geometric position.
@@ -127,6 +131,14 @@ public class GeodesicStringType
             geometricPositionGroup = new ArrayList<>();
         }
         return this.geometricPositionGroup;
+    }
+
+    public boolean isSetGeometricPositionGroup() {
+        return ((this.geometricPositionGroup!= null)&&(!this.geometricPositionGroup.isEmpty()));
+    }
+
+    public void unsetGeometricPositionGroup() {
+        this.geometricPositionGroup = null;
     }
 
 }

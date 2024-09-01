@@ -79,4 +79,8 @@ public class EXTemporalExtentType
         this.extent = value;
     }
 
+    public boolean isSetExtent() {
+        return (this.extent!= null);
+    }
+
 }

@@ -1,11 +1,14 @@
-<jaxb:bindings version="3.0"
+<jaxb:bindings 
+	version="3.0"
     xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
 	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
 	xmlns:annox="urn:jaxb.jvnet.org:annox"
-	jaxb:extensionBindingPrefixes="xjc annox">
+	xmlns:hj="urn:hyperjaxb3.jvnet.org:ejb:schemas:customizations"
+    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm"
+	jaxb:extensionBindingPrefixes="xjc annox hj orm">
     
     <jaxb:bindings schemaLocation="AIXM_BasicMessage.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
@@ -16,17 +19,24 @@
 			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement()</annox:annotate>
 		</jaxb:bindings>
     </jaxb:bindings>
-
+	
     <jaxb:bindings schemaLocation="AIXM_Features.xsd" node="/xs:schema">
 		<jaxb:globalBindings 
 			fixedAttributeAsConstantProperty="true" 
 			typesafeEnumBase="xs:string" 
-			typesafeEnumMemberName="generateName">
-		<!-- generateIsSetMethod="true" -->
-		<!-- mapSimpleTypeDef="true" -->
+			typesafeEnumMemberName="generateName"
+			generateIsSetMethod="true">
+			<!-- mapSimpleTypeDef="true" -->
 			<xjc:noValidator />
 			<xjc:noValidatingUnmarshaller />
 		</jaxb:globalBindings>
+
+		<jaxb:bindings node="//xs:complexType[@name='NavaidType']">
+            <hj:entity>
+                <hj:table name="navaid_time_slice"/>
+            </hj:entity>
+		</jaxb:bindings>
+
 		<jaxb:bindings>
 			<jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='name']">
 				<jaxb:property name="AIXMName" />

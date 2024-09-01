@@ -71,4 +71,8 @@ public class AirspaceActivationPropertyType
         this.airspaceActivation = value;
     }
 
+    public boolean isSetAirspaceActivation() {
+        return (this.airspaceActivation!= null);
+    }
+
 }

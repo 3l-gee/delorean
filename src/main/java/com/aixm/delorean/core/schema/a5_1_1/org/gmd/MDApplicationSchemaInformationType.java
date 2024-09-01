@@ -104,6 +104,10 @@ public class MDApplicationSchemaInformationType
         this.name = value;
     }
 
+    public boolean isSetName() {
+        return (this.name!= null);
+    }
+
     /**
      * Gets the value of the schemaLanguage property.
      * 
@@ -126,6 +130,10 @@ public class MDApplicationSchemaInformationType
      */
     public void setSchemaLanguage(CharacterStringPropertyType value) {
         this.schemaLanguage = value;
+    }
+
+    public boolean isSetSchemaLanguage() {
+        return (this.schemaLanguage!= null);
     }
 
     /**
@@ -152,6 +160,10 @@ public class MDApplicationSchemaInformationType
         this.constraintLanguage = value;
     }
 
+    public boolean isSetConstraintLanguage() {
+        return (this.constraintLanguage!= null);
+    }
+
     /**
      * Gets the value of the schemaAscii property.
      * 
@@ -174,6 +186,10 @@ public class MDApplicationSchemaInformationType
      */
     public void setSchemaAscii(CharacterStringPropertyType value) {
         this.schemaAscii = value;
+    }
+
+    public boolean isSetSchemaAscii() {
+        return (this.schemaAscii!= null);
     }
 
     /**
@@ -200,6 +216,10 @@ public class MDApplicationSchemaInformationType
         this.graphicsFile = value;
     }
 
+    public boolean isSetGraphicsFile() {
+        return (this.graphicsFile!= null);
+    }
+
     /**
      * Gets the value of the softwareDevelopmentFile property.
      * 
@@ -224,6 +244,10 @@ public class MDApplicationSchemaInformationType
         this.softwareDevelopmentFile = value;
     }
 
+    public boolean isSetSoftwareDevelopmentFile() {
+        return (this.softwareDevelopmentFile!= null);
+    }
+
     /**
      * Gets the value of the softwareDevelopmentFileFormat property.
      * 
@@ -246,6 +270,10 @@ public class MDApplicationSchemaInformationType
      */
     public void setSoftwareDevelopmentFileFormat(CharacterStringPropertyType value) {
         this.softwareDevelopmentFileFormat = value;
+    }
+
+    public boolean isSetSoftwareDevelopmentFileFormat() {
+        return (this.softwareDevelopmentFileFormat!= null);
     }
 
 }

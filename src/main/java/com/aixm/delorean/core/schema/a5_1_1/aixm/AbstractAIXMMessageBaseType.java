@@ -83,6 +83,10 @@ public abstract class AbstractAIXMMessageBaseType
         this.sequenceNumber = value;
     }
 
+    public boolean isSetSequenceNumber() {
+        return (this.sequenceNumber!= null);
+    }
+
     /**
      * Gets the value of the messageMetadata property.
      * 
@@ -105,6 +109,10 @@ public abstract class AbstractAIXMMessageBaseType
      */
     public void setMessageMetadata(MessageMetadataPropertyType value) {
         this.messageMetadata = value;
+    }
+
+    public boolean isSetMessageMetadata() {
+        return (this.messageMetadata!= null);
     }
 
 }

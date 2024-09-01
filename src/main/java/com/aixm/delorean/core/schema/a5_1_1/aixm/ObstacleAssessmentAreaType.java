@@ -132,6 +132,10 @@ public class ObstacleAssessmentAreaType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the sectionNumber property.
      * 
@@ -154,6 +158,10 @@ public class ObstacleAssessmentAreaType
      */
     public void setSectionNumber(JAXBElement<NoNumberType> value) {
         this.sectionNumber = value;
+    }
+
+    public boolean isSetSectionNumber() {
+        return (this.sectionNumber!= null);
     }
 
     /**
@@ -180,6 +188,10 @@ public class ObstacleAssessmentAreaType
         this.slope = value;
     }
 
+    public boolean isSetSlope() {
+        return (this.slope!= null);
+    }
+
     /**
      * Gets the value of the assessedAltitude property.
      * 
@@ -202,6 +214,10 @@ public class ObstacleAssessmentAreaType
      */
     public void setAssessedAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.assessedAltitude = value;
+    }
+
+    public boolean isSetAssessedAltitude() {
+        return (this.assessedAltitude!= null);
     }
 
     /**
@@ -228,6 +244,10 @@ public class ObstacleAssessmentAreaType
         this.slopeLowerAltitude = value;
     }
 
+    public boolean isSetSlopeLowerAltitude() {
+        return (this.slopeLowerAltitude!= null);
+    }
+
     /**
      * Gets the value of the gradientLowHigh property.
      * 
@@ -250,6 +270,10 @@ public class ObstacleAssessmentAreaType
      */
     public void setGradientLowHigh(JAXBElement<ValSlopeType> value) {
         this.gradientLowHigh = value;
+    }
+
+    public boolean isSetGradientLowHigh() {
+        return (this.gradientLowHigh!= null);
     }
 
     /**
@@ -276,6 +300,10 @@ public class ObstacleAssessmentAreaType
         this.surfaceZone = value;
     }
 
+    public boolean isSetSurfaceZone() {
+        return (this.surfaceZone!= null);
+    }
+
     /**
      * Gets the value of the safetyRegulation property.
      * 
@@ -298,6 +326,10 @@ public class ObstacleAssessmentAreaType
      */
     public void setSafetyRegulation(JAXBElement<TextNameType> value) {
         this.safetyRegulation = value;
+    }
+
+    public boolean isSetSafetyRegulation() {
+        return (this.safetyRegulation!= null);
     }
 
     /**
@@ -332,6 +364,14 @@ public class ObstacleAssessmentAreaType
         return this.aircraftCategory;
     }
 
+    public boolean isSetAircraftCategory() {
+        return ((this.aircraftCategory!= null)&&(!this.aircraftCategory.isEmpty()));
+    }
+
+    public void unsetAircraftCategory() {
+        this.aircraftCategory = null;
+    }
+
     /**
      * Gets the value of the significantObstacle property.
      * 
@@ -364,6 +404,14 @@ public class ObstacleAssessmentAreaType
         return this.significantObstacle;
     }
 
+    public boolean isSetSignificantObstacle() {
+        return ((this.significantObstacle!= null)&&(!this.significantObstacle.isEmpty()));
+    }
+
+    public void unsetSignificantObstacle() {
+        this.significantObstacle = null;
+    }
+
     /**
      * Gets the value of the surface property.
      * 
@@ -388,6 +436,10 @@ public class ObstacleAssessmentAreaType
         this.surface = value;
     }
 
+    public boolean isSetSurface() {
+        return (this.surface!= null);
+    }
+
     /**
      * Gets the value of the startingCurve property.
      * 
@@ -410,6 +462,10 @@ public class ObstacleAssessmentAreaType
      */
     public void setStartingCurve(JAXBElement<CurvePropertyType> value) {
         this.startingCurve = value;
+    }
+
+    public boolean isSetStartingCurve() {
+        return (this.startingCurve!= null);
     }
 
     /**
@@ -444,6 +500,14 @@ public class ObstacleAssessmentAreaType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -474,6 +538,14 @@ public class ObstacleAssessmentAreaType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -533,6 +605,10 @@ public class ObstacleAssessmentAreaType
             this.abstractObstacleAssessmentAreaExtension = value;
         }
 
+        public boolean isSetAbstractObstacleAssessmentAreaExtension() {
+            return (this.abstractObstacleAssessmentAreaExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -557,8 +633,16 @@ public class ObstacleAssessmentAreaType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

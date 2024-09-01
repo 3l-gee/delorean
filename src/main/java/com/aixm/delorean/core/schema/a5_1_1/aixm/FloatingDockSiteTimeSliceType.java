@@ -96,6 +96,10 @@ public class FloatingDockSiteTimeSliceType
         this.extent = value;
     }
 
+    public boolean isSetExtent() {
+        return (this.extent!= null);
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -128,6 +132,14 @@ public class FloatingDockSiteTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -158,6 +170,14 @@ public class FloatingDockSiteTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -218,6 +238,10 @@ public class FloatingDockSiteTimeSliceType
             this.abstractFloatingDockSiteExtension = value;
         }
 
+        public boolean isSetAbstractFloatingDockSiteExtension() {
+            return (this.abstractFloatingDockSiteExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -242,8 +266,16 @@ public class FloatingDockSiteTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

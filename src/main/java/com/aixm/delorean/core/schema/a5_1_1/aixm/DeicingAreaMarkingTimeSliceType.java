@@ -107,6 +107,10 @@ public class DeicingAreaMarkingTimeSliceType
         this.markingICAOStandard = value;
     }
 
+    public boolean isSetMarkingICAOStandard() {
+        return (this.markingICAOStandard!= null);
+    }
+
     /**
      * Gets the value of the condition property.
      * 
@@ -129,6 +133,10 @@ public class DeicingAreaMarkingTimeSliceType
      */
     public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
         this.condition = value;
+    }
+
+    public boolean isSetCondition() {
+        return (this.condition!= null);
     }
 
     /**
@@ -163,6 +171,14 @@ public class DeicingAreaMarkingTimeSliceType
         return this.element;
     }
 
+    public boolean isSetElement() {
+        return ((this.element!= null)&&(!this.element.isEmpty()));
+    }
+
+    public void unsetElement() {
+        this.element = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -195,6 +211,14 @@ public class DeicingAreaMarkingTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the markedDeicingArea property.
      * 
@@ -217,6 +241,10 @@ public class DeicingAreaMarkingTimeSliceType
      */
     public void setMarkedDeicingArea(JAXBElement<DeicingAreaPropertyType> value) {
         this.markedDeicingArea = value;
+    }
+
+    public boolean isSetMarkedDeicingArea() {
+        return (this.markedDeicingArea!= null);
     }
 
     /**
@@ -249,6 +277,14 @@ public class DeicingAreaMarkingTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -313,6 +349,10 @@ public class DeicingAreaMarkingTimeSliceType
             this.abstractDeicingAreaMarkingExtension = value;
         }
 
+        public boolean isSetAbstractDeicingAreaMarkingExtension() {
+            return (this.abstractDeicingAreaMarkingExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractMarkingExtension property.
          * 
@@ -335,6 +375,10 @@ public class DeicingAreaMarkingTimeSliceType
          */
         public void setAbstractMarkingExtension(AbstractExtensionType value) {
             this.abstractMarkingExtension = value;
+        }
+
+        public boolean isSetAbstractMarkingExtension() {
+            return (this.abstractMarkingExtension!= null);
         }
 
         /**
@@ -361,8 +405,16 @@ public class DeicingAreaMarkingTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -71,4 +71,8 @@ public class TerminalSegmentPointPropertyType
         this.terminalSegmentPoint = value;
     }
 
+    public boolean isSetTerminalSegmentPoint() {
+        return (this.terminalSegmentPoint!= null);
+    }
+
 }

@@ -107,6 +107,10 @@ public class HoldingUseType
         this.holdingUse = value;
     }
 
+    public boolean isSetHoldingUse() {
+        return (this.holdingUse!= null);
+    }
+
     /**
      * Gets the value of the instruction property.
      * 
@@ -129,6 +133,10 @@ public class HoldingUseType
      */
     public void setInstruction(JAXBElement<TextInstructionType> value) {
         this.instruction = value;
+    }
+
+    public boolean isSetInstruction() {
+        return (this.instruction!= null);
     }
 
     /**
@@ -155,6 +163,10 @@ public class HoldingUseType
         this.instructedAltitude = value;
     }
 
+    public boolean isSetInstructedAltitude() {
+        return (this.instructedAltitude!= null);
+    }
+
     /**
      * Gets the value of the instructionAltitudeReference property.
      * 
@@ -177,6 +189,10 @@ public class HoldingUseType
      */
     public void setInstructionAltitudeReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.instructionAltitudeReference = value;
+    }
+
+    public boolean isSetInstructionAltitudeReference() {
+        return (this.instructionAltitudeReference!= null);
     }
 
     /**
@@ -211,6 +227,14 @@ public class HoldingUseType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the theHoldingPattern property.
      * 
@@ -233,6 +257,10 @@ public class HoldingUseType
      */
     public void setTheHoldingPattern(HoldingPatternPropertyType value) {
         this.theHoldingPattern = value;
+    }
+
+    public boolean isSetTheHoldingPattern() {
+        return (this.theHoldingPattern!= null);
     }
 
     /**
@@ -265,6 +293,14 @@ public class HoldingUseType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -324,6 +360,10 @@ public class HoldingUseType
             this.abstractHoldingUseExtension = value;
         }
 
+        public boolean isSetAbstractHoldingUseExtension() {
+            return (this.abstractHoldingUseExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -348,8 +388,16 @@ public class HoldingUseType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

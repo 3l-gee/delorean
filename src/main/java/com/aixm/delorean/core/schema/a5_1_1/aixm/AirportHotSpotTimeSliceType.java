@@ -105,6 +105,10 @@ public class AirportHotSpotTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the instruction property.
      * 
@@ -127,6 +131,10 @@ public class AirportHotSpotTimeSliceType
      */
     public void setInstruction(JAXBElement<TextInstructionType> value) {
         this.instruction = value;
+    }
+
+    public boolean isSetInstruction() {
+        return (this.instruction!= null);
     }
 
     /**
@@ -153,6 +161,10 @@ public class AirportHotSpotTimeSliceType
         this.area = value;
     }
 
+    public boolean isSetArea() {
+        return (this.area!= null);
+    }
+
     /**
      * Gets the value of the affectedAirport property.
      * 
@@ -175,6 +187,10 @@ public class AirportHotSpotTimeSliceType
      */
     public void setAffectedAirport(JAXBElement<AirportHeliportPropertyType> value) {
         this.affectedAirport = value;
+    }
+
+    public boolean isSetAffectedAirport() {
+        return (this.affectedAirport!= null);
     }
 
     /**
@@ -209,6 +225,14 @@ public class AirportHotSpotTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -239,6 +263,14 @@ public class AirportHotSpotTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -299,6 +331,10 @@ public class AirportHotSpotTimeSliceType
             this.abstractAirportHotSpotExtension = value;
         }
 
+        public boolean isSetAbstractAirportHotSpotExtension() {
+            return (this.abstractAirportHotSpotExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -323,8 +359,16 @@ public class AirportHotSpotTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -92,6 +92,14 @@ public class MDDistributionType
         return this.distributionFormat;
     }
 
+    public boolean isSetDistributionFormat() {
+        return ((this.distributionFormat!= null)&&(!this.distributionFormat.isEmpty()));
+    }
+
+    public void unsetDistributionFormat() {
+        this.distributionFormat = null;
+    }
+
     /**
      * Gets the value of the distributor property.
      * 
@@ -124,6 +132,14 @@ public class MDDistributionType
         return this.distributor;
     }
 
+    public boolean isSetDistributor() {
+        return ((this.distributor!= null)&&(!this.distributor.isEmpty()));
+    }
+
+    public void unsetDistributor() {
+        this.distributor = null;
+    }
+
     /**
      * Gets the value of the transferOptions property.
      * 
@@ -154,6 +170,14 @@ public class MDDistributionType
             transferOptions = new ArrayList<>();
         }
         return this.transferOptions;
+    }
+
+    public boolean isSetTransferOptions() {
+        return ((this.transferOptions!= null)&&(!this.transferOptions.isEmpty()));
+    }
+
+    public void unsetTransferOptions() {
+        this.transferOptions = null;
     }
 
 }

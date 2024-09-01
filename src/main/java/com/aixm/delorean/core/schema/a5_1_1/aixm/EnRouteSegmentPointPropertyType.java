@@ -71,4 +71,8 @@ public class EnRouteSegmentPointPropertyType
         this.enRouteSegmentPoint = value;
     }
 
+    public boolean isSetEnRouteSegmentPoint() {
+        return (this.enRouteSegmentPoint!= null);
+    }
+
 }

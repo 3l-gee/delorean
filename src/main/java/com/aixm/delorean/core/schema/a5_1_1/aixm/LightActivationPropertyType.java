@@ -71,4 +71,8 @@ public class LightActivationPropertyType
         this.lightActivation = value;
     }
 
+    public boolean isSetLightActivation() {
+        return (this.lightActivation!= null);
+    }
+
 }

@@ -71,4 +71,8 @@ public class AirportHeliportUsagePropertyType
         this.airportHeliportUsage = value;
     }
 
+    public boolean isSetAirportHeliportUsage() {
+        return (this.airportHeliportUsage!= null);
+    }
+
 }

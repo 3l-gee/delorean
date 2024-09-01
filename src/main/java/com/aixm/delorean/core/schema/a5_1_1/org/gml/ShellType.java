@@ -93,6 +93,14 @@ public class ShellType
         return this.surfaceMember;
     }
 
+    public boolean isSetSurfaceMember() {
+        return ((this.surfaceMember!= null)&&(!this.surfaceMember.isEmpty()));
+    }
+
+    public void unsetSurfaceMember() {
+        this.surfaceMember = null;
+    }
+
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -115,6 +123,10 @@ public class ShellType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

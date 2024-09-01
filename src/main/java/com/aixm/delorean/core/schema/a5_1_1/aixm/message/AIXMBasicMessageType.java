@@ -86,4 +86,12 @@ public class AIXMBasicMessageType
         return this.hasMember;
     }
 
+    public boolean isSetHasMember() {
+        return ((this.hasMember!= null)&&(!this.hasMember.isEmpty()));
+    }
+
+    public void unsetHasMember() {
+        this.hasMember = null;
+    }
+
 }

@@ -86,4 +86,12 @@ public class SurfacePatchArrayPropertyType {
         return this.abstractSurfacePatch;
     }
 
+    public boolean isSetAbstractSurfacePatch() {
+        return ((this.abstractSurfacePatch!= null)&&(!this.abstractSurfacePatch.isEmpty()));
+    }
+
+    public void unsetAbstractSurfacePatch() {
+        this.abstractSurfacePatch = null;
+    }
+
 }

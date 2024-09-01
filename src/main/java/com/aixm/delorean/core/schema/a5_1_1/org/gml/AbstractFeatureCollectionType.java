@@ -87,6 +87,14 @@ public abstract class AbstractFeatureCollectionType
         return this.featureMember;
     }
 
+    public boolean isSetFeatureMember() {
+        return ((this.featureMember!= null)&&(!this.featureMember.isEmpty()));
+    }
+
+    public void unsetFeatureMember() {
+        this.featureMember = null;
+    }
+
     /**
      * Gets the value of the featureMembers property.
      * 
@@ -109,6 +117,10 @@ public abstract class AbstractFeatureCollectionType
      */
     public void setFeatureMembers(FeatureArrayPropertyType value) {
         this.featureMembers = value;
+    }
+
+    public boolean isSetFeatureMembers() {
+        return (this.featureMembers!= null);
     }
 
 }

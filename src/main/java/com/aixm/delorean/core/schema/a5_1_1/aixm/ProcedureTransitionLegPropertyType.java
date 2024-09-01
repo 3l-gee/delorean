@@ -71,4 +71,8 @@ public class ProcedureTransitionLegPropertyType
         this.procedureTransitionLeg = value;
     }
 
+    public boolean isSetProcedureTransitionLeg() {
+        return (this.procedureTransitionLeg!= null);
+    }
+
 }

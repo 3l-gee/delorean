@@ -93,6 +93,14 @@ public class ConcatenatedOperationType
         return this.coordOperation;
     }
 
+    public boolean isSetCoordOperation() {
+        return ((this.coordOperation!= null)&&(!this.coordOperation.isEmpty()));
+    }
+
+    public void unsetCoordOperation() {
+        this.coordOperation = null;
+    }
+
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -115,6 +123,10 @@ public class ConcatenatedOperationType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

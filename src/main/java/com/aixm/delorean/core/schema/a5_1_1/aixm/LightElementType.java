@@ -112,6 +112,10 @@ public class LightElementType
         this.colour = value;
     }
 
+    public boolean isSetColour() {
+        return (this.colour!= null);
+    }
+
     /**
      * Gets the value of the intensityLevel property.
      * 
@@ -134,6 +138,10 @@ public class LightElementType
      */
     public void setIntensityLevel(JAXBElement<CodeLightIntensityType> value) {
         this.intensityLevel = value;
+    }
+
+    public boolean isSetIntensityLevel() {
+        return (this.intensityLevel!= null);
     }
 
     /**
@@ -160,6 +168,10 @@ public class LightElementType
         this.intensity = value;
     }
 
+    public boolean isSetIntensity() {
+        return (this.intensity!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -184,6 +196,10 @@ public class LightElementType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -206,6 +222,10 @@ public class LightElementType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -240,6 +260,14 @@ public class LightElementType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -272,6 +300,14 @@ public class LightElementType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -302,6 +338,14 @@ public class LightElementType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -361,6 +405,10 @@ public class LightElementType
             this.abstractLightElementExtension = value;
         }
 
+        public boolean isSetAbstractLightElementExtension() {
+            return (this.abstractLightElementExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -385,8 +433,16 @@ public class LightElementType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

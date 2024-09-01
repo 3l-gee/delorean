@@ -133,6 +133,10 @@ public class RadioCommunicationChannelTimeSliceType
         this.mode = value;
     }
 
+    public boolean isSetMode() {
+        return (this.mode!= null);
+    }
+
     /**
      * Gets the value of the rank property.
      * 
@@ -155,6 +159,10 @@ public class RadioCommunicationChannelTimeSliceType
      */
     public void setRank(JAXBElement<CodeFacilityRankingType> value) {
         this.rank = value;
+    }
+
+    public boolean isSetRank() {
+        return (this.rank!= null);
     }
 
     /**
@@ -181,6 +189,10 @@ public class RadioCommunicationChannelTimeSliceType
         this.frequencyTransmission = value;
     }
 
+    public boolean isSetFrequencyTransmission() {
+        return (this.frequencyTransmission!= null);
+    }
+
     /**
      * Gets the value of the frequencyReception property.
      * 
@@ -203,6 +215,10 @@ public class RadioCommunicationChannelTimeSliceType
      */
     public void setFrequencyReception(JAXBElement<ValFrequencyType> value) {
         this.frequencyReception = value;
+    }
+
+    public boolean isSetFrequencyReception() {
+        return (this.frequencyReception!= null);
     }
 
     /**
@@ -229,6 +245,10 @@ public class RadioCommunicationChannelTimeSliceType
         this.channel = value;
     }
 
+    public boolean isSetChannel() {
+        return (this.channel!= null);
+    }
+
     /**
      * Gets the value of the logon property.
      * 
@@ -251,6 +271,10 @@ public class RadioCommunicationChannelTimeSliceType
      */
     public void setLogon(JAXBElement<TextDesignatorType> value) {
         this.logon = value;
+    }
+
+    public boolean isSetLogon() {
+        return (this.logon!= null);
     }
 
     /**
@@ -277,6 +301,10 @@ public class RadioCommunicationChannelTimeSliceType
         this.emissionType = value;
     }
 
+    public boolean isSetEmissionType() {
+        return (this.emissionType!= null);
+    }
+
     /**
      * Gets the value of the selectiveCall property.
      * 
@@ -299,6 +327,10 @@ public class RadioCommunicationChannelTimeSliceType
      */
     public void setSelectiveCall(JAXBElement<CodeYesNoType> value) {
         this.selectiveCall = value;
+    }
+
+    public boolean isSetSelectiveCall() {
+        return (this.selectiveCall!= null);
     }
 
     /**
@@ -325,6 +357,10 @@ public class RadioCommunicationChannelTimeSliceType
         this.flightChecked = value;
     }
 
+    public boolean isSetFlightChecked() {
+        return (this.flightChecked!= null);
+    }
+
     /**
      * Gets the value of the trafficDirection property.
      * 
@@ -347,6 +383,10 @@ public class RadioCommunicationChannelTimeSliceType
      */
     public void setTrafficDirection(JAXBElement<CodeCommunicationDirectionType> value) {
         this.trafficDirection = value;
+    }
+
+    public boolean isSetTrafficDirection() {
+        return (this.trafficDirection!= null);
     }
 
     /**
@@ -381,6 +421,14 @@ public class RadioCommunicationChannelTimeSliceType
         return this.location;
     }
 
+    public boolean isSetLocation() {
+        return ((this.location!= null)&&(!this.location.isEmpty()));
+    }
+
+    public void unsetLocation() {
+        this.location = null;
+    }
+
     /**
      * Gets the value of the availability property.
      * 
@@ -411,6 +459,14 @@ public class RadioCommunicationChannelTimeSliceType
             availability = new ArrayList<>();
         }
         return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
     }
 
     /**
@@ -445,6 +501,14 @@ public class RadioCommunicationChannelTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -475,6 +539,14 @@ public class RadioCommunicationChannelTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -535,6 +607,10 @@ public class RadioCommunicationChannelTimeSliceType
             this.abstractRadioCommunicationChannelExtension = value;
         }
 
+        public boolean isSetAbstractRadioCommunicationChannelExtension() {
+            return (this.abstractRadioCommunicationChannelExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -559,8 +635,16 @@ public class RadioCommunicationChannelTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

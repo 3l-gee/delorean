@@ -104,6 +104,10 @@ public class ApproachTimingTableType
         this.startingMeasurementPoint = value;
     }
 
+    public boolean isSetStartingMeasurementPoint() {
+        return (this.startingMeasurementPoint!= null);
+    }
+
     /**
      * Gets the value of the endingMeasurementPoint property.
      * 
@@ -126,6 +130,10 @@ public class ApproachTimingTableType
      */
     public void setEndingMeasurementPoint(JAXBElement<CodeProcedureDistanceType> value) {
         this.endingMeasurementPoint = value;
+    }
+
+    public boolean isSetEndingMeasurementPoint() {
+        return (this.endingMeasurementPoint!= null);
     }
 
     /**
@@ -152,6 +160,10 @@ public class ApproachTimingTableType
         this.time = value;
     }
 
+    public boolean isSetTime() {
+        return (this.time!= null);
+    }
+
     /**
      * Gets the value of the speed property.
      * 
@@ -174,6 +186,10 @@ public class ApproachTimingTableType
      */
     public void setSpeed(JAXBElement<ValSpeedType> value) {
         this.speed = value;
+    }
+
+    public boolean isSetSpeed() {
+        return (this.speed!= null);
     }
 
     /**
@@ -208,6 +224,14 @@ public class ApproachTimingTableType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -238,6 +262,14 @@ public class ApproachTimingTableType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -297,6 +329,10 @@ public class ApproachTimingTableType
             this.abstractApproachTimingTableExtension = value;
         }
 
+        public boolean isSetAbstractApproachTimingTableExtension() {
+            return (this.abstractApproachTimingTableExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -321,8 +357,16 @@ public class ApproachTimingTableType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

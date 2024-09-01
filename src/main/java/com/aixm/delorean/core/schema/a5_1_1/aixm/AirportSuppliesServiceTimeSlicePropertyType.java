@@ -73,6 +73,10 @@ public class AirportSuppliesServiceTimeSlicePropertyType {
         this.airportSuppliesServiceTimeSlice = value;
     }
 
+    public boolean isSetAirportSuppliesServiceTimeSlice() {
+        return (this.airportSuppliesServiceTimeSlice!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -97,8 +101,16 @@ public class AirportSuppliesServiceTimeSlicePropertyType {
      *     {@link Boolean }
      *     
      */
-    public void setOwns(Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

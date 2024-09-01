@@ -84,4 +84,12 @@ public abstract class AbstractTimePrimitiveType
         return this.relatedTime;
     }
 
+    public boolean isSetRelatedTime() {
+        return ((this.relatedTime!= null)&&(!this.relatedTime.isEmpty()));
+    }
+
+    public void unsetRelatedTime() {
+        this.relatedTime = null;
+    }
+
 }

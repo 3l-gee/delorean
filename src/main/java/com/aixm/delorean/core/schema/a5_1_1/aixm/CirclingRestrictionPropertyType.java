@@ -71,4 +71,8 @@ public class CirclingRestrictionPropertyType
         this.circlingRestriction = value;
     }
 
+    public boolean isSetCirclingRestriction() {
+        return (this.circlingRestriction!= null);
+    }
+
 }

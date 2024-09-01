@@ -7,17 +7,12 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import java.util.ArrayList;
-import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlList;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -58,13 +53,10 @@ public class BoundingShapeType {
      */
     @XmlElementRef(name = "Envelope", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends EnvelopeType> envelope;
-    @XmlList
     @XmlElement(name = "Null")
-    @Valid
-    @Size(min = 1, max = 1)
-    protected List<String> _null;
+    protected NilReasonType _null;
     @XmlAttribute(name = "nilReason")
-    protected List<String> nilReason;
+    protected NilReasonType nilReason;
 
     /**
      * Envelope defines an extent using a pair of positions defining opposite corners in arbitrary dimensions. The first direct position is the "lower corner" (a coordinate position consisting of all the minimal ordinates for each dimension for all points within the envelope), the second one the "upper corner" (a coordinate position consisting of all the maximal ordinates for each dimension for all points within the envelope).
@@ -94,68 +86,64 @@ public class BoundingShapeType {
         this.envelope = value;
     }
 
+    public boolean isSetEnvelope() {
+        return (this.envelope!= null);
+    }
+
     /**
      * Gets the value of the null property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the null property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNull().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the null property.
+     *     possible object is
+     *     {@link NilReasonType }
+     *     
      */
-    public List<String> getNull() {
-        if (_null == null) {
-            _null = new ArrayList<>();
-        }
-        return this._null;
+    public NilReasonType getNull() {
+        return _null;
+    }
+
+    /**
+     * Sets the value of the null property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NilReasonType }
+     *     
+     */
+    public void setNull(NilReasonType value) {
+        this._null = value;
+    }
+
+    public boolean isSetNull() {
+        return (this._null!= null);
     }
 
     /**
      * Gets the value of the nilReason property.
      * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nilReason property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNilReason().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * </p>
-     * 
-     * 
      * @return
-     *     The value of the nilReason property.
+     *     possible object is
+     *     {@link NilReasonType }
+     *     
      */
-    public List<String> getNilReason() {
-        if (nilReason == null) {
-            nilReason = new ArrayList<>();
-        }
-        return this.nilReason;
+    public NilReasonType getNilReason() {
+        return nilReason;
+    }
+
+    /**
+     * Sets the value of the nilReason property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NilReasonType }
+     *     
+     */
+    public void setNilReason(NilReasonType value) {
+        this.nilReason = value;
+    }
+
+    public boolean isSetNilReason() {
+        return (this.nilReason!= null);
     }
 
 }

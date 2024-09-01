@@ -105,6 +105,10 @@ public class MDGeorectifiedType
         this.checkPointAvailability = value;
     }
 
+    public boolean isSetCheckPointAvailability() {
+        return (this.checkPointAvailability!= null);
+    }
+
     /**
      * Gets the value of the checkPointDescription property.
      * 
@@ -127,6 +131,10 @@ public class MDGeorectifiedType
      */
     public void setCheckPointDescription(CharacterStringPropertyType value) {
         this.checkPointDescription = value;
+    }
+
+    public boolean isSetCheckPointDescription() {
+        return (this.checkPointDescription!= null);
     }
 
     /**
@@ -161,6 +169,14 @@ public class MDGeorectifiedType
         return this.cornerPoints;
     }
 
+    public boolean isSetCornerPoints() {
+        return ((this.cornerPoints!= null)&&(!this.cornerPoints.isEmpty()));
+    }
+
+    public void unsetCornerPoints() {
+        this.cornerPoints = null;
+    }
+
     /**
      * Gets the value of the centerPoint property.
      * 
@@ -183,6 +199,10 @@ public class MDGeorectifiedType
      */
     public void setCenterPoint(GMPointPropertyType value) {
         this.centerPoint = value;
+    }
+
+    public boolean isSetCenterPoint() {
+        return (this.centerPoint!= null);
     }
 
     /**
@@ -209,6 +229,10 @@ public class MDGeorectifiedType
         this.pointInPixel = value;
     }
 
+    public boolean isSetPointInPixel() {
+        return (this.pointInPixel!= null);
+    }
+
     /**
      * Gets the value of the transformationDimensionDescription property.
      * 
@@ -231,6 +255,10 @@ public class MDGeorectifiedType
      */
     public void setTransformationDimensionDescription(CharacterStringPropertyType value) {
         this.transformationDimensionDescription = value;
+    }
+
+    public boolean isSetTransformationDimensionDescription() {
+        return (this.transformationDimensionDescription!= null);
     }
 
     /**
@@ -263,6 +291,14 @@ public class MDGeorectifiedType
             transformationDimensionMapping = new ArrayList<>();
         }
         return this.transformationDimensionMapping;
+    }
+
+    public boolean isSetTransformationDimensionMapping() {
+        return ((this.transformationDimensionMapping!= null)&&(!this.transformationDimensionMapping.isEmpty()));
+    }
+
+    public void unsetTransformationDimensionMapping() {
+        this.transformationDimensionMapping = null;
     }
 
 }

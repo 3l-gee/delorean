@@ -71,4 +71,8 @@ public class SectorDesignPropertyType
         this.sectorDesign = value;
     }
 
+    public boolean isSetSectorDesign() {
+        return (this.sectorDesign!= null);
+    }
+
 }

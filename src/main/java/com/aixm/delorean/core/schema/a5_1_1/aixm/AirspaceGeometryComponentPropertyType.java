@@ -71,4 +71,8 @@ public class AirspaceGeometryComponentPropertyType
         this.airspaceGeometryComponent = value;
     }
 
+    public boolean isSetAirspaceGeometryComponent() {
+        return (this.airspaceGeometryComponent!= null);
+    }
+
 }

@@ -114,6 +114,10 @@ public class DesignatedPointTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -136,6 +140,10 @@ public class DesignatedPointTimeSliceType
      */
     public void setType(JAXBElement<CodeDesignatedPointType> value) {
         this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**
@@ -162,6 +170,10 @@ public class DesignatedPointTimeSliceType
         this.aixmName = value;
     }
 
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -184,6 +196,10 @@ public class DesignatedPointTimeSliceType
      */
     public void setLocation(JAXBElement<PointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -210,6 +226,10 @@ public class DesignatedPointTimeSliceType
         this.aimingPoint = value;
     }
 
+    public boolean isSetAimingPoint() {
+        return (this.aimingPoint!= null);
+    }
+
     /**
      * Gets the value of the airportHeliport property.
      * 
@@ -234,6 +254,10 @@ public class DesignatedPointTimeSliceType
         this.airportHeliport = value;
     }
 
+    public boolean isSetAirportHeliport() {
+        return (this.airportHeliport!= null);
+    }
+
     /**
      * Gets the value of the runwayPoint property.
      * 
@@ -256,6 +280,10 @@ public class DesignatedPointTimeSliceType
      */
     public void setRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
         this.runwayPoint = value;
+    }
+
+    public boolean isSetRunwayPoint() {
+        return (this.runwayPoint!= null);
     }
 
     /**
@@ -290,6 +318,14 @@ public class DesignatedPointTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -320,6 +356,14 @@ public class DesignatedPointTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -380,6 +424,10 @@ public class DesignatedPointTimeSliceType
             this.abstractDesignatedPointExtension = value;
         }
 
+        public boolean isSetAbstractDesignatedPointExtension() {
+            return (this.abstractDesignatedPointExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -404,8 +452,16 @@ public class DesignatedPointTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

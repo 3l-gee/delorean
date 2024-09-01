@@ -75,6 +75,10 @@ public class FormulaType {
         this.a = value;
     }
 
+    public boolean isSetA() {
+        return (this.a!= null);
+    }
+
     /**
      * Gets the value of the b property.
      * 
@@ -91,6 +95,10 @@ public class FormulaType {
         this.b = value;
     }
 
+    public boolean isSetB() {
+        return true;
+    }
+
     /**
      * Gets the value of the c property.
      * 
@@ -105,6 +113,10 @@ public class FormulaType {
      */
     public void setC(double value) {
         this.c = value;
+    }
+
+    public boolean isSetC() {
+        return true;
     }
 
     /**
@@ -129,6 +141,10 @@ public class FormulaType {
      */
     public void setD(Double value) {
         this.d = value;
+    }
+
+    public boolean isSetD() {
+        return (this.d!= null);
     }
 
 }

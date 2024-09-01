@@ -73,6 +73,10 @@ public class PrimarySurveillanceRadarTimeSlicePropertyType {
         this.primarySurveillanceRadarTimeSlice = value;
     }
 
+    public boolean isSetPrimarySurveillanceRadarTimeSlice() {
+        return (this.primarySurveillanceRadarTimeSlice!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -97,8 +101,16 @@ public class PrimarySurveillanceRadarTimeSlicePropertyType {
      *     {@link Boolean }
      *     
      */
-    public void setOwns(Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

@@ -71,4 +71,8 @@ public class AuthorityForNavaidEquipmentPropertyType
         this.authorityForNavaidEquipment = value;
     }
 
+    public boolean isSetAuthorityForNavaidEquipment() {
+        return (this.authorityForNavaidEquipment!= null);
+    }
+
 }

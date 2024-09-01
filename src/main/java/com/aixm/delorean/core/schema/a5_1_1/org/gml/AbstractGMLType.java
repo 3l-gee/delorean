@@ -137,6 +137,14 @@ public abstract class AbstractGMLType {
         return this.metaDataProperty;
     }
 
+    public boolean isSetMetaDataProperty() {
+        return ((this.metaDataProperty!= null)&&(!this.metaDataProperty.isEmpty()));
+    }
+
+    public void unsetMetaDataProperty() {
+        this.metaDataProperty = null;
+    }
+
     /**
      * The value of this property is a text description of the object. gml:description uses gml:StringOrRefType as its content model, so it may contain a simple text string content, or carry a reference to an external description. The use of gml:description to reference an external description has been deprecated and replaced by the gml:descriptionReference property.
      * 
@@ -160,6 +168,10 @@ public abstract class AbstractGMLType {
      */
     public void setDescription(StringOrRefType value) {
         this.description = value;
+    }
+
+    public boolean isSetDescription() {
+        return (this.description!= null);
     }
 
     /**
@@ -187,6 +199,10 @@ public abstract class AbstractGMLType {
         this.descriptionReference = value;
     }
 
+    public boolean isSetDescriptionReference() {
+        return (this.descriptionReference!= null);
+    }
+
     /**
      * Often, a special identifier is assigned to an object by the maintaining authority with the intention that it is used in references to the object For such cases, the codeSpace shall be provided. That identifier is usually unique either globally or within an application domain. gml:identifier is a pre-defined property for such identifiers.
      * 
@@ -210,6 +226,10 @@ public abstract class AbstractGMLType {
      */
     public void setIdentifier(CodeWithAuthorityType value) {
         this.identifier = value;
+    }
+
+    public boolean isSetIdentifier() {
+        return (this.identifier!= null);
     }
 
     /**
@@ -246,6 +266,14 @@ public abstract class AbstractGMLType {
         return this.name;
     }
 
+    public boolean isSetName() {
+        return ((this.name!= null)&&(!this.name.isEmpty()));
+    }
+
+    public void unsetName() {
+        this.name = null;
+    }
+
     /**
      * The attribute gml:id supports provision of a handle for the XML element representing a GML Object. Its use is mandatory for all GML objects. It is of XML type ID, so is constrained to be unique in the XML document within which it occurs.
      * 
@@ -269,6 +297,10 @@ public abstract class AbstractGMLType {
      */
     public void setId(String value) {
         this.id = value;
+    }
+
+    public boolean isSetId() {
+        return (this.id!= null);
     }
 
 }

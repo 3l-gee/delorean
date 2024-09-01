@@ -240,6 +240,10 @@ public abstract class AbstractAIXMTimeSliceType
         this.interpretation = value;
     }
 
+    public boolean isSetInterpretation() {
+        return (this.interpretation!= null);
+    }
+
     /**
      * Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details.
      * 
@@ -263,6 +267,10 @@ public abstract class AbstractAIXMTimeSliceType
      */
     public void setSequenceNumber(Long value) {
         this.sequenceNumber = value;
+    }
+
+    public boolean isSetSequenceNumber() {
+        return (this.sequenceNumber!= null);
     }
 
     /**
@@ -290,6 +298,10 @@ public abstract class AbstractAIXMTimeSliceType
         this.correctionNumber = value;
     }
 
+    public boolean isSetCorrectionNumber() {
+        return (this.correctionNumber!= null);
+    }
+
     /**
      * Gets the value of the timeSliceMetadata property.
      * 
@@ -312,6 +324,10 @@ public abstract class AbstractAIXMTimeSliceType
      */
     public void setTimeSliceMetadata(FeatureTimeSliceMetadataPropertyType value) {
         this.timeSliceMetadata = value;
+    }
+
+    public boolean isSetTimeSliceMetadata() {
+        return (this.timeSliceMetadata!= null);
     }
 
     /**
@@ -337,6 +353,10 @@ public abstract class AbstractAIXMTimeSliceType
      */
     public void setFeatureLifetime(TimePrimitivePropertyType value) {
         this.featureLifetime = value;
+    }
+
+    public boolean isSetFeatureLifetime() {
+        return (this.featureLifetime!= null);
     }
 
 }

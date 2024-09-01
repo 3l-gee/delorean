@@ -71,4 +71,8 @@ public class AuthorityForSpecialNavigationSystemPropertyType
         this.authorityForSpecialNavigationSystem = value;
     }
 
+    public boolean isSetAuthorityForSpecialNavigationSystem() {
+        return (this.authorityForSpecialNavigationSystem!= null);
+    }
+
 }

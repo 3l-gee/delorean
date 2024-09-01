@@ -80,6 +80,10 @@ public class OrientableCurveType
         this.baseCurve = value;
     }
 
+    public boolean isSetBaseCurve() {
+        return (this.baseCurve!= null);
+    }
+
     /**
      * Gets the value of the orientation property.
      * 
@@ -106,6 +110,10 @@ public class OrientableCurveType
      */
     public void setOrientation(SignType value) {
         this.orientation = value;
+    }
+
+    public boolean isSetOrientation() {
+        return (this.orientation!= null);
     }
 
 }

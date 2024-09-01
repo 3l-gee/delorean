@@ -1,4 +1,4 @@
-package com.aixm.delorean.core.container;
+package com.aixm.delorean.core.xml;
 
 import com.aixm.delorean.core.configuration.XMLConfig;
 
@@ -12,7 +12,7 @@ import javax.xml.namespace.QName;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
+import org.glassfish.jaxb.core.v2.TODO;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
@@ -21,17 +21,17 @@ import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.ValidationEvent;
 import jakarta.xml.bind.ValidationEventHandler;
 
-public class XMLBinding {
+public class XMLBinding<T> {
     private JAXBContext context;
-    private Class<?> root;
+    private final Class<T> structure;
     private Unmarshaller unmarshaller;
     private Marshaller marshaller;
     private SchemaFactory schemaFactory;
     private Schema schema;
 
-    public XMLBinding(XMLConfig xmlConfig, Class<?> structure) {
+    public XMLBinding(XMLConfig xmlConfig, Class<T> structure) {
         this.schema = xmlConfig.getSchema();
-        this.root = structure;
+        this.structure = structure;
         try {
             this.context = JAXBContext.newInstance(structure);
             this.schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -68,47 +68,29 @@ public class XMLBinding {
         }
     }
 
-    public AIXMBasicMessageType unmarshal(String path) {
-        try {
-            InputStream xmlStream = null;
-    
-            try { 
-                xmlStream = new FileInputStream(path);
-    
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            
-            // TODO this must become dynamic
-            JAXBElement<AIXMBasicMessageType> rootElement = (JAXBElement<AIXMBasicMessageType>) this.unmarshaller.unmarshal(xmlStream);
-            AIXMBasicMessageType root = rootElement.getValue();
+    public T unmarshal(String path) {
+        try (InputStream xmlStream = new FileInputStream(path)) {
+            JAXBElement<T> rootElement = (JAXBElement<T>) this.unmarshaller.unmarshal(xmlStream);
+            T root = rootElement.getValue();
             return root;
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
         return null;
     }
 
-     public void marshal(AIXMBasicMessageType record, String path) {
-        try {
-            FileOutputStream outputStream = new FileOutputStream(new File(path));
-
+    public void marshal(T record, String path, Class<T> clazz) {
+        try (FileOutputStream outputStream = new FileOutputStream(new File(path))) {
             //TODO for now this is easier
             this.marshaller.setSchema(null);
 
-            // TODO this must become dynamic
-            JAXBElement<AIXMBasicMessageType> rootElement = new JAXBElement<>(
-                new QName("http://www.aixm.aero/schema/5.1.1", "AIXMBasicMessage"),
-                AIXMBasicMessageType.class, 
-                record
-            );
+            // Create JAXBElement with the provided class type
+            QName qName = new QName("http://www.aixm.aero/schema/5.1.1", "AIXMBasicMessage");
+            JAXBElement<T> rootElement = new JAXBElement<>(qName, clazz, record);
 
-            this.marshaller.marshal(rootElement, outputStream);
+            // Marshal the JAXBElement to the output stream
+            this.marshaller.marshal(rootElement, outputStream); 
 
-            outputStream.close();
-            
         } catch (Exception e) {
             e.printStackTrace();
         }

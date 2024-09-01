@@ -83,6 +83,10 @@ public class MDBrowseGraphicType
         this.fileName = value;
     }
 
+    public boolean isSetFileName() {
+        return (this.fileName!= null);
+    }
+
     /**
      * Gets the value of the fileDescription property.
      * 
@@ -107,6 +111,10 @@ public class MDBrowseGraphicType
         this.fileDescription = value;
     }
 
+    public boolean isSetFileDescription() {
+        return (this.fileDescription!= null);
+    }
+
     /**
      * Gets the value of the fileType property.
      * 
@@ -129,6 +137,10 @@ public class MDBrowseGraphicType
      */
     public void setFileType(CharacterStringPropertyType value) {
         this.fileType = value;
+    }
+
+    public boolean isSetFileType() {
+        return (this.fileType!= null);
     }
 
 }

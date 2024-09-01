@@ -74,4 +74,8 @@ public class UsageConditionPropertyType
         this.abstractUsageCondition = value;
     }
 
+    public boolean isSetAbstractUsageCondition() {
+        return (this.abstractUsageCondition!= null);
+    }
+
 }

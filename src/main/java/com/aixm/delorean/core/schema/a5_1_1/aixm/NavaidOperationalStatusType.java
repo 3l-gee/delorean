@@ -118,6 +118,14 @@ public class NavaidOperationalStatusType
         return this.timeInterval;
     }
 
+    public boolean isSetTimeInterval() {
+        return ((this.timeInterval!= null)&&(!this.timeInterval.isEmpty()));
+    }
+
+    public void unsetTimeInterval() {
+        this.timeInterval = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -148,6 +156,14 @@ public class NavaidOperationalStatusType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
     /**
@@ -182,6 +198,14 @@ public class NavaidOperationalStatusType
         return this.specialDateAuthority;
     }
 
+    public boolean isSetSpecialDateAuthority() {
+        return ((this.specialDateAuthority!= null)&&(!this.specialDateAuthority.isEmpty()));
+    }
+
+    public void unsetSpecialDateAuthority() {
+        this.specialDateAuthority = null;
+    }
+
     /**
      * Gets the value of the operationalStatus property.
      * 
@@ -206,6 +230,10 @@ public class NavaidOperationalStatusType
         this.operationalStatus = value;
     }
 
+    public boolean isSetOperationalStatus() {
+        return (this.operationalStatus!= null);
+    }
+
     /**
      * Gets the value of the signalType property.
      * 
@@ -228,6 +256,10 @@ public class NavaidOperationalStatusType
      */
     public void setSignalType(JAXBElement<CodeRadioSignalType> value) {
         this.signalType = value;
+    }
+
+    public boolean isSetSignalType() {
+        return (this.signalType!= null);
     }
 
     /**
@@ -260,6 +292,14 @@ public class NavaidOperationalStatusType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -324,6 +364,10 @@ public class NavaidOperationalStatusType
             this.abstractPropertiesWithScheduleExtension = value;
         }
 
+        public boolean isSetAbstractPropertiesWithScheduleExtension() {
+            return (this.abstractPropertiesWithScheduleExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractNavaidOperationalStatusExtension property.
          * 
@@ -346,6 +390,10 @@ public class NavaidOperationalStatusType
          */
         public void setAbstractNavaidOperationalStatusExtension(AbstractExtensionType value) {
             this.abstractNavaidOperationalStatusExtension = value;
+        }
+
+        public boolean isSetAbstractNavaidOperationalStatusExtension() {
+            return (this.abstractNavaidOperationalStatusExtension!= null);
         }
 
         /**
@@ -372,8 +420,16 @@ public class NavaidOperationalStatusType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -76,4 +76,8 @@ public class LinearRingPropertyType {
         this.linearRing = value;
     }
 
+    public boolean isSetLinearRing() {
+        return (this.linearRing!= null);
+    }
+
 }

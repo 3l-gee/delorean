@@ -71,4 +71,8 @@ public class NitrogenPropertyType
         this.nitrogen = value;
     }
 
+    public boolean isSetNitrogen() {
+        return (this.nitrogen!= null);
+    }
+
 }

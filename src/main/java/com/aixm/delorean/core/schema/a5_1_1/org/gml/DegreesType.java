@@ -50,7 +50,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class DegreesType {
 
     @XmlValue
-    protected int value;
+    protected DegreeValueType value;
     @XmlAttribute(name = "direction")
     @Pattern(regexp = "(\\QN\\E)|(\\QE\\E)|(\\QS\\E)|(\\QW\\E)|(\\Q+\\E)|(\\Q-\\E)")
     protected String direction;
@@ -58,17 +58,29 @@ public class DegreesType {
     /**
      * Gets the value of the value property.
      * 
+     * @return
+     *     possible object is
+     *     {@link DegreeValueType }
+     *     
      */
-    public int getValue() {
+    public DegreeValueType getValue() {
         return value;
     }
 
     /**
      * Sets the value of the value property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link DegreeValueType }
+     *     
      */
-    public void setValue(int value) {
+    public void setValue(DegreeValueType value) {
         this.value = value;
+    }
+
+    public boolean isSetValue() {
+        return (this.value!= null);
     }
 
     /**
@@ -93,6 +105,10 @@ public class DegreesType {
      */
     public void setDirection(String value) {
         this.direction = value;
+    }
+
+    public boolean isSetDirection() {
+        return (this.direction!= null);
     }
 
 }

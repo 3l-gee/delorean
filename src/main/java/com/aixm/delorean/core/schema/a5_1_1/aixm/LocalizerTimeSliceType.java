@@ -162,6 +162,10 @@ public class LocalizerTimeSliceType
         this.designator = value;
     }
 
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
     /**
      * Gets the value of the aixmName property.
      * 
@@ -184,6 +188,10 @@ public class LocalizerTimeSliceType
      */
     public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
     }
 
     /**
@@ -210,6 +218,10 @@ public class LocalizerTimeSliceType
         this.emissionClass = value;
     }
 
+    public boolean isSetEmissionClass() {
+        return (this.emissionClass!= null);
+    }
+
     /**
      * Gets the value of the mobile property.
      * 
@@ -232,6 +244,10 @@ public class LocalizerTimeSliceType
      */
     public void setMobile(JAXBElement<CodeYesNoType> value) {
         this.mobile = value;
+    }
+
+    public boolean isSetMobile() {
+        return (this.mobile!= null);
     }
 
     /**
@@ -258,6 +274,10 @@ public class LocalizerTimeSliceType
         this.magneticVariation = value;
     }
 
+    public boolean isSetMagneticVariation() {
+        return (this.magneticVariation!= null);
+    }
+
     /**
      * Gets the value of the magneticVariationAccuracy property.
      * 
@@ -280,6 +300,10 @@ public class LocalizerTimeSliceType
      */
     public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticVariationAccuracy = value;
+    }
+
+    public boolean isSetMagneticVariationAccuracy() {
+        return (this.magneticVariationAccuracy!= null);
     }
 
     /**
@@ -306,6 +330,10 @@ public class LocalizerTimeSliceType
         this.dateMagneticVariation = value;
     }
 
+    public boolean isSetDateMagneticVariation() {
+        return (this.dateMagneticVariation!= null);
+    }
+
     /**
      * Gets the value of the flightChecked property.
      * 
@@ -330,6 +358,10 @@ public class LocalizerTimeSliceType
         this.flightChecked = value;
     }
 
+    public boolean isSetFlightChecked() {
+        return (this.flightChecked!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -352,6 +384,10 @@ public class LocalizerTimeSliceType
      */
     public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
     /**
@@ -386,6 +422,14 @@ public class LocalizerTimeSliceType
         return this.authority;
     }
 
+    public boolean isSetAuthority() {
+        return ((this.authority!= null)&&(!this.authority.isEmpty()));
+    }
+
+    public void unsetAuthority() {
+        this.authority = null;
+    }
+
     /**
      * Gets the value of the monitoring property.
      * 
@@ -416,6 +460,14 @@ public class LocalizerTimeSliceType
             monitoring = new ArrayList<>();
         }
         return this.monitoring;
+    }
+
+    public boolean isSetMonitoring() {
+        return ((this.monitoring!= null)&&(!this.monitoring.isEmpty()));
+    }
+
+    public void unsetMonitoring() {
+        this.monitoring = null;
     }
 
     /**
@@ -450,6 +502,14 @@ public class LocalizerTimeSliceType
         return this.availability;
     }
 
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -482,6 +542,14 @@ public class LocalizerTimeSliceType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the frequency property.
      * 
@@ -504,6 +572,10 @@ public class LocalizerTimeSliceType
      */
     public void setFrequency(JAXBElement<ValFrequencyType> value) {
         this.frequency = value;
+    }
+
+    public boolean isSetFrequency() {
+        return (this.frequency!= null);
     }
 
     /**
@@ -530,6 +602,10 @@ public class LocalizerTimeSliceType
         this.magneticBearing = value;
     }
 
+    public boolean isSetMagneticBearing() {
+        return (this.magneticBearing!= null);
+    }
+
     /**
      * Gets the value of the magneticBearingAccuracy property.
      * 
@@ -552,6 +628,10 @@ public class LocalizerTimeSliceType
      */
     public void setMagneticBearingAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticBearingAccuracy = value;
+    }
+
+    public boolean isSetMagneticBearingAccuracy() {
+        return (this.magneticBearingAccuracy!= null);
     }
 
     /**
@@ -578,6 +658,10 @@ public class LocalizerTimeSliceType
         this.trueBearing = value;
     }
 
+    public boolean isSetTrueBearing() {
+        return (this.trueBearing!= null);
+    }
+
     /**
      * Gets the value of the trueBearingAccuracy property.
      * 
@@ -600,6 +684,10 @@ public class LocalizerTimeSliceType
      */
     public void setTrueBearingAccuracy(JAXBElement<ValAngleType> value) {
         this.trueBearingAccuracy = value;
+    }
+
+    public boolean isSetTrueBearingAccuracy() {
+        return (this.trueBearingAccuracy!= null);
     }
 
     /**
@@ -626,6 +714,10 @@ public class LocalizerTimeSliceType
         this.declination = value;
     }
 
+    public boolean isSetDeclination() {
+        return (this.declination!= null);
+    }
+
     /**
      * Gets the value of the widthCourse property.
      * 
@@ -648,6 +740,10 @@ public class LocalizerTimeSliceType
      */
     public void setWidthCourse(JAXBElement<ValAngleType> value) {
         this.widthCourse = value;
+    }
+
+    public boolean isSetWidthCourse() {
+        return (this.widthCourse!= null);
     }
 
     /**
@@ -674,6 +770,10 @@ public class LocalizerTimeSliceType
         this.widthCourseAccuracy = value;
     }
 
+    public boolean isSetWidthCourseAccuracy() {
+        return (this.widthCourseAccuracy!= null);
+    }
+
     /**
      * Gets the value of the backCourseUsable property.
      * 
@@ -696,6 +796,10 @@ public class LocalizerTimeSliceType
      */
     public void setBackCourseUsable(JAXBElement<CodeILSBackCourseType> value) {
         this.backCourseUsable = value;
+    }
+
+    public boolean isSetBackCourseUsable() {
+        return (this.backCourseUsable!= null);
     }
 
     /**
@@ -728,6 +832,14 @@ public class LocalizerTimeSliceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -792,6 +904,10 @@ public class LocalizerTimeSliceType
             this.abstractLocalizerExtension = value;
         }
 
+        public boolean isSetAbstractLocalizerExtension() {
+            return (this.abstractLocalizerExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractNavaidEquipmentExtension property.
          * 
@@ -814,6 +930,10 @@ public class LocalizerTimeSliceType
          */
         public void setAbstractNavaidEquipmentExtension(AbstractExtensionType value) {
             this.abstractNavaidEquipmentExtension = value;
+        }
+
+        public boolean isSetAbstractNavaidEquipmentExtension() {
+            return (this.abstractNavaidEquipmentExtension!= null);
         }
 
         /**
@@ -840,8 +960,16 @@ public class LocalizerTimeSliceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -94,6 +93,10 @@ public abstract class AbstractFeatureType
         this.boundedBy = value;
     }
 
+    public boolean isSetBoundedBy() {
+        return (this.boundedBy!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -118,6 +121,10 @@ public abstract class AbstractFeatureType
      */
     public void setLocation(JAXBElement<? extends LocationPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
 }

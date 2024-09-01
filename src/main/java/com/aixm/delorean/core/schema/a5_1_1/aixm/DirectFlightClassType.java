@@ -105,6 +105,14 @@ public class DirectFlightClassType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the exceedLength property.
      * 
@@ -127,6 +135,10 @@ public class DirectFlightClassType
      */
     public void setExceedLength(JAXBElement<ValDistanceType> value) {
         this.exceedLength = value;
+    }
+
+    public boolean isSetExceedLength() {
+        return (this.exceedLength!= null);
     }
 
     /**
@@ -159,6 +171,14 @@ public class DirectFlightClassType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -223,6 +243,10 @@ public class DirectFlightClassType
             this.abstractDirectFlightExtension = value;
         }
 
+        public boolean isSetAbstractDirectFlightExtension() {
+            return (this.abstractDirectFlightExtension!= null);
+        }
+
         /**
          * Gets the value of the abstractDirectFlightClassExtension property.
          * 
@@ -245,6 +269,10 @@ public class DirectFlightClassType
          */
         public void setAbstractDirectFlightClassExtension(AbstractExtensionType value) {
             this.abstractDirectFlightClassExtension = value;
+        }
+
+        public boolean isSetAbstractDirectFlightClassExtension() {
+            return (this.abstractDirectFlightClassExtension!= null);
         }
 
         /**
@@ -271,8 +299,16 @@ public class DirectFlightClassType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

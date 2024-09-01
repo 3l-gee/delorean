@@ -71,4 +71,8 @@ public class ReflectorPropertyType
         this.reflector = value;
     }
 
+    public boolean isSetReflector() {
+        return (this.reflector!= null);
+    }
+
 }

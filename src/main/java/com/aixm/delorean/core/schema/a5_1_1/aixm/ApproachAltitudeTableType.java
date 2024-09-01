@@ -101,6 +101,10 @@ public class ApproachAltitudeTableType
         this.measurementPoint = value;
     }
 
+    public boolean isSetMeasurementPoint() {
+        return (this.measurementPoint!= null);
+    }
+
     /**
      * Gets the value of the altitude property.
      * 
@@ -125,6 +129,10 @@ public class ApproachAltitudeTableType
         this.altitude = value;
     }
 
+    public boolean isSetAltitude() {
+        return (this.altitude!= null);
+    }
+
     /**
      * Gets the value of the altitudeReference property.
      * 
@@ -147,6 +155,10 @@ public class ApproachAltitudeTableType
      */
     public void setAltitudeReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.altitudeReference = value;
+    }
+
+    public boolean isSetAltitudeReference() {
+        return (this.altitudeReference!= null);
     }
 
     /**
@@ -181,6 +193,14 @@ public class ApproachAltitudeTableType
         return this.annotation;
     }
 
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
     /**
      * Gets the value of the extension property.
      * 
@@ -211,6 +231,14 @@ public class ApproachAltitudeTableType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -270,6 +298,10 @@ public class ApproachAltitudeTableType
             this.abstractApproachAltitudeTableExtension = value;
         }
 
+        public boolean isSetAbstractApproachAltitudeTableExtension() {
+            return (this.abstractApproachAltitudeTableExtension!= null);
+        }
+
         /**
          * Gets the value of the owns property.
          * 
@@ -294,8 +326,16 @@ public class ApproachAltitudeTableType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

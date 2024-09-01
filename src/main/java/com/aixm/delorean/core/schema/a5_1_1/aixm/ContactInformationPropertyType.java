@@ -71,4 +71,8 @@ public class ContactInformationPropertyType
         this.contactInformation = value;
     }
 
+    public boolean isSetContactInformation() {
+        return (this.contactInformation!= null);
+    }
+
 }

@@ -44,17 +44,17 @@ public class UnitOfMeasureType {
 
     @XmlAttribute(name = "uom", required = true)
     @NotNull
-    protected String uom;
+    protected UomIdentifier uom;
 
     /**
      * Gets the value of the uom property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link UomIdentifier }
      *     
      */
-    public String getUom() {
+    public UomIdentifier getUom() {
         return uom;
     }
 
@@ -63,11 +63,15 @@ public class UnitOfMeasureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link UomIdentifier }
      *     
      */
-    public void setUom(String value) {
+    public void setUom(UomIdentifier value) {
         this.uom = value;
+    }
+
+    public boolean isSetUom() {
+        return (this.uom!= null);
     }
 
 }
