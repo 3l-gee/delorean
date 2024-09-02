@@ -8,8 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigDecimal;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -62,15 +60,10 @@ public class ClothoidType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected ClothoidType.RefLocation refLocation;
     @XmlElement(required = true)
-    @NotNull
     protected BigDecimal scaleFactor;
-    @NotNull
     protected double startParameter;
-    @NotNull
     protected double endParameter;
     @XmlAttribute(name = "interpolation")
     public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CLOTHOID;
@@ -202,8 +195,6 @@ public class ClothoidType
          * 
          */
         @XmlElement(name = "AffinePlacement", required = true)
-        @NotNull
-        @Valid
         protected AffinePlacementType affinePlacement;
 
         /**

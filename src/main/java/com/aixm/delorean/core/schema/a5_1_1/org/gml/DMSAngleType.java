@@ -7,8 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -52,15 +51,11 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DMSAngleType {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected DegreesType degrees;
-    @XmlSchemaType(name = "decimal")
-    protected DecimalMinutesType decimalMinutes;
+    protected BigDecimal decimalMinutes;
     @XmlSchemaType(name = "nonNegativeInteger")
-    protected ArcMinutesType minutes;
-    @XmlSchemaType(name = "decimal")
-    protected ArcSecondsType seconds;
+    protected Integer minutes;
+    protected BigDecimal seconds;
 
     /**
      * Gets the value of the degrees property.
@@ -95,10 +90,10 @@ public class DMSAngleType {
      * 
      * @return
      *     possible object is
-     *     {@link DecimalMinutesType }
+     *     {@link BigDecimal }
      *     
      */
-    public DecimalMinutesType getDecimalMinutes() {
+    public BigDecimal getDecimalMinutes() {
         return decimalMinutes;
     }
 
@@ -107,10 +102,10 @@ public class DMSAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link DecimalMinutesType }
+     *     {@link BigDecimal }
      *     
      */
-    public void setDecimalMinutes(DecimalMinutesType value) {
+    public void setDecimalMinutes(BigDecimal value) {
         this.decimalMinutes = value;
     }
 
@@ -123,10 +118,10 @@ public class DMSAngleType {
      * 
      * @return
      *     possible object is
-     *     {@link ArcMinutesType }
+     *     {@link Integer }
      *     
      */
-    public ArcMinutesType getMinutes() {
+    public Integer getMinutes() {
         return minutes;
     }
 
@@ -135,10 +130,10 @@ public class DMSAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ArcMinutesType }
+     *     {@link Integer }
      *     
      */
-    public void setMinutes(ArcMinutesType value) {
+    public void setMinutes(Integer value) {
         this.minutes = value;
     }
 
@@ -151,10 +146,10 @@ public class DMSAngleType {
      * 
      * @return
      *     possible object is
-     *     {@link ArcSecondsType }
+     *     {@link BigDecimal }
      *     
      */
-    public ArcSecondsType getSeconds() {
+    public BigDecimal getSeconds() {
         return seconds;
     }
 
@@ -163,10 +158,10 @@ public class DMSAngleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ArcSecondsType }
+     *     {@link BigDecimal }
      *     
      */
-    public void setSeconds(ArcSecondsType value) {
+    public void setSeconds(BigDecimal value) {
         this.seconds = value;
     }
 

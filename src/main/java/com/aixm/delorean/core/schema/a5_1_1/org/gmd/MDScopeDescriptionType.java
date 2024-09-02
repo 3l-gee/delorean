@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.ObjectReferencePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -55,21 +53,11 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class MDScopeDescriptionType {
 
-    @Valid
-    @Size(min = 1)
     protected List<ObjectReferencePropertyType> attributes;
-    @Valid
-    @Size(min = 1)
     protected List<ObjectReferencePropertyType> features;
-    @Valid
-    @Size(min = 1)
     protected List<ObjectReferencePropertyType> featureInstances;
-    @Valid
-    @Size(min = 1)
     protected List<ObjectReferencePropertyType> attributeInstances;
-    @Valid
     protected CharacterStringPropertyType dataset;
-    @Valid
     protected CharacterStringPropertyType other;
 
     /**

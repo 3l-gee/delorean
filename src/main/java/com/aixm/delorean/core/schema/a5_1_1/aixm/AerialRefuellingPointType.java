@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -85,8 +83,6 @@ public class AerialRefuellingPointType
     @XmlElementRef(name = "radarGuidance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> radarGuidance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<PointReferencePropertyType> facilityMakeup;
     @XmlElementRef(name = "pointChoice_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DesignatedPointPropertyType> pointChoiceFixDesignatedPoint;
@@ -103,15 +99,11 @@ public class AerialRefuellingPointType
     @XmlElementRef(name = "extendedServiceVolume", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RadioFrequencyAreaPropertyType> extendedServiceVolume;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "sequence", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<NoSequenceType> sequence;
     @XmlElementRef(name = "usageType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeAerialRefuellingPointType> usageType;
-    @Valid
-    @Size(min = 0)
     protected List<AerialRefuellingPointType.Extension> extension;
 
     /**
@@ -628,10 +620,8 @@ public class AerialRefuellingPointType
     public static class Extension {
 
         @XmlElement(name = "AbstractSegmentPointExtension")
-        @Valid
         protected AbstractExtensionType abstractSegmentPointExtension;
         @XmlElement(name = "AbstractAerialRefuellingPointExtension")
-        @Valid
         protected AbstractExtensionType abstractAerialRefuellingPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

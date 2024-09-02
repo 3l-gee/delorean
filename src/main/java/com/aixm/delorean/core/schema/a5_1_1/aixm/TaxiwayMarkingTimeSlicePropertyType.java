@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -43,8 +41,6 @@ import jakarta.xml.bind.annotation.XmlType;
 public class TaxiwayMarkingTimeSlicePropertyType {
 
     @XmlElement(name = "TaxiwayMarkingTimeSlice", required = true)
-    @NotNull
-    @Valid
     protected TaxiwayMarkingTimeSliceType taxiwayMarkingTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

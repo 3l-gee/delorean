@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.BooleanPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -61,19 +58,11 @@ public class MDGridSpatialRepresentationType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected IntegerPropertyType numberOfDimensions;
-    @Valid
-    @Size(min = 0)
     protected List<MDDimensionPropertyType> axisDimensionProperties;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MDCellGeometryCodePropertyType cellGeometry;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected BooleanPropertyType transformationParameterAvailability;
 
     /**

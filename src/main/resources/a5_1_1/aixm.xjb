@@ -6,9 +6,9 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
 	xmlns:annox="urn:jaxb.jvnet.org:annox"
-	xmlns:hj="urn:hyperjaxb3.jvnet.org:ejb:schemas:customizations"
-    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm"
-	jaxb:extensionBindingPrefixes="xjc annox hj orm">
+	jaxb:extensionBindingPrefixes="xjc annox">
+    <!-- xmlns:hj="urn:hyperjaxb3.jvnet.org:ejb:schemas:customizations"
+    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm" -->
     
     <jaxb:bindings schemaLocation="AIXM_BasicMessage.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
@@ -30,12 +30,6 @@
 			<xjc:noValidator />
 			<xjc:noValidatingUnmarshaller />
 		</jaxb:globalBindings>
-
-		<jaxb:bindings node="//xs:complexType[@name='NavaidType']">
-            <hj:entity>
-                <hj:table name="navaid_time_slice"/>
-            </hj:entity>
-		</jaxb:bindings>
 
 		<jaxb:bindings>
 			<jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='name']">

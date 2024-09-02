@@ -4815,16 +4815,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeBuoyDesignatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeBuoyDesignatorBaseType }
-     */
-    public CodeBuoyDesignatorBaseType createCodeBuoyDesignatorBaseType() {
-        return new CodeBuoyDesignatorBaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeBuoyDesignatorType }
      * 
      * @return
@@ -4832,26 +4822,6 @@ public class ObjectFactory {
      */
     public CodeBuoyDesignatorType createCodeBuoyDesignatorType() {
         return new CodeBuoyDesignatorType();
-    }
-
-    /**
-     * Create an instance of {@link CodeDistanceVerticalUomType }
-     * 
-     * @return
-     *     the new instance of {@link CodeDistanceVerticalUomType }
-     */
-    public CodeDistanceVerticalUomType createCodeDistanceVerticalUomType() {
-        return new CodeDistanceVerticalUomType();
-    }
-
-    /**
-     * Create an instance of {@link CodeICAOCountryBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeICAOCountryBaseType }
-     */
-    public CodeICAOCountryBaseType createCodeICAOCountryBaseType() {
-        return new CodeICAOCountryBaseType();
     }
 
     /**
@@ -4865,16 +4835,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeReferencePathIdentifierBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeReferencePathIdentifierBaseType }
-     */
-    public CodeReferencePathIdentifierBaseType createCodeReferencePathIdentifierBaseType() {
-        return new CodeReferencePathIdentifierBaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeReferencePathIdentifierType }
      * 
      * @return
@@ -4885,16 +4845,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeRouteIndicatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeRouteIndicatorBaseType }
-     */
-    public CodeRouteIndicatorBaseType createCodeRouteIndicatorBaseType() {
-        return new CodeRouteIndicatorBaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeRouteIndicatorType }
      * 
      * @return
@@ -4902,56 +4852,6 @@ public class ObjectFactory {
      */
     public CodeRouteIndicatorType createCodeRouteIndicatorType() {
         return new CodeRouteIndicatorType();
-    }
-
-    /**
-     * Create an instance of {@link AlphaType }
-     * 
-     * @return
-     *     the new instance of {@link AlphaType }
-     */
-    public AlphaType createAlphaType() {
-        return new AlphaType();
-    }
-
-    /**
-     * Create an instance of {@link AlphanumericType }
-     * 
-     * @return
-     *     the new instance of {@link AlphanumericType }
-     */
-    public AlphanumericType createAlphanumericType() {
-        return new AlphanumericType();
-    }
-
-    /**
-     * Create an instance of {@link Character1Type }
-     * 
-     * @return
-     *     the new instance of {@link Character1Type }
-     */
-    public Character1Type createCharacter1Type() {
-        return new Character1Type();
-    }
-
-    /**
-     * Create an instance of {@link Character2Type }
-     * 
-     * @return
-     *     the new instance of {@link Character2Type }
-     */
-    public Character2Type createCharacter2Type() {
-        return new Character2Type();
-    }
-
-    /**
-     * Create an instance of {@link Character3Type }
-     * 
-     * @return
-     *     the new instance of {@link Character3Type }
-     */
-    public Character3Type createCharacter3Type() {
-        return new Character3Type();
     }
 
     /**
@@ -5025,16 +4925,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeAircraftICAOBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeAircraftICAOBaseType }
-     */
-    public CodeAircraftICAOBaseType createCodeAircraftICAOBaseType() {
-        return new CodeAircraftICAOBaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeAircraftICAOType }
      * 
      * @return
@@ -5082,16 +4972,6 @@ public class ObjectFactory {
      */
     public CodeAirportHeliportCollocationType createCodeAirportHeliportCollocationType() {
         return new CodeAirportHeliportCollocationType();
-    }
-
-    /**
-     * Create an instance of {@link CodeAirportHeliportDesignatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeAirportHeliportDesignatorBaseType }
-     */
-    public CodeAirportHeliportDesignatorBaseType createCodeAirportHeliportDesignatorBaseType() {
-        return new CodeAirportHeliportDesignatorBaseType();
     }
 
     /**
@@ -5162,16 +5042,6 @@ public class ObjectFactory {
      */
     public CodeAirspaceDependencyType createCodeAirspaceDependencyType() {
         return new CodeAirspaceDependencyType();
-    }
-
-    /**
-     * Create an instance of {@link CodeAirspaceDesignatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeAirspaceDesignatorBaseType }
-     */
-    public CodeAirspaceDesignatorBaseType createCodeAirspaceDesignatorBaseType() {
-        return new CodeAirspaceDesignatorBaseType();
     }
 
     /**
@@ -5315,16 +5185,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeApronSectionBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeApronSectionBaseType }
-     */
-    public CodeApronSectionBaseType createCodeApronSectionBaseType() {
-        return new CodeApronSectionBaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeApronSectionType }
      * 
      * @return
@@ -5372,16 +5232,6 @@ public class ObjectFactory {
      */
     public CodeATCReportingType createCodeATCReportingType() {
         return new CodeATCReportingType();
-    }
-
-    /**
-     * Create an instance of {@link CodeAuralMorseBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeAuralMorseBaseType }
-     */
-    public CodeAuralMorseBaseType createCodeAuralMorseBaseType() {
-        return new CodeAuralMorseBaseType();
     }
 
     /**
@@ -5475,16 +5325,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeCommunicationChannelBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeCommunicationChannelBaseType }
-     */
-    public CodeCommunicationChannelBaseType createCodeCommunicationChannelBaseType() {
-        return new CodeCommunicationChannelBaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeCommunicationChannelType }
      * 
      * @return
@@ -5575,16 +5415,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeDesignatedPointDesignatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeDesignatedPointDesignatorBaseType }
-     */
-    public CodeDesignatedPointDesignatorBaseType createCodeDesignatedPointDesignatorBaseType() {
-        return new CodeDesignatedPointDesignatorBaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeDesignatedPointDesignatorType }
      * 
      * @return
@@ -5652,16 +5482,6 @@ public class ObjectFactory {
      */
     public CodeDistanceIndicationType createCodeDistanceIndicationType() {
         return new CodeDistanceIndicationType();
-    }
-
-    /**
-     * Create an instance of {@link CodeDMEBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeDMEBaseType }
-     */
-    public CodeDMEBaseType createCodeDMEBaseType() {
-        return new CodeDMEBaseType();
     }
 
     /**
@@ -5772,16 +5592,6 @@ public class ObjectFactory {
      */
     public CodeFlightPurposeType createCodeFlightPurposeType() {
         return new CodeFlightPurposeType();
-    }
-
-    /**
-     * Create an instance of {@link CodeFlightRestrictionDesignatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeFlightRestrictionDesignatorBaseType }
-     */
-    public CodeFlightRestrictionDesignatorBaseType createCodeFlightRestrictionDesignatorBaseType() {
-        return new CodeFlightRestrictionDesignatorBaseType();
     }
 
     /**
@@ -5975,16 +5785,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeIATABaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeIATABaseType }
-     */
-    public CodeIATABaseType createCodeIATABaseType() {
-        return new CodeIATABaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeIATAType }
      * 
      * @return
@@ -5992,16 +5792,6 @@ public class ObjectFactory {
      */
     public CodeIATAType createCodeIATAType() {
         return new CodeIATAType();
-    }
-
-    /**
-     * Create an instance of {@link CodeICAOBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeICAOBaseType }
-     */
-    public CodeICAOBaseType createCodeICAOBaseType() {
-        return new CodeICAOBaseType();
     }
 
     /**
@@ -6042,16 +5832,6 @@ public class ObjectFactory {
      */
     public CodeIntensityStandByType createCodeIntensityStandByType() {
         return new CodeIntensityStandByType();
-    }
-
-    /**
-     * Create an instance of {@link CodeLanguageBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeLanguageBaseType }
-     */
-    public CodeLanguageBaseType createCodeLanguageBaseType() {
-        return new CodeLanguageBaseType();
     }
 
     /**
@@ -6305,16 +6085,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeNavaidDesignatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeNavaidDesignatorBaseType }
-     */
-    public CodeNavaidDesignatorBaseType createCodeNavaidDesignatorBaseType() {
-        return new CodeNavaidDesignatorBaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeNavaidDesignatorType }
      * 
      * @return
@@ -6382,16 +6152,6 @@ public class ObjectFactory {
      */
     public CodeNavigationSpecificationType createCodeNavigationSpecificationType() {
         return new CodeNavigationSpecificationType();
-    }
-
-    /**
-     * Create an instance of {@link CodeNDBUsageBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeNDBUsageBaseType }
-     */
-    public CodeNDBUsageBaseType createCodeNDBUsageBaseType() {
-        return new CodeNDBUsageBaseType();
     }
 
     /**
@@ -6492,16 +6252,6 @@ public class ObjectFactory {
      */
     public CodeOperationManoeuvringAreaType createCodeOperationManoeuvringAreaType() {
         return new CodeOperationManoeuvringAreaType();
-    }
-
-    /**
-     * Create an instance of {@link CodeOrganisationDesignatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeOrganisationDesignatorBaseType }
-     */
-    public CodeOrganisationDesignatorBaseType createCodeOrganisationDesignatorBaseType() {
-        return new CodeOrganisationDesignatorBaseType();
     }
 
     /**
@@ -6762,16 +6512,6 @@ public class ObjectFactory {
      */
     public CodeRelativePositionType createCodeRelativePositionType() {
         return new CodeRelativePositionType();
-    }
-
-    /**
-     * Create an instance of {@link CodeRNPBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeRNPBaseType }
-     */
-    public CodeRNPBaseType createCodeRNPBaseType() {
-        return new CodeRNPBaseType();
     }
 
     /**
@@ -7095,16 +6835,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeSpecialNavigationChainDesignatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeSpecialNavigationChainDesignatorBaseType }
-     */
-    public CodeSpecialNavigationChainDesignatorBaseType createCodeSpecialNavigationChainDesignatorBaseType() {
-        return new CodeSpecialNavigationChainDesignatorBaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeSpecialNavigationChainDesignatorType }
      * 
      * @return
@@ -7415,16 +7145,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeUUIDBaseType }
-     * 
-     * @return
-     *     the new instance of {@link CodeUUIDBaseType }
-     */
-    public CodeUUIDBaseType createCodeUUIDBaseType() {
-        return new CodeUUIDBaseType();
-    }
-
-    /**
      * Create an instance of {@link CodeUUIDType }
      * 
      * @return
@@ -7555,26 +7275,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DateBaseType }
-     * 
-     * @return
-     *     the new instance of {@link DateBaseType }
-     */
-    public DateBaseType createDateBaseType() {
-        return new DateBaseType();
-    }
-
-    /**
-     * Create an instance of {@link DateMonthDayBaseType }
-     * 
-     * @return
-     *     the new instance of {@link DateMonthDayBaseType }
-     */
-    public DateMonthDayBaseType createDateMonthDayBaseType() {
-        return new DateMonthDayBaseType();
-    }
-
-    /**
      * Create an instance of {@link DateMonthDayType }
      * 
      * @return
@@ -7582,16 +7282,6 @@ public class ObjectFactory {
      */
     public DateMonthDayType createDateMonthDayType() {
         return new DateMonthDayType();
-    }
-
-    /**
-     * Create an instance of {@link DateTimeBaseType }
-     * 
-     * @return
-     *     the new instance of {@link DateTimeBaseType }
-     */
-    public DateTimeBaseType createDateTimeBaseType() {
-        return new DateTimeBaseType();
     }
 
     /**
@@ -7615,16 +7305,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DateYearBaseType }
-     * 
-     * @return
-     *     the new instance of {@link DateYearBaseType }
-     */
-    public DateYearBaseType createDateYearBaseType() {
-        return new DateYearBaseType();
-    }
-
-    /**
      * Create an instance of {@link DateYearType }
      * 
      * @return
@@ -7632,16 +7312,6 @@ public class ObjectFactory {
      */
     public DateYearType createDateYearType() {
         return new DateYearType();
-    }
-
-    /**
-     * Create an instance of {@link NoNumberBaseType }
-     * 
-     * @return
-     *     the new instance of {@link NoNumberBaseType }
-     */
-    public NoNumberBaseType createNoNumberBaseType() {
-        return new NoNumberBaseType();
     }
 
     /**
@@ -7655,16 +7325,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NoSequenceBaseType }
-     * 
-     * @return
-     *     the new instance of {@link NoSequenceBaseType }
-     */
-    public NoSequenceBaseType createNoSequenceBaseType() {
-        return new NoSequenceBaseType();
-    }
-
-    /**
      * Create an instance of {@link NoSequenceType }
      * 
      * @return
@@ -7672,16 +7332,6 @@ public class ObjectFactory {
      */
     public NoSequenceType createNoSequenceType() {
         return new NoSequenceType();
-    }
-
-    /**
-     * Create an instance of {@link TextAddressBaseType }
-     * 
-     * @return
-     *     the new instance of {@link TextAddressBaseType }
-     */
-    public TextAddressBaseType createTextAddressBaseType() {
-        return new TextAddressBaseType();
     }
 
     /**
@@ -7695,16 +7345,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TextDesignatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link TextDesignatorBaseType }
-     */
-    public TextDesignatorBaseType createTextDesignatorBaseType() {
-        return new TextDesignatorBaseType();
-    }
-
-    /**
      * Create an instance of {@link TextDesignatorType }
      * 
      * @return
@@ -7712,16 +7352,6 @@ public class ObjectFactory {
      */
     public TextDesignatorType createTextDesignatorType() {
         return new TextDesignatorType();
-    }
-
-    /**
-     * Create an instance of {@link TextInstructionBaseType }
-     * 
-     * @return
-     *     the new instance of {@link TextInstructionBaseType }
-     */
-    public TextInstructionBaseType createTextInstructionBaseType() {
-        return new TextInstructionBaseType();
     }
 
     /**
@@ -7735,16 +7365,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TextNameBaseType }
-     * 
-     * @return
-     *     the new instance of {@link TextNameBaseType }
-     */
-    public TextNameBaseType createTextNameBaseType() {
-        return new TextNameBaseType();
-    }
-
-    /**
      * Create an instance of {@link TextNameType }
      * 
      * @return
@@ -7752,16 +7372,6 @@ public class ObjectFactory {
      */
     public TextNameType createTextNameType() {
         return new TextNameType();
-    }
-
-    /**
-     * Create an instance of {@link TextNoteBaseType }
-     * 
-     * @return
-     *     the new instance of {@link TextNoteBaseType }
-     */
-    public TextNoteBaseType createTextNoteBaseType() {
-        return new TextNoteBaseType();
     }
 
     /**
@@ -7775,16 +7385,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TextPhoneBaseType }
-     * 
-     * @return
-     *     the new instance of {@link TextPhoneBaseType }
-     */
-    public TextPhoneBaseType createTextPhoneBaseType() {
-        return new TextPhoneBaseType();
-    }
-
-    /**
      * Create an instance of {@link TextPhoneType }
      * 
      * @return
@@ -7792,16 +7392,6 @@ public class ObjectFactory {
      */
     public TextPhoneType createTextPhoneType() {
         return new TextPhoneType();
-    }
-
-    /**
-     * Create an instance of {@link TextPropertyNameBaseType }
-     * 
-     * @return
-     *     the new instance of {@link TextPropertyNameBaseType }
-     */
-    public TextPropertyNameBaseType createTextPropertyNameBaseType() {
-        return new TextPropertyNameBaseType();
     }
 
     /**
@@ -7815,16 +7405,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TextRemarkBaseType }
-     * 
-     * @return
-     *     the new instance of {@link TextRemarkBaseType }
-     */
-    public TextRemarkBaseType createTextRemarkBaseType() {
-        return new TextRemarkBaseType();
-    }
-
-    /**
      * Create an instance of {@link TextRemarkType }
      * 
      * @return
@@ -7832,16 +7412,6 @@ public class ObjectFactory {
      */
     public TextRemarkType createTextRemarkType() {
         return new TextRemarkType();
-    }
-
-    /**
-     * Create an instance of {@link TextSIDSTARDesignatorBaseType }
-     * 
-     * @return
-     *     the new instance of {@link TextSIDSTARDesignatorBaseType }
-     */
-    public TextSIDSTARDesignatorBaseType createTextSIDSTARDesignatorBaseType() {
-        return new TextSIDSTARDesignatorBaseType();
     }
 
     /**
@@ -7855,16 +7425,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TimeBaseType }
-     * 
-     * @return
-     *     the new instance of {@link TimeBaseType }
-     */
-    public TimeBaseType createTimeBaseType() {
-        return new TimeBaseType();
-    }
-
-    /**
      * Create an instance of {@link TimeType }
      * 
      * @return
@@ -7872,16 +7432,6 @@ public class ObjectFactory {
      */
     public TimeType createTimeType() {
         return new TimeType();
-    }
-
-    /**
-     * Create an instance of {@link ValAlarmLimitBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValAlarmLimitBaseType }
-     */
-    public ValAlarmLimitBaseType createValAlarmLimitBaseType() {
-        return new ValAlarmLimitBaseType();
     }
 
     /**
@@ -7895,16 +7445,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValAngleBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValAngleBaseType }
-     */
-    public ValAngleBaseType createValAngleBaseType() {
-        return new ValAngleBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValAngleType }
      * 
      * @return
@@ -7912,16 +7452,6 @@ public class ObjectFactory {
      */
     public ValAngleType createValAngleType() {
         return new ValAngleType();
-    }
-
-    /**
-     * Create an instance of {@link ValBearingBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValBearingBaseType }
-     */
-    public ValBearingBaseType createValBearingBaseType() {
-        return new ValBearingBaseType();
     }
 
     /**
@@ -7935,16 +7465,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValChannelNumberBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValChannelNumberBaseType }
-     */
-    public ValChannelNumberBaseType createValChannelNumberBaseType() {
-        return new ValChannelNumberBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValChannelNumberType }
      * 
      * @return
@@ -7955,16 +7475,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValDepthBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValDepthBaseType }
-     */
-    public ValDepthBaseType createValDepthBaseType() {
-        return new ValDepthBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValDepthType }
      * 
      * @return
@@ -7972,26 +7482,6 @@ public class ObjectFactory {
      */
     public ValDepthType createValDepthType() {
         return new ValDepthType();
-    }
-
-    /**
-     * Create an instance of {@link ValDistanceBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValDistanceBaseType }
-     */
-    public ValDistanceBaseType createValDistanceBaseType() {
-        return new ValDistanceBaseType();
-    }
-
-    /**
-     * Create an instance of {@link ValDistanceSignedBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValDistanceSignedBaseType }
-     */
-    public ValDistanceSignedBaseType createValDistanceSignedBaseType() {
-        return new ValDistanceSignedBaseType();
     }
 
     /**
@@ -8015,16 +7505,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValDistanceVerticalBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValDistanceVerticalBaseType }
-     */
-    public ValDistanceVerticalBaseType createValDistanceVerticalBaseType() {
-        return new ValDistanceVerticalBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValDistanceVerticalType }
      * 
      * @return
@@ -8032,16 +7512,6 @@ public class ObjectFactory {
      */
     public ValDistanceVerticalType createValDistanceVerticalType() {
         return new ValDistanceVerticalType();
-    }
-
-    /**
-     * Create an instance of {@link ValDurationBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValDurationBaseType }
-     */
-    public ValDurationBaseType createValDurationBaseType() {
-        return new ValDurationBaseType();
     }
 
     /**
@@ -8055,16 +7525,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValFLBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValFLBaseType }
-     */
-    public ValFLBaseType createValFLBaseType() {
-        return new ValFLBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValFLType }
      * 
      * @return
@@ -8072,16 +7532,6 @@ public class ObjectFactory {
      */
     public ValFLType createValFLType() {
         return new ValFLType();
-    }
-
-    /**
-     * Create an instance of {@link ValFrequencyBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValFrequencyBaseType }
-     */
-    public ValFrequencyBaseType createValFrequencyBaseType() {
-        return new ValFrequencyBaseType();
     }
 
     /**
@@ -8095,16 +7545,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValFrictionBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValFrictionBaseType }
-     */
-    public ValFrictionBaseType createValFrictionBaseType() {
-        return new ValFrictionBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValFrictionType }
      * 
      * @return
@@ -8112,16 +7552,6 @@ public class ObjectFactory {
      */
     public ValFrictionType createValFrictionType() {
         return new ValFrictionType();
-    }
-
-    /**
-     * Create an instance of {@link ValHexBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValHexBaseType }
-     */
-    public ValHexBaseType createValHexBaseType() {
-        return new ValHexBaseType();
     }
 
     /**
@@ -8135,16 +7565,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValLCNBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValLCNBaseType }
-     */
-    public ValLCNBaseType createValLCNBaseType() {
-        return new ValLCNBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValLCNType }
      * 
      * @return
@@ -8155,16 +7575,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValLightIntensityBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValLightIntensityBaseType }
-     */
-    public ValLightIntensityBaseType createValLightIntensityBaseType() {
-        return new ValLightIntensityBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValLightIntensityType }
      * 
      * @return
@@ -8172,26 +7582,6 @@ public class ObjectFactory {
      */
     public ValLightIntensityType createValLightIntensityType() {
         return new ValLightIntensityType();
-    }
-
-    /**
-     * Create an instance of {@link ValMagneticVariationBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValMagneticVariationBaseType }
-     */
-    public ValMagneticVariationBaseType createValMagneticVariationBaseType() {
-        return new ValMagneticVariationBaseType();
-    }
-
-    /**
-     * Create an instance of {@link ValMagneticVariationChangeBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValMagneticVariationChangeBaseType }
-     */
-    public ValMagneticVariationChangeBaseType createValMagneticVariationChangeBaseType() {
-        return new ValMagneticVariationChangeBaseType();
     }
 
     /**
@@ -8215,16 +7605,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValPCNBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValPCNBaseType }
-     */
-    public ValPCNBaseType createValPCNBaseType() {
-        return new ValPCNBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValPCNType }
      * 
      * @return
@@ -8232,16 +7612,6 @@ public class ObjectFactory {
      */
     public ValPCNType createValPCNType() {
         return new ValPCNType();
-    }
-
-    /**
-     * Create an instance of {@link ValPercentBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValPercentBaseType }
-     */
-    public ValPercentBaseType createValPercentBaseType() {
-        return new ValPercentBaseType();
     }
 
     /**
@@ -8255,16 +7625,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValPressureBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValPressureBaseType }
-     */
-    public ValPressureBaseType createValPressureBaseType() {
-        return new ValPressureBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValPressureType }
      * 
      * @return
@@ -8272,16 +7632,6 @@ public class ObjectFactory {
      */
     public ValPressureType createValPressureType() {
         return new ValPressureType();
-    }
-
-    /**
-     * Create an instance of {@link ValSlopeBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValSlopeBaseType }
-     */
-    public ValSlopeBaseType createValSlopeBaseType() {
-        return new ValSlopeBaseType();
     }
 
     /**
@@ -8295,16 +7645,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValSpeedBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValSpeedBaseType }
-     */
-    public ValSpeedBaseType createValSpeedBaseType() {
-        return new ValSpeedBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValSpeedType }
      * 
      * @return
@@ -8315,16 +7655,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValTemperatureBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValTemperatureBaseType }
-     */
-    public ValTemperatureBaseType createValTemperatureBaseType() {
-        return new ValTemperatureBaseType();
-    }
-
-    /**
      * Create an instance of {@link ValTemperatureType }
      * 
      * @return
@@ -8332,16 +7662,6 @@ public class ObjectFactory {
      */
     public ValTemperatureType createValTemperatureType() {
         return new ValTemperatureType();
-    }
-
-    /**
-     * Create an instance of {@link ValWeightBaseType }
-     * 
-     * @return
-     *     the new instance of {@link ValWeightBaseType }
-     */
-    public ValWeightBaseType createValWeightBaseType() {
-        return new ValWeightBaseType();
     }
 
     /**
@@ -24757,16 +24077,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CodeDistanceVerticalUomType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link UomDistanceVerticalType }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CodeDistanceVerticalUomType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link UomDistanceVerticalType }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "unitOfMeasurement", scope = StandardLevelColumnTimeSliceType.class)
-    public JAXBElement<CodeDistanceVerticalUomType> createStandardLevelColumnTimeSliceTypeUnitOfMeasurement(CodeDistanceVerticalUomType value) {
-        return new JAXBElement<>(_StandardLevelColumnTimeSliceTypeUnitOfMeasurement_QNAME, CodeDistanceVerticalUomType.class, StandardLevelColumnTimeSliceType.class, value);
+    public JAXBElement<UomDistanceVerticalType> createStandardLevelColumnTimeSliceTypeUnitOfMeasurement(UomDistanceVerticalType value) {
+        return new JAXBElement<>(_StandardLevelColumnTimeSliceTypeUnitOfMeasurement_QNAME, UomDistanceVerticalType.class, StandardLevelColumnTimeSliceType.class, value);
     }
 
     /**

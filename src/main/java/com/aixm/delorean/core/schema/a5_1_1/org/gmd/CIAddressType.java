@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -57,19 +55,11 @@ public class CIAddressType
     extends AbstractObjectType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> deliveryPoint;
-    @Valid
     protected CharacterStringPropertyType city;
-    @Valid
     protected CharacterStringPropertyType administrativeArea;
-    @Valid
     protected CharacterStringPropertyType postalCode;
-    @Valid
     protected CharacterStringPropertyType country;
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> electronicMailAddress;
 
     /**

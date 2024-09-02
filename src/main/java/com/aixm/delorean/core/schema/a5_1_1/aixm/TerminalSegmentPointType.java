@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -87,8 +85,6 @@ public class TerminalSegmentPointType
     @XmlElementRef(name = "radarGuidance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> radarGuidance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<PointReferencePropertyType> facilityMakeup;
     @XmlElementRef(name = "pointChoice_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DesignatedPointPropertyType> pointChoiceFixDesignatedPoint;
@@ -105,8 +101,6 @@ public class TerminalSegmentPointType
     @XmlElementRef(name = "extendedServiceVolume", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RadioFrequencyAreaPropertyType> extendedServiceVolume;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "role", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeProcedureFixRoleType> role;
@@ -116,8 +110,6 @@ public class TerminalSegmentPointType
     protected JAXBElement<ValDistanceType> leadDME;
     @XmlElementRef(name = "indicatorFACF", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> indicatorFACF;
-    @Valid
-    @Size(min = 0)
     protected List<TerminalSegmentPointType.Extension> extension;
 
     /**
@@ -690,10 +682,8 @@ public class TerminalSegmentPointType
     public static class Extension {
 
         @XmlElement(name = "AbstractSegmentPointExtension")
-        @Valid
         protected AbstractExtensionType abstractSegmentPointExtension;
         @XmlElement(name = "AbstractTerminalSegmentPointExtension")
-        @Valid
         protected AbstractExtensionType abstractTerminalSegmentPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

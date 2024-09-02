@@ -7,13 +7,14 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
-import org.w3._2001.xmlschema.Language;
+import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -41,21 +42,23 @@ import org.w3._2001.xmlschema.Language;
 public class TextNoteType {
 
     @XmlValue
-    protected TextNoteBaseType value;
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
     @XmlAttribute(name = "lang")
-    protected Language lang;
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "language")
+    protected String lang;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link TextNoteBaseType }
+     *     {@link String }
      *     
      */
-    public TextNoteBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -64,10 +67,10 @@ public class TextNoteType {
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNoteBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(TextNoteBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -80,10 +83,10 @@ public class TextNoteType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -92,10 +95,10 @@ public class TextNoteType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 
@@ -108,10 +111,10 @@ public class TextNoteType {
      * 
      * @return
      *     possible object is
-     *     {@link Language }
+     *     {@link String }
      *     
      */
-    public Language getLang() {
+    public String getLang() {
         return lang;
     }
 
@@ -120,10 +123,10 @@ public class TextNoteType {
      * 
      * @param value
      *     allowed object is
-     *     {@link Language }
+     *     {@link String }
      *     
      */
-    public void setLang(Language value) {
+    public void setLang(String value) {
         this.lang = value;
     }
 

@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,19 +39,19 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class DateTimeType {
 
     @XmlValue
-    protected DateTimeBaseType value;
+    protected XMLGregorianCalendar value;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link DateTimeBaseType }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public DateTimeBaseType getValue() {
+    public XMLGregorianCalendar getValue() {
         return value;
     }
 
@@ -60,10 +60,10 @@ public class DateTimeType {
      * 
      * @param value
      *     allowed object is
-     *     {@link DateTimeBaseType }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setValue(DateTimeBaseType value) {
+    public void setValue(XMLGregorianCalendar value) {
         this.value = value;
     }
 
@@ -76,10 +76,10 @@ public class DateTimeType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -88,10 +88,10 @@ public class DateTimeType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -49,8 +47,6 @@ public class EllipsoidType
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MeasureType semiMajorAxis;
     /**
      * gml:secondDefiningParameter is a property containing the definition of the second parameter that defines the shape of an ellipsoid. An ellipsoid requires two defining parameters: semi-major axis and inverse flattening or semi-major axis and semi-minor axis. When the reference body is a sphere rather than an ellipsoid, only a single defining parameter is required, namely the radius of the sphere; in that case, the semi-major axis "degenerates" into the radius of the sphere.
@@ -59,8 +55,6 @@ public class EllipsoidType
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected SecondDefiningParameterPropertyElement secondDefiningParameter;
 
     /**

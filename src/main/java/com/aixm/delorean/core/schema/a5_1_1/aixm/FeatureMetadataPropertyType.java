@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gmd.MDMetadataType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractMetadataPropertyType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -44,7 +43,6 @@ public class FeatureMetadataPropertyType
 {
 
     @XmlElement(name = "MD_Metadata", namespace = "http://www.isotc211.org/2005/gmd")
-    @Valid
     protected MDMetadataType mdMetadata;
 
     /**

@@ -7,10 +7,16 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
 
@@ -36,22 +42,34 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "CodeNavaidDesignatorType", propOrder = {
     "value"
 })
+@Entity
+@Table(name = "code_navaid_designator_type")
 public class CodeNavaidDesignatorType {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @XmlTransient
+    private Long id;
+
     @XmlValue
-    protected CodeNavaidDesignatorBaseType value;
+    @Column(name = "value")
+    protected String value;
+
+
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    @Column(name = "nil_reason")
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link CodeNavaidDesignatorBaseType }
+     *     {@link String }
      *     
      */
-    public CodeNavaidDesignatorBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -60,10 +78,10 @@ public class CodeNavaidDesignatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeNavaidDesignatorBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeNavaidDesignatorBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -76,10 +94,10 @@ public class CodeNavaidDesignatorType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -88,10 +106,10 @@ public class CodeNavaidDesignatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

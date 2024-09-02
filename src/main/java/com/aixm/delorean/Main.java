@@ -1,6 +1,5 @@
 package com.aixm.delorean;
 
-import com.aixm.delorean.core.configuration.XMLConfig;
 import com.aixm.delorean.core.configuration.StructureConfig;
 import com.aixm.delorean.core.container.ContainerFactory;
 import com.aixm.delorean.core.container.ContainerWarehouse;
@@ -9,6 +8,7 @@ import com.aixm.delorean.core.database.DatabaseConfig;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.xml.XMLBinding;
+import com.aixm.delorean.core.xml.XMLConfig;
 
 import java.io.Console;
 import java.util.Scanner;

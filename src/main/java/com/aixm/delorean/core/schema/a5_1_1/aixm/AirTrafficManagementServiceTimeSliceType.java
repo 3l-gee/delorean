@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -88,41 +86,23 @@ public class AirTrafficManagementServiceTimeSliceType
     @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<UnitPropertyType> serviceProvider;
     @XmlElement(name = "call-sign", nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeServiceATFMType> type;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirspacePropertyType> clientAirspace;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AerialRefuellingPropertyType> clientAerialRefuelling;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RoutePortionPropertyType> clientRoute;
-    @Valid
-    @Size(min = 0)
     protected List<AirTrafficManagementServiceTimeSliceType.Extension> extension;
 
     /**
@@ -711,10 +691,8 @@ public class AirTrafficManagementServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirTrafficManagementServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractAirTrafficManagementServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

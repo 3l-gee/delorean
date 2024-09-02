@@ -16,7 +16,11 @@ public enum DatabaseConfig {
         20,                        // Connection pool max size
         true,                                    // Hibernate show_sql
         "update",                            // Hibernate hbm2ddl.auto
-        new Class<?>[]{} // Mapping classes
+        new Class<?>[]{
+            com.aixm.delorean.core.schema.a5_1_1.aixm.NavaidTimeSliceType.class,
+            com.aixm.delorean.core.schema.a5_1_1.aixm.CodeNavaidDesignatorType.class,
+            com.aixm.delorean.core.schema.a5_1_1.aixm.CodeNavaidServiceType.class
+        } // Mapping classes
     );
 
     private final String version;

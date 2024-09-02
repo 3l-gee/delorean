@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -61,35 +58,26 @@ public class TopoComplexType
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected TopoComplexPropertyType maximalComplex;
     /**
      * The property elements gml:subComplex, gml:superComplex and gml:maximalComplex provide an encoding for relationships between topology complexes as described for gml:TopoComplex above.
      * 
      */
-    @Valid
-    @Size(min = 0)
     protected List<TopoComplexPropertyType> superComplex;
     /**
      * The property elements gml:subComplex, gml:superComplex and gml:maximalComplex provide an encoding for relationships between topology complexes as described for gml:TopoComplex above.
      * 
      */
-    @Valid
-    @Size(min = 0)
     protected List<TopoComplexPropertyType> subComplex;
     /**
      * The gml:topoPrimitiveMember property element encodes for the relationship between a topology complex and a single topology primitive.
      * 
      */
-    @Valid
-    @Size(min = 0)
     protected List<TopoPrimitiveMemberType> topoPrimitiveMember;
     /**
      * The gml:topoPrimitiveMembers property element encodes the relationship between a topology complex and an arbitrary number of topology primitives.
      * 
      */
-    @Valid
     protected TopoPrimitiveArrayAssociationType topoPrimitiveMembers;
     @XmlAttribute(name = "isMaximal")
     protected java.lang.Boolean isMaximal;

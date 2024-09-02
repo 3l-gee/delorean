@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -84,15 +81,9 @@ public class SpecialNavigationStationTimeSliceType
     @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> position;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<SpecialNavigationStationStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<SpecialNavigationStationTimeSliceType.Extension> extension;
 
     /**
@@ -439,8 +430,6 @@ public class SpecialNavigationStationTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSpecialNavigationStationExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractSpecialNavigationStationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

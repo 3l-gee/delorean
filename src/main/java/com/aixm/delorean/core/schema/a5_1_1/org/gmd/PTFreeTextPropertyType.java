@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,7 +42,6 @@ public class PTFreeTextPropertyType
 {
 
     @XmlElement(name = "PT_FreeText")
-    @Valid
     protected PTFreeTextType ptFreeText;
 
     /**

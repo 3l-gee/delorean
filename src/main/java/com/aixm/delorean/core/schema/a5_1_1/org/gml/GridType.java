@@ -7,18 +7,17 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlList;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
-import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -59,17 +58,14 @@ public class GridType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected GridLimitsType limits;
+    @XmlList
     @XmlElement(name = "axisLabels")
-    protected NCNameList gridAxisLabels;
-    @Valid
-    @Size(min = 1)
+    protected List<String> gridAxisLabels;
     protected List<String> axisName;
     @XmlAttribute(name = "dimension", required = true)
-    @NotNull
-    protected PositiveInteger dimension;
+    @XmlSchemaType(name = "positiveInteger")
+    protected BigInteger dimension;
 
     /**
      * Gets the value of the limits property.
@@ -102,29 +98,41 @@ public class GridType
     /**
      * Gets the value of the gridAxisLabels property.
      * 
-     * @return
-     *     possible object is
-     *     {@link NCNameList }
-     *     
-     */
-    public NCNameList getGridAxisLabels() {
-        return gridAxisLabels;
-    }
-
-    /**
-     * Sets the value of the gridAxisLabels property.
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the gridAxisLabels property.</p>
      * 
-     * @param value
-     *     allowed object is
-     *     {@link NCNameList }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getGridAxisLabels().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the gridAxisLabels property.
      */
-    public void setGridAxisLabels(NCNameList value) {
-        this.gridAxisLabels = value;
+    public List<String> getGridAxisLabels() {
+        if (gridAxisLabels == null) {
+            gridAxisLabels = new ArrayList<>();
+        }
+        return this.gridAxisLabels;
     }
 
     public boolean isSetGridAxisLabels() {
-        return (this.gridAxisLabels!= null);
+        return ((this.gridAxisLabels!= null)&&(!this.gridAxisLabels.isEmpty()));
+    }
+
+    public void unsetGridAxisLabels() {
+        this.gridAxisLabels = null;
     }
 
     /**
@@ -172,10 +180,10 @@ public class GridType
      * 
      * @return
      *     possible object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public PositiveInteger getDimension() {
+    public BigInteger getDimension() {
         return dimension;
     }
 
@@ -184,10 +192,10 @@ public class GridType
      * 
      * @param value
      *     allowed object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public void setDimension(PositiveInteger value) {
+    public void setDimension(BigInteger value) {
         this.dimension = value;
     }
 

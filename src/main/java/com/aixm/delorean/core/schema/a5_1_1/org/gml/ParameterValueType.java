@@ -7,14 +7,16 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlList;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
-import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -66,9 +68,7 @@ public class ParameterValueType
      * gml:value is a numeric value of an operation parameter, with its associated unit of measure.
      * 
      */
-    @Valid
     protected MeasureType value;
-    @Valid
     protected DMSAngleType dmsAngleValue;
     /**
      * gml:stringValue is a character string value of an operation parameter. A string value does not have an associated unit of measure.
@@ -79,7 +79,8 @@ public class ParameterValueType
      * gml:integerValue is a positive integer value of an operation parameter, usually used for a count. An integer value does not have an associated unit of measure.
      * 
      */
-    protected PositiveInteger integerValue;
+    @XmlSchemaType(name = "positiveInteger")
+    protected BigInteger integerValue;
     /**
      * gml:booleanValue is a boolean value of an operation parameter. A Boolean value does not have an associated unit of measure.
      * 
@@ -89,13 +90,13 @@ public class ParameterValueType
      * gml:valueList is an ordered sequence of two or more numeric values of an operation parameter list, where each value has the same associated unit of measure. An element of this type contains a space-separated sequence of double values.
      * 
      */
-    @Valid
     protected MeasureListType valueList;
     /**
      * gml:integerValueList is an ordered sequence of two or more integer values of an operation parameter list, usually used for counts. These integer values do not have an associated unit of measure. An element of this type contains a space-separated sequence of integer values.
      * 
      */
-    protected IntegerList integerValueList;
+    @XmlList
+    protected List<BigInteger> integerValueList;
     /**
      * gml:valueFile is a reference to a file or a part of a file containing one or more parameter values, each numeric value with its associated unit of measure. When referencing a part of a file, that file shall contain multiple identified parts, such as an XML encoded document. Furthermore, the referenced file or part of a file may reference another part of the same or different files, as allowed in XML documents.
      * 
@@ -200,10 +201,10 @@ public class ParameterValueType
      * 
      * @return
      *     possible object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public PositiveInteger getIntegerValue() {
+    public BigInteger getIntegerValue() {
         return integerValue;
     }
 
@@ -212,11 +213,11 @@ public class ParameterValueType
      * 
      * @param value
      *     allowed object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      * @see #getIntegerValue()
      */
-    public void setIntegerValue(PositiveInteger value) {
+    public void setIntegerValue(BigInteger value) {
         this.integerValue = value;
     }
 
@@ -285,30 +286,43 @@ public class ParameterValueType
     /**
      * gml:integerValueList is an ordered sequence of two or more integer values of an operation parameter list, usually used for counts. These integer values do not have an associated unit of measure. An element of this type contains a space-separated sequence of integer values.
      * 
-     * @return
-     *     possible object is
-     *     {@link IntegerList }
-     *     
-     */
-    public IntegerList getIntegerValueList() {
-        return integerValueList;
-    }
-
-    /**
-     * Sets the value of the integerValueList property.
+     * Gets the value of the integerValueList property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link IntegerList }
-     *     
-     * @see #getIntegerValueList()
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the integerValueList property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getIntegerValueList().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link BigInteger }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the integerValueList property.
      */
-    public void setIntegerValueList(IntegerList value) {
-        this.integerValueList = value;
+    public List<BigInteger> getIntegerValueList() {
+        if (integerValueList == null) {
+            integerValueList = new ArrayList<>();
+        }
+        return this.integerValueList;
     }
 
     public boolean isSetIntegerValueList() {
-        return (this.integerValueList!= null);
+        return ((this.integerValueList!= null)&&(!this.integerValueList.isEmpty()));
+    }
+
+    public void unsetIntegerValueList() {
+        this.integerValueList = null;
     }
 
     /**

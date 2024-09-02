@@ -8,8 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.DecimalPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -52,20 +50,12 @@ public class EXGeographicBoundingBoxType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected DecimalPropertyType westBoundLongitude;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected DecimalPropertyType eastBoundLongitude;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected DecimalPropertyType southBoundLatitude;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected DecimalPropertyType northBoundLatitude;
 
     /**

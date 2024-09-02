@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -43,8 +41,6 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DistanceIndicationTimeSlicePropertyType {
 
     @XmlElement(name = "DistanceIndicationTimeSlice", required = true)
-    @NotNull
-    @Valid
     protected DistanceIndicationTimeSliceType distanceIndicationTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

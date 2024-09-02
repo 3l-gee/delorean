@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -97,11 +95,7 @@ public class SurfaceCharacteristicsType
     @XmlElementRef(name = "weightAUW", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValWeightType> weightAUW;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<SurfaceCharacteristicsType.Extension> extension;
 
     /**
@@ -548,7 +542,6 @@ public class SurfaceCharacteristicsType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceCharacteristicsExtension")
-        @Valid
         protected AbstractExtensionType abstractSurfaceCharacteristicsExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

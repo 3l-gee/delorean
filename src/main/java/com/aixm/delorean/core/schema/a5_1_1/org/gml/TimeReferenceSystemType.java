@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -49,7 +48,6 @@ public class TimeReferenceSystemType
 {
 
     @XmlElement(required = true)
-    @NotNull
     protected String domainOfValidity;
 
     /**

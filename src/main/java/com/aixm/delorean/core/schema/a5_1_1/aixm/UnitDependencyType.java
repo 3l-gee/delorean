@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,13 +63,8 @@ public class UnitDependencyType
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeUnitDependencyType> type;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
     protected UnitPropertyType theUnit;
-    @Valid
-    @Size(min = 0)
     protected List<UnitDependencyType.Extension> extension;
 
     /**
@@ -238,7 +231,6 @@ public class UnitDependencyType
     public static class Extension {
 
         @XmlElement(name = "AbstractUnitDependencyExtension")
-        @Valid
         protected AbstractExtensionType abstractUnitDependencyExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
