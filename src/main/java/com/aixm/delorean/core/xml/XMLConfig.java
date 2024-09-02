@@ -1,4 +1,4 @@
-package com.aixm.delorean.core.configuration;
+package com.aixm.delorean.core.xml;
 
 import javax.xml.XMLConstants;
 import javax.xml.validation.Schema;

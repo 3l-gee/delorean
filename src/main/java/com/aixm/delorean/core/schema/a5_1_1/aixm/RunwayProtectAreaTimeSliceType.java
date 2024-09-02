@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -83,8 +81,6 @@ public class RunwayProtectAreaTimeSliceType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRunwayProtectionAreaType> type;
@@ -92,8 +88,6 @@ public class RunwayProtectAreaTimeSliceType
     protected JAXBElement<CodeStatusOperationsType> status;
     @XmlElementRef(name = "protectedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayDirectionPropertyType> protectedRunwayDirection;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayProtectAreaTimeSliceType.Extension> extension;
 
     /**
@@ -458,10 +452,8 @@ public class RunwayProtectAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayProtectAreaExtension")
-        @Valid
         protected AbstractExtensionType abstractRunwayProtectAreaExtension;
         @XmlElement(name = "AbstractAirportHeliportProtectionAreaExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportHeliportProtectionAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

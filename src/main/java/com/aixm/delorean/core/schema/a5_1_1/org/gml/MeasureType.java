@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -55,8 +54,7 @@ public class MeasureType {
     @XmlValue
     protected double value;
     @XmlAttribute(name = "uom", required = true)
-    @NotNull
-    protected UomIdentifier uom;
+    protected String uom;
 
     /**
      * Gets the value of the value property.
@@ -83,10 +81,10 @@ public class MeasureType {
      * 
      * @return
      *     possible object is
-     *     {@link UomIdentifier }
+     *     {@link String }
      *     
      */
-    public UomIdentifier getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -95,10 +93,10 @@ public class MeasureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomIdentifier }
+     *     {@link String }
      *     
      */
-    public void setUom(UomIdentifier value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

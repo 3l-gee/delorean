@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -104,47 +101,25 @@ public class VerticalStructureTimeSliceType
     @XmlElementRef(name = "marker", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<MarkerBeaconPropertyType> marker;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<VerticalStructurePartPropertyType> part;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<PassengerServicePropertyType> hostedPassengerService;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<GroundLightSystemPropertyType> supportedGroundLight;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidEquipmentPropertyType> hostedNavaidEquipment;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<SpecialNavigationStationPropertyType> hostedSpecialNavStation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<UnitPropertyType> hostedUnit;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<OrganisationAuthorityPropertyType> hostedOrganisation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ServicePropertyType> supportedService;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<VerticalStructureLightingStatusPropertyType> lightingAvailability;
-    @Valid
-    @Size(min = 0)
     protected List<VerticalStructureTimeSliceType.Extension> extension;
 
     /**
@@ -923,8 +898,6 @@ public class VerticalStructureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractVerticalStructureExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractVerticalStructureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

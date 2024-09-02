@@ -7,11 +7,12 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlList;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -47,21 +48,19 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DataBlockType {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected AssociationRoleType rangeParameters;
     /**
      * gml:CoordinatesType consists of a list of coordinate tuples, with each coordinate tuple separated by the ts or tuple separator (whitespace), and each coordinate in the tuple by the cs or coordinate separator (comma).
      * The gml:tupleList encoding is effectively "band-interleaved".
      * 
      */
-    @Valid
     protected CoordinatesType tupleList;
     /**
      * gml:doubleOrNilReasonList consists of a list of gml:doubleOrNilReason values, each separated by a whitespace. The gml:doubleOrNilReason values are grouped into tuples where the dimension of each tuple in the list is equal to the number of range parameters.
      * 
      */
-    protected DoubleOrNilReasonList doubleOrNilReasonTupleList;
+    @XmlList
+    protected List<String> doubleOrNilReasonTupleList;
 
     /**
      * Gets the value of the rangeParameters property.
@@ -124,30 +123,43 @@ public class DataBlockType {
     /**
      * gml:doubleOrNilReasonList consists of a list of gml:doubleOrNilReason values, each separated by a whitespace. The gml:doubleOrNilReason values are grouped into tuples where the dimension of each tuple in the list is equal to the number of range parameters.
      * 
-     * @return
-     *     possible object is
-     *     {@link DoubleOrNilReasonList }
-     *     
-     */
-    public DoubleOrNilReasonList getDoubleOrNilReasonTupleList() {
-        return doubleOrNilReasonTupleList;
-    }
-
-    /**
-     * Sets the value of the doubleOrNilReasonTupleList property.
+     * Gets the value of the doubleOrNilReasonTupleList property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DoubleOrNilReasonList }
-     *     
-     * @see #getDoubleOrNilReasonTupleList()
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the doubleOrNilReasonTupleList property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getDoubleOrNilReasonTupleList().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the doubleOrNilReasonTupleList property.
      */
-    public void setDoubleOrNilReasonTupleList(DoubleOrNilReasonList value) {
-        this.doubleOrNilReasonTupleList = value;
+    public List<String> getDoubleOrNilReasonTupleList() {
+        if (doubleOrNilReasonTupleList == null) {
+            doubleOrNilReasonTupleList = new ArrayList<>();
+        }
+        return this.doubleOrNilReasonTupleList;
     }
 
     public boolean isSetDoubleOrNilReasonTupleList() {
-        return (this.doubleOrNilReasonTupleList!= null);
+        return ((this.doubleOrNilReasonTupleList!= null)&&(!this.doubleOrNilReasonTupleList.isEmpty()));
+    }
+
+    public void unsetDoubleOrNilReasonTupleList() {
+        this.doubleOrNilReasonTupleList = null;
     }
 
 }

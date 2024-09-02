@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -87,33 +85,19 @@ public class AirportClearanceServiceTimeSliceType
     @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<UnitPropertyType> serviceProvider;
     @XmlElement(name = "call-sign", nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElementRef(name = "snowPlan", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextInstructionType> snowPlan;
-    @Valid
-    @Size(min = 0)
     protected List<AirportClearanceServiceTimeSliceType.Extension> extension;
 
     /**
@@ -624,13 +608,10 @@ public class AirportClearanceServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportClearanceServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportClearanceServiceExtension;
         @XmlElement(name = "AbstractAirportGroundServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractAirportGroundServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
-        @Valid
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -81,8 +78,6 @@ public class NavigationAreaTimeSliceType
     @XmlElementRef(name = "departure", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<StandardInstrumentDeparturePropertyType> departure;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavigationAreaSectorPropertyType> sector;
     @XmlElementRef(name = "centrePoint_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DesignatedPointPropertyType> centrePointFixDesignatedPoint;
@@ -97,11 +92,7 @@ public class NavigationAreaTimeSliceType
     @XmlElementRef(name = "centrePoint_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> centrePointAirportReferencePoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<NavigationAreaTimeSliceType.Extension> extension;
 
     /**
@@ -532,8 +523,6 @@ public class NavigationAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavigationAreaExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractNavigationAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

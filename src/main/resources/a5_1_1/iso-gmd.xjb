@@ -6,13 +6,12 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
 	xmlns:annox="urn:jaxb.jvnet.org:annox"
-	xmlns:hj="urn:hyperjaxb3.jvnet.org:ejb:schemas:customizations"
-    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm"
-	jaxb:extensionBindingPrefixes="xjc annox hj orm">
+	jaxb:extensionBindingPrefixes="xjc annox">
+    <!-- xmlns:hj="urn:hyperjaxb3.jvnet.org:ejb:schemas:customizations"
+    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm" -->
     
     <jaxb:bindings schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gmd/gmd.xsd"
         node="/xs:schema">
-        <hj:ignored/>
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.isotc211.gmd.v2007" /> -->
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gmd"/>
@@ -21,7 +20,6 @@
 
     <jaxb:bindings schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gco/gco.xsd"
         node="/xs:schema">
-        <hj:ignored/>
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.isotc211.gco.v2007" /> -->
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gco"/>
@@ -30,7 +28,6 @@
 
     <jaxb:bindings schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gsr/gsr.xsd"
         node="/xs:schema">
-        <hj:ignored/>
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.isotc211.gsr.v2007" /> -->
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gsr"/>
@@ -39,7 +36,6 @@
 
     <jaxb:bindings schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gss/gss.xsd"
         node="/xs:schema">
-		<hj:ignored/>
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.isotc211.gss.v2007" /> -->
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gss"/>
@@ -48,7 +44,6 @@
 
     <jaxb:bindings schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gts/gts.xsd"
         node="/xs:schema">
-		<hj:ignored/>
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.isotc211.gts.v2007" /> -->
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gts"/>
@@ -57,7 +52,6 @@
 
     <jaxb:bindings schemaLocation="http://www.w3.org/2001/xml.xsd"
         node="/xs:schema">
-		<hj:ignored/>
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.w3.x2001" /> -->
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.w3"/>

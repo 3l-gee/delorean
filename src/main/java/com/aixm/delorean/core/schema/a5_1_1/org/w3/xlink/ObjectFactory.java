@@ -43,46 +43,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link HrefType }
-     * 
-     * @return
-     *     the new instance of {@link HrefType }
-     */
-    public HrefType createHrefType() {
-        return new HrefType();
-    }
-
-    /**
-     * Create an instance of {@link RoleType }
-     * 
-     * @return
-     *     the new instance of {@link RoleType }
-     */
-    public RoleType createRoleType() {
-        return new RoleType();
-    }
-
-    /**
-     * Create an instance of {@link ArcroleType }
-     * 
-     * @return
-     *     the new instance of {@link ArcroleType }
-     */
-    public ArcroleType createArcroleType() {
-        return new ArcroleType();
-    }
-
-    /**
-     * Create an instance of {@link TitleAttrType }
-     * 
-     * @return
-     *     the new instance of {@link TitleAttrType }
-     */
-    public TitleAttrType createTitleAttrType() {
-        return new TitleAttrType();
-    }
-
-    /**
      * Create an instance of {@link TitleEltType }
      * 
      * @return
@@ -120,36 +80,6 @@ public class ObjectFactory {
      */
     public ArcType createArcType() {
         return new ArcType();
-    }
-
-    /**
-     * Create an instance of {@link LabelType }
-     * 
-     * @return
-     *     the new instance of {@link LabelType }
-     */
-    public LabelType createLabelType() {
-        return new LabelType();
-    }
-
-    /**
-     * Create an instance of {@link FromType }
-     * 
-     * @return
-     *     the new instance of {@link FromType }
-     */
-    public FromType createFromType() {
-        return new FromType();
-    }
-
-    /**
-     * Create an instance of {@link ToType }
-     * 
-     * @return
-     *     the new instance of {@link ToType }
-     */
-    public ToType createToType() {
-        return new ToType();
     }
 
     /**

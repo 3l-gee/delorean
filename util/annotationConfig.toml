@@ -1,0 +1,5 @@
+[NavaidTimeSliceType]
+class = "entity"
+table = "navaid_time_slice_type"
+hibernate_id = true 
+s

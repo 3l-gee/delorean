@@ -7,11 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -19,9 +17,9 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlElementRefs;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
-import org.w3._2001.xmlschema.NonNegativeInteger;
 
 
 /**
@@ -77,17 +75,12 @@ public class BSplineType
         @XmlElementRef(name = "pointRep", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> posOrPointPropertyOrPointRep;
-    @Valid
     protected DirectPositionListType posList;
-    @Valid
     protected CoordinatesType coordinates;
     @XmlElement(required = true)
-    @NotNull
-    protected NonNegativeInteger degree;
+    @XmlSchemaType(name = "nonNegativeInteger")
+    protected BigInteger degree;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 2)
     protected List<KnotPropertyType> knot;
     @XmlAttribute(name = "interpolation")
     protected CurveInterpolationType interpolation;
@@ -199,10 +192,10 @@ public class BSplineType
      * 
      * @return
      *     possible object is
-     *     {@link NonNegativeInteger }
+     *     {@link BigInteger }
      *     
      */
-    public NonNegativeInteger getDegree() {
+    public BigInteger getDegree() {
         return degree;
     }
 
@@ -211,10 +204,10 @@ public class BSplineType
      * 
      * @param value
      *     allowed object is
-     *     {@link NonNegativeInteger }
+     *     {@link BigInteger }
      *     
      */
-    public void setDegree(NonNegativeInteger value) {
+    public void setDegree(BigInteger value) {
         this.degree = value;
     }
 

@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -104,16 +102,10 @@ public class RunwayContaminationType
     @XmlElementRef(name = "proportion", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValPercentType> proportion;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RidgePropertyType> criticalRidge;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<SurfaceContaminationLayerPropertyType> layer;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "clearedLength", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ValDistanceType> clearedLength;
@@ -133,8 +125,6 @@ public class RunwayContaminationType
     protected JAXBElement<CodeYesNoType> taxiwayAvailable;
     @XmlElementRef(name = "apronAvailable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> apronAvailable;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayContaminationType.Extension> extension;
 
     /**
@@ -859,10 +849,8 @@ public class RunwayContaminationType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceContaminationExtension")
-        @Valid
         protected AbstractExtensionType abstractSurfaceContaminationExtension;
         @XmlElement(name = "AbstractRunwayContaminationExtension")
-        @Valid
         protected AbstractExtensionType abstractRunwayContaminationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

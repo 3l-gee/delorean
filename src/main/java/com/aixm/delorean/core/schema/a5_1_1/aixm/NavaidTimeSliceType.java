@@ -9,15 +9,24 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,54 +80,87 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "navaid_time_slice")
 public class NavaidTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @XmlTransient
+    private Long id;
+
+    @Transient
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeNavaidServiceType> type;
+
+    // @OneToOne(mappedBy = "navaid_time_slice")
+    // @XmlTransient
+    // protected CodeNavaidDesignatorType testType;
+
+    @Transient
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeNavaidDesignatorType> designator;
+
+    // @OneToOne(mappedBy = "navaid_time_slice")
+    // @XmlTransient
+    // protected CodeNavaidDesignatorType testDesignator;
+
+    @Transient
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextNameType> aixmName;
+
+    @Transient
     @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> flightChecked;
+
+    @Transient
     @XmlElementRef(name = "purpose", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeNavaidPurposeType> purpose;
+
+    @Transient
     @XmlElementRef(name = "signalPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeSignalPerformanceILSType> signalPerformance;
+
+    @Transient
     @XmlElementRef(name = "courseQuality", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeCourseQualityILSType> courseQuality;
+
+    @Transient
     @XmlElementRef(name = "integrityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeIntegrityLevelILSType> integrityLevel;
+
+    @Transient
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<TouchDownLiftOffPropertyType> touchDownLiftOff;
+
+    @Transient
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidComponentPropertyType> navaidEquipment;
+
+    @Transient
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
+
+    @Transient
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RunwayDirectionPropertyType> runwayDirection;
+
+    @Transient
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportPropertyType> servedAirport;
+
+    @Transient
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NavaidOperationalStatusPropertyType> availability;
+
+    @Transient
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
+
+    @Transient
     protected List<NavaidTimeSliceType.Extension> extension;
 
     /**
@@ -681,8 +723,6 @@ public class NavaidTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractNavaidExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

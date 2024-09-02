@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -44,7 +43,6 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CoverageFunctionType {
 
     @XmlElement(name = "MappingRule")
-    @Valid
     protected StringOrRefType mappingRule;
     /**
      * gml:CoverageMappingRule provides a formal or informal description of the coverage function.
@@ -53,7 +51,6 @@ public class CoverageFunctionType {
      * 
      */
     @XmlElement(name = "CoverageMappingRule")
-    @Valid
     protected MappingRuleType coverageMappingRule;
     /**
      * gml:GridFunction provides an explicit mapping rule for grid geometries, i.e. the domain shall be a geometry of type grid.  It describes the mapping of grid posts (discrete point grid coverage) or grid cells (discrete surface coverage) to the values in the range set.
@@ -61,7 +58,6 @@ public class CoverageFunctionType {
      * 
      */
     @XmlElement(name = "GridFunction")
-    @Valid
     protected GridFunctionType gridFunction;
 
     /**

@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -57,8 +55,6 @@ public class CoordinateSystemAxisType
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CodeType axisAbbrev;
     /**
      * gml:axisDirection is the direction of this coordinate system axis (or in the case of Cartesian projected coordinates, the direction of this coordinate system axis at the origin).
@@ -67,8 +63,6 @@ public class CoordinateSystemAxisType
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CodeWithAuthorityType axisDirection;
     /**
      * The gml:minimumValue and gml:maximumValue properties allow the specification of minimum and maximum value normally allowed for this axis, in the unit of measure for the axis. For a continuous angular axis such as longitude, the values wrap-around at this value. Also, values beyond this minimum/maximum can be used for specified purposes, such as in a bounding box. A value of minus infinity shall be allowed for the gml:minimumValue element, a value of plus infiniy for the gml:maximumValue element. If these elements are omitted, the value is unspecified.
@@ -84,15 +78,13 @@ public class CoordinateSystemAxisType
      * gml:rangeMeaning describes the meaning of axis value range specified by gml:minimumValue and gml:maximumValue. This element shall be omitted when both gml:minimumValue and gml:maximumValue are omitted. This element should be included when gml:minimumValue and/or gml:maximumValue are included. If this element is omitted when the gml:minimumValue and/or gml:maximumValue are included, the meaning is unspecified. The codeSpace attribute shall reference a source of information specifying the values and meanings of all the allowed string values for this property.
      * 
      */
-    @Valid
     protected CodeWithAuthorityType rangeMeaning;
     /**
      * The uom attribute provides an identifier of the unit of measure used for this coordinate system axis. The value of this coordinate in a coordinate tuple shall be recorded using this unit of measure, whenever those coordinates use a coordinate reference system that uses a coordinate system that uses this axis.
      * 
      */
     @XmlAttribute(name = "uom", required = true)
-    @NotNull
-    protected UomIdentifier uom;
+    protected String uom;
 
     /**
      * gml:axisAbbrev is the abbreviation used for this coordinate system axis; this abbreviation is also used to identify the coordinates in the coordinate tuple. The codeSpace attribute may reference a source of more information on a set of standardized abbreviations, or on this abbreviation.
@@ -246,10 +238,10 @@ public class CoordinateSystemAxisType
      * 
      * @return
      *     possible object is
-     *     {@link UomIdentifier }
+     *     {@link String }
      *     
      */
-    public UomIdentifier getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -258,11 +250,11 @@ public class CoordinateSystemAxisType
      * 
      * @param value
      *     allowed object is
-     *     {@link UomIdentifier }
+     *     {@link String }
      *     
      * @see #getUom()
      */
-    public void setUom(UomIdentifier value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

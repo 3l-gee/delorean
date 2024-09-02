@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
+import java.math.BigDecimal;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,21 +40,21 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDistanceSignedType {
 
     @XmlValue
-    protected ValDistanceSignedBaseType value;
+    protected BigDecimal value;
     @XmlAttribute(name = "uom")
     protected UomDistanceType uom;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceSignedBaseType }
+     *     {@link BigDecimal }
      *     
      */
-    public ValDistanceSignedBaseType getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
@@ -63,10 +63,10 @@ public class ValDistanceSignedType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceSignedBaseType }
+     *     {@link BigDecimal }
      *     
      */
-    public void setValue(ValDistanceSignedBaseType value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 
@@ -107,10 +107,10 @@ public class ValDistanceSignedType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -119,10 +119,10 @@ public class ValDistanceSignedType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

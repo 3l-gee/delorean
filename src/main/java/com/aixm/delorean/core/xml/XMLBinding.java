@@ -1,7 +1,5 @@
 package com.aixm.delorean.core.xml;
 
-import com.aixm.delorean.core.configuration.XMLConfig;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -78,6 +76,17 @@ public class XMLBinding<T> {
         }
         return null;
     }
+
+    
+    public T unmarshalPojo(String path) {
+        try (InputStream xmlStream = new FileInputStream(path)) {
+            return (T) this.unmarshaller.unmarshal(xmlStream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     public void marshal(T record, String path, Class<T> clazz) {
         try (FileOutputStream outputStream = new FileOutputStream(new File(path))) {

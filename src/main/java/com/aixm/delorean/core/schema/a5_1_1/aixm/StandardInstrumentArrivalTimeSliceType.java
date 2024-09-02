@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -93,20 +91,12 @@ public class StandardInstrumentArrivalTimeSliceType
     @XmlElementRef(name = "RNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> rnav;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ProcedureAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ProcedureTransitionPropertyType> flightTransition;
     @XmlElementRef(name = "guidanceFacility_specialNavigationSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SpecialNavigationSystemPropertyType> guidanceFacilitySpecialNavigationSystem;
@@ -115,8 +105,6 @@ public class StandardInstrumentArrivalTimeSliceType
     @XmlElementRef(name = "guidanceFacility_navaid", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<NavaidPropertyType> guidanceFacilityNavaid;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "safeAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SafeAltitudeAreaPropertyType> safeAltitude;
@@ -124,8 +112,6 @@ public class StandardInstrumentArrivalTimeSliceType
     protected JAXBElement<TextSIDSTARDesignatorType> designator;
     @XmlElementRef(name = "arrival", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<LandingTakeoffAreaCollectionPropertyType> arrival;
-    @Valid
-    @Size(min = 0)
     protected List<StandardInstrumentArrivalTimeSliceType.Extension> extension;
 
     /**
@@ -762,10 +748,8 @@ public class StandardInstrumentArrivalTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardInstrumentArrivalExtension")
-        @Valid
         protected AbstractExtensionType abstractStandardInstrumentArrivalExtension;
         @XmlElement(name = "AbstractProcedureExtension")
-        @Valid
         protected AbstractExtensionType abstractProcedureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

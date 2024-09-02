@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,17 +67,11 @@ public class SafeAltitudeAreaSectorType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<SafeAltitudeAreaSectorType.Extension> extension;
 
     /**
@@ -314,7 +306,6 @@ public class SafeAltitudeAreaSectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractSafeAltitudeAreaSectorExtension")
-        @Valid
         protected AbstractExtensionType abstractSafeAltitudeAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

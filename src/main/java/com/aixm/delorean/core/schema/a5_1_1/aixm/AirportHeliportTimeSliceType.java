@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -148,12 +145,8 @@ public class AirportHeliportTimeSliceType
     @XmlElementRef(name = "certificationExpirationDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DateType> certificationExpirationDate;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<CityPropertyType> servedCity;
     @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportResponsibilityOrganisationPropertyType> responsibleOrganisation;
@@ -162,23 +155,13 @@ public class AirportHeliportTimeSliceType
     @XmlElementRef(name = "aviationBoundary", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> aviationBoundary;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AltimeterSourcePropertyType> altimeterSource;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportTimeSliceType.Extension> extension;
 
     /**
@@ -1301,8 +1284,6 @@ public class AirportHeliportTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportHeliportExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractAirportHeliportExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.NilReasonEnumeration;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
@@ -47,7 +46,7 @@ public class XHTMLType {
     @XmlAnyElement
     protected List<Element> any;
     @XmlAttribute(name = "nilReason")
-    protected NilReasonEnumeration nilReason;
+    protected String nilReason;
 
     /**
      * Gets the value of the any property.
@@ -94,10 +93,10 @@ public class XHTMLType {
      * 
      * @return
      *     possible object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public NilReasonEnumeration getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
@@ -106,10 +105,10 @@ public class XHTMLType {
      * 
      * @param value
      *     allowed object is
-     *     {@link NilReasonEnumeration }
+     *     {@link String }
      *     
      */
-    public void setNilReason(NilReasonEnumeration value) {
+    public void setNilReason(String value) {
         this.nilReason = value;
     }
 

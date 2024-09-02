@@ -661,7 +661,6 @@ public class ArrayAssociationType {
      * {@link JAXBElement }{@code <}{@link BaseUnitType }{@code >}
      * {@link JAXBElement }{@code <}{@link BezierType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.org.gml.Boolean }{@code >}
-     * {@link JAXBElement }{@code <}{@link BooleanOrNilReasonList }{@code >}
      * {@link JAXBElement }{@code <}{@link CartesianCSType }{@code >}
      * {@link JAXBElement }{@code <}{@link Category }{@code >}
      * {@link JAXBElement }{@code <}{@link CategoryExtentType }{@code >}
@@ -679,7 +678,6 @@ public class ArrayAssociationType {
      * {@link JAXBElement }{@code <}{@link ConversionType }{@code >}
      * {@link JAXBElement }{@code <}{@link CoordinateSystemAxisType }{@code >}
      * {@link JAXBElement }{@code <}{@link Count }{@code >}
-     * {@link JAXBElement }{@code <}{@link CountExtentType }{@code >}
      * {@link JAXBElement }{@code <}{@link CoverageFunctionType }{@code >}
      * {@link JAXBElement }{@code <}{@link CubicSplineType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType }{@code >}
@@ -724,7 +722,6 @@ public class ArrayAssociationType {
      * {@link JAXBElement }{@code <}{@link GridType }{@code >}
      * {@link JAXBElement }{@code <}{@link ImageCRSType }{@code >}
      * {@link JAXBElement }{@code <}{@link ImageDatumType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IntegerOrNilReasonList }{@code >}
      * {@link JAXBElement }{@code <}{@link LineStringSegmentType }{@code >}
      * {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
      * {@link JAXBElement }{@code <}{@link LinearCSType }{@code >}
@@ -792,6 +789,9 @@ public class ArrayAssociationType {
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
+     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
+     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
+     * {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}
      * </p>
      * 
      * 

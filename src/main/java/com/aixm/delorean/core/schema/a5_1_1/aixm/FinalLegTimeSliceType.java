@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -169,18 +167,12 @@ public class FinalLegTimeSliceType
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DistanceIndicationPropertyType> distance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElementRef(name = "holding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<HoldingUsePropertyType> holding;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
@@ -203,8 +195,6 @@ public class FinalLegTimeSliceType
     @XmlElementRef(name = "courseCentrelineIntersect", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRelativePositionType> courseCentrelineIntersect;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ApproachConditionPropertyType> condition;
     @XmlElementRef(name = "finalPathAlignmentPoint_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DesignatedPointPropertyType> finalPathAlignmentPointFixDesignatedPoint;
@@ -222,8 +212,6 @@ public class FinalLegTimeSliceType
     protected JAXBElement<TerminalSegmentPointPropertyType> visualDescentPoint;
     @XmlElementRef(name = "FASData", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<FASDataBlockPropertyType> fasData;
-    @Valid
-    @Size(min = 0)
     protected List<FinalLegTimeSliceType.Extension> extension;
 
     /**
@@ -1774,13 +1762,10 @@ public class FinalLegTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFinalLegExtension")
-        @Valid
         protected AbstractExtensionType abstractFinalLegExtension;
         @XmlElement(name = "AbstractApproachLegExtension")
-        @Valid
         protected AbstractExtensionType abstractApproachLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
-        @Valid
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -41,7 +40,6 @@ public class MDReferenceSystemType
     extends AbstractObjectType
 {
 
-    @Valid
     protected RSIdentifierPropertyType referenceSystemIdentifier;
 
     /**

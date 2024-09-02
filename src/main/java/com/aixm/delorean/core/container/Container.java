@@ -2,6 +2,8 @@ package com.aixm.delorean.core.container;
 
 import com.aixm.delorean.core.xml.XMLBinding;
 import com.aixm.delorean.core.database.DatabaseBinding;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.BasicMessageMemberAIXMPropertyType;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -39,7 +41,7 @@ public class Container<T> {
         if (this.xmlBinding == null) {
             throw new RuntimeException("XMLBinding is not set");
         }
-        this.record = (T) this.xmlBinding.unmarshal(path);
+        this.record = (T) this.xmlBinding.unmarshalPojo(path);
     }
 
     public void marshal(String path) {
@@ -58,15 +60,23 @@ public class Container<T> {
     //     } 
     // }
 
-    // public List<?> getDbLoadReady() {
-    //     List<T> list = record.getHasMember();
-    //     List<T> res = new ArrayList<>();
+    public List<?> getDbLoadReady() {
+        AIXMBasicMessageType test = (AIXMBasicMessageType) this.record;
+        List<BasicMessageMemberAIXMPropertyType> list = test.getHasMember();
+        List<T> res = new ArrayList<>();
 
-    //     for (int i = 0; i < list.size(); i++) {
-    //             T item = (T) list.get(i).getAbstractAIXMFeature().getValue();
-    //             res.add(item);
-    //         }      
+        for (BasicMessageMemberAIXMPropertyType item : list) {
+            // Safely cast item.getAbstractAIXMFeature().getValue() to T
+            T value = null;
+            try {
+                value = structure.cast(item.getAbstractAIXMFeature().getValue());
+            } catch (ClassCastException e) {
+                throw new IllegalStateException("Item value cannot be cast to type T", e);
+            }
 
-    //     return res;
-    // }
+            res.add(value);
+        }
+
+        return res;
+    }
 }

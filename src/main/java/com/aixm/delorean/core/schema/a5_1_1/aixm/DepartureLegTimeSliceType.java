@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -153,18 +151,12 @@ public class DepartureLegTimeSliceType
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DistanceIndicationPropertyType> distance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElementRef(name = "holding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<HoldingUsePropertyType> holding;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "requiredNavigationPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRNPType> requiredNavigationPerformance;
@@ -173,11 +165,7 @@ public class DepartureLegTimeSliceType
     @XmlElementRef(name = "departure", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<StandardInstrumentDeparturePropertyType> departure;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<DepartureArrivalConditionPropertyType> condition;
-    @Valid
-    @Size(min = 0)
     protected List<DepartureLegTimeSliceType.Extension> extension;
 
     /**
@@ -1306,10 +1294,8 @@ public class DepartureLegTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDepartureLegExtension")
-        @Valid
         protected AbstractExtensionType abstractDepartureLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
-        @Valid
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

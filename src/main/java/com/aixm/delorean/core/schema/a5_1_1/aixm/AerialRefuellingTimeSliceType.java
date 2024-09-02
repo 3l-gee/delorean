@@ -9,9 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -110,33 +107,19 @@ public class AerialRefuellingTimeSliceType
     @XmlElementRef(name = "reverseDirectionTurn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeDirectionTurnType> reverseDirectionTurn;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<RouteAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AirspacePropertyType> protectingAirspace;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AerialRefuellingTrackPropertyType> track;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AerialRefuellingAnchorPropertyType> anchor;
     @XmlElementRef(name = "oppositeTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AerialRefuellingPropertyType> oppositeTrack;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<AuthorityForAerialRefuellingPropertyType> managingOrganisation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<AerialRefuellingTimeSliceType.Extension> extension;
 
     /**
@@ -867,8 +850,6 @@ public class AerialRefuellingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAerialRefuellingExtension", required = true)
-        @NotNull
-        @Valid
         protected AbstractExtensionType abstractAerialRefuellingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

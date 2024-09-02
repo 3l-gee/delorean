@@ -9,13 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
-import org.w3._2001.xmlschema.PositiveInteger;
 
 
 /**
@@ -46,10 +45,10 @@ public class TimeIntervalLengthType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "unit", required = true)
-    @NotNull
-    protected TimeUnitType unit;
+    protected String unit;
     @XmlAttribute(name = "radix")
-    protected PositiveInteger radix;
+    @XmlSchemaType(name = "positiveInteger")
+    protected BigInteger radix;
     @XmlAttribute(name = "factor")
     protected BigInteger factor;
 
@@ -86,10 +85,10 @@ public class TimeIntervalLengthType {
      * 
      * @return
      *     possible object is
-     *     {@link TimeUnitType }
+     *     {@link String }
      *     
      */
-    public TimeUnitType getUnit() {
+    public String getUnit() {
         return unit;
     }
 
@@ -98,10 +97,10 @@ public class TimeIntervalLengthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link TimeUnitType }
+     *     {@link String }
      *     
      */
-    public void setUnit(TimeUnitType value) {
+    public void setUnit(String value) {
         this.unit = value;
     }
 
@@ -114,10 +113,10 @@ public class TimeIntervalLengthType {
      * 
      * @return
      *     possible object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public PositiveInteger getRadix() {
+    public BigInteger getRadix() {
         return radix;
     }
 
@@ -126,10 +125,10 @@ public class TimeIntervalLengthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link PositiveInteger }
+     *     {@link BigInteger }
      *     
      */
-    public void setRadix(PositiveInteger value) {
+    public void setRadix(BigInteger value) {
         this.radix = value;
     }
 

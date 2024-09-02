@@ -9,13 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -42,25 +41,23 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class LocatorType {
 
-    @Valid
-    @Size(min = 0)
     protected List<TitleEltType> title;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
     public static final TypeType TYPE = TypeType.LOCATOR;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink", required = true)
-    @NotNull
-    protected HrefType href;
+    protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    protected RoleType role;
+    protected String role;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected TitleAttrType titleAttribute;
+    protected String titleAttribute;
     /**
      * label is not required, but locators have no particular
      *      XLink function if they are not labeled.
      * 
      */
     @XmlAttribute(name = "label", namespace = "http://www.w3.org/1999/xlink")
-    protected LabelType label;
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String label;
 
     /**
      * Gets the value of the title property.
@@ -107,10 +104,10 @@ public class LocatorType {
      * 
      * @return
      *     possible object is
-     *     {@link HrefType }
+     *     {@link String }
      *     
      */
-    public HrefType getHref() {
+    public String getHref() {
         return href;
     }
 
@@ -119,10 +116,10 @@ public class LocatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link HrefType }
+     *     {@link String }
      *     
      */
-    public void setHref(HrefType value) {
+    public void setHref(String value) {
         this.href = value;
     }
 
@@ -135,10 +132,10 @@ public class LocatorType {
      * 
      * @return
      *     possible object is
-     *     {@link RoleType }
+     *     {@link String }
      *     
      */
-    public RoleType getRole() {
+    public String getRole() {
         return role;
     }
 
@@ -147,10 +144,10 @@ public class LocatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link RoleType }
+     *     {@link String }
      *     
      */
-    public void setRole(RoleType value) {
+    public void setRole(String value) {
         this.role = value;
     }
 
@@ -163,10 +160,10 @@ public class LocatorType {
      * 
      * @return
      *     possible object is
-     *     {@link TitleAttrType }
+     *     {@link String }
      *     
      */
-    public TitleAttrType getTitleAttribute() {
+    public String getTitleAttribute() {
         return titleAttribute;
     }
 
@@ -175,10 +172,10 @@ public class LocatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link TitleAttrType }
+     *     {@link String }
      *     
      */
-    public void setTitleAttribute(TitleAttrType value) {
+    public void setTitleAttribute(String value) {
         this.titleAttribute = value;
     }
 
@@ -192,10 +189,10 @@ public class LocatorType {
      * 
      * @return
      *     possible object is
-     *     {@link LabelType }
+     *     {@link String }
      *     
      */
-    public LabelType getLabel() {
+    public String getLabel() {
         return label;
     }
 
@@ -204,11 +201,11 @@ public class LocatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link LabelType }
+     *     {@link String }
      *     
      * @see #getLabel()
      */
-    public void setLabel(LabelType value) {
+    public void setLabel(String value) {
         this.label = value;
     }
 
