@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,7 +68,11 @@ public class SeaplaneRampSiteTimeSliceType
     @XmlElementRef(name = "centreline", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedCurvePropertyType> centreline;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<SeaplaneRampSiteTimeSliceType.Extension> extension;
 
     /**
@@ -232,6 +239,8 @@ public class SeaplaneRampSiteTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSeaplaneRampSiteExtension", required = true)
+        @NotNull
+        @Valid
         protected AbstractExtensionType abstractSeaplaneRampSiteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

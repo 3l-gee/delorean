@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<School xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="school.xsd">
+    <Classrooms>
+        <Classroom>
+            <ClassroomID>101</ClassroomID>
+            <Teachers>
+                <Teacher>
+                    <Name>John</Name>
+                    <Surname>Doe</Surname>
+                    <Role>Math</Role>
+                </Teacher>
+                <Teacher>
+                    <Name>Jane</Name>
+                    <Surname>Smith</Surname>
+                    <Role>English</Role>
+                </Teacher>
+            </Teachers>
+        </Classroom>
+        <Classroom>
+            <ClassroomID>102</ClassroomID>
+            <Teachers>
+                <Teacher>
+                    <Name>Anne</Name>
+                    <Surname>Johnson</Surname>
+                    <Role>German</Role>
+                </Teacher>
+            </Teachers>
+        </Classroom>
+    </Classrooms>
+    <Students>
+        <Student>
+            <Name>Emily</Name>
+            <Surname>Taylor</Surname>
+            <AssignedClassroomID>101</AssignedClassroomID>
+        </Student>
+        <Student>
+            <Name>Michael</Name>
+            <Surname>Brown</Surname>
+            <AssignedClassroomID>102</AssignedClassroomID>
+        </Student>
+    </Students>
+</School>

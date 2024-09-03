@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -51,6 +52,7 @@ public class DegreesType {
     @XmlValue
     protected int value;
     @XmlAttribute(name = "direction")
+    @Pattern(regexp = "(\\QN\\E)|(\\QE\\E)|(\\QS\\E)|(\\QW\\E)|(\\Q+\\E)|(\\Q-\\E)")
     protected String direction;
 
     /**

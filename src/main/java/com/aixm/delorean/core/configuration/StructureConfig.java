@@ -6,7 +6,11 @@ public enum StructureConfig {
     AIXM_5_1_1(
         "a5_1_1", 
         "com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType"
-        );
+        ),
+    SCHOOL(
+        "school",
+        "com.aixm.delorean.core.schema.school.School"
+    );
 
     private final String version;
     private final String structure;

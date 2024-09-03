@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,8 +71,13 @@ public class NavaidComponentType
     @XmlElementRef(name = "providesNavigableLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeYesNoType> providesNavigableLocation;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
     protected NavaidEquipmentPropertyType theNavaidEquipment;
+    @Valid
+    @Size(min = 0)
     protected List<NavaidComponentType.Extension> extension;
 
     /**
@@ -293,6 +300,7 @@ public class NavaidComponentType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidComponentExtension")
+        @Valid
         protected AbstractExtensionType abstractNavaidComponentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

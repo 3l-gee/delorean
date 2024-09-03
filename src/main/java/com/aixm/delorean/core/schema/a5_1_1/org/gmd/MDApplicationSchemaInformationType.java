@@ -10,6 +10,8 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.BinaryPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -58,14 +60,24 @@ public class MDApplicationSchemaInformationType
 {
 
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected CICitationPropertyType name;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected CharacterStringPropertyType schemaLanguage;
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected CharacterStringPropertyType constraintLanguage;
+    @Valid
     protected CharacterStringPropertyType schemaAscii;
+    @Valid
     protected BinaryPropertyType graphicsFile;
+    @Valid
     protected BinaryPropertyType softwareDevelopmentFile;
+    @Valid
     protected CharacterStringPropertyType softwareDevelopmentFileFormat;
 
     /**

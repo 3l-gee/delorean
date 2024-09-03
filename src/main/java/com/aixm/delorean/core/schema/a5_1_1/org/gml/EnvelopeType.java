@@ -10,6 +10,9 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -55,15 +58,21 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class EnvelopeType {
 
+    @Valid
     protected DirectPositionType lowerCorner;
+    @Valid
     protected DirectPositionType upperCorner;
+    @Valid
+    @Size(min = 2, max = 2)
     protected List<DirectPositionType> pos;
+    @Valid
     protected CoordinatesType coordinates;
     @XmlAttribute(name = "srsName")
     @XmlSchemaType(name = "anyURI")
     protected String srsName;
     @XmlAttribute(name = "srsDimension")
     @XmlSchemaType(name = "positiveInteger")
+    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger srsDimension;
     @XmlAttribute(name = "axisLabels")
     protected List<String> axisLabels;

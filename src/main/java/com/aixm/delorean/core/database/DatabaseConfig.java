@@ -21,6 +21,19 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.a5_1_1.aixm.CodeNavaidDesignatorType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.CodeNavaidServiceType.class
         } // Mapping classes
+    ),
+    SCHOOL(
+        "school",
+        "jdbc:postgresql://localhost:5432/delorean",
+        "postgres",
+        "postgres",
+        5,
+        20,
+        true,
+        "update",
+        new Class<?>[]{
+            com.aixm.delorean.core.schema.school.School.class
+        }
     );
 
     private final String version;

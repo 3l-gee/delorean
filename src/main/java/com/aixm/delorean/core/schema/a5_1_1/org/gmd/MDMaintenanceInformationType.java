@@ -13,6 +13,9 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.DatePropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gts.TMPeriodDurationPropertyType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -61,12 +64,24 @@ public class MDMaintenanceInformationType
 {
 
     @XmlElement(required = true)
+    @NotNull
+    @Valid
     protected MDMaintenanceFrequencyCodePropertyType maintenanceAndUpdateFrequency;
+    @Valid
     protected DatePropertyType dateOfNextUpdate;
+    @Valid
     protected TMPeriodDurationPropertyType userDefinedMaintenanceFrequency;
+    @Valid
+    @Size(min = 0)
     protected List<MDScopeCodePropertyType> updateScope;
+    @Valid
+    @Size(min = 0)
     protected List<MDScopeDescriptionPropertyType> updateScopeDescription;
+    @Valid
+    @Size(min = 0)
     protected List<CharacterStringPropertyType> maintenanceNote;
+    @Valid
+    @Size(min = 0)
     protected List<CIResponsiblePartyPropertyType> contact;
 
     /**

@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -47,7 +48,9 @@ public class PointType
     extends AbstractGeometricPrimitiveType
 {
 
+    @Valid
     protected DirectPositionType pos;
+    @Valid
     protected CoordinatesType coordinates;
 
     /**

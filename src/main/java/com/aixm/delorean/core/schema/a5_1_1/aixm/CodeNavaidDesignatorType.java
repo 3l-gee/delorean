@@ -7,16 +7,11 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
 
@@ -42,23 +37,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "CodeNavaidDesignatorType", propOrder = {
     "value"
 })
-@Entity
-@Table(name = "code_navaid_designator_type")
 public class CodeNavaidDesignatorType {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    @XmlTransient
-    private Long id;
-
     @XmlValue
-    @Column(name = "value")
+    @Size(min = 1, max = 4)
+    @Pattern(regexp = "([A-Z]|\\d)*")
     protected String value;
-
-
     @XmlAttribute(name = "nilReason")
-    @Column(name = "nil_reason")
     protected String nilReason;
 
     /**

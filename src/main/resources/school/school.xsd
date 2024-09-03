@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <!-- Base complexType for a person with name and surname -->
+    <xs:complexType name="Person">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Surname" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Teacher complexType extending Person with a role -->
+    <xs:complexType name="Teacher">
+        <xs:complexContent>
+            <xs:extension base="Person">
+                <xs:sequence>
+                    <xs:element name="Role" type="TeacherRole"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Enumeration for teacher roles -->
+    <xs:simpleType name="TeacherRole">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Math"/>
+            <xs:enumeration value="German"/>
+            <xs:enumeration value="English"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Student complexType extending Person with an assigned classroom -->
+    <xs:complexType name="Student">
+        <xs:complexContent>
+            <xs:extension base="Person">
+                <xs:sequence>
+                    <xs:element name="AssignedClassroomID" type="xs:int"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Classroom complexType with a list of teachers -->
+    <xs:complexType name="Classroom">
+        <xs:sequence>
+            <xs:element name="ClassroomID" type="xs:int"/>
+            <xs:element name="Teachers" type="TeacherList"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- List of teachers -->
+    <xs:complexType name="TeacherList">
+        <xs:sequence>
+            <xs:element name="Teacher" type="Teacher" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Root element School -->
+    <xs:element name="School">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Classrooms" type="ClassroomList"/>
+                <xs:element name="Students" type="StudentList"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- List of classrooms -->
+    <xs:complexType name="ClassroomList">
+        <xs:sequence>
+            <xs:element name="Classroom" type="Classroom" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- List of students -->
+    <xs:complexType name="StudentList">
+        <xs:sequence>
+            <xs:element name="Student" type="Student" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

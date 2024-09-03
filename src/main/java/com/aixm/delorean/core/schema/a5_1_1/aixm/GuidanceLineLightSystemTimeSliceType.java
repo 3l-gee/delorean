@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -72,13 +74,21 @@ public class GuidanceLineLightSystemTimeSliceType
     @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "lightedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<GuidanceLinePropertyType> lightedGuidanceLine;
+    @Valid
+    @Size(min = 0)
     protected List<GuidanceLineLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -383,8 +393,10 @@ public class GuidanceLineLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractGuidanceLineLightSystemExtension")
+        @Valid
         protected AbstractExtensionType abstractGuidanceLineLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
+        @Valid
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

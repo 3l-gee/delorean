@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -53,11 +55,14 @@ public class CompositeValueType
      * Property that refers to, or contains, a Value.
      * 
      */
+    @Valid
+    @Size(min = 0)
     protected List<ValuePropertyType> valueComponent;
     /**
      * Property that contains Values.
      * 
      */
+    @Valid
     protected ValueArrayPropertyType valueComponents;
     @XmlAttribute(name = "aggregationType")
     protected AggregationType aggregationType;

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -45,9 +47,11 @@ public class TimeIntervalLengthType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "unit", required = true)
+    @NotNull
     protected String unit;
     @XmlAttribute(name = "radix")
     @XmlSchemaType(name = "positiveInteger")
+    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger radix;
     @XmlAttribute(name = "factor")
     protected BigInteger factor;

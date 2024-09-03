@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -57,6 +58,7 @@ public abstract class AbstractGeometryType
     protected String srsName;
     @XmlAttribute(name = "srsDimension")
     @XmlSchemaType(name = "positiveInteger")
+    @DecimalMin(value = "1", inclusive = true)
     protected BigInteger srsDimension;
     @XmlAttribute(name = "axisLabels")
     protected List<String> axisLabels;

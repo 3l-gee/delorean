@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -44,7 +45,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class FormulaType {
 
     protected Double a;
+    @NotNull
     protected double b;
+    @NotNull
     protected double c;
     protected Double d;
 
