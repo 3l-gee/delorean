@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -79,11 +82,19 @@ public class PilotControlledLightingTimeSliceType
     @XmlElementRef(name = "activationInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TextInstructionType> activationInstruction;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<LightActivationPropertyType> controlledLightIntensity;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<GroundLightSystemPropertyType> activatedGroundLighting;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<PilotControlledLightingTimeSliceType.Extension> extension;
 
     /**
@@ -442,6 +453,8 @@ public class PilotControlledLightingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPilotControlledLightingExtension", required = true)
+        @NotNull
+        @Valid
         protected AbstractExtensionType abstractPilotControlledLightingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

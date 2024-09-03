@@ -12,6 +12,8 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -34,8 +36,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}TimeNode"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -54,7 +56,10 @@ public class TimeNodePropertyType {
      * 
      */
     @XmlElement(name = "TimeNode")
+    @Valid
     protected TimeNodeType timeNode;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
@@ -65,8 +70,10 @@ public class TimeNodePropertyType {
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
+    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
+    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;
@@ -74,8 +81,6 @@ public class TimeNodePropertyType {
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
 
     /**
      * A time node is a zero-dimensional topological primitive that represents an identifiable node in time (it is equivalent to a point in space). A node may act as the termination or initiation of any number of time edges. A time node may be realised as a geometry, its position, whose value is a time instant.
@@ -104,6 +109,42 @@ public class TimeNodePropertyType {
 
     public boolean isSetTimeNode() {
         return (this.timeNode!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
     /**
@@ -340,42 +381,6 @@ public class TimeNodePropertyType {
 
     public boolean isSetActuate() {
         return (this.actuate!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

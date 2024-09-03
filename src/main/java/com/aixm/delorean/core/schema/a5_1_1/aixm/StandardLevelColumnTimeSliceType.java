@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -70,11 +73,17 @@ public class StandardLevelColumnTimeSliceType
     @XmlElementRef(name = "separation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeRVSMType> separation;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<StandardLevelPropertyType> level;
     @XmlElementRef(name = "levelTable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<StandardLevelTablePropertyType> levelTable;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<StandardLevelColumnTimeSliceType.Extension> extension;
 
     /**
@@ -337,6 +346,8 @@ public class StandardLevelColumnTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelColumnExtension", required = true)
+        @NotNull
+        @Valid
         protected AbstractExtensionType abstractStandardLevelColumnExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

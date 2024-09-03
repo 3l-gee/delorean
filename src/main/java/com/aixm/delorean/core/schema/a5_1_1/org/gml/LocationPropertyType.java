@@ -15,6 +15,8 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -71,11 +73,15 @@ public class LocationPropertyType {
     @XmlElementRef(name = "AbstractGeometry", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractGeometryType> abstractGeometry;
     @XmlElement(name = "LocationKeyWord")
+    @Valid
     protected CodeType locationKeyWord;
     @XmlElement(name = "LocationString")
+    @Valid
     protected StringOrRefType locationString;
     @XmlList
     @XmlElement(name = "Null")
+    @Valid
+    @Size(min = 1, max = 1)
     protected List<String> _null;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
@@ -87,8 +93,10 @@ public class LocationPropertyType {
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
+    @Size(min = 1)
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
+    @Size(min = 1)
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
     protected String titleAttribute;

@@ -58,6 +58,7 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gmd.MDStandardOrderProcessType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gmd.MDUsageType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gmd.PTFreeTextType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gmd.PTLocaleType;
+import jakarta.validation.constraints.Pattern;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -153,6 +154,7 @@ public abstract class AbstractObjectType {
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
+    @Pattern(regexp = "([[_:A-Za-z]-[:]][[-._:A-Za-z0-9]-[:]]*)|([_:A-Za-z][-._:A-Za-z0-9]*)")
     protected String id;
     @XmlAttribute(name = "uuid")
     protected String uuid;

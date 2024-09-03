@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RealPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.UomLengthPropertyType;
+import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -56,13 +57,21 @@ public class MDBandType
     extends MDRangeDimensionType
 {
 
+    @Valid
     protected RealPropertyType maxValue;
+    @Valid
     protected RealPropertyType minValue;
+    @Valid
     protected UomLengthPropertyType units;
+    @Valid
     protected RealPropertyType peakResponse;
+    @Valid
     protected IntegerPropertyType bitsPerValue;
+    @Valid
     protected IntegerPropertyType toneGradation;
+    @Valid
     protected RealPropertyType scaleFactor;
+    @Valid
     protected RealPropertyType offset;
 
     /**

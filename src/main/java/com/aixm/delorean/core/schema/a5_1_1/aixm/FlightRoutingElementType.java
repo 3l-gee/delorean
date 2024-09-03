@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -85,6 +87,8 @@ public class FlightRoutingElementType
     @XmlElementRef(name = "speedCriteria", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CodeComparisonType> speedCriteria;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
     @XmlElementRef(name = "element_directFlightElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DirectFlightSegmentPropertyType> elementDirectFlightElement;
@@ -113,7 +117,11 @@ public class FlightRoutingElementType
     @XmlElementRef(name = "element_aerialRefuellingElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AerialRefuellingPropertyType> elementAerialRefuellingElement;
     @XmlElement(nillable = true)
+    @Valid
+    @Size(min = 0)
     protected List<NotePropertyType> annotation;
+    @Valid
+    @Size(min = 0)
     protected List<FlightRoutingElementType.Extension> extension;
 
     /**
@@ -740,6 +748,7 @@ public class FlightRoutingElementType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightRoutingElementExtension")
+        @Valid
         protected AbstractExtensionType abstractFlightRoutingElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

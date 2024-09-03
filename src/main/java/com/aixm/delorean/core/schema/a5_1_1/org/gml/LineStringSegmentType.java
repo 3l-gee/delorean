@@ -9,6 +9,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -62,7 +63,9 @@ public class LineStringSegmentType
         @XmlElementRef(name = "pointRep", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> posOrPointPropertyOrPointRep;
+    @Valid
     protected DirectPositionListType posList;
+    @Valid
     protected CoordinatesType coordinates;
     @XmlAttribute(name = "interpolation")
     public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.LINEAR;

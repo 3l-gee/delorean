@@ -8,6 +8,8 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigInteger;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -44,10 +46,14 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class KnotType {
 
+    @NotNull
     protected double value;
     @XmlElement(required = true)
     @XmlSchemaType(name = "nonNegativeInteger")
+    @NotNull
+    @DecimalMin(value = "0", inclusive = true)
     protected BigInteger multiplicity;
+    @NotNull
     protected double weight;
 
     /**

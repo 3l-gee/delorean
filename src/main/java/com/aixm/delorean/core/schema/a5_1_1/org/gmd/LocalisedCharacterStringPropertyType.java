@@ -8,6 +8,7 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.ObjectReferencePropertyType;
+import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -42,6 +43,7 @@ public class LocalisedCharacterStringPropertyType
 {
 
     @XmlElement(name = "LocalisedCharacterString")
+    @Valid
     protected LocalisedCharacterStringType localisedCharacterString;
 
     /**
