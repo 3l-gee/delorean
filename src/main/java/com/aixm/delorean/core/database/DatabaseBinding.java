@@ -4,6 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.validator.constraints.URL;
+
+import com.aixm.delorean.core.schema.school.School;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -51,28 +54,21 @@ public class DatabaseBinding {
         this.sessionFactory.close();
     }
 
-    public void load(List<?> objects){
+    public void load(Object object){
         if (this.sessionFactory == null){
             throw new IllegalArgumentException("sessionfactory is not init");
         }
 
         Session session = this.sessionFactory.openSession();
         Transaction transaction = null;
-        List<Object> mappedObjects = new ArrayList<>();
 
-        for (Object object : objects){
-            if (object != null && isMappedClass(object)){
-                mappedObjects.add(object);
-            }
+        if (object == null || !isMappedClass(object) ){
+            return;
         }
 
         try {
             transaction = session.beginTransaction();
-
-            for (Object mappedObject : mappedObjects){
-                session.persist(mappedObject);
-            }
-
+            session.persist(object);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -82,6 +78,31 @@ public class DatabaseBinding {
         } finally {
             session.close();
         }
+    }
+
+    public Object retrieve(Object id) {
+        if (this.sessionFactory == null) {
+            throw new IllegalArgumentException("sessionfactory is not initialized");
+        }
+
+        Session session = this.sessionFactory.openSession();
+        Transaction transaction = null;
+        Object object = null;
+
+        try {
+            transaction = session.beginTransaction();
+            object = session.get(School.class, id);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return object;
     }
 
     private boolean isMappedClass(Object object){

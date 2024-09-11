@@ -7,10 +7,19 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.EnumType;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -25,6 +34,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <extension base="{}Person">
  *       <sequence>
  *         <element name="Role" type="{}TeacherRole"/>
+ *         <element name="AssignedClassroomID" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -35,15 +45,30 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Teacher", propOrder = {
-    "role"
+    "role",
+    "assignedClassroomID"
 })
+@Entity
+@Table(name = "teacher")
 public class Teacher
     extends Person
 {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "persistent_id")
+    @XmlTransient
+    private Long id;
+
     @XmlElement(name = "Role", required = true)
     @XmlSchemaType(name = "string")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
     protected TeacherRole role;
+
+    @XmlElement(name = "AssignedClassroomID")
+    @Column(name = "assigned_classroom_id")
+    protected int assignedClassroomID;
 
     /**
      * Gets the value of the role property.
@@ -67,6 +92,22 @@ public class Teacher
      */
     public void setRole(TeacherRole value) {
         this.role = value;
+    }
+
+    /**
+     * Gets the value of the assignedClassroomID property.
+     * 
+     */
+    public int getAssignedClassroomID() {
+        return assignedClassroomID;
+    }
+
+    /**
+     * Sets the value of the assignedClassroomID property.
+     * 
+     */
+    public void setAssignedClassroomID(int value) {
+        this.assignedClassroomID = value;
     }
 
 }

@@ -66,6 +66,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TeacherList }
+     * 
+     * @return
+     *     the new instance of {@link TeacherList }
+     */
+    public TeacherList createTeacherList() {
+        return new TeacherList();
+    }
+
+    /**
      * Create an instance of {@link Person }
      * 
      * @return
@@ -103,16 +113,6 @@ public class ObjectFactory {
      */
     public Classroom createClassroom() {
         return new Classroom();
-    }
-
-    /**
-     * Create an instance of {@link TeacherList }
-     * 
-     * @return
-     *     the new instance of {@link TeacherList }
-     */
-    public TeacherList createTeacherList() {
-        return new TeacherList();
     }
 
 }

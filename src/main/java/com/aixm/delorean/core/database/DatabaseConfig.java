@@ -32,7 +32,13 @@ public enum DatabaseConfig {
         true,
         "update",
         new Class<?>[]{
-            com.aixm.delorean.core.schema.school.School.class
+            com.aixm.delorean.core.schema.school.School.class,
+            com.aixm.delorean.core.schema.school.Classroom.class,
+            com.aixm.delorean.core.schema.school.ClassroomList.class,
+            com.aixm.delorean.core.schema.school.StudentList.class,
+            com.aixm.delorean.core.schema.school.Student.class,
+            com.aixm.delorean.core.schema.school.TeacherList.class,
+            com.aixm.delorean.core.schema.school.Teacher.class
         }
     );
 

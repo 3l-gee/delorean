@@ -9,12 +9,13 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- Teacher complexType extending Person with a role -->
+    <!-- Teacher complexType extending Person with a role and an assigned classroom -->
     <xs:complexType name="Teacher">
         <xs:complexContent>
             <xs:extension base="Person">
                 <xs:sequence>
                     <xs:element name="Role" type="TeacherRole"/>
+                    <xs:element name="AssignedClassroomID" type="xs:int"/> <!-- Assigned classroom ID -->
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -40,11 +41,10 @@
         </xs:complexContent>
     </xs:complexType>
 
-    <!-- Classroom complexType with a list of teachers -->
+    <!-- Classroom complexType without a list of teachers -->
     <xs:complexType name="Classroom">
         <xs:sequence>
             <xs:element name="ClassroomID" type="xs:int"/>
-            <xs:element name="Teachers" type="TeacherList"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -61,6 +61,7 @@
             <xs:sequence>
                 <xs:element name="Classrooms" type="ClassroomList"/>
                 <xs:element name="Students" type="StudentList"/>
+                <xs:element name="Teachers" type="TeacherList"/>  <!-- List of all teachers at the school level -->
             </xs:sequence>
         </xs:complexType>
     </xs:element>

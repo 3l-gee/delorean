@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,11 +45,15 @@ import jakarta.xml.bind.annotation.XmlType;
     Teacher.class,
     Student.class
 })
+@MappedSuperclass
 public class Person {
 
     @XmlElement(name = "Name", required = true)
+    @Column(name = "name")
     protected String name;
+    
     @XmlElement(name = "Surname", required = true)
+    @Column(name = "surname")
     protected String surname;
 
     /**
