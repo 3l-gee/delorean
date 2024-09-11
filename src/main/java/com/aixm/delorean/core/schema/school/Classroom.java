@@ -7,9 +7,16 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -24,7 +31,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element name="ClassroomID" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         <element name="Teachers" type="{}TeacherList"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -35,15 +41,21 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Classroom", propOrder = {
-    "classroomID",
-    "teachers"
+    "classroomID"
 })
+@Entity
+@Table(name = "classroom")
 public class Classroom {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "persistent_id")
+    @XmlTransient
+    private Long id;
+
     @XmlElement(name = "ClassroomID")
+    @Column(name = "classroom_id")
     protected int classroomID;
-    @XmlElement(name = "Teachers", required = true)
-    protected TeacherList teachers;
 
     /**
      * Gets the value of the classroomID property.
@@ -59,30 +71,6 @@ public class Classroom {
      */
     public void setClassroomID(int value) {
         this.classroomID = value;
-    }
-
-    /**
-     * Gets the value of the teachers property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TeacherList }
-     *     
-     */
-    public TeacherList getTeachers() {
-        return teachers;
-    }
-
-    /**
-     * Sets the value of the teachers property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TeacherList }
-     *     
-     */
-    public void setTeachers(TeacherList value) {
-        this.teachers = value;
     }
 
 }

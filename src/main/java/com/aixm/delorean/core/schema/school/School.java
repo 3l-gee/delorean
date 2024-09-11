@@ -14,7 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.CascadeType;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -37,6 +37,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="Classrooms" type="{}ClassroomList"/>
  *         <element name="Students" type="{}StudentList"/>
+ *         <element name="Teachers" type="{}TeacherList"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -48,7 +49,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "classrooms",
-    "students"
+    "students",
+    "teachers"
 })
 @XmlRootElement(name = "School")
 @Entity
@@ -57,19 +59,24 @@ public class School {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "school_id")
+    @Column(name = "persistent_id")
     @XmlTransient
     private Long id;
 
     @XmlElement(name = "Classrooms", required = true)
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "school_id")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "classrooms_persistent_id")
     protected ClassroomList classrooms;
 
     @XmlElement(name = "Students", required = true)
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "school_id")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "students_persistent_id")
     protected StudentList students;
+
+    @XmlElement(name = "Teachers", required = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "teachers_persistent_id")
+    protected TeacherList teachers;
 
     /**
      * Gets the value of the classrooms property.
@@ -117,6 +124,30 @@ public class School {
      */
     public void setStudents(StudentList value) {
         this.students = value;
+    }
+
+    /**
+     * Gets the value of the teachers property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TeacherList }
+     *     
+     */
+    public TeacherList getTeachers() {
+        return teachers;
+    }
+
+    /**
+     * Sets the value of the teachers property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TeacherList }
+     *     
+     */
+    public void setTeachers(TeacherList value) {
+        this.teachers = value;
     }
 
 }

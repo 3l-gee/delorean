@@ -7,9 +7,16 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -36,11 +43,20 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "Student", propOrder = {
     "assignedClassroomID"
 })
+@Entity
+@Table(name = "student")
 public class Student
     extends Person
 {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "persistent_id")
+    @XmlTransient
+    private Long id;
+
     @XmlElement(name = "AssignedClassroomID")
+    @Column(name = "assigned_classroom_id")
     protected int assignedClassroomID;
 
     /**
