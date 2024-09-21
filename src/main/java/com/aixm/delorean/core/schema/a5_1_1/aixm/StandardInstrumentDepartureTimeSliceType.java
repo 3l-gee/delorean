@@ -9,8 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,60 +81,82 @@ import jakarta.xml.bind.annotation.XmlType;
     "takeoff",
     "extension"
 })
+@Entity
+@Table(name = "standard_instrument_departure_time_slice_type")
 public class StandardInstrumentDepartureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "communicationFailureInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextInstructionType> communicationFailureInstruction;
-    @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextInstructionType> instruction;
-    @XmlElementRef(name = "designCriteria", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeDesignStandardType> designCriteria;
-    @XmlElementRef(name = "codingStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeProcedureCodingStandardType> codingStandard;
-    @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> flightChecked;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "RNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> rnav;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Column(name = "communication_failure_instruction")
+    protected TextInstructionType communicationFailureInstruction;
+    @XmlElement(nillable = true)
+    @Column(name = "instruction")
+    protected TextInstructionType instruction;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "design_criteria")
+    protected CodeDesignStandardType designCriteria;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "coding_standard")
+    protected CodeProcedureCodingStandardType codingStandard;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "flight_checked")
+    protected CodeYesNoType flightChecked;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
+    @XmlElement(name = "RNAV", nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "rnav")
+    protected CodeYesNoType rnav;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ProcedureAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ProcedureTransitionPropertyType> flightTransition;
-    @XmlElementRef(name = "guidanceFacility_specialNavigationSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SpecialNavigationSystemPropertyType> guidanceFacilitySpecialNavigationSystem;
-    @XmlElementRef(name = "guidanceFacility_radar", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RadarSystemPropertyType> guidanceFacilityRadar;
-    @XmlElementRef(name = "guidanceFacility_navaid", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<NavaidPropertyType> guidanceFacilityNavaid;
+    @XmlElement(name = "guidanceFacility_specialNavigationSystem", nillable = true)
+    @Column(name = "guidance_facility_special_navigation_system")
+    protected SpecialNavigationSystemPropertyType guidanceFacilitySpecialNavigationSystem;
+    @XmlElement(name = "guidanceFacility_radar", nillable = true)
+    @Column(name = "guidance_facility_radar")
+    protected RadarSystemPropertyType guidanceFacilityRadar;
+    @XmlElement(name = "guidanceFacility_navaid", nillable = true)
+    @Column(name = "guidance_facility_navaid")
+    protected NavaidPropertyType guidanceFacilityNavaid;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "safeAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SafeAltitudeAreaPropertyType> safeAltitude;
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextSIDSTARDesignatorType> designator;
-    @XmlElementRef(name = "contingencyRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> contingencyRoute;
+    @XmlElement(nillable = true)
+    @Column(name = "designator")
+    protected TextSIDSTARDesignatorType designator;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "contingency_route")
+    protected CodeYesNoType contingencyRoute;
     @XmlElementRef(name = "takeoff", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<LandingTakeoffAreaCollectionPropertyType> takeoff;
-    @Valid
-    @Size(min = 0)
     protected List<StandardInstrumentDepartureTimeSliceType.Extension> extension;
 
     /**
@@ -136,10 +164,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public JAXBElement<TextInstructionType> getCommunicationFailureInstruction() {
+    public TextInstructionType getCommunicationFailureInstruction() {
         return communicationFailureInstruction;
     }
 
@@ -148,10 +176,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public void setCommunicationFailureInstruction(JAXBElement<TextInstructionType> value) {
+    public void setCommunicationFailureInstruction(TextInstructionType value) {
         this.communicationFailureInstruction = value;
     }
 
@@ -164,10 +192,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public JAXBElement<TextInstructionType> getInstruction() {
+    public TextInstructionType getInstruction() {
         return instruction;
     }
 
@@ -176,10 +204,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public void setInstruction(JAXBElement<TextInstructionType> value) {
+    public void setInstruction(TextInstructionType value) {
         this.instruction = value;
     }
 
@@ -192,10 +220,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignStandardType }{@code >}
+     *     {@link CodeDesignStandardType }
      *     
      */
-    public JAXBElement<CodeDesignStandardType> getDesignCriteria() {
+    public CodeDesignStandardType getDesignCriteria() {
         return designCriteria;
     }
 
@@ -204,10 +232,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignStandardType }{@code >}
+     *     {@link CodeDesignStandardType }
      *     
      */
-    public void setDesignCriteria(JAXBElement<CodeDesignStandardType> value) {
+    public void setDesignCriteria(CodeDesignStandardType value) {
         this.designCriteria = value;
     }
 
@@ -220,10 +248,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureCodingStandardType }{@code >}
+     *     {@link CodeProcedureCodingStandardType }
      *     
      */
-    public JAXBElement<CodeProcedureCodingStandardType> getCodingStandard() {
+    public CodeProcedureCodingStandardType getCodingStandard() {
         return codingStandard;
     }
 
@@ -232,10 +260,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureCodingStandardType }{@code >}
+     *     {@link CodeProcedureCodingStandardType }
      *     
      */
-    public void setCodingStandard(JAXBElement<CodeProcedureCodingStandardType> value) {
+    public void setCodingStandard(CodeProcedureCodingStandardType value) {
         this.codingStandard = value;
     }
 
@@ -248,10 +276,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getFlightChecked() {
+    public CodeYesNoType getFlightChecked() {
         return flightChecked;
     }
 
@@ -260,10 +288,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setFlightChecked(JAXBElement<CodeYesNoType> value) {
+    public void setFlightChecked(CodeYesNoType value) {
         this.flightChecked = value;
     }
 
@@ -276,10 +304,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -288,10 +316,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -304,10 +332,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getRNAV() {
+    public CodeYesNoType getRNAV() {
         return rnav;
     }
 
@@ -316,10 +344,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setRNAV(JAXBElement<CodeYesNoType> value) {
+    public void setRNAV(CodeYesNoType value) {
         this.rnav = value;
     }
 
@@ -492,10 +520,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     {@link SpecialNavigationSystemPropertyType }
      *     
      */
-    public JAXBElement<SpecialNavigationSystemPropertyType> getGuidanceFacilitySpecialNavigationSystem() {
+    public SpecialNavigationSystemPropertyType getGuidanceFacilitySpecialNavigationSystem() {
         return guidanceFacilitySpecialNavigationSystem;
     }
 
@@ -504,10 +532,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     {@link SpecialNavigationSystemPropertyType }
      *     
      */
-    public void setGuidanceFacilitySpecialNavigationSystem(JAXBElement<SpecialNavigationSystemPropertyType> value) {
+    public void setGuidanceFacilitySpecialNavigationSystem(SpecialNavigationSystemPropertyType value) {
         this.guidanceFacilitySpecialNavigationSystem = value;
     }
 
@@ -520,10 +548,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RadarSystemPropertyType }{@code >}
+     *     {@link RadarSystemPropertyType }
      *     
      */
-    public JAXBElement<RadarSystemPropertyType> getGuidanceFacilityRadar() {
+    public RadarSystemPropertyType getGuidanceFacilityRadar() {
         return guidanceFacilityRadar;
     }
 
@@ -532,10 +560,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RadarSystemPropertyType }{@code >}
+     *     {@link RadarSystemPropertyType }
      *     
      */
-    public void setGuidanceFacilityRadar(JAXBElement<RadarSystemPropertyType> value) {
+    public void setGuidanceFacilityRadar(RadarSystemPropertyType value) {
         this.guidanceFacilityRadar = value;
     }
 
@@ -548,10 +576,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getGuidanceFacilityNavaid() {
+    public NavaidPropertyType getGuidanceFacilityNavaid() {
         return guidanceFacilityNavaid;
     }
 
@@ -560,10 +588,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setGuidanceFacilityNavaid(JAXBElement<NavaidPropertyType> value) {
+    public void setGuidanceFacilityNavaid(NavaidPropertyType value) {
         this.guidanceFacilityNavaid = value;
     }
 
@@ -644,10 +672,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextSIDSTARDesignatorType }{@code >}
+     *     {@link TextSIDSTARDesignatorType }
      *     
      */
-    public JAXBElement<TextSIDSTARDesignatorType> getDesignator() {
+    public TextSIDSTARDesignatorType getDesignator() {
         return designator;
     }
 
@@ -656,10 +684,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextSIDSTARDesignatorType }{@code >}
+     *     {@link TextSIDSTARDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<TextSIDSTARDesignatorType> value) {
+    public void setDesignator(TextSIDSTARDesignatorType value) {
         this.designator = value;
     }
 
@@ -672,10 +700,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getContingencyRoute() {
+    public CodeYesNoType getContingencyRoute() {
         return contingencyRoute;
     }
 
@@ -684,10 +712,10 @@ public class StandardInstrumentDepartureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setContingencyRoute(JAXBElement<CodeYesNoType> value) {
+    public void setContingencyRoute(CodeYesNoType value) {
         this.contingencyRoute = value;
     }
 
@@ -793,10 +821,10 @@ public class StandardInstrumentDepartureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardInstrumentDepartureExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_standard_instrument_departure_extension")
         protected AbstractExtensionType abstractStandardInstrumentDepartureExtension;
         @XmlElement(name = "AbstractProcedureExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_procedure_extension")
         protected AbstractExtensionType abstractProcedureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

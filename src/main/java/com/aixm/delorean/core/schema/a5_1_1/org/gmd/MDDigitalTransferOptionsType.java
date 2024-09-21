@@ -12,8 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RealPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -54,14 +52,9 @@ public class MDDigitalTransferOptionsType
     extends AbstractObjectType
 {
 
-    @Valid
     protected CharacterStringPropertyType unitsOfDistribution;
-    @Valid
     protected RealPropertyType transferSize;
-    @Valid
-    @Size(min = 0)
     protected List<CIOnlineResourcePropertyType> onLine;
-    @Valid
     protected MDMediumPropertyType offLine;
 
     /**

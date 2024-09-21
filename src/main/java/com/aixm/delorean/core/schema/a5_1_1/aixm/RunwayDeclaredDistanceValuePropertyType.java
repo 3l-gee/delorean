@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,13 +39,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "RunwayDeclaredDistanceValuePropertyType", propOrder = {
     "runwayDeclaredDistanceValue"
 })
+@Entity
+@Table(name = "runway_declared_distance_value_property_type")
 public class RunwayDeclaredDistanceValuePropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "RunwayDeclaredDistanceValue", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_runway_declared_distance_value")
     protected RunwayDeclaredDistanceValueType runwayDeclaredDistanceValue;
 
     /**

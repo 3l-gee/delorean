@@ -8,8 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.math.BigDecimal;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -41,8 +39,6 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValAngleType {
 
     @XmlValue
-    @DecimalMin(value = "-180", inclusive = true)
-    @DecimalMax(value = "180", inclusive = true)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
     protected String nilReason;

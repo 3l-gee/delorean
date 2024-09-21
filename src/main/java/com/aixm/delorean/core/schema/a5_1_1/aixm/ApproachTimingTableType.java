@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -60,24 +64,31 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "approach_timing_table_type")
 public class ApproachTimingTableType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "startingMeasurementPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeProcedureDistanceType> startingMeasurementPoint;
-    @XmlElementRef(name = "endingMeasurementPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeProcedureDistanceType> endingMeasurementPoint;
-    @XmlElementRef(name = "time", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDurationType> time;
-    @XmlElementRef(name = "speed", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValSpeedType> speed;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "starting_measurement_point")
+    protected CodeProcedureDistanceType startingMeasurementPoint;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ending_measurement_point")
+    protected CodeProcedureDistanceType endingMeasurementPoint;
+    @XmlElement(nillable = true)
+    @Column(name = "time")
+    protected ValDurationType time;
+    @XmlElement(nillable = true)
+    @Column(name = "speed")
+    protected ValSpeedType speed;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ApproachTimingTableType.Extension> extension;
 
     /**
@@ -85,10 +96,10 @@ public class ApproachTimingTableType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureDistanceType }{@code >}
+     *     {@link CodeProcedureDistanceType }
      *     
      */
-    public JAXBElement<CodeProcedureDistanceType> getStartingMeasurementPoint() {
+    public CodeProcedureDistanceType getStartingMeasurementPoint() {
         return startingMeasurementPoint;
     }
 
@@ -97,10 +108,10 @@ public class ApproachTimingTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureDistanceType }{@code >}
+     *     {@link CodeProcedureDistanceType }
      *     
      */
-    public void setStartingMeasurementPoint(JAXBElement<CodeProcedureDistanceType> value) {
+    public void setStartingMeasurementPoint(CodeProcedureDistanceType value) {
         this.startingMeasurementPoint = value;
     }
 
@@ -113,10 +124,10 @@ public class ApproachTimingTableType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureDistanceType }{@code >}
+     *     {@link CodeProcedureDistanceType }
      *     
      */
-    public JAXBElement<CodeProcedureDistanceType> getEndingMeasurementPoint() {
+    public CodeProcedureDistanceType getEndingMeasurementPoint() {
         return endingMeasurementPoint;
     }
 
@@ -125,10 +136,10 @@ public class ApproachTimingTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureDistanceType }{@code >}
+     *     {@link CodeProcedureDistanceType }
      *     
      */
-    public void setEndingMeasurementPoint(JAXBElement<CodeProcedureDistanceType> value) {
+    public void setEndingMeasurementPoint(CodeProcedureDistanceType value) {
         this.endingMeasurementPoint = value;
     }
 
@@ -141,10 +152,10 @@ public class ApproachTimingTableType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
+     *     {@link ValDurationType }
      *     
      */
-    public JAXBElement<ValDurationType> getTime() {
+    public ValDurationType getTime() {
         return time;
     }
 
@@ -153,10 +164,10 @@ public class ApproachTimingTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
+     *     {@link ValDurationType }
      *     
      */
-    public void setTime(JAXBElement<ValDurationType> value) {
+    public void setTime(ValDurationType value) {
         this.time = value;
     }
 
@@ -169,10 +180,10 @@ public class ApproachTimingTableType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
+     *     {@link ValSpeedType }
      *     
      */
-    public JAXBElement<ValSpeedType> getSpeed() {
+    public ValSpeedType getSpeed() {
         return speed;
     }
 
@@ -181,10 +192,10 @@ public class ApproachTimingTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
+     *     {@link ValSpeedType }
      *     
      */
-    public void setSpeed(JAXBElement<ValSpeedType> value) {
+    public void setSpeed(ValSpeedType value) {
         this.speed = value;
     }
 
@@ -300,7 +311,7 @@ public class ApproachTimingTableType
     public static class Extension {
 
         @XmlElement(name = "AbstractApproachTimingTableExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_approach_timing_table_extension")
         protected AbstractExtensionType abstractApproachTimingTableExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

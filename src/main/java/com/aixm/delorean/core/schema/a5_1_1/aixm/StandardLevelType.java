@@ -9,14 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -57,18 +59,20 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "standard_level_type")
 public class StandardLevelType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "verticalDistance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceVerticalType> verticalDistance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Column(name = "vertical_distance")
+    protected ValDistanceVerticalType verticalDistance;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<StandardLevelType.Extension> extension;
 
     /**
@@ -76,10 +80,10 @@ public class StandardLevelType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getVerticalDistance() {
+    public ValDistanceVerticalType getVerticalDistance() {
         return verticalDistance;
     }
 
@@ -88,10 +92,10 @@ public class StandardLevelType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setVerticalDistance(JAXBElement<ValDistanceVerticalType> value) {
+    public void setVerticalDistance(ValDistanceVerticalType value) {
         this.verticalDistance = value;
     }
 
@@ -207,7 +211,7 @@ public class StandardLevelType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_standard_level_extension")
         protected AbstractExtensionType abstractStandardLevelExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

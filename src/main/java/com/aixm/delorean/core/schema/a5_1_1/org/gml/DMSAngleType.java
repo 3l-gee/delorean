@@ -8,10 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.math.BigDecimal;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -55,18 +51,10 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DMSAngleType {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected DegreesType degrees;
-    @DecimalMin(value = "0.00", inclusive = true)
-    @DecimalMax(value = "60.00", inclusive = false)
     protected BigDecimal decimalMinutes;
     @XmlSchemaType(name = "nonNegativeInteger")
-    @DecimalMin(value = "0", inclusive = true)
-    @DecimalMax(value = "59", inclusive = true)
     protected Integer minutes;
-    @DecimalMin(value = "0.00", inclusive = true)
-    @DecimalMax(value = "60.00", inclusive = false)
     protected BigDecimal seconds;
 
     /**

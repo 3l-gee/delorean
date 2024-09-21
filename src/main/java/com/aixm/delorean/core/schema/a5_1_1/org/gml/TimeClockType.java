@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.datatype.XMLGregorianCalendar;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -54,19 +51,13 @@ public class TimeClockType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected StringOrRefType referenceEvent;
     @XmlElement(required = true)
     @XmlSchemaType(name = "time")
-    @NotNull
     protected XMLGregorianCalendar referenceTime;
     @XmlElement(required = true)
     @XmlSchemaType(name = "time")
-    @NotNull
     protected XMLGregorianCalendar utcReference;
-    @Valid
-    @Size(min = 0)
     protected List<TimeCalendarPropertyType> dateBasis;
 
     /**

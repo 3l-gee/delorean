@@ -75,58 +75,20 @@ public class Main {
     }
 
     private void testRun() {
-        logger.log(LogLevel.INFO, "new school");
-        executeNewCommand("school");
+        // logger.log(LogLevel.INFO, "new school");
+        // executeNewCommand("school");
 
-        logger.log(LogLevel.INFO, "xml_config - school");
-        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "school");
+        // logger.log(LogLevel.INFO, "xml_config - school");
+        // excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "school");
 
-        logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
+        // logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
         
-        logger.log(LogLevel.INFO, "show -");
-        executeShowCommand(this.containerWarehouse.getLastContainerId());
+        // logger.log(LogLevel.INFO, "show -");
+        // executeShowCommand(this.containerWarehouse.getLastContainerId());
 
-        logger.log(LogLevel.INFO, "db_config - school");
-        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"school", "");
-
-        logger.log(LogLevel.INFO, "db - startup");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
-
-        logger.log(LogLevel.INFO, "db - load");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"load", "");
-
-        logger.log(LogLevel.INFO, "Exiting...");
-
-        logger.log(LogLevel.INFO, "new school");
-        executeNewCommand("school");
-
-        logger.log(LogLevel.INFO, "xml_config - school");
-        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "school");
-
-        logger.log(LogLevel.INFO, "db_config - school");
-        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"school", "");
-
-        logger.log(LogLevel.INFO, "db - startup");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
-
-        logger.log(LogLevel.INFO, "db - retrieve 1");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"retrieve", "1");
-
-        logger.log(LogLevel.INFO, "xml - export");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "C:/Users/rapha/Documents/project/delorean/test.xml");
-
-        // logger.log(LogLevel.INFO, "new a5_1_1");
-        // executeNewCommand("a5_1_1");
-
-        // logger.log(LogLevel.INFO, "xml_config - a5_1_1");
-        // excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
-
-        // logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/a5_1_1_dataset.xml");
-        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/a5_1_1_dataset.xml");
-        
-        // logger.log(LogLevel.INFO, "db_config - a5_1_1");
-        // executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", "");
+        // logger.log(LogLevel.INFO, "db_config - school");
+        // executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"school", "");
 
         // logger.log(LogLevel.INFO, "db - startup");
         // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
@@ -135,9 +97,48 @@ public class Main {
         // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"load", "");
 
         // logger.log(LogLevel.INFO, "Exiting...");
+
+        // logger.log(LogLevel.INFO, "new school");
+        // executeNewCommand("school");
+
+        // logger.log(LogLevel.INFO, "xml_config - school");
+        // excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "school");
+
+        // logger.log(LogLevel.INFO, "db_config - school");
+        // executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"school", "");
+
+        // logger.log(LogLevel.INFO, "db - startup");
+        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
+
+        // logger.log(LogLevel.INFO, "db - retrieve 1");
+        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"retrieve", "1");
+
+        // logger.log(LogLevel.INFO, "xml - export");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "C:/Users/rapha/Documents/project/delorean/test.xml");
+
+        logger.log(LogLevel.INFO, "new a5_1_1");
+        executeNewCommand("a5_1_1");
+
+        logger.log(LogLevel.INFO, "xml_config - a5_1_1");
+        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
+
+        logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/a5_1_1_dataset.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/a5_1_1_dataset.xml");
+        
+        logger.log(LogLevel.INFO, "db_config - a5_1_1");
+        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", "");
+
+        logger.log(LogLevel.INFO, "db - startup");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
+
+        logger.log(LogLevel.INFO, "db - load");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"load", "");
+
+        logger.log(LogLevel.INFO, "Exiting...");
     }
 
     private void executeCommand(String command) {
+        // Action Argument Parameter Optipon
         String[] parts = command.split(" ");
         String action = parts[0];
         String argument = null;

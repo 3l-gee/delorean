@@ -7,6 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -37,11 +40,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "CurvePropertyType", propOrder = {
     "curve"
 })
+@Entity
+@Table(name = "curve_property_type")
 public class CurvePropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElementRef(name = "Curve", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class)
+    @Column(name = "aixm:_curve")
     protected JAXBElement<? extends CurveType> curve;
 
     /**

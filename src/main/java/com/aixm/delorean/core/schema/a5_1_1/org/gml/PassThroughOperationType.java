@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,9 +56,6 @@ public class PassThroughOperationType
      */
     @XmlElement(required = true)
     @XmlSchemaType(name = "positiveInteger")
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<BigInteger> modifiedCoordinate;
     /**
      * gml:coordOperation is an association role to a coordinate operation.

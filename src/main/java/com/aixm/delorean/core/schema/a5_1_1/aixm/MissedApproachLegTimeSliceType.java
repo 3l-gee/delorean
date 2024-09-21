@@ -9,8 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -95,54 +101,91 @@ import jakarta.xml.bind.annotation.XmlType;
     "condition",
     "extension"
 })
+@Entity
+@Table(name = "missed_approach_leg_time_slice_type")
 public class MissedApproachLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "endConditionDesignator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeSegmentTerminationType> endConditionDesignator;
-    @XmlElementRef(name = "legPath", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeTrajectoryType> legPath;
-    @XmlElementRef(name = "legTypeARINC", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeSegmentPathType> legTypeARINC;
-    @XmlElementRef(name = "course", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValBearingType> course;
-    @XmlElementRef(name = "courseType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeCourseType> courseType;
-    @XmlElementRef(name = "courseDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeDirectionReferenceType> courseDirection;
-    @XmlElementRef(name = "turnDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeDirectionTurnType> turnDirection;
-    @XmlElementRef(name = "speedLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValSpeedType> speedLimit;
-    @XmlElementRef(name = "speedReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeSpeedReferenceType> speedReference;
-    @XmlElementRef(name = "speedInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeAltitudeUseType> speedInterpretation;
-    @XmlElementRef(name = "bankAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValAngleType> bankAngle;
-    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> length;
-    @XmlElementRef(name = "duration", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDurationType> duration;
-    @XmlElementRef(name = "procedureTurnRequired", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> procedureTurnRequired;
-    @XmlElementRef(name = "upperLimitAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceVerticalType> upperLimitAltitude;
-    @XmlElementRef(name = "upperLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeVerticalReferenceType> upperLimitReference;
-    @XmlElementRef(name = "lowerLimitAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceVerticalType> lowerLimitAltitude;
-    @XmlElementRef(name = "lowerLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeVerticalReferenceType> lowerLimitReference;
-    @XmlElementRef(name = "altitudeInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeAltitudeUseType> altitudeInterpretation;
-    @XmlElementRef(name = "altitudeOverrideATC", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceVerticalType> altitudeOverrideATC;
-    @XmlElementRef(name = "altitudeOverrideReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeVerticalReferenceType> altitudeOverrideReference;
-    @XmlElementRef(name = "verticalAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValAngleType> verticalAngle;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "end_condition_designator")
+    protected CodeSegmentTerminationType endConditionDesignator;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "leg_path")
+    protected CodeTrajectoryType legPath;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "leg_type_arinc")
+    protected CodeSegmentPathType legTypeARINC;
+    @XmlElement(nillable = true)
+    @Column(name = "course")
+    protected ValBearingType course;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "course_type")
+    protected CodeCourseType courseType;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "course_direction")
+    protected CodeDirectionReferenceType courseDirection;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "turn_direction")
+    protected CodeDirectionTurnType turnDirection;
+    @XmlElement(nillable = true)
+    @Column(name = "speed_limit")
+    protected ValSpeedType speedLimit;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "speed_reference")
+    protected CodeSpeedReferenceType speedReference;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "speed_interpretation")
+    protected CodeAltitudeUseType speedInterpretation;
+    @XmlElement(nillable = true)
+    @Column(name = "bank_angle")
+    protected ValAngleType bankAngle;
+    @XmlElement(nillable = true)
+    @Column(name = "length")
+    protected ValDistanceType length;
+    @XmlElement(nillable = true)
+    @Column(name = "duration")
+    protected ValDurationType duration;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "procedure_turn_required")
+    protected CodeYesNoType procedureTurnRequired;
+    @XmlElement(nillable = true)
+    @Column(name = "upper_limit_altitude")
+    protected ValDistanceVerticalType upperLimitAltitude;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "upper_limit_reference")
+    protected CodeVerticalReferenceType upperLimitReference;
+    @XmlElement(nillable = true)
+    @Column(name = "lower_limit_altitude")
+    protected ValDistanceVerticalType lowerLimitAltitude;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "lower_limit_reference")
+    protected CodeVerticalReferenceType lowerLimitReference;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "altitude_interpretation")
+    protected CodeAltitudeUseType altitudeInterpretation;
+    @XmlElement(nillable = true)
+    @Column(name = "altitude_override_atc")
+    protected ValDistanceVerticalType altitudeOverrideATC;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "altitude_override_reference")
+    protected CodeVerticalReferenceType altitudeOverrideReference;
+    @XmlElement(nillable = true)
+    @Column(name = "vertical_angle")
+    protected ValAngleType verticalAngle;
     @XmlElementRef(name = "startPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TerminalSegmentPointPropertyType> startPoint;
     @XmlElementRef(name = "endPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
@@ -156,35 +199,44 @@ public class MissedApproachLegTimeSliceType
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<DistanceIndicationPropertyType> distance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElementRef(name = "holding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<HoldingUsePropertyType> holding;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeMissedApproachType> type;
-    @XmlElementRef(name = "thresholdAfterMAPT", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> thresholdAfterMAPT;
-    @XmlElementRef(name = "heightMAPT", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceVerticalType> heightMAPT;
-    @XmlElementRef(name = "requiredNavigationPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeRNPType> requiredNavigationPerformance;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    protected CodeMissedApproachType type;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "threshold_after_mapt")
+    protected CodeYesNoType thresholdAfterMAPT;
+    @XmlElement(nillable = true)
+    @Column(name = "height_mapt")
+    protected ValDistanceVerticalType heightMAPT;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "required_navigation_performance")
+    protected CodeRNPType requiredNavigationPerformance;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApproachConditionPropertyType> condition;
-    @Valid
-    @Size(min = 0)
     protected List<MissedApproachLegTimeSliceType.Extension> extension;
 
     /**
@@ -192,10 +244,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeSegmentTerminationType }{@code >}
+     *     {@link CodeSegmentTerminationType }
      *     
      */
-    public JAXBElement<CodeSegmentTerminationType> getEndConditionDesignator() {
+    public CodeSegmentTerminationType getEndConditionDesignator() {
         return endConditionDesignator;
     }
 
@@ -204,10 +256,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeSegmentTerminationType }{@code >}
+     *     {@link CodeSegmentTerminationType }
      *     
      */
-    public void setEndConditionDesignator(JAXBElement<CodeSegmentTerminationType> value) {
+    public void setEndConditionDesignator(CodeSegmentTerminationType value) {
         this.endConditionDesignator = value;
     }
 
@@ -220,10 +272,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTrajectoryType }{@code >}
+     *     {@link CodeTrajectoryType }
      *     
      */
-    public JAXBElement<CodeTrajectoryType> getLegPath() {
+    public CodeTrajectoryType getLegPath() {
         return legPath;
     }
 
@@ -232,10 +284,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTrajectoryType }{@code >}
+     *     {@link CodeTrajectoryType }
      *     
      */
-    public void setLegPath(JAXBElement<CodeTrajectoryType> value) {
+    public void setLegPath(CodeTrajectoryType value) {
         this.legPath = value;
     }
 
@@ -248,10 +300,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeSegmentPathType }{@code >}
+     *     {@link CodeSegmentPathType }
      *     
      */
-    public JAXBElement<CodeSegmentPathType> getLegTypeARINC() {
+    public CodeSegmentPathType getLegTypeARINC() {
         return legTypeARINC;
     }
 
@@ -260,10 +312,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeSegmentPathType }{@code >}
+     *     {@link CodeSegmentPathType }
      *     
      */
-    public void setLegTypeARINC(JAXBElement<CodeSegmentPathType> value) {
+    public void setLegTypeARINC(CodeSegmentPathType value) {
         this.legTypeARINC = value;
     }
 
@@ -276,10 +328,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getCourse() {
+    public ValBearingType getCourse() {
         return course;
     }
 
@@ -288,10 +340,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setCourse(JAXBElement<ValBearingType> value) {
+    public void setCourse(ValBearingType value) {
         this.course = value;
     }
 
@@ -304,10 +356,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeCourseType }{@code >}
+     *     {@link CodeCourseType }
      *     
      */
-    public JAXBElement<CodeCourseType> getCourseType() {
+    public CodeCourseType getCourseType() {
         return courseType;
     }
 
@@ -316,10 +368,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeCourseType }{@code >}
+     *     {@link CodeCourseType }
      *     
      */
-    public void setCourseType(JAXBElement<CodeCourseType> value) {
+    public void setCourseType(CodeCourseType value) {
         this.courseType = value;
     }
 
@@ -332,10 +384,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionReferenceType }{@code >}
+     *     {@link CodeDirectionReferenceType }
      *     
      */
-    public JAXBElement<CodeDirectionReferenceType> getCourseDirection() {
+    public CodeDirectionReferenceType getCourseDirection() {
         return courseDirection;
     }
 
@@ -344,10 +396,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionReferenceType }{@code >}
+     *     {@link CodeDirectionReferenceType }
      *     
      */
-    public void setCourseDirection(JAXBElement<CodeDirectionReferenceType> value) {
+    public void setCourseDirection(CodeDirectionReferenceType value) {
         this.courseDirection = value;
     }
 
@@ -360,10 +412,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
+     *     {@link CodeDirectionTurnType }
      *     
      */
-    public JAXBElement<CodeDirectionTurnType> getTurnDirection() {
+    public CodeDirectionTurnType getTurnDirection() {
         return turnDirection;
     }
 
@@ -372,10 +424,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
+     *     {@link CodeDirectionTurnType }
      *     
      */
-    public void setTurnDirection(JAXBElement<CodeDirectionTurnType> value) {
+    public void setTurnDirection(CodeDirectionTurnType value) {
         this.turnDirection = value;
     }
 
@@ -388,10 +440,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
+     *     {@link ValSpeedType }
      *     
      */
-    public JAXBElement<ValSpeedType> getSpeedLimit() {
+    public ValSpeedType getSpeedLimit() {
         return speedLimit;
     }
 
@@ -400,10 +452,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
+     *     {@link ValSpeedType }
      *     
      */
-    public void setSpeedLimit(JAXBElement<ValSpeedType> value) {
+    public void setSpeedLimit(ValSpeedType value) {
         this.speedLimit = value;
     }
 
@@ -416,10 +468,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeSpeedReferenceType }{@code >}
+     *     {@link CodeSpeedReferenceType }
      *     
      */
-    public JAXBElement<CodeSpeedReferenceType> getSpeedReference() {
+    public CodeSpeedReferenceType getSpeedReference() {
         return speedReference;
     }
 
@@ -428,10 +480,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeSpeedReferenceType }{@code >}
+     *     {@link CodeSpeedReferenceType }
      *     
      */
-    public void setSpeedReference(JAXBElement<CodeSpeedReferenceType> value) {
+    public void setSpeedReference(CodeSpeedReferenceType value) {
         this.speedReference = value;
     }
 
@@ -444,10 +496,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
+     *     {@link CodeAltitudeUseType }
      *     
      */
-    public JAXBElement<CodeAltitudeUseType> getSpeedInterpretation() {
+    public CodeAltitudeUseType getSpeedInterpretation() {
         return speedInterpretation;
     }
 
@@ -456,10 +508,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
+     *     {@link CodeAltitudeUseType }
      *     
      */
-    public void setSpeedInterpretation(JAXBElement<CodeAltitudeUseType> value) {
+    public void setSpeedInterpretation(CodeAltitudeUseType value) {
         this.speedInterpretation = value;
     }
 
@@ -472,10 +524,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getBankAngle() {
+    public ValAngleType getBankAngle() {
         return bankAngle;
     }
 
@@ -484,10 +536,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setBankAngle(JAXBElement<ValAngleType> value) {
+    public void setBankAngle(ValAngleType value) {
         this.bankAngle = value;
     }
 
@@ -500,10 +552,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLength() {
+    public ValDistanceType getLength() {
         return length;
     }
 
@@ -512,10 +564,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLength(JAXBElement<ValDistanceType> value) {
+    public void setLength(ValDistanceType value) {
         this.length = value;
     }
 
@@ -528,10 +580,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
+     *     {@link ValDurationType }
      *     
      */
-    public JAXBElement<ValDurationType> getDuration() {
+    public ValDurationType getDuration() {
         return duration;
     }
 
@@ -540,10 +592,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
+     *     {@link ValDurationType }
      *     
      */
-    public void setDuration(JAXBElement<ValDurationType> value) {
+    public void setDuration(ValDurationType value) {
         this.duration = value;
     }
 
@@ -556,10 +608,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getProcedureTurnRequired() {
+    public CodeYesNoType getProcedureTurnRequired() {
         return procedureTurnRequired;
     }
 
@@ -568,10 +620,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setProcedureTurnRequired(JAXBElement<CodeYesNoType> value) {
+    public void setProcedureTurnRequired(CodeYesNoType value) {
         this.procedureTurnRequired = value;
     }
 
@@ -584,10 +636,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getUpperLimitAltitude() {
+    public ValDistanceVerticalType getUpperLimitAltitude() {
         return upperLimitAltitude;
     }
 
@@ -596,10 +648,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setUpperLimitAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setUpperLimitAltitude(ValDistanceVerticalType value) {
         this.upperLimitAltitude = value;
     }
 
@@ -612,10 +664,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getUpperLimitReference() {
+    public CodeVerticalReferenceType getUpperLimitReference() {
         return upperLimitReference;
     }
 
@@ -624,10 +676,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setUpperLimitReference(CodeVerticalReferenceType value) {
         this.upperLimitReference = value;
     }
 
@@ -640,10 +692,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getLowerLimitAltitude() {
+    public ValDistanceVerticalType getLowerLimitAltitude() {
         return lowerLimitAltitude;
     }
 
@@ -652,10 +704,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setLowerLimitAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setLowerLimitAltitude(ValDistanceVerticalType value) {
         this.lowerLimitAltitude = value;
     }
 
@@ -668,10 +720,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getLowerLimitReference() {
+    public CodeVerticalReferenceType getLowerLimitReference() {
         return lowerLimitReference;
     }
 
@@ -680,10 +732,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setLowerLimitReference(CodeVerticalReferenceType value) {
         this.lowerLimitReference = value;
     }
 
@@ -696,10 +748,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
+     *     {@link CodeAltitudeUseType }
      *     
      */
-    public JAXBElement<CodeAltitudeUseType> getAltitudeInterpretation() {
+    public CodeAltitudeUseType getAltitudeInterpretation() {
         return altitudeInterpretation;
     }
 
@@ -708,10 +760,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
+     *     {@link CodeAltitudeUseType }
      *     
      */
-    public void setAltitudeInterpretation(JAXBElement<CodeAltitudeUseType> value) {
+    public void setAltitudeInterpretation(CodeAltitudeUseType value) {
         this.altitudeInterpretation = value;
     }
 
@@ -724,10 +776,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getAltitudeOverrideATC() {
+    public ValDistanceVerticalType getAltitudeOverrideATC() {
         return altitudeOverrideATC;
     }
 
@@ -736,10 +788,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setAltitudeOverrideATC(JAXBElement<ValDistanceVerticalType> value) {
+    public void setAltitudeOverrideATC(ValDistanceVerticalType value) {
         this.altitudeOverrideATC = value;
     }
 
@@ -752,10 +804,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getAltitudeOverrideReference() {
+    public CodeVerticalReferenceType getAltitudeOverrideReference() {
         return altitudeOverrideReference;
     }
 
@@ -764,10 +816,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setAltitudeOverrideReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setAltitudeOverrideReference(CodeVerticalReferenceType value) {
         this.altitudeOverrideReference = value;
     }
 
@@ -780,10 +832,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getVerticalAngle() {
+    public ValAngleType getVerticalAngle() {
         return verticalAngle;
     }
 
@@ -792,10 +844,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setVerticalAngle(JAXBElement<ValAngleType> value) {
+    public void setVerticalAngle(ValAngleType value) {
         this.verticalAngle = value;
     }
 
@@ -1152,10 +1204,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMissedApproachType }{@code >}
+     *     {@link CodeMissedApproachType }
      *     
      */
-    public JAXBElement<CodeMissedApproachType> getType() {
+    public CodeMissedApproachType getType() {
         return type;
     }
 
@@ -1164,10 +1216,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMissedApproachType }{@code >}
+     *     {@link CodeMissedApproachType }
      *     
      */
-    public void setType(JAXBElement<CodeMissedApproachType> value) {
+    public void setType(CodeMissedApproachType value) {
         this.type = value;
     }
 
@@ -1180,10 +1232,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getThresholdAfterMAPT() {
+    public CodeYesNoType getThresholdAfterMAPT() {
         return thresholdAfterMAPT;
     }
 
@@ -1192,10 +1244,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setThresholdAfterMAPT(JAXBElement<CodeYesNoType> value) {
+    public void setThresholdAfterMAPT(CodeYesNoType value) {
         this.thresholdAfterMAPT = value;
     }
 
@@ -1208,10 +1260,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getHeightMAPT() {
+    public ValDistanceVerticalType getHeightMAPT() {
         return heightMAPT;
     }
 
@@ -1220,10 +1272,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setHeightMAPT(JAXBElement<ValDistanceVerticalType> value) {
+    public void setHeightMAPT(ValDistanceVerticalType value) {
         this.heightMAPT = value;
     }
 
@@ -1236,10 +1288,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRNPType }{@code >}
+     *     {@link CodeRNPType }
      *     
      */
-    public JAXBElement<CodeRNPType> getRequiredNavigationPerformance() {
+    public CodeRNPType getRequiredNavigationPerformance() {
         return requiredNavigationPerformance;
     }
 
@@ -1248,10 +1300,10 @@ public class MissedApproachLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRNPType }{@code >}
+     *     {@link CodeRNPType }
      *     
      */
-    public void setRequiredNavigationPerformance(JAXBElement<CodeRNPType> value) {
+    public void setRequiredNavigationPerformance(CodeRNPType value) {
         this.requiredNavigationPerformance = value;
     }
 
@@ -1371,13 +1423,13 @@ public class MissedApproachLegTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractMissedApproachLegExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_missed_approach_leg_extension")
         protected AbstractExtensionType abstractMissedApproachLegExtension;
         @XmlElement(name = "AbstractApproachLegExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_approach_leg_extension")
         protected AbstractExtensionType abstractApproachLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_segment_leg_extension")
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

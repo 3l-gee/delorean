@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,30 +66,36 @@ import jakarta.xml.bind.annotation.XmlType;
     "element",
     "extension"
 })
+@Entity
+@Table(name = "flight_condition_combination_type")
 public class FlightConditionCombinationType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "logicalOperator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeFlowConditionOperationType> logicalOperator;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "logical_operator")
+    protected CodeFlowConditionOperationType logicalOperator;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<FlightConditionElementPropertyType> element;
-    @Valid
-    @Size(min = 0)
     protected List<FlightConditionCombinationType.Extension> extension;
 
     /**
@@ -213,10 +223,10 @@ public class FlightConditionCombinationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeFlowConditionOperationType }{@code >}
+     *     {@link CodeFlowConditionOperationType }
      *     
      */
-    public JAXBElement<CodeFlowConditionOperationType> getLogicalOperator() {
+    public CodeFlowConditionOperationType getLogicalOperator() {
         return logicalOperator;
     }
 
@@ -225,10 +235,10 @@ public class FlightConditionCombinationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeFlowConditionOperationType }{@code >}
+     *     {@link CodeFlowConditionOperationType }
      *     
      */
-    public void setLogicalOperator(JAXBElement<CodeFlowConditionOperationType> value) {
+    public void setLogicalOperator(CodeFlowConditionOperationType value) {
         this.logicalOperator = value;
     }
 
@@ -346,10 +356,10 @@ public class FlightConditionCombinationType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractFlightConditionCombinationExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_flight_condition_combination_extension")
         protected AbstractExtensionType abstractFlightConditionCombinationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

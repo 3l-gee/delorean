@@ -13,9 +13,6 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RecordPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RecordTypePropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.UnitOfMeasurePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -57,18 +54,11 @@ public class DQQuantitativeResultType
     extends AbstractDQResultType
 {
 
-    @Valid
     protected RecordTypePropertyType valueType;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected UnitOfMeasurePropertyType valueUnit;
-    @Valid
     protected CharacterStringPropertyType errorStatistic;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<RecordPropertyType> value;
 
     /**

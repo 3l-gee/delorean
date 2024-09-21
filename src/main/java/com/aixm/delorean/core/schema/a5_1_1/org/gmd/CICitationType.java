@@ -12,9 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.DatePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -75,41 +72,21 @@ public class CICitationType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType title;
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> alternateTitle;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CIDatePropertyType> date;
-    @Valid
     protected CharacterStringPropertyType edition;
-    @Valid
     protected DatePropertyType editionDate;
-    @Valid
-    @Size(min = 0)
     protected List<MDIdentifierPropertyType> identifier;
-    @Valid
-    @Size(min = 0)
     protected List<CIResponsiblePartyPropertyType> citedResponsibleParty;
-    @Valid
-    @Size(min = 0)
     protected List<CIPresentationFormCodePropertyType> presentationForm;
-    @Valid
     protected CISeriesPropertyType series;
-    @Valid
     protected CharacterStringPropertyType otherCitationDetails;
-    @Valid
     protected CharacterStringPropertyType collectiveTitle;
     @XmlElement(name = "ISBN")
-    @Valid
     protected CharacterStringPropertyType isbn;
     @XmlElement(name = "ISSN")
-    @Valid
     protected CharacterStringPropertyType issn;
 
     /**

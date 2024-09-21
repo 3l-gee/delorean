@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,26 +65,35 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "meteorology_type")
 public class MeteorologyType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "flightConditions", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeMeteoConditionsType> flightConditions;
-    @XmlElementRef(name = "visibility", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> visibility;
-    @XmlElementRef(name = "visibilityInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeValueInterpretationType> visibilityInterpretation;
-    @XmlElementRef(name = "runwayVisualRange", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> runwayVisualRange;
-    @XmlElementRef(name = "runwayVisualRangeInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeValueInterpretationType> runwayVisualRangeInterpretation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "flight_conditions")
+    protected CodeMeteoConditionsType flightConditions;
+    @XmlElement(nillable = true)
+    @Column(name = "visibility")
+    protected ValDistanceType visibility;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "visibility_interpretation")
+    protected CodeValueInterpretationType visibilityInterpretation;
+    @XmlElement(nillable = true)
+    @Column(name = "runway_visual_range")
+    protected ValDistanceType runwayVisualRange;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "runway_visual_range_interpretation")
+    protected CodeValueInterpretationType runwayVisualRangeInterpretation;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<MeteorologyType.Extension> extension;
 
     /**
@@ -88,10 +101,10 @@ public class MeteorologyType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMeteoConditionsType }{@code >}
+     *     {@link CodeMeteoConditionsType }
      *     
      */
-    public JAXBElement<CodeMeteoConditionsType> getFlightConditions() {
+    public CodeMeteoConditionsType getFlightConditions() {
         return flightConditions;
     }
 
@@ -100,10 +113,10 @@ public class MeteorologyType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMeteoConditionsType }{@code >}
+     *     {@link CodeMeteoConditionsType }
      *     
      */
-    public void setFlightConditions(JAXBElement<CodeMeteoConditionsType> value) {
+    public void setFlightConditions(CodeMeteoConditionsType value) {
         this.flightConditions = value;
     }
 
@@ -116,10 +129,10 @@ public class MeteorologyType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getVisibility() {
+    public ValDistanceType getVisibility() {
         return visibility;
     }
 
@@ -128,10 +141,10 @@ public class MeteorologyType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setVisibility(JAXBElement<ValDistanceType> value) {
+    public void setVisibility(ValDistanceType value) {
         this.visibility = value;
     }
 
@@ -144,10 +157,10 @@ public class MeteorologyType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
+     *     {@link CodeValueInterpretationType }
      *     
      */
-    public JAXBElement<CodeValueInterpretationType> getVisibilityInterpretation() {
+    public CodeValueInterpretationType getVisibilityInterpretation() {
         return visibilityInterpretation;
     }
 
@@ -156,10 +169,10 @@ public class MeteorologyType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
+     *     {@link CodeValueInterpretationType }
      *     
      */
-    public void setVisibilityInterpretation(JAXBElement<CodeValueInterpretationType> value) {
+    public void setVisibilityInterpretation(CodeValueInterpretationType value) {
         this.visibilityInterpretation = value;
     }
 
@@ -172,10 +185,10 @@ public class MeteorologyType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getRunwayVisualRange() {
+    public ValDistanceType getRunwayVisualRange() {
         return runwayVisualRange;
     }
 
@@ -184,10 +197,10 @@ public class MeteorologyType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setRunwayVisualRange(JAXBElement<ValDistanceType> value) {
+    public void setRunwayVisualRange(ValDistanceType value) {
         this.runwayVisualRange = value;
     }
 
@@ -200,10 +213,10 @@ public class MeteorologyType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
+     *     {@link CodeValueInterpretationType }
      *     
      */
-    public JAXBElement<CodeValueInterpretationType> getRunwayVisualRangeInterpretation() {
+    public CodeValueInterpretationType getRunwayVisualRangeInterpretation() {
         return runwayVisualRangeInterpretation;
     }
 
@@ -212,10 +225,10 @@ public class MeteorologyType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
+     *     {@link CodeValueInterpretationType }
      *     
      */
-    public void setRunwayVisualRangeInterpretation(JAXBElement<CodeValueInterpretationType> value) {
+    public void setRunwayVisualRangeInterpretation(CodeValueInterpretationType value) {
         this.runwayVisualRangeInterpretation = value;
     }
 
@@ -331,7 +344,7 @@ public class MeteorologyType
     public static class Extension {
 
         @XmlElement(name = "AbstractMeteorologyExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_meteorology_extension")
         protected AbstractExtensionType abstractMeteorologyExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -10,10 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -79,19 +75,12 @@ public class BSplineType
         @XmlElementRef(name = "pointRep", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> posOrPointPropertyOrPointRep;
-    @Valid
     protected DirectPositionListType posList;
-    @Valid
     protected CoordinatesType coordinates;
     @XmlElement(required = true)
     @XmlSchemaType(name = "nonNegativeInteger")
-    @NotNull
-    @DecimalMin(value = "0", inclusive = true)
     protected BigInteger degree;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 2)
     protected List<KnotPropertyType> knot;
     @XmlAttribute(name = "interpolation")
     protected CurveInterpolationType interpolation;

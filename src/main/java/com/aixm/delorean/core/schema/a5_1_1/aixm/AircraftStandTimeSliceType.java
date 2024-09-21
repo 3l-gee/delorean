@@ -9,9 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,16 +71,23 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
+@Entity
+@Table(name = "aircraft_stand_time_slice_type")
 public class AircraftStandTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextDesignatorType> designator;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeAircraftStandType> type;
-    @XmlElementRef(name = "visualDockingSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeVisualDockingGuidanceType> visualDockingSystem;
+    @XmlElement(nillable = true)
+    @Column(name = "designator")
+    protected TextDesignatorType designator;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    protected CodeAircraftStandType type;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "visual_docking_system")
+    protected CodeVisualDockingGuidanceType visualDockingSystem;
     @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
@@ -85,19 +97,20 @@ public class AircraftStandTimeSliceType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AircraftStandContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApronAreaAvailabilityPropertyType> availability;
-    @Valid
-    @Size(min = 0)
     protected List<AircraftStandTimeSliceType.Extension> extension;
 
     /**
@@ -105,10 +118,10 @@ public class AircraftStandTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getDesignator() {
+    public TextDesignatorType getDesignator() {
         return designator;
     }
 
@@ -117,10 +130,10 @@ public class AircraftStandTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<TextDesignatorType> value) {
+    public void setDesignator(TextDesignatorType value) {
         this.designator = value;
     }
 
@@ -133,10 +146,10 @@ public class AircraftStandTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAircraftStandType }{@code >}
+     *     {@link CodeAircraftStandType }
      *     
      */
-    public JAXBElement<CodeAircraftStandType> getType() {
+    public CodeAircraftStandType getType() {
         return type;
     }
 
@@ -145,10 +158,10 @@ public class AircraftStandTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAircraftStandType }{@code >}
+     *     {@link CodeAircraftStandType }
      *     
      */
-    public void setType(JAXBElement<CodeAircraftStandType> value) {
+    public void setType(CodeAircraftStandType value) {
         this.type = value;
     }
 
@@ -161,10 +174,10 @@ public class AircraftStandTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVisualDockingGuidanceType }{@code >}
+     *     {@link CodeVisualDockingGuidanceType }
      *     
      */
-    public JAXBElement<CodeVisualDockingGuidanceType> getVisualDockingSystem() {
+    public CodeVisualDockingGuidanceType getVisualDockingSystem() {
         return visualDockingSystem;
     }
 
@@ -173,10 +186,10 @@ public class AircraftStandTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVisualDockingGuidanceType }{@code >}
+     *     {@link CodeVisualDockingGuidanceType }
      *     
      */
-    public void setVisualDockingSystem(JAXBElement<CodeVisualDockingGuidanceType> value) {
+    public void setVisualDockingSystem(CodeVisualDockingGuidanceType value) {
         this.visualDockingSystem = value;
     }
 
@@ -484,8 +497,7 @@ public class AircraftStandTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAircraftStandExtension", required = true)
-        @NotNull
-        @Valid
+        @Column(name = "aixm:_abstract_aircraft_stand_extension")
         protected AbstractExtensionType abstractAircraftStandExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

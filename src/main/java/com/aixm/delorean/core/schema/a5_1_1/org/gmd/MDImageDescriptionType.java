@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.BooleanPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.RealPropertyType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -67,29 +66,17 @@ public class MDImageDescriptionType
     extends MDCoverageDescriptionType
 {
 
-    @Valid
     protected RealPropertyType illuminationElevationAngle;
-    @Valid
     protected RealPropertyType illuminationAzimuthAngle;
-    @Valid
     protected MDImagingConditionCodePropertyType imagingCondition;
-    @Valid
     protected MDIdentifierPropertyType imageQualityCode;
-    @Valid
     protected RealPropertyType cloudCoverPercentage;
-    @Valid
     protected MDIdentifierPropertyType processingLevelCode;
-    @Valid
     protected IntegerPropertyType compressionGenerationQuantity;
-    @Valid
     protected BooleanPropertyType triangulationIndicator;
-    @Valid
     protected BooleanPropertyType radiometricCalibrationDataAvailability;
-    @Valid
     protected BooleanPropertyType cameraCalibrationInformationAvailability;
-    @Valid
     protected BooleanPropertyType filmDistortionInformationAvailability;
-    @Valid
     protected BooleanPropertyType lensDistortionInformationAvailability;
 
     /**

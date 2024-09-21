@@ -9,15 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,44 +72,64 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "radio_communication_channel_time_slice_type")
 public class RadioCommunicationChannelTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "mode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeCommunicationModeType> mode;
-    @XmlElementRef(name = "rank", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeFacilityRankingType> rank;
-    @XmlElementRef(name = "frequencyTransmission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValFrequencyType> frequencyTransmission;
-    @XmlElementRef(name = "frequencyReception", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValFrequencyType> frequencyReception;
-    @XmlElementRef(name = "channel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeCommunicationChannelType> channel;
-    @XmlElementRef(name = "logon", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextDesignatorType> logon;
-    @XmlElementRef(name = "emissionType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeRadioEmissionType> emissionType;
-    @XmlElementRef(name = "selectiveCall", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> selectiveCall;
-    @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> flightChecked;
-    @XmlElementRef(name = "trafficDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeCommunicationDirectionType> trafficDirection;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "mode")
+    protected CodeCommunicationModeType mode;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "rank")
+    protected CodeFacilityRankingType rank;
+    @XmlElement(nillable = true)
+    @Column(name = "frequency_transmission")
+    protected ValFrequencyType frequencyTransmission;
+    @XmlElement(nillable = true)
+    @Column(name = "frequency_reception")
+    protected ValFrequencyType frequencyReception;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "channel")
+    protected CodeCommunicationChannelType channel;
+    @XmlElement(nillable = true)
+    @Column(name = "logon")
+    protected TextDesignatorType logon;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "emission_type")
+    protected CodeRadioEmissionType emissionType;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "selective_call")
+    protected CodeYesNoType selectiveCall;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "flight_checked")
+    protected CodeYesNoType flightChecked;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "traffic_direction")
+    protected CodeCommunicationDirectionType trafficDirection;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RadioCommunicationOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<RadioCommunicationChannelTimeSliceType.Extension> extension;
 
     /**
@@ -114,10 +137,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeCommunicationModeType }{@code >}
+     *     {@link CodeCommunicationModeType }
      *     
      */
-    public JAXBElement<CodeCommunicationModeType> getMode() {
+    public CodeCommunicationModeType getMode() {
         return mode;
     }
 
@@ -126,10 +149,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeCommunicationModeType }{@code >}
+     *     {@link CodeCommunicationModeType }
      *     
      */
-    public void setMode(JAXBElement<CodeCommunicationModeType> value) {
+    public void setMode(CodeCommunicationModeType value) {
         this.mode = value;
     }
 
@@ -142,10 +165,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeFacilityRankingType }{@code >}
+     *     {@link CodeFacilityRankingType }
      *     
      */
-    public JAXBElement<CodeFacilityRankingType> getRank() {
+    public CodeFacilityRankingType getRank() {
         return rank;
     }
 
@@ -154,10 +177,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeFacilityRankingType }{@code >}
+     *     {@link CodeFacilityRankingType }
      *     
      */
-    public void setRank(JAXBElement<CodeFacilityRankingType> value) {
+    public void setRank(CodeFacilityRankingType value) {
         this.rank = value;
     }
 
@@ -170,10 +193,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
+     *     {@link ValFrequencyType }
      *     
      */
-    public JAXBElement<ValFrequencyType> getFrequencyTransmission() {
+    public ValFrequencyType getFrequencyTransmission() {
         return frequencyTransmission;
     }
 
@@ -182,10 +205,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
+     *     {@link ValFrequencyType }
      *     
      */
-    public void setFrequencyTransmission(JAXBElement<ValFrequencyType> value) {
+    public void setFrequencyTransmission(ValFrequencyType value) {
         this.frequencyTransmission = value;
     }
 
@@ -198,10 +221,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
+     *     {@link ValFrequencyType }
      *     
      */
-    public JAXBElement<ValFrequencyType> getFrequencyReception() {
+    public ValFrequencyType getFrequencyReception() {
         return frequencyReception;
     }
 
@@ -210,10 +233,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
+     *     {@link ValFrequencyType }
      *     
      */
-    public void setFrequencyReception(JAXBElement<ValFrequencyType> value) {
+    public void setFrequencyReception(ValFrequencyType value) {
         this.frequencyReception = value;
     }
 
@@ -226,10 +249,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeCommunicationChannelType }{@code >}
+     *     {@link CodeCommunicationChannelType }
      *     
      */
-    public JAXBElement<CodeCommunicationChannelType> getChannel() {
+    public CodeCommunicationChannelType getChannel() {
         return channel;
     }
 
@@ -238,10 +261,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeCommunicationChannelType }{@code >}
+     *     {@link CodeCommunicationChannelType }
      *     
      */
-    public void setChannel(JAXBElement<CodeCommunicationChannelType> value) {
+    public void setChannel(CodeCommunicationChannelType value) {
         this.channel = value;
     }
 
@@ -254,10 +277,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getLogon() {
+    public TextDesignatorType getLogon() {
         return logon;
     }
 
@@ -266,10 +289,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setLogon(JAXBElement<TextDesignatorType> value) {
+    public void setLogon(TextDesignatorType value) {
         this.logon = value;
     }
 
@@ -282,10 +305,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
+     *     {@link CodeRadioEmissionType }
      *     
      */
-    public JAXBElement<CodeRadioEmissionType> getEmissionType() {
+    public CodeRadioEmissionType getEmissionType() {
         return emissionType;
     }
 
@@ -294,10 +317,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
+     *     {@link CodeRadioEmissionType }
      *     
      */
-    public void setEmissionType(JAXBElement<CodeRadioEmissionType> value) {
+    public void setEmissionType(CodeRadioEmissionType value) {
         this.emissionType = value;
     }
 
@@ -310,10 +333,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getSelectiveCall() {
+    public CodeYesNoType getSelectiveCall() {
         return selectiveCall;
     }
 
@@ -322,10 +345,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setSelectiveCall(JAXBElement<CodeYesNoType> value) {
+    public void setSelectiveCall(CodeYesNoType value) {
         this.selectiveCall = value;
     }
 
@@ -338,10 +361,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getFlightChecked() {
+    public CodeYesNoType getFlightChecked() {
         return flightChecked;
     }
 
@@ -350,10 +373,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setFlightChecked(JAXBElement<CodeYesNoType> value) {
+    public void setFlightChecked(CodeYesNoType value) {
         this.flightChecked = value;
     }
 
@@ -366,10 +389,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeCommunicationDirectionType }{@code >}
+     *     {@link CodeCommunicationDirectionType }
      *     
      */
-    public JAXBElement<CodeCommunicationDirectionType> getTrafficDirection() {
+    public CodeCommunicationDirectionType getTrafficDirection() {
         return trafficDirection;
     }
 
@@ -378,10 +401,10 @@ public class RadioCommunicationChannelTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeCommunicationDirectionType }{@code >}
+     *     {@link CodeCommunicationDirectionType }
      *     
      */
-    public void setTrafficDirection(JAXBElement<CodeCommunicationDirectionType> value) {
+    public void setTrafficDirection(CodeCommunicationDirectionType value) {
         this.trafficDirection = value;
     }
 
@@ -577,8 +600,7 @@ public class RadioCommunicationChannelTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRadioCommunicationChannelExtension", required = true)
-        @NotNull
-        @Valid
+        @Column(name = "aixm:_abstract_radio_communication_channel_extension")
         protected AbstractExtensionType abstractRadioCommunicationChannelExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

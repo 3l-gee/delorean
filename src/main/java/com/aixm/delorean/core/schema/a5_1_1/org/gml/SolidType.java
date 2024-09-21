@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -45,10 +43,7 @@ public class SolidType
     extends AbstractSolidType
 {
 
-    @Valid
     protected ShellPropertyType exterior;
-    @Valid
-    @Size(min = 0)
     protected List<ShellPropertyType> interior;
 
     /**

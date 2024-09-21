@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -59,24 +63,29 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "surface_contamination_layer_type")
 public class SurfaceContaminationLayerType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "layerOrder", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<NoSequenceType> layerOrder;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeContaminationType> type;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Column(name = "layer_order")
+    protected NoSequenceType layerOrder;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    protected CodeContaminationType type;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<SurfaceContaminationLayerType.Extension> extension;
 
     /**
@@ -84,10 +93,10 @@ public class SurfaceContaminationLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public JAXBElement<NoSequenceType> getLayerOrder() {
+    public NoSequenceType getLayerOrder() {
         return layerOrder;
     }
 
@@ -96,10 +105,10 @@ public class SurfaceContaminationLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public void setLayerOrder(JAXBElement<NoSequenceType> value) {
+    public void setLayerOrder(NoSequenceType value) {
         this.layerOrder = value;
     }
 
@@ -112,10 +121,10 @@ public class SurfaceContaminationLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeContaminationType }{@code >}
+     *     {@link CodeContaminationType }
      *     
      */
-    public JAXBElement<CodeContaminationType> getType() {
+    public CodeContaminationType getType() {
         return type;
     }
 
@@ -124,10 +133,10 @@ public class SurfaceContaminationLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeContaminationType }{@code >}
+     *     {@link CodeContaminationType }
      *     
      */
-    public void setType(JAXBElement<CodeContaminationType> value) {
+    public void setType(CodeContaminationType value) {
         this.type = value;
     }
 
@@ -283,7 +292,7 @@ public class SurfaceContaminationLayerType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceContaminationLayerExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_surface_contamination_layer_extension")
         protected AbstractExtensionType abstractSurfaceContaminationLayerExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

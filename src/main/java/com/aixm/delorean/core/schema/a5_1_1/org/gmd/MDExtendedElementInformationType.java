@@ -12,9 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -75,45 +72,23 @@ public class MDExtendedElementInformationType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType name;
-    @Valid
     protected CharacterStringPropertyType shortName;
-    @Valid
     protected IntegerPropertyType domainCode;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType definition;
-    @Valid
     protected MDObligationCodePropertyType obligation;
-    @Valid
     protected CharacterStringPropertyType condition;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MDDatatypeCodePropertyType dataType;
-    @Valid
     protected CharacterStringPropertyType maximumOccurrence;
-    @Valid
     protected CharacterStringPropertyType domainValue;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CharacterStringPropertyType> parentEntity;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CharacterStringPropertyType rule;
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> rationale;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CIResponsiblePartyPropertyType> source;
 
     /**

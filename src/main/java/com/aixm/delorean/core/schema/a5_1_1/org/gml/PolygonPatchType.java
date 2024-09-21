@@ -9,8 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -51,14 +49,11 @@ public class PolygonPatchType
      * A boundary of a surface consists of a number of rings. In the normal 2D case, one of these rings is distinguished as being the exterior boundary. In a general manifold this is not always possible, in which case all boundaries shall be listed as interior boundaries, and the exterior will be empty.
      * 
      */
-    @Valid
     protected AbstractRingPropertyType exterior;
     /**
      * A boundary of a surface consists of a number of rings. The "interior" rings separate the surface / surface patch from the area enclosed by the rings.
      * 
      */
-    @Valid
-    @Size(min = 0)
     protected List<AbstractRingPropertyType> interior;
     @XmlAttribute(name = "interpolation")
     public static final SurfaceInterpolationType INTERPOLATION = SurfaceInterpolationType.PLANAR;

@@ -7,6 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -37,11 +40,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "DirectFlightPropertyType", propOrder = {
     "abstractDirectFlight"
 })
+@Entity
+@Table(name = "direct_flight_property_type")
 public class DirectFlightPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElementRef(name = "AbstractDirectFlight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class)
+    @Column(name = "aixm:_abstract_direct_flight")
     protected JAXBElement<? extends AbstractDirectFlightType> abstractDirectFlight;
 
     /**

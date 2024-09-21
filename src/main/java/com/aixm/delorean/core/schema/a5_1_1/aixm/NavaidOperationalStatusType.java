@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,28 +66,35 @@ import jakarta.xml.bind.annotation.XmlType;
     "signalType",
     "extension"
 })
+@Entity
+@Table(name = "navaid_operational_status_type")
 public class NavaidOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "operationalStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeStatusNavaidType> operationalStatus;
-    @XmlElementRef(name = "signalType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeRadioSignalType> signalType;
-    @Valid
-    @Size(min = 0)
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "operational_status")
+    protected CodeStatusNavaidType operationalStatus;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "signal_type")
+    protected CodeRadioSignalType signalType;
     protected List<NavaidOperationalStatusType.Extension> extension;
 
     /**
@@ -211,10 +222,10 @@ public class NavaidOperationalStatusType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusNavaidType }{@code >}
+     *     {@link CodeStatusNavaidType }
      *     
      */
-    public JAXBElement<CodeStatusNavaidType> getOperationalStatus() {
+    public CodeStatusNavaidType getOperationalStatus() {
         return operationalStatus;
     }
 
@@ -223,10 +234,10 @@ public class NavaidOperationalStatusType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusNavaidType }{@code >}
+     *     {@link CodeStatusNavaidType }
      *     
      */
-    public void setOperationalStatus(JAXBElement<CodeStatusNavaidType> value) {
+    public void setOperationalStatus(CodeStatusNavaidType value) {
         this.operationalStatus = value;
     }
 
@@ -239,10 +250,10 @@ public class NavaidOperationalStatusType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioSignalType }{@code >}
+     *     {@link CodeRadioSignalType }
      *     
      */
-    public JAXBElement<CodeRadioSignalType> getSignalType() {
+    public CodeRadioSignalType getSignalType() {
         return signalType;
     }
 
@@ -251,10 +262,10 @@ public class NavaidOperationalStatusType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioSignalType }{@code >}
+     *     {@link CodeRadioSignalType }
      *     
      */
-    public void setSignalType(JAXBElement<CodeRadioSignalType> value) {
+    public void setSignalType(CodeRadioSignalType value) {
         this.signalType = value;
     }
 
@@ -332,10 +343,10 @@ public class NavaidOperationalStatusType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractNavaidOperationalStatusExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_navaid_operational_status_extension")
         protected AbstractExtensionType abstractNavaidOperationalStatusExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

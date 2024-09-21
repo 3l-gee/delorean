@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,13 +39,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "AirportHeliportUsagePropertyType", propOrder = {
     "airportHeliportUsage"
 })
+@Entity
+@Table(name = "airport_heliport_usage_property_type")
 public class AirportHeliportUsagePropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "AirportHeliportUsage", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_airport_heliport_usage")
     protected AirportHeliportUsageType airportHeliportUsage;
 
     /**

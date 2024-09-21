@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,19 +75,16 @@ public class EngineeringCRSType
      * gml:cylindricalCS is an association role to the cylindrical coordinate system used by this CRS.
      * 
      */
-    @Valid
     protected CylindricalCSPropertyType cylindricalCS;
     /**
      * gml:linearCS is an association role to the linear coordinate system used by this CRS.
      * 
      */
-    @Valid
     protected LinearCSPropertyType linearCS;
     /**
      * gml:polarCS is an association role to the polar coordinate system used by this CRS.
      * 
      */
-    @Valid
     protected PolarCSPropertyType polarCS;
     /**
      * gml:sphericalCS is an association role to the spherical coordinate system used by this CRS.
@@ -100,7 +96,6 @@ public class EngineeringCRSType
      * gml:userDefinedCS is an association role to the user defined coordinate system used by this CRS.
      * 
      */
-    @Valid
     protected UserDefinedCSPropertyType userDefinedCS;
     @XmlElementRef(name = "coordinateSystem", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<CoordinateSystemPropertyType> coordinateSystem;

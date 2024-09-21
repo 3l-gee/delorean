@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -59,22 +63,27 @@ import jakarta.xml.bind.annotation.XmlType;
     "theAirspaceVolume",
     "extension"
 })
+@Entity
+@Table(name = "airspace_geometry_component_type")
 public class AirspaceGeometryComponentType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "operation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeAirspaceAggregationType> operation;
-    @XmlElementRef(name = "operationSequence", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<NoSequenceType> operationSequence;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "operation")
+    protected CodeAirspaceAggregationType operation;
+    @XmlElement(nillable = true)
+    @Column(name = "operation_sequence")
+    protected NoSequenceType operationSequence;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "theAirspaceVolume", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirspaceVolumePropertyType> theAirspaceVolume;
-    @Valid
-    @Size(min = 0)
+    @XmlElement(nillable = true)
+    @Column(name = "the_airspace_volume")
+    protected AirspaceVolumePropertyType theAirspaceVolume;
     protected List<AirspaceGeometryComponentType.Extension> extension;
 
     /**
@@ -82,10 +91,10 @@ public class AirspaceGeometryComponentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirspaceAggregationType }{@code >}
+     *     {@link CodeAirspaceAggregationType }
      *     
      */
-    public JAXBElement<CodeAirspaceAggregationType> getOperation() {
+    public CodeAirspaceAggregationType getOperation() {
         return operation;
     }
 
@@ -94,10 +103,10 @@ public class AirspaceGeometryComponentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirspaceAggregationType }{@code >}
+     *     {@link CodeAirspaceAggregationType }
      *     
      */
-    public void setOperation(JAXBElement<CodeAirspaceAggregationType> value) {
+    public void setOperation(CodeAirspaceAggregationType value) {
         this.operation = value;
     }
 
@@ -110,10 +119,10 @@ public class AirspaceGeometryComponentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public JAXBElement<NoSequenceType> getOperationSequence() {
+    public NoSequenceType getOperationSequence() {
         return operationSequence;
     }
 
@@ -122,10 +131,10 @@ public class AirspaceGeometryComponentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public void setOperationSequence(JAXBElement<NoSequenceType> value) {
+    public void setOperationSequence(NoSequenceType value) {
         this.operationSequence = value;
     }
 
@@ -178,10 +187,10 @@ public class AirspaceGeometryComponentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirspaceVolumePropertyType }{@code >}
+     *     {@link AirspaceVolumePropertyType }
      *     
      */
-    public JAXBElement<AirspaceVolumePropertyType> getTheAirspaceVolume() {
+    public AirspaceVolumePropertyType getTheAirspaceVolume() {
         return theAirspaceVolume;
     }
 
@@ -190,10 +199,10 @@ public class AirspaceGeometryComponentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirspaceVolumePropertyType }{@code >}
+     *     {@link AirspaceVolumePropertyType }
      *     
      */
-    public void setTheAirspaceVolume(JAXBElement<AirspaceVolumePropertyType> value) {
+    public void setTheAirspaceVolume(AirspaceVolumePropertyType value) {
         this.theAirspaceVolume = value;
     }
 
@@ -269,7 +278,7 @@ public class AirspaceGeometryComponentType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceGeometryComponentExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_airspace_geometry_component_extension")
         protected AbstractExtensionType abstractAirspaceGeometryComponentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -57,18 +61,21 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "oxygen_type")
 public class OxygenType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeOxygenType> type;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    protected CodeOxygenType type;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<OxygenType.Extension> extension;
 
     /**
@@ -76,10 +83,10 @@ public class OxygenType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeOxygenType }{@code >}
+     *     {@link CodeOxygenType }
      *     
      */
-    public JAXBElement<CodeOxygenType> getType() {
+    public CodeOxygenType getType() {
         return type;
     }
 
@@ -88,10 +95,10 @@ public class OxygenType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeOxygenType }{@code >}
+     *     {@link CodeOxygenType }
      *     
      */
-    public void setType(JAXBElement<CodeOxygenType> value) {
+    public void setType(CodeOxygenType value) {
         this.type = value;
     }
 
@@ -207,7 +214,7 @@ public class OxygenType
     public static class Extension {
 
         @XmlElement(name = "AbstractOxygenExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_oxygen_extension")
         protected AbstractExtensionType abstractOxygenExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

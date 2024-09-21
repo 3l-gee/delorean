@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,26 +65,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "marking_element_type")
 public class MarkingElementType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeColourType> colour;
-    @XmlElementRef(name = "style", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeMarkingStyleType> style;
-    @XmlElementRef(name = "extent_curveExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedCurvePropertyType> extentCurveExtent;
-    @XmlElementRef(name = "extent_surfaceExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedSurfacePropertyType> extentSurfaceExtent;
-    @XmlElementRef(name = "extent_location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedPointPropertyType> extentLocation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "colour")
+    protected CodeColourType colour;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "style")
+    protected CodeMarkingStyleType style;
+    @XmlElement(name = "extent_curveExtent", nillable = true)
+    @Column(name = "extent_curve_extent")
+    protected ElevatedCurvePropertyType extentCurveExtent;
+    @XmlElement(name = "extent_surfaceExtent", nillable = true)
+    @Column(name = "extent_surface_extent")
+    protected ElevatedSurfacePropertyType extentSurfaceExtent;
+    @XmlElement(name = "extent_location", nillable = true)
+    @Column(name = "extent_location")
+    protected ElevatedPointPropertyType extentLocation;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<MarkingElementType.Extension> extension;
 
     /**
@@ -88,10 +100,10 @@ public class MarkingElementType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public JAXBElement<CodeColourType> getColour() {
+    public CodeColourType getColour() {
         return colour;
     }
 
@@ -100,10 +112,10 @@ public class MarkingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public void setColour(JAXBElement<CodeColourType> value) {
+    public void setColour(CodeColourType value) {
         this.colour = value;
     }
 
@@ -116,10 +128,10 @@ public class MarkingElementType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMarkingStyleType }{@code >}
+     *     {@link CodeMarkingStyleType }
      *     
      */
-    public JAXBElement<CodeMarkingStyleType> getStyle() {
+    public CodeMarkingStyleType getStyle() {
         return style;
     }
 
@@ -128,10 +140,10 @@ public class MarkingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMarkingStyleType }{@code >}
+     *     {@link CodeMarkingStyleType }
      *     
      */
-    public void setStyle(JAXBElement<CodeMarkingStyleType> value) {
+    public void setStyle(CodeMarkingStyleType value) {
         this.style = value;
     }
 
@@ -144,10 +156,10 @@ public class MarkingElementType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedCurvePropertyType }{@code >}
+     *     {@link ElevatedCurvePropertyType }
      *     
      */
-    public JAXBElement<ElevatedCurvePropertyType> getExtentCurveExtent() {
+    public ElevatedCurvePropertyType getExtentCurveExtent() {
         return extentCurveExtent;
     }
 
@@ -156,10 +168,10 @@ public class MarkingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedCurvePropertyType }{@code >}
+     *     {@link ElevatedCurvePropertyType }
      *     
      */
-    public void setExtentCurveExtent(JAXBElement<ElevatedCurvePropertyType> value) {
+    public void setExtentCurveExtent(ElevatedCurvePropertyType value) {
         this.extentCurveExtent = value;
     }
 
@@ -172,10 +184,10 @@ public class MarkingElementType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getExtentSurfaceExtent() {
+    public ElevatedSurfacePropertyType getExtentSurfaceExtent() {
         return extentSurfaceExtent;
     }
 
@@ -184,10 +196,10 @@ public class MarkingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setExtentSurfaceExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setExtentSurfaceExtent(ElevatedSurfacePropertyType value) {
         this.extentSurfaceExtent = value;
     }
 
@@ -200,10 +212,10 @@ public class MarkingElementType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getExtentLocation() {
+    public ElevatedPointPropertyType getExtentLocation() {
         return extentLocation;
     }
 
@@ -212,10 +224,10 @@ public class MarkingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setExtentLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setExtentLocation(ElevatedPointPropertyType value) {
         this.extentLocation = value;
     }
 
@@ -331,7 +343,7 @@ public class MarkingElementType
     public static class Extension {
 
         @XmlElement(name = "AbstractMarkingElementExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_marking_element_extension")
         protected AbstractExtensionType abstractMarkingElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

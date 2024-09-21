@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,13 +39,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "FlightRestrictionLevelPropertyType", propOrder = {
     "flightRestrictionLevel"
 })
+@Entity
+@Table(name = "flight_restriction_level_property_type")
 public class FlightRestrictionLevelPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "FlightRestrictionLevel", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_flight_restriction_level")
     protected FlightRestrictionLevelType flightRestrictionLevel;
 
     /**

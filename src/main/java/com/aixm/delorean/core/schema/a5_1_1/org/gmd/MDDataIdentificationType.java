@@ -10,9 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -60,29 +57,14 @@ public class MDDataIdentificationType
     extends AbstractMDIdentificationType
 {
 
-    @Valid
-    @Size(min = 0)
     protected List<MDSpatialRepresentationTypeCodePropertyType> spatialRepresentationType;
-    @Valid
-    @Size(min = 0)
     protected List<MDResolutionPropertyType> spatialResolution;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CharacterStringPropertyType> language;
-    @Valid
-    @Size(min = 0)
     protected List<MDCharacterSetCodePropertyType> characterSet;
-    @Valid
-    @Size(min = 0)
     protected List<MDTopicCategoryCodePropertyType> topicCategory;
-    @Valid
     protected CharacterStringPropertyType environmentDescription;
-    @Valid
-    @Size(min = 0)
     protected List<EXExtentPropertyType> extent;
-    @Valid
     protected CharacterStringPropertyType supplementalInformation;
 
     /**

@@ -9,8 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -78,80 +84,107 @@ import jakarta.xml.bind.annotation.XmlType;
     "clientAerialRefuelling",
     "extension"
 })
+@Entity
+@Table(name = "information_service_time_slice_type")
 public class InformationServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "flightOperations", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeFlightDestinationType> flightOperations;
-    @XmlElementRef(name = "rank", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeFacilityRankingType> rank;
-    @XmlElementRef(name = "compliantICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> compliantICAO;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextNameType> aixmName;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "flight_operations")
+    protected CodeFlightDestinationType flightOperations;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "rank")
+    protected CodeFacilityRankingType rank;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "compliant_icao")
+    protected CodeYesNoType compliantICAO;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<UnitPropertyType> serviceProvider;
     @XmlElement(name = "call-sign", nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeServiceInformationType> type;
-    @XmlElementRef(name = "voice", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> voice;
-    @XmlElementRef(name = "dataLink", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> dataLink;
-    @XmlElementRef(name = "recorded", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> recorded;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    protected CodeServiceInformationType type;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "voice")
+    protected CodeYesNoType voice;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "data_link")
+    protected CodeYesNoType dataLink;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "recorded")
+    protected CodeYesNoType recorded;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<VORPropertyType> navaidBroadcast;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirspacePropertyType> clientAirspace;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirportHeliportPropertyType> clientAirport;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RoutePortionPropertyType> clientRoute;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ProcedurePropertyType> clientProcedure;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<HoldingPatternPropertyType> clientHolding;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AerialRefuellingPropertyType> clientAerialRefuelling;
-    @Valid
-    @Size(min = 0)
     protected List<InformationServiceTimeSliceType.Extension> extension;
 
     /**
@@ -159,10 +192,10 @@ public class InformationServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeFlightDestinationType }{@code >}
+     *     {@link CodeFlightDestinationType }
      *     
      */
-    public JAXBElement<CodeFlightDestinationType> getFlightOperations() {
+    public CodeFlightDestinationType getFlightOperations() {
         return flightOperations;
     }
 
@@ -171,10 +204,10 @@ public class InformationServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeFlightDestinationType }{@code >}
+     *     {@link CodeFlightDestinationType }
      *     
      */
-    public void setFlightOperations(JAXBElement<CodeFlightDestinationType> value) {
+    public void setFlightOperations(CodeFlightDestinationType value) {
         this.flightOperations = value;
     }
 
@@ -187,10 +220,10 @@ public class InformationServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeFacilityRankingType }{@code >}
+     *     {@link CodeFacilityRankingType }
      *     
      */
-    public JAXBElement<CodeFacilityRankingType> getRank() {
+    public CodeFacilityRankingType getRank() {
         return rank;
     }
 
@@ -199,10 +232,10 @@ public class InformationServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeFacilityRankingType }{@code >}
+     *     {@link CodeFacilityRankingType }
      *     
      */
-    public void setRank(JAXBElement<CodeFacilityRankingType> value) {
+    public void setRank(CodeFacilityRankingType value) {
         this.rank = value;
     }
 
@@ -215,10 +248,10 @@ public class InformationServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getCompliantICAO() {
+    public CodeYesNoType getCompliantICAO() {
         return compliantICAO;
     }
 
@@ -227,10 +260,10 @@ public class InformationServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setCompliantICAO(JAXBElement<CodeYesNoType> value) {
+    public void setCompliantICAO(CodeYesNoType value) {
         this.compliantICAO = value;
     }
 
@@ -243,10 +276,10 @@ public class InformationServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -255,10 +288,10 @@ public class InformationServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -527,10 +560,10 @@ public class InformationServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeServiceInformationType }{@code >}
+     *     {@link CodeServiceInformationType }
      *     
      */
-    public JAXBElement<CodeServiceInformationType> getType() {
+    public CodeServiceInformationType getType() {
         return type;
     }
 
@@ -539,10 +572,10 @@ public class InformationServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeServiceInformationType }{@code >}
+     *     {@link CodeServiceInformationType }
      *     
      */
-    public void setType(JAXBElement<CodeServiceInformationType> value) {
+    public void setType(CodeServiceInformationType value) {
         this.type = value;
     }
 
@@ -555,10 +588,10 @@ public class InformationServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getVoice() {
+    public CodeYesNoType getVoice() {
         return voice;
     }
 
@@ -567,10 +600,10 @@ public class InformationServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setVoice(JAXBElement<CodeYesNoType> value) {
+    public void setVoice(CodeYesNoType value) {
         this.voice = value;
     }
 
@@ -583,10 +616,10 @@ public class InformationServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getDataLink() {
+    public CodeYesNoType getDataLink() {
         return dataLink;
     }
 
@@ -595,10 +628,10 @@ public class InformationServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setDataLink(JAXBElement<CodeYesNoType> value) {
+    public void setDataLink(CodeYesNoType value) {
         this.dataLink = value;
     }
 
@@ -611,10 +644,10 @@ public class InformationServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getRecorded() {
+    public CodeYesNoType getRecorded() {
         return recorded;
     }
 
@@ -623,10 +656,10 @@ public class InformationServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setRecorded(JAXBElement<CodeYesNoType> value) {
+    public void setRecorded(CodeYesNoType value) {
         this.recorded = value;
     }
 
@@ -984,10 +1017,10 @@ public class InformationServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractInformationServiceExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_information_service_extension")
         protected AbstractExtensionType abstractInformationServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_service_extension")
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

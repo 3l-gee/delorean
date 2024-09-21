@@ -7,7 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -45,9 +44,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "SecondDefiningParameter")
 public class SecondDefiningParameter {
 
-    @Valid
     protected MeasureType inverseFlattening;
-    @Valid
     protected LengthType semiMinorAxis;
     @XmlElement(defaultValue = "true")
     protected java.lang.Boolean isSphere;
