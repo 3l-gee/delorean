@@ -9,8 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -63,30 +69,38 @@ import jakarta.xml.bind.annotation.XmlType;
     "markedElement",
     "extension"
 })
+@Entity
+@Table(name = "taxiway_marking_time_slice_type")
 public class TaxiwayMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> markingICAOStandard;
-    @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "marking_icao_standard")
+    protected CodeYesNoType markingICAOStandard;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "condition")
+    protected CodeMarkingConditionType condition;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "markingLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeTaxiwaySectionType> markingLocation;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "marking_location")
+    protected CodeTaxiwaySectionType markingLocation;
     @XmlElementRef(name = "markedTaxiway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TaxiwayPropertyType> markedTaxiway;
     @XmlElementRef(name = "markedElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TaxiwayElementPropertyType> markedElement;
-    @Valid
-    @Size(min = 0)
     protected List<TaxiwayMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -94,10 +108,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMarkingICAOStandard() {
+    public CodeYesNoType getMarkingICAOStandard() {
         return markingICAOStandard;
     }
 
@@ -106,10 +120,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMarkingICAOStandard(JAXBElement<CodeYesNoType> value) {
+    public void setMarkingICAOStandard(CodeYesNoType value) {
         this.markingICAOStandard = value;
     }
 
@@ -122,10 +136,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
+     *     {@link CodeMarkingConditionType }
      *     
      */
-    public JAXBElement<CodeMarkingConditionType> getCondition() {
+    public CodeMarkingConditionType getCondition() {
         return condition;
     }
 
@@ -134,10 +148,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
+     *     {@link CodeMarkingConditionType }
      *     
      */
-    public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
+    public void setCondition(CodeMarkingConditionType value) {
         this.condition = value;
     }
 
@@ -230,10 +244,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTaxiwaySectionType }{@code >}
+     *     {@link CodeTaxiwaySectionType }
      *     
      */
-    public JAXBElement<CodeTaxiwaySectionType> getMarkingLocation() {
+    public CodeTaxiwaySectionType getMarkingLocation() {
         return markingLocation;
     }
 
@@ -242,10 +256,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTaxiwaySectionType }{@code >}
+     *     {@link CodeTaxiwaySectionType }
      *     
      */
-    public void setMarkingLocation(JAXBElement<CodeTaxiwaySectionType> value) {
+    public void setMarkingLocation(CodeTaxiwaySectionType value) {
         this.markingLocation = value;
     }
 
@@ -379,10 +393,10 @@ public class TaxiwayMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTaxiwayMarkingExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_taxiway_marking_extension")
         protected AbstractExtensionType abstractTaxiwayMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_marking_extension")
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

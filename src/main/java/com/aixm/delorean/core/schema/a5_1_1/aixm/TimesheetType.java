@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,46 +75,71 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "timesheet_type")
 public class TimesheetType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "timeReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeTimeReferenceType> timeReference;
-    @XmlElementRef(name = "startDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<DateMonthDayType> startDate;
-    @XmlElementRef(name = "endDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<DateMonthDayType> endDate;
-    @XmlElementRef(name = "day", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeDayType> day;
-    @XmlElementRef(name = "dayTil", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeDayType> dayTil;
-    @XmlElementRef(name = "startTime", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TimeType> startTime;
-    @XmlElementRef(name = "startEvent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeTimeEventType> startEvent;
-    @XmlElementRef(name = "startTimeRelativeEvent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDurationType> startTimeRelativeEvent;
-    @XmlElementRef(name = "startEventInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeTimeEventCombinationType> startEventInterpretation;
-    @XmlElementRef(name = "endTime", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TimeType> endTime;
-    @XmlElementRef(name = "endEvent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeTimeEventType> endEvent;
-    @XmlElementRef(name = "endTimeRelativeEvent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDurationType> endTimeRelativeEvent;
-    @XmlElementRef(name = "endEventInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeTimeEventCombinationType> endEventInterpretation;
-    @XmlElementRef(name = "daylightSavingAdjust", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> daylightSavingAdjust;
-    @XmlElementRef(name = "excluded", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> excluded;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "time_reference")
+    protected CodeTimeReferenceType timeReference;
+    @XmlElement(nillable = true)
+    @Column(name = "start_date")
+    protected DateMonthDayType startDate;
+    @XmlElement(nillable = true)
+    @Column(name = "end_date")
+    protected DateMonthDayType endDate;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "day")
+    protected CodeDayType day;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "day_til")
+    protected CodeDayType dayTil;
+    @XmlElement(nillable = true)
+    @Column(name = "start_time")
+    protected TimeType startTime;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "start_event")
+    protected CodeTimeEventType startEvent;
+    @XmlElement(nillable = true)
+    @Column(name = "start_time_relative_event")
+    protected ValDurationType startTimeRelativeEvent;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "start_event_interpretation")
+    protected CodeTimeEventCombinationType startEventInterpretation;
+    @XmlElement(nillable = true)
+    @Column(name = "end_time")
+    protected TimeType endTime;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "end_event")
+    protected CodeTimeEventType endEvent;
+    @XmlElement(nillable = true)
+    @Column(name = "end_time_relative_event")
+    protected ValDurationType endTimeRelativeEvent;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "end_event_interpretation")
+    protected CodeTimeEventCombinationType endEventInterpretation;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "daylight_saving_adjust")
+    protected CodeYesNoType daylightSavingAdjust;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "excluded")
+    protected CodeYesNoType excluded;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<TimesheetType.Extension> extension;
 
     /**
@@ -118,10 +147,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTimeReferenceType }{@code >}
+     *     {@link CodeTimeReferenceType }
      *     
      */
-    public JAXBElement<CodeTimeReferenceType> getTimeReference() {
+    public CodeTimeReferenceType getTimeReference() {
         return timeReference;
     }
 
@@ -130,10 +159,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTimeReferenceType }{@code >}
+     *     {@link CodeTimeReferenceType }
      *     
      */
-    public void setTimeReference(JAXBElement<CodeTimeReferenceType> value) {
+    public void setTimeReference(CodeTimeReferenceType value) {
         this.timeReference = value;
     }
 
@@ -146,10 +175,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateMonthDayType }{@code >}
+     *     {@link DateMonthDayType }
      *     
      */
-    public JAXBElement<DateMonthDayType> getStartDate() {
+    public DateMonthDayType getStartDate() {
         return startDate;
     }
 
@@ -158,10 +187,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateMonthDayType }{@code >}
+     *     {@link DateMonthDayType }
      *     
      */
-    public void setStartDate(JAXBElement<DateMonthDayType> value) {
+    public void setStartDate(DateMonthDayType value) {
         this.startDate = value;
     }
 
@@ -174,10 +203,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateMonthDayType }{@code >}
+     *     {@link DateMonthDayType }
      *     
      */
-    public JAXBElement<DateMonthDayType> getEndDate() {
+    public DateMonthDayType getEndDate() {
         return endDate;
     }
 
@@ -186,10 +215,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateMonthDayType }{@code >}
+     *     {@link DateMonthDayType }
      *     
      */
-    public void setEndDate(JAXBElement<DateMonthDayType> value) {
+    public void setEndDate(DateMonthDayType value) {
         this.endDate = value;
     }
 
@@ -202,10 +231,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDayType }{@code >}
+     *     {@link CodeDayType }
      *     
      */
-    public JAXBElement<CodeDayType> getDay() {
+    public CodeDayType getDay() {
         return day;
     }
 
@@ -214,10 +243,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDayType }{@code >}
+     *     {@link CodeDayType }
      *     
      */
-    public void setDay(JAXBElement<CodeDayType> value) {
+    public void setDay(CodeDayType value) {
         this.day = value;
     }
 
@@ -230,10 +259,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDayType }{@code >}
+     *     {@link CodeDayType }
      *     
      */
-    public JAXBElement<CodeDayType> getDayTil() {
+    public CodeDayType getDayTil() {
         return dayTil;
     }
 
@@ -242,10 +271,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDayType }{@code >}
+     *     {@link CodeDayType }
      *     
      */
-    public void setDayTil(JAXBElement<CodeDayType> value) {
+    public void setDayTil(CodeDayType value) {
         this.dayTil = value;
     }
 
@@ -258,10 +287,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TimeType }{@code >}
+     *     {@link TimeType }
      *     
      */
-    public JAXBElement<TimeType> getStartTime() {
+    public TimeType getStartTime() {
         return startTime;
     }
 
@@ -270,10 +299,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TimeType }{@code >}
+     *     {@link TimeType }
      *     
      */
-    public void setStartTime(JAXBElement<TimeType> value) {
+    public void setStartTime(TimeType value) {
         this.startTime = value;
     }
 
@@ -286,10 +315,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTimeEventType }{@code >}
+     *     {@link CodeTimeEventType }
      *     
      */
-    public JAXBElement<CodeTimeEventType> getStartEvent() {
+    public CodeTimeEventType getStartEvent() {
         return startEvent;
     }
 
@@ -298,10 +327,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTimeEventType }{@code >}
+     *     {@link CodeTimeEventType }
      *     
      */
-    public void setStartEvent(JAXBElement<CodeTimeEventType> value) {
+    public void setStartEvent(CodeTimeEventType value) {
         this.startEvent = value;
     }
 
@@ -314,10 +343,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
+     *     {@link ValDurationType }
      *     
      */
-    public JAXBElement<ValDurationType> getStartTimeRelativeEvent() {
+    public ValDurationType getStartTimeRelativeEvent() {
         return startTimeRelativeEvent;
     }
 
@@ -326,10 +355,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
+     *     {@link ValDurationType }
      *     
      */
-    public void setStartTimeRelativeEvent(JAXBElement<ValDurationType> value) {
+    public void setStartTimeRelativeEvent(ValDurationType value) {
         this.startTimeRelativeEvent = value;
     }
 
@@ -342,10 +371,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTimeEventCombinationType }{@code >}
+     *     {@link CodeTimeEventCombinationType }
      *     
      */
-    public JAXBElement<CodeTimeEventCombinationType> getStartEventInterpretation() {
+    public CodeTimeEventCombinationType getStartEventInterpretation() {
         return startEventInterpretation;
     }
 
@@ -354,10 +383,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTimeEventCombinationType }{@code >}
+     *     {@link CodeTimeEventCombinationType }
      *     
      */
-    public void setStartEventInterpretation(JAXBElement<CodeTimeEventCombinationType> value) {
+    public void setStartEventInterpretation(CodeTimeEventCombinationType value) {
         this.startEventInterpretation = value;
     }
 
@@ -370,10 +399,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TimeType }{@code >}
+     *     {@link TimeType }
      *     
      */
-    public JAXBElement<TimeType> getEndTime() {
+    public TimeType getEndTime() {
         return endTime;
     }
 
@@ -382,10 +411,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TimeType }{@code >}
+     *     {@link TimeType }
      *     
      */
-    public void setEndTime(JAXBElement<TimeType> value) {
+    public void setEndTime(TimeType value) {
         this.endTime = value;
     }
 
@@ -398,10 +427,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTimeEventType }{@code >}
+     *     {@link CodeTimeEventType }
      *     
      */
-    public JAXBElement<CodeTimeEventType> getEndEvent() {
+    public CodeTimeEventType getEndEvent() {
         return endEvent;
     }
 
@@ -410,10 +439,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTimeEventType }{@code >}
+     *     {@link CodeTimeEventType }
      *     
      */
-    public void setEndEvent(JAXBElement<CodeTimeEventType> value) {
+    public void setEndEvent(CodeTimeEventType value) {
         this.endEvent = value;
     }
 
@@ -426,10 +455,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
+     *     {@link ValDurationType }
      *     
      */
-    public JAXBElement<ValDurationType> getEndTimeRelativeEvent() {
+    public ValDurationType getEndTimeRelativeEvent() {
         return endTimeRelativeEvent;
     }
 
@@ -438,10 +467,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
+     *     {@link ValDurationType }
      *     
      */
-    public void setEndTimeRelativeEvent(JAXBElement<ValDurationType> value) {
+    public void setEndTimeRelativeEvent(ValDurationType value) {
         this.endTimeRelativeEvent = value;
     }
 
@@ -454,10 +483,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTimeEventCombinationType }{@code >}
+     *     {@link CodeTimeEventCombinationType }
      *     
      */
-    public JAXBElement<CodeTimeEventCombinationType> getEndEventInterpretation() {
+    public CodeTimeEventCombinationType getEndEventInterpretation() {
         return endEventInterpretation;
     }
 
@@ -466,10 +495,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTimeEventCombinationType }{@code >}
+     *     {@link CodeTimeEventCombinationType }
      *     
      */
-    public void setEndEventInterpretation(JAXBElement<CodeTimeEventCombinationType> value) {
+    public void setEndEventInterpretation(CodeTimeEventCombinationType value) {
         this.endEventInterpretation = value;
     }
 
@@ -482,10 +511,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getDaylightSavingAdjust() {
+    public CodeYesNoType getDaylightSavingAdjust() {
         return daylightSavingAdjust;
     }
 
@@ -494,10 +523,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setDaylightSavingAdjust(JAXBElement<CodeYesNoType> value) {
+    public void setDaylightSavingAdjust(CodeYesNoType value) {
         this.daylightSavingAdjust = value;
     }
 
@@ -510,10 +539,10 @@ public class TimesheetType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getExcluded() {
+    public CodeYesNoType getExcluded() {
         return excluded;
     }
 
@@ -522,10 +551,10 @@ public class TimesheetType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setExcluded(JAXBElement<CodeYesNoType> value) {
+    public void setExcluded(CodeYesNoType value) {
         this.excluded = value;
     }
 
@@ -641,7 +670,7 @@ public class TimesheetType
     public static class Extension {
 
         @XmlElement(name = "AbstractTimesheetExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_timesheet_extension")
         protected AbstractExtensionType abstractTimesheetExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

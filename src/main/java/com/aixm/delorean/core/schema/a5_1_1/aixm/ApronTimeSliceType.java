@@ -9,9 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -63,32 +68,38 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
+@Entity
+@Table(name = "apron_time_slice_type")
 public class ApronTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> abandoned;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "abandoned")
+    protected CodeYesNoType abandoned;
     @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
     @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApronContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApronAreaAvailabilityPropertyType> availability;
-    @Valid
-    @Size(min = 0)
     protected List<ApronTimeSliceType.Extension> extension;
 
     /**
@@ -96,10 +107,10 @@ public class ApronTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -108,10 +119,10 @@ public class ApronTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -124,10 +135,10 @@ public class ApronTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getAbandoned() {
+    public CodeYesNoType getAbandoned() {
         return abandoned;
     }
 
@@ -136,10 +147,10 @@ public class ApronTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setAbandoned(JAXBElement<CodeYesNoType> value) {
+    public void setAbandoned(CodeYesNoType value) {
         this.abandoned = value;
     }
 
@@ -391,8 +402,7 @@ public class ApronTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractApronExtension", required = true)
-        @NotNull
-        @Valid
+        @Column(name = "aixm:_abstract_apron_extension")
         protected AbstractExtensionType abstractApronExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

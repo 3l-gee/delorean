@@ -10,9 +10,11 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm.message;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMMessageType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -44,14 +46,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "hasMember"
 })
 @XmlRootElement
+@Entity
+@Table(name = "aixm_basic_message_type")
 public class AIXMBasicMessageType
     extends AbstractAIXMMessageType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<BasicMessageMemberAIXMPropertyType> hasMember;
 
     /**

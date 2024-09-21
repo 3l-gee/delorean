@@ -9,8 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -73,54 +79,76 @@ import jakarta.xml.bind.annotation.XmlType;
     "auralMorseCode",
     "extension"
 })
+@Entity
+@Table(name = "marker_beacon_time_slice_type")
 public class MarkerBeaconTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeNavaidDesignatorType> designator;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "emissionClass", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeRadioEmissionType> emissionClass;
-    @XmlElementRef(name = "mobile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> mobile;
-    @XmlElementRef(name = "magneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValMagneticVariationType> magneticVariation;
-    @XmlElementRef(name = "magneticVariationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValAngleType> magneticVariationAccuracy;
-    @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<DateYearType> dateMagneticVariation;
-    @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> flightChecked;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "designator")
+    protected CodeNavaidDesignatorType designator;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "emission_class")
+    protected CodeRadioEmissionType emissionClass;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "mobile")
+    protected CodeYesNoType mobile;
+    @XmlElement(nillable = true)
+    @Column(name = "magnetic_variation")
+    protected ValMagneticVariationType magneticVariation;
+    @XmlElement(nillable = true)
+    @Column(name = "magnetic_variation_accuracy")
+    protected ValAngleType magneticVariationAccuracy;
+    @XmlElement(nillable = true)
+    @Column(name = "date_magnetic_variation")
+    protected DateYearType dateMagneticVariation;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "flight_checked")
+    protected CodeYesNoType flightChecked;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AuthorityForNavaidEquipmentPropertyType> authority;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NavaidEquipmentMonitoringPropertyType> monitoring;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "class", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeMarkerBeaconSignalType> clazz;
-    @XmlElementRef(name = "frequency", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValFrequencyType> frequency;
-    @XmlElementRef(name = "axisBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValBearingType> axisBearing;
-    @XmlElementRef(name = "auralMorseCode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeAuralMorseType> auralMorseCode;
-    @Valid
-    @Size(min = 0)
+    @XmlElement(name = "class", nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "class")
+    protected CodeMarkerBeaconSignalType clazz;
+    @XmlElement(nillable = true)
+    @Column(name = "frequency")
+    protected ValFrequencyType frequency;
+    @XmlElement(nillable = true)
+    @Column(name = "axis_bearing")
+    protected ValBearingType axisBearing;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "aural_morse_code")
+    protected CodeAuralMorseType auralMorseCode;
     protected List<MarkerBeaconTimeSliceType.Extension> extension;
 
     /**
@@ -128,10 +156,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
+     *     {@link CodeNavaidDesignatorType }
      *     
      */
-    public JAXBElement<CodeNavaidDesignatorType> getDesignator() {
+    public CodeNavaidDesignatorType getDesignator() {
         return designator;
     }
 
@@ -140,10 +168,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
+     *     {@link CodeNavaidDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<CodeNavaidDesignatorType> value) {
+    public void setDesignator(CodeNavaidDesignatorType value) {
         this.designator = value;
     }
 
@@ -156,10 +184,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -168,10 +196,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -184,10 +212,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
+     *     {@link CodeRadioEmissionType }
      *     
      */
-    public JAXBElement<CodeRadioEmissionType> getEmissionClass() {
+    public CodeRadioEmissionType getEmissionClass() {
         return emissionClass;
     }
 
@@ -196,10 +224,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
+     *     {@link CodeRadioEmissionType }
      *     
      */
-    public void setEmissionClass(JAXBElement<CodeRadioEmissionType> value) {
+    public void setEmissionClass(CodeRadioEmissionType value) {
         this.emissionClass = value;
     }
 
@@ -212,10 +240,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMobile() {
+    public CodeYesNoType getMobile() {
         return mobile;
     }
 
@@ -224,10 +252,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMobile(JAXBElement<CodeYesNoType> value) {
+    public void setMobile(CodeYesNoType value) {
         this.mobile = value;
     }
 
@@ -240,10 +268,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     *     {@link ValMagneticVariationType }
      *     
      */
-    public JAXBElement<ValMagneticVariationType> getMagneticVariation() {
+    public ValMagneticVariationType getMagneticVariation() {
         return magneticVariation;
     }
 
@@ -252,10 +280,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     *     {@link ValMagneticVariationType }
      *     
      */
-    public void setMagneticVariation(JAXBElement<ValMagneticVariationType> value) {
+    public void setMagneticVariation(ValMagneticVariationType value) {
         this.magneticVariation = value;
     }
 
@@ -268,10 +296,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getMagneticVariationAccuracy() {
+    public ValAngleType getMagneticVariationAccuracy() {
         return magneticVariationAccuracy;
     }
 
@@ -280,10 +308,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
+    public void setMagneticVariationAccuracy(ValAngleType value) {
         this.magneticVariationAccuracy = value;
     }
 
@@ -296,10 +324,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public JAXBElement<DateYearType> getDateMagneticVariation() {
+    public DateYearType getDateMagneticVariation() {
         return dateMagneticVariation;
     }
 
@@ -308,10 +336,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public void setDateMagneticVariation(JAXBElement<DateYearType> value) {
+    public void setDateMagneticVariation(DateYearType value) {
         this.dateMagneticVariation = value;
     }
 
@@ -324,10 +352,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getFlightChecked() {
+    public CodeYesNoType getFlightChecked() {
         return flightChecked;
     }
 
@@ -336,10 +364,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setFlightChecked(JAXBElement<CodeYesNoType> value) {
+    public void setFlightChecked(CodeYesNoType value) {
         this.flightChecked = value;
     }
 
@@ -540,10 +568,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMarkerBeaconSignalType }{@code >}
+     *     {@link CodeMarkerBeaconSignalType }
      *     
      */
-    public JAXBElement<CodeMarkerBeaconSignalType> getClazz() {
+    public CodeMarkerBeaconSignalType getClazz() {
         return clazz;
     }
 
@@ -552,10 +580,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMarkerBeaconSignalType }{@code >}
+     *     {@link CodeMarkerBeaconSignalType }
      *     
      */
-    public void setClazz(JAXBElement<CodeMarkerBeaconSignalType> value) {
+    public void setClazz(CodeMarkerBeaconSignalType value) {
         this.clazz = value;
     }
 
@@ -568,10 +596,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
+     *     {@link ValFrequencyType }
      *     
      */
-    public JAXBElement<ValFrequencyType> getFrequency() {
+    public ValFrequencyType getFrequency() {
         return frequency;
     }
 
@@ -580,10 +608,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
+     *     {@link ValFrequencyType }
      *     
      */
-    public void setFrequency(JAXBElement<ValFrequencyType> value) {
+    public void setFrequency(ValFrequencyType value) {
         this.frequency = value;
     }
 
@@ -596,10 +624,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getAxisBearing() {
+    public ValBearingType getAxisBearing() {
         return axisBearing;
     }
 
@@ -608,10 +636,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setAxisBearing(JAXBElement<ValBearingType> value) {
+    public void setAxisBearing(ValBearingType value) {
         this.axisBearing = value;
     }
 
@@ -624,10 +652,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAuralMorseType }{@code >}
+     *     {@link CodeAuralMorseType }
      *     
      */
-    public JAXBElement<CodeAuralMorseType> getAuralMorseCode() {
+    public CodeAuralMorseType getAuralMorseCode() {
         return auralMorseCode;
     }
 
@@ -636,10 +664,10 @@ public class MarkerBeaconTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAuralMorseType }{@code >}
+     *     {@link CodeAuralMorseType }
      *     
      */
-    public void setAuralMorseCode(JAXBElement<CodeAuralMorseType> value) {
+    public void setAuralMorseCode(CodeAuralMorseType value) {
         this.auralMorseCode = value;
     }
 
@@ -717,10 +745,10 @@ public class MarkerBeaconTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractMarkerBeaconExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_marker_beacon_extension")
         protected AbstractExtensionType abstractMarkerBeaconExtension;
         @XmlElement(name = "AbstractNavaidEquipmentExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_navaid_equipment_extension")
         protected AbstractExtensionType abstractNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

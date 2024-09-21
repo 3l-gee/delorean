@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -49,7 +48,6 @@ public class MeasureListType {
     @XmlValue
     protected List<Double> value;
     @XmlAttribute(name = "uom", required = true)
-    @NotNull
     protected String uom;
 
     /**

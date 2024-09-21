@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,11 +41,12 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "AirportClearanceServiceTimeSlicePropertyType", propOrder = {
     "airportClearanceServiceTimeSlice"
 })
+@Entity
+@Table(name = "airport_clearance_service_time_slice_property_type")
 public class AirportClearanceServiceTimeSlicePropertyType {
 
     @XmlElement(name = "AirportClearanceServiceTimeSlice", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_airport_clearance_service_time_slice")
     protected AirportClearanceServiceTimeSliceType airportClearanceServiceTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

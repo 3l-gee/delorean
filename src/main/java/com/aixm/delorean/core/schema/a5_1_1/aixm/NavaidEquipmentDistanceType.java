@@ -9,14 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -59,22 +61,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "theNavaidEquipment",
     "extension"
 })
+@Entity
+@Table(name = "navaid_equipment_distance_type")
 public class NavaidEquipmentDistanceType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> distance;
-    @XmlElementRef(name = "distanceAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> distanceAccuracy;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Column(name = "distance")
+    protected ValDistanceType distance;
+    @XmlElement(nillable = true)
+    @Column(name = "distance_accuracy")
+    protected ValDistanceType distanceAccuracy;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
+    @Column(name = "the_navaid_equipment")
     protected NavaidEquipmentPropertyType theNavaidEquipment;
-    @Valid
-    @Size(min = 0)
     protected List<NavaidEquipmentDistanceType.Extension> extension;
 
     /**
@@ -82,10 +87,10 @@ public class NavaidEquipmentDistanceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getDistance() {
+    public ValDistanceType getDistance() {
         return distance;
     }
 
@@ -94,10 +99,10 @@ public class NavaidEquipmentDistanceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setDistance(JAXBElement<ValDistanceType> value) {
+    public void setDistance(ValDistanceType value) {
         this.distance = value;
     }
 
@@ -110,10 +115,10 @@ public class NavaidEquipmentDistanceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getDistanceAccuracy() {
+    public ValDistanceType getDistanceAccuracy() {
         return distanceAccuracy;
     }
 
@@ -122,10 +127,10 @@ public class NavaidEquipmentDistanceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setDistanceAccuracy(JAXBElement<ValDistanceType> value) {
+    public void setDistanceAccuracy(ValDistanceType value) {
         this.distanceAccuracy = value;
     }
 
@@ -269,7 +274,7 @@ public class NavaidEquipmentDistanceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidEquipmentDistanceExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_navaid_equipment_distance_extension")
         protected AbstractExtensionType abstractNavaidEquipmentDistanceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,8 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -78,64 +84,91 @@ import jakarta.xml.bind.annotation.XmlType;
     "channel",
     "extension"
 })
+@Entity
+@Table(name = "azimuth_time_slice_type")
 public class AzimuthTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeNavaidDesignatorType> designator;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "emissionClass", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeRadioEmissionType> emissionClass;
-    @XmlElementRef(name = "mobile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> mobile;
-    @XmlElementRef(name = "magneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValMagneticVariationType> magneticVariation;
-    @XmlElementRef(name = "magneticVariationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValAngleType> magneticVariationAccuracy;
-    @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<DateYearType> dateMagneticVariation;
-    @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> flightChecked;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "designator")
+    protected CodeNavaidDesignatorType designator;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "emission_class")
+    protected CodeRadioEmissionType emissionClass;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "mobile")
+    protected CodeYesNoType mobile;
+    @XmlElement(nillable = true)
+    @Column(name = "magnetic_variation")
+    protected ValMagneticVariationType magneticVariation;
+    @XmlElement(nillable = true)
+    @Column(name = "magnetic_variation_accuracy")
+    protected ValAngleType magneticVariationAccuracy;
+    @XmlElement(nillable = true)
+    @Column(name = "date_magnetic_variation")
+    protected DateYearType dateMagneticVariation;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "flight_checked")
+    protected CodeYesNoType flightChecked;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AuthorityForNavaidEquipmentPropertyType> authority;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NavaidEquipmentMonitoringPropertyType> monitoring;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeMLSAzimuthType> type;
-    @XmlElementRef(name = "trueBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValBearingType> trueBearing;
-    @XmlElementRef(name = "trueBearingAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValAngleType> trueBearingAccuracy;
-    @XmlElementRef(name = "magneticBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValBearingType> magneticBearing;
-    @XmlElementRef(name = "angleProportionalLeft", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValAngleType> angleProportionalLeft;
-    @XmlElementRef(name = "angleProportionalRight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValAngleType> angleProportionalRight;
-    @XmlElementRef(name = "angleCoverLeft", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValAngleType> angleCoverLeft;
-    @XmlElementRef(name = "angleCoverRight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValAngleType> angleCoverRight;
-    @XmlElementRef(name = "channel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeMLSChannelType> channel;
-    @Valid
-    @Size(min = 0)
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    protected CodeMLSAzimuthType type;
+    @XmlElement(nillable = true)
+    @Column(name = "true_bearing")
+    protected ValBearingType trueBearing;
+    @XmlElement(nillable = true)
+    @Column(name = "true_bearing_accuracy")
+    protected ValAngleType trueBearingAccuracy;
+    @XmlElement(nillable = true)
+    @Column(name = "magnetic_bearing")
+    protected ValBearingType magneticBearing;
+    @XmlElement(nillable = true)
+    @Column(name = "angle_proportional_left")
+    protected ValAngleType angleProportionalLeft;
+    @XmlElement(nillable = true)
+    @Column(name = "angle_proportional_right")
+    protected ValAngleType angleProportionalRight;
+    @XmlElement(nillable = true)
+    @Column(name = "angle_cover_left")
+    protected ValAngleType angleCoverLeft;
+    @XmlElement(nillable = true)
+    @Column(name = "angle_cover_right")
+    protected ValAngleType angleCoverRight;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "channel")
+    protected CodeMLSChannelType channel;
     protected List<AzimuthTimeSliceType.Extension> extension;
 
     /**
@@ -143,10 +176,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
+     *     {@link CodeNavaidDesignatorType }
      *     
      */
-    public JAXBElement<CodeNavaidDesignatorType> getDesignator() {
+    public CodeNavaidDesignatorType getDesignator() {
         return designator;
     }
 
@@ -155,10 +188,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
+     *     {@link CodeNavaidDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<CodeNavaidDesignatorType> value) {
+    public void setDesignator(CodeNavaidDesignatorType value) {
         this.designator = value;
     }
 
@@ -171,10 +204,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -183,10 +216,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -199,10 +232,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
+     *     {@link CodeRadioEmissionType }
      *     
      */
-    public JAXBElement<CodeRadioEmissionType> getEmissionClass() {
+    public CodeRadioEmissionType getEmissionClass() {
         return emissionClass;
     }
 
@@ -211,10 +244,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
+     *     {@link CodeRadioEmissionType }
      *     
      */
-    public void setEmissionClass(JAXBElement<CodeRadioEmissionType> value) {
+    public void setEmissionClass(CodeRadioEmissionType value) {
         this.emissionClass = value;
     }
 
@@ -227,10 +260,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMobile() {
+    public CodeYesNoType getMobile() {
         return mobile;
     }
 
@@ -239,10 +272,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMobile(JAXBElement<CodeYesNoType> value) {
+    public void setMobile(CodeYesNoType value) {
         this.mobile = value;
     }
 
@@ -255,10 +288,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     *     {@link ValMagneticVariationType }
      *     
      */
-    public JAXBElement<ValMagneticVariationType> getMagneticVariation() {
+    public ValMagneticVariationType getMagneticVariation() {
         return magneticVariation;
     }
 
@@ -267,10 +300,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     *     {@link ValMagneticVariationType }
      *     
      */
-    public void setMagneticVariation(JAXBElement<ValMagneticVariationType> value) {
+    public void setMagneticVariation(ValMagneticVariationType value) {
         this.magneticVariation = value;
     }
 
@@ -283,10 +316,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getMagneticVariationAccuracy() {
+    public ValAngleType getMagneticVariationAccuracy() {
         return magneticVariationAccuracy;
     }
 
@@ -295,10 +328,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
+    public void setMagneticVariationAccuracy(ValAngleType value) {
         this.magneticVariationAccuracy = value;
     }
 
@@ -311,10 +344,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public JAXBElement<DateYearType> getDateMagneticVariation() {
+    public DateYearType getDateMagneticVariation() {
         return dateMagneticVariation;
     }
 
@@ -323,10 +356,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public void setDateMagneticVariation(JAXBElement<DateYearType> value) {
+    public void setDateMagneticVariation(DateYearType value) {
         this.dateMagneticVariation = value;
     }
 
@@ -339,10 +372,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getFlightChecked() {
+    public CodeYesNoType getFlightChecked() {
         return flightChecked;
     }
 
@@ -351,10 +384,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setFlightChecked(JAXBElement<CodeYesNoType> value) {
+    public void setFlightChecked(CodeYesNoType value) {
         this.flightChecked = value;
     }
 
@@ -555,10 +588,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMLSAzimuthType }{@code >}
+     *     {@link CodeMLSAzimuthType }
      *     
      */
-    public JAXBElement<CodeMLSAzimuthType> getType() {
+    public CodeMLSAzimuthType getType() {
         return type;
     }
 
@@ -567,10 +600,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMLSAzimuthType }{@code >}
+     *     {@link CodeMLSAzimuthType }
      *     
      */
-    public void setType(JAXBElement<CodeMLSAzimuthType> value) {
+    public void setType(CodeMLSAzimuthType value) {
         this.type = value;
     }
 
@@ -583,10 +616,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getTrueBearing() {
+    public ValBearingType getTrueBearing() {
         return trueBearing;
     }
 
@@ -595,10 +628,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setTrueBearing(JAXBElement<ValBearingType> value) {
+    public void setTrueBearing(ValBearingType value) {
         this.trueBearing = value;
     }
 
@@ -611,10 +644,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getTrueBearingAccuracy() {
+    public ValAngleType getTrueBearingAccuracy() {
         return trueBearingAccuracy;
     }
 
@@ -623,10 +656,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setTrueBearingAccuracy(JAXBElement<ValAngleType> value) {
+    public void setTrueBearingAccuracy(ValAngleType value) {
         this.trueBearingAccuracy = value;
     }
 
@@ -639,10 +672,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getMagneticBearing() {
+    public ValBearingType getMagneticBearing() {
         return magneticBearing;
     }
 
@@ -651,10 +684,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setMagneticBearing(JAXBElement<ValBearingType> value) {
+    public void setMagneticBearing(ValBearingType value) {
         this.magneticBearing = value;
     }
 
@@ -667,10 +700,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getAngleProportionalLeft() {
+    public ValAngleType getAngleProportionalLeft() {
         return angleProportionalLeft;
     }
 
@@ -679,10 +712,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setAngleProportionalLeft(JAXBElement<ValAngleType> value) {
+    public void setAngleProportionalLeft(ValAngleType value) {
         this.angleProportionalLeft = value;
     }
 
@@ -695,10 +728,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getAngleProportionalRight() {
+    public ValAngleType getAngleProportionalRight() {
         return angleProportionalRight;
     }
 
@@ -707,10 +740,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setAngleProportionalRight(JAXBElement<ValAngleType> value) {
+    public void setAngleProportionalRight(ValAngleType value) {
         this.angleProportionalRight = value;
     }
 
@@ -723,10 +756,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getAngleCoverLeft() {
+    public ValAngleType getAngleCoverLeft() {
         return angleCoverLeft;
     }
 
@@ -735,10 +768,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setAngleCoverLeft(JAXBElement<ValAngleType> value) {
+    public void setAngleCoverLeft(ValAngleType value) {
         this.angleCoverLeft = value;
     }
 
@@ -751,10 +784,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getAngleCoverRight() {
+    public ValAngleType getAngleCoverRight() {
         return angleCoverRight;
     }
 
@@ -763,10 +796,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setAngleCoverRight(JAXBElement<ValAngleType> value) {
+    public void setAngleCoverRight(ValAngleType value) {
         this.angleCoverRight = value;
     }
 
@@ -779,10 +812,10 @@ public class AzimuthTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMLSChannelType }{@code >}
+     *     {@link CodeMLSChannelType }
      *     
      */
-    public JAXBElement<CodeMLSChannelType> getChannel() {
+    public CodeMLSChannelType getChannel() {
         return channel;
     }
 
@@ -791,10 +824,10 @@ public class AzimuthTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMLSChannelType }{@code >}
+     *     {@link CodeMLSChannelType }
      *     
      */
-    public void setChannel(JAXBElement<CodeMLSChannelType> value) {
+    public void setChannel(CodeMLSChannelType value) {
         this.channel = value;
     }
 
@@ -872,10 +905,10 @@ public class AzimuthTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAzimuthExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_azimuth_extension")
         protected AbstractExtensionType abstractAzimuthExtension;
         @XmlElement(name = "AbstractNavaidEquipmentExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_navaid_equipment_extension")
         protected AbstractExtensionType abstractNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

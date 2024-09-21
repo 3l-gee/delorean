@@ -9,9 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -62,28 +67,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "taxi_holding_position_time_slice_type")
 public class TaxiHoldingPositionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "landingCategory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeHoldingCategoryType> landingCategory;
-    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeStatusOperationsType> status;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "landing_category")
+    protected CodeHoldingCategoryType landingCategory;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    protected CodeStatusOperationsType status;
     @XmlElementRef(name = "associatedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<GuidanceLinePropertyType> associatedGuidanceLine;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RunwayPropertyType> protectedRunway;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<TaxiHoldingPositionTimeSliceType.Extension> extension;
 
     /**
@@ -91,10 +102,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeHoldingCategoryType }{@code >}
+     *     {@link CodeHoldingCategoryType }
      *     
      */
-    public JAXBElement<CodeHoldingCategoryType> getLandingCategory() {
+    public CodeHoldingCategoryType getLandingCategory() {
         return landingCategory;
     }
 
@@ -103,10 +114,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeHoldingCategoryType }{@code >}
+     *     {@link CodeHoldingCategoryType }
      *     
      */
-    public void setLandingCategory(JAXBElement<CodeHoldingCategoryType> value) {
+    public void setLandingCategory(CodeHoldingCategoryType value) {
         this.landingCategory = value;
     }
 
@@ -119,10 +130,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public JAXBElement<CodeStatusOperationsType> getStatus() {
+    public CodeStatusOperationsType getStatus() {
         return status;
     }
 
@@ -131,10 +142,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
+    public void setStatus(CodeStatusOperationsType value) {
         this.status = value;
     }
 
@@ -346,8 +357,7 @@ public class TaxiHoldingPositionTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTaxiHoldingPositionExtension", required = true)
-        @NotNull
-        @Valid
+        @Column(name = "aixm:_abstract_taxi_holding_position_extension")
         protected AbstractExtensionType abstractTaxiHoldingPositionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

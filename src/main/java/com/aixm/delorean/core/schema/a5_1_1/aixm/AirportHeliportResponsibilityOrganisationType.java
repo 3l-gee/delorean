@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,28 +66,33 @@ import jakarta.xml.bind.annotation.XmlType;
     "theOrganisationAuthority",
     "extension"
 })
+@Entity
+@Table(name = "airport_heliport_responsibility_organisation_type")
 public class AirportHeliportResponsibilityOrganisationType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "role", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeAuthorityRoleType> role;
-    @Valid
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    protected CodeAuthorityRoleType role;
+    @Column(name = "the_organisation_authority")
     protected OrganisationAuthorityPropertyType theOrganisationAuthority;
-    @Valid
-    @Size(min = 0)
     protected List<AirportHeliportResponsibilityOrganisationType.Extension> extension;
 
     /**
@@ -211,10 +220,10 @@ public class AirportHeliportResponsibilityOrganisationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAuthorityRoleType }{@code >}
+     *     {@link CodeAuthorityRoleType }
      *     
      */
-    public JAXBElement<CodeAuthorityRoleType> getRole() {
+    public CodeAuthorityRoleType getRole() {
         return role;
     }
 
@@ -223,10 +232,10 @@ public class AirportHeliportResponsibilityOrganisationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAuthorityRoleType }{@code >}
+     *     {@link CodeAuthorityRoleType }
      *     
      */
-    public void setRole(JAXBElement<CodeAuthorityRoleType> value) {
+    public void setRole(CodeAuthorityRoleType value) {
         this.role = value;
     }
 
@@ -332,10 +341,10 @@ public class AirportHeliportResponsibilityOrganisationType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractAirportHeliportResponsibilityOrganisationExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_airport_heliport_responsibility_organisation_extension")
         protected AbstractExtensionType abstractAirportHeliportResponsibilityOrganisationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

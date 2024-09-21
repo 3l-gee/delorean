@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,11 +41,12 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "RunwayDirectionLightSystemTimeSlicePropertyType", propOrder = {
     "runwayDirectionLightSystemTimeSlice"
 })
+@Entity
+@Table(name = "runway_direction_light_system_time_slice_property_type")
 public class RunwayDirectionLightSystemTimeSlicePropertyType {
 
     @XmlElement(name = "RunwayDirectionLightSystemTimeSlice", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_runway_direction_light_system_time_slice")
     protected RunwayDirectionLightSystemTimeSliceType runwayDirectionLightSystemTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

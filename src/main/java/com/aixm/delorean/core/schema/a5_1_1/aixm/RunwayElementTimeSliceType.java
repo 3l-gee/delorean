@@ -9,9 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,36 +70,45 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
+@Entity
+@Table(name = "runway_element_time_slice_type")
 public class RunwayElementTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeRunwayElementType> type;
-    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> length;
-    @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> width;
-    @XmlElementRef(name = "gradeSeparation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeGradeSeparationType> gradeSeparation;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    protected CodeRunwayElementType type;
+    @XmlElement(nillable = true)
+    @Column(name = "length")
+    protected ValDistanceType length;
+    @XmlElement(nillable = true)
+    @Column(name = "width")
+    protected ValDistanceType width;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "grade_separation")
+    protected CodeGradeSeparationType gradeSeparation;
     @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RunwayPropertyType> associatedRunway;
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayElementTimeSliceType.Extension> extension;
 
     /**
@@ -102,10 +116,10 @@ public class RunwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRunwayElementType }{@code >}
+     *     {@link CodeRunwayElementType }
      *     
      */
-    public JAXBElement<CodeRunwayElementType> getType() {
+    public CodeRunwayElementType getType() {
         return type;
     }
 
@@ -114,10 +128,10 @@ public class RunwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRunwayElementType }{@code >}
+     *     {@link CodeRunwayElementType }
      *     
      */
-    public void setType(JAXBElement<CodeRunwayElementType> value) {
+    public void setType(CodeRunwayElementType value) {
         this.type = value;
     }
 
@@ -130,10 +144,10 @@ public class RunwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLength() {
+    public ValDistanceType getLength() {
         return length;
     }
 
@@ -142,10 +156,10 @@ public class RunwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLength(JAXBElement<ValDistanceType> value) {
+    public void setLength(ValDistanceType value) {
         this.length = value;
     }
 
@@ -158,10 +172,10 @@ public class RunwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getWidth() {
+    public ValDistanceType getWidth() {
         return width;
     }
 
@@ -170,10 +184,10 @@ public class RunwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setWidth(JAXBElement<ValDistanceType> value) {
+    public void setWidth(ValDistanceType value) {
         this.width = value;
     }
 
@@ -186,10 +200,10 @@ public class RunwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeGradeSeparationType }{@code >}
+     *     {@link CodeGradeSeparationType }
      *     
      */
-    public JAXBElement<CodeGradeSeparationType> getGradeSeparation() {
+    public CodeGradeSeparationType getGradeSeparation() {
         return gradeSeparation;
     }
 
@@ -198,10 +212,10 @@ public class RunwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeGradeSeparationType }{@code >}
+     *     {@link CodeGradeSeparationType }
      *     
      */
-    public void setGradeSeparation(JAXBElement<CodeGradeSeparationType> value) {
+    public void setGradeSeparation(CodeGradeSeparationType value) {
         this.gradeSeparation = value;
     }
 
@@ -453,8 +467,7 @@ public class RunwayElementTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayElementExtension", required = true)
-        @NotNull
-        @Valid
+        @Column(name = "aixm:_abstract_runway_element_extension")
         protected AbstractExtensionType abstractRunwayElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

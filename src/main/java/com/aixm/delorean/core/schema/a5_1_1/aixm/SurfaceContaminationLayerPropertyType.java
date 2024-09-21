@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,13 +39,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "SurfaceContaminationLayerPropertyType", propOrder = {
     "surfaceContaminationLayer"
 })
+@Entity
+@Table(name = "surface_contamination_layer_property_type")
 public class SurfaceContaminationLayerPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "SurfaceContaminationLayer", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_surface_contamination_layer")
     protected SurfaceContaminationLayerType surfaceContaminationLayer;
 
     /**

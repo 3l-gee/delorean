@@ -9,9 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,22 +63,24 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "survey_control_point_time_slice_type")
 public class SurveyControlPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextNameType> designator;
+    @XmlElement(nillable = true)
+    @Column(name = "designator")
+    protected TextNameType designator;
     @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<SurveyControlPointTimeSliceType.Extension> extension;
 
     /**
@@ -83,10 +88,10 @@ public class SurveyControlPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getDesignator() {
+    public TextNameType getDesignator() {
         return designator;
     }
 
@@ -95,10 +100,10 @@ public class SurveyControlPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setDesignator(JAXBElement<TextNameType> value) {
+    public void setDesignator(TextNameType value) {
         this.designator = value;
     }
 
@@ -270,8 +275,7 @@ public class SurveyControlPointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurveyControlPointExtension", required = true)
-        @NotNull
-        @Valid
+        @Column(name = "aixm:_abstract_survey_control_point_extension")
         protected AbstractExtensionType abstractSurveyControlPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

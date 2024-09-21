@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
-import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -46,11 +45,8 @@ public class CISeriesType
     extends AbstractObjectType
 {
 
-    @Valid
     protected CharacterStringPropertyType name;
-    @Valid
     protected CharacterStringPropertyType issueIdentification;
-    @Valid
     protected CharacterStringPropertyType page;
 
     /**

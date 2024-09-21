@@ -10,8 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gmd;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.AbstractObjectType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.IntegerPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.MeasurePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -50,14 +48,9 @@ public class MDDimensionType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected MDDimensionNameTypeCodePropertyType dimensionName;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected IntegerPropertyType dimensionSize;
-    @Valid
     protected MeasurePropertyType resolution;
 
     /**

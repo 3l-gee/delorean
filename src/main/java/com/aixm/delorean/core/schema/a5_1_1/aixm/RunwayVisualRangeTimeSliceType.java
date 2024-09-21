@@ -9,9 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,24 +65,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "runway_visual_range_time_slice_type")
 public class RunwayVisualRangeTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "readingPosition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeRVRReadingType> readingPosition;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "reading_position")
+    protected CodeRVRReadingType readingPosition;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RunwayDirectionPropertyType> associatedRunwayDirection;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<RunwayVisualRangeTimeSliceType.Extension> extension;
 
     /**
@@ -85,10 +94,10 @@ public class RunwayVisualRangeTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRVRReadingType }{@code >}
+     *     {@link CodeRVRReadingType }
      *     
      */
-    public JAXBElement<CodeRVRReadingType> getReadingPosition() {
+    public CodeRVRReadingType getReadingPosition() {
         return readingPosition;
     }
 
@@ -97,10 +106,10 @@ public class RunwayVisualRangeTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRVRReadingType }{@code >}
+     *     {@link CodeRVRReadingType }
      *     
      */
-    public void setReadingPosition(JAXBElement<CodeRVRReadingType> value) {
+    public void setReadingPosition(CodeRVRReadingType value) {
         this.readingPosition = value;
     }
 
@@ -284,8 +293,7 @@ public class RunwayVisualRangeTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayVisualRangeExtension", required = true)
-        @NotNull
-        @Valid
+        @Column(name = "aixm:_abstract_runway_visual_range_extension")
         protected AbstractExtensionType abstractRunwayVisualRangeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

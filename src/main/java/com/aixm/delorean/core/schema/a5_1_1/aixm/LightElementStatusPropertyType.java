@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,13 +39,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "LightElementStatusPropertyType", propOrder = {
     "lightElementStatus"
 })
+@Entity
+@Table(name = "light_element_status_property_type")
 public class LightElementStatusPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "LightElementStatus", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_light_element_status")
     protected LightElementStatusType lightElementStatus;
 
     /**

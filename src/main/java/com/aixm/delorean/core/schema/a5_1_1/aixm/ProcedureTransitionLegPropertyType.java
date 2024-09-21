@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,13 +39,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "ProcedureTransitionLegPropertyType", propOrder = {
     "procedureTransitionLeg"
 })
+@Entity
+@Table(name = "procedure_transition_leg_property_type")
 public class ProcedureTransitionLegPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "ProcedureTransitionLeg", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_procedure_transition_leg")
     protected ProcedureTransitionLegType procedureTransitionLeg;
 
     /**

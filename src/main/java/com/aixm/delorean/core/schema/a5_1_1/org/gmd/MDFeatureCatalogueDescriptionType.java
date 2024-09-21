@@ -12,9 +12,6 @@ import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.BooleanPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.CharacterStringPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gco.GenericNamePropertyType;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -58,22 +55,12 @@ public class MDFeatureCatalogueDescriptionType
     extends AbstractMDContentInformationType
 {
 
-    @Valid
     protected BooleanPropertyType complianceCode;
-    @Valid
-    @Size(min = 0)
     protected List<CharacterStringPropertyType> language;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected BooleanPropertyType includedWithDataset;
-    @Valid
-    @Size(min = 0)
     protected List<GenericNamePropertyType> featureTypes;
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
     protected List<CICitationPropertyType> featureCatalogueCitation;
 
     /**

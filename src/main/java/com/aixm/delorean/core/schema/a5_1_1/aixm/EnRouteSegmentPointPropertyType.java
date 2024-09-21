@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,13 +39,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "EnRouteSegmentPointPropertyType", propOrder = {
     "enRouteSegmentPoint"
 })
+@Entity
+@Table(name = "en_route_segment_point_property_type")
 public class EnRouteSegmentPointPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "EnRouteSegmentPoint", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_en_route_segment_point")
     protected EnRouteSegmentPointType enRouteSegmentPoint;
 
     /**

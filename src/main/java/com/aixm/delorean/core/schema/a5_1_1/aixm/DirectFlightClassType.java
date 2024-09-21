@@ -9,14 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -59,18 +61,20 @@ import jakarta.xml.bind.annotation.XmlType;
     "exceedLength",
     "extension"
 })
+@Entity
+@Table(name = "direct_flight_class_type")
 public class DirectFlightClassType
     extends AbstractDirectFlightType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "exceedLength", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> exceedLength;
-    @Valid
-    @Size(min = 0)
+    @XmlElement(nillable = true)
+    @Column(name = "exceed_length")
+    protected ValDistanceType exceedLength;
     protected List<DirectFlightClassType.Extension> extension;
 
     /**
@@ -118,10 +122,10 @@ public class DirectFlightClassType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getExceedLength() {
+    public ValDistanceType getExceedLength() {
         return exceedLength;
     }
 
@@ -130,10 +134,10 @@ public class DirectFlightClassType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setExceedLength(JAXBElement<ValDistanceType> value) {
+    public void setExceedLength(ValDistanceType value) {
         this.exceedLength = value;
     }
 
@@ -211,10 +215,10 @@ public class DirectFlightClassType
     public static class Extension {
 
         @XmlElement(name = "AbstractDirectFlightExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_direct_flight_extension")
         protected AbstractExtensionType abstractDirectFlightExtension;
         @XmlElement(name = "AbstractDirectFlightClassExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_direct_flight_class_extension")
         protected AbstractExtensionType abstractDirectFlightClassExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

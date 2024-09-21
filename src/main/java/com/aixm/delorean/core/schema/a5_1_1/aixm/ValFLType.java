@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -41,8 +39,6 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValFLType {
 
     @XmlValue
-    @DecimalMin(value = "0", inclusive = true)
-    @DecimalMax(value = "999", inclusive = true)
     protected long value;
     @XmlAttribute(name = "uom")
     protected UomFLType uom;

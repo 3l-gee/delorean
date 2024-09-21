@@ -9,14 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,28 +64,33 @@ import jakarta.xml.bind.annotation.XmlType;
     "distanceAccuracy",
     "extension"
 })
+@Entity
+@Table(name = "runway_declared_distance_value_type")
 public class RunwayDeclaredDistanceValueType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> distance;
-    @XmlElementRef(name = "distanceAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> distanceAccuracy;
-    @Valid
-    @Size(min = 0)
+    @XmlElement(nillable = true)
+    @Column(name = "distance")
+    protected ValDistanceType distance;
+    @XmlElement(nillable = true)
+    @Column(name = "distance_accuracy")
+    protected ValDistanceType distanceAccuracy;
     protected List<RunwayDeclaredDistanceValueType.Extension> extension;
 
     /**
@@ -211,10 +218,10 @@ public class RunwayDeclaredDistanceValueType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getDistance() {
+    public ValDistanceType getDistance() {
         return distance;
     }
 
@@ -223,10 +230,10 @@ public class RunwayDeclaredDistanceValueType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setDistance(JAXBElement<ValDistanceType> value) {
+    public void setDistance(ValDistanceType value) {
         this.distance = value;
     }
 
@@ -239,10 +246,10 @@ public class RunwayDeclaredDistanceValueType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getDistanceAccuracy() {
+    public ValDistanceType getDistanceAccuracy() {
         return distanceAccuracy;
     }
 
@@ -251,10 +258,10 @@ public class RunwayDeclaredDistanceValueType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setDistanceAccuracy(JAXBElement<ValDistanceType> value) {
+    public void setDistanceAccuracy(ValDistanceType value) {
         this.distanceAccuracy = value;
     }
 
@@ -332,10 +339,10 @@ public class RunwayDeclaredDistanceValueType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractRunwayDeclaredDistanceValueExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_runway_declared_distance_value_extension")
         protected AbstractExtensionType abstractRunwayDeclaredDistanceValueExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

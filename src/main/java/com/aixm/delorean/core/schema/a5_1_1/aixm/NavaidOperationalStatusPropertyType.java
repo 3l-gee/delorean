@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,13 +39,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "NavaidOperationalStatusPropertyType", propOrder = {
     "navaidOperationalStatus"
 })
+@Entity
+@Table(name = "navaid_operational_status_property_type")
 public class NavaidOperationalStatusPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "NavaidOperationalStatus", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_navaid_operational_status")
     protected NavaidOperationalStatusType navaidOperationalStatus;
 
     /**

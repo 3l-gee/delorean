@@ -9,9 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -58,6 +61,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "floating_dock_site_time_slice_type")
 public class FloatingDockSiteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -65,11 +70,10 @@ public class FloatingDockSiteTimeSliceType
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<FloatingDockSiteTimeSliceType.Extension> extension;
 
     /**
@@ -208,8 +212,7 @@ public class FloatingDockSiteTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFloatingDockSiteExtension", required = true)
-        @NotNull
-        @Valid
+        @Column(name = "aixm:_abstract_floating_dock_site_extension")
         protected AbstractExtensionType abstractFloatingDockSiteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

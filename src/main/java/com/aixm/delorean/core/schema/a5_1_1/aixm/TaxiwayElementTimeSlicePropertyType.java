@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,11 +41,12 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "TaxiwayElementTimeSlicePropertyType", propOrder = {
     "taxiwayElementTimeSlice"
 })
+@Entity
+@Table(name = "taxiway_element_time_slice_property_type")
 public class TaxiwayElementTimeSlicePropertyType {
 
     @XmlElement(name = "TaxiwayElementTimeSlice", required = true)
-    @NotNull
-    @Valid
+    @Column(name = "aixm:_taxiway_element_time_slice")
     protected TaxiwayElementTimeSliceType taxiwayElementTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

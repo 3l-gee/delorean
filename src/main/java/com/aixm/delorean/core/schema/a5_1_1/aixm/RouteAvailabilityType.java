@@ -9,14 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,34 +68,44 @@ import jakarta.xml.bind.annotation.XmlType;
     "levels",
     "extension"
 })
+@Entity
+@Table(name = "route_availability_type")
 public class RouteAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "direction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeDirectionType> direction;
-    @XmlElementRef(name = "cardinalDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeCardinalDirectionType> cardinalDirection;
-    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeRouteAvailabilityType> status;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "direction")
+    protected CodeDirectionType direction;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "cardinal_direction")
+    protected CodeCardinalDirectionType cardinalDirection;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    protected CodeRouteAvailabilityType status;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirspaceLayerPropertyType> levels;
-    @Valid
-    @Size(min = 0)
     protected List<RouteAvailabilityType.Extension> extension;
 
     /**
@@ -219,10 +233,10 @@ public class RouteAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionType }{@code >}
+     *     {@link CodeDirectionType }
      *     
      */
-    public JAXBElement<CodeDirectionType> getDirection() {
+    public CodeDirectionType getDirection() {
         return direction;
     }
 
@@ -231,10 +245,10 @@ public class RouteAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionType }{@code >}
+     *     {@link CodeDirectionType }
      *     
      */
-    public void setDirection(JAXBElement<CodeDirectionType> value) {
+    public void setDirection(CodeDirectionType value) {
         this.direction = value;
     }
 
@@ -247,10 +261,10 @@ public class RouteAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
+     *     {@link CodeCardinalDirectionType }
      *     
      */
-    public JAXBElement<CodeCardinalDirectionType> getCardinalDirection() {
+    public CodeCardinalDirectionType getCardinalDirection() {
         return cardinalDirection;
     }
 
@@ -259,10 +273,10 @@ public class RouteAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
+     *     {@link CodeCardinalDirectionType }
      *     
      */
-    public void setCardinalDirection(JAXBElement<CodeCardinalDirectionType> value) {
+    public void setCardinalDirection(CodeCardinalDirectionType value) {
         this.cardinalDirection = value;
     }
 
@@ -275,10 +289,10 @@ public class RouteAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteAvailabilityType }{@code >}
+     *     {@link CodeRouteAvailabilityType }
      *     
      */
-    public JAXBElement<CodeRouteAvailabilityType> getStatus() {
+    public CodeRouteAvailabilityType getStatus() {
         return status;
     }
 
@@ -287,10 +301,10 @@ public class RouteAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteAvailabilityType }{@code >}
+     *     {@link CodeRouteAvailabilityType }
      *     
      */
-    public void setStatus(JAXBElement<CodeRouteAvailabilityType> value) {
+    public void setStatus(CodeRouteAvailabilityType value) {
         this.status = value;
     }
 
@@ -408,10 +422,10 @@ public class RouteAvailabilityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractRouteAvailabilityExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_route_availability_extension")
         protected AbstractExtensionType abstractRouteAvailabilityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

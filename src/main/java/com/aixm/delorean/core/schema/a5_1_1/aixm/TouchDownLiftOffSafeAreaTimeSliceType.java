@@ -9,8 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,30 +70,37 @@ import jakarta.xml.bind.annotation.XmlType;
     "protectedTouchDownLiftOff",
     "extension"
 })
+@Entity
+@Table(name = "touch_down_lift_off_safe_area_time_slice_type")
 public class TouchDownLiftOffSafeAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> width;
-    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceType> length;
-    @XmlElementRef(name = "lighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> lighting;
-    @XmlElementRef(name = "obstacleFree", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeYesNoType> obstacleFree;
+    @XmlElement(nillable = true)
+    @Column(name = "width")
+    protected ValDistanceType width;
+    @XmlElement(nillable = true)
+    @Column(name = "length")
+    protected ValDistanceType length;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "lighting")
+    protected CodeYesNoType lighting;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "obstacle_free")
+    protected CodeYesNoType obstacleFree;
     @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "protectedTouchDownLiftOff", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<TouchDownLiftOffPropertyType> protectedTouchDownLiftOff;
-    @Valid
-    @Size(min = 0)
     protected List<TouchDownLiftOffSafeAreaTimeSliceType.Extension> extension;
 
     /**
@@ -95,10 +108,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getWidth() {
+    public ValDistanceType getWidth() {
         return width;
     }
 
@@ -107,10 +120,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setWidth(JAXBElement<ValDistanceType> value) {
+    public void setWidth(ValDistanceType value) {
         this.width = value;
     }
 
@@ -123,10 +136,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLength() {
+    public ValDistanceType getLength() {
         return length;
     }
 
@@ -135,10 +148,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLength(JAXBElement<ValDistanceType> value) {
+    public void setLength(ValDistanceType value) {
         this.length = value;
     }
 
@@ -151,10 +164,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getLighting() {
+    public CodeYesNoType getLighting() {
         return lighting;
     }
 
@@ -163,10 +176,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setLighting(JAXBElement<CodeYesNoType> value) {
+    public void setLighting(CodeYesNoType value) {
         this.lighting = value;
     }
 
@@ -179,10 +192,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getObstacleFree() {
+    public CodeYesNoType getObstacleFree() {
         return obstacleFree;
     }
 
@@ -191,10 +204,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setObstacleFree(JAXBElement<CodeYesNoType> value) {
+    public void setObstacleFree(CodeYesNoType value) {
         this.obstacleFree = value;
     }
 
@@ -396,10 +409,10 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTouchDownLiftOffSafeAreaExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_touch_down_lift_off_safe_area_extension")
         protected AbstractExtensionType abstractTouchDownLiftOffSafeAreaExtension;
         @XmlElement(name = "AbstractAirportHeliportProtectionAreaExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_airport_heliport_protection_area_extension")
         protected AbstractExtensionType abstractAirportHeliportProtectionAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

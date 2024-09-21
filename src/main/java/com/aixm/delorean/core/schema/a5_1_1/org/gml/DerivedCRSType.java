@@ -7,8 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -53,16 +51,12 @@ public class DerivedCRSType
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected SingleCRSPropertyType baseCRS;
     /**
      * The gml:derivedCRSType property describes the type of a derived coordinate reference system. The required codeSpace attribute shall reference a source of information specifying the values and meanings of all the allowed string values for this property.
      * 
      */
     @XmlElement(required = true)
-    @NotNull
-    @Valid
     protected CodeWithAuthorityType derivedCRSType;
     /**
      * An association role to the coordinate system used by this CRS.

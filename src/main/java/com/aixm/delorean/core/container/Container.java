@@ -137,23 +137,23 @@ public class Container<T> {
         }
     }
 
-    public List<?> getDbLoadReady() {
-        AIXMBasicMessageType test = (AIXMBasicMessageType) this.record;
-        List<BasicMessageMemberAIXMPropertyType> list = test.getHasMember();
-        List<T> res = new ArrayList<>();
+    // public List<?> getDbLoadReady() {
+    //     AIXMBasicMessageType test = (AIXMBasicMessageType) this.record;
+    //     List<BasicMessageMemberAIXMPropertyType> list = test.getHasMember();
+    //     List<T> res = new ArrayList<>();
 
-        for (BasicMessageMemberAIXMPropertyType item : list) {
-            // Safely cast item.getAbstractAIXMFeature().getValue() to T
-            T value = null;
-            try {
-                value = structure.cast(item.getAbstractAIXMFeature().getValue());
-            } catch (ClassCastException e) {
-                throw new IllegalStateException("Item value cannot be cast to type T", e);
-            }
+    //     for (BasicMessageMemberAIXMPropertyType item : list) {
+    //         // Safely cast item.getAbstractAIXMFeature().getValue() to T
+    //         T value = null;
+    //         try {
+    //             value = structure.cast(item.getAbstractAIXMFeature().getValue());
+    //         } catch (ClassCastException e) {
+    //             throw new IllegalStateException("Item value cannot be cast to type T", e);
+    //         }
 
-            res.add(value);
-        }
+    //         res.add(value);
+    //     }
 
-        return res;
-    }
+    //     return res;
+    // }
 }

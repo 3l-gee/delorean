@@ -9,8 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -62,28 +68,36 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "departure_arrival_condition_type")
 public class DepartureArrivalConditionType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "minimumEnrouteAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceVerticalType> minimumEnrouteAltitude;
-    @XmlElementRef(name = "minimumCrossingAtEnd", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceVerticalType> minimumCrossingAtEnd;
-    @XmlElementRef(name = "minimumCrossingAtEndReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeVerticalReferenceType> minimumCrossingAtEndReference;
-    @XmlElementRef(name = "maximumCrossingAtEnd", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceVerticalType> maximumCrossingAtEnd;
-    @XmlElementRef(name = "maximumCrossingAtEndReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeVerticalReferenceType> maximumCrossingAtEndReference;
+    @XmlElement(nillable = true)
+    @Column(name = "minimum_enroute_altitude")
+    protected ValDistanceVerticalType minimumEnrouteAltitude;
+    @XmlElement(nillable = true)
+    @Column(name = "minimum_crossing_at_end")
+    protected ValDistanceVerticalType minimumCrossingAtEnd;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "minimum_crossing_at_end_reference")
+    protected CodeVerticalReferenceType minimumCrossingAtEndReference;
+    @XmlElement(nillable = true)
+    @Column(name = "maximum_crossing_at_end")
+    protected ValDistanceVerticalType maximumCrossingAtEnd;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "maximum_crossing_at_end_reference")
+    protected CodeVerticalReferenceType maximumCrossingAtEndReference;
     @XmlElementRef(name = "engineType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AircraftCharacteristicPropertyType> engineType;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<DepartureArrivalConditionType.Extension> extension;
 
     /**
@@ -91,10 +105,10 @@ public class DepartureArrivalConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getMinimumEnrouteAltitude() {
+    public ValDistanceVerticalType getMinimumEnrouteAltitude() {
         return minimumEnrouteAltitude;
     }
 
@@ -103,10 +117,10 @@ public class DepartureArrivalConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setMinimumEnrouteAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setMinimumEnrouteAltitude(ValDistanceVerticalType value) {
         this.minimumEnrouteAltitude = value;
     }
 
@@ -119,10 +133,10 @@ public class DepartureArrivalConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getMinimumCrossingAtEnd() {
+    public ValDistanceVerticalType getMinimumCrossingAtEnd() {
         return minimumCrossingAtEnd;
     }
 
@@ -131,10 +145,10 @@ public class DepartureArrivalConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setMinimumCrossingAtEnd(JAXBElement<ValDistanceVerticalType> value) {
+    public void setMinimumCrossingAtEnd(ValDistanceVerticalType value) {
         this.minimumCrossingAtEnd = value;
     }
 
@@ -147,10 +161,10 @@ public class DepartureArrivalConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getMinimumCrossingAtEndReference() {
+    public CodeVerticalReferenceType getMinimumCrossingAtEndReference() {
         return minimumCrossingAtEndReference;
     }
 
@@ -159,10 +173,10 @@ public class DepartureArrivalConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setMinimumCrossingAtEndReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setMinimumCrossingAtEndReference(CodeVerticalReferenceType value) {
         this.minimumCrossingAtEndReference = value;
     }
 
@@ -175,10 +189,10 @@ public class DepartureArrivalConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getMaximumCrossingAtEnd() {
+    public ValDistanceVerticalType getMaximumCrossingAtEnd() {
         return maximumCrossingAtEnd;
     }
 
@@ -187,10 +201,10 @@ public class DepartureArrivalConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setMaximumCrossingAtEnd(JAXBElement<ValDistanceVerticalType> value) {
+    public void setMaximumCrossingAtEnd(ValDistanceVerticalType value) {
         this.maximumCrossingAtEnd = value;
     }
 
@@ -203,10 +217,10 @@ public class DepartureArrivalConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getMaximumCrossingAtEndReference() {
+    public CodeVerticalReferenceType getMaximumCrossingAtEndReference() {
         return maximumCrossingAtEndReference;
     }
 
@@ -215,10 +229,10 @@ public class DepartureArrivalConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setMaximumCrossingAtEndReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setMaximumCrossingAtEndReference(CodeVerticalReferenceType value) {
         this.maximumCrossingAtEndReference = value;
     }
 
@@ -362,7 +376,7 @@ public class DepartureArrivalConditionType
     public static class Extension {
 
         @XmlElement(name = "AbstractDepartureArrivalConditionExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_departure_arrival_condition_extension")
         protected AbstractExtensionType abstractDepartureArrivalConditionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

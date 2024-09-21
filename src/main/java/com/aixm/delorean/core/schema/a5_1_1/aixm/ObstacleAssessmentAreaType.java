@@ -9,8 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,44 +74,57 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "obstacle_assessment_area_type")
 public class ObstacleAssessmentAreaType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeObstacleAssessmentSurfaceType> type;
-    @XmlElementRef(name = "sectionNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<NoNumberType> sectionNumber;
-    @XmlElementRef(name = "slope", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValSlopeType> slope;
-    @XmlElementRef(name = "assessedAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceVerticalType> assessedAltitude;
-    @XmlElementRef(name = "slopeLowerAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValDistanceVerticalType> slopeLowerAltitude;
-    @XmlElementRef(name = "gradientLowHigh", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ValSlopeType> gradientLowHigh;
-    @XmlElementRef(name = "surfaceZone", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeObstructionIdSurfaceZoneType> surfaceZone;
-    @XmlElementRef(name = "safetyRegulation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextNameType> safetyRegulation;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    protected CodeObstacleAssessmentSurfaceType type;
+    @XmlElement(nillable = true)
+    @Column(name = "section_number")
+    protected NoNumberType sectionNumber;
+    @XmlElement(nillable = true)
+    @Column(name = "slope")
+    protected ValSlopeType slope;
+    @XmlElement(nillable = true)
+    @Column(name = "assessed_altitude")
+    protected ValDistanceVerticalType assessedAltitude;
+    @XmlElement(nillable = true)
+    @Column(name = "slope_lower_altitude")
+    protected ValDistanceVerticalType slopeLowerAltitude;
+    @XmlElement(nillable = true)
+    @Column(name = "gradient_low_high")
+    protected ValSlopeType gradientLowHigh;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "surface_zone")
+    protected CodeObstructionIdSurfaceZoneType surfaceZone;
+    @XmlElement(nillable = true)
+    @Column(name = "safety_regulation")
+    protected TextNameType safetyRegulation;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElementRef(name = "surface", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<SurfacePropertyType> surface;
     @XmlElementRef(name = "startingCurve", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<CurvePropertyType> startingCurve;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<ObstacleAssessmentAreaType.Extension> extension;
 
     /**
@@ -113,10 +132,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeObstacleAssessmentSurfaceType }{@code >}
+     *     {@link CodeObstacleAssessmentSurfaceType }
      *     
      */
-    public JAXBElement<CodeObstacleAssessmentSurfaceType> getType() {
+    public CodeObstacleAssessmentSurfaceType getType() {
         return type;
     }
 
@@ -125,10 +144,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeObstacleAssessmentSurfaceType }{@code >}
+     *     {@link CodeObstacleAssessmentSurfaceType }
      *     
      */
-    public void setType(JAXBElement<CodeObstacleAssessmentSurfaceType> value) {
+    public void setType(CodeObstacleAssessmentSurfaceType value) {
         this.type = value;
     }
 
@@ -141,10 +160,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public JAXBElement<NoNumberType> getSectionNumber() {
+    public NoNumberType getSectionNumber() {
         return sectionNumber;
     }
 
@@ -153,10 +172,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public void setSectionNumber(JAXBElement<NoNumberType> value) {
+    public void setSectionNumber(NoNumberType value) {
         this.sectionNumber = value;
     }
 
@@ -169,10 +188,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValSlopeType }{@code >}
+     *     {@link ValSlopeType }
      *     
      */
-    public JAXBElement<ValSlopeType> getSlope() {
+    public ValSlopeType getSlope() {
         return slope;
     }
 
@@ -181,10 +200,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValSlopeType }{@code >}
+     *     {@link ValSlopeType }
      *     
      */
-    public void setSlope(JAXBElement<ValSlopeType> value) {
+    public void setSlope(ValSlopeType value) {
         this.slope = value;
     }
 
@@ -197,10 +216,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getAssessedAltitude() {
+    public ValDistanceVerticalType getAssessedAltitude() {
         return assessedAltitude;
     }
 
@@ -209,10 +228,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setAssessedAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setAssessedAltitude(ValDistanceVerticalType value) {
         this.assessedAltitude = value;
     }
 
@@ -225,10 +244,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getSlopeLowerAltitude() {
+    public ValDistanceVerticalType getSlopeLowerAltitude() {
         return slopeLowerAltitude;
     }
 
@@ -237,10 +256,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setSlopeLowerAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setSlopeLowerAltitude(ValDistanceVerticalType value) {
         this.slopeLowerAltitude = value;
     }
 
@@ -253,10 +272,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValSlopeType }{@code >}
+     *     {@link ValSlopeType }
      *     
      */
-    public JAXBElement<ValSlopeType> getGradientLowHigh() {
+    public ValSlopeType getGradientLowHigh() {
         return gradientLowHigh;
     }
 
@@ -265,10 +284,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValSlopeType }{@code >}
+     *     {@link ValSlopeType }
      *     
      */
-    public void setGradientLowHigh(JAXBElement<ValSlopeType> value) {
+    public void setGradientLowHigh(ValSlopeType value) {
         this.gradientLowHigh = value;
     }
 
@@ -281,10 +300,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeObstructionIdSurfaceZoneType }{@code >}
+     *     {@link CodeObstructionIdSurfaceZoneType }
      *     
      */
-    public JAXBElement<CodeObstructionIdSurfaceZoneType> getSurfaceZone() {
+    public CodeObstructionIdSurfaceZoneType getSurfaceZone() {
         return surfaceZone;
     }
 
@@ -293,10 +312,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeObstructionIdSurfaceZoneType }{@code >}
+     *     {@link CodeObstructionIdSurfaceZoneType }
      *     
      */
-    public void setSurfaceZone(JAXBElement<CodeObstructionIdSurfaceZoneType> value) {
+    public void setSurfaceZone(CodeObstructionIdSurfaceZoneType value) {
         this.surfaceZone = value;
     }
 
@@ -309,10 +328,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getSafetyRegulation() {
+    public TextNameType getSafetyRegulation() {
         return safetyRegulation;
     }
 
@@ -321,10 +340,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setSafetyRegulation(JAXBElement<TextNameType> value) {
+    public void setSafetyRegulation(TextNameType value) {
         this.safetyRegulation = value;
     }
 
@@ -576,7 +595,7 @@ public class ObstacleAssessmentAreaType
     public static class Extension {
 
         @XmlElement(name = "AbstractObstacleAssessmentAreaExtension")
-        @Valid
+        @Column(name = "aixm:_abstract_obstacle_assessment_area_extension")
         protected AbstractExtensionType abstractObstacleAssessmentAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

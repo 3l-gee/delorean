@@ -9,9 +9,14 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,16 +69,23 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "designated_point_time_slice_type")
 public class DesignatedPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeDesignatedPointDesignatorType> designator;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CodeDesignatedPointType> type;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TextNameType> aixmName;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "designator")
+    protected CodeDesignatedPointDesignatorType designator;
+    @XmlElement(nillable = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    protected CodeDesignatedPointType type;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<PointPropertyType> location;
     @XmlElementRef(name = "aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
@@ -83,11 +95,10 @@ public class DesignatedPointTimeSliceType
     @XmlElementRef(name = "runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<RunwayCentrelinePointPropertyType> runwayPoint;
     @XmlElement(nillable = true)
-    @Valid
-    @Size(min = 0)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Valid
-    @Size(min = 0)
     protected List<DesignatedPointTimeSliceType.Extension> extension;
 
     /**
@@ -95,10 +106,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignatedPointDesignatorType }{@code >}
+     *     {@link CodeDesignatedPointDesignatorType }
      *     
      */
-    public JAXBElement<CodeDesignatedPointDesignatorType> getDesignator() {
+    public CodeDesignatedPointDesignatorType getDesignator() {
         return designator;
     }
 
@@ -107,10 +118,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignatedPointDesignatorType }{@code >}
+     *     {@link CodeDesignatedPointDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<CodeDesignatedPointDesignatorType> value) {
+    public void setDesignator(CodeDesignatedPointDesignatorType value) {
         this.designator = value;
     }
 
@@ -123,10 +134,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignatedPointType }{@code >}
+     *     {@link CodeDesignatedPointType }
      *     
      */
-    public JAXBElement<CodeDesignatedPointType> getType() {
+    public CodeDesignatedPointType getType() {
         return type;
     }
 
@@ -135,10 +146,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignatedPointType }{@code >}
+     *     {@link CodeDesignatedPointType }
      *     
      */
-    public void setType(JAXBElement<CodeDesignatedPointType> value) {
+    public void setType(CodeDesignatedPointType value) {
         this.type = value;
     }
 
@@ -151,10 +162,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -163,10 +174,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -394,8 +405,7 @@ public class DesignatedPointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDesignatedPointExtension", required = true)
-        @NotNull
-        @Valid
+        @Column(name = "aixm:_abstract_designated_point_extension")
         protected AbstractExtensionType abstractDesignatedPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

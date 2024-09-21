@@ -9,9 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,14 +41,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "StandardLevelColumnType", propOrder = {
     "timeSlice"
 })
+@Entity
+@Table(name = "standard_level_column_type")
 public class StandardLevelColumnType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @NotNull
-    @Valid
-    @Size(min = 1)
+    @Column(name = "time_slice")
     protected List<StandardLevelColumnTimeSlicePropertyType> timeSlice;
 
     /**
