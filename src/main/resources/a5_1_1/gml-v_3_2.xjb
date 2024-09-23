@@ -10,8 +10,7 @@
     <!-- xmlns:hj="urn:hyperjaxb3.jvnet.org:ejb:schemas:customizations"
     xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm" -->
 
-	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" 
-		node="/xs:schema">
+	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" node="/xs:schema">
 		<jaxb:schemaBindings>
 			<!-- <jaxb:package name="net.opengis.gml.v_3_2"/> -->
 			<jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gml"/>
@@ -26,7 +25,6 @@
 			</jaxb:bindings>
 		</jaxb:bindings>
 	</jaxb:bindings>
-
 
 	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/grids.xsd" node="/xs:schema">
 		<jaxb:bindings>
