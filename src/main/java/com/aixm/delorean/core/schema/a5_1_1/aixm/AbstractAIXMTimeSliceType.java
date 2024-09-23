@@ -32,6 +32,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}correctionNumber" minOccurs="0"/>
  *         <element name="timeSliceMetadata" type="{http://www.aixm.aero/schema/5.1.1}FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}featureLifetime" minOccurs="0"/>
+ *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -46,7 +47,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "sequenceNumber",
     "correctionNumber",
     "timeSliceMetadata",
-    "featureLifetime"
+    "featureLifetime",
+    "dbID"
 })
 @XmlSeeAlso({
     AerialRefuellingTimeSliceType.class,
@@ -201,6 +203,7 @@ public abstract class AbstractAIXMTimeSliceType
      * 
      */
     protected TimePrimitivePropertyType featureLifetime;
+    protected long dbID;
 
     /**
      * Property indicating how the timeslice is to be interpreted.  See the AIXM Temporality model for details.
@@ -344,6 +347,26 @@ public abstract class AbstractAIXMTimeSliceType
 
     public boolean isSetFeatureLifetime() {
         return (this.featureLifetime!= null);
+    }
+
+    /**
+     * Gets the value of the dbID property.
+     * 
+     */
+    public long getDbID() {
+        return dbID;
+    }
+
+    /**
+     * Sets the value of the dbID property.
+     * 
+     */
+    public void setDbID(long value) {
+        this.dbID = value;
+    }
+
+    public boolean isSetDbID() {
+        return true;
     }
 
 }

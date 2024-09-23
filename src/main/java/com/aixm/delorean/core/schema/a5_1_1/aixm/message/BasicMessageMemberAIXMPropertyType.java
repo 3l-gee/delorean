@@ -152,6 +152,9 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractFeatureMemberType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -185,15 +188,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {
     "abstractAIXMFeature"
 })
+@Entity
+@Table(name = "basic_message_member_aixm_property_type")
 public class BasicMessageMemberAIXMPropertyType
     extends AbstractFeatureMemberType
 {
 
-    /**
-     * Substitution head for AIXM features.
-     * 
-     */
     @XmlElementRef(name = "AbstractAIXMFeature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Column(name = "abstract_aixm_feature")
     protected JAXBElement<? extends AbstractAIXMFeatureType> abstractAIXMFeature;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
@@ -216,7 +218,7 @@ public class BasicMessageMemberAIXMPropertyType
     protected ActuateType actuate;
 
     /**
-     * Substitution head for AIXM features.
+     * Gets the value of the abstractAIXMFeature property.
      * 
      * @return
      *     possible object is
@@ -510,7 +512,6 @@ public class BasicMessageMemberAIXMPropertyType
      *     {@link JAXBElement }{@code <}{@link VisualGlideSlopeIndicatorType }{@code >}
      *     {@link JAXBElement }{@code <}{@link WorkAreaType }{@code >}
      *     
-     * @see #getAbstractAIXMFeature()
      */
     public void setAbstractAIXMFeature(JAXBElement<? extends AbstractAIXMFeatureType> value) {
         this.abstractAIXMFeature = value;

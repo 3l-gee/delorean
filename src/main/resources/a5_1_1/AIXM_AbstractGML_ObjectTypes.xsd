@@ -20,7 +20,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		provided by the Open Source Initiative:
 		http://www.opensource.org/licenses/bsd-license.php
 	-->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:aixm="http://www.aixm.aero/schema/5.1.1" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" targetNamespace="http://www.aixm.aero/schema/5.1.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1.1">
+<schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:aixm="http://www.aixm.aero/schema/5.1.1" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" targetNamespace="http://www.aixm.aero/schema/5.1.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1.1">
 	<annotation>
 		<appinfo>
 			<gml:gmlProfileSchema>http://external.schemas.opengis.net/gmlAIXMProfile/1.1/gml321forAIXM.xsd</gml:gmlProfileSchema>
@@ -82,7 +82,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<restriction base="gml:AbstractGMLType">
 				<sequence>
-					<sequence/>
+					<!-- For persistence requirement -->
+					<element name="dbID" type="xs:long" minOccurs="0"/>
 				</sequence>
 				<attribute ref="gml:id" use="required"/>
 			</restriction>
