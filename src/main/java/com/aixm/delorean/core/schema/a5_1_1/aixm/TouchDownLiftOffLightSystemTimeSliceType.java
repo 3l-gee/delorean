@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -107,8 +105,9 @@ public class TouchDownLiftOffLightSystemTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "position")
     protected CodeTLOFSectionType position;
-    @XmlElementRef(name = "lightedTouchDownLiftOff", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TouchDownLiftOffPropertyType> lightedTouchDownLiftOff;
+    @XmlElement(nillable = true)
+    @Column(name = "lighted_touch_down_lift_off")
+    protected TouchDownLiftOffPropertyType lightedTouchDownLiftOff;
     protected List<TouchDownLiftOffLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -348,10 +347,10 @@ public class TouchDownLiftOffLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getLightedTouchDownLiftOff() {
+    public TouchDownLiftOffPropertyType getLightedTouchDownLiftOff() {
         return lightedTouchDownLiftOff;
     }
 
@@ -360,10 +359,10 @@ public class TouchDownLiftOffLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setLightedTouchDownLiftOff(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setLightedTouchDownLiftOff(TouchDownLiftOffPropertyType value) {
         this.lightedTouchDownLiftOff = value;
     }
 

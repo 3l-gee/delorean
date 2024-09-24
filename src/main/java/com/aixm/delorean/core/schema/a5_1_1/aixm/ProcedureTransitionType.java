@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -89,10 +87,12 @@ public class ProcedureTransitionType
     @XmlElement(nillable = true)
     @Column(name = "vector_heading")
     protected ValBearingType vectorHeading;
-    @XmlElementRef(name = "departureRunwayTransition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<LandingTakeoffAreaCollectionPropertyType> departureRunwayTransition;
-    @XmlElementRef(name = "trajectory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CurvePropertyType> trajectory;
+    @XmlElement(nillable = true)
+    @Column(name = "departure_runway_transition")
+    protected LandingTakeoffAreaCollectionPropertyType departureRunwayTransition;
+    @XmlElement(nillable = true)
+    @Column(name = "trajectory")
+    protected CurvePropertyType trajectory;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -222,10 +222,10 @@ public class ProcedureTransitionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
+     *     {@link LandingTakeoffAreaCollectionPropertyType }
      *     
      */
-    public JAXBElement<LandingTakeoffAreaCollectionPropertyType> getDepartureRunwayTransition() {
+    public LandingTakeoffAreaCollectionPropertyType getDepartureRunwayTransition() {
         return departureRunwayTransition;
     }
 
@@ -234,10 +234,10 @@ public class ProcedureTransitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
+     *     {@link LandingTakeoffAreaCollectionPropertyType }
      *     
      */
-    public void setDepartureRunwayTransition(JAXBElement<LandingTakeoffAreaCollectionPropertyType> value) {
+    public void setDepartureRunwayTransition(LandingTakeoffAreaCollectionPropertyType value) {
         this.departureRunwayTransition = value;
     }
 
@@ -250,10 +250,10 @@ public class ProcedureTransitionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public JAXBElement<CurvePropertyType> getTrajectory() {
+    public CurvePropertyType getTrajectory() {
         return trajectory;
     }
 
@@ -262,10 +262,10 @@ public class ProcedureTransitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public void setTrajectory(JAXBElement<CurvePropertyType> value) {
+    public void setTrajectory(CurvePropertyType value) {
         this.trajectory = value;
     }
 

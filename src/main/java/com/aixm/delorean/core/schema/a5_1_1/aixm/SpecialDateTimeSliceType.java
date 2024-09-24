@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -91,8 +89,9 @@ public class SpecialDateTimeSliceType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "authority", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<OrganisationAuthorityPropertyType> authority;
+    @XmlElement(nillable = true)
+    @Column(name = "authority")
+    protected OrganisationAuthorityPropertyType authority;
     protected List<SpecialDateTimeSliceType.Extension> extension;
 
     /**
@@ -252,10 +251,10 @@ public class SpecialDateTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public JAXBElement<OrganisationAuthorityPropertyType> getAuthority() {
+    public OrganisationAuthorityPropertyType getAuthority() {
         return authority;
     }
 
@@ -264,10 +263,10 @@ public class SpecialDateTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public void setAuthority(JAXBElement<OrganisationAuthorityPropertyType> value) {
+    public void setAuthority(OrganisationAuthorityPropertyType value) {
         this.authority = value;
     }
 

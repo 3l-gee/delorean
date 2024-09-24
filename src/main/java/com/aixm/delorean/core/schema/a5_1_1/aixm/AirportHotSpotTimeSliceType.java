@@ -15,12 +15,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -76,10 +74,12 @@ public class AirportHotSpotTimeSliceType
     @XmlElement(nillable = true)
     @Column(name = "instruction")
     protected TextInstructionType instruction;
-    @XmlElementRef(name = "area", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedSurfacePropertyType> area;
-    @XmlElementRef(name = "affectedAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirportHeliportPropertyType> affectedAirport;
+    @XmlElement(nillable = true)
+    @Column(name = "area")
+    protected ElevatedSurfacePropertyType area;
+    @XmlElement(nillable = true)
+    @Column(name = "affected_airport")
+    protected AirportHeliportPropertyType affectedAirport;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -148,10 +148,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getArea() {
+    public ElevatedSurfacePropertyType getArea() {
         return area;
     }
 
@@ -160,10 +160,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setArea(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setArea(ElevatedSurfacePropertyType value) {
         this.area = value;
     }
 
@@ -176,10 +176,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAffectedAirport() {
+    public AirportHeliportPropertyType getAffectedAirport() {
         return affectedAirport;
     }
 
@@ -188,10 +188,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAffectedAirport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAffectedAirport(AirportHeliportPropertyType value) {
         this.affectedAirport = value;
     }
 

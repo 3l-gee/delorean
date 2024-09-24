@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -74,8 +72,9 @@ public class ReflectorType
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     protected CodeReflectorType type;
-    @XmlElementRef(name = "touchdownReflector", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedPointPropertyType> touchdownReflector;
+    @XmlElement(nillable = true)
+    @Column(name = "touchdown_reflector")
+    protected ElevatedPointPropertyType touchdownReflector;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -116,10 +115,10 @@ public class ReflectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getTouchdownReflector() {
+    public ElevatedPointPropertyType getTouchdownReflector() {
         return touchdownReflector;
     }
 
@@ -128,10 +127,10 @@ public class ReflectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setTouchdownReflector(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setTouchdownReflector(ElevatedPointPropertyType value) {
         this.touchdownReflector = value;
     }
 

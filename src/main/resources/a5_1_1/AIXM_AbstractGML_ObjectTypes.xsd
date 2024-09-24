@@ -66,6 +66,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="aixm:AbstractAIXMFeatureBaseType">
 				<sequence>
 					<element name="featureMetadata" type="aixm:FeatureMetadataPropertyType" minOccurs="0"/>
+					<!-- Adding dbID as a new field -->
+                	<element name="dbID" type="xs:long" minOccurs="0"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -82,8 +84,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<restriction base="gml:AbstractGMLType">
 				<sequence>
-					<!-- For persistence requirement -->
-					<element name="dbID" type="xs:long" minOccurs="0"/>
+					<sequence/>
 				</sequence>
 				<attribute ref="gml:id" use="required"/>
 			</restriction>
@@ -134,6 +135,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element ref="aixm:correctionNumber" minOccurs="0"/>
 					<element name="timeSliceMetadata" type="aixm:FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
 					<element ref="aixm:featureLifetime" minOccurs="0"/>
+					<!-- Adding dbID as a new field -->
+                	<element name="dbID" type="xs:long" minOccurs="0"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -147,6 +150,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				<sequence>
 					<element ref="aixm:sequenceNumber" minOccurs="0"/>
 					<element name="messageMetadata" type="aixm:MessageMetadataPropertyType" minOccurs="0"/>
+					<!-- Adding dbID as a new field -->
+					<element name="dbID" type="xs:long" minOccurs="0"/>
 				</sequence>
 			</extension>
 		</complexContent>

@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -80,10 +78,12 @@ public class RouteDMETimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "satisfactory")
     protected CodeYesNoType satisfactory;
-    @XmlElementRef(name = "referencedDME", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<DMEPropertyType> referencedDME;
-    @XmlElementRef(name = "applicableRoutePortion", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RoutePortionPropertyType> applicableRoutePortion;
+    @XmlElement(nillable = true)
+    @Column(name = "referenced_dme")
+    protected DMEPropertyType referencedDME;
+    @XmlElement(nillable = true)
+    @Column(name = "applicable_route_portion")
+    protected RoutePortionPropertyType applicableRoutePortion;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -152,10 +152,10 @@ public class RouteDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
+     *     {@link DMEPropertyType }
      *     
      */
-    public JAXBElement<DMEPropertyType> getReferencedDME() {
+    public DMEPropertyType getReferencedDME() {
         return referencedDME;
     }
 
@@ -164,10 +164,10 @@ public class RouteDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
+     *     {@link DMEPropertyType }
      *     
      */
-    public void setReferencedDME(JAXBElement<DMEPropertyType> value) {
+    public void setReferencedDME(DMEPropertyType value) {
         this.referencedDME = value;
     }
 
@@ -180,10 +180,10 @@ public class RouteDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
+     *     {@link RoutePortionPropertyType }
      *     
      */
-    public JAXBElement<RoutePortionPropertyType> getApplicableRoutePortion() {
+    public RoutePortionPropertyType getApplicableRoutePortion() {
         return applicableRoutePortion;
     }
 
@@ -192,10 +192,10 @@ public class RouteDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
+     *     {@link RoutePortionPropertyType }
      *     
      */
-    public void setApplicableRoutePortion(JAXBElement<RoutePortionPropertyType> value) {
+    public void setApplicableRoutePortion(RoutePortionPropertyType value) {
         this.applicableRoutePortion = value;
     }
 

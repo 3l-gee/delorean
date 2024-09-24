@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -91,8 +89,9 @@ public class TaxiHoldingPositionMarkingTimeSliceType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "markedTaxiHold", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TaxiHoldingPositionPropertyType> markedTaxiHold;
+    @XmlElement(nillable = true)
+    @Column(name = "marked_taxi_hold")
+    protected TaxiHoldingPositionPropertyType markedTaxiHold;
     protected List<TaxiHoldingPositionMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -236,10 +235,10 @@ public class TaxiHoldingPositionMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TaxiHoldingPositionPropertyType }{@code >}
+     *     {@link TaxiHoldingPositionPropertyType }
      *     
      */
-    public JAXBElement<TaxiHoldingPositionPropertyType> getMarkedTaxiHold() {
+    public TaxiHoldingPositionPropertyType getMarkedTaxiHold() {
         return markedTaxiHold;
     }
 
@@ -248,10 +247,10 @@ public class TaxiHoldingPositionMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TaxiHoldingPositionPropertyType }{@code >}
+     *     {@link TaxiHoldingPositionPropertyType }
      *     
      */
-    public void setMarkedTaxiHold(JAXBElement<TaxiHoldingPositionPropertyType> value) {
+    public void setMarkedTaxiHold(TaxiHoldingPositionPropertyType value) {
         this.markedTaxiHold = value;
     }
 

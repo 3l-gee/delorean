@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -107,8 +105,9 @@ public class ApronLightSystemTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "position")
     protected CodeApronSectionType position;
-    @XmlElementRef(name = "lightedApron", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ApronPropertyType> lightedApron;
+    @XmlElement(nillable = true)
+    @Column(name = "lighted_apron")
+    protected ApronPropertyType lightedApron;
     protected List<ApronLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -348,10 +347,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
+     *     {@link ApronPropertyType }
      *     
      */
-    public JAXBElement<ApronPropertyType> getLightedApron() {
+    public ApronPropertyType getLightedApron() {
         return lightedApron;
     }
 
@@ -360,10 +359,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
+     *     {@link ApronPropertyType }
      *     
      */
-    public void setLightedApron(JAXBElement<ApronPropertyType> value) {
+    public void setLightedApron(ApronPropertyType value) {
         this.lightedApron = value;
     }
 

@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -126,8 +124,9 @@ public class ApproachLightingSystemTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "alignment_indicator")
     protected CodeYesNoType alignmentIndicator;
-    @XmlElementRef(name = "servedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RunwayDirectionPropertyType> servedRunwayDirection;
+    @XmlElement(nillable = true)
+    @Column(name = "served_runway_direction")
+    protected RunwayDirectionPropertyType servedRunwayDirection;
     protected List<ApproachLightingSystemTimeSliceType.Extension> extension;
 
     /**
@@ -479,10 +478,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public JAXBElement<RunwayDirectionPropertyType> getServedRunwayDirection() {
+    public RunwayDirectionPropertyType getServedRunwayDirection() {
         return servedRunwayDirection;
     }
 
@@ -491,10 +490,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public void setServedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
+    public void setServedRunwayDirection(RunwayDirectionPropertyType value) {
         this.servedRunwayDirection = value;
     }
 

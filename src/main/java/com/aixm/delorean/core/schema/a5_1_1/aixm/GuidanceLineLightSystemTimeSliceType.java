@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -102,8 +100,9 @@ public class GuidanceLineLightSystemTimeSliceType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "lightedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<GuidanceLinePropertyType> lightedGuidanceLine;
+    @XmlElement(nillable = true)
+    @Column(name = "lighted_guidance_line")
+    protected GuidanceLinePropertyType lightedGuidanceLine;
     protected List<GuidanceLineLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -315,10 +314,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public JAXBElement<GuidanceLinePropertyType> getLightedGuidanceLine() {
+    public GuidanceLinePropertyType getLightedGuidanceLine() {
         return lightedGuidanceLine;
     }
 
@@ -327,10 +326,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public void setLightedGuidanceLine(JAXBElement<GuidanceLinePropertyType> value) {
+    public void setLightedGuidanceLine(GuidanceLinePropertyType value) {
         this.lightedGuidanceLine = value;
     }
 

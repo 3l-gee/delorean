@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -92,8 +90,9 @@ public class StandardLevelColumnTimeSliceType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<StandardLevelPropertyType> level;
-    @XmlElementRef(name = "levelTable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<StandardLevelTablePropertyType> levelTable;
+    @XmlElement(nillable = true)
+    @Column(name = "level_table")
+    protected StandardLevelTablePropertyType levelTable;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -230,10 +229,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link StandardLevelTablePropertyType }{@code >}
+     *     {@link StandardLevelTablePropertyType }
      *     
      */
-    public JAXBElement<StandardLevelTablePropertyType> getLevelTable() {
+    public StandardLevelTablePropertyType getLevelTable() {
         return levelTable;
     }
 
@@ -242,10 +241,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link StandardLevelTablePropertyType }{@code >}
+     *     {@link StandardLevelTablePropertyType }
      *     
      */
-    public void setLevelTable(JAXBElement<StandardLevelTablePropertyType> value) {
+    public void setLevelTable(StandardLevelTablePropertyType value) {
         this.levelTable = value;
     }
 

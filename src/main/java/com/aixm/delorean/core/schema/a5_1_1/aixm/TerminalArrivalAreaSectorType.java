@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -86,10 +84,12 @@ public class TerminalArrivalAreaSectorType
     @Enumerated(EnumType.STRING)
     @Column(name = "altitude_description")
     protected CodeAltitudeUseType altitudeDescription;
-    @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SurfacePropertyType> extent;
+    @XmlElement(nillable = true)
+    @Column(name = "sector_definition")
+    protected CircleSectorPropertyType sectorDefinition;
+    @XmlElement(nillable = true)
+    @Column(name = "extent")
+    protected SurfacePropertyType extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -191,10 +191,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
+     *     {@link CircleSectorPropertyType }
      *     
      */
-    public JAXBElement<CircleSectorPropertyType> getSectorDefinition() {
+    public CircleSectorPropertyType getSectorDefinition() {
         return sectorDefinition;
     }
 
@@ -203,10 +203,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
+     *     {@link CircleSectorPropertyType }
      *     
      */
-    public void setSectorDefinition(JAXBElement<CircleSectorPropertyType> value) {
+    public void setSectorDefinition(CircleSectorPropertyType value) {
         this.sectorDefinition = value;
     }
 
@@ -219,10 +219,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public JAXBElement<SurfacePropertyType> getExtent() {
+    public SurfacePropertyType getExtent() {
         return extent;
     }
 
@@ -231,10 +231,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<SurfacePropertyType> value) {
+    public void setExtent(SurfacePropertyType value) {
         this.extent = value;
     }
 

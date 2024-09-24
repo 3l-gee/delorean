@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -80,10 +78,12 @@ public class ProcedureDMETimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "satisfactory")
     protected CodeYesNoType satisfactory;
-    @XmlElementRef(name = "DME", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<DMEPropertyType> dme;
-    @XmlElementRef(name = "segmentLeg", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SegmentLegPropertyType> segmentLeg;
+    @XmlElement(name = "DME", nillable = true)
+    @Column(name = "dme")
+    protected DMEPropertyType dme;
+    @XmlElement(nillable = true)
+    @Column(name = "segment_leg")
+    protected SegmentLegPropertyType segmentLeg;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -152,10 +152,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
+     *     {@link DMEPropertyType }
      *     
      */
-    public JAXBElement<DMEPropertyType> getDME() {
+    public DMEPropertyType getDME() {
         return dme;
     }
 
@@ -164,10 +164,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
+     *     {@link DMEPropertyType }
      *     
      */
-    public void setDME(JAXBElement<DMEPropertyType> value) {
+    public void setDME(DMEPropertyType value) {
         this.dme = value;
     }
 
@@ -180,10 +180,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SegmentLegPropertyType }{@code >}
+     *     {@link SegmentLegPropertyType }
      *     
      */
-    public JAXBElement<SegmentLegPropertyType> getSegmentLeg() {
+    public SegmentLegPropertyType getSegmentLeg() {
         return segmentLeg;
     }
 
@@ -192,10 +192,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SegmentLegPropertyType }{@code >}
+     *     {@link SegmentLegPropertyType }
      *     
      */
-    public void setSegmentLeg(JAXBElement<SegmentLegPropertyType> value) {
+    public void setSegmentLeg(SegmentLegPropertyType value) {
         this.segmentLeg = value;
     }
 

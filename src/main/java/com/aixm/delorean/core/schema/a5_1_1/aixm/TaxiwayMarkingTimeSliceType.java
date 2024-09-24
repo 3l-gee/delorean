@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -97,10 +95,12 @@ public class TaxiwayMarkingTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "marking_location")
     protected CodeTaxiwaySectionType markingLocation;
-    @XmlElementRef(name = "markedTaxiway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TaxiwayPropertyType> markedTaxiway;
-    @XmlElementRef(name = "markedElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TaxiwayElementPropertyType> markedElement;
+    @XmlElement(nillable = true)
+    @Column(name = "marked_taxiway")
+    protected TaxiwayPropertyType markedTaxiway;
+    @XmlElement(nillable = true)
+    @Column(name = "marked_element")
+    protected TaxiwayElementPropertyType markedElement;
     protected List<TaxiwayMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -272,10 +272,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
+     *     {@link TaxiwayPropertyType }
      *     
      */
-    public JAXBElement<TaxiwayPropertyType> getMarkedTaxiway() {
+    public TaxiwayPropertyType getMarkedTaxiway() {
         return markedTaxiway;
     }
 
@@ -284,10 +284,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
+     *     {@link TaxiwayPropertyType }
      *     
      */
-    public void setMarkedTaxiway(JAXBElement<TaxiwayPropertyType> value) {
+    public void setMarkedTaxiway(TaxiwayPropertyType value) {
         this.markedTaxiway = value;
     }
 
@@ -300,10 +300,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayElementPropertyType }{@code >}
+     *     {@link TaxiwayElementPropertyType }
      *     
      */
-    public JAXBElement<TaxiwayElementPropertyType> getMarkedElement() {
+    public TaxiwayElementPropertyType getMarkedElement() {
         return markedElement;
     }
 
@@ -312,10 +312,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayElementPropertyType }{@code >}
+     *     {@link TaxiwayElementPropertyType }
      *     
      */
-    public void setMarkedElement(JAXBElement<TaxiwayElementPropertyType> value) {
+    public void setMarkedElement(TaxiwayElementPropertyType value) {
         this.markedElement = value;
     }
 

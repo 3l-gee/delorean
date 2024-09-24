@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -96,8 +94,9 @@ public class ApronMarkingTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "marking_location")
     protected CodeApronSectionType markingLocation;
-    @XmlElementRef(name = "markedApron", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ApronPropertyType> markedApron;
+    @XmlElement(nillable = true)
+    @Column(name = "marked_apron")
+    protected ApronPropertyType markedApron;
     protected List<ApronMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -269,10 +268,10 @@ public class ApronMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
+     *     {@link ApronPropertyType }
      *     
      */
-    public JAXBElement<ApronPropertyType> getMarkedApron() {
+    public ApronPropertyType getMarkedApron() {
         return markedApron;
     }
 
@@ -281,10 +280,10 @@ public class ApronMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
+     *     {@link ApronPropertyType }
      *     
      */
-    public void setMarkedApron(JAXBElement<ApronPropertyType> value) {
+    public void setMarkedApron(ApronPropertyType value) {
         this.markedApron = value;
     }
 

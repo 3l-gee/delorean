@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -107,8 +105,9 @@ public class RunwayProtectAreaLightSystemTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "position")
     protected CodeProtectAreaSectionType position;
-    @XmlElementRef(name = "lightedArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RunwayProtectAreaPropertyType> lightedArea;
+    @XmlElement(nillable = true)
+    @Column(name = "lighted_area")
+    protected RunwayProtectAreaPropertyType lightedArea;
     protected List<RunwayProtectAreaLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -348,10 +347,10 @@ public class RunwayProtectAreaLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayProtectAreaPropertyType }{@code >}
+     *     {@link RunwayProtectAreaPropertyType }
      *     
      */
-    public JAXBElement<RunwayProtectAreaPropertyType> getLightedArea() {
+    public RunwayProtectAreaPropertyType getLightedArea() {
         return lightedArea;
     }
 
@@ -360,10 +359,10 @@ public class RunwayProtectAreaLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayProtectAreaPropertyType }{@code >}
+     *     {@link RunwayProtectAreaPropertyType }
      *     
      */
-    public void setLightedArea(JAXBElement<RunwayProtectAreaPropertyType> value) {
+    public void setLightedArea(RunwayProtectAreaPropertyType value) {
         this.lightedArea = value;
     }
 

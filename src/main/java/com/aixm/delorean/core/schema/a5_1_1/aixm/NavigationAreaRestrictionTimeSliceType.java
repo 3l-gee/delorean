@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -81,10 +79,12 @@ public class NavigationAreaRestrictionTimeSliceType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ProcedurePropertyType> procedure;
-    @XmlElementRef(name = "designSurface", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ObstacleAssessmentAreaPropertyType> designSurface;
-    @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
+    @XmlElement(nillable = true)
+    @Column(name = "design_surface")
+    protected ObstacleAssessmentAreaPropertyType designSurface;
+    @XmlElement(nillable = true)
+    @Column(name = "sector_definition")
+    protected CircleSectorPropertyType sectorDefinition;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -165,10 +165,10 @@ public class NavigationAreaRestrictionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ObstacleAssessmentAreaPropertyType }{@code >}
+     *     {@link ObstacleAssessmentAreaPropertyType }
      *     
      */
-    public JAXBElement<ObstacleAssessmentAreaPropertyType> getDesignSurface() {
+    public ObstacleAssessmentAreaPropertyType getDesignSurface() {
         return designSurface;
     }
 
@@ -177,10 +177,10 @@ public class NavigationAreaRestrictionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ObstacleAssessmentAreaPropertyType }{@code >}
+     *     {@link ObstacleAssessmentAreaPropertyType }
      *     
      */
-    public void setDesignSurface(JAXBElement<ObstacleAssessmentAreaPropertyType> value) {
+    public void setDesignSurface(ObstacleAssessmentAreaPropertyType value) {
         this.designSurface = value;
     }
 
@@ -193,10 +193,10 @@ public class NavigationAreaRestrictionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
+     *     {@link CircleSectorPropertyType }
      *     
      */
-    public JAXBElement<CircleSectorPropertyType> getSectorDefinition() {
+    public CircleSectorPropertyType getSectorDefinition() {
         return sectorDefinition;
     }
 
@@ -205,10 +205,10 @@ public class NavigationAreaRestrictionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
+     *     {@link CircleSectorPropertyType }
      *     
      */
-    public void setSectorDefinition(JAXBElement<CircleSectorPropertyType> value) {
+    public void setSectorDefinition(CircleSectorPropertyType value) {
         this.sectorDefinition = value;
     }
 

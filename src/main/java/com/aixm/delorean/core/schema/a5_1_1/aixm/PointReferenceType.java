@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -85,8 +83,9 @@ public class PointReferenceType
     @XmlElement(nillable = true)
     @Column(name = "post_fix_tolerance")
     protected ValDistanceSignedType postFixTolerance;
-    @XmlElementRef(name = "point", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<DesignatedPointPropertyType> point;
+    @XmlElement(nillable = true)
+    @Column(name = "point")
+    protected DesignatedPointPropertyType point;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -97,8 +96,9 @@ public class PointReferenceType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<DistanceIndicationPropertyType> facilityDistance;
-    @XmlElementRef(name = "fixToleranceArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SurfacePropertyType> fixToleranceArea;
+    @XmlElement(nillable = true)
+    @Column(name = "fix_tolerance_area")
+    protected SurfacePropertyType fixToleranceArea;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -195,10 +195,10 @@ public class PointReferenceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getPoint() {
+    public DesignatedPointPropertyType getPoint() {
         return point;
     }
 
@@ -207,10 +207,10 @@ public class PointReferenceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setPoint(DesignatedPointPropertyType value) {
         this.point = value;
     }
 
@@ -303,10 +303,10 @@ public class PointReferenceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public JAXBElement<SurfacePropertyType> getFixToleranceArea() {
+    public SurfacePropertyType getFixToleranceArea() {
         return fixToleranceArea;
     }
 
@@ -315,10 +315,10 @@ public class PointReferenceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public void setFixToleranceArea(JAXBElement<SurfacePropertyType> value) {
+    public void setFixToleranceArea(SurfacePropertyType value) {
         this.fixToleranceArea = value;
     }
 

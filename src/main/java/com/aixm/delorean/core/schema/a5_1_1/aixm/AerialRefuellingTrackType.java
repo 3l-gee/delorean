@@ -15,12 +15,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,8 +67,9 @@ public class AerialRefuellingTrackType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CurvePropertyType> extent;
+    @XmlElement(nillable = true)
+    @Column(name = "extent")
+    protected CurvePropertyType extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -93,10 +92,10 @@ public class AerialRefuellingTrackType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public JAXBElement<CurvePropertyType> getExtent() {
+    public CurvePropertyType getExtent() {
         return extent;
     }
 
@@ -105,10 +104,10 @@ public class AerialRefuellingTrackType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<CurvePropertyType> value) {
+    public void setExtent(CurvePropertyType value) {
         this.extent = value;
     }
 

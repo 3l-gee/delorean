@@ -11,10 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -49,8 +48,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     ElevatedCurveType.class
 })
-@Entity
-@Table(name = "curve_type")
+@MappedSuperclass
 public class CurveType
     extends com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType
 {

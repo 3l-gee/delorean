@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -199,25 +197,32 @@ public class FinalLegTimeSliceType
     @XmlElement(nillable = true)
     @Column(name = "vertical_angle")
     protected ValAngleType verticalAngle;
-    @XmlElementRef(name = "startPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TerminalSegmentPointPropertyType> startPoint;
-    @XmlElementRef(name = "endPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TerminalSegmentPointPropertyType> endPoint;
-    @XmlElementRef(name = "trajectory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CurvePropertyType> trajectory;
-    @XmlElementRef(name = "arcCentre", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TerminalSegmentPointPropertyType> arcCentre;
-    @XmlElementRef(name = "angle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AngleIndicationPropertyType> angle;
-    @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<DistanceIndicationPropertyType> distance;
+    @XmlElement(nillable = true)
+    @Column(name = "start_point")
+    protected TerminalSegmentPointPropertyType startPoint;
+    @XmlElement(nillable = true)
+    @Column(name = "end_point")
+    protected TerminalSegmentPointPropertyType endPoint;
+    @XmlElement(nillable = true)
+    @Column(name = "trajectory")
+    protected CurvePropertyType trajectory;
+    @XmlElement(nillable = true)
+    @Column(name = "arc_centre")
+    protected TerminalSegmentPointPropertyType arcCentre;
+    @XmlElement(nillable = true)
+    @Column(name = "angle")
+    protected AngleIndicationPropertyType angle;
+    @XmlElement(nillable = true)
+    @Column(name = "distance")
+    protected DistanceIndicationPropertyType distance;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
-    @XmlElementRef(name = "holding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<HoldingUsePropertyType> holding;
+    @XmlElement(nillable = true)
+    @Column(name = "holding")
+    protected HoldingUsePropertyType holding;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -228,8 +233,9 @@ public class FinalLegTimeSliceType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
+    @XmlElement(nillable = true)
+    @Column(name = "approach")
+    protected InstrumentApproachProcedurePropertyType approach;
     @XmlElement(nillable = true)
     @Enumerated(EnumType.STRING)
     @Column(name = "guidance_system")
@@ -285,10 +291,12 @@ public class FinalLegTimeSliceType
     @XmlElement(name = "finalPathAlignmentPoint_airportReferencePoint", nillable = true)
     @Column(name = "final_path_alignment_point_airport_reference_point")
     protected AirportHeliportPropertyType finalPathAlignmentPointAirportReferencePoint;
-    @XmlElementRef(name = "visualDescentPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TerminalSegmentPointPropertyType> visualDescentPoint;
-    @XmlElementRef(name = "FASData", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<FASDataBlockPropertyType> fasData;
+    @XmlElement(nillable = true)
+    @Column(name = "visual_descent_point")
+    protected TerminalSegmentPointPropertyType visualDescentPoint;
+    @XmlElement(name = "FASData", nillable = true)
+    @Column(name = "fas_data")
+    protected FASDataBlockPropertyType fasData;
     protected List<FinalLegTimeSliceType.Extension> extension;
 
     /**
@@ -912,10 +920,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
+     *     {@link TerminalSegmentPointPropertyType }
      *     
      */
-    public JAXBElement<TerminalSegmentPointPropertyType> getStartPoint() {
+    public TerminalSegmentPointPropertyType getStartPoint() {
         return startPoint;
     }
 
@@ -924,10 +932,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
+     *     {@link TerminalSegmentPointPropertyType }
      *     
      */
-    public void setStartPoint(JAXBElement<TerminalSegmentPointPropertyType> value) {
+    public void setStartPoint(TerminalSegmentPointPropertyType value) {
         this.startPoint = value;
     }
 
@@ -940,10 +948,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
+     *     {@link TerminalSegmentPointPropertyType }
      *     
      */
-    public JAXBElement<TerminalSegmentPointPropertyType> getEndPoint() {
+    public TerminalSegmentPointPropertyType getEndPoint() {
         return endPoint;
     }
 
@@ -952,10 +960,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
+     *     {@link TerminalSegmentPointPropertyType }
      *     
      */
-    public void setEndPoint(JAXBElement<TerminalSegmentPointPropertyType> value) {
+    public void setEndPoint(TerminalSegmentPointPropertyType value) {
         this.endPoint = value;
     }
 
@@ -968,10 +976,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public JAXBElement<CurvePropertyType> getTrajectory() {
+    public CurvePropertyType getTrajectory() {
         return trajectory;
     }
 
@@ -980,10 +988,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public void setTrajectory(JAXBElement<CurvePropertyType> value) {
+    public void setTrajectory(CurvePropertyType value) {
         this.trajectory = value;
     }
 
@@ -996,10 +1004,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
+     *     {@link TerminalSegmentPointPropertyType }
      *     
      */
-    public JAXBElement<TerminalSegmentPointPropertyType> getArcCentre() {
+    public TerminalSegmentPointPropertyType getArcCentre() {
         return arcCentre;
     }
 
@@ -1008,10 +1016,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
+     *     {@link TerminalSegmentPointPropertyType }
      *     
      */
-    public void setArcCentre(JAXBElement<TerminalSegmentPointPropertyType> value) {
+    public void setArcCentre(TerminalSegmentPointPropertyType value) {
         this.arcCentre = value;
     }
 
@@ -1024,10 +1032,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AngleIndicationPropertyType }{@code >}
+     *     {@link AngleIndicationPropertyType }
      *     
      */
-    public JAXBElement<AngleIndicationPropertyType> getAngle() {
+    public AngleIndicationPropertyType getAngle() {
         return angle;
     }
 
@@ -1036,10 +1044,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AngleIndicationPropertyType }{@code >}
+     *     {@link AngleIndicationPropertyType }
      *     
      */
-    public void setAngle(JAXBElement<AngleIndicationPropertyType> value) {
+    public void setAngle(AngleIndicationPropertyType value) {
         this.angle = value;
     }
 
@@ -1052,10 +1060,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DistanceIndicationPropertyType }{@code >}
+     *     {@link DistanceIndicationPropertyType }
      *     
      */
-    public JAXBElement<DistanceIndicationPropertyType> getDistance() {
+    public DistanceIndicationPropertyType getDistance() {
         return distance;
     }
 
@@ -1064,10 +1072,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DistanceIndicationPropertyType }{@code >}
+     *     {@link DistanceIndicationPropertyType }
      *     
      */
-    public void setDistance(JAXBElement<DistanceIndicationPropertyType> value) {
+    public void setDistance(DistanceIndicationPropertyType value) {
         this.distance = value;
     }
 
@@ -1120,10 +1128,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link HoldingUsePropertyType }{@code >}
+     *     {@link HoldingUsePropertyType }
      *     
      */
-    public JAXBElement<HoldingUsePropertyType> getHolding() {
+    public HoldingUsePropertyType getHolding() {
         return holding;
     }
 
@@ -1132,10 +1140,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link HoldingUsePropertyType }{@code >}
+     *     {@link HoldingUsePropertyType }
      *     
      */
-    public void setHolding(JAXBElement<HoldingUsePropertyType> value) {
+    public void setHolding(HoldingUsePropertyType value) {
         this.holding = value;
     }
 
@@ -1228,10 +1236,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public JAXBElement<InstrumentApproachProcedurePropertyType> getApproach() {
+    public InstrumentApproachProcedurePropertyType getApproach() {
         return approach;
     }
 
@@ -1240,10 +1248,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public void setApproach(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
+    public void setApproach(InstrumentApproachProcedurePropertyType value) {
         this.approach = value;
     }
 
@@ -1716,10 +1724,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
+     *     {@link TerminalSegmentPointPropertyType }
      *     
      */
-    public JAXBElement<TerminalSegmentPointPropertyType> getVisualDescentPoint() {
+    public TerminalSegmentPointPropertyType getVisualDescentPoint() {
         return visualDescentPoint;
     }
 
@@ -1728,10 +1736,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
+     *     {@link TerminalSegmentPointPropertyType }
      *     
      */
-    public void setVisualDescentPoint(JAXBElement<TerminalSegmentPointPropertyType> value) {
+    public void setVisualDescentPoint(TerminalSegmentPointPropertyType value) {
         this.visualDescentPoint = value;
     }
 
@@ -1744,10 +1752,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link FASDataBlockPropertyType }{@code >}
+     *     {@link FASDataBlockPropertyType }
      *     
      */
-    public JAXBElement<FASDataBlockPropertyType> getFASData() {
+    public FASDataBlockPropertyType getFASData() {
         return fasData;
     }
 
@@ -1756,10 +1764,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link FASDataBlockPropertyType }{@code >}
+     *     {@link FASDataBlockPropertyType }
      *     
      */
-    public void setFASData(JAXBElement<FASDataBlockPropertyType> value) {
+    public void setFASData(FASDataBlockPropertyType value) {
         this.fasData = value;
     }
 

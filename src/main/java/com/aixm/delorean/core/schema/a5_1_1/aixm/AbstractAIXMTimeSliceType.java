@@ -8,10 +8,16 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePrimitivePropertyType;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -32,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}correctionNumber" minOccurs="0"/>
  *         <element name="timeSliceMetadata" type="{http://www.aixm.aero/schema/5.1.1}FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}featureLifetime" minOccurs="0"/>
- *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -47,8 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "sequenceNumber",
     "correctionNumber",
     "timeSliceMetadata",
-    "featureLifetime",
-    "dbID"
+    "featureLifetime"
 })
 @XmlSeeAlso({
     AerialRefuellingTimeSliceType.class,
@@ -177,6 +182,7 @@ import jakarta.xml.bind.annotation.XmlType;
     RadarSystemTimeSliceType.class,
     SecondarySurveillanceRadarTimeSliceType.class
 })
+@MappedSuperclass
 public abstract class AbstractAIXMTimeSliceType
     extends AbstractAIXMTimeSliceBaseType
 {
@@ -203,7 +209,11 @@ public abstract class AbstractAIXMTimeSliceType
      * 
      */
     protected TimePrimitivePropertyType featureLifetime;
-    protected long dbID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @XmlTransient
+    protected Long dbID;
 
     /**
      * Property indicating how the timeslice is to be interpreted.  See the AIXM Temporality model for details.
@@ -352,21 +362,29 @@ public abstract class AbstractAIXMTimeSliceType
     /**
      * Gets the value of the dbID property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
-    public long getDbID() {
+    public Long getDbID() {
         return dbID;
     }
 
     /**
      * Sets the value of the dbID property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setDbID(long value) {
+    public void setDbID(Long value) {
         this.dbID = value;
     }
 
     public boolean isSetDbID() {
-        return true;
+        return (this.dbID!= null);
     }
 
 }

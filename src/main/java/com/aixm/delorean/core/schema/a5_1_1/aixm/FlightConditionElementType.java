@@ -15,12 +15,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -148,8 +146,9 @@ public class FlightConditionElementType
     @XmlElement(name = "flightCondition_aerialRefuellingCondition", nillable = true)
     @Column(name = "flight_condition_aerial_refuelling_condition")
     protected AerialRefuellingPropertyType flightConditionAerialRefuellingCondition;
-    @XmlElementRef(name = "operationalCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<FlightConditionCircumstancePropertyType> operationalCondition;
+    @XmlElement(nillable = true)
+    @Column(name = "operational_condition")
+    protected FlightConditionCircumstancePropertyType operationalCondition;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -727,10 +726,10 @@ public class FlightConditionElementType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link FlightConditionCircumstancePropertyType }{@code >}
+     *     {@link FlightConditionCircumstancePropertyType }
      *     
      */
-    public JAXBElement<FlightConditionCircumstancePropertyType> getOperationalCondition() {
+    public FlightConditionCircumstancePropertyType getOperationalCondition() {
         return operationalCondition;
     }
 
@@ -739,10 +738,10 @@ public class FlightConditionElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link FlightConditionCircumstancePropertyType }{@code >}
+     *     {@link FlightConditionCircumstancePropertyType }
      *     
      */
-    public void setOperationalCondition(JAXBElement<FlightConditionCircumstancePropertyType> value) {
+    public void setOperationalCondition(FlightConditionCircumstancePropertyType value) {
         this.operationalCondition = value;
     }
 

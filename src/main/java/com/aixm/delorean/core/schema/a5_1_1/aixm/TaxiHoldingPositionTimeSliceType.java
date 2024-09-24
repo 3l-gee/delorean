@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -81,15 +79,17 @@ public class TaxiHoldingPositionTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     protected CodeStatusOperationsType status;
-    @XmlElementRef(name = "associatedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<GuidanceLinePropertyType> associatedGuidanceLine;
+    @XmlElement(nillable = true)
+    @Column(name = "associated_guidance_line")
+    protected GuidanceLinePropertyType associatedGuidanceLine;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RunwayPropertyType> protectedRunway;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedPointPropertyType> location;
+    @XmlElement(nillable = true)
+    @Column(name = "location")
+    protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -158,10 +158,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public JAXBElement<GuidanceLinePropertyType> getAssociatedGuidanceLine() {
+    public GuidanceLinePropertyType getAssociatedGuidanceLine() {
         return associatedGuidanceLine;
     }
 
@@ -170,10 +170,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public void setAssociatedGuidanceLine(JAXBElement<GuidanceLinePropertyType> value) {
+    public void setAssociatedGuidanceLine(GuidanceLinePropertyType value) {
         this.associatedGuidanceLine = value;
     }
 
@@ -226,10 +226,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getLocation() {
+    public ElevatedPointPropertyType getLocation() {
         return location;
     }
 
@@ -238,10 +238,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setLocation(ElevatedPointPropertyType value) {
         this.location = value;
     }
 

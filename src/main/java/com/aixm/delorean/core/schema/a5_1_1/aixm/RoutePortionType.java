@@ -15,12 +15,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -121,8 +119,9 @@ public class RoutePortionType
     @XmlElement(name = "intermediatePoint_airportReferencePoint", nillable = true)
     @Column(name = "intermediate_point_airport_reference_point")
     protected AirportHeliportPropertyType intermediatePointAirportReferencePoint;
-    @XmlElementRef(name = "referencedRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RoutePropertyType> referencedRoute;
+    @XmlElement(nillable = true)
+    @Column(name = "referenced_route")
+    protected RoutePropertyType referencedRoute;
     @XmlElement(name = "end_fixDesignatedPoint", nillable = true)
     @Column(name = "end_fix_designated_point")
     protected DesignatedPointPropertyType endFixDesignatedPoint;
@@ -489,10 +488,10 @@ public class RoutePortionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
+     *     {@link RoutePropertyType }
      *     
      */
-    public JAXBElement<RoutePropertyType> getReferencedRoute() {
+    public RoutePropertyType getReferencedRoute() {
         return referencedRoute;
     }
 
@@ -501,10 +500,10 @@ public class RoutePortionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
+     *     {@link RoutePropertyType }
      *     
      */
-    public void setReferencedRoute(JAXBElement<RoutePropertyType> value) {
+    public void setReferencedRoute(RoutePropertyType value) {
         this.referencedRoute = value;
     }
 

@@ -15,12 +15,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,10 +66,12 @@ public class AirspaceBorderCrossingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "exitedAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirspacePropertyType> exitedAirspace;
-    @XmlElementRef(name = "enteredAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirspacePropertyType> enteredAirspace;
+    @XmlElement(nillable = true)
+    @Column(name = "exited_airspace")
+    protected AirspacePropertyType exitedAirspace;
+    @XmlElement(nillable = true)
+    @Column(name = "entered_airspace")
+    protected AirspacePropertyType enteredAirspace;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -84,10 +84,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
+     *     {@link AirspacePropertyType }
      *     
      */
-    public JAXBElement<AirspacePropertyType> getExitedAirspace() {
+    public AirspacePropertyType getExitedAirspace() {
         return exitedAirspace;
     }
 
@@ -96,10 +96,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
+     *     {@link AirspacePropertyType }
      *     
      */
-    public void setExitedAirspace(JAXBElement<AirspacePropertyType> value) {
+    public void setExitedAirspace(AirspacePropertyType value) {
         this.exitedAirspace = value;
     }
 
@@ -112,10 +112,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
+     *     {@link AirspacePropertyType }
      *     
      */
-    public JAXBElement<AirspacePropertyType> getEnteredAirspace() {
+    public AirspacePropertyType getEnteredAirspace() {
         return enteredAirspace;
     }
 
@@ -124,10 +124,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
+     *     {@link AirspacePropertyType }
      *     
      */
-    public void setEnteredAirspace(JAXBElement<AirspacePropertyType> value) {
+    public void setEnteredAirspace(AirspacePropertyType value) {
         this.enteredAirspace = value;
     }
 

@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -107,10 +105,12 @@ public class CheckpointINSTimeSliceType
     @XmlElement(nillable = true)
     @Column(name = "angle")
     protected ValBearingType angle;
-    @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedPointPropertyType> position;
-    @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
+    @XmlElement(nillable = true)
+    @Column(name = "position")
+    protected ElevatedPointPropertyType position;
+    @XmlElement(nillable = true)
+    @Column(name = "airport_heliport")
+    protected AirportHeliportPropertyType airportHeliport;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -347,10 +347,10 @@ public class CheckpointINSTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getPosition() {
+    public ElevatedPointPropertyType getPosition() {
         return position;
     }
 
@@ -359,10 +359,10 @@ public class CheckpointINSTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setPosition(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setPosition(ElevatedPointPropertyType value) {
         this.position = value;
     }
 
@@ -375,10 +375,10 @@ public class CheckpointINSTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAirportHeliport() {
+    public AirportHeliportPropertyType getAirportHeliport() {
         return airportHeliport;
     }
 
@@ -387,10 +387,10 @@ public class CheckpointINSTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAirportHeliport(AirportHeliportPropertyType value) {
         this.airportHeliport = value;
     }
 
