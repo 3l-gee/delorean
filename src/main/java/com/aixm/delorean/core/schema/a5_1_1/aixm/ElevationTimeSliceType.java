@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -113,8 +111,9 @@ public class ElevationTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "flight_checked")
     protected CodeYesNoType flightChecked;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedPointPropertyType> location;
+    @XmlElement(nillable = true)
+    @Column(name = "location")
+    protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -378,10 +377,10 @@ public class ElevationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getLocation() {
+    public ElevatedPointPropertyType getLocation() {
         return location;
     }
 
@@ -390,10 +389,10 @@ public class ElevationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setLocation(ElevatedPointPropertyType value) {
         this.location = value;
     }
 

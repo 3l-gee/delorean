@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -111,12 +109,15 @@ public class HoldingAssessmentTimeSliceType
     @XmlElement(nillable = true)
     @Column(name = "leg_length_away")
     protected ValDistanceType legLengthAway;
-    @XmlElementRef(name = "holdingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SegmentPointPropertyType> holdingPoint;
-    @XmlElementRef(name = "unplannedHolding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<UnplannedHoldingPropertyType> unplannedHolding;
-    @XmlElementRef(name = "assessedHoldingPattern", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<HoldingPatternPropertyType> assessedHoldingPattern;
+    @XmlElement(nillable = true)
+    @Column(name = "holding_point")
+    protected SegmentPointPropertyType holdingPoint;
+    @XmlElement(nillable = true)
+    @Column(name = "unplanned_holding")
+    protected UnplannedHoldingPropertyType unplannedHolding;
+    @XmlElement(nillable = true)
+    @Column(name = "assessed_holding_pattern")
+    protected HoldingPatternPropertyType assessedHoldingPattern;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -386,10 +387,10 @@ public class HoldingAssessmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SegmentPointPropertyType }{@code >}
+     *     {@link SegmentPointPropertyType }
      *     
      */
-    public JAXBElement<SegmentPointPropertyType> getHoldingPoint() {
+    public SegmentPointPropertyType getHoldingPoint() {
         return holdingPoint;
     }
 
@@ -398,10 +399,10 @@ public class HoldingAssessmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SegmentPointPropertyType }{@code >}
+     *     {@link SegmentPointPropertyType }
      *     
      */
-    public void setHoldingPoint(JAXBElement<SegmentPointPropertyType> value) {
+    public void setHoldingPoint(SegmentPointPropertyType value) {
         this.holdingPoint = value;
     }
 
@@ -414,10 +415,10 @@ public class HoldingAssessmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link UnplannedHoldingPropertyType }{@code >}
+     *     {@link UnplannedHoldingPropertyType }
      *     
      */
-    public JAXBElement<UnplannedHoldingPropertyType> getUnplannedHolding() {
+    public UnplannedHoldingPropertyType getUnplannedHolding() {
         return unplannedHolding;
     }
 
@@ -426,10 +427,10 @@ public class HoldingAssessmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link UnplannedHoldingPropertyType }{@code >}
+     *     {@link UnplannedHoldingPropertyType }
      *     
      */
-    public void setUnplannedHolding(JAXBElement<UnplannedHoldingPropertyType> value) {
+    public void setUnplannedHolding(UnplannedHoldingPropertyType value) {
         this.unplannedHolding = value;
     }
 
@@ -442,10 +443,10 @@ public class HoldingAssessmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link HoldingPatternPropertyType }{@code >}
+     *     {@link HoldingPatternPropertyType }
      *     
      */
-    public JAXBElement<HoldingPatternPropertyType> getAssessedHoldingPattern() {
+    public HoldingPatternPropertyType getAssessedHoldingPattern() {
         return assessedHoldingPattern;
     }
 
@@ -454,10 +455,10 @@ public class HoldingAssessmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link HoldingPatternPropertyType }{@code >}
+     *     {@link HoldingPatternPropertyType }
      *     
      */
-    public void setAssessedHoldingPattern(JAXBElement<HoldingPatternPropertyType> value) {
+    public void setAssessedHoldingPattern(HoldingPatternPropertyType value) {
         this.assessedHoldingPattern = value;
     }
 

@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -181,16 +179,21 @@ public class RouteSegmentTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "designator_suffix")
     protected CodeRouteDesignatorSuffixType designatorSuffix;
-    @XmlElementRef(name = "start", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<EnRouteSegmentPointPropertyType> start;
-    @XmlElementRef(name = "routeFormed", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RoutePropertyType> routeFormed;
-    @XmlElementRef(name = "evaluationArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ObstacleAssessmentAreaPropertyType> evaluationArea;
-    @XmlElementRef(name = "curveExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CurvePropertyType> curveExtent;
-    @XmlElementRef(name = "end", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<EnRouteSegmentPointPropertyType> end;
+    @XmlElement(nillable = true)
+    @Column(name = "start")
+    protected EnRouteSegmentPointPropertyType start;
+    @XmlElement(nillable = true)
+    @Column(name = "route_formed")
+    protected RoutePropertyType routeFormed;
+    @XmlElement(nillable = true)
+    @Column(name = "evaluation_area")
+    protected ObstacleAssessmentAreaPropertyType evaluationArea;
+    @XmlElement(nillable = true)
+    @Column(name = "curve_extent")
+    protected CurvePropertyType curveExtent;
+    @XmlElement(nillable = true)
+    @Column(name = "end")
+    protected EnRouteSegmentPointPropertyType end;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -880,10 +883,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link EnRouteSegmentPointPropertyType }{@code >}
+     *     {@link EnRouteSegmentPointPropertyType }
      *     
      */
-    public JAXBElement<EnRouteSegmentPointPropertyType> getStart() {
+    public EnRouteSegmentPointPropertyType getStart() {
         return start;
     }
 
@@ -892,10 +895,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link EnRouteSegmentPointPropertyType }{@code >}
+     *     {@link EnRouteSegmentPointPropertyType }
      *     
      */
-    public void setStart(JAXBElement<EnRouteSegmentPointPropertyType> value) {
+    public void setStart(EnRouteSegmentPointPropertyType value) {
         this.start = value;
     }
 
@@ -908,10 +911,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
+     *     {@link RoutePropertyType }
      *     
      */
-    public JAXBElement<RoutePropertyType> getRouteFormed() {
+    public RoutePropertyType getRouteFormed() {
         return routeFormed;
     }
 
@@ -920,10 +923,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
+     *     {@link RoutePropertyType }
      *     
      */
-    public void setRouteFormed(JAXBElement<RoutePropertyType> value) {
+    public void setRouteFormed(RoutePropertyType value) {
         this.routeFormed = value;
     }
 
@@ -936,10 +939,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ObstacleAssessmentAreaPropertyType }{@code >}
+     *     {@link ObstacleAssessmentAreaPropertyType }
      *     
      */
-    public JAXBElement<ObstacleAssessmentAreaPropertyType> getEvaluationArea() {
+    public ObstacleAssessmentAreaPropertyType getEvaluationArea() {
         return evaluationArea;
     }
 
@@ -948,10 +951,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ObstacleAssessmentAreaPropertyType }{@code >}
+     *     {@link ObstacleAssessmentAreaPropertyType }
      *     
      */
-    public void setEvaluationArea(JAXBElement<ObstacleAssessmentAreaPropertyType> value) {
+    public void setEvaluationArea(ObstacleAssessmentAreaPropertyType value) {
         this.evaluationArea = value;
     }
 
@@ -964,10 +967,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public JAXBElement<CurvePropertyType> getCurveExtent() {
+    public CurvePropertyType getCurveExtent() {
         return curveExtent;
     }
 
@@ -976,10 +979,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public void setCurveExtent(JAXBElement<CurvePropertyType> value) {
+    public void setCurveExtent(CurvePropertyType value) {
         this.curveExtent = value;
     }
 
@@ -992,10 +995,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link EnRouteSegmentPointPropertyType }{@code >}
+     *     {@link EnRouteSegmentPointPropertyType }
      *     
      */
-    public JAXBElement<EnRouteSegmentPointPropertyType> getEnd() {
+    public EnRouteSegmentPointPropertyType getEnd() {
         return end;
     }
 
@@ -1004,10 +1007,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link EnRouteSegmentPointPropertyType }{@code >}
+     *     {@link EnRouteSegmentPointPropertyType }
      *     
      */
-    public void setEnd(JAXBElement<EnRouteSegmentPointPropertyType> value) {
+    public void setEnd(EnRouteSegmentPointPropertyType value) {
         this.end = value;
     }
 

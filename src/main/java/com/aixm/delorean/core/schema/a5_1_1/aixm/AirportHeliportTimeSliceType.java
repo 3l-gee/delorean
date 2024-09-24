@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -203,12 +201,15 @@ public class AirportHeliportTimeSliceType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<CityPropertyType> servedCity;
-    @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirportHeliportResponsibilityOrganisationPropertyType> responsibleOrganisation;
-    @XmlElementRef(name = "ARP", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedPointPropertyType> arp;
-    @XmlElementRef(name = "aviationBoundary", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedSurfacePropertyType> aviationBoundary;
+    @XmlElement(nillable = true)
+    @Column(name = "responsible_organisation")
+    protected AirportHeliportResponsibilityOrganisationPropertyType responsibleOrganisation;
+    @XmlElement(name = "ARP", nillable = true)
+    @Column(name = "arp")
+    protected ElevatedPointPropertyType arp;
+    @XmlElement(nillable = true)
+    @Column(name = "aviation_boundary")
+    protected ElevatedSurfacePropertyType aviationBoundary;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -1044,10 +1045,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportResponsibilityOrganisationPropertyType }{@code >}
+     *     {@link AirportHeliportResponsibilityOrganisationPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportResponsibilityOrganisationPropertyType> getResponsibleOrganisation() {
+    public AirportHeliportResponsibilityOrganisationPropertyType getResponsibleOrganisation() {
         return responsibleOrganisation;
     }
 
@@ -1056,10 +1057,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportResponsibilityOrganisationPropertyType }{@code >}
+     *     {@link AirportHeliportResponsibilityOrganisationPropertyType }
      *     
      */
-    public void setResponsibleOrganisation(JAXBElement<AirportHeliportResponsibilityOrganisationPropertyType> value) {
+    public void setResponsibleOrganisation(AirportHeliportResponsibilityOrganisationPropertyType value) {
         this.responsibleOrganisation = value;
     }
 
@@ -1072,10 +1073,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getARP() {
+    public ElevatedPointPropertyType getARP() {
         return arp;
     }
 
@@ -1084,10 +1085,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setARP(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setARP(ElevatedPointPropertyType value) {
         this.arp = value;
     }
 
@@ -1100,10 +1101,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getAviationBoundary() {
+    public ElevatedSurfacePropertyType getAviationBoundary() {
         return aviationBoundary;
     }
 
@@ -1112,10 +1113,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setAviationBoundary(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setAviationBoundary(ElevatedSurfacePropertyType value) {
         this.aviationBoundary = value;
     }
 

@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -132,15 +130,17 @@ public class TerminalArrivalAreaTimeSliceType
     @XmlElement(name = "IAF_airportReferencePoint", nillable = true)
     @Column(name = "iaf_airport_reference_point")
     protected AirportHeliportPropertyType iafAirportReferencePoint;
-    @XmlElementRef(name = "buffer", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SurfacePropertyType> buffer;
+    @XmlElement(nillable = true)
+    @Column(name = "buffer")
+    protected SurfacePropertyType buffer;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TerminalArrivalAreaSectorPropertyType> sector;
-    @XmlElementRef(name = "approachRNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<InstrumentApproachProcedurePropertyType> approachRNAV;
+    @XmlElement(nillable = true)
+    @Column(name = "approach_rnav")
+    protected InstrumentApproachProcedurePropertyType approachRNAV;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -573,10 +573,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public JAXBElement<SurfacePropertyType> getBuffer() {
+    public SurfacePropertyType getBuffer() {
         return buffer;
     }
 
@@ -585,10 +585,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public void setBuffer(JAXBElement<SurfacePropertyType> value) {
+    public void setBuffer(SurfacePropertyType value) {
         this.buffer = value;
     }
 
@@ -641,10 +641,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public JAXBElement<InstrumentApproachProcedurePropertyType> getApproachRNAV() {
+    public InstrumentApproachProcedurePropertyType getApproachRNAV() {
         return approachRNAV;
     }
 
@@ -653,10 +653,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public void setApproachRNAV(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
+    public void setApproachRNAV(InstrumentApproachProcedurePropertyType value) {
         this.approachRNAV = value;
     }
 

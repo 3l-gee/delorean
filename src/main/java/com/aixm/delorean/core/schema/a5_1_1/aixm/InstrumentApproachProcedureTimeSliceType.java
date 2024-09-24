@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -155,8 +153,9 @@ public class InstrumentApproachProcedureTimeSliceType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "safeAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SafeAltitudeAreaPropertyType> safeAltitude;
+    @XmlElement(nillable = true)
+    @Column(name = "safe_altitude")
+    protected SafeAltitudeAreaPropertyType safeAltitude;
     @XmlElement(nillable = true)
     @Enumerated(EnumType.STRING)
     @Column(name = "approach_prefix")
@@ -190,15 +189,17 @@ public class InstrumentApproachProcedureTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "waas_reliable")
     protected CodeYesNoType waasReliable;
-    @XmlElementRef(name = "landing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<LandingTakeoffAreaCollectionPropertyType> landing;
+    @XmlElement(nillable = true)
+    @Column(name = "landing")
+    protected LandingTakeoffAreaCollectionPropertyType landing;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<MissedApproachGroupPropertyType> missedInstruction;
-    @XmlElementRef(name = "finalProfile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<FinalProfilePropertyType> finalProfile;
+    @XmlElement(nillable = true)
+    @Column(name = "final_profile")
+    protected FinalProfilePropertyType finalProfile;
     protected List<InstrumentApproachProcedureTimeSliceType.Extension> extension;
 
     /**
@@ -686,10 +687,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SafeAltitudeAreaPropertyType }{@code >}
+     *     {@link SafeAltitudeAreaPropertyType }
      *     
      */
-    public JAXBElement<SafeAltitudeAreaPropertyType> getSafeAltitude() {
+    public SafeAltitudeAreaPropertyType getSafeAltitude() {
         return safeAltitude;
     }
 
@@ -698,10 +699,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SafeAltitudeAreaPropertyType }{@code >}
+     *     {@link SafeAltitudeAreaPropertyType }
      *     
      */
-    public void setSafeAltitude(JAXBElement<SafeAltitudeAreaPropertyType> value) {
+    public void setSafeAltitude(SafeAltitudeAreaPropertyType value) {
         this.safeAltitude = value;
     }
 
@@ -966,10 +967,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
+     *     {@link LandingTakeoffAreaCollectionPropertyType }
      *     
      */
-    public JAXBElement<LandingTakeoffAreaCollectionPropertyType> getLanding() {
+    public LandingTakeoffAreaCollectionPropertyType getLanding() {
         return landing;
     }
 
@@ -978,10 +979,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
+     *     {@link LandingTakeoffAreaCollectionPropertyType }
      *     
      */
-    public void setLanding(JAXBElement<LandingTakeoffAreaCollectionPropertyType> value) {
+    public void setLanding(LandingTakeoffAreaCollectionPropertyType value) {
         this.landing = value;
     }
 
@@ -1034,10 +1035,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link FinalProfilePropertyType }{@code >}
+     *     {@link FinalProfilePropertyType }
      *     
      */
-    public JAXBElement<FinalProfilePropertyType> getFinalProfile() {
+    public FinalProfilePropertyType getFinalProfile() {
         return finalProfile;
     }
 
@@ -1046,10 +1047,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link FinalProfilePropertyType }{@code >}
+     *     {@link FinalProfilePropertyType }
      *     
      */
-    public void setFinalProfile(JAXBElement<FinalProfilePropertyType> value) {
+    public void setFinalProfile(FinalProfilePropertyType value) {
         this.finalProfile = value;
     }
 

@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -84,8 +82,9 @@ public class FlightRestrictionTimeSliceType
     @XmlElement(nillable = true)
     @Column(name = "instruction")
     protected TextInstructionType instruction;
-    @XmlElementRef(name = "flight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<FlightConditionCombinationPropertyType> flight;
+    @XmlElement(nillable = true)
+    @Column(name = "flight")
+    protected FlightConditionCombinationPropertyType flight;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -187,10 +186,10 @@ public class FlightRestrictionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link FlightConditionCombinationPropertyType }{@code >}
+     *     {@link FlightConditionCombinationPropertyType }
      *     
      */
-    public JAXBElement<FlightConditionCombinationPropertyType> getFlight() {
+    public FlightConditionCombinationPropertyType getFlight() {
         return flight;
     }
 
@@ -199,10 +198,10 @@ public class FlightRestrictionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link FlightConditionCombinationPropertyType }{@code >}
+     *     {@link FlightConditionCombinationPropertyType }
      *     
      */
-    public void setFlight(JAXBElement<FlightConditionCombinationPropertyType> value) {
+    public void setFlight(FlightConditionCombinationPropertyType value) {
         this.flight = value;
     }
 

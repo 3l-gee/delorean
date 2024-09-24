@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -107,8 +105,9 @@ public class RunwayDirectionLightSystemTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "position")
     protected CodeRunwaySectionType position;
-    @XmlElementRef(name = "associatedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RunwayDirectionPropertyType> associatedRunwayDirection;
+    @XmlElement(nillable = true)
+    @Column(name = "associated_runway_direction")
+    protected RunwayDirectionPropertyType associatedRunwayDirection;
     protected List<RunwayDirectionLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -348,10 +347,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public JAXBElement<RunwayDirectionPropertyType> getAssociatedRunwayDirection() {
+    public RunwayDirectionPropertyType getAssociatedRunwayDirection() {
         return associatedRunwayDirection;
     }
 
@@ -360,10 +359,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public void setAssociatedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
+    public void setAssociatedRunwayDirection(RunwayDirectionPropertyType value) {
         this.associatedRunwayDirection = value;
     }
 

@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -124,10 +122,12 @@ public class RunwayDirectionTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "precision_approach_guidance")
     protected CodeApproachGuidanceType precisionApproachGuidance;
-    @XmlElementRef(name = "usedRunway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RunwayPropertyType> usedRunway;
-    @XmlElementRef(name = "startingElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RunwayElementPropertyType> startingElement;
+    @XmlElement(nillable = true)
+    @Column(name = "used_runway")
+    protected RunwayPropertyType usedRunway;
+    @XmlElement(nillable = true)
+    @Column(name = "starting_element")
+    protected RunwayElementPropertyType startingElement;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -481,10 +481,10 @@ public class RunwayDirectionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayPropertyType }{@code >}
+     *     {@link RunwayPropertyType }
      *     
      */
-    public JAXBElement<RunwayPropertyType> getUsedRunway() {
+    public RunwayPropertyType getUsedRunway() {
         return usedRunway;
     }
 
@@ -493,10 +493,10 @@ public class RunwayDirectionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayPropertyType }{@code >}
+     *     {@link RunwayPropertyType }
      *     
      */
-    public void setUsedRunway(JAXBElement<RunwayPropertyType> value) {
+    public void setUsedRunway(RunwayPropertyType value) {
         this.usedRunway = value;
     }
 
@@ -509,10 +509,10 @@ public class RunwayDirectionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayElementPropertyType }{@code >}
+     *     {@link RunwayElementPropertyType }
      *     
      */
-    public JAXBElement<RunwayElementPropertyType> getStartingElement() {
+    public RunwayElementPropertyType getStartingElement() {
         return startingElement;
     }
 
@@ -521,10 +521,10 @@ public class RunwayDirectionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayElementPropertyType }{@code >}
+     *     {@link RunwayElementPropertyType }
      *     
      */
-    public void setStartingElement(JAXBElement<RunwayElementPropertyType> value) {
+    public void setStartingElement(RunwayElementPropertyType value) {
         this.startingElement = value;
     }
 

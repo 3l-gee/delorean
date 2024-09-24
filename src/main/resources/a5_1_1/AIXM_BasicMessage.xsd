@@ -21,7 +21,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		http://www.opensource.org/licenses/bsd-license.php
 	-->
 <!-- Component: AIXM: Basic Message -->
-<schema xmlns:message="http://www.aixm.aero/schema/5.1.1/message" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:aixm="http://www.aixm.aero/schema/5.1.1" targetNamespace="http://www.aixm.aero/schema/5.1.1/message" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1.1">
+<schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:message="http://www.aixm.aero/schema/5.1.1/message" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:aixm="http://www.aixm.aero/schema/5.1.1" targetNamespace="http://www.aixm.aero/schema/5.1.1/message" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1.1">
 	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
 	<import namespace="http://www.aixm.aero/schema/5.1.1" schemaLocation="./AIXM_Features.xsd"/>
 	<annotation>
@@ -46,9 +46,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="BasicMessageMemberAIXMPropertyType">
 		<complexContent>
 			<extension base="gml:AbstractFeatureMemberType">
-				<choice>
-					<element ref="aixm:AbstractAIXMFeature"/>
-				</choice>
+				<sequence>
+					<choice>
+						<element ref="aixm:AbstractAIXMFeature"/>
+					</choice>
+					<!-- Adding dbID as a new field inside the sequence -->
+					<element name="dbID" type="xs:long" minOccurs="0"/>
+				</sequence>
 				<attributeGroup ref="gml:AssociationAttributeGroup"/>
 			</extension>
 		</complexContent>

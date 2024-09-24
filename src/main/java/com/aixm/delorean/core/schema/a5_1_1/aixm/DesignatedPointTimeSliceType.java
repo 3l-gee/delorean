@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -86,14 +84,18 @@ public class DesignatedPointTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Column(name = "name")
     protected TextNameType aixmName;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<PointPropertyType> location;
-    @XmlElementRef(name = "aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TouchDownLiftOffPropertyType> aimingPoint;
-    @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
-    @XmlElementRef(name = "runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RunwayCentrelinePointPropertyType> runwayPoint;
+    @XmlElement(nillable = true)
+    @Column(name = "location")
+    protected PointPropertyType location;
+    @XmlElement(nillable = true)
+    @Column(name = "aiming_point")
+    protected TouchDownLiftOffPropertyType aimingPoint;
+    @XmlElement(nillable = true)
+    @Column(name = "airport_heliport")
+    protected AirportHeliportPropertyType airportHeliport;
+    @XmlElement(nillable = true)
+    @Column(name = "runway_point")
+    protected RunwayCentrelinePointPropertyType runwayPoint;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -190,10 +192,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public JAXBElement<PointPropertyType> getLocation() {
+    public PointPropertyType getLocation() {
         return location;
     }
 
@@ -202,10 +204,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<PointPropertyType> value) {
+    public void setLocation(PointPropertyType value) {
         this.location = value;
     }
 
@@ -218,10 +220,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getAimingPoint() {
+    public TouchDownLiftOffPropertyType getAimingPoint() {
         return aimingPoint;
     }
 
@@ -230,10 +232,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setAimingPoint(TouchDownLiftOffPropertyType value) {
         this.aimingPoint = value;
     }
 
@@ -246,10 +248,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAirportHeliport() {
+    public AirportHeliportPropertyType getAirportHeliport() {
         return airportHeliport;
     }
 
@@ -258,10 +260,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAirportHeliport(AirportHeliportPropertyType value) {
         this.airportHeliport = value;
     }
 
@@ -274,10 +276,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getRunwayPoint() {
         return runwayPoint;
     }
 
@@ -286,10 +288,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.runwayPoint = value;
     }
 

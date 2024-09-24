@@ -7,9 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -25,6 +31,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}sequenceNumber" minOccurs="0"/>
  *         <element name="messageMetadata" type="{http://www.aixm.aero/schema/5.1.1}MessageMetadataPropertyType" minOccurs="0"/>
+ *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -41,6 +48,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     AbstractAIXMMessageType.class
 })
+@MappedSuperclass
 public abstract class AbstractAIXMMessageBaseType
     extends AbstractAIXMFeatureBaseType
 {
@@ -51,6 +59,11 @@ public abstract class AbstractAIXMMessageBaseType
      */
     protected Long sequenceNumber;
     protected MessageMetadataPropertyType messageMetadata;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @XmlTransient
+    protected Long dbID;
 
     /**
      * Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details.
@@ -107,6 +120,34 @@ public abstract class AbstractAIXMMessageBaseType
 
     public boolean isSetMessageMetadata() {
         return (this.messageMetadata!= null);
+    }
+
+    /**
+     * Gets the value of the dbID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getDbID() {
+        return dbID;
+    }
+
+    /**
+     * Sets the value of the dbID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setDbID(Long value) {
+        this.dbID = value;
+    }
+
+    public boolean isSetDbID() {
+        return (this.dbID!= null);
     }
 
 }

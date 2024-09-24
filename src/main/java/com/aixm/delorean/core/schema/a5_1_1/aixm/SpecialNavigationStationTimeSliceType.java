@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -90,12 +88,15 @@ public class SpecialNavigationStationTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "emission")
     protected CodeRadioEmissionType emission;
-    @XmlElementRef(name = "systemChain", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SpecialNavigationSystemPropertyType> systemChain;
-    @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AuthorityForSpecialNavigationStationPropertyType> responsibleOrganisation;
-    @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedPointPropertyType> position;
+    @XmlElement(nillable = true)
+    @Column(name = "system_chain")
+    protected SpecialNavigationSystemPropertyType systemChain;
+    @XmlElement(nillable = true)
+    @Column(name = "responsible_organisation")
+    protected AuthorityForSpecialNavigationStationPropertyType responsibleOrganisation;
+    @XmlElement(nillable = true)
+    @Column(name = "position")
+    protected ElevatedPointPropertyType position;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -225,10 +226,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     {@link SpecialNavigationSystemPropertyType }
      *     
      */
-    public JAXBElement<SpecialNavigationSystemPropertyType> getSystemChain() {
+    public SpecialNavigationSystemPropertyType getSystemChain() {
         return systemChain;
     }
 
@@ -237,10 +238,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     {@link SpecialNavigationSystemPropertyType }
      *     
      */
-    public void setSystemChain(JAXBElement<SpecialNavigationSystemPropertyType> value) {
+    public void setSystemChain(SpecialNavigationSystemPropertyType value) {
         this.systemChain = value;
     }
 
@@ -253,10 +254,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AuthorityForSpecialNavigationStationPropertyType }{@code >}
+     *     {@link AuthorityForSpecialNavigationStationPropertyType }
      *     
      */
-    public JAXBElement<AuthorityForSpecialNavigationStationPropertyType> getResponsibleOrganisation() {
+    public AuthorityForSpecialNavigationStationPropertyType getResponsibleOrganisation() {
         return responsibleOrganisation;
     }
 
@@ -265,10 +266,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AuthorityForSpecialNavigationStationPropertyType }{@code >}
+     *     {@link AuthorityForSpecialNavigationStationPropertyType }
      *     
      */
-    public void setResponsibleOrganisation(JAXBElement<AuthorityForSpecialNavigationStationPropertyType> value) {
+    public void setResponsibleOrganisation(AuthorityForSpecialNavigationStationPropertyType value) {
         this.responsibleOrganisation = value;
     }
 
@@ -281,10 +282,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getPosition() {
+    public ElevatedPointPropertyType getPosition() {
         return position;
     }
 
@@ -293,10 +294,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setPosition(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setPosition(ElevatedPointPropertyType value) {
         this.position = value;
     }
 

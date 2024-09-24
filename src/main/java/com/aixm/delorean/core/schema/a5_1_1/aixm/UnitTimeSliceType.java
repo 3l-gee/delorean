@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -98,12 +96,15 @@ public class UnitTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "military")
     protected CodeMilitaryOperationsType military;
-    @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedPointPropertyType> position;
-    @XmlElementRef(name = "airportLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirportHeliportPropertyType> airportLocation;
-    @XmlElementRef(name = "ownerOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<OrganisationAuthorityPropertyType> ownerOrganisation;
+    @XmlElement(nillable = true)
+    @Column(name = "position")
+    protected ElevatedPointPropertyType position;
+    @XmlElement(nillable = true)
+    @Column(name = "airport_location")
+    protected AirportHeliportPropertyType airportLocation;
+    @XmlElement(nillable = true)
+    @Column(name = "owner_organisation")
+    protected OrganisationAuthorityPropertyType ownerOrganisation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -271,10 +272,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getPosition() {
+    public ElevatedPointPropertyType getPosition() {
         return position;
     }
 
@@ -283,10 +284,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setPosition(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setPosition(ElevatedPointPropertyType value) {
         this.position = value;
     }
 
@@ -299,10 +300,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAirportLocation() {
+    public AirportHeliportPropertyType getAirportLocation() {
         return airportLocation;
     }
 
@@ -311,10 +312,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAirportLocation(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAirportLocation(AirportHeliportPropertyType value) {
         this.airportLocation = value;
     }
 
@@ -327,10 +328,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public JAXBElement<OrganisationAuthorityPropertyType> getOwnerOrganisation() {
+    public OrganisationAuthorityPropertyType getOwnerOrganisation() {
         return ownerOrganisation;
     }
 
@@ -339,10 +340,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public void setOwnerOrganisation(JAXBElement<OrganisationAuthorityPropertyType> value) {
+    public void setOwnerOrganisation(OrganisationAuthorityPropertyType value) {
         this.ownerOrganisation = value;
     }
 

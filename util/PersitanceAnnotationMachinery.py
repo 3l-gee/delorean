@@ -90,6 +90,15 @@ class Util:
     
 
 class PersistenceAnnotationMachinery:
+    # Define constants for XML namespace and tags
+    XS_NAMESPACE = "{http://www.w3.org/2001/XMLSchema}"
+    TAG_IMPORT = XS_NAMESPACE + "import"
+    TAG_ANNOTATION = XS_NAMESPACE + "annotation"
+    TAG_INCLUDE = XS_NAMESPACE + "include"
+    TAG_ELEMENT = XS_NAMESPACE + "element"
+    TAG_COMPLEX_TYPE = XS_NAMESPACE + "complexType"
+    TAG_GROUP = XS_NAMESPACE + "group"
+
     def __init__(self, input_path: str, output_path: str):
         self.input_path = input_path
         self.output_path = output_path
@@ -116,108 +125,167 @@ class PersistenceAnnotationMachinery:
                 f.write("\n")
 
     def run(self):
+        """Main function to process XML schema elements."""
         for child in self.root:
-            if child.tag == "{http://www.w3.org/2001/XMLSchema}complexType":
-                if bool(child.attrib.get('abstract')):
-                    self._complex_abstract_type_annotation(child)
-                else :
-                    self._complex_type_annotation(child)
+            self._process_child(child)
 
-                for element in child.findall('.//xs:element', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'}):
-                    if element.get("name") == "timeSlice" :
-                        self._field_type_annotations_column_complex_element_name(child, element)
+    def _process_child(self, child):
+        """Dispatch processing based on the XML tag type."""
+        if child.tag == self.TAG_IMPORT:
+            self._process_import(child)
+        elif child.tag == self.TAG_ANNOTATION:
+            self._process_annotation(child)
+        elif child.tag == self.TAG_INCLUDE:
+            self._process_include(child)
+        elif child.tag == self.TAG_ELEMENT:
+            self._process_element(child)
+        elif child.tag == self.TAG_COMPLEX_TYPE:
+            self._process_complex_type(child)
+        elif child.tag == self.TAG_GROUP:
+            self._process_group(child)
+        else:
+            self._log_unrecognized_tag(child)
 
-                    elif element.get("name") == "extension" :
-                        pass #TODO
+    # Define separate methods for each tag type, so it's easier to expand
 
-                    elif element.get("ref") is not None:
-                        self._field_type_annotations_column_complex_element_ref(child, element)
+    def _process_import(self, child):
+        """Process 'import' tag (currently not implemented)."""
+        pass  # Placeholder for future expansion
 
-                    else:
-                        print(child.get("name"))
-                        print(element.get("ref"))
+    def _process_annotation(self, child):
+        """Process 'annotation' tag (currently not implemented)."""
+        pass  # Placeholder for future expansion
 
-            if child.tag == "{http://www.w3.org/2001/XMLSchema}group" :
-                for element in child.findall('.//xs:element', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'}):
+    def _process_include(self, child):
+        """Process 'include' tag (currently not implemented)."""
+        pass  # Placeholder for future expansion
 
-                    if element.get("maxOccurs", 1) == "unbounded":
-                        self._field_type_annotations_unbounded(child, element)
+    def _process_element(self, child):
+        """Process 'element' tag (currently not implemented)."""
+        pass  # Placeholder for future expansion
 
-                    if element.get("maxOccurs", 1) == 1:
-                        if element.get("name") == "name" :
-                            if "Code" in element.get("type"):
-                                self._field_type_annotations_enumerations_property_name_generate_element(child, element)
-                            else :
-                                self._field_type_annotations_column_property_name_generate_element(child, element)
-                        else:
-                            if "Code" in element.get("type"):
-                                self._field_type_annotations_enumerations_property_generate_element(child, element)
-                            else :
-                                self._field_type_annotations_column_property_generate_element(child, element)
+    def _process_complex_type(self, child):
+        """Process 'complexType' tag."""
+        if bool(child.attrib.get('abstract')) or "Abstract" in child.attrib.get('name'):
+            self.class_cmplx_abs_annox(child)
+        else:
+            self.class_cmplx_typ_annox(child)
 
-            else:
-                NotImplementedError(child.tag)
-                pass
+        # Process nested elements inside complexType
+        for element in child.findall('.//xs:element', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'}):
+            self._process_complex_type_element(child, element)
 
-    def _complex_abstract_type_annotation(self, child):
+    def _process_complex_type_element(self, parent, element):
+        """Handle elements within complexType."""
+        element_name = element.get("name")
+        if element_name == "timeSlice":
+            self.field_cmplx_typ_annox_clmn_name(parent, element)
+        elif element_name == "extension":
+            pass  # TODO: Implement handling for "extension"
+        elif element.get("ref") is not None:
+            self.field_cmplx_typ_annox_clmn_ref(parent, element)
+        else:
+            self._log_missing_ref_or_name(parent, element)
+
+    def _process_group(self, child):
+        """Process 'group' tag."""
+        for element in child.findall('.//xs:element', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'}):
+            self._process_group_element(child, element)
+
+    def _process_group_element(self, parent, element):
+        """Handle elements within a group."""
+        max_occurs = element.get("maxOccurs", "1")
+
+        if max_occurs == "unbounded":
+            self.field_typ_annox_onetomany(parent, element)
+        elif max_occurs == "1":
+            self._process_group_element_with_max_occurs_1(parent, element)
+        else:
+            self._log_invalid_max_occurs(parent, element)
+
+    def _process_group_element_with_max_occurs_1(self, parent, element):
+        """Process group element where maxOccurs is 1."""
+        element_name = element.get("name")
+        element_type = element.get("type")
+
+        if element_name == "name":
+            self.field_grp_type_annox_clmn_name_name_gnrt_elmnt(parent, element)
+        else:
+            self.field_grp_type_annox_clmn_name_gnrt_elmnt(parent, element)
+
+    def _log_unrecognized_tag(self, child):
+        """Log unrecognized tag for future troubleshooting."""
+        print(f"Unrecognized tag: {child.tag}")
+
+    def _log_missing_ref_or_name(self, parent, element):
+        """Log cases where element is missing both 'name' and 'ref'."""
+        print(f"Missing 'name' or 'ref' in element for complexType {parent.get('name')}. Element: {element.get('ref')}")
+
+    def _log_invalid_max_occurs(self, parent, element):
+        """Log cases where maxOccurs is neither '1' nor 'unbounded'."""
+        print(f"Invalid 'maxOccurs': {element.get('maxOccurs')} in element {element.tag} of group {parent.get('name')}")
+
+
+
+    def class_cmplx_abs_annox(self, child):
         self.annotations.append(JaxbAnnotations.COMPLEXTYPE(child.attrib['name']))
         self.annotations.append(AnnoxAnnotations.CLASS(CoreAnnotations.MAPPEDSUPERCLASS.value)) 
         self.annotations.append(JaxbAnnotations.END.value)
     
-    def _complex_type_annotation(self, child):
+    def class_cmplx_typ_annox(self, child):
         self.annotations.append(JaxbAnnotations.COMPLEXTYPE(child.attrib['name']))
         self.annotations.append(AnnoxAnnotations.CLASS(CoreAnnotations.ENTITY.value))
         self.annotations.append(AnnoxAnnotations.CLASS(CoreAnnotations.TABLE_SNAKE(child.attrib['name'])))       
         self.annotations.append(JaxbAnnotations.END.value)
 
-    def _field_type_annotations_unbounded(self, parent, child):
+    def field_typ_annox_onetomany(self, parent, child):
         self.annotations.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
         self.annotations.append(AnnoxAnnotations.FIELD(RelationshipAnnotations.ONE_TO_MANY.value))
         self.annotations.append(JaxbAnnotations.END.value)
 
-    def _field_type_annotations_enumerations_complex_element_name(self, parent, child):
+    def field_cmplx_typ_annox_enum_name(self, parent, child):
         self.annotations.append(JaxbAnnotations.COMPLEXTYPE_ELEMENT_NAME(parent.attrib['name'], child.attrib['name']))
         self.annotations.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.ENUMERATED_STRING.value))
         self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
         self.annotations.append(JaxbAnnotations.END.value)
 
-    def _field_type_annotations_enumerations_complex_element_ref(self, parent, child):
+    def field_cmplx_typ_annox_enum_ref(self, parent, child):
         self.annotations.append(JaxbAnnotations.COMPLEXTYPE_ELEMEENT_REF(parent.attrib['name'], child.attrib['ref']))
         self.annotations.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.ENUMERATED_STRING.value))
         self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_DBL_POINT(child.attrib['ref'])))
         self.annotations.append(JaxbAnnotations.END.value)
 
-    def _field_type_annotations_enumerations_property_generate_element(self, parent, child):
+    def field_grp_typ_annox_enum_name_gnrt_elmnt(self, parent, child):
         self.annotations.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
         self.annotations.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.ENUMERATED_STRING.value))
         self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
         self.annotations.append(JaxbAnnotations.PROPERTY_GENERATEELEMENT.value)
         self.annotations.append(JaxbAnnotations.END.value)
 
-    def _field_type_annotations_enumerations_property_name_generate_element(self, parent, child):
+    def field_grp_typ_annox_enum_name_name_gnrt_elmnt(self, parent, child):
         self.annotations.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
         self.annotations.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.ENUMERATED_STRING.value))
         self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
         self.annotations.append(JaxbAnnotations.PROPERTY_NAME_GENERATEELEMENT.value)
         self.annotations.append(JaxbAnnotations.END.value)
 
-    def _field_type_annotations_column_complex_element_name(self, parent, child):
+    def field_cmplx_typ_annox_clmn_name(self, parent, child):
         self.annotations.append(JaxbAnnotations.COMPLEXTYPE_ELEMENT_NAME(parent.attrib['name'], child.attrib['name']))
         self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
         self.annotations.append(JaxbAnnotations.END.value)
 
-    def _field_type_annotations_column_complex_element_ref(self, parent, child):
+    def field_cmplx_typ_annox_clmn_ref(self, parent, child):
         self.annotations.append(JaxbAnnotations.COMPLEXTYPE_ELEMEENT_REF(parent.attrib['name'], child.attrib['ref']))
         self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_DBL_POINT(child.attrib['ref'])))
         self.annotations.append(JaxbAnnotations.END.value)
 
-    def _field_type_annotations_column_property_generate_element(self, parent, child):
+    def field_grp_type_annox_clmn_name_gnrt_elmnt(self, parent, child):
         self.annotations.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
         self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
         self.annotations.append(JaxbAnnotations.PROPERTY_GENERATEELEMENT.value)
         self.annotations.append(JaxbAnnotations.END.value)
 
-    def _field_type_annotations_column_property_name_generate_element(self, parent, child):
+    def field_grp_type_annox_clmn_name_name_gnrt_elmnt(self, parent, child):
         self.annotations.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
         self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
         self.annotations.append(JaxbAnnotations.PROPERTY_NAME_GENERATEELEMENT.value)

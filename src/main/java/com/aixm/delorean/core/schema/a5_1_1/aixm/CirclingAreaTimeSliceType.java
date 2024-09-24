@@ -15,12 +15,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,17 +69,20 @@ public class CirclingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SurfacePropertyType> extent;
-    @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
+    @XmlElement(nillable = true)
+    @Column(name = "extent")
+    protected SurfacePropertyType extent;
+    @XmlElement(nillable = true)
+    @Column(name = "approach")
+    protected InstrumentApproachProcedurePropertyType approach;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApproachConditionPropertyType> condition;
-    @XmlElementRef(name = "aircraftCategory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AircraftCharacteristicPropertyType> aircraftCategory;
+    @XmlElement(nillable = true)
+    @Column(name = "aircraft_category")
+    protected AircraftCharacteristicPropertyType aircraftCategory;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -99,10 +100,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public JAXBElement<SurfacePropertyType> getExtent() {
+    public SurfacePropertyType getExtent() {
         return extent;
     }
 
@@ -111,10 +112,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<SurfacePropertyType> value) {
+    public void setExtent(SurfacePropertyType value) {
         this.extent = value;
     }
 
@@ -127,10 +128,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public JAXBElement<InstrumentApproachProcedurePropertyType> getApproach() {
+    public InstrumentApproachProcedurePropertyType getApproach() {
         return approach;
     }
 
@@ -139,10 +140,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public void setApproach(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
+    public void setApproach(InstrumentApproachProcedurePropertyType value) {
         this.approach = value;
     }
 
@@ -195,10 +196,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
+     *     {@link AircraftCharacteristicPropertyType }
      *     
      */
-    public JAXBElement<AircraftCharacteristicPropertyType> getAircraftCategory() {
+    public AircraftCharacteristicPropertyType getAircraftCategory() {
         return aircraftCategory;
     }
 
@@ -207,10 +208,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
+     *     {@link AircraftCharacteristicPropertyType }
      *     
      */
-    public void setAircraftCategory(JAXBElement<AircraftCharacteristicPropertyType> value) {
+    public void setAircraftCategory(AircraftCharacteristicPropertyType value) {
         this.aircraftCategory = value;
     }
 

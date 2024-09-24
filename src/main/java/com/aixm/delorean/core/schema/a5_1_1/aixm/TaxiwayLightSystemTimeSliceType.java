@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -107,8 +105,9 @@ public class TaxiwayLightSystemTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "position")
     protected CodeTaxiwaySectionType position;
-    @XmlElementRef(name = "lightedTaxiway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<TaxiwayPropertyType> lightedTaxiway;
+    @XmlElement(nillable = true)
+    @Column(name = "lighted_taxiway")
+    protected TaxiwayPropertyType lightedTaxiway;
     protected List<TaxiwayLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -348,10 +347,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
+     *     {@link TaxiwayPropertyType }
      *     
      */
-    public JAXBElement<TaxiwayPropertyType> getLightedTaxiway() {
+    public TaxiwayPropertyType getLightedTaxiway() {
         return lightedTaxiway;
     }
 
@@ -360,10 +359,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
+     *     {@link TaxiwayPropertyType }
      *     
      */
-    public void setLightedTaxiway(JAXBElement<TaxiwayPropertyType> value) {
+    public void setLightedTaxiway(TaxiwayPropertyType value) {
         this.lightedTaxiway = value;
     }
 

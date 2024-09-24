@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -75,10 +73,12 @@ public class AirportHeliportCollocationTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     protected CodeAirportHeliportCollocationType type;
-    @XmlElementRef(name = "hostAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirportHeliportPropertyType> hostAirport;
-    @XmlElementRef(name = "dependentAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirportHeliportPropertyType> dependentAirport;
+    @XmlElement(nillable = true)
+    @Column(name = "host_airport")
+    protected AirportHeliportPropertyType hostAirport;
+    @XmlElement(nillable = true)
+    @Column(name = "dependent_airport")
+    protected AirportHeliportPropertyType dependentAirport;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -119,10 +119,10 @@ public class AirportHeliportCollocationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getHostAirport() {
+    public AirportHeliportPropertyType getHostAirport() {
         return hostAirport;
     }
 
@@ -131,10 +131,10 @@ public class AirportHeliportCollocationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setHostAirport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setHostAirport(AirportHeliportPropertyType value) {
         this.hostAirport = value;
     }
 
@@ -147,10 +147,10 @@ public class AirportHeliportCollocationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getDependentAirport() {
+    public AirportHeliportPropertyType getDependentAirport() {
         return dependentAirport;
     }
 
@@ -159,10 +159,10 @@ public class AirportHeliportCollocationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setDependentAirport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setDependentAirport(AirportHeliportPropertyType value) {
         this.dependentAirport = value;
     }
 

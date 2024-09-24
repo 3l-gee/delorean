@@ -19,16 +19,6 @@
 			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement</annox:annotate>
 			<annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "aixm_basic_message_type")</annox:annotate>
-            <!-- <jaxb:bindings node=".">
-                <jaxb:class>
-                    <jaxb:property name="id" type="java.lang.Long">
-                        <annox:annotate>@jakarta.persistence.Id</annox:annotate>
-                        <annox:annotate>@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
-                        <annox:annotate>@jakarta.persistence.Column(name = "id")</annox:annotate>
-                        <annox:annotate>@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
-                    </jaxb:property>
-                </jaxb:class>
-            </jaxb:bindings> -->
 		</jaxb:bindings>
 
 		<jaxb:bindings node="//xs:group[@name='AIXMBasicMessagePropertyGroup']//xs:element[@name='hasMember']">
@@ -42,20 +32,53 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "abstract_aixm_feature")</annox:annotate>
 			<jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
-    </jaxb:bindings>
 
-    <!-- <jaxb:bindings schemaLocation="AIXM_AbstractGML_ObjectTypes.xsd" node="/xs:schema">
-        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureBaseType']">
-            <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
-        </jaxb:bindings>
-
-        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureBaseType']//xs:element[@name='dbID']">
+                <jaxb:bindings node="xs:complexType[@name='BasicMessageMemberAIXMPropertyType']//xs:element[@name='dbID']">
             <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "id")</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
         </jaxb:bindings>
-	</jaxb:bindings> -->
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="AIXM_AbstractGML_ObjectTypes.xsd" node="/xs:schema">
+        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']">
+            <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='dbID']">
+            <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "id")</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+        </jaxb:bindings>
+	</jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="AIXM_AbstractGML_ObjectTypes.xsd" node="/xs:schema">
+        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']">
+            <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@name='dbID']">
+            <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "id")</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+        </jaxb:bindings>
+	</jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="AIXM_AbstractGML_ObjectTypes.xsd" node="/xs:schema">
+        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMMessageBaseType']">
+            <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMMessageBaseType']//xs:element[@name='dbID']">
+            <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "id")</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+        </jaxb:bindings>
+	</jaxb:bindings>
    	
     <jaxb:bindings schemaLocation="AIXM_Features.xsd" node="/xs:schema">
 		<jaxb:globalBindings 
@@ -67,15 +90,6 @@
 			<xjc:noValidator />
 			<xjc:noValidatingUnmarshaller />
 		</jaxb:globalBindings>
-
-		<!-- <jaxb:bindings node="//xs:complexType[@name='NavaidComponentType']">
-			<annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-        </jaxb:bindings>
-
-        <jaxb:bindings node="//xs:group[@name='NavaidComponentPropertyGroup']//xs:element[@name='collocationGroup']">
-			<annox:annotate target="field">@jakarta.persistence.Column(name = "collocation_group")</annox:annotate>
-			<jaxb:property generateElementProperty="false"/>
-        </jaxb:bindings> -->
 
         <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -179,6 +193,10 @@
         <jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='anchor']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='oppositeTrack']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "opposite_track")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='managingOrganisation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -231,6 +249,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "refuelling_base_level_reference")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AerialRefuellingAnchorPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AerialRefuellingAnchorPropertyGroup']//xs:element[@name='verticalExtent']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -279,6 +301,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingTrackType']//xs:element[@ref='aixm:AbstractAerialRefuellingTrackExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_aerial_refuelling_track_extension")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AerialRefuellingTrackPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AerialRefuellingTrackPropertyGroup']//xs:element[@name='point']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -470,6 +496,18 @@
         <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='servedCity']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='responsibleOrganisation']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "responsible_organisation")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='ARP']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "arp")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='aviationBoundary']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "aviation_boundary")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='altimeterSource']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -542,6 +580,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "type")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirportHeliportCollocationPropertyGroup']//xs:element[@name='hostAirport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "host_airport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirportHeliportCollocationPropertyGroup']//xs:element[@name='dependentAirport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "dependent_airport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AirportHeliportCollocationPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -568,6 +614,14 @@
         <jaxb:bindings node="//xs:group[@name='AirportHeliportProtectionAreaPropertyGroup']//xs:element[@name='obstacleFree']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "obstacle_free")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirportHeliportProtectionAreaPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirportHeliportProtectionAreaPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AirportHeliportProtectionAreaPropertyGroup']//xs:element[@name='annotation']">
@@ -652,6 +706,14 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AirportHotSpotPropertyGroup']//xs:element[@name='instruction']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "instruction")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirportHotSpotPropertyGroup']//xs:element[@name='area']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "area")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirportHotSpotPropertyGroup']//xs:element[@name='affectedAirport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "affected_airport")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AirportHotSpotPropertyGroup']//xs:element[@name='annotation']">
@@ -800,6 +862,14 @@
         <jaxb:bindings node="//xs:complexType[@name='NonMovementAreaTimeSliceType']//xs:element[@ref='aixm:AbstractNonMovementAreaExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_non_movement_area_extension")</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NonMovementAreaPropertyGroup']//xs:element[@name='associatedAirportHeliport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_airport_heliport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NonMovementAreaPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='NonMovementAreaPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -904,6 +974,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "designator")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SurveyControlPointPropertyGroup']//xs:element[@name='associatedAirportHeliport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_airport_heliport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SurveyControlPointPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SurveyControlPointPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -922,6 +1000,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='UsageConditionPropertyGroup']//xs:element[@name='contact']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='UsageConditionPropertyGroup']//xs:element[@name='selection']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "selection")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='UsageConditionPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -965,6 +1047,14 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='WorkAreaPropertyGroup']//xs:element[@name='plannedOperational']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "planned_operational")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='WorkAreaPropertyGroup']//xs:element[@name='associatedAirportHeliport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_airport_heliport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='WorkAreaPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='WorkAreaPropertyGroup']//xs:element[@name='activation']">
@@ -1034,6 +1124,22 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "visual_docking_system")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AircraftStandPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AircraftStandPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AircraftStandPropertyGroup']//xs:element[@name='apronLocation']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "apron_location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AircraftStandPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AircraftStandPropertyGroup']//xs:element[@name='contaminant']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -1075,6 +1181,14 @@
         <jaxb:bindings node="//xs:group[@name='ApronPropertyGroup']//xs:element[@name='abandoned']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "abandoned")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApronPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApronPropertyGroup']//xs:element[@name='associatedAirportHeliport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_airport_heliport")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ApronPropertyGroup']//xs:element[@name='contaminant']">
@@ -1191,6 +1305,18 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "width")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApronElementPropertyGroup']//xs:element[@name='associatedApron']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_apron")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApronElementPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApronElementPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ApronElementPropertyGroup']//xs:element[@name='supplyService']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -1224,6 +1350,26 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DeicingAreaTimeSliceType']//xs:element[@ref='aixm:AbstractDeicingAreaExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_deicing_area_extension")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DeicingAreaPropertyGroup']//xs:element[@name='associatedApron']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_apron")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DeicingAreaPropertyGroup']//xs:element[@name='taxiwayLocation']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "taxiway_location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DeicingAreaPropertyGroup']//xs:element[@name='standLocation']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "stand_location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DeicingAreaPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DeicingAreaPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='DeicingAreaPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -1259,6 +1405,10 @@
         <jaxb:bindings node="//xs:group[@name='PassengerLoadingBridgePropertyGroup']//xs:element[@name='type']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "type")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='PassengerLoadingBridgePropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='PassengerLoadingBridgePropertyGroup']//xs:element[@name='associatedStand']">
@@ -1311,8 +1461,20 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "abandoned")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RoadPropertyGroup']//xs:element[@name='associatedAirport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_airport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RoadPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RoadPropertyGroup']//xs:element[@name='accessibleStand']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RoadPropertyGroup']//xs:element[@name='surfaceExtent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RoadPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -1368,6 +1530,26 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "abandoned")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffPropertyGroup']//xs:element[@name='aimingPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "aiming_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffPropertyGroup']//xs:element[@name='associatedAirportHeliport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_airport_heliport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffPropertyGroup']//xs:element[@name='approachTakeOffArea']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "approach_take_off_area")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffPropertyGroup']//xs:element[@name='contaminant']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -1404,6 +1586,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffSafeAreaTimeSliceType']//xs:element[@ref='aixm:AbstractAirportHeliportProtectionAreaExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_airport_heliport_protection_area_extension")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffSafeAreaPropertyGroup']//xs:element[@name='protectedTouchDownLiftOff']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "protected_touch_down_lift_off")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApproachLightingSystemPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -1457,6 +1643,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "alignment_indicator")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApproachLightingSystemPropertyGroup']//xs:element[@name='servedRunwayDirection']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "served_runway_direction")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApronLightSystemPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "apron_light_system_property_type")</annox:annotate>
@@ -1488,6 +1678,10 @@
         <jaxb:bindings node="//xs:group[@name='ApronLightSystemPropertyGroup']//xs:element[@name='position']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "position")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApronLightSystemPropertyGroup']//xs:element[@name='lightedApron']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "lighted_apron")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='GroundLightingAvailabilityType']">
@@ -1571,6 +1765,10 @@
         <jaxb:bindings node="//xs:complexType[@name='GuidanceLineLightSystemTimeSliceType']//xs:element[@ref='aixm:AbstractGroundLightSystemExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_ground_light_system_extension")</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='GuidanceLineLightSystemPropertyGroup']//xs:element[@name='lightedGuidanceLine']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "lighted_guidance_line")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LightActivationType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "light_activation_type")</annox:annotate>
@@ -1635,6 +1833,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "position")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayDirectionLightSystemPropertyGroup']//xs:element[@name='associatedRunwayDirection']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_runway_direction")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaLightSystemPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_protect_area_light_system_property_type")</annox:annotate>
@@ -1666,6 +1868,10 @@
         <jaxb:bindings node="//xs:group[@name='RunwayProtectAreaLightSystemPropertyGroup']//xs:element[@name='position']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "position")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayProtectAreaLightSystemPropertyGroup']//xs:element[@name='lightedArea']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "lighted_area")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionLightSystemPropertyType']">
@@ -1701,6 +1907,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "type")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiHoldingPositionLightSystemPropertyGroup']//xs:element[@name='taxiHolding']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "taxi_holding")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TaxiwayLightSystemPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiway_light_system_property_type")</annox:annotate>
@@ -1732,6 +1942,10 @@
         <jaxb:bindings node="//xs:group[@name='TaxiwayLightSystemPropertyGroup']//xs:element[@name='position']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "position")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiwayLightSystemPropertyGroup']//xs:element[@name='lightedTaxiway']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "lighted_taxiway")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffLightSystemPropertyType']">
@@ -1767,6 +1981,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "position")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffLightSystemPropertyGroup']//xs:element[@name='lightedTouchDownLiftOff']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "lighted_touch_down_lift_off")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirportProtectionAreaMarkingPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_protection_area_marking_property_type")</annox:annotate>
@@ -1798,6 +2016,10 @@
         <jaxb:bindings node="//xs:group[@name='AirportProtectionAreaMarkingPropertyGroup']//xs:element[@name='markingLocation']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "marking_location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirportProtectionAreaMarkingPropertyGroup']//xs:element[@name='markedProtectionArea']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marked_protection_area")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApronMarkingPropertyType']">
@@ -1833,6 +2055,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "marking_location")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApronMarkingPropertyGroup']//xs:element[@name='markedApron']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marked_apron")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DeicingAreaMarkingPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "deicing_area_marking_property_type")</annox:annotate>
@@ -1861,6 +2087,10 @@
         <jaxb:bindings node="//xs:complexType[@name='DeicingAreaMarkingTimeSliceType']//xs:element[@ref='aixm:AbstractMarkingExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_marking_extension")</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DeicingAreaMarkingPropertyGroup']//xs:element[@name='markedDeicingArea']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marked_deicing_area")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='GuidanceLineMarkingPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "guidance_line_marking_property_type")</annox:annotate>
@@ -1888,6 +2118,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='GuidanceLineMarkingTimeSliceType']//xs:element[@ref='aixm:AbstractMarkingExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_marking_extension")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='GuidanceLineMarkingPropertyGroup']//xs:element[@name='markedGuidanceLine']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marked_guidance_line")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MarkingPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -1984,6 +2218,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "marking_location")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayMarkingPropertyGroup']//xs:element[@name='markedRunway']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marked_runway")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='StandMarkingPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "stand_marking_property_type")</annox:annotate>
@@ -2012,6 +2250,10 @@
         <jaxb:bindings node="//xs:complexType[@name='StandMarkingTimeSliceType']//xs:element[@ref='aixm:AbstractMarkingExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_marking_extension")</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='StandMarkingPropertyGroup']//xs:element[@name='markedStand']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marked_stand")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionMarkingPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "taxi_holding_position_marking_property_type")</annox:annotate>
@@ -2039,6 +2281,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionMarkingTimeSliceType']//xs:element[@ref='aixm:AbstractMarkingExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_marking_extension")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiHoldingPositionMarkingPropertyGroup']//xs:element[@name='markedTaxiHold']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marked_taxi_hold")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TaxiwayMarkingPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -2073,6 +2319,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "marking_location")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiwayMarkingPropertyGroup']//xs:element[@name='markedTaxiway']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marked_taxiway")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiwayMarkingPropertyGroup']//xs:element[@name='markedElement']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marked_element")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffMarkingPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "touch_down_lift_off_marking_property_type")</annox:annotate>
@@ -2104,6 +2358,10 @@
         <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffMarkingPropertyGroup']//xs:element[@name='markingLocation']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "marking_location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffMarkingPropertyGroup']//xs:element[@name='markedTouchDownLiftOff']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marked_touch_down_lift_off")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ArrestingGearPropertyType']">
@@ -2165,6 +2423,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ArrestingGearPropertyGroup']//xs:element[@name='runwayDirection']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ArrestingGearPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ArrestingGearPropertyGroup']//xs:element[@name='extent_surfaceExtent']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "extent_surface_extent")</annox:annotate>
@@ -2337,6 +2599,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "abandoned")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayPropertyGroup']//xs:element[@name='associatedAirportHeliport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_airport_heliport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RunwayPropertyGroup']//xs:element[@name='overallContaminant']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -2380,6 +2650,18 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "status")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayBlastPadPropertyGroup']//xs:element[@name='usedRunwayDirection']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "used_runway_direction")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayBlastPadPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayBlastPadPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RunwayBlastPadPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -2415,6 +2697,14 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RunwayCentrelinePointPropertyGroup']//xs:element[@name='designator']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "designator")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayCentrelinePointPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayCentrelinePointPropertyGroup']//xs:element[@name='onRunway']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "on_runway")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RunwayCentrelinePointPropertyGroup']//xs:element[@name='associatedDeclaredDistance']">
@@ -2554,6 +2844,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "precision_approach_guidance")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayDirectionPropertyGroup']//xs:element[@name='usedRunway']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "used_runway")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayDirectionPropertyGroup']//xs:element[@name='startingElement']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "starting_element")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RunwayDirectionPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -2603,8 +2901,16 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "grade_separation")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayElementPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RunwayElementPropertyGroup']//xs:element[@name='associatedRunway']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayElementPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RunwayElementPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -2650,6 +2956,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "status")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayProtectAreaPropertyGroup']//xs:element[@name='protectedRunwayDirection']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "protected_runway_direction")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RunwayVisualRangePropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_visual_range_property_type")</annox:annotate>
@@ -2682,6 +2992,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RunwayVisualRangePropertyGroup']//xs:element[@name='associatedRunwayDirection']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RunwayVisualRangePropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RunwayVisualRangePropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -2741,6 +3055,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "minimum_eye_height_over_threshold")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='VisualGlideSlopeIndicatorPropertyGroup']//xs:element[@name='runwayDirection']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_direction")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FloatingDockSitePropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "floating_dock_site_property_type")</annox:annotate>
@@ -2765,6 +3083,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FloatingDockSiteTimeSliceType']//xs:element[@ref='aixm:AbstractFloatingDockSiteExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_floating_dock_site_extension")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='FloatingDockSitePropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='FloatingDockSitePropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -2809,6 +3131,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "colour")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='MarkingBuoyPropertyGroup']//xs:element[@name='theSeaplaneLandingArea']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "the_seaplane_landing_area")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='MarkingBuoyPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='MarkingBuoyPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -2843,6 +3173,10 @@
         <jaxb:bindings node="//xs:group[@name='SeaplaneLandingAreaPropertyGroup']//xs:element[@name='dockSite']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SeaplaneLandingAreaPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SeaplaneLandingAreaPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -2873,6 +3207,14 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SeaplaneRampSiteTimeSliceType']//xs:element[@ref='aixm:AbstractSeaplaneRampSiteExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_seaplane_ramp_site_extension")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SeaplaneRampSitePropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SeaplaneRampSitePropertyGroup']//xs:element[@name='centreline']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "centreline")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SeaplaneRampSitePropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3223,6 +3565,10 @@
         <jaxb:bindings node="//xs:group[@name='GuidanceLinePropertyGroup']//xs:element[@name='connectedStand']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='GuidanceLinePropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='GuidanceLinePropertyGroup']//xs:element[@name='connectedTaxiway']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -3264,8 +3610,16 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "status")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiHoldingPositionPropertyGroup']//xs:element[@name='associatedGuidanceLine']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_guidance_line")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='TaxiHoldingPositionPropertyGroup']//xs:element[@name='protectedRunway']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiHoldingPositionPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='TaxiHoldingPositionPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3321,6 +3675,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "abandoned")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiwayPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiwayPropertyGroup']//xs:element[@name='associatedAirportHeliport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_airport_heliport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='TaxiwayPropertyGroup']//xs:element[@name='contaminant']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -3371,6 +3733,18 @@
         <jaxb:bindings node="//xs:group[@name='TaxiwayElementPropertyGroup']//xs:element[@name='gradeSeparation']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "grade_separation")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiwayElementPropertyGroup']//xs:element[@name='surfaceProperties']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_properties")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiwayElementPropertyGroup']//xs:element[@name='associatedTaxiway']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "associated_taxiway")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TaxiwayElementPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='TaxiwayElementPropertyGroup']//xs:element[@name='annotation']">
@@ -3438,6 +3812,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AirspacePropertyGroup']//xs:element[@name='class']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirspacePropertyGroup']//xs:element[@name='protectedRoute']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "protected_route")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AirspacePropertyGroup']//xs:element[@name='geometryComponent']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3586,6 +3964,18 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "width")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirspaceVolumePropertyGroup']//xs:element[@name='horizontalProjection']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "horizontal_projection")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirspaceVolumePropertyGroup']//xs:element[@name='centreline']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "centreline")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirspaceVolumePropertyGroup']//xs:element[@name='contributorAirspace']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "contributor_airspace")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AirspaceVolumePropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -3652,6 +4042,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "type")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AuthorityForAirspacePropertyGroup']//xs:element[@name='responsibleOrganisation']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "responsible_organisation")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AuthorityForAirspacePropertyGroup']//xs:element[@name='assignedAirspace']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "assigned_airspace")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AuthorityForAirspacePropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -3689,12 +4087,17 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "type")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='GeoBorderPropertyGroup']//xs:element[@name='border']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "border")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='GeoBorderPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CurveType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "curve_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+            <!-- <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Table(name = "point_type")</annox:annotate> -->
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='CurvePropertyGroup']//xs:element[@name='horizontalAccuracy']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "horizontal_accuracy")</annox:annotate>
@@ -3804,8 +4207,9 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_elevated_surface")</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='PointType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "point_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+            <!-- <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Table(name = "point_type")</annox:annotate> -->
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='PointPropertyGroup']//xs:element[@name='horizontalAccuracy']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "horizontal_accuracy")</annox:annotate>
@@ -3822,8 +4226,9 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_point")</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SurfaceType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "surface_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+            <!-- <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Table(name = "point_type")</annox:annotate> -->
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SurfacePropertyGroup']//xs:element[@name='horizontalAccuracy']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "horizontal_accuracy")</annox:annotate>
@@ -3930,6 +4335,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "outbound_leg_span_end_time")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='HoldingPatternPropertyGroup']//xs:element[@name='holdingPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "holding_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='HoldingPatternPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='HoldingPatternPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -4017,6 +4430,10 @@
         <jaxb:bindings node="//xs:group[@name='UnplannedHoldingPropertyGroup']//xs:element[@name='controlledAirspace']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "controlled_airspace")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='UnplannedHoldingPropertyGroup']//xs:element[@name='holdingPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "holding_point")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='UnplannedHoldingPropertyGroup']//xs:element[@name='annotation']">
@@ -4221,6 +4638,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CheckpointVORTimeSliceType']//xs:element[@ref='aixm:AbstractNavigationSystemCheckpointExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_navigation_system_checkpoint_extension")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='CheckpointVORPropertyGroup']//xs:element[@name='checkPointFacility']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "check_point_facility")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DirectionFinderPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -4577,6 +4998,10 @@
         <jaxb:bindings node="//xs:group[@name='NavaidPropertyGroup']//xs:element[@name='navaidEquipment']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NavaidPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='NavaidPropertyGroup']//xs:element[@name='runwayDirection']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -4665,6 +5090,10 @@
         <jaxb:bindings node="//xs:group[@name='NavaidEquipmentPropertyGroup']//xs:element[@name='flightChecked']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "flight_checked")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NavaidEquipmentPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='NavaidEquipmentPropertyGroup']//xs:element[@name='authority']">
@@ -4769,6 +5198,14 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='NavigationSystemCheckpointPropertyGroup']//xs:element[@name='angle']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "angle")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NavigationSystemCheckpointPropertyGroup']//xs:element[@name='position']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "position")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NavigationSystemCheckpointPropertyGroup']//xs:element[@name='airportHeliport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "airport_heliport")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='NavigationSystemCheckpointPropertyGroup']//xs:element[@name='annotation']">
@@ -4899,6 +5336,18 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "emission")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SpecialNavigationStationPropertyGroup']//xs:element[@name='systemChain']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "system_chain")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SpecialNavigationStationPropertyGroup']//xs:element[@name='responsibleOrganisation']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "responsible_organisation")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SpecialNavigationStationPropertyGroup']//xs:element[@name='position']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "position")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SpecialNavigationStationPropertyGroup']//xs:element[@name='availability']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -4965,6 +5414,10 @@
         <jaxb:bindings node="//xs:group[@name='SpecialNavigationSystemPropertyGroup']//xs:element[@name='name']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "name")</annox:annotate>
             <jaxb:property name="AIXMName" generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SpecialNavigationSystemPropertyGroup']//xs:element[@name='responsibleOrganisation']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "responsible_organisation")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SpecialNavigationSystemPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -5104,6 +5557,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "minimum_reception_altitude")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AngleIndicationPropertyGroup']//xs:element[@name='fix']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "fix")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AngleIndicationPropertyGroup']//xs:element[@name='pointChoice_fixDesignatedPoint']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "point_choice_fix_designated_point")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
@@ -5195,6 +5652,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "type")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DistanceIndicationPropertyGroup']//xs:element[@name='fix']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "fix")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='DistanceIndicationPropertyGroup']//xs:element[@name='pointChoice_fixDesignatedPoint']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "point_choice_fix_designated_point")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
@@ -5278,11 +5739,19 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "post_fix_tolerance")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='PointReferencePropertyGroup']//xs:element[@name='point']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='PointReferencePropertyGroup']//xs:element[@name='facilityAngle']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='PointReferencePropertyGroup']//xs:element[@name='facilityDistance']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='PointReferencePropertyGroup']//xs:element[@name='fixToleranceArea']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "fix_tolerance_area")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='PointReferencePropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -5343,6 +5812,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SegmentPointPropertyGroup']//xs:element[@name='pointChoice_airportReferencePoint']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "point_choice_airport_reference_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SegmentPointPropertyGroup']//xs:element[@name='extendedServiceVolume']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extended_service_volume")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SegmentPointPropertyGroup']//xs:element[@name='annotation']">
@@ -5429,6 +5902,22 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "name")</annox:annotate>
             <jaxb:property name="AIXMName" generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='aimingPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "aiming_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='airportHeliport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "airport_heliport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='runwayPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -5465,6 +5954,10 @@
         <jaxb:bindings node="//xs:group[@name='SignificantPointInAirspacePropertyGroup']//xs:element[@name='relativeLocation']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "relative_location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SignificantPointInAirspacePropertyGroup']//xs:element[@name='containingAirspace']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "containing_airspace")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SignificantPointInAirspacePropertyGroup']//xs:element[@name='location_fixDesignatedPoint']">
@@ -5536,6 +6029,18 @@
         <jaxb:bindings node="//xs:group[@name='AeronauticalGroundLightPropertyGroup']//xs:element[@name='flashing']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "flashing")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AeronauticalGroundLightPropertyGroup']//xs:element[@name='structureBeacon']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "structure_beacon")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AeronauticalGroundLightPropertyGroup']//xs:element[@name='aerodromeBeacon']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "aerodrome_beacon")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AeronauticalGroundLightPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AeronauticalGroundLightPropertyGroup']//xs:element[@name='annotation']">
@@ -5632,6 +6137,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "reference_owner_airport")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ObstacleAreaPropertyGroup']//xs:element[@name='surfaceExtent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface_extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ObstacleAreaPropertyGroup']//xs:element[@name='obstacle']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -5707,6 +6216,10 @@
         <jaxb:bindings node="//xs:group[@name='VerticalStructurePropertyGroup']//xs:element[@name='synchronisedLighting']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "synchronised_lighting")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='VerticalStructurePropertyGroup']//xs:element[@name='marker']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "marker")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='VerticalStructurePropertyGroup']//xs:element[@name='part']">
@@ -5973,6 +6486,18 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "military")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='position']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "position")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='airportLocation']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "airport_location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='ownerOrganisation']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "owner_organisation")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='contact']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -6085,6 +6610,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "climb_gradient")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApproachConditionPropertyGroup']//xs:element[@name='minimumSet']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "minimum_set")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ApproachConditionPropertyGroup']//xs:element[@name='circlingRestriction']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -6093,6 +6622,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ApproachConditionPropertyGroup']//xs:element[@name='landingArea']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApproachConditionPropertyGroup']//xs:element[@name='altimeter']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "altimeter")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ApproachConditionPropertyGroup']//xs:element[@name='designSurface']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6273,8 +6806,16 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "waas_reliable")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='InstrumentApproachProcedurePropertyGroup']//xs:element[@name='landing']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "landing")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='InstrumentApproachProcedurePropertyGroup']//xs:element[@name='missedInstruction']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='InstrumentApproachProcedurePropertyGroup']//xs:element[@name='finalProfile']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "final_profile")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MissedApproachGroupType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6394,8 +6935,16 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "iaf_airport_reference_point")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TerminalArrivalAreaPropertyGroup']//xs:element[@name='buffer']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "buffer")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='TerminalArrivalAreaPropertyGroup']//xs:element[@name='sector']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TerminalArrivalAreaPropertyGroup']//xs:element[@name='approachRNAV']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "approach_rnav")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='TerminalArrivalAreaPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6420,6 +6969,14 @@
         <jaxb:bindings node="//xs:group[@name='TerminalArrivalAreaSectorPropertyGroup']//xs:element[@name='altitudeDescription']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "altitude_description")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TerminalArrivalAreaSectorPropertyGroup']//xs:element[@name='sectorDefinition']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "sector_definition")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='TerminalArrivalAreaSectorPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='TerminalArrivalAreaSectorPropertyGroup']//xs:element[@name='significantObstacle']">
@@ -6528,8 +7085,20 @@
         <jaxb:bindings node="//xs:complexType[@name='CirclingAreaTimeSliceType']//xs:element[@ref='aixm:AbstractCirclingAreaExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_circling_area_extension")</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='CirclingAreaPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='CirclingAreaPropertyGroup']//xs:element[@name='approach']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "approach")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='CirclingAreaPropertyGroup']//xs:element[@name='condition']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='CirclingAreaPropertyGroup']//xs:element[@name='aircraftCategory']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "aircraft_category")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='CirclingAreaPropertyGroup']//xs:element[@name='designSurface']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6546,6 +7115,14 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CirclingRestrictionType']//xs:element[@ref='aixm:AbstractCirclingRestrictionExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_circling_restriction_extension")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='CirclingRestrictionPropertyGroup']//xs:element[@name='sectorDescription']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "sector_description")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='CirclingRestrictionPropertyGroup']//xs:element[@name='restrictionArea']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "restriction_area")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CirclingRestrictionPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6731,6 +7308,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "designator")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='StandardInstrumentArrivalPropertyGroup']//xs:element[@name='arrival']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "arrival")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DepartureArrivalConditionType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "departure_arrival_condition_type")</annox:annotate>
@@ -6758,6 +7339,10 @@
         <jaxb:bindings node="//xs:group[@name='DepartureArrivalConditionPropertyGroup']//xs:element[@name='maximumCrossingAtEndReference']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "maximum_crossing_at_end_reference")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DepartureArrivalConditionPropertyGroup']//xs:element[@name='engineType']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "engine_type")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='DepartureArrivalConditionPropertyGroup']//xs:element[@name='annotation']">
@@ -6808,6 +7393,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "minimum_visibility")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NavigationAreaPropertyGroup']//xs:element[@name='departure']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "departure")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='NavigationAreaPropertyGroup']//xs:element[@name='sector']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -6845,8 +7434,16 @@
         <jaxb:bindings node="//xs:complexType[@name='NavigationAreaSectorType']//xs:element[@ref='aixm:AbstractNavigationAreaSectorExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_navigation_area_sector_extension")</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NavigationAreaSectorPropertyGroup']//xs:element[@name='sectorDefinition']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "sector_definition")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='NavigationAreaSectorPropertyGroup']//xs:element[@name='significantObstacle']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NavigationAreaSectorPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='NavigationAreaSectorPropertyGroup']//xs:element[@name='sectorCriteria']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6933,6 +7530,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "contingency_route")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='StandardInstrumentDeparturePropertyGroup']//xs:element[@name='takeoff']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "takeoff")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SafeAltitudeAreaPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "safe_altitude_area_property_type")</annox:annotate>
@@ -7007,8 +7608,16 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "buffer_width")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SafeAltitudeAreaSectorPropertyGroup']//xs:element[@name='extent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SafeAltitudeAreaSectorPropertyGroup']//xs:element[@name='significantObstacle']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SafeAltitudeAreaSectorPropertyGroup']//xs:element[@name='sectorDefinition']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "sector_definition")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SafeAltitudeAreaSectorPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7026,6 +7635,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractApproachLegType']">
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ApproachLegPropertyGroup']//xs:element[@name='approach']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "approach")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ArrivalFeederLegPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7096,6 +7709,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "required_navigation_performance")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ArrivalLegPropertyGroup']//xs:element[@name='arrival']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "arrival")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DepartureLegPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "departure_leg_property_type")</annox:annotate>
@@ -7131,6 +7748,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='DepartureLegPropertyGroup']//xs:element[@name='minimumObstacleClearanceAltitude']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "minimum_obstacle_clearance_altitude")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='DepartureLegPropertyGroup']//xs:element[@name='departure']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "departure")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='DepartureLegPropertyGroup']//xs:element[@name='condition']">
@@ -7233,6 +7854,14 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='FinalLegPropertyGroup']//xs:element[@name='finalPathAlignmentPoint_airportReferencePoint']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "final_path_alignment_point_airport_reference_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='FinalLegPropertyGroup']//xs:element[@name='visualDescentPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "visual_descent_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='FinalLegPropertyGroup']//xs:element[@name='FASData']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "fas_data")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='HoldingUseType']">
@@ -7455,6 +8084,14 @@
         <jaxb:bindings node="//xs:group[@name='NavigationAreaRestrictionPropertyGroup']//xs:element[@name='procedure']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NavigationAreaRestrictionPropertyGroup']//xs:element[@name='designSurface']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "design_surface")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='NavigationAreaRestrictionPropertyGroup']//xs:element[@name='sectorDefinition']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "sector_definition")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='NavigationAreaRestrictionPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -7524,6 +8161,10 @@
         <jaxb:bindings node="//xs:group[@name='ProcedurePropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ProcedurePropertyGroup']//xs:element[@name='safeAltitude']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "safe_altitude")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ProcedureDMEPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "procedure_dme_property_type")</annox:annotate>
@@ -7559,6 +8200,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "satisfactory")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ProcedureDMEPropertyGroup']//xs:element[@name='DME']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "dme")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ProcedureDMEPropertyGroup']//xs:element[@name='segmentLeg']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "segment_leg")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ProcedureDMEPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -7585,6 +8234,14 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ProcedureTransitionPropertyGroup']//xs:element[@name='vectorHeading']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "vector_heading")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ProcedureTransitionPropertyGroup']//xs:element[@name='departureRunwayTransition']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "departure_runway_transition")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ProcedureTransitionPropertyGroup']//xs:element[@name='trajectory']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "trajectory")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ProcedureTransitionPropertyGroup']//xs:element[@name='transitionLeg']">
@@ -7733,8 +8390,36 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "vertical_angle")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SegmentLegPropertyGroup']//xs:element[@name='startPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "start_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SegmentLegPropertyGroup']//xs:element[@name='endPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "end_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SegmentLegPropertyGroup']//xs:element[@name='trajectory']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "trajectory")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SegmentLegPropertyGroup']//xs:element[@name='arcCentre']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "arc_centre")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SegmentLegPropertyGroup']//xs:element[@name='angle']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "angle")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SegmentLegPropertyGroup']//xs:element[@name='distance']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "distance")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SegmentLegPropertyGroup']//xs:element[@name='aircraftCategory']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SegmentLegPropertyGroup']//xs:element[@name='holding']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "holding")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SegmentLegPropertyGroup']//xs:element[@name='designSurface']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7817,6 +8502,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "location_airport_reference_point")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ChangeOverPointPropertyGroup']//xs:element[@name='applicableRoutePortion']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "applicable_route_portion")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ChangeOverPointPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -7897,6 +8586,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "military_training_type")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RoutePropertyGroup']//xs:element[@name='userOrganisation']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "user_organisation")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RoutePropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -7970,6 +8663,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "satisfactory")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RouteDMEPropertyGroup']//xs:element[@name='referencedDME']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "referenced_dme")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RouteDMEPropertyGroup']//xs:element[@name='applicableRoutePortion']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "applicable_route_portion")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RouteDMEPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -8026,6 +8727,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RoutePortionPropertyGroup']//xs:element[@name='intermediatePoint_airportReferencePoint']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "intermediate_point_airport_reference_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RoutePortionPropertyGroup']//xs:element[@name='referencedRoute']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "referenced_route")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RoutePortionPropertyGroup']//xs:element[@name='end_fixDesignatedPoint']">
@@ -8194,6 +8899,26 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "designator_suffix")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RouteSegmentPropertyGroup']//xs:element[@name='start']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "start")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RouteSegmentPropertyGroup']//xs:element[@name='routeFormed']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "route_formed")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RouteSegmentPropertyGroup']//xs:element[@name='evaluationArea']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "evaluation_area")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RouteSegmentPropertyGroup']//xs:element[@name='curveExtent']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "curve_extent")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RouteSegmentPropertyGroup']//xs:element[@name='end']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "end")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RouteSegmentPropertyGroup']//xs:element[@name='availability']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -8224,6 +8949,14 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceBorderCrossingTimeSliceType']//xs:element[@ref='aixm:AbstractAirspaceBorderCrossingExtension']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:_abstract_airspace_border_crossing_extension")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirspaceBorderCrossingPropertyGroup']//xs:element[@name='exitedAirspace']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "exited_airspace")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirspaceBorderCrossingPropertyGroup']//xs:element[@name='enteredAirspace']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "entered_airspace")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AirspaceBorderCrossingPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -8467,6 +9200,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "flight_condition_aerial_refuelling_condition")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='FlightConditionElementPropertyGroup']//xs:element[@name='operationalCondition']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "operational_condition")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='FlightConditionElementPropertyGroup']//xs:element[@name='flightLevel']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -8517,6 +9254,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='FlightRestrictionPropertyGroup']//xs:element[@name='instruction']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "instruction")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='FlightRestrictionPropertyGroup']//xs:element[@name='flight']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "flight")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='FlightRestrictionPropertyGroup']//xs:element[@name='regulatedRoute']">
@@ -8904,6 +9645,10 @@
         <jaxb:bindings node="//xs:group[@name='AirTrafficControlServicePropertyGroup']//xs:element[@name='clientAerialRefuelling']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirTrafficControlServicePropertyGroup']//xs:element[@name='aircraftLocator']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "aircraft_locator")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirTrafficManagementServicePropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "air_traffic_management_service_property_type")</annox:annotate>
@@ -9069,6 +9814,10 @@
         <jaxb:bindings node="//xs:group[@name='GroundTrafficControlServicePropertyGroup']//xs:element[@name='type']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "type")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='GroundTrafficControlServicePropertyGroup']//xs:element[@name='clientAirport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "client_airport")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='InformationServicePropertyType']">
@@ -9470,6 +10219,14 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "name")</annox:annotate>
             <jaxb:property name="AIXMName" generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ServicePropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ServicePropertyGroup']//xs:element[@name='serviceProvider']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "service_provider")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ServicePropertyGroup']//xs:element[@name='call-sign']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -9854,6 +10611,10 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "altitude_interpretation")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='AirspaceLayerPropertyGroup']//xs:element[@name='discreteLevelSeries']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "discrete_level_series")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='AirspaceLayerPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -9954,6 +10715,10 @@
         <jaxb:bindings node="//xs:group[@name='LightElementPropertyGroup']//xs:element[@name='type']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "type")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='LightElementPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='LightElementPropertyGroup']//xs:element[@name='annotation']">
@@ -10164,6 +10929,10 @@
         <jaxb:bindings node="//xs:group[@name='SpecialDatePropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='SpecialDatePropertyGroup']//xs:element[@name='authority']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "authority")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TimesheetType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "timesheet_type")</annox:annotate>
@@ -10314,6 +11083,10 @@
         <jaxb:bindings node="//xs:group[@name='StandardLevelColumnPropertyGroup']//xs:element[@name='level']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='StandardLevelColumnPropertyGroup']//xs:element[@name='levelTable']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "level_table")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='StandardLevelColumnPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -10362,6 +11135,10 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='StandardLevelSectorPropertyGroup']//xs:element[@name='applicableAirspace']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='StandardLevelSectorPropertyGroup']//xs:element[@name='applicableLevelColumn']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "applicable_level_column")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='StandardLevelSectorPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10504,6 +11281,18 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "leg_length_away")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='HoldingAssessmentPropertyGroup']//xs:element[@name='holdingPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "holding_point")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='HoldingAssessmentPropertyGroup']//xs:element[@name='unplannedHolding']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "unplanned_holding")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='HoldingAssessmentPropertyGroup']//xs:element[@name='assessedHoldingPattern']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "assessed_holding_pattern")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='HoldingAssessmentPropertyGroup']//xs:element[@name='obstacleAssessment']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -10556,6 +11345,14 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ObstacleAssessmentAreaPropertyGroup']//xs:element[@name='significantObstacle']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ObstacleAssessmentAreaPropertyGroup']//xs:element[@name='surface']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "surface")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ObstacleAssessmentAreaPropertyGroup']//xs:element[@name='startingCurve']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "starting_curve")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ObstacleAssessmentAreaPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10633,6 +11430,10 @@
         <jaxb:bindings node="//xs:group[@name='ObstructionPropertyGroup']//xs:element[@name='closeIn']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "close_in")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ObstructionPropertyGroup']//xs:element[@name='theVerticalStructure']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "the_vertical_structure")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ObstructionPropertyGroup']//xs:element[@name='adjustment']">
@@ -10829,6 +11630,10 @@
         <jaxb:bindings node="//xs:group[@name='RadarEquipmentPropertyGroup']//xs:element[@name='contact']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RadarEquipmentPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RadarEquipmentPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
@@ -10881,8 +11686,16 @@
         <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='office']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='airportHeliport']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "airport_heliport")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='PARRunway']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='location']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "location")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='annotation']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10897,6 +11710,10 @@
         <jaxb:bindings node="//xs:group[@name='ReflectorPropertyGroup']//xs:element[@name='type']">
             <annox:annotate target="field">@jakarta.persistence.Enumerated(EnumType.STRING)</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "type")</annox:annotate>
+            <jaxb:property generateElementProperty="false"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:group[@name='ReflectorPropertyGroup']//xs:element[@name='touchdownReflector']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "touchdown_reflector")</annox:annotate>
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='ReflectorPropertyGroup']//xs:element[@name='annotation']">

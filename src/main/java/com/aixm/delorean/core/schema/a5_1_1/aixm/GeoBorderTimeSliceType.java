@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -78,8 +76,9 @@ public class GeoBorderTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     protected CodeGeoBorderType type;
-    @XmlElementRef(name = "border", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CurvePropertyType> border;
+    @XmlElement(nillable = true)
+    @Column(name = "border")
+    protected CurvePropertyType border;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -148,10 +147,10 @@ public class GeoBorderTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public JAXBElement<CurvePropertyType> getBorder() {
+    public CurvePropertyType getBorder() {
         return border;
     }
 
@@ -160,10 +159,10 @@ public class GeoBorderTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public void setBorder(JAXBElement<CurvePropertyType> value) {
+    public void setBorder(CurvePropertyType value) {
         this.border = value;
     }
 

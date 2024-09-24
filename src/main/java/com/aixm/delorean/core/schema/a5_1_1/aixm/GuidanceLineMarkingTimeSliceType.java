@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -91,8 +89,9 @@ public class GuidanceLineMarkingTimeSliceType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "markedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<GuidanceLinePropertyType> markedGuidanceLine;
+    @XmlElement(nillable = true)
+    @Column(name = "marked_guidance_line")
+    protected GuidanceLinePropertyType markedGuidanceLine;
     protected List<GuidanceLineMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -236,10 +235,10 @@ public class GuidanceLineMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public JAXBElement<GuidanceLinePropertyType> getMarkedGuidanceLine() {
+    public GuidanceLinePropertyType getMarkedGuidanceLine() {
         return markedGuidanceLine;
     }
 
@@ -248,10 +247,10 @@ public class GuidanceLineMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public void setMarkedGuidanceLine(JAXBElement<GuidanceLinePropertyType> value) {
+    public void setMarkedGuidanceLine(GuidanceLinePropertyType value) {
         this.markedGuidanceLine = value;
     }
 

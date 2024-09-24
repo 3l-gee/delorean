@@ -9,10 +9,17 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AggregationType;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -38,9 +45,16 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     AIXMBasicMessageType.class
 })
+@MappedSuperclass
 public abstract class AbstractAIXMMessageType
     extends AbstractAIXMMessageBaseType
 {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @XmlTransient
+    protected Long dbID;
 
     @XmlAttribute(name = "aggregationType")
     protected AggregationType aggregationType;

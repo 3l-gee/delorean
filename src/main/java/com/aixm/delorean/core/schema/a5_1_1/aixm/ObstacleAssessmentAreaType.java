@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -116,10 +114,12 @@ public class ObstacleAssessmentAreaType
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ObstructionPropertyType> significantObstacle;
-    @XmlElementRef(name = "surface", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SurfacePropertyType> surface;
-    @XmlElementRef(name = "startingCurve", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<CurvePropertyType> startingCurve;
+    @XmlElement(nillable = true)
+    @Column(name = "surface")
+    protected SurfacePropertyType surface;
+    @XmlElement(nillable = true)
+    @Column(name = "starting_curve")
+    protected CurvePropertyType startingCurve;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -436,10 +436,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public JAXBElement<SurfacePropertyType> getSurface() {
+    public SurfacePropertyType getSurface() {
         return surface;
     }
 
@@ -448,10 +448,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public void setSurface(JAXBElement<SurfacePropertyType> value) {
+    public void setSurface(SurfacePropertyType value) {
         this.surface = value;
     }
 
@@ -464,10 +464,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public JAXBElement<CurvePropertyType> getStartingCurve() {
+    public CurvePropertyType getStartingCurve() {
         return startingCurve;
     }
 
@@ -476,10 +476,10 @@ public class ObstacleAssessmentAreaType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public void setStartingCurve(JAXBElement<CurvePropertyType> value) {
+    public void setStartingCurve(CurvePropertyType value) {
         this.startingCurve = value;
     }
 

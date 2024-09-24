@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -81,10 +79,12 @@ public class ApronTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "abandoned")
     protected CodeYesNoType abandoned;
-    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
-    @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
+    @XmlElement(nillable = true)
+    @Column(name = "surface_properties")
+    protected SurfaceCharacteristicsPropertyType surfaceProperties;
+    @XmlElement(nillable = true)
+    @Column(name = "associated_airport_heliport")
+    protected AirportHeliportPropertyType associatedAirportHeliport;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -163,10 +163,10 @@ public class ApronTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
+    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -175,10 +175,10 @@ public class ApronTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
+    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
         this.surfaceProperties = value;
     }
 
@@ -191,10 +191,10 @@ public class ApronTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirportHeliport() {
+    public AirportHeliportPropertyType getAssociatedAirportHeliport() {
         return associatedAirportHeliport;
     }
 
@@ -203,10 +203,10 @@ public class ApronTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAssociatedAirportHeliport(AirportHeliportPropertyType value) {
         this.associatedAirportHeliport = value;
     }
 

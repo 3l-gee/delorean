@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -96,8 +94,9 @@ public class AirportProtectionAreaMarkingTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "marking_location")
     protected CodeProtectAreaSectionType markingLocation;
-    @XmlElementRef(name = "markedProtectionArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<AirportHeliportProtectionAreaPropertyType> markedProtectionArea;
+    @XmlElement(nillable = true)
+    @Column(name = "marked_protection_area")
+    protected AirportHeliportProtectionAreaPropertyType markedProtectionArea;
     protected List<AirportProtectionAreaMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -269,10 +268,10 @@ public class AirportProtectionAreaMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportProtectionAreaPropertyType }{@code >}
+     *     {@link AirportHeliportProtectionAreaPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportProtectionAreaPropertyType> getMarkedProtectionArea() {
+    public AirportHeliportProtectionAreaPropertyType getMarkedProtectionArea() {
         return markedProtectionArea;
     }
 
@@ -281,10 +280,10 @@ public class AirportProtectionAreaMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportProtectionAreaPropertyType }{@code >}
+     *     {@link AirportHeliportProtectionAreaPropertyType }
      *     
      */
-    public void setMarkedProtectionArea(JAXBElement<AirportHeliportProtectionAreaPropertyType> value) {
+    public void setMarkedProtectionArea(AirportHeliportProtectionAreaPropertyType value) {
         this.markedProtectionArea = value;
     }
 

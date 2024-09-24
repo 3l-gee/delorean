@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -85,10 +83,12 @@ public class MarkingBuoyTimeSliceType
     @Enumerated(EnumType.STRING)
     @Column(name = "colour")
     protected CodeColourType colour;
-    @XmlElementRef(name = "theSeaplaneLandingArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<SeaplaneLandingAreaPropertyType> theSeaplaneLandingArea;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedPointPropertyType> location;
+    @XmlElement(nillable = true)
+    @Column(name = "the_seaplane_landing_area")
+    protected SeaplaneLandingAreaPropertyType theSeaplaneLandingArea;
+    @XmlElement(nillable = true)
+    @Column(name = "location")
+    protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -185,10 +185,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SeaplaneLandingAreaPropertyType }{@code >}
+     *     {@link SeaplaneLandingAreaPropertyType }
      *     
      */
-    public JAXBElement<SeaplaneLandingAreaPropertyType> getTheSeaplaneLandingArea() {
+    public SeaplaneLandingAreaPropertyType getTheSeaplaneLandingArea() {
         return theSeaplaneLandingArea;
     }
 
@@ -197,10 +197,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SeaplaneLandingAreaPropertyType }{@code >}
+     *     {@link SeaplaneLandingAreaPropertyType }
      *     
      */
-    public void setTheSeaplaneLandingArea(JAXBElement<SeaplaneLandingAreaPropertyType> value) {
+    public void setTheSeaplaneLandingArea(SeaplaneLandingAreaPropertyType value) {
         this.theSeaplaneLandingArea = value;
     }
 
@@ -213,10 +213,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getLocation() {
+    public ElevatedPointPropertyType getLocation() {
         return location;
     }
 
@@ -225,10 +225,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setLocation(ElevatedPointPropertyType value) {
         this.location = value;
     }
 

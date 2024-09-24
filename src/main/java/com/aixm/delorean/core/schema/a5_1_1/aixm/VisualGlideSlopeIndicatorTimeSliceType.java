@@ -17,12 +17,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -129,8 +127,9 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @XmlElement(nillable = true)
     @Column(name = "minimum_eye_height_over_threshold")
     protected ValDistanceVerticalType minimumEyeHeightOverThreshold;
-    @XmlElementRef(name = "runwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<RunwayDirectionPropertyType> runwayDirection;
+    @XmlElement(nillable = true)
+    @Column(name = "runway_direction")
+    protected RunwayDirectionPropertyType runwayDirection;
     protected List<VisualGlideSlopeIndicatorTimeSliceType.Extension> extension;
 
     /**
@@ -510,10 +509,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public JAXBElement<RunwayDirectionPropertyType> getRunwayDirection() {
+    public RunwayDirectionPropertyType getRunwayDirection() {
         return runwayDirection;
     }
 
@@ -522,10 +521,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public void setRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
+    public void setRunwayDirection(RunwayDirectionPropertyType value) {
         this.runwayDirection = value;
     }
 
