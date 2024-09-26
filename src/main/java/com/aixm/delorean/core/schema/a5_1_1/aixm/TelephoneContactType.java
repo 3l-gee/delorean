@@ -9,16 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,26 +70,21 @@ public class TelephoneContactType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
-    @Column(name = "voice")
-    protected TextPhoneType voice;
-    @XmlElement(nillable = true)
-    @Column(name = "facsimile")
-    protected TextPhoneType facsimile;
+    @XmlElementRef(name = "voice", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextPhoneType> voice;
+    @XmlElementRef(name = "facsimile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextPhoneType> facsimile;
+    @Transient
     protected List<TelephoneContactType.Extension> extension;
 
     /**
@@ -218,10 +212,10 @@ public class TelephoneContactType
      * 
      * @return
      *     possible object is
-     *     {@link TextPhoneType }
+     *     {@link JAXBElement }{@code <}{@link TextPhoneType }{@code >}
      *     
      */
-    public TextPhoneType getVoice() {
+    public JAXBElement<TextPhoneType> getVoice() {
         return voice;
     }
 
@@ -230,10 +224,10 @@ public class TelephoneContactType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextPhoneType }
+     *     {@link JAXBElement }{@code <}{@link TextPhoneType }{@code >}
      *     
      */
-    public void setVoice(TextPhoneType value) {
+    public void setVoice(JAXBElement<TextPhoneType> value) {
         this.voice = value;
     }
 
@@ -246,10 +240,10 @@ public class TelephoneContactType
      * 
      * @return
      *     possible object is
-     *     {@link TextPhoneType }
+     *     {@link JAXBElement }{@code <}{@link TextPhoneType }{@code >}
      *     
      */
-    public TextPhoneType getFacsimile() {
+    public JAXBElement<TextPhoneType> getFacsimile() {
         return facsimile;
     }
 
@@ -258,10 +252,10 @@ public class TelephoneContactType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextPhoneType }
+     *     {@link JAXBElement }{@code <}{@link TextPhoneType }{@code >}
      *     
      */
-    public void setFacsimile(TextPhoneType value) {
+    public void setFacsimile(JAXBElement<TextPhoneType> value) {
         this.facsimile = value;
     }
 
@@ -339,10 +333,10 @@ public class TelephoneContactType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractTelephoneContactExtension")
-        @Column(name = "aixm:_abstract_telephone_contact_extension")
+        @Transient
         protected AbstractExtensionType abstractTelephoneContactExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -79,58 +76,49 @@ public class MinimaType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "altitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> altitude;
+    @XmlElementRef(name = "altitudeCode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeMinimumAltitudeType> altitudeCode;
+    @XmlElementRef(name = "altitudeReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeVerticalReferenceType> altitudeReference;
+    @XmlElementRef(name = "height", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> height;
+    @XmlElementRef(name = "militaryHeight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> militaryHeight;
+    @XmlElementRef(name = "radioHeight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> radioHeight;
+    @XmlElementRef(name = "heightCode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeMinimumHeightType> heightCode;
+    @XmlElementRef(name = "heightReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeHeightReferenceType> heightReference;
+    @XmlElementRef(name = "visibility", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> visibility;
+    @XmlElementRef(name = "militaryVisibility", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> militaryVisibility;
+    @XmlElementRef(name = "mandatoryRVR", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> mandatoryRVR;
+    @XmlElementRef(name = "remoteAltimeterMinima", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> remoteAltimeterMinima;
     @XmlElement(nillable = true)
-    @Column(name = "altitude")
-    protected ValDistanceVerticalType altitude;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "altitude_code")
-    protected CodeMinimumAltitudeType altitudeCode;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "altitude_reference")
-    protected CodeVerticalReferenceType altitudeReference;
-    @XmlElement(nillable = true)
-    @Column(name = "height")
-    protected ValDistanceVerticalType height;
-    @XmlElement(nillable = true)
-    @Column(name = "military_height")
-    protected ValDistanceVerticalType militaryHeight;
-    @XmlElement(nillable = true)
-    @Column(name = "radio_height")
-    protected ValDistanceVerticalType radioHeight;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "height_code")
-    protected CodeMinimumHeightType heightCode;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "height_reference")
-    protected CodeHeightReferenceType heightReference;
-    @XmlElement(nillable = true)
-    @Column(name = "visibility")
-    protected ValDistanceType visibility;
-    @XmlElement(nillable = true)
-    @Column(name = "military_visibility")
-    protected ValDistanceType militaryVisibility;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "mandatory_rvr")
-    protected CodeYesNoType mandatoryRVR;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "remote_altimeter_minima")
-    protected CodeYesNoType remoteAltimeterMinima;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<EquipmentUnavailableAdjustmentPropertyType> adjustmentINOP;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<MinimaType.Extension> extension;
 
     /**
@@ -138,10 +126,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getAltitude() {
+    public JAXBElement<ValDistanceVerticalType> getAltitude() {
         return altitude;
     }
 
@@ -150,10 +138,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setAltitude(ValDistanceVerticalType value) {
+    public void setAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.altitude = value;
     }
 
@@ -166,10 +154,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link CodeMinimumAltitudeType }
+     *     {@link JAXBElement }{@code <}{@link CodeMinimumAltitudeType }{@code >}
      *     
      */
-    public CodeMinimumAltitudeType getAltitudeCode() {
+    public JAXBElement<CodeMinimumAltitudeType> getAltitudeCode() {
         return altitudeCode;
     }
 
@@ -178,10 +166,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMinimumAltitudeType }
+     *     {@link JAXBElement }{@code <}{@link CodeMinimumAltitudeType }{@code >}
      *     
      */
-    public void setAltitudeCode(CodeMinimumAltitudeType value) {
+    public void setAltitudeCode(JAXBElement<CodeMinimumAltitudeType> value) {
         this.altitudeCode = value;
     }
 
@@ -194,10 +182,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getAltitudeReference() {
+    public JAXBElement<CodeVerticalReferenceType> getAltitudeReference() {
         return altitudeReference;
     }
 
@@ -206,10 +194,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setAltitudeReference(CodeVerticalReferenceType value) {
+    public void setAltitudeReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.altitudeReference = value;
     }
 
@@ -222,10 +210,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getHeight() {
+    public JAXBElement<ValDistanceVerticalType> getHeight() {
         return height;
     }
 
@@ -234,10 +222,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setHeight(ValDistanceVerticalType value) {
+    public void setHeight(JAXBElement<ValDistanceVerticalType> value) {
         this.height = value;
     }
 
@@ -250,10 +238,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getMilitaryHeight() {
+    public JAXBElement<ValDistanceVerticalType> getMilitaryHeight() {
         return militaryHeight;
     }
 
@@ -262,10 +250,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setMilitaryHeight(ValDistanceVerticalType value) {
+    public void setMilitaryHeight(JAXBElement<ValDistanceVerticalType> value) {
         this.militaryHeight = value;
     }
 
@@ -278,10 +266,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getRadioHeight() {
+    public JAXBElement<ValDistanceVerticalType> getRadioHeight() {
         return radioHeight;
     }
 
@@ -290,10 +278,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setRadioHeight(ValDistanceVerticalType value) {
+    public void setRadioHeight(JAXBElement<ValDistanceVerticalType> value) {
         this.radioHeight = value;
     }
 
@@ -306,10 +294,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link CodeMinimumHeightType }
+     *     {@link JAXBElement }{@code <}{@link CodeMinimumHeightType }{@code >}
      *     
      */
-    public CodeMinimumHeightType getHeightCode() {
+    public JAXBElement<CodeMinimumHeightType> getHeightCode() {
         return heightCode;
     }
 
@@ -318,10 +306,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMinimumHeightType }
+     *     {@link JAXBElement }{@code <}{@link CodeMinimumHeightType }{@code >}
      *     
      */
-    public void setHeightCode(CodeMinimumHeightType value) {
+    public void setHeightCode(JAXBElement<CodeMinimumHeightType> value) {
         this.heightCode = value;
     }
 
@@ -334,10 +322,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link CodeHeightReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeHeightReferenceType }{@code >}
      *     
      */
-    public CodeHeightReferenceType getHeightReference() {
+    public JAXBElement<CodeHeightReferenceType> getHeightReference() {
         return heightReference;
     }
 
@@ -346,10 +334,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeHeightReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeHeightReferenceType }{@code >}
      *     
      */
-    public void setHeightReference(CodeHeightReferenceType value) {
+    public void setHeightReference(JAXBElement<CodeHeightReferenceType> value) {
         this.heightReference = value;
     }
 
@@ -362,10 +350,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getVisibility() {
+    public JAXBElement<ValDistanceType> getVisibility() {
         return visibility;
     }
 
@@ -374,10 +362,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setVisibility(ValDistanceType value) {
+    public void setVisibility(JAXBElement<ValDistanceType> value) {
         this.visibility = value;
     }
 
@@ -390,10 +378,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getMilitaryVisibility() {
+    public JAXBElement<ValDistanceType> getMilitaryVisibility() {
         return militaryVisibility;
     }
 
@@ -402,10 +390,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setMilitaryVisibility(ValDistanceType value) {
+    public void setMilitaryVisibility(JAXBElement<ValDistanceType> value) {
         this.militaryVisibility = value;
     }
 
@@ -418,10 +406,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getMandatoryRVR() {
+    public JAXBElement<CodeYesNoType> getMandatoryRVR() {
         return mandatoryRVR;
     }
 
@@ -430,10 +418,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setMandatoryRVR(CodeYesNoType value) {
+    public void setMandatoryRVR(JAXBElement<CodeYesNoType> value) {
         this.mandatoryRVR = value;
     }
 
@@ -446,10 +434,10 @@ public class MinimaType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getRemoteAltimeterMinima() {
+    public JAXBElement<CodeYesNoType> getRemoteAltimeterMinima() {
         return remoteAltimeterMinima;
     }
 
@@ -458,10 +446,10 @@ public class MinimaType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setRemoteAltimeterMinima(CodeYesNoType value) {
+    public void setRemoteAltimeterMinima(JAXBElement<CodeYesNoType> value) {
         this.remoteAltimeterMinima = value;
     }
 
@@ -617,7 +605,7 @@ public class MinimaType
     public static class Extension {
 
         @XmlElement(name = "AbstractMinimaExtension")
-        @Column(name = "aixm:_abstract_minima_extension")
+        @Transient
         protected AbstractExtensionType abstractMinimaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

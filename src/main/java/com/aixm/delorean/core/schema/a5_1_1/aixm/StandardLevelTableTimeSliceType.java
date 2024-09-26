@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,19 +65,16 @@ public class StandardLevelTableTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(name = "name", nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "name")
-    protected CodeLevelTableDesignatorType aixmName;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeLevelTableDesignatorType> aixmName;
+    @XmlElementRef(name = "standardICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> standardICAO;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "standard_icao")
-    protected CodeYesNoType standardICAO;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<StandardLevelTableTimeSliceType.Extension> extension;
 
     /**
@@ -88,10 +82,10 @@ public class StandardLevelTableTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeLevelTableDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeLevelTableDesignatorType }{@code >}
      *     
      */
-    public CodeLevelTableDesignatorType getAIXMName() {
+    public JAXBElement<CodeLevelTableDesignatorType> getAIXMName() {
         return aixmName;
     }
 
@@ -100,10 +94,10 @@ public class StandardLevelTableTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLevelTableDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeLevelTableDesignatorType }{@code >}
      *     
      */
-    public void setAIXMName(CodeLevelTableDesignatorType value) {
+    public void setAIXMName(JAXBElement<CodeLevelTableDesignatorType> value) {
         this.aixmName = value;
     }
 
@@ -116,10 +110,10 @@ public class StandardLevelTableTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getStandardICAO() {
+    public JAXBElement<CodeYesNoType> getStandardICAO() {
         return standardICAO;
     }
 
@@ -128,10 +122,10 @@ public class StandardLevelTableTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setStandardICAO(CodeYesNoType value) {
+    public void setStandardICAO(JAXBElement<CodeYesNoType> value) {
         this.standardICAO = value;
     }
 
@@ -247,7 +241,7 @@ public class StandardLevelTableTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelTableExtension", required = true)
-        @Column(name = "aixm:_abstract_standard_level_table_extension")
+        @Transient
         protected AbstractExtensionType abstractStandardLevelTableExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

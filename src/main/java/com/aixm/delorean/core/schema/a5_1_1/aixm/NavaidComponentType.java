@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,24 +67,21 @@ public class NavaidComponentType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "collocationGroup", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<NoSequenceType> collocationGroup;
+    @XmlElementRef(name = "markerPosition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodePositionInILSType> markerPosition;
+    @XmlElementRef(name = "providesNavigableLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> providesNavigableLocation;
     @XmlElement(nillable = true)
-    @Column(name = "collocation_group")
-    protected NoSequenceType collocationGroup;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "marker_position")
-    protected CodePositionInILSType markerPosition;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "provides_navigable_location")
-    protected CodeYesNoType providesNavigableLocation;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
-    @Column(name = "the_navaid_equipment")
+    @Transient
     protected NavaidEquipmentPropertyType theNavaidEquipment;
+    @Transient
     protected List<NavaidComponentType.Extension> extension;
 
     /**
@@ -95,10 +89,10 @@ public class NavaidComponentType
      * 
      * @return
      *     possible object is
-     *     {@link NoSequenceType }
+     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
      *     
      */
-    public NoSequenceType getCollocationGroup() {
+    public JAXBElement<NoSequenceType> getCollocationGroup() {
         return collocationGroup;
     }
 
@@ -107,10 +101,10 @@ public class NavaidComponentType
      * 
      * @param value
      *     allowed object is
-     *     {@link NoSequenceType }
+     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
      *     
      */
-    public void setCollocationGroup(NoSequenceType value) {
+    public void setCollocationGroup(JAXBElement<NoSequenceType> value) {
         this.collocationGroup = value;
     }
 
@@ -123,10 +117,10 @@ public class NavaidComponentType
      * 
      * @return
      *     possible object is
-     *     {@link CodePositionInILSType }
+     *     {@link JAXBElement }{@code <}{@link CodePositionInILSType }{@code >}
      *     
      */
-    public CodePositionInILSType getMarkerPosition() {
+    public JAXBElement<CodePositionInILSType> getMarkerPosition() {
         return markerPosition;
     }
 
@@ -135,10 +129,10 @@ public class NavaidComponentType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodePositionInILSType }
+     *     {@link JAXBElement }{@code <}{@link CodePositionInILSType }{@code >}
      *     
      */
-    public void setMarkerPosition(CodePositionInILSType value) {
+    public void setMarkerPosition(JAXBElement<CodePositionInILSType> value) {
         this.markerPosition = value;
     }
 
@@ -151,10 +145,10 @@ public class NavaidComponentType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getProvidesNavigableLocation() {
+    public JAXBElement<CodeYesNoType> getProvidesNavigableLocation() {
         return providesNavigableLocation;
     }
 
@@ -163,10 +157,10 @@ public class NavaidComponentType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setProvidesNavigableLocation(CodeYesNoType value) {
+    public void setProvidesNavigableLocation(JAXBElement<CodeYesNoType> value) {
         this.providesNavigableLocation = value;
     }
 
@@ -310,7 +304,7 @@ public class NavaidComponentType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidComponentExtension")
-        @Column(name = "aixm:_abstract_navaid_component_extension")
+        @Transient
         protected AbstractExtensionType abstractNavaidComponentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

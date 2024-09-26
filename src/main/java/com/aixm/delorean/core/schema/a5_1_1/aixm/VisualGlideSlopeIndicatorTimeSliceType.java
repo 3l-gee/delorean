@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -79,57 +76,46 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "emergencyLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> emergencyLighting;
+    @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeLightIntensityType> intensityLevel;
+    @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "emergency_lighting")
-    protected CodeYesNoType emergencyLighting;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "intensity_level")
-    protected CodeLightIntensityType intensityLevel;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "colour")
-    protected CodeColourType colour;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeVASISType type;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "position")
-    protected CodeSideType position;
-    @XmlElement(nillable = true)
-    @Column(name = "number_box")
-    protected NoNumberType numberBox;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "portable")
-    protected CodeYesNoType portable;
-    @XmlElement(nillable = true)
-    @Column(name = "slope_angle")
-    protected ValAngleType slopeAngle;
-    @XmlElement(nillable = true)
-    @Column(name = "minimum_eye_height_over_threshold")
-    protected ValDistanceVerticalType minimumEyeHeightOverThreshold;
-    @XmlElement(nillable = true)
-    @Column(name = "runway_direction")
-    protected RunwayDirectionPropertyType runwayDirection;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeVASISType> type;
+    @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeSideType> position;
+    @XmlElementRef(name = "numberBox", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<NoNumberType> numberBox;
+    @XmlElementRef(name = "portable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> portable;
+    @XmlElementRef(name = "slopeAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValAngleType> slopeAngle;
+    @XmlElementRef(name = "minimumEyeHeightOverThreshold", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> minimumEyeHeightOverThreshold;
+    @XmlElementRef(name = "runwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<RunwayDirectionPropertyType> runwayDirection;
+    @Transient
     protected List<VisualGlideSlopeIndicatorTimeSliceType.Extension> extension;
 
     /**
@@ -137,10 +123,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getEmergencyLighting() {
+    public JAXBElement<CodeYesNoType> getEmergencyLighting() {
         return emergencyLighting;
     }
 
@@ -149,10 +135,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setEmergencyLighting(CodeYesNoType value) {
+    public void setEmergencyLighting(JAXBElement<CodeYesNoType> value) {
         this.emergencyLighting = value;
     }
 
@@ -165,10 +151,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeLightIntensityType }
+     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
      *     
      */
-    public CodeLightIntensityType getIntensityLevel() {
+    public JAXBElement<CodeLightIntensityType> getIntensityLevel() {
         return intensityLevel;
     }
 
@@ -177,10 +163,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLightIntensityType }
+     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
      *     
      */
-    public void setIntensityLevel(CodeLightIntensityType value) {
+    public void setIntensityLevel(JAXBElement<CodeLightIntensityType> value) {
         this.intensityLevel = value;
     }
 
@@ -193,10 +179,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeColourType }
+     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
      *     
      */
-    public CodeColourType getColour() {
+    public JAXBElement<CodeColourType> getColour() {
         return colour;
     }
 
@@ -205,10 +191,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeColourType }
+     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
      *     
      */
-    public void setColour(CodeColourType value) {
+    public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
     }
 
@@ -341,10 +327,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVASISType }
+     *     {@link JAXBElement }{@code <}{@link CodeVASISType }{@code >}
      *     
      */
-    public CodeVASISType getType() {
+    public JAXBElement<CodeVASISType> getType() {
         return type;
     }
 
@@ -353,10 +339,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVASISType }
+     *     {@link JAXBElement }{@code <}{@link CodeVASISType }{@code >}
      *     
      */
-    public void setType(CodeVASISType value) {
+    public void setType(JAXBElement<CodeVASISType> value) {
         this.type = value;
     }
 
@@ -369,10 +355,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeSideType }
+     *     {@link JAXBElement }{@code <}{@link CodeSideType }{@code >}
      *     
      */
-    public CodeSideType getPosition() {
+    public JAXBElement<CodeSideType> getPosition() {
         return position;
     }
 
@@ -381,10 +367,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSideType }
+     *     {@link JAXBElement }{@code <}{@link CodeSideType }{@code >}
      *     
      */
-    public void setPosition(CodeSideType value) {
+    public void setPosition(JAXBElement<CodeSideType> value) {
         this.position = value;
     }
 
@@ -397,10 +383,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link NoNumberType }
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
      *     
      */
-    public NoNumberType getNumberBox() {
+    public JAXBElement<NoNumberType> getNumberBox() {
         return numberBox;
     }
 
@@ -409,10 +395,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link NoNumberType }
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
      *     
      */
-    public void setNumberBox(NoNumberType value) {
+    public void setNumberBox(JAXBElement<NoNumberType> value) {
         this.numberBox = value;
     }
 
@@ -425,10 +411,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getPortable() {
+    public JAXBElement<CodeYesNoType> getPortable() {
         return portable;
     }
 
@@ -437,10 +423,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setPortable(CodeYesNoType value) {
+    public void setPortable(JAXBElement<CodeYesNoType> value) {
         this.portable = value;
     }
 
@@ -453,10 +439,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public ValAngleType getSlopeAngle() {
+    public JAXBElement<ValAngleType> getSlopeAngle() {
         return slopeAngle;
     }
 
@@ -465,10 +451,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public void setSlopeAngle(ValAngleType value) {
+    public void setSlopeAngle(JAXBElement<ValAngleType> value) {
         this.slopeAngle = value;
     }
 
@@ -481,10 +467,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getMinimumEyeHeightOverThreshold() {
+    public JAXBElement<ValDistanceVerticalType> getMinimumEyeHeightOverThreshold() {
         return minimumEyeHeightOverThreshold;
     }
 
@@ -493,10 +479,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setMinimumEyeHeightOverThreshold(ValDistanceVerticalType value) {
+    public void setMinimumEyeHeightOverThreshold(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumEyeHeightOverThreshold = value;
     }
 
@@ -509,10 +495,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public RunwayDirectionPropertyType getRunwayDirection() {
+    public JAXBElement<RunwayDirectionPropertyType> getRunwayDirection() {
         return runwayDirection;
     }
 
@@ -521,10 +507,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public void setRunwayDirection(RunwayDirectionPropertyType value) {
+    public void setRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
         this.runwayDirection = value;
     }
 
@@ -602,10 +588,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractVisualGlideSlopeIndicatorExtension")
-        @Column(name = "aixm:_abstract_visual_glide_slope_indicator_extension")
+        @Transient
         protected AbstractExtensionType abstractVisualGlideSlopeIndicatorExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @Column(name = "aixm:_abstract_ground_light_system_extension")
+        @Transient
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

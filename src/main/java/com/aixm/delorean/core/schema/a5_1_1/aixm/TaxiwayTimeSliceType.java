@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -76,47 +73,40 @@ public class TaxiwayTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextDesignatorType> designator;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeTaxiwayType> type;
+    @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> width;
+    @XmlElementRef(name = "widthShoulder", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> widthShoulder;
+    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> length;
+    @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> abandoned;
+    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
+    @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
     @XmlElement(nillable = true)
-    @Column(name = "designator")
-    protected TextDesignatorType designator;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeTaxiwayType type;
-    @XmlElement(nillable = true)
-    @Column(name = "width")
-    protected ValDistanceType width;
-    @XmlElement(nillable = true)
-    @Column(name = "width_shoulder")
-    protected ValDistanceType widthShoulder;
-    @XmlElement(nillable = true)
-    @Column(name = "length")
-    protected ValDistanceType length;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "abandoned")
-    protected CodeYesNoType abandoned;
-    @XmlElement(nillable = true)
-    @Column(name = "surface_properties")
-    protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(nillable = true)
-    @Column(name = "associated_airport_heliport")
-    protected AirportHeliportPropertyType associatedAirportHeliport;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<TaxiwayContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
+    @Transient
     protected List<TaxiwayTimeSliceType.Extension> extension;
 
     /**
@@ -124,10 +114,10 @@ public class TaxiwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
      *     
      */
-    public TextDesignatorType getDesignator() {
+    public JAXBElement<TextDesignatorType> getDesignator() {
         return designator;
     }
 
@@ -136,10 +126,10 @@ public class TaxiwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
      *     
      */
-    public void setDesignator(TextDesignatorType value) {
+    public void setDesignator(JAXBElement<TextDesignatorType> value) {
         this.designator = value;
     }
 
@@ -152,10 +142,10 @@ public class TaxiwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeTaxiwayType }
+     *     {@link JAXBElement }{@code <}{@link CodeTaxiwayType }{@code >}
      *     
      */
-    public CodeTaxiwayType getType() {
+    public JAXBElement<CodeTaxiwayType> getType() {
         return type;
     }
 
@@ -164,10 +154,10 @@ public class TaxiwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeTaxiwayType }
+     *     {@link JAXBElement }{@code <}{@link CodeTaxiwayType }{@code >}
      *     
      */
-    public void setType(CodeTaxiwayType value) {
+    public void setType(JAXBElement<CodeTaxiwayType> value) {
         this.type = value;
     }
 
@@ -180,10 +170,10 @@ public class TaxiwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getWidth() {
+    public JAXBElement<ValDistanceType> getWidth() {
         return width;
     }
 
@@ -192,10 +182,10 @@ public class TaxiwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setWidth(ValDistanceType value) {
+    public void setWidth(JAXBElement<ValDistanceType> value) {
         this.width = value;
     }
 
@@ -208,10 +198,10 @@ public class TaxiwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getWidthShoulder() {
+    public JAXBElement<ValDistanceType> getWidthShoulder() {
         return widthShoulder;
     }
 
@@ -220,10 +210,10 @@ public class TaxiwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setWidthShoulder(ValDistanceType value) {
+    public void setWidthShoulder(JAXBElement<ValDistanceType> value) {
         this.widthShoulder = value;
     }
 
@@ -236,10 +226,10 @@ public class TaxiwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getLength() {
+    public JAXBElement<ValDistanceType> getLength() {
         return length;
     }
 
@@ -248,10 +238,10 @@ public class TaxiwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setLength(ValDistanceType value) {
+    public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
     }
 
@@ -264,10 +254,10 @@ public class TaxiwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getAbandoned() {
+    public JAXBElement<CodeYesNoType> getAbandoned() {
         return abandoned;
     }
 
@@ -276,10 +266,10 @@ public class TaxiwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setAbandoned(CodeYesNoType value) {
+    public void setAbandoned(JAXBElement<CodeYesNoType> value) {
         this.abandoned = value;
     }
 
@@ -292,10 +282,10 @@ public class TaxiwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
+    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -304,10 +294,10 @@ public class TaxiwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
+    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
     }
 
@@ -320,10 +310,10 @@ public class TaxiwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getAssociatedAirportHeliport() {
+    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirportHeliport() {
         return associatedAirportHeliport;
     }
 
@@ -332,10 +322,10 @@ public class TaxiwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setAssociatedAirportHeliport(AirportHeliportPropertyType value) {
+    public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.associatedAirportHeliport = value;
     }
 
@@ -531,7 +521,7 @@ public class TaxiwayTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTaxiwayExtension", required = true)
-        @Column(name = "aixm:_abstract_taxiway_extension")
+        @Transient
         protected AbstractExtensionType abstractTaxiwayExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

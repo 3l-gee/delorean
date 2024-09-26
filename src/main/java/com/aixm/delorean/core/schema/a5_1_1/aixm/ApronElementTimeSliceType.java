@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -78,56 +75,46 @@ public class ApronElementTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeApronElementType> type;
+    @XmlElementRef(name = "jetwayAvailability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> jetwayAvailability;
+    @XmlElementRef(name = "towingAvailability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> towingAvailability;
+    @XmlElementRef(name = "dockingAvailability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> dockingAvailability;
+    @XmlElementRef(name = "groundPowerAvailability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> groundPowerAvailability;
+    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> length;
+    @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> width;
+    @XmlElementRef(name = "associatedApron", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ApronPropertyType> associatedApron;
+    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
+    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeApronElementType type;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "jetway_availability")
-    protected CodeYesNoType jetwayAvailability;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "towing_availability")
-    protected CodeYesNoType towingAvailability;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "docking_availability")
-    protected CodeYesNoType dockingAvailability;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "ground_power_availability")
-    protected CodeYesNoType groundPowerAvailability;
-    @XmlElement(nillable = true)
-    @Column(name = "length")
-    protected ValDistanceType length;
-    @XmlElement(nillable = true)
-    @Column(name = "width")
-    protected ValDistanceType width;
-    @XmlElement(nillable = true)
-    @Column(name = "associated_apron")
-    protected ApronPropertyType associatedApron;
-    @XmlElement(nillable = true)
-    @Column(name = "surface_properties")
-    protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(nillable = true)
-    @Column(name = "extent")
-    protected ElevatedSurfacePropertyType extent;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AirportSuppliesServicePropertyType> supplyService;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ApronAreaAvailabilityPropertyType> availability;
+    @Transient
     protected List<ApronElementTimeSliceType.Extension> extension;
 
     /**
@@ -135,10 +122,10 @@ public class ApronElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeApronElementType }
+     *     {@link JAXBElement }{@code <}{@link CodeApronElementType }{@code >}
      *     
      */
-    public CodeApronElementType getType() {
+    public JAXBElement<CodeApronElementType> getType() {
         return type;
     }
 
@@ -147,10 +134,10 @@ public class ApronElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeApronElementType }
+     *     {@link JAXBElement }{@code <}{@link CodeApronElementType }{@code >}
      *     
      */
-    public void setType(CodeApronElementType value) {
+    public void setType(JAXBElement<CodeApronElementType> value) {
         this.type = value;
     }
 
@@ -163,10 +150,10 @@ public class ApronElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getJetwayAvailability() {
+    public JAXBElement<CodeYesNoType> getJetwayAvailability() {
         return jetwayAvailability;
     }
 
@@ -175,10 +162,10 @@ public class ApronElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setJetwayAvailability(CodeYesNoType value) {
+    public void setJetwayAvailability(JAXBElement<CodeYesNoType> value) {
         this.jetwayAvailability = value;
     }
 
@@ -191,10 +178,10 @@ public class ApronElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getTowingAvailability() {
+    public JAXBElement<CodeYesNoType> getTowingAvailability() {
         return towingAvailability;
     }
 
@@ -203,10 +190,10 @@ public class ApronElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setTowingAvailability(CodeYesNoType value) {
+    public void setTowingAvailability(JAXBElement<CodeYesNoType> value) {
         this.towingAvailability = value;
     }
 
@@ -219,10 +206,10 @@ public class ApronElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getDockingAvailability() {
+    public JAXBElement<CodeYesNoType> getDockingAvailability() {
         return dockingAvailability;
     }
 
@@ -231,10 +218,10 @@ public class ApronElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setDockingAvailability(CodeYesNoType value) {
+    public void setDockingAvailability(JAXBElement<CodeYesNoType> value) {
         this.dockingAvailability = value;
     }
 
@@ -247,10 +234,10 @@ public class ApronElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getGroundPowerAvailability() {
+    public JAXBElement<CodeYesNoType> getGroundPowerAvailability() {
         return groundPowerAvailability;
     }
 
@@ -259,10 +246,10 @@ public class ApronElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setGroundPowerAvailability(CodeYesNoType value) {
+    public void setGroundPowerAvailability(JAXBElement<CodeYesNoType> value) {
         this.groundPowerAvailability = value;
     }
 
@@ -275,10 +262,10 @@ public class ApronElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getLength() {
+    public JAXBElement<ValDistanceType> getLength() {
         return length;
     }
 
@@ -287,10 +274,10 @@ public class ApronElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setLength(ValDistanceType value) {
+    public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
     }
 
@@ -303,10 +290,10 @@ public class ApronElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getWidth() {
+    public JAXBElement<ValDistanceType> getWidth() {
         return width;
     }
 
@@ -315,10 +302,10 @@ public class ApronElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setWidth(ValDistanceType value) {
+    public void setWidth(JAXBElement<ValDistanceType> value) {
         this.width = value;
     }
 
@@ -331,10 +318,10 @@ public class ApronElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ApronPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
      *     
      */
-    public ApronPropertyType getAssociatedApron() {
+    public JAXBElement<ApronPropertyType> getAssociatedApron() {
         return associatedApron;
     }
 
@@ -343,10 +330,10 @@ public class ApronElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ApronPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
      *     
      */
-    public void setAssociatedApron(ApronPropertyType value) {
+    public void setAssociatedApron(JAXBElement<ApronPropertyType> value) {
         this.associatedApron = value;
     }
 
@@ -359,10 +346,10 @@ public class ApronElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
+    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -371,10 +358,10 @@ public class ApronElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
+    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
     }
 
@@ -387,10 +374,10 @@ public class ApronElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedSurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      *     
      */
-    public ElevatedSurfacePropertyType getExtent() {
+    public JAXBElement<ElevatedSurfacePropertyType> getExtent() {
         return extent;
     }
 
@@ -399,10 +386,10 @@ public class ApronElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedSurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      *     
      */
-    public void setExtent(ElevatedSurfacePropertyType value) {
+    public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
     }
 
@@ -598,7 +585,7 @@ public class ApronElementTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractApronElementExtension", required = true)
-        @Column(name = "aixm:_abstract_apron_element_extension")
+        @Transient
         protected AbstractExtensionType abstractApronElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

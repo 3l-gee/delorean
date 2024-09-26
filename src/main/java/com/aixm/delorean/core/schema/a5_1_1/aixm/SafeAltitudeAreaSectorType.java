@@ -9,16 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,25 +67,22 @@ public class SafeAltitudeAreaSectorType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "bufferWidth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> bufferWidth;
+    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Column(name = "buffer_width")
-    protected ValDistanceType bufferWidth;
-    @XmlElement(nillable = true)
-    @Column(name = "extent")
-    protected SurfacePropertyType extent;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ObstructionPropertyType> significantObstacle;
+    @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
     @XmlElement(nillable = true)
-    @Column(name = "sector_definition")
-    protected CircleSectorPropertyType sectorDefinition;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<SafeAltitudeAreaSectorType.Extension> extension;
 
     /**
@@ -94,10 +90,10 @@ public class SafeAltitudeAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getBufferWidth() {
+    public JAXBElement<ValDistanceType> getBufferWidth() {
         return bufferWidth;
     }
 
@@ -106,10 +102,10 @@ public class SafeAltitudeAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setBufferWidth(ValDistanceType value) {
+    public void setBufferWidth(JAXBElement<ValDistanceType> value) {
         this.bufferWidth = value;
     }
 
@@ -122,10 +118,10 @@ public class SafeAltitudeAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link SurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      *     
      */
-    public SurfacePropertyType getExtent() {
+    public JAXBElement<SurfacePropertyType> getExtent() {
         return extent;
     }
 
@@ -134,10 +130,10 @@ public class SafeAltitudeAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      *     
      */
-    public void setExtent(SurfacePropertyType value) {
+    public void setExtent(JAXBElement<SurfacePropertyType> value) {
         this.extent = value;
     }
 
@@ -190,10 +186,10 @@ public class SafeAltitudeAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link CircleSectorPropertyType }
+     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
      *     
      */
-    public CircleSectorPropertyType getSectorDefinition() {
+    public JAXBElement<CircleSectorPropertyType> getSectorDefinition() {
         return sectorDefinition;
     }
 
@@ -202,10 +198,10 @@ public class SafeAltitudeAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link CircleSectorPropertyType }
+     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
      *     
      */
-    public void setSectorDefinition(CircleSectorPropertyType value) {
+    public void setSectorDefinition(JAXBElement<CircleSectorPropertyType> value) {
         this.sectorDefinition = value;
     }
 
@@ -321,7 +317,7 @@ public class SafeAltitudeAreaSectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractSafeAltitudeAreaSectorExtension")
-        @Column(name = "aixm:_abstract_safe_altitude_area_sector_extension")
+        @Transient
         protected AbstractExtensionType abstractSafeAltitudeAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

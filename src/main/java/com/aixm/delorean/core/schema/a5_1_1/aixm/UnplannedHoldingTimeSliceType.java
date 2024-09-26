@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,29 +68,25 @@ public class UnplannedHoldingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "unplannedHolding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeApprovalType> unplannedHolding;
+    @XmlElementRef(name = "authorizedAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> authorizedAltitude;
+    @XmlElementRef(name = "altitudeReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeVerticalReferenceType> altitudeReference;
+    @XmlElementRef(name = "controlledAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> controlledAirspace;
+    @XmlElementRef(name = "holdingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<SegmentPointPropertyType> holdingPoint;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "unplanned_holding")
-    protected CodeApprovalType unplannedHolding;
-    @XmlElement(nillable = true)
-    @Column(name = "authorized_altitude")
-    protected ValDistanceVerticalType authorizedAltitude;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "altitude_reference")
-    protected CodeVerticalReferenceType altitudeReference;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "controlled_airspace")
-    protected CodeYesNoType controlledAirspace;
-    @XmlElement(nillable = true)
-    @Column(name = "holding_point")
-    protected SegmentPointPropertyType holdingPoint;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<UnplannedHoldingTimeSliceType.Extension> extension;
 
     /**
@@ -101,10 +94,10 @@ public class UnplannedHoldingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeApprovalType }
+     *     {@link JAXBElement }{@code <}{@link CodeApprovalType }{@code >}
      *     
      */
-    public CodeApprovalType getUnplannedHolding() {
+    public JAXBElement<CodeApprovalType> getUnplannedHolding() {
         return unplannedHolding;
     }
 
@@ -113,10 +106,10 @@ public class UnplannedHoldingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeApprovalType }
+     *     {@link JAXBElement }{@code <}{@link CodeApprovalType }{@code >}
      *     
      */
-    public void setUnplannedHolding(CodeApprovalType value) {
+    public void setUnplannedHolding(JAXBElement<CodeApprovalType> value) {
         this.unplannedHolding = value;
     }
 
@@ -129,10 +122,10 @@ public class UnplannedHoldingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getAuthorizedAltitude() {
+    public JAXBElement<ValDistanceVerticalType> getAuthorizedAltitude() {
         return authorizedAltitude;
     }
 
@@ -141,10 +134,10 @@ public class UnplannedHoldingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setAuthorizedAltitude(ValDistanceVerticalType value) {
+    public void setAuthorizedAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.authorizedAltitude = value;
     }
 
@@ -157,10 +150,10 @@ public class UnplannedHoldingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getAltitudeReference() {
+    public JAXBElement<CodeVerticalReferenceType> getAltitudeReference() {
         return altitudeReference;
     }
 
@@ -169,10 +162,10 @@ public class UnplannedHoldingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setAltitudeReference(CodeVerticalReferenceType value) {
+    public void setAltitudeReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.altitudeReference = value;
     }
 
@@ -185,10 +178,10 @@ public class UnplannedHoldingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getControlledAirspace() {
+    public JAXBElement<CodeYesNoType> getControlledAirspace() {
         return controlledAirspace;
     }
 
@@ -197,10 +190,10 @@ public class UnplannedHoldingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setControlledAirspace(CodeYesNoType value) {
+    public void setControlledAirspace(JAXBElement<CodeYesNoType> value) {
         this.controlledAirspace = value;
     }
 
@@ -213,10 +206,10 @@ public class UnplannedHoldingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SegmentPointPropertyType }{@code >}
      *     
      */
-    public SegmentPointPropertyType getHoldingPoint() {
+    public JAXBElement<SegmentPointPropertyType> getHoldingPoint() {
         return holdingPoint;
     }
 
@@ -225,10 +218,10 @@ public class UnplannedHoldingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SegmentPointPropertyType }{@code >}
      *     
      */
-    public void setHoldingPoint(SegmentPointPropertyType value) {
+    public void setHoldingPoint(JAXBElement<SegmentPointPropertyType> value) {
         this.holdingPoint = value;
     }
 
@@ -344,7 +337,7 @@ public class UnplannedHoldingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractUnplannedHoldingExtension", required = true)
-        @Column(name = "aixm:_abstract_unplanned_holding_extension")
+        @Transient
         protected AbstractExtensionType abstractUnplannedHoldingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

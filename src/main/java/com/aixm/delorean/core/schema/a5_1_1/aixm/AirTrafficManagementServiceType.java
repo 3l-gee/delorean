@@ -9,9 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -48,7 +48,7 @@ public class AirTrafficManagementServiceType
 {
 
     @XmlElement(required = true)
-    @Column(name = "time_slice")
+    @Transient
     protected List<AirTrafficManagementServiceTimeSlicePropertyType> timeSlice;
 
     /**

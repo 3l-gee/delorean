@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -102,136 +99,115 @@ public class DepartureLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "endConditionDesignator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeSegmentTerminationType> endConditionDesignator;
+    @XmlElementRef(name = "legPath", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeTrajectoryType> legPath;
+    @XmlElementRef(name = "legTypeARINC", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeSegmentPathType> legTypeARINC;
+    @XmlElementRef(name = "course", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValBearingType> course;
+    @XmlElementRef(name = "courseType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeCourseType> courseType;
+    @XmlElementRef(name = "courseDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeDirectionReferenceType> courseDirection;
+    @XmlElementRef(name = "turnDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeDirectionTurnType> turnDirection;
+    @XmlElementRef(name = "speedLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValSpeedType> speedLimit;
+    @XmlElementRef(name = "speedReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeSpeedReferenceType> speedReference;
+    @XmlElementRef(name = "speedInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeAltitudeUseType> speedInterpretation;
+    @XmlElementRef(name = "bankAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValAngleType> bankAngle;
+    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> length;
+    @XmlElementRef(name = "duration", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDurationType> duration;
+    @XmlElementRef(name = "procedureTurnRequired", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> procedureTurnRequired;
+    @XmlElementRef(name = "upperLimitAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> upperLimitAltitude;
+    @XmlElementRef(name = "upperLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeVerticalReferenceType> upperLimitReference;
+    @XmlElementRef(name = "lowerLimitAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> lowerLimitAltitude;
+    @XmlElementRef(name = "lowerLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeVerticalReferenceType> lowerLimitReference;
+    @XmlElementRef(name = "altitudeInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeAltitudeUseType> altitudeInterpretation;
+    @XmlElementRef(name = "altitudeOverrideATC", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> altitudeOverrideATC;
+    @XmlElementRef(name = "altitudeOverrideReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeVerticalReferenceType> altitudeOverrideReference;
+    @XmlElementRef(name = "verticalAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValAngleType> verticalAngle;
+    @XmlElementRef(name = "startPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TerminalSegmentPointPropertyType> startPoint;
+    @XmlElementRef(name = "endPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TerminalSegmentPointPropertyType> endPoint;
+    @XmlElementRef(name = "trajectory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CurvePropertyType> trajectory;
+    @XmlElementRef(name = "arcCentre", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TerminalSegmentPointPropertyType> arcCentre;
+    @XmlElementRef(name = "angle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<AngleIndicationPropertyType> angle;
+    @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<DistanceIndicationPropertyType> distance;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "end_condition_designator")
-    protected CodeSegmentTerminationType endConditionDesignator;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "leg_path")
-    protected CodeTrajectoryType legPath;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "leg_type_arinc")
-    protected CodeSegmentPathType legTypeARINC;
-    @XmlElement(nillable = true)
-    @Column(name = "course")
-    protected ValBearingType course;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "course_type")
-    protected CodeCourseType courseType;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "course_direction")
-    protected CodeDirectionReferenceType courseDirection;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "turn_direction")
-    protected CodeDirectionTurnType turnDirection;
-    @XmlElement(nillable = true)
-    @Column(name = "speed_limit")
-    protected ValSpeedType speedLimit;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "speed_reference")
-    protected CodeSpeedReferenceType speedReference;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "speed_interpretation")
-    protected CodeAltitudeUseType speedInterpretation;
-    @XmlElement(nillable = true)
-    @Column(name = "bank_angle")
-    protected ValAngleType bankAngle;
-    @XmlElement(nillable = true)
-    @Column(name = "length")
-    protected ValDistanceType length;
-    @XmlElement(nillable = true)
-    @Column(name = "duration")
-    protected ValDurationType duration;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "procedure_turn_required")
-    protected CodeYesNoType procedureTurnRequired;
-    @XmlElement(nillable = true)
-    @Column(name = "upper_limit_altitude")
-    protected ValDistanceVerticalType upperLimitAltitude;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "upper_limit_reference")
-    protected CodeVerticalReferenceType upperLimitReference;
-    @XmlElement(nillable = true)
-    @Column(name = "lower_limit_altitude")
-    protected ValDistanceVerticalType lowerLimitAltitude;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "lower_limit_reference")
-    protected CodeVerticalReferenceType lowerLimitReference;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "altitude_interpretation")
-    protected CodeAltitudeUseType altitudeInterpretation;
-    @XmlElement(nillable = true)
-    @Column(name = "altitude_override_atc")
-    protected ValDistanceVerticalType altitudeOverrideATC;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "altitude_override_reference")
-    protected CodeVerticalReferenceType altitudeOverrideReference;
-    @XmlElement(nillable = true)
-    @Column(name = "vertical_angle")
-    protected ValAngleType verticalAngle;
-    @XmlElement(nillable = true)
-    @Column(name = "start_point")
-    protected TerminalSegmentPointPropertyType startPoint;
-    @XmlElement(nillable = true)
-    @Column(name = "end_point")
-    protected TerminalSegmentPointPropertyType endPoint;
-    @XmlElement(nillable = true)
-    @Column(name = "trajectory")
-    protected CurvePropertyType trajectory;
-    @XmlElement(nillable = true)
-    @Column(name = "arc_centre")
-    protected TerminalSegmentPointPropertyType arcCentre;
-    @XmlElement(nillable = true)
-    @Column(name = "angle")
-    protected AngleIndicationPropertyType angle;
-    @XmlElement(nillable = true)
-    @Column(name = "distance")
-    protected DistanceIndicationPropertyType distance;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
+    @XmlElementRef(name = "holding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<HoldingUsePropertyType> holding;
     @XmlElement(nillable = true)
-    @Column(name = "holding")
-    protected HoldingUsePropertyType holding;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @XmlElementRef(name = "requiredNavigationPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeRNPType> requiredNavigationPerformance;
+    @XmlElementRef(name = "minimumObstacleClearanceAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> minimumObstacleClearanceAltitude;
+    @XmlElementRef(name = "departure", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<StandardInstrumentDeparturePropertyType> departure;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "required_navigation_performance")
-    protected CodeRNPType requiredNavigationPerformance;
-    @XmlElement(nillable = true)
-    @Column(name = "minimum_obstacle_clearance_altitude")
-    protected ValDistanceVerticalType minimumObstacleClearanceAltitude;
-    @XmlElement(nillable = true)
-    @Column(name = "departure")
-    protected StandardInstrumentDeparturePropertyType departure;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<DepartureArrivalConditionPropertyType> condition;
+    @Transient
     protected List<DepartureLegTimeSliceType.Extension> extension;
 
     /**
@@ -239,10 +215,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeSegmentTerminationType }
+     *     {@link JAXBElement }{@code <}{@link CodeSegmentTerminationType }{@code >}
      *     
      */
-    public CodeSegmentTerminationType getEndConditionDesignator() {
+    public JAXBElement<CodeSegmentTerminationType> getEndConditionDesignator() {
         return endConditionDesignator;
     }
 
@@ -251,10 +227,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSegmentTerminationType }
+     *     {@link JAXBElement }{@code <}{@link CodeSegmentTerminationType }{@code >}
      *     
      */
-    public void setEndConditionDesignator(CodeSegmentTerminationType value) {
+    public void setEndConditionDesignator(JAXBElement<CodeSegmentTerminationType> value) {
         this.endConditionDesignator = value;
     }
 
@@ -267,10 +243,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeTrajectoryType }
+     *     {@link JAXBElement }{@code <}{@link CodeTrajectoryType }{@code >}
      *     
      */
-    public CodeTrajectoryType getLegPath() {
+    public JAXBElement<CodeTrajectoryType> getLegPath() {
         return legPath;
     }
 
@@ -279,10 +255,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeTrajectoryType }
+     *     {@link JAXBElement }{@code <}{@link CodeTrajectoryType }{@code >}
      *     
      */
-    public void setLegPath(CodeTrajectoryType value) {
+    public void setLegPath(JAXBElement<CodeTrajectoryType> value) {
         this.legPath = value;
     }
 
@@ -295,10 +271,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeSegmentPathType }
+     *     {@link JAXBElement }{@code <}{@link CodeSegmentPathType }{@code >}
      *     
      */
-    public CodeSegmentPathType getLegTypeARINC() {
+    public JAXBElement<CodeSegmentPathType> getLegTypeARINC() {
         return legTypeARINC;
     }
 
@@ -307,10 +283,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSegmentPathType }
+     *     {@link JAXBElement }{@code <}{@link CodeSegmentPathType }{@code >}
      *     
      */
-    public void setLegTypeARINC(CodeSegmentPathType value) {
+    public void setLegTypeARINC(JAXBElement<CodeSegmentPathType> value) {
         this.legTypeARINC = value;
     }
 
@@ -323,10 +299,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getCourse() {
+    public JAXBElement<ValBearingType> getCourse() {
         return course;
     }
 
@@ -335,10 +311,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setCourse(ValBearingType value) {
+    public void setCourse(JAXBElement<ValBearingType> value) {
         this.course = value;
     }
 
@@ -351,10 +327,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeCourseType }
+     *     {@link JAXBElement }{@code <}{@link CodeCourseType }{@code >}
      *     
      */
-    public CodeCourseType getCourseType() {
+    public JAXBElement<CodeCourseType> getCourseType() {
         return courseType;
     }
 
@@ -363,10 +339,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeCourseType }
+     *     {@link JAXBElement }{@code <}{@link CodeCourseType }{@code >}
      *     
      */
-    public void setCourseType(CodeCourseType value) {
+    public void setCourseType(JAXBElement<CodeCourseType> value) {
         this.courseType = value;
     }
 
@@ -379,10 +355,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeDirectionReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionReferenceType }{@code >}
      *     
      */
-    public CodeDirectionReferenceType getCourseDirection() {
+    public JAXBElement<CodeDirectionReferenceType> getCourseDirection() {
         return courseDirection;
     }
 
@@ -391,10 +367,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDirectionReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionReferenceType }{@code >}
      *     
      */
-    public void setCourseDirection(CodeDirectionReferenceType value) {
+    public void setCourseDirection(JAXBElement<CodeDirectionReferenceType> value) {
         this.courseDirection = value;
     }
 
@@ -407,10 +383,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeDirectionTurnType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
      *     
      */
-    public CodeDirectionTurnType getTurnDirection() {
+    public JAXBElement<CodeDirectionTurnType> getTurnDirection() {
         return turnDirection;
     }
 
@@ -419,10 +395,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDirectionTurnType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
      *     
      */
-    public void setTurnDirection(CodeDirectionTurnType value) {
+    public void setTurnDirection(JAXBElement<CodeDirectionTurnType> value) {
         this.turnDirection = value;
     }
 
@@ -435,10 +411,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValSpeedType }
+     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
      *     
      */
-    public ValSpeedType getSpeedLimit() {
+    public JAXBElement<ValSpeedType> getSpeedLimit() {
         return speedLimit;
     }
 
@@ -447,10 +423,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValSpeedType }
+     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
      *     
      */
-    public void setSpeedLimit(ValSpeedType value) {
+    public void setSpeedLimit(JAXBElement<ValSpeedType> value) {
         this.speedLimit = value;
     }
 
@@ -463,10 +439,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeSpeedReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeSpeedReferenceType }{@code >}
      *     
      */
-    public CodeSpeedReferenceType getSpeedReference() {
+    public JAXBElement<CodeSpeedReferenceType> getSpeedReference() {
         return speedReference;
     }
 
@@ -475,10 +451,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSpeedReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeSpeedReferenceType }{@code >}
      *     
      */
-    public void setSpeedReference(CodeSpeedReferenceType value) {
+    public void setSpeedReference(JAXBElement<CodeSpeedReferenceType> value) {
         this.speedReference = value;
     }
 
@@ -491,10 +467,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAltitudeUseType }
+     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
      *     
      */
-    public CodeAltitudeUseType getSpeedInterpretation() {
+    public JAXBElement<CodeAltitudeUseType> getSpeedInterpretation() {
         return speedInterpretation;
     }
 
@@ -503,10 +479,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAltitudeUseType }
+     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
      *     
      */
-    public void setSpeedInterpretation(CodeAltitudeUseType value) {
+    public void setSpeedInterpretation(JAXBElement<CodeAltitudeUseType> value) {
         this.speedInterpretation = value;
     }
 
@@ -519,10 +495,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public ValAngleType getBankAngle() {
+    public JAXBElement<ValAngleType> getBankAngle() {
         return bankAngle;
     }
 
@@ -531,10 +507,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public void setBankAngle(ValAngleType value) {
+    public void setBankAngle(JAXBElement<ValAngleType> value) {
         this.bankAngle = value;
     }
 
@@ -547,10 +523,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getLength() {
+    public JAXBElement<ValDistanceType> getLength() {
         return length;
     }
 
@@ -559,10 +535,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setLength(ValDistanceType value) {
+    public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
     }
 
@@ -575,10 +551,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDurationType }
+     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
      *     
      */
-    public ValDurationType getDuration() {
+    public JAXBElement<ValDurationType> getDuration() {
         return duration;
     }
 
@@ -587,10 +563,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDurationType }
+     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
      *     
      */
-    public void setDuration(ValDurationType value) {
+    public void setDuration(JAXBElement<ValDurationType> value) {
         this.duration = value;
     }
 
@@ -603,10 +579,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getProcedureTurnRequired() {
+    public JAXBElement<CodeYesNoType> getProcedureTurnRequired() {
         return procedureTurnRequired;
     }
 
@@ -615,10 +591,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setProcedureTurnRequired(CodeYesNoType value) {
+    public void setProcedureTurnRequired(JAXBElement<CodeYesNoType> value) {
         this.procedureTurnRequired = value;
     }
 
@@ -631,10 +607,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getUpperLimitAltitude() {
+    public JAXBElement<ValDistanceVerticalType> getUpperLimitAltitude() {
         return upperLimitAltitude;
     }
 
@@ -643,10 +619,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setUpperLimitAltitude(ValDistanceVerticalType value) {
+    public void setUpperLimitAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.upperLimitAltitude = value;
     }
 
@@ -659,10 +635,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getUpperLimitReference() {
+    public JAXBElement<CodeVerticalReferenceType> getUpperLimitReference() {
         return upperLimitReference;
     }
 
@@ -671,10 +647,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setUpperLimitReference(CodeVerticalReferenceType value) {
+    public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.upperLimitReference = value;
     }
 
@@ -687,10 +663,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getLowerLimitAltitude() {
+    public JAXBElement<ValDistanceVerticalType> getLowerLimitAltitude() {
         return lowerLimitAltitude;
     }
 
@@ -699,10 +675,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setLowerLimitAltitude(ValDistanceVerticalType value) {
+    public void setLowerLimitAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.lowerLimitAltitude = value;
     }
 
@@ -715,10 +691,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getLowerLimitReference() {
+    public JAXBElement<CodeVerticalReferenceType> getLowerLimitReference() {
         return lowerLimitReference;
     }
 
@@ -727,10 +703,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setLowerLimitReference(CodeVerticalReferenceType value) {
+    public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLimitReference = value;
     }
 
@@ -743,10 +719,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAltitudeUseType }
+     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
      *     
      */
-    public CodeAltitudeUseType getAltitudeInterpretation() {
+    public JAXBElement<CodeAltitudeUseType> getAltitudeInterpretation() {
         return altitudeInterpretation;
     }
 
@@ -755,10 +731,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAltitudeUseType }
+     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
      *     
      */
-    public void setAltitudeInterpretation(CodeAltitudeUseType value) {
+    public void setAltitudeInterpretation(JAXBElement<CodeAltitudeUseType> value) {
         this.altitudeInterpretation = value;
     }
 
@@ -771,10 +747,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getAltitudeOverrideATC() {
+    public JAXBElement<ValDistanceVerticalType> getAltitudeOverrideATC() {
         return altitudeOverrideATC;
     }
 
@@ -783,10 +759,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setAltitudeOverrideATC(ValDistanceVerticalType value) {
+    public void setAltitudeOverrideATC(JAXBElement<ValDistanceVerticalType> value) {
         this.altitudeOverrideATC = value;
     }
 
@@ -799,10 +775,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getAltitudeOverrideReference() {
+    public JAXBElement<CodeVerticalReferenceType> getAltitudeOverrideReference() {
         return altitudeOverrideReference;
     }
 
@@ -811,10 +787,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setAltitudeOverrideReference(CodeVerticalReferenceType value) {
+    public void setAltitudeOverrideReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.altitudeOverrideReference = value;
     }
 
@@ -827,10 +803,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public ValAngleType getVerticalAngle() {
+    public JAXBElement<ValAngleType> getVerticalAngle() {
         return verticalAngle;
     }
 
@@ -839,10 +815,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public void setVerticalAngle(ValAngleType value) {
+    public void setVerticalAngle(JAXBElement<ValAngleType> value) {
         this.verticalAngle = value;
     }
 
@@ -855,10 +831,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TerminalSegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
      *     
      */
-    public TerminalSegmentPointPropertyType getStartPoint() {
+    public JAXBElement<TerminalSegmentPointPropertyType> getStartPoint() {
         return startPoint;
     }
 
@@ -867,10 +843,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TerminalSegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
      *     
      */
-    public void setStartPoint(TerminalSegmentPointPropertyType value) {
+    public void setStartPoint(JAXBElement<TerminalSegmentPointPropertyType> value) {
         this.startPoint = value;
     }
 
@@ -883,10 +859,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TerminalSegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
      *     
      */
-    public TerminalSegmentPointPropertyType getEndPoint() {
+    public JAXBElement<TerminalSegmentPointPropertyType> getEndPoint() {
         return endPoint;
     }
 
@@ -895,10 +871,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TerminalSegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
      *     
      */
-    public void setEndPoint(TerminalSegmentPointPropertyType value) {
+    public void setEndPoint(JAXBElement<TerminalSegmentPointPropertyType> value) {
         this.endPoint = value;
     }
 
@@ -911,10 +887,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CurvePropertyType }
+     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
      *     
      */
-    public CurvePropertyType getTrajectory() {
+    public JAXBElement<CurvePropertyType> getTrajectory() {
         return trajectory;
     }
 
@@ -923,10 +899,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CurvePropertyType }
+     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
      *     
      */
-    public void setTrajectory(CurvePropertyType value) {
+    public void setTrajectory(JAXBElement<CurvePropertyType> value) {
         this.trajectory = value;
     }
 
@@ -939,10 +915,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TerminalSegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
      *     
      */
-    public TerminalSegmentPointPropertyType getArcCentre() {
+    public JAXBElement<TerminalSegmentPointPropertyType> getArcCentre() {
         return arcCentre;
     }
 
@@ -951,10 +927,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TerminalSegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TerminalSegmentPointPropertyType }{@code >}
      *     
      */
-    public void setArcCentre(TerminalSegmentPointPropertyType value) {
+    public void setArcCentre(JAXBElement<TerminalSegmentPointPropertyType> value) {
         this.arcCentre = value;
     }
 
@@ -967,10 +943,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AngleIndicationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AngleIndicationPropertyType }{@code >}
      *     
      */
-    public AngleIndicationPropertyType getAngle() {
+    public JAXBElement<AngleIndicationPropertyType> getAngle() {
         return angle;
     }
 
@@ -979,10 +955,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AngleIndicationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AngleIndicationPropertyType }{@code >}
      *     
      */
-    public void setAngle(AngleIndicationPropertyType value) {
+    public void setAngle(JAXBElement<AngleIndicationPropertyType> value) {
         this.angle = value;
     }
 
@@ -995,10 +971,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link DistanceIndicationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DistanceIndicationPropertyType }{@code >}
      *     
      */
-    public DistanceIndicationPropertyType getDistance() {
+    public JAXBElement<DistanceIndicationPropertyType> getDistance() {
         return distance;
     }
 
@@ -1007,10 +983,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link DistanceIndicationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DistanceIndicationPropertyType }{@code >}
      *     
      */
-    public void setDistance(DistanceIndicationPropertyType value) {
+    public void setDistance(JAXBElement<DistanceIndicationPropertyType> value) {
         this.distance = value;
     }
 
@@ -1063,10 +1039,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link HoldingUsePropertyType }
+     *     {@link JAXBElement }{@code <}{@link HoldingUsePropertyType }{@code >}
      *     
      */
-    public HoldingUsePropertyType getHolding() {
+    public JAXBElement<HoldingUsePropertyType> getHolding() {
         return holding;
     }
 
@@ -1075,10 +1051,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link HoldingUsePropertyType }
+     *     {@link JAXBElement }{@code <}{@link HoldingUsePropertyType }{@code >}
      *     
      */
-    public void setHolding(HoldingUsePropertyType value) {
+    public void setHolding(JAXBElement<HoldingUsePropertyType> value) {
         this.holding = value;
     }
 
@@ -1171,10 +1147,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRNPType }
+     *     {@link JAXBElement }{@code <}{@link CodeRNPType }{@code >}
      *     
      */
-    public CodeRNPType getRequiredNavigationPerformance() {
+    public JAXBElement<CodeRNPType> getRequiredNavigationPerformance() {
         return requiredNavigationPerformance;
     }
 
@@ -1183,10 +1159,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRNPType }
+     *     {@link JAXBElement }{@code <}{@link CodeRNPType }{@code >}
      *     
      */
-    public void setRequiredNavigationPerformance(CodeRNPType value) {
+    public void setRequiredNavigationPerformance(JAXBElement<CodeRNPType> value) {
         this.requiredNavigationPerformance = value;
     }
 
@@ -1199,10 +1175,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getMinimumObstacleClearanceAltitude() {
+    public JAXBElement<ValDistanceVerticalType> getMinimumObstacleClearanceAltitude() {
         return minimumObstacleClearanceAltitude;
     }
 
@@ -1211,10 +1187,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setMinimumObstacleClearanceAltitude(ValDistanceVerticalType value) {
+    public void setMinimumObstacleClearanceAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumObstacleClearanceAltitude = value;
     }
 
@@ -1227,10 +1203,10 @@ public class DepartureLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link StandardInstrumentDeparturePropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardInstrumentDeparturePropertyType }{@code >}
      *     
      */
-    public StandardInstrumentDeparturePropertyType getDeparture() {
+    public JAXBElement<StandardInstrumentDeparturePropertyType> getDeparture() {
         return departure;
     }
 
@@ -1239,10 +1215,10 @@ public class DepartureLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link StandardInstrumentDeparturePropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardInstrumentDeparturePropertyType }{@code >}
      *     
      */
-    public void setDeparture(StandardInstrumentDeparturePropertyType value) {
+    public void setDeparture(JAXBElement<StandardInstrumentDeparturePropertyType> value) {
         this.departure = value;
     }
 
@@ -1360,10 +1336,10 @@ public class DepartureLegTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDepartureLegExtension")
-        @Column(name = "aixm:_abstract_departure_leg_extension")
+        @Transient
         protected AbstractExtensionType abstractDepartureLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
-        @Column(name = "aixm:_abstract_segment_leg_extension")
+        @Transient
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

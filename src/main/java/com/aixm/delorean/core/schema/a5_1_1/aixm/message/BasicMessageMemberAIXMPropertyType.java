@@ -193,7 +193,8 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {
-    "abstractAIXMFeature"
+    "abstractAIXMFeature",
+    "dbID"
 })
 @Entity
 @Table(name = "basic_message_member_aixm_property_type")

@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -43,7 +44,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AbstractAIXMMessageBaseType", propOrder = {
     "sequenceNumber",
-    "messageMetadata"
+    "messageMetadata",
+    "dbID"
 })
 @XmlSeeAlso({
     AbstractAIXMMessageType.class
@@ -58,6 +60,7 @@ public abstract class AbstractAIXMMessageBaseType
      * 
      */
     protected Long sequenceNumber;
+    @Transient
     protected MessageMetadataPropertyType messageMetadata;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

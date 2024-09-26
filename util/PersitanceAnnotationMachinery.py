@@ -17,6 +17,7 @@ class CoreAnnotations(Enum):
     TABLE_SNAKE = lambda x : f'@jakarta.persistence.Table(name = "{Util.snake_case(x)}")'
     TABLE_DBL_POINT = lambda x : f'@jakarta.persistence.Table(name = "{Util.snake_case(x)}")'
     ID = '@jakarta.persistence.Id'
+    TRANSIENT = '@jakarta.persistence.Transient'
     COLUMN_SNAKE = lambda x : f'@jakarta.persistence.Column(name = "{Util.snake_case(x)}")'
     COLUMN_DBL_POINT = lambda x : f'@jakarta.persistence.Column(name = "{Util.snake_case(x)}")'
     GENERATED_VALUE = '@jakarta.persistence.GeneratedValue'
@@ -98,8 +99,12 @@ class PersistenceAnnotationMachinery:
     TAG_ELEMENT = XS_NAMESPACE + "element"
     TAG_COMPLEX_TYPE = XS_NAMESPACE + "complexType"
     TAG_GROUP = XS_NAMESPACE + "group"
+    LOCATION = set()
+    GEOMETRY = set()
+
 
     def __init__(self, input_path: str, output_path: str):
+        print(f"Processing {input_path}...")
         self.input_path = input_path
         self.output_path = output_path
         self.root = ET.parse(self.input_path).getroot()
@@ -117,6 +122,9 @@ class PersistenceAnnotationMachinery:
         self.run()
         self.save_annotations()
 
+        print(self.LOCATION)
+        print(self.GEOMETRY)
+
     def save_annotations(self):
         self.annotations.append("</jaxb:bindings>")
         with open(self.output_path, 'w') as f:
@@ -127,22 +135,35 @@ class PersistenceAnnotationMachinery:
     def run(self):
         """Main function to process XML schema elements."""
         for child in self.root:
-            self._process_child(child)
+            self._process_child_class(child)
+            self._process_child_field(child)
 
-    def _process_child(self, child):
+
+    def _process_child_class(self, child):
         """Dispatch processing based on the XML tag type."""
-        if child.tag == self.TAG_IMPORT:
-            self._process_import(child)
-        elif child.tag == self.TAG_ANNOTATION:
-            self._process_annotation(child)
-        elif child.tag == self.TAG_INCLUDE:
-            self._process_include(child)
-        elif child.tag == self.TAG_ELEMENT:
-            self._process_element(child)
-        elif child.tag == self.TAG_COMPLEX_TYPE:
-            self._process_complex_type(child)
-        elif child.tag == self.TAG_GROUP:
-            self._process_group(child)
+        if child.tag in [self.TAG_IMPORT, self.TAG_ANNOTATION, self.TAG_INCLUDE, self.TAG_GROUP, self.TAG_ELEMENT]:
+            pass
+        elif child.tag in [self.TAG_COMPLEX_TYPE]:
+            self.annotations += AnnoationsFunctions.class_writer(
+                child, 
+                bool(child.attrib.get('abstract')) or "Abstract" in child.attrib.get('name')
+                )
+        else:
+            self._log_unrecognized_tag(child)
+
+    def _process_child_field(self, child):
+        """Dispatch processing based on the XML tag type."""
+        if child.tag in [self.TAG_IMPORT, self.TAG_ANNOTATION, self.TAG_INCLUDE, self.TAG_ELEMENT]:
+            pass
+        elif child.tag in [self.TAG_COMPLEX_TYPE, self.TAG_GROUP]:
+            for element in child.findall('.//xs:element', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'}):
+                self.annotations += AnnoationsFunctions.field_writer(
+                    child,
+                    element,
+                    None,
+                    True,
+                    bool(child.tag == self.TAG_COMPLEX_TYPE)
+                )
         else:
             self._log_unrecognized_tag(child)
 
@@ -160,18 +181,23 @@ class PersistenceAnnotationMachinery:
         """Process 'include' tag (currently not implemented)."""
         pass  # Placeholder for future expansion
 
-    def _process_element(self, child):
+    def _process_element_field(self, child):
         """Process 'element' tag (currently not implemented)."""
         pass  # Placeholder for future expansion
 
-    def _process_complex_type(self, child):
+    def _process_element_class(self, child):
+        """Process 'element' tag (currently not implemented)."""
+        pass  # Placeholder for future expansion
+
+    def _process_complex_type_class(self, child):
         """Process 'complexType' tag."""
         if bool(child.attrib.get('abstract')) or "Abstract" in child.attrib.get('name'):
             self.class_cmplx_abs_annox(child)
         else:
             self.class_cmplx_typ_annox(child)
 
-        # Process nested elements inside complexType
+    def _process_complex_type_field(self, child):
+        """Process 'complexType' tag."""
         for element in child.findall('.//xs:element', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'}):
             self._process_complex_type_element(child, element)
 
@@ -191,6 +217,10 @@ class PersistenceAnnotationMachinery:
         """Process 'group' tag."""
         for element in child.findall('.//xs:element', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'}):
             self._process_group_element(child, element)
+            if element.get("name", "") == "location":
+                self.LOCATION.add(element.get("type", ""))
+            if element.get("name", "") == "geometryComponent":
+                self.GEOMETRY.add(element.get("type", ""))
 
     def _process_group_element(self, parent, element):
         """Handle elements within a group."""
@@ -215,7 +245,7 @@ class PersistenceAnnotationMachinery:
 
     def _log_unrecognized_tag(self, child):
         """Log unrecognized tag for future troubleshooting."""
-        print(f"Unrecognized tag: {child.tag}")
+        print(f"Unrecognized tag: {child.tag}, {child.get('name')},{child.get('ref')}")
 
     def _log_missing_ref_or_name(self, parent, element):
         """Log cases where element is missing both 'name' and 'ref'."""
@@ -225,7 +255,51 @@ class PersistenceAnnotationMachinery:
         """Log cases where maxOccurs is neither '1' nor 'unbounded'."""
         print(f"Invalid 'maxOccurs': {element.get('maxOccurs')} in element {element.tag} of group {parent.get('name')}")
 
+class AnnoationsFunctions:
+    @staticmethod
+    def class_writer(child, abstract: bool):
+        res = []
+        res.append(JaxbAnnotations.COMPLEXTYPE(child.attrib['name']))
+        if abstract:
+            res.append(AnnoxAnnotations.CLASS(CoreAnnotations.MAPPEDSUPERCLASS.value))
+        else :
+            res.append(AnnoxAnnotations.CLASS(CoreAnnotations.ENTITY.value))
+            res.append(AnnoxAnnotations.CLASS(CoreAnnotations.TABLE_SNAKE(child.attrib['name'])))
+        res.append(JaxbAnnotations.END.value)
+        return res
+    
+    def field_writer(parent, child, spatial: enumerate, trensient: bool, complex: bool):
+        res = []
+        if complex and child.attrib.get('name'):
+            res.append(JaxbAnnotations.COMPLEXTYPE_ELEMENT_NAME(parent.attrib['name'], child.attrib['name']))
+        elif complex and child.attrib.get('ref'):
+            res.append(JaxbAnnotations.COMPLEXTYPE_ELEMEENT_REF(parent.attrib['name'], child.attrib['ref']))
+        else :
+            res.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
 
+        if trensient :
+            res.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.TRANSIENT.value))
+            res.append(JaxbAnnotations.END.value)
+            return res
+        
+        child_max_occurs = child.get("maxOccurs", "1")
+
+        if child_max_occurs == "unbounded":
+            res.append(AnnoxAnnotations.FIELD(RelationshipAnnotations.ONE_TO_MANY.value))
+        elif child_max_occurs == "1":
+            res.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
+        else:
+            pass
+
+        child_name = child.get("name")
+
+        if child_name == "name":
+            res.append(JaxbAnnotations.PROPERTY_NAME_GENERATEELEMENT.value)
+        else:
+            res.append(JaxbAnnotations.PROPERTY_GENERATEELEMENT.value)
+
+        res.append(JaxbAnnotations.END.value)
+        return res
 
     def class_cmplx_abs_annox(self, child):
         self.annotations.append(JaxbAnnotations.COMPLEXTYPE(child.attrib['name']))
@@ -246,6 +320,7 @@ class PersistenceAnnotationMachinery:
     def field_cmplx_typ_annox_enum_name(self, parent, child):
         self.annotations.append(JaxbAnnotations.COMPLEXTYPE_ELEMENT_NAME(parent.attrib['name'], child.attrib['name']))
         self.annotations.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.ENUMERATED_STRING.value))
+        self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
         self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
         self.annotations.append(JaxbAnnotations.END.value)
 

@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,34 +69,28 @@ public class ApronTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> aixmName;
+    @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> abandoned;
+    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
+    @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "abandoned")
-    protected CodeYesNoType abandoned;
-    @XmlElement(nillable = true)
-    @Column(name = "surface_properties")
-    protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(nillable = true)
-    @Column(name = "associated_airport_heliport")
-    protected AirportHeliportPropertyType associatedAirportHeliport;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ApronContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ApronAreaAvailabilityPropertyType> availability;
+    @Transient
     protected List<ApronTimeSliceType.Extension> extension;
 
     /**
@@ -107,10 +98,10 @@ public class ApronTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getAIXMName() {
+    public JAXBElement<TextNameType> getAIXMName() {
         return aixmName;
     }
 
@@ -119,10 +110,10 @@ public class ApronTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setAIXMName(TextNameType value) {
+    public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
     }
 
@@ -135,10 +126,10 @@ public class ApronTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getAbandoned() {
+    public JAXBElement<CodeYesNoType> getAbandoned() {
         return abandoned;
     }
 
@@ -147,10 +138,10 @@ public class ApronTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setAbandoned(CodeYesNoType value) {
+    public void setAbandoned(JAXBElement<CodeYesNoType> value) {
         this.abandoned = value;
     }
 
@@ -163,10 +154,10 @@ public class ApronTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
+    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -175,10 +166,10 @@ public class ApronTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
+    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
     }
 
@@ -191,10 +182,10 @@ public class ApronTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getAssociatedAirportHeliport() {
+    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirportHeliport() {
         return associatedAirportHeliport;
     }
 
@@ -203,10 +194,10 @@ public class ApronTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setAssociatedAirportHeliport(AirportHeliportPropertyType value) {
+    public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.associatedAirportHeliport = value;
     }
 
@@ -402,7 +393,7 @@ public class ApronTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractApronExtension", required = true)
-        @Column(name = "aixm:_abstract_apron_extension")
+        @Transient
         protected AbstractExtensionType abstractApronExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

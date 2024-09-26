@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,34 +69,28 @@ public class LightElementType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeColourType> colour;
+    @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeLightIntensityType> intensityLevel;
+    @XmlElementRef(name = "intensity", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValLightIntensityType> intensity;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeLightSourceType> type;
+    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "colour")
-    protected CodeColourType colour;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "intensity_level")
-    protected CodeLightIntensityType intensityLevel;
-    @XmlElement(nillable = true)
-    @Column(name = "intensity")
-    protected ValLightIntensityType intensity;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeLightSourceType type;
-    @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<LightElementStatusPropertyType> availability;
+    @Transient
     protected List<LightElementType.Extension> extension;
 
     /**
@@ -107,10 +98,10 @@ public class LightElementType
      * 
      * @return
      *     possible object is
-     *     {@link CodeColourType }
+     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
      *     
      */
-    public CodeColourType getColour() {
+    public JAXBElement<CodeColourType> getColour() {
         return colour;
     }
 
@@ -119,10 +110,10 @@ public class LightElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeColourType }
+     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
      *     
      */
-    public void setColour(CodeColourType value) {
+    public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
     }
 
@@ -135,10 +126,10 @@ public class LightElementType
      * 
      * @return
      *     possible object is
-     *     {@link CodeLightIntensityType }
+     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
      *     
      */
-    public CodeLightIntensityType getIntensityLevel() {
+    public JAXBElement<CodeLightIntensityType> getIntensityLevel() {
         return intensityLevel;
     }
 
@@ -147,10 +138,10 @@ public class LightElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLightIntensityType }
+     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
      *     
      */
-    public void setIntensityLevel(CodeLightIntensityType value) {
+    public void setIntensityLevel(JAXBElement<CodeLightIntensityType> value) {
         this.intensityLevel = value;
     }
 
@@ -163,10 +154,10 @@ public class LightElementType
      * 
      * @return
      *     possible object is
-     *     {@link ValLightIntensityType }
+     *     {@link JAXBElement }{@code <}{@link ValLightIntensityType }{@code >}
      *     
      */
-    public ValLightIntensityType getIntensity() {
+    public JAXBElement<ValLightIntensityType> getIntensity() {
         return intensity;
     }
 
@@ -175,10 +166,10 @@ public class LightElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValLightIntensityType }
+     *     {@link JAXBElement }{@code <}{@link ValLightIntensityType }{@code >}
      *     
      */
-    public void setIntensity(ValLightIntensityType value) {
+    public void setIntensity(JAXBElement<ValLightIntensityType> value) {
         this.intensity = value;
     }
 
@@ -191,10 +182,10 @@ public class LightElementType
      * 
      * @return
      *     possible object is
-     *     {@link CodeLightSourceType }
+     *     {@link JAXBElement }{@code <}{@link CodeLightSourceType }{@code >}
      *     
      */
-    public CodeLightSourceType getType() {
+    public JAXBElement<CodeLightSourceType> getType() {
         return type;
     }
 
@@ -203,10 +194,10 @@ public class LightElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLightSourceType }
+     *     {@link JAXBElement }{@code <}{@link CodeLightSourceType }{@code >}
      *     
      */
-    public void setType(CodeLightSourceType value) {
+    public void setType(JAXBElement<CodeLightSourceType> value) {
         this.type = value;
     }
 
@@ -219,10 +210,10 @@ public class LightElementType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public ElevatedPointPropertyType getLocation() {
+    public JAXBElement<ElevatedPointPropertyType> getLocation() {
         return location;
     }
 
@@ -231,10 +222,10 @@ public class LightElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public void setLocation(ElevatedPointPropertyType value) {
+    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
     }
 
@@ -390,7 +381,7 @@ public class LightElementType
     public static class Extension {
 
         @XmlElement(name = "AbstractLightElementExtension")
-        @Column(name = "aixm:_abstract_light_element_extension")
+        @Transient
         protected AbstractExtensionType abstractLightElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

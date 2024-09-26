@@ -119,11 +119,11 @@ public class Main {
         logger.log(LogLevel.INFO, "new a5_1_1");
         executeNewCommand("a5_1_1");
 
-        logger.log(LogLevel.INFO, "xml_config - a5_1_1");
-        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
+        // logger.log(LogLevel.INFO, "xml_config - a5_1_1");
+        // excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
 
-        logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/a5_1_1_dataset.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/a5_1_1_dataset.xml");
+        // logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/a5_1_1_dataset.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/a5_1_1_dataset.xml");
         
         logger.log(LogLevel.INFO, "db_config - a5_1_1");
         executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", "");

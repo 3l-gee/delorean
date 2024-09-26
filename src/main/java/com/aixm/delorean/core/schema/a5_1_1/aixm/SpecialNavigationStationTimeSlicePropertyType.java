@@ -7,9 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class SpecialNavigationStationTimeSlicePropertyType {
 
     @XmlElement(name = "SpecialNavigationStationTimeSlice", required = true)
-    @Column(name = "aixm:_special_navigation_station_time_slice")
+    @Transient
     protected SpecialNavigationStationTimeSliceType specialNavigationStationTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -73,36 +70,31 @@ public class ProcedureTransitionType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "transitionId", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeDesignatedPointDesignatorType> transitionId;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeProcedurePhaseType> type;
+    @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextInstructionType> instruction;
+    @XmlElementRef(name = "vectorHeading", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValBearingType> vectorHeading;
+    @XmlElementRef(name = "departureRunwayTransition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<LandingTakeoffAreaCollectionPropertyType> departureRunwayTransition;
+    @XmlElementRef(name = "trajectory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CurvePropertyType> trajectory;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "transition_id")
-    protected CodeDesignatedPointDesignatorType transitionId;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeProcedurePhaseType type;
-    @XmlElement(nillable = true)
-    @Column(name = "instruction")
-    protected TextInstructionType instruction;
-    @XmlElement(nillable = true)
-    @Column(name = "vector_heading")
-    protected ValBearingType vectorHeading;
-    @XmlElement(nillable = true)
-    @Column(name = "departure_runway_transition")
-    protected LandingTakeoffAreaCollectionPropertyType departureRunwayTransition;
-    @XmlElement(nillable = true)
-    @Column(name = "trajectory")
-    protected CurvePropertyType trajectory;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ProcedureTransitionLegPropertyType> transitionLeg;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<ProcedureTransitionType.Extension> extension;
 
     /**
@@ -110,10 +102,10 @@ public class ProcedureTransitionType
      * 
      * @return
      *     possible object is
-     *     {@link CodeDesignatedPointDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeDesignatedPointDesignatorType }{@code >}
      *     
      */
-    public CodeDesignatedPointDesignatorType getTransitionId() {
+    public JAXBElement<CodeDesignatedPointDesignatorType> getTransitionId() {
         return transitionId;
     }
 
@@ -122,10 +114,10 @@ public class ProcedureTransitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDesignatedPointDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeDesignatedPointDesignatorType }{@code >}
      *     
      */
-    public void setTransitionId(CodeDesignatedPointDesignatorType value) {
+    public void setTransitionId(JAXBElement<CodeDesignatedPointDesignatorType> value) {
         this.transitionId = value;
     }
 
@@ -138,10 +130,10 @@ public class ProcedureTransitionType
      * 
      * @return
      *     possible object is
-     *     {@link CodeProcedurePhaseType }
+     *     {@link JAXBElement }{@code <}{@link CodeProcedurePhaseType }{@code >}
      *     
      */
-    public CodeProcedurePhaseType getType() {
+    public JAXBElement<CodeProcedurePhaseType> getType() {
         return type;
     }
 
@@ -150,10 +142,10 @@ public class ProcedureTransitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeProcedurePhaseType }
+     *     {@link JAXBElement }{@code <}{@link CodeProcedurePhaseType }{@code >}
      *     
      */
-    public void setType(CodeProcedurePhaseType value) {
+    public void setType(JAXBElement<CodeProcedurePhaseType> value) {
         this.type = value;
     }
 
@@ -166,10 +158,10 @@ public class ProcedureTransitionType
      * 
      * @return
      *     possible object is
-     *     {@link TextInstructionType }
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
      *     
      */
-    public TextInstructionType getInstruction() {
+    public JAXBElement<TextInstructionType> getInstruction() {
         return instruction;
     }
 
@@ -178,10 +170,10 @@ public class ProcedureTransitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextInstructionType }
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
      *     
      */
-    public void setInstruction(TextInstructionType value) {
+    public void setInstruction(JAXBElement<TextInstructionType> value) {
         this.instruction = value;
     }
 
@@ -194,10 +186,10 @@ public class ProcedureTransitionType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getVectorHeading() {
+    public JAXBElement<ValBearingType> getVectorHeading() {
         return vectorHeading;
     }
 
@@ -206,10 +198,10 @@ public class ProcedureTransitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setVectorHeading(ValBearingType value) {
+    public void setVectorHeading(JAXBElement<ValBearingType> value) {
         this.vectorHeading = value;
     }
 
@@ -222,10 +214,10 @@ public class ProcedureTransitionType
      * 
      * @return
      *     possible object is
-     *     {@link LandingTakeoffAreaCollectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
      *     
      */
-    public LandingTakeoffAreaCollectionPropertyType getDepartureRunwayTransition() {
+    public JAXBElement<LandingTakeoffAreaCollectionPropertyType> getDepartureRunwayTransition() {
         return departureRunwayTransition;
     }
 
@@ -234,10 +226,10 @@ public class ProcedureTransitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link LandingTakeoffAreaCollectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
      *     
      */
-    public void setDepartureRunwayTransition(LandingTakeoffAreaCollectionPropertyType value) {
+    public void setDepartureRunwayTransition(JAXBElement<LandingTakeoffAreaCollectionPropertyType> value) {
         this.departureRunwayTransition = value;
     }
 
@@ -250,10 +242,10 @@ public class ProcedureTransitionType
      * 
      * @return
      *     possible object is
-     *     {@link CurvePropertyType }
+     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
      *     
      */
-    public CurvePropertyType getTrajectory() {
+    public JAXBElement<CurvePropertyType> getTrajectory() {
         return trajectory;
     }
 
@@ -262,10 +254,10 @@ public class ProcedureTransitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link CurvePropertyType }
+     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
      *     
      */
-    public void setTrajectory(CurvePropertyType value) {
+    public void setTrajectory(JAXBElement<CurvePropertyType> value) {
         this.trajectory = value;
     }
 
@@ -421,7 +413,7 @@ public class ProcedureTransitionType
     public static class Extension {
 
         @XmlElement(name = "AbstractProcedureTransitionExtension")
-        @Column(name = "aixm:_abstract_procedure_transition_extension")
+        @Transient
         protected AbstractExtensionType abstractProcedureTransitionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

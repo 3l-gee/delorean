@@ -7,9 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AzimuthTimeSlicePropertyType {
 
     @XmlElement(name = "AzimuthTimeSlice", required = true)
-    @Column(name = "aixm:_azimuth_time_slice")
+    @Transient
     protected AzimuthTimeSliceType azimuthTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

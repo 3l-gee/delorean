@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,29 +68,25 @@ public class WorkAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeWorkAreaType> type;
+    @XmlElementRef(name = "plannedOperational", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<DateType> plannedOperational;
+    @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
+    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeWorkAreaType type;
-    @XmlElement(nillable = true)
-    @Column(name = "planned_operational")
-    protected DateType plannedOperational;
-    @XmlElement(nillable = true)
-    @Column(name = "associated_airport_heliport")
-    protected AirportHeliportPropertyType associatedAirportHeliport;
-    @XmlElement(nillable = true)
-    @Column(name = "extent")
-    protected ElevatedSurfacePropertyType extent;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<WorkareaActivityPropertyType> activation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<WorkAreaTimeSliceType.Extension> extension;
 
     /**
@@ -101,10 +94,10 @@ public class WorkAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeWorkAreaType }
+     *     {@link JAXBElement }{@code <}{@link CodeWorkAreaType }{@code >}
      *     
      */
-    public CodeWorkAreaType getType() {
+    public JAXBElement<CodeWorkAreaType> getType() {
         return type;
     }
 
@@ -113,10 +106,10 @@ public class WorkAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeWorkAreaType }
+     *     {@link JAXBElement }{@code <}{@link CodeWorkAreaType }{@code >}
      *     
      */
-    public void setType(CodeWorkAreaType value) {
+    public void setType(JAXBElement<CodeWorkAreaType> value) {
         this.type = value;
     }
 
@@ -129,10 +122,10 @@ public class WorkAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link DateType }
+     *     {@link JAXBElement }{@code <}{@link DateType }{@code >}
      *     
      */
-    public DateType getPlannedOperational() {
+    public JAXBElement<DateType> getPlannedOperational() {
         return plannedOperational;
     }
 
@@ -141,10 +134,10 @@ public class WorkAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link DateType }
+     *     {@link JAXBElement }{@code <}{@link DateType }{@code >}
      *     
      */
-    public void setPlannedOperational(DateType value) {
+    public void setPlannedOperational(JAXBElement<DateType> value) {
         this.plannedOperational = value;
     }
 
@@ -157,10 +150,10 @@ public class WorkAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getAssociatedAirportHeliport() {
+    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirportHeliport() {
         return associatedAirportHeliport;
     }
 
@@ -169,10 +162,10 @@ public class WorkAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setAssociatedAirportHeliport(AirportHeliportPropertyType value) {
+    public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.associatedAirportHeliport = value;
     }
 
@@ -185,10 +178,10 @@ public class WorkAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedSurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      *     
      */
-    public ElevatedSurfacePropertyType getExtent() {
+    public JAXBElement<ElevatedSurfacePropertyType> getExtent() {
         return extent;
     }
 
@@ -197,10 +190,10 @@ public class WorkAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedSurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      *     
      */
-    public void setExtent(ElevatedSurfacePropertyType value) {
+    public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
     }
 
@@ -356,7 +349,7 @@ public class WorkAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractWorkAreaExtension", required = true)
-        @Column(name = "aixm:_abstract_work_area_extension")
+        @Transient
         protected AbstractExtensionType abstractWorkAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

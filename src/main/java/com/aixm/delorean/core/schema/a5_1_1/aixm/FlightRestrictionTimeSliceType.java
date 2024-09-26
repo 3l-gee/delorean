@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,30 +68,25 @@ public class FlightRestrictionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeFlightRestrictionDesignatorType> designator;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeFlightRestrictionType> type;
+    @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextInstructionType> instruction;
+    @XmlElementRef(name = "flight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<FlightConditionCombinationPropertyType> flight;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "designator")
-    protected CodeFlightRestrictionDesignatorType designator;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeFlightRestrictionType type;
-    @XmlElement(nillable = true)
-    @Column(name = "instruction")
-    protected TextInstructionType instruction;
-    @XmlElement(nillable = true)
-    @Column(name = "flight")
-    protected FlightConditionCombinationPropertyType flight;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<FlightRestrictionRoutePropertyType> regulatedRoute;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<FlightRestrictionTimeSliceType.Extension> extension;
 
     /**
@@ -102,10 +94,10 @@ public class FlightRestrictionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeFlightRestrictionDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightRestrictionDesignatorType }{@code >}
      *     
      */
-    public CodeFlightRestrictionDesignatorType getDesignator() {
+    public JAXBElement<CodeFlightRestrictionDesignatorType> getDesignator() {
         return designator;
     }
 
@@ -114,10 +106,10 @@ public class FlightRestrictionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFlightRestrictionDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightRestrictionDesignatorType }{@code >}
      *     
      */
-    public void setDesignator(CodeFlightRestrictionDesignatorType value) {
+    public void setDesignator(JAXBElement<CodeFlightRestrictionDesignatorType> value) {
         this.designator = value;
     }
 
@@ -130,10 +122,10 @@ public class FlightRestrictionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeFlightRestrictionType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightRestrictionType }{@code >}
      *     
      */
-    public CodeFlightRestrictionType getType() {
+    public JAXBElement<CodeFlightRestrictionType> getType() {
         return type;
     }
 
@@ -142,10 +134,10 @@ public class FlightRestrictionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFlightRestrictionType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightRestrictionType }{@code >}
      *     
      */
-    public void setType(CodeFlightRestrictionType value) {
+    public void setType(JAXBElement<CodeFlightRestrictionType> value) {
         this.type = value;
     }
 
@@ -158,10 +150,10 @@ public class FlightRestrictionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextInstructionType }
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
      *     
      */
-    public TextInstructionType getInstruction() {
+    public JAXBElement<TextInstructionType> getInstruction() {
         return instruction;
     }
 
@@ -170,10 +162,10 @@ public class FlightRestrictionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextInstructionType }
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
      *     
      */
-    public void setInstruction(TextInstructionType value) {
+    public void setInstruction(JAXBElement<TextInstructionType> value) {
         this.instruction = value;
     }
 
@@ -186,10 +178,10 @@ public class FlightRestrictionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link FlightConditionCombinationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link FlightConditionCombinationPropertyType }{@code >}
      *     
      */
-    public FlightConditionCombinationPropertyType getFlight() {
+    public JAXBElement<FlightConditionCombinationPropertyType> getFlight() {
         return flight;
     }
 
@@ -198,10 +190,10 @@ public class FlightRestrictionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link FlightConditionCombinationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link FlightConditionCombinationPropertyType }{@code >}
      *     
      */
-    public void setFlight(FlightConditionCombinationPropertyType value) {
+    public void setFlight(JAXBElement<FlightConditionCombinationPropertyType> value) {
         this.flight = value;
     }
 
@@ -357,7 +349,7 @@ public class FlightRestrictionTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightRestrictionExtension", required = true)
-        @Column(name = "aixm:_abstract_flight_restriction_extension")
+        @Transient
         protected AbstractExtensionType abstractFlightRestrictionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

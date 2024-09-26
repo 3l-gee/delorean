@@ -7,9 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -46,7 +46,7 @@ public class DepartureArrivalConditionPropertyType
 {
 
     @XmlElement(name = "DepartureArrivalCondition", required = true)
-    @Column(name = "aixm:_departure_arrival_condition")
+    @Transient
     protected DepartureArrivalConditionType departureArrivalCondition;
 
     /**

@@ -7,9 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class IntermediateLegTimeSlicePropertyType {
 
     @XmlElement(name = "IntermediateLegTimeSlice", required = true)
-    @Column(name = "aixm:_intermediate_leg_time_slice")
+    @Transient
     protected IntermediateLegTimeSliceType intermediateLegTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

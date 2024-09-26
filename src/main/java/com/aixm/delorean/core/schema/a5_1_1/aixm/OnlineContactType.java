@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -75,33 +72,27 @@ public class OnlineContactType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "network")
-    protected CodeTelecomNetworkType network;
-    @XmlElement(nillable = true)
-    @Column(name = "linkage")
-    protected TextAddressType linkage;
-    @XmlElement(nillable = true)
-    @Column(name = "protocol")
-    protected TextNameType protocol;
-    @XmlElement(nillable = true)
-    @Column(name = "e_mail")
-    protected TextAddressType eMail;
+    @XmlElementRef(name = "network", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeTelecomNetworkType> network;
+    @XmlElementRef(name = "linkage", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextAddressType> linkage;
+    @XmlElementRef(name = "protocol", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> protocol;
+    @XmlElementRef(name = "eMail", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextAddressType> eMail;
+    @Transient
     protected List<OnlineContactType.Extension> extension;
 
     /**
@@ -229,10 +220,10 @@ public class OnlineContactType
      * 
      * @return
      *     possible object is
-     *     {@link CodeTelecomNetworkType }
+     *     {@link JAXBElement }{@code <}{@link CodeTelecomNetworkType }{@code >}
      *     
      */
-    public CodeTelecomNetworkType getNetwork() {
+    public JAXBElement<CodeTelecomNetworkType> getNetwork() {
         return network;
     }
 
@@ -241,10 +232,10 @@ public class OnlineContactType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeTelecomNetworkType }
+     *     {@link JAXBElement }{@code <}{@link CodeTelecomNetworkType }{@code >}
      *     
      */
-    public void setNetwork(CodeTelecomNetworkType value) {
+    public void setNetwork(JAXBElement<CodeTelecomNetworkType> value) {
         this.network = value;
     }
 
@@ -257,10 +248,10 @@ public class OnlineContactType
      * 
      * @return
      *     possible object is
-     *     {@link TextAddressType }
+     *     {@link JAXBElement }{@code <}{@link TextAddressType }{@code >}
      *     
      */
-    public TextAddressType getLinkage() {
+    public JAXBElement<TextAddressType> getLinkage() {
         return linkage;
     }
 
@@ -269,10 +260,10 @@ public class OnlineContactType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextAddressType }
+     *     {@link JAXBElement }{@code <}{@link TextAddressType }{@code >}
      *     
      */
-    public void setLinkage(TextAddressType value) {
+    public void setLinkage(JAXBElement<TextAddressType> value) {
         this.linkage = value;
     }
 
@@ -285,10 +276,10 @@ public class OnlineContactType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getProtocol() {
+    public JAXBElement<TextNameType> getProtocol() {
         return protocol;
     }
 
@@ -297,10 +288,10 @@ public class OnlineContactType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setProtocol(TextNameType value) {
+    public void setProtocol(JAXBElement<TextNameType> value) {
         this.protocol = value;
     }
 
@@ -313,10 +304,10 @@ public class OnlineContactType
      * 
      * @return
      *     possible object is
-     *     {@link TextAddressType }
+     *     {@link JAXBElement }{@code <}{@link TextAddressType }{@code >}
      *     
      */
-    public TextAddressType getEMail() {
+    public JAXBElement<TextAddressType> getEMail() {
         return eMail;
     }
 
@@ -325,10 +316,10 @@ public class OnlineContactType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextAddressType }
+     *     {@link JAXBElement }{@code <}{@link TextAddressType }{@code >}
      *     
      */
-    public void setEMail(TextAddressType value) {
+    public void setEMail(JAXBElement<TextAddressType> value) {
         this.eMail = value;
     }
 
@@ -406,10 +397,10 @@ public class OnlineContactType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractOnlineContactExtension")
-        @Column(name = "aixm:_abstract_online_contact_extension")
+        @Transient
         protected AbstractExtensionType abstractOnlineContactExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -84,68 +81,58 @@ public class EnRouteSegmentPointType
     extends AbstractSegmentPointType
 {
 
+    @XmlElementRef(name = "reportingATC", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeATCReportingType> reportingATC;
+    @XmlElementRef(name = "flyOver", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> flyOver;
+    @XmlElementRef(name = "waypoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> waypoint;
+    @XmlElementRef(name = "radarGuidance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> radarGuidance;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "reporting_atc")
-    protected CodeATCReportingType reportingATC;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "fly_over")
-    protected CodeYesNoType flyOver;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "waypoint")
-    protected CodeYesNoType waypoint;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "radar_guidance")
-    protected CodeYesNoType radarGuidance;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<PointReferencePropertyType> facilityMakeup;
-    @XmlElement(name = "pointChoice_fixDesignatedPoint", nillable = true)
-    @Column(name = "point_choice_fix_designated_point")
-    protected DesignatedPointPropertyType pointChoiceFixDesignatedPoint;
-    @XmlElement(name = "pointChoice_navaidSystem", nillable = true)
-    @Column(name = "point_choice_navaid_system")
-    protected NavaidPropertyType pointChoiceNavaidSystem;
-    @XmlElement(name = "pointChoice_position", nillable = true)
-    @Column(name = "point_choice_position")
-    protected PointPropertyType pointChoicePosition;
-    @XmlElement(name = "pointChoice_runwayPoint", nillable = true)
-    @Column(name = "point_choice_runway_point")
-    protected RunwayCentrelinePointPropertyType pointChoiceRunwayPoint;
-    @XmlElement(name = "pointChoice_aimingPoint", nillable = true)
-    @Column(name = "point_choice_aiming_point")
-    protected TouchDownLiftOffPropertyType pointChoiceAimingPoint;
-    @XmlElement(name = "pointChoice_airportReferencePoint", nillable = true)
-    @Column(name = "point_choice_airport_reference_point")
-    protected AirportHeliportPropertyType pointChoiceAirportReferencePoint;
+    @XmlElementRef(name = "pointChoice_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<DesignatedPointPropertyType> pointChoiceFixDesignatedPoint;
+    @XmlElementRef(name = "pointChoice_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<NavaidPropertyType> pointChoiceNavaidSystem;
+    @XmlElementRef(name = "pointChoice_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<PointPropertyType> pointChoicePosition;
+    @XmlElementRef(name = "pointChoice_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<RunwayCentrelinePointPropertyType> pointChoiceRunwayPoint;
+    @XmlElementRef(name = "pointChoice_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TouchDownLiftOffPropertyType> pointChoiceAimingPoint;
+    @XmlElementRef(name = "pointChoice_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<AirportHeliportPropertyType> pointChoiceAirportReferencePoint;
+    @XmlElementRef(name = "extendedServiceVolume", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<RadioFrequencyAreaPropertyType> extendedServiceVolume;
     @XmlElement(nillable = true)
-    @Column(name = "extended_service_volume")
-    protected RadioFrequencyAreaPropertyType extendedServiceVolume;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role_free_flight")
-    protected CodeFreeFlightType roleFreeFlight;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role_rvsm")
-    protected CodeRVSMPointRoleType roleRVSM;
-    @XmlElement(nillable = true)
-    @Column(name = "turn_radius")
-    protected ValDistanceType turnRadius;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role_military_training")
-    protected CodeMilitaryRoutePointType roleMilitaryTraining;
+    @XmlElementRef(name = "roleFreeFlight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeFreeFlightType> roleFreeFlight;
+    @XmlElementRef(name = "roleRVSM", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeRVSMPointRoleType> roleRVSM;
+    @XmlElementRef(name = "turnRadius", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> turnRadius;
+    @XmlElementRef(name = "roleMilitaryTraining", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeMilitaryRoutePointType> roleMilitaryTraining;
+    @Transient
     protected List<EnRouteSegmentPointType.Extension> extension;
 
     /**
@@ -153,10 +140,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link CodeATCReportingType }
+     *     {@link JAXBElement }{@code <}{@link CodeATCReportingType }{@code >}
      *     
      */
-    public CodeATCReportingType getReportingATC() {
+    public JAXBElement<CodeATCReportingType> getReportingATC() {
         return reportingATC;
     }
 
@@ -165,10 +152,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeATCReportingType }
+     *     {@link JAXBElement }{@code <}{@link CodeATCReportingType }{@code >}
      *     
      */
-    public void setReportingATC(CodeATCReportingType value) {
+    public void setReportingATC(JAXBElement<CodeATCReportingType> value) {
         this.reportingATC = value;
     }
 
@@ -181,10 +168,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getFlyOver() {
+    public JAXBElement<CodeYesNoType> getFlyOver() {
         return flyOver;
     }
 
@@ -193,10 +180,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setFlyOver(CodeYesNoType value) {
+    public void setFlyOver(JAXBElement<CodeYesNoType> value) {
         this.flyOver = value;
     }
 
@@ -209,10 +196,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getWaypoint() {
+    public JAXBElement<CodeYesNoType> getWaypoint() {
         return waypoint;
     }
 
@@ -221,10 +208,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setWaypoint(CodeYesNoType value) {
+    public void setWaypoint(JAXBElement<CodeYesNoType> value) {
         this.waypoint = value;
     }
 
@@ -237,10 +224,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getRadarGuidance() {
+    public JAXBElement<CodeYesNoType> getRadarGuidance() {
         return radarGuidance;
     }
 
@@ -249,10 +236,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setRadarGuidance(CodeYesNoType value) {
+    public void setRadarGuidance(JAXBElement<CodeYesNoType> value) {
         this.radarGuidance = value;
     }
 
@@ -305,10 +292,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public DesignatedPointPropertyType getPointChoiceFixDesignatedPoint() {
+    public JAXBElement<DesignatedPointPropertyType> getPointChoiceFixDesignatedPoint() {
         return pointChoiceFixDesignatedPoint;
     }
 
@@ -317,10 +304,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceFixDesignatedPoint(DesignatedPointPropertyType value) {
+    public void setPointChoiceFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.pointChoiceFixDesignatedPoint = value;
     }
 
@@ -333,10 +320,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link NavaidPropertyType }
+     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
      *     
      */
-    public NavaidPropertyType getPointChoiceNavaidSystem() {
+    public JAXBElement<NavaidPropertyType> getPointChoiceNavaidSystem() {
         return pointChoiceNavaidSystem;
     }
 
@@ -345,10 +332,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link NavaidPropertyType }
+     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceNavaidSystem(NavaidPropertyType value) {
+    public void setPointChoiceNavaidSystem(JAXBElement<NavaidPropertyType> value) {
         this.pointChoiceNavaidSystem = value;
     }
 
@@ -361,10 +348,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link PointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
      *     
      */
-    public PointPropertyType getPointChoicePosition() {
+    public JAXBElement<PointPropertyType> getPointChoicePosition() {
         return pointChoicePosition;
     }
 
@@ -373,10 +360,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link PointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
      *     
      */
-    public void setPointChoicePosition(PointPropertyType value) {
+    public void setPointChoicePosition(JAXBElement<PointPropertyType> value) {
         this.pointChoicePosition = value;
     }
 
@@ -389,10 +376,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayCentrelinePointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
      *     
      */
-    public RunwayCentrelinePointPropertyType getPointChoiceRunwayPoint() {
+    public JAXBElement<RunwayCentrelinePointPropertyType> getPointChoiceRunwayPoint() {
         return pointChoiceRunwayPoint;
     }
 
@@ -401,10 +388,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayCentrelinePointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceRunwayPoint(RunwayCentrelinePointPropertyType value) {
+    public void setPointChoiceRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
         this.pointChoiceRunwayPoint = value;
     }
 
@@ -417,10 +404,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link TouchDownLiftOffPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
      *     
      */
-    public TouchDownLiftOffPropertyType getPointChoiceAimingPoint() {
+    public JAXBElement<TouchDownLiftOffPropertyType> getPointChoiceAimingPoint() {
         return pointChoiceAimingPoint;
     }
 
@@ -429,10 +416,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link TouchDownLiftOffPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceAimingPoint(TouchDownLiftOffPropertyType value) {
+    public void setPointChoiceAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.pointChoiceAimingPoint = value;
     }
 
@@ -445,10 +432,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getPointChoiceAirportReferencePoint() {
+    public JAXBElement<AirportHeliportPropertyType> getPointChoiceAirportReferencePoint() {
         return pointChoiceAirportReferencePoint;
     }
 
@@ -457,10 +444,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceAirportReferencePoint(AirportHeliportPropertyType value) {
+    public void setPointChoiceAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.pointChoiceAirportReferencePoint = value;
     }
 
@@ -473,10 +460,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link RadioFrequencyAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RadioFrequencyAreaPropertyType }{@code >}
      *     
      */
-    public RadioFrequencyAreaPropertyType getExtendedServiceVolume() {
+    public JAXBElement<RadioFrequencyAreaPropertyType> getExtendedServiceVolume() {
         return extendedServiceVolume;
     }
 
@@ -485,10 +472,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link RadioFrequencyAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RadioFrequencyAreaPropertyType }{@code >}
      *     
      */
-    public void setExtendedServiceVolume(RadioFrequencyAreaPropertyType value) {
+    public void setExtendedServiceVolume(JAXBElement<RadioFrequencyAreaPropertyType> value) {
         this.extendedServiceVolume = value;
     }
 
@@ -541,10 +528,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link CodeFreeFlightType }
+     *     {@link JAXBElement }{@code <}{@link CodeFreeFlightType }{@code >}
      *     
      */
-    public CodeFreeFlightType getRoleFreeFlight() {
+    public JAXBElement<CodeFreeFlightType> getRoleFreeFlight() {
         return roleFreeFlight;
     }
 
@@ -553,10 +540,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFreeFlightType }
+     *     {@link JAXBElement }{@code <}{@link CodeFreeFlightType }{@code >}
      *     
      */
-    public void setRoleFreeFlight(CodeFreeFlightType value) {
+    public void setRoleFreeFlight(JAXBElement<CodeFreeFlightType> value) {
         this.roleFreeFlight = value;
     }
 
@@ -569,10 +556,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRVSMPointRoleType }
+     *     {@link JAXBElement }{@code <}{@link CodeRVSMPointRoleType }{@code >}
      *     
      */
-    public CodeRVSMPointRoleType getRoleRVSM() {
+    public JAXBElement<CodeRVSMPointRoleType> getRoleRVSM() {
         return roleRVSM;
     }
 
@@ -581,10 +568,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRVSMPointRoleType }
+     *     {@link JAXBElement }{@code <}{@link CodeRVSMPointRoleType }{@code >}
      *     
      */
-    public void setRoleRVSM(CodeRVSMPointRoleType value) {
+    public void setRoleRVSM(JAXBElement<CodeRVSMPointRoleType> value) {
         this.roleRVSM = value;
     }
 
@@ -597,10 +584,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getTurnRadius() {
+    public JAXBElement<ValDistanceType> getTurnRadius() {
         return turnRadius;
     }
 
@@ -609,10 +596,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setTurnRadius(ValDistanceType value) {
+    public void setTurnRadius(JAXBElement<ValDistanceType> value) {
         this.turnRadius = value;
     }
 
@@ -625,10 +612,10 @@ public class EnRouteSegmentPointType
      * 
      * @return
      *     possible object is
-     *     {@link CodeMilitaryRoutePointType }
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryRoutePointType }{@code >}
      *     
      */
-    public CodeMilitaryRoutePointType getRoleMilitaryTraining() {
+    public JAXBElement<CodeMilitaryRoutePointType> getRoleMilitaryTraining() {
         return roleMilitaryTraining;
     }
 
@@ -637,10 +624,10 @@ public class EnRouteSegmentPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMilitaryRoutePointType }
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryRoutePointType }{@code >}
      *     
      */
-    public void setRoleMilitaryTraining(CodeMilitaryRoutePointType value) {
+    public void setRoleMilitaryTraining(JAXBElement<CodeMilitaryRoutePointType> value) {
         this.roleMilitaryTraining = value;
     }
 
@@ -718,10 +705,10 @@ public class EnRouteSegmentPointType
     public static class Extension {
 
         @XmlElement(name = "AbstractSegmentPointExtension")
-        @Column(name = "aixm:_abstract_segment_point_extension")
+        @Transient
         protected AbstractExtensionType abstractSegmentPointExtension;
         @XmlElement(name = "AbstractEnRouteSegmentPointExtension")
-        @Column(name = "aixm:_abstract_en_route_segment_point_extension")
+        @Transient
         protected AbstractExtensionType abstractEnRouteSegmentPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

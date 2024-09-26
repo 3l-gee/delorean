@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,27 +68,25 @@ public class RunwayBlastPadTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> length;
+    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeStatusOperationsType> status;
+    @XmlElementRef(name = "usedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<RunwayDirectionPropertyType> usedRunwayDirection;
+    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ElevatedSurfacePropertyType> extent;
+    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
     @XmlElement(nillable = true)
-    @Column(name = "length")
-    protected ValDistanceType length;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    protected CodeStatusOperationsType status;
-    @XmlElement(nillable = true)
-    @Column(name = "used_runway_direction")
-    protected RunwayDirectionPropertyType usedRunwayDirection;
-    @XmlElement(nillable = true)
-    @Column(name = "extent")
-    protected ElevatedSurfacePropertyType extent;
-    @XmlElement(nillable = true)
-    @Column(name = "surface_properties")
-    protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<RunwayBlastPadTimeSliceType.Extension> extension;
 
     /**
@@ -99,10 +94,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getLength() {
+    public JAXBElement<ValDistanceType> getLength() {
         return length;
     }
 
@@ -111,10 +106,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setLength(ValDistanceType value) {
+    public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
     }
 
@@ -127,10 +122,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeStatusOperationsType }
+     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
      *     
      */
-    public CodeStatusOperationsType getStatus() {
+    public JAXBElement<CodeStatusOperationsType> getStatus() {
         return status;
     }
 
@@ -139,10 +134,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeStatusOperationsType }
+     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
      *     
      */
-    public void setStatus(CodeStatusOperationsType value) {
+    public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
         this.status = value;
     }
 
@@ -155,10 +150,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public RunwayDirectionPropertyType getUsedRunwayDirection() {
+    public JAXBElement<RunwayDirectionPropertyType> getUsedRunwayDirection() {
         return usedRunwayDirection;
     }
 
@@ -167,10 +162,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public void setUsedRunwayDirection(RunwayDirectionPropertyType value) {
+    public void setUsedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
         this.usedRunwayDirection = value;
     }
 
@@ -183,10 +178,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedSurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      *     
      */
-    public ElevatedSurfacePropertyType getExtent() {
+    public JAXBElement<ElevatedSurfacePropertyType> getExtent() {
         return extent;
     }
 
@@ -195,10 +190,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedSurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      *     
      */
-    public void setExtent(ElevatedSurfacePropertyType value) {
+    public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
     }
 
@@ -211,10 +206,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
+    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -223,10 +218,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
+    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
     }
 
@@ -342,7 +337,7 @@ public class RunwayBlastPadTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayBlastPadExtension", required = true)
-        @Column(name = "aixm:_abstract_runway_blast_pad_extension")
+        @Transient
         protected AbstractExtensionType abstractRunwayBlastPadExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

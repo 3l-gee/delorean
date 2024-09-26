@@ -53,7 +53,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "sequenceNumber",
     "correctionNumber",
     "timeSliceMetadata",
-    "featureLifetime"
+    "featureLifetime",
+    "dbID"
 })
 @XmlSeeAlso({
     AerialRefuellingTimeSliceType.class,

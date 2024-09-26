@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -77,54 +74,43 @@ public class AirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeAirspaceType type;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "designator")
-    protected CodeAirspaceDesignatorType designator;
-    @XmlElement(nillable = true)
-    @Column(name = "local_type")
-    protected TextNameType localType;
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "designator_icao")
-    protected CodeYesNoType designatorICAO;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "control_type")
-    protected CodeMilitaryOperationsType controlType;
-    @XmlElement(nillable = true)
-    @Column(name = "upper_lower_separation")
-    protected ValFLType upperLowerSeparation;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeAirspaceType> type;
+    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeAirspaceDesignatorType> designator;
+    @XmlElementRef(name = "localType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> localType;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> aixmName;
+    @XmlElementRef(name = "designatorICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> designatorICAO;
+    @XmlElementRef(name = "controlType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeMilitaryOperationsType> controlType;
+    @XmlElementRef(name = "upperLowerSeparation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValFLType> upperLowerSeparation;
     @XmlElement(name = "class", nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AirspaceLayerClassPropertyType> clazz;
+    @XmlElementRef(name = "protectedRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<RoutePropertyType> protectedRoute;
     @XmlElement(nillable = true)
-    @Column(name = "protected_route")
-    protected RoutePropertyType protectedRoute;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AirspaceGeometryComponentPropertyType> geometryComponent;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AirspaceActivationPropertyType> activation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AirspaceTimeSliceType.Extension> extension;
 
     /**
@@ -132,10 +118,10 @@ public class AirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAirspaceType }
+     *     {@link JAXBElement }{@code <}{@link CodeAirspaceType }{@code >}
      *     
      */
-    public CodeAirspaceType getType() {
+    public JAXBElement<CodeAirspaceType> getType() {
         return type;
     }
 
@@ -144,10 +130,10 @@ public class AirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAirspaceType }
+     *     {@link JAXBElement }{@code <}{@link CodeAirspaceType }{@code >}
      *     
      */
-    public void setType(CodeAirspaceType value) {
+    public void setType(JAXBElement<CodeAirspaceType> value) {
         this.type = value;
     }
 
@@ -160,10 +146,10 @@ public class AirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAirspaceDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeAirspaceDesignatorType }{@code >}
      *     
      */
-    public CodeAirspaceDesignatorType getDesignator() {
+    public JAXBElement<CodeAirspaceDesignatorType> getDesignator() {
         return designator;
     }
 
@@ -172,10 +158,10 @@ public class AirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAirspaceDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeAirspaceDesignatorType }{@code >}
      *     
      */
-    public void setDesignator(CodeAirspaceDesignatorType value) {
+    public void setDesignator(JAXBElement<CodeAirspaceDesignatorType> value) {
         this.designator = value;
     }
 
@@ -188,10 +174,10 @@ public class AirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getLocalType() {
+    public JAXBElement<TextNameType> getLocalType() {
         return localType;
     }
 
@@ -200,10 +186,10 @@ public class AirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setLocalType(TextNameType value) {
+    public void setLocalType(JAXBElement<TextNameType> value) {
         this.localType = value;
     }
 
@@ -216,10 +202,10 @@ public class AirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getAIXMName() {
+    public JAXBElement<TextNameType> getAIXMName() {
         return aixmName;
     }
 
@@ -228,10 +214,10 @@ public class AirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setAIXMName(TextNameType value) {
+    public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
     }
 
@@ -244,10 +230,10 @@ public class AirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getDesignatorICAO() {
+    public JAXBElement<CodeYesNoType> getDesignatorICAO() {
         return designatorICAO;
     }
 
@@ -256,10 +242,10 @@ public class AirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setDesignatorICAO(CodeYesNoType value) {
+    public void setDesignatorICAO(JAXBElement<CodeYesNoType> value) {
         this.designatorICAO = value;
     }
 
@@ -272,10 +258,10 @@ public class AirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeMilitaryOperationsType }
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
      *     
      */
-    public CodeMilitaryOperationsType getControlType() {
+    public JAXBElement<CodeMilitaryOperationsType> getControlType() {
         return controlType;
     }
 
@@ -284,10 +270,10 @@ public class AirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMilitaryOperationsType }
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
      *     
      */
-    public void setControlType(CodeMilitaryOperationsType value) {
+    public void setControlType(JAXBElement<CodeMilitaryOperationsType> value) {
         this.controlType = value;
     }
 
@@ -300,10 +286,10 @@ public class AirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValFLType }
+     *     {@link JAXBElement }{@code <}{@link ValFLType }{@code >}
      *     
      */
-    public ValFLType getUpperLowerSeparation() {
+    public JAXBElement<ValFLType> getUpperLowerSeparation() {
         return upperLowerSeparation;
     }
 
@@ -312,10 +298,10 @@ public class AirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValFLType }
+     *     {@link JAXBElement }{@code <}{@link ValFLType }{@code >}
      *     
      */
-    public void setUpperLowerSeparation(ValFLType value) {
+    public void setUpperLowerSeparation(JAXBElement<ValFLType> value) {
         this.upperLowerSeparation = value;
     }
 
@@ -368,10 +354,10 @@ public class AirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RoutePropertyType }
+     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
      *     
      */
-    public RoutePropertyType getProtectedRoute() {
+    public JAXBElement<RoutePropertyType> getProtectedRoute() {
         return protectedRoute;
     }
 
@@ -380,10 +366,10 @@ public class AirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RoutePropertyType }
+     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
      *     
      */
-    public void setProtectedRoute(RoutePropertyType value) {
+    public void setProtectedRoute(JAXBElement<RoutePropertyType> value) {
         this.protectedRoute = value;
     }
 
@@ -579,7 +565,7 @@ public class AirspaceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceExtension", required = true)
-        @Column(name = "aixm:_abstract_airspace_extension")
+        @Transient
         protected AbstractExtensionType abstractAirspaceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

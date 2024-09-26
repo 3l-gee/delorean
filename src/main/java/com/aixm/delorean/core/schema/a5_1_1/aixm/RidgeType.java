@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,21 +66,19 @@ public class RidgeType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "side", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeSideType> side;
+    @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> distance;
+    @XmlElementRef(name = "depth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDepthType> depth;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "side")
-    protected CodeSideType side;
-    @XmlElement(nillable = true)
-    @Column(name = "distance")
-    protected ValDistanceType distance;
-    @XmlElement(nillable = true)
-    @Column(name = "depth")
-    protected ValDepthType depth;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<RidgeType.Extension> extension;
 
     /**
@@ -91,10 +86,10 @@ public class RidgeType
      * 
      * @return
      *     possible object is
-     *     {@link CodeSideType }
+     *     {@link JAXBElement }{@code <}{@link CodeSideType }{@code >}
      *     
      */
-    public CodeSideType getSide() {
+    public JAXBElement<CodeSideType> getSide() {
         return side;
     }
 
@@ -103,10 +98,10 @@ public class RidgeType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSideType }
+     *     {@link JAXBElement }{@code <}{@link CodeSideType }{@code >}
      *     
      */
-    public void setSide(CodeSideType value) {
+    public void setSide(JAXBElement<CodeSideType> value) {
         this.side = value;
     }
 
@@ -119,10 +114,10 @@ public class RidgeType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getDistance() {
+    public JAXBElement<ValDistanceType> getDistance() {
         return distance;
     }
 
@@ -131,10 +126,10 @@ public class RidgeType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setDistance(ValDistanceType value) {
+    public void setDistance(JAXBElement<ValDistanceType> value) {
         this.distance = value;
     }
 
@@ -147,10 +142,10 @@ public class RidgeType
      * 
      * @return
      *     possible object is
-     *     {@link ValDepthType }
+     *     {@link JAXBElement }{@code <}{@link ValDepthType }{@code >}
      *     
      */
-    public ValDepthType getDepth() {
+    public JAXBElement<ValDepthType> getDepth() {
         return depth;
     }
 
@@ -159,10 +154,10 @@ public class RidgeType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDepthType }
+     *     {@link JAXBElement }{@code <}{@link ValDepthType }{@code >}
      *     
      */
-    public void setDepth(ValDepthType value) {
+    public void setDepth(JAXBElement<ValDepthType> value) {
         this.depth = value;
     }
 
@@ -278,7 +273,7 @@ public class RidgeType
     public static class Extension {
 
         @XmlElement(name = "AbstractRidgeExtension")
-        @Column(name = "aixm:_abstract_ridge_extension")
+        @Transient
         protected AbstractExtensionType abstractRidgeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

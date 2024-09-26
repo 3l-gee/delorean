@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -73,30 +70,25 @@ public class AirportHeliportUsageType
     extends AbstractUsageConditionType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeUsageLimitationType> type;
+    @XmlElementRef(name = "priorPermission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDurationType> priorPermission;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeUsageLimitationType type;
-    @XmlElement(nillable = true)
-    @Column(name = "prior_permission")
-    protected ValDurationType priorPermission;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ContactInformationPropertyType> contact;
+    @XmlElementRef(name = "selection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ConditionCombinationPropertyType> selection;
     @XmlElement(nillable = true)
-    @Column(name = "selection")
-    protected ConditionCombinationPropertyType selection;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "operation")
-    protected CodeOperationAirportHeliportType operation;
+    @XmlElementRef(name = "operation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeOperationAirportHeliportType> operation;
+    @Transient
     protected List<AirportHeliportUsageType.Extension> extension;
 
     /**
@@ -104,10 +96,10 @@ public class AirportHeliportUsageType
      * 
      * @return
      *     possible object is
-     *     {@link CodeUsageLimitationType }
+     *     {@link JAXBElement }{@code <}{@link CodeUsageLimitationType }{@code >}
      *     
      */
-    public CodeUsageLimitationType getType() {
+    public JAXBElement<CodeUsageLimitationType> getType() {
         return type;
     }
 
@@ -116,10 +108,10 @@ public class AirportHeliportUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeUsageLimitationType }
+     *     {@link JAXBElement }{@code <}{@link CodeUsageLimitationType }{@code >}
      *     
      */
-    public void setType(CodeUsageLimitationType value) {
+    public void setType(JAXBElement<CodeUsageLimitationType> value) {
         this.type = value;
     }
 
@@ -132,10 +124,10 @@ public class AirportHeliportUsageType
      * 
      * @return
      *     possible object is
-     *     {@link ValDurationType }
+     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
      *     
      */
-    public ValDurationType getPriorPermission() {
+    public JAXBElement<ValDurationType> getPriorPermission() {
         return priorPermission;
     }
 
@@ -144,10 +136,10 @@ public class AirportHeliportUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDurationType }
+     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
      *     
      */
-    public void setPriorPermission(ValDurationType value) {
+    public void setPriorPermission(JAXBElement<ValDurationType> value) {
         this.priorPermission = value;
     }
 
@@ -200,10 +192,10 @@ public class AirportHeliportUsageType
      * 
      * @return
      *     possible object is
-     *     {@link ConditionCombinationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ConditionCombinationPropertyType }{@code >}
      *     
      */
-    public ConditionCombinationPropertyType getSelection() {
+    public JAXBElement<ConditionCombinationPropertyType> getSelection() {
         return selection;
     }
 
@@ -212,10 +204,10 @@ public class AirportHeliportUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link ConditionCombinationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ConditionCombinationPropertyType }{@code >}
      *     
      */
-    public void setSelection(ConditionCombinationPropertyType value) {
+    public void setSelection(JAXBElement<ConditionCombinationPropertyType> value) {
         this.selection = value;
     }
 
@@ -268,10 +260,10 @@ public class AirportHeliportUsageType
      * 
      * @return
      *     possible object is
-     *     {@link CodeOperationAirportHeliportType }
+     *     {@link JAXBElement }{@code <}{@link CodeOperationAirportHeliportType }{@code >}
      *     
      */
-    public CodeOperationAirportHeliportType getOperation() {
+    public JAXBElement<CodeOperationAirportHeliportType> getOperation() {
         return operation;
     }
 
@@ -280,10 +272,10 @@ public class AirportHeliportUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeOperationAirportHeliportType }
+     *     {@link JAXBElement }{@code <}{@link CodeOperationAirportHeliportType }{@code >}
      *     
      */
-    public void setOperation(CodeOperationAirportHeliportType value) {
+    public void setOperation(JAXBElement<CodeOperationAirportHeliportType> value) {
         this.operation = value;
     }
 
@@ -361,10 +353,10 @@ public class AirportHeliportUsageType
     public static class Extension {
 
         @XmlElement(name = "AbstractUsageConditionExtension")
-        @Column(name = "aixm:_abstract_usage_condition_extension")
+        @Transient
         protected AbstractExtensionType abstractUsageConditionExtension;
         @XmlElement(name = "AbstractAirportHeliportUsageExtension")
-        @Column(name = "aixm:_abstract_airport_heliport_usage_extension")
+        @Transient
         protected AbstractExtensionType abstractAirportHeliportUsageExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

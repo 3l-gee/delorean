@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -80,70 +77,52 @@ public class NavaidTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeNavaidServiceType> type;
+    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeNavaidDesignatorType> designator;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> aixmName;
+    @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> flightChecked;
+    @XmlElementRef(name = "purpose", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeNavaidPurposeType> purpose;
+    @XmlElementRef(name = "signalPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeSignalPerformanceILSType> signalPerformance;
+    @XmlElementRef(name = "courseQuality", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeCourseQualityILSType> courseQuality;
+    @XmlElementRef(name = "integrityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeIntegrityLevelILSType> integrityLevel;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeNavaidServiceType type;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "designator")
-    protected CodeNavaidDesignatorType designator;
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "flight_checked")
-    protected CodeYesNoType flightChecked;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "purpose")
-    protected CodeNavaidPurposeType purpose;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "signal_performance")
-    protected CodeSignalPerformanceILSType signalPerformance;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "course_quality")
-    protected CodeCourseQualityILSType courseQuality;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "integrity_level")
-    protected CodeIntegrityLevelILSType integrityLevel;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<TouchDownLiftOffPropertyType> touchDownLiftOff;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NavaidComponentPropertyType> navaidEquipment;
+    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<RunwayDirectionPropertyType> runwayDirection;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AirportHeliportPropertyType> servedAirport;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<NavaidTimeSliceType.Extension> extension;
 
     /**
@@ -151,10 +130,10 @@ public class NavaidTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeNavaidServiceType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavaidServiceType }{@code >}
      *     
      */
-    public CodeNavaidServiceType getType() {
+    public JAXBElement<CodeNavaidServiceType> getType() {
         return type;
     }
 
@@ -163,10 +142,10 @@ public class NavaidTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeNavaidServiceType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavaidServiceType }{@code >}
      *     
      */
-    public void setType(CodeNavaidServiceType value) {
+    public void setType(JAXBElement<CodeNavaidServiceType> value) {
         this.type = value;
     }
 
@@ -179,10 +158,10 @@ public class NavaidTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeNavaidDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
      *     
      */
-    public CodeNavaidDesignatorType getDesignator() {
+    public JAXBElement<CodeNavaidDesignatorType> getDesignator() {
         return designator;
     }
 
@@ -191,10 +170,10 @@ public class NavaidTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeNavaidDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
      *     
      */
-    public void setDesignator(CodeNavaidDesignatorType value) {
+    public void setDesignator(JAXBElement<CodeNavaidDesignatorType> value) {
         this.designator = value;
     }
 
@@ -207,10 +186,10 @@ public class NavaidTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getAIXMName() {
+    public JAXBElement<TextNameType> getAIXMName() {
         return aixmName;
     }
 
@@ -219,10 +198,10 @@ public class NavaidTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setAIXMName(TextNameType value) {
+    public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
     }
 
@@ -235,10 +214,10 @@ public class NavaidTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getFlightChecked() {
+    public JAXBElement<CodeYesNoType> getFlightChecked() {
         return flightChecked;
     }
 
@@ -247,10 +226,10 @@ public class NavaidTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setFlightChecked(CodeYesNoType value) {
+    public void setFlightChecked(JAXBElement<CodeYesNoType> value) {
         this.flightChecked = value;
     }
 
@@ -263,10 +242,10 @@ public class NavaidTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeNavaidPurposeType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavaidPurposeType }{@code >}
      *     
      */
-    public CodeNavaidPurposeType getPurpose() {
+    public JAXBElement<CodeNavaidPurposeType> getPurpose() {
         return purpose;
     }
 
@@ -275,10 +254,10 @@ public class NavaidTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeNavaidPurposeType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavaidPurposeType }{@code >}
      *     
      */
-    public void setPurpose(CodeNavaidPurposeType value) {
+    public void setPurpose(JAXBElement<CodeNavaidPurposeType> value) {
         this.purpose = value;
     }
 
@@ -291,10 +270,10 @@ public class NavaidTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeSignalPerformanceILSType }
+     *     {@link JAXBElement }{@code <}{@link CodeSignalPerformanceILSType }{@code >}
      *     
      */
-    public CodeSignalPerformanceILSType getSignalPerformance() {
+    public JAXBElement<CodeSignalPerformanceILSType> getSignalPerformance() {
         return signalPerformance;
     }
 
@@ -303,10 +282,10 @@ public class NavaidTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSignalPerformanceILSType }
+     *     {@link JAXBElement }{@code <}{@link CodeSignalPerformanceILSType }{@code >}
      *     
      */
-    public void setSignalPerformance(CodeSignalPerformanceILSType value) {
+    public void setSignalPerformance(JAXBElement<CodeSignalPerformanceILSType> value) {
         this.signalPerformance = value;
     }
 
@@ -319,10 +298,10 @@ public class NavaidTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeCourseQualityILSType }
+     *     {@link JAXBElement }{@code <}{@link CodeCourseQualityILSType }{@code >}
      *     
      */
-    public CodeCourseQualityILSType getCourseQuality() {
+    public JAXBElement<CodeCourseQualityILSType> getCourseQuality() {
         return courseQuality;
     }
 
@@ -331,10 +310,10 @@ public class NavaidTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeCourseQualityILSType }
+     *     {@link JAXBElement }{@code <}{@link CodeCourseQualityILSType }{@code >}
      *     
      */
-    public void setCourseQuality(CodeCourseQualityILSType value) {
+    public void setCourseQuality(JAXBElement<CodeCourseQualityILSType> value) {
         this.courseQuality = value;
     }
 
@@ -347,10 +326,10 @@ public class NavaidTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeIntegrityLevelILSType }
+     *     {@link JAXBElement }{@code <}{@link CodeIntegrityLevelILSType }{@code >}
      *     
      */
-    public CodeIntegrityLevelILSType getIntegrityLevel() {
+    public JAXBElement<CodeIntegrityLevelILSType> getIntegrityLevel() {
         return integrityLevel;
     }
 
@@ -359,10 +338,10 @@ public class NavaidTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeIntegrityLevelILSType }
+     *     {@link JAXBElement }{@code <}{@link CodeIntegrityLevelILSType }{@code >}
      *     
      */
-    public void setIntegrityLevel(CodeIntegrityLevelILSType value) {
+    public void setIntegrityLevel(JAXBElement<CodeIntegrityLevelILSType> value) {
         this.integrityLevel = value;
     }
 
@@ -455,10 +434,10 @@ public class NavaidTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public ElevatedPointPropertyType getLocation() {
+    public JAXBElement<ElevatedPointPropertyType> getLocation() {
         return location;
     }
 
@@ -467,10 +446,10 @@ public class NavaidTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public void setLocation(ElevatedPointPropertyType value) {
+    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
     }
 
@@ -706,7 +685,7 @@ public class NavaidTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidExtension", required = true)
-        @Column(name = "aixm:_abstract_navaid_extension")
+        @Transient
         protected AbstractExtensionType abstractNavaidExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -75,37 +72,27 @@ public class RouteAvailabilityType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
+    @XmlElementRef(name = "direction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeDirectionType> direction;
+    @XmlElementRef(name = "cardinalDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeCardinalDirectionType> cardinalDirection;
+    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeRouteAvailabilityType> status;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "direction")
-    protected CodeDirectionType direction;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "cardinal_direction")
-    protected CodeCardinalDirectionType cardinalDirection;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    protected CodeRouteAvailabilityType status;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AirspaceLayerPropertyType> levels;
+    @Transient
     protected List<RouteAvailabilityType.Extension> extension;
 
     /**
@@ -233,10 +220,10 @@ public class RouteAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link CodeDirectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionType }{@code >}
      *     
      */
-    public CodeDirectionType getDirection() {
+    public JAXBElement<CodeDirectionType> getDirection() {
         return direction;
     }
 
@@ -245,10 +232,10 @@ public class RouteAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDirectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionType }{@code >}
      *     
      */
-    public void setDirection(CodeDirectionType value) {
+    public void setDirection(JAXBElement<CodeDirectionType> value) {
         this.direction = value;
     }
 
@@ -261,10 +248,10 @@ public class RouteAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link CodeCardinalDirectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
      *     
      */
-    public CodeCardinalDirectionType getCardinalDirection() {
+    public JAXBElement<CodeCardinalDirectionType> getCardinalDirection() {
         return cardinalDirection;
     }
 
@@ -273,10 +260,10 @@ public class RouteAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeCardinalDirectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
      *     
      */
-    public void setCardinalDirection(CodeCardinalDirectionType value) {
+    public void setCardinalDirection(JAXBElement<CodeCardinalDirectionType> value) {
         this.cardinalDirection = value;
     }
 
@@ -289,10 +276,10 @@ public class RouteAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRouteAvailabilityType }
+     *     {@link JAXBElement }{@code <}{@link CodeRouteAvailabilityType }{@code >}
      *     
      */
-    public CodeRouteAvailabilityType getStatus() {
+    public JAXBElement<CodeRouteAvailabilityType> getStatus() {
         return status;
     }
 
@@ -301,10 +288,10 @@ public class RouteAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRouteAvailabilityType }
+     *     {@link JAXBElement }{@code <}{@link CodeRouteAvailabilityType }{@code >}
      *     
      */
-    public void setStatus(CodeRouteAvailabilityType value) {
+    public void setStatus(JAXBElement<CodeRouteAvailabilityType> value) {
         this.status = value;
     }
 
@@ -422,10 +409,10 @@ public class RouteAvailabilityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractRouteAvailabilityExtension")
-        @Column(name = "aixm:_abstract_route_availability_extension")
+        @Transient
         protected AbstractExtensionType abstractRouteAvailabilityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

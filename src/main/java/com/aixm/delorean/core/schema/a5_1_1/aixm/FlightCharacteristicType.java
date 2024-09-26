@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,35 +69,28 @@ public class FlightCharacteristicType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeFlightType> type;
+    @XmlElementRef(name = "rule", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeFlightRuleType> rule;
+    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeFlightStatusType> status;
+    @XmlElementRef(name = "military", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeMilitaryStatusType> military;
+    @XmlElementRef(name = "origin", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeFlightOriginType> origin;
+    @XmlElementRef(name = "purpose", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeFlightPurposeType> purpose;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeFlightType type;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "rule")
-    protected CodeFlightRuleType rule;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    protected CodeFlightStatusType status;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "military")
-    protected CodeMilitaryStatusType military;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "origin")
-    protected CodeFlightOriginType origin;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "purpose")
-    protected CodeFlightPurposeType purpose;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<FlightCharacteristicType.Extension> extension;
 
     /**
@@ -108,10 +98,10 @@ public class FlightCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeFlightType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightType }{@code >}
      *     
      */
-    public CodeFlightType getType() {
+    public JAXBElement<CodeFlightType> getType() {
         return type;
     }
 
@@ -120,10 +110,10 @@ public class FlightCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFlightType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightType }{@code >}
      *     
      */
-    public void setType(CodeFlightType value) {
+    public void setType(JAXBElement<CodeFlightType> value) {
         this.type = value;
     }
 
@@ -136,10 +126,10 @@ public class FlightCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeFlightRuleType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightRuleType }{@code >}
      *     
      */
-    public CodeFlightRuleType getRule() {
+    public JAXBElement<CodeFlightRuleType> getRule() {
         return rule;
     }
 
@@ -148,10 +138,10 @@ public class FlightCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFlightRuleType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightRuleType }{@code >}
      *     
      */
-    public void setRule(CodeFlightRuleType value) {
+    public void setRule(JAXBElement<CodeFlightRuleType> value) {
         this.rule = value;
     }
 
@@ -164,10 +154,10 @@ public class FlightCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeFlightStatusType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightStatusType }{@code >}
      *     
      */
-    public CodeFlightStatusType getStatus() {
+    public JAXBElement<CodeFlightStatusType> getStatus() {
         return status;
     }
 
@@ -176,10 +166,10 @@ public class FlightCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFlightStatusType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightStatusType }{@code >}
      *     
      */
-    public void setStatus(CodeFlightStatusType value) {
+    public void setStatus(JAXBElement<CodeFlightStatusType> value) {
         this.status = value;
     }
 
@@ -192,10 +182,10 @@ public class FlightCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeMilitaryStatusType }
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryStatusType }{@code >}
      *     
      */
-    public CodeMilitaryStatusType getMilitary() {
+    public JAXBElement<CodeMilitaryStatusType> getMilitary() {
         return military;
     }
 
@@ -204,10 +194,10 @@ public class FlightCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMilitaryStatusType }
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryStatusType }{@code >}
      *     
      */
-    public void setMilitary(CodeMilitaryStatusType value) {
+    public void setMilitary(JAXBElement<CodeMilitaryStatusType> value) {
         this.military = value;
     }
 
@@ -220,10 +210,10 @@ public class FlightCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeFlightOriginType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightOriginType }{@code >}
      *     
      */
-    public CodeFlightOriginType getOrigin() {
+    public JAXBElement<CodeFlightOriginType> getOrigin() {
         return origin;
     }
 
@@ -232,10 +222,10 @@ public class FlightCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFlightOriginType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightOriginType }{@code >}
      *     
      */
-    public void setOrigin(CodeFlightOriginType value) {
+    public void setOrigin(JAXBElement<CodeFlightOriginType> value) {
         this.origin = value;
     }
 
@@ -248,10 +238,10 @@ public class FlightCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeFlightPurposeType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightPurposeType }{@code >}
      *     
      */
-    public CodeFlightPurposeType getPurpose() {
+    public JAXBElement<CodeFlightPurposeType> getPurpose() {
         return purpose;
     }
 
@@ -260,10 +250,10 @@ public class FlightCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFlightPurposeType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightPurposeType }{@code >}
      *     
      */
-    public void setPurpose(CodeFlightPurposeType value) {
+    public void setPurpose(JAXBElement<CodeFlightPurposeType> value) {
         this.purpose = value;
     }
 
@@ -379,7 +369,7 @@ public class FlightCharacteristicType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightCharacteristicExtension")
-        @Column(name = "aixm:_abstract_flight_characteristic_extension")
+        @Transient
         protected AbstractExtensionType abstractFlightCharacteristicExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

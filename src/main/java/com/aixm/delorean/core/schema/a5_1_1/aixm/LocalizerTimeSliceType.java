@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -88,85 +85,73 @@ public class LocalizerTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeNavaidDesignatorType> designator;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> aixmName;
+    @XmlElementRef(name = "emissionClass", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeRadioEmissionType> emissionClass;
+    @XmlElementRef(name = "mobile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> mobile;
+    @XmlElementRef(name = "magneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValMagneticVariationType> magneticVariation;
+    @XmlElementRef(name = "magneticVariationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValAngleType> magneticVariationAccuracy;
+    @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<DateYearType> dateMagneticVariation;
+    @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> flightChecked;
+    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "designator")
-    protected CodeNavaidDesignatorType designator;
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "emission_class")
-    protected CodeRadioEmissionType emissionClass;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "mobile")
-    protected CodeYesNoType mobile;
-    @XmlElement(nillable = true)
-    @Column(name = "magnetic_variation")
-    protected ValMagneticVariationType magneticVariation;
-    @XmlElement(nillable = true)
-    @Column(name = "magnetic_variation_accuracy")
-    protected ValAngleType magneticVariationAccuracy;
-    @XmlElement(nillable = true)
-    @Column(name = "date_magnetic_variation")
-    protected DateYearType dateMagneticVariation;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "flight_checked")
-    protected CodeYesNoType flightChecked;
-    @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AuthorityForNavaidEquipmentPropertyType> authority;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NavaidEquipmentMonitoringPropertyType> monitoring;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @Column(name = "frequency")
-    protected ValFrequencyType frequency;
-    @XmlElement(nillable = true)
-    @Column(name = "magnetic_bearing")
-    protected ValBearingType magneticBearing;
-    @XmlElement(nillable = true)
-    @Column(name = "magnetic_bearing_accuracy")
-    protected ValAngleType magneticBearingAccuracy;
-    @XmlElement(nillable = true)
-    @Column(name = "true_bearing")
-    protected ValBearingType trueBearing;
-    @XmlElement(nillable = true)
-    @Column(name = "true_bearing_accuracy")
-    protected ValAngleType trueBearingAccuracy;
-    @XmlElement(nillable = true)
-    @Column(name = "declination")
-    protected ValMagneticVariationType declination;
-    @XmlElement(nillable = true)
-    @Column(name = "width_course")
-    protected ValAngleType widthCourse;
-    @XmlElement(nillable = true)
-    @Column(name = "width_course_accuracy")
-    protected ValAngleType widthCourseAccuracy;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "back_course_usable")
-    protected CodeILSBackCourseType backCourseUsable;
+    @XmlElementRef(name = "frequency", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValFrequencyType> frequency;
+    @XmlElementRef(name = "magneticBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValBearingType> magneticBearing;
+    @XmlElementRef(name = "magneticBearingAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValAngleType> magneticBearingAccuracy;
+    @XmlElementRef(name = "trueBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValBearingType> trueBearing;
+    @XmlElementRef(name = "trueBearingAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValAngleType> trueBearingAccuracy;
+    @XmlElementRef(name = "declination", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValMagneticVariationType> declination;
+    @XmlElementRef(name = "widthCourse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValAngleType> widthCourse;
+    @XmlElementRef(name = "widthCourseAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValAngleType> widthCourseAccuracy;
+    @XmlElementRef(name = "backCourseUsable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeILSBackCourseType> backCourseUsable;
+    @Transient
     protected List<LocalizerTimeSliceType.Extension> extension;
 
     /**
@@ -174,10 +159,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeNavaidDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
      *     
      */
-    public CodeNavaidDesignatorType getDesignator() {
+    public JAXBElement<CodeNavaidDesignatorType> getDesignator() {
         return designator;
     }
 
@@ -186,10 +171,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeNavaidDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
      *     
      */
-    public void setDesignator(CodeNavaidDesignatorType value) {
+    public void setDesignator(JAXBElement<CodeNavaidDesignatorType> value) {
         this.designator = value;
     }
 
@@ -202,10 +187,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getAIXMName() {
+    public JAXBElement<TextNameType> getAIXMName() {
         return aixmName;
     }
 
@@ -214,10 +199,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setAIXMName(TextNameType value) {
+    public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
     }
 
@@ -230,10 +215,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRadioEmissionType }
+     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
      *     
      */
-    public CodeRadioEmissionType getEmissionClass() {
+    public JAXBElement<CodeRadioEmissionType> getEmissionClass() {
         return emissionClass;
     }
 
@@ -242,10 +227,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRadioEmissionType }
+     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
      *     
      */
-    public void setEmissionClass(CodeRadioEmissionType value) {
+    public void setEmissionClass(JAXBElement<CodeRadioEmissionType> value) {
         this.emissionClass = value;
     }
 
@@ -258,10 +243,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getMobile() {
+    public JAXBElement<CodeYesNoType> getMobile() {
         return mobile;
     }
 
@@ -270,10 +255,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setMobile(CodeYesNoType value) {
+    public void setMobile(JAXBElement<CodeYesNoType> value) {
         this.mobile = value;
     }
 
@@ -286,10 +271,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValMagneticVariationType }
+     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
      *     
      */
-    public ValMagneticVariationType getMagneticVariation() {
+    public JAXBElement<ValMagneticVariationType> getMagneticVariation() {
         return magneticVariation;
     }
 
@@ -298,10 +283,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValMagneticVariationType }
+     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
      *     
      */
-    public void setMagneticVariation(ValMagneticVariationType value) {
+    public void setMagneticVariation(JAXBElement<ValMagneticVariationType> value) {
         this.magneticVariation = value;
     }
 
@@ -314,10 +299,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public ValAngleType getMagneticVariationAccuracy() {
+    public JAXBElement<ValAngleType> getMagneticVariationAccuracy() {
         return magneticVariationAccuracy;
     }
 
@@ -326,10 +311,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public void setMagneticVariationAccuracy(ValAngleType value) {
+    public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticVariationAccuracy = value;
     }
 
@@ -342,10 +327,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link DateYearType }
+     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
      *     
      */
-    public DateYearType getDateMagneticVariation() {
+    public JAXBElement<DateYearType> getDateMagneticVariation() {
         return dateMagneticVariation;
     }
 
@@ -354,10 +339,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link DateYearType }
+     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
      *     
      */
-    public void setDateMagneticVariation(DateYearType value) {
+    public void setDateMagneticVariation(JAXBElement<DateYearType> value) {
         this.dateMagneticVariation = value;
     }
 
@@ -370,10 +355,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getFlightChecked() {
+    public JAXBElement<CodeYesNoType> getFlightChecked() {
         return flightChecked;
     }
 
@@ -382,10 +367,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setFlightChecked(CodeYesNoType value) {
+    public void setFlightChecked(JAXBElement<CodeYesNoType> value) {
         this.flightChecked = value;
     }
 
@@ -398,10 +383,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public ElevatedPointPropertyType getLocation() {
+    public JAXBElement<ElevatedPointPropertyType> getLocation() {
         return location;
     }
 
@@ -410,10 +395,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public void setLocation(ElevatedPointPropertyType value) {
+    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
     }
 
@@ -586,10 +571,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValFrequencyType }
+     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
      *     
      */
-    public ValFrequencyType getFrequency() {
+    public JAXBElement<ValFrequencyType> getFrequency() {
         return frequency;
     }
 
@@ -598,10 +583,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValFrequencyType }
+     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
      *     
      */
-    public void setFrequency(ValFrequencyType value) {
+    public void setFrequency(JAXBElement<ValFrequencyType> value) {
         this.frequency = value;
     }
 
@@ -614,10 +599,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getMagneticBearing() {
+    public JAXBElement<ValBearingType> getMagneticBearing() {
         return magneticBearing;
     }
 
@@ -626,10 +611,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setMagneticBearing(ValBearingType value) {
+    public void setMagneticBearing(JAXBElement<ValBearingType> value) {
         this.magneticBearing = value;
     }
 
@@ -642,10 +627,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public ValAngleType getMagneticBearingAccuracy() {
+    public JAXBElement<ValAngleType> getMagneticBearingAccuracy() {
         return magneticBearingAccuracy;
     }
 
@@ -654,10 +639,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public void setMagneticBearingAccuracy(ValAngleType value) {
+    public void setMagneticBearingAccuracy(JAXBElement<ValAngleType> value) {
         this.magneticBearingAccuracy = value;
     }
 
@@ -670,10 +655,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getTrueBearing() {
+    public JAXBElement<ValBearingType> getTrueBearing() {
         return trueBearing;
     }
 
@@ -682,10 +667,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setTrueBearing(ValBearingType value) {
+    public void setTrueBearing(JAXBElement<ValBearingType> value) {
         this.trueBearing = value;
     }
 
@@ -698,10 +683,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public ValAngleType getTrueBearingAccuracy() {
+    public JAXBElement<ValAngleType> getTrueBearingAccuracy() {
         return trueBearingAccuracy;
     }
 
@@ -710,10 +695,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public void setTrueBearingAccuracy(ValAngleType value) {
+    public void setTrueBearingAccuracy(JAXBElement<ValAngleType> value) {
         this.trueBearingAccuracy = value;
     }
 
@@ -726,10 +711,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValMagneticVariationType }
+     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
      *     
      */
-    public ValMagneticVariationType getDeclination() {
+    public JAXBElement<ValMagneticVariationType> getDeclination() {
         return declination;
     }
 
@@ -738,10 +723,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValMagneticVariationType }
+     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
      *     
      */
-    public void setDeclination(ValMagneticVariationType value) {
+    public void setDeclination(JAXBElement<ValMagneticVariationType> value) {
         this.declination = value;
     }
 
@@ -754,10 +739,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public ValAngleType getWidthCourse() {
+    public JAXBElement<ValAngleType> getWidthCourse() {
         return widthCourse;
     }
 
@@ -766,10 +751,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public void setWidthCourse(ValAngleType value) {
+    public void setWidthCourse(JAXBElement<ValAngleType> value) {
         this.widthCourse = value;
     }
 
@@ -782,10 +767,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public ValAngleType getWidthCourseAccuracy() {
+    public JAXBElement<ValAngleType> getWidthCourseAccuracy() {
         return widthCourseAccuracy;
     }
 
@@ -794,10 +779,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValAngleType }
+     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      *     
      */
-    public void setWidthCourseAccuracy(ValAngleType value) {
+    public void setWidthCourseAccuracy(JAXBElement<ValAngleType> value) {
         this.widthCourseAccuracy = value;
     }
 
@@ -810,10 +795,10 @@ public class LocalizerTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeILSBackCourseType }
+     *     {@link JAXBElement }{@code <}{@link CodeILSBackCourseType }{@code >}
      *     
      */
-    public CodeILSBackCourseType getBackCourseUsable() {
+    public JAXBElement<CodeILSBackCourseType> getBackCourseUsable() {
         return backCourseUsable;
     }
 
@@ -822,10 +807,10 @@ public class LocalizerTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeILSBackCourseType }
+     *     {@link JAXBElement }{@code <}{@link CodeILSBackCourseType }{@code >}
      *     
      */
-    public void setBackCourseUsable(CodeILSBackCourseType value) {
+    public void setBackCourseUsable(JAXBElement<CodeILSBackCourseType> value) {
         this.backCourseUsable = value;
     }
 
@@ -903,10 +888,10 @@ public class LocalizerTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractLocalizerExtension")
-        @Column(name = "aixm:_abstract_localizer_extension")
+        @Transient
         protected AbstractExtensionType abstractLocalizerExtension;
         @XmlElement(name = "AbstractNavaidEquipmentExtension")
-        @Column(name = "aixm:_abstract_navaid_equipment_extension")
+        @Transient
         protected AbstractExtensionType abstractNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
