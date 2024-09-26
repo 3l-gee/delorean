@@ -9,13 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,9 +63,10 @@ public class LinguisticNoteType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
-    @Column(name = "note")
-    protected TextNoteType note;
+    @XmlElementRef(name = "note", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNoteType> note;
+    @Transient
     protected List<LinguisticNoteType.Extension> extension;
 
     /**
@@ -71,10 +74,10 @@ public class LinguisticNoteType
      * 
      * @return
      *     possible object is
-     *     {@link TextNoteType }
+     *     {@link JAXBElement }{@code <}{@link TextNoteType }{@code >}
      *     
      */
-    public TextNoteType getNote() {
+    public JAXBElement<TextNoteType> getNote() {
         return note;
     }
 
@@ -83,10 +86,10 @@ public class LinguisticNoteType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNoteType }
+     *     {@link JAXBElement }{@code <}{@link TextNoteType }{@code >}
      *     
      */
-    public void setNote(TextNoteType value) {
+    public void setNote(JAXBElement<TextNoteType> value) {
         this.note = value;
     }
 
@@ -162,7 +165,7 @@ public class LinguisticNoteType
     public static class Extension {
 
         @XmlElement(name = "AbstractLinguisticNoteExtension")
-        @Column(name = "aixm:_abstract_linguistic_note_extension")
+        @Transient
         protected AbstractExtensionType abstractLinguisticNoteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

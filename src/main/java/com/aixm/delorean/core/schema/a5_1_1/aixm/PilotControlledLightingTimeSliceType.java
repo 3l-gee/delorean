@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -74,41 +71,34 @@ public class PilotControlledLightingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodePilotControlledLightingType> type;
+    @XmlElementRef(name = "duration", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDurationType> duration;
+    @XmlElementRef(name = "intensitySteps", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<NoNumberType> intensitySteps;
+    @XmlElementRef(name = "standByIntensity", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeIntensityStandByType> standByIntensity;
+    @XmlElementRef(name = "radioFrequency", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValFrequencyType> radioFrequency;
+    @XmlElementRef(name = "activationInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextInstructionType> activationInstruction;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodePilotControlledLightingType type;
-    @XmlElement(nillable = true)
-    @Column(name = "duration")
-    protected ValDurationType duration;
-    @XmlElement(nillable = true)
-    @Column(name = "intensity_steps")
-    protected NoNumberType intensitySteps;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "stand_by_intensity")
-    protected CodeIntensityStandByType standByIntensity;
-    @XmlElement(nillable = true)
-    @Column(name = "radio_frequency")
-    protected ValFrequencyType radioFrequency;
-    @XmlElement(nillable = true)
-    @Column(name = "activation_instruction")
-    protected TextInstructionType activationInstruction;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<LightActivationPropertyType> controlledLightIntensity;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<GroundLightSystemPropertyType> activatedGroundLighting;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<PilotControlledLightingTimeSliceType.Extension> extension;
 
     /**
@@ -116,10 +106,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodePilotControlledLightingType }
+     *     {@link JAXBElement }{@code <}{@link CodePilotControlledLightingType }{@code >}
      *     
      */
-    public CodePilotControlledLightingType getType() {
+    public JAXBElement<CodePilotControlledLightingType> getType() {
         return type;
     }
 
@@ -128,10 +118,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodePilotControlledLightingType }
+     *     {@link JAXBElement }{@code <}{@link CodePilotControlledLightingType }{@code >}
      *     
      */
-    public void setType(CodePilotControlledLightingType value) {
+    public void setType(JAXBElement<CodePilotControlledLightingType> value) {
         this.type = value;
     }
 
@@ -144,10 +134,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDurationType }
+     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
      *     
      */
-    public ValDurationType getDuration() {
+    public JAXBElement<ValDurationType> getDuration() {
         return duration;
     }
 
@@ -156,10 +146,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDurationType }
+     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
      *     
      */
-    public void setDuration(ValDurationType value) {
+    public void setDuration(JAXBElement<ValDurationType> value) {
         this.duration = value;
     }
 
@@ -172,10 +162,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link NoNumberType }
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
      *     
      */
-    public NoNumberType getIntensitySteps() {
+    public JAXBElement<NoNumberType> getIntensitySteps() {
         return intensitySteps;
     }
 
@@ -184,10 +174,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link NoNumberType }
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
      *     
      */
-    public void setIntensitySteps(NoNumberType value) {
+    public void setIntensitySteps(JAXBElement<NoNumberType> value) {
         this.intensitySteps = value;
     }
 
@@ -200,10 +190,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeIntensityStandByType }
+     *     {@link JAXBElement }{@code <}{@link CodeIntensityStandByType }{@code >}
      *     
      */
-    public CodeIntensityStandByType getStandByIntensity() {
+    public JAXBElement<CodeIntensityStandByType> getStandByIntensity() {
         return standByIntensity;
     }
 
@@ -212,10 +202,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeIntensityStandByType }
+     *     {@link JAXBElement }{@code <}{@link CodeIntensityStandByType }{@code >}
      *     
      */
-    public void setStandByIntensity(CodeIntensityStandByType value) {
+    public void setStandByIntensity(JAXBElement<CodeIntensityStandByType> value) {
         this.standByIntensity = value;
     }
 
@@ -228,10 +218,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValFrequencyType }
+     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
      *     
      */
-    public ValFrequencyType getRadioFrequency() {
+    public JAXBElement<ValFrequencyType> getRadioFrequency() {
         return radioFrequency;
     }
 
@@ -240,10 +230,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValFrequencyType }
+     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
      *     
      */
-    public void setRadioFrequency(ValFrequencyType value) {
+    public void setRadioFrequency(JAXBElement<ValFrequencyType> value) {
         this.radioFrequency = value;
     }
 
@@ -256,10 +246,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextInstructionType }
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
      *     
      */
-    public TextInstructionType getActivationInstruction() {
+    public JAXBElement<TextInstructionType> getActivationInstruction() {
         return activationInstruction;
     }
 
@@ -268,10 +258,10 @@ public class PilotControlledLightingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextInstructionType }
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
      *     
      */
-    public void setActivationInstruction(TextInstructionType value) {
+    public void setActivationInstruction(JAXBElement<TextInstructionType> value) {
         this.activationInstruction = value;
     }
 
@@ -467,7 +457,7 @@ public class PilotControlledLightingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPilotControlledLightingExtension", required = true)
-        @Column(name = "aixm:_abstract_pilot_controlled_lighting_extension")
+        @Transient
         protected AbstractExtensionType abstractPilotControlledLightingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

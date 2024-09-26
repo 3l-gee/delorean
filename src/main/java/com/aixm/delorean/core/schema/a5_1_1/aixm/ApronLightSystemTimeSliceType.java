@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -74,40 +71,31 @@ public class ApronLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "emergencyLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> emergencyLighting;
+    @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeLightIntensityType> intensityLevel;
+    @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "emergency_lighting")
-    protected CodeYesNoType emergencyLighting;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "intensity_level")
-    protected CodeLightIntensityType intensityLevel;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "colour")
-    protected CodeColourType colour;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "position")
-    protected CodeApronSectionType position;
-    @XmlElement(nillable = true)
-    @Column(name = "lighted_apron")
-    protected ApronPropertyType lightedApron;
+    @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeApronSectionType> position;
+    @XmlElementRef(name = "lightedApron", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ApronPropertyType> lightedApron;
+    @Transient
     protected List<ApronLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -115,10 +103,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getEmergencyLighting() {
+    public JAXBElement<CodeYesNoType> getEmergencyLighting() {
         return emergencyLighting;
     }
 
@@ -127,10 +115,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setEmergencyLighting(CodeYesNoType value) {
+    public void setEmergencyLighting(JAXBElement<CodeYesNoType> value) {
         this.emergencyLighting = value;
     }
 
@@ -143,10 +131,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeLightIntensityType }
+     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
      *     
      */
-    public CodeLightIntensityType getIntensityLevel() {
+    public JAXBElement<CodeLightIntensityType> getIntensityLevel() {
         return intensityLevel;
     }
 
@@ -155,10 +143,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLightIntensityType }
+     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
      *     
      */
-    public void setIntensityLevel(CodeLightIntensityType value) {
+    public void setIntensityLevel(JAXBElement<CodeLightIntensityType> value) {
         this.intensityLevel = value;
     }
 
@@ -171,10 +159,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeColourType }
+     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
      *     
      */
-    public CodeColourType getColour() {
+    public JAXBElement<CodeColourType> getColour() {
         return colour;
     }
 
@@ -183,10 +171,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeColourType }
+     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
      *     
      */
-    public void setColour(CodeColourType value) {
+    public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
     }
 
@@ -319,10 +307,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeApronSectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeApronSectionType }{@code >}
      *     
      */
-    public CodeApronSectionType getPosition() {
+    public JAXBElement<CodeApronSectionType> getPosition() {
         return position;
     }
 
@@ -331,10 +319,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeApronSectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeApronSectionType }{@code >}
      *     
      */
-    public void setPosition(CodeApronSectionType value) {
+    public void setPosition(JAXBElement<CodeApronSectionType> value) {
         this.position = value;
     }
 
@@ -347,10 +335,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ApronPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
      *     
      */
-    public ApronPropertyType getLightedApron() {
+    public JAXBElement<ApronPropertyType> getLightedApron() {
         return lightedApron;
     }
 
@@ -359,10 +347,10 @@ public class ApronLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ApronPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
      *     
      */
-    public void setLightedApron(ApronPropertyType value) {
+    public void setLightedApron(JAXBElement<ApronPropertyType> value) {
         this.lightedApron = value;
     }
 
@@ -440,10 +428,10 @@ public class ApronLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractApronLightSystemExtension")
-        @Column(name = "aixm:_abstract_apron_light_system_extension")
+        @Transient
         protected AbstractExtensionType abstractApronLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @Column(name = "aixm:_abstract_ground_light_system_extension")
+        @Transient
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,30 +68,25 @@ public class EquipmentUnavailableAdjustmentColumnType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "guidanceEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeApproachType> guidanceEquipment;
+    @XmlElementRef(name = "landingSystemLights", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> landingSystemLights;
+    @XmlElementRef(name = "equipmentRVR", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> equipmentRVR;
+    @XmlElementRef(name = "visibilityAdjustment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> visibilityAdjustment;
+    @XmlElementRef(name = "approachLightingInoperative", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> approachLightingInoperative;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "guidance_equipment")
-    protected CodeApproachType guidanceEquipment;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "landing_system_lights")
-    protected CodeYesNoType landingSystemLights;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "equipment_rvr")
-    protected CodeYesNoType equipmentRVR;
-    @XmlElement(nillable = true)
-    @Column(name = "visibility_adjustment")
-    protected ValDistanceVerticalType visibilityAdjustment;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "approach_lighting_inoperative")
-    protected CodeYesNoType approachLightingInoperative;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<EquipmentUnavailableAdjustmentColumnType.Extension> extension;
 
     /**
@@ -102,10 +94,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      * 
      * @return
      *     possible object is
-     *     {@link CodeApproachType }
+     *     {@link JAXBElement }{@code <}{@link CodeApproachType }{@code >}
      *     
      */
-    public CodeApproachType getGuidanceEquipment() {
+    public JAXBElement<CodeApproachType> getGuidanceEquipment() {
         return guidanceEquipment;
     }
 
@@ -114,10 +106,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeApproachType }
+     *     {@link JAXBElement }{@code <}{@link CodeApproachType }{@code >}
      *     
      */
-    public void setGuidanceEquipment(CodeApproachType value) {
+    public void setGuidanceEquipment(JAXBElement<CodeApproachType> value) {
         this.guidanceEquipment = value;
     }
 
@@ -130,10 +122,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getLandingSystemLights() {
+    public JAXBElement<CodeYesNoType> getLandingSystemLights() {
         return landingSystemLights;
     }
 
@@ -142,10 +134,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setLandingSystemLights(CodeYesNoType value) {
+    public void setLandingSystemLights(JAXBElement<CodeYesNoType> value) {
         this.landingSystemLights = value;
     }
 
@@ -158,10 +150,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getEquipmentRVR() {
+    public JAXBElement<CodeYesNoType> getEquipmentRVR() {
         return equipmentRVR;
     }
 
@@ -170,10 +162,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setEquipmentRVR(CodeYesNoType value) {
+    public void setEquipmentRVR(JAXBElement<CodeYesNoType> value) {
         this.equipmentRVR = value;
     }
 
@@ -186,10 +178,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getVisibilityAdjustment() {
+    public JAXBElement<ValDistanceVerticalType> getVisibilityAdjustment() {
         return visibilityAdjustment;
     }
 
@@ -198,10 +190,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setVisibilityAdjustment(ValDistanceVerticalType value) {
+    public void setVisibilityAdjustment(JAXBElement<ValDistanceVerticalType> value) {
         this.visibilityAdjustment = value;
     }
 
@@ -214,10 +206,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getApproachLightingInoperative() {
+    public JAXBElement<CodeYesNoType> getApproachLightingInoperative() {
         return approachLightingInoperative;
     }
 
@@ -226,10 +218,10 @@ public class EquipmentUnavailableAdjustmentColumnType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setApproachLightingInoperative(CodeYesNoType value) {
+    public void setApproachLightingInoperative(JAXBElement<CodeYesNoType> value) {
         this.approachLightingInoperative = value;
     }
 
@@ -345,7 +337,7 @@ public class EquipmentUnavailableAdjustmentColumnType
     public static class Extension {
 
         @XmlElement(name = "AbstractEquipmentUnavailableAdjustmentColumnExtension")
-        @Column(name = "aixm:_abstract_equipment_unavailable_adjustment_column_extension")
+        @Transient
         protected AbstractExtensionType abstractEquipmentUnavailableAdjustmentColumnExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

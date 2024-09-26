@@ -9,16 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -74,35 +73,30 @@ public class PostalAddressType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
-    @Column(name = "delivery_point")
-    protected TextAddressType deliveryPoint;
-    @XmlElement(nillable = true)
-    @Column(name = "city")
-    protected TextNameType city;
-    @XmlElement(nillable = true)
-    @Column(name = "administrative_area")
-    protected TextNameType administrativeArea;
-    @XmlElement(nillable = true)
-    @Column(name = "postal_code")
-    protected TextNameType postalCode;
-    @XmlElement(nillable = true)
-    @Column(name = "country")
-    protected TextNameType country;
+    @XmlElementRef(name = "deliveryPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextAddressType> deliveryPoint;
+    @XmlElementRef(name = "city", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> city;
+    @XmlElementRef(name = "administrativeArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> administrativeArea;
+    @XmlElementRef(name = "postalCode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> postalCode;
+    @XmlElementRef(name = "country", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> country;
+    @Transient
     protected List<PostalAddressType.Extension> extension;
 
     /**
@@ -230,10 +224,10 @@ public class PostalAddressType
      * 
      * @return
      *     possible object is
-     *     {@link TextAddressType }
+     *     {@link JAXBElement }{@code <}{@link TextAddressType }{@code >}
      *     
      */
-    public TextAddressType getDeliveryPoint() {
+    public JAXBElement<TextAddressType> getDeliveryPoint() {
         return deliveryPoint;
     }
 
@@ -242,10 +236,10 @@ public class PostalAddressType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextAddressType }
+     *     {@link JAXBElement }{@code <}{@link TextAddressType }{@code >}
      *     
      */
-    public void setDeliveryPoint(TextAddressType value) {
+    public void setDeliveryPoint(JAXBElement<TextAddressType> value) {
         this.deliveryPoint = value;
     }
 
@@ -258,10 +252,10 @@ public class PostalAddressType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getCity() {
+    public JAXBElement<TextNameType> getCity() {
         return city;
     }
 
@@ -270,10 +264,10 @@ public class PostalAddressType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setCity(TextNameType value) {
+    public void setCity(JAXBElement<TextNameType> value) {
         this.city = value;
     }
 
@@ -286,10 +280,10 @@ public class PostalAddressType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getAdministrativeArea() {
+    public JAXBElement<TextNameType> getAdministrativeArea() {
         return administrativeArea;
     }
 
@@ -298,10 +292,10 @@ public class PostalAddressType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setAdministrativeArea(TextNameType value) {
+    public void setAdministrativeArea(JAXBElement<TextNameType> value) {
         this.administrativeArea = value;
     }
 
@@ -314,10 +308,10 @@ public class PostalAddressType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getPostalCode() {
+    public JAXBElement<TextNameType> getPostalCode() {
         return postalCode;
     }
 
@@ -326,10 +320,10 @@ public class PostalAddressType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setPostalCode(TextNameType value) {
+    public void setPostalCode(JAXBElement<TextNameType> value) {
         this.postalCode = value;
     }
 
@@ -342,10 +336,10 @@ public class PostalAddressType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getCountry() {
+    public JAXBElement<TextNameType> getCountry() {
         return country;
     }
 
@@ -354,10 +348,10 @@ public class PostalAddressType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setCountry(TextNameType value) {
+    public void setCountry(JAXBElement<TextNameType> value) {
         this.country = value;
     }
 
@@ -435,10 +429,10 @@ public class PostalAddressType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractPostalAddressExtension")
-        @Column(name = "aixm:_abstract_postal_address_extension")
+        @Transient
         protected AbstractExtensionType abstractPostalAddressExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

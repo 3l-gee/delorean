@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,17 +65,15 @@ public class AuthorityForNavaidEquipmentType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeAuthorityRoleType> type;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeAuthorityRoleType type;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
-    @Column(name = "the_organisation_authority")
+    @Transient
     protected OrganisationAuthorityPropertyType theOrganisationAuthority;
+    @Transient
     protected List<AuthorityForNavaidEquipmentType.Extension> extension;
 
     /**
@@ -86,10 +81,10 @@ public class AuthorityForNavaidEquipmentType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAuthorityRoleType }
+     *     {@link JAXBElement }{@code <}{@link CodeAuthorityRoleType }{@code >}
      *     
      */
-    public CodeAuthorityRoleType getType() {
+    public JAXBElement<CodeAuthorityRoleType> getType() {
         return type;
     }
 
@@ -98,10 +93,10 @@ public class AuthorityForNavaidEquipmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAuthorityRoleType }
+     *     {@link JAXBElement }{@code <}{@link CodeAuthorityRoleType }{@code >}
      *     
      */
-    public void setType(CodeAuthorityRoleType value) {
+    public void setType(JAXBElement<CodeAuthorityRoleType> value) {
         this.type = value;
     }
 
@@ -245,7 +240,7 @@ public class AuthorityForNavaidEquipmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractAuthorityForNavaidEquipmentExtension")
-        @Column(name = "aixm:_abstract_authority_for_navaid_equipment_extension")
+        @Transient
         protected AbstractExtensionType abstractAuthorityForNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

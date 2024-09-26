@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -74,39 +71,34 @@ public class TaxiwayElementTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeTaxiwayElementType> type;
+    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> length;
+    @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> width;
+    @XmlElementRef(name = "gradeSeparation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeGradeSeparationType> gradeSeparation;
+    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
+    @XmlElementRef(name = "associatedTaxiway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TaxiwayPropertyType> associatedTaxiway;
+    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeTaxiwayElementType type;
-    @XmlElement(nillable = true)
-    @Column(name = "length")
-    protected ValDistanceType length;
-    @XmlElement(nillable = true)
-    @Column(name = "width")
-    protected ValDistanceType width;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "grade_separation")
-    protected CodeGradeSeparationType gradeSeparation;
-    @XmlElement(nillable = true)
-    @Column(name = "surface_properties")
-    protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(nillable = true)
-    @Column(name = "associated_taxiway")
-    protected TaxiwayPropertyType associatedTaxiway;
-    @XmlElement(nillable = true)
-    @Column(name = "extent")
-    protected ElevatedSurfacePropertyType extent;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
+    @Transient
     protected List<TaxiwayElementTimeSliceType.Extension> extension;
 
     /**
@@ -114,10 +106,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeTaxiwayElementType }
+     *     {@link JAXBElement }{@code <}{@link CodeTaxiwayElementType }{@code >}
      *     
      */
-    public CodeTaxiwayElementType getType() {
+    public JAXBElement<CodeTaxiwayElementType> getType() {
         return type;
     }
 
@@ -126,10 +118,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeTaxiwayElementType }
+     *     {@link JAXBElement }{@code <}{@link CodeTaxiwayElementType }{@code >}
      *     
      */
-    public void setType(CodeTaxiwayElementType value) {
+    public void setType(JAXBElement<CodeTaxiwayElementType> value) {
         this.type = value;
     }
 
@@ -142,10 +134,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getLength() {
+    public JAXBElement<ValDistanceType> getLength() {
         return length;
     }
 
@@ -154,10 +146,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setLength(ValDistanceType value) {
+    public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
     }
 
@@ -170,10 +162,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getWidth() {
+    public JAXBElement<ValDistanceType> getWidth() {
         return width;
     }
 
@@ -182,10 +174,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setWidth(ValDistanceType value) {
+    public void setWidth(JAXBElement<ValDistanceType> value) {
         this.width = value;
     }
 
@@ -198,10 +190,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeGradeSeparationType }
+     *     {@link JAXBElement }{@code <}{@link CodeGradeSeparationType }{@code >}
      *     
      */
-    public CodeGradeSeparationType getGradeSeparation() {
+    public JAXBElement<CodeGradeSeparationType> getGradeSeparation() {
         return gradeSeparation;
     }
 
@@ -210,10 +202,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeGradeSeparationType }
+     *     {@link JAXBElement }{@code <}{@link CodeGradeSeparationType }{@code >}
      *     
      */
-    public void setGradeSeparation(CodeGradeSeparationType value) {
+    public void setGradeSeparation(JAXBElement<CodeGradeSeparationType> value) {
         this.gradeSeparation = value;
     }
 
@@ -226,10 +218,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
+    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -238,10 +230,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
+    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
     }
 
@@ -254,10 +246,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TaxiwayPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
      *     
      */
-    public TaxiwayPropertyType getAssociatedTaxiway() {
+    public JAXBElement<TaxiwayPropertyType> getAssociatedTaxiway() {
         return associatedTaxiway;
     }
 
@@ -266,10 +258,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TaxiwayPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
      *     
      */
-    public void setAssociatedTaxiway(TaxiwayPropertyType value) {
+    public void setAssociatedTaxiway(JAXBElement<TaxiwayPropertyType> value) {
         this.associatedTaxiway = value;
     }
 
@@ -282,10 +274,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedSurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      *     
      */
-    public ElevatedSurfacePropertyType getExtent() {
+    public JAXBElement<ElevatedSurfacePropertyType> getExtent() {
         return extent;
     }
 
@@ -294,10 +286,10 @@ public class TaxiwayElementTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedSurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      *     
      */
-    public void setExtent(ElevatedSurfacePropertyType value) {
+    public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
     }
 
@@ -453,7 +445,7 @@ public class TaxiwayElementTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTaxiwayElementExtension", required = true)
-        @Column(name = "aixm:_abstract_taxiway_element_extension")
+        @Transient
         protected AbstractExtensionType abstractTaxiwayElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

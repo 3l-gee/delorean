@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -78,54 +75,46 @@ public class AerialRefuellingAnchorType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "outboundCourse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValBearingType> outboundCourse;
+    @XmlElementRef(name = "outboundCourseType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeCourseType> outboundCourseType;
+    @XmlElementRef(name = "inboundCourse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValBearingType> inboundCourse;
+    @XmlElementRef(name = "turnDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeDirectionTurnType> turnDirection;
+    @XmlElementRef(name = "speedLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValSpeedType> speedLimit;
+    @XmlElementRef(name = "legSeparation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> legSeparation;
+    @XmlElementRef(name = "legLength", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceType> legLength;
+    @XmlElementRef(name = "refuellingBaseLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> refuellingBaseLevel;
+    @XmlElementRef(name = "refuellingBaseLevelReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeVerticalReferenceType> refuellingBaseLevelReference;
+    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Column(name = "outbound_course")
-    protected ValBearingType outboundCourse;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "outbound_course_type")
-    protected CodeCourseType outboundCourseType;
-    @XmlElement(nillable = true)
-    @Column(name = "inbound_course")
-    protected ValBearingType inboundCourse;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "turn_direction")
-    protected CodeDirectionTurnType turnDirection;
-    @XmlElement(nillable = true)
-    @Column(name = "speed_limit")
-    protected ValSpeedType speedLimit;
-    @XmlElement(nillable = true)
-    @Column(name = "leg_separation")
-    protected ValDistanceType legSeparation;
-    @XmlElement(nillable = true)
-    @Column(name = "leg_length")
-    protected ValDistanceType legLength;
-    @XmlElement(nillable = true)
-    @Column(name = "refuelling_base_level")
-    protected ValDistanceVerticalType refuellingBaseLevel;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "refuelling_base_level_reference")
-    protected CodeVerticalReferenceType refuellingBaseLevelReference;
-    @XmlElement(nillable = true)
-    @Column(name = "extent")
-    protected SurfacePropertyType extent;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AirspaceLayerPropertyType> verticalExtent;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AerialRefuellingPointPropertyType> point;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AerialRefuellingAnchorType.Extension> extension;
 
     /**
@@ -133,10 +122,10 @@ public class AerialRefuellingAnchorType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getOutboundCourse() {
+    public JAXBElement<ValBearingType> getOutboundCourse() {
         return outboundCourse;
     }
 
@@ -145,10 +134,10 @@ public class AerialRefuellingAnchorType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setOutboundCourse(ValBearingType value) {
+    public void setOutboundCourse(JAXBElement<ValBearingType> value) {
         this.outboundCourse = value;
     }
 
@@ -161,10 +150,10 @@ public class AerialRefuellingAnchorType
      * 
      * @return
      *     possible object is
-     *     {@link CodeCourseType }
+     *     {@link JAXBElement }{@code <}{@link CodeCourseType }{@code >}
      *     
      */
-    public CodeCourseType getOutboundCourseType() {
+    public JAXBElement<CodeCourseType> getOutboundCourseType() {
         return outboundCourseType;
     }
 
@@ -173,10 +162,10 @@ public class AerialRefuellingAnchorType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeCourseType }
+     *     {@link JAXBElement }{@code <}{@link CodeCourseType }{@code >}
      *     
      */
-    public void setOutboundCourseType(CodeCourseType value) {
+    public void setOutboundCourseType(JAXBElement<CodeCourseType> value) {
         this.outboundCourseType = value;
     }
 
@@ -189,10 +178,10 @@ public class AerialRefuellingAnchorType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getInboundCourse() {
+    public JAXBElement<ValBearingType> getInboundCourse() {
         return inboundCourse;
     }
 
@@ -201,10 +190,10 @@ public class AerialRefuellingAnchorType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setInboundCourse(ValBearingType value) {
+    public void setInboundCourse(JAXBElement<ValBearingType> value) {
         this.inboundCourse = value;
     }
 
@@ -217,10 +206,10 @@ public class AerialRefuellingAnchorType
      * 
      * @return
      *     possible object is
-     *     {@link CodeDirectionTurnType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
      *     
      */
-    public CodeDirectionTurnType getTurnDirection() {
+    public JAXBElement<CodeDirectionTurnType> getTurnDirection() {
         return turnDirection;
     }
 
@@ -229,10 +218,10 @@ public class AerialRefuellingAnchorType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDirectionTurnType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
      *     
      */
-    public void setTurnDirection(CodeDirectionTurnType value) {
+    public void setTurnDirection(JAXBElement<CodeDirectionTurnType> value) {
         this.turnDirection = value;
     }
 
@@ -245,10 +234,10 @@ public class AerialRefuellingAnchorType
      * 
      * @return
      *     possible object is
-     *     {@link ValSpeedType }
+     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
      *     
      */
-    public ValSpeedType getSpeedLimit() {
+    public JAXBElement<ValSpeedType> getSpeedLimit() {
         return speedLimit;
     }
 
@@ -257,10 +246,10 @@ public class AerialRefuellingAnchorType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValSpeedType }
+     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
      *     
      */
-    public void setSpeedLimit(ValSpeedType value) {
+    public void setSpeedLimit(JAXBElement<ValSpeedType> value) {
         this.speedLimit = value;
     }
 
@@ -273,10 +262,10 @@ public class AerialRefuellingAnchorType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getLegSeparation() {
+    public JAXBElement<ValDistanceType> getLegSeparation() {
         return legSeparation;
     }
 
@@ -285,10 +274,10 @@ public class AerialRefuellingAnchorType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setLegSeparation(ValDistanceType value) {
+    public void setLegSeparation(JAXBElement<ValDistanceType> value) {
         this.legSeparation = value;
     }
 
@@ -301,10 +290,10 @@ public class AerialRefuellingAnchorType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getLegLength() {
+    public JAXBElement<ValDistanceType> getLegLength() {
         return legLength;
     }
 
@@ -313,10 +302,10 @@ public class AerialRefuellingAnchorType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setLegLength(ValDistanceType value) {
+    public void setLegLength(JAXBElement<ValDistanceType> value) {
         this.legLength = value;
     }
 
@@ -329,10 +318,10 @@ public class AerialRefuellingAnchorType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getRefuellingBaseLevel() {
+    public JAXBElement<ValDistanceVerticalType> getRefuellingBaseLevel() {
         return refuellingBaseLevel;
     }
 
@@ -341,10 +330,10 @@ public class AerialRefuellingAnchorType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setRefuellingBaseLevel(ValDistanceVerticalType value) {
+    public void setRefuellingBaseLevel(JAXBElement<ValDistanceVerticalType> value) {
         this.refuellingBaseLevel = value;
     }
 
@@ -357,10 +346,10 @@ public class AerialRefuellingAnchorType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getRefuellingBaseLevelReference() {
+    public JAXBElement<CodeVerticalReferenceType> getRefuellingBaseLevelReference() {
         return refuellingBaseLevelReference;
     }
 
@@ -369,10 +358,10 @@ public class AerialRefuellingAnchorType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setRefuellingBaseLevelReference(CodeVerticalReferenceType value) {
+    public void setRefuellingBaseLevelReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.refuellingBaseLevelReference = value;
     }
 
@@ -385,10 +374,10 @@ public class AerialRefuellingAnchorType
      * 
      * @return
      *     possible object is
-     *     {@link SurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      *     
      */
-    public SurfacePropertyType getExtent() {
+    public JAXBElement<SurfacePropertyType> getExtent() {
         return extent;
     }
 
@@ -397,10 +386,10 @@ public class AerialRefuellingAnchorType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      *     
      */
-    public void setExtent(SurfacePropertyType value) {
+    public void setExtent(JAXBElement<SurfacePropertyType> value) {
         this.extent = value;
     }
 
@@ -596,7 +585,7 @@ public class AerialRefuellingAnchorType
     public static class Extension {
 
         @XmlElement(name = "AbstractAerialRefuellingAnchorExtension")
-        @Column(name = "aixm:_abstract_aerial_refuelling_anchor_extension")
+        @Transient
         protected AbstractExtensionType abstractAerialRefuellingAnchorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

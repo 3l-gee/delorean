@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,24 +66,19 @@ public class AltimeterSourceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "isRemote", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> isRemote;
+    @XmlElementRef(name = "isPrimary", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> isPrimary;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "is_remote")
-    protected CodeYesNoType isRemote;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "is_primary")
-    protected CodeYesNoType isPrimary;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<AltimeterSourceStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AltimeterSourceTimeSliceType.Extension> extension;
 
     /**
@@ -94,10 +86,10 @@ public class AltimeterSourceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getIsRemote() {
+    public JAXBElement<CodeYesNoType> getIsRemote() {
         return isRemote;
     }
 
@@ -106,10 +98,10 @@ public class AltimeterSourceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setIsRemote(CodeYesNoType value) {
+    public void setIsRemote(JAXBElement<CodeYesNoType> value) {
         this.isRemote = value;
     }
 
@@ -122,10 +114,10 @@ public class AltimeterSourceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getIsPrimary() {
+    public JAXBElement<CodeYesNoType> getIsPrimary() {
         return isPrimary;
     }
 
@@ -134,10 +126,10 @@ public class AltimeterSourceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setIsPrimary(CodeYesNoType value) {
+    public void setIsPrimary(JAXBElement<CodeYesNoType> value) {
         this.isPrimary = value;
     }
 
@@ -293,7 +285,7 @@ public class AltimeterSourceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAltimeterSourceExtension", required = true)
-        @Column(name = "aixm:_abstract_altimeter_source_extension")
+        @Transient
         protected AbstractExtensionType abstractAltimeterSourceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

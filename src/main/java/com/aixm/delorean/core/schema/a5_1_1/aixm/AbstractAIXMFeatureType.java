@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -43,7 +44,8 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AbstractAIXMFeatureType", propOrder = {
-    "featureMetadata"
+    "featureMetadata",
+    "dbID"
 })
 @XmlSeeAlso({
     AerialRefuellingType.class,
@@ -130,6 +132,7 @@ public abstract class AbstractAIXMFeatureType
     extends AbstractAIXMFeatureBaseType
 {
 
+    @Transient
     protected FeatureMetadataPropertyType featureMetadata;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

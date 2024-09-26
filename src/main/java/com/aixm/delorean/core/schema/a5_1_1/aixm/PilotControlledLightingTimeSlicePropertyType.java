@@ -7,9 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PilotControlledLightingTimeSlicePropertyType {
 
     @XmlElement(name = "PilotControlledLightingTimeSlice", required = true)
-    @Column(name = "aixm:_pilot_controlled_lighting_time_slice")
+    @Transient
     protected PilotControlledLightingTimeSliceType pilotControlledLightingTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

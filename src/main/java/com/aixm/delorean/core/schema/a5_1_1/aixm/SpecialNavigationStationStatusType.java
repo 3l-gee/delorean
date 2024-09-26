@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,24 +69,18 @@ public class SpecialNavigationStationStatusType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "operational_status")
-    protected CodeStatusNavaidType operationalStatus;
+    @XmlElementRef(name = "operationalStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeStatusNavaidType> operationalStatus;
+    @Transient
     protected List<SpecialNavigationStationStatusType.Extension> extension;
 
     /**
@@ -217,10 +208,10 @@ public class SpecialNavigationStationStatusType
      * 
      * @return
      *     possible object is
-     *     {@link CodeStatusNavaidType }
+     *     {@link JAXBElement }{@code <}{@link CodeStatusNavaidType }{@code >}
      *     
      */
-    public CodeStatusNavaidType getOperationalStatus() {
+    public JAXBElement<CodeStatusNavaidType> getOperationalStatus() {
         return operationalStatus;
     }
 
@@ -229,10 +220,10 @@ public class SpecialNavigationStationStatusType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeStatusNavaidType }
+     *     {@link JAXBElement }{@code <}{@link CodeStatusNavaidType }{@code >}
      *     
      */
-    public void setOperationalStatus(CodeStatusNavaidType value) {
+    public void setOperationalStatus(JAXBElement<CodeStatusNavaidType> value) {
         this.operationalStatus = value;
     }
 
@@ -310,10 +301,10 @@ public class SpecialNavigationStationStatusType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractSpecialNavigationStationStatusExtension")
-        @Column(name = "aixm:_abstract_special_navigation_station_status_extension")
+        @Transient
         protected AbstractExtensionType abstractSpecialNavigationStationStatusExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

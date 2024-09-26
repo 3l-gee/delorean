@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,27 +68,22 @@ public class DeicingAreaMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> markingICAOStandard;
+    @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "marking_icao_standard")
-    protected CodeYesNoType markingICAOStandard;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "condition")
-    protected CodeMarkingConditionType condition;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @Column(name = "marked_deicing_area")
-    protected DeicingAreaPropertyType markedDeicingArea;
+    @XmlElementRef(name = "markedDeicingArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<DeicingAreaPropertyType> markedDeicingArea;
+    @Transient
     protected List<DeicingAreaMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -99,10 +91,10 @@ public class DeicingAreaMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getMarkingICAOStandard() {
+    public JAXBElement<CodeYesNoType> getMarkingICAOStandard() {
         return markingICAOStandard;
     }
 
@@ -111,10 +103,10 @@ public class DeicingAreaMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setMarkingICAOStandard(CodeYesNoType value) {
+    public void setMarkingICAOStandard(JAXBElement<CodeYesNoType> value) {
         this.markingICAOStandard = value;
     }
 
@@ -127,10 +119,10 @@ public class DeicingAreaMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeMarkingConditionType }
+     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
      *     
      */
-    public CodeMarkingConditionType getCondition() {
+    public JAXBElement<CodeMarkingConditionType> getCondition() {
         return condition;
     }
 
@@ -139,10 +131,10 @@ public class DeicingAreaMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMarkingConditionType }
+     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
      *     
      */
-    public void setCondition(CodeMarkingConditionType value) {
+    public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
         this.condition = value;
     }
 
@@ -235,10 +227,10 @@ public class DeicingAreaMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link DeicingAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DeicingAreaPropertyType }{@code >}
      *     
      */
-    public DeicingAreaPropertyType getMarkedDeicingArea() {
+    public JAXBElement<DeicingAreaPropertyType> getMarkedDeicingArea() {
         return markedDeicingArea;
     }
 
@@ -247,10 +239,10 @@ public class DeicingAreaMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link DeicingAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DeicingAreaPropertyType }{@code >}
      *     
      */
-    public void setMarkedDeicingArea(DeicingAreaPropertyType value) {
+    public void setMarkedDeicingArea(JAXBElement<DeicingAreaPropertyType> value) {
         this.markedDeicingArea = value;
     }
 
@@ -328,10 +320,10 @@ public class DeicingAreaMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDeicingAreaMarkingExtension")
-        @Column(name = "aixm:_abstract_deicing_area_marking_extension")
+        @Transient
         protected AbstractExtensionType abstractDeicingAreaMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
-        @Column(name = "aixm:_abstract_marking_extension")
+        @Transient
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

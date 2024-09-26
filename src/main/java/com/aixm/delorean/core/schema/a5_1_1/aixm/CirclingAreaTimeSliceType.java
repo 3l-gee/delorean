@@ -9,16 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,30 +68,25 @@ public class CirclingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<SurfacePropertyType> extent;
+    @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
     @XmlElement(nillable = true)
-    @Column(name = "extent")
-    protected SurfacePropertyType extent;
-    @XmlElement(nillable = true)
-    @Column(name = "approach")
-    protected InstrumentApproachProcedurePropertyType approach;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ApproachConditionPropertyType> condition;
+    @XmlElementRef(name = "aircraftCategory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElement(nillable = true)
-    @Column(name = "aircraft_category")
-    protected AircraftCharacteristicPropertyType aircraftCategory;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<CirclingAreaTimeSliceType.Extension> extension;
 
     /**
@@ -100,10 +94,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      *     
      */
-    public SurfacePropertyType getExtent() {
+    public JAXBElement<SurfacePropertyType> getExtent() {
         return extent;
     }
 
@@ -112,10 +106,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      *     
      */
-    public void setExtent(SurfacePropertyType value) {
+    public void setExtent(JAXBElement<SurfacePropertyType> value) {
         this.extent = value;
     }
 
@@ -128,10 +122,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link InstrumentApproachProcedurePropertyType }
+     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
      *     
      */
-    public InstrumentApproachProcedurePropertyType getApproach() {
+    public JAXBElement<InstrumentApproachProcedurePropertyType> getApproach() {
         return approach;
     }
 
@@ -140,10 +134,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link InstrumentApproachProcedurePropertyType }
+     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
      *     
      */
-    public void setApproach(InstrumentApproachProcedurePropertyType value) {
+    public void setApproach(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
         this.approach = value;
     }
 
@@ -196,10 +190,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AircraftCharacteristicPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
      *     
      */
-    public AircraftCharacteristicPropertyType getAircraftCategory() {
+    public JAXBElement<AircraftCharacteristicPropertyType> getAircraftCategory() {
         return aircraftCategory;
     }
 
@@ -208,10 +202,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AircraftCharacteristicPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
      *     
      */
-    public void setAircraftCategory(AircraftCharacteristicPropertyType value) {
+    public void setAircraftCategory(JAXBElement<AircraftCharacteristicPropertyType> value) {
         this.aircraftCategory = value;
     }
 
@@ -367,7 +361,7 @@ public class CirclingAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractCirclingAreaExtension", required = true)
-        @Column(name = "aixm:_abstract_circling_area_extension")
+        @Transient
         protected AbstractExtensionType abstractCirclingAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

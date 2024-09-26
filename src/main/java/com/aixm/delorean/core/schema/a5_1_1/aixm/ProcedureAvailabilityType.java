@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,24 +69,18 @@ public class ProcedureAvailabilityType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    protected CodeProcedureAvailabilityType status;
+    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeProcedureAvailabilityType> status;
+    @Transient
     protected List<ProcedureAvailabilityType.Extension> extension;
 
     /**
@@ -217,10 +208,10 @@ public class ProcedureAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link CodeProcedureAvailabilityType }
+     *     {@link JAXBElement }{@code <}{@link CodeProcedureAvailabilityType }{@code >}
      *     
      */
-    public CodeProcedureAvailabilityType getStatus() {
+    public JAXBElement<CodeProcedureAvailabilityType> getStatus() {
         return status;
     }
 
@@ -229,10 +220,10 @@ public class ProcedureAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeProcedureAvailabilityType }
+     *     {@link JAXBElement }{@code <}{@link CodeProcedureAvailabilityType }{@code >}
      *     
      */
-    public void setStatus(CodeProcedureAvailabilityType value) {
+    public void setStatus(JAXBElement<CodeProcedureAvailabilityType> value) {
         this.status = value;
     }
 
@@ -310,10 +301,10 @@ public class ProcedureAvailabilityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractProcedureAvailabilityExtension")
-        @Column(name = "aixm:_abstract_procedure_availability_extension")
+        @Transient
         protected AbstractExtensionType abstractProcedureAvailabilityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

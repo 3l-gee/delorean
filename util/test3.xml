@@ -13,19 +13,25 @@
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMFeatureBaseType']//xs:element[@ref='gml:description']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "gml:description")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMFeatureBaseType']//xs:element[@ref='gml:identifier']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "gml:identifier")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMFeatureBaseType']//xs:element[@ref='gml:name']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "gml:name")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMFeatureBaseType']//xs:element[@ref='gml:boundedBy']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "gml:bounded_by")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMFeatureType']">
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='featureMetadata']">
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='dbID']">
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMObjectType']">
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
@@ -37,28 +43,40 @@
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMTimeSliceBaseType']//xs:element[@ref='gml:validTime']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "gml:valid_time")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMTimeSliceType']">
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@ref='aixm:interpretation']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:interpretation")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@ref='aixm:sequenceNumber']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:sequence_number")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@ref='aixm:correctionNumber']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:correction_number")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@name='timeSliceMetadata']">
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@ref='aixm:featureLifetime']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:feature_lifetime")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@name='dbID']">
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMMessageBaseType']">
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMMessageBaseType']//xs:element[@ref='aixm:sequenceNumber']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "aixm:sequence_number")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMMessageBaseType']//xs:element[@name='messageMetadata']">
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMMessageBaseType']//xs:element[@name='dbID']">
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMMessageType']">
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
@@ -71,20 +89,20 @@
             <annox:annotate target="class">@jakarta.persistence.Table(name = "feature_metadata_property_type")</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FeatureMetadataPropertyType']//xs:element[@ref='gmd:MD_Metadata']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "gmd:md__metadata")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FeatureTimeSliceMetadataPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "feature_time_slice_metadata_property_type")</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FeatureTimeSliceMetadataPropertyType']//xs:element[@ref='gmd:MD_Metadata']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "gmd:md__metadata")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MessageMetadataPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "message_metadata_property_type")</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MessageMetadataPropertyType']//xs:element[@ref='gmd:MD_Metadata']">
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "gmd:md__metadata")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
 </jaxb:bindings>

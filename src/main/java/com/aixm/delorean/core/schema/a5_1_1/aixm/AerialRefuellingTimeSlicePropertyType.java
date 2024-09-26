@@ -7,17 +7,13 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -48,15 +44,9 @@ import jakarta.xml.bind.annotation.XmlType;
 @Entity
 @Table(name = "aerial_refuelling_time_slice_property_type")
 public class AerialRefuellingTimeSlicePropertyType {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    @XmlTransient
-    protected Long dbID;
 
     @XmlElement(name = "AerialRefuellingTimeSlice", required = true)
-    @Column(name = "aixm:_aerial_refuelling_time_slice")
+    @Transient
     protected AerialRefuellingTimeSliceType aerialRefuellingTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

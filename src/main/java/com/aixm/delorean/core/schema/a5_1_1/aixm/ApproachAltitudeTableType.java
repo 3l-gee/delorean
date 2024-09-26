@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,22 +66,19 @@ public class ApproachAltitudeTableType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "measurementPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeProcedureDistanceType> measurementPoint;
+    @XmlElementRef(name = "altitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ValDistanceVerticalType> altitude;
+    @XmlElementRef(name = "altitudeReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeVerticalReferenceType> altitudeReference;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "measurement_point")
-    protected CodeProcedureDistanceType measurementPoint;
-    @XmlElement(nillable = true)
-    @Column(name = "altitude")
-    protected ValDistanceVerticalType altitude;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "altitude_reference")
-    protected CodeVerticalReferenceType altitudeReference;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<ApproachAltitudeTableType.Extension> extension;
 
     /**
@@ -92,10 +86,10 @@ public class ApproachAltitudeTableType
      * 
      * @return
      *     possible object is
-     *     {@link CodeProcedureDistanceType }
+     *     {@link JAXBElement }{@code <}{@link CodeProcedureDistanceType }{@code >}
      *     
      */
-    public CodeProcedureDistanceType getMeasurementPoint() {
+    public JAXBElement<CodeProcedureDistanceType> getMeasurementPoint() {
         return measurementPoint;
     }
 
@@ -104,10 +98,10 @@ public class ApproachAltitudeTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeProcedureDistanceType }
+     *     {@link JAXBElement }{@code <}{@link CodeProcedureDistanceType }{@code >}
      *     
      */
-    public void setMeasurementPoint(CodeProcedureDistanceType value) {
+    public void setMeasurementPoint(JAXBElement<CodeProcedureDistanceType> value) {
         this.measurementPoint = value;
     }
 
@@ -120,10 +114,10 @@ public class ApproachAltitudeTableType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getAltitude() {
+    public JAXBElement<ValDistanceVerticalType> getAltitude() {
         return altitude;
     }
 
@@ -132,10 +126,10 @@ public class ApproachAltitudeTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setAltitude(ValDistanceVerticalType value) {
+    public void setAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.altitude = value;
     }
 
@@ -148,10 +142,10 @@ public class ApproachAltitudeTableType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getAltitudeReference() {
+    public JAXBElement<CodeVerticalReferenceType> getAltitudeReference() {
         return altitudeReference;
     }
 
@@ -160,10 +154,10 @@ public class ApproachAltitudeTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setAltitudeReference(CodeVerticalReferenceType value) {
+    public void setAltitudeReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.altitudeReference = value;
     }
 
@@ -279,7 +273,7 @@ public class ApproachAltitudeTableType
     public static class Extension {
 
         @XmlElement(name = "AbstractApproachAltitudeTableExtension")
-        @Column(name = "aixm:_abstract_approach_altitude_table_extension")
+        @Transient
         protected AbstractExtensionType abstractApproachAltitudeTableExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

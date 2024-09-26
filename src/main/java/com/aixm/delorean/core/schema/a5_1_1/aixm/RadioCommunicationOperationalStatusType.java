@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,24 +69,18 @@ public class RadioCommunicationOperationalStatusType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "operational_status")
-    protected CodeStatusServiceType operationalStatus;
+    @XmlElementRef(name = "operationalStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeStatusServiceType> operationalStatus;
+    @Transient
     protected List<RadioCommunicationOperationalStatusType.Extension> extension;
 
     /**
@@ -217,10 +208,10 @@ public class RadioCommunicationOperationalStatusType
      * 
      * @return
      *     possible object is
-     *     {@link CodeStatusServiceType }
+     *     {@link JAXBElement }{@code <}{@link CodeStatusServiceType }{@code >}
      *     
      */
-    public CodeStatusServiceType getOperationalStatus() {
+    public JAXBElement<CodeStatusServiceType> getOperationalStatus() {
         return operationalStatus;
     }
 
@@ -229,10 +220,10 @@ public class RadioCommunicationOperationalStatusType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeStatusServiceType }
+     *     {@link JAXBElement }{@code <}{@link CodeStatusServiceType }{@code >}
      *     
      */
-    public void setOperationalStatus(CodeStatusServiceType value) {
+    public void setOperationalStatus(JAXBElement<CodeStatusServiceType> value) {
         this.operationalStatus = value;
     }
 
@@ -310,10 +301,10 @@ public class RadioCommunicationOperationalStatusType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractRadioCommunicationOperationalStatusExtension")
-        @Column(name = "aixm:_abstract_radio_communication_operational_status_extension")
+        @Transient
         protected AbstractExtensionType abstractRadioCommunicationOperationalStatusExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

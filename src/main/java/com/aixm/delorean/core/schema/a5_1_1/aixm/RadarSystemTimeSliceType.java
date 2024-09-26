@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -75,46 +72,37 @@ public class RadarSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeRadarServiceType> type;
+    @XmlElementRef(name = "model", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextNameType> model;
+    @XmlElementRef(name = "generalTerrainMonitor", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> generalTerrainMonitor;
+    @XmlElementRef(name = "broadcastIdentifier", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<TextDesignatorType> broadcastIdentifier;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    protected CodeRadarServiceType type;
-    @XmlElement(nillable = true)
-    @Column(name = "model")
-    protected TextNameType model;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "general_terrain_monitor")
-    protected CodeYesNoType generalTerrainMonitor;
-    @XmlElement(nillable = true)
-    @Column(name = "broadcast_identifier")
-    protected TextDesignatorType broadcastIdentifier;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<RadarComponentPropertyType> radarEquipment;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> office;
-    @XmlElement(nillable = true)
-    @Column(name = "airport_heliport")
-    protected AirportHeliportPropertyType airportHeliport;
+    @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(name = "PARRunway", nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<RunwayPropertyType> parRunway;
+    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<RadarSystemTimeSliceType.Extension> extension;
 
     /**
@@ -122,10 +110,10 @@ public class RadarSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRadarServiceType }
+     *     {@link JAXBElement }{@code <}{@link CodeRadarServiceType }{@code >}
      *     
      */
-    public CodeRadarServiceType getType() {
+    public JAXBElement<CodeRadarServiceType> getType() {
         return type;
     }
 
@@ -134,10 +122,10 @@ public class RadarSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRadarServiceType }
+     *     {@link JAXBElement }{@code <}{@link CodeRadarServiceType }{@code >}
      *     
      */
-    public void setType(CodeRadarServiceType value) {
+    public void setType(JAXBElement<CodeRadarServiceType> value) {
         this.type = value;
     }
 
@@ -150,10 +138,10 @@ public class RadarSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getModel() {
+    public JAXBElement<TextNameType> getModel() {
         return model;
     }
 
@@ -162,10 +150,10 @@ public class RadarSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setModel(TextNameType value) {
+    public void setModel(JAXBElement<TextNameType> value) {
         this.model = value;
     }
 
@@ -178,10 +166,10 @@ public class RadarSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getGeneralTerrainMonitor() {
+    public JAXBElement<CodeYesNoType> getGeneralTerrainMonitor() {
         return generalTerrainMonitor;
     }
 
@@ -190,10 +178,10 @@ public class RadarSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setGeneralTerrainMonitor(CodeYesNoType value) {
+    public void setGeneralTerrainMonitor(JAXBElement<CodeYesNoType> value) {
         this.generalTerrainMonitor = value;
     }
 
@@ -206,10 +194,10 @@ public class RadarSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
      *     
      */
-    public TextDesignatorType getBroadcastIdentifier() {
+    public JAXBElement<TextDesignatorType> getBroadcastIdentifier() {
         return broadcastIdentifier;
     }
 
@@ -218,10 +206,10 @@ public class RadarSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
      *     
      */
-    public void setBroadcastIdentifier(TextDesignatorType value) {
+    public void setBroadcastIdentifier(JAXBElement<TextDesignatorType> value) {
         this.broadcastIdentifier = value;
     }
 
@@ -314,10 +302,10 @@ public class RadarSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getAirportHeliport() {
+    public JAXBElement<AirportHeliportPropertyType> getAirportHeliport() {
         return airportHeliport;
     }
 
@@ -326,10 +314,10 @@ public class RadarSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setAirportHeliport(AirportHeliportPropertyType value) {
+    public void setAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.airportHeliport = value;
     }
 
@@ -382,10 +370,10 @@ public class RadarSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public ElevatedPointPropertyType getLocation() {
+    public JAXBElement<ElevatedPointPropertyType> getLocation() {
         return location;
     }
 
@@ -394,10 +382,10 @@ public class RadarSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public void setLocation(ElevatedPointPropertyType value) {
+    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
     }
 
@@ -513,7 +501,7 @@ public class RadarSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRadarSystemExtension", required = true)
-        @Column(name = "aixm:_abstract_radar_system_extension")
+        @Transient
         protected AbstractExtensionType abstractRadarSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,31 +69,25 @@ public class ApronMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeYesNoType> markingICAOStandard;
+    @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "marking_icao_standard")
-    protected CodeYesNoType markingICAOStandard;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "condition")
-    protected CodeMarkingConditionType condition;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "marking_location")
-    protected CodeApronSectionType markingLocation;
-    @XmlElement(nillable = true)
-    @Column(name = "marked_apron")
-    protected ApronPropertyType markedApron;
+    @XmlElementRef(name = "markingLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeApronSectionType> markingLocation;
+    @XmlElementRef(name = "markedApron", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ApronPropertyType> markedApron;
+    @Transient
     protected List<ApronMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -104,10 +95,10 @@ public class ApronMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getMarkingICAOStandard() {
+    public JAXBElement<CodeYesNoType> getMarkingICAOStandard() {
         return markingICAOStandard;
     }
 
@@ -116,10 +107,10 @@ public class ApronMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setMarkingICAOStandard(CodeYesNoType value) {
+    public void setMarkingICAOStandard(JAXBElement<CodeYesNoType> value) {
         this.markingICAOStandard = value;
     }
 
@@ -132,10 +123,10 @@ public class ApronMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeMarkingConditionType }
+     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
      *     
      */
-    public CodeMarkingConditionType getCondition() {
+    public JAXBElement<CodeMarkingConditionType> getCondition() {
         return condition;
     }
 
@@ -144,10 +135,10 @@ public class ApronMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMarkingConditionType }
+     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
      *     
      */
-    public void setCondition(CodeMarkingConditionType value) {
+    public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
         this.condition = value;
     }
 
@@ -240,10 +231,10 @@ public class ApronMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeApronSectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeApronSectionType }{@code >}
      *     
      */
-    public CodeApronSectionType getMarkingLocation() {
+    public JAXBElement<CodeApronSectionType> getMarkingLocation() {
         return markingLocation;
     }
 
@@ -252,10 +243,10 @@ public class ApronMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeApronSectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeApronSectionType }{@code >}
      *     
      */
-    public void setMarkingLocation(CodeApronSectionType value) {
+    public void setMarkingLocation(JAXBElement<CodeApronSectionType> value) {
         this.markingLocation = value;
     }
 
@@ -268,10 +259,10 @@ public class ApronMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ApronPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
      *     
      */
-    public ApronPropertyType getMarkedApron() {
+    public JAXBElement<ApronPropertyType> getMarkedApron() {
         return markedApron;
     }
 
@@ -280,10 +271,10 @@ public class ApronMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ApronPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
      *     
      */
-    public void setMarkedApron(ApronPropertyType value) {
+    public void setMarkedApron(JAXBElement<ApronPropertyType> value) {
         this.markedApron = value;
     }
 
@@ -361,10 +352,10 @@ public class ApronMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractApronMarkingExtension")
-        @Column(name = "aixm:_abstract_apron_marking_extension")
+        @Transient
         protected AbstractExtensionType abstractApronMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
-        @Column(name = "aixm:_abstract_marking_extension")
+        @Transient
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

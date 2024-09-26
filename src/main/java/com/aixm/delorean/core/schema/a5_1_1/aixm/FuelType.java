@@ -9,18 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,15 +64,13 @@ public class FuelType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "category", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<CodeFuelType> category;
     @XmlElement(nillable = true)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "category")
-    protected CodeFuelType category;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<FuelType.Extension> extension;
 
     /**
@@ -83,10 +78,10 @@ public class FuelType
      * 
      * @return
      *     possible object is
-     *     {@link CodeFuelType }
+     *     {@link JAXBElement }{@code <}{@link CodeFuelType }{@code >}
      *     
      */
-    public CodeFuelType getCategory() {
+    public JAXBElement<CodeFuelType> getCategory() {
         return category;
     }
 
@@ -95,10 +90,10 @@ public class FuelType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFuelType }
+     *     {@link JAXBElement }{@code <}{@link CodeFuelType }{@code >}
      *     
      */
-    public void setCategory(CodeFuelType value) {
+    public void setCategory(JAXBElement<CodeFuelType> value) {
         this.category = value;
     }
 
@@ -214,7 +209,7 @@ public class FuelType
     public static class Extension {
 
         @XmlElement(name = "AbstractFuelExtension")
-        @Column(name = "aixm:_abstract_fuel_extension")
+        @Transient
         protected AbstractExtensionType abstractFuelExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
