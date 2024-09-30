@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,46 +67,49 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "distance_indication_time_slice_type")
+@Embeddable
 public class DistanceIndicationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> distance;
-    @XmlElementRef(name = "minimumReceptionAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> minimumReceptionAltitude;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeDistanceIndicationType> type;
-    @XmlElementRef(name = "fix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> fix;
-    @XmlElementRef(name = "pointChoice_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> pointChoiceFixDesignatedPoint;
-    @XmlElementRef(name = "pointChoice_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NavaidPropertyType> pointChoiceNavaidSystem;
-    @XmlElementRef(name = "pointChoice_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<PointPropertyType> pointChoicePosition;
-    @XmlElementRef(name = "pointChoice_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> pointChoiceRunwayPoint;
-    @XmlElementRef(name = "pointChoice_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> pointChoiceAimingPoint;
-    @XmlElementRef(name = "pointChoice_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> pointChoiceAirportReferencePoint;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "distance")
+    protected ValDistanceType distance;
+    @XmlElement(nillable = true)
+    @Column(name = "minimum_reception_altitude")
+    protected ValDistanceVerticalType minimumReceptionAltitude;
+    @XmlElement(nillable = true)
+    @Column(name = "type")
+    protected CodeDistanceIndicationType type;
+    @XmlElement(nillable = true)
+    @Column(name = "fix")
+    protected DesignatedPointPropertyType fix;
+    @XmlElement(name = "pointChoice_fixDesignatedPoint", nillable = true)
+    @Column(name = "point_choice_fix_designated_point")
+    protected DesignatedPointPropertyType pointChoiceFixDesignatedPoint;
+    @XmlElement(name = "pointChoice_navaidSystem", nillable = true)
+    @Column(name = "point_choice_navaid_system")
+    protected NavaidPropertyType pointChoiceNavaidSystem;
+    @XmlElement(name = "pointChoice_position", nillable = true)
+    @Column(name = "point_choice_position")
+    protected PointPropertyType pointChoicePosition;
+    @XmlElement(name = "pointChoice_runwayPoint", nillable = true)
+    @Column(name = "point_choice_runway_point")
+    protected RunwayCentrelinePointPropertyType pointChoiceRunwayPoint;
+    @XmlElement(name = "pointChoice_aimingPoint", nillable = true)
+    @Column(name = "point_choice_aiming_point")
+    protected TouchDownLiftOffPropertyType pointChoiceAimingPoint;
+    @XmlElement(name = "pointChoice_airportReferencePoint", nillable = true)
+    @Column(name = "point_choice_airport_reference_point")
+    protected AirportHeliportPropertyType pointChoiceAirportReferencePoint;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<DistanceIndicationTimeSliceType.Extension> extension;
 
     /**
@@ -114,10 +117,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getDistance() {
+    public ValDistanceType getDistance() {
         return distance;
     }
 
@@ -126,10 +129,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setDistance(JAXBElement<ValDistanceType> value) {
+    public void setDistance(ValDistanceType value) {
         this.distance = value;
     }
 
@@ -142,10 +145,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getMinimumReceptionAltitude() {
+    public ValDistanceVerticalType getMinimumReceptionAltitude() {
         return minimumReceptionAltitude;
     }
 
@@ -154,10 +157,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setMinimumReceptionAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setMinimumReceptionAltitude(ValDistanceVerticalType value) {
         this.minimumReceptionAltitude = value;
     }
 
@@ -170,10 +173,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDistanceIndicationType }{@code >}
+     *     {@link CodeDistanceIndicationType }
      *     
      */
-    public JAXBElement<CodeDistanceIndicationType> getType() {
+    public CodeDistanceIndicationType getType() {
         return type;
     }
 
@@ -182,10 +185,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDistanceIndicationType }{@code >}
+     *     {@link CodeDistanceIndicationType }
      *     
      */
-    public void setType(JAXBElement<CodeDistanceIndicationType> value) {
+    public void setType(CodeDistanceIndicationType value) {
         this.type = value;
     }
 
@@ -198,10 +201,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getFix() {
+    public DesignatedPointPropertyType getFix() {
         return fix;
     }
 
@@ -210,10 +213,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setFix(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setFix(DesignatedPointPropertyType value) {
         this.fix = value;
     }
 
@@ -226,10 +229,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getPointChoiceFixDesignatedPoint() {
+    public DesignatedPointPropertyType getPointChoiceFixDesignatedPoint() {
         return pointChoiceFixDesignatedPoint;
     }
 
@@ -238,10 +241,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setPointChoiceFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setPointChoiceFixDesignatedPoint(DesignatedPointPropertyType value) {
         this.pointChoiceFixDesignatedPoint = value;
     }
 
@@ -254,10 +257,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getPointChoiceNavaidSystem() {
+    public NavaidPropertyType getPointChoiceNavaidSystem() {
         return pointChoiceNavaidSystem;
     }
 
@@ -266,10 +269,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setPointChoiceNavaidSystem(JAXBElement<NavaidPropertyType> value) {
+    public void setPointChoiceNavaidSystem(NavaidPropertyType value) {
         this.pointChoiceNavaidSystem = value;
     }
 
@@ -282,10 +285,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public JAXBElement<PointPropertyType> getPointChoicePosition() {
+    public PointPropertyType getPointChoicePosition() {
         return pointChoicePosition;
     }
 
@@ -294,10 +297,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public void setPointChoicePosition(JAXBElement<PointPropertyType> value) {
+    public void setPointChoicePosition(PointPropertyType value) {
         this.pointChoicePosition = value;
     }
 
@@ -310,10 +313,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getPointChoiceRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getPointChoiceRunwayPoint() {
         return pointChoiceRunwayPoint;
     }
 
@@ -322,10 +325,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setPointChoiceRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setPointChoiceRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.pointChoiceRunwayPoint = value;
     }
 
@@ -338,10 +341,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getPointChoiceAimingPoint() {
+    public TouchDownLiftOffPropertyType getPointChoiceAimingPoint() {
         return pointChoiceAimingPoint;
     }
 
@@ -350,10 +353,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setPointChoiceAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setPointChoiceAimingPoint(TouchDownLiftOffPropertyType value) {
         this.pointChoiceAimingPoint = value;
     }
 
@@ -366,10 +369,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getPointChoiceAirportReferencePoint() {
+    public AirportHeliportPropertyType getPointChoiceAirportReferencePoint() {
         return pointChoiceAirportReferencePoint;
     }
 
@@ -378,10 +381,10 @@ public class DistanceIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setPointChoiceAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setPointChoiceAirportReferencePoint(AirportHeliportPropertyType value) {
         this.pointChoiceAirportReferencePoint = value;
     }
 
@@ -497,7 +500,7 @@ public class DistanceIndicationTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDistanceIndicationExtension", required = true)
-        @Transient
+        @Column(name = "aixm:_abstract_distance_indication_extension")
         protected AbstractExtensionType abstractDistanceIndicationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

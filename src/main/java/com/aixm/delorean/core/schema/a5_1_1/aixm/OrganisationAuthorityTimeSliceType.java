@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,34 +63,41 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "organisation_authority_time_slice_type")
+@Embeddable
 public class OrganisationAuthorityTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeOrganisationDesignatorType> designator;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeOrganisationType> type;
-    @XmlElementRef(name = "military", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeMilitaryOperationsType> military;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "designator")
+    protected CodeOrganisationDesignatorType designator;
+    @XmlElement(nillable = true)
+    @Column(name = "type")
+    protected CodeOrganisationType type;
+    @XmlElement(nillable = true)
+    @Column(name = "military")
+    protected CodeMilitaryOperationsType military;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityAssociationPropertyType> relatedOrganisationAuthority;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityTimeSliceType.Extension> extension;
 
     /**
@@ -98,10 +105,10 @@ public class OrganisationAuthorityTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -110,10 +117,10 @@ public class OrganisationAuthorityTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -126,10 +133,10 @@ public class OrganisationAuthorityTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeOrganisationDesignatorType }{@code >}
+     *     {@link CodeOrganisationDesignatorType }
      *     
      */
-    public JAXBElement<CodeOrganisationDesignatorType> getDesignator() {
+    public CodeOrganisationDesignatorType getDesignator() {
         return designator;
     }
 
@@ -138,10 +145,10 @@ public class OrganisationAuthorityTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeOrganisationDesignatorType }{@code >}
+     *     {@link CodeOrganisationDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<CodeOrganisationDesignatorType> value) {
+    public void setDesignator(CodeOrganisationDesignatorType value) {
         this.designator = value;
     }
 
@@ -154,10 +161,10 @@ public class OrganisationAuthorityTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeOrganisationType }{@code >}
+     *     {@link CodeOrganisationType }
      *     
      */
-    public JAXBElement<CodeOrganisationType> getType() {
+    public CodeOrganisationType getType() {
         return type;
     }
 
@@ -166,10 +173,10 @@ public class OrganisationAuthorityTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeOrganisationType }{@code >}
+     *     {@link CodeOrganisationType }
      *     
      */
-    public void setType(JAXBElement<CodeOrganisationType> value) {
+    public void setType(CodeOrganisationType value) {
         this.type = value;
     }
 
@@ -182,10 +189,10 @@ public class OrganisationAuthorityTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     *     {@link CodeMilitaryOperationsType }
      *     
      */
-    public JAXBElement<CodeMilitaryOperationsType> getMilitary() {
+    public CodeMilitaryOperationsType getMilitary() {
         return military;
     }
 
@@ -194,10 +201,10 @@ public class OrganisationAuthorityTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     *     {@link CodeMilitaryOperationsType }
      *     
      */
-    public void setMilitary(JAXBElement<CodeMilitaryOperationsType> value) {
+    public void setMilitary(CodeMilitaryOperationsType value) {
         this.military = value;
     }
 
@@ -393,7 +400,7 @@ public class OrganisationAuthorityTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractOrganisationAuthorityExtension", required = true)
-        @Transient
+        @Column(name = "aixm:_abstract_organisation_authority_extension")
         protected AbstractExtensionType abstractOrganisationAuthorityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

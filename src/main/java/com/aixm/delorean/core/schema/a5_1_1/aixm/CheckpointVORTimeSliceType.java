@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,49 +69,52 @@ import jakarta.xml.bind.annotation.XmlType;
     "checkPointFacility",
     "extension"
 })
-@Entity
-@Table(name = "checkpoint_vor_time_slice_type")
+@Embeddable
 public class CheckpointVORTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "category", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeCheckpointCategoryType> category;
-    @XmlElementRef(name = "upperLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> upperLimit;
-    @XmlElementRef(name = "upperLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> upperLimitReference;
-    @XmlElementRef(name = "lowerLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> lowerLimit;
-    @XmlElementRef(name = "lowerLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> lowerLimitReference;
-    @XmlElementRef(name = "altitudeInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAltitudeUseType> altitudeInterpretation;
-    @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> distance;
-    @XmlElementRef(name = "angle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValBearingType> angle;
-    @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> position;
-    @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "category")
+    protected CodeCheckpointCategoryType category;
+    @XmlElement(nillable = true)
+    @Column(name = "upper_limit")
+    protected ValDistanceVerticalType upperLimit;
+    @XmlElement(nillable = true)
+    @Column(name = "upper_limit_reference")
+    protected CodeVerticalReferenceType upperLimitReference;
+    @XmlElement(nillable = true)
+    @Column(name = "lower_limit")
+    protected ValDistanceVerticalType lowerLimit;
+    @XmlElement(nillable = true)
+    @Column(name = "lower_limit_reference")
+    protected CodeVerticalReferenceType lowerLimitReference;
+    @XmlElement(nillable = true)
+    @Column(name = "altitude_interpretation")
+    protected CodeAltitudeUseType altitudeInterpretation;
+    @XmlElement(nillable = true)
+    @Column(name = "distance")
+    protected ValDistanceType distance;
+    @XmlElement(nillable = true)
+    @Column(name = "angle")
+    protected ValBearingType angle;
+    @XmlElement(nillable = true)
+    @Column(name = "position")
+    protected ElevatedPointPropertyType position;
+    @XmlElement(nillable = true)
+    @Column(name = "airport_heliport")
+    protected AirportHeliportPropertyType airportHeliport;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "checkPointFacility", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<VORPropertyType> checkPointFacility;
-    @Transient
+    @XmlElement(nillable = true)
+    @Column(name = "check_point_facility")
+    protected VORPropertyType checkPointFacility;
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<CheckpointVORTimeSliceType.Extension> extension;
 
     /**
@@ -119,10 +122,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeCheckpointCategoryType }{@code >}
+     *     {@link CodeCheckpointCategoryType }
      *     
      */
-    public JAXBElement<CodeCheckpointCategoryType> getCategory() {
+    public CodeCheckpointCategoryType getCategory() {
         return category;
     }
 
@@ -131,10 +134,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeCheckpointCategoryType }{@code >}
+     *     {@link CodeCheckpointCategoryType }
      *     
      */
-    public void setCategory(JAXBElement<CodeCheckpointCategoryType> value) {
+    public void setCategory(CodeCheckpointCategoryType value) {
         this.category = value;
     }
 
@@ -147,10 +150,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getUpperLimit() {
+    public ValDistanceVerticalType getUpperLimit() {
         return upperLimit;
     }
 
@@ -159,10 +162,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setUpperLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setUpperLimit(ValDistanceVerticalType value) {
         this.upperLimit = value;
     }
 
@@ -175,10 +178,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getUpperLimitReference() {
+    public CodeVerticalReferenceType getUpperLimitReference() {
         return upperLimitReference;
     }
 
@@ -187,10 +190,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setUpperLimitReference(CodeVerticalReferenceType value) {
         this.upperLimitReference = value;
     }
 
@@ -203,10 +206,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getLowerLimit() {
+    public ValDistanceVerticalType getLowerLimit() {
         return lowerLimit;
     }
 
@@ -215,10 +218,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setLowerLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setLowerLimit(ValDistanceVerticalType value) {
         this.lowerLimit = value;
     }
 
@@ -231,10 +234,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getLowerLimitReference() {
+    public CodeVerticalReferenceType getLowerLimitReference() {
         return lowerLimitReference;
     }
 
@@ -243,10 +246,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setLowerLimitReference(CodeVerticalReferenceType value) {
         this.lowerLimitReference = value;
     }
 
@@ -259,10 +262,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
+     *     {@link CodeAltitudeUseType }
      *     
      */
-    public JAXBElement<CodeAltitudeUseType> getAltitudeInterpretation() {
+    public CodeAltitudeUseType getAltitudeInterpretation() {
         return altitudeInterpretation;
     }
 
@@ -271,10 +274,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
+     *     {@link CodeAltitudeUseType }
      *     
      */
-    public void setAltitudeInterpretation(JAXBElement<CodeAltitudeUseType> value) {
+    public void setAltitudeInterpretation(CodeAltitudeUseType value) {
         this.altitudeInterpretation = value;
     }
 
@@ -287,10 +290,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getDistance() {
+    public ValDistanceType getDistance() {
         return distance;
     }
 
@@ -299,10 +302,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setDistance(JAXBElement<ValDistanceType> value) {
+    public void setDistance(ValDistanceType value) {
         this.distance = value;
     }
 
@@ -315,10 +318,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getAngle() {
+    public ValBearingType getAngle() {
         return angle;
     }
 
@@ -327,10 +330,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setAngle(JAXBElement<ValBearingType> value) {
+    public void setAngle(ValBearingType value) {
         this.angle = value;
     }
 
@@ -343,10 +346,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getPosition() {
+    public ElevatedPointPropertyType getPosition() {
         return position;
     }
 
@@ -355,10 +358,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setPosition(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setPosition(ElevatedPointPropertyType value) {
         this.position = value;
     }
 
@@ -371,10 +374,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAirportHeliport() {
+    public AirportHeliportPropertyType getAirportHeliport() {
         return airportHeliport;
     }
 
@@ -383,10 +386,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAirportHeliport(AirportHeliportPropertyType value) {
         this.airportHeliport = value;
     }
 
@@ -439,10 +442,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link VORPropertyType }{@code >}
+     *     {@link VORPropertyType }
      *     
      */
-    public JAXBElement<VORPropertyType> getCheckPointFacility() {
+    public VORPropertyType getCheckPointFacility() {
         return checkPointFacility;
     }
 
@@ -451,10 +454,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link VORPropertyType }{@code >}
+     *     {@link VORPropertyType }
      *     
      */
-    public void setCheckPointFacility(JAXBElement<VORPropertyType> value) {
+    public void setCheckPointFacility(VORPropertyType value) {
         this.checkPointFacility = value;
     }
 
@@ -532,10 +535,10 @@ public class CheckpointVORTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractCheckpointVORExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_checkpoint_vor_extension")
         protected AbstractExtensionType abstractCheckpointVORExtension;
         @XmlElement(name = "AbstractNavigationSystemCheckpointExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_navigation_system_checkpoint_extension")
         protected AbstractExtensionType abstractNavigationSystemCheckpointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

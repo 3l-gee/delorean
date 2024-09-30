@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,22 +68,26 @@ public class AltitudeAdjustmentType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "altitudeAdjustmentType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAltitudeAdjustmentType> altitudeAdjustmentType;
-    @XmlElementRef(name = "primaryAlternateMinimum", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> primaryAlternateMinimum;
-    @XmlElementRef(name = "altitudeAdjustment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> altitudeAdjustment;
-    @XmlElementRef(name = "localRemoteCode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> localRemoteCode;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "altitude_adjustment_type")
+    protected CodeAltitudeAdjustmentType altitudeAdjustmentType;
+    @XmlElement(nillable = true)
+    @Column(name = "primary_alternate_minimum")
+    protected CodeYesNoType primaryAlternateMinimum;
+    @XmlElement(nillable = true)
+    @Column(name = "altitude_adjustment")
+    protected ValDistanceVerticalType altitudeAdjustment;
+    @XmlElement(nillable = true)
+    @Column(name = "local_remote_code")
+    protected CodeYesNoType localRemoteCode;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AltitudeAdjustmentType.Extension> extension;
 
     /**
@@ -90,10 +95,10 @@ public class AltitudeAdjustmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeAdjustmentType }{@code >}
+     *     {@link CodeAltitudeAdjustmentType }
      *     
      */
-    public JAXBElement<CodeAltitudeAdjustmentType> getAltitudeAdjustmentType() {
+    public CodeAltitudeAdjustmentType getAltitudeAdjustmentType() {
         return altitudeAdjustmentType;
     }
 
@@ -102,10 +107,10 @@ public class AltitudeAdjustmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeAdjustmentType }{@code >}
+     *     {@link CodeAltitudeAdjustmentType }
      *     
      */
-    public void setAltitudeAdjustmentType(JAXBElement<CodeAltitudeAdjustmentType> value) {
+    public void setAltitudeAdjustmentType(CodeAltitudeAdjustmentType value) {
         this.altitudeAdjustmentType = value;
     }
 
@@ -118,10 +123,10 @@ public class AltitudeAdjustmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getPrimaryAlternateMinimum() {
+    public CodeYesNoType getPrimaryAlternateMinimum() {
         return primaryAlternateMinimum;
     }
 
@@ -130,10 +135,10 @@ public class AltitudeAdjustmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setPrimaryAlternateMinimum(JAXBElement<CodeYesNoType> value) {
+    public void setPrimaryAlternateMinimum(CodeYesNoType value) {
         this.primaryAlternateMinimum = value;
     }
 
@@ -146,10 +151,10 @@ public class AltitudeAdjustmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getAltitudeAdjustment() {
+    public ValDistanceVerticalType getAltitudeAdjustment() {
         return altitudeAdjustment;
     }
 
@@ -158,10 +163,10 @@ public class AltitudeAdjustmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setAltitudeAdjustment(JAXBElement<ValDistanceVerticalType> value) {
+    public void setAltitudeAdjustment(ValDistanceVerticalType value) {
         this.altitudeAdjustment = value;
     }
 
@@ -174,10 +179,10 @@ public class AltitudeAdjustmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getLocalRemoteCode() {
+    public CodeYesNoType getLocalRemoteCode() {
         return localRemoteCode;
     }
 
@@ -186,10 +191,10 @@ public class AltitudeAdjustmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setLocalRemoteCode(JAXBElement<CodeYesNoType> value) {
+    public void setLocalRemoteCode(CodeYesNoType value) {
         this.localRemoteCode = value;
     }
 
@@ -305,7 +310,7 @@ public class AltitudeAdjustmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractAltitudeAdjustmentExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_altitude_adjustment_extension")
         protected AbstractExtensionType abstractAltitudeAdjustmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

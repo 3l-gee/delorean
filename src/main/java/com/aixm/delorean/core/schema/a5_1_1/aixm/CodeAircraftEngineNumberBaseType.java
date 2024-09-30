@@ -36,19 +36,19 @@ import jakarta.xml.bind.annotation.XmlType;
 public enum CodeAircraftEngineNumberBaseType {
 
     @XmlEnumValue("1")
-    ONE("1"),
+    VALUE_1("1"),
     @XmlEnumValue("2")
-    TWO("2"),
+    VALUE_2("2"),
     @XmlEnumValue("3")
-    THREE("3"),
+    VALUE_3("3"),
     @XmlEnumValue("4")
-    FOUR("4"),
+    VALUE_4("4"),
     @XmlEnumValue("6")
-    SIX("6"),
+    VALUE_5("6"),
     @XmlEnumValue("8")
-    EIGHT("8"),
+    VALUE_6("8"),
     @XmlEnumValue("2C")
-    TWO_C("2C");
+    VALUE_7("2C");
     private final String value;
 
     CodeAircraftEngineNumberBaseType(String v) {

@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,28 +70,34 @@ public class TerminalArrivalAreaSectorType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "flyByCode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> flyByCode;
-    @XmlElementRef(name = "procedureTurnRequired", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> procedureTurnRequired;
-    @XmlElementRef(name = "altitudeDescription", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAltitudeUseType> altitudeDescription;
-    @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "fly_by_code")
+    protected CodeYesNoType flyByCode;
+    @XmlElement(nillable = true)
+    @Column(name = "procedure_turn_required")
+    protected CodeYesNoType procedureTurnRequired;
+    @XmlElement(nillable = true)
+    @Column(name = "altitude_description")
+    protected CodeAltitudeUseType altitudeDescription;
+    @XmlElement(nillable = true)
+    @Column(name = "sector_definition")
+    protected CircleSectorPropertyType sectorDefinition;
+    @XmlElement(nillable = true)
+    @Column(name = "extent")
+    protected SurfacePropertyType extent;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TerminalArrivalAreaSectorType.Extension> extension;
 
     /**
@@ -98,10 +105,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getFlyByCode() {
+    public CodeYesNoType getFlyByCode() {
         return flyByCode;
     }
 
@@ -110,10 +117,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setFlyByCode(JAXBElement<CodeYesNoType> value) {
+    public void setFlyByCode(CodeYesNoType value) {
         this.flyByCode = value;
     }
 
@@ -126,10 +133,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getProcedureTurnRequired() {
+    public CodeYesNoType getProcedureTurnRequired() {
         return procedureTurnRequired;
     }
 
@@ -138,10 +145,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setProcedureTurnRequired(JAXBElement<CodeYesNoType> value) {
+    public void setProcedureTurnRequired(CodeYesNoType value) {
         this.procedureTurnRequired = value;
     }
 
@@ -154,10 +161,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
+     *     {@link CodeAltitudeUseType }
      *     
      */
-    public JAXBElement<CodeAltitudeUseType> getAltitudeDescription() {
+    public CodeAltitudeUseType getAltitudeDescription() {
         return altitudeDescription;
     }
 
@@ -166,10 +173,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
+     *     {@link CodeAltitudeUseType }
      *     
      */
-    public void setAltitudeDescription(JAXBElement<CodeAltitudeUseType> value) {
+    public void setAltitudeDescription(CodeAltitudeUseType value) {
         this.altitudeDescription = value;
     }
 
@@ -182,10 +189,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
+     *     {@link CircleSectorPropertyType }
      *     
      */
-    public JAXBElement<CircleSectorPropertyType> getSectorDefinition() {
+    public CircleSectorPropertyType getSectorDefinition() {
         return sectorDefinition;
     }
 
@@ -194,10 +201,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
+     *     {@link CircleSectorPropertyType }
      *     
      */
-    public void setSectorDefinition(JAXBElement<CircleSectorPropertyType> value) {
+    public void setSectorDefinition(CircleSectorPropertyType value) {
         this.sectorDefinition = value;
     }
 
@@ -210,10 +217,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public JAXBElement<SurfacePropertyType> getExtent() {
+    public SurfacePropertyType getExtent() {
         return extent;
     }
 
@@ -222,10 +229,10 @@ public class TerminalArrivalAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<SurfacePropertyType> value) {
+    public void setExtent(SurfacePropertyType value) {
         this.extent = value;
     }
 
@@ -381,7 +388,7 @@ public class TerminalArrivalAreaSectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractTerminalArrivalAreaSectorExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_terminal_arrival_area_sector_extension")
         protected AbstractExtensionType abstractTerminalArrivalAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

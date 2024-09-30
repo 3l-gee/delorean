@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,24 +69,28 @@ public class HoldingUseType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "holdingUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeHoldingUseType> holdingUse;
-    @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextInstructionType> instruction;
-    @XmlElementRef(name = "instructedAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> instructedAltitude;
-    @XmlElementRef(name = "instructionAltitudeReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> instructionAltitudeReference;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "holding_use")
+    protected CodeHoldingUseType holdingUse;
+    @XmlElement(nillable = true)
+    @Column(name = "instruction")
+    protected TextInstructionType instruction;
+    @XmlElement(nillable = true)
+    @Column(name = "instructed_altitude")
+    protected ValDistanceVerticalType instructedAltitude;
+    @XmlElement(nillable = true)
+    @Column(name = "instruction_altitude_reference")
+    protected CodeVerticalReferenceType instructionAltitudeReference;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @Column(name = "the_holding_pattern")
     protected HoldingPatternPropertyType theHoldingPattern;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<HoldingUseType.Extension> extension;
 
     /**
@@ -93,10 +98,10 @@ public class HoldingUseType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeHoldingUseType }{@code >}
+     *     {@link CodeHoldingUseType }
      *     
      */
-    public JAXBElement<CodeHoldingUseType> getHoldingUse() {
+    public CodeHoldingUseType getHoldingUse() {
         return holdingUse;
     }
 
@@ -105,10 +110,10 @@ public class HoldingUseType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeHoldingUseType }{@code >}
+     *     {@link CodeHoldingUseType }
      *     
      */
-    public void setHoldingUse(JAXBElement<CodeHoldingUseType> value) {
+    public void setHoldingUse(CodeHoldingUseType value) {
         this.holdingUse = value;
     }
 
@@ -121,10 +126,10 @@ public class HoldingUseType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public JAXBElement<TextInstructionType> getInstruction() {
+    public TextInstructionType getInstruction() {
         return instruction;
     }
 
@@ -133,10 +138,10 @@ public class HoldingUseType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public void setInstruction(JAXBElement<TextInstructionType> value) {
+    public void setInstruction(TextInstructionType value) {
         this.instruction = value;
     }
 
@@ -149,10 +154,10 @@ public class HoldingUseType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getInstructedAltitude() {
+    public ValDistanceVerticalType getInstructedAltitude() {
         return instructedAltitude;
     }
 
@@ -161,10 +166,10 @@ public class HoldingUseType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setInstructedAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setInstructedAltitude(ValDistanceVerticalType value) {
         this.instructedAltitude = value;
     }
 
@@ -177,10 +182,10 @@ public class HoldingUseType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getInstructionAltitudeReference() {
+    public CodeVerticalReferenceType getInstructionAltitudeReference() {
         return instructionAltitudeReference;
     }
 
@@ -189,10 +194,10 @@ public class HoldingUseType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setInstructionAltitudeReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setInstructionAltitudeReference(CodeVerticalReferenceType value) {
         this.instructionAltitudeReference = value;
     }
 
@@ -336,7 +341,7 @@ public class HoldingUseType
     public static class Extension {
 
         @XmlElement(name = "AbstractHoldingUseExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_holding_use_extension")
         protected AbstractExtensionType abstractHoldingUseExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

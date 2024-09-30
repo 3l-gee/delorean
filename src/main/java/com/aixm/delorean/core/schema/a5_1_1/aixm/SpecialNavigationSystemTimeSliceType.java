@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,28 +61,31 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "special_navigation_system_time_slice_type")
+@Embeddable
 public class SpecialNavigationSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeSpecialNavigationSystemType> type;
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeSpecialNavigationChainDesignatorType> designator;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AuthorityForSpecialNavigationSystemPropertyType> responsibleOrganisation;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "type")
+    protected CodeSpecialNavigationSystemType type;
+    @XmlElement(nillable = true)
+    @Column(name = "designator")
+    protected CodeSpecialNavigationChainDesignatorType designator;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Column(name = "responsible_organisation")
+    protected AuthorityForSpecialNavigationSystemPropertyType responsibleOrganisation;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<SpecialNavigationSystemTimeSliceType.Extension> extension;
 
     /**
@@ -90,10 +93,10 @@ public class SpecialNavigationSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeSpecialNavigationSystemType }{@code >}
+     *     {@link CodeSpecialNavigationSystemType }
      *     
      */
-    public JAXBElement<CodeSpecialNavigationSystemType> getType() {
+    public CodeSpecialNavigationSystemType getType() {
         return type;
     }
 
@@ -102,10 +105,10 @@ public class SpecialNavigationSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeSpecialNavigationSystemType }{@code >}
+     *     {@link CodeSpecialNavigationSystemType }
      *     
      */
-    public void setType(JAXBElement<CodeSpecialNavigationSystemType> value) {
+    public void setType(CodeSpecialNavigationSystemType value) {
         this.type = value;
     }
 
@@ -118,10 +121,10 @@ public class SpecialNavigationSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeSpecialNavigationChainDesignatorType }{@code >}
+     *     {@link CodeSpecialNavigationChainDesignatorType }
      *     
      */
-    public JAXBElement<CodeSpecialNavigationChainDesignatorType> getDesignator() {
+    public CodeSpecialNavigationChainDesignatorType getDesignator() {
         return designator;
     }
 
@@ -130,10 +133,10 @@ public class SpecialNavigationSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeSpecialNavigationChainDesignatorType }{@code >}
+     *     {@link CodeSpecialNavigationChainDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<CodeSpecialNavigationChainDesignatorType> value) {
+    public void setDesignator(CodeSpecialNavigationChainDesignatorType value) {
         this.designator = value;
     }
 
@@ -146,10 +149,10 @@ public class SpecialNavigationSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -158,10 +161,10 @@ public class SpecialNavigationSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -174,10 +177,10 @@ public class SpecialNavigationSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AuthorityForSpecialNavigationSystemPropertyType }{@code >}
+     *     {@link AuthorityForSpecialNavigationSystemPropertyType }
      *     
      */
-    public JAXBElement<AuthorityForSpecialNavigationSystemPropertyType> getResponsibleOrganisation() {
+    public AuthorityForSpecialNavigationSystemPropertyType getResponsibleOrganisation() {
         return responsibleOrganisation;
     }
 
@@ -186,10 +189,10 @@ public class SpecialNavigationSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AuthorityForSpecialNavigationSystemPropertyType }{@code >}
+     *     {@link AuthorityForSpecialNavigationSystemPropertyType }
      *     
      */
-    public void setResponsibleOrganisation(JAXBElement<AuthorityForSpecialNavigationSystemPropertyType> value) {
+    public void setResponsibleOrganisation(AuthorityForSpecialNavigationSystemPropertyType value) {
         this.responsibleOrganisation = value;
     }
 
@@ -305,7 +308,7 @@ public class SpecialNavigationSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSpecialNavigationSystemExtension", required = true)
-        @Transient
+        @Column(name = "aixm:_abstract_special_navigation_system_extension")
         protected AbstractExtensionType abstractSpecialNavigationSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

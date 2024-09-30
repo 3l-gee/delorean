@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,22 +68,26 @@ public class ApproachDistanceTableType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "startingMeasurementPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeProcedureDistanceType> startingMeasurementPoint;
-    @XmlElementRef(name = "valueHAT", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> valueHAT;
-    @XmlElementRef(name = "endingMeasurementPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeProcedureDistanceType> endingMeasurementPoint;
-    @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> distance;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "starting_measurement_point")
+    protected CodeProcedureDistanceType startingMeasurementPoint;
+    @XmlElement(nillable = true)
+    @Column(name = "value_hat")
+    protected ValDistanceVerticalType valueHAT;
+    @XmlElement(nillable = true)
+    @Column(name = "ending_measurement_point")
+    protected CodeProcedureDistanceType endingMeasurementPoint;
+    @XmlElement(nillable = true)
+    @Column(name = "distance")
+    protected ValDistanceType distance;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApproachDistanceTableType.Extension> extension;
 
     /**
@@ -90,10 +95,10 @@ public class ApproachDistanceTableType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureDistanceType }{@code >}
+     *     {@link CodeProcedureDistanceType }
      *     
      */
-    public JAXBElement<CodeProcedureDistanceType> getStartingMeasurementPoint() {
+    public CodeProcedureDistanceType getStartingMeasurementPoint() {
         return startingMeasurementPoint;
     }
 
@@ -102,10 +107,10 @@ public class ApproachDistanceTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureDistanceType }{@code >}
+     *     {@link CodeProcedureDistanceType }
      *     
      */
-    public void setStartingMeasurementPoint(JAXBElement<CodeProcedureDistanceType> value) {
+    public void setStartingMeasurementPoint(CodeProcedureDistanceType value) {
         this.startingMeasurementPoint = value;
     }
 
@@ -118,10 +123,10 @@ public class ApproachDistanceTableType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getValueHAT() {
+    public ValDistanceVerticalType getValueHAT() {
         return valueHAT;
     }
 
@@ -130,10 +135,10 @@ public class ApproachDistanceTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setValueHAT(JAXBElement<ValDistanceVerticalType> value) {
+    public void setValueHAT(ValDistanceVerticalType value) {
         this.valueHAT = value;
     }
 
@@ -146,10 +151,10 @@ public class ApproachDistanceTableType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureDistanceType }{@code >}
+     *     {@link CodeProcedureDistanceType }
      *     
      */
-    public JAXBElement<CodeProcedureDistanceType> getEndingMeasurementPoint() {
+    public CodeProcedureDistanceType getEndingMeasurementPoint() {
         return endingMeasurementPoint;
     }
 
@@ -158,10 +163,10 @@ public class ApproachDistanceTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureDistanceType }{@code >}
+     *     {@link CodeProcedureDistanceType }
      *     
      */
-    public void setEndingMeasurementPoint(JAXBElement<CodeProcedureDistanceType> value) {
+    public void setEndingMeasurementPoint(CodeProcedureDistanceType value) {
         this.endingMeasurementPoint = value;
     }
 
@@ -174,10 +179,10 @@ public class ApproachDistanceTableType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getDistance() {
+    public ValDistanceType getDistance() {
         return distance;
     }
 
@@ -186,10 +191,10 @@ public class ApproachDistanceTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setDistance(JAXBElement<ValDistanceType> value) {
+    public void setDistance(ValDistanceType value) {
         this.distance = value;
     }
 
@@ -305,7 +310,7 @@ public class ApproachDistanceTableType
     public static class Extension {
 
         @XmlElement(name = "AbstractApproachDistanceTableExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_approach_distance_table_extension")
         protected AbstractExtensionType abstractApproachDistanceTableExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

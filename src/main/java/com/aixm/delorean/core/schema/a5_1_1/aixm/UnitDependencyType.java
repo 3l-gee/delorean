@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,15 +66,19 @@ public class UnitDependencyType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeUnitDependencyType> type;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "type")
+    protected CodeUnitDependencyType type;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @Column(name = "the_unit")
     protected UnitPropertyType theUnit;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<UnitDependencyType.Extension> extension;
 
     /**
@@ -81,10 +86,10 @@ public class UnitDependencyType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeUnitDependencyType }{@code >}
+     *     {@link CodeUnitDependencyType }
      *     
      */
-    public JAXBElement<CodeUnitDependencyType> getType() {
+    public CodeUnitDependencyType getType() {
         return type;
     }
 
@@ -93,10 +98,10 @@ public class UnitDependencyType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeUnitDependencyType }{@code >}
+     *     {@link CodeUnitDependencyType }
      *     
      */
-    public void setType(JAXBElement<CodeUnitDependencyType> value) {
+    public void setType(CodeUnitDependencyType value) {
         this.type = value;
     }
 
@@ -240,7 +245,7 @@ public class UnitDependencyType
     public static class Extension {
 
         @XmlElement(name = "AbstractUnitDependencyExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_unit_dependency_extension")
         protected AbstractExtensionType abstractUnitDependencyExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

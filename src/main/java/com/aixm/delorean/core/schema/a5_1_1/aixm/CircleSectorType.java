@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -74,43 +75,47 @@ public class CircleSectorType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "arcDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeArcDirectionType> arcDirection;
-    @XmlElementRef(name = "fromAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValBearingType> fromAngle;
-    @XmlElementRef(name = "toAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValBearingType> toAngle;
-    @XmlElementRef(name = "angleType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeBearingType> angleType;
-    @XmlElementRef(name = "angleDirectionReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeDirectionReferenceType> angleDirectionReference;
-    @XmlElementRef(name = "innerDistance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> innerDistance;
-    @XmlElementRef(name = "outerDistance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> outerDistance;
-    @XmlElementRef(name = "upperLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> upperLimit;
-    @XmlElementRef(name = "upperLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> upperLimitReference;
-    @XmlElementRef(name = "lowerLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> lowerLimit;
-    @XmlElementRef(name = "lowerLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> lowerLimitReference;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "arc_direction")
+    protected CodeArcDirectionType arcDirection;
+    @XmlElement(nillable = true)
+    @Column(name = "from_angle")
+    protected ValBearingType fromAngle;
+    @XmlElement(nillable = true)
+    @Column(name = "to_angle")
+    protected ValBearingType toAngle;
+    @XmlElement(nillable = true)
+    @Column(name = "angle_type")
+    protected CodeBearingType angleType;
+    @XmlElement(nillable = true)
+    @Column(name = "angle_direction_reference")
+    protected CodeDirectionReferenceType angleDirectionReference;
+    @XmlElement(nillable = true)
+    @Column(name = "inner_distance")
+    protected ValDistanceType innerDistance;
+    @XmlElement(nillable = true)
+    @Column(name = "outer_distance")
+    protected ValDistanceType outerDistance;
+    @XmlElement(nillable = true)
+    @Column(name = "upper_limit")
+    protected ValDistanceVerticalType upperLimit;
+    @XmlElement(nillable = true)
+    @Column(name = "upper_limit_reference")
+    protected CodeVerticalReferenceType upperLimitReference;
+    @XmlElement(nillable = true)
+    @Column(name = "lower_limit")
+    protected ValDistanceVerticalType lowerLimit;
+    @XmlElement(nillable = true)
+    @Column(name = "lower_limit_reference")
+    protected CodeVerticalReferenceType lowerLimitReference;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<CircleSectorType.Extension> extension;
 
     /**
@@ -118,10 +123,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeArcDirectionType }{@code >}
+     *     {@link CodeArcDirectionType }
      *     
      */
-    public JAXBElement<CodeArcDirectionType> getArcDirection() {
+    public CodeArcDirectionType getArcDirection() {
         return arcDirection;
     }
 
@@ -130,10 +135,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeArcDirectionType }{@code >}
+     *     {@link CodeArcDirectionType }
      *     
      */
-    public void setArcDirection(JAXBElement<CodeArcDirectionType> value) {
+    public void setArcDirection(CodeArcDirectionType value) {
         this.arcDirection = value;
     }
 
@@ -146,10 +151,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getFromAngle() {
+    public ValBearingType getFromAngle() {
         return fromAngle;
     }
 
@@ -158,10 +163,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setFromAngle(JAXBElement<ValBearingType> value) {
+    public void setFromAngle(ValBearingType value) {
         this.fromAngle = value;
     }
 
@@ -174,10 +179,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getToAngle() {
+    public ValBearingType getToAngle() {
         return toAngle;
     }
 
@@ -186,10 +191,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setToAngle(JAXBElement<ValBearingType> value) {
+    public void setToAngle(ValBearingType value) {
         this.toAngle = value;
     }
 
@@ -202,10 +207,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeBearingType }{@code >}
+     *     {@link CodeBearingType }
      *     
      */
-    public JAXBElement<CodeBearingType> getAngleType() {
+    public CodeBearingType getAngleType() {
         return angleType;
     }
 
@@ -214,10 +219,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeBearingType }{@code >}
+     *     {@link CodeBearingType }
      *     
      */
-    public void setAngleType(JAXBElement<CodeBearingType> value) {
+    public void setAngleType(CodeBearingType value) {
         this.angleType = value;
     }
 
@@ -230,10 +235,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionReferenceType }{@code >}
+     *     {@link CodeDirectionReferenceType }
      *     
      */
-    public JAXBElement<CodeDirectionReferenceType> getAngleDirectionReference() {
+    public CodeDirectionReferenceType getAngleDirectionReference() {
         return angleDirectionReference;
     }
 
@@ -242,10 +247,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionReferenceType }{@code >}
+     *     {@link CodeDirectionReferenceType }
      *     
      */
-    public void setAngleDirectionReference(JAXBElement<CodeDirectionReferenceType> value) {
+    public void setAngleDirectionReference(CodeDirectionReferenceType value) {
         this.angleDirectionReference = value;
     }
 
@@ -258,10 +263,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getInnerDistance() {
+    public ValDistanceType getInnerDistance() {
         return innerDistance;
     }
 
@@ -270,10 +275,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setInnerDistance(JAXBElement<ValDistanceType> value) {
+    public void setInnerDistance(ValDistanceType value) {
         this.innerDistance = value;
     }
 
@@ -286,10 +291,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getOuterDistance() {
+    public ValDistanceType getOuterDistance() {
         return outerDistance;
     }
 
@@ -298,10 +303,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setOuterDistance(JAXBElement<ValDistanceType> value) {
+    public void setOuterDistance(ValDistanceType value) {
         this.outerDistance = value;
     }
 
@@ -314,10 +319,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getUpperLimit() {
+    public ValDistanceVerticalType getUpperLimit() {
         return upperLimit;
     }
 
@@ -326,10 +331,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setUpperLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setUpperLimit(ValDistanceVerticalType value) {
         this.upperLimit = value;
     }
 
@@ -342,10 +347,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getUpperLimitReference() {
+    public CodeVerticalReferenceType getUpperLimitReference() {
         return upperLimitReference;
     }
 
@@ -354,10 +359,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setUpperLimitReference(CodeVerticalReferenceType value) {
         this.upperLimitReference = value;
     }
 
@@ -370,10 +375,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getLowerLimit() {
+    public ValDistanceVerticalType getLowerLimit() {
         return lowerLimit;
     }
 
@@ -382,10 +387,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setLowerLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setLowerLimit(ValDistanceVerticalType value) {
         this.lowerLimit = value;
     }
 
@@ -398,10 +403,10 @@ public class CircleSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getLowerLimitReference() {
+    public CodeVerticalReferenceType getLowerLimitReference() {
         return lowerLimitReference;
     }
 
@@ -410,10 +415,10 @@ public class CircleSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setLowerLimitReference(CodeVerticalReferenceType value) {
         this.lowerLimitReference = value;
     }
 
@@ -529,7 +534,7 @@ public class CircleSectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractCircleSectorExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_circle_sector_extension")
         protected AbstractExtensionType abstractCircleSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

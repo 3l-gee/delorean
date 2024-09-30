@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -78,49 +79,57 @@ public class TaxiwayContaminationType
     extends AbstractSurfaceContaminationType
 {
 
-    @XmlElementRef(name = "observationTime", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DateTimeType> observationTime;
-    @XmlElementRef(name = "depth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDepthType> depth;
-    @XmlElementRef(name = "frictionCoefficient", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValFrictionType> frictionCoefficient;
-    @XmlElementRef(name = "frictionEstimation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeFrictionEstimateType> frictionEstimation;
-    @XmlElementRef(name = "frictionDevice", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeFrictionDeviceType> frictionDevice;
-    @XmlElementRef(name = "obscuredLights", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> obscuredLights;
-    @XmlElementRef(name = "furtherClearanceTime", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TimeType> furtherClearanceTime;
-    @XmlElementRef(name = "furtherTotalClearance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> furtherTotalClearance;
-    @XmlElementRef(name = "nextObservationTime", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DateTimeType> nextObservationTime;
-    @XmlElementRef(name = "proportion", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValPercentType> proportion;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "observation_time")
+    protected DateTimeType observationTime;
+    @XmlElement(nillable = true)
+    @Column(name = "depth")
+    protected ValDepthType depth;
+    @XmlElement(nillable = true)
+    @Column(name = "friction_coefficient")
+    protected ValFrictionType frictionCoefficient;
+    @XmlElement(nillable = true)
+    @Column(name = "friction_estimation")
+    protected CodeFrictionEstimateType frictionEstimation;
+    @XmlElement(nillable = true)
+    @Column(name = "friction_device")
+    protected CodeFrictionDeviceType frictionDevice;
+    @XmlElement(nillable = true)
+    @Column(name = "obscured_lights")
+    protected CodeYesNoType obscuredLights;
+    @XmlElement(nillable = true)
+    @Column(name = "further_clearance_time")
+    protected TimeType furtherClearanceTime;
+    @XmlElement(nillable = true)
+    @Column(name = "further_total_clearance")
+    protected CodeYesNoType furtherTotalClearance;
+    @XmlElement(nillable = true)
+    @Column(name = "next_observation_time")
+    protected DateTimeType nextObservationTime;
+    @XmlElement(nillable = true)
+    @Column(name = "proportion")
+    protected ValPercentType proportion;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RidgePropertyType> criticalRidge;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<SurfaceContaminationLayerPropertyType> layer;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "clearedWidth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> clearedWidth;
-    @Transient
+    @XmlElement(nillable = true)
+    @Column(name = "cleared_width")
+    protected ValDistanceType clearedWidth;
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TaxiwayContaminationType.Extension> extension;
 
     /**
@@ -128,10 +137,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateTimeType }{@code >}
+     *     {@link DateTimeType }
      *     
      */
-    public JAXBElement<DateTimeType> getObservationTime() {
+    public DateTimeType getObservationTime() {
         return observationTime;
     }
 
@@ -140,10 +149,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateTimeType }{@code >}
+     *     {@link DateTimeType }
      *     
      */
-    public void setObservationTime(JAXBElement<DateTimeType> value) {
+    public void setObservationTime(DateTimeType value) {
         this.observationTime = value;
     }
 
@@ -156,10 +165,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDepthType }{@code >}
+     *     {@link ValDepthType }
      *     
      */
-    public JAXBElement<ValDepthType> getDepth() {
+    public ValDepthType getDepth() {
         return depth;
     }
 
@@ -168,10 +177,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDepthType }{@code >}
+     *     {@link ValDepthType }
      *     
      */
-    public void setDepth(JAXBElement<ValDepthType> value) {
+    public void setDepth(ValDepthType value) {
         this.depth = value;
     }
 
@@ -184,10 +193,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValFrictionType }{@code >}
+     *     {@link ValFrictionType }
      *     
      */
-    public JAXBElement<ValFrictionType> getFrictionCoefficient() {
+    public ValFrictionType getFrictionCoefficient() {
         return frictionCoefficient;
     }
 
@@ -196,10 +205,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValFrictionType }{@code >}
+     *     {@link ValFrictionType }
      *     
      */
-    public void setFrictionCoefficient(JAXBElement<ValFrictionType> value) {
+    public void setFrictionCoefficient(ValFrictionType value) {
         this.frictionCoefficient = value;
     }
 
@@ -212,10 +221,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeFrictionEstimateType }{@code >}
+     *     {@link CodeFrictionEstimateType }
      *     
      */
-    public JAXBElement<CodeFrictionEstimateType> getFrictionEstimation() {
+    public CodeFrictionEstimateType getFrictionEstimation() {
         return frictionEstimation;
     }
 
@@ -224,10 +233,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeFrictionEstimateType }{@code >}
+     *     {@link CodeFrictionEstimateType }
      *     
      */
-    public void setFrictionEstimation(JAXBElement<CodeFrictionEstimateType> value) {
+    public void setFrictionEstimation(CodeFrictionEstimateType value) {
         this.frictionEstimation = value;
     }
 
@@ -240,10 +249,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeFrictionDeviceType }{@code >}
+     *     {@link CodeFrictionDeviceType }
      *     
      */
-    public JAXBElement<CodeFrictionDeviceType> getFrictionDevice() {
+    public CodeFrictionDeviceType getFrictionDevice() {
         return frictionDevice;
     }
 
@@ -252,10 +261,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeFrictionDeviceType }{@code >}
+     *     {@link CodeFrictionDeviceType }
      *     
      */
-    public void setFrictionDevice(JAXBElement<CodeFrictionDeviceType> value) {
+    public void setFrictionDevice(CodeFrictionDeviceType value) {
         this.frictionDevice = value;
     }
 
@@ -268,10 +277,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getObscuredLights() {
+    public CodeYesNoType getObscuredLights() {
         return obscuredLights;
     }
 
@@ -280,10 +289,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setObscuredLights(JAXBElement<CodeYesNoType> value) {
+    public void setObscuredLights(CodeYesNoType value) {
         this.obscuredLights = value;
     }
 
@@ -296,10 +305,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TimeType }{@code >}
+     *     {@link TimeType }
      *     
      */
-    public JAXBElement<TimeType> getFurtherClearanceTime() {
+    public TimeType getFurtherClearanceTime() {
         return furtherClearanceTime;
     }
 
@@ -308,10 +317,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TimeType }{@code >}
+     *     {@link TimeType }
      *     
      */
-    public void setFurtherClearanceTime(JAXBElement<TimeType> value) {
+    public void setFurtherClearanceTime(TimeType value) {
         this.furtherClearanceTime = value;
     }
 
@@ -324,10 +333,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getFurtherTotalClearance() {
+    public CodeYesNoType getFurtherTotalClearance() {
         return furtherTotalClearance;
     }
 
@@ -336,10 +345,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setFurtherTotalClearance(JAXBElement<CodeYesNoType> value) {
+    public void setFurtherTotalClearance(CodeYesNoType value) {
         this.furtherTotalClearance = value;
     }
 
@@ -352,10 +361,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateTimeType }{@code >}
+     *     {@link DateTimeType }
      *     
      */
-    public JAXBElement<DateTimeType> getNextObservationTime() {
+    public DateTimeType getNextObservationTime() {
         return nextObservationTime;
     }
 
@@ -364,10 +373,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateTimeType }{@code >}
+     *     {@link DateTimeType }
      *     
      */
-    public void setNextObservationTime(JAXBElement<DateTimeType> value) {
+    public void setNextObservationTime(DateTimeType value) {
         this.nextObservationTime = value;
     }
 
@@ -380,10 +389,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValPercentType }{@code >}
+     *     {@link ValPercentType }
      *     
      */
-    public JAXBElement<ValPercentType> getProportion() {
+    public ValPercentType getProportion() {
         return proportion;
     }
 
@@ -392,10 +401,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValPercentType }{@code >}
+     *     {@link ValPercentType }
      *     
      */
-    public void setProportion(JAXBElement<ValPercentType> value) {
+    public void setProportion(ValPercentType value) {
         this.proportion = value;
     }
 
@@ -528,10 +537,10 @@ public class TaxiwayContaminationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getClearedWidth() {
+    public ValDistanceType getClearedWidth() {
         return clearedWidth;
     }
 
@@ -540,10 +549,10 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setClearedWidth(JAXBElement<ValDistanceType> value) {
+    public void setClearedWidth(ValDistanceType value) {
         this.clearedWidth = value;
     }
 
@@ -621,10 +630,10 @@ public class TaxiwayContaminationType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceContaminationExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_surface_contamination_extension")
         protected AbstractExtensionType abstractSurfaceContaminationExtension;
         @XmlElement(name = "AbstractTaxiwayContaminationExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_taxiway_contamination_extension")
         protected AbstractExtensionType abstractTaxiwayContaminationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

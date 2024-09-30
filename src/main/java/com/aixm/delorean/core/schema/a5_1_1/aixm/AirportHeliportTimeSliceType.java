@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -91,118 +91,131 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "airport_heliport_time_slice_type")
+@Embeddable
 public class AirportHeliportTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAirportHeliportDesignatorType> designator;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "locationIndicatorICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeICAOType> locationIndicatorICAO;
-    @XmlElementRef(name = "designatorIATA", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeIATAType> designatorIATA;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAirportHeliportType> type;
-    @XmlElementRef(name = "certifiedICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> certifiedICAO;
-    @XmlElementRef(name = "privateUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> privateUse;
-    @XmlElementRef(name = "controlType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeMilitaryOperationsType> controlType;
-    @XmlElementRef(name = "fieldElevation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> fieldElevation;
-    @XmlElementRef(name = "fieldElevationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> fieldElevationAccuracy;
-    @XmlElementRef(name = "verticalDatum", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalDatumType> verticalDatum;
-    @XmlElementRef(name = "magneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValMagneticVariationType> magneticVariation;
-    @XmlElementRef(name = "magneticVariationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValAngleType> magneticVariationAccuracy;
-    @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DateYearType> dateMagneticVariation;
-    @XmlElementRef(name = "magneticVariationChange", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValMagneticVariationChangeType> magneticVariationChange;
-    @XmlElementRef(name = "referenceTemperature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValTemperatureType> referenceTemperature;
-    @XmlElementRef(name = "altimeterCheckLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> altimeterCheckLocation;
-    @XmlElementRef(name = "secondaryPowerSupply", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> secondaryPowerSupply;
-    @XmlElementRef(name = "windDirectionIndicator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> windDirectionIndicator;
-    @XmlElementRef(name = "landingDirectionIndicator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> landingDirectionIndicator;
-    @XmlElementRef(name = "transitionAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> transitionAltitude;
-    @XmlElementRef(name = "transitionLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValFLType> transitionLevel;
-    @XmlElementRef(name = "lowestTemperature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValTemperatureType> lowestTemperature;
-    @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> abandoned;
-    @XmlElementRef(name = "certificationDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DateType> certificationDate;
-    @XmlElementRef(name = "certificationExpirationDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DateType> certificationExpirationDate;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "designator")
+    protected CodeAirportHeliportDesignatorType designator;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Column(name = "location_indicator_icao")
+    protected CodeICAOType locationIndicatorICAO;
+    @XmlElement(nillable = true)
+    @Column(name = "designator_iata")
+    protected CodeIATAType designatorIATA;
+    @XmlElement(nillable = true)
+    @Column(name = "type")
+    protected CodeAirportHeliportType type;
+    @XmlElement(nillable = true)
+    @Column(name = "certified_icao")
+    protected CodeYesNoType certifiedICAO;
+    @XmlElement(nillable = true)
+    @Column(name = "private_use")
+    protected CodeYesNoType privateUse;
+    @XmlElement(nillable = true)
+    @Column(name = "control_type")
+    protected CodeMilitaryOperationsType controlType;
+    @XmlElement(nillable = true)
+    @Column(name = "field_elevation")
+    protected ValDistanceVerticalType fieldElevation;
+    @XmlElement(nillable = true)
+    @Column(name = "field_elevation_accuracy")
+    protected ValDistanceVerticalType fieldElevationAccuracy;
+    @XmlElement(nillable = true)
+    @Column(name = "vertical_datum")
+    protected CodeVerticalDatumType verticalDatum;
+    @XmlElement(nillable = true)
+    @Column(name = "magnetic_variation")
+    protected ValMagneticVariationType magneticVariation;
+    @XmlElement(nillable = true)
+    @Column(name = "magnetic_variation_accuracy")
+    protected ValAngleType magneticVariationAccuracy;
+    @XmlElement(nillable = true)
+    @Column(name = "date_magnetic_variation")
+    protected DateYearType dateMagneticVariation;
+    @XmlElement(nillable = true)
+    @Column(name = "magnetic_variation_change")
+    protected ValMagneticVariationChangeType magneticVariationChange;
+    @XmlElement(nillable = true)
+    @Column(name = "reference_temperature")
+    protected ValTemperatureType referenceTemperature;
+    @XmlElement(nillable = true)
+    @Column(name = "altimeter_check_location")
+    protected CodeYesNoType altimeterCheckLocation;
+    @XmlElement(nillable = true)
+    @Column(name = "secondary_power_supply")
+    protected CodeYesNoType secondaryPowerSupply;
+    @XmlElement(nillable = true)
+    @Column(name = "wind_direction_indicator")
+    protected CodeYesNoType windDirectionIndicator;
+    @XmlElement(nillable = true)
+    @Column(name = "landing_direction_indicator")
+    protected CodeYesNoType landingDirectionIndicator;
+    @XmlElement(nillable = true)
+    @Column(name = "transition_altitude")
+    protected ValDistanceVerticalType transitionAltitude;
+    @XmlElement(nillable = true)
+    @Column(name = "transition_level")
+    protected ValFLType transitionLevel;
+    @XmlElement(nillable = true)
+    @Column(name = "lowest_temperature")
+    protected ValTemperatureType lowestTemperature;
+    @XmlElement(nillable = true)
+    @Column(name = "abandoned")
+    protected CodeYesNoType abandoned;
+    @XmlElement(nillable = true)
+    @Column(name = "certification_date")
+    protected DateType certificationDate;
+    @XmlElement(nillable = true)
+    @Column(name = "certification_expiration_date")
+    protected DateType certificationExpirationDate;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirportHeliportContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<CityPropertyType> servedCity;
-    @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportResponsibilityOrganisationPropertyType> responsibleOrganisation;
-    @XmlElementRef(name = "ARP", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> arp;
-    @XmlElementRef(name = "aviationBoundary", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedSurfacePropertyType> aviationBoundary;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "responsible_organisation")
+    protected AirportHeliportResponsibilityOrganisationPropertyType responsibleOrganisation;
+    @XmlElement(name = "ARP", nillable = true)
+    @Column(name = "arp")
+    protected ElevatedPointPropertyType arp;
+    @XmlElement(nillable = true)
+    @Column(name = "aviation_boundary")
+    protected ElevatedSurfacePropertyType aviationBoundary;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AltimeterSourcePropertyType> altimeterSource;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirportHeliportAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirportHeliportTimeSliceType.Extension> extension;
 
     /**
@@ -210,10 +223,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirportHeliportDesignatorType }{@code >}
+     *     {@link CodeAirportHeliportDesignatorType }
      *     
      */
-    public JAXBElement<CodeAirportHeliportDesignatorType> getDesignator() {
+    public CodeAirportHeliportDesignatorType getDesignator() {
         return designator;
     }
 
@@ -222,10 +235,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirportHeliportDesignatorType }{@code >}
+     *     {@link CodeAirportHeliportDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<CodeAirportHeliportDesignatorType> value) {
+    public void setDesignator(CodeAirportHeliportDesignatorType value) {
         this.designator = value;
     }
 
@@ -238,10 +251,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -250,10 +263,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -266,10 +279,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeICAOType }{@code >}
+     *     {@link CodeICAOType }
      *     
      */
-    public JAXBElement<CodeICAOType> getLocationIndicatorICAO() {
+    public CodeICAOType getLocationIndicatorICAO() {
         return locationIndicatorICAO;
     }
 
@@ -278,10 +291,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeICAOType }{@code >}
+     *     {@link CodeICAOType }
      *     
      */
-    public void setLocationIndicatorICAO(JAXBElement<CodeICAOType> value) {
+    public void setLocationIndicatorICAO(CodeICAOType value) {
         this.locationIndicatorICAO = value;
     }
 
@@ -294,10 +307,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeIATAType }{@code >}
+     *     {@link CodeIATAType }
      *     
      */
-    public JAXBElement<CodeIATAType> getDesignatorIATA() {
+    public CodeIATAType getDesignatorIATA() {
         return designatorIATA;
     }
 
@@ -306,10 +319,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeIATAType }{@code >}
+     *     {@link CodeIATAType }
      *     
      */
-    public void setDesignatorIATA(JAXBElement<CodeIATAType> value) {
+    public void setDesignatorIATA(CodeIATAType value) {
         this.designatorIATA = value;
     }
 
@@ -322,10 +335,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirportHeliportType }{@code >}
+     *     {@link CodeAirportHeliportType }
      *     
      */
-    public JAXBElement<CodeAirportHeliportType> getType() {
+    public CodeAirportHeliportType getType() {
         return type;
     }
 
@@ -334,10 +347,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirportHeliportType }{@code >}
+     *     {@link CodeAirportHeliportType }
      *     
      */
-    public void setType(JAXBElement<CodeAirportHeliportType> value) {
+    public void setType(CodeAirportHeliportType value) {
         this.type = value;
     }
 
@@ -350,10 +363,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getCertifiedICAO() {
+    public CodeYesNoType getCertifiedICAO() {
         return certifiedICAO;
     }
 
@@ -362,10 +375,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setCertifiedICAO(JAXBElement<CodeYesNoType> value) {
+    public void setCertifiedICAO(CodeYesNoType value) {
         this.certifiedICAO = value;
     }
 
@@ -378,10 +391,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getPrivateUse() {
+    public CodeYesNoType getPrivateUse() {
         return privateUse;
     }
 
@@ -390,10 +403,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setPrivateUse(JAXBElement<CodeYesNoType> value) {
+    public void setPrivateUse(CodeYesNoType value) {
         this.privateUse = value;
     }
 
@@ -406,10 +419,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     *     {@link CodeMilitaryOperationsType }
      *     
      */
-    public JAXBElement<CodeMilitaryOperationsType> getControlType() {
+    public CodeMilitaryOperationsType getControlType() {
         return controlType;
     }
 
@@ -418,10 +431,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     *     {@link CodeMilitaryOperationsType }
      *     
      */
-    public void setControlType(JAXBElement<CodeMilitaryOperationsType> value) {
+    public void setControlType(CodeMilitaryOperationsType value) {
         this.controlType = value;
     }
 
@@ -434,10 +447,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getFieldElevation() {
+    public ValDistanceVerticalType getFieldElevation() {
         return fieldElevation;
     }
 
@@ -446,10 +459,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setFieldElevation(JAXBElement<ValDistanceVerticalType> value) {
+    public void setFieldElevation(ValDistanceVerticalType value) {
         this.fieldElevation = value;
     }
 
@@ -462,10 +475,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getFieldElevationAccuracy() {
+    public ValDistanceVerticalType getFieldElevationAccuracy() {
         return fieldElevationAccuracy;
     }
 
@@ -474,10 +487,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setFieldElevationAccuracy(JAXBElement<ValDistanceVerticalType> value) {
+    public void setFieldElevationAccuracy(ValDistanceVerticalType value) {
         this.fieldElevationAccuracy = value;
     }
 
@@ -490,10 +503,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalDatumType }{@code >}
+     *     {@link CodeVerticalDatumType }
      *     
      */
-    public JAXBElement<CodeVerticalDatumType> getVerticalDatum() {
+    public CodeVerticalDatumType getVerticalDatum() {
         return verticalDatum;
     }
 
@@ -502,10 +515,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalDatumType }{@code >}
+     *     {@link CodeVerticalDatumType }
      *     
      */
-    public void setVerticalDatum(JAXBElement<CodeVerticalDatumType> value) {
+    public void setVerticalDatum(CodeVerticalDatumType value) {
         this.verticalDatum = value;
     }
 
@@ -518,10 +531,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     *     {@link ValMagneticVariationType }
      *     
      */
-    public JAXBElement<ValMagneticVariationType> getMagneticVariation() {
+    public ValMagneticVariationType getMagneticVariation() {
         return magneticVariation;
     }
 
@@ -530,10 +543,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     *     {@link ValMagneticVariationType }
      *     
      */
-    public void setMagneticVariation(JAXBElement<ValMagneticVariationType> value) {
+    public void setMagneticVariation(ValMagneticVariationType value) {
         this.magneticVariation = value;
     }
 
@@ -546,10 +559,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getMagneticVariationAccuracy() {
+    public ValAngleType getMagneticVariationAccuracy() {
         return magneticVariationAccuracy;
     }
 
@@ -558,10 +571,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
+    public void setMagneticVariationAccuracy(ValAngleType value) {
         this.magneticVariationAccuracy = value;
     }
 
@@ -574,10 +587,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public JAXBElement<DateYearType> getDateMagneticVariation() {
+    public DateYearType getDateMagneticVariation() {
         return dateMagneticVariation;
     }
 
@@ -586,10 +599,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public void setDateMagneticVariation(JAXBElement<DateYearType> value) {
+    public void setDateMagneticVariation(DateYearType value) {
         this.dateMagneticVariation = value;
     }
 
@@ -602,10 +615,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationChangeType }{@code >}
+     *     {@link ValMagneticVariationChangeType }
      *     
      */
-    public JAXBElement<ValMagneticVariationChangeType> getMagneticVariationChange() {
+    public ValMagneticVariationChangeType getMagneticVariationChange() {
         return magneticVariationChange;
     }
 
@@ -614,10 +627,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationChangeType }{@code >}
+     *     {@link ValMagneticVariationChangeType }
      *     
      */
-    public void setMagneticVariationChange(JAXBElement<ValMagneticVariationChangeType> value) {
+    public void setMagneticVariationChange(ValMagneticVariationChangeType value) {
         this.magneticVariationChange = value;
     }
 
@@ -630,10 +643,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValTemperatureType }{@code >}
+     *     {@link ValTemperatureType }
      *     
      */
-    public JAXBElement<ValTemperatureType> getReferenceTemperature() {
+    public ValTemperatureType getReferenceTemperature() {
         return referenceTemperature;
     }
 
@@ -642,10 +655,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValTemperatureType }{@code >}
+     *     {@link ValTemperatureType }
      *     
      */
-    public void setReferenceTemperature(JAXBElement<ValTemperatureType> value) {
+    public void setReferenceTemperature(ValTemperatureType value) {
         this.referenceTemperature = value;
     }
 
@@ -658,10 +671,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getAltimeterCheckLocation() {
+    public CodeYesNoType getAltimeterCheckLocation() {
         return altimeterCheckLocation;
     }
 
@@ -670,10 +683,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setAltimeterCheckLocation(JAXBElement<CodeYesNoType> value) {
+    public void setAltimeterCheckLocation(CodeYesNoType value) {
         this.altimeterCheckLocation = value;
     }
 
@@ -686,10 +699,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getSecondaryPowerSupply() {
+    public CodeYesNoType getSecondaryPowerSupply() {
         return secondaryPowerSupply;
     }
 
@@ -698,10 +711,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setSecondaryPowerSupply(JAXBElement<CodeYesNoType> value) {
+    public void setSecondaryPowerSupply(CodeYesNoType value) {
         this.secondaryPowerSupply = value;
     }
 
@@ -714,10 +727,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getWindDirectionIndicator() {
+    public CodeYesNoType getWindDirectionIndicator() {
         return windDirectionIndicator;
     }
 
@@ -726,10 +739,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setWindDirectionIndicator(JAXBElement<CodeYesNoType> value) {
+    public void setWindDirectionIndicator(CodeYesNoType value) {
         this.windDirectionIndicator = value;
     }
 
@@ -742,10 +755,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getLandingDirectionIndicator() {
+    public CodeYesNoType getLandingDirectionIndicator() {
         return landingDirectionIndicator;
     }
 
@@ -754,10 +767,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setLandingDirectionIndicator(JAXBElement<CodeYesNoType> value) {
+    public void setLandingDirectionIndicator(CodeYesNoType value) {
         this.landingDirectionIndicator = value;
     }
 
@@ -770,10 +783,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getTransitionAltitude() {
+    public ValDistanceVerticalType getTransitionAltitude() {
         return transitionAltitude;
     }
 
@@ -782,10 +795,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setTransitionAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setTransitionAltitude(ValDistanceVerticalType value) {
         this.transitionAltitude = value;
     }
 
@@ -798,10 +811,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValFLType }{@code >}
+     *     {@link ValFLType }
      *     
      */
-    public JAXBElement<ValFLType> getTransitionLevel() {
+    public ValFLType getTransitionLevel() {
         return transitionLevel;
     }
 
@@ -810,10 +823,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValFLType }{@code >}
+     *     {@link ValFLType }
      *     
      */
-    public void setTransitionLevel(JAXBElement<ValFLType> value) {
+    public void setTransitionLevel(ValFLType value) {
         this.transitionLevel = value;
     }
 
@@ -826,10 +839,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValTemperatureType }{@code >}
+     *     {@link ValTemperatureType }
      *     
      */
-    public JAXBElement<ValTemperatureType> getLowestTemperature() {
+    public ValTemperatureType getLowestTemperature() {
         return lowestTemperature;
     }
 
@@ -838,10 +851,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValTemperatureType }{@code >}
+     *     {@link ValTemperatureType }
      *     
      */
-    public void setLowestTemperature(JAXBElement<ValTemperatureType> value) {
+    public void setLowestTemperature(ValTemperatureType value) {
         this.lowestTemperature = value;
     }
 
@@ -854,10 +867,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getAbandoned() {
+    public CodeYesNoType getAbandoned() {
         return abandoned;
     }
 
@@ -866,10 +879,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setAbandoned(JAXBElement<CodeYesNoType> value) {
+    public void setAbandoned(CodeYesNoType value) {
         this.abandoned = value;
     }
 
@@ -882,10 +895,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateType }{@code >}
+     *     {@link DateType }
      *     
      */
-    public JAXBElement<DateType> getCertificationDate() {
+    public DateType getCertificationDate() {
         return certificationDate;
     }
 
@@ -894,10 +907,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateType }{@code >}
+     *     {@link DateType }
      *     
      */
-    public void setCertificationDate(JAXBElement<DateType> value) {
+    public void setCertificationDate(DateType value) {
         this.certificationDate = value;
     }
 
@@ -910,10 +923,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateType }{@code >}
+     *     {@link DateType }
      *     
      */
-    public JAXBElement<DateType> getCertificationExpirationDate() {
+    public DateType getCertificationExpirationDate() {
         return certificationExpirationDate;
     }
 
@@ -922,10 +935,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateType }{@code >}
+     *     {@link DateType }
      *     
      */
-    public void setCertificationExpirationDate(JAXBElement<DateType> value) {
+    public void setCertificationExpirationDate(DateType value) {
         this.certificationExpirationDate = value;
     }
 
@@ -1018,10 +1031,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportResponsibilityOrganisationPropertyType }{@code >}
+     *     {@link AirportHeliportResponsibilityOrganisationPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportResponsibilityOrganisationPropertyType> getResponsibleOrganisation() {
+    public AirportHeliportResponsibilityOrganisationPropertyType getResponsibleOrganisation() {
         return responsibleOrganisation;
     }
 
@@ -1030,10 +1043,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportResponsibilityOrganisationPropertyType }{@code >}
+     *     {@link AirportHeliportResponsibilityOrganisationPropertyType }
      *     
      */
-    public void setResponsibleOrganisation(JAXBElement<AirportHeliportResponsibilityOrganisationPropertyType> value) {
+    public void setResponsibleOrganisation(AirportHeliportResponsibilityOrganisationPropertyType value) {
         this.responsibleOrganisation = value;
     }
 
@@ -1046,10 +1059,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getARP() {
+    public ElevatedPointPropertyType getARP() {
         return arp;
     }
 
@@ -1058,10 +1071,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setARP(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setARP(ElevatedPointPropertyType value) {
         this.arp = value;
     }
 
@@ -1074,10 +1087,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getAviationBoundary() {
+    public ElevatedSurfacePropertyType getAviationBoundary() {
         return aviationBoundary;
     }
 
@@ -1086,10 +1099,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setAviationBoundary(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setAviationBoundary(ElevatedSurfacePropertyType value) {
         this.aviationBoundary = value;
     }
 
@@ -1325,7 +1338,7 @@ public class AirportHeliportTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportHeliportExtension", required = true)
-        @Transient
+        @Column(name = "aixm:_abstract_airport_heliport_extension")
         protected AbstractExtensionType abstractAirportHeliportExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

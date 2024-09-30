@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,49 +68,58 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "unit_time_slice_type")
+@Embeddable
 public class UnitTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeUnitType> type;
-    @XmlElementRef(name = "compliantICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> compliantICAO;
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeOrganisationDesignatorType> designator;
-    @XmlElementRef(name = "military", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeMilitaryOperationsType> military;
-    @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> position;
-    @XmlElementRef(name = "airportLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> airportLocation;
-    @XmlElementRef(name = "ownerOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<OrganisationAuthorityPropertyType> ownerOrganisation;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "type")
+    protected CodeUnitType type;
+    @XmlElement(nillable = true)
+    @Column(name = "compliant_icao")
+    protected CodeYesNoType compliantICAO;
+    @XmlElement(nillable = true)
+    @Column(name = "designator")
+    protected CodeOrganisationDesignatorType designator;
+    @XmlElement(nillable = true)
+    @Column(name = "military")
+    protected CodeMilitaryOperationsType military;
+    @XmlElement(nillable = true)
+    @Column(name = "position")
+    protected ElevatedPointPropertyType position;
+    @XmlElement(nillable = true)
+    @Column(name = "airport_location")
+    protected AirportHeliportPropertyType airportLocation;
+    @XmlElement(nillable = true)
+    @Column(name = "owner_organisation")
+    protected OrganisationAuthorityPropertyType ownerOrganisation;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<UnitDependencyPropertyType> relatedUnit;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<UnitAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<UnitTimeSliceType.Extension> extension;
 
     /**
@@ -118,10 +127,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -130,10 +139,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -146,10 +155,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeUnitType }{@code >}
+     *     {@link CodeUnitType }
      *     
      */
-    public JAXBElement<CodeUnitType> getType() {
+    public CodeUnitType getType() {
         return type;
     }
 
@@ -158,10 +167,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeUnitType }{@code >}
+     *     {@link CodeUnitType }
      *     
      */
-    public void setType(JAXBElement<CodeUnitType> value) {
+    public void setType(CodeUnitType value) {
         this.type = value;
     }
 
@@ -174,10 +183,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getCompliantICAO() {
+    public CodeYesNoType getCompliantICAO() {
         return compliantICAO;
     }
 
@@ -186,10 +195,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setCompliantICAO(JAXBElement<CodeYesNoType> value) {
+    public void setCompliantICAO(CodeYesNoType value) {
         this.compliantICAO = value;
     }
 
@@ -202,10 +211,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeOrganisationDesignatorType }{@code >}
+     *     {@link CodeOrganisationDesignatorType }
      *     
      */
-    public JAXBElement<CodeOrganisationDesignatorType> getDesignator() {
+    public CodeOrganisationDesignatorType getDesignator() {
         return designator;
     }
 
@@ -214,10 +223,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeOrganisationDesignatorType }{@code >}
+     *     {@link CodeOrganisationDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<CodeOrganisationDesignatorType> value) {
+    public void setDesignator(CodeOrganisationDesignatorType value) {
         this.designator = value;
     }
 
@@ -230,10 +239,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     *     {@link CodeMilitaryOperationsType }
      *     
      */
-    public JAXBElement<CodeMilitaryOperationsType> getMilitary() {
+    public CodeMilitaryOperationsType getMilitary() {
         return military;
     }
 
@@ -242,10 +251,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     *     {@link CodeMilitaryOperationsType }
      *     
      */
-    public void setMilitary(JAXBElement<CodeMilitaryOperationsType> value) {
+    public void setMilitary(CodeMilitaryOperationsType value) {
         this.military = value;
     }
 
@@ -258,10 +267,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getPosition() {
+    public ElevatedPointPropertyType getPosition() {
         return position;
     }
 
@@ -270,10 +279,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setPosition(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setPosition(ElevatedPointPropertyType value) {
         this.position = value;
     }
 
@@ -286,10 +295,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAirportLocation() {
+    public AirportHeliportPropertyType getAirportLocation() {
         return airportLocation;
     }
 
@@ -298,10 +307,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAirportLocation(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAirportLocation(AirportHeliportPropertyType value) {
         this.airportLocation = value;
     }
 
@@ -314,10 +323,10 @@ public class UnitTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public JAXBElement<OrganisationAuthorityPropertyType> getOwnerOrganisation() {
+    public OrganisationAuthorityPropertyType getOwnerOrganisation() {
         return ownerOrganisation;
     }
 
@@ -326,10 +335,10 @@ public class UnitTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public void setOwnerOrganisation(JAXBElement<OrganisationAuthorityPropertyType> value) {
+    public void setOwnerOrganisation(OrganisationAuthorityPropertyType value) {
         this.ownerOrganisation = value;
     }
 
@@ -565,7 +574,7 @@ public class UnitTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractUnitExtension", required = true)
-        @Transient
+        @Column(name = "aixm:_abstract_unit_extension")
         protected AbstractExtensionType abstractUnitExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
