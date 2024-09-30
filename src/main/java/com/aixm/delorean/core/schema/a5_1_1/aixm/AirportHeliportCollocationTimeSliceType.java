@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -60,25 +60,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "airport_heliport_collocation_time_slice_type")
+@Embeddable
 public class AirportHeliportCollocationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAirportHeliportCollocationType> type;
-    @XmlElementRef(name = "hostAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> hostAirport;
-    @XmlElementRef(name = "dependentAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> dependentAirport;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "type")
+    protected CodeAirportHeliportCollocationType type;
+    @XmlElement(nillable = true)
+    @Column(name = "host_airport")
+    protected AirportHeliportPropertyType hostAirport;
+    @XmlElement(nillable = true)
+    @Column(name = "dependent_airport")
+    protected AirportHeliportPropertyType dependentAirport;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirportHeliportCollocationTimeSliceType.Extension> extension;
 
     /**
@@ -86,10 +89,10 @@ public class AirportHeliportCollocationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirportHeliportCollocationType }{@code >}
+     *     {@link CodeAirportHeliportCollocationType }
      *     
      */
-    public JAXBElement<CodeAirportHeliportCollocationType> getType() {
+    public CodeAirportHeliportCollocationType getType() {
         return type;
     }
 
@@ -98,10 +101,10 @@ public class AirportHeliportCollocationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirportHeliportCollocationType }{@code >}
+     *     {@link CodeAirportHeliportCollocationType }
      *     
      */
-    public void setType(JAXBElement<CodeAirportHeliportCollocationType> value) {
+    public void setType(CodeAirportHeliportCollocationType value) {
         this.type = value;
     }
 
@@ -114,10 +117,10 @@ public class AirportHeliportCollocationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getHostAirport() {
+    public AirportHeliportPropertyType getHostAirport() {
         return hostAirport;
     }
 
@@ -126,10 +129,10 @@ public class AirportHeliportCollocationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setHostAirport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setHostAirport(AirportHeliportPropertyType value) {
         this.hostAirport = value;
     }
 
@@ -142,10 +145,10 @@ public class AirportHeliportCollocationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getDependentAirport() {
+    public AirportHeliportPropertyType getDependentAirport() {
         return dependentAirport;
     }
 
@@ -154,10 +157,10 @@ public class AirportHeliportCollocationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setDependentAirport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setDependentAirport(AirportHeliportPropertyType value) {
         this.dependentAirport = value;
     }
 
@@ -273,7 +276,7 @@ public class AirportHeliportCollocationTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportHeliportCollocationExtension", required = true)
-        @Transient
+        @Column(name = "aixm:_abstract_airport_heliport_collocation_extension")
         protected AbstractExtensionType abstractAirportHeliportCollocationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -8,6 +8,8 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -36,11 +38,14 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "DateType", propOrder = {
     "value"
 })
+@Embeddable
 public class DateType {
 
     @XmlValue
+    @Column(name = "date")
     protected XMLGregorianCalendar value;
     @XmlAttribute(name = "nilReason")
+    @Column(name = "date_base_type_nil_reason")
     protected String nilReason;
 
     /**

@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -58,19 +58,22 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "floating_dock_site_time_slice_type")
+@Embeddable
 public class FloatingDockSiteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "extent")
+    protected ElevatedSurfacePropertyType extent;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<FloatingDockSiteTimeSliceType.Extension> extension;
 
     /**
@@ -78,10 +81,10 @@ public class FloatingDockSiteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getExtent() {
+    public ElevatedSurfacePropertyType getExtent() {
         return extent;
     }
 
@@ -90,10 +93,10 @@ public class FloatingDockSiteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setExtent(ElevatedSurfacePropertyType value) {
         this.extent = value;
     }
 
@@ -209,7 +212,7 @@ public class FloatingDockSiteTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFloatingDockSiteExtension", required = true)
-        @Transient
+        @Column(name = "aixm:_abstract_floating_dock_site_extension")
         protected AbstractExtensionType abstractFloatingDockSiteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

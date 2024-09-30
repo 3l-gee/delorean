@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,37 +73,45 @@ public class ObstructionType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "requiredClearance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> requiredClearance;
-    @XmlElementRef(name = "minimumAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> minimumAltitude;
-    @XmlElementRef(name = "surfacePenetration", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> surfacePenetration;
-    @XmlElementRef(name = "slopePenetration", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValAngleType> slopePenetration;
-    @XmlElementRef(name = "controlling", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> controlling;
-    @XmlElementRef(name = "closeIn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> closeIn;
-    @XmlElementRef(name = "theVerticalStructure", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<VerticalStructurePropertyType> theVerticalStructure;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "required_clearance")
+    protected ValDistanceType requiredClearance;
+    @XmlElement(nillable = true)
+    @Column(name = "minimum_altitude")
+    protected ValDistanceVerticalType minimumAltitude;
+    @XmlElement(nillable = true)
+    @Column(name = "surface_penetration")
+    protected CodeYesNoType surfacePenetration;
+    @XmlElement(nillable = true)
+    @Column(name = "slope_penetration")
+    protected ValAngleType slopePenetration;
+    @XmlElement(nillable = true)
+    @Column(name = "controlling")
+    protected CodeYesNoType controlling;
+    @XmlElement(nillable = true)
+    @Column(name = "close_in")
+    protected CodeYesNoType closeIn;
+    @XmlElement(nillable = true)
+    @Column(name = "the_vertical_structure")
+    protected VerticalStructurePropertyType theVerticalStructure;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AltitudeAdjustmentPropertyType> adjustment;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ObstaclePlacementPropertyType> obstaclePlacement;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ObstructionType.Extension> extension;
 
     /**
@@ -110,10 +119,10 @@ public class ObstructionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getRequiredClearance() {
+    public ValDistanceType getRequiredClearance() {
         return requiredClearance;
     }
 
@@ -122,10 +131,10 @@ public class ObstructionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setRequiredClearance(JAXBElement<ValDistanceType> value) {
+    public void setRequiredClearance(ValDistanceType value) {
         this.requiredClearance = value;
     }
 
@@ -138,10 +147,10 @@ public class ObstructionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getMinimumAltitude() {
+    public ValDistanceVerticalType getMinimumAltitude() {
         return minimumAltitude;
     }
 
@@ -150,10 +159,10 @@ public class ObstructionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setMinimumAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setMinimumAltitude(ValDistanceVerticalType value) {
         this.minimumAltitude = value;
     }
 
@@ -166,10 +175,10 @@ public class ObstructionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getSurfacePenetration() {
+    public CodeYesNoType getSurfacePenetration() {
         return surfacePenetration;
     }
 
@@ -178,10 +187,10 @@ public class ObstructionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setSurfacePenetration(JAXBElement<CodeYesNoType> value) {
+    public void setSurfacePenetration(CodeYesNoType value) {
         this.surfacePenetration = value;
     }
 
@@ -194,10 +203,10 @@ public class ObstructionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getSlopePenetration() {
+    public ValAngleType getSlopePenetration() {
         return slopePenetration;
     }
 
@@ -206,10 +215,10 @@ public class ObstructionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setSlopePenetration(JAXBElement<ValAngleType> value) {
+    public void setSlopePenetration(ValAngleType value) {
         this.slopePenetration = value;
     }
 
@@ -222,10 +231,10 @@ public class ObstructionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getControlling() {
+    public CodeYesNoType getControlling() {
         return controlling;
     }
 
@@ -234,10 +243,10 @@ public class ObstructionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setControlling(JAXBElement<CodeYesNoType> value) {
+    public void setControlling(CodeYesNoType value) {
         this.controlling = value;
     }
 
@@ -250,10 +259,10 @@ public class ObstructionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getCloseIn() {
+    public CodeYesNoType getCloseIn() {
         return closeIn;
     }
 
@@ -262,10 +271,10 @@ public class ObstructionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setCloseIn(JAXBElement<CodeYesNoType> value) {
+    public void setCloseIn(CodeYesNoType value) {
         this.closeIn = value;
     }
 
@@ -278,10 +287,10 @@ public class ObstructionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link VerticalStructurePropertyType }{@code >}
+     *     {@link VerticalStructurePropertyType }
      *     
      */
-    public JAXBElement<VerticalStructurePropertyType> getTheVerticalStructure() {
+    public VerticalStructurePropertyType getTheVerticalStructure() {
         return theVerticalStructure;
     }
 
@@ -290,10 +299,10 @@ public class ObstructionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link VerticalStructurePropertyType }{@code >}
+     *     {@link VerticalStructurePropertyType }
      *     
      */
-    public void setTheVerticalStructure(JAXBElement<VerticalStructurePropertyType> value) {
+    public void setTheVerticalStructure(VerticalStructurePropertyType value) {
         this.theVerticalStructure = value;
     }
 
@@ -489,7 +498,7 @@ public class ObstructionType
     public static class Extension {
 
         @XmlElement(name = "AbstractObstructionExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_obstruction_extension")
         protected AbstractExtensionType abstractObstructionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

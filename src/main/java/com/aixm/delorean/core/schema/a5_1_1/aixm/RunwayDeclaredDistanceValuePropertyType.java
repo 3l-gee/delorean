@@ -7,9 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -46,7 +46,7 @@ public class RunwayDeclaredDistanceValuePropertyType
 {
 
     @XmlElement(name = "RunwayDeclaredDistanceValue", required = true)
-    @Transient
+    @Column(name = "aixm:_runway_declared_distance_value")
     protected RunwayDeclaredDistanceValueType runwayDeclaredDistanceValue;
 
     /**

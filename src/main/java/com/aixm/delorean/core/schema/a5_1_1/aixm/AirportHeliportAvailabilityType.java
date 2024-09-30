@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,24 +72,34 @@ public class AirportHeliportAvailabilityType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "operationalStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStatusAirportType> operationalStatus;
-    @XmlElementRef(name = "warning", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAirportWarningType> warning;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "operational_status")
+    protected CodeStatusAirportType operationalStatus;
+    @XmlElement(nillable = true)
+    @Column(name = "warning")
+    protected CodeAirportWarningType warning;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirportHeliportUsagePropertyType> usage;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirportHeliportAvailabilityType.Extension> extension;
 
     /**
@@ -216,10 +227,10 @@ public class AirportHeliportAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusAirportType }{@code >}
+     *     {@link CodeStatusAirportType }
      *     
      */
-    public JAXBElement<CodeStatusAirportType> getOperationalStatus() {
+    public CodeStatusAirportType getOperationalStatus() {
         return operationalStatus;
     }
 
@@ -228,10 +239,10 @@ public class AirportHeliportAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusAirportType }{@code >}
+     *     {@link CodeStatusAirportType }
      *     
      */
-    public void setOperationalStatus(JAXBElement<CodeStatusAirportType> value) {
+    public void setOperationalStatus(CodeStatusAirportType value) {
         this.operationalStatus = value;
     }
 
@@ -244,10 +255,10 @@ public class AirportHeliportAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirportWarningType }{@code >}
+     *     {@link CodeAirportWarningType }
      *     
      */
-    public JAXBElement<CodeAirportWarningType> getWarning() {
+    public CodeAirportWarningType getWarning() {
         return warning;
     }
 
@@ -256,10 +267,10 @@ public class AirportHeliportAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirportWarningType }{@code >}
+     *     {@link CodeAirportWarningType }
      *     
      */
-    public void setWarning(JAXBElement<CodeAirportWarningType> value) {
+    public void setWarning(CodeAirportWarningType value) {
         this.warning = value;
     }
 
@@ -377,10 +388,10 @@ public class AirportHeliportAvailabilityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_properties_with_schedule_extension")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractAirportHeliportAvailabilityExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_airport_heliport_availability_extension")
         protected AbstractExtensionType abstractAirportHeliportAvailabilityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

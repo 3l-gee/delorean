@@ -7,9 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -46,7 +46,7 @@ public class HoldingUsePropertyType
 {
 
     @XmlElement(name = "HoldingUse", required = true)
-    @Transient
+    @Column(name = "aixm:_holding_use")
     protected HoldingUseType holdingUse;
 
     /**

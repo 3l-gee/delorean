@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -66,19 +67,21 @@ public class ElevatedCurveType
     extends CurveType
 {
 
-    @XmlElementRef(name = "elevation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> elevation;
-    @XmlElementRef(name = "geoidUndulation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceSignedType> geoidUndulation;
-    @XmlElementRef(name = "verticalDatum", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalDatumType> verticalDatum;
-    @XmlElementRef(name = "verticalAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> verticalAccuracy;
-    @Transient
+    @XmlElement(nillable = true)
+    @Column(name = "elevation")
+    protected ValDistanceVerticalType elevation;
+    @XmlElement(nillable = true)
+    @Column(name = "geoid_undulation")
+    protected ValDistanceSignedType geoidUndulation;
+    @XmlElement(nillable = true)
+    @Column(name = "vertical_datum")
+    protected CodeVerticalDatumType verticalDatum;
+    @XmlElement(nillable = true)
+    @Column(name = "vertical_accuracy")
+    protected ValDistanceType verticalAccuracy;
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ElevatedCurveType.Extension> extension;
 
     /**
@@ -86,10 +89,10 @@ public class ElevatedCurveType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getElevation() {
+    public ValDistanceVerticalType getElevation() {
         return elevation;
     }
 
@@ -98,10 +101,10 @@ public class ElevatedCurveType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setElevation(JAXBElement<ValDistanceVerticalType> value) {
+    public void setElevation(ValDistanceVerticalType value) {
         this.elevation = value;
     }
 
@@ -114,10 +117,10 @@ public class ElevatedCurveType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
+     *     {@link ValDistanceSignedType }
      *     
      */
-    public JAXBElement<ValDistanceSignedType> getGeoidUndulation() {
+    public ValDistanceSignedType getGeoidUndulation() {
         return geoidUndulation;
     }
 
@@ -126,10 +129,10 @@ public class ElevatedCurveType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
+     *     {@link ValDistanceSignedType }
      *     
      */
-    public void setGeoidUndulation(JAXBElement<ValDistanceSignedType> value) {
+    public void setGeoidUndulation(ValDistanceSignedType value) {
         this.geoidUndulation = value;
     }
 
@@ -142,10 +145,10 @@ public class ElevatedCurveType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalDatumType }{@code >}
+     *     {@link CodeVerticalDatumType }
      *     
      */
-    public JAXBElement<CodeVerticalDatumType> getVerticalDatum() {
+    public CodeVerticalDatumType getVerticalDatum() {
         return verticalDatum;
     }
 
@@ -154,10 +157,10 @@ public class ElevatedCurveType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalDatumType }{@code >}
+     *     {@link CodeVerticalDatumType }
      *     
      */
-    public void setVerticalDatum(JAXBElement<CodeVerticalDatumType> value) {
+    public void setVerticalDatum(CodeVerticalDatumType value) {
         this.verticalDatum = value;
     }
 
@@ -170,10 +173,10 @@ public class ElevatedCurveType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getVerticalAccuracy() {
+    public ValDistanceType getVerticalAccuracy() {
         return verticalAccuracy;
     }
 
@@ -182,10 +185,10 @@ public class ElevatedCurveType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setVerticalAccuracy(JAXBElement<ValDistanceType> value) {
+    public void setVerticalAccuracy(ValDistanceType value) {
         this.verticalAccuracy = value;
     }
 
@@ -261,7 +264,7 @@ public class ElevatedCurveType
     public static class Extension {
 
         @XmlElement(name = "AbstractElevatedCurveExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_elevated_curve_extension")
         protected AbstractExtensionType abstractElevatedCurveExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

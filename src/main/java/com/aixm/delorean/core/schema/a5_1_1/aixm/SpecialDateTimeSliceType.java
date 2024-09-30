@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,31 +62,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "authority",
     "extension"
 })
-@Entity
-@Table(name = "special_date_time_slice_type")
+@Embeddable
 public class SpecialDateTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeSpecialDateType> type;
-    @XmlElementRef(name = "dateDay", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DateMonthDayType> dateDay;
-    @XmlElementRef(name = "dateYear", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DateYearType> dateYear;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "type")
+    protected CodeSpecialDateType type;
+    @XmlElement(nillable = true)
+    @Column(name = "date_day")
+    protected DateMonthDayType dateDay;
+    @XmlElement(nillable = true)
+    @Column(name = "date_year")
+    protected DateYearType dateYear;
+    @XmlElement(name = "name", nillable = true)
+    @Column(name = "name")
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "authority", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<OrganisationAuthorityPropertyType> authority;
-    @Transient
+    @XmlElement(nillable = true)
+    @Column(name = "authority")
+    protected OrganisationAuthorityPropertyType authority;
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<SpecialDateTimeSliceType.Extension> extension;
 
     /**
@@ -94,10 +97,10 @@ public class SpecialDateTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeSpecialDateType }{@code >}
+     *     {@link CodeSpecialDateType }
      *     
      */
-    public JAXBElement<CodeSpecialDateType> getType() {
+    public CodeSpecialDateType getType() {
         return type;
     }
 
@@ -106,10 +109,10 @@ public class SpecialDateTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeSpecialDateType }{@code >}
+     *     {@link CodeSpecialDateType }
      *     
      */
-    public void setType(JAXBElement<CodeSpecialDateType> value) {
+    public void setType(CodeSpecialDateType value) {
         this.type = value;
     }
 
@@ -122,10 +125,10 @@ public class SpecialDateTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateMonthDayType }{@code >}
+     *     {@link DateMonthDayType }
      *     
      */
-    public JAXBElement<DateMonthDayType> getDateDay() {
+    public DateMonthDayType getDateDay() {
         return dateDay;
     }
 
@@ -134,10 +137,10 @@ public class SpecialDateTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateMonthDayType }{@code >}
+     *     {@link DateMonthDayType }
      *     
      */
-    public void setDateDay(JAXBElement<DateMonthDayType> value) {
+    public void setDateDay(DateMonthDayType value) {
         this.dateDay = value;
     }
 
@@ -150,10 +153,10 @@ public class SpecialDateTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public JAXBElement<DateYearType> getDateYear() {
+    public DateYearType getDateYear() {
         return dateYear;
     }
 
@@ -162,10 +165,10 @@ public class SpecialDateTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public void setDateYear(JAXBElement<DateYearType> value) {
+    public void setDateYear(DateYearType value) {
         this.dateYear = value;
     }
 
@@ -178,10 +181,10 @@ public class SpecialDateTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAIXMName() {
         return aixmName;
     }
 
@@ -190,10 +193,10 @@ public class SpecialDateTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAIXMName(TextNameType value) {
         this.aixmName = value;
     }
 
@@ -246,10 +249,10 @@ public class SpecialDateTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public JAXBElement<OrganisationAuthorityPropertyType> getAuthority() {
+    public OrganisationAuthorityPropertyType getAuthority() {
         return authority;
     }
 
@@ -258,10 +261,10 @@ public class SpecialDateTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public void setAuthority(JAXBElement<OrganisationAuthorityPropertyType> value) {
+    public void setAuthority(OrganisationAuthorityPropertyType value) {
         this.authority = value;
     }
 
@@ -337,7 +340,7 @@ public class SpecialDateTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSpecialDateExtension", required = true)
-        @Transient
+        @Column(name = "aixm:_abstract_special_date_extension")
         protected AbstractExtensionType abstractSpecialDateExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

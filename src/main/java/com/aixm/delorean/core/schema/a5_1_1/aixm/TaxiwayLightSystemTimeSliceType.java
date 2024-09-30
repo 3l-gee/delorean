@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,37 +65,44 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightedTaxiway",
     "extension"
 })
-@Entity
-@Table(name = "taxiway_light_system_time_slice_type")
+@Embeddable
 public class TaxiwayLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "emergencyLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> emergencyLighting;
-    @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeLightIntensityType> intensityLevel;
-    @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "emergency_lighting")
+    protected CodeYesNoType emergencyLighting;
+    @XmlElement(nillable = true)
+    @Column(name = "intensity_level")
+    protected CodeLightIntensityType intensityLevel;
+    @XmlElement(nillable = true)
+    @Column(name = "colour")
+    protected CodeColourType colour;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeTaxiwaySectionType> position;
-    @XmlElementRef(name = "lightedTaxiway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TaxiwayPropertyType> lightedTaxiway;
-    @Transient
+    @XmlElement(nillable = true)
+    @Column(name = "position")
+    protected CodeTaxiwaySectionType position;
+    @XmlElement(nillable = true)
+    @Column(name = "lighted_taxiway")
+    protected TaxiwayPropertyType lightedTaxiway;
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TaxiwayLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -103,10 +110,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getEmergencyLighting() {
+    public CodeYesNoType getEmergencyLighting() {
         return emergencyLighting;
     }
 
@@ -115,10 +122,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setEmergencyLighting(JAXBElement<CodeYesNoType> value) {
+    public void setEmergencyLighting(CodeYesNoType value) {
         this.emergencyLighting = value;
     }
 
@@ -131,10 +138,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
+     *     {@link CodeLightIntensityType }
      *     
      */
-    public JAXBElement<CodeLightIntensityType> getIntensityLevel() {
+    public CodeLightIntensityType getIntensityLevel() {
         return intensityLevel;
     }
 
@@ -143,10 +150,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
+     *     {@link CodeLightIntensityType }
      *     
      */
-    public void setIntensityLevel(JAXBElement<CodeLightIntensityType> value) {
+    public void setIntensityLevel(CodeLightIntensityType value) {
         this.intensityLevel = value;
     }
 
@@ -159,10 +166,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public JAXBElement<CodeColourType> getColour() {
+    public CodeColourType getColour() {
         return colour;
     }
 
@@ -171,10 +178,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public void setColour(JAXBElement<CodeColourType> value) {
+    public void setColour(CodeColourType value) {
         this.colour = value;
     }
 
@@ -307,10 +314,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTaxiwaySectionType }{@code >}
+     *     {@link CodeTaxiwaySectionType }
      *     
      */
-    public JAXBElement<CodeTaxiwaySectionType> getPosition() {
+    public CodeTaxiwaySectionType getPosition() {
         return position;
     }
 
@@ -319,10 +326,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTaxiwaySectionType }{@code >}
+     *     {@link CodeTaxiwaySectionType }
      *     
      */
-    public void setPosition(JAXBElement<CodeTaxiwaySectionType> value) {
+    public void setPosition(CodeTaxiwaySectionType value) {
         this.position = value;
     }
 
@@ -335,10 +342,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
+     *     {@link TaxiwayPropertyType }
      *     
      */
-    public JAXBElement<TaxiwayPropertyType> getLightedTaxiway() {
+    public TaxiwayPropertyType getLightedTaxiway() {
         return lightedTaxiway;
     }
 
@@ -347,10 +354,10 @@ public class TaxiwayLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
+     *     {@link TaxiwayPropertyType }
      *     
      */
-    public void setLightedTaxiway(JAXBElement<TaxiwayPropertyType> value) {
+    public void setLightedTaxiway(TaxiwayPropertyType value) {
         this.lightedTaxiway = value;
     }
 
@@ -428,10 +435,10 @@ public class TaxiwayLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTaxiwayLightSystemExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_taxiway_light_system_extension")
         protected AbstractExtensionType abstractTaxiwayLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_ground_light_system_extension")
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

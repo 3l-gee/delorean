@@ -82,13 +82,22 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<documentation>Base type for AIXM complex types that are NOT features. For example, City, ContactInformation, AirspaceVolume, etc. It derives from AbstractGMLType so that AIXM objects are recognised as GML objects, thus ensuring that GML-aware applications recognise them properly. Retains only the mandatory gml:id attribute.</documentation>
 		</annotation>
 		<complexContent>
+			<extension base="gml:AbstractGMLType">
+				<sequence>
+					<!-- Adding dbID as a new field -->
+					<element name="dbID" type="xs:long" minOccurs="0"/>
+				</sequence>
+				<attribute ref="gml:id" use="required"/>
+			</extension>
+		</complexContent>
+		<!-- <complexContent>
 			<restriction base="gml:AbstractGMLType">
 				<sequence>
 					<sequence/>
 				</sequence>
 				<attribute ref="gml:id" use="required"/>
 			</restriction>
-		</complexContent>
+		</complexContent> -->
 	</complexType>
 	<element name="AbstractAIXMObject" type="aixm:AbstractAIXMObjectType" abstract="true" substitutionGroup="gml:AbstractGML">
 		<annotation>

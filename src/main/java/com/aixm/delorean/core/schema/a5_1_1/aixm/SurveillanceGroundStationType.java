@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,15 +66,19 @@ public class SurveillanceGroundStationType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "videoMap", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> videoMap;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "video_map")
+    protected CodeYesNoType videoMap;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @Column(name = "the_unit")
     protected UnitPropertyType theUnit;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<SurveillanceGroundStationType.Extension> extension;
 
     /**
@@ -81,10 +86,10 @@ public class SurveillanceGroundStationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getVideoMap() {
+    public CodeYesNoType getVideoMap() {
         return videoMap;
     }
 
@@ -93,10 +98,10 @@ public class SurveillanceGroundStationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setVideoMap(JAXBElement<CodeYesNoType> value) {
+    public void setVideoMap(CodeYesNoType value) {
         this.videoMap = value;
     }
 
@@ -240,7 +245,7 @@ public class SurveillanceGroundStationType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurveillanceGroundStationExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_surveillance_ground_station_extension")
         protected AbstractExtensionType abstractSurveillanceGroundStationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

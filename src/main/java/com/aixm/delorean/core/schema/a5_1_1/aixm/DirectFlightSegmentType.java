@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -78,45 +79,49 @@ public class DirectFlightSegmentType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "end_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> endFixDesignatedPoint;
-    @XmlElementRef(name = "end_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NavaidPropertyType> endNavaidSystem;
-    @XmlElementRef(name = "end_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<PointPropertyType> endPosition;
-    @XmlElementRef(name = "end_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> endRunwayPoint;
-    @XmlElementRef(name = "end_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> endAimingPoint;
-    @XmlElementRef(name = "end_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> endAirportReferencePoint;
-    @XmlElementRef(name = "start_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> startFixDesignatedPoint;
-    @XmlElementRef(name = "start_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NavaidPropertyType> startNavaidSystem;
-    @XmlElementRef(name = "start_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<PointPropertyType> startPosition;
-    @XmlElementRef(name = "start_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> startRunwayPoint;
-    @XmlElementRef(name = "start_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> startAimingPoint;
-    @XmlElementRef(name = "start_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> startAirportReferencePoint;
-    @Transient
+    @XmlElement(name = "end_fixDesignatedPoint", nillable = true)
+    @Column(name = "end_fix_designated_point")
+    protected DesignatedPointPropertyType endFixDesignatedPoint;
+    @XmlElement(name = "end_navaidSystem", nillable = true)
+    @Column(name = "end_navaid_system")
+    protected NavaidPropertyType endNavaidSystem;
+    @XmlElement(name = "end_position", nillable = true)
+    @Column(name = "end_position")
+    protected PointPropertyType endPosition;
+    @XmlElement(name = "end_runwayPoint", nillable = true)
+    @Column(name = "end_runway_point")
+    protected RunwayCentrelinePointPropertyType endRunwayPoint;
+    @XmlElement(name = "end_aimingPoint", nillable = true)
+    @Column(name = "end_aiming_point")
+    protected TouchDownLiftOffPropertyType endAimingPoint;
+    @XmlElement(name = "end_airportReferencePoint", nillable = true)
+    @Column(name = "end_airport_reference_point")
+    protected AirportHeliportPropertyType endAirportReferencePoint;
+    @XmlElement(name = "start_fixDesignatedPoint", nillable = true)
+    @Column(name = "start_fix_designated_point")
+    protected DesignatedPointPropertyType startFixDesignatedPoint;
+    @XmlElement(name = "start_navaidSystem", nillable = true)
+    @Column(name = "start_navaid_system")
+    protected NavaidPropertyType startNavaidSystem;
+    @XmlElement(name = "start_position", nillable = true)
+    @Column(name = "start_position")
+    protected PointPropertyType startPosition;
+    @XmlElement(name = "start_runwayPoint", nillable = true)
+    @Column(name = "start_runway_point")
+    protected RunwayCentrelinePointPropertyType startRunwayPoint;
+    @XmlElement(name = "start_aimingPoint", nillable = true)
+    @Column(name = "start_aiming_point")
+    protected TouchDownLiftOffPropertyType startAimingPoint;
+    @XmlElement(name = "start_airportReferencePoint", nillable = true)
+    @Column(name = "start_airport_reference_point")
+    protected AirportHeliportPropertyType startAirportReferencePoint;
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<DirectFlightSegmentType.Extension> extension;
 
     /**
@@ -164,10 +169,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getEndFixDesignatedPoint() {
+    public DesignatedPointPropertyType getEndFixDesignatedPoint() {
         return endFixDesignatedPoint;
     }
 
@@ -176,10 +181,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setEndFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setEndFixDesignatedPoint(DesignatedPointPropertyType value) {
         this.endFixDesignatedPoint = value;
     }
 
@@ -192,10 +197,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getEndNavaidSystem() {
+    public NavaidPropertyType getEndNavaidSystem() {
         return endNavaidSystem;
     }
 
@@ -204,10 +209,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setEndNavaidSystem(JAXBElement<NavaidPropertyType> value) {
+    public void setEndNavaidSystem(NavaidPropertyType value) {
         this.endNavaidSystem = value;
     }
 
@@ -220,10 +225,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public JAXBElement<PointPropertyType> getEndPosition() {
+    public PointPropertyType getEndPosition() {
         return endPosition;
     }
 
@@ -232,10 +237,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public void setEndPosition(JAXBElement<PointPropertyType> value) {
+    public void setEndPosition(PointPropertyType value) {
         this.endPosition = value;
     }
 
@@ -248,10 +253,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getEndRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getEndRunwayPoint() {
         return endRunwayPoint;
     }
 
@@ -260,10 +265,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setEndRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setEndRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.endRunwayPoint = value;
     }
 
@@ -276,10 +281,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getEndAimingPoint() {
+    public TouchDownLiftOffPropertyType getEndAimingPoint() {
         return endAimingPoint;
     }
 
@@ -288,10 +293,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setEndAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setEndAimingPoint(TouchDownLiftOffPropertyType value) {
         this.endAimingPoint = value;
     }
 
@@ -304,10 +309,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getEndAirportReferencePoint() {
+    public AirportHeliportPropertyType getEndAirportReferencePoint() {
         return endAirportReferencePoint;
     }
 
@@ -316,10 +321,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setEndAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setEndAirportReferencePoint(AirportHeliportPropertyType value) {
         this.endAirportReferencePoint = value;
     }
 
@@ -332,10 +337,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getStartFixDesignatedPoint() {
+    public DesignatedPointPropertyType getStartFixDesignatedPoint() {
         return startFixDesignatedPoint;
     }
 
@@ -344,10 +349,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setStartFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setStartFixDesignatedPoint(DesignatedPointPropertyType value) {
         this.startFixDesignatedPoint = value;
     }
 
@@ -360,10 +365,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getStartNavaidSystem() {
+    public NavaidPropertyType getStartNavaidSystem() {
         return startNavaidSystem;
     }
 
@@ -372,10 +377,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setStartNavaidSystem(JAXBElement<NavaidPropertyType> value) {
+    public void setStartNavaidSystem(NavaidPropertyType value) {
         this.startNavaidSystem = value;
     }
 
@@ -388,10 +393,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public JAXBElement<PointPropertyType> getStartPosition() {
+    public PointPropertyType getStartPosition() {
         return startPosition;
     }
 
@@ -400,10 +405,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public void setStartPosition(JAXBElement<PointPropertyType> value) {
+    public void setStartPosition(PointPropertyType value) {
         this.startPosition = value;
     }
 
@@ -416,10 +421,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getStartRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getStartRunwayPoint() {
         return startRunwayPoint;
     }
 
@@ -428,10 +433,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setStartRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setStartRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.startRunwayPoint = value;
     }
 
@@ -444,10 +449,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getStartAimingPoint() {
+    public TouchDownLiftOffPropertyType getStartAimingPoint() {
         return startAimingPoint;
     }
 
@@ -456,10 +461,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setStartAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setStartAimingPoint(TouchDownLiftOffPropertyType value) {
         this.startAimingPoint = value;
     }
 
@@ -472,10 +477,10 @@ public class DirectFlightSegmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getStartAirportReferencePoint() {
+    public AirportHeliportPropertyType getStartAirportReferencePoint() {
         return startAirportReferencePoint;
     }
 
@@ -484,10 +489,10 @@ public class DirectFlightSegmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setStartAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setStartAirportReferencePoint(AirportHeliportPropertyType value) {
         this.startAirportReferencePoint = value;
     }
 
@@ -565,10 +570,10 @@ public class DirectFlightSegmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractDirectFlightExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_direct_flight_extension")
         protected AbstractExtensionType abstractDirectFlightExtension;
         @XmlElement(name = "AbstractDirectFlightSegmentExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_direct_flight_segment_extension")
         protected AbstractExtensionType abstractDirectFlightSegmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -7,9 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -47,7 +47,7 @@ public class SurfacePropertyType
 {
 
     @XmlElementRef(name = "Surface", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class)
-    @Transient
+    @Column(name = "aixm:_surface")
     protected JAXBElement<? extends SurfaceType> surface;
 
     /**

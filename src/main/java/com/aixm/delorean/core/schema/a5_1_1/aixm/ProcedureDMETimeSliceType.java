@@ -9,15 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,28 +61,31 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "procedure_dme_time_slice_type")
+@Embeddable
 public class ProcedureDMETimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "criticalDME", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> criticalDME;
-    @XmlElementRef(name = "satisfactory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> satisfactory;
-    @XmlElementRef(name = "DME", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DMEPropertyType> dme;
-    @XmlElementRef(name = "segmentLeg", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SegmentLegPropertyType> segmentLeg;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "critical_dme")
+    protected CodeYesNoType criticalDME;
+    @XmlElement(nillable = true)
+    @Column(name = "satisfactory")
+    protected CodeYesNoType satisfactory;
+    @XmlElement(name = "DME", nillable = true)
+    @Column(name = "dme")
+    protected DMEPropertyType dme;
+    @XmlElement(nillable = true)
+    @Column(name = "segment_leg")
+    protected SegmentLegPropertyType segmentLeg;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ProcedureDMETimeSliceType.Extension> extension;
 
     /**
@@ -90,10 +93,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getCriticalDME() {
+    public CodeYesNoType getCriticalDME() {
         return criticalDME;
     }
 
@@ -102,10 +105,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setCriticalDME(JAXBElement<CodeYesNoType> value) {
+    public void setCriticalDME(CodeYesNoType value) {
         this.criticalDME = value;
     }
 
@@ -118,10 +121,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getSatisfactory() {
+    public CodeYesNoType getSatisfactory() {
         return satisfactory;
     }
 
@@ -130,10 +133,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setSatisfactory(JAXBElement<CodeYesNoType> value) {
+    public void setSatisfactory(CodeYesNoType value) {
         this.satisfactory = value;
     }
 
@@ -146,10 +149,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
+     *     {@link DMEPropertyType }
      *     
      */
-    public JAXBElement<DMEPropertyType> getDME() {
+    public DMEPropertyType getDME() {
         return dme;
     }
 
@@ -158,10 +161,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
+     *     {@link DMEPropertyType }
      *     
      */
-    public void setDME(JAXBElement<DMEPropertyType> value) {
+    public void setDME(DMEPropertyType value) {
         this.dme = value;
     }
 
@@ -174,10 +177,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SegmentLegPropertyType }{@code >}
+     *     {@link SegmentLegPropertyType }
      *     
      */
-    public JAXBElement<SegmentLegPropertyType> getSegmentLeg() {
+    public SegmentLegPropertyType getSegmentLeg() {
         return segmentLeg;
     }
 
@@ -186,10 +189,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SegmentLegPropertyType }{@code >}
+     *     {@link SegmentLegPropertyType }
      *     
      */
-    public void setSegmentLeg(JAXBElement<SegmentLegPropertyType> value) {
+    public void setSegmentLeg(SegmentLegPropertyType value) {
         this.segmentLeg = value;
     }
 
@@ -305,7 +308,7 @@ public class ProcedureDMETimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractProcedureDMEExtension", required = true)
-        @Transient
+        @Column(name = "aixm:_abstract_procedure_dme_extension")
         protected AbstractExtensionType abstractProcedureDMEExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -75,46 +76,50 @@ public class FASDataBlockType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "horizontalAlarmLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValAlarmLimitType> horizontalAlarmLimit;
-    @XmlElementRef(name = "verticalAlarmLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValAlarmLimitType> verticalAlarmLimit;
-    @XmlElementRef(name = "thresholdCourseWidth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> thresholdCourseWidth;
-    @XmlElementRef(name = "lengthOffset", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> lengthOffset;
-    @XmlElementRef(name = "CRCRemainder", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValHexType> crcRemainder;
-    @XmlElementRef(name = "operationType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NoSequenceType> operationType;
-    @XmlElementRef(name = "serviceProviderSBAS", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NoSequenceType> serviceProviderSBAS;
-    @XmlElementRef(name = "approachPerformanceDesignator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NoSequenceType> approachPerformanceDesignator;
-    @XmlElementRef(name = "routeIndicator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRouteIndicatorType> routeIndicator;
-    @XmlElementRef(name = "referencePathDataSelector", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NoSequenceType> referencePathDataSelector;
-    @XmlElementRef(name = "referencePathIdentifier", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeReferencePathIdentifierType> referencePathIdentifier;
-    @XmlElementRef(name = "codeICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeICAOCountryType> codeICAO;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "horizontal_alarm_limit")
+    protected ValAlarmLimitType horizontalAlarmLimit;
+    @XmlElement(nillable = true)
+    @Column(name = "vertical_alarm_limit")
+    protected ValAlarmLimitType verticalAlarmLimit;
+    @XmlElement(nillable = true)
+    @Column(name = "threshold_course_width")
+    protected ValDistanceType thresholdCourseWidth;
+    @XmlElement(nillable = true)
+    @Column(name = "length_offset")
+    protected ValDistanceType lengthOffset;
+    @XmlElement(name = "CRCRemainder", nillable = true)
+    @Column(name = "crc_remainder")
+    protected ValHexType crcRemainder;
+    @XmlElement(nillable = true)
+    @Column(name = "operation_type")
+    protected NoSequenceType operationType;
+    @XmlElement(nillable = true)
+    @Column(name = "service_provider_sbas")
+    protected NoSequenceType serviceProviderSBAS;
+    @XmlElement(nillable = true)
+    @Column(name = "approach_performance_designator")
+    protected NoSequenceType approachPerformanceDesignator;
+    @XmlElement(nillable = true)
+    @Column(name = "route_indicator")
+    protected CodeRouteIndicatorType routeIndicator;
+    @XmlElement(nillable = true)
+    @Column(name = "reference_path_data_selector")
+    protected NoSequenceType referencePathDataSelector;
+    @XmlElement(nillable = true)
+    @Column(name = "reference_path_identifier")
+    protected CodeReferencePathIdentifierType referencePathIdentifier;
+    @XmlElement(nillable = true)
+    @Column(name = "code_icao")
+    protected CodeICAOCountryType codeICAO;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<FASDataBlockType.Extension> extension;
 
     /**
@@ -122,10 +127,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAlarmLimitType }{@code >}
+     *     {@link ValAlarmLimitType }
      *     
      */
-    public JAXBElement<ValAlarmLimitType> getHorizontalAlarmLimit() {
+    public ValAlarmLimitType getHorizontalAlarmLimit() {
         return horizontalAlarmLimit;
     }
 
@@ -134,10 +139,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAlarmLimitType }{@code >}
+     *     {@link ValAlarmLimitType }
      *     
      */
-    public void setHorizontalAlarmLimit(JAXBElement<ValAlarmLimitType> value) {
+    public void setHorizontalAlarmLimit(ValAlarmLimitType value) {
         this.horizontalAlarmLimit = value;
     }
 
@@ -150,10 +155,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAlarmLimitType }{@code >}
+     *     {@link ValAlarmLimitType }
      *     
      */
-    public JAXBElement<ValAlarmLimitType> getVerticalAlarmLimit() {
+    public ValAlarmLimitType getVerticalAlarmLimit() {
         return verticalAlarmLimit;
     }
 
@@ -162,10 +167,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAlarmLimitType }{@code >}
+     *     {@link ValAlarmLimitType }
      *     
      */
-    public void setVerticalAlarmLimit(JAXBElement<ValAlarmLimitType> value) {
+    public void setVerticalAlarmLimit(ValAlarmLimitType value) {
         this.verticalAlarmLimit = value;
     }
 
@@ -178,10 +183,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getThresholdCourseWidth() {
+    public ValDistanceType getThresholdCourseWidth() {
         return thresholdCourseWidth;
     }
 
@@ -190,10 +195,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setThresholdCourseWidth(JAXBElement<ValDistanceType> value) {
+    public void setThresholdCourseWidth(ValDistanceType value) {
         this.thresholdCourseWidth = value;
     }
 
@@ -206,10 +211,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLengthOffset() {
+    public ValDistanceType getLengthOffset() {
         return lengthOffset;
     }
 
@@ -218,10 +223,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLengthOffset(JAXBElement<ValDistanceType> value) {
+    public void setLengthOffset(ValDistanceType value) {
         this.lengthOffset = value;
     }
 
@@ -234,10 +239,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValHexType }{@code >}
+     *     {@link ValHexType }
      *     
      */
-    public JAXBElement<ValHexType> getCRCRemainder() {
+    public ValHexType getCRCRemainder() {
         return crcRemainder;
     }
 
@@ -246,10 +251,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValHexType }{@code >}
+     *     {@link ValHexType }
      *     
      */
-    public void setCRCRemainder(JAXBElement<ValHexType> value) {
+    public void setCRCRemainder(ValHexType value) {
         this.crcRemainder = value;
     }
 
@@ -262,10 +267,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public JAXBElement<NoSequenceType> getOperationType() {
+    public NoSequenceType getOperationType() {
         return operationType;
     }
 
@@ -274,10 +279,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public void setOperationType(JAXBElement<NoSequenceType> value) {
+    public void setOperationType(NoSequenceType value) {
         this.operationType = value;
     }
 
@@ -290,10 +295,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public JAXBElement<NoSequenceType> getServiceProviderSBAS() {
+    public NoSequenceType getServiceProviderSBAS() {
         return serviceProviderSBAS;
     }
 
@@ -302,10 +307,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public void setServiceProviderSBAS(JAXBElement<NoSequenceType> value) {
+    public void setServiceProviderSBAS(NoSequenceType value) {
         this.serviceProviderSBAS = value;
     }
 
@@ -318,10 +323,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public JAXBElement<NoSequenceType> getApproachPerformanceDesignator() {
+    public NoSequenceType getApproachPerformanceDesignator() {
         return approachPerformanceDesignator;
     }
 
@@ -330,10 +335,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public void setApproachPerformanceDesignator(JAXBElement<NoSequenceType> value) {
+    public void setApproachPerformanceDesignator(NoSequenceType value) {
         this.approachPerformanceDesignator = value;
     }
 
@@ -346,10 +351,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteIndicatorType }{@code >}
+     *     {@link CodeRouteIndicatorType }
      *     
      */
-    public JAXBElement<CodeRouteIndicatorType> getRouteIndicator() {
+    public CodeRouteIndicatorType getRouteIndicator() {
         return routeIndicator;
     }
 
@@ -358,10 +363,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteIndicatorType }{@code >}
+     *     {@link CodeRouteIndicatorType }
      *     
      */
-    public void setRouteIndicator(JAXBElement<CodeRouteIndicatorType> value) {
+    public void setRouteIndicator(CodeRouteIndicatorType value) {
         this.routeIndicator = value;
     }
 
@@ -374,10 +379,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public JAXBElement<NoSequenceType> getReferencePathDataSelector() {
+    public NoSequenceType getReferencePathDataSelector() {
         return referencePathDataSelector;
     }
 
@@ -386,10 +391,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public void setReferencePathDataSelector(JAXBElement<NoSequenceType> value) {
+    public void setReferencePathDataSelector(NoSequenceType value) {
         this.referencePathDataSelector = value;
     }
 
@@ -402,10 +407,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeReferencePathIdentifierType }{@code >}
+     *     {@link CodeReferencePathIdentifierType }
      *     
      */
-    public JAXBElement<CodeReferencePathIdentifierType> getReferencePathIdentifier() {
+    public CodeReferencePathIdentifierType getReferencePathIdentifier() {
         return referencePathIdentifier;
     }
 
@@ -414,10 +419,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeReferencePathIdentifierType }{@code >}
+     *     {@link CodeReferencePathIdentifierType }
      *     
      */
-    public void setReferencePathIdentifier(JAXBElement<CodeReferencePathIdentifierType> value) {
+    public void setReferencePathIdentifier(CodeReferencePathIdentifierType value) {
         this.referencePathIdentifier = value;
     }
 
@@ -430,10 +435,10 @@ public class FASDataBlockType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeICAOCountryType }{@code >}
+     *     {@link CodeICAOCountryType }
      *     
      */
-    public JAXBElement<CodeICAOCountryType> getCodeICAO() {
+    public CodeICAOCountryType getCodeICAO() {
         return codeICAO;
     }
 
@@ -442,10 +447,10 @@ public class FASDataBlockType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeICAOCountryType }{@code >}
+     *     {@link CodeICAOCountryType }
      *     
      */
-    public void setCodeICAO(JAXBElement<CodeICAOCountryType> value) {
+    public void setCodeICAO(CodeICAOCountryType value) {
         this.codeICAO = value;
     }
 
@@ -561,7 +566,7 @@ public class FASDataBlockType
     public static class Extension {
 
         @XmlElement(name = "AbstractFASDataBlockExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_fas_data_block_extension")
         protected AbstractExtensionType abstractFASDataBlockExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

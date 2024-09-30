@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -35,11 +37,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "CodeNDBUsageType", propOrder = {
     "value"
 })
+@Embeddable
 public class CodeNDBUsageType {
 
     @XmlValue
-    protected String value;
+    protected CodeNDBUsageBaseType value;
     @XmlAttribute(name = "nilReason")
+    @Column(name = "code_ndb_usage_base_type_nil_reason")
     protected String nilReason;
 
     /**
@@ -47,10 +51,10 @@ public class CodeNDBUsageType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link CodeNDBUsageBaseType }
      *     
      */
-    public String getValue() {
+    public CodeNDBUsageBaseType getValue() {
         return value;
     }
 
@@ -59,10 +63,10 @@ public class CodeNDBUsageType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link CodeNDBUsageBaseType }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(CodeNDBUsageBaseType value) {
         this.value = value;
     }
 

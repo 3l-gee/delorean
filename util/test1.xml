@@ -1,13 +1,14 @@
 
 <jaxb:bindings 
-	version="3.0"
+    version="3.0"
     xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
-	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-	xmlns:annox="urn:jaxb.jvnet.org:annox"
-	jaxb:extensionBindingPrefixes="xjc annox">
+    xmlns:annox="urn:jaxb.jvnet.org:annox"
+    jaxb:extensionBindingPrefixes="xjc annox">
+    <jaxb:bindings schemaLocation="AIXM_Features.xsd" node="/xs:schema">
 
         <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingPropertyType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -10751,4 +10752,5 @@
         <jaxb:bindings node="//xs:group[@name='SurveillanceRadarPropertyGroup']//xs:element[@name='groundStation']">
             <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
+    </jaxb:bindings>
 </jaxb:bindings>

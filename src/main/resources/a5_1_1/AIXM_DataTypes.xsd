@@ -1514,6 +1514,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeApronSectionBaseType">
+		<restriction base="string">
+			<enumeration value="EDGE"/>
+		</restriction>
+	</simpleType>
+	<!-- <simpleType name="CodeApronSectionBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -1526,7 +1531,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
+
 	<complexType name="CodeApronSectionType">
 		<simpleContent>
 			<extension base="aixm:CodeApronSectionBaseType">
@@ -2723,6 +2729,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeDMEBaseType">
+		<restriction base="string">
+			<enumeration value="NARROW"/>
+			<enumeration value="PRECISION"/>
+			<enumeration value="WIDE"/>
+		</restriction>
+	</simpleType>
+	<!-- <simpleType name="CodeDMEBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -2737,7 +2750,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<simpleType name="CodeDMEChannelBaseType">
 		<restriction base="string">
 			<enumeration value="1X"/>
@@ -6083,6 +6096,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</simpleContent>
 	</complexType>
 	<simpleType name="CodeNDBUsageBaseType">
+		<restriction base="string">
+			<enumeration value="ENR"/>
+			<enumeration value="L"/>
+			<enumeration value="MAR"/>
+		</restriction>
+	</simpleType>
+	<!-- <simpleType name="CodeNDBUsageBaseType">
 		<union>
 			<simpleType>
 				<restriction base="string">
@@ -6097,7 +6117,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</restriction>
 			</simpleType>
 		</union>
-	</simpleType>
+	</simpleType> -->
 	<complexType name="CodeNDBUsageType">
 		<simpleContent>
 			<extension base="aixm:CodeNDBUsageBaseType">

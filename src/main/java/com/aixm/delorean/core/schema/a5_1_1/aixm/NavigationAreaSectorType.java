@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,22 +68,30 @@ public class NavigationAreaSectorType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "sector_definition")
+    protected CircleSectorPropertyType sectorDefinition;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ObstructionPropertyType> significantObstacle;
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "extent")
+    protected SurfacePropertyType extent;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<SectorDesignPropertyType> sectorCriteria;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NavigationAreaSectorType.Extension> extension;
 
     /**
@@ -90,10 +99,10 @@ public class NavigationAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
+     *     {@link CircleSectorPropertyType }
      *     
      */
-    public JAXBElement<CircleSectorPropertyType> getSectorDefinition() {
+    public CircleSectorPropertyType getSectorDefinition() {
         return sectorDefinition;
     }
 
@@ -102,10 +111,10 @@ public class NavigationAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
+     *     {@link CircleSectorPropertyType }
      *     
      */
-    public void setSectorDefinition(JAXBElement<CircleSectorPropertyType> value) {
+    public void setSectorDefinition(CircleSectorPropertyType value) {
         this.sectorDefinition = value;
     }
 
@@ -158,10 +167,10 @@ public class NavigationAreaSectorType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public JAXBElement<SurfacePropertyType> getExtent() {
+    public SurfacePropertyType getExtent() {
         return extent;
     }
 
@@ -170,10 +179,10 @@ public class NavigationAreaSectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<SurfacePropertyType> value) {
+    public void setExtent(SurfacePropertyType value) {
         this.extent = value;
     }
 
@@ -329,7 +338,7 @@ public class NavigationAreaSectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavigationAreaSectorExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_navigation_area_sector_extension")
         protected AbstractExtensionType abstractNavigationAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

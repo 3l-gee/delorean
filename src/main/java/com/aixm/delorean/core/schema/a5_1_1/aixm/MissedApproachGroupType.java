@@ -9,15 +9,16 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,22 +68,28 @@ public class MissedApproachGroupType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextInstructionType> instruction;
-    @XmlElementRef(name = "alternateClimbInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextInstructionType> alternateClimbInstruction;
-    @XmlElementRef(name = "alternateClimbAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> alternateClimbAltitude;
     @XmlElement(nillable = true)
-    @Transient
+    @Column(name = "instruction")
+    protected TextInstructionType instruction;
+    @XmlElement(nillable = true)
+    @Column(name = "alternate_climb_instruction")
+    protected TextInstructionType alternateClimbInstruction;
+    @XmlElement(nillable = true)
+    @Column(name = "alternate_climb_altitude")
+    protected ValDistanceVerticalType alternateClimbAltitude;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AltimeterSourcePropertyType> altimeter;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<MissedApproachGroupType.Extension> extension;
 
     /**
@@ -90,10 +97,10 @@ public class MissedApproachGroupType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public JAXBElement<TextInstructionType> getInstruction() {
+    public TextInstructionType getInstruction() {
         return instruction;
     }
 
@@ -102,10 +109,10 @@ public class MissedApproachGroupType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public void setInstruction(JAXBElement<TextInstructionType> value) {
+    public void setInstruction(TextInstructionType value) {
         this.instruction = value;
     }
 
@@ -118,10 +125,10 @@ public class MissedApproachGroupType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public JAXBElement<TextInstructionType> getAlternateClimbInstruction() {
+    public TextInstructionType getAlternateClimbInstruction() {
         return alternateClimbInstruction;
     }
 
@@ -130,10 +137,10 @@ public class MissedApproachGroupType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public void setAlternateClimbInstruction(JAXBElement<TextInstructionType> value) {
+    public void setAlternateClimbInstruction(TextInstructionType value) {
         this.alternateClimbInstruction = value;
     }
 
@@ -146,10 +153,10 @@ public class MissedApproachGroupType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getAlternateClimbAltitude() {
+    public ValDistanceVerticalType getAlternateClimbAltitude() {
         return alternateClimbAltitude;
     }
 
@@ -158,10 +165,10 @@ public class MissedApproachGroupType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setAlternateClimbAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setAlternateClimbAltitude(ValDistanceVerticalType value) {
         this.alternateClimbAltitude = value;
     }
 
@@ -317,7 +324,7 @@ public class MissedApproachGroupType
     public static class Extension {
 
         @XmlElement(name = "AbstractMissedApproachGroupExtension")
-        @Transient
+        @Column(name = "aixm:_abstract_missed_approach_group_extension")
         protected AbstractExtensionType abstractMissedApproachGroupExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
