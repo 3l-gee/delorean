@@ -77,27 +77,31 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<documentation>Substitution head for AIXM features.</documentation>
 		</annotation>
 	</element>
-	<complexType name="AbstractAIXMObjectType" abstract="true">
+	<complexType name="AbstractAIXMObjectBaseType" abstract="true">
 		<annotation>
 			<documentation>Base type for AIXM complex types that are NOT features. For example, City, ContactInformation, AirspaceVolume, etc. It derives from AbstractGMLType so that AIXM objects are recognised as GML objects, thus ensuring that GML-aware applications recognise them properly. Retains only the mandatory gml:id attribute.</documentation>
 		</annotation>
 		<complexContent>
-			<extension base="gml:AbstractGMLType">
-				<sequence>
-					<!-- Adding dbID as a new field -->
-					<element name="dbID" type="xs:long" minOccurs="0"/>
-				</sequence>
-				<attribute ref="gml:id" use="required"/>
-			</extension>
-		</complexContent>
-		<!-- <complexContent>
 			<restriction base="gml:AbstractGMLType">
 				<sequence>
 					<sequence/>
 				</sequence>
 				<attribute ref="gml:id" use="required"/>
 			</restriction>
-		</complexContent> -->
+		</complexContent>
+	</complexType>
+	<complexType name="AbstractAIXMObjectType" abstract="true">
+		<annotation>
+			<documentation>Adds the FeatureMetadata, which is common to all AIXM features</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectBaseType">
+				<sequence>
+					<!-- Adding dbID as a new field -->
+                	<element name="dbID" type="xs:long" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
 	</complexType>
 	<element name="AbstractAIXMObject" type="aixm:AbstractAIXMObjectType" abstract="true" substitutionGroup="gml:AbstractGML">
 		<annotation>

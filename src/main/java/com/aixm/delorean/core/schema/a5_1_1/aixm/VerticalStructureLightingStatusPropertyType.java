@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,7 +47,8 @@ public class VerticalStructureLightingStatusPropertyType
 {
 
     @XmlElement(name = "VerticalStructureLightingStatus", required = true)
-    @Column(name = "aixm:_vertical_structure_lighting_status")
+    @MapsId("dbID")
+    @Embedded
     protected VerticalStructureLightingStatusType verticalStructureLightingStatus;
 
     /**

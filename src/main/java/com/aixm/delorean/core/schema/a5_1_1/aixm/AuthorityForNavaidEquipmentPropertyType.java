@@ -7,8 +7,9 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,7 +47,8 @@ public class AuthorityForNavaidEquipmentPropertyType
 {
 
     @XmlElement(name = "AuthorityForNavaidEquipment", required = true)
-    @Column(name = "aixm:_authority_for_navaid_equipment")
+    @MapsId("dbID")
+    @Embedded
     protected AuthorityForNavaidEquipmentType authorityForNavaidEquipment;
 
     /**

@@ -7,15 +7,20 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractGMLType;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * Base type for AIXM complex types that are NOT features. For example, City, ContactInformation, AirspaceVolume, etc. It derives from AbstractGMLType so that AIXM objects are recognised as GML objects, thus ensuring that GML-aware applications recognise them properly. Retains only the mandatory gml:id attribute.
+ * Adds the FeatureMetadata, which is common to all AIXM features
  * 
  * <p>Java class for AbstractAIXMObjectType complex type</p>.
  * 
@@ -24,13 +29,11 @@ import jakarta.xml.bind.annotation.XmlType;
  * <pre>{@code
  * <complexType name="AbstractAIXMObjectType">
  *   <complexContent>
- *     <restriction base="{http://www.opengis.net/gml/3.2}AbstractGMLType">
+ *     <extension base="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMObjectBaseType">
  *       <sequence>
- *         <sequence>
- *         </sequence>
+ *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
- *       <attribute ref="{http://www.opengis.net/gml/3.2}id use="required""/>
- *     </restriction>
+ *     </extension>
  *   </complexContent>
  * </complexType>
  * }</pre>
@@ -38,7 +41,9 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AbstractAIXMObjectType")
+@XmlType(name = "AbstractAIXMObjectType", propOrder = {
+    "dbID"
+})
 @XmlSeeAlso({
     AbstractExtensionType.class,
     AerialRefuellingAnchorType.class,
@@ -119,9 +124,43 @@ import jakarta.xml.bind.annotation.XmlType;
     ReflectorType.class,
     SurveillanceGroundStationType.class
 })
+@MappedSuperclass
 public abstract class AbstractAIXMObjectType
-    extends AbstractGMLType
+    extends AbstractAIXMObjectBaseType
 {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @XmlTransient
+    protected Long dbID;
+
+    /**
+     * Gets the value of the dbID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getDbID() {
+        return dbID;
+    }
+
+    /**
+     * Sets the value of the dbID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setDbID(Long value) {
+        this.dbID = value;
+    }
+
+    public boolean isSetDbID() {
+        return (this.dbID!= null);
+    }
 
 }
