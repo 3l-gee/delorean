@@ -181,7 +181,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <choice>
  *           <element ref="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMFeature"/>
  *         </choice>
- *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </extension>
@@ -207,9 +207,9 @@ public class BasicMessageMemberAIXMPropertyType
     protected JAXBElement<? extends AbstractAIXMFeatureType> abstractAIXMFeature;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "db_id", nullable = false)
     @XmlTransient
-    protected Long dbID;
+    protected long dbID;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
@@ -537,29 +537,21 @@ public class BasicMessageMemberAIXMPropertyType
     /**
      * Gets the value of the dbID property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
      */
-    public Long getDbID() {
+    public long getDbID() {
         return dbID;
     }
 
     /**
      * Sets the value of the dbID property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
      */
-    public void setDbID(Long value) {
+    public void setDbID(long value) {
         this.dbID = value;
     }
 
     public boolean isSetDbID() {
-        return (this.dbID!= null);
+        return true;
     }
 
     /**

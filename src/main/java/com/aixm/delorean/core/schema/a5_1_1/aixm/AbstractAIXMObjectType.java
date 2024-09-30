@@ -31,7 +31,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMObjectBaseType">
  *       <sequence>
- *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -131,36 +131,28 @@ public abstract class AbstractAIXMObjectType
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "db_id", nullable = false)
     @XmlTransient
-    protected Long dbID;
+    protected long dbID;
 
     /**
      * Gets the value of the dbID property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
      */
-    public Long getDbID() {
+    public long getDbID() {
         return dbID;
     }
 
     /**
      * Sets the value of the dbID property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
      */
-    public void setDbID(Long value) {
+    public void setDbID(long value) {
         this.dbID = value;
     }
 
     public boolean isSetDbID() {
-        return (this.dbID!= null);
+        return true;
     }
 
 }

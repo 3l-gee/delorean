@@ -51,7 +51,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 						<element ref="aixm:AbstractAIXMFeature"/>
 					</choice>
 					<!-- Adding dbID as a new field inside the sequence -->
-					<element name="dbID" type="xs:long" minOccurs="0"/>
+					<element name="dbID" type="xs:long"/>
 				</sequence>
 				<attributeGroup ref="gml:AssociationAttributeGroup"/>
 			</extension>

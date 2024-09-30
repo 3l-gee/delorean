@@ -7,10 +7,16 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -26,6 +32,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <attribute name="nilReason" type="{http://www.opengis.net/gml/3.2}NilReasonEnumeration" />
+ *       <attribute name="dbID" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -162,10 +169,17 @@ import jakarta.xml.bind.annotation.XmlType;
     ReflectorPropertyType.class,
     SurveillanceGroundStationPropertyType.class
 })
+@MappedSuperclass
 public abstract class AbstractAIXMPropertyType {
 
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
+    @XmlAttribute(name = "dbID")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "db_id", nullable = false)
+    @XmlTransient
+    protected Long dbID;
 
     /**
      * Gets the value of the nilReason property.
@@ -193,6 +207,38 @@ public abstract class AbstractAIXMPropertyType {
 
     public boolean isSetNilReason() {
         return (this.nilReason!= null);
+    }
+
+    /**
+     * Gets the value of the dbID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public long getDbID() {
+        return dbID;
+    }
+
+    /**
+     * Sets the value of the dbID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setDbID(long value) {
+        this.dbID = value;
+    }
+
+    public boolean isSetDbID() {
+        return (this.dbID!= null);
+    }
+
+    public void unsetDbID() {
+        this.dbID = null;
     }
 
 }

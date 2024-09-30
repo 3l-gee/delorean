@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}correctionNumber" minOccurs="0"/>
  *         <element name="timeSliceMetadata" type="{http://www.aixm.aero/schema/5.1.1}FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}featureLifetime" minOccurs="0"/>
- *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -212,9 +212,9 @@ public abstract class AbstractAIXMTimeSliceType
     protected TimePrimitivePropertyType featureLifetime;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "db_id", nullable = false)
     @XmlTransient
-    protected Long dbID;
+    protected long dbID;
 
     /**
      * Property indicating how the timeslice is to be interpreted.  See the AIXM Temporality model for details.
@@ -363,29 +363,21 @@ public abstract class AbstractAIXMTimeSliceType
     /**
      * Gets the value of the dbID property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
      */
-    public Long getDbID() {
+    public long getDbID() {
         return dbID;
     }
 
     /**
      * Sets the value of the dbID property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
      */
-    public void setDbID(Long value) {
+    public void setDbID(long value) {
         this.dbID = value;
     }
 
     public boolean isSetDbID() {
-        return (this.dbID!= null);
+        return true;
     }
 
 }

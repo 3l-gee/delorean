@@ -7,9 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Embedded;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -47,8 +46,7 @@ public class EquipmentUnavailableAdjustmentColumnPropertyType
 {
 
     @XmlElement(name = "EquipmentUnavailableAdjustmentColumn", required = true)
-    @MapsId("dbID")
-    @Embedded
+    @Column(name = "aixm:_equipment_unavailable_adjustment_column")
     protected EquipmentUnavailableAdjustmentColumnType equipmentUnavailableAdjustmentColumn;
 
     /**
