@@ -67,7 +67,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				<sequence>
 					<element name="featureMetadata" type="aixm:FeatureMetadataPropertyType" minOccurs="0"/>
 					<!-- Adding dbID as a new field -->
-                	<element name="dbID" type="xs:long" minOccurs="0"/>
+                	<element name="dbID" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -98,7 +98,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="aixm:AbstractAIXMObjectBaseType">
 				<sequence>
 					<!-- Adding dbID as a new field -->
-                	<element name="dbID" type="xs:long" minOccurs="0"/>
+                	<element name="dbID" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -113,6 +113,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<documentation>It provides a basis for deriving AIXM feature/object properties. It defines the nilReason attribute and currently, it is only used for properties that are derived from association with an AIM object.</documentation>
 		</annotation>
 		<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+        <attribute name="dbID" type="xs:long"/>
 	</complexType>
 	<!--====================================================================-->
 	<!--AIXM TimeSlice-->
@@ -149,7 +150,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element name="timeSliceMetadata" type="aixm:FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
 					<element ref="aixm:featureLifetime" minOccurs="0"/>
 					<!-- Adding dbID as a new field -->
-                	<element name="dbID" type="xs:long" minOccurs="0"/>
+                	<element name="dbID" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -164,7 +165,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element ref="aixm:sequenceNumber" minOccurs="0"/>
 					<element name="messageMetadata" type="aixm:MessageMetadataPropertyType" minOccurs="0"/>
 					<!-- Adding dbID as a new field -->
-					<element name="dbID" type="xs:long" minOccurs="0"/>
+					<element name="dbID" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>

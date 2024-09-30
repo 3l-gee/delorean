@@ -7,9 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Embedded;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -47,8 +46,7 @@ public class ContactInformationPropertyType
 {
 
     @XmlElement(name = "ContactInformation", required = true)
-    @MapsId("dbID")
-    @Embedded
+    @Column(name = "aixm:_contact_information")
     protected ContactInformationType contactInformation;
 
     /**

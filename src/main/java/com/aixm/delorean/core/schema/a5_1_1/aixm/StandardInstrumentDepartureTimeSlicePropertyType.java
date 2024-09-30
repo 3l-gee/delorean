@@ -7,14 +7,17 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Embedded;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.MapsId;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -29,6 +32,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}StandardInstrumentDepartureTimeSlice"/>
+ *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *     </restriction>
@@ -40,16 +44,21 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "StandardInstrumentDepartureTimeSlicePropertyType", propOrder = {
-    "standardInstrumentDepartureTimeSlice"
+    "standardInstrumentDepartureTimeSlice",
+    "dbID"
 })
 @Entity
 @Table(name = "standard_instrument_departure_time_slice_property_type")
 public class StandardInstrumentDepartureTimeSlicePropertyType {
 
     @XmlElement(name = "StandardInstrumentDepartureTimeSlice", required = true)
-    @MapsId("dbID")
-    @Embedded
+    @Column(name = "aixm:_standard_instrument_departure_time_slice")
     protected StandardInstrumentDepartureTimeSliceType standardInstrumentDepartureTimeSlice;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "db_id", nullable = false)
+    @XmlTransient
+    protected long dbID;
     @XmlAttribute(name = "owns")
     protected Boolean owns;
 
@@ -79,6 +88,26 @@ public class StandardInstrumentDepartureTimeSlicePropertyType {
 
     public boolean isSetStandardInstrumentDepartureTimeSlice() {
         return (this.standardInstrumentDepartureTimeSlice!= null);
+    }
+
+    /**
+     * Gets the value of the dbID property.
+     * 
+     */
+    public long getDbID() {
+        return dbID;
+    }
+
+    /**
+     * Sets the value of the dbID property.
+     * 
+     */
+    public void setDbID(long value) {
+        this.dbID = value;
+    }
+
+    public boolean isSetDbID() {
+        return true;
     }
 
     /**

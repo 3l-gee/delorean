@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -75,7 +76,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "roleMilitaryTraining",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "en_route_segment_point_type")
 public class EnRouteSegmentPointType
     extends AbstractSegmentPointType
 {
