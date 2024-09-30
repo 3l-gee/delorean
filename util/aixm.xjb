@@ -128,8 +128,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingAnchorType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "aerial_refuelling_anchor_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingAnchorType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -200,8 +199,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingPointType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "aerial_refuelling_point_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingPointType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -232,8 +230,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingTrackType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "aerial_refuelling_track_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingTrackType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -268,8 +265,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AuthorityForAerialRefuellingType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "authority_for_aerial_refuelling_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AuthorityForAerialRefuellingType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -471,8 +467,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirportHeliportAvailabilityType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_heliport_availability_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirportHeliportAvailabilityType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -589,8 +584,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirportHeliportResponsibilityOrganisationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_heliport_responsibility_organisation_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirportHeliportResponsibilityOrganisationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -621,8 +615,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirportHeliportUsageType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_heliport_usage_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirportHeliportUsageType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -747,8 +740,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AltimeterSourceStatusType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "altimeter_source_status_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AltimeterSourceStatusType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -775,8 +767,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CityType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "city_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CityType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -803,8 +794,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ConditionCombinationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "condition_combination_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ConditionCombinationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -890,8 +880,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SurfaceCharacteristicsType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "surface_characteristics_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SurfaceCharacteristicsType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -1095,8 +1084,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='WorkareaActivityType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "workarea_activity_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='WorkareaActivityType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -1253,8 +1241,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApronAreaAvailabilityType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "apron_area_availability_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApronAreaAvailabilityType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -1289,8 +1276,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApronAreaUsageType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "apron_area_usage_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApronAreaUsageType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -1797,8 +1783,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='GroundLightingAvailabilityType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "ground_lighting_availability_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='GroundLightingAvailabilityType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -1895,8 +1880,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LightActivationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "light_activation_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LightActivationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -2333,8 +2317,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MarkingElementType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "marking_element_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MarkingElementType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -2671,8 +2654,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ManoeuvringAreaAvailabilityType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "manoeuvring_area_availability_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ManoeuvringAreaAvailabilityType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -2707,8 +2689,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ManoeuvringAreaUsageType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "manoeuvring_area_usage_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ManoeuvringAreaUsageType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -2735,8 +2716,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NavaidEquipmentDistanceType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "navaid_equipment_distance_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NavaidEquipmentDistanceType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -2984,8 +2964,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RunwayDeclaredDistanceType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_declared_distance_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RunwayDeclaredDistanceType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3016,8 +2995,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RunwayDeclaredDistanceValueType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_declared_distance_value_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RunwayDeclaredDistanceValueType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3555,8 +3533,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AircraftStandContaminationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "aircraft_stand_contamination_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AircraftStandContaminationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3579,8 +3556,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirportHeliportContaminationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_heliport_contamination_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirportHeliportContaminationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3603,8 +3579,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApronContaminationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "apron_contamination_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApronContaminationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3627,8 +3602,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RidgeType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "ridge_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RidgeType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3663,8 +3637,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RunwayContaminationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_contamination_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RunwayContaminationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3723,8 +3696,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RunwaySectionContaminationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_section_contamination_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RunwaySectionContaminationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3814,8 +3786,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SurfaceContaminationLayerType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "surface_contamination_layer_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SurfaceContaminationLayerType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3850,8 +3821,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TaxiwayContaminationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiway_contamination_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TaxiwayContaminationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -3878,8 +3848,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffContaminationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "touch_down_lift_off_contamination_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffContaminationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4253,8 +4222,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceActivationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "airspace_activation_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceActivationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4297,8 +4265,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceGeometryComponentType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "airspace_geometry_component_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceGeometryComponentType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4333,8 +4300,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceLayerClassType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "airspace_layer_class_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceLayerClassType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4365,8 +4331,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceVolumeType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "airspace_volume_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceVolumeType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4437,8 +4402,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceVolumeDependencyType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "airspace_volume_dependency_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceVolumeDependencyType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4563,8 +4527,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CurveType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "curve_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='CurvePropertyGroup']//xs:element[@name='horizontalAccuracy']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "horizontal_accuracy")</annox:annotate>
@@ -4583,8 +4546,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ElevatedCurveType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "elevated_curve_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ElevatedCurveType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4619,8 +4581,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ElevatedPointType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "elevated_point_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ElevatedPointType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4655,8 +4616,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ElevatedSurfaceType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "elevated_surface_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ElevatedSurfaceType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4691,8 +4651,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='PointType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "point_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='PointPropertyGroup']//xs:element[@name='horizontalAccuracy']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "horizontal_accuracy")</annox:annotate>
@@ -4711,8 +4670,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SurfaceType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "surface_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:group[@name='SurfacePropertyGroup']//xs:element[@name='horizontalAccuracy']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "horizontal_accuracy")</annox:annotate>
@@ -4834,8 +4792,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='HoldingPatternDistanceType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "holding_pattern_distance_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='HoldingPatternDistanceType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4862,8 +4819,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='HoldingPatternDurationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "holding_pattern_duration_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='HoldingPatternDurationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4945,8 +4901,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AuthorityForNavaidEquipmentType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "authority_for_navaid_equipment_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AuthorityForNavaidEquipmentType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -4977,8 +4932,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AuthorityForSpecialNavigationStationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "authority_for_special_navigation_station_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AuthorityForSpecialNavigationStationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -5009,8 +4963,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AuthorityForSpecialNavigationSystemType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "authority_for_special_navigation_system_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AuthorityForSpecialNavigationSystemType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -5599,8 +5552,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NavaidComponentType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "navaid_component_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NavaidComponentType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -5698,8 +5650,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NavaidEquipmentMonitoringType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "navaid_equipment_monitoring_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NavaidEquipmentMonitoringType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -5726,8 +5677,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NavaidOperationalStatusType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "navaid_operational_status_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NavaidOperationalStatusType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -5970,8 +5920,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationStationStatusType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "special_navigation_station_status_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationStationStatusType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6230,8 +6179,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AngleUseType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "angle_use_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AngleUseType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6337,8 +6285,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='EnRouteSegmentPointType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "en_route_segment_point_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='EnRouteSegmentPointType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6377,8 +6324,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='PointReferenceType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "point_reference_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='PointReferenceType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6492,8 +6438,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TerminalSegmentPointType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "terminal_segment_point_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TerminalSegmentPointType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6729,8 +6674,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LinguisticNoteType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "linguistic_note_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LinguisticNoteType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6753,8 +6697,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NoteType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "note_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NoteType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6963,8 +6906,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='VerticalStructureLightingStatusType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "vertical_structure_lighting_status_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='VerticalStructureLightingStatusType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -6991,8 +6933,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='VerticalStructurePartType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "vertical_structure_part_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='VerticalStructurePartType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7134,8 +7075,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='OrganisationAuthorityAssociationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "organisation_authority_association_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='OrganisationAuthorityAssociationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7245,8 +7185,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='UnitAvailabilityType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "unit_availability_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='UnitAvailabilityType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7273,8 +7212,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='UnitDependencyType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "unit_dependency_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='UnitDependencyType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7305,8 +7243,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApproachAltitudeTableType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "approach_altitude_table_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApproachAltitudeTableType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7341,8 +7278,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApproachConditionType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "approach_condition_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApproachConditionType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7401,8 +7337,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApproachDistanceTableType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "approach_distance_table_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApproachDistanceTableType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7441,8 +7376,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApproachTimingTableType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "approach_timing_table_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ApproachTimingTableType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7481,8 +7415,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FinalProfileType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "final_profile_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FinalProfileType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7600,8 +7533,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MissedApproachGroupType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "missed_approach_group_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MissedApproachGroupType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7747,8 +7679,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TerminalArrivalAreaSectorType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "terminal_arrival_area_sector_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TerminalArrivalAreaSectorType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7795,8 +7726,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FASDataBlockType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "fas_data_block_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FASDataBlockType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7922,8 +7852,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CirclingRestrictionType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "circling_restriction_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CirclingRestrictionType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7954,8 +7883,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='EquipmentUnavailableAdjustmentType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "equipment_unavailable_adjustment_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='EquipmentUnavailableAdjustmentType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -7990,8 +7918,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='EquipmentUnavailableAdjustmentColumnType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "equipment_unavailable_adjustment_column_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='EquipmentUnavailableAdjustmentColumnType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -8034,8 +7961,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MinimaType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "minima_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MinimaType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -8153,8 +8079,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DepartureArrivalConditionType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "departure_arrival_condition_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DepartureArrivalConditionType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -8280,8 +8205,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NavigationAreaSectorType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "navigation_area_sector_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NavigationAreaSectorType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -8320,8 +8244,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SectorDesignType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "sector_design_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SectorDesignType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -8478,8 +8401,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SafeAltitudeAreaSectorType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "safe_altitude_area_sector_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SafeAltitudeAreaSectorType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -8777,8 +8699,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='HoldingUseType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "holding_use_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='HoldingUseType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -8907,8 +8828,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LandingTakeoffAreaCollectionType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "landing_takeoff_area_collection_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LandingTakeoffAreaCollectionType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -9171,8 +9091,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ProcedureTransitionType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "procedure_transition_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ProcedureTransitionType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -9223,8 +9142,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ProcedureTransitionLegType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "procedure_transition_leg_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ProcedureTransitionLegType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -9390,8 +9308,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ProcedureAvailabilityType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "procedure_availability_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ProcedureAvailabilityType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -9568,8 +9485,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RouteAvailabilityType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "route_availability_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RouteAvailabilityType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -9659,8 +9575,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RoutePortionType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "route_portion_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RoutePortionType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -9972,8 +9887,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DirectFlightClassType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "direct_flight_class_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DirectFlightClassType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10000,8 +9914,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DirectFlightSegmentType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "direct_flight_segment_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='DirectFlightSegmentType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10072,8 +9985,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightConditionCircumstanceType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "flight_condition_circumstance_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightConditionCircumstanceType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10104,8 +10016,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightConditionCombinationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "flight_condition_combination_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightConditionCombinationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10136,8 +10047,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightConditionElementType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "flight_condition_element_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightConditionElementType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10303,8 +10213,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightRestrictionLevelType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "flight_restriction_level_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightRestrictionLevelType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10343,8 +10252,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightRestrictionRouteType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "flight_restriction_route_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightRestrictionRouteType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10379,8 +10287,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightRoutingElementType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "flight_routing_element_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightRoutingElementType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10804,8 +10711,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CallsignDetailType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "callsign_detail_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CallsignDetailType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -10883,8 +10789,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FuelType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "fuel_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FuelType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11037,8 +10942,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NitrogenType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "nitrogen_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='NitrogenType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11065,8 +10969,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='OilType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "oil_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='OilType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11093,8 +10996,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='OxygenType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "oxygen_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='OxygenType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11314,8 +11216,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RadioCommunicationOperationalStatusType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "radio_communication_operational_status_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RadioCommunicationOperationalStatusType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11440,8 +11341,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ServiceOperationalStatusType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "service_operational_status_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ServiceOperationalStatusType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11487,8 +11387,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ContactInformationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "contact_information_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ContactInformationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11531,8 +11430,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='OnlineContactType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "online_contact_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='OnlineContactType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11571,8 +11469,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='PostalAddressType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "postal_address_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='PostalAddressType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11615,8 +11512,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TelephoneContactType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "telephone_contact_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TelephoneContactType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11647,8 +11543,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AircraftCharacteristicType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "aircraft_characteristic_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AircraftCharacteristicType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11755,8 +11650,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightCharacteristicType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "flight_characteristic_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='FlightCharacteristicType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11803,8 +11697,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceLayerType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "airspace_layer_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AirspaceLayerType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11851,8 +11744,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CircleSectorType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "circle_sector_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CircleSectorType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11919,8 +11811,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LightElementType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "light_element_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LightElementType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11967,8 +11858,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LightElementStatusType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "light_element_status_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='LightElementStatusType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -11995,8 +11885,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MeteorologyType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "meteorology_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='MeteorologyType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -12192,8 +12081,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TimesheetType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "timesheet_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='TimesheetType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -12276,8 +12164,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='StandardLevelType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "standard_level_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='StandardLevelType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -12461,8 +12348,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AltitudeAdjustmentType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "altitude_adjustment_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AltitudeAdjustmentType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -12588,8 +12474,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ObstacleAssessmentAreaType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "obstacle_assessment_area_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ObstacleAssessmentAreaType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -12660,8 +12545,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ObstaclePlacementType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "obstacle_placement_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ObstaclePlacementType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -12700,8 +12584,7 @@
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ObstructionType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "obstruction_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ObstructionType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -12854,8 +12737,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RadarComponentType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "radar_component_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='RadarComponentType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -13032,8 +12914,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ReflectorType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "reflector_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='ReflectorType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
@@ -13115,8 +12996,7 @@
             <jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SurveillanceGroundStationType']">
-            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
-            <annox:annotate target="class">@jakarta.persistence.Table(name = "surveillance_ground_station_type")</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='SurveillanceGroundStationType']//xs:element[@name='extension']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>

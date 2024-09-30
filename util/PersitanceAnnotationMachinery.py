@@ -105,15 +105,25 @@ class XmlTags(Enum):
 
 class EntityClass:
     entityClass = []
+    embedable = []
 
     @staticmethod
-    def append(name):
+    def add_to_embedable(name):
+        EntityClass.embedable.append(str(name))
+
+    @staticmethod
+    def add_to_entity_class(name):
         EntityClass.entityClass.append(str(name))
 
     @staticmethod
-    def out():
+    def print_entity_class():
         for entity in EntityClass.entityClass:
             print(str("com.aixm.delorean.core.schema.a5_1_1.aixm." + str(entity) + ".class,"))
+        
+    @staticmethod
+    def pint_embedable():
+        for entity in EntityClass.embedable:
+            print(entity)
     
 class PersistenceAnnotationMachinery:
     # Define constants for XML namespace and tags
@@ -121,12 +131,13 @@ class PersistenceAnnotationMachinery:
     LOCATION = set()
     GEOMETRY = set()
 
-    def __init__(self,name: str,  input_path: str, output_path: str, ignore: list):
+    def __init__(self,name: str,  input_path: str, output_path: str, ignore: list, embedable: list = []):
         print(f"Processing {name}...")
         self.name = name
         self.input_path = input_path
         self.output_path = output_path
         self.ignore = ignore
+        self.embedable = embedable
         self.root = ET.parse(self.input_path).getroot()
         self.annotations = [f"""
     <jaxb:bindings schemaLocation="{name}" node="/xs:schema">
@@ -144,9 +155,9 @@ class PersistenceAnnotationMachinery:
                 print(f"Ignoring {child.attrib.get('name')}")
                 
             else:
+
                 self._process_child_class(child)
                 self._process_child_field(child)
-
 
     def _process_child_class(self, child):
         """Dispatch processing based on the XML tag type."""
@@ -154,16 +165,23 @@ class PersistenceAnnotationMachinery:
         nilreason = any(
             attribute.get('name') == 'nilReason' for attribute in child.findall('.//xs:attribute', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'})
         )
+        embedable = child.attrib.get('name') in self.embedable
         
         if child.tag in [XmlTags.TAG_IMPORT.value, XmlTags.TAG_ANNOTATION.value, XmlTags.TAG_INCLUDE.value, XmlTags.TAG_GROUP.value, XmlTags.TAG_ELEMENT.value]:
             pass
         elif child.tag in [XmlTags.TAG_SIMPLE_TYPE.value]:
             pass
         elif child.tag in [XmlTags.TAG_COMPLEX_TYPE.value]:
+            try :
+                if child[0][0].tag == "{http://www.w3.org/2001/XMLSchema}extension" and child[0][0][0][0].tag == "{http://www.w3.org/2001/XMLSchema}element" and child[0][0][0][0].attrib.get("ref") :
+                    EntityClass.add_to_embedable(str("_" + child[0][0][0][0].attrib.get("ref").split(":")[1]+"Type" + "&"))
+            except :
+                pass
             self.annotations += AnnoationsFunctions.class_writer(
                 child, 
                 abstract,
-                nilreason
+                nilreason,
+                embedable
             )
         else:
             self._log_unrecognized_tag(child)
@@ -200,7 +218,7 @@ class PersistenceAnnotationMachinery:
                     child,
                     element,
                     None,
-                    False,
+                    False
                 )
         else:
             self._log_unrecognized_tag(child)
@@ -219,17 +237,17 @@ class PersistenceAnnotationMachinery:
 
 class AnnoationsFunctions:
     @staticmethod
-    def class_writer(child, abstract: bool, nilreason: bool):
+    def class_writer(child, abstract: bool, nilreason: bool, embedable: bool):
         res = []
         res.append(JaxbAnnotations.COMPLEXTYPE(child.attrib['name']))
         if abstract:
             res.append(AnnoxAnnotations.CLASS(CoreAnnotations.MAPPEDSUPERCLASS.value))
-        elif nilreason :
+        elif nilreason or embedable:
             res.append(AnnoxAnnotations.CLASS(AdditionalAnnotations.EMBEDDABLE.value))
         elif "TimeSliceType" in child.get("name"):
             res.append(AnnoxAnnotations.CLASS(AdditionalAnnotations.EMBEDDABLE.value)) 
         else :
-            EntityClass.append(child.attrib['name'])
+            EntityClass.add_to_entity_class(child.attrib['name'])
             res.append(AnnoxAnnotations.CLASS(CoreAnnotations.ENTITY.value))
             res.append(AnnoxAnnotations.CLASS(CoreAnnotations.TABLE_SNAKE(child.attrib['name'])))
         res.append(JaxbAnnotations.END.value)
@@ -258,6 +276,7 @@ class AnnoationsFunctions:
         
         else :
             print(child.attrib['name'])
+            return []
 
         res.append(JaxbAnnotations.END.value)
         return res
@@ -309,9 +328,6 @@ class AnnoationsFunctions:
             res.append(JaxbAnnotations.END.value)
             return res
         
-        print(parent[0][0].get('base', ""))
-        # print("PropertyType" in parent.get('name', "") and "TimeSlice" in child.get('ref', ""), parent.get('name', ""), child.get('ref', ""))
-        # if "PropertyType" in parent.get('name', "") and "TimeSlice" in child.get('ref', ""):
         if "PropertyType" in parent.get('name', ""):
             res.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.MAPSID("dbID")))
             res.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.EMBEDDED.value))
@@ -343,71 +359,6 @@ class AnnoationsFunctions:
         res.append(JaxbAnnotations.END.value)
         return res
 
-    def class_cmplx_abs_annox(self, child):
-        self.annotations.append(JaxbAnnotations.COMPLEXTYPE(child.attrib['name']))
-        self.annotations.append(AnnoxAnnotations.CLASS(CoreAnnotations.MAPPEDSUPERCLASS.value)) 
-        self.annotations.append(JaxbAnnotations.END.value)
-    
-    def class_cmplx_typ_annox(self, child):
-        self.annotations.append(JaxbAnnotations.COMPLEXTYPE(child.attrib['name']))
-        self.annotations.append(AnnoxAnnotations.CLASS(CoreAnnotations.ENTITY.value))
-        self.annotations.append(AnnoxAnnotations.CLASS(CoreAnnotations.TABLE_SNAKE(child.attrib['name'])))       
-        self.annotations.append(JaxbAnnotations.END.value)
-
-    def field_typ_annox_onetomany(self, parent, child):
-        self.annotations.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
-        self.annotations.append(AnnoxAnnotations.FIELD(RelationshipAnnotations.ONE_TO_MANY.value))
-        self.annotations.append(JaxbAnnotations.END.value)
-
-    def field_cmplx_typ_annox_enum_name(self, parent, child):
-        self.annotations.append(JaxbAnnotations.COMPLEXTYPE_ELEMENT_NAME(parent.attrib['name'], child.attrib['name']))
-        self.annotations.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.ENUMERATED_STRING.value))
-        self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
-        self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
-        self.annotations.append(JaxbAnnotations.END.value)
-
-    def field_cmplx_typ_annox_enum_ref(self, parent, child):
-        self.annotations.append(JaxbAnnotations.COMPLEXTYPE_ELEMEENT_REF(parent.attrib['name'], child.attrib['ref']))
-        self.annotations.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.ENUMERATED_STRING.value))
-        self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_DBL_POINT(child.attrib['ref'])))
-        self.annotations.append(JaxbAnnotations.END.value)
-
-    def field_grp_typ_annox_enum_name_gnrt_elmnt(self, parent, child):
-        self.annotations.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
-        self.annotations.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.ENUMERATED_STRING.value))
-        self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
-        self.annotations.append(JaxbAnnotations.PROPERTY_GENERATEELEMENT.value)
-        self.annotations.append(JaxbAnnotations.END.value)
-
-    def field_grp_typ_annox_enum_name_name_gnrt_elmnt(self, parent, child):
-        self.annotations.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
-        self.annotations.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.ENUMERATED_STRING.value))
-        self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
-        self.annotations.append(JaxbAnnotations.PROPERTY_NAME_GENERATEELEMENT.value)
-        self.annotations.append(JaxbAnnotations.END.value)
-
-    def field_cmplx_typ_annox_clmn_name(self, parent, child):
-        self.annotations.append(JaxbAnnotations.COMPLEXTYPE_ELEMENT_NAME(parent.attrib['name'], child.attrib['name']))
-        self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
-        self.annotations.append(JaxbAnnotations.END.value)
-
-    def field_cmplx_typ_annox_clmn_ref(self, parent, child):
-        self.annotations.append(JaxbAnnotations.COMPLEXTYPE_ELEMEENT_REF(parent.attrib['name'], child.attrib['ref']))
-        self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_DBL_POINT(child.attrib['ref'])))
-        self.annotations.append(JaxbAnnotations.END.value)
-
-    def field_grp_type_annox_clmn_name_gnrt_elmnt(self, parent, child):
-        self.annotations.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
-        self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
-        self.annotations.append(JaxbAnnotations.PROPERTY_GENERATEELEMENT.value)
-        self.annotations.append(JaxbAnnotations.END.value)
-
-    def field_grp_type_annox_clmn_name_name_gnrt_elmnt(self, parent, child):
-        self.annotations.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
-        self.annotations.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
-        self.annotations.append(JaxbAnnotations.PROPERTY_NAME_GENERATEELEMENT.value)
-        self.annotations.append(JaxbAnnotations.END.value)
-
 
 class PesitenceAnnotationsManager:
     def __init__ (self, task: list): 
@@ -426,7 +377,7 @@ class PesitenceAnnotationsManager:
 """]
     
         for item in task :
-            temp = PersistenceAnnotationMachinery(item['name'], item['input_path'], item['output_path'], item['ignore'])
+            temp = PersistenceAnnotationMachinery(item['name'], item['input_path'], item['output_path'], item['ignore'], item['embedable'])
             self.annotations += temp.return_annotations()
 
         self.save_annotations()
@@ -448,6 +399,9 @@ task = [
     #     "output_path": "util/AIXM_DataTypes.xjb",
     #     "ignore": [
     #         "CodeDistanceVerticalUomType"
+    #     ],
+    #     "embedable": [
+
     #     ]
     # }
     # ,
@@ -456,6 +410,133 @@ task = [
         "input_path": "src/main/resources/a5_1_1/AIXM_Features.xsd",
         "output_path": "util/AIXM_Features.xjb",
         "ignore": [
+        ],
+        "embedable": [
+            "AerialRefuellingAnchorType",
+            "AerialRefuellingPointType",
+            "AerialRefuellingTrackType",
+            "AuthorityForAerialRefuellingType",
+            "AirportHeliportAvailabilityType",
+            "AirportHeliportResponsibilityOrganisationType",
+            "AirportHeliportUsageType",
+            "AltimeterSourceStatusType",
+            "CityType",
+            "ConditionCombinationType",
+            "SurfaceCharacteristicsType",
+            "AbstractUsageConditionType",
+            "WorkareaActivityType",
+            "ApronAreaAvailabilityType",
+            "ApronAreaUsageType",
+            "GroundLightingAvailabilityType",
+            "LightActivationType",
+            "MarkingElementType",
+            "ManoeuvringAreaAvailabilityType",
+            "ManoeuvringAreaUsageType",
+            "NavaidEquipmentDistanceType",
+            "RunwayDeclaredDistanceType",
+            "RunwayDeclaredDistanceValueType",
+            "AircraftStandContaminationType",
+            "AirportHeliportContaminationType",
+            "ApronContaminationType",
+            "RidgeType",
+            "RunwayContaminationType",
+            "RunwaySectionContaminationType",
+            "AbstractSurfaceContaminationType",
+            "SurfaceContaminationLayerType",
+            "TaxiwayContaminationType",
+            "TouchDownLiftOffContaminationType",
+            "AirspaceActivationType",
+            "AirspaceGeometryComponentType",
+            "AirspaceLayerClassType",
+            "AirspaceVolumeType",
+            "AirspaceVolumeDependencyType",
+            "CurveType",
+            "ElevatedCurveType",
+            "ElevatedPointType",
+            "ElevatedSurfaceType",
+            "PointType",
+            "SurfaceType",
+            "HoldingPatternDistanceType",
+            "HoldingPatternDurationType",
+            "AuthorityForNavaidEquipmentType",
+            "AuthorityForSpecialNavigationStationType",
+            "AuthorityForSpecialNavigationSystemType",
+            "NavaidComponentType",
+            "NavaidEquipmentMonitoringType",
+            "NavaidOperationalStatusType",
+            "SpecialNavigationStationStatusType",
+            "AngleUseType",
+            "EnRouteSegmentPointType",
+            "PointReferenceType",
+            "AbstractSegmentPointType",
+            "TerminalSegmentPointType",
+            "LinguisticNoteType",
+            "NoteType",
+            "VerticalStructureLightingStatusType",
+            "VerticalStructurePartType",
+            "OrganisationAuthorityAssociationType",
+            "UnitAvailabilityType",
+            "UnitDependencyType",
+            "ApproachAltitudeTableType",
+            "ApproachConditionType",
+            "ApproachDistanceTableType",
+            "ApproachTimingTableType",
+            "FinalProfileType",
+            "MissedApproachGroupType",
+            "TerminalArrivalAreaSectorType",
+            "FASDataBlockType",
+            "CirclingRestrictionType",
+            "EquipmentUnavailableAdjustmentType",
+            "EquipmentUnavailableAdjustmentColumnType",
+            "MinimaType",
+            "DepartureArrivalConditionType",
+            "NavigationAreaSectorType",
+            "SectorDesignType",
+            "SafeAltitudeAreaSectorType",
+            "HoldingUseType",
+            "LandingTakeoffAreaCollectionType",
+            "ProcedureTransitionType",
+            "ProcedureTransitionLegType",
+            "ProcedureAvailabilityType",
+            "RouteAvailabilityType",
+            "RoutePortionType",
+            "AbstractDirectFlightType",
+            "DirectFlightClassType",
+            "DirectFlightSegmentType",
+            "FlightConditionCircumstanceType",
+            "FlightConditionCombinationType",
+            "FlightConditionElementType",
+            "FlightRestrictionLevelType",
+            "FlightRestrictionRouteType",
+            "FlightRoutingElementType",
+            "CallsignDetailType",
+            "FuelType",
+            "NitrogenType",
+            "OilType",
+            "OxygenType",
+            "RadioCommunicationOperationalStatusType",
+            "ServiceOperationalStatusType",
+            "ContactInformationType",
+            "OnlineContactType",
+            "PostalAddressType",
+            "TelephoneContactType",
+            "AircraftCharacteristicType",
+            "FlightCharacteristicType",
+            "AirspaceLayerType",
+            "CircleSectorType",
+            "LightElementType",
+            "LightElementStatusType",
+            "MeteorologyType",
+            "AbstractPropertiesWithScheduleType",
+            "TimesheetType",
+            "StandardLevelType",
+            "AltitudeAdjustmentType",
+            "ObstacleAssessmentAreaType",
+            "ObstaclePlacementType",
+            "ObstructionType",
+            "RadarComponentType",
+            "ReflectorType",
+            "SurveillanceGroundStationType",
         ]
     }
     # , 
@@ -474,7 +555,7 @@ task = [
 
 PesitenceAnnotationsManager(task)
 
-# EntityClass.out()
+# EntityClass.pint_embedable()
 
 # PersistenceAnnotationMachinery("src/main/resources/a5_1_1/AIXM_BasicMessage.xsd","util/test2.xml")
 
