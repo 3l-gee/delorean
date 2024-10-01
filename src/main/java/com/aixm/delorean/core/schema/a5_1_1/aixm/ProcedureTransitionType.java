@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -420,7 +422,10 @@ public class ProcedureTransitionType
     public static class Extension {
 
         @XmlElement(name = "AbstractProcedureTransitionExtension")
-        @Column(name = "aixm:_abstract_procedure_transition_extension")
+        @JoinColumn(name = "abstract_procedure_transition_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractProcedureTransitionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

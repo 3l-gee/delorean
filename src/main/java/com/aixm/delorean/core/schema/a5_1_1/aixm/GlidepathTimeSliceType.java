@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -76,8 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "rdhAccuracy",
     "extension"
 })
-@Entity
-@Table(name = "glidepath_time_slice_type")
+@Embeddable
 public class GlidepathTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -771,10 +771,16 @@ public class GlidepathTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractGlidepathExtension")
-        @Column(name = "aixm:_abstract_glidepath_extension")
+        @JoinColumn(name = "abstract_glidepath_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractGlidepathExtension;
         @XmlElement(name = "AbstractNavaidEquipmentExtension")
-        @Column(name = "aixm:_abstract_navaid_equipment_extension")
+        @JoinColumn(name = "abstract_navaid_equipment_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

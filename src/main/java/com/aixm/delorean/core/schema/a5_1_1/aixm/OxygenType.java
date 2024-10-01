@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -214,7 +216,10 @@ public class OxygenType
     public static class Extension {
 
         @XmlElement(name = "AbstractOxygenExtension")
-        @Column(name = "aixm:_abstract_oxygen_extension")
+        @JoinColumn(name = "abstract_oxygen_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractOxygenExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

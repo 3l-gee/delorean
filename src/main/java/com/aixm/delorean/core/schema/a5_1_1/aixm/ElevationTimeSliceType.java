@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -75,8 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "angleAccuracy",
     "extension"
 })
-@Entity
-@Table(name = "elevation_time_slice_type")
+@Embeddable
 public class ElevationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -739,10 +739,16 @@ public class ElevationTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractElevationExtension")
-        @Column(name = "aixm:_abstract_elevation_extension")
+        @JoinColumn(name = "abstract_elevation_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractElevationExtension;
         @XmlElement(name = "AbstractNavaidEquipmentExtension")
-        @Column(name = "aixm:_abstract_navaid_equipment_extension")
+        @JoinColumn(name = "abstract_navaid_equipment_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

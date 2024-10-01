@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -86,8 +87,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "finalProfile",
     "extension"
 })
-@Entity
-@Table(name = "instrument_approach_procedure_time_slice_type")
+@Embeddable
 public class InstrumentApproachProcedureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -1119,10 +1119,16 @@ public class InstrumentApproachProcedureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractInstrumentApproachProcedureExtension")
-        @Column(name = "aixm:_abstract_instrument_approach_procedure_extension")
+        @JoinColumn(name = "abstract_instrument_approach_procedure_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractInstrumentApproachProcedureExtension;
         @XmlElement(name = "AbstractProcedureExtension")
-        @Column(name = "aixm:_abstract_procedure_extension")
+        @JoinColumn(name = "abstract_procedure_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractProcedureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

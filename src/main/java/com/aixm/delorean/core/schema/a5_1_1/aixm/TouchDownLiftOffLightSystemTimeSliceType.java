@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -66,8 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightedTouchDownLiftOff",
     "extension"
 })
-@Entity
-@Table(name = "touch_down_lift_off_light_system_time_slice_type")
+@Embeddable
 public class TouchDownLiftOffLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -437,10 +437,16 @@ public class TouchDownLiftOffLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTouchDownLiftOffLightSystemExtension")
-        @Column(name = "aixm:_abstract_touch_down_lift_off_light_system_extension")
+        @JoinColumn(name = "abstract_touch_down_lift_off_light_system_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractTouchDownLiftOffLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @Column(name = "aixm:_abstract_ground_light_system_extension")
+        @JoinColumn(name = "abstract_ground_light_system_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

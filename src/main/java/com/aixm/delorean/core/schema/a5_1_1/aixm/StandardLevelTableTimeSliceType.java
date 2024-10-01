@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -60,8 +61,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "standard_level_table_time_slice_type")
+@Embeddable
 public class StandardLevelTableTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -246,7 +246,10 @@ public class StandardLevelTableTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelTableExtension", required = true)
-        @Column(name = "aixm:_abstract_standard_level_table_extension")
+        @JoinColumn(name = "abstract_standard_level_table_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractStandardLevelTableExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

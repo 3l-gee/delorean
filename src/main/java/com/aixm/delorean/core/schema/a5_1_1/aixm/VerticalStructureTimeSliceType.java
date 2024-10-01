@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -78,8 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightingAvailability",
     "extension"
 })
-@Entity
-@Table(name = "vertical_structure_time_slice_type")
+@Embeddable
 public class VerticalStructureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -948,7 +948,10 @@ public class VerticalStructureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractVerticalStructureExtension", required = true)
-        @Column(name = "aixm:_abstract_vertical_structure_extension")
+        @JoinColumn(name = "abstract_vertical_structure_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractVerticalStructureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -264,7 +266,10 @@ public class ElevatedSurfaceType
     public static class Extension {
 
         @XmlElement(name = "AbstractElevatedSurfaceExtension")
-        @Column(name = "aixm:_abstract_elevated_surface_extension")
+        @JoinColumn(name = "abstract_elevated_surface_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractElevatedSurfaceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

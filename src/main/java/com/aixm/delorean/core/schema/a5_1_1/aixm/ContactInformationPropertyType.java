@@ -7,8 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,7 +48,10 @@ public class ContactInformationPropertyType
 {
 
     @XmlElement(name = "ContactInformation", required = true)
-    @Column(name = "aixm:_contact_information")
+    @JoinColumn(name = "contact_information")
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
     protected ContactInformationType contactInformation;
 
     /**

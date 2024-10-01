@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -75,8 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "clientAirport",
     "extension"
 })
-@Entity
-@Table(name = "ground_traffic_control_service_time_slice_type")
+@Embeddable
 public class GroundTrafficControlServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -724,13 +724,22 @@ public class GroundTrafficControlServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractGroundTrafficControlServiceExtension")
-        @Column(name = "aixm:_abstract_ground_traffic_control_service_extension")
+        @JoinColumn(name = "abstract_ground_traffic_control_service_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractGroundTrafficControlServiceExtension;
         @XmlElement(name = "AbstractTrafficSeparationServiceExtension")
-        @Column(name = "aixm:_abstract_traffic_separation_service_extension")
+        @JoinColumn(name = "abstract_traffic_separation_service_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractTrafficSeparationServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
-        @Column(name = "aixm:_abstract_service_extension")
+        @JoinColumn(name = "abstract_service_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

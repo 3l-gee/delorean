@@ -7,11 +7,14 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -52,7 +55,10 @@ import jakarta.xml.bind.annotation.XmlType;
 public class MarkingBuoyTimeSlicePropertyType {
 
     @XmlElement(name = "MarkingBuoyTimeSlice", required = true)
-    @Column(name = "aixm:_marking_buoy_time_slice")
+    @JoinColumn(name = "marking_buoy_time_slice")
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
     protected MarkingBuoyTimeSliceType markingBuoyTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

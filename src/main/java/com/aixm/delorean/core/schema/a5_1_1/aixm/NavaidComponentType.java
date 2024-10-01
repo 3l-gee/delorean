@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -309,7 +311,10 @@ public class NavaidComponentType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidComponentExtension")
-        @Column(name = "aixm:_abstract_navaid_component_extension")
+        @JoinColumn(name = "abstract_navaid_component_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractNavaidComponentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -7,8 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,7 +48,10 @@ public class FASDataBlockPropertyType
 {
 
     @XmlElement(name = "FASDataBlock", required = true)
-    @Column(name = "aixm:fas_data_block")
+    @JoinColumn(name = "fas_data_block")
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
     protected FASDataBlockType fasDataBlock;
 
     /**

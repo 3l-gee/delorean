@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -94,8 +95,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "condition",
     "extension"
 })
-@Entity
-@Table(name = "departure_leg_time_slice_type")
+@Embeddable
 public class DepartureLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -1347,10 +1347,16 @@ public class DepartureLegTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDepartureLegExtension")
-        @Column(name = "aixm:_abstract_departure_leg_extension")
+        @JoinColumn(name = "abstract_departure_leg_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractDepartureLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
-        @Column(name = "aixm:_abstract_segment_leg_extension")
+        @JoinColumn(name = "abstract_segment_leg_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

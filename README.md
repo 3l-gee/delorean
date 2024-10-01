@@ -90,40 +90,146 @@ This temporal structure is achieved with a Feature / Timeslice / Property Struct
 
 ```mermaid
 classDiagram
-    Message "1" -->     "1..*" Feature
-    Feature "1" -->     "1..*" TimeSlice
-    TimeSlice "1" -->   "1"  FeaturePropertyGroup
-    FeaturePropertyGroup "1" --> "1..*" Object
+    %% Base Types (topo
+    AbstractGMLType --|> AbstractFeatureType
+    AbstractGMLType --|> AbstractAIXMObjectBaseType
+    AbstractGMLType --|> AbstractTimeSliceType
+    AbstractTimeSliceType --|> AbstractAIXMTimeSliceBaseType
+    
+    %% Derived Types
+    AbstractFeatureType --|> DynamicFeatureType 
+    DynamicFeatureType --|> AbstractAIXMFeatureBaseType
 
-    class Message {
-        +sequenceNumber() int
+    %% AIXM Types
+    AbstractAIXMFeatureBaseType --|> AbstractAIXMMessageBaseType
+    AbstractAIXMMessageBaseType --|> AbstractAIXMMessageType
+    AbstractAIXMFeatureBaseType --|> AbstractAIXMFeatureType
+    AbstractAIXMObjectBaseType --|> AbstractAIXMObjectType
+    AbstractAIXMTimeSliceBaseType --|> AbstractAIXMTimeSliceType
+
+    %% Final Implementations
+    AbstractAIXMObjectType --|> AbstractAIXMObject
+    AbstractAIXMFeatureType --|> AbstractAIXMFeature
+
+    %% Class Declarations
+    class AbstractGMLType {
+
+    }
+    class AbstractFeatureType { 
+
+    }
+    class AbstractTimeSliceType { 
+
+    }
+    class DynamicFeatureType { 
+
+    }
+    class AbstractAIXMFeatureBaseType { 
+
+    }
+    class AbstractAIXMMessageBaseType {
+
+    }
+    class AbstractAIXMObjectBaseType { 
+
+    }
+    class AbstractAIXMTimeSliceBaseType {
+
+    }
+    class AbstractAIXMMessageType { 
+
+    }
+    class AbstractAIXMFeatureType { 
+
+    }
+    class AbstractAIXMObjectType { 
+
+    }
+    class AbstractAIXMPropertyType { 
+
+    }
+    class AbstractAIXMTimeSliceType { 
+
+    }
+    class AbstractAIXMFeature { 
+
+    }
+    class AbstractAIXMObject { 
+
+    }
+```
+
+```mermaid
+classDiagram
+    class AIXMMessage
+    style AIXMMessage fill:#1b2847
+    class AIXMPropertyGroup
+    style AIXMPropertyGroup fill:#3a3447
+    class AIXMTimeSlice
+    style AIXMTimeSlice fill:#3a3447
+    class AIXMFeature
+    style AIXMFeature fill:#3a3447
+    class AIXMObject
+    style AIXMObject fill:#3a3447
+
+    %% AIXM Message Relationship with Features
+    AIXMMessage o-- AIXMFeature
+    AIXMFeature --|> ConcreteFeatureType
+    AIXMTimeSlice --|> ConcreteTimeSliceType
+    AIXMPropertyGroup --|> SecondConcretePropertyType
+    AIXMObject --|> ConcreteObjectType
+
+    %% Compositions between concrete types
+    ConcreteFeatureType --* FirstConcretePropertyType
+    FirstConcretePropertyType --* ConcreteTimeSliceType
+    ConcreteTimeSliceType --* SecondConcretePropertyType
+    SecondConcretePropertyType --* ConcreteObjectType
+    ConcreteObjectType --* ThirdConcretePropertyType
+
+    %% Class Definitions
+    class AIXMMessage { 
+        +List~AIXMFeature~ Features
+        +metadata
     }
 
-    class Feature {
-        +Int isFeature
-        +identifier() uuid
+    class AIXMPropertyGroup { 
+        <<AbstractAIXMPropertyType>>
     }
 
-    class TimeSlice {
-        +uuid isTimeSlice
-        +validTime() DateTime
-        +interpretation() String
-        +sequenceNumber() Int
-        +correctionNumber() Int
+    class AIXMTimeSlice { 
+        <<AbstractAIXMTimeSliceType>>
     }
 
-    class FeaturePropertyGroup {
-        +id isPropertyGroup
-        +featureLifetime() String
+    class AIXMFeature { 
+        <<AbstractAIXMFeature>>
     }
 
-    class Object {
-        +id isComplexProperty
+    class AIXMObject { 
+        <<AbstractAIXMObject>>
     }
 
-    class Annotations {
-        +propertyName() String
-        +purpose() String
+    class ConcreteFeatureType {
+        +List~FirstConcretePropertyType~ TimeSlice
+    }
+
+    class FirstConcretePropertyType {
+        +bool owns
+        +ConcreteTimeSliceType ConcreteTimeSlice
+    }
+
+    class ConcreteTimeSliceType {
+        +SecondConcretePropertyType ConcreteProperty
+    }
+
+    class SecondConcretePropertyType {
+        +ConcreteObjectType ConcreteObject
+    }
+
+    class ConcreteObjectType {
+        +ThirdConcretePropertyType ConcreteProperty
+    }
+
+    class ThirdConcretePropertyType {
     }
 ```
 

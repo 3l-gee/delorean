@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -245,7 +247,10 @@ public class AuthorityForNavaidEquipmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractAuthorityForNavaidEquipmentExtension")
-        @Column(name = "aixm:_abstract_authority_for_navaid_equipment_extension")
+        @JoinColumn(name = "abstract_authority_for_navaid_equipment_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractAuthorityForNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
