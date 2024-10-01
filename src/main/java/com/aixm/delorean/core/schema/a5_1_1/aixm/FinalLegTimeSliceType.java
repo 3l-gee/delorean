@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -110,8 +111,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "fasData",
     "extension"
 })
-@Entity
-@Table(name = "final_leg_time_slice_type")
+@Embeddable
 public class FinalLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -1830,13 +1830,22 @@ public class FinalLegTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFinalLegExtension")
-        @Column(name = "aixm:_abstract_final_leg_extension")
+        @JoinColumn(name = "abstract_final_leg_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractFinalLegExtension;
         @XmlElement(name = "AbstractApproachLegExtension")
-        @Column(name = "aixm:_abstract_approach_leg_extension")
+        @JoinColumn(name = "abstract_approach_leg_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractApproachLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
-        @Column(name = "aixm:_abstract_segment_leg_extension")
+        @JoinColumn(name = "abstract_segment_leg_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

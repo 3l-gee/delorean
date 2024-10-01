@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -388,7 +390,10 @@ public class TerminalArrivalAreaSectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractTerminalArrivalAreaSectorExtension")
-        @Column(name = "aixm:_abstract_terminal_arrival_area_sector_extension")
+        @JoinColumn(name = "abstract_terminal_arrival_area_sector_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractTerminalArrivalAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

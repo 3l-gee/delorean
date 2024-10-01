@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -168,7 +170,10 @@ public class LinguisticNoteType
     public static class Extension {
 
         @XmlElement(name = "AbstractLinguisticNoteExtension")
-        @Column(name = "aixm:_abstract_linguistic_note_extension")
+        @JoinColumn(name = "abstract_linguistic_note_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractLinguisticNoteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

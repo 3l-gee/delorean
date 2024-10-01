@@ -7,8 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,7 +48,10 @@ public class TouchDownLiftOffContaminationPropertyType
 {
 
     @XmlElement(name = "TouchDownLiftOffContamination", required = true)
-    @Column(name = "aixm:_touch_down_lift_off_contamination")
+    @JoinColumn(name = "touch_down_lift_off_contamination")
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
     protected TouchDownLiftOffContaminationType touchDownLiftOffContamination;
 
     /**

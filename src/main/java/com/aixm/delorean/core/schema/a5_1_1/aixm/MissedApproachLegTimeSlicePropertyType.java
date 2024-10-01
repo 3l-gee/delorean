@@ -7,11 +7,14 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -52,7 +55,10 @@ import jakarta.xml.bind.annotation.XmlType;
 public class MissedApproachLegTimeSlicePropertyType {
 
     @XmlElement(name = "MissedApproachLegTimeSlice", required = true)
-    @Column(name = "aixm:_missed_approach_leg_time_slice")
+    @JoinColumn(name = "missed_approach_leg_time_slice")
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
     protected MissedApproachLegTimeSliceType missedApproachLegTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

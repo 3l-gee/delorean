@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -712,10 +714,16 @@ public class TerminalSegmentPointType
     public static class Extension {
 
         @XmlElement(name = "AbstractSegmentPointExtension")
-        @Column(name = "aixm:_abstract_segment_point_extension")
+        @JoinColumn(name = "abstract_segment_point_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractSegmentPointExtension;
         @XmlElement(name = "AbstractTerminalSegmentPointExtension")
-        @Column(name = "aixm:_abstract_terminal_segment_point_extension")
+        @JoinColumn(name = "abstract_terminal_segment_point_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractTerminalSegmentPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

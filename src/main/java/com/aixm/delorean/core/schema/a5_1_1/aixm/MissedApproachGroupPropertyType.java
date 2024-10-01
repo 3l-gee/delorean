@@ -7,8 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,7 +48,10 @@ public class MissedApproachGroupPropertyType
 {
 
     @XmlElement(name = "MissedApproachGroup", required = true)
-    @Column(name = "aixm:_missed_approach_group")
+    @JoinColumn(name = "missed_approach_group")
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
     protected MissedApproachGroupType missedApproachGroup;
 
     /**

@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -570,10 +572,16 @@ public class DirectFlightSegmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractDirectFlightExtension")
-        @Column(name = "aixm:_abstract_direct_flight_extension")
+        @JoinColumn(name = "abstract_direct_flight_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractDirectFlightExtension;
         @XmlElement(name = "AbstractDirectFlightSegmentExtension")
-        @Column(name = "aixm:_abstract_direct_flight_segment_extension")
+        @JoinColumn(name = "abstract_direct_flight_segment_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractDirectFlightSegmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

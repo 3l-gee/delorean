@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -790,7 +792,10 @@ public class RoutePortionType
     public static class Extension {
 
         @XmlElement(name = "AbstractRoutePortionExtension")
-        @Column(name = "aixm:_abstract_route_portion_extension")
+        @JoinColumn(name = "abstract_route_portion_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractRoutePortionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

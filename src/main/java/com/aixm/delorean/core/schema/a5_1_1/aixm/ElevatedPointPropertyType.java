@@ -7,8 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,7 +48,10 @@ public class ElevatedPointPropertyType
 {
 
     @XmlElement(name = "ElevatedPoint", required = true)
-    @Column(name = "aixm:_elevated_point")
+    @JoinColumn(name = "elevated_point")
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
     protected ElevatedPointType elevatedPoint;
 
     /**

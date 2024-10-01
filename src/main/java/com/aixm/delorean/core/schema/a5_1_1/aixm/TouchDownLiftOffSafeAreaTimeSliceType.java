@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -66,8 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "protectedTouchDownLiftOff",
     "extension"
 })
-@Entity
-@Table(name = "touch_down_lift_off_safe_area_time_slice_type")
+@Embeddable
 public class TouchDownLiftOffSafeAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -409,10 +409,16 @@ public class TouchDownLiftOffSafeAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTouchDownLiftOffSafeAreaExtension")
-        @Column(name = "aixm:_abstract_touch_down_lift_off_safe_area_extension")
+        @JoinColumn(name = "abstract_touch_down_lift_off_safe_area_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractTouchDownLiftOffSafeAreaExtension;
         @XmlElement(name = "AbstractAirportHeliportProtectionAreaExtension")
-        @Column(name = "aixm:_abstract_airport_heliport_protection_area_extension")
+        @JoinColumn(name = "abstract_airport_heliport_protection_area_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractAirportHeliportProtectionAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

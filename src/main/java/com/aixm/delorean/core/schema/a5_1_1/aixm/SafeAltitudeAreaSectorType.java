@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -324,7 +326,10 @@ public class SafeAltitudeAreaSectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractSafeAltitudeAreaSectorExtension")
-        @Column(name = "aixm:_abstract_safe_altitude_area_sector_extension")
+        @JoinColumn(name = "abstract_safe_altitude_area_sector_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractSafeAltitudeAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

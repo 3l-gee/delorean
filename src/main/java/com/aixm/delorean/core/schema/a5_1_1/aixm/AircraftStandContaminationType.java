@@ -13,7 +13,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -598,10 +600,16 @@ public class AircraftStandContaminationType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceContaminationExtension")
-        @Column(name = "aixm:_abstract_surface_contamination_extension")
+        @JoinColumn(name = "abstract_surface_contamination_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractSurfaceContaminationExtension;
         @XmlElement(name = "AbstractAircraftStandContaminationExtension")
-        @Column(name = "aixm:_abstract_aircraft_stand_contamination_extension")
+        @JoinColumn(name = "abstract_aircraft_stand_contamination_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractAircraftStandContaminationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

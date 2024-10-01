@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -62,8 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "airport_hot_spot_time_slice_type")
+@Embeddable
 public class AirportHotSpotTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -310,7 +310,10 @@ public class AirportHotSpotTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportHotSpotExtension", required = true)
-        @Column(name = "aixm:_abstract_airport_hot_spot_extension")
+        @JoinColumn(name = "abstract_airport_hot_spot_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractAirportHotSpotExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

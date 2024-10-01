@@ -7,8 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,7 +48,10 @@ public class AircraftCharacteristicPropertyType
 {
 
     @XmlElement(name = "AircraftCharacteristic", required = true)
-    @Column(name = "aixm:_aircraft_characteristic")
+    @JoinColumn(name = "aircraft_characteristic")
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
     protected AircraftCharacteristicType aircraftCharacteristic;
 
     /**

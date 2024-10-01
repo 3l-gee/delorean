@@ -7,8 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -47,7 +49,10 @@ public class PropertiesWithSchedulePropertyType
 {
 
     @XmlElementRef(name = "AbstractPropertiesWithSchedule", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class)
-    @Column(name = "aixm:_abstract_properties_with_schedule")
+    @JoinColumn(name = "abstract_properties_with_schedule")
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
     protected JAXBElement<? extends AbstractPropertiesWithScheduleType> abstractPropertiesWithSchedule;
 
     /**

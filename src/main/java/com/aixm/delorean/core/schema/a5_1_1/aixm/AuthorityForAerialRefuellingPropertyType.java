@@ -7,8 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,7 +48,10 @@ public class AuthorityForAerialRefuellingPropertyType
 {
 
     @XmlElement(name = "AuthorityForAerialRefuelling", required = true)
-    @Column(name = "aixm:_authority_for_aerial_refuelling")
+    @JoinColumn(name = "authority_for_aerial_refuelling")
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
     protected AuthorityForAerialRefuellingType authorityForAerialRefuelling;
 
     /**

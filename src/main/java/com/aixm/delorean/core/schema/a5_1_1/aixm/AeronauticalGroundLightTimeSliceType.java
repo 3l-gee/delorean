@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -65,8 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "aeronautical_ground_light_time_slice_type")
+@Embeddable
 public class AeronauticalGroundLightTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -406,7 +406,10 @@ public class AeronauticalGroundLightTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAeronauticalGroundLightExtension", required = true)
-        @Column(name = "aixm:_abstract_aeronautical_ground_light_extension")
+        @JoinColumn(name = "abstract_aeronautical_ground_light_extension")
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        })
         protected AbstractExtensionType abstractAeronauticalGroundLightExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
