@@ -9,17 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,59 +64,32 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
 public class GuidanceLineTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextNameType> designator;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeGuidanceLineType> type;
+    @XmlElementRef(name = "maxSpeed", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValSpeedType> maxSpeed;
+    @XmlElementRef(name = "usageDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeDirectionType> usageDirection;
     @XmlElement(nillable = true)
-    @Column(name = "designator")
-    protected TextNameType designator;
-    @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeGuidanceLineType type;
-    @XmlElement(nillable = true)
-    @Column(name = "max_speed")
-    protected ValSpeedType maxSpeed;
-    @XmlElement(nillable = true)
-    @Column(name = "usage_direction")
-    protected CodeDirectionType usageDirection;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TouchDownLiftOffPropertyType> connectedTouchDownLiftOff;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RunwayCentrelinePointPropertyType> connectedRunwayCentrelinePoint;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApronPropertyType> connectedApron;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AircraftStandPropertyType> connectedStand;
+    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ElevatedCurvePropertyType> extent;
     @XmlElement(nillable = true)
-    @Column(name = "extent")
-    protected ElevatedCurvePropertyType extent;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TaxiwayPropertyType> connectedTaxiway;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<GuidanceLineTimeSliceType.Extension> extension;
 
     /**
@@ -129,10 +97,10 @@ public class GuidanceLineTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getDesignator() {
+    public JAXBElement<TextNameType> getDesignator() {
         return designator;
     }
 
@@ -141,10 +109,10 @@ public class GuidanceLineTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setDesignator(TextNameType value) {
+    public void setDesignator(JAXBElement<TextNameType> value) {
         this.designator = value;
     }
 
@@ -157,10 +125,10 @@ public class GuidanceLineTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeGuidanceLineType }
+     *     {@link JAXBElement }{@code <}{@link CodeGuidanceLineType }{@code >}
      *     
      */
-    public CodeGuidanceLineType getType() {
+    public JAXBElement<CodeGuidanceLineType> getType() {
         return type;
     }
 
@@ -169,10 +137,10 @@ public class GuidanceLineTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeGuidanceLineType }
+     *     {@link JAXBElement }{@code <}{@link CodeGuidanceLineType }{@code >}
      *     
      */
-    public void setType(CodeGuidanceLineType value) {
+    public void setType(JAXBElement<CodeGuidanceLineType> value) {
         this.type = value;
     }
 
@@ -185,10 +153,10 @@ public class GuidanceLineTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValSpeedType }
+     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
      *     
      */
-    public ValSpeedType getMaxSpeed() {
+    public JAXBElement<ValSpeedType> getMaxSpeed() {
         return maxSpeed;
     }
 
@@ -197,10 +165,10 @@ public class GuidanceLineTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValSpeedType }
+     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
      *     
      */
-    public void setMaxSpeed(ValSpeedType value) {
+    public void setMaxSpeed(JAXBElement<ValSpeedType> value) {
         this.maxSpeed = value;
     }
 
@@ -213,10 +181,10 @@ public class GuidanceLineTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeDirectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionType }{@code >}
      *     
      */
-    public CodeDirectionType getUsageDirection() {
+    public JAXBElement<CodeDirectionType> getUsageDirection() {
         return usageDirection;
     }
 
@@ -225,10 +193,10 @@ public class GuidanceLineTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDirectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionType }{@code >}
      *     
      */
-    public void setUsageDirection(CodeDirectionType value) {
+    public void setUsageDirection(JAXBElement<CodeDirectionType> value) {
         this.usageDirection = value;
     }
 
@@ -401,10 +369,10 @@ public class GuidanceLineTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedCurvePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedCurvePropertyType }{@code >}
      *     
      */
-    public ElevatedCurvePropertyType getExtent() {
+    public JAXBElement<ElevatedCurvePropertyType> getExtent() {
         return extent;
     }
 
@@ -413,10 +381,10 @@ public class GuidanceLineTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedCurvePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedCurvePropertyType }{@code >}
      *     
      */
-    public void setExtent(ElevatedCurvePropertyType value) {
+    public void setExtent(JAXBElement<ElevatedCurvePropertyType> value) {
         this.extent = value;
     }
 
@@ -572,10 +540,6 @@ public class GuidanceLineTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractGuidanceLineExtension", required = true)
-        @JoinColumn(name = "abstract_guidance_line_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractGuidanceLineExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

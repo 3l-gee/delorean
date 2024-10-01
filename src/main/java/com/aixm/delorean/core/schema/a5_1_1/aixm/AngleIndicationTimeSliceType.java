@@ -9,17 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,58 +67,38 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
 public class AngleIndicationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "angle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValBearingType> angle;
+    @XmlElementRef(name = "angleType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeBearingType> angleType;
+    @XmlElementRef(name = "indicationDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeDirectionReferenceType> indicationDirection;
+    @XmlElementRef(name = "trueAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValBearingType> trueAngle;
+    @XmlElementRef(name = "cardinalDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeCardinalDirectionType> cardinalDirection;
+    @XmlElementRef(name = "minimumReceptionAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> minimumReceptionAltitude;
+    @XmlElementRef(name = "fix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<DesignatedPointPropertyType> fix;
+    @XmlElementRef(name = "pointChoice_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<DesignatedPointPropertyType> pointChoiceFixDesignatedPoint;
+    @XmlElementRef(name = "pointChoice_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<NavaidPropertyType> pointChoiceNavaidSystem;
+    @XmlElementRef(name = "pointChoice_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<PointPropertyType> pointChoicePosition;
+    @XmlElementRef(name = "pointChoice_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<RunwayCentrelinePointPropertyType> pointChoiceRunwayPoint;
+    @XmlElementRef(name = "pointChoice_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TouchDownLiftOffPropertyType> pointChoiceAimingPoint;
+    @XmlElementRef(name = "pointChoice_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<AirportHeliportPropertyType> pointChoiceAirportReferencePoint;
     @XmlElement(nillable = true)
-    @Column(name = "angle")
-    protected ValBearingType angle;
-    @XmlElement(nillable = true)
-    @Column(name = "angle_type")
-    protected CodeBearingType angleType;
-    @XmlElement(nillable = true)
-    @Column(name = "indication_direction")
-    protected CodeDirectionReferenceType indicationDirection;
-    @XmlElement(nillable = true)
-    @Column(name = "true_angle")
-    protected ValBearingType trueAngle;
-    @XmlElement(nillable = true)
-    @Column(name = "cardinal_direction")
-    protected CodeCardinalDirectionType cardinalDirection;
-    @XmlElement(nillable = true)
-    @Column(name = "minimum_reception_altitude")
-    protected ValDistanceVerticalType minimumReceptionAltitude;
-    @XmlElement(nillable = true)
-    @Column(name = "fix")
-    protected DesignatedPointPropertyType fix;
-    @XmlElement(name = "pointChoice_fixDesignatedPoint", nillable = true)
-    @Column(name = "point_choice_fix_designated_point")
-    protected DesignatedPointPropertyType pointChoiceFixDesignatedPoint;
-    @XmlElement(name = "pointChoice_navaidSystem", nillable = true)
-    @Column(name = "point_choice_navaid_system")
-    protected NavaidPropertyType pointChoiceNavaidSystem;
-    @XmlElement(name = "pointChoice_position", nillable = true)
-    @Column(name = "point_choice_position")
-    protected PointPropertyType pointChoicePosition;
-    @XmlElement(name = "pointChoice_runwayPoint", nillable = true)
-    @Column(name = "point_choice_runway_point")
-    protected RunwayCentrelinePointPropertyType pointChoiceRunwayPoint;
-    @XmlElement(name = "pointChoice_aimingPoint", nillable = true)
-    @Column(name = "point_choice_aiming_point")
-    protected TouchDownLiftOffPropertyType pointChoiceAimingPoint;
-    @XmlElement(name = "pointChoice_airportReferencePoint", nillable = true)
-    @Column(name = "point_choice_airport_reference_point")
-    protected AirportHeliportPropertyType pointChoiceAirportReferencePoint;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AngleIndicationTimeSliceType.Extension> extension;
 
     /**
@@ -131,10 +106,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getAngle() {
+    public JAXBElement<ValBearingType> getAngle() {
         return angle;
     }
 
@@ -143,10 +118,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setAngle(ValBearingType value) {
+    public void setAngle(JAXBElement<ValBearingType> value) {
         this.angle = value;
     }
 
@@ -159,10 +134,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeBearingType }
+     *     {@link JAXBElement }{@code <}{@link CodeBearingType }{@code >}
      *     
      */
-    public CodeBearingType getAngleType() {
+    public JAXBElement<CodeBearingType> getAngleType() {
         return angleType;
     }
 
@@ -171,10 +146,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeBearingType }
+     *     {@link JAXBElement }{@code <}{@link CodeBearingType }{@code >}
      *     
      */
-    public void setAngleType(CodeBearingType value) {
+    public void setAngleType(JAXBElement<CodeBearingType> value) {
         this.angleType = value;
     }
 
@@ -187,10 +162,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeDirectionReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionReferenceType }{@code >}
      *     
      */
-    public CodeDirectionReferenceType getIndicationDirection() {
+    public JAXBElement<CodeDirectionReferenceType> getIndicationDirection() {
         return indicationDirection;
     }
 
@@ -199,10 +174,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDirectionReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionReferenceType }{@code >}
      *     
      */
-    public void setIndicationDirection(CodeDirectionReferenceType value) {
+    public void setIndicationDirection(JAXBElement<CodeDirectionReferenceType> value) {
         this.indicationDirection = value;
     }
 
@@ -215,10 +190,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getTrueAngle() {
+    public JAXBElement<ValBearingType> getTrueAngle() {
         return trueAngle;
     }
 
@@ -227,10 +202,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setTrueAngle(ValBearingType value) {
+    public void setTrueAngle(JAXBElement<ValBearingType> value) {
         this.trueAngle = value;
     }
 
@@ -243,10 +218,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeCardinalDirectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
      *     
      */
-    public CodeCardinalDirectionType getCardinalDirection() {
+    public JAXBElement<CodeCardinalDirectionType> getCardinalDirection() {
         return cardinalDirection;
     }
 
@@ -255,10 +230,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeCardinalDirectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
      *     
      */
-    public void setCardinalDirection(CodeCardinalDirectionType value) {
+    public void setCardinalDirection(JAXBElement<CodeCardinalDirectionType> value) {
         this.cardinalDirection = value;
     }
 
@@ -271,10 +246,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getMinimumReceptionAltitude() {
+    public JAXBElement<ValDistanceVerticalType> getMinimumReceptionAltitude() {
         return minimumReceptionAltitude;
     }
 
@@ -283,10 +258,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setMinimumReceptionAltitude(ValDistanceVerticalType value) {
+    public void setMinimumReceptionAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumReceptionAltitude = value;
     }
 
@@ -299,10 +274,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public DesignatedPointPropertyType getFix() {
+    public JAXBElement<DesignatedPointPropertyType> getFix() {
         return fix;
     }
 
@@ -311,10 +286,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public void setFix(DesignatedPointPropertyType value) {
+    public void setFix(JAXBElement<DesignatedPointPropertyType> value) {
         this.fix = value;
     }
 
@@ -327,10 +302,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public DesignatedPointPropertyType getPointChoiceFixDesignatedPoint() {
+    public JAXBElement<DesignatedPointPropertyType> getPointChoiceFixDesignatedPoint() {
         return pointChoiceFixDesignatedPoint;
     }
 
@@ -339,10 +314,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceFixDesignatedPoint(DesignatedPointPropertyType value) {
+    public void setPointChoiceFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.pointChoiceFixDesignatedPoint = value;
     }
 
@@ -355,10 +330,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link NavaidPropertyType }
+     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
      *     
      */
-    public NavaidPropertyType getPointChoiceNavaidSystem() {
+    public JAXBElement<NavaidPropertyType> getPointChoiceNavaidSystem() {
         return pointChoiceNavaidSystem;
     }
 
@@ -367,10 +342,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link NavaidPropertyType }
+     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceNavaidSystem(NavaidPropertyType value) {
+    public void setPointChoiceNavaidSystem(JAXBElement<NavaidPropertyType> value) {
         this.pointChoiceNavaidSystem = value;
     }
 
@@ -383,10 +358,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link PointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
      *     
      */
-    public PointPropertyType getPointChoicePosition() {
+    public JAXBElement<PointPropertyType> getPointChoicePosition() {
         return pointChoicePosition;
     }
 
@@ -395,10 +370,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link PointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
      *     
      */
-    public void setPointChoicePosition(PointPropertyType value) {
+    public void setPointChoicePosition(JAXBElement<PointPropertyType> value) {
         this.pointChoicePosition = value;
     }
 
@@ -411,10 +386,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayCentrelinePointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
      *     
      */
-    public RunwayCentrelinePointPropertyType getPointChoiceRunwayPoint() {
+    public JAXBElement<RunwayCentrelinePointPropertyType> getPointChoiceRunwayPoint() {
         return pointChoiceRunwayPoint;
     }
 
@@ -423,10 +398,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayCentrelinePointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceRunwayPoint(RunwayCentrelinePointPropertyType value) {
+    public void setPointChoiceRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
         this.pointChoiceRunwayPoint = value;
     }
 
@@ -439,10 +414,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TouchDownLiftOffPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
      *     
      */
-    public TouchDownLiftOffPropertyType getPointChoiceAimingPoint() {
+    public JAXBElement<TouchDownLiftOffPropertyType> getPointChoiceAimingPoint() {
         return pointChoiceAimingPoint;
     }
 
@@ -451,10 +426,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TouchDownLiftOffPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceAimingPoint(TouchDownLiftOffPropertyType value) {
+    public void setPointChoiceAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.pointChoiceAimingPoint = value;
     }
 
@@ -467,10 +442,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getPointChoiceAirportReferencePoint() {
+    public JAXBElement<AirportHeliportPropertyType> getPointChoiceAirportReferencePoint() {
         return pointChoiceAirportReferencePoint;
     }
 
@@ -479,10 +454,10 @@ public class AngleIndicationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceAirportReferencePoint(AirportHeliportPropertyType value) {
+    public void setPointChoiceAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.pointChoiceAirportReferencePoint = value;
     }
 
@@ -598,10 +573,6 @@ public class AngleIndicationTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAngleIndicationExtension", required = true)
-        @JoinColumn(name = "abstract_angle_indication_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractAngleIndicationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

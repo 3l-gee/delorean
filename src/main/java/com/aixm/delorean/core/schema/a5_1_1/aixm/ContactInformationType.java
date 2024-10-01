@@ -9,18 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -57,305 +52,83 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ContactInformationType", propOrder = {
-    "aixmName",
-    "title",
-    "address",
-    "networkNode",
-    "phoneFax",
-    "annotation",
-    "extension"
+    "rest"
 })
-@Entity
-@Table(name = "contact_information_type")
 public class ContactInformationType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Column(name = "title")
-    protected TextNameType title;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<PostalAddressPropertyType> address;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<OnlineContactPropertyType> networkNode;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<TelephoneContactPropertyType> phoneFax;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<ContactInformationType.Extension> extension;
-
     /**
-     * Gets the value of the aixmName property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link TextNameType }
-     *     
-     */
-    public TextNameType getAIXMName() {
-        return aixmName;
-    }
-
-    /**
-     * Sets the value of the aixmName property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 10247 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TextNameType }
-     *     
      */
-    public void setAIXMName(TextNameType value) {
-        this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
+    @XmlElementRefs({
+        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "title", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "address", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "networkNode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "phoneFax", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> rest;
 
     /**
-     * Gets the value of the title property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link TextNameType }
-     *     
-     */
-    public TextNameType getTitle() {
-        return title;
-    }
-
-    /**
-     * Sets the value of the title property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 10247 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TextNameType }
-     *     
-     */
-    public void setTitle(TextNameType value) {
-        this.title = value;
-    }
-
-    public boolean isSetTitle() {
-        return (this.title!= null);
-    }
-
-    /**
-     * Gets the value of the address property.
+     * Gets the value of the rest property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the address property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getAddress().add(newItem);
+     * getRest().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link PostalAddressPropertyType }
+     * {@link JAXBElement }{@code <}{@link ContactInformationType.Extension }{@code >}
+     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link OnlineContactPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link PostalAddressPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TelephoneContactPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      * </p>
      * 
      * 
      * @return
-     *     The value of the address property.
+     *     The value of the rest property.
      */
-    public List<PostalAddressPropertyType> getAddress() {
-        if (address == null) {
-            address = new ArrayList<>();
+    public List<JAXBElement<?>> getRest() {
+        if (rest == null) {
+            rest = new ArrayList<>();
         }
-        return this.address;
-    }
-
-    public boolean isSetAddress() {
-        return ((this.address!= null)&&(!this.address.isEmpty()));
-    }
-
-    public void unsetAddress() {
-        this.address = null;
-    }
-
-    /**
-     * Gets the value of the networkNode property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the networkNode property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNetworkNode().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link OnlineContactPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the networkNode property.
-     */
-    public List<OnlineContactPropertyType> getNetworkNode() {
-        if (networkNode == null) {
-            networkNode = new ArrayList<>();
-        }
-        return this.networkNode;
-    }
-
-    public boolean isSetNetworkNode() {
-        return ((this.networkNode!= null)&&(!this.networkNode.isEmpty()));
-    }
-
-    public void unsetNetworkNode() {
-        this.networkNode = null;
-    }
-
-    /**
-     * Gets the value of the phoneFax property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the phoneFax property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getPhoneFax().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link TelephoneContactPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the phoneFax property.
-     */
-    public List<TelephoneContactPropertyType> getPhoneFax() {
-        if (phoneFax == null) {
-            phoneFax = new ArrayList<>();
-        }
-        return this.phoneFax;
-    }
-
-    public boolean isSetPhoneFax() {
-        return ((this.phoneFax!= null)&&(!this.phoneFax.isEmpty()));
-    }
-
-    public void unsetPhoneFax() {
-        this.phoneFax = null;
-    }
-
-    /**
-     * Gets the value of the annotation property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAnnotation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NotePropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the annotation property.
-     */
-    public List<NotePropertyType> getAnnotation() {
-        if (annotation == null) {
-            annotation = new ArrayList<>();
-        }
-        return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ContactInformationType.Extension }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the extension property.
-     */
-    public List<ContactInformationType.Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<>();
-        }
-        return this.extension;
-    }
-
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
+        return this.rest;
     }
 
 
@@ -386,10 +159,6 @@ public class ContactInformationType
     public static class Extension {
 
         @XmlElement(name = "AbstractContactInformationExtension")
-        @JoinColumn(name = "abstract_contact_information_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractContactInformationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "UnitAvailabilityPropertyType", propOrder = {
     "unitAvailability"
 })
-@Entity
-@Table(name = "unit_availability_property_type")
 public class UnitAvailabilityPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "UnitAvailability", required = true)
-    @JoinColumn(name = "unit_availability")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected UnitAvailabilityType unitAvailability;
 
     /**

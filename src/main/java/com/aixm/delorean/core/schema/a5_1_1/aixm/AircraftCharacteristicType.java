@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -81,83 +75,54 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "aircraft_characteristic_type")
 public class AircraftCharacteristicType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAircraftType> type;
+    @XmlElementRef(name = "engine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAircraftEngineType> engine;
+    @XmlElementRef(name = "numberEngine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAircraftEngineNumberType> numberEngine;
+    @XmlElementRef(name = "typeAircraftICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAircraftICAOType> typeAircraftICAO;
+    @XmlElementRef(name = "aircraftLandingCategory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAircraftCategoryType> aircraftLandingCategory;
+    @XmlElementRef(name = "wingSpan", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceType> wingSpan;
+    @XmlElementRef(name = "wingSpanInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeValueInterpretationType> wingSpanInterpretation;
+    @XmlElementRef(name = "classWingSpan", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAircraftWingspanClassType> classWingSpan;
+    @XmlElementRef(name = "weight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValWeightType> weight;
+    @XmlElementRef(name = "weightInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeValueInterpretationType> weightInterpretation;
+    @XmlElementRef(name = "passengers", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<NoNumberType> passengers;
+    @XmlElementRef(name = "passengersInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeValueInterpretationType> passengersInterpretation;
+    @XmlElementRef(name = "speed", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValSpeedType> speed;
+    @XmlElementRef(name = "speedInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeValueInterpretationType> speedInterpretation;
+    @XmlElementRef(name = "wakeTurbulence", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeWakeTurbulenceType> wakeTurbulence;
+    @XmlElementRef(name = "navigationEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeNavigationEquipmentType> navigationEquipment;
+    @XmlElementRef(name = "navigationSpecification", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeNavigationSpecificationType> navigationSpecification;
+    @XmlElementRef(name = "verticalSeparationCapability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRVSMType> verticalSeparationCapability;
+    @XmlElementRef(name = "antiCollisionAndSeparationEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeEquipmentAntiCollisionType> antiCollisionAndSeparationEquipment;
+    @XmlElementRef(name = "communicationEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeCommunicationModeType> communicationEquipment;
+    @XmlElementRef(name = "surveillanceEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeTransponderType> surveillanceEquipment;
     @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeAircraftType type;
-    @XmlElement(nillable = true)
-    @Column(name = "engine")
-    protected CodeAircraftEngineType engine;
-    @XmlElement(nillable = true)
-    @Column(name = "number_engine")
-    protected CodeAircraftEngineNumberType numberEngine;
-    @XmlElement(nillable = true)
-    @Column(name = "type_aircraft_icao")
-    protected CodeAircraftICAOType typeAircraftICAO;
-    @XmlElement(nillable = true)
-    @Column(name = "aircraft_landing_category")
-    protected CodeAircraftCategoryType aircraftLandingCategory;
-    @XmlElement(nillable = true)
-    @Column(name = "wing_span")
-    protected ValDistanceType wingSpan;
-    @XmlElement(nillable = true)
-    @Column(name = "wing_span_interpretation")
-    protected CodeValueInterpretationType wingSpanInterpretation;
-    @XmlElement(nillable = true)
-    @Column(name = "class_wing_span")
-    protected CodeAircraftWingspanClassType classWingSpan;
-    @XmlElement(nillable = true)
-    @Column(name = "weight")
-    protected ValWeightType weight;
-    @XmlElement(nillable = true)
-    @Column(name = "weight_interpretation")
-    protected CodeValueInterpretationType weightInterpretation;
-    @XmlElement(nillable = true)
-    @Column(name = "passengers")
-    protected NoNumberType passengers;
-    @XmlElement(nillable = true)
-    @Column(name = "passengers_interpretation")
-    protected CodeValueInterpretationType passengersInterpretation;
-    @XmlElement(nillable = true)
-    @Column(name = "speed")
-    protected ValSpeedType speed;
-    @XmlElement(nillable = true)
-    @Column(name = "speed_interpretation")
-    protected CodeValueInterpretationType speedInterpretation;
-    @XmlElement(nillable = true)
-    @Column(name = "wake_turbulence")
-    protected CodeWakeTurbulenceType wakeTurbulence;
-    @XmlElement(nillable = true)
-    @Column(name = "navigation_equipment")
-    protected CodeNavigationEquipmentType navigationEquipment;
-    @XmlElement(nillable = true)
-    @Column(name = "navigation_specification")
-    protected CodeNavigationSpecificationType navigationSpecification;
-    @XmlElement(nillable = true)
-    @Column(name = "vertical_separation_capability")
-    protected CodeRVSMType verticalSeparationCapability;
-    @XmlElement(nillable = true)
-    @Column(name = "anti_collision_and_separation_equipment")
-    protected CodeEquipmentAntiCollisionType antiCollisionAndSeparationEquipment;
-    @XmlElement(nillable = true)
-    @Column(name = "communication_equipment")
-    protected CodeCommunicationModeType communicationEquipment;
-    @XmlElement(nillable = true)
-    @Column(name = "surveillance_equipment")
-    protected CodeTransponderType surveillanceEquipment;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AircraftCharacteristicType.Extension> extension;
 
     /**
@@ -165,10 +130,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAircraftType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftType }{@code >}
      *     
      */
-    public CodeAircraftType getType() {
+    public JAXBElement<CodeAircraftType> getType() {
         return type;
     }
 
@@ -177,10 +142,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAircraftType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftType }{@code >}
      *     
      */
-    public void setType(CodeAircraftType value) {
+    public void setType(JAXBElement<CodeAircraftType> value) {
         this.type = value;
     }
 
@@ -193,10 +158,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAircraftEngineType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftEngineType }{@code >}
      *     
      */
-    public CodeAircraftEngineType getEngine() {
+    public JAXBElement<CodeAircraftEngineType> getEngine() {
         return engine;
     }
 
@@ -205,10 +170,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAircraftEngineType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftEngineType }{@code >}
      *     
      */
-    public void setEngine(CodeAircraftEngineType value) {
+    public void setEngine(JAXBElement<CodeAircraftEngineType> value) {
         this.engine = value;
     }
 
@@ -221,10 +186,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAircraftEngineNumberType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftEngineNumberType }{@code >}
      *     
      */
-    public CodeAircraftEngineNumberType getNumberEngine() {
+    public JAXBElement<CodeAircraftEngineNumberType> getNumberEngine() {
         return numberEngine;
     }
 
@@ -233,10 +198,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAircraftEngineNumberType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftEngineNumberType }{@code >}
      *     
      */
-    public void setNumberEngine(CodeAircraftEngineNumberType value) {
+    public void setNumberEngine(JAXBElement<CodeAircraftEngineNumberType> value) {
         this.numberEngine = value;
     }
 
@@ -249,10 +214,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAircraftICAOType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftICAOType }{@code >}
      *     
      */
-    public CodeAircraftICAOType getTypeAircraftICAO() {
+    public JAXBElement<CodeAircraftICAOType> getTypeAircraftICAO() {
         return typeAircraftICAO;
     }
 
@@ -261,10 +226,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAircraftICAOType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftICAOType }{@code >}
      *     
      */
-    public void setTypeAircraftICAO(CodeAircraftICAOType value) {
+    public void setTypeAircraftICAO(JAXBElement<CodeAircraftICAOType> value) {
         this.typeAircraftICAO = value;
     }
 
@@ -277,10 +242,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAircraftCategoryType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftCategoryType }{@code >}
      *     
      */
-    public CodeAircraftCategoryType getAircraftLandingCategory() {
+    public JAXBElement<CodeAircraftCategoryType> getAircraftLandingCategory() {
         return aircraftLandingCategory;
     }
 
@@ -289,10 +254,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAircraftCategoryType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftCategoryType }{@code >}
      *     
      */
-    public void setAircraftLandingCategory(CodeAircraftCategoryType value) {
+    public void setAircraftLandingCategory(JAXBElement<CodeAircraftCategoryType> value) {
         this.aircraftLandingCategory = value;
     }
 
@@ -305,10 +270,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getWingSpan() {
+    public JAXBElement<ValDistanceType> getWingSpan() {
         return wingSpan;
     }
 
@@ -317,10 +282,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setWingSpan(ValDistanceType value) {
+    public void setWingSpan(JAXBElement<ValDistanceType> value) {
         this.wingSpan = value;
     }
 
@@ -333,10 +298,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeValueInterpretationType }
+     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
      *     
      */
-    public CodeValueInterpretationType getWingSpanInterpretation() {
+    public JAXBElement<CodeValueInterpretationType> getWingSpanInterpretation() {
         return wingSpanInterpretation;
     }
 
@@ -345,10 +310,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeValueInterpretationType }
+     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
      *     
      */
-    public void setWingSpanInterpretation(CodeValueInterpretationType value) {
+    public void setWingSpanInterpretation(JAXBElement<CodeValueInterpretationType> value) {
         this.wingSpanInterpretation = value;
     }
 
@@ -361,10 +326,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAircraftWingspanClassType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftWingspanClassType }{@code >}
      *     
      */
-    public CodeAircraftWingspanClassType getClassWingSpan() {
+    public JAXBElement<CodeAircraftWingspanClassType> getClassWingSpan() {
         return classWingSpan;
     }
 
@@ -373,10 +338,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAircraftWingspanClassType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftWingspanClassType }{@code >}
      *     
      */
-    public void setClassWingSpan(CodeAircraftWingspanClassType value) {
+    public void setClassWingSpan(JAXBElement<CodeAircraftWingspanClassType> value) {
         this.classWingSpan = value;
     }
 
@@ -389,10 +354,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link ValWeightType }
+     *     {@link JAXBElement }{@code <}{@link ValWeightType }{@code >}
      *     
      */
-    public ValWeightType getWeight() {
+    public JAXBElement<ValWeightType> getWeight() {
         return weight;
     }
 
@@ -401,10 +366,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValWeightType }
+     *     {@link JAXBElement }{@code <}{@link ValWeightType }{@code >}
      *     
      */
-    public void setWeight(ValWeightType value) {
+    public void setWeight(JAXBElement<ValWeightType> value) {
         this.weight = value;
     }
 
@@ -417,10 +382,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeValueInterpretationType }
+     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
      *     
      */
-    public CodeValueInterpretationType getWeightInterpretation() {
+    public JAXBElement<CodeValueInterpretationType> getWeightInterpretation() {
         return weightInterpretation;
     }
 
@@ -429,10 +394,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeValueInterpretationType }
+     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
      *     
      */
-    public void setWeightInterpretation(CodeValueInterpretationType value) {
+    public void setWeightInterpretation(JAXBElement<CodeValueInterpretationType> value) {
         this.weightInterpretation = value;
     }
 
@@ -445,10 +410,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link NoNumberType }
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
      *     
      */
-    public NoNumberType getPassengers() {
+    public JAXBElement<NoNumberType> getPassengers() {
         return passengers;
     }
 
@@ -457,10 +422,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link NoNumberType }
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
      *     
      */
-    public void setPassengers(NoNumberType value) {
+    public void setPassengers(JAXBElement<NoNumberType> value) {
         this.passengers = value;
     }
 
@@ -473,10 +438,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeValueInterpretationType }
+     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
      *     
      */
-    public CodeValueInterpretationType getPassengersInterpretation() {
+    public JAXBElement<CodeValueInterpretationType> getPassengersInterpretation() {
         return passengersInterpretation;
     }
 
@@ -485,10 +450,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeValueInterpretationType }
+     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
      *     
      */
-    public void setPassengersInterpretation(CodeValueInterpretationType value) {
+    public void setPassengersInterpretation(JAXBElement<CodeValueInterpretationType> value) {
         this.passengersInterpretation = value;
     }
 
@@ -501,10 +466,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link ValSpeedType }
+     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
      *     
      */
-    public ValSpeedType getSpeed() {
+    public JAXBElement<ValSpeedType> getSpeed() {
         return speed;
     }
 
@@ -513,10 +478,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValSpeedType }
+     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
      *     
      */
-    public void setSpeed(ValSpeedType value) {
+    public void setSpeed(JAXBElement<ValSpeedType> value) {
         this.speed = value;
     }
 
@@ -529,10 +494,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeValueInterpretationType }
+     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
      *     
      */
-    public CodeValueInterpretationType getSpeedInterpretation() {
+    public JAXBElement<CodeValueInterpretationType> getSpeedInterpretation() {
         return speedInterpretation;
     }
 
@@ -541,10 +506,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeValueInterpretationType }
+     *     {@link JAXBElement }{@code <}{@link CodeValueInterpretationType }{@code >}
      *     
      */
-    public void setSpeedInterpretation(CodeValueInterpretationType value) {
+    public void setSpeedInterpretation(JAXBElement<CodeValueInterpretationType> value) {
         this.speedInterpretation = value;
     }
 
@@ -557,10 +522,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeWakeTurbulenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeWakeTurbulenceType }{@code >}
      *     
      */
-    public CodeWakeTurbulenceType getWakeTurbulence() {
+    public JAXBElement<CodeWakeTurbulenceType> getWakeTurbulence() {
         return wakeTurbulence;
     }
 
@@ -569,10 +534,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeWakeTurbulenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeWakeTurbulenceType }{@code >}
      *     
      */
-    public void setWakeTurbulence(CodeWakeTurbulenceType value) {
+    public void setWakeTurbulence(JAXBElement<CodeWakeTurbulenceType> value) {
         this.wakeTurbulence = value;
     }
 
@@ -585,10 +550,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeNavigationEquipmentType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavigationEquipmentType }{@code >}
      *     
      */
-    public CodeNavigationEquipmentType getNavigationEquipment() {
+    public JAXBElement<CodeNavigationEquipmentType> getNavigationEquipment() {
         return navigationEquipment;
     }
 
@@ -597,10 +562,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeNavigationEquipmentType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavigationEquipmentType }{@code >}
      *     
      */
-    public void setNavigationEquipment(CodeNavigationEquipmentType value) {
+    public void setNavigationEquipment(JAXBElement<CodeNavigationEquipmentType> value) {
         this.navigationEquipment = value;
     }
 
@@ -613,10 +578,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeNavigationSpecificationType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavigationSpecificationType }{@code >}
      *     
      */
-    public CodeNavigationSpecificationType getNavigationSpecification() {
+    public JAXBElement<CodeNavigationSpecificationType> getNavigationSpecification() {
         return navigationSpecification;
     }
 
@@ -625,10 +590,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeNavigationSpecificationType }
+     *     {@link JAXBElement }{@code <}{@link CodeNavigationSpecificationType }{@code >}
      *     
      */
-    public void setNavigationSpecification(CodeNavigationSpecificationType value) {
+    public void setNavigationSpecification(JAXBElement<CodeNavigationSpecificationType> value) {
         this.navigationSpecification = value;
     }
 
@@ -641,10 +606,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRVSMType }
+     *     {@link JAXBElement }{@code <}{@link CodeRVSMType }{@code >}
      *     
      */
-    public CodeRVSMType getVerticalSeparationCapability() {
+    public JAXBElement<CodeRVSMType> getVerticalSeparationCapability() {
         return verticalSeparationCapability;
     }
 
@@ -653,10 +618,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRVSMType }
+     *     {@link JAXBElement }{@code <}{@link CodeRVSMType }{@code >}
      *     
      */
-    public void setVerticalSeparationCapability(CodeRVSMType value) {
+    public void setVerticalSeparationCapability(JAXBElement<CodeRVSMType> value) {
         this.verticalSeparationCapability = value;
     }
 
@@ -669,10 +634,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeEquipmentAntiCollisionType }
+     *     {@link JAXBElement }{@code <}{@link CodeEquipmentAntiCollisionType }{@code >}
      *     
      */
-    public CodeEquipmentAntiCollisionType getAntiCollisionAndSeparationEquipment() {
+    public JAXBElement<CodeEquipmentAntiCollisionType> getAntiCollisionAndSeparationEquipment() {
         return antiCollisionAndSeparationEquipment;
     }
 
@@ -681,10 +646,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeEquipmentAntiCollisionType }
+     *     {@link JAXBElement }{@code <}{@link CodeEquipmentAntiCollisionType }{@code >}
      *     
      */
-    public void setAntiCollisionAndSeparationEquipment(CodeEquipmentAntiCollisionType value) {
+    public void setAntiCollisionAndSeparationEquipment(JAXBElement<CodeEquipmentAntiCollisionType> value) {
         this.antiCollisionAndSeparationEquipment = value;
     }
 
@@ -697,10 +662,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeCommunicationModeType }
+     *     {@link JAXBElement }{@code <}{@link CodeCommunicationModeType }{@code >}
      *     
      */
-    public CodeCommunicationModeType getCommunicationEquipment() {
+    public JAXBElement<CodeCommunicationModeType> getCommunicationEquipment() {
         return communicationEquipment;
     }
 
@@ -709,10 +674,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeCommunicationModeType }
+     *     {@link JAXBElement }{@code <}{@link CodeCommunicationModeType }{@code >}
      *     
      */
-    public void setCommunicationEquipment(CodeCommunicationModeType value) {
+    public void setCommunicationEquipment(JAXBElement<CodeCommunicationModeType> value) {
         this.communicationEquipment = value;
     }
 
@@ -725,10 +690,10 @@ public class AircraftCharacteristicType
      * 
      * @return
      *     possible object is
-     *     {@link CodeTransponderType }
+     *     {@link JAXBElement }{@code <}{@link CodeTransponderType }{@code >}
      *     
      */
-    public CodeTransponderType getSurveillanceEquipment() {
+    public JAXBElement<CodeTransponderType> getSurveillanceEquipment() {
         return surveillanceEquipment;
     }
 
@@ -737,10 +702,10 @@ public class AircraftCharacteristicType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeTransponderType }
+     *     {@link JAXBElement }{@code <}{@link CodeTransponderType }{@code >}
      *     
      */
-    public void setSurveillanceEquipment(CodeTransponderType value) {
+    public void setSurveillanceEquipment(JAXBElement<CodeTransponderType> value) {
         this.surveillanceEquipment = value;
     }
 
@@ -856,10 +821,6 @@ public class AircraftCharacteristicType
     public static class Extension {
 
         @XmlElement(name = "AbstractAircraftCharacteristicExtension")
-        @JoinColumn(name = "abstract_aircraft_characteristic_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractAircraftCharacteristicExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

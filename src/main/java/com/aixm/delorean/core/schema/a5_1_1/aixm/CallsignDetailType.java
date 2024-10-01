@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,26 +56,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "callsign_detail_type")
 public class CallsignDetailType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "callSign", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextNameType> callSign;
+    @XmlElementRef(name = "language", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeLanguageType> language;
     @XmlElement(nillable = true)
-    @Column(name = "call_sign")
-    protected TextNameType callSign;
-    @XmlElement(nillable = true)
-    @Column(name = "language")
-    protected CodeLanguageType language;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<CallsignDetailType.Extension> extension;
 
     /**
@@ -89,10 +73,10 @@ public class CallsignDetailType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getCallSign() {
+    public JAXBElement<TextNameType> getCallSign() {
         return callSign;
     }
 
@@ -101,10 +85,10 @@ public class CallsignDetailType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setCallSign(TextNameType value) {
+    public void setCallSign(JAXBElement<TextNameType> value) {
         this.callSign = value;
     }
 
@@ -117,10 +101,10 @@ public class CallsignDetailType
      * 
      * @return
      *     possible object is
-     *     {@link CodeLanguageType }
+     *     {@link JAXBElement }{@code <}{@link CodeLanguageType }{@code >}
      *     
      */
-    public CodeLanguageType getLanguage() {
+    public JAXBElement<CodeLanguageType> getLanguage() {
         return language;
     }
 
@@ -129,10 +113,10 @@ public class CallsignDetailType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLanguageType }
+     *     {@link JAXBElement }{@code <}{@link CodeLanguageType }{@code >}
      *     
      */
-    public void setLanguage(CodeLanguageType value) {
+    public void setLanguage(JAXBElement<CodeLanguageType> value) {
         this.language = value;
     }
 
@@ -248,10 +232,6 @@ public class CallsignDetailType
     public static class Extension {
 
         @XmlElement(name = "AbstractCallsignDetailExtension")
-        @JoinColumn(name = "abstract_callsign_detail_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractCallsignDetailExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

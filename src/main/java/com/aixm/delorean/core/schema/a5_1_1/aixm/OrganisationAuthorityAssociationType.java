@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,25 +56,15 @@ import jakarta.xml.bind.annotation.XmlType;
     "theOrganisationAuthority",
     "extension"
 })
-@Entity
-@Table(name = "organisation_authority_association_type")
 public class OrganisationAuthorityAssociationType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeOrganisationHierarchyType> type;
     @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeOrganisationHierarchyType type;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Column(name = "the_organisation_authority")
     protected OrganisationAuthorityPropertyType theOrganisationAuthority;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityAssociationType.Extension> extension;
 
     /**
@@ -88,10 +72,10 @@ public class OrganisationAuthorityAssociationType
      * 
      * @return
      *     possible object is
-     *     {@link CodeOrganisationHierarchyType }
+     *     {@link JAXBElement }{@code <}{@link CodeOrganisationHierarchyType }{@code >}
      *     
      */
-    public CodeOrganisationHierarchyType getType() {
+    public JAXBElement<CodeOrganisationHierarchyType> getType() {
         return type;
     }
 
@@ -100,10 +84,10 @@ public class OrganisationAuthorityAssociationType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeOrganisationHierarchyType }
+     *     {@link JAXBElement }{@code <}{@link CodeOrganisationHierarchyType }{@code >}
      *     
      */
-    public void setType(CodeOrganisationHierarchyType value) {
+    public void setType(JAXBElement<CodeOrganisationHierarchyType> value) {
         this.type = value;
     }
 
@@ -247,10 +231,6 @@ public class OrganisationAuthorityAssociationType
     public static class Extension {
 
         @XmlElement(name = "AbstractOrganisationAuthorityAssociationExtension")
-        @JoinColumn(name = "abstract_organisation_authority_association_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractOrganisationAuthorityAssociationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

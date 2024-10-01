@@ -9,17 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -56,326 +52,87 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DesignatedPointTimeSliceType", propOrder = {
-    "designator",
-    "type",
-    "aixmName",
-    "location",
-    "aimingPoint",
-    "airportHeliport",
-    "runwayPoint",
-    "annotation",
-    "extension"
+    "rest"
 })
-@Embeddable
 public class DesignatedPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
-    @Column(name = "designator")
-    protected CodeDesignatedPointDesignatorType designator;
-    @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeDesignatedPointType type;
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected PointPropertyType location;
-    @XmlElement(nillable = true)
-    @Column(name = "aiming_point")
-    protected TouchDownLiftOffPropertyType aimingPoint;
-    @XmlElement(nillable = true)
-    @Column(name = "airport_heliport")
-    protected AirportHeliportPropertyType airportHeliport;
-    @XmlElement(nillable = true)
-    @Column(name = "runway_point")
-    protected RunwayCentrelinePointPropertyType runwayPoint;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<DesignatedPointTimeSliceType.Extension> extension;
-
     /**
-     * Gets the value of the designator property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link CodeDesignatedPointDesignatorType }
-     *     
-     */
-    public CodeDesignatedPointDesignatorType getDesignator() {
-        return designator;
-    }
-
-    /**
-     * Sets the value of the designator property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 6082 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeDesignatedPointDesignatorType }
-     *     
      */
-    public void setDesignator(CodeDesignatedPointDesignatorType value) {
-        this.designator = value;
-    }
-
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
+    @XmlElementRefs({
+        @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> rest;
 
     /**
-     * Gets the value of the type property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link CodeDesignatedPointType }
-     *     
-     */
-    public CodeDesignatedPointType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 6082 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeDesignatedPointType }
-     *     
-     */
-    public void setType(CodeDesignatedPointType value) {
-        this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
-    /**
-     * Gets the value of the aixmName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TextNameType }
-     *     
-     */
-    public TextNameType getAIXMName() {
-        return aixmName;
-    }
-
-    /**
-     * Sets the value of the aixmName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TextNameType }
-     *     
-     */
-    public void setAIXMName(TextNameType value) {
-        this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
-    /**
-     * Gets the value of the location property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link PointPropertyType }
-     *     
-     */
-    public PointPropertyType getLocation() {
-        return location;
-    }
-
-    /**
-     * Sets the value of the location property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link PointPropertyType }
-     *     
-     */
-    public void setLocation(PointPropertyType value) {
-        this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
-    }
-
-    /**
-     * Gets the value of the aimingPoint property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TouchDownLiftOffPropertyType }
-     *     
-     */
-    public TouchDownLiftOffPropertyType getAimingPoint() {
-        return aimingPoint;
-    }
-
-    /**
-     * Sets the value of the aimingPoint property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TouchDownLiftOffPropertyType }
-     *     
-     */
-    public void setAimingPoint(TouchDownLiftOffPropertyType value) {
-        this.aimingPoint = value;
-    }
-
-    public boolean isSetAimingPoint() {
-        return (this.aimingPoint!= null);
-    }
-
-    /**
-     * Gets the value of the airportHeliport property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AirportHeliportPropertyType }
-     *     
-     */
-    public AirportHeliportPropertyType getAirportHeliport() {
-        return airportHeliport;
-    }
-
-    /**
-     * Sets the value of the airportHeliport property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AirportHeliportPropertyType }
-     *     
-     */
-    public void setAirportHeliport(AirportHeliportPropertyType value) {
-        this.airportHeliport = value;
-    }
-
-    public boolean isSetAirportHeliport() {
-        return (this.airportHeliport!= null);
-    }
-
-    /**
-     * Gets the value of the runwayPoint property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RunwayCentrelinePointPropertyType }
-     *     
-     */
-    public RunwayCentrelinePointPropertyType getRunwayPoint() {
-        return runwayPoint;
-    }
-
-    /**
-     * Sets the value of the runwayPoint property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RunwayCentrelinePointPropertyType }
-     *     
-     */
-    public void setRunwayPoint(RunwayCentrelinePointPropertyType value) {
-        this.runwayPoint = value;
-    }
-
-    public boolean isSetRunwayPoint() {
-        return (this.runwayPoint!= null);
-    }
-
-    /**
-     * Gets the value of the annotation property.
+     * Gets the value of the rest property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getAnnotation().add(newItem);
+     * getRest().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link NotePropertyType }
+     * {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeDesignatedPointDesignatorType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeDesignatedPointType }{@code >}
+     * {@link JAXBElement }{@code <}{@link DesignatedPointTimeSliceType.Extension }{@code >}
+     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
      * </p>
      * 
      * 
      * @return
-     *     The value of the annotation property.
+     *     The value of the rest property.
      */
-    public List<NotePropertyType> getAnnotation() {
-        if (annotation == null) {
-            annotation = new ArrayList<>();
+    public List<JAXBElement<?>> getRest() {
+        if (rest == null) {
+            rest = new ArrayList<>();
         }
-        return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link DesignatedPointTimeSliceType.Extension }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the extension property.
-     */
-    public List<DesignatedPointTimeSliceType.Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<>();
-        }
-        return this.extension;
-    }
-
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
+        return this.rest;
     }
 
 
@@ -406,10 +163,6 @@ public class DesignatedPointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDesignatedPointExtension", required = true)
-        @JoinColumn(name = "abstract_designated_point_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractDesignatedPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

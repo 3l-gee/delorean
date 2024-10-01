@@ -9,17 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -57,770 +53,113 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PrecisionApproachRadarTimeSliceType", propOrder = {
-    "aixmName",
-    "serialNumber",
-    "range",
-    "rangeAccuracy",
-    "dualChannel",
-    "movingTargetIndicator",
-    "standbyPower",
-    "digital",
-    "militaryUseOnly",
-    "specialUseOnly",
-    "specialAircraftOnly",
-    "magneticVariation",
-    "magneticVariationAccuracy",
-    "dateMagneticVariation",
-    "contact",
-    "location",
-    "annotation",
-    "precisionApproachRadarType",
-    "slope",
-    "slopeAccuracy",
-    "reflector",
-    "extension"
+    "rest"
 })
-@Embeddable
 public class PrecisionApproachRadarTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Column(name = "serial_number")
-    protected TextDesignatorType serialNumber;
-    @XmlElement(nillable = true)
-    @Column(name = "range")
-    protected ValDistanceType range;
-    @XmlElement(nillable = true)
-    @Column(name = "range_accuracy")
-    protected ValDistanceType rangeAccuracy;
-    @XmlElement(nillable = true)
-    @Column(name = "dual_channel")
-    protected CodeYesNoType dualChannel;
-    @XmlElement(nillable = true)
-    @Column(name = "moving_target_indicator")
-    protected CodeYesNoType movingTargetIndicator;
-    @XmlElement(nillable = true)
-    @Column(name = "standby_power")
-    protected CodeStandbyPowerType standbyPower;
-    @XmlElement(nillable = true)
-    @Column(name = "digital")
-    protected CodeYesNoType digital;
-    @XmlElement(nillable = true)
-    @Column(name = "military_use_only")
-    protected CodeYesNoType militaryUseOnly;
-    @XmlElement(nillable = true)
-    @Column(name = "special_use_only")
-    protected CodeYesNoType specialUseOnly;
-    @XmlElement(nillable = true)
-    @Column(name = "special_aircraft_only")
-    protected CodeYesNoType specialAircraftOnly;
-    @XmlElement(nillable = true)
-    @Column(name = "magnetic_variation")
-    protected ValMagneticVariationType magneticVariation;
-    @XmlElement(nillable = true)
-    @Column(name = "magnetic_variation_accuracy")
-    protected ValAngleType magneticVariationAccuracy;
-    @XmlElement(nillable = true)
-    @Column(name = "date_magnetic_variation")
-    protected DateYearType dateMagneticVariation;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<ContactInformationPropertyType> contact;
-    @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @Column(name = "precision_approach_radar_type")
-    protected CodePARType precisionApproachRadarType;
-    @XmlElement(nillable = true)
-    @Column(name = "slope")
-    protected ValAngleType slope;
-    @XmlElement(nillable = true)
-    @Column(name = "slope_accuracy")
-    protected ValAngleType slopeAccuracy;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<ReflectorPropertyType> reflector;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<PrecisionApproachRadarTimeSliceType.Extension> extension;
-
     /**
-     * Gets the value of the aixmName property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link TextNameType }
-     *     
-     */
-    public TextNameType getAIXMName() {
-        return aixmName;
-    }
-
-    /**
-     * Sets the value of the aixmName property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 11400 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TextNameType }
-     *     
      */
-    public void setAIXMName(TextNameType value) {
-        this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
+    @XmlElementRefs({
+        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "serialNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "range", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "rangeAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "dualChannel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "movingTargetIndicator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "standbyPower", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "digital", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "militaryUseOnly", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "specialUseOnly", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "specialAircraftOnly", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "magneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "magneticVariationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "contact", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "precisionApproachRadarType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "slope", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "slopeAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "reflector", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> rest;
 
     /**
-     * Gets the value of the serialNumber property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link TextDesignatorType }
-     *     
-     */
-    public TextDesignatorType getSerialNumber() {
-        return serialNumber;
-    }
-
-    /**
-     * Sets the value of the serialNumber property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 11400 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TextDesignatorType }
-     *     
-     */
-    public void setSerialNumber(TextDesignatorType value) {
-        this.serialNumber = value;
-    }
-
-    public boolean isSetSerialNumber() {
-        return (this.serialNumber!= null);
-    }
-
-    /**
-     * Gets the value of the range property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValDistanceType }
-     *     
-     */
-    public ValDistanceType getRange() {
-        return range;
-    }
-
-    /**
-     * Sets the value of the range property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValDistanceType }
-     *     
-     */
-    public void setRange(ValDistanceType value) {
-        this.range = value;
-    }
-
-    public boolean isSetRange() {
-        return (this.range!= null);
-    }
-
-    /**
-     * Gets the value of the rangeAccuracy property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValDistanceType }
-     *     
-     */
-    public ValDistanceType getRangeAccuracy() {
-        return rangeAccuracy;
-    }
-
-    /**
-     * Sets the value of the rangeAccuracy property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValDistanceType }
-     *     
-     */
-    public void setRangeAccuracy(ValDistanceType value) {
-        this.rangeAccuracy = value;
-    }
-
-    public boolean isSetRangeAccuracy() {
-        return (this.rangeAccuracy!= null);
-    }
-
-    /**
-     * Gets the value of the dualChannel property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getDualChannel() {
-        return dualChannel;
-    }
-
-    /**
-     * Sets the value of the dualChannel property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setDualChannel(CodeYesNoType value) {
-        this.dualChannel = value;
-    }
-
-    public boolean isSetDualChannel() {
-        return (this.dualChannel!= null);
-    }
-
-    /**
-     * Gets the value of the movingTargetIndicator property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getMovingTargetIndicator() {
-        return movingTargetIndicator;
-    }
-
-    /**
-     * Sets the value of the movingTargetIndicator property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setMovingTargetIndicator(CodeYesNoType value) {
-        this.movingTargetIndicator = value;
-    }
-
-    public boolean isSetMovingTargetIndicator() {
-        return (this.movingTargetIndicator!= null);
-    }
-
-    /**
-     * Gets the value of the standbyPower property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeStandbyPowerType }
-     *     
-     */
-    public CodeStandbyPowerType getStandbyPower() {
-        return standbyPower;
-    }
-
-    /**
-     * Sets the value of the standbyPower property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeStandbyPowerType }
-     *     
-     */
-    public void setStandbyPower(CodeStandbyPowerType value) {
-        this.standbyPower = value;
-    }
-
-    public boolean isSetStandbyPower() {
-        return (this.standbyPower!= null);
-    }
-
-    /**
-     * Gets the value of the digital property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getDigital() {
-        return digital;
-    }
-
-    /**
-     * Sets the value of the digital property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setDigital(CodeYesNoType value) {
-        this.digital = value;
-    }
-
-    public boolean isSetDigital() {
-        return (this.digital!= null);
-    }
-
-    /**
-     * Gets the value of the militaryUseOnly property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getMilitaryUseOnly() {
-        return militaryUseOnly;
-    }
-
-    /**
-     * Sets the value of the militaryUseOnly property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setMilitaryUseOnly(CodeYesNoType value) {
-        this.militaryUseOnly = value;
-    }
-
-    public boolean isSetMilitaryUseOnly() {
-        return (this.militaryUseOnly!= null);
-    }
-
-    /**
-     * Gets the value of the specialUseOnly property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getSpecialUseOnly() {
-        return specialUseOnly;
-    }
-
-    /**
-     * Sets the value of the specialUseOnly property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setSpecialUseOnly(CodeYesNoType value) {
-        this.specialUseOnly = value;
-    }
-
-    public boolean isSetSpecialUseOnly() {
-        return (this.specialUseOnly!= null);
-    }
-
-    /**
-     * Gets the value of the specialAircraftOnly property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getSpecialAircraftOnly() {
-        return specialAircraftOnly;
-    }
-
-    /**
-     * Sets the value of the specialAircraftOnly property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setSpecialAircraftOnly(CodeYesNoType value) {
-        this.specialAircraftOnly = value;
-    }
-
-    public boolean isSetSpecialAircraftOnly() {
-        return (this.specialAircraftOnly!= null);
-    }
-
-    /**
-     * Gets the value of the magneticVariation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValMagneticVariationType }
-     *     
-     */
-    public ValMagneticVariationType getMagneticVariation() {
-        return magneticVariation;
-    }
-
-    /**
-     * Sets the value of the magneticVariation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValMagneticVariationType }
-     *     
-     */
-    public void setMagneticVariation(ValMagneticVariationType value) {
-        this.magneticVariation = value;
-    }
-
-    public boolean isSetMagneticVariation() {
-        return (this.magneticVariation!= null);
-    }
-
-    /**
-     * Gets the value of the magneticVariationAccuracy property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValAngleType }
-     *     
-     */
-    public ValAngleType getMagneticVariationAccuracy() {
-        return magneticVariationAccuracy;
-    }
-
-    /**
-     * Sets the value of the magneticVariationAccuracy property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValAngleType }
-     *     
-     */
-    public void setMagneticVariationAccuracy(ValAngleType value) {
-        this.magneticVariationAccuracy = value;
-    }
-
-    public boolean isSetMagneticVariationAccuracy() {
-        return (this.magneticVariationAccuracy!= null);
-    }
-
-    /**
-     * Gets the value of the dateMagneticVariation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DateYearType }
-     *     
-     */
-    public DateYearType getDateMagneticVariation() {
-        return dateMagneticVariation;
-    }
-
-    /**
-     * Sets the value of the dateMagneticVariation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DateYearType }
-     *     
-     */
-    public void setDateMagneticVariation(DateYearType value) {
-        this.dateMagneticVariation = value;
-    }
-
-    public boolean isSetDateMagneticVariation() {
-        return (this.dateMagneticVariation!= null);
-    }
-
-    /**
-     * Gets the value of the contact property.
+     * Gets the value of the rest property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the contact property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getContact().add(newItem);
+     * getRest().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ContactInformationPropertyType }
+     * {@link JAXBElement }{@code <}{@link CodePARType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeStandbyPowerType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link PrecisionApproachRadarTimeSliceType.Extension }{@code >}
+     * {@link JAXBElement }{@code <}{@link ReflectorPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
      * </p>
      * 
      * 
      * @return
-     *     The value of the contact property.
+     *     The value of the rest property.
      */
-    public List<ContactInformationPropertyType> getContact() {
-        if (contact == null) {
-            contact = new ArrayList<>();
+    public List<JAXBElement<?>> getRest() {
+        if (rest == null) {
+            rest = new ArrayList<>();
         }
-        return this.contact;
-    }
-
-    public boolean isSetContact() {
-        return ((this.contact!= null)&&(!this.contact.isEmpty()));
-    }
-
-    public void unsetContact() {
-        this.contact = null;
-    }
-
-    /**
-     * Gets the value of the location property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public ElevatedPointPropertyType getLocation() {
-        return location;
-    }
-
-    /**
-     * Sets the value of the location property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public void setLocation(ElevatedPointPropertyType value) {
-        this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
-    }
-
-    /**
-     * Gets the value of the annotation property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAnnotation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NotePropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the annotation property.
-     */
-    public List<NotePropertyType> getAnnotation() {
-        if (annotation == null) {
-            annotation = new ArrayList<>();
-        }
-        return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
-    /**
-     * Gets the value of the precisionApproachRadarType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodePARType }
-     *     
-     */
-    public CodePARType getPrecisionApproachRadarType() {
-        return precisionApproachRadarType;
-    }
-
-    /**
-     * Sets the value of the precisionApproachRadarType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodePARType }
-     *     
-     */
-    public void setPrecisionApproachRadarType(CodePARType value) {
-        this.precisionApproachRadarType = value;
-    }
-
-    public boolean isSetPrecisionApproachRadarType() {
-        return (this.precisionApproachRadarType!= null);
-    }
-
-    /**
-     * Gets the value of the slope property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValAngleType }
-     *     
-     */
-    public ValAngleType getSlope() {
-        return slope;
-    }
-
-    /**
-     * Sets the value of the slope property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValAngleType }
-     *     
-     */
-    public void setSlope(ValAngleType value) {
-        this.slope = value;
-    }
-
-    public boolean isSetSlope() {
-        return (this.slope!= null);
-    }
-
-    /**
-     * Gets the value of the slopeAccuracy property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValAngleType }
-     *     
-     */
-    public ValAngleType getSlopeAccuracy() {
-        return slopeAccuracy;
-    }
-
-    /**
-     * Sets the value of the slopeAccuracy property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValAngleType }
-     *     
-     */
-    public void setSlopeAccuracy(ValAngleType value) {
-        this.slopeAccuracy = value;
-    }
-
-    public boolean isSetSlopeAccuracy() {
-        return (this.slopeAccuracy!= null);
-    }
-
-    /**
-     * Gets the value of the reflector property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the reflector property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getReflector().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ReflectorPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the reflector property.
-     */
-    public List<ReflectorPropertyType> getReflector() {
-        if (reflector == null) {
-            reflector = new ArrayList<>();
-        }
-        return this.reflector;
-    }
-
-    public boolean isSetReflector() {
-        return ((this.reflector!= null)&&(!this.reflector.isEmpty()));
-    }
-
-    public void unsetReflector() {
-        this.reflector = null;
-    }
-
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link PrecisionApproachRadarTimeSliceType.Extension }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the extension property.
-     */
-    public List<PrecisionApproachRadarTimeSliceType.Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<>();
-        }
-        return this.extension;
-    }
-
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
+        return this.rest;
     }
 
 
@@ -853,16 +192,8 @@ public class PrecisionApproachRadarTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPrecisionApproachRadarExtension")
-        @JoinColumn(name = "abstract_precision_approach_radar_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractPrecisionApproachRadarExtension;
         @XmlElement(name = "AbstractRadarEquipmentExtension")
-        @JoinColumn(name = "abstract_radar_equipment_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractRadarEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

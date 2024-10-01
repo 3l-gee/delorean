@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,32 +58,20 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "flight_restriction_level_type")
 public class FlightRestrictionLevelType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "upperLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> upperLevel;
+    @XmlElementRef(name = "upperLevelReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeVerticalReferenceType> upperLevelReference;
+    @XmlElementRef(name = "lowerLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> lowerLevel;
+    @XmlElementRef(name = "lowerLevelReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeVerticalReferenceType> lowerLevelReference;
     @XmlElement(nillable = true)
-    @Column(name = "upper_level")
-    protected ValDistanceVerticalType upperLevel;
-    @XmlElement(nillable = true)
-    @Column(name = "upper_level_reference")
-    protected CodeVerticalReferenceType upperLevelReference;
-    @XmlElement(nillable = true)
-    @Column(name = "lower_level")
-    protected ValDistanceVerticalType lowerLevel;
-    @XmlElement(nillable = true)
-    @Column(name = "lower_level_reference")
-    protected CodeVerticalReferenceType lowerLevelReference;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<FlightRestrictionLevelType.Extension> extension;
 
     /**
@@ -97,10 +79,10 @@ public class FlightRestrictionLevelType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getUpperLevel() {
+    public JAXBElement<ValDistanceVerticalType> getUpperLevel() {
         return upperLevel;
     }
 
@@ -109,10 +91,10 @@ public class FlightRestrictionLevelType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setUpperLevel(ValDistanceVerticalType value) {
+    public void setUpperLevel(JAXBElement<ValDistanceVerticalType> value) {
         this.upperLevel = value;
     }
 
@@ -125,10 +107,10 @@ public class FlightRestrictionLevelType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getUpperLevelReference() {
+    public JAXBElement<CodeVerticalReferenceType> getUpperLevelReference() {
         return upperLevelReference;
     }
 
@@ -137,10 +119,10 @@ public class FlightRestrictionLevelType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setUpperLevelReference(CodeVerticalReferenceType value) {
+    public void setUpperLevelReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.upperLevelReference = value;
     }
 
@@ -153,10 +135,10 @@ public class FlightRestrictionLevelType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getLowerLevel() {
+    public JAXBElement<ValDistanceVerticalType> getLowerLevel() {
         return lowerLevel;
     }
 
@@ -165,10 +147,10 @@ public class FlightRestrictionLevelType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setLowerLevel(ValDistanceVerticalType value) {
+    public void setLowerLevel(JAXBElement<ValDistanceVerticalType> value) {
         this.lowerLevel = value;
     }
 
@@ -181,10 +163,10 @@ public class FlightRestrictionLevelType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getLowerLevelReference() {
+    public JAXBElement<CodeVerticalReferenceType> getLowerLevelReference() {
         return lowerLevelReference;
     }
 
@@ -193,10 +175,10 @@ public class FlightRestrictionLevelType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setLowerLevelReference(CodeVerticalReferenceType value) {
+    public void setLowerLevelReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLevelReference = value;
     }
 
@@ -312,10 +294,6 @@ public class FlightRestrictionLevelType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightRestrictionLevelExtension")
-        @JoinColumn(name = "abstract_flight_restriction_level_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractFlightRestrictionLevelExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

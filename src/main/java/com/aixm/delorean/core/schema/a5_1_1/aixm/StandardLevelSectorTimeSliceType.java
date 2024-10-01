@@ -9,17 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,39 +60,24 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
 public class StandardLevelSectorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "flightRule", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeFlightRuleType> flightRule;
+    @XmlElementRef(name = "fromTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValBearingType> fromTrack;
+    @XmlElementRef(name = "toTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValBearingType> toTrack;
+    @XmlElementRef(name = "angleType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeNorthReferenceType> angleType;
     @XmlElement(nillable = true)
-    @Column(name = "flight_rule")
-    protected CodeFlightRuleType flightRule;
-    @XmlElement(nillable = true)
-    @Column(name = "from_track")
-    protected ValBearingType fromTrack;
-    @XmlElement(nillable = true)
-    @Column(name = "to_track")
-    protected ValBearingType toTrack;
-    @XmlElement(nillable = true)
-    @Column(name = "angle_type")
-    protected CodeNorthReferenceType angleType;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirspacePropertyType> applicableAirspace;
+    @XmlElementRef(name = "applicableLevelColumn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<StandardLevelColumnPropertyType> applicableLevelColumn;
     @XmlElement(nillable = true)
-    @Column(name = "applicable_level_column")
-    protected StandardLevelColumnPropertyType applicableLevelColumn;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<StandardLevelSectorTimeSliceType.Extension> extension;
 
     /**
@@ -105,10 +85,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeFlightRuleType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightRuleType }{@code >}
      *     
      */
-    public CodeFlightRuleType getFlightRule() {
+    public JAXBElement<CodeFlightRuleType> getFlightRule() {
         return flightRule;
     }
 
@@ -117,10 +97,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFlightRuleType }
+     *     {@link JAXBElement }{@code <}{@link CodeFlightRuleType }{@code >}
      *     
      */
-    public void setFlightRule(CodeFlightRuleType value) {
+    public void setFlightRule(JAXBElement<CodeFlightRuleType> value) {
         this.flightRule = value;
     }
 
@@ -133,10 +113,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getFromTrack() {
+    public JAXBElement<ValBearingType> getFromTrack() {
         return fromTrack;
     }
 
@@ -145,10 +125,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setFromTrack(ValBearingType value) {
+    public void setFromTrack(JAXBElement<ValBearingType> value) {
         this.fromTrack = value;
     }
 
@@ -161,10 +141,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getToTrack() {
+    public JAXBElement<ValBearingType> getToTrack() {
         return toTrack;
     }
 
@@ -173,10 +153,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setToTrack(ValBearingType value) {
+    public void setToTrack(JAXBElement<ValBearingType> value) {
         this.toTrack = value;
     }
 
@@ -189,10 +169,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeNorthReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeNorthReferenceType }{@code >}
      *     
      */
-    public CodeNorthReferenceType getAngleType() {
+    public JAXBElement<CodeNorthReferenceType> getAngleType() {
         return angleType;
     }
 
@@ -201,10 +181,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeNorthReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeNorthReferenceType }{@code >}
      *     
      */
-    public void setAngleType(CodeNorthReferenceType value) {
+    public void setAngleType(JAXBElement<CodeNorthReferenceType> value) {
         this.angleType = value;
     }
 
@@ -257,10 +237,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link StandardLevelColumnPropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardLevelColumnPropertyType }{@code >}
      *     
      */
-    public StandardLevelColumnPropertyType getApplicableLevelColumn() {
+    public JAXBElement<StandardLevelColumnPropertyType> getApplicableLevelColumn() {
         return applicableLevelColumn;
     }
 
@@ -269,10 +249,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link StandardLevelColumnPropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardLevelColumnPropertyType }{@code >}
      *     
      */
-    public void setApplicableLevelColumn(StandardLevelColumnPropertyType value) {
+    public void setApplicableLevelColumn(JAXBElement<StandardLevelColumnPropertyType> value) {
         this.applicableLevelColumn = value;
     }
 
@@ -388,10 +368,6 @@ public class StandardLevelSectorTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelSectorExtension", required = true)
-        @JoinColumn(name = "abstract_standard_level_sector_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractStandardLevelSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

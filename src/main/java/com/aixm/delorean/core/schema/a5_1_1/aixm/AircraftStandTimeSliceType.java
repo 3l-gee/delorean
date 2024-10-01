@@ -9,17 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,50 +63,30 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
-@Embeddable
 public class AircraftStandTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextDesignatorType> designator;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAircraftStandType> type;
+    @XmlElementRef(name = "visualDockingSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeVisualDockingGuidanceType> visualDockingSystem;
+    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
+    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ElevatedPointPropertyType> location;
+    @XmlElementRef(name = "apronLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ApronElementPropertyType> apronLocation;
+    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Column(name = "designator")
-    protected TextDesignatorType designator;
-    @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeAircraftStandType type;
-    @XmlElement(nillable = true)
-    @Column(name = "visual_docking_system")
-    protected CodeVisualDockingGuidanceType visualDockingSystem;
-    @XmlElement(nillable = true)
-    @Column(name = "surface_properties")
-    protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
-    @Column(name = "apron_location")
-    protected ApronElementPropertyType apronLocation;
-    @XmlElement(nillable = true)
-    @Column(name = "extent")
-    protected ElevatedSurfacePropertyType extent;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AircraftStandContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApronAreaAvailabilityPropertyType> availability;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AircraftStandTimeSliceType.Extension> extension;
 
     /**
@@ -119,10 +94,10 @@ public class AircraftStandTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
      *     
      */
-    public TextDesignatorType getDesignator() {
+    public JAXBElement<TextDesignatorType> getDesignator() {
         return designator;
     }
 
@@ -131,10 +106,10 @@ public class AircraftStandTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
      *     
      */
-    public void setDesignator(TextDesignatorType value) {
+    public void setDesignator(JAXBElement<TextDesignatorType> value) {
         this.designator = value;
     }
 
@@ -147,10 +122,10 @@ public class AircraftStandTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAircraftStandType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftStandType }{@code >}
      *     
      */
-    public CodeAircraftStandType getType() {
+    public JAXBElement<CodeAircraftStandType> getType() {
         return type;
     }
 
@@ -159,10 +134,10 @@ public class AircraftStandTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAircraftStandType }
+     *     {@link JAXBElement }{@code <}{@link CodeAircraftStandType }{@code >}
      *     
      */
-    public void setType(CodeAircraftStandType value) {
+    public void setType(JAXBElement<CodeAircraftStandType> value) {
         this.type = value;
     }
 
@@ -175,10 +150,10 @@ public class AircraftStandTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVisualDockingGuidanceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVisualDockingGuidanceType }{@code >}
      *     
      */
-    public CodeVisualDockingGuidanceType getVisualDockingSystem() {
+    public JAXBElement<CodeVisualDockingGuidanceType> getVisualDockingSystem() {
         return visualDockingSystem;
     }
 
@@ -187,10 +162,10 @@ public class AircraftStandTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVisualDockingGuidanceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVisualDockingGuidanceType }{@code >}
      *     
      */
-    public void setVisualDockingSystem(CodeVisualDockingGuidanceType value) {
+    public void setVisualDockingSystem(JAXBElement<CodeVisualDockingGuidanceType> value) {
         this.visualDockingSystem = value;
     }
 
@@ -203,10 +178,10 @@ public class AircraftStandTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
+    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -215,10 +190,10 @@ public class AircraftStandTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfaceCharacteristicsPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
      *     
      */
-    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
+    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
         this.surfaceProperties = value;
     }
 
@@ -231,10 +206,10 @@ public class AircraftStandTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public ElevatedPointPropertyType getLocation() {
+    public JAXBElement<ElevatedPointPropertyType> getLocation() {
         return location;
     }
 
@@ -243,10 +218,10 @@ public class AircraftStandTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public void setLocation(ElevatedPointPropertyType value) {
+    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
     }
 
@@ -259,10 +234,10 @@ public class AircraftStandTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ApronElementPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ApronElementPropertyType }{@code >}
      *     
      */
-    public ApronElementPropertyType getApronLocation() {
+    public JAXBElement<ApronElementPropertyType> getApronLocation() {
         return apronLocation;
     }
 
@@ -271,10 +246,10 @@ public class AircraftStandTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ApronElementPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ApronElementPropertyType }{@code >}
      *     
      */
-    public void setApronLocation(ApronElementPropertyType value) {
+    public void setApronLocation(JAXBElement<ApronElementPropertyType> value) {
         this.apronLocation = value;
     }
 
@@ -287,10 +262,10 @@ public class AircraftStandTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedSurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      *     
      */
-    public ElevatedSurfacePropertyType getExtent() {
+    public JAXBElement<ElevatedSurfacePropertyType> getExtent() {
         return extent;
     }
 
@@ -299,10 +274,10 @@ public class AircraftStandTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedSurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      *     
      */
-    public void setExtent(ElevatedSurfacePropertyType value) {
+    public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
         this.extent = value;
     }
 
@@ -498,10 +473,6 @@ public class AircraftStandTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAircraftStandExtension", required = true)
-        @JoinColumn(name = "abstract_aircraft_stand_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractAircraftStandExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

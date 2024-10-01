@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,25 +56,15 @@ import jakarta.xml.bind.annotation.XmlType;
     "theUnit",
     "extension"
 })
-@Entity
-@Table(name = "surveillance_ground_station_type")
 public class SurveillanceGroundStationType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "videoMap", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> videoMap;
     @XmlElement(nillable = true)
-    @Column(name = "video_map")
-    protected CodeYesNoType videoMap;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Column(name = "the_unit")
     protected UnitPropertyType theUnit;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<SurveillanceGroundStationType.Extension> extension;
 
     /**
@@ -88,10 +72,10 @@ public class SurveillanceGroundStationType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getVideoMap() {
+    public JAXBElement<CodeYesNoType> getVideoMap() {
         return videoMap;
     }
 
@@ -100,10 +84,10 @@ public class SurveillanceGroundStationType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setVideoMap(CodeYesNoType value) {
+    public void setVideoMap(JAXBElement<CodeYesNoType> value) {
         this.videoMap = value;
     }
 
@@ -247,10 +231,6 @@ public class SurveillanceGroundStationType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurveillanceGroundStationExtension")
-        @JoinColumn(name = "abstract_surveillance_ground_station_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractSurveillanceGroundStationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

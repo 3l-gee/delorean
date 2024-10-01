@@ -9,17 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -56,326 +52,87 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AeronauticalGroundLightTimeSliceType", propOrder = {
-    "aixmName",
-    "type",
-    "colour",
-    "flashing",
-    "structureBeacon",
-    "aerodromeBeacon",
-    "location",
-    "annotation",
-    "extension"
+    "rest"
 })
-@Embeddable
 public class AeronauticalGroundLightTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeGroundLightingType type;
-    @XmlElement(nillable = true)
-    @Column(name = "colour")
-    protected CodeColourType colour;
-    @XmlElement(nillable = true)
-    @Column(name = "flashing")
-    protected CodeYesNoType flashing;
-    @XmlElement(nillable = true)
-    @Column(name = "structure_beacon")
-    protected VerticalStructurePropertyType structureBeacon;
-    @XmlElement(nillable = true)
-    @Column(name = "aerodrome_beacon")
-    protected AirportHeliportPropertyType aerodromeBeacon;
-    @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<AeronauticalGroundLightTimeSliceType.Extension> extension;
-
     /**
-     * Gets the value of the aixmName property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link TextNameType }
-     *     
-     */
-    public TextNameType getAIXMName() {
-        return aixmName;
-    }
-
-    /**
-     * Sets the value of the aixmName property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 6190 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TextNameType }
-     *     
      */
-    public void setAIXMName(TextNameType value) {
-        this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
+    @XmlElementRefs({
+        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "flashing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "structureBeacon", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "aerodromeBeacon", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> rest;
 
     /**
-     * Gets the value of the type property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link CodeGroundLightingType }
-     *     
-     */
-    public CodeGroundLightingType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 6190 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeGroundLightingType }
-     *     
-     */
-    public void setType(CodeGroundLightingType value) {
-        this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
-    /**
-     * Gets the value of the colour property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeColourType }
-     *     
-     */
-    public CodeColourType getColour() {
-        return colour;
-    }
-
-    /**
-     * Sets the value of the colour property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeColourType }
-     *     
-     */
-    public void setColour(CodeColourType value) {
-        this.colour = value;
-    }
-
-    public boolean isSetColour() {
-        return (this.colour!= null);
-    }
-
-    /**
-     * Gets the value of the flashing property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getFlashing() {
-        return flashing;
-    }
-
-    /**
-     * Sets the value of the flashing property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setFlashing(CodeYesNoType value) {
-        this.flashing = value;
-    }
-
-    public boolean isSetFlashing() {
-        return (this.flashing!= null);
-    }
-
-    /**
-     * Gets the value of the structureBeacon property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link VerticalStructurePropertyType }
-     *     
-     */
-    public VerticalStructurePropertyType getStructureBeacon() {
-        return structureBeacon;
-    }
-
-    /**
-     * Sets the value of the structureBeacon property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link VerticalStructurePropertyType }
-     *     
-     */
-    public void setStructureBeacon(VerticalStructurePropertyType value) {
-        this.structureBeacon = value;
-    }
-
-    public boolean isSetStructureBeacon() {
-        return (this.structureBeacon!= null);
-    }
-
-    /**
-     * Gets the value of the aerodromeBeacon property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AirportHeliportPropertyType }
-     *     
-     */
-    public AirportHeliportPropertyType getAerodromeBeacon() {
-        return aerodromeBeacon;
-    }
-
-    /**
-     * Sets the value of the aerodromeBeacon property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AirportHeliportPropertyType }
-     *     
-     */
-    public void setAerodromeBeacon(AirportHeliportPropertyType value) {
-        this.aerodromeBeacon = value;
-    }
-
-    public boolean isSetAerodromeBeacon() {
-        return (this.aerodromeBeacon!= null);
-    }
-
-    /**
-     * Gets the value of the location property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public ElevatedPointPropertyType getLocation() {
-        return location;
-    }
-
-    /**
-     * Sets the value of the location property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public void setLocation(ElevatedPointPropertyType value) {
-        this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
-    }
-
-    /**
-     * Gets the value of the annotation property.
+     * Gets the value of the rest property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getAnnotation().add(newItem);
+     * getRest().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link NotePropertyType }
+     * {@link JAXBElement }{@code <}{@link AeronauticalGroundLightTimeSliceType.Extension }{@code >}
+     * {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeGroundLightingType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link JAXBElement }{@code <}{@link VerticalStructurePropertyType }{@code >}
      * </p>
      * 
      * 
      * @return
-     *     The value of the annotation property.
+     *     The value of the rest property.
      */
-    public List<NotePropertyType> getAnnotation() {
-        if (annotation == null) {
-            annotation = new ArrayList<>();
+    public List<JAXBElement<?>> getRest() {
+        if (rest == null) {
+            rest = new ArrayList<>();
         }
-        return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AeronauticalGroundLightTimeSliceType.Extension }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the extension property.
-     */
-    public List<AeronauticalGroundLightTimeSliceType.Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<>();
-        }
-        return this.extension;
-    }
-
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
+        return this.rest;
     }
 
 
@@ -406,10 +163,6 @@ public class AeronauticalGroundLightTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAeronauticalGroundLightExtension", required = true)
-        @JoinColumn(name = "abstract_aeronautical_ground_light_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractAeronauticalGroundLightExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

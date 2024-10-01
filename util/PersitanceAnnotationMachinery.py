@@ -288,7 +288,7 @@ class AnnoationsFunctions:
         child_name = child.get("name")
         enum_values = child.findall('.//xs:enumeration', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'})
         if enum_values != []:
-            res.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(Util.simple_column_name(child.attrib['name']))))
+            # res.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(Util.simple_column_name(child.attrib['name']))))
             res.append(JaxbAnnotations.ENUM_CLASS_START(child.attrib['name']))
             for enum in enum_values:
                 res.append(JaxbAnnotations.ENUM_MEMBER(enum.attrib['value']))

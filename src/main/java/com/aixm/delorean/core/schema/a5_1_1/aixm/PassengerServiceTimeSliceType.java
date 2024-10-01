@@ -9,17 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -58,556 +54,97 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PassengerServiceTimeSliceType", propOrder = {
-    "flightOperations",
-    "rank",
-    "compliantICAO",
-    "aixmName",
-    "location",
-    "serviceProvider",
-    "callSign",
-    "radioCommunication",
-    "groundCommunication",
-    "availability",
-    "annotation",
-    "airportHeliport",
-    "type",
-    "extension"
+    "rest"
 })
-@Embeddable
 public class PassengerServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
-    @Column(name = "flight_operations")
-    protected CodeFlightDestinationType flightOperations;
-    @XmlElement(nillable = true)
-    @Column(name = "rank")
-    protected CodeFacilityRankingType rank;
-    @XmlElement(nillable = true)
-    @Column(name = "compliant_icao")
-    protected CodeYesNoType compliantICAO;
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
-    @Column(name = "service_provider")
-    protected UnitPropertyType serviceProvider;
-    @XmlElement(name = "call-sign", nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<CallsignDetailPropertyType> callSign;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<RadioCommunicationChannelPropertyType> radioCommunication;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<ContactInformationPropertyType> groundCommunication;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<ServiceOperationalStatusPropertyType> availability;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<AirportHeliportPropertyType> airportHeliport;
-    @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodePassengerServiceType type;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<PassengerServiceTimeSliceType.Extension> extension;
-
     /**
-     * Gets the value of the flightOperations property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link CodeFlightDestinationType }
-     *     
-     */
-    public CodeFlightDestinationType getFlightOperations() {
-        return flightOperations;
-    }
-
-    /**
-     * Sets the value of the flightOperations property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 10162 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeFlightDestinationType }
-     *     
      */
-    public void setFlightOperations(CodeFlightDestinationType value) {
-        this.flightOperations = value;
-    }
-
-    public boolean isSetFlightOperations() {
-        return (this.flightOperations!= null);
-    }
+    @XmlElementRefs({
+        @XmlElementRef(name = "flightOperations", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "rank", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "compliantICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "call-sign", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "radioCommunication", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "groundCommunication", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "availability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> rest;
 
     /**
-     * Gets the value of the rank property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link CodeFacilityRankingType }
-     *     
-     */
-    public CodeFacilityRankingType getRank() {
-        return rank;
-    }
-
-    /**
-     * Sets the value of the rank property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 10162 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeFacilityRankingType }
-     *     
-     */
-    public void setRank(CodeFacilityRankingType value) {
-        this.rank = value;
-    }
-
-    public boolean isSetRank() {
-        return (this.rank!= null);
-    }
-
-    /**
-     * Gets the value of the compliantICAO property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getCompliantICAO() {
-        return compliantICAO;
-    }
-
-    /**
-     * Sets the value of the compliantICAO property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setCompliantICAO(CodeYesNoType value) {
-        this.compliantICAO = value;
-    }
-
-    public boolean isSetCompliantICAO() {
-        return (this.compliantICAO!= null);
-    }
-
-    /**
-     * Gets the value of the aixmName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TextNameType }
-     *     
-     */
-    public TextNameType getAIXMName() {
-        return aixmName;
-    }
-
-    /**
-     * Sets the value of the aixmName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TextNameType }
-     *     
-     */
-    public void setAIXMName(TextNameType value) {
-        this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
-    /**
-     * Gets the value of the location property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public ElevatedPointPropertyType getLocation() {
-        return location;
-    }
-
-    /**
-     * Sets the value of the location property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public void setLocation(ElevatedPointPropertyType value) {
-        this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
-    }
-
-    /**
-     * Gets the value of the serviceProvider property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UnitPropertyType }
-     *     
-     */
-    public UnitPropertyType getServiceProvider() {
-        return serviceProvider;
-    }
-
-    /**
-     * Sets the value of the serviceProvider property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UnitPropertyType }
-     *     
-     */
-    public void setServiceProvider(UnitPropertyType value) {
-        this.serviceProvider = value;
-    }
-
-    public boolean isSetServiceProvider() {
-        return (this.serviceProvider!= null);
-    }
-
-    /**
-     * Gets the value of the callSign property.
+     * Gets the value of the rest property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the callSign property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getCallSign().add(newItem);
+     * getRest().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CallsignDetailPropertyType }
+     * {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeFacilityRankingType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeFlightDestinationType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodePassengerServiceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link PassengerServiceTimeSliceType.Extension }{@code >}
+     * {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link JAXBElement }{@code <}{@link UnitPropertyType }{@code >}
      * </p>
      * 
      * 
      * @return
-     *     The value of the callSign property.
+     *     The value of the rest property.
      */
-    public List<CallsignDetailPropertyType> getCallSign() {
-        if (callSign == null) {
-            callSign = new ArrayList<>();
+    public List<JAXBElement<?>> getRest() {
+        if (rest == null) {
+            rest = new ArrayList<>();
         }
-        return this.callSign;
-    }
-
-    public boolean isSetCallSign() {
-        return ((this.callSign!= null)&&(!this.callSign.isEmpty()));
-    }
-
-    public void unsetCallSign() {
-        this.callSign = null;
-    }
-
-    /**
-     * Gets the value of the radioCommunication property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the radioCommunication property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getRadioCommunication().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link RadioCommunicationChannelPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the radioCommunication property.
-     */
-    public List<RadioCommunicationChannelPropertyType> getRadioCommunication() {
-        if (radioCommunication == null) {
-            radioCommunication = new ArrayList<>();
-        }
-        return this.radioCommunication;
-    }
-
-    public boolean isSetRadioCommunication() {
-        return ((this.radioCommunication!= null)&&(!this.radioCommunication.isEmpty()));
-    }
-
-    public void unsetRadioCommunication() {
-        this.radioCommunication = null;
-    }
-
-    /**
-     * Gets the value of the groundCommunication property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the groundCommunication property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getGroundCommunication().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ContactInformationPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the groundCommunication property.
-     */
-    public List<ContactInformationPropertyType> getGroundCommunication() {
-        if (groundCommunication == null) {
-            groundCommunication = new ArrayList<>();
-        }
-        return this.groundCommunication;
-    }
-
-    public boolean isSetGroundCommunication() {
-        return ((this.groundCommunication!= null)&&(!this.groundCommunication.isEmpty()));
-    }
-
-    public void unsetGroundCommunication() {
-        this.groundCommunication = null;
-    }
-
-    /**
-     * Gets the value of the availability property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the availability property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAvailability().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ServiceOperationalStatusPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the availability property.
-     */
-    public List<ServiceOperationalStatusPropertyType> getAvailability() {
-        if (availability == null) {
-            availability = new ArrayList<>();
-        }
-        return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
-    }
-
-    /**
-     * Gets the value of the annotation property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAnnotation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NotePropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the annotation property.
-     */
-    public List<NotePropertyType> getAnnotation() {
-        if (annotation == null) {
-            annotation = new ArrayList<>();
-        }
-        return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
-    /**
-     * Gets the value of the airportHeliport property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the airportHeliport property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAirportHeliport().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AirportHeliportPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the airportHeliport property.
-     */
-    public List<AirportHeliportPropertyType> getAirportHeliport() {
-        if (airportHeliport == null) {
-            airportHeliport = new ArrayList<>();
-        }
-        return this.airportHeliport;
-    }
-
-    public boolean isSetAirportHeliport() {
-        return ((this.airportHeliport!= null)&&(!this.airportHeliport.isEmpty()));
-    }
-
-    public void unsetAirportHeliport() {
-        this.airportHeliport = null;
-    }
-
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodePassengerServiceType }
-     *     
-     */
-    public CodePassengerServiceType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodePassengerServiceType }
-     *     
-     */
-    public void setType(CodePassengerServiceType value) {
-        this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link PassengerServiceTimeSliceType.Extension }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the extension property.
-     */
-    public List<PassengerServiceTimeSliceType.Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<>();
-        }
-        return this.extension;
-    }
-
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
+        return this.rest;
     }
 
 
@@ -642,22 +179,10 @@ public class PassengerServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPassengerServiceExtension")
-        @JoinColumn(name = "abstract_passenger_service_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractPassengerServiceExtension;
         @XmlElement(name = "AbstractAirportGroundServiceExtension")
-        @JoinColumn(name = "abstract_airport_ground_service_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractAirportGroundServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
-        @JoinColumn(name = "abstract_service_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

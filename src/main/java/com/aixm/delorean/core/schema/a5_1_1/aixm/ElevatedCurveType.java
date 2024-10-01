@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,27 +57,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "verticalAccuracy",
     "extension"
 })
-@Entity
-@Table(name = "elevated_curve_type")
 public class ElevatedCurveType
     extends CurveType
 {
 
-    @XmlElement(nillable = true)
-    @Column(name = "elevation")
-    protected ValDistanceVerticalType elevation;
-    @XmlElement(nillable = true)
-    @Column(name = "geoid_undulation")
-    protected ValDistanceSignedType geoidUndulation;
-    @XmlElement(nillable = true)
-    @Column(name = "vertical_datum")
-    protected CodeVerticalDatumType verticalDatum;
-    @XmlElement(nillable = true)
-    @Column(name = "vertical_accuracy")
-    protected ValDistanceType verticalAccuracy;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @XmlElementRef(name = "elevation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> elevation;
+    @XmlElementRef(name = "geoidUndulation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceSignedType> geoidUndulation;
+    @XmlElementRef(name = "verticalDatum", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeVerticalDatumType> verticalDatum;
+    @XmlElementRef(name = "verticalAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceType> verticalAccuracy;
     protected List<ElevatedCurveType.Extension> extension;
 
     /**
@@ -91,10 +76,10 @@ public class ElevatedCurveType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getElevation() {
+    public JAXBElement<ValDistanceVerticalType> getElevation() {
         return elevation;
     }
 
@@ -103,10 +88,10 @@ public class ElevatedCurveType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setElevation(ValDistanceVerticalType value) {
+    public void setElevation(JAXBElement<ValDistanceVerticalType> value) {
         this.elevation = value;
     }
 
@@ -119,10 +104,10 @@ public class ElevatedCurveType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceSignedType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
      *     
      */
-    public ValDistanceSignedType getGeoidUndulation() {
+    public JAXBElement<ValDistanceSignedType> getGeoidUndulation() {
         return geoidUndulation;
     }
 
@@ -131,10 +116,10 @@ public class ElevatedCurveType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceSignedType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
      *     
      */
-    public void setGeoidUndulation(ValDistanceSignedType value) {
+    public void setGeoidUndulation(JAXBElement<ValDistanceSignedType> value) {
         this.geoidUndulation = value;
     }
 
@@ -147,10 +132,10 @@ public class ElevatedCurveType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalDatumType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalDatumType }{@code >}
      *     
      */
-    public CodeVerticalDatumType getVerticalDatum() {
+    public JAXBElement<CodeVerticalDatumType> getVerticalDatum() {
         return verticalDatum;
     }
 
@@ -159,10 +144,10 @@ public class ElevatedCurveType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalDatumType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalDatumType }{@code >}
      *     
      */
-    public void setVerticalDatum(CodeVerticalDatumType value) {
+    public void setVerticalDatum(JAXBElement<CodeVerticalDatumType> value) {
         this.verticalDatum = value;
     }
 
@@ -175,10 +160,10 @@ public class ElevatedCurveType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getVerticalAccuracy() {
+    public JAXBElement<ValDistanceType> getVerticalAccuracy() {
         return verticalAccuracy;
     }
 
@@ -187,10 +172,10 @@ public class ElevatedCurveType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setVerticalAccuracy(ValDistanceType value) {
+    public void setVerticalAccuracy(JAXBElement<ValDistanceType> value) {
         this.verticalAccuracy = value;
     }
 
@@ -266,10 +251,6 @@ public class ElevatedCurveType
     public static class Extension {
 
         @XmlElement(name = "AbstractElevatedCurveExtension")
-        @JoinColumn(name = "abstract_elevated_curve_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractElevatedCurveExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

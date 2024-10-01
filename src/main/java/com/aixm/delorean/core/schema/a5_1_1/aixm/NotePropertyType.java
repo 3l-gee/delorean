@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "NotePropertyType", propOrder = {
     "note"
 })
-@Entity
-@Table(name = "note_property_type")
 public class NotePropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "Note", required = true)
-    @JoinColumn(name = "note")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected NoteType note;
 
     /**

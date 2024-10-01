@@ -9,17 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,44 +62,26 @@ import jakarta.xml.bind.annotation.XmlType;
     "associatedRunwayDirection",
     "extension"
 })
-@Embeddable
 public class RunwayDirectionLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "emergencyLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> emergencyLighting;
+    @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeLightIntensityType> intensityLevel;
+    @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
-    @Column(name = "emergency_lighting")
-    protected CodeYesNoType emergencyLighting;
-    @XmlElement(nillable = true)
-    @Column(name = "intensity_level")
-    protected CodeLightIntensityType intensityLevel;
-    @XmlElement(nillable = true)
-    @Column(name = "colour")
-    protected CodeColourType colour;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @Column(name = "position")
-    protected CodeRunwaySectionType position;
-    @XmlElement(nillable = true)
-    @Column(name = "associated_runway_direction")
-    protected RunwayDirectionPropertyType associatedRunwayDirection;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRunwaySectionType> position;
+    @XmlElementRef(name = "associatedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<RunwayDirectionPropertyType> associatedRunwayDirection;
     protected List<RunwayDirectionLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -112,10 +89,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getEmergencyLighting() {
+    public JAXBElement<CodeYesNoType> getEmergencyLighting() {
         return emergencyLighting;
     }
 
@@ -124,10 +101,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setEmergencyLighting(CodeYesNoType value) {
+    public void setEmergencyLighting(JAXBElement<CodeYesNoType> value) {
         this.emergencyLighting = value;
     }
 
@@ -140,10 +117,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeLightIntensityType }
+     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
      *     
      */
-    public CodeLightIntensityType getIntensityLevel() {
+    public JAXBElement<CodeLightIntensityType> getIntensityLevel() {
         return intensityLevel;
     }
 
@@ -152,10 +129,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLightIntensityType }
+     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
      *     
      */
-    public void setIntensityLevel(CodeLightIntensityType value) {
+    public void setIntensityLevel(JAXBElement<CodeLightIntensityType> value) {
         this.intensityLevel = value;
     }
 
@@ -168,10 +145,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeColourType }
+     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
      *     
      */
-    public CodeColourType getColour() {
+    public JAXBElement<CodeColourType> getColour() {
         return colour;
     }
 
@@ -180,10 +157,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeColourType }
+     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
      *     
      */
-    public void setColour(CodeColourType value) {
+    public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
     }
 
@@ -316,10 +293,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRunwaySectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeRunwaySectionType }{@code >}
      *     
      */
-    public CodeRunwaySectionType getPosition() {
+    public JAXBElement<CodeRunwaySectionType> getPosition() {
         return position;
     }
 
@@ -328,10 +305,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRunwaySectionType }
+     *     {@link JAXBElement }{@code <}{@link CodeRunwaySectionType }{@code >}
      *     
      */
-    public void setPosition(CodeRunwaySectionType value) {
+    public void setPosition(JAXBElement<CodeRunwaySectionType> value) {
         this.position = value;
     }
 
@@ -344,10 +321,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public RunwayDirectionPropertyType getAssociatedRunwayDirection() {
+    public JAXBElement<RunwayDirectionPropertyType> getAssociatedRunwayDirection() {
         return associatedRunwayDirection;
     }
 
@@ -356,10 +333,10 @@ public class RunwayDirectionLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public void setAssociatedRunwayDirection(RunwayDirectionPropertyType value) {
+    public void setAssociatedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
         this.associatedRunwayDirection = value;
     }
 
@@ -437,16 +414,8 @@ public class RunwayDirectionLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayDirectionLightSystemExtension")
-        @JoinColumn(name = "abstract_runway_direction_light_system_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractRunwayDirectionLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @JoinColumn(name = "abstract_ground_light_system_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

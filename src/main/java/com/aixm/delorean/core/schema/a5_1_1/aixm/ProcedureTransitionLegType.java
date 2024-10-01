@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,25 +56,15 @@ import jakarta.xml.bind.annotation.XmlType;
     "theSegmentLeg",
     "extension"
 })
-@Entity
-@Table(name = "procedure_transition_leg_type")
 public class ProcedureTransitionLegType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "seqNumberARINC", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<NoSequenceType> seqNumberARINC;
     @XmlElement(nillable = true)
-    @Column(name = "seq_number_arinc")
-    protected NoSequenceType seqNumberARINC;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @Column(name = "the_segment_leg")
     protected SegmentLegPropertyType theSegmentLeg;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ProcedureTransitionLegType.Extension> extension;
 
     /**
@@ -88,10 +72,10 @@ public class ProcedureTransitionLegType
      * 
      * @return
      *     possible object is
-     *     {@link NoSequenceType }
+     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
      *     
      */
-    public NoSequenceType getSeqNumberARINC() {
+    public JAXBElement<NoSequenceType> getSeqNumberARINC() {
         return seqNumberARINC;
     }
 
@@ -100,10 +84,10 @@ public class ProcedureTransitionLegType
      * 
      * @param value
      *     allowed object is
-     *     {@link NoSequenceType }
+     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
      *     
      */
-    public void setSeqNumberARINC(NoSequenceType value) {
+    public void setSeqNumberARINC(JAXBElement<NoSequenceType> value) {
         this.seqNumberARINC = value;
     }
 
@@ -247,10 +231,6 @@ public class ProcedureTransitionLegType
     public static class Extension {
 
         @XmlElement(name = "AbstractProcedureTransitionLegExtension")
-        @JoinColumn(name = "abstract_procedure_transition_leg_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractProcedureTransitionLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

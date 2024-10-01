@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "AircraftStandContaminationPropertyType", propOrder = {
     "aircraftStandContamination"
 })
-@Entity
-@Table(name = "aircraft_stand_contamination_property_type")
 public class AircraftStandContaminationPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "AircraftStandContamination", required = true)
-    @JoinColumn(name = "aircraft_stand_contamination")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected AircraftStandContaminationType aircraftStandContamination;
 
     /**

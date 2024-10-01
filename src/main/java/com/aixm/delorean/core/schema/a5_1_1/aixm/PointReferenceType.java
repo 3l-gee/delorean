@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,45 +61,26 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "point_reference_type")
 public class PointReferenceType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "role", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeReferenceRoleType> role;
+    @XmlElementRef(name = "priorFixTolerance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceSignedType> priorFixTolerance;
+    @XmlElementRef(name = "postFixTolerance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceSignedType> postFixTolerance;
+    @XmlElementRef(name = "point", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<DesignatedPointPropertyType> point;
     @XmlElement(nillable = true)
-    @Column(name = "role")
-    protected CodeReferenceRoleType role;
-    @XmlElement(nillable = true)
-    @Column(name = "prior_fix_tolerance")
-    protected ValDistanceSignedType priorFixTolerance;
-    @XmlElement(nillable = true)
-    @Column(name = "post_fix_tolerance")
-    protected ValDistanceSignedType postFixTolerance;
-    @XmlElement(nillable = true)
-    @Column(name = "point")
-    protected DesignatedPointPropertyType point;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AngleUsePropertyType> facilityAngle;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<DistanceIndicationPropertyType> facilityDistance;
+    @XmlElementRef(name = "fixToleranceArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<SurfacePropertyType> fixToleranceArea;
     @XmlElement(nillable = true)
-    @Column(name = "fix_tolerance_area")
-    protected SurfacePropertyType fixToleranceArea;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<PointReferenceType.Extension> extension;
 
     /**
@@ -113,10 +88,10 @@ public class PointReferenceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeReferenceRoleType }
+     *     {@link JAXBElement }{@code <}{@link CodeReferenceRoleType }{@code >}
      *     
      */
-    public CodeReferenceRoleType getRole() {
+    public JAXBElement<CodeReferenceRoleType> getRole() {
         return role;
     }
 
@@ -125,10 +100,10 @@ public class PointReferenceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeReferenceRoleType }
+     *     {@link JAXBElement }{@code <}{@link CodeReferenceRoleType }{@code >}
      *     
      */
-    public void setRole(CodeReferenceRoleType value) {
+    public void setRole(JAXBElement<CodeReferenceRoleType> value) {
         this.role = value;
     }
 
@@ -141,10 +116,10 @@ public class PointReferenceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceSignedType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
      *     
      */
-    public ValDistanceSignedType getPriorFixTolerance() {
+    public JAXBElement<ValDistanceSignedType> getPriorFixTolerance() {
         return priorFixTolerance;
     }
 
@@ -153,10 +128,10 @@ public class PointReferenceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceSignedType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
      *     
      */
-    public void setPriorFixTolerance(ValDistanceSignedType value) {
+    public void setPriorFixTolerance(JAXBElement<ValDistanceSignedType> value) {
         this.priorFixTolerance = value;
     }
 
@@ -169,10 +144,10 @@ public class PointReferenceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceSignedType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
      *     
      */
-    public ValDistanceSignedType getPostFixTolerance() {
+    public JAXBElement<ValDistanceSignedType> getPostFixTolerance() {
         return postFixTolerance;
     }
 
@@ -181,10 +156,10 @@ public class PointReferenceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceSignedType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
      *     
      */
-    public void setPostFixTolerance(ValDistanceSignedType value) {
+    public void setPostFixTolerance(JAXBElement<ValDistanceSignedType> value) {
         this.postFixTolerance = value;
     }
 
@@ -197,10 +172,10 @@ public class PointReferenceType
      * 
      * @return
      *     possible object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public DesignatedPointPropertyType getPoint() {
+    public JAXBElement<DesignatedPointPropertyType> getPoint() {
         return point;
     }
 
@@ -209,10 +184,10 @@ public class PointReferenceType
      * 
      * @param value
      *     allowed object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public void setPoint(DesignatedPointPropertyType value) {
+    public void setPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.point = value;
     }
 
@@ -305,10 +280,10 @@ public class PointReferenceType
      * 
      * @return
      *     possible object is
-     *     {@link SurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      *     
      */
-    public SurfacePropertyType getFixToleranceArea() {
+    public JAXBElement<SurfacePropertyType> getFixToleranceArea() {
         return fixToleranceArea;
     }
 
@@ -317,10 +292,10 @@ public class PointReferenceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      *     
      */
-    public void setFixToleranceArea(SurfacePropertyType value) {
+    public void setFixToleranceArea(JAXBElement<SurfacePropertyType> value) {
         this.fixToleranceArea = value;
     }
 
@@ -436,10 +411,6 @@ public class PointReferenceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPointReferenceExtension")
-        @JoinColumn(name = "abstract_point_reference_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractPointReferenceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

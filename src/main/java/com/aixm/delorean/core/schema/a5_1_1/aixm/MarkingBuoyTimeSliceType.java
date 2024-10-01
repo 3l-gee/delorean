@@ -9,17 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,34 +59,22 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
 public class MarkingBuoyTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeBuoyDesignatorType> designator;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeBuoyType> type;
+    @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeColourType> colour;
+    @XmlElementRef(name = "theSeaplaneLandingArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<SeaplaneLandingAreaPropertyType> theSeaplaneLandingArea;
+    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
-    @Column(name = "designator")
-    protected CodeBuoyDesignatorType designator;
-    @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeBuoyType type;
-    @XmlElement(nillable = true)
-    @Column(name = "colour")
-    protected CodeColourType colour;
-    @XmlElement(nillable = true)
-    @Column(name = "the_seaplane_landing_area")
-    protected SeaplaneLandingAreaPropertyType theSeaplaneLandingArea;
-    @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<MarkingBuoyTimeSliceType.Extension> extension;
 
     /**
@@ -99,10 +82,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeBuoyDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeBuoyDesignatorType }{@code >}
      *     
      */
-    public CodeBuoyDesignatorType getDesignator() {
+    public JAXBElement<CodeBuoyDesignatorType> getDesignator() {
         return designator;
     }
 
@@ -111,10 +94,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeBuoyDesignatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeBuoyDesignatorType }{@code >}
      *     
      */
-    public void setDesignator(CodeBuoyDesignatorType value) {
+    public void setDesignator(JAXBElement<CodeBuoyDesignatorType> value) {
         this.designator = value;
     }
 
@@ -127,10 +110,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeBuoyType }
+     *     {@link JAXBElement }{@code <}{@link CodeBuoyType }{@code >}
      *     
      */
-    public CodeBuoyType getType() {
+    public JAXBElement<CodeBuoyType> getType() {
         return type;
     }
 
@@ -139,10 +122,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeBuoyType }
+     *     {@link JAXBElement }{@code <}{@link CodeBuoyType }{@code >}
      *     
      */
-    public void setType(CodeBuoyType value) {
+    public void setType(JAXBElement<CodeBuoyType> value) {
         this.type = value;
     }
 
@@ -155,10 +138,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeColourType }
+     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
      *     
      */
-    public CodeColourType getColour() {
+    public JAXBElement<CodeColourType> getColour() {
         return colour;
     }
 
@@ -167,10 +150,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeColourType }
+     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
      *     
      */
-    public void setColour(CodeColourType value) {
+    public void setColour(JAXBElement<CodeColourType> value) {
         this.colour = value;
     }
 
@@ -183,10 +166,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SeaplaneLandingAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SeaplaneLandingAreaPropertyType }{@code >}
      *     
      */
-    public SeaplaneLandingAreaPropertyType getTheSeaplaneLandingArea() {
+    public JAXBElement<SeaplaneLandingAreaPropertyType> getTheSeaplaneLandingArea() {
         return theSeaplaneLandingArea;
     }
 
@@ -195,10 +178,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SeaplaneLandingAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SeaplaneLandingAreaPropertyType }{@code >}
      *     
      */
-    public void setTheSeaplaneLandingArea(SeaplaneLandingAreaPropertyType value) {
+    public void setTheSeaplaneLandingArea(JAXBElement<SeaplaneLandingAreaPropertyType> value) {
         this.theSeaplaneLandingArea = value;
     }
 
@@ -211,10 +194,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public ElevatedPointPropertyType getLocation() {
+    public JAXBElement<ElevatedPointPropertyType> getLocation() {
         return location;
     }
 
@@ -223,10 +206,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public void setLocation(ElevatedPointPropertyType value) {
+    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
         this.location = value;
     }
 
@@ -342,10 +325,6 @@ public class MarkingBuoyTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractMarkingBuoyExtension", required = true)
-        @JoinColumn(name = "abstract_marking_buoy_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractMarkingBuoyExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

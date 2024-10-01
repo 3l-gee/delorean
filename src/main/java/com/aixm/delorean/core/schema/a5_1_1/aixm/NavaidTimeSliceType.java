@@ -9,17 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -56,620 +52,101 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NavaidTimeSliceType", propOrder = {
-    "type",
-    "designator",
-    "aixmName",
-    "flightChecked",
-    "purpose",
-    "signalPerformance",
-    "courseQuality",
-    "integrityLevel",
-    "touchDownLiftOff",
-    "navaidEquipment",
-    "location",
-    "runwayDirection",
-    "servedAirport",
-    "availability",
-    "annotation",
-    "extension"
+    "rest"
 })
-@Embeddable
 public class NavaidTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeNavaidServiceType type;
-    @XmlElement(nillable = true)
-    @Column(name = "designator")
-    protected CodeNavaidDesignatorType designator;
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Column(name = "flight_checked")
-    protected CodeYesNoType flightChecked;
-    @XmlElement(nillable = true)
-    @Column(name = "purpose")
-    protected CodeNavaidPurposeType purpose;
-    @XmlElement(nillable = true)
-    @Column(name = "signal_performance")
-    protected CodeSignalPerformanceILSType signalPerformance;
-    @XmlElement(nillable = true)
-    @Column(name = "course_quality")
-    protected CodeCourseQualityILSType courseQuality;
-    @XmlElement(nillable = true)
-    @Column(name = "integrity_level")
-    protected CodeIntegrityLevelILSType integrityLevel;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<TouchDownLiftOffPropertyType> touchDownLiftOff;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NavaidComponentPropertyType> navaidEquipment;
-    @XmlElement(nillable = true)
-    @Column(name = "location")
-    protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<RunwayDirectionPropertyType> runwayDirection;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<AirportHeliportPropertyType> servedAirport;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NavaidOperationalStatusPropertyType> availability;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NavaidTimeSliceType.Extension> extension;
-
     /**
-     * Gets the value of the type property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link CodeNavaidServiceType }
-     *     
-     */
-    public CodeNavaidServiceType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 5214 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeNavaidServiceType }
-     *     
      */
-    public void setType(CodeNavaidServiceType value) {
-        this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
+    @XmlElementRefs({
+        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "purpose", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "signalPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "courseQuality", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "integrityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "touchDownLiftOff", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "navaidEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "runwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "servedAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "availability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> rest;
 
     /**
-     * Gets the value of the designator property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link CodeNavaidDesignatorType }
-     *     
-     */
-    public CodeNavaidDesignatorType getDesignator() {
-        return designator;
-    }
-
-    /**
-     * Sets the value of the designator property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 5214 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeNavaidDesignatorType }
-     *     
-     */
-    public void setDesignator(CodeNavaidDesignatorType value) {
-        this.designator = value;
-    }
-
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
-    /**
-     * Gets the value of the aixmName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TextNameType }
-     *     
-     */
-    public TextNameType getAIXMName() {
-        return aixmName;
-    }
-
-    /**
-     * Sets the value of the aixmName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TextNameType }
-     *     
-     */
-    public void setAIXMName(TextNameType value) {
-        this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
-    /**
-     * Gets the value of the flightChecked property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getFlightChecked() {
-        return flightChecked;
-    }
-
-    /**
-     * Sets the value of the flightChecked property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setFlightChecked(CodeYesNoType value) {
-        this.flightChecked = value;
-    }
-
-    public boolean isSetFlightChecked() {
-        return (this.flightChecked!= null);
-    }
-
-    /**
-     * Gets the value of the purpose property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeNavaidPurposeType }
-     *     
-     */
-    public CodeNavaidPurposeType getPurpose() {
-        return purpose;
-    }
-
-    /**
-     * Sets the value of the purpose property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeNavaidPurposeType }
-     *     
-     */
-    public void setPurpose(CodeNavaidPurposeType value) {
-        this.purpose = value;
-    }
-
-    public boolean isSetPurpose() {
-        return (this.purpose!= null);
-    }
-
-    /**
-     * Gets the value of the signalPerformance property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeSignalPerformanceILSType }
-     *     
-     */
-    public CodeSignalPerformanceILSType getSignalPerformance() {
-        return signalPerformance;
-    }
-
-    /**
-     * Sets the value of the signalPerformance property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeSignalPerformanceILSType }
-     *     
-     */
-    public void setSignalPerformance(CodeSignalPerformanceILSType value) {
-        this.signalPerformance = value;
-    }
-
-    public boolean isSetSignalPerformance() {
-        return (this.signalPerformance!= null);
-    }
-
-    /**
-     * Gets the value of the courseQuality property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeCourseQualityILSType }
-     *     
-     */
-    public CodeCourseQualityILSType getCourseQuality() {
-        return courseQuality;
-    }
-
-    /**
-     * Sets the value of the courseQuality property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeCourseQualityILSType }
-     *     
-     */
-    public void setCourseQuality(CodeCourseQualityILSType value) {
-        this.courseQuality = value;
-    }
-
-    public boolean isSetCourseQuality() {
-        return (this.courseQuality!= null);
-    }
-
-    /**
-     * Gets the value of the integrityLevel property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeIntegrityLevelILSType }
-     *     
-     */
-    public CodeIntegrityLevelILSType getIntegrityLevel() {
-        return integrityLevel;
-    }
-
-    /**
-     * Sets the value of the integrityLevel property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeIntegrityLevelILSType }
-     *     
-     */
-    public void setIntegrityLevel(CodeIntegrityLevelILSType value) {
-        this.integrityLevel = value;
-    }
-
-    public boolean isSetIntegrityLevel() {
-        return (this.integrityLevel!= null);
-    }
-
-    /**
-     * Gets the value of the touchDownLiftOff property.
+     * Gets the value of the rest property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the touchDownLiftOff property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getTouchDownLiftOff().add(newItem);
+     * getRest().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link TouchDownLiftOffPropertyType }
+     * {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeCourseQualityILSType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeIntegrityLevelILSType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeNavaidPurposeType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeNavaidServiceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeSignalPerformanceILSType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NavaidComponentPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NavaidTimeSliceType.Extension }{@code >}
+     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
      * </p>
      * 
      * 
      * @return
-     *     The value of the touchDownLiftOff property.
+     *     The value of the rest property.
      */
-    public List<TouchDownLiftOffPropertyType> getTouchDownLiftOff() {
-        if (touchDownLiftOff == null) {
-            touchDownLiftOff = new ArrayList<>();
+    public List<JAXBElement<?>> getRest() {
+        if (rest == null) {
+            rest = new ArrayList<>();
         }
-        return this.touchDownLiftOff;
-    }
-
-    public boolean isSetTouchDownLiftOff() {
-        return ((this.touchDownLiftOff!= null)&&(!this.touchDownLiftOff.isEmpty()));
-    }
-
-    public void unsetTouchDownLiftOff() {
-        this.touchDownLiftOff = null;
-    }
-
-    /**
-     * Gets the value of the navaidEquipment property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the navaidEquipment property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getNavaidEquipment().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NavaidComponentPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the navaidEquipment property.
-     */
-    public List<NavaidComponentPropertyType> getNavaidEquipment() {
-        if (navaidEquipment == null) {
-            navaidEquipment = new ArrayList<>();
-        }
-        return this.navaidEquipment;
-    }
-
-    public boolean isSetNavaidEquipment() {
-        return ((this.navaidEquipment!= null)&&(!this.navaidEquipment.isEmpty()));
-    }
-
-    public void unsetNavaidEquipment() {
-        this.navaidEquipment = null;
-    }
-
-    /**
-     * Gets the value of the location property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public ElevatedPointPropertyType getLocation() {
-        return location;
-    }
-
-    /**
-     * Sets the value of the location property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public void setLocation(ElevatedPointPropertyType value) {
-        this.location = value;
-    }
-
-    public boolean isSetLocation() {
-        return (this.location!= null);
-    }
-
-    /**
-     * Gets the value of the runwayDirection property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the runwayDirection property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getRunwayDirection().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link RunwayDirectionPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the runwayDirection property.
-     */
-    public List<RunwayDirectionPropertyType> getRunwayDirection() {
-        if (runwayDirection == null) {
-            runwayDirection = new ArrayList<>();
-        }
-        return this.runwayDirection;
-    }
-
-    public boolean isSetRunwayDirection() {
-        return ((this.runwayDirection!= null)&&(!this.runwayDirection.isEmpty()));
-    }
-
-    public void unsetRunwayDirection() {
-        this.runwayDirection = null;
-    }
-
-    /**
-     * Gets the value of the servedAirport property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the servedAirport property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getServedAirport().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AirportHeliportPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the servedAirport property.
-     */
-    public List<AirportHeliportPropertyType> getServedAirport() {
-        if (servedAirport == null) {
-            servedAirport = new ArrayList<>();
-        }
-        return this.servedAirport;
-    }
-
-    public boolean isSetServedAirport() {
-        return ((this.servedAirport!= null)&&(!this.servedAirport.isEmpty()));
-    }
-
-    public void unsetServedAirport() {
-        this.servedAirport = null;
-    }
-
-    /**
-     * Gets the value of the availability property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the availability property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAvailability().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NavaidOperationalStatusPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the availability property.
-     */
-    public List<NavaidOperationalStatusPropertyType> getAvailability() {
-        if (availability == null) {
-            availability = new ArrayList<>();
-        }
-        return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
-    }
-
-    /**
-     * Gets the value of the annotation property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAnnotation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NotePropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the annotation property.
-     */
-    public List<NotePropertyType> getAnnotation() {
-        if (annotation == null) {
-            annotation = new ArrayList<>();
-        }
-        return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NavaidTimeSliceType.Extension }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the extension property.
-     */
-    public List<NavaidTimeSliceType.Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<>();
-        }
-        return this.extension;
-    }
-
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
+        return this.rest;
     }
 
 
@@ -700,10 +177,6 @@ public class NavaidTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidExtension", required = true)
-        @JoinColumn(name = "abstract_navaid_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractNavaidExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

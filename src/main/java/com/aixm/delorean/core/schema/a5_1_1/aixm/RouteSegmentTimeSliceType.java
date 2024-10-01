@@ -9,17 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -89,111 +84,72 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
 public class RouteSegmentTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "level", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeLevelType> level;
+    @XmlElementRef(name = "upperLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> upperLimit;
+    @XmlElementRef(name = "upperLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeVerticalReferenceType> upperLimitReference;
+    @XmlElementRef(name = "lowerLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> lowerLimit;
+    @XmlElementRef(name = "lowerLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeVerticalReferenceType> lowerLimitReference;
+    @XmlElementRef(name = "minimumObstacleClearanceAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> minimumObstacleClearanceAltitude;
+    @XmlElementRef(name = "pathType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRouteSegmentPathType> pathType;
+    @XmlElementRef(name = "trueTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValBearingType> trueTrack;
+    @XmlElementRef(name = "magneticTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValBearingType> magneticTrack;
+    @XmlElementRef(name = "reverseTrueTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValBearingType> reverseTrueTrack;
+    @XmlElementRef(name = "reverseMagneticTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValBearingType> reverseMagneticTrack;
+    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceType> length;
+    @XmlElementRef(name = "widthLeft", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceType> widthLeft;
+    @XmlElementRef(name = "widthRight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceType> widthRight;
+    @XmlElementRef(name = "turnDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeDirectionTurnType> turnDirection;
+    @XmlElementRef(name = "signalGap", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> signalGap;
+    @XmlElementRef(name = "minimumEnrouteAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> minimumEnrouteAltitude;
+    @XmlElementRef(name = "minimumCrossingAtEnd", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> minimumCrossingAtEnd;
+    @XmlElementRef(name = "minimumCrossingAtEndReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeVerticalReferenceType> minimumCrossingAtEndReference;
+    @XmlElementRef(name = "maximumCrossingAtEnd", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> maximumCrossingAtEnd;
+    @XmlElementRef(name = "maximumCrossingAtEndReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeVerticalReferenceType> maximumCrossingAtEndReference;
+    @XmlElementRef(name = "navigationType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRouteNavigationType> navigationType;
+    @XmlElementRef(name = "requiredNavigationPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRNPType> requiredNavigationPerformance;
+    @XmlElementRef(name = "designatorSuffix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRouteDesignatorSuffixType> designatorSuffix;
+    @XmlElementRef(name = "start", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<EnRouteSegmentPointPropertyType> start;
+    @XmlElementRef(name = "routeFormed", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<RoutePropertyType> routeFormed;
+    @XmlElementRef(name = "evaluationArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ObstacleAssessmentAreaPropertyType> evaluationArea;
+    @XmlElementRef(name = "curveExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CurvePropertyType> curveExtent;
+    @XmlElementRef(name = "end", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<EnRouteSegmentPointPropertyType> end;
     @XmlElement(nillable = true)
-    @Column(name = "level")
-    protected CodeLevelType level;
-    @XmlElement(nillable = true)
-    @Column(name = "upper_limit")
-    protected ValDistanceVerticalType upperLimit;
-    @XmlElement(nillable = true)
-    @Column(name = "upper_limit_reference")
-    protected CodeVerticalReferenceType upperLimitReference;
-    @XmlElement(nillable = true)
-    @Column(name = "lower_limit")
-    protected ValDistanceVerticalType lowerLimit;
-    @XmlElement(nillable = true)
-    @Column(name = "lower_limit_reference")
-    protected CodeVerticalReferenceType lowerLimitReference;
-    @XmlElement(nillable = true)
-    @Column(name = "minimum_obstacle_clearance_altitude")
-    protected ValDistanceVerticalType minimumObstacleClearanceAltitude;
-    @XmlElement(nillable = true)
-    @Column(name = "path_type")
-    protected CodeRouteSegmentPathType pathType;
-    @XmlElement(nillable = true)
-    @Column(name = "true_track")
-    protected ValBearingType trueTrack;
-    @XmlElement(nillable = true)
-    @Column(name = "magnetic_track")
-    protected ValBearingType magneticTrack;
-    @XmlElement(nillable = true)
-    @Column(name = "reverse_true_track")
-    protected ValBearingType reverseTrueTrack;
-    @XmlElement(nillable = true)
-    @Column(name = "reverse_magnetic_track")
-    protected ValBearingType reverseMagneticTrack;
-    @XmlElement(nillable = true)
-    @Column(name = "length")
-    protected ValDistanceType length;
-    @XmlElement(nillable = true)
-    @Column(name = "width_left")
-    protected ValDistanceType widthLeft;
-    @XmlElement(nillable = true)
-    @Column(name = "width_right")
-    protected ValDistanceType widthRight;
-    @XmlElement(nillable = true)
-    @Column(name = "turn_direction")
-    protected CodeDirectionTurnType turnDirection;
-    @XmlElement(nillable = true)
-    @Column(name = "signal_gap")
-    protected CodeYesNoType signalGap;
-    @XmlElement(nillable = true)
-    @Column(name = "minimum_enroute_altitude")
-    protected ValDistanceVerticalType minimumEnrouteAltitude;
-    @XmlElement(nillable = true)
-    @Column(name = "minimum_crossing_at_end")
-    protected ValDistanceVerticalType minimumCrossingAtEnd;
-    @XmlElement(nillable = true)
-    @Column(name = "minimum_crossing_at_end_reference")
-    protected CodeVerticalReferenceType minimumCrossingAtEndReference;
-    @XmlElement(nillable = true)
-    @Column(name = "maximum_crossing_at_end")
-    protected ValDistanceVerticalType maximumCrossingAtEnd;
-    @XmlElement(nillable = true)
-    @Column(name = "maximum_crossing_at_end_reference")
-    protected CodeVerticalReferenceType maximumCrossingAtEndReference;
-    @XmlElement(nillable = true)
-    @Column(name = "navigation_type")
-    protected CodeRouteNavigationType navigationType;
-    @XmlElement(nillable = true)
-    @Column(name = "required_navigation_performance")
-    protected CodeRNPType requiredNavigationPerformance;
-    @XmlElement(nillable = true)
-    @Column(name = "designator_suffix")
-    protected CodeRouteDesignatorSuffixType designatorSuffix;
-    @XmlElement(nillable = true)
-    @Column(name = "start")
-    protected EnRouteSegmentPointPropertyType start;
-    @XmlElement(nillable = true)
-    @Column(name = "route_formed")
-    protected RoutePropertyType routeFormed;
-    @XmlElement(nillable = true)
-    @Column(name = "evaluation_area")
-    protected ObstacleAssessmentAreaPropertyType evaluationArea;
-    @XmlElement(nillable = true)
-    @Column(name = "curve_extent")
-    protected CurvePropertyType curveExtent;
-    @XmlElement(nillable = true)
-    @Column(name = "end")
-    protected EnRouteSegmentPointPropertyType end;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RouteAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RouteSegmentTimeSliceType.Extension> extension;
 
     /**
@@ -201,10 +157,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeLevelType }
+     *     {@link JAXBElement }{@code <}{@link CodeLevelType }{@code >}
      *     
      */
-    public CodeLevelType getLevel() {
+    public JAXBElement<CodeLevelType> getLevel() {
         return level;
     }
 
@@ -213,10 +169,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLevelType }
+     *     {@link JAXBElement }{@code <}{@link CodeLevelType }{@code >}
      *     
      */
-    public void setLevel(CodeLevelType value) {
+    public void setLevel(JAXBElement<CodeLevelType> value) {
         this.level = value;
     }
 
@@ -229,10 +185,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getUpperLimit() {
+    public JAXBElement<ValDistanceVerticalType> getUpperLimit() {
         return upperLimit;
     }
 
@@ -241,10 +197,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setUpperLimit(ValDistanceVerticalType value) {
+    public void setUpperLimit(JAXBElement<ValDistanceVerticalType> value) {
         this.upperLimit = value;
     }
 
@@ -257,10 +213,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getUpperLimitReference() {
+    public JAXBElement<CodeVerticalReferenceType> getUpperLimitReference() {
         return upperLimitReference;
     }
 
@@ -269,10 +225,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setUpperLimitReference(CodeVerticalReferenceType value) {
+    public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.upperLimitReference = value;
     }
 
@@ -285,10 +241,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getLowerLimit() {
+    public JAXBElement<ValDistanceVerticalType> getLowerLimit() {
         return lowerLimit;
     }
 
@@ -297,10 +253,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setLowerLimit(ValDistanceVerticalType value) {
+    public void setLowerLimit(JAXBElement<ValDistanceVerticalType> value) {
         this.lowerLimit = value;
     }
 
@@ -313,10 +269,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getLowerLimitReference() {
+    public JAXBElement<CodeVerticalReferenceType> getLowerLimitReference() {
         return lowerLimitReference;
     }
 
@@ -325,10 +281,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setLowerLimitReference(CodeVerticalReferenceType value) {
+    public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.lowerLimitReference = value;
     }
 
@@ -341,10 +297,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getMinimumObstacleClearanceAltitude() {
+    public JAXBElement<ValDistanceVerticalType> getMinimumObstacleClearanceAltitude() {
         return minimumObstacleClearanceAltitude;
     }
 
@@ -353,10 +309,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setMinimumObstacleClearanceAltitude(ValDistanceVerticalType value) {
+    public void setMinimumObstacleClearanceAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumObstacleClearanceAltitude = value;
     }
 
@@ -369,10 +325,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRouteSegmentPathType }
+     *     {@link JAXBElement }{@code <}{@link CodeRouteSegmentPathType }{@code >}
      *     
      */
-    public CodeRouteSegmentPathType getPathType() {
+    public JAXBElement<CodeRouteSegmentPathType> getPathType() {
         return pathType;
     }
 
@@ -381,10 +337,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRouteSegmentPathType }
+     *     {@link JAXBElement }{@code <}{@link CodeRouteSegmentPathType }{@code >}
      *     
      */
-    public void setPathType(CodeRouteSegmentPathType value) {
+    public void setPathType(JAXBElement<CodeRouteSegmentPathType> value) {
         this.pathType = value;
     }
 
@@ -397,10 +353,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getTrueTrack() {
+    public JAXBElement<ValBearingType> getTrueTrack() {
         return trueTrack;
     }
 
@@ -409,10 +365,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setTrueTrack(ValBearingType value) {
+    public void setTrueTrack(JAXBElement<ValBearingType> value) {
         this.trueTrack = value;
     }
 
@@ -425,10 +381,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getMagneticTrack() {
+    public JAXBElement<ValBearingType> getMagneticTrack() {
         return magneticTrack;
     }
 
@@ -437,10 +393,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setMagneticTrack(ValBearingType value) {
+    public void setMagneticTrack(JAXBElement<ValBearingType> value) {
         this.magneticTrack = value;
     }
 
@@ -453,10 +409,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getReverseTrueTrack() {
+    public JAXBElement<ValBearingType> getReverseTrueTrack() {
         return reverseTrueTrack;
     }
 
@@ -465,10 +421,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setReverseTrueTrack(ValBearingType value) {
+    public void setReverseTrueTrack(JAXBElement<ValBearingType> value) {
         this.reverseTrueTrack = value;
     }
 
@@ -481,10 +437,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getReverseMagneticTrack() {
+    public JAXBElement<ValBearingType> getReverseMagneticTrack() {
         return reverseMagneticTrack;
     }
 
@@ -493,10 +449,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setReverseMagneticTrack(ValBearingType value) {
+    public void setReverseMagneticTrack(JAXBElement<ValBearingType> value) {
         this.reverseMagneticTrack = value;
     }
 
@@ -509,10 +465,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getLength() {
+    public JAXBElement<ValDistanceType> getLength() {
         return length;
     }
 
@@ -521,10 +477,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setLength(ValDistanceType value) {
+    public void setLength(JAXBElement<ValDistanceType> value) {
         this.length = value;
     }
 
@@ -537,10 +493,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getWidthLeft() {
+    public JAXBElement<ValDistanceType> getWidthLeft() {
         return widthLeft;
     }
 
@@ -549,10 +505,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setWidthLeft(ValDistanceType value) {
+    public void setWidthLeft(JAXBElement<ValDistanceType> value) {
         this.widthLeft = value;
     }
 
@@ -565,10 +521,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getWidthRight() {
+    public JAXBElement<ValDistanceType> getWidthRight() {
         return widthRight;
     }
 
@@ -577,10 +533,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setWidthRight(ValDistanceType value) {
+    public void setWidthRight(JAXBElement<ValDistanceType> value) {
         this.widthRight = value;
     }
 
@@ -593,10 +549,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeDirectionTurnType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
      *     
      */
-    public CodeDirectionTurnType getTurnDirection() {
+    public JAXBElement<CodeDirectionTurnType> getTurnDirection() {
         return turnDirection;
     }
 
@@ -605,10 +561,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDirectionTurnType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
      *     
      */
-    public void setTurnDirection(CodeDirectionTurnType value) {
+    public void setTurnDirection(JAXBElement<CodeDirectionTurnType> value) {
         this.turnDirection = value;
     }
 
@@ -621,10 +577,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getSignalGap() {
+    public JAXBElement<CodeYesNoType> getSignalGap() {
         return signalGap;
     }
 
@@ -633,10 +589,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setSignalGap(CodeYesNoType value) {
+    public void setSignalGap(JAXBElement<CodeYesNoType> value) {
         this.signalGap = value;
     }
 
@@ -649,10 +605,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getMinimumEnrouteAltitude() {
+    public JAXBElement<ValDistanceVerticalType> getMinimumEnrouteAltitude() {
         return minimumEnrouteAltitude;
     }
 
@@ -661,10 +617,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setMinimumEnrouteAltitude(ValDistanceVerticalType value) {
+    public void setMinimumEnrouteAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumEnrouteAltitude = value;
     }
 
@@ -677,10 +633,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getMinimumCrossingAtEnd() {
+    public JAXBElement<ValDistanceVerticalType> getMinimumCrossingAtEnd() {
         return minimumCrossingAtEnd;
     }
 
@@ -689,10 +645,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setMinimumCrossingAtEnd(ValDistanceVerticalType value) {
+    public void setMinimumCrossingAtEnd(JAXBElement<ValDistanceVerticalType> value) {
         this.minimumCrossingAtEnd = value;
     }
 
@@ -705,10 +661,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getMinimumCrossingAtEndReference() {
+    public JAXBElement<CodeVerticalReferenceType> getMinimumCrossingAtEndReference() {
         return minimumCrossingAtEndReference;
     }
 
@@ -717,10 +673,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setMinimumCrossingAtEndReference(CodeVerticalReferenceType value) {
+    public void setMinimumCrossingAtEndReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.minimumCrossingAtEndReference = value;
     }
 
@@ -733,10 +689,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getMaximumCrossingAtEnd() {
+    public JAXBElement<ValDistanceVerticalType> getMaximumCrossingAtEnd() {
         return maximumCrossingAtEnd;
     }
 
@@ -745,10 +701,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setMaximumCrossingAtEnd(ValDistanceVerticalType value) {
+    public void setMaximumCrossingAtEnd(JAXBElement<ValDistanceVerticalType> value) {
         this.maximumCrossingAtEnd = value;
     }
 
@@ -761,10 +717,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public CodeVerticalReferenceType getMaximumCrossingAtEndReference() {
+    public JAXBElement<CodeVerticalReferenceType> getMaximumCrossingAtEndReference() {
         return maximumCrossingAtEndReference;
     }
 
@@ -773,10 +729,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceType }
+     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
      *     
      */
-    public void setMaximumCrossingAtEndReference(CodeVerticalReferenceType value) {
+    public void setMaximumCrossingAtEndReference(JAXBElement<CodeVerticalReferenceType> value) {
         this.maximumCrossingAtEndReference = value;
     }
 
@@ -789,10 +745,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRouteNavigationType }
+     *     {@link JAXBElement }{@code <}{@link CodeRouteNavigationType }{@code >}
      *     
      */
-    public CodeRouteNavigationType getNavigationType() {
+    public JAXBElement<CodeRouteNavigationType> getNavigationType() {
         return navigationType;
     }
 
@@ -801,10 +757,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRouteNavigationType }
+     *     {@link JAXBElement }{@code <}{@link CodeRouteNavigationType }{@code >}
      *     
      */
-    public void setNavigationType(CodeRouteNavigationType value) {
+    public void setNavigationType(JAXBElement<CodeRouteNavigationType> value) {
         this.navigationType = value;
     }
 
@@ -817,10 +773,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRNPType }
+     *     {@link JAXBElement }{@code <}{@link CodeRNPType }{@code >}
      *     
      */
-    public CodeRNPType getRequiredNavigationPerformance() {
+    public JAXBElement<CodeRNPType> getRequiredNavigationPerformance() {
         return requiredNavigationPerformance;
     }
 
@@ -829,10 +785,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRNPType }
+     *     {@link JAXBElement }{@code <}{@link CodeRNPType }{@code >}
      *     
      */
-    public void setRequiredNavigationPerformance(CodeRNPType value) {
+    public void setRequiredNavigationPerformance(JAXBElement<CodeRNPType> value) {
         this.requiredNavigationPerformance = value;
     }
 
@@ -845,10 +801,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRouteDesignatorSuffixType }
+     *     {@link JAXBElement }{@code <}{@link CodeRouteDesignatorSuffixType }{@code >}
      *     
      */
-    public CodeRouteDesignatorSuffixType getDesignatorSuffix() {
+    public JAXBElement<CodeRouteDesignatorSuffixType> getDesignatorSuffix() {
         return designatorSuffix;
     }
 
@@ -857,10 +813,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRouteDesignatorSuffixType }
+     *     {@link JAXBElement }{@code <}{@link CodeRouteDesignatorSuffixType }{@code >}
      *     
      */
-    public void setDesignatorSuffix(CodeRouteDesignatorSuffixType value) {
+    public void setDesignatorSuffix(JAXBElement<CodeRouteDesignatorSuffixType> value) {
         this.designatorSuffix = value;
     }
 
@@ -873,10 +829,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link EnRouteSegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link EnRouteSegmentPointPropertyType }{@code >}
      *     
      */
-    public EnRouteSegmentPointPropertyType getStart() {
+    public JAXBElement<EnRouteSegmentPointPropertyType> getStart() {
         return start;
     }
 
@@ -885,10 +841,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link EnRouteSegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link EnRouteSegmentPointPropertyType }{@code >}
      *     
      */
-    public void setStart(EnRouteSegmentPointPropertyType value) {
+    public void setStart(JAXBElement<EnRouteSegmentPointPropertyType> value) {
         this.start = value;
     }
 
@@ -901,10 +857,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RoutePropertyType }
+     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
      *     
      */
-    public RoutePropertyType getRouteFormed() {
+    public JAXBElement<RoutePropertyType> getRouteFormed() {
         return routeFormed;
     }
 
@@ -913,10 +869,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RoutePropertyType }
+     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
      *     
      */
-    public void setRouteFormed(RoutePropertyType value) {
+    public void setRouteFormed(JAXBElement<RoutePropertyType> value) {
         this.routeFormed = value;
     }
 
@@ -929,10 +885,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ObstacleAssessmentAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ObstacleAssessmentAreaPropertyType }{@code >}
      *     
      */
-    public ObstacleAssessmentAreaPropertyType getEvaluationArea() {
+    public JAXBElement<ObstacleAssessmentAreaPropertyType> getEvaluationArea() {
         return evaluationArea;
     }
 
@@ -941,10 +897,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ObstacleAssessmentAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ObstacleAssessmentAreaPropertyType }{@code >}
      *     
      */
-    public void setEvaluationArea(ObstacleAssessmentAreaPropertyType value) {
+    public void setEvaluationArea(JAXBElement<ObstacleAssessmentAreaPropertyType> value) {
         this.evaluationArea = value;
     }
 
@@ -957,10 +913,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CurvePropertyType }
+     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
      *     
      */
-    public CurvePropertyType getCurveExtent() {
+    public JAXBElement<CurvePropertyType> getCurveExtent() {
         return curveExtent;
     }
 
@@ -969,10 +925,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CurvePropertyType }
+     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
      *     
      */
-    public void setCurveExtent(CurvePropertyType value) {
+    public void setCurveExtent(JAXBElement<CurvePropertyType> value) {
         this.curveExtent = value;
     }
 
@@ -985,10 +941,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link EnRouteSegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link EnRouteSegmentPointPropertyType }{@code >}
      *     
      */
-    public EnRouteSegmentPointPropertyType getEnd() {
+    public JAXBElement<EnRouteSegmentPointPropertyType> getEnd() {
         return end;
     }
 
@@ -997,10 +953,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link EnRouteSegmentPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link EnRouteSegmentPointPropertyType }{@code >}
      *     
      */
-    public void setEnd(EnRouteSegmentPointPropertyType value) {
+    public void setEnd(JAXBElement<EnRouteSegmentPointPropertyType> value) {
         this.end = value;
     }
 
@@ -1156,10 +1112,6 @@ public class RouteSegmentTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRouteSegmentExtension", required = true)
-        @JoinColumn(name = "abstract_route_segment_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractRouteSegmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

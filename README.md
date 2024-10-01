@@ -233,6 +233,98 @@ classDiagram
     }
 ```
 
+```mermaid
+classDiagram
+    class AbstractGMLType
+    style AbstractGMLType fill:#3a3447
+    class AbstractGeometryType
+    style AbstractGeometryType fill:#3a3447
+    class AbstractGeometricPrimitiveType
+    style AbstractGeometricPrimitiveType fill:#3a3447
+    class AbstractSurfaceType
+    style AbstractSurfaceType fill:#3a3447
+    class AbstractCurveType
+    style AbstractCurveType fill:#3a3447
+    class gmlSurfaceType
+    style gmlSurfaceType fill:#3a3447
+    class gmlPointType
+    style gmlPointType fill:#3a3447
+    class gmlCurveType
+    style gmlCurveType fill:#3a3447
+
+    AbstractGMLType --|> AbstractGeometryType
+    AbstractGeometryType --|> AbstractGeometricPrimitiveType
+    AbstractGeometricPrimitiveType --|> gmlPointType
+    AbstractGeometricPrimitiveType --|> AbstractSurfaceType
+    AbstractGeometricPrimitiveType --> AbstractCurveType
+    AbstractSurfaceType --|> gmlSurfaceType
+    AbstractCurveType --> gmlCurveType
+
+    gmlSurfaceType --|> SurfaceType
+    gmlPointType --|> PointType
+    gmlCurveType --|> CurveType
+
+
+    PointType --|> ElevatedPointType
+    SurfaceType --|> ElevatedSurfaceType
+    CurveType --|> ElevatedCurveType
+
+
+    class AbstractGMLType{
+        <<abstract>>
+    }
+    
+    class AbstractGeometryType{
+        <<abstract>>
+    }
+    
+    class AbstractGeometricPrimitiveType{
+        <<abstract>>
+    }
+
+    class AbstractSurfaceType{
+        <<abstract>>
+    }
+
+    class AbstractCurveType{
+        <<abstract>>
+    }
+
+    class gmlPointType{
+        <<abstract>>
+    }
+
+    class gmlSurfaceType{
+        <<abstract>>
+    }
+
+    class gmlCurveType{
+        <<abstract>>
+    }
+
+    class PointType{
+
+    }
+
+    class SurfaceType{
+
+    }
+
+    class CurveType {
+
+    }
+
+    class ElevatedSurfaceType{
+
+    }
+
+    class ElevatedCurveType{
+
+    }
+```
+
+
+
 ### Goal
 
 **AIXM Version covered :**

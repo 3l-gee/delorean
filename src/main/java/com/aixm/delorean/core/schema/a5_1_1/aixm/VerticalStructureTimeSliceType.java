@@ -9,17 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -56,868 +52,113 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VerticalStructureTimeSliceType", propOrder = {
-    "aixmName",
-    "type",
-    "lighted",
-    "markingICAOStandard",
-    "group",
-    "length",
-    "width",
-    "radius",
-    "lightingICAOStandard",
-    "synchronisedLighting",
-    "marker",
-    "part",
-    "hostedPassengerService",
-    "supportedGroundLight",
-    "hostedNavaidEquipment",
-    "hostedSpecialNavStation",
-    "hostedUnit",
-    "hostedOrganisation",
-    "supportedService",
-    "annotation",
-    "lightingAvailability",
-    "extension"
+    "rest"
 })
-@Embeddable
 public class VerticalStructureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeVerticalStructureType type;
-    @XmlElement(nillable = true)
-    @Column(name = "lighted")
-    protected CodeYesNoType lighted;
-    @XmlElement(nillable = true)
-    @Column(name = "marking_icao_standard")
-    protected CodeYesNoType markingICAOStandard;
-    @XmlElement(nillable = true)
-    @Column(name = "group")
-    protected CodeYesNoType group;
-    @XmlElement(nillable = true)
-    @Column(name = "length")
-    protected ValDistanceType length;
-    @XmlElement(nillable = true)
-    @Column(name = "width")
-    protected ValDistanceType width;
-    @XmlElement(nillable = true)
-    @Column(name = "radius")
-    protected ValDistanceType radius;
-    @XmlElement(nillable = true)
-    @Column(name = "lighting_icao_standard")
-    protected CodeYesNoType lightingICAOStandard;
-    @XmlElement(nillable = true)
-    @Column(name = "synchronised_lighting")
-    protected CodeYesNoType synchronisedLighting;
-    @XmlElement(nillable = true)
-    @Column(name = "marker")
-    protected MarkerBeaconPropertyType marker;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<VerticalStructurePartPropertyType> part;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<PassengerServicePropertyType> hostedPassengerService;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<GroundLightSystemPropertyType> supportedGroundLight;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NavaidEquipmentPropertyType> hostedNavaidEquipment;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<SpecialNavigationStationPropertyType> hostedSpecialNavStation;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<UnitPropertyType> hostedUnit;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<OrganisationAuthorityPropertyType> hostedOrganisation;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<ServicePropertyType> supportedService;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<VerticalStructureLightingStatusPropertyType> lightingAvailability;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<VerticalStructureTimeSliceType.Extension> extension;
-
     /**
-     * Gets the value of the aixmName property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link TextNameType }
-     *     
-     */
-    public TextNameType getAIXMName() {
-        return aixmName;
-    }
-
-    /**
-     * Sets the value of the aixmName property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 6366 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TextNameType }
-     *     
      */
-    public void setAIXMName(TextNameType value) {
-        this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
+    @XmlElementRefs({
+        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "lighted", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "group", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "radius", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "lightingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "synchronisedLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "marker", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "part", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "hostedPassengerService", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "supportedGroundLight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "hostedNavaidEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "hostedSpecialNavStation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "hostedUnit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "hostedOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "supportedService", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "lightingAvailability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> rest;
 
     /**
-     * Gets the value of the type property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link CodeVerticalStructureType }
-     *     
-     */
-    public CodeVerticalStructureType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 6366 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeVerticalStructureType }
-     *     
-     */
-    public void setType(CodeVerticalStructureType value) {
-        this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
-    /**
-     * Gets the value of the lighted property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getLighted() {
-        return lighted;
-    }
-
-    /**
-     * Sets the value of the lighted property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setLighted(CodeYesNoType value) {
-        this.lighted = value;
-    }
-
-    public boolean isSetLighted() {
-        return (this.lighted!= null);
-    }
-
-    /**
-     * Gets the value of the markingICAOStandard property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getMarkingICAOStandard() {
-        return markingICAOStandard;
-    }
-
-    /**
-     * Sets the value of the markingICAOStandard property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setMarkingICAOStandard(CodeYesNoType value) {
-        this.markingICAOStandard = value;
-    }
-
-    public boolean isSetMarkingICAOStandard() {
-        return (this.markingICAOStandard!= null);
-    }
-
-    /**
-     * Gets the value of the group property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getGroup() {
-        return group;
-    }
-
-    /**
-     * Sets the value of the group property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setGroup(CodeYesNoType value) {
-        this.group = value;
-    }
-
-    public boolean isSetGroup() {
-        return (this.group!= null);
-    }
-
-    /**
-     * Gets the value of the length property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValDistanceType }
-     *     
-     */
-    public ValDistanceType getLength() {
-        return length;
-    }
-
-    /**
-     * Sets the value of the length property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValDistanceType }
-     *     
-     */
-    public void setLength(ValDistanceType value) {
-        this.length = value;
-    }
-
-    public boolean isSetLength() {
-        return (this.length!= null);
-    }
-
-    /**
-     * Gets the value of the width property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValDistanceType }
-     *     
-     */
-    public ValDistanceType getWidth() {
-        return width;
-    }
-
-    /**
-     * Sets the value of the width property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValDistanceType }
-     *     
-     */
-    public void setWidth(ValDistanceType value) {
-        this.width = value;
-    }
-
-    public boolean isSetWidth() {
-        return (this.width!= null);
-    }
-
-    /**
-     * Gets the value of the radius property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValDistanceType }
-     *     
-     */
-    public ValDistanceType getRadius() {
-        return radius;
-    }
-
-    /**
-     * Sets the value of the radius property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValDistanceType }
-     *     
-     */
-    public void setRadius(ValDistanceType value) {
-        this.radius = value;
-    }
-
-    public boolean isSetRadius() {
-        return (this.radius!= null);
-    }
-
-    /**
-     * Gets the value of the lightingICAOStandard property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getLightingICAOStandard() {
-        return lightingICAOStandard;
-    }
-
-    /**
-     * Sets the value of the lightingICAOStandard property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setLightingICAOStandard(CodeYesNoType value) {
-        this.lightingICAOStandard = value;
-    }
-
-    public boolean isSetLightingICAOStandard() {
-        return (this.lightingICAOStandard!= null);
-    }
-
-    /**
-     * Gets the value of the synchronisedLighting property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getSynchronisedLighting() {
-        return synchronisedLighting;
-    }
-
-    /**
-     * Sets the value of the synchronisedLighting property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setSynchronisedLighting(CodeYesNoType value) {
-        this.synchronisedLighting = value;
-    }
-
-    public boolean isSetSynchronisedLighting() {
-        return (this.synchronisedLighting!= null);
-    }
-
-    /**
-     * Gets the value of the marker property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link MarkerBeaconPropertyType }
-     *     
-     */
-    public MarkerBeaconPropertyType getMarker() {
-        return marker;
-    }
-
-    /**
-     * Sets the value of the marker property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link MarkerBeaconPropertyType }
-     *     
-     */
-    public void setMarker(MarkerBeaconPropertyType value) {
-        this.marker = value;
-    }
-
-    public boolean isSetMarker() {
-        return (this.marker!= null);
-    }
-
-    /**
-     * Gets the value of the part property.
+     * Gets the value of the rest property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the part property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getPart().add(newItem);
+     * getRest().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link VerticalStructurePartPropertyType }
+     * {@link JAXBElement }{@code <}{@link CodeVerticalStructureType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link GroundLightSystemPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link MarkerBeaconPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NavaidEquipmentPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link PassengerServicePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ServicePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link SpecialNavigationStationPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link JAXBElement }{@code <}{@link UnitPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link VerticalStructureLightingStatusPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link VerticalStructurePartPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link VerticalStructureTimeSliceType.Extension }{@code >}
      * </p>
      * 
      * 
      * @return
-     *     The value of the part property.
+     *     The value of the rest property.
      */
-    public List<VerticalStructurePartPropertyType> getPart() {
-        if (part == null) {
-            part = new ArrayList<>();
+    public List<JAXBElement<?>> getRest() {
+        if (rest == null) {
+            rest = new ArrayList<>();
         }
-        return this.part;
-    }
-
-    public boolean isSetPart() {
-        return ((this.part!= null)&&(!this.part.isEmpty()));
-    }
-
-    public void unsetPart() {
-        this.part = null;
-    }
-
-    /**
-     * Gets the value of the hostedPassengerService property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the hostedPassengerService property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getHostedPassengerService().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link PassengerServicePropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the hostedPassengerService property.
-     */
-    public List<PassengerServicePropertyType> getHostedPassengerService() {
-        if (hostedPassengerService == null) {
-            hostedPassengerService = new ArrayList<>();
-        }
-        return this.hostedPassengerService;
-    }
-
-    public boolean isSetHostedPassengerService() {
-        return ((this.hostedPassengerService!= null)&&(!this.hostedPassengerService.isEmpty()));
-    }
-
-    public void unsetHostedPassengerService() {
-        this.hostedPassengerService = null;
-    }
-
-    /**
-     * Gets the value of the supportedGroundLight property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the supportedGroundLight property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getSupportedGroundLight().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link GroundLightSystemPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the supportedGroundLight property.
-     */
-    public List<GroundLightSystemPropertyType> getSupportedGroundLight() {
-        if (supportedGroundLight == null) {
-            supportedGroundLight = new ArrayList<>();
-        }
-        return this.supportedGroundLight;
-    }
-
-    public boolean isSetSupportedGroundLight() {
-        return ((this.supportedGroundLight!= null)&&(!this.supportedGroundLight.isEmpty()));
-    }
-
-    public void unsetSupportedGroundLight() {
-        this.supportedGroundLight = null;
-    }
-
-    /**
-     * Gets the value of the hostedNavaidEquipment property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the hostedNavaidEquipment property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getHostedNavaidEquipment().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NavaidEquipmentPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the hostedNavaidEquipment property.
-     */
-    public List<NavaidEquipmentPropertyType> getHostedNavaidEquipment() {
-        if (hostedNavaidEquipment == null) {
-            hostedNavaidEquipment = new ArrayList<>();
-        }
-        return this.hostedNavaidEquipment;
-    }
-
-    public boolean isSetHostedNavaidEquipment() {
-        return ((this.hostedNavaidEquipment!= null)&&(!this.hostedNavaidEquipment.isEmpty()));
-    }
-
-    public void unsetHostedNavaidEquipment() {
-        this.hostedNavaidEquipment = null;
-    }
-
-    /**
-     * Gets the value of the hostedSpecialNavStation property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the hostedSpecialNavStation property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getHostedSpecialNavStation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link SpecialNavigationStationPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the hostedSpecialNavStation property.
-     */
-    public List<SpecialNavigationStationPropertyType> getHostedSpecialNavStation() {
-        if (hostedSpecialNavStation == null) {
-            hostedSpecialNavStation = new ArrayList<>();
-        }
-        return this.hostedSpecialNavStation;
-    }
-
-    public boolean isSetHostedSpecialNavStation() {
-        return ((this.hostedSpecialNavStation!= null)&&(!this.hostedSpecialNavStation.isEmpty()));
-    }
-
-    public void unsetHostedSpecialNavStation() {
-        this.hostedSpecialNavStation = null;
-    }
-
-    /**
-     * Gets the value of the hostedUnit property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the hostedUnit property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getHostedUnit().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link UnitPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the hostedUnit property.
-     */
-    public List<UnitPropertyType> getHostedUnit() {
-        if (hostedUnit == null) {
-            hostedUnit = new ArrayList<>();
-        }
-        return this.hostedUnit;
-    }
-
-    public boolean isSetHostedUnit() {
-        return ((this.hostedUnit!= null)&&(!this.hostedUnit.isEmpty()));
-    }
-
-    public void unsetHostedUnit() {
-        this.hostedUnit = null;
-    }
-
-    /**
-     * Gets the value of the hostedOrganisation property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the hostedOrganisation property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getHostedOrganisation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link OrganisationAuthorityPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the hostedOrganisation property.
-     */
-    public List<OrganisationAuthorityPropertyType> getHostedOrganisation() {
-        if (hostedOrganisation == null) {
-            hostedOrganisation = new ArrayList<>();
-        }
-        return this.hostedOrganisation;
-    }
-
-    public boolean isSetHostedOrganisation() {
-        return ((this.hostedOrganisation!= null)&&(!this.hostedOrganisation.isEmpty()));
-    }
-
-    public void unsetHostedOrganisation() {
-        this.hostedOrganisation = null;
-    }
-
-    /**
-     * Gets the value of the supportedService property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the supportedService property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getSupportedService().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ServicePropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the supportedService property.
-     */
-    public List<ServicePropertyType> getSupportedService() {
-        if (supportedService == null) {
-            supportedService = new ArrayList<>();
-        }
-        return this.supportedService;
-    }
-
-    public boolean isSetSupportedService() {
-        return ((this.supportedService!= null)&&(!this.supportedService.isEmpty()));
-    }
-
-    public void unsetSupportedService() {
-        this.supportedService = null;
-    }
-
-    /**
-     * Gets the value of the annotation property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAnnotation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NotePropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the annotation property.
-     */
-    public List<NotePropertyType> getAnnotation() {
-        if (annotation == null) {
-            annotation = new ArrayList<>();
-        }
-        return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
-    /**
-     * Gets the value of the lightingAvailability property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the lightingAvailability property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getLightingAvailability().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link VerticalStructureLightingStatusPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the lightingAvailability property.
-     */
-    public List<VerticalStructureLightingStatusPropertyType> getLightingAvailability() {
-        if (lightingAvailability == null) {
-            lightingAvailability = new ArrayList<>();
-        }
-        return this.lightingAvailability;
-    }
-
-    public boolean isSetLightingAvailability() {
-        return ((this.lightingAvailability!= null)&&(!this.lightingAvailability.isEmpty()));
-    }
-
-    public void unsetLightingAvailability() {
-        this.lightingAvailability = null;
-    }
-
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link VerticalStructureTimeSliceType.Extension }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the extension property.
-     */
-    public List<VerticalStructureTimeSliceType.Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<>();
-        }
-        return this.extension;
-    }
-
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
+        return this.rest;
     }
 
 
@@ -948,10 +189,6 @@ public class VerticalStructureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractVerticalStructureExtension", required = true)
-        @JoinColumn(name = "abstract_vertical_structure_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractVerticalStructureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

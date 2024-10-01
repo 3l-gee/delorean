@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,32 +58,20 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "sector_design_type")
 public class SectorDesignType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "turnDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeDirectionTurnType> turnDirection;
+    @XmlElementRef(name = "designGradient", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValSlopeType> designGradient;
+    @XmlElementRef(name = "terminationAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceVerticalType> terminationAltitude;
+    @XmlElementRef(name = "turnPermitted", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> turnPermitted;
     @XmlElement(nillable = true)
-    @Column(name = "turn_direction")
-    protected CodeDirectionTurnType turnDirection;
-    @XmlElement(nillable = true)
-    @Column(name = "design_gradient")
-    protected ValSlopeType designGradient;
-    @XmlElement(nillable = true)
-    @Column(name = "termination_altitude")
-    protected ValDistanceVerticalType terminationAltitude;
-    @XmlElement(nillable = true)
-    @Column(name = "turn_permitted")
-    protected CodeYesNoType turnPermitted;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<SectorDesignType.Extension> extension;
 
     /**
@@ -97,10 +79,10 @@ public class SectorDesignType
      * 
      * @return
      *     possible object is
-     *     {@link CodeDirectionTurnType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
      *     
      */
-    public CodeDirectionTurnType getTurnDirection() {
+    public JAXBElement<CodeDirectionTurnType> getTurnDirection() {
         return turnDirection;
     }
 
@@ -109,10 +91,10 @@ public class SectorDesignType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDirectionTurnType }
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
      *     
      */
-    public void setTurnDirection(CodeDirectionTurnType value) {
+    public void setTurnDirection(JAXBElement<CodeDirectionTurnType> value) {
         this.turnDirection = value;
     }
 
@@ -125,10 +107,10 @@ public class SectorDesignType
      * 
      * @return
      *     possible object is
-     *     {@link ValSlopeType }
+     *     {@link JAXBElement }{@code <}{@link ValSlopeType }{@code >}
      *     
      */
-    public ValSlopeType getDesignGradient() {
+    public JAXBElement<ValSlopeType> getDesignGradient() {
         return designGradient;
     }
 
@@ -137,10 +119,10 @@ public class SectorDesignType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValSlopeType }
+     *     {@link JAXBElement }{@code <}{@link ValSlopeType }{@code >}
      *     
      */
-    public void setDesignGradient(ValSlopeType value) {
+    public void setDesignGradient(JAXBElement<ValSlopeType> value) {
         this.designGradient = value;
     }
 
@@ -153,10 +135,10 @@ public class SectorDesignType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public ValDistanceVerticalType getTerminationAltitude() {
+    public JAXBElement<ValDistanceVerticalType> getTerminationAltitude() {
         return terminationAltitude;
     }
 
@@ -165,10 +147,10 @@ public class SectorDesignType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceVerticalType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
      *     
      */
-    public void setTerminationAltitude(ValDistanceVerticalType value) {
+    public void setTerminationAltitude(JAXBElement<ValDistanceVerticalType> value) {
         this.terminationAltitude = value;
     }
 
@@ -181,10 +163,10 @@ public class SectorDesignType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getTurnPermitted() {
+    public JAXBElement<CodeYesNoType> getTurnPermitted() {
         return turnPermitted;
     }
 
@@ -193,10 +175,10 @@ public class SectorDesignType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setTurnPermitted(CodeYesNoType value) {
+    public void setTurnPermitted(JAXBElement<CodeYesNoType> value) {
         this.turnPermitted = value;
     }
 
@@ -312,10 +294,6 @@ public class SectorDesignType
     public static class Extension {
 
         @XmlElement(name = "AbstractSectorDesignExtension")
-        @JoinColumn(name = "abstract_sector_design_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractSectorDesignExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

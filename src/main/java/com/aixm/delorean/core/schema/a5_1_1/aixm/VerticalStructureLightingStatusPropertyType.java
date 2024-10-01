@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "VerticalStructureLightingStatusPropertyType", propOrder = {
     "verticalStructureLightingStatus"
 })
-@Entity
-@Table(name = "vertical_structure_lighting_status_property_type")
 public class VerticalStructureLightingStatusPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "VerticalStructureLightingStatus", required = true)
-    @JoinColumn(name = "vertical_structure_lighting_status")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected VerticalStructureLightingStatusType verticalStructureLightingStatus;
 
     /**

@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,53 +63,26 @@ import jakarta.xml.bind.annotation.XmlType;
     "subCondition",
     "extension"
 })
-@Entity
-@Table(name = "condition_combination_type")
 public class ConditionCombinationType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
+    @XmlElementRef(name = "logicalOperator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeLogicalOperatorType> logicalOperator;
     @XmlElement(nillable = true)
-    @Column(name = "logical_operator")
-    protected CodeLogicalOperatorType logicalOperator;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<MeteorologyPropertyType> weather;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AircraftCharacteristicPropertyType> aircraft;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<FlightCharacteristicPropertyType> flight;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ConditionCombinationPropertyType> subCondition;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ConditionCombinationType.Extension> extension;
 
     /**
@@ -243,10 +210,10 @@ public class ConditionCombinationType
      * 
      * @return
      *     possible object is
-     *     {@link CodeLogicalOperatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeLogicalOperatorType }{@code >}
      *     
      */
-    public CodeLogicalOperatorType getLogicalOperator() {
+    public JAXBElement<CodeLogicalOperatorType> getLogicalOperator() {
         return logicalOperator;
     }
 
@@ -255,10 +222,10 @@ public class ConditionCombinationType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLogicalOperatorType }
+     *     {@link JAXBElement }{@code <}{@link CodeLogicalOperatorType }{@code >}
      *     
      */
-    public void setLogicalOperator(CodeLogicalOperatorType value) {
+    public void setLogicalOperator(JAXBElement<CodeLogicalOperatorType> value) {
         this.logicalOperator = value;
     }
 
@@ -496,16 +463,8 @@ public class ConditionCombinationType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @JoinColumn(name = "abstract_properties_with_schedule_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractConditionCombinationExtension")
-        @JoinColumn(name = "abstract_condition_combination_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractConditionCombinationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

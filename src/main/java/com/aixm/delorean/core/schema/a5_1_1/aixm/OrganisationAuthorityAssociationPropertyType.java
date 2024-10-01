@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "OrganisationAuthorityAssociationPropertyType", propOrder = {
     "organisationAuthorityAssociation"
 })
-@Entity
-@Table(name = "organisation_authority_association_property_type")
 public class OrganisationAuthorityAssociationPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "OrganisationAuthorityAssociation", required = true)
-    @JoinColumn(name = "organisation_authority_association")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected OrganisationAuthorityAssociationType organisationAuthorityAssociation;
 
     /**

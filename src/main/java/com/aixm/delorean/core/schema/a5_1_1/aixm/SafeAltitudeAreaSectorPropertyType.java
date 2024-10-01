@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "SafeAltitudeAreaSectorPropertyType", propOrder = {
     "safeAltitudeAreaSector"
 })
-@Entity
-@Table(name = "safe_altitude_area_sector_property_type")
 public class SafeAltitudeAreaSectorPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "SafeAltitudeAreaSector", required = true)
-    @JoinColumn(name = "safe_altitude_area_sector")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected SafeAltitudeAreaSectorType safeAltitudeAreaSector;
 
     /**
