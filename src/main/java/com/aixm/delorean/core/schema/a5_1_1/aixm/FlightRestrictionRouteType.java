@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,33 +57,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "flight_restriction_route_type")
 public class FlightRestrictionRouteType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "priorPermission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> priorPermission;
     @XmlElement(nillable = true)
-    @Column(name = "prior_permission")
-    protected CodeYesNoType priorPermission;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<FlightRoutingElementPropertyType> routeElement;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<FlightRestrictionRouteType.Extension> extension;
 
     /**
@@ -97,10 +76,10 @@ public class FlightRestrictionRouteType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getPriorPermission() {
+    public JAXBElement<CodeYesNoType> getPriorPermission() {
         return priorPermission;
     }
 
@@ -109,10 +88,10 @@ public class FlightRestrictionRouteType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setPriorPermission(CodeYesNoType value) {
+    public void setPriorPermission(JAXBElement<CodeYesNoType> value) {
         this.priorPermission = value;
     }
 
@@ -308,10 +287,6 @@ public class FlightRestrictionRouteType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightRestrictionRouteExtension")
-        @JoinColumn(name = "abstract_flight_restriction_route_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractFlightRestrictionRouteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

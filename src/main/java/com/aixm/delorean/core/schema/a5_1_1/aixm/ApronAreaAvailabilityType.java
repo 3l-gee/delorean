@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,41 +61,22 @@ import jakarta.xml.bind.annotation.XmlType;
     "usage",
     "extension"
 })
-@Entity
-@Table(name = "apron_area_availability_type")
 public class ApronAreaAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
+    @XmlElementRef(name = "operationalStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeStatusAirportType> operationalStatus;
+    @XmlElementRef(name = "warning", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAirportWarningType> warning;
     @XmlElement(nillable = true)
-    @Column(name = "operational_status")
-    protected CodeStatusAirportType operationalStatus;
-    @XmlElement(nillable = true)
-    @Column(name = "warning")
-    protected CodeAirportWarningType warning;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApronAreaUsagePropertyType> usage;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApronAreaAvailabilityType.Extension> extension;
 
     /**
@@ -229,10 +204,10 @@ public class ApronAreaAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link CodeStatusAirportType }
+     *     {@link JAXBElement }{@code <}{@link CodeStatusAirportType }{@code >}
      *     
      */
-    public CodeStatusAirportType getOperationalStatus() {
+    public JAXBElement<CodeStatusAirportType> getOperationalStatus() {
         return operationalStatus;
     }
 
@@ -241,10 +216,10 @@ public class ApronAreaAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeStatusAirportType }
+     *     {@link JAXBElement }{@code <}{@link CodeStatusAirportType }{@code >}
      *     
      */
-    public void setOperationalStatus(CodeStatusAirportType value) {
+    public void setOperationalStatus(JAXBElement<CodeStatusAirportType> value) {
         this.operationalStatus = value;
     }
 
@@ -257,10 +232,10 @@ public class ApronAreaAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link CodeAirportWarningType }
+     *     {@link JAXBElement }{@code <}{@link CodeAirportWarningType }{@code >}
      *     
      */
-    public CodeAirportWarningType getWarning() {
+    public JAXBElement<CodeAirportWarningType> getWarning() {
         return warning;
     }
 
@@ -269,10 +244,10 @@ public class ApronAreaAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAirportWarningType }
+     *     {@link JAXBElement }{@code <}{@link CodeAirportWarningType }{@code >}
      *     
      */
-    public void setWarning(CodeAirportWarningType value) {
+    public void setWarning(JAXBElement<CodeAirportWarningType> value) {
         this.warning = value;
     }
 
@@ -390,16 +365,8 @@ public class ApronAreaAvailabilityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @JoinColumn(name = "abstract_properties_with_schedule_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractApronAreaAvailabilityExtension")
-        @JoinColumn(name = "abstract_apron_area_availability_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractApronAreaAvailabilityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

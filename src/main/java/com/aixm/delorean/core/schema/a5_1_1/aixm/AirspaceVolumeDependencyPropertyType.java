@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "AirspaceVolumeDependencyPropertyType", propOrder = {
     "airspaceVolumeDependency"
 })
-@Entity
-@Table(name = "airspace_volume_dependency_property_type")
 public class AirspaceVolumeDependencyPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "AirspaceVolumeDependency", required = true)
-    @JoinColumn(name = "airspace_volume_dependency")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected AirspaceVolumeDependencyType airspaceVolumeDependency;
 
     /**

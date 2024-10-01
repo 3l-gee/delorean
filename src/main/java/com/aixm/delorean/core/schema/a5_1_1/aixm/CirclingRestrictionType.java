@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -66,36 +60,20 @@ import jakarta.xml.bind.annotation.XmlType;
     "restrictionArea",
     "extension"
 })
-@Entity
-@Table(name = "circling_restriction_type")
 public class CirclingRestrictionType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
-    @Column(name = "sector_description")
-    protected CircleSectorPropertyType sectorDescription;
-    @XmlElement(nillable = true)
-    @Column(name = "restriction_area")
-    protected SurfacePropertyType restrictionArea;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @XmlElementRef(name = "sectorDescription", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CircleSectorPropertyType> sectorDescription;
+    @XmlElementRef(name = "restrictionArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<SurfacePropertyType> restrictionArea;
     protected List<CirclingRestrictionType.Extension> extension;
 
     /**
@@ -223,10 +201,10 @@ public class CirclingRestrictionType
      * 
      * @return
      *     possible object is
-     *     {@link CircleSectorPropertyType }
+     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
      *     
      */
-    public CircleSectorPropertyType getSectorDescription() {
+    public JAXBElement<CircleSectorPropertyType> getSectorDescription() {
         return sectorDescription;
     }
 
@@ -235,10 +213,10 @@ public class CirclingRestrictionType
      * 
      * @param value
      *     allowed object is
-     *     {@link CircleSectorPropertyType }
+     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
      *     
      */
-    public void setSectorDescription(CircleSectorPropertyType value) {
+    public void setSectorDescription(JAXBElement<CircleSectorPropertyType> value) {
         this.sectorDescription = value;
     }
 
@@ -251,10 +229,10 @@ public class CirclingRestrictionType
      * 
      * @return
      *     possible object is
-     *     {@link SurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      *     
      */
-    public SurfacePropertyType getRestrictionArea() {
+    public JAXBElement<SurfacePropertyType> getRestrictionArea() {
         return restrictionArea;
     }
 
@@ -263,10 +241,10 @@ public class CirclingRestrictionType
      * 
      * @param value
      *     allowed object is
-     *     {@link SurfacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      *     
      */
-    public void setRestrictionArea(SurfacePropertyType value) {
+    public void setRestrictionArea(JAXBElement<SurfacePropertyType> value) {
         this.restrictionArea = value;
     }
 
@@ -344,16 +322,8 @@ public class CirclingRestrictionType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @JoinColumn(name = "abstract_properties_with_schedule_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractCirclingRestrictionExtension")
-        @JoinColumn(name = "abstract_circling_restriction_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractCirclingRestrictionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

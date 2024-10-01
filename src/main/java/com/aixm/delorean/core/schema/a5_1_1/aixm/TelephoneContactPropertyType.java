@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "TelephoneContactPropertyType", propOrder = {
     "telephoneContact"
 })
-@Entity
-@Table(name = "telephone_contact_property_type")
 public class TelephoneContactPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "TelephoneContact", required = true)
-    @JoinColumn(name = "telephone_contact")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected TelephoneContactType telephoneContact;
 
     /**

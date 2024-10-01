@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -66,34 +60,20 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "apron_area_usage_type")
 public class ApronAreaUsageType
     extends AbstractUsageConditionType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeUsageLimitationType> type;
+    @XmlElementRef(name = "priorPermission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDurationType> priorPermission;
     @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeUsageLimitationType type;
-    @XmlElement(nillable = true)
-    @Column(name = "prior_permission")
-    protected ValDurationType priorPermission;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ContactInformationPropertyType> contact;
+    @XmlElementRef(name = "selection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ConditionCombinationPropertyType> selection;
     @XmlElement(nillable = true)
-    @Column(name = "selection")
-    protected ConditionCombinationPropertyType selection;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ApronAreaUsageType.Extension> extension;
 
     /**
@@ -101,10 +81,10 @@ public class ApronAreaUsageType
      * 
      * @return
      *     possible object is
-     *     {@link CodeUsageLimitationType }
+     *     {@link JAXBElement }{@code <}{@link CodeUsageLimitationType }{@code >}
      *     
      */
-    public CodeUsageLimitationType getType() {
+    public JAXBElement<CodeUsageLimitationType> getType() {
         return type;
     }
 
@@ -113,10 +93,10 @@ public class ApronAreaUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeUsageLimitationType }
+     *     {@link JAXBElement }{@code <}{@link CodeUsageLimitationType }{@code >}
      *     
      */
-    public void setType(CodeUsageLimitationType value) {
+    public void setType(JAXBElement<CodeUsageLimitationType> value) {
         this.type = value;
     }
 
@@ -129,10 +109,10 @@ public class ApronAreaUsageType
      * 
      * @return
      *     possible object is
-     *     {@link ValDurationType }
+     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
      *     
      */
-    public ValDurationType getPriorPermission() {
+    public JAXBElement<ValDurationType> getPriorPermission() {
         return priorPermission;
     }
 
@@ -141,10 +121,10 @@ public class ApronAreaUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDurationType }
+     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
      *     
      */
-    public void setPriorPermission(ValDurationType value) {
+    public void setPriorPermission(JAXBElement<ValDurationType> value) {
         this.priorPermission = value;
     }
 
@@ -197,10 +177,10 @@ public class ApronAreaUsageType
      * 
      * @return
      *     possible object is
-     *     {@link ConditionCombinationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ConditionCombinationPropertyType }{@code >}
      *     
      */
-    public ConditionCombinationPropertyType getSelection() {
+    public JAXBElement<ConditionCombinationPropertyType> getSelection() {
         return selection;
     }
 
@@ -209,10 +189,10 @@ public class ApronAreaUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link ConditionCombinationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ConditionCombinationPropertyType }{@code >}
      *     
      */
-    public void setSelection(ConditionCombinationPropertyType value) {
+    public void setSelection(JAXBElement<ConditionCombinationPropertyType> value) {
         this.selection = value;
     }
 
@@ -330,16 +310,8 @@ public class ApronAreaUsageType
     public static class Extension {
 
         @XmlElement(name = "AbstractUsageConditionExtension")
-        @JoinColumn(name = "abstract_usage_condition_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractUsageConditionExtension;
         @XmlElement(name = "AbstractApronAreaUsageExtension")
-        @JoinColumn(name = "abstract_apron_area_usage_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractApronAreaUsageExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

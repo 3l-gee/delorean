@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "AerialRefuellingPointPropertyType", propOrder = {
     "aerialRefuellingPoint"
 })
-@Entity
-@Table(name = "aerial_refuelling_point_property_type")
 public class AerialRefuellingPointPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "AerialRefuellingPoint", required = true)
-    @JoinColumn(name = "aerial_refuelling_point")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected AerialRefuellingPointType aerialRefuellingPoint;
 
     /**

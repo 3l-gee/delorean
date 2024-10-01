@@ -9,17 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -56,1260 +52,141 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AirportHeliportTimeSliceType", propOrder = {
-    "designator",
-    "aixmName",
-    "locationIndicatorICAO",
-    "designatorIATA",
-    "type",
-    "certifiedICAO",
-    "privateUse",
-    "controlType",
-    "fieldElevation",
-    "fieldElevationAccuracy",
-    "verticalDatum",
-    "magneticVariation",
-    "magneticVariationAccuracy",
-    "dateMagneticVariation",
-    "magneticVariationChange",
-    "referenceTemperature",
-    "altimeterCheckLocation",
-    "secondaryPowerSupply",
-    "windDirectionIndicator",
-    "landingDirectionIndicator",
-    "transitionAltitude",
-    "transitionLevel",
-    "lowestTemperature",
-    "abandoned",
-    "certificationDate",
-    "certificationExpirationDate",
-    "contaminant",
-    "servedCity",
-    "responsibleOrganisation",
-    "arp",
-    "aviationBoundary",
-    "altimeterSource",
-    "contact",
-    "availability",
-    "annotation",
-    "extension"
+    "rest"
 })
-@Embeddable
 public class AirportHeliportTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
-    @Column(name = "designator")
-    protected CodeAirportHeliportDesignatorType designator;
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Column(name = "location_indicator_icao")
-    protected CodeICAOType locationIndicatorICAO;
-    @XmlElement(nillable = true)
-    @Column(name = "designator_iata")
-    protected CodeIATAType designatorIATA;
-    @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeAirportHeliportType type;
-    @XmlElement(nillable = true)
-    @Column(name = "certified_icao")
-    protected CodeYesNoType certifiedICAO;
-    @XmlElement(nillable = true)
-    @Column(name = "private_use")
-    protected CodeYesNoType privateUse;
-    @XmlElement(nillable = true)
-    @Column(name = "control_type")
-    protected CodeMilitaryOperationsType controlType;
-    @XmlElement(nillable = true)
-    @Column(name = "field_elevation")
-    protected ValDistanceVerticalType fieldElevation;
-    @XmlElement(nillable = true)
-    @Column(name = "field_elevation_accuracy")
-    protected ValDistanceVerticalType fieldElevationAccuracy;
-    @XmlElement(nillable = true)
-    @Column(name = "vertical_datum")
-    protected CodeVerticalDatumType verticalDatum;
-    @XmlElement(nillable = true)
-    @Column(name = "magnetic_variation")
-    protected ValMagneticVariationType magneticVariation;
-    @XmlElement(nillable = true)
-    @Column(name = "magnetic_variation_accuracy")
-    protected ValAngleType magneticVariationAccuracy;
-    @XmlElement(nillable = true)
-    @Column(name = "date_magnetic_variation")
-    protected DateYearType dateMagneticVariation;
-    @XmlElement(nillable = true)
-    @Column(name = "magnetic_variation_change")
-    protected ValMagneticVariationChangeType magneticVariationChange;
-    @XmlElement(nillable = true)
-    @Column(name = "reference_temperature")
-    protected ValTemperatureType referenceTemperature;
-    @XmlElement(nillable = true)
-    @Column(name = "altimeter_check_location")
-    protected CodeYesNoType altimeterCheckLocation;
-    @XmlElement(nillable = true)
-    @Column(name = "secondary_power_supply")
-    protected CodeYesNoType secondaryPowerSupply;
-    @XmlElement(nillable = true)
-    @Column(name = "wind_direction_indicator")
-    protected CodeYesNoType windDirectionIndicator;
-    @XmlElement(nillable = true)
-    @Column(name = "landing_direction_indicator")
-    protected CodeYesNoType landingDirectionIndicator;
-    @XmlElement(nillable = true)
-    @Column(name = "transition_altitude")
-    protected ValDistanceVerticalType transitionAltitude;
-    @XmlElement(nillable = true)
-    @Column(name = "transition_level")
-    protected ValFLType transitionLevel;
-    @XmlElement(nillable = true)
-    @Column(name = "lowest_temperature")
-    protected ValTemperatureType lowestTemperature;
-    @XmlElement(nillable = true)
-    @Column(name = "abandoned")
-    protected CodeYesNoType abandoned;
-    @XmlElement(nillable = true)
-    @Column(name = "certification_date")
-    protected DateType certificationDate;
-    @XmlElement(nillable = true)
-    @Column(name = "certification_expiration_date")
-    protected DateType certificationExpirationDate;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<AirportHeliportContaminationPropertyType> contaminant;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<CityPropertyType> servedCity;
-    @XmlElement(nillable = true)
-    @Column(name = "responsible_organisation")
-    protected AirportHeliportResponsibilityOrganisationPropertyType responsibleOrganisation;
-    @XmlElement(name = "ARP", nillable = true)
-    @Column(name = "arp")
-    protected ElevatedPointPropertyType arp;
-    @XmlElement(nillable = true)
-    @Column(name = "aviation_boundary")
-    protected ElevatedSurfacePropertyType aviationBoundary;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<AltimeterSourcePropertyType> altimeterSource;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<ContactInformationPropertyType> contact;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<AirportHeliportAvailabilityPropertyType> availability;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<AirportHeliportTimeSliceType.Extension> extension;
-
     /**
-     * Gets the value of the designator property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link CodeAirportHeliportDesignatorType }
-     *     
-     */
-    public CodeAirportHeliportDesignatorType getDesignator() {
-        return designator;
-    }
-
-    /**
-     * Sets the value of the designator property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 295 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeAirportHeliportDesignatorType }
-     *     
      */
-    public void setDesignator(CodeAirportHeliportDesignatorType value) {
-        this.designator = value;
-    }
-
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
+    @XmlElementRefs({
+        @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "locationIndicatorICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "designatorIATA", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "certifiedICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "privateUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "controlType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "fieldElevation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "fieldElevationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "verticalDatum", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "magneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "magneticVariationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "magneticVariationChange", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "referenceTemperature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "altimeterCheckLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "secondaryPowerSupply", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "windDirectionIndicator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "landingDirectionIndicator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "transitionAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "transitionLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "lowestTemperature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "certificationDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "certificationExpirationDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "contaminant", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "servedCity", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ARP", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "aviationBoundary", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "altimeterSource", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "contact", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "availability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> rest;
 
     /**
-     * Gets the value of the aixmName property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link TextNameType }
-     *     
-     */
-    public TextNameType getAIXMName() {
-        return aixmName;
-    }
-
-    /**
-     * Sets the value of the aixmName property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 295 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TextNameType }
-     *     
-     */
-    public void setAIXMName(TextNameType value) {
-        this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
-
-    /**
-     * Gets the value of the locationIndicatorICAO property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeICAOType }
-     *     
-     */
-    public CodeICAOType getLocationIndicatorICAO() {
-        return locationIndicatorICAO;
-    }
-
-    /**
-     * Sets the value of the locationIndicatorICAO property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeICAOType }
-     *     
-     */
-    public void setLocationIndicatorICAO(CodeICAOType value) {
-        this.locationIndicatorICAO = value;
-    }
-
-    public boolean isSetLocationIndicatorICAO() {
-        return (this.locationIndicatorICAO!= null);
-    }
-
-    /**
-     * Gets the value of the designatorIATA property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeIATAType }
-     *     
-     */
-    public CodeIATAType getDesignatorIATA() {
-        return designatorIATA;
-    }
-
-    /**
-     * Sets the value of the designatorIATA property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeIATAType }
-     *     
-     */
-    public void setDesignatorIATA(CodeIATAType value) {
-        this.designatorIATA = value;
-    }
-
-    public boolean isSetDesignatorIATA() {
-        return (this.designatorIATA!= null);
-    }
-
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeAirportHeliportType }
-     *     
-     */
-    public CodeAirportHeliportType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeAirportHeliportType }
-     *     
-     */
-    public void setType(CodeAirportHeliportType value) {
-        this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
-    /**
-     * Gets the value of the certifiedICAO property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getCertifiedICAO() {
-        return certifiedICAO;
-    }
-
-    /**
-     * Sets the value of the certifiedICAO property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setCertifiedICAO(CodeYesNoType value) {
-        this.certifiedICAO = value;
-    }
-
-    public boolean isSetCertifiedICAO() {
-        return (this.certifiedICAO!= null);
-    }
-
-    /**
-     * Gets the value of the privateUse property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getPrivateUse() {
-        return privateUse;
-    }
-
-    /**
-     * Sets the value of the privateUse property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setPrivateUse(CodeYesNoType value) {
-        this.privateUse = value;
-    }
-
-    public boolean isSetPrivateUse() {
-        return (this.privateUse!= null);
-    }
-
-    /**
-     * Gets the value of the controlType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeMilitaryOperationsType }
-     *     
-     */
-    public CodeMilitaryOperationsType getControlType() {
-        return controlType;
-    }
-
-    /**
-     * Sets the value of the controlType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeMilitaryOperationsType }
-     *     
-     */
-    public void setControlType(CodeMilitaryOperationsType value) {
-        this.controlType = value;
-    }
-
-    public boolean isSetControlType() {
-        return (this.controlType!= null);
-    }
-
-    /**
-     * Gets the value of the fieldElevation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValDistanceVerticalType }
-     *     
-     */
-    public ValDistanceVerticalType getFieldElevation() {
-        return fieldElevation;
-    }
-
-    /**
-     * Sets the value of the fieldElevation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValDistanceVerticalType }
-     *     
-     */
-    public void setFieldElevation(ValDistanceVerticalType value) {
-        this.fieldElevation = value;
-    }
-
-    public boolean isSetFieldElevation() {
-        return (this.fieldElevation!= null);
-    }
-
-    /**
-     * Gets the value of the fieldElevationAccuracy property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValDistanceVerticalType }
-     *     
-     */
-    public ValDistanceVerticalType getFieldElevationAccuracy() {
-        return fieldElevationAccuracy;
-    }
-
-    /**
-     * Sets the value of the fieldElevationAccuracy property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValDistanceVerticalType }
-     *     
-     */
-    public void setFieldElevationAccuracy(ValDistanceVerticalType value) {
-        this.fieldElevationAccuracy = value;
-    }
-
-    public boolean isSetFieldElevationAccuracy() {
-        return (this.fieldElevationAccuracy!= null);
-    }
-
-    /**
-     * Gets the value of the verticalDatum property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeVerticalDatumType }
-     *     
-     */
-    public CodeVerticalDatumType getVerticalDatum() {
-        return verticalDatum;
-    }
-
-    /**
-     * Sets the value of the verticalDatum property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeVerticalDatumType }
-     *     
-     */
-    public void setVerticalDatum(CodeVerticalDatumType value) {
-        this.verticalDatum = value;
-    }
-
-    public boolean isSetVerticalDatum() {
-        return (this.verticalDatum!= null);
-    }
-
-    /**
-     * Gets the value of the magneticVariation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValMagneticVariationType }
-     *     
-     */
-    public ValMagneticVariationType getMagneticVariation() {
-        return magneticVariation;
-    }
-
-    /**
-     * Sets the value of the magneticVariation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValMagneticVariationType }
-     *     
-     */
-    public void setMagneticVariation(ValMagneticVariationType value) {
-        this.magneticVariation = value;
-    }
-
-    public boolean isSetMagneticVariation() {
-        return (this.magneticVariation!= null);
-    }
-
-    /**
-     * Gets the value of the magneticVariationAccuracy property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValAngleType }
-     *     
-     */
-    public ValAngleType getMagneticVariationAccuracy() {
-        return magneticVariationAccuracy;
-    }
-
-    /**
-     * Sets the value of the magneticVariationAccuracy property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValAngleType }
-     *     
-     */
-    public void setMagneticVariationAccuracy(ValAngleType value) {
-        this.magneticVariationAccuracy = value;
-    }
-
-    public boolean isSetMagneticVariationAccuracy() {
-        return (this.magneticVariationAccuracy!= null);
-    }
-
-    /**
-     * Gets the value of the dateMagneticVariation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DateYearType }
-     *     
-     */
-    public DateYearType getDateMagneticVariation() {
-        return dateMagneticVariation;
-    }
-
-    /**
-     * Sets the value of the dateMagneticVariation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DateYearType }
-     *     
-     */
-    public void setDateMagneticVariation(DateYearType value) {
-        this.dateMagneticVariation = value;
-    }
-
-    public boolean isSetDateMagneticVariation() {
-        return (this.dateMagneticVariation!= null);
-    }
-
-    /**
-     * Gets the value of the magneticVariationChange property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValMagneticVariationChangeType }
-     *     
-     */
-    public ValMagneticVariationChangeType getMagneticVariationChange() {
-        return magneticVariationChange;
-    }
-
-    /**
-     * Sets the value of the magneticVariationChange property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValMagneticVariationChangeType }
-     *     
-     */
-    public void setMagneticVariationChange(ValMagneticVariationChangeType value) {
-        this.magneticVariationChange = value;
-    }
-
-    public boolean isSetMagneticVariationChange() {
-        return (this.magneticVariationChange!= null);
-    }
-
-    /**
-     * Gets the value of the referenceTemperature property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValTemperatureType }
-     *     
-     */
-    public ValTemperatureType getReferenceTemperature() {
-        return referenceTemperature;
-    }
-
-    /**
-     * Sets the value of the referenceTemperature property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValTemperatureType }
-     *     
-     */
-    public void setReferenceTemperature(ValTemperatureType value) {
-        this.referenceTemperature = value;
-    }
-
-    public boolean isSetReferenceTemperature() {
-        return (this.referenceTemperature!= null);
-    }
-
-    /**
-     * Gets the value of the altimeterCheckLocation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getAltimeterCheckLocation() {
-        return altimeterCheckLocation;
-    }
-
-    /**
-     * Sets the value of the altimeterCheckLocation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setAltimeterCheckLocation(CodeYesNoType value) {
-        this.altimeterCheckLocation = value;
-    }
-
-    public boolean isSetAltimeterCheckLocation() {
-        return (this.altimeterCheckLocation!= null);
-    }
-
-    /**
-     * Gets the value of the secondaryPowerSupply property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getSecondaryPowerSupply() {
-        return secondaryPowerSupply;
-    }
-
-    /**
-     * Sets the value of the secondaryPowerSupply property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setSecondaryPowerSupply(CodeYesNoType value) {
-        this.secondaryPowerSupply = value;
-    }
-
-    public boolean isSetSecondaryPowerSupply() {
-        return (this.secondaryPowerSupply!= null);
-    }
-
-    /**
-     * Gets the value of the windDirectionIndicator property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getWindDirectionIndicator() {
-        return windDirectionIndicator;
-    }
-
-    /**
-     * Sets the value of the windDirectionIndicator property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setWindDirectionIndicator(CodeYesNoType value) {
-        this.windDirectionIndicator = value;
-    }
-
-    public boolean isSetWindDirectionIndicator() {
-        return (this.windDirectionIndicator!= null);
-    }
-
-    /**
-     * Gets the value of the landingDirectionIndicator property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getLandingDirectionIndicator() {
-        return landingDirectionIndicator;
-    }
-
-    /**
-     * Sets the value of the landingDirectionIndicator property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setLandingDirectionIndicator(CodeYesNoType value) {
-        this.landingDirectionIndicator = value;
-    }
-
-    public boolean isSetLandingDirectionIndicator() {
-        return (this.landingDirectionIndicator!= null);
-    }
-
-    /**
-     * Gets the value of the transitionAltitude property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValDistanceVerticalType }
-     *     
-     */
-    public ValDistanceVerticalType getTransitionAltitude() {
-        return transitionAltitude;
-    }
-
-    /**
-     * Sets the value of the transitionAltitude property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValDistanceVerticalType }
-     *     
-     */
-    public void setTransitionAltitude(ValDistanceVerticalType value) {
-        this.transitionAltitude = value;
-    }
-
-    public boolean isSetTransitionAltitude() {
-        return (this.transitionAltitude!= null);
-    }
-
-    /**
-     * Gets the value of the transitionLevel property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValFLType }
-     *     
-     */
-    public ValFLType getTransitionLevel() {
-        return transitionLevel;
-    }
-
-    /**
-     * Sets the value of the transitionLevel property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValFLType }
-     *     
-     */
-    public void setTransitionLevel(ValFLType value) {
-        this.transitionLevel = value;
-    }
-
-    public boolean isSetTransitionLevel() {
-        return (this.transitionLevel!= null);
-    }
-
-    /**
-     * Gets the value of the lowestTemperature property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValTemperatureType }
-     *     
-     */
-    public ValTemperatureType getLowestTemperature() {
-        return lowestTemperature;
-    }
-
-    /**
-     * Sets the value of the lowestTemperature property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValTemperatureType }
-     *     
-     */
-    public void setLowestTemperature(ValTemperatureType value) {
-        this.lowestTemperature = value;
-    }
-
-    public boolean isSetLowestTemperature() {
-        return (this.lowestTemperature!= null);
-    }
-
-    /**
-     * Gets the value of the abandoned property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getAbandoned() {
-        return abandoned;
-    }
-
-    /**
-     * Sets the value of the abandoned property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setAbandoned(CodeYesNoType value) {
-        this.abandoned = value;
-    }
-
-    public boolean isSetAbandoned() {
-        return (this.abandoned!= null);
-    }
-
-    /**
-     * Gets the value of the certificationDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DateType }
-     *     
-     */
-    public DateType getCertificationDate() {
-        return certificationDate;
-    }
-
-    /**
-     * Sets the value of the certificationDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DateType }
-     *     
-     */
-    public void setCertificationDate(DateType value) {
-        this.certificationDate = value;
-    }
-
-    public boolean isSetCertificationDate() {
-        return (this.certificationDate!= null);
-    }
-
-    /**
-     * Gets the value of the certificationExpirationDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DateType }
-     *     
-     */
-    public DateType getCertificationExpirationDate() {
-        return certificationExpirationDate;
-    }
-
-    /**
-     * Sets the value of the certificationExpirationDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DateType }
-     *     
-     */
-    public void setCertificationExpirationDate(DateType value) {
-        this.certificationExpirationDate = value;
-    }
-
-    public boolean isSetCertificationExpirationDate() {
-        return (this.certificationExpirationDate!= null);
-    }
-
-    /**
-     * Gets the value of the contaminant property.
+     * Gets the value of the rest property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the contaminant property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getContaminant().add(newItem);
+     * getRest().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AirportHeliportContaminationPropertyType }
+     * {@link JAXBElement }{@code <}{@link AirportHeliportAvailabilityPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link AirportHeliportContaminationPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link AirportHeliportResponsibilityOrganisationPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link AirportHeliportTimeSliceType.Extension }{@code >}
+     * {@link JAXBElement }{@code <}{@link AltimeterSourcePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CityPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeAirportHeliportDesignatorType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeAirportHeliportType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeIATAType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeICAOType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeVerticalDatumType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link DateType }{@code >}
+     * {@link JAXBElement }{@code <}{@link DateType }{@code >}
+     * {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValFLType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValMagneticVariationChangeType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValTemperatureType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ValTemperatureType }{@code >}
      * </p>
      * 
      * 
      * @return
-     *     The value of the contaminant property.
+     *     The value of the rest property.
      */
-    public List<AirportHeliportContaminationPropertyType> getContaminant() {
-        if (contaminant == null) {
-            contaminant = new ArrayList<>();
+    public List<JAXBElement<?>> getRest() {
+        if (rest == null) {
+            rest = new ArrayList<>();
         }
-        return this.contaminant;
-    }
-
-    public boolean isSetContaminant() {
-        return ((this.contaminant!= null)&&(!this.contaminant.isEmpty()));
-    }
-
-    public void unsetContaminant() {
-        this.contaminant = null;
-    }
-
-    /**
-     * Gets the value of the servedCity property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the servedCity property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getServedCity().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link CityPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the servedCity property.
-     */
-    public List<CityPropertyType> getServedCity() {
-        if (servedCity == null) {
-            servedCity = new ArrayList<>();
-        }
-        return this.servedCity;
-    }
-
-    public boolean isSetServedCity() {
-        return ((this.servedCity!= null)&&(!this.servedCity.isEmpty()));
-    }
-
-    public void unsetServedCity() {
-        this.servedCity = null;
-    }
-
-    /**
-     * Gets the value of the responsibleOrganisation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AirportHeliportResponsibilityOrganisationPropertyType }
-     *     
-     */
-    public AirportHeliportResponsibilityOrganisationPropertyType getResponsibleOrganisation() {
-        return responsibleOrganisation;
-    }
-
-    /**
-     * Sets the value of the responsibleOrganisation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AirportHeliportResponsibilityOrganisationPropertyType }
-     *     
-     */
-    public void setResponsibleOrganisation(AirportHeliportResponsibilityOrganisationPropertyType value) {
-        this.responsibleOrganisation = value;
-    }
-
-    public boolean isSetResponsibleOrganisation() {
-        return (this.responsibleOrganisation!= null);
-    }
-
-    /**
-     * Gets the value of the arp property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public ElevatedPointPropertyType getARP() {
-        return arp;
-    }
-
-    /**
-     * Sets the value of the arp property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public void setARP(ElevatedPointPropertyType value) {
-        this.arp = value;
-    }
-
-    public boolean isSetARP() {
-        return (this.arp!= null);
-    }
-
-    /**
-     * Gets the value of the aviationBoundary property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ElevatedSurfacePropertyType }
-     *     
-     */
-    public ElevatedSurfacePropertyType getAviationBoundary() {
-        return aviationBoundary;
-    }
-
-    /**
-     * Sets the value of the aviationBoundary property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ElevatedSurfacePropertyType }
-     *     
-     */
-    public void setAviationBoundary(ElevatedSurfacePropertyType value) {
-        this.aviationBoundary = value;
-    }
-
-    public boolean isSetAviationBoundary() {
-        return (this.aviationBoundary!= null);
-    }
-
-    /**
-     * Gets the value of the altimeterSource property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the altimeterSource property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAltimeterSource().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AltimeterSourcePropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the altimeterSource property.
-     */
-    public List<AltimeterSourcePropertyType> getAltimeterSource() {
-        if (altimeterSource == null) {
-            altimeterSource = new ArrayList<>();
-        }
-        return this.altimeterSource;
-    }
-
-    public boolean isSetAltimeterSource() {
-        return ((this.altimeterSource!= null)&&(!this.altimeterSource.isEmpty()));
-    }
-
-    public void unsetAltimeterSource() {
-        this.altimeterSource = null;
-    }
-
-    /**
-     * Gets the value of the contact property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the contact property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getContact().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ContactInformationPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the contact property.
-     */
-    public List<ContactInformationPropertyType> getContact() {
-        if (contact == null) {
-            contact = new ArrayList<>();
-        }
-        return this.contact;
-    }
-
-    public boolean isSetContact() {
-        return ((this.contact!= null)&&(!this.contact.isEmpty()));
-    }
-
-    public void unsetContact() {
-        this.contact = null;
-    }
-
-    /**
-     * Gets the value of the availability property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the availability property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAvailability().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AirportHeliportAvailabilityPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the availability property.
-     */
-    public List<AirportHeliportAvailabilityPropertyType> getAvailability() {
-        if (availability == null) {
-            availability = new ArrayList<>();
-        }
-        return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
-    }
-
-    /**
-     * Gets the value of the annotation property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAnnotation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NotePropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the annotation property.
-     */
-    public List<NotePropertyType> getAnnotation() {
-        if (annotation == null) {
-            annotation = new ArrayList<>();
-        }
-        return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AirportHeliportTimeSliceType.Extension }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the extension property.
-     */
-    public List<AirportHeliportTimeSliceType.Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<>();
-        }
-        return this.extension;
-    }
-
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
+        return this.rest;
     }
 
 
@@ -1340,10 +217,6 @@ public class AirportHeliportTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportHeliportExtension", required = true)
-        @JoinColumn(name = "abstract_airport_heliport_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractAirportHeliportExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

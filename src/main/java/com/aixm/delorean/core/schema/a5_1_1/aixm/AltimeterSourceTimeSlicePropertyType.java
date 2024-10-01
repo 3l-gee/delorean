@@ -7,20 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -50,20 +40,10 @@ import jakarta.xml.bind.annotation.XmlType;
     "altimeterSourceTimeSlice",
     "dbID"
 })
-@Entity
-@Table(name = "altimeter_source_time_slice_property_type")
 public class AltimeterSourceTimeSlicePropertyType {
 
     @XmlElement(name = "AltimeterSourceTimeSlice", required = true)
-    @JoinColumn(name = "altimeter_source_time_slice")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected AltimeterSourceTimeSliceType altimeterSourceTimeSlice;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "db_id", nullable = false)
-    @XmlTransient
     protected long dbID;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

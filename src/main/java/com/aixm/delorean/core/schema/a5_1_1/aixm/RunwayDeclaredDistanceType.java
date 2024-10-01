@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,28 +56,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "runway_declared_distance_type")
 public class RunwayDeclaredDistanceType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeDeclaredDistanceType> type;
     @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeDeclaredDistanceType type;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RunwayDeclaredDistanceValuePropertyType> declaredValue;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RunwayDeclaredDistanceType.Extension> extension;
 
     /**
@@ -91,10 +73,10 @@ public class RunwayDeclaredDistanceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeDeclaredDistanceType }
+     *     {@link JAXBElement }{@code <}{@link CodeDeclaredDistanceType }{@code >}
      *     
      */
-    public CodeDeclaredDistanceType getType() {
+    public JAXBElement<CodeDeclaredDistanceType> getType() {
         return type;
     }
 
@@ -103,10 +85,10 @@ public class RunwayDeclaredDistanceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDeclaredDistanceType }
+     *     {@link JAXBElement }{@code <}{@link CodeDeclaredDistanceType }{@code >}
      *     
      */
-    public void setType(CodeDeclaredDistanceType value) {
+    public void setType(JAXBElement<CodeDeclaredDistanceType> value) {
         this.type = value;
     }
 
@@ -262,10 +244,6 @@ public class RunwayDeclaredDistanceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayDeclaredDistanceExtension")
-        @JoinColumn(name = "abstract_runway_declared_distance_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractRunwayDeclaredDistanceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

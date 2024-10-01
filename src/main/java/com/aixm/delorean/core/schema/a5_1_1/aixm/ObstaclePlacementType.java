@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,32 +58,20 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "obstacle_placement_type")
 public class ObstaclePlacementType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "obstacleBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValBearingType> obstacleBearing;
+    @XmlElementRef(name = "obstacleDistance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValDistanceType> obstacleDistance;
+    @XmlElementRef(name = "pointType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextNameType> pointType;
+    @XmlElementRef(name = "obstaclePlacement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeSideType> obstaclePlacement;
     @XmlElement(nillable = true)
-    @Column(name = "obstacle_bearing")
-    protected ValBearingType obstacleBearing;
-    @XmlElement(nillable = true)
-    @Column(name = "obstacle_distance")
-    protected ValDistanceType obstacleDistance;
-    @XmlElement(nillable = true)
-    @Column(name = "point_type")
-    protected TextNameType pointType;
-    @XmlElement(nillable = true)
-    @Column(name = "obstacle_placement")
-    protected CodeSideType obstaclePlacement;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ObstaclePlacementType.Extension> extension;
 
     /**
@@ -97,10 +79,10 @@ public class ObstaclePlacementType
      * 
      * @return
      *     possible object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public ValBearingType getObstacleBearing() {
+    public JAXBElement<ValBearingType> getObstacleBearing() {
         return obstacleBearing;
     }
 
@@ -109,10 +91,10 @@ public class ObstaclePlacementType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValBearingType }
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
      *     
      */
-    public void setObstacleBearing(ValBearingType value) {
+    public void setObstacleBearing(JAXBElement<ValBearingType> value) {
         this.obstacleBearing = value;
     }
 
@@ -125,10 +107,10 @@ public class ObstaclePlacementType
      * 
      * @return
      *     possible object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public ValDistanceType getObstacleDistance() {
+    public JAXBElement<ValDistanceType> getObstacleDistance() {
         return obstacleDistance;
     }
 
@@ -137,10 +119,10 @@ public class ObstaclePlacementType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValDistanceType }
+     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
      *     
      */
-    public void setObstacleDistance(ValDistanceType value) {
+    public void setObstacleDistance(JAXBElement<ValDistanceType> value) {
         this.obstacleDistance = value;
     }
 
@@ -153,10 +135,10 @@ public class ObstaclePlacementType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getPointType() {
+    public JAXBElement<TextNameType> getPointType() {
         return pointType;
     }
 
@@ -165,10 +147,10 @@ public class ObstaclePlacementType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setPointType(TextNameType value) {
+    public void setPointType(JAXBElement<TextNameType> value) {
         this.pointType = value;
     }
 
@@ -181,10 +163,10 @@ public class ObstaclePlacementType
      * 
      * @return
      *     possible object is
-     *     {@link CodeSideType }
+     *     {@link JAXBElement }{@code <}{@link CodeSideType }{@code >}
      *     
      */
-    public CodeSideType getObstaclePlacement() {
+    public JAXBElement<CodeSideType> getObstaclePlacement() {
         return obstaclePlacement;
     }
 
@@ -193,10 +175,10 @@ public class ObstaclePlacementType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSideType }
+     *     {@link JAXBElement }{@code <}{@link CodeSideType }{@code >}
      *     
      */
-    public void setObstaclePlacement(CodeSideType value) {
+    public void setObstaclePlacement(JAXBElement<CodeSideType> value) {
         this.obstaclePlacement = value;
     }
 
@@ -312,10 +294,6 @@ public class ObstaclePlacementType
     public static class Extension {
 
         @XmlElement(name = "AbstractObstaclePlacementExtension")
-        @JoinColumn(name = "abstract_obstacle_placement_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractObstaclePlacementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

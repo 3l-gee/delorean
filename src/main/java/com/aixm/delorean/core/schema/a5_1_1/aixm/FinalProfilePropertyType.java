@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "FinalProfilePropertyType", propOrder = {
     "finalProfile"
 })
-@Entity
-@Table(name = "final_profile_property_type")
 public class FinalProfilePropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "FinalProfile", required = true)
-    @JoinColumn(name = "final_profile")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected FinalProfileType finalProfile;
 
     /**

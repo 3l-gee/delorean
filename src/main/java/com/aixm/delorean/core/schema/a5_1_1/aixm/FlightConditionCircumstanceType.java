@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,26 +56,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "flight_condition_circumstance_type")
 public class FlightConditionCircumstanceType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "referenceLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> referenceLocation;
+    @XmlElementRef(name = "relationWithLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeLocationQualifierType> relationWithLocation;
     @XmlElement(nillable = true)
-    @Column(name = "reference_location")
-    protected CodeYesNoType referenceLocation;
-    @XmlElement(nillable = true)
-    @Column(name = "relation_with_location")
-    protected CodeLocationQualifierType relationWithLocation;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<FlightConditionCircumstanceType.Extension> extension;
 
     /**
@@ -89,10 +73,10 @@ public class FlightConditionCircumstanceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getReferenceLocation() {
+    public JAXBElement<CodeYesNoType> getReferenceLocation() {
         return referenceLocation;
     }
 
@@ -101,10 +85,10 @@ public class FlightConditionCircumstanceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setReferenceLocation(CodeYesNoType value) {
+    public void setReferenceLocation(JAXBElement<CodeYesNoType> value) {
         this.referenceLocation = value;
     }
 
@@ -117,10 +101,10 @@ public class FlightConditionCircumstanceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeLocationQualifierType }
+     *     {@link JAXBElement }{@code <}{@link CodeLocationQualifierType }{@code >}
      *     
      */
-    public CodeLocationQualifierType getRelationWithLocation() {
+    public JAXBElement<CodeLocationQualifierType> getRelationWithLocation() {
         return relationWithLocation;
     }
 
@@ -129,10 +113,10 @@ public class FlightConditionCircumstanceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLocationQualifierType }
+     *     {@link JAXBElement }{@code <}{@link CodeLocationQualifierType }{@code >}
      *     
      */
-    public void setRelationWithLocation(CodeLocationQualifierType value) {
+    public void setRelationWithLocation(JAXBElement<CodeLocationQualifierType> value) {
         this.relationWithLocation = value;
     }
 
@@ -248,10 +232,6 @@ public class FlightConditionCircumstanceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightConditionCircumstanceExtension")
-        @JoinColumn(name = "abstract_flight_condition_circumstance_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractFlightConditionCircumstanceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

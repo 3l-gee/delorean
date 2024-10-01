@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,56 +66,36 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "surface_characteristics_type")
 public class SurfaceCharacteristicsType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "composition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeSurfaceCompositionType> composition;
+    @XmlElementRef(name = "preparation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeSurfacePreparationType> preparation;
+    @XmlElementRef(name = "surfaceCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeSurfaceConditionType> surfaceCondition;
+    @XmlElementRef(name = "classPCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValPCNType> classPCN;
+    @XmlElementRef(name = "pavementTypePCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodePCNPavementType> pavementTypePCN;
+    @XmlElementRef(name = "pavementSubgradePCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodePCNSubgradeType> pavementSubgradePCN;
+    @XmlElementRef(name = "maxTyrePressurePCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodePCNTyrePressureType> maxTyrePressurePCN;
+    @XmlElementRef(name = "evaluationMethodPCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodePCNMethodType> evaluationMethodPCN;
+    @XmlElementRef(name = "classLCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValLCNType> classLCN;
+    @XmlElementRef(name = "weightSIWL", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValWeightType> weightSIWL;
+    @XmlElementRef(name = "tyrePressureSIWL", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValPressureType> tyrePressureSIWL;
+    @XmlElementRef(name = "weightAUW", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValWeightType> weightAUW;
     @XmlElement(nillable = true)
-    @Column(name = "composition")
-    protected CodeSurfaceCompositionType composition;
-    @XmlElement(nillable = true)
-    @Column(name = "preparation")
-    protected CodeSurfacePreparationType preparation;
-    @XmlElement(nillable = true)
-    @Column(name = "surface_condition")
-    protected CodeSurfaceConditionType surfaceCondition;
-    @XmlElement(nillable = true)
-    @Column(name = "class_pcn")
-    protected ValPCNType classPCN;
-    @XmlElement(nillable = true)
-    @Column(name = "pavement_type_pcn")
-    protected CodePCNPavementType pavementTypePCN;
-    @XmlElement(nillable = true)
-    @Column(name = "pavement_subgrade_pcn")
-    protected CodePCNSubgradeType pavementSubgradePCN;
-    @XmlElement(nillable = true)
-    @Column(name = "max_tyre_pressure_pcn")
-    protected CodePCNTyrePressureType maxTyrePressurePCN;
-    @XmlElement(nillable = true)
-    @Column(name = "evaluation_method_pcn")
-    protected CodePCNMethodType evaluationMethodPCN;
-    @XmlElement(nillable = true)
-    @Column(name = "class_lcn")
-    protected ValLCNType classLCN;
-    @XmlElement(nillable = true)
-    @Column(name = "weight_siwl")
-    protected ValWeightType weightSIWL;
-    @XmlElement(nillable = true)
-    @Column(name = "tyre_pressure_siwl")
-    protected ValPressureType tyrePressureSIWL;
-    @XmlElement(nillable = true)
-    @Column(name = "weight_auw")
-    protected ValWeightType weightAUW;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<SurfaceCharacteristicsType.Extension> extension;
 
     /**
@@ -129,10 +103,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link CodeSurfaceCompositionType }
+     *     {@link JAXBElement }{@code <}{@link CodeSurfaceCompositionType }{@code >}
      *     
      */
-    public CodeSurfaceCompositionType getComposition() {
+    public JAXBElement<CodeSurfaceCompositionType> getComposition() {
         return composition;
     }
 
@@ -141,10 +115,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSurfaceCompositionType }
+     *     {@link JAXBElement }{@code <}{@link CodeSurfaceCompositionType }{@code >}
      *     
      */
-    public void setComposition(CodeSurfaceCompositionType value) {
+    public void setComposition(JAXBElement<CodeSurfaceCompositionType> value) {
         this.composition = value;
     }
 
@@ -157,10 +131,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link CodeSurfacePreparationType }
+     *     {@link JAXBElement }{@code <}{@link CodeSurfacePreparationType }{@code >}
      *     
      */
-    public CodeSurfacePreparationType getPreparation() {
+    public JAXBElement<CodeSurfacePreparationType> getPreparation() {
         return preparation;
     }
 
@@ -169,10 +143,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSurfacePreparationType }
+     *     {@link JAXBElement }{@code <}{@link CodeSurfacePreparationType }{@code >}
      *     
      */
-    public void setPreparation(CodeSurfacePreparationType value) {
+    public void setPreparation(JAXBElement<CodeSurfacePreparationType> value) {
         this.preparation = value;
     }
 
@@ -185,10 +159,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link CodeSurfaceConditionType }
+     *     {@link JAXBElement }{@code <}{@link CodeSurfaceConditionType }{@code >}
      *     
      */
-    public CodeSurfaceConditionType getSurfaceCondition() {
+    public JAXBElement<CodeSurfaceConditionType> getSurfaceCondition() {
         return surfaceCondition;
     }
 
@@ -197,10 +171,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSurfaceConditionType }
+     *     {@link JAXBElement }{@code <}{@link CodeSurfaceConditionType }{@code >}
      *     
      */
-    public void setSurfaceCondition(CodeSurfaceConditionType value) {
+    public void setSurfaceCondition(JAXBElement<CodeSurfaceConditionType> value) {
         this.surfaceCondition = value;
     }
 
@@ -213,10 +187,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link ValPCNType }
+     *     {@link JAXBElement }{@code <}{@link ValPCNType }{@code >}
      *     
      */
-    public ValPCNType getClassPCN() {
+    public JAXBElement<ValPCNType> getClassPCN() {
         return classPCN;
     }
 
@@ -225,10 +199,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValPCNType }
+     *     {@link JAXBElement }{@code <}{@link ValPCNType }{@code >}
      *     
      */
-    public void setClassPCN(ValPCNType value) {
+    public void setClassPCN(JAXBElement<ValPCNType> value) {
         this.classPCN = value;
     }
 
@@ -241,10 +215,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link CodePCNPavementType }
+     *     {@link JAXBElement }{@code <}{@link CodePCNPavementType }{@code >}
      *     
      */
-    public CodePCNPavementType getPavementTypePCN() {
+    public JAXBElement<CodePCNPavementType> getPavementTypePCN() {
         return pavementTypePCN;
     }
 
@@ -253,10 +227,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodePCNPavementType }
+     *     {@link JAXBElement }{@code <}{@link CodePCNPavementType }{@code >}
      *     
      */
-    public void setPavementTypePCN(CodePCNPavementType value) {
+    public void setPavementTypePCN(JAXBElement<CodePCNPavementType> value) {
         this.pavementTypePCN = value;
     }
 
@@ -269,10 +243,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link CodePCNSubgradeType }
+     *     {@link JAXBElement }{@code <}{@link CodePCNSubgradeType }{@code >}
      *     
      */
-    public CodePCNSubgradeType getPavementSubgradePCN() {
+    public JAXBElement<CodePCNSubgradeType> getPavementSubgradePCN() {
         return pavementSubgradePCN;
     }
 
@@ -281,10 +255,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodePCNSubgradeType }
+     *     {@link JAXBElement }{@code <}{@link CodePCNSubgradeType }{@code >}
      *     
      */
-    public void setPavementSubgradePCN(CodePCNSubgradeType value) {
+    public void setPavementSubgradePCN(JAXBElement<CodePCNSubgradeType> value) {
         this.pavementSubgradePCN = value;
     }
 
@@ -297,10 +271,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link CodePCNTyrePressureType }
+     *     {@link JAXBElement }{@code <}{@link CodePCNTyrePressureType }{@code >}
      *     
      */
-    public CodePCNTyrePressureType getMaxTyrePressurePCN() {
+    public JAXBElement<CodePCNTyrePressureType> getMaxTyrePressurePCN() {
         return maxTyrePressurePCN;
     }
 
@@ -309,10 +283,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodePCNTyrePressureType }
+     *     {@link JAXBElement }{@code <}{@link CodePCNTyrePressureType }{@code >}
      *     
      */
-    public void setMaxTyrePressurePCN(CodePCNTyrePressureType value) {
+    public void setMaxTyrePressurePCN(JAXBElement<CodePCNTyrePressureType> value) {
         this.maxTyrePressurePCN = value;
     }
 
@@ -325,10 +299,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link CodePCNMethodType }
+     *     {@link JAXBElement }{@code <}{@link CodePCNMethodType }{@code >}
      *     
      */
-    public CodePCNMethodType getEvaluationMethodPCN() {
+    public JAXBElement<CodePCNMethodType> getEvaluationMethodPCN() {
         return evaluationMethodPCN;
     }
 
@@ -337,10 +311,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodePCNMethodType }
+     *     {@link JAXBElement }{@code <}{@link CodePCNMethodType }{@code >}
      *     
      */
-    public void setEvaluationMethodPCN(CodePCNMethodType value) {
+    public void setEvaluationMethodPCN(JAXBElement<CodePCNMethodType> value) {
         this.evaluationMethodPCN = value;
     }
 
@@ -353,10 +327,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link ValLCNType }
+     *     {@link JAXBElement }{@code <}{@link ValLCNType }{@code >}
      *     
      */
-    public ValLCNType getClassLCN() {
+    public JAXBElement<ValLCNType> getClassLCN() {
         return classLCN;
     }
 
@@ -365,10 +339,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValLCNType }
+     *     {@link JAXBElement }{@code <}{@link ValLCNType }{@code >}
      *     
      */
-    public void setClassLCN(ValLCNType value) {
+    public void setClassLCN(JAXBElement<ValLCNType> value) {
         this.classLCN = value;
     }
 
@@ -381,10 +355,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link ValWeightType }
+     *     {@link JAXBElement }{@code <}{@link ValWeightType }{@code >}
      *     
      */
-    public ValWeightType getWeightSIWL() {
+    public JAXBElement<ValWeightType> getWeightSIWL() {
         return weightSIWL;
     }
 
@@ -393,10 +367,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValWeightType }
+     *     {@link JAXBElement }{@code <}{@link ValWeightType }{@code >}
      *     
      */
-    public void setWeightSIWL(ValWeightType value) {
+    public void setWeightSIWL(JAXBElement<ValWeightType> value) {
         this.weightSIWL = value;
     }
 
@@ -409,10 +383,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link ValPressureType }
+     *     {@link JAXBElement }{@code <}{@link ValPressureType }{@code >}
      *     
      */
-    public ValPressureType getTyrePressureSIWL() {
+    public JAXBElement<ValPressureType> getTyrePressureSIWL() {
         return tyrePressureSIWL;
     }
 
@@ -421,10 +395,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValPressureType }
+     *     {@link JAXBElement }{@code <}{@link ValPressureType }{@code >}
      *     
      */
-    public void setTyrePressureSIWL(ValPressureType value) {
+    public void setTyrePressureSIWL(JAXBElement<ValPressureType> value) {
         this.tyrePressureSIWL = value;
     }
 
@@ -437,10 +411,10 @@ public class SurfaceCharacteristicsType
      * 
      * @return
      *     possible object is
-     *     {@link ValWeightType }
+     *     {@link JAXBElement }{@code <}{@link ValWeightType }{@code >}
      *     
      */
-    public ValWeightType getWeightAUW() {
+    public JAXBElement<ValWeightType> getWeightAUW() {
         return weightAUW;
     }
 
@@ -449,10 +423,10 @@ public class SurfaceCharacteristicsType
      * 
      * @param value
      *     allowed object is
-     *     {@link ValWeightType }
+     *     {@link JAXBElement }{@code <}{@link ValWeightType }{@code >}
      *     
      */
-    public void setWeightAUW(ValWeightType value) {
+    public void setWeightAUW(JAXBElement<ValWeightType> value) {
         this.weightAUW = value;
     }
 
@@ -568,10 +542,6 @@ public class SurfaceCharacteristicsType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceCharacteristicsExtension")
-        @JoinColumn(name = "abstract_surface_characteristics_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractSurfaceCharacteristicsExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,33 +59,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "status",
     "extension"
 })
-@Entity
-@Table(name = "vertical_structure_lighting_status_type")
 public class VerticalStructureLightingStatusType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
-    @Column(name = "status")
-    protected CodeStatusOperationsType status;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeStatusOperationsType> status;
     protected List<VerticalStructureLightingStatusType.Extension> extension;
 
     /**
@@ -219,10 +198,10 @@ public class VerticalStructureLightingStatusType
      * 
      * @return
      *     possible object is
-     *     {@link CodeStatusOperationsType }
+     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
      *     
      */
-    public CodeStatusOperationsType getStatus() {
+    public JAXBElement<CodeStatusOperationsType> getStatus() {
         return status;
     }
 
@@ -231,10 +210,10 @@ public class VerticalStructureLightingStatusType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeStatusOperationsType }
+     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
      *     
      */
-    public void setStatus(CodeStatusOperationsType value) {
+    public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
         this.status = value;
     }
 
@@ -312,16 +291,8 @@ public class VerticalStructureLightingStatusType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @JoinColumn(name = "abstract_properties_with_schedule_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractVerticalStructureLightingStatusExtension")
-        @JoinColumn(name = "abstract_vertical_structure_lighting_status_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractVerticalStructureLightingStatusExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

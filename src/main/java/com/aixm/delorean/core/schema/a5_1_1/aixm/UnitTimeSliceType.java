@@ -9,17 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -56,496 +52,95 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UnitTimeSliceType", propOrder = {
-    "aixmName",
-    "type",
-    "compliantICAO",
-    "designator",
-    "military",
-    "position",
-    "airportLocation",
-    "ownerOrganisation",
-    "contact",
-    "relatedUnit",
-    "availability",
-    "annotation",
-    "extension"
+    "rest"
 })
-@Embeddable
 public class UnitTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(name = "name", nillable = true)
-    @Column(name = "name")
-    protected TextNameType aixmName;
-    @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeUnitType type;
-    @XmlElement(nillable = true)
-    @Column(name = "compliant_icao")
-    protected CodeYesNoType compliantICAO;
-    @XmlElement(nillable = true)
-    @Column(name = "designator")
-    protected CodeOrganisationDesignatorType designator;
-    @XmlElement(nillable = true)
-    @Column(name = "military")
-    protected CodeMilitaryOperationsType military;
-    @XmlElement(nillable = true)
-    @Column(name = "position")
-    protected ElevatedPointPropertyType position;
-    @XmlElement(nillable = true)
-    @Column(name = "airport_location")
-    protected AirportHeliportPropertyType airportLocation;
-    @XmlElement(nillable = true)
-    @Column(name = "owner_organisation")
-    protected OrganisationAuthorityPropertyType ownerOrganisation;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<ContactInformationPropertyType> contact;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<UnitDependencyPropertyType> relatedUnit;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<UnitAvailabilityPropertyType> availability;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<UnitTimeSliceType.Extension> extension;
-
     /**
-     * Gets the value of the aixmName property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link TextNameType }
-     *     
-     */
-    public TextNameType getAIXMName() {
-        return aixmName;
-    }
-
-    /**
-     * Sets the value of the aixmName property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 6605 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TextNameType }
-     *     
      */
-    public void setAIXMName(TextNameType value) {
-        this.aixmName = value;
-    }
-
-    public boolean isSetAIXMName() {
-        return (this.aixmName!= null);
-    }
+    @XmlElementRefs({
+        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "compliantICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "military", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "airportLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ownerOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "contact", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "relatedUnit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "availability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> rest;
 
     /**
-     * Gets the value of the type property.
+     * Gets the rest of the content model. 
      * 
-     * @return
-     *     possible object is
-     *     {@link CodeUnitType }
-     *     
-     */
-    public CodeUnitType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
+     * <p>
+     * You are getting this "catch-all" property because of the following reason: 
+     * The field name "Name" is used by two different parts of a schema. See: 
+     * line 6605 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
+     * <p>
+     * To get rid of this property, apply a property customization to one 
+     * of both of the following declarations to change their names:
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeUnitType }
-     *     
-     */
-    public void setType(CodeUnitType value) {
-        this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
-    /**
-     * Gets the value of the compliantICAO property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public CodeYesNoType getCompliantICAO() {
-        return compliantICAO;
-    }
-
-    /**
-     * Sets the value of the compliantICAO property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeYesNoType }
-     *     
-     */
-    public void setCompliantICAO(CodeYesNoType value) {
-        this.compliantICAO = value;
-    }
-
-    public boolean isSetCompliantICAO() {
-        return (this.compliantICAO!= null);
-    }
-
-    /**
-     * Gets the value of the designator property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeOrganisationDesignatorType }
-     *     
-     */
-    public CodeOrganisationDesignatorType getDesignator() {
-        return designator;
-    }
-
-    /**
-     * Sets the value of the designator property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeOrganisationDesignatorType }
-     *     
-     */
-    public void setDesignator(CodeOrganisationDesignatorType value) {
-        this.designator = value;
-    }
-
-    public boolean isSetDesignator() {
-        return (this.designator!= null);
-    }
-
-    /**
-     * Gets the value of the military property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeMilitaryOperationsType }
-     *     
-     */
-    public CodeMilitaryOperationsType getMilitary() {
-        return military;
-    }
-
-    /**
-     * Sets the value of the military property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeMilitaryOperationsType }
-     *     
-     */
-    public void setMilitary(CodeMilitaryOperationsType value) {
-        this.military = value;
-    }
-
-    public boolean isSetMilitary() {
-        return (this.military!= null);
-    }
-
-    /**
-     * Gets the value of the position property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public ElevatedPointPropertyType getPosition() {
-        return position;
-    }
-
-    /**
-     * Sets the value of the position property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ElevatedPointPropertyType }
-     *     
-     */
-    public void setPosition(ElevatedPointPropertyType value) {
-        this.position = value;
-    }
-
-    public boolean isSetPosition() {
-        return (this.position!= null);
-    }
-
-    /**
-     * Gets the value of the airportLocation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AirportHeliportPropertyType }
-     *     
-     */
-    public AirportHeliportPropertyType getAirportLocation() {
-        return airportLocation;
-    }
-
-    /**
-     * Sets the value of the airportLocation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AirportHeliportPropertyType }
-     *     
-     */
-    public void setAirportLocation(AirportHeliportPropertyType value) {
-        this.airportLocation = value;
-    }
-
-    public boolean isSetAirportLocation() {
-        return (this.airportLocation!= null);
-    }
-
-    /**
-     * Gets the value of the ownerOrganisation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OrganisationAuthorityPropertyType }
-     *     
-     */
-    public OrganisationAuthorityPropertyType getOwnerOrganisation() {
-        return ownerOrganisation;
-    }
-
-    /**
-     * Sets the value of the ownerOrganisation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OrganisationAuthorityPropertyType }
-     *     
-     */
-    public void setOwnerOrganisation(OrganisationAuthorityPropertyType value) {
-        this.ownerOrganisation = value;
-    }
-
-    public boolean isSetOwnerOrganisation() {
-        return (this.ownerOrganisation!= null);
-    }
-
-    /**
-     * Gets the value of the contact property.
+     * Gets the value of the rest property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the contact property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getContact().add(newItem);
+     * getRest().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ContactInformationPropertyType }
+     * {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeOrganisationDesignatorType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeUnitType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link JAXBElement }{@code <}{@link UnitAvailabilityPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link UnitDependencyPropertyType }{@code >}
+     * {@link JAXBElement }{@code <}{@link UnitTimeSliceType.Extension }{@code >}
      * </p>
      * 
      * 
      * @return
-     *     The value of the contact property.
+     *     The value of the rest property.
      */
-    public List<ContactInformationPropertyType> getContact() {
-        if (contact == null) {
-            contact = new ArrayList<>();
+    public List<JAXBElement<?>> getRest() {
+        if (rest == null) {
+            rest = new ArrayList<>();
         }
-        return this.contact;
-    }
-
-    public boolean isSetContact() {
-        return ((this.contact!= null)&&(!this.contact.isEmpty()));
-    }
-
-    public void unsetContact() {
-        this.contact = null;
-    }
-
-    /**
-     * Gets the value of the relatedUnit property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the relatedUnit property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getRelatedUnit().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link UnitDependencyPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the relatedUnit property.
-     */
-    public List<UnitDependencyPropertyType> getRelatedUnit() {
-        if (relatedUnit == null) {
-            relatedUnit = new ArrayList<>();
-        }
-        return this.relatedUnit;
-    }
-
-    public boolean isSetRelatedUnit() {
-        return ((this.relatedUnit!= null)&&(!this.relatedUnit.isEmpty()));
-    }
-
-    public void unsetRelatedUnit() {
-        this.relatedUnit = null;
-    }
-
-    /**
-     * Gets the value of the availability property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the availability property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAvailability().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link UnitAvailabilityPropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the availability property.
-     */
-    public List<UnitAvailabilityPropertyType> getAvailability() {
-        if (availability == null) {
-            availability = new ArrayList<>();
-        }
-        return this.availability;
-    }
-
-    public boolean isSetAvailability() {
-        return ((this.availability!= null)&&(!this.availability.isEmpty()));
-    }
-
-    public void unsetAvailability() {
-        this.availability = null;
-    }
-
-    /**
-     * Gets the value of the annotation property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getAnnotation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NotePropertyType }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the annotation property.
-     */
-    public List<NotePropertyType> getAnnotation() {
-        if (annotation == null) {
-            annotation = new ArrayList<>();
-        }
-        return this.annotation;
-    }
-
-    public boolean isSetAnnotation() {
-        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
-    }
-
-    public void unsetAnnotation() {
-        this.annotation = null;
-    }
-
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * </p>
-     * <pre>
-     * getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link UnitTimeSliceType.Extension }
-     * </p>
-     * 
-     * 
-     * @return
-     *     The value of the extension property.
-     */
-    public List<UnitTimeSliceType.Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<>();
-        }
-        return this.extension;
-    }
-
-    public boolean isSetExtension() {
-        return ((this.extension!= null)&&(!this.extension.isEmpty()));
-    }
-
-    public void unsetExtension() {
-        this.extension = null;
+        return this.rest;
     }
 
 
@@ -576,10 +171,6 @@ public class UnitTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractUnitExtension", required = true)
-        @JoinColumn(name = "abstract_unit_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractUnitExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

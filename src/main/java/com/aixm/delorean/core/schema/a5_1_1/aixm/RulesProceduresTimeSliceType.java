@@ -9,17 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,38 +59,22 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
 public class RulesProceduresTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "category", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRuleProcedureType> category;
+    @XmlElementRef(name = "title", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRuleProcedureTitleType> title;
+    @XmlElementRef(name = "content", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<XHTMLType> content;
     @XmlElement(nillable = true)
-    @Column(name = "category")
-    protected CodeRuleProcedureType category;
-    @XmlElement(nillable = true)
-    @Column(name = "title")
-    protected CodeRuleProcedureTitleType title;
-    @XmlElement(nillable = true)
-    @Column(name = "content")
-    protected XHTMLType content;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirportHeliportPropertyType> affectedLocation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirspacePropertyType> affectedArea;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<RulesProceduresTimeSliceType.Extension> extension;
 
     /**
@@ -103,10 +82,10 @@ public class RulesProceduresTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRuleProcedureType }
+     *     {@link JAXBElement }{@code <}{@link CodeRuleProcedureType }{@code >}
      *     
      */
-    public CodeRuleProcedureType getCategory() {
+    public JAXBElement<CodeRuleProcedureType> getCategory() {
         return category;
     }
 
@@ -115,10 +94,10 @@ public class RulesProceduresTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRuleProcedureType }
+     *     {@link JAXBElement }{@code <}{@link CodeRuleProcedureType }{@code >}
      *     
      */
-    public void setCategory(CodeRuleProcedureType value) {
+    public void setCategory(JAXBElement<CodeRuleProcedureType> value) {
         this.category = value;
     }
 
@@ -131,10 +110,10 @@ public class RulesProceduresTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeRuleProcedureTitleType }
+     *     {@link JAXBElement }{@code <}{@link CodeRuleProcedureTitleType }{@code >}
      *     
      */
-    public CodeRuleProcedureTitleType getTitle() {
+    public JAXBElement<CodeRuleProcedureTitleType> getTitle() {
         return title;
     }
 
@@ -143,10 +122,10 @@ public class RulesProceduresTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRuleProcedureTitleType }
+     *     {@link JAXBElement }{@code <}{@link CodeRuleProcedureTitleType }{@code >}
      *     
      */
-    public void setTitle(CodeRuleProcedureTitleType value) {
+    public void setTitle(JAXBElement<CodeRuleProcedureTitleType> value) {
         this.title = value;
     }
 
@@ -159,10 +138,10 @@ public class RulesProceduresTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link XHTMLType }
+     *     {@link JAXBElement }{@code <}{@link XHTMLType }{@code >}
      *     
      */
-    public XHTMLType getContent() {
+    public JAXBElement<XHTMLType> getContent() {
         return content;
     }
 
@@ -171,10 +150,10 @@ public class RulesProceduresTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link XHTMLType }
+     *     {@link JAXBElement }{@code <}{@link XHTMLType }{@code >}
      *     
      */
-    public void setContent(XHTMLType value) {
+    public void setContent(JAXBElement<XHTMLType> value) {
         this.content = value;
     }
 
@@ -370,10 +349,6 @@ public class RulesProceduresTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRulesProceduresExtension", required = true)
-        @JoinColumn(name = "abstract_rules_procedures_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractRulesProceduresExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

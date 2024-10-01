@@ -9,17 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,33 +59,20 @@ import jakarta.xml.bind.annotation.XmlType;
     "markedStand",
     "extension"
 })
-@Embeddable
 public class StandMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> markingICAOStandard;
+    @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
-    @Column(name = "marking_icao_standard")
-    protected CodeYesNoType markingICAOStandard;
-    @XmlElement(nillable = true)
-    @Column(name = "condition")
-    protected CodeMarkingConditionType condition;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
-    @Column(name = "marked_stand")
-    protected AircraftStandPropertyType markedStand;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @XmlElementRef(name = "markedStand", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<AircraftStandPropertyType> markedStand;
     protected List<StandMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -98,10 +80,10 @@ public class StandMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public CodeYesNoType getMarkingICAOStandard() {
+    public JAXBElement<CodeYesNoType> getMarkingICAOStandard() {
         return markingICAOStandard;
     }
 
@@ -110,10 +92,10 @@ public class StandMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeYesNoType }
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      *     
      */
-    public void setMarkingICAOStandard(CodeYesNoType value) {
+    public void setMarkingICAOStandard(JAXBElement<CodeYesNoType> value) {
         this.markingICAOStandard = value;
     }
 
@@ -126,10 +108,10 @@ public class StandMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link CodeMarkingConditionType }
+     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
      *     
      */
-    public CodeMarkingConditionType getCondition() {
+    public JAXBElement<CodeMarkingConditionType> getCondition() {
         return condition;
     }
 
@@ -138,10 +120,10 @@ public class StandMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMarkingConditionType }
+     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
      *     
      */
-    public void setCondition(CodeMarkingConditionType value) {
+    public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
         this.condition = value;
     }
 
@@ -234,10 +216,10 @@ public class StandMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AircraftStandPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AircraftStandPropertyType }{@code >}
      *     
      */
-    public AircraftStandPropertyType getMarkedStand() {
+    public JAXBElement<AircraftStandPropertyType> getMarkedStand() {
         return markedStand;
     }
 
@@ -246,10 +228,10 @@ public class StandMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AircraftStandPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AircraftStandPropertyType }{@code >}
      *     
      */
-    public void setMarkedStand(AircraftStandPropertyType value) {
+    public void setMarkedStand(JAXBElement<AircraftStandPropertyType> value) {
         this.markedStand = value;
     }
 
@@ -327,16 +309,8 @@ public class StandMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandMarkingExtension")
-        @JoinColumn(name = "abstract_stand_marking_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractStandMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
-        @JoinColumn(name = "abstract_marking_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

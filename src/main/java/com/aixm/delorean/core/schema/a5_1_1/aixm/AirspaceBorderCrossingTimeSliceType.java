@@ -9,17 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,25 +56,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
 public class AirspaceBorderCrossingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
+    @XmlElementRef(name = "exitedAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<AirspacePropertyType> exitedAirspace;
+    @XmlElementRef(name = "enteredAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<AirspacePropertyType> enteredAirspace;
     @XmlElement(nillable = true)
-    @Column(name = "exited_airspace")
-    protected AirspacePropertyType exitedAirspace;
-    @XmlElement(nillable = true)
-    @Column(name = "entered_airspace")
-    protected AirspacePropertyType enteredAirspace;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<AirspaceBorderCrossingTimeSliceType.Extension> extension;
 
     /**
@@ -87,10 +73,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirspacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
      *     
      */
-    public AirspacePropertyType getExitedAirspace() {
+    public JAXBElement<AirspacePropertyType> getExitedAirspace() {
         return exitedAirspace;
     }
 
@@ -99,10 +85,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirspacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
      *     
      */
-    public void setExitedAirspace(AirspacePropertyType value) {
+    public void setExitedAirspace(JAXBElement<AirspacePropertyType> value) {
         this.exitedAirspace = value;
     }
 
@@ -115,10 +101,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirspacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
      *     
      */
-    public AirspacePropertyType getEnteredAirspace() {
+    public JAXBElement<AirspacePropertyType> getEnteredAirspace() {
         return enteredAirspace;
     }
 
@@ -127,10 +113,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirspacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
      *     
      */
-    public void setEnteredAirspace(AirspacePropertyType value) {
+    public void setEnteredAirspace(JAXBElement<AirspacePropertyType> value) {
         this.enteredAirspace = value;
     }
 
@@ -246,10 +232,6 @@ public class AirspaceBorderCrossingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceBorderCrossingExtension", required = true)
-        @JoinColumn(name = "abstract_airspace_border_crossing_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractAirspaceBorderCrossingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

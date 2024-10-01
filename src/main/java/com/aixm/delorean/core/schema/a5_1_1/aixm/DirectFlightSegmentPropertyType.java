@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,17 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "DirectFlightSegmentPropertyType", propOrder = {
     "directFlightSegment"
 })
-@Entity
-@Table(name = "direct_flight_segment_property_type")
 public class DirectFlightSegmentPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "DirectFlightSegment", required = true)
-    @JoinColumn(name = "direct_flight_segment")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected DirectFlightSegmentType directFlightSegment;
 
     /**

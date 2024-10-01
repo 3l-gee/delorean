@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -42,17 +37,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "PointPropertyType", propOrder = {
     "point"
 })
-@Entity
-@Table(name = "point_property_type")
 public class PointPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElementRef(name = "Point", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class)
-    @JoinColumn(name = "point")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected JAXBElement<? extends PointType> point;
 
     /**

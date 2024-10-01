@@ -7,11 +7,6 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -42,17 +37,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "UsageConditionPropertyType", propOrder = {
     "abstractUsageCondition"
 })
-@Entity
-@Table(name = "usage_condition_property_type")
 public class UsageConditionPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElementRef(name = "AbstractUsageCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class)
-    @JoinColumn(name = "abstract_usage_condition")
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    })
     protected JAXBElement<? extends AbstractUsageConditionType> abstractUsageCondition;
 
     /**

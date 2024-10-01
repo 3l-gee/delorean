@@ -9,18 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,26 +56,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "reflector_type")
 public class ReflectorType
     extends AbstractAIXMObjectType
 {
 
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeReflectorType> type;
+    @XmlElementRef(name = "touchdownReflector", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ElevatedPointPropertyType> touchdownReflector;
     @XmlElement(nillable = true)
-    @Column(name = "type")
-    protected CodeReflectorType type;
-    @XmlElement(nillable = true)
-    @Column(name = "touchdown_reflector")
-    protected ElevatedPointPropertyType touchdownReflector;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<NotePropertyType> annotation;
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
     protected List<ReflectorType.Extension> extension;
 
     /**
@@ -89,10 +73,10 @@ public class ReflectorType
      * 
      * @return
      *     possible object is
-     *     {@link CodeReflectorType }
+     *     {@link JAXBElement }{@code <}{@link CodeReflectorType }{@code >}
      *     
      */
-    public CodeReflectorType getType() {
+    public JAXBElement<CodeReflectorType> getType() {
         return type;
     }
 
@@ -101,10 +85,10 @@ public class ReflectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeReflectorType }
+     *     {@link JAXBElement }{@code <}{@link CodeReflectorType }{@code >}
      *     
      */
-    public void setType(CodeReflectorType value) {
+    public void setType(JAXBElement<CodeReflectorType> value) {
         this.type = value;
     }
 
@@ -117,10 +101,10 @@ public class ReflectorType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public ElevatedPointPropertyType getTouchdownReflector() {
+    public JAXBElement<ElevatedPointPropertyType> getTouchdownReflector() {
         return touchdownReflector;
     }
 
@@ -129,10 +113,10 @@ public class ReflectorType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public void setTouchdownReflector(ElevatedPointPropertyType value) {
+    public void setTouchdownReflector(JAXBElement<ElevatedPointPropertyType> value) {
         this.touchdownReflector = value;
     }
 
@@ -248,10 +232,6 @@ public class ReflectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractReflectorExtension")
-        @JoinColumn(name = "abstract_reflector_extension")
-        @OneToOne(cascade = {
-            CascadeType.ALL
-        })
         protected AbstractExtensionType abstractReflectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
