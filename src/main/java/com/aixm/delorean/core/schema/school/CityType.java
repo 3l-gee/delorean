@@ -22,7 +22,6 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -37,9 +36,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="houses" type="{http://www.example.com/city}HouseType" maxOccurs="unbounded"/>
- *         <element name="streets" type="{http://www.example.com/city}StreetType" maxOccurs="unbounded"/>
- *         <element name="poles" type="{http://www.example.com/city}PoleType" maxOccurs="unbounded"/>
+ *         <element name="House" type="{}HouseType" maxOccurs="unbounded"/>
+ *         <element name="Street" type="{}StreetType" maxOccurs="unbounded"/>
+ *         <element name="Pole" type="{}PoleType" maxOccurs="unbounded"/>
  *       </sequence>
  *       <attribute name="cityname" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       <attribute name="dbid" type="{http://www.w3.org/2001/XMLSchema}long" />
@@ -52,30 +51,29 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CityType", propOrder = {
-    "houses",
-    "streets",
-    "poles"
+    "house",
+    "street",
+    "pole"
 })
-@XmlRootElement
 @Entity
 @Table(name = "city")
 public class CityType {
 
-    @XmlElement(required = true)
+    @XmlElement(name = "House", required = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<HouseType> houses;
-    @XmlElement(required = true)
+    protected List<HouseType> house;
+    @XmlElement(name = "Street", required = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<StreetType> streets;
-    @XmlElement(required = true)
+    protected List<StreetType> street;
+    @XmlElement(name = "Pole", required = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
-    protected List<PoleType> poles;
+    protected List<PoleType> pole;
     @XmlAttribute(name = "cityname", required = true)
     @Column(name = "cityname")
     protected String cityname;
@@ -87,18 +85,18 @@ public class CityType {
     protected Long dbid;
 
     /**
-     * Gets the value of the houses property.
+     * Gets the value of the house property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the houses property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the house property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getHouses().add(newItem);
+     * getHouse().add(newItem);
      * </pre>
      * 
      * 
@@ -109,28 +107,28 @@ public class CityType {
      * 
      * 
      * @return
-     *     The value of the houses property.
+     *     The value of the house property.
      */
-    public List<HouseType> getHouses() {
-        if (houses == null) {
-            houses = new ArrayList<>();
+    public List<HouseType> getHouse() {
+        if (house == null) {
+            house = new ArrayList<>();
         }
-        return this.houses;
+        return this.house;
     }
 
     /**
-     * Gets the value of the streets property.
+     * Gets the value of the street property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the streets property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the street property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getStreets().add(newItem);
+     * getStreet().add(newItem);
      * </pre>
      * 
      * 
@@ -141,28 +139,28 @@ public class CityType {
      * 
      * 
      * @return
-     *     The value of the streets property.
+     *     The value of the street property.
      */
-    public List<StreetType> getStreets() {
-        if (streets == null) {
-            streets = new ArrayList<>();
+    public List<StreetType> getStreet() {
+        if (street == null) {
+            street = new ArrayList<>();
         }
-        return this.streets;
+        return this.street;
     }
 
     /**
-     * Gets the value of the poles property.
+     * Gets the value of the pole property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the poles property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the pole property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getPoles().add(newItem);
+     * getPole().add(newItem);
      * </pre>
      * 
      * 
@@ -173,13 +171,13 @@ public class CityType {
      * 
      * 
      * @return
-     *     The value of the poles property.
+     *     The value of the pole property.
      */
-    public List<PoleType> getPoles() {
-        if (poles == null) {
-            poles = new ArrayList<>();
+    public List<PoleType> getPole() {
+        if (pole == null) {
+            pole = new ArrayList<>();
         }
-        return this.poles;
+        return this.pole;
     }
 
     /**

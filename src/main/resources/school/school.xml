@@ -1,53 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<city xmlns="http://www.example.com/city" xmlns:gml="http://www.opengis.net/gml/3.2" name="SampleCity">
-
-    <!-- List of houses -->
-    <houses>
-        <gml:SurfaceType housename="House1">
+<countryType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" cityname="SampleCity">
+    <City cityname="cityone">
+        <!-- List of houses -->
+        <House housename="HouseA">
             <gml:patches>
-                <gml:PolygonPatch>
-                    <gml:exterior>
-                        <gml:LinearRing>
-                            <gml:posList>0 0 0 10 10 10 10 0 0 0</gml:posList>
-                        </gml:LinearRing>
-                    </gml:exterior>
-                </gml:PolygonPatch>
+                <!-- Surface patches or surface data for the house can go here -->
             </gml:patches>
-        </gml:SurfaceType>
-
-        <gml:SurfaceType housename="House2">
+        </House>
+        <House housename="HouseB">
             <gml:patches>
-                <gml:PolygonPatch>
-                    <gml:exterior>
-                        <gml:LinearRing>
-                            <gml:posList>20 20 20 30 30 30 30 20 20 20</gml:posList>
-                        </gml:LinearRing>
-                    </gml:exterior>
-                </gml:PolygonPatch>
+                <!-- Surface patches or surface data for the house can go here -->
             </gml:patches>
-        </gml:SurfaceType>
-    </houses>
+        </House>
 
-    <!-- List of streets -->
-    <streets>
-        <gml:LineStringType streetname="Street1">
-            <gml:posList>0 0 10 10</gml:posList>
-        </gml:LineStringType>
+        <!-- List of streets -->
+        <Street streetname="MainStreet">
+            <gml:posList>
+                <!-- Coordinates for the LineString representing the street -->
+                10.0 20.0 30.0 40.0
+            </gml:posList>
+        </Street>
+        <Street streetname="SecondStreet">
+            <gml:posList>
+                <!-- Coordinates for the LineString representing the street -->
+                50.0 60.0 70.0 80.0
+            </gml:posList>
+        </Street>
 
-        <gml:LineStringType streetname="Street2">
-            <gml:posList>10 10 20 20</gml:posList>
-        </gml:LineStringType>
-    </streets>
-
-    <!-- List of poles -->
-    <poles>
-        <gml:PointType polename="Pole1">
-            <gml:pos>5 5</gml:pos>
-        </gml:PointType>
-
-        <gml:PointType polename="Pole2">
-            <gml:pos>15 15</gml:pos>
-        </gml:PointType>
-    </poles>
-
-</city>
+        <!-- List of poles -->
+        <Pole polename="Pole1">
+            <gml:pos>
+                <!-- Coordinates for the Point representing the pole -->
+                10.0 20.0
+            </gml:pos>
+        </Pole>
+        <Pole polename="Pole2">
+            <gml:pos>
+                <!-- Coordinates for the Point representing the pole -->
+                30.0 40.0
+            </gml:pos>
+        </Pole>
+    </City>
+</countryType>
