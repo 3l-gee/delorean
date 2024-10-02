@@ -1,83 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:gml="http://www.opengis.net/gml/3.2"
+    targetNamespace="http://www.example.com/city"
+	xmlns="http://www.example.com/city"
+    elementFormDefault="qualified">
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<!-- Define the root element city with a name attribute -->
+	<xs:complexType name="HouseType">
+		<xs:complexContent>
+			<xs:extension base="gml:SurfaceType">
+				<xs:attribute name="housename" type="xs:string" use="required"/>
+                <xs:attribute name="dbid" type="xs:long"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- Define Street as an extension of gml:LineString -->
+	<xs:complexType name="StreetType">
+		<xs:complexContent>
+			<xs:extension base="gml:LineStringType">
+				<xs:attribute name="streetname" type="xs:string" use="required"/>
+                <xs:attribute name="dbid" type="xs:long"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- Define Pole as an extension of gml:Point -->
+	<xs:complexType name="PoleType">
+		<xs:complexContent>
+			<xs:extension base="gml:PointType">
+				<xs:attribute name="polename" type="xs:string" use="required"/>
+                <xs:attribute name="dbid" type="xs:long"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 
-    <!-- Base complexType for a person with name and surname -->
-    <xs:complexType name="Person">
+    <xs:complexType name="CityType">
         <xs:sequence>
-            <xs:element name="Name" type="xs:string"/>
-            <xs:element name="Surname" type="xs:string"/>
+            <!-- One list of houses (HouseType) -->
+            <xs:element name="houses" type="HouseType" maxOccurs="unbounded"/>
+            
+            <!-- One list of streets (StreetType) -->
+            <xs:element name="streets" type="StreetType" maxOccurs="unbounded"/>
+            
+            <!-- One list of poles (PoleType) -->
+            <xs:element name="poles" type="PoleType" maxOccurs="unbounded"/>
         </xs:sequence>
+        <xs:attribute name="cityname" type="xs:string" use="required"/>
+        <xs:attribute name="dbid" type="xs:long"/>
     </xs:complexType>
-
-    <!-- Teacher complexType extending Person with a role and an assigned classroom -->
-    <xs:complexType name="Teacher">
-        <xs:complexContent>
-            <xs:extension base="Person">
-                <xs:sequence>
-                    <xs:element name="Role" type="TeacherRole"/>
-                    <xs:element name="AssignedClassroomID" type="xs:int"/> <!-- Assigned classroom ID -->
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-
-    <!-- Enumeration for teacher roles -->
-    <xs:simpleType name="TeacherRole">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Math"/>
-            <xs:enumeration value="German"/>
-            <xs:enumeration value="English"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-    <!-- Student complexType extending Person with an assigned classroom -->
-    <xs:complexType name="Student">
-        <xs:complexContent>
-            <xs:extension base="Person">
-                <xs:sequence>
-                    <xs:element name="AssignedClassroomID" type="xs:int"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-
-    <!-- Classroom complexType without a list of teachers -->
-    <xs:complexType name="Classroom">
-        <xs:sequence>
-            <xs:element name="ClassroomID" type="xs:int"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <!-- List of teachers -->
-    <xs:complexType name="TeacherList">
-        <xs:sequence>
-            <xs:element name="Teacher" type="Teacher" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <!-- Root element School -->
-    <xs:element name="School">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="Classrooms" type="ClassroomList"/>
-                <xs:element name="Students" type="StudentList"/>
-                <xs:element name="Teachers" type="TeacherList"/>  <!-- List of all teachers at the school level -->
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <!-- List of classrooms -->
-    <xs:complexType name="ClassroomList">
-        <xs:sequence>
-            <xs:element name="Classroom" type="Classroom" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <!-- List of students -->
-    <xs:complexType name="StudentList">
-        <xs:sequence>
-            <xs:element name="Student" type="Student" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
+    <!-- Define the city element as a reference to CityType -->
+    <xs:element name="city" type="CityType"/>
 </xs:schema>

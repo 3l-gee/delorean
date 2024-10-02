@@ -1,108 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<School xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <Classrooms>
-        <Classroom>
-            <ClassroomID>101</ClassroomID>
-        </Classroom>
-        <Classroom>
-            <ClassroomID>102</ClassroomID>
-        </Classroom>
-        <Classroom>
-            <ClassroomID>103</ClassroomID>
-        </Classroom>
-    </Classrooms>
-    <Students>
-        <Student>
-            <Name>John</Name>
-            <Surname>Doe</Surname>
-            <AssignedClassroomID>101</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>Jane</Name>
-            <Surname>Smith</Surname>
-            <AssignedClassroomID>101</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>Michael</Name>
-            <Surname>Johnson</Surname>
-            <AssignedClassroomID>101</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>Emily</Name>
-            <Surname>Williams</Surname>
-            <AssignedClassroomID>101</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>Chris</Name>
-            <Surname>Brown</Surname>
-            <AssignedClassroomID>102</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>Anna</Name>
-            <Surname>Jones</Surname>
-            <AssignedClassroomID>102</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>David</Name>
-            <Surname>Miller</Surname>
-            <AssignedClassroomID>102</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>Laura</Name>
-            <Surname>Davis</Surname>
-            <AssignedClassroomID>102</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>James</Name>
-            <Surname>Wilson</Surname>
-            <AssignedClassroomID>103</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>Maria</Name>
-            <Surname>Garcia</Surname>
-            <AssignedClassroomID>103</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>Robert</Name>
-            <Surname>Martinez</Surname>
-            <AssignedClassroomID>103</AssignedClassroomID>
-        </Student>
-        <Student>
-            <Name>Linda</Name>
-            <Surname>Rodriguez</Surname>
-            <AssignedClassroomID>103</AssignedClassroomID>
-        </Student>
-    </Students>
-    <Teachers>
-        <Teacher>
-            <Name>William</Name>
-            <Surname>Jones</Surname>
-            <Role>Math</Role>
-            <AssignedClassroomID>101</AssignedClassroomID>
-        </Teacher>
-        <Teacher>
-            <Name>Patricia</Name>
-            <Surname>Smith</Surname>
-            <Role>English</Role>
-            <AssignedClassroomID>102</AssignedClassroomID>
-        </Teacher>
-        <Teacher>
-            <Name>Richard</Name>
-            <Surname>Taylor</Surname>
-            <Role>German</Role>
-            <AssignedClassroomID>103</AssignedClassroomID>
-        </Teacher>
-        <Teacher>
-            <Name>Barbara</Name>
-            <Surname>Williams</Surname>
-            <Role>Math</Role>
-            <AssignedClassroomID>102</AssignedClassroomID>
-        </Teacher>
-        <Teacher>
-            <Name>Thomas</Name>
-            <Surname>Brown</Surname>
-            <Role>English</Role>
-            <AssignedClassroomID>103</AssignedClassroomID>
-        </Teacher>
-    </Teachers>
-</School>
+<city xmlns="http://www.example.com/city" xmlns:gml="http://www.opengis.net/gml/3.2" name="SampleCity">
+
+    <!-- List of houses -->
+    <houses>
+        <gml:SurfaceType housename="House1">
+            <gml:patches>
+                <gml:PolygonPatch>
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>0 0 0 10 10 10 10 0 0 0</gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:PolygonPatch>
+            </gml:patches>
+        </gml:SurfaceType>
+
+        <gml:SurfaceType housename="House2">
+            <gml:patches>
+                <gml:PolygonPatch>
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>20 20 20 30 30 30 30 20 20 20</gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:PolygonPatch>
+            </gml:patches>
+        </gml:SurfaceType>
+    </houses>
+
+    <!-- List of streets -->
+    <streets>
+        <gml:LineStringType streetname="Street1">
+            <gml:posList>0 0 10 10</gml:posList>
+        </gml:LineStringType>
+
+        <gml:LineStringType streetname="Street2">
+            <gml:posList>10 10 20 20</gml:posList>
+        </gml:LineStringType>
+    </streets>
+
+    <!-- List of poles -->
+    <poles>
+        <gml:PointType polename="Pole1">
+            <gml:pos>5 5</gml:pos>
+        </gml:PointType>
+
+        <gml:PointType polename="Pole2">
+            <gml:pos>15 15</gml:pos>
+        </gml:PointType>
+    </poles>
+
+</city>

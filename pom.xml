@@ -77,7 +77,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- <plugin>
+			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.4.2</version>
@@ -90,7 +90,7 @@
                     </archive> 	
                 </configuration>
             </plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
@@ -113,7 +113,7 @@
                     </schemaIncludes>
                     <bindingDirectory>${project.basedir}/src/main/resources/school</bindingDirectory>
                     <bindingIncludes>
-                        <include>school.xjb</include>
+                        <include>*.xjb</include>
                     </bindingIncludes>
                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                 </configuration>       
@@ -151,18 +151,18 @@
                 </executions>
             </plugin> -->
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
                 <configuration>
                     <extension>true</extension>
                     <args>
-                        <arg>-Xannotate</arg>
+                        <arg>-Xannotate</arg> -->
                         <!-- <arg>-XJsr303Annotations</arg>
                         <arg>-XJsr303Annotations:validationAnnotations=jakarta</arg>
                         <arg>-XJsr303Annotations:generateServiceValidationAnnotations=InOut</arg> -->
-                    </args>
+                    <!-- </args>
                     <plugins>
                         <plugin>
                             <groupId>org.jvnet.jaxb</groupId>
@@ -216,7 +216,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 
 			<!-- Added maven-shade-plugin to create a fat jar including dependencies -->
             <plugin>

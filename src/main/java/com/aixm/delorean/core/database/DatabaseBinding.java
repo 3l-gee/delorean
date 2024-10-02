@@ -3,19 +3,10 @@ package com.aixm.delorean.core.database;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.validator.constraints.URL;
 
-import com.aixm.delorean.core.schema.school.School;
+import com.aixm.delorean.core.schema.school.CityType;
 
-import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import jakarta.persistence.metamodel.Metamodel;
-import jakarta.validation.constraints.Null;
-
-import java.util.List;
-import java.util.ArrayList;
-
 
 public class DatabaseBinding {
     private SessionFactory sessionFactory;
@@ -91,7 +82,7 @@ public class DatabaseBinding {
 
         try {
             transaction = session.beginTransaction();
-            object = session.get(School.class, id);
+            object = session.get(CityType.class, id);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
