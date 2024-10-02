@@ -15,8 +15,70 @@
             <!-- <jaxb:package name="aero.aixm.message"/> -->
 			<jaxb:package name="com.aixm.delorean.core.schema.school"/>
 		</jaxb:schemaBindings>
-		<jaxb:bindings node="xs:element [@name='School']">
+		<jaxb:bindings node="xs:complexType[@name='CityType']">
 			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement()</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Table(name = "city")</annox:annotate>
 		</jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:attribute[@name='cityname']">
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "cityname")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:attribute[@name='dbid']">
+            <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = false)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:element[@name='houses']">
+            <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:element[@name='streets']">
+            <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:element[@name='poles']">
+            <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='HouseType']">
+			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement()</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Table(name = "house")</annox:annotate>
+		</jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='HouseType']//xs:attribute[@name='dbid']">
+            <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = false)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='HouseType']//xs:attribute[@name='housename']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "housename")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='StreetType']">
+			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement()</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Table(name = "street")</annox:annotate>
+		</jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='StreetType']//xs:attribute[@name='dbid']">
+            <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = false)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='StreetType']//xs:attribute[@name='streetname']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "streetname")</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='PoleType']">
+			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement()</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+            <annox:annotate target="class">@jakarta.persistence.Table(name = "pole")</annox:annotate>
+		</jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='PoleType']//xs:attribute[@name='dbid']">
+            <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = false)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='PoleType']//xs:attribute[@name='polename']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "polename")</annox:annotate>
+        </jaxb:bindings>
     </jaxb:bindings>
 </jaxb:bindings>

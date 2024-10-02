@@ -7,6 +7,9 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.annotation.XmlElementDecl;
 import jakarta.xml.bind.annotation.XmlRegistry;
 
 
@@ -27,6 +30,7 @@ import jakarta.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private static final QName _City_QNAME = new QName("http://www.example.com/city", "city");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.aixm.delorean.core.schema.school
@@ -36,83 +40,56 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link School }
+     * Create an instance of {@link CityType }
      * 
      * @return
-     *     the new instance of {@link School }
+     *     the new instance of {@link CityType }
      */
-    public School createSchool() {
-        return new School();
+    public CityType createCityType() {
+        return new CityType();
     }
 
     /**
-     * Create an instance of {@link ClassroomList }
+     * Create an instance of {@link HouseType }
      * 
      * @return
-     *     the new instance of {@link ClassroomList }
+     *     the new instance of {@link HouseType }
      */
-    public ClassroomList createClassroomList() {
-        return new ClassroomList();
+    public HouseType createHouseType() {
+        return new HouseType();
     }
 
     /**
-     * Create an instance of {@link StudentList }
+     * Create an instance of {@link StreetType }
      * 
      * @return
-     *     the new instance of {@link StudentList }
+     *     the new instance of {@link StreetType }
      */
-    public StudentList createStudentList() {
-        return new StudentList();
+    public StreetType createStreetType() {
+        return new StreetType();
     }
 
     /**
-     * Create an instance of {@link TeacherList }
+     * Create an instance of {@link PoleType }
      * 
      * @return
-     *     the new instance of {@link TeacherList }
+     *     the new instance of {@link PoleType }
      */
-    public TeacherList createTeacherList() {
-        return new TeacherList();
+    public PoleType createPoleType() {
+        return new PoleType();
     }
 
     /**
-     * Create an instance of {@link Person }
+     * Create an instance of {@link JAXBElement }{@code <}{@link CityType }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link Person }
+     *     the new instance of {@link JAXBElement }{@code <}{@link CityType }{@code >}
      */
-    public Person createPerson() {
-        return new Person();
-    }
-
-    /**
-     * Create an instance of {@link Teacher }
-     * 
-     * @return
-     *     the new instance of {@link Teacher }
-     */
-    public Teacher createTeacher() {
-        return new Teacher();
-    }
-
-    /**
-     * Create an instance of {@link Student }
-     * 
-     * @return
-     *     the new instance of {@link Student }
-     */
-    public Student createStudent() {
-        return new Student();
-    }
-
-    /**
-     * Create an instance of {@link Classroom }
-     * 
-     * @return
-     *     the new instance of {@link Classroom }
-     */
-    public Classroom createClassroom() {
-        return new Classroom();
+    @XmlElementDecl(namespace = "http://www.example.com/city", name = "city")
+    public JAXBElement<CityType> createCity(CityType value) {
+        return new JAXBElement<>(_City_QNAME, CityType.class, null, value);
     }
 
 }
