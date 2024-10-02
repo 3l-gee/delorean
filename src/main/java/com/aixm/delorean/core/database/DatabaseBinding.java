@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.aixm.delorean.core.schema.school.CityType;
+import com.aixm.delorean.core.schema.school.CountryType;
 
 import org.hibernate.Transaction;
 
@@ -82,7 +82,7 @@ public class DatabaseBinding {
 
         try {
             transaction = session.beginTransaction();
-            object = session.get(CityType.class, id);
+            object = session.get(CountryType.class, id);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

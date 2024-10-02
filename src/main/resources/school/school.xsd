@@ -2,8 +2,6 @@
 <xs:schema
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:gml="http://www.opengis.net/gml/3.2"
-    targetNamespace="http://www.example.com/city"
-	xmlns="http://www.example.com/city"
     elementFormDefault="qualified">
 	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
 	<!-- Define the root element city with a name attribute -->
@@ -37,17 +35,23 @@
     <xs:complexType name="CityType">
         <xs:sequence>
             <!-- One list of houses (HouseType) -->
-            <xs:element name="houses" type="HouseType" maxOccurs="unbounded"/>
+            <xs:element name="House" type="HouseType" maxOccurs="unbounded"/>
             
             <!-- One list of streets (StreetType) -->
-            <xs:element name="streets" type="StreetType" maxOccurs="unbounded"/>
+            <xs:element name="Street" type="StreetType" maxOccurs="unbounded"/>
             
             <!-- One list of poles (PoleType) -->
-            <xs:element name="poles" type="PoleType" maxOccurs="unbounded"/>
+            <xs:element name="Pole" type="PoleType" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute name="cityname" type="xs:string" use="required"/>
+		<xs:attribute name="cityname" type="xs:string" use="required"/>
         <xs:attribute name="dbid" type="xs:long"/>
     </xs:complexType>
+
+	<xs:complexType name="CountryType">
+		<xs:sequence>
+			<xs:element name="City" type="CityType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
     <!-- Define the city element as a reference to CityType -->
-    <xs:element name="city" type="CityType"/>
+    <xs:element name="Country" type="CountryType"/>
 </xs:schema>

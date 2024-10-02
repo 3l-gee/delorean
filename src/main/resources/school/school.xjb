@@ -15,8 +15,10 @@
             <!-- <jaxb:package name="aero.aixm.message"/> -->
 			<jaxb:package name="com.aixm.delorean.core.schema.school"/>
 		</jaxb:schemaBindings>
-		<jaxb:bindings node="xs:complexType[@name='CityType']">
+		<jaxb:bindings node="xs:complexType[@name='CountryType']">
 			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement()</annox:annotate>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='CityType']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.Table(name = "city")</annox:annotate>
 		</jaxb:bindings>
@@ -29,13 +31,13 @@
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = false)</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
         </jaxb:bindings>
-        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:element[@name='houses']">
+        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:element[@name='House']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
-        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:element[@name='streets']">
+        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:element[@name='Street']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
-        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:element[@name='poles']">
+        <jaxb:bindings node="xs:complexType[@name='CityType']//xs:element[@name='Pole']">
             <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="xs:complexType[@name='HouseType']">

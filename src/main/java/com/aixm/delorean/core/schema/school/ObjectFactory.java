@@ -30,7 +30,7 @@ import jakarta.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
-    private static final QName _City_QNAME = new QName("http://www.example.com/city", "city");
+    private static final QName _Country_QNAME = new QName("", "Country");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.aixm.delorean.core.schema.school
@@ -40,13 +40,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CityType }
+     * Create an instance of {@link CountryType }
      * 
      * @return
-     *     the new instance of {@link CityType }
+     *     the new instance of {@link CountryType }
      */
-    public CityType createCityType() {
-        return new CityType();
+    public CountryType createCountryType() {
+        return new CountryType();
     }
 
     /**
@@ -80,16 +80,26 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CityType }{@code >}
+     * Create an instance of {@link CityType }
+     * 
+     * @return
+     *     the new instance of {@link CityType }
+     */
+    public CityType createCityType() {
+        return new CityType();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CountryType }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CityType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link CountryType }{@code >}
      */
-    @XmlElementDecl(namespace = "http://www.example.com/city", name = "city")
-    public JAXBElement<CityType> createCity(CityType value) {
-        return new JAXBElement<>(_City_QNAME, CityType.class, null, value);
+    @XmlElementDecl(namespace = "", name = "Country")
+    public JAXBElement<CountryType> createCountry(CountryType value) {
+        return new JAXBElement<>(_Country_QNAME, CountryType.class, null, value);
     }
 
 }
