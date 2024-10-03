@@ -43,7 +43,7 @@ public class Container<T> {
         if (this.xmlBinding == null) {
             throw new RuntimeException("XMLBinding is not set");
         }
-        this.record = (T) this.xmlBinding.unmarshalPojo(path);
+        this.record = (T) this.xmlBinding.unmarshal(path);
     }
 
     public void marshal(String path) {

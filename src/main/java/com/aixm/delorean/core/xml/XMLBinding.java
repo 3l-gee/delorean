@@ -66,15 +66,21 @@ public class XMLBinding<T> {
 
     public T unmarshal(String path) {
         try (InputStream xmlStream = new FileInputStream(path)) {
-            JAXBElement<T> rootElement = (JAXBElement<T>) this.unmarshaller.unmarshal(xmlStream);
-            T root = rootElement.getValue();
-            return root;
+            Object unmarshalledObject = this.unmarshaller.unmarshal(xmlStream);
+    
+            if (unmarshalledObject instanceof JAXBElement<?>) {
+
+                JAXBElement<T> rootElement = (JAXBElement<T>) unmarshalledObject;
+                return rootElement.getValue();
+            } else {
+                return (T) unmarshalledObject;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
+    
     
     public T unmarshalPojo(String path) {
         try (InputStream xmlStream = new FileInputStream(path)) {

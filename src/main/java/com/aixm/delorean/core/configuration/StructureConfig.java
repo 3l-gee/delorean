@@ -9,7 +9,7 @@ public enum StructureConfig {
         ),
     SCHOOL(
         "school",
-        "com.aixm.delorean.core.schema.school.CountryType"
+        "com.aixm.delorean.core.schema.school.School"
     );
 
     private final String version;

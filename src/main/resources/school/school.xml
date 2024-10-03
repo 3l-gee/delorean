@@ -1,44 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<countryType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" cityname="SampleCity">
+<school xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <classroom>
+        <classroomid>101</classroomid>
+    </classroom>
+    <classroom>
+        <classroomid>102</classroomid>
+    </classroom>
+    <classroom>
+        <classroomid>103</classroomid>
+    </classroom>
+    <student>
+        <name>John</name>
+        <surname>Doe</surname>
+        <assignedclassroomid>101</assignedclassroomid>
+    </student>
+    <student>
+        <name>Jane</name>
+        <surname>Smith</surname>
+        <assignedclassroomid>101</assignedclassroomid>
+    </student>
+    <student>
+        <name>Michael</name>
+        <surname>Johnson</surname>
+        <assignedclassroomid>101</assignedclassroomid>
+    </student>
+    <student>
+        <name>Emily</name>
+        <surname>Williams</surname>
+        <assignedclassroomid>101</assignedclassroomid>
+    </student>
+    <student>
+        <name>Chris</name>
+        <surname>Brown</surname>
+        <assignedclassroomid>102</assignedclassroomid>
+    </student>
+    <student>
+        <name>Anna</name>
+        <surname>Jones</surname>
+        <assignedclassroomid>102</assignedclassroomid>
+    </student>
+    <student>
+        <name>David</name>
+        <surname>Miller</surname>
+        <assignedclassroomid>102</assignedclassroomid>
+    </student>
+    <student>
+        <name>Laura</name>
+        <surname>Davis</surname>
+        <assignedclassroomid>102</assignedclassroomid>
+    </student>
+    <student>
+        <name>James</name>
+        <surname>Wilson</surname>
+        <assignedclassroomid>103</assignedclassroomid>
+    </student>
+    <student>
+        <name>Maria</name>
+        <surname>Garcia</surname>
+        <assignedclassroomid>103</assignedclassroomid>
+    </student>
+    <student>
+        <name>Robert</name>
+        <surname>Martinez</surname>
+        <assignedclassroomid>103</assignedclassroomid>
+    </student>
+    <student>
+        <name>Linda</name>
+        <surname>Rodriguez</surname>
+        <assignedclassroomid>103</assignedclassroomid>
+    </student>
+    <teacher>
+        <name>William</name>
+        <surname>Jones</surname>
+        <role>Math</role>
+        <assignedclassroomid>101</assignedclassroomid>
+    </teacher>
+    <teacher>
+        <name>Patricia</name>
+        <surname>Smith</surname>
+        <role>English</role>
+        <assignedclassroomid>102</assignedclassroomid>
+    </teacher>
+    <teacher>
+        <name>Richard</name>
+        <surname>Taylor</surname>
+        <role>German</role>
+        <assignedclassroomid>103</assignedclassroomid>
+    </teacher>
+    <teacher>
+        <name>Barbara</name>
+        <surname>Williams</surname>
+        <role>Math</role>
+        <assignedclassroomid>102</assignedclassroomid>
+    </teacher>
+    <teacher>
+        <name>Thomas</name>
+        <surname>Brown</surname>
+        <role>English</role>
+        <assignedclassroomid>103</assignedclassroomid>
+    </teacher>
+</school>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<Country xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" cityname="SampleCity">
     <City cityname="cityone">
-        <!-- List of houses -->
         <House housename="HouseA">
             <gml:patches>
-                <!-- Surface patches or surface data for the house can go here -->
             </gml:patches>
         </House>
         <House housename="HouseB">
             <gml:patches>
-                <!-- Surface patches or surface data for the house can go here -->
             </gml:patches>
         </House>
 
-        <!-- List of streets -->
         <Street streetname="MainStreet">
             <gml:posList>
-                <!-- Coordinates for the LineString representing the street -->
                 10.0 20.0 30.0 40.0
             </gml:posList>
         </Street>
         <Street streetname="SecondStreet">
             <gml:posList>
-                <!-- Coordinates for the LineString representing the street -->
                 50.0 60.0 70.0 80.0
             </gml:posList>
         </Street>
-
-        <!-- List of poles -->
         <Pole polename="Pole1">
             <gml:pos>
-                <!-- Coordinates for the Point representing the pole -->
                 10.0 20.0
             </gml:pos>
         </Pole>
         <Pole polename="Pole2">
             <gml:pos>
-                <!-- Coordinates for the Point representing the pole -->
                 30.0 40.0
             </gml:pos>
         </Pole>
     </City>
-</countryType>
+</Country> -->

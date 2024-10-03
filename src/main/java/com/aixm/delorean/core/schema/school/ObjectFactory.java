@@ -30,7 +30,7 @@ import jakarta.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
-    private static final QName _Country_QNAME = new QName("", "Country");
+    private static final QName _School_QNAME = new QName("", "school");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.aixm.delorean.core.schema.school
@@ -40,66 +40,66 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CountryType }
+     * Create an instance of {@link School }
      * 
      * @return
-     *     the new instance of {@link CountryType }
+     *     the new instance of {@link School }
      */
-    public CountryType createCountryType() {
-        return new CountryType();
+    public School createSchool() {
+        return new School();
     }
 
     /**
-     * Create an instance of {@link HouseType }
+     * Create an instance of {@link Person }
      * 
      * @return
-     *     the new instance of {@link HouseType }
+     *     the new instance of {@link Person }
      */
-    public HouseType createHouseType() {
-        return new HouseType();
+    public Person createPerson() {
+        return new Person();
     }
 
     /**
-     * Create an instance of {@link StreetType }
+     * Create an instance of {@link Teacher }
      * 
      * @return
-     *     the new instance of {@link StreetType }
+     *     the new instance of {@link Teacher }
      */
-    public StreetType createStreetType() {
-        return new StreetType();
+    public Teacher createTeacher() {
+        return new Teacher();
     }
 
     /**
-     * Create an instance of {@link PoleType }
+     * Create an instance of {@link Student }
      * 
      * @return
-     *     the new instance of {@link PoleType }
+     *     the new instance of {@link Student }
      */
-    public PoleType createPoleType() {
-        return new PoleType();
+    public Student createStudent() {
+        return new Student();
     }
 
     /**
-     * Create an instance of {@link CityType }
+     * Create an instance of {@link Classroom }
      * 
      * @return
-     *     the new instance of {@link CityType }
+     *     the new instance of {@link Classroom }
      */
-    public CityType createCityType() {
-        return new CityType();
+    public Classroom createClassroom() {
+        return new Classroom();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CountryType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link School }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CountryType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link School }{@code >}
      */
-    @XmlElementDecl(namespace = "", name = "Country")
-    public JAXBElement<CountryType> createCountry(CountryType value) {
-        return new JAXBElement<>(_Country_QNAME, CountryType.class, null, value);
+    @XmlElementDecl(namespace = "", name = "school")
+    public JAXBElement<School> createSchool(School value) {
+        return new JAXBElement<>(_School_QNAME, School.class, null, value);
     }
 
 }

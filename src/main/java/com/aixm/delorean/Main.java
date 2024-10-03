@@ -81,11 +81,11 @@ public class Main {
         logger.log(LogLevel.INFO, "xml_config - school");
         excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "school");
 
-        logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
+        // logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
  
-        // logger.log(LogLevel.INFO, "xml - load C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/school/school.xml");
-        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/school/school.xml");
+        logger.log(LogLevel.INFO, "xml - load C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/school/school.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/school/school.xml");
        
         // logger.log(LogLevel.INFO, "show -");
         // executeShowCommand(this.containerWarehouse.getLastContainerId());
