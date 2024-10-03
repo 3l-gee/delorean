@@ -1,10 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <!-- Base complexType for a person with name and surname -->
+    <xs:complexType name="person">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- teacher complexType extending person with a role and an assigned classroom -->
+    <xs:complexType name="teacher">
+        <xs:complexContent>
+            <xs:extension base="person">
+                <xs:sequence>
+                    <xs:element name="role" type="teacherrole"/>
+                    <xs:element name="assignedclassroomid" type="xs:int"/> <!-- Assigned classroom ID -->
+                </xs:sequence>
+                <xs:attribute name="dbid" type="xs:long"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Enumeration for teacher roles -->
+    <xs:simpleType name="teacherrole">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="math"/>
+            <xs:enumeration value="german"/>
+            <xs:enumeration value="english"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- student complexType extending person with an assigned classroom -->
+    <xs:complexType name="student">
+        <xs:complexContent>
+            <xs:extension base="person">
+                <xs:sequence>
+                    <xs:element name="assignedclassroomid" type="xs:int"/>
+                </xs:sequence>
+                <xs:attribute name="dbid" type="xs:long"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Classroom complexType without a list of teachers -->
+    <xs:complexType name="classroom">
+        <xs:sequence>
+            <xs:element name="classroomid" type="xs:int"/>
+        </xs:sequence>
+        <xs:attribute name="dbid" type="xs:long"/>
+    </xs:complexType>
+
+    <xs:complexType name="school">
+        <xs:sequence>
+            <xs:element name="classroom" type="classroom" maxOccurs="unbounded"/>
+            <xs:element name="student" type="student" maxOccurs="unbounded"/>
+            <xs:element name="teacher" type="teacher" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="dbid" type="xs:long"/>
+    </xs:complexType>
+
+    <!-- Root element School -->
+    <xs:element name="school" type="school">
+
+    </xs:element>
+</xs:schema>
+
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:gml="http://www.opengis.net/gml/3.2"
     elementFormDefault="qualified">
 	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
-	<!-- Define the root element city with a name attribute -->
 	<xs:complexType name="HouseType">
 		<xs:complexContent>
 			<xs:extension base="gml:SurfaceType">
@@ -13,7 +80,6 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<!-- Define Street as an extension of gml:LineString -->
 	<xs:complexType name="StreetType">
 		<xs:complexContent>
 			<xs:extension base="gml:LineStringType">
@@ -22,7 +88,6 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<!-- Define Pole as an extension of gml:Point -->
 	<xs:complexType name="PoleType">
 		<xs:complexContent>
 			<xs:extension base="gml:PointType">
@@ -34,13 +99,8 @@
 
     <xs:complexType name="CityType">
         <xs:sequence>
-            <!-- One list of houses (HouseType) -->
             <xs:element name="House" type="HouseType" maxOccurs="unbounded"/>
-            
-            <!-- One list of streets (StreetType) -->
             <xs:element name="Street" type="StreetType" maxOccurs="unbounded"/>
-            
-            <!-- One list of poles (PoleType) -->
             <xs:element name="Pole" type="PoleType" maxOccurs="unbounded"/>
         </xs:sequence>
 		<xs:attribute name="cityname" type="xs:string" use="required"/>
@@ -52,6 +112,5 @@
 			<xs:element name="City" type="CityType" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-    <!-- Define the city element as a reference to CityType -->
     <xs:element name="Country" type="CountryType"/>
-</xs:schema>
+</xs:schema> -->

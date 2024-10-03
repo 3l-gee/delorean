@@ -404,10 +404,10 @@ public enum DatabaseConfig {
         true,
         "update",
         new Class<?>[]{
-            com.aixm.delorean.core.schema.school.CityType.class,
-            com.aixm.delorean.core.schema.school.HouseType.class,
-            com.aixm.delorean.core.schema.school.PoleType.class,
-            com.aixm.delorean.core.schema.school.StreetType.class,
+            com.aixm.delorean.core.schema.school.School.class,
+            com.aixm.delorean.core.schema.school.Classroom.class,
+            com.aixm.delorean.core.schema.school.Student.class,
+            com.aixm.delorean.core.schema.school.Teacher.class,
         }
     );
 

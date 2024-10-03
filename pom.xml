@@ -90,7 +90,7 @@
                     </archive> 	
                 </configuration>
             </plugin>
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
@@ -98,6 +98,7 @@
                     <extension>true</extension>
                     <args>
                         <arg>-Xannotate</arg>
+                        <arg>-XremoveAnnotation</arg>
                     </args>
                     <plugins>
                         <plugin>
@@ -113,7 +114,7 @@
                     </schemaIncludes>
                     <bindingDirectory>${project.basedir}/src/main/resources/school</bindingDirectory>
                     <bindingIncludes>
-                        <include>*.xjb</include>
+                        <include>school.xjb</include>
                     </bindingIncludes>
                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                 </configuration>       
@@ -149,7 +150,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
 
 			<!-- <plugin>
 				<groupId>org.jvnet.jaxb</groupId>
