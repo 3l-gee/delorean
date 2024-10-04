@@ -114,7 +114,7 @@
                     </schemaIncludes>
                     <bindingDirectory>${project.basedir}/src/main/resources/school</bindingDirectory>
                     <bindingIncludes>
-                        <include>school.xjb</include>
+                        <include>*.xjb</include>
                     </bindingIncludes>
                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                 </configuration>       

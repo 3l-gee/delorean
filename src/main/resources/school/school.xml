@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<school xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<school 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gml="http://www.opengis.net/gml">
+    <point>
+        <gml:Point>
+            <gml:coordinates>1.0,1.0</gml:coordinates>
+        </gml:Point>
+    </point>
     <classroom>
         <classroomid>101</classroomid>
     </classroom>
@@ -78,25 +85,25 @@
     <teacher>
         <name>Patricia</name>
         <surname>Smith</surname>
-        <role>English</role>
+        <role>english</role>
         <assignedclassroomid>102</assignedclassroomid>
     </teacher>
     <teacher>
         <name>Richard</name>
         <surname>Taylor</surname>
-        <role>German</role>
+        <role>german</role>
         <assignedclassroomid>103</assignedclassroomid>
     </teacher>
     <teacher>
         <name>Barbara</name>
         <surname>Williams</surname>
-        <role>Math</role>
+        <role>math</role>
         <assignedclassroomid>102</assignedclassroomid>
     </teacher>
     <teacher>
         <name>Thomas</name>
         <surname>Brown</surname>
-        <role>English</role>
+        <role>english</role>
         <assignedclassroomid>103</assignedclassroomid>
     </teacher>
 </school>

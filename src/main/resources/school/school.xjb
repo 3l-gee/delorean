@@ -42,6 +42,11 @@
         <jaxb:bindings node="xs:simpleType[@name='teacherrole']">
             <annox:annotate target="enum">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="enum">@jakarta.persistence.Table(name = "teacher_role")</annox:annotate>
+            <jaxb:typesafeEnumClass name="teacherrole">
+                <jaxb:typesafeEnumMember name="math" value="math"/>
+                <jaxb:typesafeEnumMember name="german" value="german"/>
+                <jaxb:typesafeEnumMember name="english" value="english"/>
+            </jaxb:typesafeEnumClass>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='teacher']">
             <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
