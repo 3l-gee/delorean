@@ -15,9 +15,6 @@
 			<!-- <jaxb:package name="net.opengis.gml.v_3_2"/> -->
 			<jaxb:package name="com.aixm.delorean.core.schema.school.org.gml"/>
 		</jaxb:schemaBindings>
-		<!-- <jaxb:bindings node="//xs:complexType[@name='SurfaceType']">
-			<annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
-		</jaxb:bindings> -->
 	</jaxb:bindings>
 
 	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/geometryPrimitives.xsd" node="/xs:schema">

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema 	
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:gml="http://www.opengis.net/gml/3.2"
+    elementFormDefault="qualified">
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
 
     <!-- Base complexType for a person with name and surname -->
     <xs:complexType name="person">
@@ -53,6 +57,8 @@
 
     <xs:complexType name="school">
         <xs:sequence>
+            <xs:element name="pointdb" type="xs:double" maxOccurs="unbounded"/>
+            <xs:element name="pointxml" type="gml:PointType"/>
             <xs:element name="classroom" type="classroom" maxOccurs="unbounded"/>
             <xs:element name="student" type="student" maxOccurs="unbounded"/>
             <xs:element name="teacher" type="teacher" maxOccurs="unbounded"/>

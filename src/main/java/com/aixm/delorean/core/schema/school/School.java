@@ -9,6 +9,7 @@ package com.aixm.delorean.core.schema.school;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,6 +37,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="pointdb" type="{http://www.w3.org/2001/XMLSchema}double" maxOccurs="unbounded"/>
+ *         <element name="pointxml" type="{http://www.opengis.net/gml/3.2}PointType"/>
  *         <element name="classroom" type="{}classroom" maxOccurs="unbounded"/>
  *         <element name="student" type="{}student" maxOccurs="unbounded"/>
  *         <element name="teacher" type="{}teacher" maxOccurs="unbounded"/>
@@ -50,6 +53,8 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "school", propOrder = {
+    "pointdb",
+    "pointxml",
     "classroom",
     "student",
     "teacher"
@@ -59,6 +64,10 @@ import jakarta.xml.bind.annotation.XmlType;
 @Table(name = "school")
 public class School {
 
+    @XmlElement(type = Double.class)
+    protected List<Double> pointdb;
+    @XmlElement(required = true)
+    protected PointType pointxml;
     @XmlElement(required = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -79,6 +88,62 @@ public class School {
     @Column(name = "dbid", nullable = false)
     @XmlTransient
     protected Long dbid;
+
+    /**
+     * Gets the value of the pointdb property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the pointdb property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getPointdb().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Double }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the pointdb property.
+     */
+    public List<Double> getPointdb() {
+        if (pointdb == null) {
+            pointdb = new ArrayList<>();
+        }
+        return this.pointdb;
+    }
+
+    /**
+     * Gets the value of the pointxml property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link PointType }
+     *     
+     */
+    public PointType getPointxml() {
+        return pointxml;
+    }
+
+    /**
+     * Sets the value of the pointxml property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PointType }
+     *     
+     */
+    public void setPointxml(PointType value) {
+        this.pointxml = value;
+    }
 
     /**
      * Gets the value of the classroom property.
