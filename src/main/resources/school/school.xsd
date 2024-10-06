@@ -55,10 +55,11 @@
         <xs:attribute name="dbid" type="xs:long"/>
     </xs:complexType>
 
+
     <xs:complexType name="school">
         <xs:sequence>
-            <xs:element name="pointdb" type="xs:double" maxOccurs="unbounded"/>
-            <xs:element name="pointxml" type="gml:PointType"/>
+            <xs:element name="geom" type="xs:string"/>
+            <!-- <xs:element name="geomgeom" type="gml:PointType"/> -->
             <xs:element name="classroom" type="classroom" maxOccurs="unbounded"/>
             <xs:element name="student" type="student" maxOccurs="unbounded"/>
             <xs:element name="teacher" type="teacher" maxOccurs="unbounded"/>

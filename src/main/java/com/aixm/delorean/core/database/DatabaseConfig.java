@@ -468,6 +468,9 @@ public enum DatabaseConfig {
         configuration.setProperty("hibernate.use_sql_comments", "true");  // Adds comments to the generated SQL for context
         configuration.setProperty("hibernate.hbm2ddl.auto", this.hbm2ddlAuto);
 
+        //Set PostgreSQL dialect
+        configuration.setProperty("hibernate.dialect.PostgreSQLDialect", "org.hibernate.spatial.dialect.postgis.PostgisDialect");
+
         // Add mapping classes
         for (Class<?> mappingClass : this.mappingClasses) {
             configuration.addAnnotatedClass(mappingClass);

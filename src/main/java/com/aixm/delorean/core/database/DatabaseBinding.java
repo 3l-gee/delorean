@@ -94,16 +94,12 @@ public class DatabaseBinding {
         }
 
         return object;
-    }
-
-    private boolean isMappedClass(Object object){
-        System.err.println(object.getClass());   
-        if (this.databaseConfig.getMappedClasses().contains(object.getClass())){
-            System.err.println("true");
-            return true;
         }
 
-        System.err.println("false");
+        private boolean isMappedClass(Object object){ 
+        if (this.databaseConfig.getMappedClasses().contains(object.getClass())){
+            return true;
+        }
         return false;
     }
 }
