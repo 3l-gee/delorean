@@ -14,7 +14,8 @@
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="aero.aixm.message"/> -->
 			<jaxb:package name="com.aixm.delorean.core.schema.school"/>
-		</jaxb:schemaBindings>
+        </jaxb:schemaBindings>
+
 		<!-- <jaxb:bindings node="xs:element[@name='School']">
 			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement()</annox:annotate>
 		</jaxb:bindings> -->
@@ -38,6 +39,14 @@
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = false)</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             <annox:removeAnnotation class="jakarta.xml.bind.annotation.XmlAttribute" target="field"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='geom']">
+    		<jaxb:javaType 
+				name="org.locationtech.jts.geom.Point" 
+				parseMethod="com.aixm.delorean.core.schema.school.adapter.GeometryAdapterTwo.parseToPoint" 
+				printMethod="com.aixm.delorean.core.schema.school.adapter.GeometryAdapterTwo.printToString"/>
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "geom", columnDefinition = "geometry(Point, 4326)")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="xs:simpleType[@name='teacherrole']">
             <annox:annotate target="enum">@jakarta.persistence.Entity</annox:annotate>

@@ -81,11 +81,11 @@ public class Main {
         logger.log(LogLevel.INFO, "xml_config - school");
         excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "school");
 
-        // logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
-        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
+        logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
  
-        logger.log(LogLevel.INFO, "xml - load C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/school/school.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/school/school.xml");
+        // logger.log(LogLevel.INFO, "xml - load C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/school/school.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/school/school.xml");
        
         // logger.log(LogLevel.INFO, "show -");
         // executeShowCommand(this.containerWarehouse.getLastContainerId());
@@ -99,25 +99,28 @@ public class Main {
         logger.log(LogLevel.INFO, "db - load");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"load", "");
 
-        logger.log(LogLevel.INFO, "Exiting...");
+        logger.log(LogLevel.INFO, "xml - export C:/Users/rapha/Documents/project/delorean/test.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "C:/Users/rapha/Documents/project/delorean/importExport.xml");
 
-        // logger.log(LogLevel.INFO, "new school");
-        // executeNewCommand("school");
+        // logger.log(LogLevel.INFO, "Exiting...");
 
-        // logger.log(LogLevel.INFO, "xml_config - school");
-        // excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "school");
+        logger.log(LogLevel.INFO, "new school");
+        executeNewCommand("school");
 
-        // logger.log(LogLevel.INFO, "db_config - school");
-        // executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"school", "");
+        logger.log(LogLevel.INFO, "xml_config - school");
+        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "school");
 
-        // logger.log(LogLevel.INFO, "db - startup");
-        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
+        logger.log(LogLevel.INFO, "db_config - school");
+        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"school", "");
 
-        // logger.log(LogLevel.INFO, "db - retrieve 1");
-        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"retrieve", "1");
+        logger.log(LogLevel.INFO, "db - startup");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
 
-        // logger.log(LogLevel.INFO, "xml - export");
-        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "C:/Users/rapha/Documents/project/delorean/test.xml");
+        logger.log(LogLevel.INFO, "db - retrieve 1");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"retrieve", "1");
+
+        logger.log(LogLevel.INFO, "xml - export C:/Users/rapha/Documents/project/delorean/test.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "C:/Users/rapha/Documents/project/delorean/retriveExport.xml");
 
         // logger.log(LogLevel.INFO, "new a5_1_1");
         // executeNewCommand("a5_1_1");
