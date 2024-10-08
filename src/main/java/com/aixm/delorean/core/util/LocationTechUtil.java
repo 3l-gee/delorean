@@ -13,9 +13,10 @@ import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.LineString;
+import org.locationtech.jts.geom.LinearRing;
 import org.locationtech.jts.geom.Polygon;
 
-public class GisUtil {
+public class LocationTechUtil {
 
     private static CoordinateTransformFactory ctFactory = new CoordinateTransformFactory();
     private static CRSFactory crsFactory = new CRSFactory();
@@ -49,18 +50,13 @@ public class GisUtil {
         ProjCoordinate tgtCoord = new ProjCoordinate();
         transform.transform(srcCoord, tgtCoord);
 
-        // Return transformed coordinate
-        Coordinate coordinate = new Coordinate(tgtCoord.x, tgtCoord.y);
-
-        return coordinate;
+        return new Coordinate(tgtCoord.x, tgtCoord.y);
     }
 
     public static Point transformCRS(Point value, String sourceCRS, String targetCRS) {
         CoordinateTransform transform = createCoordinateTransform(sourceCRS, targetCRS);
+        return geometryFactory.createPoint(transformCoordinates(value.getCoordinate(), transform));
 
-        Point point = geometryFactory.createPoint(transformCoordinates(value.getCoordinate(), transform));
-
-        return point;
     }
 
     public static LineString transformCRS(LineString value, String sourceCRS, String targetCRS) {
@@ -76,7 +72,23 @@ public class GisUtil {
         return geometryFactory.createLineString(transformedArray);
     }
 
-    public static Polygon transformCRS(Polygon value, String sourceCRS, String targetCRS) {
-        return null;
+    public static Polygon transformCRS(Polygon value, String sourceCRS, String targetCRS) {    
+        LineString shell = value.getExteriorRing();
+        LinearRing transformedShell = geometryFactory.createLinearRing(
+            transformCRS(shell, sourceCRS, targetCRS).getCoordinateSequence()
+        );
+    
+        int numHoles = value.getNumInteriorRing();
+        LinearRing[] transformedHoles = new LinearRing[numHoles];
+        for (int i = 0; i < numHoles; i++) {
+            LineString hole = value.getInteriorRingN(i);
+            transformedHoles[i] = geometryFactory.createLinearRing(
+                transformCRS(hole, sourceCRS, targetCRS).getCoordinateSequence()
+            );
+        }
+    
+        return geometryFactory.createPolygon(transformedShell, transformedHoles);
     }
+    
+    
 }

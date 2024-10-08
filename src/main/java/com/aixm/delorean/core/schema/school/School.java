@@ -18,6 +18,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -25,7 +26,10 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.Point;
+
+import com.aixm.delorean.core.schema.school.org.gml.CurveType;
 import com.aixm.delorean.core.schema.school.org.gml.PointType;
 
 
@@ -39,7 +43,8 @@ import com.aixm.delorean.core.schema.school.org.gml.PointType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="geom" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="geomPoint" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="geomCurve" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         <element name="classroom" type="{}classroom" maxOccurs="unbounded"/>
  *         <element name="student" type="{}student" maxOccurs="unbounded"/>
  *         <element name="teacher" type="{}teacher" maxOccurs="unbounded"/>
@@ -54,7 +59,8 @@ import com.aixm.delorean.core.schema.school.org.gml.PointType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "school", propOrder = {
-    "geom",
+    "geomPoint",
+    "geomCurve",
     "classroom",
     "student",
     "teacher"
@@ -66,8 +72,12 @@ public class School {
 
     @XmlElement(required = true, type = PointType.class)
     @XmlJavaTypeAdapter(Adapter1.class)
-    @Column(name = "geom", columnDefinition = "geometry(Point, 4326)")
-    protected Point geom;
+    @Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")
+    protected Point geomPoint;
+    @XmlElement(required = true, type = CurveType.class)
+    @XmlJavaTypeAdapter(Adapter2.class)
+    @Column(name = "geomCurve", columnDefinition = "geometry(Linestring, 4326)")
+    protected LineString geomCurve;
     @XmlElement(required = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -90,27 +100,51 @@ public class School {
     protected Long dbid;
 
     /**
-     * Gets the value of the geom property.
+     * Gets the value of the geomPoint property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public Point getGeom() {
-        return geom;
+    public Point getGeomPoint() {
+        return geomPoint;
     }
 
     /**
-     * Sets the value of the geom property.
+     * Sets the value of the geomPoint property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setGeom(Point value) {
-        this.geom = value;
+    public void setGeomPoint(Point value) {
+        this.geomPoint = value;
+    }
+
+    /**
+     * Gets the value of the geomCurve property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public LineString getGeomCurve() {
+        return geomCurve;
+    }
+
+    /**
+     * Sets the value of the geomCurve property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setGeomCurve(LineString value) {
+        this.geomCurve = value;
     }
 
     /**

@@ -55,10 +55,22 @@
         <xs:attribute name="dbid" type="xs:long"/>
     </xs:complexType>
 
+    <!-- <element name="Point" type="aixm:PointType" substitutionGroup="gml:Point"/>
+    <complexType name="PointType">
+		<complexContent>
+			<extension base="gml:PointType">
+				<sequence>
+					<group ref="aixm:PointPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType> -->
+
 
     <xs:complexType name="school">
         <xs:sequence>
-            <xs:element name="geom" type="xs:string"/>
+            <xs:element name="geomPoint" type="xs:string"/>
+            <xs:element name="geomCurve" type="xs:string"/>
             <!-- <xs:element name="geomgeom" type="gml:PointType"/> -->
             <xs:element name="classroom" type="classroom" maxOccurs="unbounded"/>
             <xs:element name="student" type="student" maxOccurs="unbounded"/>

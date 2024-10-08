@@ -7,49 +7,21 @@
 
 package com.aixm.delorean.core.schema.school;
 
-import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;
-
-import com.aixm.delorean.core.schema.school.org.gml.DirectPositionType;
 import com.aixm.delorean.core.schema.school.org.gml.PointType;
 
-public class Adapter1
-    extends XmlAdapter<PointType, Point>
+
+public class Adapter1 extends XmlAdapter<PointType, Point>
 {
-    private static final GeometryFactory geometryFactory = new GeometryFactory();
 
-    public Point unmarshal(PointType value) throws JAXBException {
-
+    public Point unmarshal(PointType value) throws Exception {
         System.out.println("Adapter1 unmarshal");
-
-        DirectPositionType pos = value.getPos();
-        double x = pos.getValue().get(0);
-        double y = pos.getValue().get(1);
-
-        return geometryFactory.createPoint(new Coordinate(x, y));
+        return (com.aixm.delorean.core.util.GmlUtil.parseGMLPoint(value));
     }
 
-    public PointType marshal(Point value) throws JAXBException, ParserConfigurationException {
-
-        System.out.println("Adapter1 unmarshal");
-
-        DirectPositionType pos = new DirectPositionType();
-        pos.getValue().add(value.getX());
-        pos.getValue().add(value.getY());
-        if (value.getSRID() != 0) {
-            pos.setSrsName("EPSG:" + value.getSRID());
-        }
-
-        PointType pointType = new PointType();
-        pointType.setPos(pos);
-
-        return pointType;
+    public PointType marshal(Point value) throws Exception{
+        return (com.aixm.delorean.core.util.GmlUtil.printGMLPoint(value));
     }
 
 }
