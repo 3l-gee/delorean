@@ -25,30 +25,9 @@ import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 public class XMLAdapter {
     
     private GeometryFactory geometryFactory;
-    private CoordinateTransformFactory ctFactory;
-    private CRSFactory crsFactory;
 
     public XMLAdapter() {
         this.geometryFactory = new GeometryFactory();
-        this.ctFactory = new CoordinateTransformFactory();
-        this.crsFactory = new CRSFactory();
-    }
-
-    private Coordinate transformCRSToEPSG4326(Coordinate coord, String sourceCRS, String targetCRS) {
-        // Define source and target CRS
-        CoordinateReferenceSystem srcCrs = crsFactory.createFromName(sourceCRS);
-        CoordinateReferenceSystem tgtCrs = crsFactory.createFromName(targetCRS); 
-
-        // Create the transformation
-        CoordinateTransform transform = ctFactory.createTransform(srcCrs, tgtCrs);
-
-        // Convert the coordinate
-        ProjCoordinate srcCoord = new ProjCoordinate(coord.x, coord.y);
-        ProjCoordinate tgtCoord = new ProjCoordinate();
-        transform.transform(srcCoord, tgtCoord);
-
-        // Return transformed coordinate
-        return new Coordinate(tgtCoord.x, tgtCoord.y);
     }
 
     public Point parseGMLPoint(PointType value) {
