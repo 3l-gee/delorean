@@ -1,7 +1,17 @@
 <school xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
-    <geom>
+    <!-- <geomPoint>
+        <gml:point srsName="EPSG:4326">
+            <gml:pos>1.0 1.0</gml:pos>
+        </gml:point>
+    </geomPoint> -->
+    <geomPoint>
         <gml:pos>1.0 1.0</gml:pos>
-    </geom>
+    </geomPoint>
+    <geomCurve>
+        <gml:curve srsName="EPSG:4326">
+            <gml:posList>1.0 1.0 2.0 2.0 3.0 3.0</gml:posList>
+        </gml:curve>
+    </geomCurve>
     <classroom/>
     <student/>
     <teacher/>
