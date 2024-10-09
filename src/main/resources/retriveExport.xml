@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns4:AIXMBasicMessage xmlns:ns1="http://www.opengis.net/gml/3.2" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns:ns4="http://www.aixm.aero/schema/5.1.1">
+    <geomPoint srsName="EPSG:4326">
+        <ns1:pos>1.0 1.0</ns1:pos>
+    </geomPoint>
+    <geomCurve srsName="EPSG:4326" srsDimension="2">
+        <ns1:segments>
+            <ns1:GeodesicString>
+                <ns1:posList>1.0 1.0 2.0 2.0 3.0 3.0</ns1:posList>
+            </ns1:GeodesicString>
+        </ns1:segments>
+    </geomCurve>
+    <classroom>
+        <classroomid>0</classroomid>
+    </classroom>
+    <student>
+        <assignedclassroomid>0</assignedclassroomid>
+    </student>
+    <teacher>
+        <assignedclassroomid>0</assignedclassroomid>
+    </teacher>
+</ns4:AIXMBasicMessage>

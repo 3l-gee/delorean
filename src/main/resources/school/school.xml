@@ -8,9 +8,11 @@
         <gml:pos>1.0 1.0</gml:pos>
     </geomPoint>
     <geomCurve>
-        <gml:curve srsName="EPSG:4326">
-            <gml:posList>1.0 1.0 2.0 2.0 3.0 3.0</gml:posList>
-        </gml:curve>
+        <gml:segments>
+            <gml:GeodesicString>
+                <gml:posList>1.0 1.0 2.0 2.0 3.0 3.0</gml:posList>
+            </gml:GeodesicString>
+        </gml:segments>
     </geomCurve>
     <classroom/>
     <student/>
