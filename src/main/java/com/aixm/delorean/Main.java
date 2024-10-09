@@ -81,8 +81,8 @@ public class Main {
         logger.log(LogLevel.INFO, "xml_config - school");
         excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "school");
 
-        logger.log(LogLevel.INFO, "xml - load C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/rapha/Documents/project/delorean/src/main/resources/school/school.xml");
+        logger.log(LogLevel.INFO, "xml - load src/main/resources/school/school.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/main/resources/school/school.xml");
  
         // logger.log(LogLevel.INFO, "xml - load C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/school/school.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/school/school.xml");
@@ -99,8 +99,8 @@ public class Main {
         logger.log(LogLevel.INFO, "db - load");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"load", "");
 
-        logger.log(LogLevel.INFO, "xml - export C:/Users/rapha/Documents/project/delorean/test.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "C:/Users/rapha/Documents/project/delorean/importExport.xml");
+        logger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/importExport.xml");
 
         // logger.log(LogLevel.INFO, "Exiting...");
 
@@ -119,8 +119,8 @@ public class Main {
         logger.log(LogLevel.INFO, "db - retrieve 1");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"retrieve", "1");
 
-        logger.log(LogLevel.INFO, "xml - export C:/Users/rapha/Documents/project/delorean/test.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "C:/Users/rapha/Documents/project/delorean/retriveExport.xml");
+        logger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/retriveExport.xml");
 
         // logger.log(LogLevel.INFO, "new a5_1_1");
         // executeNewCommand("a5_1_1");
