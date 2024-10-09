@@ -18,11 +18,11 @@ public class Adapter2 extends XmlAdapter<CurveType, LineString>
 
     public LineString unmarshal(CurveType value) throws Exception {
         System.out.println("Adapter2 unmarshal");
-        return (com.aixm.delorean.core.util.GmlUtil.parseGMLCurve(value));
+        return (com.aixm.delorean.core.util.GisUtil.parseGMLCurve(value));
     }
 
     public CurveType marshal(LineString value) throws Exception{
-        return (com.aixm.delorean.core.util.GmlUtil.printGMLCurve(value));
+        return (com.aixm.delorean.core.util.GisUtil.printGMLCurve(value));
     }
 
 }
