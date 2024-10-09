@@ -4,8 +4,8 @@
             <gml:pos>1.0 1.0</gml:pos>
         </gml:point>
     </geomPoint> -->
-    <geomPoint>
-        <gml:pos>1.0 1.0</gml:pos>
+    <geomPoint srsName="EPSG:2056">
+        <gml:pos>2600000 1200000</gml:pos>
     </geomPoint>
     <geomCurve>
         <gml:segments>

@@ -13,6 +13,9 @@ import org.locationtech.jts.geom.Polygon;
 import org.locationtech.jts.geom.PrecisionModel;
 import org.locationtech.proj4j.CRSFactory;
 import org.locationtech.proj4j.CoordinateReferenceSystem;
+import org.locationtech.proj4j.CoordinateTransformFactory;
+import org.locationtech.proj4j.ProjCoordinate;
+import org.locationtech.proj4j.CoordinateTransform;
 
 import com.aixm.delorean.core.schema.school.org.gml.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractCurveSegmentType;
@@ -24,18 +27,57 @@ import com.aixm.delorean.core.schema.school.org.gml.GeodesicStringType;
 import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
 
-public class GmlUtil {    
+public class GisUtil {    
     private static int SRID = 4326; // EPSG:4326
     private static PrecisionModel precisionModel = new PrecisionModel( 0.001);
     private static GeometryFactory geometryFactory = new GeometryFactory(precisionModel, SRID);
+    private static CRSFactory crsFactory = new CRSFactory();
+    private static CoordinateTransformFactory ctFactory = new CoordinateTransformFactory();
+
+    private static CoordinateTransform createCoordinateTransform(String sourceCRS, String targetCRS) {
+        if (!isValidCRS(sourceCRS)) {
+            throw new IllegalArgumentException("Invalid source CRS: " + sourceCRS);
+        }
+
+        if (!isValidCRS(targetCRS)) {
+            throw new IllegalArgumentException("Invalid target CRS: " + targetCRS);
+        }
+
+        CoordinateReferenceSystem srcCrs = crsFactory.createFromName(sourceCRS);
+        CoordinateReferenceSystem tgtCrs = crsFactory.createFromName(targetCRS);
+        return ctFactory.createTransform(srcCrs, tgtCrs);
+    }
+
+    private static boolean isValidCRS(String crs) {
+            try {
+                crsFactory.createFromName(crs);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }
+
+    private static Coordinate transformCoordinates(Coordinate value, CoordinateTransform transform) {
+        ProjCoordinate srcCoord = new ProjCoordinate(value.getX(), value.getY());
+        ProjCoordinate tgtCoord = new ProjCoordinate();
+        transform.transform(srcCoord, tgtCoord);
+
+        return new Coordinate(tgtCoord.x, tgtCoord.y);
+    }
 
     public static Point parseGMLPoint(PointType value) {
         DirectPositionType pos = value.getPos();
+        String srsName = value.getSrsName();
+        Coordinate srcCoord = new Coordinate(pos.getValue().get(0), pos.getValue().get(1));
+        if (srsName == null) {
+            // No transformation needed
+            return geometryFactory.createPoint(new Coordinate(srcCoord.x, srcCoord.y));
+        }
+        
+        CoordinateTransform transform = createCoordinateTransform(srsName, "EPSG:4326");
+        Coordinate tgtCoord = transformCoordinates(new Coordinate(srcCoord.x, srcCoord.y), transform);
 
-        double x = pos.getValue().get(0);
-        double y = pos.getValue().get(1);
-
-        return geometryFactory.createPoint(new Coordinate(x, y));
+        return geometryFactory.createPoint(new Coordinate(tgtCoord.x, tgtCoord.y));
     }
 
     public static PointType printGMLPoint(Point value){  

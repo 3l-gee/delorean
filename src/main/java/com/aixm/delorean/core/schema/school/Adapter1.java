@@ -17,11 +17,11 @@ public class Adapter1 extends XmlAdapter<PointType, Point>
 
     public Point unmarshal(PointType value) throws Exception {
         System.out.println("Adapter1 unmarshal");
-        return (com.aixm.delorean.core.util.GmlUtil.parseGMLPoint(value));
+        return (com.aixm.delorean.core.util.GisUtil.parseGMLPoint(value));
     }
 
     public PointType marshal(Point value) throws Exception{
-        return (com.aixm.delorean.core.util.GmlUtil.printGMLPoint(value));
+        return (com.aixm.delorean.core.util.GisUtil.printGMLPoint(value));
     }
 
 }
