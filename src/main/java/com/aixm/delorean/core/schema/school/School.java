@@ -28,6 +28,10 @@ import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.geom.Polygon;
+
+import com.aixm.delorean.core.schema.school.org.gml.PointType;
+import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
 
 import com.aixm.delorean.core.schema.school.org.gml.CurveType;
 import com.aixm.delorean.core.schema.school.org.gml.PointType;
@@ -45,6 +49,7 @@ import com.aixm.delorean.core.schema.school.org.gml.PointType;
  *       <sequence>
  *         <element name="geomPoint" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         <element name="geomCurve" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="geomSurface" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         <element name="classroom" type="{}classroom" maxOccurs="unbounded"/>
  *         <element name="student" type="{}student" maxOccurs="unbounded"/>
  *         <element name="teacher" type="{}teacher" maxOccurs="unbounded"/>
@@ -61,6 +66,7 @@ import com.aixm.delorean.core.schema.school.org.gml.PointType;
 @XmlType(name = "school", propOrder = {
     "geomPoint",
     "geomCurve",
+    "geomSurface",
     "classroom",
     "student",
     "teacher"
@@ -73,11 +79,18 @@ public class School {
     @XmlElement(required = true, type = PointType.class)
     @XmlJavaTypeAdapter(Adapter1.class)
     @Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")
+    @Transient
     protected Point geomPoint;
     @XmlElement(required = true, type = CurveType.class)
     @XmlJavaTypeAdapter(Adapter2.class)
     @Column(name = "geomCurve", columnDefinition = "geometry(Linestring, 4326)")
+    @Transient
     protected LineString geomCurve;
+    @XmlElement(required = true, type = SurfaceType.class)
+    @XmlJavaTypeAdapter(Adapter3.class)
+    @Column(name = "geomSurface", columnDefinition = "geometry(Polygon, 4326)")
+    @Transient
+    protected Polygon geomSurface;
     @XmlElement(required = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -145,6 +158,30 @@ public class School {
      */
     public void setGeomCurve(LineString value) {
         this.geomCurve = value;
+    }
+
+    /**
+     * Gets the value of the geomSurface property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Polygon getGeomSurface() {
+        return geomSurface;
+    }
+
+    /**
+     * Sets the value of the geomSurface property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setGeomSurface(Polygon value) {
+        this.geomSurface = value;
     }
 
     /**

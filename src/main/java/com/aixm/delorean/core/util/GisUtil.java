@@ -1,6 +1,8 @@
 package com.aixm.delorean.core.util;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 import javax.xml.namespace.QName;
@@ -19,12 +21,20 @@ import org.locationtech.proj4j.CoordinateTransform;
 
 import com.aixm.delorean.core.schema.school.org.gml.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractCurveSegmentType;
+import com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType;
+import com.aixm.delorean.core.schema.school.org.gml.SurfacePatchArrayPropertyType;
+import com.aixm.delorean.core.schema.school.org.gml.AbstractSurfacePatchType;
+import com.aixm.delorean.core.schema.school.org.gml.CurvePropertyType;
+import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
+import com.aixm.delorean.core.schema.school.org.gml.RingType;
+
 import jakarta.xml.bind.JAXBElement;
 import com.aixm.delorean.core.schema.school.org.gml.CurveType;
 import com.aixm.delorean.core.schema.school.org.gml.DirectPositionListType;
 import com.aixm.delorean.core.schema.school.org.gml.DirectPositionType;
 import com.aixm.delorean.core.schema.school.org.gml.GeodesicStringType;
 import com.aixm.delorean.core.schema.school.org.gml.PointType;
+import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
 import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
 
 public class GisUtil {    
@@ -120,8 +130,6 @@ public class GisUtil {
         Coordinate[] coordinates = new Coordinate[posList.size() / dimension];
 
         for (int i = 0; i < posList.size(); i += dimension) {
-            System.out.println("x: " + posList.get(i));
-            System.out.println("y: " + posList.get(i + 1));
             coordinates[i / dimension] = new Coordinate(posList.get(i), posList.get(i + 1));
         }
 
@@ -161,12 +169,53 @@ public class GisUtil {
     }
 
 
-    public Polygon parseGMLSurface(SurfaceType value) {
+    public static Polygon parseGMLSurface(SurfaceType value) { 
+        List<PolygonPatchType> patches = null;
+        String srsName = value.getSrsName();
+        Integer counter = 0;
+        Map<Integer, RingType> exteriorMap = new HashMap<>(256);
+        Map<Integer, RingType> interiorMap = new HashMap<>(256);
+        
+        
+        //TODO cam Only handel PolygonPatchType
+        for (JAXBElement<? extends AbstractSurfacePatchType> element : value.getPatches().getValue().getAbstractSurfacePatch()) {
+            if (element.getValue() instanceof PolygonPatchType) {
+                    patches.add((PolygonPatchType) element.getValue());
+
+            } else {
+                throw new IllegalArgumentException("Unsupported surface patch type: " + element.getValue().getClass().getName());
+            }    
+        }
+
+        for (PolygonPatchType patch : patches) {
+            //Handels Exterior
+            if(patch.getExterior().getAbstractRing().getValue() instanceof RingType){
+                exteriorMap.put(counter, (RingType) patch.getExterior().getAbstractRing().getValue());
+            }
+
+            //Handels Interior
+            for (AbstractRingPropertyType interior : patch.getInterior()){
+                if (interior.getAbstractRing().getValue() instanceof RingType) {
+                    interiorMap.put(counter, (RingType) interior.getAbstractRing().getValue());
+                }
+            }
+
+            counter++;
+        }
+
+        for (Integer i : exteriorMap.keySet()){
+            System.out.println("exteriorMap :"  +  exteriorMap.get(i));
+        }
+
+
+
         return null;
     }
 
-    public SurfaceType printGMLSurface(Polygon value){
-        return null;
+    public static SurfaceType printGMLSurface(Polygon value){
+
+
+        return new SurfaceType();
     }
     
 }

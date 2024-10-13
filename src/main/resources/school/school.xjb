@@ -43,17 +43,25 @@
         <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='geomPoint']">
     		<jaxb:javaType 
 				name="org.locationtech.jts.geom.Point" 
-				parseMethod="com.aixm.delorean.core.util.parseGMLPoint" 
-				printMethod="com.aixm.delorean.core.util.printGMLPoint"/>
+				parseMethod="com.aixm.delorean.core.util.GisUtil.parseGMLPoint" 
+				printMethod="com.aixm.delorean.core.util.GisUtil.printGMLPoint"/>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='geomCurve']">
     		<jaxb:javaType 
 				name="org.locationtech.jts.geom.LineString" 
-				parseMethod="com.aixm.delorean.core.util.parseGMLCurve" 
-				printMethod="com.aixm.delorean.core.util.printGMLCurve"/>
+				parseMethod="com.aixm.delorean.core.util.GisUtil.parseGMLCurve" 
+				printMethod="com.aixm.delorean.core.util.GisUtil.printGMLCurve"/>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "geomCurve", columnDefinition = "geometry(Linestring, 4326)")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='geomSurface']">
+    		<jaxb:javaType 
+				name="org.locationtech.jts.geom.Polygon" 
+				parseMethod="com.aixm.delorean.core.util.GisUtil.parseGMLSurface" 
+				printMethod="com.aixm.delorean.core.util.GisUtil.printGMLSurface"/>
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "geomSurface", columnDefinition = "geometry(PolygonPolygonWithHole, 4326)")</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="xs:simpleType[@name='teacherrole']">

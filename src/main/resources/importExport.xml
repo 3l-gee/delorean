@@ -10,6 +10,7 @@
             </ns1:GeodesicString>
         </ns1:segments>
     </geomCurve>
+    <geomSurface/>
     <classroom>
         <classroomid>0</classroomid>
     </classroom>

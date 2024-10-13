@@ -12,16 +12,16 @@ import org.locationtech.jts.geom.LineString;
 
 import com.aixm.delorean.core.schema.school.org.gml.CurveType;
 
-public class Adapter2 extends XmlAdapter<CurveType, LineString>
+public class Adapter2
+    extends XmlAdapter<CurveType, LineString>
 {
 
 
-    public LineString unmarshal(CurveType value) throws Exception {
-        System.out.println("Adapter2 unmarshal");
+    public LineString unmarshal(CurveType value) {
         return (com.aixm.delorean.core.util.GisUtil.parseGMLCurve(value));
     }
 
-    public CurveType marshal(LineString value) throws Exception{
+    public CurveType marshal(LineString value) {
         return (com.aixm.delorean.core.util.GisUtil.printGMLCurve(value));
     }
 
