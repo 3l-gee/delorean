@@ -1,9 +1,9 @@
 <school xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
-    <!-- <geomPoint>
+    <geomPoint>
         <gml:point srsName="EPSG:4326">
             <gml:pos>1.0 1.0</gml:pos>
         </gml:point>
-    </geomPoint> -->
+    </geomPoint>
     <geomPoint srsName="EPSG:2056">
         <gml:pos>2600000 1200000</gml:pos>
     </geomPoint>
@@ -14,6 +14,34 @@
             </gml:GeodesicString>
         </gml:segments>
     </geomCurve>
+    <geomSurface>
+        <gml:patches>
+            <gml:PolygonPatch>
+                <gml:exterior>
+                    <gml:LinearRing>
+                        <gml:posList>1.0 1.0 2.0 2.0 3.0 3.0 1.0 1.0</gml:posList>
+                    </gml:LinearRing>
+                </gml:exterior>
+            </gml:PolygonPatch>
+        </gml:patches>
+    </geomSurface>
+    <gml:patches>
+        <gml:PolygonPatch>
+            <gml:exterior>
+                <gml:Ring>
+                    <gml:curveMember>
+                        <gml:Curve gml:id="gmlAranID10620">
+                            <gml:segments>
+                                <gml:GeodesicString>
+                                    <gml:posList>24.2688767 57.0962053 24.2686517 57.096149 24.2678778 57.0970662 24.2681028 57.0971224 24.2688767 57.0962053 </gml:posList>
+                                </gml:GeodesicString>
+                            </gml:segments>
+                        </gml:Curve>
+                    </gml:curveMember>
+                </gml:Ring>
+            </gml:exterior>
+        </gml:PolygonPatch>
+    </gml:patches>
     <classroom/>
     <student/>
     <teacher/>
