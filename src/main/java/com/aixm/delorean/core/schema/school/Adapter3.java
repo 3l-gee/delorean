@@ -18,11 +18,11 @@ public class Adapter3
 
 
     public Polygon unmarshal(SurfaceType value) {
-        return (com.aixm.delorean.core.util.GisUtil.parseGMLSurface(value));
+        return (com.aixm.delorean.core.util.TempGisUtil.parseGMLSurface(value));
     }
 
     public SurfaceType marshal(Polygon value) {
-        return (com.aixm.delorean.core.util.GisUtil.printGMLSurface(value));
+        return (com.aixm.delorean.core.util.TempGisUtil.printGMLSurface(value));
     }
 
 }

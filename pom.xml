@@ -13,11 +13,21 @@
 
     <repositories>
         <repository>
-            <id>sourceforge</id>
-            <name>SourceForge Repository</name>
+            <id>osgeo</id>
+            <name>OSGeo Release Repository</name>
             <url>https://repo.osgeo.org/repository/release/</url>
+            <snapshots><enabled>false</enabled></snapshots>
+            <releases><enabled>true</enabled></releases>
         </repository>
     </repositories>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <geotools.version>32.0</geotools.version>
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
 
 	<dependencies>
 		<dependency>
@@ -106,6 +116,31 @@
         </dependency>
 
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-main</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-xml</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools.xsd</groupId>
+            <artifactId>gt-xsd-gml3</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+
+        <!-- <dependency>
             <groupId>org.geotools</groupId>
             <artifactId>gt-main</artifactId>
             <version>32.0</version>
@@ -127,15 +162,9 @@
             <groupId>org.geotools</groupId>
             <artifactId>gt-jts-wrapper</artifactId>
             <version>24.7</version>
-        </dependency>
+        </dependency> -->
 
 	</dependencies>
-
-	<properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-    </properties>
-
 	<build>
 		<plugins>
                 <!-- <plugin>

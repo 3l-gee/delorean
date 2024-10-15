@@ -37,7 +37,7 @@ import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
 import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
 
-public class GisUtil {    
+public class TempGisUtil {    
     private static int SRID = 4326; // EPSG:4326
     private static PrecisionModel precisionModel = new PrecisionModel( 0.001);
     private static GeometryFactory geometryFactory = new GeometryFactory(precisionModel, SRID);
