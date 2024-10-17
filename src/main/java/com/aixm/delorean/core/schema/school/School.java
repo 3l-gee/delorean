@@ -79,17 +79,14 @@ public class School {
     @XmlElement(required = true, type = PointType.class)
     @XmlJavaTypeAdapter(Adapter1.class)
     @Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")
-    @Transient
     protected Point geomPoint;
     @XmlElement(required = true, type = CurveType.class)
     @XmlJavaTypeAdapter(Adapter2.class)
     @Column(name = "geomCurve", columnDefinition = "geometry(Linestring, 4326)")
-    @Transient
     protected LineString geomCurve;
     @XmlElement(required = true, type = SurfaceType.class)
     @XmlJavaTypeAdapter(Adapter3.class)
     @Column(name = "geomSurface", columnDefinition = "geometry(Polygon, 4326)")
-    @Transient
     protected Polygon geomSurface;
     @XmlElement(required = true)
     @OneToMany(cascade = {

@@ -11,6 +11,7 @@ import javax.xml.namespace.QName;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LineString;
+import org.locationtech.jts.geom.LinearRing;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 import org.locationtech.jts.geom.PrecisionModel;
@@ -44,6 +45,33 @@ public class GisUtil {
     private static GeometryFactory geometryFactory = new GeometryFactory(precisionModel, SRID);
     private static CRSFactory crsFactory = new CRSFactory();
     private static CoordinateTransformFactory ctFactory = new CoordinateTransformFactory();
+
+    private static Coordinate[] segmentToCoordinate(String srsName, GeodesicStringType segment) {
+        CoordinateTransform transform = createCoordinateTransform(srsName, "EPSG:4326");
+        List<Double> posList = segment.getPosList().getValue();
+        BigInteger srsDimension = segment.getPosList().getSrsDimension();
+        int dimension = (srsDimension != null) ? srsDimension.intValue() : 2;
+        Coordinate[] coordinates = new Coordinate[posList.size() / dimension];
+
+        for (int i = 0; i < posList.size(); i += dimension) {
+            coordinates[i / dimension] = transformCoordinates(new Coordinate(posList.get(i), posList.get(i + 1)), transform);
+        }
+        
+        return coordinates;
+    }
+
+    private static GeodesicStringType coordinateToSegment(Coordinate[] coordinates) {
+        GeodesicStringType segment = new GeodesicStringType();
+        DirectPositionListType posList = new DirectPositionListType();
+        
+        for (Coordinate coord : coordinates) {
+            posList.getValue().add(coord.getX());
+            posList.getValue().add(coord.getY());
+        }
+        
+        segment.setPosList(posList);
+        return segment;
+    }
 
     private static CoordinateTransform createCoordinateTransform(String sourceCRS, String targetCRS) {
         if (!isValidCRS(sourceCRS)) {
@@ -125,16 +153,7 @@ public class GisUtil {
             throw new IllegalArgumentException("No GeodesicStringType segment found in the curve.");
         }
 
-        List<Double> posList = segment.getPosList().getValue();
-        BigInteger srsDimension = segment.getPosList().getSrsDimension();
-        int dimension = (srsDimension != null) ? srsDimension.intValue() : 2;
-        Coordinate[] coordinates = new Coordinate[posList.size() / dimension];
-
-        for (int i = 0; i < posList.size(); i += dimension) {
-            coordinates[i / dimension] = new Coordinate(posList.get(i), posList.get(i + 1));
-        }
-
-        return geometryFactory.createLineString(coordinates);
+        return geometryFactory.createLineString(segmentToCoordinate(value.getSrsName(), segment));
     }
 
     public static CurveType printGMLCurve(LineString value) {
@@ -173,45 +192,12 @@ public class GisUtil {
     public static Polygon parseGMLSurface(SurfaceType value) { 
         System.out.println("parseGMLSurface(SurfaceType value)");
         List<PolygonPatchType> patches = new ArrayList<>();
-        String srsName = value.getSrsName();
         Integer counter = 0;
-        Map<Integer, RingType> exteriorMap = new HashMap<>(256);
-        Map<Integer, RingType> interiorMap = new HashMap<>(256);
+        Map<Integer, GeodesicStringType> exteriorMap = new HashMap<>(256);
+        Map<Integer, GeodesicStringType> interiorMap = new HashMap<>(256);
         
-        System.out.println("---value---");
-        System.out.println(value);
-        System.out.println(value.getPatches());
-        System.out.println(value.getPatches().getValue());
-        System.out.println(value.getPatches().getValue().getAbstractSurfacePatch());
-        System.out.println(value.getPatches().getValue().getAbstractSurfacePatch().getFirst().getValue());
-
-        /*
-         * ---value---
-        com.aixm.delorean.core.schema.school.org.gml.SurfaceType@2cf92cc7
-        jakarta.xml.bind.JAXBElement@30ea8c23
-        com.aixm.delorean.core.schema.school.org.gml.SurfacePatchArrayPropertyType@7b139eab
-        [jakarta.xml.bind.JAXBElement@4e76dac, jakarta.xml.bind.JAXBElement@611df6e3]
-        com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType@5f2f577c
-        */
-        
-
-        //TODO cam Only handel PolygonPatchType
         for (JAXBElement<? extends AbstractSurfacePatchType> element : value.getPatches().getValue().getAbstractSurfacePatch()) {
-
-            System.out.println("---element---");
-            System.out.println(element);
-            System.out.println(element.getValue());
-            System.out.println(element.getValue() instanceof PolygonPatchType);
-
-            /*
-             * ---element---
-            jakarta.xml.bind.JAXBElement@4e76dac
-            com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType@5f2f577
-            true
-             */
-
             if (element.getValue() instanceof PolygonPatchType) {
-                    System.out.println("---add element to patches---");
                     patches.add((PolygonPatchType) element.getValue());
 
             } else {
@@ -219,64 +205,60 @@ public class GisUtil {
             }    
         }
 
-        System.out.println("---patches getExterior---");
-        System.out.println(patches.getFirst());
-        System.out.println(patches.getFirst().getExterior());
-        System.out.println(patches.getFirst().getExterior().getAbstractRing());
-        System.out.println(patches.getFirst().getExterior().getAbstractRing().getValue());
-        System.out.println(patches.getFirst().getExterior().getAbstractRing().getValue() instanceof RingType);
-        System.out.println("---patches getInterior---");
-        System.out.println(patches.getFirst().getInterior());
-        System.out.println(patches.getFirst().getInterior().getFirst().getAbstractRing());
-        System.out.println(patches.getFirst().getInterior().getFirst().getAbstractRing().getValue());
-        System.out.println(patches.getFirst().getInterior().getFirst().getAbstractRing().getValue() instanceof RingType);
-        /* 
-        ---patches getExterior---
-        com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType@5f2f577
-        com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType@5d465e4b
-        jakarta.xml.bind.JAXBElement@53e211ee
-        com.aixm.delorean.core.schema.school.org.gml.RingType@41a90fa8
-        true
-        ---patches getInterior---
-        [com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType@3d8bbcdc]
-        jakarta.xml.bind.JAXBElement@52500920
-        com.aixm.delorean.core.schema.school.org.gml.RingType@117e0fe5
-        true
-        */
-
         for (PolygonPatchType patch : patches) {
-            //Handels Exterior
             if(patch.getExterior().getAbstractRing().getValue() instanceof RingType){
-                System.out.println("---add patch to exteriorMap---");
-                exteriorMap.put(counter, (RingType) patch.getExterior().getAbstractRing().getValue());
+                RingType exteriorRing = (RingType) patch.getExterior().getAbstractRing().getValue();
+
+                if (exteriorRing.getCurveMember().getFirst().getAbstractCurve().getValue() instanceof CurveType){
+                    CurveType curve = (CurveType) exteriorRing.getCurveMember().getFirst().getAbstractCurve().getValue();
+
+                    if (curve.getSegments().getAbstractCurveSegment().getFirst().getValue() instanceof GeodesicStringType){
+                        exteriorMap.put(counter, (GeodesicStringType) curve.getSegments().getAbstractCurveSegment().getFirst().getValue());
+                    } else {
+                        throw new IllegalArgumentException("Unsupported curve segment type: " + curve.getSegments().getAbstractCurveSegment().getFirst().getValue().getClass().getName());
+                    }
+                } else {
+                    throw new IllegalArgumentException("Unsupported surface patch type: " + patch.getExterior().getAbstractRing().getValue().getClass().getName());
+                }
             } else {
                 throw new IllegalArgumentException("Unsupported surface patch type: " + patch.getExterior().getAbstractRing().getValue().getClass().getName());
             }
 
-            //Handels Interior
             for (AbstractRingPropertyType interior : patch.getInterior()){
                 if (interior.getAbstractRing().getValue() instanceof RingType) {
-                    System.out.println("---add patch to interiorMap---");
-                    interiorMap.put(counter, (RingType) interior.getAbstractRing().getValue());
+                    RingType interiorRing = (RingType) patch.getExterior().getAbstractRing().getValue();
+
+                    if (interiorRing.getCurveMember().getFirst().getAbstractCurve().getValue() instanceof CurveType){
+                        CurveType curve = (CurveType) interiorRing.getCurveMember().getFirst().getAbstractCurve().getValue();
+    
+                        if (curve.getSegments().getAbstractCurveSegment().getFirst().getValue() instanceof GeodesicStringType){
+                            interiorMap.put(counter, (GeodesicStringType) curve.getSegments().getAbstractCurveSegment().getFirst().getValue());
+                        } else {
+                            throw new IllegalArgumentException("Unsupported curve segment type: " + curve.getSegments().getAbstractCurveSegment().getFirst().getValue().getClass().getName());
+                        }
+    
+                    } else {
+                        throw new IllegalArgumentException("Unsupported surface patch type: " + patch.getExterior().getAbstractRing().getValue().getClass().getName());
+                    }
                 } else {
                     throw new IllegalArgumentException("Unsupported surface patch type: " + interior.getAbstractRing().getValue().getClass().getName());
                 }
             }
-
             counter++;
         }
 
-        for (Integer i : exteriorMap.keySet()){
-            System.out.println("exteriorMap :"  +  exteriorMap.get(i));
+        if (exteriorMap.size() != 1) {
+            throw new IllegalArgumentException("The exterior map must contain exactly one entry.");
         }
 
-        for (Integer i : interiorMap.keySet()){
-            System.out.println("interiorMap :"  +  interiorMap.get(i));
+        LinearRing shell = geometryFactory.createLinearRing(segmentToCoordinate(value.getSrsName(), exteriorMap.get(0)));
+        LinearRing[] holes = new LinearRing[interiorMap.size()];
+
+        for (Integer i : interiorMap.keySet()) {
+            holes[i] = geometryFactory.createLinearRing(segmentToCoordinate(value.getSrsName(), interiorMap.get(i)));
         }
 
-
-
-        return null;
+        return geometryFactory.createPolygon(shell, holes);
     }
 
     public static SurfaceType printGMLSurface(Polygon value){
