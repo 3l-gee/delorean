@@ -14,9 +14,8 @@
             </gml:GeodesicString>
         </gml:segments>
     </geomCurve>
-    <geomSurface>
+    <geomSurface srsName="EPSG:4326">
         <gml:patches>
-            <!-- First Island with a hole -->
             <gml:PolygonPatch>
                 <gml:exterior>
                     <gml:Ring>
@@ -48,25 +47,6 @@
                         </gml:curveMember>
                     </gml:Ring>
                 </gml:interior>
-            </gml:PolygonPatch>
-
-            <!-- Second Island -->
-            <gml:PolygonPatch>
-                <gml:exterior>
-                    <gml:Ring>
-                        <gml:curveMember>
-                            <gml:Curve>
-                                <gml:segments>
-                                    <gml:GeodesicString>
-                                        <gml:posList>
-                                            20 20  30 20  30 30  20 30  20 20
-                                        </gml:posList>
-                                    </gml:GeodesicString>
-                                </gml:segments>
-                            </gml:Curve>
-                        </gml:curveMember>
-                    </gml:Ring>
-                </gml:exterior>
             </gml:PolygonPatch>
         </gml:patches>
     </geomSurface>
