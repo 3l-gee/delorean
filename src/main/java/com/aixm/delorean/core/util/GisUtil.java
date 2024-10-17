@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.xml.namespace.QName;
 
@@ -37,7 +38,7 @@ import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
 import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
 
-public class TempGisUtil {    
+public class GisUtil {    
     private static int SRID = 4326; // EPSG:4326
     private static PrecisionModel precisionModel = new PrecisionModel( 0.001);
     private static GeometryFactory geometryFactory = new GeometryFactory(precisionModel, SRID);
@@ -170,16 +171,47 @@ public class TempGisUtil {
 
 
     public static Polygon parseGMLSurface(SurfaceType value) { 
-        List<PolygonPatchType> patches = null;
+        System.out.println("parseGMLSurface(SurfaceType value)");
+        List<PolygonPatchType> patches = new ArrayList<>();
         String srsName = value.getSrsName();
         Integer counter = 0;
         Map<Integer, RingType> exteriorMap = new HashMap<>(256);
         Map<Integer, RingType> interiorMap = new HashMap<>(256);
         
+        System.out.println("---value---");
+        System.out.println(value);
+        System.out.println(value.getPatches());
+        System.out.println(value.getPatches().getValue());
+        System.out.println(value.getPatches().getValue().getAbstractSurfacePatch());
+        System.out.println(value.getPatches().getValue().getAbstractSurfacePatch().getFirst().getValue());
+
+        /*
+         * ---value---
+        com.aixm.delorean.core.schema.school.org.gml.SurfaceType@2cf92cc7
+        jakarta.xml.bind.JAXBElement@30ea8c23
+        com.aixm.delorean.core.schema.school.org.gml.SurfacePatchArrayPropertyType@7b139eab
+        [jakarta.xml.bind.JAXBElement@4e76dac, jakarta.xml.bind.JAXBElement@611df6e3]
+        com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType@5f2f577c
+        */
         
+
         //TODO cam Only handel PolygonPatchType
         for (JAXBElement<? extends AbstractSurfacePatchType> element : value.getPatches().getValue().getAbstractSurfacePatch()) {
+
+            System.out.println("---element---");
+            System.out.println(element);
+            System.out.println(element.getValue());
+            System.out.println(element.getValue() instanceof PolygonPatchType);
+
+            /*
+             * ---element---
+            jakarta.xml.bind.JAXBElement@4e76dac
+            com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType@5f2f577
+            true
+             */
+
             if (element.getValue() instanceof PolygonPatchType) {
+                    System.out.println("---add element to patches---");
                     patches.add((PolygonPatchType) element.getValue());
 
             } else {
@@ -187,16 +219,47 @@ public class TempGisUtil {
             }    
         }
 
+        System.out.println("---patches getExterior---");
+        System.out.println(patches.getFirst());
+        System.out.println(patches.getFirst().getExterior());
+        System.out.println(patches.getFirst().getExterior().getAbstractRing());
+        System.out.println(patches.getFirst().getExterior().getAbstractRing().getValue());
+        System.out.println(patches.getFirst().getExterior().getAbstractRing().getValue() instanceof RingType);
+        System.out.println("---patches getInterior---");
+        System.out.println(patches.getFirst().getInterior());
+        System.out.println(patches.getFirst().getInterior().getFirst().getAbstractRing());
+        System.out.println(patches.getFirst().getInterior().getFirst().getAbstractRing().getValue());
+        System.out.println(patches.getFirst().getInterior().getFirst().getAbstractRing().getValue() instanceof RingType);
+        /* 
+        ---patches getExterior---
+        com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType@5f2f577
+        com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType@5d465e4b
+        jakarta.xml.bind.JAXBElement@53e211ee
+        com.aixm.delorean.core.schema.school.org.gml.RingType@41a90fa8
+        true
+        ---patches getInterior---
+        [com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType@3d8bbcdc]
+        jakarta.xml.bind.JAXBElement@52500920
+        com.aixm.delorean.core.schema.school.org.gml.RingType@117e0fe5
+        true
+        */
+
         for (PolygonPatchType patch : patches) {
             //Handels Exterior
             if(patch.getExterior().getAbstractRing().getValue() instanceof RingType){
+                System.out.println("---add patch to exteriorMap---");
                 exteriorMap.put(counter, (RingType) patch.getExterior().getAbstractRing().getValue());
+            } else {
+                throw new IllegalArgumentException("Unsupported surface patch type: " + patch.getExterior().getAbstractRing().getValue().getClass().getName());
             }
 
             //Handels Interior
             for (AbstractRingPropertyType interior : patch.getInterior()){
                 if (interior.getAbstractRing().getValue() instanceof RingType) {
+                    System.out.println("---add patch to interiorMap---");
                     interiorMap.put(counter, (RingType) interior.getAbstractRing().getValue());
+                } else {
+                    throw new IllegalArgumentException("Unsupported surface patch type: " + interior.getAbstractRing().getValue().getClass().getName());
                 }
             }
 
@@ -205,6 +268,10 @@ public class TempGisUtil {
 
         for (Integer i : exteriorMap.keySet()){
             System.out.println("exteriorMap :"  +  exteriorMap.get(i));
+        }
+
+        for (Integer i : interiorMap.keySet()){
+            System.out.println("interiorMap :"  +  interiorMap.get(i));
         }
 
 

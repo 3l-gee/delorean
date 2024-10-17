@@ -18,11 +18,11 @@ public class Adapter1
 
 
     public Point unmarshal(PointType value) {
-        return (com.aixm.delorean.core.util.TempGisUtil.parseGMLPoint(value));
+        return (com.aixm.delorean.core.util.GisUtil.parseGMLPoint(value));
     }
 
     public PointType marshal(Point value) {
-        return (com.aixm.delorean.core.util.TempGisUtil.printGMLPoint(value));
+        return (com.aixm.delorean.core.util.GisUtil.printGMLPoint(value));
     }
 
 }

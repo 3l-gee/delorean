@@ -36,8 +36,12 @@
   </build>
   <repositories>
     <repository>
-      <id>sourceforge</id>
-      <name>SourceForge Repository</name>
+      <releases />
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>osgeo</id>
+      <name>OSGeo Release Repository</name>
       <url>https://repo.osgeo.org/repository/release/</url>
     </repository>
   </repositories>
@@ -62,9 +66,24 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>hamcrest-core</artifactId>
+          <groupId>org.hamcrest</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
   </dependencies>
   <properties>
     <maven.compiler.target>21</maven.compiler.target>
     <maven.compiler.source>21</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <geotools.version>32.0</geotools.version>
+    <maven.deploy.skip>true</maven.deploy.skip>
   </properties>
 </project>

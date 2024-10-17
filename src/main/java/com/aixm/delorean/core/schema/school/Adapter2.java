@@ -18,11 +18,11 @@ public class Adapter2
 
 
     public LineString unmarshal(CurveType value) {
-        return (com.aixm.delorean.core.util.TempGisUtil.parseGMLCurve(value));
+        return (com.aixm.delorean.core.util.GisUtil.parseGMLCurve(value));
     }
 
     public CurveType marshal(LineString value) {
-        return (com.aixm.delorean.core.util.TempGisUtil.printGMLCurve(value));
+        return (com.aixm.delorean.core.util.GisUtil.printGMLCurve(value));
     }
 
 }
