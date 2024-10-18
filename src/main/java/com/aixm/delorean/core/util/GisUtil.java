@@ -24,6 +24,7 @@ import org.locationtech.proj4j.CoordinateTransform;
 import com.aixm.delorean.core.schema.school.org.gml.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractCurveSegmentType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType;
+import com.aixm.delorean.core.schema.school.org.gml.AbstractRingType;
 import com.aixm.delorean.core.schema.school.org.gml.SurfacePatchArrayPropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractSurfacePatchType;
 import com.aixm.delorean.core.schema.school.org.gml.CurvePropertyType;
@@ -47,6 +48,9 @@ public class GisUtil {
     private static CoordinateTransformFactory ctFactory = new CoordinateTransformFactory();
 
     private static Coordinate[] segmentToCoordinate(String srsName, GeodesicStringType segment) {
+        if (srsName == null) {
+            srsName = "EPSG:4326";
+        }
         CoordinateTransform transform = createCoordinateTransform(srsName, "EPSG:4326");
         List<Double> posList = segment.getPosList().getValue();
         BigInteger srsDimension = segment.getPosList().getSrsDimension();
@@ -85,6 +89,22 @@ public class GisUtil {
         CoordinateReferenceSystem srcCrs = crsFactory.createFromName(sourceCRS);
         CoordinateReferenceSystem tgtCrs = crsFactory.createFromName(targetCRS);
         return ctFactory.createTransform(srcCrs, tgtCrs);
+    }
+
+    private static RingType geodesicStringTypeWrapper(GeodesicStringType value) {
+        CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();   
+        segments.getAbstractCurveSegment().add(new JAXBElement<GeodesicStringType>(new QName("http://www.opengis.net/gml/3.2", "GeodesicString"), GeodesicStringType.class, value));
+
+        CurveType curve = new CurveType();
+        curve.setSegments(segments);
+
+        CurvePropertyType curveProperty = new CurvePropertyType();
+        curveProperty.setAbstractCurve(new JAXBElement<CurveType>(new QName("http://www.opengis.net/gml/3.2", "Curve"), CurveType.class, curve)); 
+        
+        RingType ring = new RingType();
+        ring.getCurveMember().add(curveProperty);
+
+        return ring;
     }
 
     private static boolean isValidCRS(String crs) {
@@ -139,7 +159,6 @@ public class GisUtil {
     public static LineString parseGMLCurve(CurveType value) {
         GeodesicStringType segment = null;
 
-        //TODO can only handle GeodesicString segmentstype
         for (JAXBElement<? extends AbstractCurveSegmentType> element : value.getSegments().getAbstractCurveSegment()) {
             if (element.getValue() instanceof GeodesicStringType) {
                 segment = (GeodesicStringType) element.getValue();
@@ -262,7 +281,34 @@ public class GisUtil {
     }
 
     public static SurfaceType printGMLSurface(Polygon value){
+        //shell
+        GeodesicStringType shell = coordinateToSegment(value.getExteriorRing().getCoordinates());
+        RingType exterior = geodesicStringTypeWrapper(shell);
+        AbstractRingPropertyType exteriorRing = new AbstractRingPropertyType();
+        exteriorRing.setAbstractRing(new JAXBElement<RingType>( new QName("http://www.opengis.net/gml/3.2", "Ring"), RingType.class, exterior));
 
+        //holes
+        List<AbstractRingPropertyType> interiorRingList = new ArrayList<>();
+        for (int i = 0; i < value.getNumInteriorRing(); i++) {
+            GeodesicStringType hole = coordinateToSegment(value.getInteriorRingN(i).getCoordinates());
+            RingType interior = geodesicStringTypeWrapper(hole);
+            AbstractRingPropertyType interiorRing = new AbstractRingPropertyType();
+            interiorRing.setAbstractRing(new JAXBElement<RingType>( new QName("http://www.opengis.net/gml/3.2", "Ring"), RingType.class, interior));
+            interiorRingList.add(interiorRing);
+        }
+
+        PolygonPatchType patch = new PolygonPatchType();
+        patch.setExterior(exteriorRing);
+        patch.getInterior().addAll(interiorRingList);   
+
+        SurfacePatchArrayPropertyType patches = new SurfacePatchArrayPropertyType();
+        patches.getAbstractSurfacePatch().add(new JAXBElement<PolygonPatchType>(new QName("http://www.opengis.net/gml/3.2", "PolygonPatch"), PolygonPatchType.class, patch));
+
+
+        SurfaceType surface = new SurfaceType();
+        surface.setPatches(new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.opengis.net/gml/3.2", "patches"), SurfacePatchArrayPropertyType.class, patches));
+        surface.setSrsDimension(BigInteger.valueOf(2));
+        surface.setSrsName("EPSG:4326");
 
         return new SurfaceType();
     }
