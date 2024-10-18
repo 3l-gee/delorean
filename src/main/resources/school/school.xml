@@ -7,7 +7,7 @@
     <geomPoint srsName="EPSG:2056">
         <gml:pos>2600000 1200000</gml:pos>
     </geomPoint>
-    <geomCurve>
+    <geomCurve srsName="EPSG:4326">
         <gml:segments>
             <gml:GeodesicString>
                 <gml:posList>1.0 1.0 2.0 2.0 3.0 3.0</gml:posList>
