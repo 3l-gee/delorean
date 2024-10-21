@@ -55,22 +55,57 @@
         <xs:attribute name="dbid" type="xs:long"/>
     </xs:complexType>
 
-    <!-- <element name="Point" type="aixm:PointType" substitutionGroup="gml:Point"/>
-    <complexType name="PointType">
-		<complexContent>
-			<extension base="gml:PointType">
-				<sequence>
-					<group ref="aixm:PointPropertyGroup"/>
-				</sequence>
-			</extension>
-		</complexContent>
-	</complexType> -->
+	<xs:element name="Point" type="AixmPointType" substitutionGroup="gml:Point"/>
+
+	<xs:complexType name="AixmPointType">
+		<xs:complexContent>
+			<xs:extension base="gml:PointType">
+				<!-- <xs:sequence>
+					<xs:group ref="AixmPointPropertyGroup"/>
+				</xs:sequence> -->
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:group name="AixmPointPropertyGroup">
+		<xs:sequence>
+			<xs:element name="horizontalAccuracy" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="annotation" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+
+    <xs:complexType name="AixmCustomPropertyType">
+        <xs:annotation>
+            <xs:documentation>
+                This is a custom type that replaces aixm:AbstractAIXMPropertyType.
+                It contains similar attributes such as nilReason and dbID.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <!-- Add any specific elements you need for this property type -->
+        </xs:sequence>
+        <xs:attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+        <xs:attribute name="dbID" type="xs:long"/>
+    </xs:complexType>
+
+	<xs:complexType name="AixmPointPropertyType">
+		<xs:complexContent>
+			<!-- <xs:extension base="aixm:AbstractAIXMPropertyType"> -->
+            <xs:extension base="AixmCustomPropertyType">
+				<xs:sequence>
+					<!-- <xs:element ref="Point"/> -->
+                    <xs:element name="point" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 
 
     <xs:complexType name="school">
         <xs:sequence>
-            <xs:element name="geomPoint" type="xs:string"/>
-            <xs:element name="geomCurve" type="xs:string"/>
+            <xs:element name="aixmPoint" type="AixmPointPropertyType"/>
+            <xs:element name="geomPoint" type="xs:string" />
+            <xs:element name="geomCurve" type="xs:string" />
             <xs:element name="geomSurface" type="xs:string"/>
             <!-- <xs:element name="geomgeom" type="gml:PointType"/> -->
             <xs:element name="classroom" type="classroom" maxOccurs="unbounded"/>

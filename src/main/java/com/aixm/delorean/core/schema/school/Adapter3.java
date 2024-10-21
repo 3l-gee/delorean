@@ -8,22 +8,21 @@
 package com.aixm.delorean.core.schema.school;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-import org.locationtech.jts.geom.Polygon;
+import org.locationtech.jts.geom.LineString;
 
-import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
+import com.aixm.delorean.core.schema.school.org.gml.CurveType;
 
 public class Adapter3
-    extends XmlAdapter<SurfaceType, Polygon>
+    extends XmlAdapter<CurveType, LineString>
 {
 
 
-    public Polygon unmarshal(SurfaceType value) {
-        System.out.println("unmarshal(SurfaceType value)");
-        return (com.aixm.delorean.core.util.GisUtil.parseGMLSurface(value));
+    public LineString unmarshal(CurveType value) {
+        return (com.aixm.delorean.core.util.GisUtil.parseGMLCurve(value));
     }
 
-    public SurfaceType marshal(Polygon value) {
-        return (com.aixm.delorean.core.util.GisUtil.printGMLSurface(value));
+    public CurveType marshal(LineString value) {
+        return (com.aixm.delorean.core.util.GisUtil.printGMLCurve(value));
     }
 
 }

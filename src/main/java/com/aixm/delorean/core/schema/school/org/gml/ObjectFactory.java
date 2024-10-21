@@ -35,8 +35,11 @@ import jakarta.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
-    private static final QName _AbstractObject_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractObject");
+    private static final QName _Point_QNAME = new QName("http://www.opengis.net/gml/3.2", "Point");
+    private static final QName _AbstractGeometricPrimitive_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractGeometricPrimitive");
+    private static final QName _AbstractGeometry_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractGeometry");
     private static final QName _AbstractGML_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractGML");
+    private static final QName _AbstractObject_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractObject");
     private static final QName _AbstractAssociationRole_QNAME = new QName("http://www.opengis.net/gml/3.2", "abstractAssociationRole");
     private static final QName _AbstractStrictAssociationRole_QNAME = new QName("http://www.opengis.net/gml/3.2", "abstractStrictAssociationRole");
     private static final QName _AbstractReference_QNAME = new QName("http://www.opengis.net/gml/3.2", "abstractReference");
@@ -67,13 +70,10 @@ public class ObjectFactory {
     private static final QName _RoughConversionToPreferredUnit_QNAME = new QName("http://www.opengis.net/gml/3.2", "roughConversionToPreferredUnit");
     private static final QName _Measure_QNAME = new QName("http://www.opengis.net/gml/3.2", "measure");
     private static final QName _Angle_QNAME = new QName("http://www.opengis.net/gml/3.2", "angle");
-    private static final QName _AbstractGeometry_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractGeometry");
     private static final QName _Pos_QNAME = new QName("http://www.opengis.net/gml/3.2", "pos");
     private static final QName _PosList_QNAME = new QName("http://www.opengis.net/gml/3.2", "posList");
     private static final QName _Vector_QNAME = new QName("http://www.opengis.net/gml/3.2", "vector");
     private static final QName _Envelope_QNAME = new QName("http://www.opengis.net/gml/3.2", "Envelope");
-    private static final QName _AbstractGeometricPrimitive_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractGeometricPrimitive");
-    private static final QName _Point_QNAME = new QName("http://www.opengis.net/gml/3.2", "Point");
     private static final QName _PointProperty_QNAME = new QName("http://www.opengis.net/gml/3.2", "pointProperty");
     private static final QName _AbstractCurve_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractCurve");
     private static final QName _CurveProperty_QNAME = new QName("http://www.opengis.net/gml/3.2", "curveProperty");
@@ -543,6 +543,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PointType }
+     * 
+     * @return
+     *     the new instance of {@link PointType }
+     */
+    public PointType createPointType() {
+        return new PointType();
+    }
+
+    /**
      * Create an instance of {@link AssociationRoleType }
      * 
      * @return
@@ -760,16 +770,6 @@ public class ObjectFactory {
      */
     public EnvelopeType createEnvelopeType() {
         return new EnvelopeType();
-    }
-
-    /**
-     * Create an instance of {@link PointType }
-     * 
-     * @return
-     *     the new instance of {@link PointType }
-     */
-    public PointType createPointType() {
-        return new PointType();
     }
 
     /**
@@ -3603,16 +3603,42 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PointType }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link PointType }{@code >}
      */
-    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractObject")
-    public JAXBElement<Object> createAbstractObject(Object value) {
-        return new JAXBElement<>(_AbstractObject_QNAME, Object.class, null, value);
+    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Point", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractGeometricPrimitive")
+    public JAXBElement<PointType> createPoint(PointType value) {
+        return new JAXBElement<>(_Point_QNAME, PointType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractGeometricPrimitive", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractGeometry")
+    public JAXBElement<AbstractGeometricPrimitiveType> createAbstractGeometricPrimitive(AbstractGeometricPrimitiveType value) {
+        return new JAXBElement<>(_AbstractGeometricPrimitive_QNAME, AbstractGeometricPrimitiveType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractGeometry", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractGML")
+    public JAXBElement<AbstractGeometryType> createAbstractGeometry(AbstractGeometryType value) {
+        return new JAXBElement<>(_AbstractGeometry_QNAME, AbstractGeometryType.class, null, value);
     }
 
     /**
@@ -3626,6 +3652,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractGML", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractObject")
     public JAXBElement<AbstractGMLType> createAbstractGML(AbstractGMLType value) {
         return new JAXBElement<>(_AbstractGML_QNAME, AbstractGMLType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractObject")
+    public JAXBElement<Object> createAbstractObject(Object value) {
+        return new JAXBElement<>(_AbstractObject_QNAME, Object.class, null, value);
     }
 
     /**
@@ -4019,19 +4058,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractGeometry", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractGML")
-    public JAXBElement<AbstractGeometryType> createAbstractGeometry(AbstractGeometryType value) {
-        return new JAXBElement<>(_AbstractGeometry_QNAME, AbstractGeometryType.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DirectPositionType }{@code >}
      * 
      * @param value
@@ -4081,32 +4107,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Envelope", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractObject")
     public JAXBElement<EnvelopeType> createEnvelope(EnvelopeType value) {
         return new JAXBElement<>(_Envelope_QNAME, EnvelopeType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractGeometricPrimitive", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractGeometry")
-    public JAXBElement<AbstractGeometricPrimitiveType> createAbstractGeometricPrimitive(AbstractGeometricPrimitiveType value) {
-        return new JAXBElement<>(_AbstractGeometricPrimitive_QNAME, AbstractGeometricPrimitiveType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PointType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PointType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Point", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractGeometricPrimitive")
-    public JAXBElement<PointType> createPoint(PointType value) {
-        return new JAXBElement<>(_Point_QNAME, PointType.class, null, value);
     }
 
     /**

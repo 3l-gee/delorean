@@ -9,6 +9,7 @@ package com.aixm.delorean.core.schema.school.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.aixm.delorean.core.schema.school.AixmPointType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.TypeType;
@@ -99,6 +100,7 @@ public class LocationPropertyType {
      * 
      * @return
      *     possible object is
+     *     {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricAggregateType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
@@ -143,6 +145,7 @@ public class LocationPropertyType {
      * 
      * @param value
      *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricAggregateType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}

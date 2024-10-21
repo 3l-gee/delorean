@@ -35,8 +35,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}AbstractSolid"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -56,8 +56,6 @@ public class SolidPropertyType {
      */
     @XmlElementRef(name = "AbstractSolid", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractSolidType> abstractSolid;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
@@ -77,6 +75,8 @@ public class SolidPropertyType {
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
 
     /**
      * The AbstractSolid element is the abstract head of the substituition group for all (continuous) solid elements.
@@ -105,34 +105,6 @@ public class SolidPropertyType {
      */
     public void setAbstractSolid(JAXBElement<? extends AbstractSolidType> value) {
         this.abstractSolid = value;
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(java.lang.Boolean value) {
-        this.owns = value;
     }
 
     /**
@@ -361,6 +333,34 @@ public class SolidPropertyType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(java.lang.Boolean value) {
+        this.owns = value;
     }
 
 }

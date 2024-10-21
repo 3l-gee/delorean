@@ -30,6 +30,7 @@ import jakarta.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private static final QName _Point_QNAME = new QName("", "Point");
     private static final QName _School_QNAME = new QName("", "school");
 
     /**
@@ -37,6 +38,16 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link AixmPointType }
+     * 
+     * @return
+     *     the new instance of {@link AixmPointType }
+     */
+    public AixmPointType createAixmPointType() {
+        return new AixmPointType();
     }
 
     /**
@@ -87,6 +98,39 @@ public class ObjectFactory {
      */
     public Classroom createClassroom() {
         return new Classroom();
+    }
+
+    /**
+     * Create an instance of {@link AixmCustomPropertyType }
+     * 
+     * @return
+     *     the new instance of {@link AixmCustomPropertyType }
+     */
+    public AixmCustomPropertyType createAixmCustomPropertyType() {
+        return new AixmCustomPropertyType();
+    }
+
+    /**
+     * Create an instance of {@link AixmPointPropertyType }
+     * 
+     * @return
+     *     the new instance of {@link AixmPointPropertyType }
+     */
+    public AixmPointPropertyType createAixmPointPropertyType() {
+        return new AixmPointPropertyType();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "Point", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "Point")
+    public JAXBElement<AixmPointType> createPoint(AixmPointType value) {
+        return new JAXBElement<>(_Point_QNAME, AixmPointType.class, null, value);
     }
 
     /**

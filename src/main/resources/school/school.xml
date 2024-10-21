@@ -1,4 +1,11 @@
 <school xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
+    <aixmPoint nilReason="yes">
+        <point>
+            <gml:point srsName="EPSG:4326">
+                <gml:pos>1.0 1.0</gml:pos>
+            </gml:point>
+        </point>
+    </aixmPoint>
     <geomPoint>
         <gml:point srsName="EPSG:4326">
             <gml:pos>1.0 1.0</gml:pos>
@@ -18,7 +25,7 @@
         <gml:patches>
             <gml:PolygonPatch>
                 <gml:exterior>
-                    <gml:Ring>
+                    <gml:Ring gml:id ="1">
                         <gml:curveMember>
                             <gml:Curve>
                                 <gml:segments>
@@ -33,7 +40,7 @@
                     </gml:Ring>
                 </gml:exterior>
                 <gml:interior>
-                    <gml:Ring>
+                    <gml:Ring gml:id ="2">
                         <gml:curveMember>
                             <gml:Curve>
                                 <gml:segments>
@@ -47,9 +54,36 @@
                         </gml:curveMember>
                     </gml:Ring>
                 </gml:interior>
+                <gml:interior>
+                    <gml:Ring gml:id ="3">
+                        <gml:curveMember>
+                            <gml:Curve>
+                                <gml:segments>
+                                    <gml:GeodesicString>
+                                        <gml:posList>
+                                            0.1 0.1 0.2 0.1 0.2 0.2 0.1 0.2 0.1 0.1
+                                        </gml:posList>
+                                    </gml:GeodesicString>
+                                </gml:segments>
+                            </gml:Curve>
+                        </gml:curveMember>
+                    </gml:Ring>
+                </gml:interior>
             </gml:PolygonPatch>
         </gml:patches>
     </geomSurface>
+    <!-- <gml:Polygon srsName="EPSG:4326">
+        <gml:outerBoundaryIs>
+            <gml:LinearRing>
+                <gml:coordinates>0,0 10,0 10,10 0,10 0,0</gml:coordinates>
+            </gml:LinearRing>
+        </gml:outerBoundaryIs>
+        <gml:innerBoundaryIs>
+            <gml:LinearRing>
+                <gml:coordinates>3,3 7,3 7,7 3,7 3,3</gml:coordinates>
+            </gml:LinearRing>
+        </gml:innerBoundaryIs>
+    </gml:Polygon> -->
     <classroom/>
     <student/>
     <teacher/>
