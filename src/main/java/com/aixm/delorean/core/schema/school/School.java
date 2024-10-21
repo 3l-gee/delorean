@@ -31,8 +31,8 @@ import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 
-import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import com.aixm.delorean.core.schema.school.org.gml.CurveType;
+import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
 
 

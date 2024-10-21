@@ -55,25 +55,23 @@
         <xs:attribute name="dbid" type="xs:long"/>
     </xs:complexType>
 
+    <!-- AixmPointType extending gml:PointType with horizontalAccuracy and annotation -->
 	<xs:element name="Point" type="AixmPointType" substitutionGroup="gml:Point"/>
-
 	<xs:complexType name="AixmPointType">
 		<xs:complexContent>
 			<xs:extension base="gml:PointType">
-				<!-- <xs:sequence>
+				<xs:sequence>
 					<xs:group ref="AixmPointPropertyGroup"/>
-				</xs:sequence> -->
+				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-
 	<xs:group name="AixmPointPropertyGroup">
 		<xs:sequence>
-			<xs:element name="horizontalAccuracy" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="horizontalAccuracy" type="xs:long" nillable="true" minOccurs="0"/>
 			<xs:element name="annotation" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:group>
-
     <xs:complexType name="AixmCustomPropertyType">
         <xs:annotation>
             <xs:documentation>
@@ -87,7 +85,6 @@
         <xs:attribute name="nilReason" type="gml:NilReasonEnumeration"/>
         <xs:attribute name="dbID" type="xs:long"/>
     </xs:complexType>
-
 	<xs:complexType name="AixmPointPropertyType">
 		<xs:complexContent>
 			<!-- <xs:extension base="aixm:AbstractAIXMPropertyType"> -->
@@ -99,6 +96,68 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+
+    <!-- Curve complexType extending gml:CurveType with horizontalAccuracy and annotation -->
+    <element name="Curve" type="aixm:CurveType" substitutionGroup="gml:Curve"/>
+	<complexType name="CurveType">
+		<complexContent>
+			<extension base="gml:CurveType">
+				<sequence>
+					<group ref="aixm:CurvePropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CurvePropertyGroup">
+		<sequence>
+			<element name="horizontalAccuracy" type="aixm:ValDistanceType" nillable="true" minOccurs="0"/>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<complexType name="CurvePropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="aixm:Curve"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="ElevatedCurve" type="aixm:ElevatedCurveType" substitutionGroup="aixm:Curve"/>
+	<complexType name="ElevatedCurveType">
+		<complexContent>
+			<extension base="aixm:CurveType">
+				<sequence>
+					<group ref="aixm:ElevatedCurvePropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<choice>
+								<element ref="aixm:AbstractElevatedCurveExtension"/>
+							</choice>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ElevatedCurvePropertyGroup">
+		<sequence>
+			<element name="elevation" type="aixm:ValDistanceVerticalType" nillable="true" minOccurs="0"/>
+			<element name="geoidUndulation" type="aixm:ValDistanceSignedType" nillable="true" minOccurs="0"/>
+			<element name="verticalDatum" type="aixm:CodeVerticalDatumType" nillable="true" minOccurs="0"/>
+			<element name="verticalAccuracy" type="aixm:ValDistanceType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<complexType name="ElevatedCurvePropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="aixm:ElevatedCurve"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
 
 
     <xs:complexType name="school">
