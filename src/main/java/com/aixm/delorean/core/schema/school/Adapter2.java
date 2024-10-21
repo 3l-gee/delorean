@@ -8,21 +8,21 @@
 package com.aixm.delorean.core.schema.school;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-import org.locationtech.jts.geom.LineString;
+import org.locationtech.jts.geom.Point;
 
-import com.aixm.delorean.core.schema.school.org.gml.CurveType;
+import com.aixm.delorean.core.schema.school.org.gml.PointType;
 
 public class Adapter2
-    extends XmlAdapter<CurveType, LineString>
+    extends XmlAdapter<PointType, Point>
 {
 
 
-    public LineString unmarshal(CurveType value) {
-        return (com.aixm.delorean.core.util.GisUtil.parseGMLCurve(value));
+    public Point unmarshal(PointType value) {
+        return (com.aixm.delorean.core.util.GisUtil.parseGMLPoint(value));
     }
 
-    public CurveType marshal(LineString value) {
-        return (com.aixm.delorean.core.util.GisUtil.printGMLCurve(value));
+    public PointType marshal(Point value) {
+        return (com.aixm.delorean.core.util.GisUtil.printGMLPoint(value));
     }
 
 }

@@ -48,6 +48,15 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
+        <!-- AIXM Point Type structure -->
+        <jaxb:bindings node="xs:complexType[@name='AixmPointPropertyType']//xs:element[@name='point']">
+    		<jaxb:javaType 
+				name="org.locationtech.jts.geom.Point" 
+				parseMethod="com.aixm.delorean.core.util.GisUtil.parseGMLPoint" 
+				printMethod="com.aixm.delorean.core.util.GisUtil.printGMLPoint"/>
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
         <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='geomCurve']">
     		<jaxb:javaType 
 				name="org.locationtech.jts.geom.LineString" 

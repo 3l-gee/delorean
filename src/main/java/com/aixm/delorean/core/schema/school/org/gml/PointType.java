@@ -7,8 +7,10 @@
 
 package com.aixm.delorean.core.schema.school.org.gml;
 
+import com.aixm.delorean.core.schema.school.AixmPointType;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -38,6 +40,9 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "PointType", propOrder = {
     "pos",
     "coordinates"
+})
+@XmlSeeAlso({
+    AixmPointType.class
 })
 public class PointType
     extends AbstractGeometricPrimitiveType

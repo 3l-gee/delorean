@@ -9,14 +9,16 @@ package com.aixm.delorean.core.schema.school.org.gss;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.aixm.delorean.core.schema.school.AixmPointType;
 import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.TypeType;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -51,8 +53,8 @@ public class GMPointPropertyType {
      * A Point is defined by a single coordinate tuple. The direct position of a point is specified by the pos element which is of type DirectPositionType.
      * 
      */
-    @XmlElement(name = "Point", namespace = "http://www.opengis.net/gml/3.2")
-    protected PointType point;
+    @XmlElementRef(name = "Point", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
+    protected JAXBElement<? extends PointType> point;
     @XmlAttribute(name = "nilReason", namespace = "http://www.isotc211.org/2005/gco")
     protected List<String> nilReason;
     @XmlAttribute(name = "uuidref")
@@ -77,10 +79,11 @@ public class GMPointPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link PointType }
+     *     {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link PointType }{@code >}
      *     
      */
-    public PointType getPoint() {
+    public JAXBElement<? extends PointType> getPoint() {
         return point;
     }
 
@@ -89,11 +92,12 @@ public class GMPointPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link PointType }
+     *     {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link PointType }{@code >}
      *     
      * @see #getPoint()
      */
-    public void setPoint(PointType value) {
+    public void setPoint(JAXBElement<? extends PointType> value) {
         this.point = value;
     }
 

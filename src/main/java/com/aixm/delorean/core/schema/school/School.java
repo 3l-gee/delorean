@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.school;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,10 +32,8 @@ import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 
 import com.aixm.delorean.core.schema.school.org.gml.PointType;
-import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
-
 import com.aixm.delorean.core.schema.school.org.gml.CurveType;
-import com.aixm.delorean.core.schema.school.org.gml.PointType;
+import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
 
 
 /**
@@ -47,6 +46,7 @@ import com.aixm.delorean.core.schema.school.org.gml.PointType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="aixmPoint" type="{}AixmPointPropertyType"/>
  *         <element name="geomPoint" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         <element name="geomCurve" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         <element name="geomSurface" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -64,6 +64,7 @@ import com.aixm.delorean.core.schema.school.org.gml.PointType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "school", propOrder = {
+    "aixmPoint",
     "geomPoint",
     "geomCurve",
     "geomSurface",
@@ -76,16 +77,19 @@ import com.aixm.delorean.core.schema.school.org.gml.PointType;
 @Table(name = "school")
 public class School {
 
+    @XmlElement(required = true)
+    @Embedded
+    protected AixmPointPropertyType aixmPoint;
     @XmlElement(required = true, type = PointType.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter2.class)
     @Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")
     protected Point geomPoint;
     @XmlElement(required = true, type = CurveType.class)
-    @XmlJavaTypeAdapter(Adapter2.class)
+    @XmlJavaTypeAdapter(Adapter3.class)
     @Column(name = "geomCurve", columnDefinition = "geometry(Linestring, 4326)")
     protected LineString geomCurve;
     @XmlElement(required = true, type = SurfaceType.class)
-    @XmlJavaTypeAdapter(Adapter3.class)
+    @XmlJavaTypeAdapter(Adapter4.class)
     @Column(name = "geomSurface", columnDefinition = "geometry(Polygon, 4326)")
     protected Polygon geomSurface;
     @XmlElement(required = true)
@@ -108,6 +112,30 @@ public class School {
     @Column(name = "dbid", nullable = false)
     @XmlTransient
     protected Long dbid;
+
+    /**
+     * Gets the value of the aixmPoint property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AixmPointPropertyType }
+     *     
+     */
+    public AixmPointPropertyType getAixmPoint() {
+        return aixmPoint;
+    }
+
+    /**
+     * Sets the value of the aixmPoint property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AixmPointPropertyType }
+     *     
+     */
+    public void setAixmPoint(AixmPointPropertyType value) {
+        this.aixmPoint = value;
+    }
 
     /**
      * Gets the value of the geomPoint property.
