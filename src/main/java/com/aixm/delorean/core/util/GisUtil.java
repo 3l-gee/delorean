@@ -22,7 +22,7 @@ import org.locationtech.proj4j.ProjCoordinate;
 import org.locationtech.proj4j.CoordinateTransform;
 
 import com.aixm.delorean.core.schema.school.AixmPointType;
-
+import com.aixm.delorean.core.schema.school.PersitentPointType;
 import com.aixm.delorean.core.schema.school.org.gml.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractCurveSegmentType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType;
@@ -141,19 +141,6 @@ public class GisUtil {
         return geometryFactory.createPoint(new Coordinate(tgtCoord.x, tgtCoord.y));
     }
 
-    public static Point parseAIXMPoint (AixmPointType value) {
-        return parseGMLPoint(value);
-    }
-    
-
-    public static List<Point> parseGMLPoints(List<PointType> values) {
-        List<Point> points = new ArrayList<>(values.size());
-        for (PointType value : values) {
-            points.add(parseGMLPoint(value));
-        }
-        return points;
-    }
-    
     public static PointType printGMLPoint(Point value){  
         DirectPositionType pos = new DirectPositionType();
 
@@ -171,23 +158,46 @@ public class GisUtil {
         return pointType;
     }
 
-    public static AixmPointType printAIXMPoint(Point value) {
+    public static PersitentPointType parseAIXMPoint (AixmPointType value) {
+        Point point = parseGMLPoint(value);
+        Long horizontalAccuracy = value.getHorizontalAccuracy().getValue();
+        String annotation = value.getAnnotation().getFirst();
+
+        PersitentPointType persitentPointType = new PersitentPointType();
+        persitentPointType.setPoint(point);
+        persitentPointType.setHorizontalAccuracy(horizontalAccuracy);
+        persitentPointType.setAnnotation(annotation);
+
+        return persitentPointType;
+    }
+
+    public static AixmPointType printAIXMPoint(PersitentPointType value) {
         DirectPositionType pos = new DirectPositionType();
 
-        pos.getValue().add(value.getX());
-        pos.getValue().add(value.getY());
+        pos.getValue().add(value.getPoint().getX());
+        pos.getValue().add(value.getPoint().getY());
 
 
         AixmPointType aixmPointType = new AixmPointType();
         aixmPointType.setPos(pos);
 
-        if (value.getSRID() != 0) {
-            aixmPointType.setSrsName("EPSG:" + value.getSRID());
+        if (value.getPoint().getSRID() != 0) {
+            aixmPointType.setSrsName("EPSG:" + value.getPoint().getSRID());
         }
 
+        aixmPointType.setHorizontalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, Long.valueOf(10)));
+        aixmPointType.getAnnotation().add("annotation");
         return aixmPointType;
     }
-
+    
+    public static List<Point> parseGMLPoints(List<PointType> values) {
+        List<Point> points = new ArrayList<>(values.size());
+        for (PointType value : values) {
+            points.add(parseGMLPoint(value));
+        }
+        return points;
+    }
+    
     public static List<PointType> printGMLPoints(List<Point> values){
         List<PointType> points = new ArrayList<>(values.size());
         for (Point value : values) {

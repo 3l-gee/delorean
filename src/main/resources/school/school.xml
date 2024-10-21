@@ -1,9 +1,9 @@
 <school xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
     <aixmPoint nilReason="yes">
-        <point>
-            <gml:point srsName="EPSG:4326">
-                <gml:pos>1.0 1.0</gml:pos>
-            </gml:point>
+        <point srsName="EPSG:4326">
+            <gml:pos>1.0 1.0</gml:pos>
+            <horizontalAccuracy uom="m">0.1</horizontalAccuracy>
+            <annotation>What</annotation>
         </point>
     </aixmPoint>
     <geomPoint>

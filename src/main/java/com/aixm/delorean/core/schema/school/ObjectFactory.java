@@ -32,6 +32,7 @@ public class ObjectFactory {
 
     private static final QName _Point_QNAME = new QName("", "Point");
     private static final QName _School_QNAME = new QName("", "school");
+    private static final QName _AixmPointTypeHorizontalAccuracy_QNAME = new QName("", "horizontalAccuracy");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.aixm.delorean.core.schema.school
@@ -144,6 +145,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "school")
     public JAXBElement<School> createSchool(School value) {
         return new JAXBElement<>(_School_QNAME, School.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "horizontalAccuracy", scope = AixmPointType.class)
+    public JAXBElement<Long> createAixmPointTypeHorizontalAccuracy(Long value) {
+        return new JAXBElement<>(_AixmPointTypeHorizontalAccuracy_QNAME, Long.class, AixmPointType.class, value);
     }
 
 }

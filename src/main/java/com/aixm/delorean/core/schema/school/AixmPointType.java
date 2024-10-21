@@ -7,10 +7,14 @@
 
 package com.aixm.delorean.core.schema.school;
 
-import com.aixm.delorean.core.schema.school.org.gml.DirectPositionType;
+import java.util.ArrayList;
+import java.util.List;
 import com.aixm.delorean.core.schema.school.org.gml.PointType;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -23,6 +27,9 @@ import jakarta.xml.bind.annotation.XmlType;
  * <complexType name="AixmPointType">
  *   <complexContent>
  *     <extension base="{http://www.opengis.net/gml/3.2}PointType">
+ *       <sequence>
+ *         <group ref="{}AixmPointPropertyGroup"/>
+ *       </sequence>
  *     </extension>
  *   </complexContent>
  * </complexType>
@@ -31,16 +38,73 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AixmPointType")
+@XmlType(name = "AixmPointType", propOrder = {
+    "horizontalAccuracy",
+    "annotation"
+})
 public class AixmPointType
     extends PointType
 {
 
-    public AixmPointType() {
-        DirectPositionType pos = new DirectPositionType();
-        pos.getValue().add(1.0);
-        pos.getValue().add(2.0);
-        this.setPos(pos);
+    @XmlElementRef(name = "horizontalAccuracy", type = JAXBElement.class, required = false)
+    protected JAXBElement<Long> horizontalAccuracy;
+    @XmlElement(nillable = true)
+    protected List<String> annotation;
+
+    /**
+     * Gets the value of the horizontalAccuracy property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link Long }{@code >}
+     *     
+     */
+    public JAXBElement<Long> getHorizontalAccuracy() {
+        return horizontalAccuracy;
+    }
+
+    /**
+     * Sets the value of the horizontalAccuracy property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link Long }{@code >}
+     *     
+     */
+    public void setHorizontalAccuracy(JAXBElement<Long> value) {
+        this.horizontalAccuracy = value;
+    }
+
+    /**
+     * Gets the value of the annotation property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAnnotation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the annotation property.
+     */
+    public List<String> getAnnotation() {
+        if (annotation == null) {
+            annotation = new ArrayList<>();
+        }
+        return this.annotation;
     }
 
 }
