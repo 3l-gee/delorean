@@ -8,18 +8,19 @@
 package com.aixm.delorean.core.schema.school;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import org.locationtech.jts.geom.Point;
 
 public class Adapter1
-    extends XmlAdapter<AixmPointType, PersitentPointType>
+    extends XmlAdapter<String, Point>
 {
 
 
-    public PersitentPointType unmarshal(AixmPointType value) {
-        return (com.aixm.delorean.core.util.GisUtil.parseAIXMPoint(value));
+    public Point unmarshal(String value) {
+        return (com.aixm.delorean.core.util.GisUtil.parseGMLPoint(value));
     }
 
-    public AixmPointType marshal(PersitentPointType value) {
-        return (com.aixm.delorean.core.util.GisUtil.printAIXMPoint(value));
+    public String marshal(Point value) {
+        return (com.aixm.delorean.core.util.GisUtil.printGMLPoint(value));
     }
 
 }

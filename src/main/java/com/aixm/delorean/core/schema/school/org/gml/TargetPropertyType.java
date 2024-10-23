@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.school.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.aixm.delorean.core.schema.school.AixmCurveType;
+import com.aixm.delorean.core.schema.school.AixmElevatedCurveType;
+import com.aixm.delorean.core.schema.school.AixmElevatedPointType;
 import com.aixm.delorean.core.schema.school.AixmPointType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ShowType;
@@ -149,6 +152,9 @@ public class TargetPropertyType {
      * 
      * @return
      *     possible object is
+     *     {@link JAXBElement }{@code <}{@link AixmCurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AixmElevatedCurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricAggregateType }{@code >}
@@ -194,6 +200,9 @@ public class TargetPropertyType {
      * 
      * @param value
      *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link AixmCurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AixmElevatedCurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricAggregateType }{@code >}

@@ -40,6 +40,8 @@ public class ObjectFactory {
     private static final QName _AbstractGeometry_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractGeometry");
     private static final QName _AbstractGML_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractGML");
     private static final QName _AbstractObject_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractObject");
+    private static final QName _Curve_QNAME = new QName("http://www.opengis.net/gml/3.2", "Curve");
+    private static final QName _AbstractCurve_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractCurve");
     private static final QName _AbstractAssociationRole_QNAME = new QName("http://www.opengis.net/gml/3.2", "abstractAssociationRole");
     private static final QName _AbstractStrictAssociationRole_QNAME = new QName("http://www.opengis.net/gml/3.2", "abstractStrictAssociationRole");
     private static final QName _AbstractReference_QNAME = new QName("http://www.opengis.net/gml/3.2", "abstractReference");
@@ -75,7 +77,6 @@ public class ObjectFactory {
     private static final QName _Vector_QNAME = new QName("http://www.opengis.net/gml/3.2", "vector");
     private static final QName _Envelope_QNAME = new QName("http://www.opengis.net/gml/3.2", "Envelope");
     private static final QName _PointProperty_QNAME = new QName("http://www.opengis.net/gml/3.2", "pointProperty");
-    private static final QName _AbstractCurve_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractCurve");
     private static final QName _CurveProperty_QNAME = new QName("http://www.opengis.net/gml/3.2", "curveProperty");
     private static final QName _LineString_QNAME = new QName("http://www.opengis.net/gml/3.2", "LineString");
     private static final QName _AbstractSurface_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractSurface");
@@ -85,7 +86,6 @@ public class ObjectFactory {
     private static final QName _Interior_QNAME = new QName("http://www.opengis.net/gml/3.2", "interior");
     private static final QName _AbstractRing_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractRing");
     private static final QName _LinearRing_QNAME = new QName("http://www.opengis.net/gml/3.2", "LinearRing");
-    private static final QName _Curve_QNAME = new QName("http://www.opengis.net/gml/3.2", "Curve");
     private static final QName _BaseCurve_QNAME = new QName("http://www.opengis.net/gml/3.2", "baseCurve");
     private static final QName _OrientableCurve_QNAME = new QName("http://www.opengis.net/gml/3.2", "OrientableCurve");
     private static final QName _AbstractCurveSegment_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractCurveSegment");
@@ -553,6 +553,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CurveType }
+     * 
+     * @return
+     *     the new instance of {@link CurveType }
+     */
+    public CurveType createCurveType() {
+        return new CurveType();
+    }
+
+    /**
      * Create an instance of {@link AssociationRoleType }
      * 
      * @return
@@ -840,16 +850,6 @@ public class ObjectFactory {
      */
     public LinearRingType createLinearRingType() {
         return new LinearRingType();
-    }
-
-    /**
-     * Create an instance of {@link CurveType }
-     * 
-     * @return
-     *     the new instance of {@link CurveType }
-     */
-    public CurveType createCurveType() {
-        return new CurveType();
     }
 
     /**
@@ -3668,6 +3668,32 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CurveType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CurveType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Curve", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractCurve")
+    public JAXBElement<CurveType> createCurve(CurveType value) {
+        return new JAXBElement<>(_Curve_QNAME, CurveType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractCurve", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractGeometricPrimitive")
+    public JAXBElement<AbstractCurveType> createAbstractCurve(AbstractCurveType value) {
+        return new JAXBElement<>(_AbstractCurve_QNAME, AbstractCurveType.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AssociationRoleType }{@code >}
      * 
      * @param value
@@ -4123,19 +4149,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractCurve", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractGeometricPrimitive")
-    public JAXBElement<AbstractCurveType> createAbstractCurve(AbstractCurveType value) {
-        return new JAXBElement<>(_AbstractCurve_QNAME, AbstractCurveType.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
      * 
      * @param value
@@ -4250,19 +4263,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "LinearRing", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractRing")
     public JAXBElement<LinearRingType> createLinearRing(LinearRingType value) {
         return new JAXBElement<>(_LinearRing_QNAME, LinearRingType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CurveType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CurveType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Curve", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractCurve")
-    public JAXBElement<CurveType> createCurve(CurveType value) {
-        return new JAXBElement<>(_Curve_QNAME, CurveType.class, null, value);
     }
 
     /**

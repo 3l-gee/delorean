@@ -7,9 +7,11 @@
 
 package com.aixm.delorean.core.schema.school.org.gml;
 
+import com.aixm.delorean.core.schema.school.AixmCurveType;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -35,6 +37,9 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CurveType", propOrder = {
     "segments"
+})
+@XmlSeeAlso({
+    AixmCurveType.class
 })
 public class CurveType
     extends AbstractCurveType

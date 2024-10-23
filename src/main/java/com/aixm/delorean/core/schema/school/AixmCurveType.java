@@ -9,7 +9,7 @@ package com.aixm.delorean.core.schema.school;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.school.org.gml.PointType;
+import com.aixm.delorean.core.schema.school.org.gml.CurveType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -20,16 +20,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AixmPointType complex type</p>.
+ * <p>Java class for AixmCurveType complex type</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
  * 
  * <pre>{@code
- * <complexType name="AixmPointType">
+ * <complexType name="AixmCurveType">
  *   <complexContent>
- *     <extension base="{http://www.opengis.net/gml/3.2}PointType">
+ *     <extension base="{http://www.opengis.net/gml/3.2}CurveType">
  *       <sequence>
- *         <group ref="{}AixmPointPropertyGroup"/>
+ *         <group ref="{}AixmCurvePropertyGroup"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -39,15 +39,15 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AixmPointType", propOrder = {
+@XmlType(name = "AixmCurveType", propOrder = {
     "horizontalAccuracy",
     "annotation"
 })
 @XmlSeeAlso({
-    AixmElevatedPointType.class
+    AixmElevatedCurveType.class
 })
-public class AixmPointType
-    extends PointType
+public class AixmCurveType
+    extends CurveType
 {
 
     @XmlElementRef(name = "horizontalAccuracy", type = JAXBElement.class, required = false)

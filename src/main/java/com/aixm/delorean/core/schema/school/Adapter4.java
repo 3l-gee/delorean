@@ -10,18 +10,16 @@ package com.aixm.delorean.core.schema.school;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 import org.locationtech.jts.geom.Polygon;
 
-import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
-
 public class Adapter4
-    extends XmlAdapter<SurfaceType, Polygon>
+    extends XmlAdapter<String, Polygon>
 {
 
 
-    public Polygon unmarshal(SurfaceType value) {
+    public Polygon unmarshal(String value) {
         return (com.aixm.delorean.core.util.GisUtil.parseGMLSurface(value));
     }
 
-    public SurfaceType marshal(Polygon value) {
+    public String marshal(Polygon value) {
         return (com.aixm.delorean.core.util.GisUtil.printGMLSurface(value));
     }
 

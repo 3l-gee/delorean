@@ -31,14 +31,41 @@ import jakarta.xml.bind.annotation.XmlRegistry;
 public class ObjectFactory {
 
     private static final QName _Point_QNAME = new QName("", "Point");
+    private static final QName _ElevatedPoint_QNAME = new QName("", "ElevatedPoint");
+    private static final QName _Curve_QNAME = new QName("", "Curve");
+    private static final QName _ElevatedCurve_QNAME = new QName("", "ElevatedCurve");
     private static final QName _School_QNAME = new QName("", "school");
-    private static final QName _AixmPointTypeHorizontalAccuracy_QNAME = new QName("", "horizontalAccuracy");
+    private static final QName _AixmCurveTypeHorizontalAccuracy_QNAME = new QName("", "horizontalAccuracy");
+    private static final QName _AixmElevatedCurveTypeElevation_QNAME = new QName("", "elevation");
+    private static final QName _AixmElevatedCurveTypeGeoidUndulation_QNAME = new QName("", "geoidUndulation");
+    private static final QName _AixmElevatedCurveTypeVerticalDatum_QNAME = new QName("", "verticalDatum");
+    private static final QName _AixmElevatedCurveTypeVerticalAccuracy_QNAME = new QName("", "verticalAccuracy");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.aixm.delorean.core.schema.school
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link AixmElevatedCurveType }
+     * 
+     * @return
+     *     the new instance of {@link AixmElevatedCurveType }
+     */
+    public AixmElevatedCurveType createAixmElevatedCurveType() {
+        return new AixmElevatedCurveType();
+    }
+
+    /**
+     * Create an instance of {@link AixmElevatedPointType }
+     * 
+     * @return
+     *     the new instance of {@link AixmElevatedPointType }
+     */
+    public AixmElevatedPointType createAixmElevatedPointType() {
+        return new AixmElevatedPointType();
     }
 
     /**
@@ -49,6 +76,16 @@ public class ObjectFactory {
      */
     public AixmPointType createAixmPointType() {
         return new AixmPointType();
+    }
+
+    /**
+     * Create an instance of {@link AixmCurveType }
+     * 
+     * @return
+     *     the new instance of {@link AixmCurveType }
+     */
+    public AixmCurveType createAixmCurveType() {
+        return new AixmCurveType();
     }
 
     /**
@@ -102,13 +139,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AixmCustomPropertyType }
+     * Create an instance of {@link AbstractAIXMPropertyType }
      * 
      * @return
-     *     the new instance of {@link AixmCustomPropertyType }
+     *     the new instance of {@link AbstractAIXMPropertyType }
      */
-    public AixmCustomPropertyType createAixmCustomPropertyType() {
-        return new AixmCustomPropertyType();
+    public AbstractAIXMPropertyType createAbstractAIXMPropertyType() {
+        return new AbstractAIXMPropertyType();
     }
 
     /**
@@ -122,6 +159,56 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ElevatedPointPropertyType }
+     * 
+     * @return
+     *     the new instance of {@link ElevatedPointPropertyType }
+     */
+    public ElevatedPointPropertyType createElevatedPointPropertyType() {
+        return new ElevatedPointPropertyType();
+    }
+
+    /**
+     * Create an instance of {@link AixmCurvePropertyType }
+     * 
+     * @return
+     *     the new instance of {@link AixmCurvePropertyType }
+     */
+    public AixmCurvePropertyType createAixmCurvePropertyType() {
+        return new AixmCurvePropertyType();
+    }
+
+    /**
+     * Create an instance of {@link ElevatedCurvePropertyType }
+     * 
+     * @return
+     *     the new instance of {@link ElevatedCurvePropertyType }
+     */
+    public ElevatedCurvePropertyType createElevatedCurvePropertyType() {
+        return new ElevatedCurvePropertyType();
+    }
+
+    /**
+     * Create an instance of {@link AixmElevatedCurveType.Extension }
+     * 
+     * @return
+     *     the new instance of {@link AixmElevatedCurveType.Extension }
+     */
+    public AixmElevatedCurveType.Extension createAixmElevatedCurveTypeExtension() {
+        return new AixmElevatedCurveType.Extension();
+    }
+
+    /**
+     * Create an instance of {@link AixmElevatedPointType.Extension }
+     * 
+     * @return
+     *     the new instance of {@link AixmElevatedPointType.Extension }
+     */
+    public AixmElevatedPointType.Extension createAixmElevatedPointTypeExtension() {
+        return new AixmElevatedPointType.Extension();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
      * 
      * @param value
@@ -132,6 +219,45 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "Point", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "Point")
     public JAXBElement<AixmPointType> createPoint(AixmPointType value) {
         return new JAXBElement<>(_Point_QNAME, AixmPointType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "ElevatedPoint", substitutionHeadNamespace = "", substitutionHeadName = "Point")
+    public JAXBElement<AixmElevatedPointType> createElevatedPoint(AixmElevatedPointType value) {
+        return new JAXBElement<>(_ElevatedPoint_QNAME, AixmElevatedPointType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AixmCurveType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AixmCurveType }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "Curve", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "Curve")
+    public JAXBElement<AixmCurveType> createCurve(AixmCurveType value) {
+        return new JAXBElement<>(_Curve_QNAME, AixmCurveType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AixmElevatedCurveType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AixmElevatedCurveType }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "ElevatedCurve", substitutionHeadNamespace = "", substitutionHeadName = "Curve")
+    public JAXBElement<AixmElevatedCurveType> createElevatedCurve(AixmElevatedCurveType value) {
+        return new JAXBElement<>(_ElevatedCurve_QNAME, AixmElevatedCurveType.class, null, value);
     }
 
     /**
@@ -155,9 +281,126 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
      */
+    @XmlElementDecl(namespace = "", name = "horizontalAccuracy", scope = AixmCurveType.class)
+    public JAXBElement<Long> createAixmCurveTypeHorizontalAccuracy(Long value) {
+        return new JAXBElement<>(_AixmCurveTypeHorizontalAccuracy_QNAME, Long.class, AixmCurveType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "elevation", scope = AixmElevatedCurveType.class)
+    public JAXBElement<Long> createAixmElevatedCurveTypeElevation(Long value) {
+        return new JAXBElement<>(_AixmElevatedCurveTypeElevation_QNAME, Long.class, AixmElevatedCurveType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "geoidUndulation", scope = AixmElevatedCurveType.class)
+    public JAXBElement<Long> createAixmElevatedCurveTypeGeoidUndulation(Long value) {
+        return new JAXBElement<>(_AixmElevatedCurveTypeGeoidUndulation_QNAME, Long.class, AixmElevatedCurveType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "verticalDatum", scope = AixmElevatedCurveType.class)
+    public JAXBElement<String> createAixmElevatedCurveTypeVerticalDatum(String value) {
+        return new JAXBElement<>(_AixmElevatedCurveTypeVerticalDatum_QNAME, String.class, AixmElevatedCurveType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "verticalAccuracy", scope = AixmElevatedCurveType.class)
+    public JAXBElement<Long> createAixmElevatedCurveTypeVerticalAccuracy(Long value) {
+        return new JAXBElement<>(_AixmElevatedCurveTypeVerticalAccuracy_QNAME, Long.class, AixmElevatedCurveType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
     @XmlElementDecl(namespace = "", name = "horizontalAccuracy", scope = AixmPointType.class)
     public JAXBElement<Long> createAixmPointTypeHorizontalAccuracy(Long value) {
-        return new JAXBElement<>(_AixmPointTypeHorizontalAccuracy_QNAME, Long.class, AixmPointType.class, value);
+        return new JAXBElement<>(_AixmCurveTypeHorizontalAccuracy_QNAME, Long.class, AixmPointType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "elevation", scope = AixmElevatedPointType.class)
+    public JAXBElement<Long> createAixmElevatedPointTypeElevation(Long value) {
+        return new JAXBElement<>(_AixmElevatedCurveTypeElevation_QNAME, Long.class, AixmElevatedPointType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "geoidUndulation", scope = AixmElevatedPointType.class)
+    public JAXBElement<Long> createAixmElevatedPointTypeGeoidUndulation(Long value) {
+        return new JAXBElement<>(_AixmElevatedCurveTypeGeoidUndulation_QNAME, Long.class, AixmElevatedPointType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "verticalDatum", scope = AixmElevatedPointType.class)
+    public JAXBElement<String> createAixmElevatedPointTypeVerticalDatum(String value) {
+        return new JAXBElement<>(_AixmElevatedCurveTypeVerticalDatum_QNAME, String.class, AixmElevatedPointType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "verticalAccuracy", scope = AixmElevatedPointType.class)
+    public JAXBElement<Long> createAixmElevatedPointTypeVerticalAccuracy(Long value) {
+        return new JAXBElement<>(_AixmElevatedCurveTypeVerticalAccuracy_QNAME, Long.class, AixmElevatedPointType.class, value);
     }
 
 }
