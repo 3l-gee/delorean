@@ -7,28 +7,23 @@
 
 package com.aixm.delorean.core.schema.school;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.locationtech.jts.geom.Point;
 
 
 /**
- * <p>Java class for AixmPointPropertyType complex type</p>.
+ * <p>Java class for ElevatedCurvePropertyType complex type</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
  * 
  * <pre>{@code
- * <complexType name="AixmPointPropertyType">
+ * <complexType name="ElevatedCurvePropertyType">
  *   <complexContent>
  *     <extension base="{}AbstractAIXMPropertyType">
  *       <sequence>
- *         <element name="point" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="elevatedCurve" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -38,42 +33,38 @@ import org.locationtech.jts.geom.Point;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AixmPointPropertyType", propOrder = {
-    "point"
+@XmlType(name = "ElevatedCurvePropertyType", propOrder = {
+    "elevatedCurve"
 })
-@Embeddable
-public class AixmPointPropertyType
+public class ElevatedCurvePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    @Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")
-    @Embedded
-    protected Point point;
+    @XmlElement(required = true)
+    protected String elevatedCurve;
 
     /**
-     * Gets the value of the point property.
+     * Gets the value of the elevatedCurve property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public Point getPoint() {
-        return point;
+    public String getElevatedCurve() {
+        return elevatedCurve;
     }
 
     /**
-     * Sets the value of the point property.
+     * Sets the value of the elevatedCurve property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPoint(Point value) {
-        this.point = value;
+    public void setElevatedCurve(String value) {
+        this.elevatedCurve = value;
     }
 
 }

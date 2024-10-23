@@ -34,8 +34,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AbstractCurveType")
 @XmlSeeAlso({
-    LineStringType.class,
     CurveType.class,
+    LineStringType.class,
     OrientableCurveType.class,
     AbstractRingType.class,
     CompositeCurveType.class

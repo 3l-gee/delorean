@@ -15,19 +15,14 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * This is a custom type that replaces aixm:AbstractAIXMPropertyType.
- *                 It contains similar attributes such as nilReason and dbID.
- * 
- * <p>Java class for AixmCustomPropertyType complex type</p>.
+ * <p>Java class for AbstractAIXMPropertyType complex type</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
  * 
  * <pre>{@code
- * <complexType name="AixmCustomPropertyType">
+ * <complexType name="AbstractAIXMPropertyType">
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *       </sequence>
  *       <attribute name="nilReason" type="{http://www.opengis.net/gml/3.2}NilReasonEnumeration" />
  *       <attribute name="dbID" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     </restriction>
@@ -38,11 +33,14 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AixmCustomPropertyType")
+@XmlType(name = "AbstractAIXMPropertyType")
 @XmlSeeAlso({
-    AixmPointPropertyType.class
+    AixmPointPropertyType.class,
+    ElevatedPointPropertyType.class,
+    AixmCurvePropertyType.class,
+    ElevatedCurvePropertyType.class
 })
-public class AixmCustomPropertyType {
+public class AbstractAIXMPropertyType {
 
     @XmlAttribute(name = "nilReason")
     protected String nilReason;

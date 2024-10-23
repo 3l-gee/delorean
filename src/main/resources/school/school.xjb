@@ -40,16 +40,19 @@
             <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             <annox:removeAnnotation class="jakarta.xml.bind.annotation.XmlAttribute" target="field"/>
         </jaxb:bindings>
-        <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='geomPoint']">
-    		<jaxb:javaType 
-				name="org.locationtech.jts.geom.Point" 
-				parseMethod="com.aixm.delorean.core.util.GisUtil.parseGMLPoint" 
-				printMethod="com.aixm.delorean.core.util.GisUtil.printGMLPoint"/>
-            <annox:annotate target="field">@jakarta.persistence.Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")</annox:annotate>
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='aixmPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
         </jaxb:bindings>
-        <!-- AIXM Point Type structure -->
-        <jaxb:bindings node="xs:complexType[@name='AixmPointPropertyType']//xs:element[@name='point']">
+        <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='aixmElevatedPoint']">
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='aixmCurve']">
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='aixmElevatedCurve']">
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='school']//xs:element[@name='geomPoint']">
     		<jaxb:javaType 
 				name="org.locationtech.jts.geom.Point" 
 				parseMethod="com.aixm.delorean.core.util.GisUtil.parseGMLPoint" 
@@ -73,6 +76,19 @@
             <annox:annotate target="field">@jakarta.persistence.Column(name = "geomSurface", columnDefinition = "geometry(Polygon, 4326)")</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
+        <!-- AIXM Point Type structure -->
+        <jaxb:bindings node="xs:complexType[@name='AixmPointPropertyType']">
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+		</jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='AixmPointPropertyType']//xs:element[@name='point']">
+    		<jaxb:javaType 
+				name="org.locationtech.jts.geom.Point" 
+				parseMethod="com.aixm.delorean.core.util.GisUtil.parseGMLPoint" 
+				printMethod="com.aixm.delorean.core.util.GisUtil.printGMLPoint"/>
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")</annox:annotate>
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+        </jaxb:bindings>
+        <!-- AIXM Curve Type structure -->
         <jaxb:bindings node="xs:simpleType[@name='teacherrole']">
             <annox:annotate target="enum">@jakarta.persistence.Entity</annox:annotate>
             <annox:annotate target="enum">@jakarta.persistence.Table(name = "teacher_role")</annox:annotate>

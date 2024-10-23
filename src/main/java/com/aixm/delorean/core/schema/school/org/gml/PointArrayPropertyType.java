@@ -9,6 +9,7 @@ package com.aixm.delorean.core.schema.school.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.aixm.delorean.core.schema.school.AixmElevatedPointType;
 import com.aixm.delorean.core.schema.school.AixmPointType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -69,6 +70,7 @@ public class PointArrayPropertyType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
      * {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
      * {@link JAXBElement }{@code <}{@link PointType }{@code >}
      * </p>

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.school.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.aixm.delorean.core.schema.school.AixmCurveType;
+import com.aixm.delorean.core.schema.school.AixmElevatedCurveType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,6 +70,8 @@ public class CurveArrayPropertyType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link AixmCurveType }{@code >}
+     * {@link JAXBElement }{@code <}{@link AixmElevatedCurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractRingType }{@code >}
      * {@link JAXBElement }{@code <}{@link CompositeCurveType }{@code >}
