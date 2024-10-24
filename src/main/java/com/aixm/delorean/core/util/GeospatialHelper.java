@@ -21,8 +21,17 @@ import org.locationtech.proj4j.CoordinateTransformFactory;
 import org.locationtech.proj4j.ProjCoordinate;
 import org.locationtech.proj4j.CoordinateTransform;
 
-import com.aixm.delorean.core.schema.school.AixmPointType;
-import com.aixm.delorean.core.schema.school.PersitentPointType;
+import jakarta.xml.bind.JAXBElement;
+import com.aixm.delorean.core.schema.school.org.gml.CurveType;
+import com.aixm.delorean.core.schema.school.org.gml.DirectPositionListType;
+import com.aixm.delorean.core.schema.school.org.gml.DirectPositionType;
+import com.aixm.delorean.core.schema.school.org.gml.GeodesicStringType;
+import com.aixm.delorean.core.schema.school.org.gml.PointType;
+import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
+import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
+
+import com.aixm.delorean.core.adapter.gis.AixmPointType;
+
 import com.aixm.delorean.core.schema.school.org.gml.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractCurveSegmentType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType;
@@ -33,16 +42,7 @@ import com.aixm.delorean.core.schema.school.org.gml.CurvePropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
 import com.aixm.delorean.core.schema.school.org.gml.RingType;
 
-import jakarta.xml.bind.JAXBElement;
-import com.aixm.delorean.core.schema.school.org.gml.CurveType;
-import com.aixm.delorean.core.schema.school.org.gml.DirectPositionListType;
-import com.aixm.delorean.core.schema.school.org.gml.DirectPositionType;
-import com.aixm.delorean.core.schema.school.org.gml.GeodesicStringType;
-import com.aixm.delorean.core.schema.school.org.gml.PointType;
-import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
-import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
-
-public class GisUtil {    
+public class GeospatialHelper {    
     private static int SRID = 4326; // EPSG:4326
     private static PrecisionModel precisionModel = new PrecisionModel( 0.001);
     private static GeometryFactory geometryFactory = new GeometryFactory(precisionModel, SRID);
@@ -158,36 +158,36 @@ public class GisUtil {
         return pointType;
     }
 
-    public static PersitentPointType parseAIXMPoint (AixmPointType value) {
+    public static AixmPointType parseAIXMPoint (com.aixm.delorean.core.schema.school.PointType value) {
         Point point = parseGMLPoint(value);
         Long horizontalAccuracy = value.getHorizontalAccuracy().getValue();
-        String annotation = value.getAnnotation().getFirst();
+        List<String> annotation = value.getAnnotation();
 
-        PersitentPointType persitentPointType = new PersitentPointType();
-        persitentPointType.setPoint(point);
-        persitentPointType.setHorizontalAccuracy(horizontalAccuracy);
-        persitentPointType.setAnnotation(annotation);
+        AixmPointType aixmPointType = new AixmPointType();
+        aixmPointType.setPoint(point);
+        aixmPointType.setHorizontalAccuracy(horizontalAccuracy);
+        aixmPointType.setAnnotation(annotation);
 
-        return persitentPointType;
+        return aixmPointType;
     }
 
-    public static AixmPointType printAIXMPoint(PersitentPointType value) {
+    public static com.aixm.delorean.core.schema.school.PointType printAIXMPoint(AixmPointType value) {
         DirectPositionType pos = new DirectPositionType();
 
         pos.getValue().add(value.getPoint().getX());
         pos.getValue().add(value.getPoint().getY());
 
 
-        AixmPointType aixmPointType = new AixmPointType();
-        aixmPointType.setPos(pos);
+        com.aixm.delorean.core.schema.school.PointType pointType = new com.aixm.delorean.core.schema.school.PointType();
+        pointType.setPos(pos);
 
         if (value.getPoint().getSRID() != 0) {
-            aixmPointType.setSrsName("EPSG:" + value.getPoint().getSRID());
+            pointType.setSrsName("EPSG:" + value.getPoint().getSRID());
         }
 
-        aixmPointType.setHorizontalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, Long.valueOf(10)));
-        aixmPointType.getAnnotation().add("annotation");
-        return aixmPointType;
+        pointType.setHorizontalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, Long.valueOf(10)));
+        pointType.getAnnotation().add("annotation");
+        return pointType;
     }
     
     public static List<Point> parseGMLPoints(List<PointType> values) {

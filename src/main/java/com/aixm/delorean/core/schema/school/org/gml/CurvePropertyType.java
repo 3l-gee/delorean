@@ -9,8 +9,7 @@ package com.aixm.delorean.core.schema.school.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.school.AixmCurveType;
-import com.aixm.delorean.core.schema.school.AixmElevatedCurveType;
+import com.aixm.delorean.core.schema.school.ElevatedCurveType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.TypeType;
@@ -85,12 +84,12 @@ public class CurvePropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AixmCurveType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AixmElevatedCurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeCurveType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.CurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
      *     {@link JAXBElement }{@code <}{@link LinearRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link OrientableCurveType }{@code >}
@@ -106,12 +105,12 @@ public class CurvePropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AixmCurveType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AixmElevatedCurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeCurveType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.CurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
      *     {@link JAXBElement }{@code <}{@link LinearRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link OrientableCurveType }{@code >}

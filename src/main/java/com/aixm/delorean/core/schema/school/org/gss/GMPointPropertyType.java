@@ -9,9 +9,7 @@ package com.aixm.delorean.core.schema.school.org.gss;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.school.AixmElevatedPointType;
-import com.aixm.delorean.core.schema.school.AixmPointType;
-import com.aixm.delorean.core.schema.school.org.gml.PointType;
+import com.aixm.delorean.core.schema.school.ElevatedPointType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.TypeType;
@@ -55,7 +53,7 @@ public class GMPointPropertyType {
      * 
      */
     @XmlElementRef(name = "Point", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
-    protected JAXBElement<? extends PointType> point;
+    protected JAXBElement<? extends com.aixm.delorean.core.schema.school.org.gml.PointType> point;
     @XmlAttribute(name = "nilReason", namespace = "http://www.isotc211.org/2005/gco")
     protected List<String> nilReason;
     @XmlAttribute(name = "uuidref")
@@ -80,12 +78,12 @@ public class GMPointPropertyType {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.PointType }{@code >}
      *     
      */
-    public JAXBElement<? extends PointType> getPoint() {
+    public JAXBElement<? extends com.aixm.delorean.core.schema.school.org.gml.PointType> getPoint() {
         return point;
     }
 
@@ -94,13 +92,13 @@ public class GMPointPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.PointType }{@code >}
      *     
      * @see #getPoint()
      */
-    public void setPoint(JAXBElement<? extends PointType> value) {
+    public void setPoint(JAXBElement<? extends com.aixm.delorean.core.schema.school.org.gml.PointType> value) {
         this.point = value;
     }
 

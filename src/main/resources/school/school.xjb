@@ -86,7 +86,7 @@
             <jaxb:javaType name="org.locationtech.jts.geom.Point"/>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixmPoint", columnDefinition = "geometry(Point, 4326)")</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true, type = com.aixm.delorean.core.schema.school.org.gml.PointType.class)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true, type = com.aixm.delorean.core.schema.school.PointType.class)</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.gis.PointTypeAdapter.class)</annox:annotate>
         </jaxb:bindings>
         <!-- ElevatedPointPropertyType -->
@@ -96,7 +96,7 @@
     		<jaxb:javaType name="org.locationtech.jts.geom.LineString"/>
             <annox:annotate target="field">@jakarta.persistence.Column(name = "aixmCurve", columnDefinition = "geometry(Linestring, 4326)")</annox:annotate>
             <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true, type = com.aixm.delorean.core.schema.school.org.gml.CurveType.class)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true, type = com.aixm.delorean.core.schema.school.CurveType.class)</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.gis.CurveTypeAdapter.class)</annox:annotate>
         </jaxb:bindings>
         <!-- ElevatedCurvePropertyType -->
