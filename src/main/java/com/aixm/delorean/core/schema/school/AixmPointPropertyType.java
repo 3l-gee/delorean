@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import com.aixm.delorean.core.adapter.gis.PointTypeAdapter;
+import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
@@ -46,9 +48,9 @@ public class AixmPointPropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    @Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")
+    @XmlElement(required = true, type = PointType.class)
+    @XmlJavaTypeAdapter(PointTypeAdapter.class)
+    @Column(name = "aixmPoint", columnDefinition = "geometry(Point, 4326)")
     @Embedded
     protected Point point;
 

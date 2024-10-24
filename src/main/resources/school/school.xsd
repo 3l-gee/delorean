@@ -58,7 +58,6 @@
     <!-- Abstract ComplexType -->
     <xs:complexType name="AbstractAIXMPropertyType">
         <xs:attribute name="nilReason" type="gml:NilReasonEnumeration"/>
-        <xs:attribute name="dbID" type="xs:long"/>
     </xs:complexType>
 
     <!-- AixmPointType extending gml:PointType with horizontalAccuracy and annotation -->
@@ -192,6 +191,71 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+
+	<!-- Surface complexType extending gml:SurfaceType with horizontalAccuracy and annotation -->
+	<!-- <element name="Surface" type="aixm:SurfaceType" substitutionGroup="gml:Surface"/>
+	<complexType name="SurfaceType">
+		<complexContent>
+			<extension base="gml:SurfaceType">
+				<sequence>
+					<group ref="aixm:SurfacePropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SurfacePropertyGroup">
+		<sequence>
+			<element name="horizontalAccuracy" type="aixm:ValDistanceType" nillable="true" minOccurs="0"/>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<complexType name="SurfacePropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="aixm:Surface"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType> -->
+
+	<!-- ElevatedSurface complexType extending Surface with elevation, geoidUndulation, verticalDatum and verticalAccuracy -->
+	<!-- <element name="ElevatedSurface" type="aixm:ElevatedSurfaceType" substitutionGroup="aixm:Surface"/>
+	<complexType name="ElevatedSurfaceType">
+		<complexContent>
+			<extension base="aixm:SurfaceType">
+				<sequence>
+					<group ref="aixm:ElevatedSurfacePropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<choice>
+								<element ref="aixm:AbstractElevatedSurfaceExtension"/>
+							</choice>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ElevatedSurfacePropertyGroup">
+		<sequence>
+			<element name="elevation" type="aixm:ValDistanceVerticalType" nillable="true" minOccurs="0"/>
+			<element name="geoidUndulation" type="aixm:ValDistanceSignedType" nillable="true" minOccurs="0"/>
+			<element name="verticalDatum" type="aixm:CodeVerticalDatumType" nillable="true" minOccurs="0"/>
+			<element name="verticalAccuracy" type="aixm:ValDistanceType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<complexType name="ElevatedSurfacePropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="aixm:ElevatedSurface"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="AbstractElevatedSurfaceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/> -->
 
 
     <xs:complexType name="school">

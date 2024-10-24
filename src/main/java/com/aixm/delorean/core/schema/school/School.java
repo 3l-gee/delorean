@@ -9,6 +9,10 @@ package com.aixm.delorean.core.schema.school;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.aixm.delorean.core.adapter.gis.CurveTypeAdapter;
+import com.aixm.delorean.core.adapter.gis.PointTypeAdapter;
+import com.aixm.delorean.core.schema.school.org.gml.CurveType;
+import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -91,18 +95,16 @@ public class School {
     @XmlElement(required = true)
     @Embedded
     protected AixmCurvePropertyType aixmElevatedCurve;
-    @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlElement(required = true, type = PointType.class)
+    @XmlJavaTypeAdapter(PointTypeAdapter.class)
     @Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")
-    @Transient
     protected Point geomPoint;
-    @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlElement(required = true, type = CurveType.class)
+    @XmlJavaTypeAdapter(CurveTypeAdapter.class)
     @Column(name = "geomCurve", columnDefinition = "geometry(Linestring, 4326)")
-    @Transient
     protected LineString geomCurve;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     @Column(name = "geomSurface", columnDefinition = "geometry(Polygon, 4326)")
     @Transient
     protected Polygon geomSurface;

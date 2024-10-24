@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -24,7 +26,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <attribute name="nilReason" type="{http://www.opengis.net/gml/3.2}NilReasonEnumeration" />
- *       <attribute name="dbID" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -40,12 +41,12 @@ import jakarta.xml.bind.annotation.XmlType;
     AixmCurvePropertyType.class,
     ElevatedCurvePropertyType.class
 })
+@MappedSuperclass
 public class AbstractAIXMPropertyType {
 
     @XmlAttribute(name = "nilReason")
+    @Column(name = "nilReason")
     protected String nilReason;
-    @XmlAttribute(name = "dbID")
-    protected Long dbID;
 
     /**
      * Gets the value of the nilReason property.
@@ -69,30 +70,6 @@ public class AbstractAIXMPropertyType {
      */
     public void setNilReason(String value) {
         this.nilReason = value;
-    }
-
-    /**
-     * Gets the value of the dbID property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    public Long getDbID() {
-        return dbID;
-    }
-
-    /**
-     * Sets the value of the dbID property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    public void setDbID(Long value) {
-        this.dbID = value;
     }
 
 }

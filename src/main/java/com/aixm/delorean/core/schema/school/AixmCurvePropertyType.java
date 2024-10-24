@@ -7,10 +7,16 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import com.aixm.delorean.core.adapter.gis.CurveTypeAdapter;
+import com.aixm.delorean.core.schema.school.org.gml.CurveType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.locationtech.jts.geom.LineString;
 
 
 /**
@@ -40,8 +46,11 @@ public class AixmCurvePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true)
-    protected String curve;
+    @XmlElement(required = true, type = CurveType.class)
+    @XmlJavaTypeAdapter(CurveTypeAdapter.class)
+    @Column(name = "aixmCurve", columnDefinition = "geometry(Linestring, 4326)")
+    @Embedded
+    protected LineString curve;
 
     /**
      * Gets the value of the curve property.
@@ -51,7 +60,7 @@ public class AixmCurvePropertyType
      *     {@link String }
      *     
      */
-    public String getCurve() {
+    public LineString getCurve() {
         return curve;
     }
 
@@ -63,7 +72,7 @@ public class AixmCurvePropertyType
      *     {@link String }
      *     
      */
-    public void setCurve(String value) {
+    public void setCurve(LineString value) {
         this.curve = value;
     }
 

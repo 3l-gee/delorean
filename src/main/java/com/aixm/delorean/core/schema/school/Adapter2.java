@@ -16,11 +16,14 @@ public class Adapter2
 
 
     public Point unmarshal(String value) {
-        return (com.aixm.delorean.core.util.GisUtil.parseGMLPoint(value));
+        return new Point(value);
     }
 
     public String marshal(Point value) {
-        return (com.aixm.delorean.core.util.GisUtil.printGMLPoint(value));
+        if (value == null) {
+            return null;
+        }
+        return value.toString();
     }
 
 }

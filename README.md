@@ -323,6 +323,41 @@ classDiagram
     }
 ```
 
+```mermaid
+classDiagram
+    DirectPositionType --* gml_PointType
+    gml_PointType --> PointType
+    AbstractAIXMPropertyType --> PointPropertyType
+    PointType --* PointPropertyType
+
+    class gml_PointType {
+        DirectPositionType pos
+        String id
+        String srsName
+        BigInteger srsDimension
+        List[String] axisLabels
+        List[String] uomLabels
+    }
+
+    class DirectPositionType {
+        List[Double] value
+    }
+
+    class AbstractAIXMPropertyType {
+        enum nilReason
+    }
+
+    class PointType {
+        float horizontalAccuracy
+        string annotation
+    }
+
+    class PointPropertyType {
+        PointType point
+        string horizontalAccuracy
+        list[string] annotation
+    }
+```
 
 
 ### Goal
