@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.school;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -20,12 +19,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AixmPointType complex type</p>.
+ * <p>Java class for PointType complex type</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
  * 
  * <pre>{@code
- * <complexType name="AixmPointType">
+ * <complexType name="PointType">
  *   <complexContent>
  *     <extension base="{http://www.opengis.net/gml/3.2}PointType">
  *       <sequence>
@@ -39,15 +38,15 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AixmPointType", propOrder = {
+@XmlType(name = "PointType", propOrder = {
     "horizontalAccuracy",
     "annotation"
 })
 @XmlSeeAlso({
-    AixmElevatedPointType.class
+    ElevatedPointType.class
 })
-public class AixmPointType
-    extends PointType
+public class PointType
+    extends com.aixm.delorean.core.schema.school.org.gml.PointType
 {
 
     @XmlElementRef(name = "horizontalAccuracy", type = JAXBElement.class, required = false)

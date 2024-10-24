@@ -9,10 +9,8 @@ package com.aixm.delorean.core.schema.school.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.school.AixmCurveType;
-import com.aixm.delorean.core.schema.school.AixmElevatedCurveType;
-import com.aixm.delorean.core.schema.school.AixmElevatedPointType;
-import com.aixm.delorean.core.schema.school.AixmPointType;
+import com.aixm.delorean.core.schema.school.ElevatedCurveType;
+import com.aixm.delorean.core.schema.school.ElevatedPointType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.school.org.w3.xlink.TypeType;
@@ -95,10 +93,10 @@ public class DomainSetType {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AixmCurveType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AixmElevatedCurveType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.PointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricAggregateType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
@@ -110,7 +108,7 @@ public class DomainSetType {
      *     {@link JAXBElement }{@code <}{@link CompositeCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeSolidType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeSurfaceType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.CurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link GeometricComplexType }{@code >}
      *     {@link JAXBElement }{@code <}{@link GridType }{@code >}
      *     {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
@@ -122,7 +120,7 @@ public class DomainSetType {
      *     {@link JAXBElement }{@code <}{@link MultiSurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link OrientableCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link OrientableSurfaceType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.PointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link PolygonType }{@code >}
      *     {@link JAXBElement }{@code <}{@link RectifiedGridType }{@code >}
      *     {@link JAXBElement }{@code <}{@link RingType }{@code >}
@@ -143,10 +141,10 @@ public class DomainSetType {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AixmCurveType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AixmElevatedCurveType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.PointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricAggregateType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
@@ -158,7 +156,7 @@ public class DomainSetType {
      *     {@link JAXBElement }{@code <}{@link CompositeCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeSolidType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeSurfaceType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.CurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link GeometricComplexType }{@code >}
      *     {@link JAXBElement }{@code <}{@link GridType }{@code >}
      *     {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
@@ -170,7 +168,7 @@ public class DomainSetType {
      *     {@link JAXBElement }{@code <}{@link MultiSurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link OrientableCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link OrientableSurfaceType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.PointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link PolygonType }{@code >}
      *     {@link JAXBElement }{@code <}{@link RectifiedGridType }{@code >}
      *     {@link JAXBElement }{@code <}{@link RingType }{@code >}

@@ -61,8 +61,8 @@
     </xs:complexType>
 
     <!-- AixmPointType extending gml:PointType with horizontalAccuracy and annotation -->
-	<xs:element name="Point" type="AixmPointType" substitutionGroup="gml:Point"/>
-	<xs:complexType name="AixmPointType">
+	<xs:element name="Point" type="PointType" substitutionGroup="gml:Point"/>
+	<xs:complexType name="PointType">
 		<xs:complexContent>
 			<xs:extension base="gml:PointType">
 				<xs:sequence>
@@ -89,10 +89,10 @@
 	</xs:complexType>
 
     <!-- ElevatedPoint complexType extending Point with elevation, geoidUndulation, verticalDatum and verticalAccuracy -->
-	<xs:element name="ElevatedPoint" type="AixmElevatedPointType" substitutionGroup="Point"/>
-	<xs:complexType name="AixmElevatedPointType">
+	<xs:element name="ElevatedPoint" type="ElevatedPointType" substitutionGroup="Point"/>
+	<xs:complexType name="ElevatedPointType">
 		<xs:complexContent>
-			<xs:extension base="AixmPointType">
+			<xs:extension base="PointType">
 				<xs:sequence>
 					<xs:group ref="AixmElevatedPointPropertyGroup"/>
 					<xs:element name="extension" minOccurs="0" maxOccurs="unbounded">
@@ -127,8 +127,8 @@
 	</xs:complexType>
 
     <!-- Curve complexType extending gml:CurveType with horizontalAccuracy and annotation -->
-    <xs:element name="Curve" type="AixmCurveType" substitutionGroup="gml:Curve"/>
-	<xs:complexType name="AixmCurveType">
+    <xs:element name="Curve" type="CurveType" substitutionGroup="gml:Curve"/>
+	<xs:complexType name="CurveType">
 		<xs:complexContent>
 			<xs:extension base="gml:CurveType">
 				<xs:sequence>
@@ -155,10 +155,10 @@
 	</xs:complexType>
 
     <!-- ElevatedCurve complexType extending Curve with elevation, geoidUndulation, verticalDatum and verticalAccuracy -->
-	<xs:element name="ElevatedCurve" type="AixmElevatedCurveType" substitutionGroup="Curve"/>
-	<xs:complexType name="AixmElevatedCurveType">
+	<xs:element name="ElevatedCurve" type="ElevatedCurveType" substitutionGroup="Curve"/>
+	<xs:complexType name="ElevatedCurveType">
 		<xs:complexContent>
-			<xs:extension base="AixmCurveType">
+			<xs:extension base="CurveType">
 				<xs:sequence>
 					<xs:group ref="AixmElevatedCurvePropertyGroup"/>
 					<xs:element name="extension" minOccurs="0" maxOccurs="unbounded">

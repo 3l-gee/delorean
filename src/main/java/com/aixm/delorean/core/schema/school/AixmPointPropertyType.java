@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.school;
 
 import com.aixm.delorean.core.adapter.gis.PointTypeAdapter;
-import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;

@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.school;
 
 import com.aixm.delorean.core.adapter.gis.CurveTypeAdapter;
-import com.aixm.delorean.core.schema.school.org.gml.CurveType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;

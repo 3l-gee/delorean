@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.school;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.school.org.gml.CurveType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -20,12 +19,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AixmCurveType complex type</p>.
+ * <p>Java class for CurveType complex type</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
  * 
  * <pre>{@code
- * <complexType name="AixmCurveType">
+ * <complexType name="CurveType">
  *   <complexContent>
  *     <extension base="{http://www.opengis.net/gml/3.2}CurveType">
  *       <sequence>
@@ -39,15 +38,15 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AixmCurveType", propOrder = {
+@XmlType(name = "CurveType", propOrder = {
     "horizontalAccuracy",
     "annotation"
 })
 @XmlSeeAlso({
-    AixmElevatedCurveType.class
+    ElevatedCurveType.class
 })
-public class AixmCurveType
-    extends CurveType
+public class CurveType
+    extends com.aixm.delorean.core.schema.school.org.gml.CurveType
 {
 
     @XmlElementRef(name = "horizontalAccuracy", type = JAXBElement.class, required = false)

@@ -9,8 +9,7 @@ package com.aixm.delorean.core.schema.school.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.school.AixmElevatedPointType;
-import com.aixm.delorean.core.schema.school.AixmPointType;
+import com.aixm.delorean.core.schema.school.ElevatedPointType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -48,7 +47,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PointArrayPropertyType {
 
     @XmlElementRef(name = "Point", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
-    protected List<JAXBElement<? extends PointType>> point;
+    protected List<JAXBElement<? extends com.aixm.delorean.core.schema.school.org.gml.PointType>> point;
     @XmlAttribute(name = "owns")
     protected java.lang.Boolean owns;
 
@@ -70,16 +69,16 @@ public class PointArrayPropertyType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
-     * {@link JAXBElement }{@code <}{@link PointType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.PointType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.PointType }{@code >}
      * </p>
      * 
      * 
      * @return
      *     The value of the point property.
      */
-    public List<JAXBElement<? extends PointType>> getPoint() {
+    public List<JAXBElement<? extends com.aixm.delorean.core.schema.school.org.gml.PointType>> getPoint() {
         if (point == null) {
             point = new ArrayList<>();
         }

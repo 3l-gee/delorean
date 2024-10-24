@@ -9,11 +9,11 @@ public class CurveTypeAdapter extends XmlAdapter<CurveType, LineString>
 {
 
     public LineString unmarshal(CurveType value) {
-        return (com.aixm.delorean.core.util.GisUtil.parseGMLCurve(value));
+        return (com.aixm.delorean.core.util.GeospatialHelper.parseGMLCurve(value));
     }
 
     public CurveType marshal(LineString value) {
-        return (com.aixm.delorean.core.util.GisUtil.printGMLCurve(value));
+        return (com.aixm.delorean.core.util.GeospatialHelper.printGMLCurve(value));
     }
 
 }

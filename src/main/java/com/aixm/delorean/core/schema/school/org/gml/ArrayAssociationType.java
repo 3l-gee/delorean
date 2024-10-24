@@ -9,10 +9,8 @@ package com.aixm.delorean.core.schema.school.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.school.AixmCurveType;
-import com.aixm.delorean.core.schema.school.AixmElevatedCurveType;
-import com.aixm.delorean.core.schema.school.AixmElevatedPointType;
-import com.aixm.delorean.core.schema.school.AixmPointType;
+import com.aixm.delorean.core.schema.school.ElevatedCurveType;
+import com.aixm.delorean.core.schema.school.ElevatedPointType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,10 +74,10 @@ public class ArrayAssociationType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link AixmCurveType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AixmElevatedCurveType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AixmElevatedPointType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AixmPointType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.CurveType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.PointType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractCRSType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractCRSType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractContinuousCoverageType }{@code >}
@@ -147,7 +145,7 @@ public class ArrayAssociationType {
      * {@link JAXBElement }{@code <}{@link Count }{@code >}
      * {@link JAXBElement }{@code <}{@link CoverageFunctionType }{@code >}
      * {@link JAXBElement }{@code <}{@link CubicSplineType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CurveType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.CurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link CylindricalCSType }{@code >}
      * {@link JAXBElement }{@code <}{@link DataBlockType }{@code >}
      * {@link JAXBElement }{@code <}{@link DefinitionProxyType }{@code >}
@@ -213,7 +211,7 @@ public class ArrayAssociationType {
      * {@link JAXBElement }{@code <}{@link ParameterValueGroupType }{@code >}
      * {@link JAXBElement }{@code <}{@link ParameterValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link PassThroughOperationType }{@code >}
-     * {@link JAXBElement }{@code <}{@link PointType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.PointType }{@code >}
      * {@link JAXBElement }{@code <}{@link PolarCSType }{@code >}
      * {@link JAXBElement }{@code <}{@link PolygonType }{@code >}
      * {@link JAXBElement }{@code <}{@link PrimeMeridianType }{@code >}

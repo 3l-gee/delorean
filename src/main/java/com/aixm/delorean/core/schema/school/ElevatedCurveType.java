@@ -18,16 +18,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AixmElevatedPointType complex type</p>.
+ * <p>Java class for ElevatedCurveType complex type</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
  * 
  * <pre>{@code
- * <complexType name="AixmElevatedPointType">
+ * <complexType name="ElevatedCurveType">
  *   <complexContent>
- *     <extension base="{}AixmPointType">
+ *     <extension base="{}CurveType">
  *       <sequence>
- *         <group ref="{}AixmElevatedPointPropertyGroup"/>
+ *         <group ref="{}AixmElevatedCurvePropertyGroup"/>
  *         <element name="extension" maxOccurs="unbounded" minOccurs="0">
  *           <complexType>
  *             <complexContent>
@@ -46,15 +46,15 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AixmElevatedPointType", propOrder = {
+@XmlType(name = "ElevatedCurveType", propOrder = {
     "elevation",
     "geoidUndulation",
     "verticalDatum",
     "verticalAccuracy",
     "extension"
 })
-public class AixmElevatedPointType
-    extends AixmPointType
+public class ElevatedCurveType
+    extends CurveType
 {
 
     @XmlElementRef(name = "elevation", type = JAXBElement.class, required = false)
@@ -65,7 +65,7 @@ public class AixmElevatedPointType
     protected JAXBElement<String> verticalDatum;
     @XmlElementRef(name = "verticalAccuracy", type = JAXBElement.class, required = false)
     protected JAXBElement<Long> verticalAccuracy;
-    protected List<AixmElevatedPointType.Extension> extension;
+    protected List<ElevatedCurveType.Extension> extension;
 
     /**
      * Gets the value of the elevation property.
@@ -181,14 +181,14 @@ public class AixmElevatedPointType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AixmElevatedPointType.Extension }
+     * {@link ElevatedCurveType.Extension }
      * </p>
      * 
      * 
      * @return
      *     The value of the extension property.
      */
-    public List<AixmElevatedPointType.Extension> getExtension() {
+    public List<ElevatedCurveType.Extension> getExtension() {
         if (extension == null) {
             extension = new ArrayList<>();
         }

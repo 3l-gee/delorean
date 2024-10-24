@@ -9,11 +9,11 @@ public class PointTypeAdapter extends XmlAdapter<PointType, Point>
 {
 
     public Point unmarshal(PointType value) {
-        return (com.aixm.delorean.core.util.GisUtil.parseGMLPoint(value));
+        return (com.aixm.delorean.core.util.GeospatialHelper.parseGMLPoint(value));
     }
 
     public PointType marshal(Point value) {
-        return (com.aixm.delorean.core.util.GisUtil.printGMLPoint(value));
+        return (com.aixm.delorean.core.util.GeospatialHelper.printGMLPoint(value));
     }
 
 }
