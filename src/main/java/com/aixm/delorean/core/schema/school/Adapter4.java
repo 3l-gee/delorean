@@ -8,19 +8,22 @@
 package com.aixm.delorean.core.schema.school;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-import org.locationtech.jts.geom.Polygon;
+import org.locationtech.jts.geom.LineString;
 
 public class Adapter4
-    extends XmlAdapter<String, Polygon>
+    extends XmlAdapter<String, LineString>
 {
 
 
-    public Polygon unmarshal(String value) {
-        return (com.aixm.delorean.core.util.GisUtil.parseGMLSurface(value));
+    public LineString unmarshal(String value) {
+        return new LineString(value);
     }
 
-    public String marshal(Polygon value) {
-        return (com.aixm.delorean.core.util.GisUtil.printGMLSurface(value));
+    public String marshal(LineString value) {
+        if (value == null) {
+            return null;
+        }
+        return value.toString();
     }
 
 }

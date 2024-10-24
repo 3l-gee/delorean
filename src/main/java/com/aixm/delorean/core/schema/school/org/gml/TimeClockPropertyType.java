@@ -34,8 +34,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}TimeClock"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -60,6 +60,8 @@ public class TimeClockPropertyType {
      */
     @XmlElement(name = "TimeClock")
     protected TimeClockType timeClock;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
@@ -79,8 +81,6 @@ public class TimeClockPropertyType {
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
 
     /**
      * A clock provides a basis for defining temporal position within a day. A clock shall be used with a calendar in order to provide a complete description of a temporal position within a specific day.
@@ -110,6 +110,34 @@ public class TimeClockPropertyType {
      */
     public void setTimeClock(TimeClockType value) {
         this.timeClock = value;
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(java.lang.Boolean value) {
+        this.owns = value;
     }
 
     /**
@@ -338,34 +366,6 @@ public class TimeClockPropertyType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(java.lang.Boolean value) {
-        this.owns = value;
     }
 
 }
