@@ -31,6 +31,9 @@ import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
 import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
 
 import com.aixm.delorean.core.adapter.gis.AixmPointType;
+import com.aixm.delorean.core.adapter.gis.AixmCurveType;
+import com.aixm.delorean.core.adapter.gis.AixmElevatedCurveType;
+import com.aixm.delorean.core.adapter.gis.AixmElevatedPointType;
 
 import com.aixm.delorean.core.schema.school.org.gml.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractCurveSegmentType;
@@ -41,6 +44,10 @@ import com.aixm.delorean.core.schema.school.org.gml.AbstractSurfacePatchType;
 import com.aixm.delorean.core.schema.school.org.gml.CurvePropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
 import com.aixm.delorean.core.schema.school.org.gml.RingType;
+import com.aixm.delorean.core.schema.school.ElevatedCurvePropertyType;
+import com.aixm.delorean.core.schema.school.ElevatedCurveType;
+import com.aixm.delorean.core.schema.school.ElevatedPointType;
+import com.aixm.delorean.core.schema.school.ElevatedCurvePropertyType;
 
 public class GeospatialHelper {    
     private static int SRID = 4326; // EPSG:4326
@@ -159,37 +166,71 @@ public class GeospatialHelper {
     }
 
     public static AixmPointType parseAIXMPoint (com.aixm.delorean.core.schema.school.PointType value) {
-        Point point = parseGMLPoint(value);
-        Long horizontalAccuracy = value.getHorizontalAccuracy().getValue();
-        List<String> annotation = value.getAnnotation();
+        AixmPointType aixmPoint = new AixmPointType();
+        aixmPoint.setPoint(parseGMLPoint(value));
+        aixmPoint.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
+        aixmPoint.setAnnotation((value.getAnnotation()));
+        aixmPoint.setId(value.getId());
 
-        AixmPointType aixmPointType = new AixmPointType();
-        aixmPointType.setPoint(point);
-        aixmPointType.setHorizontalAccuracy(horizontalAccuracy);
-        aixmPointType.setAnnotation(annotation);
-
-        return aixmPointType;
+        return aixmPoint;
     }
 
     public static com.aixm.delorean.core.schema.school.PointType printAIXMPoint(AixmPointType value) {
+        com.aixm.delorean.core.schema.school.PointType point = new com.aixm.delorean.core.schema.school.PointType();
         DirectPositionType pos = new DirectPositionType();
 
         pos.getValue().add(value.getPoint().getX());
         pos.getValue().add(value.getPoint().getY());
 
-
-        com.aixm.delorean.core.schema.school.PointType pointType = new com.aixm.delorean.core.schema.school.PointType();
-        pointType.setPos(pos);
+        point.setPos(pos);
 
         if (value.getPoint().getSRID() != 0) {
-            pointType.setSrsName("EPSG:" + value.getPoint().getSRID());
+            point.setSrsName("EPSG:" + value.getPoint().getSRID());
         }
 
-        pointType.setHorizontalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, Long.valueOf(10)));
-        pointType.getAnnotation().add("annotation");
-        return pointType;
+        point.setId(value.getId());
+
+        point.setHorizontalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, Long.valueOf(10)));
+        point.getAnnotation().add("annotation");
+        return point;
+    }
+
+    public static AixmElevatedPointType parseAIXMElevatedPoint (ElevatedPointType value) {
+        AixmElevatedPointType aixmElevatedPoint= new AixmElevatedPointType();
+        aixmElevatedPoint.setPoint(parseGMLPoint(value));
+        aixmElevatedPoint.setElevation(value.getElevation().getValue());
+        aixmElevatedPoint.setGeoidUndulation(value.getGeoidUndulation().getValue());
+        aixmElevatedPoint.setVerticalDatum(value.getVerticalDatum().getValue());
+        aixmElevatedPoint.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
+        aixmElevatedPoint.setVerticalAccuracy(value.getVerticalAccuracy().getValue());
+        aixmElevatedPoint.setAnnotation(value.getAnnotation());
+
+        return aixmElevatedPoint;
     }
     
+    public static ElevatedPointType printAIXMElevatedPoint(AixmElevatedPointType value) {
+        ElevatedPointType elevatedPoint = new ElevatedPointType();
+        DirectPositionType pos = new DirectPositionType();
+
+        pos.getValue().add(value.getPoint().getX());
+        pos.getValue().add(value.getPoint().getY());
+
+        elevatedPoint.setPos(pos);
+
+        if (value.getPoint().getSRID() != 0) {
+            elevatedPoint.setSrsName("EPSG:" + value.getPoint().getSRID());
+        }
+
+        elevatedPoint.setElevation(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "elevation"), Long.class, value.getElevation()));
+        elevatedPoint.setGeoidUndulation(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), Long.class, value.getGeoidUndulation()));
+        elevatedPoint.setVerticalDatum(new JAXBElement<String>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), String.class, value.getVerticalDatum()));
+        elevatedPoint.setHorizontalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy()));
+        elevatedPoint.setVerticalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), Long.class, value.getVerticalAccuracy()));
+        elevatedPoint.getAnnotation().addAll(value.getAnnotation());
+
+        return new ElevatedPointType();
+    }
+
     public static List<Point> parseGMLPoints(List<PointType> values) {
         List<Point> points = new ArrayList<>(values.size());
         for (PointType value : values) {
@@ -225,14 +266,6 @@ public class GeospatialHelper {
         return geometryFactory.createLineString(segmentToCoordinate(value.getSrsName(), segment));
     }
 
-    public static List<LineString> parseGMLCurves(List<CurveType> values) {
-        List<LineString> curves = new ArrayList<>(values.size());
-        for (CurveType value : values) {
-            curves.add(parseGMLCurve(value));
-        }
-        return curves;
-    }
-
     public static CurveType printGMLCurve(LineString value) {
         CurveType curve = new CurveType();
         CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();
@@ -257,12 +290,77 @@ public class GeospatialHelper {
         segments.getAbstractCurveSegment().add(geodesicElement);
         curve.setSegments(segments);
         
-        int srid = value.getSRID();
-        if (srid != 0) {
-            curve.setSrsName("EPSG:" + srid);
+        if (value.getSRID() != 0) {
+            curve.setSrsName("EPSG:" + value.getSRID());
         }
 
         return curve;
+    }
+
+    public static AixmCurveType parseAIXMCurve(com.aixm.delorean.core.schema.school.CurveType value) {
+        AixmCurveType aixmCurve = new AixmCurveType();
+        aixmCurve.setLineString(parseGMLCurve(value));
+        aixmCurve.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
+        aixmCurve.setAnnotation(value.getAnnotation());
+        
+        return aixmCurve;
+    }
+
+    public static com.aixm.delorean.core.schema.school.CurveType printAIXMCurve(AixmCurveType value) {
+        com.aixm.delorean.core.schema.school.CurveType curve = new com.aixm.delorean.core.schema.school.CurveType();
+        CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();
+        GeodesicStringType geodesicString = new GeodesicStringType();
+        DirectPositionListType posList = new DirectPositionListType();
+
+        for (Coordinate coord : value.getLineString().getCoordinates()) {
+            posList.getValue().add(coord.getX());
+            posList.getValue().add(coord.getY());
+        }
+
+        curve.setSrsDimension(BigInteger.valueOf(2));
+
+        geodesicString.setPosList(posList);
+
+        JAXBElement<GeodesicStringType> geodesicElement = new JAXBElement<>(
+            new QName("http://www.opengis.net/gml/3.2", "GeodesicString"), 
+            GeodesicStringType.class, 
+            geodesicString
+        );
+
+        segments.getAbstractCurveSegment().add(geodesicElement);
+        curve.setSegments(segments);
+        
+        if (value.getLineString().getSRID() != 0) {
+            curve.setSrsName("EPSG:" + value.getLineString().getSRID());
+        }
+
+        return curve;
+    }
+
+    public static AixmElevatedCurveType parseAIXMElevatedCurve(ElevatedCurveType value) {
+        AixmElevatedCurveType aixmElevatedCurve = new AixmElevatedCurveType();
+        aixmElevatedCurve.setLineString(parseGMLCurve(value));
+        aixmElevatedCurve.setElevation(value.getElevation().getValue());
+        aixmElevatedCurve.setGeoidUndulation(value.getGeoidUndulation().getValue());
+        aixmElevatedCurve.setVerticalDatum(value.getVerticalDatum().getValue());
+        aixmElevatedCurve.setVerticalAccuracy(value.getVerticalAccuracy().getValue());
+        aixmElevatedCurve.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
+        aixmElevatedCurve.setAnnotation(value.getAnnotation());
+
+        return aixmElevatedCurve;
+    }
+
+    public static ElevatedCurveType printAIXMElevatedCurve(AixmElevatedCurveType value) {
+        ElevatedCurveType elevatedCurve = new ElevatedCurveType();
+        return elevatedCurve;
+    }
+
+    public static List<LineString> parseGMLCurves(List<CurveType> values) {
+        List<LineString> curves = new ArrayList<>(values.size());
+        for (CurveType value : values) {
+            curves.add(parseGMLCurve(value));
+        }
+        return curves;
     }
 
     public static List<CurveType> printGMLCurves(List<LineString> values) {
