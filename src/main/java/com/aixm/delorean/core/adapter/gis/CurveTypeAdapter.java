@@ -1,19 +1,16 @@
 package com.aixm.delorean.core.adapter.gis;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-import org.locationtech.jts.geom.LineString;
 
-import com.aixm.delorean.core.schema.school.org.gml.CurveType;
-
-public class CurveTypeAdapter extends XmlAdapter<CurveType, LineString>
+public class CurveTypeAdapter extends XmlAdapter<com.aixm.delorean.core.schema.school.CurveType, AixmCurveType>
 {
 
-    public LineString unmarshal(CurveType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.parseGMLCurve(value));
+    public AixmCurveType unmarshal(com.aixm.delorean.core.schema.school.CurveType value) {
+        return (com.aixm.delorean.core.util.GeospatialHelper.parseAIXMCurve(value));
     }
 
-    public CurveType marshal(LineString value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.printGMLCurve(value));
+    public com.aixm.delorean.core.schema.school.CurveType marshal(AixmCurveType value) {
+        return (com.aixm.delorean.core.util.GeospatialHelper.printAIXMCurve(value));
     }
 
 }

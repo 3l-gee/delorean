@@ -120,7 +120,7 @@
 			<xs:extension base="AbstractAIXMPropertyType">
 				<xs:sequence>
 					<!-- <xs:element ref="aixm:ElevatedPoint"/> -->
-                    <xs:element name="elevatedPoint" type="xs:string" />
+                    <xs:element name="point" type="xs:string" />
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

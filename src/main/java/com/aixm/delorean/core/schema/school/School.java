@@ -95,19 +95,19 @@ public class School {
     @XmlElement(required = true)
     @Embedded
     protected AixmCurvePropertyType aixmElevatedCurve;
-    @XmlElement(required = true, type = PointType.class)
-    @XmlJavaTypeAdapter(PointTypeAdapter.class)
-    @Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")
-    protected Point geomPoint;
-    @XmlElement(required = true, type = CurveType.class)
-    @XmlJavaTypeAdapter(CurveTypeAdapter.class)
-    @Column(name = "geomCurve", columnDefinition = "geometry(Linestring, 4326)")
-    protected LineString geomCurve;
-    @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter5 .class)
-    @Column(name = "geomSurface", columnDefinition = "geometry(Polygon, 4326)")
-    @Transient
-    protected Polygon geomSurface;
+    // @XmlElement(required = true, type = PointType.class)
+    // @XmlJavaTypeAdapter(PointTypeAdapter.class)
+    // @Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")
+    // protected Point geomPoint;
+    // @XmlElement(required = true, type = CurveType.class)
+    // @XmlJavaTypeAdapter(CurveTypeAdapter.class)
+    // @Column(name = "geomCurve", columnDefinition = "geometry(Linestring, 4326)")
+    // protected LineString geomCurve;
+    // @XmlElement(required = true, type = String.class)
+    // @XmlJavaTypeAdapter(Adapter5.class)
+    // @Column(name = "geomSurface", columnDefinition = "geometry(Polygon, 4326)")
+    // @Transient
+    // protected Polygon geomSurface;
     @XmlElement(required = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -233,9 +233,9 @@ public class School {
      *     {@link String }
      *     
      */
-    public Point getGeomPoint() {
-        return geomPoint;
-    }
+    // public Point getGeomPoint() {
+    //     return geomPoint;
+    // }
 
     /**
      * Sets the value of the geomPoint property.
@@ -245,9 +245,9 @@ public class School {
      *     {@link String }
      *     
      */
-    public void setGeomPoint(Point value) {
-        this.geomPoint = value;
-    }
+    // public void setGeomPoint(Point value) {
+    //     this.geomPoint = value;
+    // }
 
     /**
      * Gets the value of the geomCurve property.
@@ -257,9 +257,9 @@ public class School {
      *     {@link String }
      *     
      */
-    public LineString getGeomCurve() {
-        return geomCurve;
-    }
+    // public LineString getGeomCurve() {
+    //     return geomCurve;
+    // }
 
     /**
      * Sets the value of the geomCurve property.
@@ -268,10 +268,10 @@ public class School {
      *     allowed object is
      *     {@link String }
      *     
-     */
-    public void setGeomCurve(LineString value) {
-        this.geomCurve = value;
-    }
+    //  */
+    // public void setGeomCurve(LineString value) {
+    //     this.geomCurve = value;
+    // }
 
     /**
      * Gets the value of the geomSurface property.
@@ -281,9 +281,9 @@ public class School {
      *     {@link String }
      *     
      */
-    public Polygon getGeomSurface() {
-        return geomSurface;
-    }
+    // public Polygon getGeomSurface() {
+    //     return geomSurface;
+    // }
 
     /**
      * Sets the value of the geomSurface property.
@@ -293,9 +293,9 @@ public class School {
      *     {@link String }
      *     
      */
-    public void setGeomSurface(Polygon value) {
-        this.geomSurface = value;
-    }
+    // public void setGeomSurface(Polygon value) {
+    //     this.geomSurface = value;
+    // }
 
     /**
      * Gets the value of the classroom property.

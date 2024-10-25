@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import com.aixm.delorean.core.adapter.gis.AixmPointType;
 import com.aixm.delorean.core.adapter.gis.PointTypeAdapter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -16,7 +17,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.locationtech.jts.geom.Point;
 
 
 /**
@@ -51,7 +51,7 @@ public class AixmPointPropertyType
     @XmlJavaTypeAdapter(PointTypeAdapter.class)
     @Column(name = "aixmPoint", columnDefinition = "geometry(Point, 4326)")
     @Embedded
-    protected Point point;
+    protected AixmPointType point;
 
     /**
      * Gets the value of the point property.
@@ -61,7 +61,7 @@ public class AixmPointPropertyType
      *     {@link String }
      *     
      */
-    public Point getPoint() {
+    public AixmPointType getPoint() {
         return point;
     }
 
@@ -73,7 +73,7 @@ public class AixmPointPropertyType
      *     {@link String }
      *     
      */
-    public void setPoint(Point value) {
+    public void setPoint(AixmPointType value) {
         this.point = value;
     }
 
