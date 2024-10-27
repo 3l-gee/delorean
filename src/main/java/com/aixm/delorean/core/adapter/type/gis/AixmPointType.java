@@ -1,25 +1,24 @@
-package com.aixm.delorean.core.adapter.gis;
+package com.aixm.delorean.core.adapter.type.gis;
 
 import java.util.List;
 
 import org.locationtech.jts.geom.Point;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.xml.bind.annotation.XmlTransient;
 
 @Embeddable
 public class AixmPointType {
         
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    @XmlTransient
-    protected String id;
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @Column(name = "id", nullable = false)
+    // protected String id;
 
     @Column(name = "point", columnDefinition = "geometry(Point, 4326)")
     protected Point point;
@@ -27,16 +26,17 @@ public class AixmPointType {
     @Column(name = "horizontalAccuracy")
     protected Long horizontalAccuracy;
 
-    @OneToMany(mappedBy = "id")
+    @ElementCollection
+    @Column(name = "annotation")
     protected List<String> annotation;
 
-    public String getId() {
-        return id;
-    }
+    // public String getId() {
+    //     return id;
+    // }
 
-    public void setId(String value) {
-        this.id = value;
-    }
+    // public void setId(String value) {
+    //     this.id = value;
+    // }
 
     public Point getPoint() {
         return point;

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.school.ElevatedCurveType;
 import com.aixm.delorean.core.schema.school.ElevatedPointType;
+import com.aixm.delorean.core.schema.school.ElevatedSurfaceType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -77,7 +78,9 @@ public class ArrayAssociationType {
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.CurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.PointType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.SurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractCRSType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractCRSType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractContinuousCoverageType }{@code >}
@@ -223,9 +226,9 @@ public class ArrayAssociationType {
      * {@link JAXBElement }{@code <}{@link ShellType }{@code >}
      * {@link JAXBElement }{@code <}{@link SolidType }{@code >}
      * {@link JAXBElement }{@code <}{@link SphericalCSType }{@code >}
-     * {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
-     * {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
-     * {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.SurfaceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.SurfaceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.school.org.gml.SurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link TemporalCRSType }{@code >}
      * {@link JAXBElement }{@code <}{@link TemporalCSType }{@code >}
      * {@link JAXBElement }{@code <}{@link TemporalDatumType }{@code >}

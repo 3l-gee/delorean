@@ -2,6 +2,7 @@ package com.aixm.delorean.core.adapter.gis;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
+import com.aixm.delorean.core.adapter.type.gis.AixmPointType;
 import com.aixm.delorean.core.schema.school.PointType;
 
 public class PointTypeAdapter extends XmlAdapter<PointType, AixmPointType>

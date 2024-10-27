@@ -29,12 +29,10 @@ import com.aixm.delorean.core.schema.school.org.gml.GeodesicStringType;
 import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
 import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
-
-import com.aixm.delorean.core.adapter.gis.AixmPointType;
-import com.aixm.delorean.core.adapter.gis.AixmCurveType;
-import com.aixm.delorean.core.adapter.gis.AixmElevatedCurveType;
-import com.aixm.delorean.core.adapter.gis.AixmElevatedPointType;
-
+import com.aixm.delorean.core.adapter.type.gis.AixmCurveType;
+import com.aixm.delorean.core.adapter.type.gis.AixmElevatedCurveType;
+import com.aixm.delorean.core.adapter.type.gis.AixmElevatedPointType;
+import com.aixm.delorean.core.adapter.type.gis.AixmPointType;
 import com.aixm.delorean.core.schema.school.org.gml.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractCurveSegmentType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType;
@@ -170,7 +168,7 @@ public class GeospatialHelper {
         aixmPoint.setPoint(parseGMLPoint(value));
         aixmPoint.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
         aixmPoint.setAnnotation((value.getAnnotation()));
-        aixmPoint.setId(value.getId());
+        // aixmPoint.setId(value.getId());
 
         return aixmPoint;
     }
@@ -188,7 +186,7 @@ public class GeospatialHelper {
             point.setSrsName("EPSG:" + value.getPoint().getSRID());
         }
 
-        point.setId(value.getId());
+        // point.setId(value.getId());
 
         point.setHorizontalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, Long.valueOf(10)));
         point.getAnnotation().add("annotation");
@@ -329,6 +327,9 @@ public class GeospatialHelper {
 
         segments.getAbstractCurveSegment().add(geodesicElement);
         curve.setSegments(segments);
+        JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
+        curve.setHorizontalAccuracy(horizontalAccuracy);
+        curve.getAnnotation().addAll(value.getAnnotation());
         
         if (value.getLineString().getSRID() != 0) {
             curve.setSrsName("EPSG:" + value.getLineString().getSRID());
@@ -352,6 +353,48 @@ public class GeospatialHelper {
 
     public static ElevatedCurveType printAIXMElevatedCurve(AixmElevatedCurveType value) {
         ElevatedCurveType elevatedCurve = new ElevatedCurveType();
+        CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();
+        GeodesicStringType geodesicString = new GeodesicStringType();
+        DirectPositionListType posList = new DirectPositionListType();
+
+        for (Coordinate coord : value.getLineString().getCoordinates()) {
+            posList.getValue().add(coord.getX());
+            posList.getValue().add(coord.getY());
+        }
+
+        elevatedCurve.setSrsDimension(BigInteger.valueOf(2));
+
+        geodesicString.setPosList(posList);
+
+        JAXBElement<GeodesicStringType> geodesicElement = new JAXBElement<>(
+            new QName("http://www.opengis.net/gml/3.2", "GeodesicString"), 
+            GeodesicStringType.class, 
+            geodesicString
+        );
+
+        JAXBElement<Long> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), Long.class, value.getElevation());
+        elevatedCurve.setElevation(elevation);
+
+        JAXBElement<Long> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), Long.class, value.getGeoidUndulation());
+        elevatedCurve.setGeoidUndulation(geoidUndulation);
+
+        segments.getAbstractCurveSegment().add(geodesicElement);
+        elevatedCurve.setSegments(segments);
+        JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
+        elevatedCurve.setHorizontalAccuracy(horizontalAccuracy);
+        
+        JAXBElement<Long> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), Long.class, value.getVerticalAccuracy());
+        elevatedCurve.setVerticalAccuracy(verticalAccuracy);
+
+        JAXBElement<String> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), String.class, value.getVerticalDatum());
+        elevatedCurve.setVerticalDatum(verticalDatum);
+
+        elevatedCurve.getAnnotation().addAll(value.getAnnotation());
+        
+        if (value.getLineString().getSRID() != 0) {
+            elevatedCurve.setSrsName("EPSG:" + value.getLineString().getSRID());
+        }
+
         return elevatedCurve;
     }
 

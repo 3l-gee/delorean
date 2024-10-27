@@ -7,9 +7,8 @@
 
 package com.aixm.delorean.core.schema.school;
 
-import com.aixm.delorean.core.adapter.gis.AixmElevatedPointType;
-import com.aixm.delorean.core.adapter.gis.PointTypeAdapter;
-import jakarta.persistence.Column;
+import com.aixm.delorean.core.adapter.gis.ElevatedPointTypeAdapter;
+import com.aixm.delorean.core.adapter.type.gis.AixmElevatedPointType;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -48,8 +47,7 @@ public class ElevatedPointPropertyType
 {
 
     @XmlElement(required = true, type = ElevatedPointType.class)
-    @XmlJavaTypeAdapter(PointTypeAdapter.class)
-    @Column(name = "aixmPoint", columnDefinition = "geometry(Point, 4326)")
+    @XmlJavaTypeAdapter(ElevatedPointTypeAdapter.class)
     @Embedded
     protected AixmElevatedPointType point;
 

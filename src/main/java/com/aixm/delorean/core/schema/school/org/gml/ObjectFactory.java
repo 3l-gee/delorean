@@ -42,6 +42,8 @@ public class ObjectFactory {
     private static final QName _AbstractObject_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractObject");
     private static final QName _Curve_QNAME = new QName("http://www.opengis.net/gml/3.2", "Curve");
     private static final QName _AbstractCurve_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractCurve");
+    private static final QName _Surface_QNAME = new QName("http://www.opengis.net/gml/3.2", "Surface");
+    private static final QName _AbstractSurface_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractSurface");
     private static final QName _AbstractAssociationRole_QNAME = new QName("http://www.opengis.net/gml/3.2", "abstractAssociationRole");
     private static final QName _AbstractStrictAssociationRole_QNAME = new QName("http://www.opengis.net/gml/3.2", "abstractStrictAssociationRole");
     private static final QName _AbstractReference_QNAME = new QName("http://www.opengis.net/gml/3.2", "abstractReference");
@@ -79,7 +81,6 @@ public class ObjectFactory {
     private static final QName _PointProperty_QNAME = new QName("http://www.opengis.net/gml/3.2", "pointProperty");
     private static final QName _CurveProperty_QNAME = new QName("http://www.opengis.net/gml/3.2", "curveProperty");
     private static final QName _LineString_QNAME = new QName("http://www.opengis.net/gml/3.2", "LineString");
-    private static final QName _AbstractSurface_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractSurface");
     private static final QName _SurfaceProperty_QNAME = new QName("http://www.opengis.net/gml/3.2", "surfaceProperty");
     private static final QName _Polygon_QNAME = new QName("http://www.opengis.net/gml/3.2", "Polygon");
     private static final QName _Exterior_QNAME = new QName("http://www.opengis.net/gml/3.2", "exterior");
@@ -106,7 +107,6 @@ public class ObjectFactory {
     private static final QName _Clothoid_QNAME = new QName("http://www.opengis.net/gml/3.2", "Clothoid");
     private static final QName _GeodesicString_QNAME = new QName("http://www.opengis.net/gml/3.2", "GeodesicString");
     private static final QName _Geodesic_QNAME = new QName("http://www.opengis.net/gml/3.2", "Geodesic");
-    private static final QName _Surface_QNAME = new QName("http://www.opengis.net/gml/3.2", "Surface");
     private static final QName _BaseSurface_QNAME = new QName("http://www.opengis.net/gml/3.2", "baseSurface");
     private static final QName _OrientableSurface_QNAME = new QName("http://www.opengis.net/gml/3.2", "OrientableSurface");
     private static final QName _AbstractSurfacePatch_QNAME = new QName("http://www.opengis.net/gml/3.2", "AbstractSurfacePatch");
@@ -560,6 +560,16 @@ public class ObjectFactory {
      */
     public CurveType createCurveType() {
         return new CurveType();
+    }
+
+    /**
+     * Create an instance of {@link SurfaceType }
+     * 
+     * @return
+     *     the new instance of {@link SurfaceType }
+     */
+    public SurfaceType createSurfaceType() {
+        return new SurfaceType();
     }
 
     /**
@@ -1020,16 +1030,6 @@ public class ObjectFactory {
      */
     public GeodesicType createGeodesicType() {
         return new GeodesicType();
-    }
-
-    /**
-     * Create an instance of {@link SurfaceType }
-     * 
-     * @return
-     *     the new instance of {@link SurfaceType }
-     */
-    public SurfaceType createSurfaceType() {
-        return new SurfaceType();
     }
 
     /**
@@ -3694,6 +3694,32 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Surface", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractSurface")
+    public JAXBElement<SurfaceType> createSurface(SurfaceType value) {
+        return new JAXBElement<>(_Surface_QNAME, SurfaceType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AbstractSurfaceType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AbstractSurfaceType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractSurface", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractGeometricPrimitive")
+    public JAXBElement<AbstractSurfaceType> createAbstractSurface(AbstractSurfaceType value) {
+        return new JAXBElement<>(_AbstractSurface_QNAME, AbstractSurfaceType.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AssociationRoleType }{@code >}
      * 
      * @param value
@@ -4175,19 +4201,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AbstractSurfaceType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AbstractSurfaceType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractSurface", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractGeometricPrimitive")
-    public JAXBElement<AbstractSurfaceType> createAbstractSurface(AbstractSurfaceType value) {
-        return new JAXBElement<>(_AbstractSurface_QNAME, AbstractSurfaceType.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
      * 
      * @param value
@@ -4523,19 +4536,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Geodesic", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "GeodesicString")
     public JAXBElement<GeodesicType> createGeodesic(GeodesicType value) {
         return new JAXBElement<>(_Geodesic_QNAME, GeodesicType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Surface", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractSurface")
-    public JAXBElement<SurfaceType> createSurface(SurfaceType value) {
-        return new JAXBElement<>(_Surface_QNAME, SurfaceType.class, null, value);
     }
 
     /**

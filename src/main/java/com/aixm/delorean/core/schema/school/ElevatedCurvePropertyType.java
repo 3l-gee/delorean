@@ -7,10 +7,15 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import com.aixm.delorean.core.adapter.gis.ElevatedCurveTypeAdapter;
+import com.aixm.delorean.core.adapter.type.gis.AixmElevatedCurveType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -36,12 +41,15 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "ElevatedCurvePropertyType", propOrder = {
     "elevatedCurve"
 })
+@Embeddable
 public class ElevatedCurvePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true)
-    protected String elevatedCurve;
+    @XmlElement(required = true, type = ElevatedCurveType.class)
+    @XmlJavaTypeAdapter(ElevatedCurveTypeAdapter.class)
+    @Embedded
+    protected AixmElevatedCurveType elevatedCurve;
 
     /**
      * Gets the value of the elevatedCurve property.
@@ -51,7 +59,7 @@ public class ElevatedCurvePropertyType
      *     {@link String }
      *     
      */
-    public String getElevatedCurve() {
+    public AixmElevatedCurveType getElevatedCurve() {
         return elevatedCurve;
     }
 
@@ -63,7 +71,7 @@ public class ElevatedCurvePropertyType
      *     {@link String }
      *     
      */
-    public void setElevatedCurve(String value) {
+    public void setElevatedCurve(AixmElevatedCurveType value) {
         this.elevatedCurve = value;
     }
 

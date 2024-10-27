@@ -1,5 +1,7 @@
 package com.aixm.delorean.core.adapter.gis;
 
+import com.aixm.delorean.core.adapter.type.gis.AixmCurveType;
+
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class CurveTypeAdapter extends XmlAdapter<com.aixm.delorean.core.schema.school.CurveType, AixmCurveType>
