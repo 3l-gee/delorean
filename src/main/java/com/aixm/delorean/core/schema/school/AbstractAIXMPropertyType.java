@@ -39,7 +39,9 @@ import jakarta.xml.bind.annotation.XmlType;
     AixmPointPropertyType.class,
     ElevatedPointPropertyType.class,
     AixmCurvePropertyType.class,
-    ElevatedCurvePropertyType.class
+    ElevatedCurvePropertyType.class,
+    SurfacePropertyType.class,
+    ElevatedSurfacePropertyType.class
 })
 @MappedSuperclass
 public class AbstractAIXMPropertyType {

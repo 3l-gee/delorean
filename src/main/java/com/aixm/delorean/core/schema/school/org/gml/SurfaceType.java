@@ -39,6 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "patches"
 })
 @XmlSeeAlso({
+    com.aixm.delorean.core.schema.school.SurfaceType.class,
     TinType.class
 })
 public class SurfaceType

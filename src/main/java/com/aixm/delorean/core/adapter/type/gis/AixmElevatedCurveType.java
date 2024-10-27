@@ -1,30 +1,29 @@
-package com.aixm.delorean.core.adapter.gis;
+package com.aixm.delorean.core.adapter.type.gis;
 
 import java.util.List;
 
 import org.locationtech.jts.geom.LineString;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.xml.bind.annotation.XmlTransient;
 
 @Embeddable
 public class AixmElevatedCurveType {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    @XmlTransient
-    protected String id;
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @Column(name = "id", nullable = false)
+    // protected String id;
 
     @Column(name = "linestring", columnDefinition = "geometry(Linestring, 4326)")
     protected LineString lineString;
 
-    @Column(name = "horizontalAccuracy")
+    @Column(name = "elevation")
     protected long elevation;
 
     @Column(name = "geoidUndulation")
@@ -39,16 +38,17 @@ public class AixmElevatedCurveType {
     @Column(name = "verticalAccuracy")
     protected long verticalAccuracy;
 
-    @OneToMany(mappedBy = "id")
+    @ElementCollection
+    @Column(name = "annotation")
     protected List<String> annotation;
 
-    public String getId() {
-        return id;
-    }
+    // public String getId() {
+    //     return id;
+    // }
 
-    public void setId(String value) {
-        this.id = value;
-    }
+    // public void setId(String value) {
+    //     this.id = value;
+    // }
 
     public LineString getLineString() {
         return lineString;

@@ -1,5 +1,5 @@
 <school xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
-    <aixmPoint nilReason="yes">
+    <!-- <aixmPoint nilReason="yes">
         <point srsName="EPSG:4326">
             <gml:pos>1.0 1.0</gml:pos>
             <horizontalAccuracy uom="m">0.1</horizontalAccuracy>
@@ -20,8 +20,8 @@
                 <gml:posList>1.0 1.0 2.0 2.0 3.0 3.0</gml:posList>
             </gml:GeodesicString>
         </gml:segments>
-    </geomCurve>
-    <geomSurface srsName="EPSG:4326">
+    </geomCurve> -->
+    <!-- <geomSurface srsName="EPSG:4326">
         <gml:patches>
             <gml:PolygonPatch>
                 <gml:exterior>
@@ -71,19 +71,18 @@
                 </gml:interior>
             </gml:PolygonPatch>
         </gml:patches>
-    </geomSurface>
-    <!-- <gml:Polygon srsName="EPSG:4326">
-        <gml:outerBoundaryIs>
-            <gml:LinearRing>
-                <gml:coordinates>0,0 10,0 10,10 0,10 0,0</gml:coordinates>
-            </gml:LinearRing>
-        </gml:outerBoundaryIs>
-        <gml:innerBoundaryIs>
-            <gml:LinearRing>
-                <gml:coordinates>3,3 7,3 7,7 3,7 3,3</gml:coordinates>
-            </gml:LinearRing>
-        </gml:innerBoundaryIs>
-    </gml:Polygon> -->
+    </geomSurface> -->
+    <implementedPoint>
+        <name>test</name>
+        <aixmPoint>
+            <name>test</name>
+            <point srsName="EPSG:4326">
+                <gml:pos>1.0 1.0</gml:pos>
+                <horizontalAccuracy>0.1</horizontalAccuracy>
+                <annotation>What</annotation>
+            </point>
+        </aixmPoint>
+    </implementedPoint>
     <classroom/>
     <student/>
     <teacher/>

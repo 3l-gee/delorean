@@ -34,18 +34,30 @@ public class ObjectFactory {
     private static final QName _ElevatedPoint_QNAME = new QName("", "ElevatedPoint");
     private static final QName _Curve_QNAME = new QName("", "Curve");
     private static final QName _ElevatedCurve_QNAME = new QName("", "ElevatedCurve");
+    private static final QName _Surface_QNAME = new QName("", "Surface");
+    private static final QName _ElevatedSurface_QNAME = new QName("", "ElevatedSurface");
     private static final QName _School_QNAME = new QName("", "school");
-    private static final QName _CurveTypeHorizontalAccuracy_QNAME = new QName("", "horizontalAccuracy");
-    private static final QName _ElevatedCurveTypeElevation_QNAME = new QName("", "elevation");
-    private static final QName _ElevatedCurveTypeGeoidUndulation_QNAME = new QName("", "geoidUndulation");
-    private static final QName _ElevatedCurveTypeVerticalDatum_QNAME = new QName("", "verticalDatum");
-    private static final QName _ElevatedCurveTypeVerticalAccuracy_QNAME = new QName("", "verticalAccuracy");
+    private static final QName _SurfaceTypeHorizontalAccuracy_QNAME = new QName("", "horizontalAccuracy");
+    private static final QName _ElevatedSurfaceTypeElevation_QNAME = new QName("", "elevation");
+    private static final QName _ElevatedSurfaceTypeGeoidUndulation_QNAME = new QName("", "geoidUndulation");
+    private static final QName _ElevatedSurfaceTypeVerticalDatum_QNAME = new QName("", "verticalDatum");
+    private static final QName _ElevatedSurfaceTypeVerticalAccuracy_QNAME = new QName("", "verticalAccuracy");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.aixm.delorean.core.schema.school
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ElevatedSurfaceType }
+     * 
+     * @return
+     *     the new instance of {@link ElevatedSurfaceType }
+     */
+    public ElevatedSurfaceType createElevatedSurfaceType() {
+        return new ElevatedSurfaceType();
     }
 
     /**
@@ -86,6 +98,16 @@ public class ObjectFactory {
      */
     public CurveType createCurveType() {
         return new CurveType();
+    }
+
+    /**
+     * Create an instance of {@link SurfaceType }
+     * 
+     * @return
+     *     the new instance of {@link SurfaceType }
+     */
+    public SurfaceType createSurfaceType() {
+        return new SurfaceType();
     }
 
     /**
@@ -189,6 +211,96 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SurfacePropertyType }
+     * 
+     * @return
+     *     the new instance of {@link SurfacePropertyType }
+     */
+    public SurfacePropertyType createSurfacePropertyType() {
+        return new SurfacePropertyType();
+    }
+
+    /**
+     * Create an instance of {@link ElevatedSurfacePropertyType }
+     * 
+     * @return
+     *     the new instance of {@link ElevatedSurfacePropertyType }
+     */
+    public ElevatedSurfacePropertyType createElevatedSurfacePropertyType() {
+        return new ElevatedSurfacePropertyType();
+    }
+
+    /**
+     * Create an instance of {@link ImplementationAixmPoint }
+     * 
+     * @return
+     *     the new instance of {@link ImplementationAixmPoint }
+     */
+    public ImplementationAixmPoint createImplementationAixmPoint() {
+        return new ImplementationAixmPoint();
+    }
+
+    /**
+     * Create an instance of {@link ImplementationAixmElevatedPoint }
+     * 
+     * @return
+     *     the new instance of {@link ImplementationAixmElevatedPoint }
+     */
+    public ImplementationAixmElevatedPoint createImplementationAixmElevatedPoint() {
+        return new ImplementationAixmElevatedPoint();
+    }
+
+    /**
+     * Create an instance of {@link ImplementationAixmCurve }
+     * 
+     * @return
+     *     the new instance of {@link ImplementationAixmCurve }
+     */
+    public ImplementationAixmCurve createImplementationAixmCurve() {
+        return new ImplementationAixmCurve();
+    }
+
+    /**
+     * Create an instance of {@link ImplementationAixmElevatedCurve }
+     * 
+     * @return
+     *     the new instance of {@link ImplementationAixmElevatedCurve }
+     */
+    public ImplementationAixmElevatedCurve createImplementationAixmElevatedCurve() {
+        return new ImplementationAixmElevatedCurve();
+    }
+
+    /**
+     * Create an instance of {@link ImplementationAixmSurface }
+     * 
+     * @return
+     *     the new instance of {@link ImplementationAixmSurface }
+     */
+    public ImplementationAixmSurface createImplementationAixmSurface() {
+        return new ImplementationAixmSurface();
+    }
+
+    /**
+     * Create an instance of {@link ImplementationAixmElevatedSurface }
+     * 
+     * @return
+     *     the new instance of {@link ImplementationAixmElevatedSurface }
+     */
+    public ImplementationAixmElevatedSurface createImplementationAixmElevatedSurface() {
+        return new ImplementationAixmElevatedSurface();
+    }
+
+    /**
+     * Create an instance of {@link ElevatedSurfaceType.Extension }
+     * 
+     * @return
+     *     the new instance of {@link ElevatedSurfaceType.Extension }
+     */
+    public ElevatedSurfaceType.Extension createElevatedSurfaceTypeExtension() {
+        return new ElevatedSurfaceType.Extension();
+    }
+
+    /**
      * Create an instance of {@link ElevatedCurveType.Extension }
      * 
      * @return
@@ -261,6 +373,32 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "Surface", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "Surface")
+    public JAXBElement<SurfaceType> createSurface(SurfaceType value) {
+        return new JAXBElement<>(_Surface_QNAME, SurfaceType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "ElevatedSurface", substitutionHeadNamespace = "", substitutionHeadName = "Surface")
+    public JAXBElement<ElevatedSurfaceType> createElevatedSurface(ElevatedSurfaceType value) {
+        return new JAXBElement<>(_ElevatedSurface_QNAME, ElevatedSurfaceType.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link School }{@code >}
      * 
      * @param value
@@ -281,9 +419,74 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
      */
+    @XmlElementDecl(namespace = "", name = "horizontalAccuracy", scope = SurfaceType.class)
+    public JAXBElement<Long> createSurfaceTypeHorizontalAccuracy(Long value) {
+        return new JAXBElement<>(_SurfaceTypeHorizontalAccuracy_QNAME, Long.class, SurfaceType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "elevation", scope = ElevatedSurfaceType.class)
+    public JAXBElement<Long> createElevatedSurfaceTypeElevation(Long value) {
+        return new JAXBElement<>(_ElevatedSurfaceTypeElevation_QNAME, Long.class, ElevatedSurfaceType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "geoidUndulation", scope = ElevatedSurfaceType.class)
+    public JAXBElement<Long> createElevatedSurfaceTypeGeoidUndulation(Long value) {
+        return new JAXBElement<>(_ElevatedSurfaceTypeGeoidUndulation_QNAME, Long.class, ElevatedSurfaceType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "verticalDatum", scope = ElevatedSurfaceType.class)
+    public JAXBElement<String> createElevatedSurfaceTypeVerticalDatum(String value) {
+        return new JAXBElement<>(_ElevatedSurfaceTypeVerticalDatum_QNAME, String.class, ElevatedSurfaceType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    @XmlElementDecl(namespace = "", name = "verticalAccuracy", scope = ElevatedSurfaceType.class)
+    public JAXBElement<Long> createElevatedSurfaceTypeVerticalAccuracy(Long value) {
+        return new JAXBElement<>(_ElevatedSurfaceTypeVerticalAccuracy_QNAME, Long.class, ElevatedSurfaceType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
     @XmlElementDecl(namespace = "", name = "horizontalAccuracy", scope = CurveType.class)
     public JAXBElement<Long> createCurveTypeHorizontalAccuracy(Long value) {
-        return new JAXBElement<>(_CurveTypeHorizontalAccuracy_QNAME, Long.class, CurveType.class, value);
+        return new JAXBElement<>(_SurfaceTypeHorizontalAccuracy_QNAME, Long.class, CurveType.class, value);
     }
 
     /**
@@ -296,7 +499,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "elevation", scope = ElevatedCurveType.class)
     public JAXBElement<Long> createElevatedCurveTypeElevation(Long value) {
-        return new JAXBElement<>(_ElevatedCurveTypeElevation_QNAME, Long.class, ElevatedCurveType.class, value);
+        return new JAXBElement<>(_ElevatedSurfaceTypeElevation_QNAME, Long.class, ElevatedCurveType.class, value);
     }
 
     /**
@@ -309,7 +512,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "geoidUndulation", scope = ElevatedCurveType.class)
     public JAXBElement<Long> createElevatedCurveTypeGeoidUndulation(Long value) {
-        return new JAXBElement<>(_ElevatedCurveTypeGeoidUndulation_QNAME, Long.class, ElevatedCurveType.class, value);
+        return new JAXBElement<>(_ElevatedSurfaceTypeGeoidUndulation_QNAME, Long.class, ElevatedCurveType.class, value);
     }
 
     /**
@@ -322,7 +525,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "verticalDatum", scope = ElevatedCurveType.class)
     public JAXBElement<String> createElevatedCurveTypeVerticalDatum(String value) {
-        return new JAXBElement<>(_ElevatedCurveTypeVerticalDatum_QNAME, String.class, ElevatedCurveType.class, value);
+        return new JAXBElement<>(_ElevatedSurfaceTypeVerticalDatum_QNAME, String.class, ElevatedCurveType.class, value);
     }
 
     /**
@@ -335,7 +538,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "verticalAccuracy", scope = ElevatedCurveType.class)
     public JAXBElement<Long> createElevatedCurveTypeVerticalAccuracy(Long value) {
-        return new JAXBElement<>(_ElevatedCurveTypeVerticalAccuracy_QNAME, Long.class, ElevatedCurveType.class, value);
+        return new JAXBElement<>(_ElevatedSurfaceTypeVerticalAccuracy_QNAME, Long.class, ElevatedCurveType.class, value);
     }
 
     /**
@@ -348,7 +551,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "horizontalAccuracy", scope = PointType.class)
     public JAXBElement<Long> createPointTypeHorizontalAccuracy(Long value) {
-        return new JAXBElement<>(_CurveTypeHorizontalAccuracy_QNAME, Long.class, PointType.class, value);
+        return new JAXBElement<>(_SurfaceTypeHorizontalAccuracy_QNAME, Long.class, PointType.class, value);
     }
 
     /**
@@ -361,7 +564,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "elevation", scope = ElevatedPointType.class)
     public JAXBElement<Long> createElevatedPointTypeElevation(Long value) {
-        return new JAXBElement<>(_ElevatedCurveTypeElevation_QNAME, Long.class, ElevatedPointType.class, value);
+        return new JAXBElement<>(_ElevatedSurfaceTypeElevation_QNAME, Long.class, ElevatedPointType.class, value);
     }
 
     /**
@@ -374,7 +577,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "geoidUndulation", scope = ElevatedPointType.class)
     public JAXBElement<Long> createElevatedPointTypeGeoidUndulation(Long value) {
-        return new JAXBElement<>(_ElevatedCurveTypeGeoidUndulation_QNAME, Long.class, ElevatedPointType.class, value);
+        return new JAXBElement<>(_ElevatedSurfaceTypeGeoidUndulation_QNAME, Long.class, ElevatedPointType.class, value);
     }
 
     /**
@@ -387,7 +590,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "verticalDatum", scope = ElevatedPointType.class)
     public JAXBElement<String> createElevatedPointTypeVerticalDatum(String value) {
-        return new JAXBElement<>(_ElevatedCurveTypeVerticalDatum_QNAME, String.class, ElevatedPointType.class, value);
+        return new JAXBElement<>(_ElevatedSurfaceTypeVerticalDatum_QNAME, String.class, ElevatedPointType.class, value);
     }
 
     /**
@@ -400,7 +603,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "verticalAccuracy", scope = ElevatedPointType.class)
     public JAXBElement<Long> createElevatedPointTypeVerticalAccuracy(Long value) {
-        return new JAXBElement<>(_ElevatedCurveTypeVerticalAccuracy_QNAME, Long.class, ElevatedPointType.class, value);
+        return new JAXBElement<>(_ElevatedSurfaceTypeVerticalAccuracy_QNAME, Long.class, ElevatedPointType.class, value);
     }
 
 }

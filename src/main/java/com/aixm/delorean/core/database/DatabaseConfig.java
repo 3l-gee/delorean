@@ -408,6 +408,18 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.school.Classroom.class,
             com.aixm.delorean.core.schema.school.Student.class,
             com.aixm.delorean.core.schema.school.Teacher.class,
+            com.aixm.delorean.core.schema.school.AixmPointPropertyType.class,
+            com.aixm.delorean.core.schema.school.ElevatedPointPropertyType.class,
+            com.aixm.delorean.core.schema.school.AixmCurvePropertyType.class,
+            com.aixm.delorean.core.schema.school.ElevatedCurvePropertyType.class,
+            com.aixm.delorean.core.schema.school.ImplementationAixmPoint.class,
+            com.aixm.delorean.core.schema.school.ImplementationAixmElevatedPoint.class,
+            com.aixm.delorean.core.schema.school.ImplementationAixmCurve.class,
+            com.aixm.delorean.core.schema.school.ImplementationAixmElevatedCurve.class,
+            com.aixm.delorean.core.adapter.type.gis.AixmPointType.class,
+            com.aixm.delorean.core.adapter.type.gis.AixmElevatedPointType.class,
+            com.aixm.delorean.core.adapter.type.gis.AixmCurveType.class,
+            com.aixm.delorean.core.adapter.type.gis.AixmElevatedCurveType.class,
         }
     );
 

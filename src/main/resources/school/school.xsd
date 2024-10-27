@@ -192,81 +192,137 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<!-- Surface complexType extending gml:SurfaceType with horizontalAccuracy and annotation -->
-	<!-- <element name="Surface" type="aixm:SurfaceType" substitutionGroup="gml:Surface"/>
-	<complexType name="SurfaceType">
-		<complexContent>
-			<extension base="gml:SurfaceType">
-				<sequence>
-					<group ref="aixm:SurfacePropertyGroup"/>
-				</sequence>
-			</extension>
-		</complexContent>
-	</complexType>
-	<group name="SurfacePropertyGroup">
-		<sequence>
-			<element name="horizontalAccuracy" type="aixm:ValDistanceType" nillable="true" minOccurs="0"/>
-			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-		</sequence>
-	</group>
-	<complexType name="SurfacePropertyType">
-		<complexContent>
-			<extension base="aixm:AbstractAIXMPropertyType">
-				<sequence>
-					<element ref="aixm:Surface"/>
-				</sequence>
-			</extension>
-		</complexContent>
-	</complexType> -->
+	<!-- Surface complexType extending gml:SurfaceType with horizontalAccuracy and annotation  -->
+	<xs:element name="Surface" type="SurfaceType" substitutionGroup="gml:Surface"/>
+	<xs:complexType name="SurfaceType">
+		<xs:complexContent>
+			<xs:extension base="gml:SurfaceType">
+				<xs:sequence>
+					<xs:group ref="AixmSurfacePropertyGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:group name="AixmSurfacePropertyGroup">
+		<xs:sequence>
+			<xs:element name="horizontalAccuracy" type="xs:long" nillable="true" minOccurs="0"/>
+			<xs:element name="annotation" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="SurfacePropertyType">
+		<xs:complexContent>
+			<xs:extension base="AbstractAIXMPropertyType">
+				<xs:sequence>
+					<!-- <xs:element ref="aixm:Surface"/> -->
+					<xs:element name="surface" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 
 	<!-- ElevatedSurface complexType extending Surface with elevation, geoidUndulation, verticalDatum and verticalAccuracy -->
-	<!-- <element name="ElevatedSurface" type="aixm:ElevatedSurfaceType" substitutionGroup="aixm:Surface"/>
-	<complexType name="ElevatedSurfaceType">
-		<complexContent>
-			<extension base="aixm:SurfaceType">
-				<sequence>
-					<group ref="aixm:ElevatedSurfacePropertyGroup"/>
-					<element name="extension" minOccurs="0" maxOccurs="unbounded">
-						<complexType>
-							<choice>
+	<xs:element name="ElevatedSurface" type="ElevatedSurfaceType" substitutionGroup="Surface"/>
+	<xs:complexType name="ElevatedSurfaceType">
+		<xs:complexContent>
+			<xs:extension base="SurfaceType">
+				<xs:sequence>
+					<xs:group ref="AixmElevatedSurfacePropertyGroup"/>
+					<xs:element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<xs:complexType>
+							<!-- <xs:choice>
 								<element ref="aixm:AbstractElevatedSurfaceExtension"/>
-							</choice>
-							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
-						</complexType>
-					</element>
-				</sequence>
-			</extension>
-		</complexContent>
-	</complexType>
-	<group name="ElevatedSurfacePropertyGroup">
-		<sequence>
-			<element name="elevation" type="aixm:ValDistanceVerticalType" nillable="true" minOccurs="0"/>
-			<element name="geoidUndulation" type="aixm:ValDistanceSignedType" nillable="true" minOccurs="0"/>
-			<element name="verticalDatum" type="aixm:CodeVerticalDatumType" nillable="true" minOccurs="0"/>
-			<element name="verticalAccuracy" type="aixm:ValDistanceType" nillable="true" minOccurs="0"/>
-		</sequence>
-	</group>
-	<complexType name="ElevatedSurfacePropertyType">
-		<complexContent>
-			<extension base="aixm:AbstractAIXMPropertyType">
-				<sequence>
-					<element ref="aixm:ElevatedSurface"/>
-				</sequence>
-			</extension>
-		</complexContent>
-	</complexType>
-	<element name="AbstractElevatedSurfaceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/> -->
+							</xs:choice> -->
+							<xs:attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:group name="AixmElevatedSurfacePropertyGroup">
+		<xs:sequence>
+			<xs:element name="elevation" type="xs:long" nillable="true" minOccurs="0"/>
+			<xs:element name="geoidUndulation" type="xs:long" nillable="true" minOccurs="0"/>
+			<xs:element name="verticalDatum" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="verticalAccuracy" type="xs:long" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ElevatedSurfacePropertyType">
+		<xs:complexContent>
+			<xs:extension base="AbstractAIXMPropertyType">
+				<xs:sequence>
+					<!-- <xs:element ref="aixm:ElevatedSurface"/> -->
+					<xs:element name="surface" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- <xs:element name="AbstractElevatedSurfaceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/> -->
 
+	<xs:complexType name="implementationAixmPoint">
+		<xs:sequence>
+			<xs:element name="aixmPoint" type="AixmPointPropertyType"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="id" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="implementationAixmElevatedPoint">
+		<xs:sequence>
+			<xs:element name="aixmElevatedPoint" type="ElevatedPointPropertyType"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="id" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="implementationAixmCurve">
+		<xs:sequence>
+			<xs:element name="aixmCurve" type="AixmCurvePropertyType"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="id" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="implementationAixmElevatedCurve">
+		<xs:sequence>
+			<xs:element name="aixmElevatedCurve" type="ElevatedCurvePropertyType"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="id" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="implementationAixmSurface">
+		<xs:sequence>
+			<xs:element name="aixmSurface" type="SurfacePropertyType"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="id" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="implementationAixmElevatedSurface">
+		<xs:sequence>
+			<xs:element name="aixmElevatedSurface" type="ElevatedSurfacePropertyType"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="id" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
 
     <xs:complexType name="school">
         <xs:sequence>
-            <xs:element name="aixmPoint" type="AixmPointPropertyType"/>
+		    <xs:element name="implementedPoint" type="implementationAixmPoint"/>
+            <xs:element name="implementedElevatedPoint" type="implementationAixmElevatedPoint"/>
+            <xs:element name="implementedCurve" type="implementationAixmCurve"/>
+            <xs:element name="implementedElevatedCurve" type="implementationAixmElevatedCurve"/>
+			<xs:element name="implementedSurface" type="implementationAixmSurface"/>
+			<xs:element name="implementedElevatedSurface" type="implementationAixmElevatedSurface"/>
+		
+            <!-- <xs:element name="aixmPoint" type="AixmPointPropertyType"/>
             <xs:element name="aixmElevatedPoint" type="ElevatedPointPropertyType"/>
             <xs:element name="aixmCurve" type="AixmCurvePropertyType"/>
-            <xs:element name="aixmElevatedCurve" type="AixmCurvePropertyType"/>
-            <xs:element name="geomPoint" type="xs:string" />
+            <xs:element name="aixmElevatedCurve" type="ElevatedCurvePropertyType"/> -->
+            <!-- <xs:element name="geomPoint" type="xs:string" />
             <xs:element name="geomCurve" type="xs:string" />
-            <xs:element name="geomSurface" type="xs:string"/>
+            <xs:element name="geomSurface" type="xs:string"/> -->
             <!-- <xs:element name="geomgeom" type="gml:PointType"/> -->
             <xs:element name="classroom" type="classroom" maxOccurs="unbounded"/>
             <xs:element name="student" type="student" maxOccurs="unbounded"/>

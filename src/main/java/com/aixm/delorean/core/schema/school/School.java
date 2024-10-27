@@ -9,10 +9,6 @@ package com.aixm.delorean.core.schema.school;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.adapter.gis.CurveTypeAdapter;
-import com.aixm.delorean.core.adapter.gis.PointTypeAdapter;
-import com.aixm.delorean.core.schema.school.org.gml.CurveType;
-import com.aixm.delorean.core.schema.school.org.gml.PointType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -22,18 +18,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.locationtech.jts.geom.LineString;
-import org.locationtech.jts.geom.Point;
-import org.locationtech.jts.geom.Polygon;
 
 
 /**
@@ -46,13 +38,12 @@ import org.locationtech.jts.geom.Polygon;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="aixmPoint" type="{}AixmPointPropertyType"/>
- *         <element name="aixmElevatedPoint" type="{}ElevatedPointPropertyType"/>
- *         <element name="aixmCurve" type="{}AixmCurvePropertyType"/>
- *         <element name="aixmElevatedCurve" type="{}AixmCurvePropertyType"/>
- *         <element name="geomPoint" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         <element name="geomCurve" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         <element name="geomSurface" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="implementedPoint" type="{}implementationAixmPoint"/>
+ *         <element name="implementedElevatedPoint" type="{}implementationAixmElevatedPoint"/>
+ *         <element name="implementedCurve" type="{}implementationAixmCurve"/>
+ *         <element name="implementedElevatedCurve" type="{}implementationAixmElevatedCurve"/>
+ *         <element name="implementedSurface" type="{}implementationAixmSurface"/>
+ *         <element name="implementedElevatedSurface" type="{}implementationAixmElevatedSurface"/>
  *         <element name="classroom" type="{}classroom" maxOccurs="unbounded"/>
  *         <element name="student" type="{}student" maxOccurs="unbounded"/>
  *         <element name="teacher" type="{}teacher" maxOccurs="unbounded"/>
@@ -67,13 +58,12 @@ import org.locationtech.jts.geom.Polygon;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "school", propOrder = {
-    "aixmPoint",
-    "aixmElevatedPoint",
-    "aixmCurve",
-    "aixmElevatedCurve",
-    "geomPoint",
-    "geomCurve",
-    "geomSurface",
+    "implementedPoint",
+    "implementedElevatedPoint",
+    "implementedCurve",
+    "implementedElevatedCurve",
+    "implementedSurface",
+    "implementedElevatedSurface",
     "classroom",
     "student",
     "teacher"
@@ -85,29 +75,40 @@ public class School {
 
     @XmlElement(required = true)
     @Embedded
-    protected AixmPointPropertyType aixmPoint;
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
+    protected ImplementationAixmPoint implementedPoint;
     @XmlElement(required = true)
     @Embedded
-    protected ElevatedPointPropertyType aixmElevatedPoint;
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
+    protected ImplementationAixmElevatedPoint implementedElevatedPoint;
     @XmlElement(required = true)
     @Embedded
-    protected AixmCurvePropertyType aixmCurve;
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
+    protected ImplementationAixmCurve implementedCurve;
     @XmlElement(required = true)
     @Embedded
-    protected AixmCurvePropertyType aixmElevatedCurve;
-    // @XmlElement(required = true, type = PointType.class)
-    // @XmlJavaTypeAdapter(PointTypeAdapter.class)
-    // @Column(name = "geomPoint", columnDefinition = "geometry(Point, 4326)")
-    // protected Point geomPoint;
-    // @XmlElement(required = true, type = CurveType.class)
-    // @XmlJavaTypeAdapter(CurveTypeAdapter.class)
-    // @Column(name = "geomCurve", columnDefinition = "geometry(Linestring, 4326)")
-    // protected LineString geomCurve;
-    // @XmlElement(required = true, type = String.class)
-    // @XmlJavaTypeAdapter(Adapter5.class)
-    // @Column(name = "geomSurface", columnDefinition = "geometry(Polygon, 4326)")
-    // @Transient
-    // protected Polygon geomSurface;
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
+    protected ImplementationAixmElevatedCurve implementedElevatedCurve;
+    @XmlElement(required = true)
+    @Embedded
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
+    protected ImplementationAixmSurface implementedSurface;
+    @XmlElement(required = true)
+    @Embedded
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
+    protected ImplementationAixmElevatedSurface implementedElevatedSurface;
     @XmlElement(required = true)
     @OneToMany(cascade = {
         CascadeType.ALL
@@ -125,177 +126,153 @@ public class School {
     protected List<Teacher> teacher;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dbid", nullable = false)
+    @Column(name = "id", nullable = false)
     @XmlTransient
     protected Long dbid;
 
     /**
-     * Gets the value of the aixmPoint property.
+     * Gets the value of the implementedPoint property.
      * 
      * @return
      *     possible object is
-     *     {@link AixmPointPropertyType }
+     *     {@link ImplementationAixmPoint }
      *     
      */
-    public AixmPointPropertyType getAixmPoint() {
-        return aixmPoint;
+    public ImplementationAixmPoint getImplementedPoint() {
+        return implementedPoint;
     }
 
     /**
-     * Sets the value of the aixmPoint property.
+     * Sets the value of the implementedPoint property.
      * 
      * @param value
      *     allowed object is
-     *     {@link AixmPointPropertyType }
+     *     {@link ImplementationAixmPoint }
      *     
      */
-    public void setAixmPoint(AixmPointPropertyType value) {
-        this.aixmPoint = value;
+    public void setImplementedPoint(ImplementationAixmPoint value) {
+        this.implementedPoint = value;
     }
 
     /**
-     * Gets the value of the aixmElevatedPoint property.
+     * Gets the value of the implementedElevatedPoint property.
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link ImplementationAixmElevatedPoint }
      *     
      */
-    public ElevatedPointPropertyType getAixmElevatedPoint() {
-        return aixmElevatedPoint;
+    public ImplementationAixmElevatedPoint getImplementedElevatedPoint() {
+        return implementedElevatedPoint;
     }
 
     /**
-     * Sets the value of the aixmElevatedPoint property.
+     * Sets the value of the implementedElevatedPoint property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link ImplementationAixmElevatedPoint }
      *     
      */
-    public void setAixmElevatedPoint(ElevatedPointPropertyType value) {
-        this.aixmElevatedPoint = value;
+    public void setImplementedElevatedPoint(ImplementationAixmElevatedPoint value) {
+        this.implementedElevatedPoint = value;
     }
 
     /**
-     * Gets the value of the aixmCurve property.
+     * Gets the value of the implementedCurve property.
      * 
      * @return
      *     possible object is
-     *     {@link AixmCurvePropertyType }
+     *     {@link ImplementationAixmCurve }
      *     
      */
-    public AixmCurvePropertyType getAixmCurve() {
-        return aixmCurve;
+    public ImplementationAixmCurve getImplementedCurve() {
+        return implementedCurve;
     }
 
     /**
-     * Sets the value of the aixmCurve property.
+     * Sets the value of the implementedCurve property.
      * 
      * @param value
      *     allowed object is
-     *     {@link AixmCurvePropertyType }
+     *     {@link ImplementationAixmCurve }
      *     
      */
-    public void setAixmCurve(AixmCurvePropertyType value) {
-        this.aixmCurve = value;
+    public void setImplementedCurve(ImplementationAixmCurve value) {
+        this.implementedCurve = value;
     }
 
     /**
-     * Gets the value of the aixmElevatedCurve property.
+     * Gets the value of the implementedElevatedCurve property.
      * 
      * @return
      *     possible object is
-     *     {@link AixmCurvePropertyType }
+     *     {@link ImplementationAixmElevatedCurve }
      *     
      */
-    public AixmCurvePropertyType getAixmElevatedCurve() {
-        return aixmElevatedCurve;
+    public ImplementationAixmElevatedCurve getImplementedElevatedCurve() {
+        return implementedElevatedCurve;
     }
 
     /**
-     * Sets the value of the aixmElevatedCurve property.
+     * Sets the value of the implementedElevatedCurve property.
      * 
      * @param value
      *     allowed object is
-     *     {@link AixmCurvePropertyType }
+     *     {@link ImplementationAixmElevatedCurve }
      *     
      */
-    public void setAixmElevatedCurve(AixmCurvePropertyType value) {
-        this.aixmElevatedCurve = value;
+    public void setImplementedElevatedCurve(ImplementationAixmElevatedCurve value) {
+        this.implementedElevatedCurve = value;
     }
 
     /**
-     * Gets the value of the geomPoint property.
+     * Gets the value of the implementedSurface property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ImplementationAixmSurface }
      *     
      */
-    // public Point getGeomPoint() {
-    //     return geomPoint;
-    // }
+    public ImplementationAixmSurface getImplementedSurface() {
+        return implementedSurface;
+    }
 
     /**
-     * Sets the value of the geomPoint property.
+     * Sets the value of the implementedSurface property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ImplementationAixmSurface }
      *     
      */
-    // public void setGeomPoint(Point value) {
-    //     this.geomPoint = value;
-    // }
+    public void setImplementedSurface(ImplementationAixmSurface value) {
+        this.implementedSurface = value;
+    }
 
     /**
-     * Gets the value of the geomCurve property.
+     * Gets the value of the implementedElevatedSurface property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ImplementationAixmElevatedSurface }
      *     
      */
-    // public LineString getGeomCurve() {
-    //     return geomCurve;
-    // }
+    public ImplementationAixmElevatedSurface getImplementedElevatedSurface() {
+        return implementedElevatedSurface;
+    }
 
     /**
-     * Sets the value of the geomCurve property.
+     * Sets the value of the implementedElevatedSurface property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
-     *     
-    //  */
-    // public void setGeomCurve(LineString value) {
-    //     this.geomCurve = value;
-    // }
-
-    /**
-     * Gets the value of the geomSurface property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
+     *     {@link ImplementationAixmElevatedSurface }
      *     
      */
-    // public Polygon getGeomSurface() {
-    //     return geomSurface;
-    // }
-
-    /**
-     * Sets the value of the geomSurface property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    // public void setGeomSurface(Polygon value) {
-    //     this.geomSurface = value;
-    // }
+    public void setImplementedElevatedSurface(ImplementationAixmElevatedSurface value) {
+        this.implementedElevatedSurface = value;
+    }
 
     /**
      * Gets the value of the classroom property.
