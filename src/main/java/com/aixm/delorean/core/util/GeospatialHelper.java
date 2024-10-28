@@ -32,7 +32,9 @@ import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
 import com.aixm.delorean.core.adapter.type.gis.AixmCurveType;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedCurveType;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedPointType;
+import com.aixm.delorean.core.adapter.type.gis.AixmElevatedSurfaceType;
 import com.aixm.delorean.core.adapter.type.gis.AixmPointType;
+import com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType;
 import com.aixm.delorean.core.schema.school.org.gml.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractCurveSegmentType;
 import com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType;
@@ -45,6 +47,7 @@ import com.aixm.delorean.core.schema.school.org.gml.RingType;
 import com.aixm.delorean.core.schema.school.ElevatedCurvePropertyType;
 import com.aixm.delorean.core.schema.school.ElevatedCurveType;
 import com.aixm.delorean.core.schema.school.ElevatedPointType;
+import com.aixm.delorean.core.schema.school.ElevatedSurfaceType;
 import com.aixm.delorean.core.schema.school.ElevatedCurvePropertyType;
 
 public class GeospatialHelper {    
@@ -485,14 +488,11 @@ public class GeospatialHelper {
     }
 
     public static SurfaceType printGMLSurface(Polygon value){
-
-        //shell
         GeodesicStringType shell = coordinateToSegment(value.getExteriorRing().getCoordinates());
         RingType exterior = geodesicStringTypeWrapper(shell);
         AbstractRingPropertyType exteriorRing = new AbstractRingPropertyType();
         exteriorRing.setAbstractRing(new JAXBElement<RingType>( new QName("http://www.opengis.net/gml/3.2", "Ring"), RingType.class, exterior));
         
-        //holes
         List<AbstractRingPropertyType> interiorRingList = new ArrayList<>();
         for (int i = 0; i < value.getNumInteriorRing(); i++) {
             GeodesicStringType hole = coordinateToSegment(value.getInteriorRingN(i).getCoordinates());
@@ -509,7 +509,6 @@ public class GeospatialHelper {
         SurfacePatchArrayPropertyType patches = new SurfacePatchArrayPropertyType();
         patches.getAbstractSurfacePatch().add(new JAXBElement<PolygonPatchType>(new QName("http://www.opengis.net/gml/3.2", "PolygonPatch"), PolygonPatchType.class, patch));
 
-
         SurfaceType surface = new SurfaceType();
         surface.setPatches(new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.opengis.net/gml/3.2", "patches"), SurfacePatchArrayPropertyType.class, patches));
         surface.setSrsDimension(BigInteger.valueOf(2));
@@ -518,4 +517,105 @@ public class GeospatialHelper {
         return surface;
     }
    
+    public static AixmSurfaceType parseAIXMSurface(com.aixm.delorean.core.schema.school.SurfaceType value) {
+        AixmSurfaceType aixmSurface = new AixmSurfaceType();
+        aixmSurface.setPolygon(parseGMLSurface(value));
+        aixmSurface.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
+        aixmSurface.setAnnotation(value.getAnnotation());
+
+        return aixmSurface;
+    }
+
+    public static com.aixm.delorean.core.schema.school.SurfaceType printAIXMSurface(AixmSurfaceType value){
+        com.aixm.delorean.core.schema.school.SurfaceType surface = new com.aixm.delorean.core.schema.school.SurfaceType();
+        GeodesicStringType shell = coordinateToSegment(value.getPolygon().getExteriorRing().getCoordinates());
+        RingType exterior = geodesicStringTypeWrapper(shell);
+        AbstractRingPropertyType exteriorRing = new AbstractRingPropertyType();
+        exteriorRing.setAbstractRing(new JAXBElement<RingType>( new QName("http://www.opengis.net/gml/3.2", "Ring"), RingType.class, exterior));
+        
+        List<AbstractRingPropertyType> interiorRingList = new ArrayList<>();
+        for (int i = 0; i < value.getPolygon().getNumInteriorRing(); i++) {
+            GeodesicStringType hole = coordinateToSegment(value.getPolygon().getInteriorRingN(i).getCoordinates());
+            RingType interior = geodesicStringTypeWrapper(hole);
+            AbstractRingPropertyType interiorRing = new AbstractRingPropertyType();
+            interiorRing.setAbstractRing(new JAXBElement<RingType>( new QName("http://www.opengis.net/gml/3.2", "Ring"), RingType.class, interior));
+            interiorRingList.add(interiorRing);
+        }
+
+        PolygonPatchType patch = new PolygonPatchType();
+        patch.setExterior(exteriorRing);
+        patch.getInterior().addAll(interiorRingList);   
+
+        SurfacePatchArrayPropertyType patches = new SurfacePatchArrayPropertyType();
+        patches.getAbstractSurfacePatch().add(new JAXBElement<PolygonPatchType>(new QName("http://www.opengis.net/gml/3.2", "PolygonPatch"), PolygonPatchType.class, patch));
+
+        surface.setPatches(new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.opengis.net/gml/3.2", "patches"), SurfacePatchArrayPropertyType.class, patches));
+        surface.setSrsDimension(BigInteger.valueOf(2));
+        surface.setSrsName("EPSG:4326");
+        JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
+        surface.setHorizontalAccuracy(horizontalAccuracy);
+        surface.getAnnotation().addAll(value.getAnnotation());
+
+        return surface;
+    }
+
+    public static AixmElevatedSurfaceType parseAIXMElevatedSurface(ElevatedSurfaceType value) {
+        AixmElevatedSurfaceType aixmElevatedSurface = new AixmElevatedSurfaceType();
+        aixmElevatedSurface.setPolygon(parseGMLSurface(value));
+        aixmElevatedSurface.setElevation(value.getElevation().getValue());
+        aixmElevatedSurface.setGeoidUndulation(value.getGeoidUndulation().getValue());
+        aixmElevatedSurface.setVerticalDatum(value.getVerticalDatum().getValue());
+        aixmElevatedSurface.setVerticalAccuracy(value.getVerticalAccuracy().getValue());
+        aixmElevatedSurface.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
+        aixmElevatedSurface.setAnnotation(value.getAnnotation());
+
+        return aixmElevatedSurface;
+    }
+
+    public static ElevatedSurfaceType printAIXMElevatedSurface(AixmElevatedSurfaceType value) {
+        ElevatedSurfaceType elevatedSurface = new ElevatedSurfaceType();
+        GeodesicStringType shell = coordinateToSegment(value.getPolygon().getExteriorRing().getCoordinates());
+        RingType exterior = geodesicStringTypeWrapper(shell);
+        AbstractRingPropertyType exteriorRing = new AbstractRingPropertyType();
+        exteriorRing.setAbstractRing(new JAXBElement<RingType>( new QName("http://www.opengis.net/gml/3.2", "Ring"), RingType.class, exterior));
+        
+        List<AbstractRingPropertyType> interiorRingList = new ArrayList<>();
+        for (int i = 0; i < value.getPolygon().getNumInteriorRing(); i++) {
+            GeodesicStringType hole = coordinateToSegment(value.getPolygon().getInteriorRingN(i).getCoordinates());
+            RingType interior = geodesicStringTypeWrapper(hole);
+            AbstractRingPropertyType interiorRing = new AbstractRingPropertyType();
+            interiorRing.setAbstractRing(new JAXBElement<RingType>( new QName("http://www.opengis.net/gml/3.2", "Ring"), RingType.class, interior));
+            interiorRingList.add(interiorRing);
+        }
+
+        PolygonPatchType patch = new PolygonPatchType();
+        patch.setExterior(exteriorRing);
+        patch.getInterior().addAll(interiorRingList);   
+
+        SurfacePatchArrayPropertyType patches = new SurfacePatchArrayPropertyType();
+        patches.getAbstractSurfacePatch().add(new JAXBElement<PolygonPatchType>(new QName("http://www.opengis.net/gml/3.2", "PolygonPatch"), PolygonPatchType.class, patch));
+
+        elevatedSurface.setPatches(new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.opengis.net/gml/3.2", "patches"), SurfacePatchArrayPropertyType.class, patches));
+        elevatedSurface.setSrsDimension(BigInteger.valueOf(2));
+        elevatedSurface.setSrsName("EPSG:4326");
+
+        JAXBElement<Long> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), Long.class, value.getElevation());
+        elevatedSurface.setElevation(elevation);
+
+        JAXBElement<Long> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), Long.class, value.getGeoidUndulation());
+        elevatedSurface.setGeoidUndulation(geoidUndulation);
+
+        JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
+        elevatedSurface.setHorizontalAccuracy(horizontalAccuracy);
+
+        JAXBElement<Long> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), Long.class, value.getVerticalAccuracy());
+        elevatedSurface.setVerticalAccuracy(verticalAccuracy);
+
+        JAXBElement<String> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), String.class, value.getVerticalDatum());
+        elevatedSurface.setVerticalDatum(verticalDatum);
+
+        elevatedSurface.getAnnotation().addAll(value.getAnnotation());
+
+        return elevatedSurface;
+    }
 }

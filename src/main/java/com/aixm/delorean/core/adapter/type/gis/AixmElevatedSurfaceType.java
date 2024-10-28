@@ -19,12 +19,16 @@ public class AixmElevatedSurfaceType {
     @Column(name = "geomSurface", columnDefinition = "geometry(Polygon, 4326)")
     protected Polygon polygon;
 
+    @Column(name = "elevation")
     protected Long elevation;
 
+    @Column(name = "geoidUndulation")
     protected Long geoidUndulation;
 
-    protected Long verticalDatum;
+    @Column(name = "verticalDatum")
+    protected String verticalDatum;
 
+    @Column(name = "verticalAccuracy")
     protected Long verticalAccuracy;
 
     @Column(name = "horizontalAccuracy")
@@ -58,11 +62,11 @@ public class AixmElevatedSurfaceType {
         this.geoidUndulation = value;
     }
 
-    public Long getVerticalDatum() {
+    public String getVerticalDatum() {
         return verticalDatum;
     }
 
-    public void setVerticalDatum(Long value) {
+    public void setVerticalDatum(String value) {
         this.verticalDatum = value;
     }
 
