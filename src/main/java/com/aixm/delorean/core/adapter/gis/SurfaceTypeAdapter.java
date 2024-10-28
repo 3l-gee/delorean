@@ -1,19 +1,19 @@
 package com.aixm.delorean.core.adapter.gis;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-import org.locationtech.jts.geom.Polygon;
 
-import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
+import com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType;
+import com.aixm.delorean.core.schema.school.SurfaceType;
 
-public class SurfaceTypeAdapter extends XmlAdapter<SurfaceType, Polygon>
+public class SurfaceTypeAdapter extends XmlAdapter<SurfaceType, AixmSurfaceType>
 {
 
-    public Polygon unmarshal(SurfaceType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.parseGMLSurface(value));
+    public AixmSurfaceType unmarshal(SurfaceType value) {
+        return (com.aixm.delorean.core.util.GeospatialHelper.parseAIXMSurface(value));
     }
 
-    public SurfaceType marshal(Polygon value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.printGMLSurface(value));
+    public SurfaceType marshal(AixmSurfaceType value) {
+        return (com.aixm.delorean.core.util.GeospatialHelper.printAIXMSurface(value));
     }
 
 }
