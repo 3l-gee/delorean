@@ -33,12 +33,12 @@
 			<jaxb:property generateElementProperty="false"/>
         </jaxb:bindings>
 
-        <jaxb:bindings node="xs:complexType[@name='BasicMessageMemberAIXMPropertyType']//xs:element[@name='dbID']">
+        <!-- <jaxb:bindings node="xs:complexType[@name='BasicMessageMemberAIXMPropertyType']//xs:element[@name='dbID']">
             <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "db_id", nullable = false)</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
-        </jaxb:bindings>
+        </jaxb:bindings> -->
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="AIXM_AbstractGML_ObjectTypes.xsd" node="/xs:schema">
@@ -54,45 +54,45 @@
             <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
 
-        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='dbID']">
+        <!-- <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='dbID']">
             <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "db_id", nullable = false)</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
-        </jaxb:bindings>
+        </jaxb:bindings> -->
 
         <jaxb:bindings node="xs:complexType[@name='AbstractAIXMObjectType']">
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
 
-        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMObjectType']//xs:element[@name='dbID']">
+        <!-- <jaxb:bindings node="xs:complexType[@name='AbstractAIXMObjectType']//xs:element[@name='dbID']">
             <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "db_id", nullable = false)</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
-        </jaxb:bindings>
+        </jaxb:bindings> -->
 
         <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']">
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
 
-        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@name='dbID']">
+        <!-- <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@name='dbID']">
             <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "db_id", nullable = false)</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
-        </jaxb:bindings>
+        </jaxb:bindings> -->
 
         <jaxb:bindings node="xs:complexType[@name='AbstractAIXMMessageBaseType']">
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
 
-        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMMessageBaseType']//xs:element[@name='dbID']">
+        <!-- <jaxb:bindings node="xs:complexType[@name='AbstractAIXMMessageBaseType']//xs:element[@name='dbID']">
             <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "db_id", nullable = false)</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
-        </jaxb:bindings>
+        </jaxb:bindings> -->
 
         <jaxb:bindings node="xs:complexType[@name='AbstractAIXMMessageBaseType']//xs:element[@name='messageMetadata']">
             <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -102,12 +102,12 @@
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
 
-        <jaxb:bindings node="xs:complexType[@name='AbstractAIXMPropertyType']//xs:attribute[@name='dbID']">
+        <!-- <jaxb:bindings node="xs:complexType[@name='AbstractAIXMPropertyType']//xs:attribute[@name='dbID']">
             <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "db_id", nullable = false)</annox:annotate>
             <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
-        </jaxb:bindings>
+        </jaxb:bindings> -->
 	</jaxb:bindings>
 
     <!-- <jaxb:bindings schemaLocation="AIXM_Features.xsd" node="/xs:schema">
@@ -136,10 +136,65 @@
 			<xjc:noValidator />
 			<xjc:noValidatingUnmarshaller />
 		</jaxb:globalBindings>
+        <!-- Gis Handeling -->
+        <jaxb:bindings node="//xs:complexType[@name='PointPropertyType']">
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+		</jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='PointPropertyType']//xs:element[@name='point']">
+            <jaxb:javaType name="com.aixm.delorean.core.adapter.type.gis.AixmPointType"/>
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true, type = com.aixm.delorean.core.schema.a5_1_1.aixm.PointType.class)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.gis.PointTypeAdapter.class)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='ElevatedPointPropertyType']">
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+		</jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='ElevatedPointPropertyType']//xs:element[@name='point']">
+            <jaxb:javaType name="com.aixm.delorean.core.adapter.type.gis.AixmElevatedPointType"/>
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true, type = com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointType.class)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.gis.ElevatedPointTypeAdapter.class)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='CurvePropertyType']">
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+		</jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='CurvePropertyType']//xs:element[@name='curve']">
+    		<jaxb:javaType name="com.aixm.delorean.core.adapter.type.gis.AixmCurveType"/>
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true, type = com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType.class)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.gis.CurveTypeAdapter.class)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='ElevatedCurvePropertyType']">
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+		</jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='ElevatedCurvePropertyType']//xs:element[@name='curve']">
+    		<jaxb:javaType name="com.aixm.delorean.core.adapter.type.gis.AixmElevatedCurveType"/>
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true, type = com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType.class)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.gis.ElevatedCurveTypeAdapter.class)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='SurfacePropertyType']">
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+		</jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='SurfacePropertyType']//xs:element[@name='surface']">
+    		<jaxb:javaType name="com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType"/>
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true, type = com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType.class)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.gis.SurfaceTypeAdapter.class)</annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='ElevatedSurfacePropertyType']">
+            <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+		</jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='ElevatedSurfacePropertyType']//xs:element[@name='surface']">
+    		<jaxb:javaType name="com.aixm.delorean.core.adapter.type.gis.AixmElevatedSurfaceType"/>
+            <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true, type = com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType.class)</annox:annotate>
+            <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.gis.ElevatedSurfaceTypeAdapter.class)</annox:annotate>
+        </jaxb:bindings>
 	</jaxb:bindings>
 
     <jaxb:bindings schemaLocation="AIXM_DataTypes.xsd" node="/xs:schema">
-        <!-- <jaxb:bindings node="//xs:simpleType[@name='CodeBuoyDesignatorBaseType']">
+        <jaxb:bindings node="//xs:simpleType[@name='CodeBuoyDesignatorBaseType']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "code_buoy_designator")</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CodeBuoyDesignatorType']">
@@ -5661,7 +5716,7 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='XHTMLType']//xs:attribute[@name='nilReason']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "_nil_reason")</annox:annotate>
-        </jaxb:bindings> -->
+        </jaxb:bindings>
     </jaxb:bindings>
 
 </jaxb:bindings>

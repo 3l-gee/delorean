@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -39,15 +41,19 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "TextNoteType", propOrder = {
     "value"
 })
+@Embeddable
 public class TextNoteType {
 
     @XmlValue
+    @Column(name = "text_note")
     protected String value;
     @XmlAttribute(name = "nilReason")
+    @Column(name = "text_note_base_type_nil_reason")
     protected String nilReason;
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "language")
+    @Column(name = "text_note_base_type_lang")
     protected String lang;
 
     /**

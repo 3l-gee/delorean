@@ -49,7 +49,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AerialRefuellingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
+			<!-- Adding dbID as a new field -->
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -267,7 +269,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AirportHeliportTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -384,7 +386,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AirportHeliportCollocationTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -526,7 +528,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AirportHotSpotTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -576,7 +578,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AltimeterSourceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -733,7 +735,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:NonMovementAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -826,7 +828,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SurveyControlPointTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -902,7 +904,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:WorkAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -988,7 +990,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AircraftStandTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1043,7 +1045,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ApronTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1165,7 +1167,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ApronElementTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1223,7 +1225,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:DeicingAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1275,7 +1277,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:PassengerLoadingBridgeTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1324,7 +1326,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RoadTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1378,7 +1380,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TouchDownLiftOffTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1437,7 +1439,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TouchDownLiftOffSafeAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1485,7 +1487,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ApproachLightingSystemTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1538,7 +1540,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ApronLightSystemTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1643,7 +1645,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:GuidanceLineLightSystemTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1727,7 +1729,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RunwayDirectionLightSystemTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1776,7 +1778,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RunwayProtectAreaLightSystemTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1825,7 +1827,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TaxiHoldingPositionLightSystemTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1874,7 +1876,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TaxiwayLightSystemTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1923,7 +1925,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TouchDownLiftOffLightSystemTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1972,7 +1974,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AirportProtectionAreaMarkingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2021,7 +2023,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ApronMarkingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2070,7 +2072,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:DeicingAreaMarkingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2118,7 +2120,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:GuidanceLineMarkingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2225,7 +2227,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RunwayMarkingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2274,7 +2276,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:StandMarkingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2322,7 +2324,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TaxiHoldingPositionMarkingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2370,7 +2372,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TaxiwayMarkingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2420,7 +2422,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TouchDownLiftOffMarkingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2469,7 +2471,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ArrestingGearTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2637,7 +2639,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RunwayTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2699,7 +2701,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RunwayBlastPadTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2750,7 +2752,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RunwayCentrelinePointTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2873,7 +2875,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RunwayDirectionTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2934,7 +2936,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RunwayElementTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2988,7 +2990,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RunwayProtectAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3038,7 +3040,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RunwayVisualRangeTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3087,7 +3089,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:VisualGlideSlopeIndicatorTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3141,7 +3143,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:FloatingDockSiteTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3188,7 +3190,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:MarkingBuoyTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3239,7 +3241,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SeaplaneLandingAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3289,7 +3291,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SeaplaneRampSiteTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3689,7 +3691,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:GuidanceLineTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3745,7 +3747,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TaxiHoldingPositionTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3796,7 +3798,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TaxiwayTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3852,7 +3854,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TaxiwayElementTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3906,7 +3908,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AirspaceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4154,7 +4156,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AuthorityForAirspaceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4203,7 +4205,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:GeoBorderTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4254,7 +4256,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:Curve"/>
+					<!-- <element ref="aixm:Curve"/> -->
+					<!-- Gis Handeling -->
+					<xs:element name="curve" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -4289,7 +4293,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:ElevatedCurve"/>
+					<!-- <element ref="aixm:ElevatedCurve"/> -->
+					<!-- Gis Handeling -->
+					<element name="curve" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -4325,7 +4331,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:ElevatedPoint"/>
+					<!-- <element ref="aixm:ElevatedPoint"/> -->
+					<!-- Gis Handeling -->
+					<element name="point" type="xs:string"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -4361,7 +4369,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:ElevatedSurface"/>
+					<!-- <element ref="aixm:ElevatedSurface"/> -->
+					<!-- Gis Handeling -->
+					<xs:element name="surface" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -4387,7 +4397,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:Point"/>
+					<!-- <element ref="aixm:Point"/> -->
+					<!-- Gis Handeling -->
+					<element name="point" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -4412,7 +4424,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:Surface"/>
+					<!-- <element ref="aixm:Surface"/> -->
+					<!-- Gis Handeling -->
+					<element name="surface" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -4435,7 +4449,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:HoldingPatternTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4568,7 +4582,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:UnplannedHoldingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4724,7 +4738,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AzimuthTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4780,7 +4794,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:CheckpointINSTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4827,7 +4841,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:CheckpointVORTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4875,7 +4889,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:DirectionFinderTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4924,7 +4938,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:DMETimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4975,7 +4989,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ElevationTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5026,7 +5040,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:GlidepathTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5078,7 +5092,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:LocalizerTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5134,7 +5148,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:MarkerBeaconTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5185,7 +5199,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:NavaidTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5407,7 +5421,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:NDBTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5457,7 +5471,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SDFTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5507,7 +5521,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SpecialNavigationStationTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5596,7 +5610,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SpecialNavigationSystemTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5646,7 +5660,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TACANTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5695,7 +5709,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:VORTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5746,7 +5760,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AngleIndicationTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5842,7 +5856,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:DistanceIndicationTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6053,7 +6067,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:DesignatedPointTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6106,7 +6120,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SignificantPointInAirspaceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6163,7 +6177,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AeronauticalGroundLightTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6284,7 +6298,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ObstacleAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6339,7 +6353,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:VerticalStructureTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6491,7 +6505,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:OrganisationAuthorityTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6578,7 +6592,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:UnitTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6893,7 +6907,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:InstrumentApproachProcedureTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6989,7 +7003,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:TerminalArrivalAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7141,7 +7155,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:CirclingAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7348,7 +7362,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:StandardInstrumentArrivalTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7436,7 +7450,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:NavigationAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7569,7 +7583,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:StandardInstrumentDepartureTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7619,7 +7633,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SafeAltitudeAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7730,7 +7744,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ArrivalFeederLegTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7779,7 +7793,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ArrivalLegTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7828,7 +7842,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:DepartureLegTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7879,7 +7893,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:FinalLegTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7985,7 +7999,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:InitialLegTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8034,7 +8048,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:IntermediateLegTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8118,7 +8132,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:MissedApproachLegTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8171,7 +8185,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:NavigationAreaRestrictionTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8254,7 +8268,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ProcedureDMETimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8461,7 +8475,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:ChangeOverPointTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8517,7 +8531,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RouteTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8613,7 +8627,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RouteDMETimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8721,7 +8735,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RouteSegmentTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8797,7 +8811,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AirspaceBorderCrossingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9083,7 +9097,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:FlightRestrictionTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9262,7 +9276,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RulesProceduresTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9313,7 +9327,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AircraftGroundServiceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9362,7 +9376,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AirportClearanceServiceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9428,7 +9442,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AirportSuppliesServiceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9480,7 +9494,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AirTrafficControlServiceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9536,7 +9550,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:AirTrafficManagementServiceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9622,7 +9636,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:FireFightingServiceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9706,7 +9720,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:GroundTrafficControlServiceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9756,7 +9770,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:InformationServiceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9916,7 +9930,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:PassengerServiceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9965,7 +9979,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:PilotControlledLightingTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10019,7 +10033,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RadioCommunicationChannelTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10112,7 +10126,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SearchRescueServiceTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10681,7 +10695,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RadioFrequencyAreaTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10764,7 +10778,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SpecialDateTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10897,7 +10911,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:StandardLevelColumnTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10948,7 +10962,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:StandardLevelSectorTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -11000,7 +11014,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:StandardLevelTableTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -11085,7 +11099,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:HoldingAssessmentTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -11268,7 +11282,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:PrecisionApproachRadarTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -11319,7 +11333,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:PrimarySurveillanceRadarTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -11435,7 +11449,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:RadarSystemTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -11525,7 +11539,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<element ref="aixm:SecondarySurveillanceRadarTimeSlice"/>
 			<!-- Adding dbID as a new field -->
-            <element name="dbID" type="xs:long"/>
+            <!-- <element name="dbID" type="xs:long"/> -->
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>

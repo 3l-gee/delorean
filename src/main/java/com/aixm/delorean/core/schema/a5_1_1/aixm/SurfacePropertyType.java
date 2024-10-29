@@ -7,11 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.xml.bind.JAXBElement;
+import com.aixm.delorean.core.adapter.gis.SurfaceTypeAdapter;
+import com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -24,7 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMPropertyType">
  *       <sequence>
- *         <element ref="{http://www.aixm.aero/schema/5.1.1}Surface"/>
+ *         <element name="surface" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -37,23 +41,25 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "SurfacePropertyType", propOrder = {
     "surface"
 })
+@Embeddable
 public class SurfacePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElementRef(name = "Surface", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class)
-    protected JAXBElement<? extends SurfaceType> surface;
+    @XmlElement(required = true, type = SurfaceType.class)
+    @XmlJavaTypeAdapter(SurfaceTypeAdapter.class)
+    @Embedded
+    protected AixmSurfaceType surface;
 
     /**
      * Gets the value of the surface property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<? extends SurfaceType> getSurface() {
+    public AixmSurfaceType getSurface() {
         return surface;
     }
 
@@ -62,11 +68,10 @@ public class SurfacePropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link SurfaceType }{@code >}
+     *     {@link String }
      *     
      */
-    public void setSurface(JAXBElement<? extends SurfaceType> value) {
+    public void setSurface(AixmSurfaceType value) {
         this.surface = value;
     }
 

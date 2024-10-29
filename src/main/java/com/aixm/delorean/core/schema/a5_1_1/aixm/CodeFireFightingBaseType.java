@@ -8,13 +8,10 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- * 
  * <p>Java class for CodeFireFightingBaseType</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
@@ -43,65 +40,26 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum CodeFireFightingBaseType {
 
-    @XmlEnumValue("H1")
-    H_1("H1"),
-    @XmlEnumValue("H2")
-    H_2("H2"),
-    @XmlEnumValue("H3")
-    H_3("H3"),
-    @XmlEnumValue("A1")
-    A_1("A1"),
-    @XmlEnumValue("A2")
-    A_2("A2"),
-    @XmlEnumValue("A3")
-    A_3("A3"),
-    @XmlEnumValue("A4")
-    A_4("A4"),
-    @XmlEnumValue("A5")
-    A_5("A5"),
-    @XmlEnumValue("A6")
-    A_6("A6"),
-    @XmlEnumValue("A7")
-    A_7("A7"),
-    @XmlEnumValue("A8")
-    A_8("A8"),
-    @XmlEnumValue("A9")
-    A_9("A9"),
-    @XmlEnumValue("A10")
-    A_10("A10");
-    private final String value;
+    H1,
+    H2,
+    H3,
+    A1,
+    A2,
+    A3,
+    A4,
+    A5,
+    A6,
+    A7,
+    A8,
+    A9,
+    A10;
 
-    CodeFireFightingBaseType(String v) {
-        value = v;
-    }
-
-    /**
-     * Gets the value associated to the enum constant.
-     * 
-     * @return
-     *     The value linked to the enum.
-     */
     public String value() {
-        return value;
+        return name();
     }
 
-    /**
-     * Gets the enum associated to the value passed as parameter.
-     * 
-     * @param v
-     *     The value to get the enum from.
-     * @return
-     *     The enum which corresponds to the value, if it exists.
-     * @throws IllegalArgumentException
-     *     If no value matches in the enum declaration.
-     */
     public static CodeFireFightingBaseType fromValue(String v) {
-        for (CodeFireFightingBaseType c: CodeFireFightingBaseType.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return valueOf(v);
     }
 
 }

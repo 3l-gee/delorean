@@ -25,7 +25,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}DMETimeSlice"/>
- *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *     </restriction>
@@ -37,14 +36,12 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DMETimeSlicePropertyType", propOrder = {
-    "dmeTimeSlice",
-    "dbID"
+    "dmeTimeSlice"
 })
 public class DMETimeSlicePropertyType {
 
     @XmlElement(name = "DMETimeSlice", required = true)
     protected DMETimeSliceType dmeTimeSlice;
-    protected long dbID;
     @XmlAttribute(name = "owns")
     protected Boolean owns;
 
@@ -74,26 +71,6 @@ public class DMETimeSlicePropertyType {
 
     public boolean isSetDMETimeSlice() {
         return (this.dmeTimeSlice!= null);
-    }
-
-    /**
-     * Gets the value of the dbID property.
-     * 
-     */
-    public long getDbID() {
-        return dbID;
-    }
-
-    /**
-     * Sets the value of the dbID property.
-     * 
-     */
-    public void setDbID(long value) {
-        this.dbID = value;
-    }
-
-    public boolean isSetDbID() {
-        return true;
     }
 
     /**

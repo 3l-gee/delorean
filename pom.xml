@@ -228,7 +228,7 @@
                     </executions>
                 </plugin> -->
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
@@ -236,11 +236,11 @@
                     <extension>true</extension>
                     <args>
                         <arg>-Xannotate</arg>
-                        <arg>-XremoveAnnotation</arg>
+                        <arg>-XremoveAnnotation</arg> -->
                         <!-- <arg>-XJsr303Annotations</arg>
                         <arg>-XJsr303Annotations:validationAnnotations=jakarta</arg>
                         <arg>-XJsr303Annotations:generateServiceValidationAnnotations=InOut</arg> -->
-                    </args>
+                    <!-- </args>
                     <plugins>
                         <plugin>
                             <groupId>org.jvnet.jaxb</groupId>
@@ -294,7 +294,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 
 			<!-- Added maven-shade-plugin to create a fat jar including dependencies -->
             <plugin>

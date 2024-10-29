@@ -8,13 +8,10 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- * 
  * <p>Java class for CodePARBaseType</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
@@ -36,51 +33,19 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum CodePARBaseType {
 
-    @XmlEnumValue("FPN16")
-    FPN_16("FPN16"),
-    @XmlEnumValue("FPN62")
-    FPN_62("FPN62"),
-    @XmlEnumValue("GPN22")
-    GPN_22("GPN22"),
-    @XmlEnumValue("GPN25")
-    GPN_25("GPN25"),
-    @XmlEnumValue("MPN14K")
-    MPN_14_K("MPN14K"),
-    @XmlEnumValue("TPN19")
-    TPN_19("TPN19");
-    private final String value;
+    FPN16,
+    FPN62,
+    GPN22,
+    GPN25,
+    MPN14K,
+    TPN19;
 
-    CodePARBaseType(String v) {
-        value = v;
-    }
-
-    /**
-     * Gets the value associated to the enum constant.
-     * 
-     * @return
-     *     The value linked to the enum.
-     */
     public String value() {
-        return value;
+        return name();
     }
 
-    /**
-     * Gets the enum associated to the value passed as parameter.
-     * 
-     * @param v
-     *     The value to get the enum from.
-     * @return
-     *     The enum which corresponds to the value, if it exists.
-     * @throws IllegalArgumentException
-     *     If no value matches in the enum declaration.
-     */
     public static CodePARBaseType fromValue(String v) {
-        for (CodePARBaseType c: CodePARBaseType.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return valueOf(v);
     }
 
 }

@@ -8,13 +8,10 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- * 
  * <p>Java class for CodeBuoyBaseType</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
@@ -42,55 +39,25 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum CodeBuoyBaseType {
 
-    @XmlEnumValue("BLACK_RED_FL2")
-    BLACK_RED_FL_2("BLACK_RED_FL2"),
-    GREEN("GREEN"),
-    GREEN_RED_GFL("GREEN_RED_GFL"),
-    @XmlEnumValue("Q3_VQ3")
-    Q_3_VQ_3("Q3_VQ3"),
-    @XmlEnumValue("Q6_VQ6")
-    Q_6_VQ_6("Q6_VQ6"),
-    @XmlEnumValue("Q9_VQ9")
-    Q_9_VQ_9("Q9_VQ9"),
-    Q_VQ("Q_VQ"),
-    RED("RED"),
-    RED_GREEN_RFL("RED_GREEN_RFL"),
-    RED_WHITE("RED_WHITE"),
-    WHITE("WHITE"),
-    YELLOW("YELLOW");
-    private final String value;
+    BLACK_RED_FL2,
+    GREEN,
+    GREEN_RED_GFL,
+    Q3_VQ3,
+    Q6_VQ6,
+    Q9_VQ9,
+    Q_VQ,
+    RED,
+    RED_GREEN_RFL,
+    RED_WHITE,
+    WHITE,
+    YELLOW;
 
-    CodeBuoyBaseType(String v) {
-        value = v;
-    }
-
-    /**
-     * Gets the value associated to the enum constant.
-     * 
-     * @return
-     *     The value linked to the enum.
-     */
     public String value() {
-        return value;
+        return name();
     }
 
-    /**
-     * Gets the enum associated to the value passed as parameter.
-     * 
-     * @param v
-     *     The value to get the enum from.
-     * @return
-     *     The enum which corresponds to the value, if it exists.
-     * @throws IllegalArgumentException
-     *     If no value matches in the enum declaration.
-     */
     public static CodeBuoyBaseType fromValue(String v) {
-        for (CodeBuoyBaseType c: CodeBuoyBaseType.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return valueOf(v);
     }
 
 }

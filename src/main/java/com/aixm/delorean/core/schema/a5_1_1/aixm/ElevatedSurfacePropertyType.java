@@ -7,10 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import com.aixm.delorean.core.adapter.gis.ElevatedSurfaceTypeAdapter;
+import com.aixm.delorean.core.adapter.type.gis.AixmElevatedSurfaceType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -23,7 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMPropertyType">
  *       <sequence>
- *         <element ref="{http://www.aixm.aero/schema/5.1.1}ElevatedSurface"/>
+ *         <element name="surface" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -34,41 +39,44 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ElevatedSurfacePropertyType", propOrder = {
-    "elevatedSurface"
+    "surface"
 })
+@Embeddable
 public class ElevatedSurfacePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(name = "ElevatedSurface", required = true)
-    protected ElevatedSurfaceType elevatedSurface;
+    @XmlElement(required = true, type = ElevatedSurfaceType.class)
+    @XmlJavaTypeAdapter(ElevatedSurfaceTypeAdapter.class)
+    @Embedded
+    protected AixmElevatedSurfaceType surface;
 
     /**
-     * Gets the value of the elevatedSurface property.
+     * Gets the value of the surface property.
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedSurfaceType }
+     *     {@link String }
      *     
      */
-    public ElevatedSurfaceType getElevatedSurface() {
-        return elevatedSurface;
+    public AixmElevatedSurfaceType getSurface() {
+        return surface;
     }
 
     /**
-     * Sets the value of the elevatedSurface property.
+     * Sets the value of the surface property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedSurfaceType }
+     *     {@link String }
      *     
      */
-    public void setElevatedSurface(ElevatedSurfaceType value) {
-        this.elevatedSurface = value;
+    public void setSurface(AixmElevatedSurfaceType value) {
+        this.surface = value;
     }
 
-    public boolean isSetElevatedSurface() {
-        return (this.elevatedSurface!= null);
+    public boolean isSetSurface() {
+        return (this.surface!= null);
     }
 
 }

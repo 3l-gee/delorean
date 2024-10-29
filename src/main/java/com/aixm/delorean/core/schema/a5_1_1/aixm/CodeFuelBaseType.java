@@ -8,13 +8,10 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- * 
  * <p>Java class for CodeFuelBaseType</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
@@ -68,106 +65,51 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum CodeFuelBaseType {
 
-    AVGAS("AVGAS"),
-    AVGAS_LL("AVGAS_LL"),
-    @XmlEnumValue("OCT73")
-    OCT_73("OCT73"),
-    @XmlEnumValue("OCT80")
-    OCT_80("OCT80"),
-    @XmlEnumValue("OCT82UL")
-    OCT_82_UL("OCT82UL"),
-    @XmlEnumValue("OCT80_87")
-    OCT_80_87("OCT80_87"),
-    @XmlEnumValue("OCT91_98")
-    OCT_91_98("OCT91_98"),
-    @XmlEnumValue("OCT100_130")
-    OCT_100_130("OCT100_130"),
-    @XmlEnumValue("OCT108_135")
-    OCT_108_135("OCT108_135"),
-    @XmlEnumValue("OCT115_145")
-    OCT_115_145("OCT115_145"),
-    MOGAS("MOGAS"),
-    JET("JET"),
-    A("A"),
-    @XmlEnumValue("A1")
-    A_1("A1"),
-    @XmlEnumValue("A1_PLUS")
-    A_1_PLUS("A1_PLUS"),
-    B("B"),
-    @XmlEnumValue("JP1")
-    JP_1("JP1"),
-    @XmlEnumValue("JP2")
-    JP_2("JP2"),
-    @XmlEnumValue("JP3")
-    JP_3("JP3"),
-    @XmlEnumValue("JP4")
-    JP_4("JP4"),
-    @XmlEnumValue("JP5")
-    JP_5("JP5"),
-    @XmlEnumValue("JP6")
-    JP_6("JP6"),
-    JPTS("JPTS"),
-    @XmlEnumValue("JP7")
-    JP_7("JP7"),
-    @XmlEnumValue("JP8")
-    JP_8("JP8"),
-    @XmlEnumValue("JP8_HIGHER")
-    JP_8_HIGHER("JP8_HIGHER"),
-    @XmlEnumValue("JP9")
-    JP_9("JP9"),
-    @XmlEnumValue("JP10")
-    JP_10("JP10"),
-    @XmlEnumValue("F18")
-    F_18("F18"),
-    @XmlEnumValue("F34")
-    F_34("F34"),
-    @XmlEnumValue("F35")
-    F_35("F35"),
-    @XmlEnumValue("F40")
-    F_40("F40"),
-    @XmlEnumValue("F44")
-    F_44("F44"),
-    @XmlEnumValue("TR0")
-    TR_0("TR0"),
-    @XmlEnumValue("TR4")
-    TR_4("TR4"),
-    @XmlEnumValue("TS1")
-    TS_1("TS1"),
-    RT("RT"),
-    ALL("ALL");
-    private final String value;
+    AVGAS,
+    AVGAS_LL,
+    OCT73,
+    OCT80,
+    OCT82UL,
+    OCT80_87,
+    OCT91_98,
+    OCT100_130,
+    OCT108_135,
+    OCT115_145,
+    MOGAS,
+    JET,
+    A,
+    A1,
+    A1_PLUS,
+    B,
+    JP1,
+    JP2,
+    JP3,
+    JP4,
+    JP5,
+    JP6,
+    JPTS,
+    JP7,
+    JP8,
+    JP8_HIGHER,
+    JP9,
+    JP10,
+    F18,
+    F34,
+    F35,
+    F40,
+    F44,
+    TR0,
+    TR4,
+    TS1,
+    RT,
+    ALL;
 
-    CodeFuelBaseType(String v) {
-        value = v;
-    }
-
-    /**
-     * Gets the value associated to the enum constant.
-     * 
-     * @return
-     *     The value linked to the enum.
-     */
     public String value() {
-        return value;
+        return name();
     }
 
-    /**
-     * Gets the enum associated to the value passed as parameter.
-     * 
-     * @param v
-     *     The value to get the enum from.
-     * @return
-     *     The enum which corresponds to the value, if it exists.
-     * @throws IllegalArgumentException
-     *     If no value matches in the enum declaration.
-     */
     public static CodeFuelBaseType fromValue(String v) {
-        for (CodeFuelBaseType c: CodeFuelBaseType.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return valueOf(v);
     }
 
 }

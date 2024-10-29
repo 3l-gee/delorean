@@ -8,13 +8,10 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- * 
  * <p>Java class for CodeRadioEmissionBaseType</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
@@ -46,69 +43,29 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum CodeRadioEmissionBaseType {
 
-    @XmlEnumValue("A2")
-    A_2("A2"),
-    @XmlEnumValue("A3A")
-    A_3_A("A3A"),
-    @XmlEnumValue("A3B")
-    A_3_B("A3B"),
-    @XmlEnumValue("A3E")
-    A_3_E("A3E"),
-    @XmlEnumValue("A3H")
-    A_3_H("A3H"),
-    @XmlEnumValue("A3J")
-    A_3_J("A3J"),
-    @XmlEnumValue("A3L")
-    A_3_L("A3L"),
-    @XmlEnumValue("A3U")
-    A_3_U("A3U"),
-    @XmlEnumValue("J3E")
-    J_3_E("J3E"),
-    @XmlEnumValue("NONA1A")
-    NONA_1_A("NONA1A"),
-    @XmlEnumValue("NONA2A")
-    NONA_2_A("NONA2A"),
-    PON("PON"),
-    @XmlEnumValue("A8W")
-    A_8_W("A8W"),
-    @XmlEnumValue("A9W")
-    A_9_W("A9W"),
-    NOX("NOX"),
-    @XmlEnumValue("G1D")
-    G_1_D("G1D");
-    private final String value;
+    A2,
+    A3A,
+    A3B,
+    A3E,
+    A3H,
+    A3J,
+    A3L,
+    A3U,
+    J3E,
+    NONA1A,
+    NONA2A,
+    PON,
+    A8W,
+    A9W,
+    NOX,
+    G1D;
 
-    CodeRadioEmissionBaseType(String v) {
-        value = v;
-    }
-
-    /**
-     * Gets the value associated to the enum constant.
-     * 
-     * @return
-     *     The value linked to the enum.
-     */
     public String value() {
-        return value;
+        return name();
     }
 
-    /**
-     * Gets the enum associated to the value passed as parameter.
-     * 
-     * @param v
-     *     The value to get the enum from.
-     * @return
-     *     The enum which corresponds to the value, if it exists.
-     * @throws IllegalArgumentException
-     *     If no value matches in the enum declaration.
-     */
     public static CodeRadioEmissionBaseType fromValue(String v) {
-        for (CodeRadioEmissionBaseType c: CodeRadioEmissionBaseType.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return valueOf(v);
     }
 
 }

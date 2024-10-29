@@ -154,9 +154,6 @@ import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -164,7 +161,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -181,7 +177,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <choice>
  *           <element ref="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMFeature"/>
  *         </choice>
- *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </extension>
@@ -193,8 +188,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {
-    "abstractAIXMFeature",
-    "dbID"
+    "abstractAIXMFeature"
 })
 @Entity
 @Table(name = "basic_message_member_aixm_property_type")
@@ -205,11 +199,6 @@ public class BasicMessageMemberAIXMPropertyType
     @XmlElementRef(name = "AbstractAIXMFeature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Column(name = "abstract_aixm_feature")
     protected JAXBElement<? extends AbstractAIXMFeatureType> abstractAIXMFeature;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "db_id", nullable = false)
-    @XmlTransient
-    protected long dbID;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
@@ -532,26 +521,6 @@ public class BasicMessageMemberAIXMPropertyType
 
     public boolean isSetAbstractAIXMFeature() {
         return (this.abstractAIXMFeature!= null);
-    }
-
-    /**
-     * Gets the value of the dbID property.
-     * 
-     */
-    public long getDbID() {
-        return dbID;
-    }
-
-    /**
-     * Sets the value of the dbID property.
-     * 
-     */
-    public void setDbID(long value) {
-        this.dbID = value;
-    }
-
-    public boolean isSetDbID() {
-        return true;
     }
 
     /**

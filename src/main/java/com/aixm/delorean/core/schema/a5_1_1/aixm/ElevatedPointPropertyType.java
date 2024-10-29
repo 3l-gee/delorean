@@ -7,10 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import com.aixm.delorean.core.adapter.gis.ElevatedPointTypeAdapter;
+import com.aixm.delorean.core.adapter.type.gis.AixmElevatedPointType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -23,7 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMPropertyType">
  *       <sequence>
- *         <element ref="{http://www.aixm.aero/schema/5.1.1}ElevatedPoint"/>
+ *         <element name="point" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -34,41 +39,44 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ElevatedPointPropertyType", propOrder = {
-    "elevatedPoint"
+    "point"
 })
+@Embeddable
 public class ElevatedPointPropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(name = "ElevatedPoint", required = true)
-    protected ElevatedPointType elevatedPoint;
+    @XmlElement(required = true, type = ElevatedPointType.class)
+    @XmlJavaTypeAdapter(ElevatedPointTypeAdapter.class)
+    @Embedded
+    protected AixmElevatedPointType point;
 
     /**
-     * Gets the value of the elevatedPoint property.
+     * Gets the value of the point property.
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedPointType }
+     *     {@link String }
      *     
      */
-    public ElevatedPointType getElevatedPoint() {
-        return elevatedPoint;
+    public AixmElevatedPointType getPoint() {
+        return point;
     }
 
     /**
-     * Sets the value of the elevatedPoint property.
+     * Sets the value of the point property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedPointType }
+     *     {@link String }
      *     
      */
-    public void setElevatedPoint(ElevatedPointType value) {
-        this.elevatedPoint = value;
+    public void setPoint(AixmElevatedPointType value) {
+        this.point = value;
     }
 
-    public boolean isSetElevatedPoint() {
-        return (this.elevatedPoint!= null);
+    public boolean isSetPoint() {
+        return (this.point!= null);
     }
 
 }

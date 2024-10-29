@@ -1,23 +1,290 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns4:AIXMBasicMessage xmlns:ns1="http://www.opengis.net/gml/3.2" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns:ns4="http://www.aixm.aero/schema/5.1.1">
-    <implementedPoint>
-        <aixmPoint>
-            <point srsName="EPSG:4326">
-                <ns1:pos>1.0 1.0</ns1:pos>
-                <ns1:horizontalAccuracy>10</ns1:horizontalAccuracy>
-                <annotation>annotation</annotation>
-            </point>
-        </aixmPoint>
-        <name>test</name>
-        <id>1</id>
-    </implementedPoint>
-    <classroom>
-        <classroomid>0</classroomid>
-    </classroom>
-    <student>
-        <assignedclassroomid>0</assignedclassroomid>
-    </student>
-    <teacher>
-        <assignedclassroomid>0</assignedclassroomid>
-    </teacher>
-</ns4:AIXMBasicMessage>
+<ns3:AIXMBasicMessage xmlns:ns1="http://www.opengis.net/gml/3.2" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns:ns3="http://www.aixm.aero/schema/5.1.1" xmlns:ns4="http://www.isotc211.org/2005/gco" xmlns:ns5="http://www.isotc211.org/2005/gmd" xmlns:ns6="http://www.isotc211.org/2005/gts" xmlns:ns7="http://www.aixm.aero/schema/5.1.1/message" ns1:id="M0000001">
+    <ns1:boundedBy>
+        <ns1:Envelope srsName="urn:ogc:def:crs:EPSG::4326">
+            <ns1:lowerCorner>-32.0886111111111 -47.0</ns1:lowerCorner>
+            <ns1:upperCorner>57.690815969999996 52.4283333333333</ns1:upperCorner>
+        </ns1:Envelope>
+    </ns1:boundedBy>
+    <ns3:messageMetadata>
+        <ns5:MD_Metadata id="MD_DONLON_MESSAGE">
+            <ns5:characterSet>
+                <ns5:MD_CharacterSetCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8">utf8</ns5:MD_CharacterSetCode>
+            </ns5:characterSet>
+            <ns5:contact ns2:type="simple">
+                <ns5:CI_ResponsibleParty>
+                    <ns5:organisationName>
+                        <ns4:CharacterString>EUROCONTROL</ns4:CharacterString>
+                    </ns5:organisationName>
+                    <ns5:contactInfo ns2:type="simple">
+                        <ns5:CI_Contact>
+                            <ns5:onlineResource ns2:type="simple">
+<ns5:CI_OnlineResource>
+    <ns5:linkage>
+        <ns5:URL>http://www.eurocontrol.int</ns5:URL>
+    </ns5:linkage>
+</ns5:CI_OnlineResource>
+                            </ns5:onlineResource>
+                        </ns5:CI_Contact>
+                    </ns5:contactInfo>
+                    <ns5:role>
+                        <ns5:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</ns5:CI_RoleCode>
+                    </ns5:role>
+                </ns5:CI_ResponsibleParty>
+            </ns5:contact>
+            <ns5:dateStamp>
+                <ns4:Date xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <ns4:DateTime>2022-07-01T12:00:00Z</ns4:DateTime>
+            </ns5:dateStamp>
+            <ns5:identificationInfo ns2:type="simple">
+                <ns5:MD_DataIdentification>
+                    <ns5:citation ns2:type="simple">
+                        <ns5:CI_Citation>
+                            <ns5:title>
+<ns4:CharacterString>DONLON - complete sample</ns4:CharacterString>
+                            </ns5:title>
+                            <ns5:date ns2:type="simple">
+<ns5:CI_Date>
+    <ns5:date>
+        <ns4:Date xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <ns4:DateTime>2022-07-01T00:00:00Z</ns4:DateTime>
+    </ns5:date>
+    <ns5:dateType>
+        <ns5:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</ns5:CI_DateTypeCode>
+    </ns5:dateType>
+</ns5:CI_Date>
+                            </ns5:date>
+                        </ns5:CI_Citation>
+                    </ns5:citation>
+                    <ns5:abstract>
+                        <ns4:CharacterString>Donlon complete data set sample data initially created by
+							Solitec Software Solutions(solitec.com); currently maintained by
+							Eurocontrol.</ns4:CharacterString>
+                    </ns5:abstract>
+                    <ns5:pointOfContact ns2:type="simple">
+                        <ns5:CI_ResponsibleParty>
+                            <ns5:individualName>
+<ns4:CharacterString>No name</ns4:CharacterString>
+                            </ns5:individualName>
+                            <ns5:organisationName>
+<ns4:CharacterString>Eurocontrol</ns4:CharacterString>
+                            </ns5:organisationName>
+                            <ns5:contactInfo ns2:type="simple">
+<ns5:CI_Contact>
+    <ns5:onlineResource ns2:type="simple">
+        <ns5:CI_OnlineResource>
+            <ns5:linkage>
+                <ns5:URL>www.aixm.aero</ns5:URL>
+            </ns5:linkage>
+            <ns5:name>
+                <ns4:CharacterString>AIXM 5.1 website</ns4:CharacterString>
+            </ns5:name>
+        </ns5:CI_OnlineResource>
+    </ns5:onlineResource>
+</ns5:CI_Contact>
+                            </ns5:contactInfo>
+                            <ns5:role>
+<ns5:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact">pointOfContact</ns5:CI_RoleCode>
+                            </ns5:role>
+                        </ns5:CI_ResponsibleParty>
+                    </ns5:pointOfContact>
+                    <ns5:resourceConstraints ns2:type="simple">
+                        <ns5:MD_Constraints>
+                            <ns5:useLimitation>
+<ns4:CharacterString>To be used for demonstration purposes only! Any operational usage is prohibited!</ns4:CharacterString>
+                            </ns5:useLimitation>
+                        </ns5:MD_Constraints>
+                    </ns5:resourceConstraints>
+                    <ns5:language>
+                        <ns4:CharacterString>eng</ns4:CharacterString>
+                    </ns5:language>
+                    <ns5:topicCategory>
+                        <ns5:MD_TopicCategoryCode>transportation</ns5:MD_TopicCategoryCode>
+                    </ns5:topicCategory>
+                    <ns5:extent ns2:type="simple">
+                        <ns5:EX_Extent>
+                            <ns5:geographicElement ns2:type="simple">
+<ns5:EX_GeographicBoundingBox>
+    <ns5:westBoundLongitude>
+        <ns4:Decimal>-47.0</ns4:Decimal>
+    </ns5:westBoundLongitude>
+    <ns5:eastBoundLongitude>
+        <ns4:Decimal>52.4283333333333</ns4:Decimal>
+    </ns5:eastBoundLongitude>
+    <ns5:southBoundLatitude>
+        <ns4:Decimal>57.690815969999996</ns4:Decimal>
+    </ns5:southBoundLatitude>
+    <ns5:northBoundLatitude>
+        <ns4:Decimal>-32.0886111111111</ns4:Decimal>
+    </ns5:northBoundLatitude>
+</ns5:EX_GeographicBoundingBox>
+                            </ns5:geographicElement>
+                        </ns5:EX_Extent>
+                    </ns5:extent>
+                </ns5:MD_DataIdentification>
+            </ns5:identificationInfo>
+        </ns5:MD_Metadata>
+    </ns3:messageMetadata>
+    <ns7:hasMember ns2:type="simple">
+        <ns3:OrganisationAuthority ns1:id="uuid.6384a4e0-8497-4f83-8eaa-d73ef549d90e">
+            <ns1:identifier codeSpace="urn:uuid:">6384a4e0-8497-4f83-8eaa-d73ef549d90e</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:timeSlice>
+                <ns3:OrganisationAuthorityTimeSlice ns1:id="DONLONSTATE">
+                    <ns1:validTime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="vtDONLONSTATE">
+                            <ns1:beginPosition>2009-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns1:validTime>
+                    <ns3:interpretation>BASELINE</ns3:interpretation>
+                    <ns3:sequenceNumber>1</ns3:sequenceNumber>
+                    <ns3:featureLifetime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="ltDONLONSTATE">
+                            <ns1:beginPosition>2009-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns3:featureLifetime>
+                    <ns3:name>REPUBLIC OF DONLON</ns3:name>
+                    <ns3:type>STATE</ns3:type>
+                </ns3:OrganisationAuthorityTimeSlice>
+            </ns3:timeSlice>
+        </ns3:OrganisationAuthority>
+    </ns7:hasMember>
+    <ns7:hasMember ns2:type="simple">
+        <ns3:OrganisationAuthority ns1:id="uuid.c225ae5c-540f-4a48-8867-809b393b2407">
+            <ns1:identifier codeSpace="urn:uuid:">c225ae5c-540f-4a48-8867-809b393b2407</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:timeSlice>
+                <ns3:OrganisationAuthorityTimeSlice ns1:id="ORG_CAA">
+                    <ns1:validTime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="rtvtOXS0">
+                            <ns1:beginPosition>2017-07-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns1:validTime>
+                    <ns3:interpretation>BASELINE</ns3:interpretation>
+                    <ns3:sequenceNumber>2</ns3:sequenceNumber>
+                    <ns3:featureLifetime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="ltOXS118">
+                            <ns1:beginPosition>2017-07-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns3:featureLifetime>
+                    <ns3:name>CIVIL AVIATION ADMINISTRATION</ns3:name>
+                    <ns3:type>NTL_AUTH</ns3:type>
+                    <ns3:relatedOrganisationAuthority>
+                        <ns3:OrganisationAuthorityAssociation ns1:id="CAATODONLONSTATE">
+                            <ns3:type>OWNED_BY</ns3:type>
+                            <ns3:theOrganisationAuthority ns2:type="simple" ns2:href="urn:uuid:6384a4e0-8497-4f83-8eaa-d73ef549d90e" ns2:title="ORG_REPUBLIC OF DONLON"/>
+                        </ns3:OrganisationAuthorityAssociation>
+                    </ns3:relatedOrganisationAuthority>
+                </ns3:OrganisationAuthorityTimeSlice>
+            </ns3:timeSlice>
+        </ns3:OrganisationAuthority>
+    </ns7:hasMember>
+    <ns7:hasMember ns2:type="simple">
+        <ns3:OrganisationAuthority ns1:id="uuid.1e1bdf59-3dd6-4f96-9166-e6095e7231fc">
+            <ns1:identifier codeSpace="urn:uuid:">1e1bdf59-3dd6-4f96-9166-e6095e7231fc</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:timeSlice>
+                <ns3:OrganisationAuthorityTimeSlice ns1:id="ORGTSDONLON1">
+                    <ns1:validTime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="rtvtOXS1">
+                            <ns1:beginPosition>2009-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns1:validTime>
+                    <ns3:interpretation>BASELINE</ns3:interpretation>
+                    <ns3:sequenceNumber>1</ns3:sequenceNumber>
+                    <ns3:featureLifetime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="ltOXS119">
+                            <ns1:beginPosition>2009-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns3:featureLifetime>
+                    <ns3:name>DONLON</ns3:name>
+                    <ns3:type>NTL_AUTH</ns3:type>
+                </ns3:OrganisationAuthorityTimeSlice>
+            </ns3:timeSlice>
+        </ns3:OrganisationAuthority>
+    </ns7:hasMember>
+    <ns7:hasMember ns2:type="simple">
+        <ns3:OrganisationAuthority ns1:id="uuid.74efb6ba-a52a-46c0-a16b-03860d356882">
+            <ns1:identifier codeSpace="urn:uuid:">74efb6ba-a52a-46c0-a16b-03860d356882</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:timeSlice>
+                <ns3:OrganisationAuthorityTimeSlice ns1:id="ORGTSDONLON_HELIPORT_AUTHORITY1">
+                    <ns1:validTime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="rtvtOXS2">
+                            <ns1:beginPosition>2009-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns1:validTime>
+                    <ns3:interpretation>BASELINE</ns3:interpretation>
+                    <ns3:sequenceNumber>1</ns3:sequenceNumber>
+                    <ns3:featureLifetime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="ltOXS120">
+                            <ns1:beginPosition>2009-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns3:featureLifetime>
+                    <ns3:name>DONLON_HELIPORT_AUTHORITY</ns3:name>
+                    <ns3:type>NTL_AUTH</ns3:type>
+                </ns3:OrganisationAuthorityTimeSlice>
+            </ns3:timeSlice>
+        </ns3:OrganisationAuthority>
+    </ns7:hasMember>
+    <ns7:hasMember ns2:type="simple">
+        <ns3:OrganisationAuthority ns1:id="uuid.6384a4e0-8497-4f83-8eaa-d73ef549d90f">
+            <ns1:identifier codeSpace="urn:uuid:">6384a4e0-8497-4f83-8eaa-d73ef549d90f</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:timeSlice>
+                <ns3:OrganisationAuthorityTimeSlice ns1:id="ORG_DONBURG_AEROCLUB">
+                    <ns1:validTime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="vt1111">
+                            <ns1:beginPosition>2017-01-07T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns1:validTime>
+                    <ns3:interpretation>BASELINE</ns3:interpretation>
+                    <ns3:sequenceNumber>1</ns3:sequenceNumber>
+                    <ns3:featureLifetime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="lt1111">
+                            <ns1:beginPosition>2017-01-07T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns3:featureLifetime>
+                    <ns3:name>DONBURG AERO CLUB</ns3:name>
+                    <ns3:type/>
+                    <ns3:contact>
+                        <ns3:ContactInformation ns1:id="ci1111">
+                            <ns3:phoneFax>
+<ns3:TelephoneContact ns1:id="tc1111">
+    <ns3:voice>0531302546</ns3:voice>
+</ns3:TelephoneContact>
+                            </ns3:phoneFax>
+                        </ns3:ContactInformation>
+                    </ns3:contact>
+                </ns3:OrganisationAuthorityTimeSlice>
+            </ns3:timeSlice>
+        </ns3:OrganisationAuthority>
+    </ns7:hasMember>
+    <ns7:hasMember ns2:type="simple">
+        <ns3:GeoBorder ns1:id="uuid.6118ba76-0d46-4ba7-af63-17f29755e890">
+            <ns1:identifier codeSpace="urn:uuid:">6118ba76-0d46-4ba7-af63-17f29755e890</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:timeSlice>
+                <ns3:GeoBorderTimeSlice ns1:id="geobtsREPUBLICOFDONLON">
+                    <ns1:validTime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="vtILURU93">
+                            <ns1:beginPosition>2009-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns1:validTime>
+                    <ns3:interpretation>BASELINE</ns3:interpretation>
+                    <ns3:sequenceNumber>1</ns3:sequenceNumber>
+                    <ns3:featureLifetime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="ltILURU93">
+                            <ns1:beginPosition>2009-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition
