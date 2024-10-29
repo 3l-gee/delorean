@@ -76,6 +76,10 @@ public class CodeListValueType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return (this.value!= null);
+    }
+
     /**
      * Gets the value of the codeList property.
      * 
@@ -98,6 +102,10 @@ public class CodeListValueType {
      */
     public void setCodeList(String value) {
         this.codeList = value;
+    }
+
+    public boolean isSetCodeList() {
+        return (this.codeList!= null);
     }
 
     /**
@@ -124,6 +132,10 @@ public class CodeListValueType {
         this.codeListValue = value;
     }
 
+    public boolean isSetCodeListValue() {
+        return (this.codeListValue!= null);
+    }
+
     /**
      * Gets the value of the codeSpace property.
      * 
@@ -146,6 +158,10 @@ public class CodeListValueType {
      */
     public void setCodeSpace(String value) {
         this.codeSpace = value;
+    }
+
+    public boolean isSetCodeSpace() {
+        return (this.codeSpace!= null);
     }
 
 }

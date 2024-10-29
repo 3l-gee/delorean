@@ -66,6 +66,10 @@ public class MappingRuleType {
         this.ruleDefinition = value;
     }
 
+    public boolean isSetRuleDefinition() {
+        return (this.ruleDefinition!= null);
+    }
+
     /**
      * Gets the value of the ruleReference property.
      * 
@@ -88,6 +92,10 @@ public class MappingRuleType {
      */
     public void setRuleReference(ReferenceType value) {
         this.ruleReference = value;
+    }
+
+    public boolean isSetRuleReference() {
+        return (this.ruleReference!= null);
     }
 
 }

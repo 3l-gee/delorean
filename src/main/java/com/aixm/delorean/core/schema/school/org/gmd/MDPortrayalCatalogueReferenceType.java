@@ -80,4 +80,12 @@ public class MDPortrayalCatalogueReferenceType
         return this.portrayalCatalogueCitation;
     }
 
+    public boolean isSetPortrayalCatalogueCitation() {
+        return ((this.portrayalCatalogueCitation!= null)&&(!this.portrayalCatalogueCitation.isEmpty()));
+    }
+
+    public void unsetPortrayalCatalogueCitation() {
+        this.portrayalCatalogueCitation = null;
+    }
+
 }

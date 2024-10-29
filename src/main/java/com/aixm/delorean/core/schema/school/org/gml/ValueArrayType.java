@@ -67,6 +67,10 @@ public class ValueArrayType
         this.codeSpace = value;
     }
 
+    public boolean isSetCodeSpace() {
+        return (this.codeSpace!= null);
+    }
+
     /**
      * Gets the value of the uom property.
      * 
@@ -89,6 +93,10 @@ public class ValueArrayType
      */
     public void setUom(String value) {
         this.uom = value;
+    }
+
+    public boolean isSetUom() {
+        return (this.uom!= null);
     }
 
 }

@@ -154,6 +154,10 @@ public class School {
         this.implementedPoint = value;
     }
 
+    public boolean isSetImplementedPoint() {
+        return (this.implementedPoint!= null);
+    }
+
     /**
      * Gets the value of the implementedElevatedPoint property.
      * 
@@ -176,6 +180,10 @@ public class School {
      */
     public void setImplementedElevatedPoint(ImplementationAixmElevatedPoint value) {
         this.implementedElevatedPoint = value;
+    }
+
+    public boolean isSetImplementedElevatedPoint() {
+        return (this.implementedElevatedPoint!= null);
     }
 
     /**
@@ -202,6 +210,10 @@ public class School {
         this.implementedCurve = value;
     }
 
+    public boolean isSetImplementedCurve() {
+        return (this.implementedCurve!= null);
+    }
+
     /**
      * Gets the value of the implementedElevatedCurve property.
      * 
@@ -224,6 +236,10 @@ public class School {
      */
     public void setImplementedElevatedCurve(ImplementationAixmElevatedCurve value) {
         this.implementedElevatedCurve = value;
+    }
+
+    public boolean isSetImplementedElevatedCurve() {
+        return (this.implementedElevatedCurve!= null);
     }
 
     /**
@@ -250,6 +266,10 @@ public class School {
         this.implementedSurface = value;
     }
 
+    public boolean isSetImplementedSurface() {
+        return (this.implementedSurface!= null);
+    }
+
     /**
      * Gets the value of the implementedElevatedSurface property.
      * 
@@ -272,6 +292,10 @@ public class School {
      */
     public void setImplementedElevatedSurface(ImplementationAixmElevatedSurface value) {
         this.implementedElevatedSurface = value;
+    }
+
+    public boolean isSetImplementedElevatedSurface() {
+        return (this.implementedElevatedSurface!= null);
     }
 
     /**
@@ -306,6 +330,14 @@ public class School {
         return this.classroom;
     }
 
+    public boolean isSetClassroom() {
+        return ((this.classroom!= null)&&(!this.classroom.isEmpty()));
+    }
+
+    public void unsetClassroom() {
+        this.classroom = null;
+    }
+
     /**
      * Gets the value of the student property.
      * 
@@ -336,6 +368,14 @@ public class School {
             student = new ArrayList<>();
         }
         return this.student;
+    }
+
+    public boolean isSetStudent() {
+        return ((this.student!= null)&&(!this.student.isEmpty()));
+    }
+
+    public void unsetStudent() {
+        this.student = null;
     }
 
     /**
@@ -370,6 +410,14 @@ public class School {
         return this.teacher;
     }
 
+    public boolean isSetTeacher() {
+        return ((this.teacher!= null)&&(!this.teacher.isEmpty()));
+    }
+
+    public void unsetTeacher() {
+        this.teacher = null;
+    }
+
     /**
      * Gets the value of the dbid property.
      * 
@@ -378,7 +426,7 @@ public class School {
      *     {@link Long }
      *     
      */
-    public Long getDbid() {
+    public long getDbid() {
         return dbid;
     }
 
@@ -390,8 +438,16 @@ public class School {
      *     {@link Long }
      *     
      */
-    public void setDbid(Long value) {
+    public void setDbid(long value) {
         this.dbid = value;
+    }
+
+    public boolean isSetDbid() {
+        return (this.dbid!= null);
+    }
+
+    public void unsetDbid() {
+        this.dbid = null;
     }
 
 }

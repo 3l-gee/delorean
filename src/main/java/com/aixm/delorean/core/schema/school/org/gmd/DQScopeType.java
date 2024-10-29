@@ -76,6 +76,10 @@ public class DQScopeType
         this.level = value;
     }
 
+    public boolean isSetLevel() {
+        return (this.level!= null);
+    }
+
     /**
      * Gets the value of the extent property.
      * 
@@ -98,6 +102,10 @@ public class DQScopeType
      */
     public void setExtent(EXExtentPropertyType value) {
         this.extent = value;
+    }
+
+    public boolean isSetExtent() {
+        return (this.extent!= null);
     }
 
     /**
@@ -130,6 +138,14 @@ public class DQScopeType
             levelDescription = new ArrayList<>();
         }
         return this.levelDescription;
+    }
+
+    public boolean isSetLevelDescription() {
+        return ((this.levelDescription!= null)&&(!this.levelDescription.isEmpty()));
+    }
+
+    public void unsetLevelDescription() {
+        this.levelDescription = null;
     }
 
 }

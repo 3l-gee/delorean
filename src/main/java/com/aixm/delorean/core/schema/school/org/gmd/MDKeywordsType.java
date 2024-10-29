@@ -87,6 +87,14 @@ public class MDKeywordsType
         return this.keyword;
     }
 
+    public boolean isSetKeyword() {
+        return ((this.keyword!= null)&&(!this.keyword.isEmpty()));
+    }
+
+    public void unsetKeyword() {
+        this.keyword = null;
+    }
+
     /**
      * Gets the value of the type property.
      * 
@@ -111,6 +119,10 @@ public class MDKeywordsType
         this.type = value;
     }
 
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
     /**
      * Gets the value of the thesaurusName property.
      * 
@@ -133,6 +145,10 @@ public class MDKeywordsType
      */
     public void setThesaurusName(CICitationPropertyType value) {
         this.thesaurusName = value;
+    }
+
+    public boolean isSetThesaurusName() {
+        return (this.thesaurusName!= null);
     }
 
 }

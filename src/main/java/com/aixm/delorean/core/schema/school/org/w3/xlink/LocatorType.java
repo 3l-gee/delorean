@@ -43,7 +43,7 @@ public class LocatorType {
 
     protected List<TitleEltType> title;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.LOCATOR;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink", required = true)
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
@@ -91,32 +91,12 @@ public class LocatorType {
         return this.title;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.LOCATOR;
-        } else {
-            return type;
-        }
+    public boolean isSetTitle() {
+        return ((this.title!= null)&&(!this.title.isEmpty()));
     }
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public void unsetTitle() {
+        this.title = null;
     }
 
     /**
@@ -143,6 +123,10 @@ public class LocatorType {
         this.href = value;
     }
 
+    public boolean isSetHref() {
+        return (this.href!= null);
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -165,6 +149,10 @@ public class LocatorType {
      */
     public void setRole(String value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -191,6 +179,10 @@ public class LocatorType {
         this.titleAttribute = value;
     }
 
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
+    }
+
     /**
      * label is not required, but locators have no particular
      *      XLink function if they are not labeled.
@@ -215,6 +207,10 @@ public class LocatorType {
      */
     public void setLabel(String value) {
         this.label = value;
+    }
+
+    public boolean isSetLabel() {
+        return (this.label!= null);
     }
 
 }

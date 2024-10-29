@@ -71,6 +71,10 @@ public class GeographicCRSType
         this.usesEllipsoidalCS = value;
     }
 
+    public boolean isSetUsesEllipsoidalCS() {
+        return (this.usesEllipsoidalCS!= null);
+    }
+
     /**
      * Gets the value of the usesGeodeticDatum property.
      * 
@@ -93,6 +97,10 @@ public class GeographicCRSType
      */
     public void setUsesGeodeticDatum(GeodeticDatumPropertyType value) {
         this.usesGeodeticDatum = value;
+    }
+
+    public boolean isSetUsesGeodeticDatum() {
+        return (this.usesGeodeticDatum!= null);
     }
 
 }

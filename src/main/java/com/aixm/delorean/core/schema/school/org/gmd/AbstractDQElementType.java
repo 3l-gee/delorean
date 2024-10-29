@@ -109,6 +109,14 @@ public abstract class AbstractDQElementType
         return this.nameOfMeasure;
     }
 
+    public boolean isSetNameOfMeasure() {
+        return ((this.nameOfMeasure!= null)&&(!this.nameOfMeasure.isEmpty()));
+    }
+
+    public void unsetNameOfMeasure() {
+        this.nameOfMeasure = null;
+    }
+
     /**
      * Gets the value of the measureIdentification property.
      * 
@@ -131,6 +139,10 @@ public abstract class AbstractDQElementType
      */
     public void setMeasureIdentification(MDIdentifierPropertyType value) {
         this.measureIdentification = value;
+    }
+
+    public boolean isSetMeasureIdentification() {
+        return (this.measureIdentification!= null);
     }
 
     /**
@@ -157,6 +169,10 @@ public abstract class AbstractDQElementType
         this.measureDescription = value;
     }
 
+    public boolean isSetMeasureDescription() {
+        return (this.measureDescription!= null);
+    }
+
     /**
      * Gets the value of the evaluationMethodType property.
      * 
@@ -179,6 +195,10 @@ public abstract class AbstractDQElementType
      */
     public void setEvaluationMethodType(DQEvaluationMethodTypeCodePropertyType value) {
         this.evaluationMethodType = value;
+    }
+
+    public boolean isSetEvaluationMethodType() {
+        return (this.evaluationMethodType!= null);
     }
 
     /**
@@ -205,6 +225,10 @@ public abstract class AbstractDQElementType
         this.evaluationMethodDescription = value;
     }
 
+    public boolean isSetEvaluationMethodDescription() {
+        return (this.evaluationMethodDescription!= null);
+    }
+
     /**
      * Gets the value of the evaluationProcedure property.
      * 
@@ -227,6 +251,10 @@ public abstract class AbstractDQElementType
      */
     public void setEvaluationProcedure(CICitationPropertyType value) {
         this.evaluationProcedure = value;
+    }
+
+    public boolean isSetEvaluationProcedure() {
+        return (this.evaluationProcedure!= null);
     }
 
     /**
@@ -261,6 +289,14 @@ public abstract class AbstractDQElementType
         return this.dateTime;
     }
 
+    public boolean isSetDateTime() {
+        return ((this.dateTime!= null)&&(!this.dateTime.isEmpty()));
+    }
+
+    public void unsetDateTime() {
+        this.dateTime = null;
+    }
+
     /**
      * Gets the value of the result property.
      * 
@@ -291,6 +327,14 @@ public abstract class AbstractDQElementType
             result = new ArrayList<>();
         }
         return this.result;
+    }
+
+    public boolean isSetResult() {
+        return ((this.result!= null)&&(!this.result.isEmpty()));
+    }
+
+    public void unsetResult() {
+        this.result = null;
     }
 
 }

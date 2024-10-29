@@ -72,6 +72,10 @@ public class MDClassificationCodePropertyType {
         this.mdClassificationCode = value;
     }
 
+    public boolean isSetMDClassificationCode() {
+        return (this.mdClassificationCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class MDClassificationCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

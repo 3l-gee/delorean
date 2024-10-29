@@ -83,6 +83,10 @@ public class AffinePlacementType {
         this.location = value;
     }
 
+    public boolean isSetLocation() {
+        return (this.location!= null);
+    }
+
     /**
      * Gets the value of the refDirection property.
      * 
@@ -115,6 +119,14 @@ public class AffinePlacementType {
         return this.refDirection;
     }
 
+    public boolean isSetRefDirection() {
+        return ((this.refDirection!= null)&&(!this.refDirection.isEmpty()));
+    }
+
+    public void unsetRefDirection() {
+        this.refDirection = null;
+    }
+
     /**
      * Gets the value of the inDimension property.
      * 
@@ -139,6 +151,10 @@ public class AffinePlacementType {
         this.inDimension = value;
     }
 
+    public boolean isSetInDimension() {
+        return (this.inDimension!= null);
+    }
+
     /**
      * Gets the value of the outDimension property.
      * 
@@ -161,6 +177,10 @@ public class AffinePlacementType {
      */
     public void setOutDimension(BigInteger value) {
         this.outDimension = value;
+    }
+
+    public boolean isSetOutDimension() {
+        return (this.outDimension!= null);
     }
 
 }

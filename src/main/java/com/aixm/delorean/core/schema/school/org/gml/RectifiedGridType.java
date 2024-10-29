@@ -73,6 +73,10 @@ public class RectifiedGridType
         this.origin = value;
     }
 
+    public boolean isSetOrigin() {
+        return (this.origin!= null);
+    }
+
     /**
      * Gets the value of the offsetVector property.
      * 
@@ -103,6 +107,14 @@ public class RectifiedGridType
             offsetVector = new ArrayList<>();
         }
         return this.offsetVector;
+    }
+
+    public boolean isSetOffsetVector() {
+        return ((this.offsetVector!= null)&&(!this.offsetVector.isEmpty()));
+    }
+
+    public void unsetOffsetVector() {
+        this.offsetVector = null;
     }
 
 }

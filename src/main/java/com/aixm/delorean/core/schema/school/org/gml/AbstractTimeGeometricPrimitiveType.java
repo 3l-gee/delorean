@@ -74,4 +74,8 @@ public abstract class AbstractTimeGeometricPrimitiveType
         this.frame = value;
     }
 
+    public boolean isSetFrame() {
+        return (this.frame!= null);
+    }
+
 }

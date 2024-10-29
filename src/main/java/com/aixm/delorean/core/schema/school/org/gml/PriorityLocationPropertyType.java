@@ -63,4 +63,8 @@ public class PriorityLocationPropertyType
         this.priority = value;
     }
 
+    public boolean isSetPriority() {
+        return (this.priority!= null);
+    }
+
 }

@@ -99,6 +99,14 @@ public class TinType
         return this.stopLines;
     }
 
+    public boolean isSetStopLines() {
+        return ((this.stopLines!= null)&&(!this.stopLines.isEmpty()));
+    }
+
+    public void unsetStopLines() {
+        this.stopLines = null;
+    }
+
     /**
      * Gets the value of the breakLines property.
      * 
@@ -131,6 +139,14 @@ public class TinType
         return this.breakLines;
     }
 
+    public boolean isSetBreakLines() {
+        return ((this.breakLines!= null)&&(!this.breakLines.isEmpty()));
+    }
+
+    public void unsetBreakLines() {
+        this.breakLines = null;
+    }
+
     /**
      * Gets the value of the maxLength property.
      * 
@@ -155,6 +171,10 @@ public class TinType
         this.maxLength = value;
     }
 
+    public boolean isSetMaxLength() {
+        return (this.maxLength!= null);
+    }
+
     /**
      * Gets the value of the controlPoint property.
      * 
@@ -177,6 +197,10 @@ public class TinType
      */
     public void setControlPoint(TinType.ControlPoint value) {
         this.controlPoint = value;
+    }
+
+    public boolean isSetControlPoint() {
+        return (this.controlPoint!= null);
     }
 
 
@@ -244,6 +268,10 @@ public class TinType
             this.posList = value;
         }
 
+        public boolean isSetPosList() {
+            return (this.posList!= null);
+        }
+
         /**
          * GML supports two different ways to specify a geometric position: either by a direct position (a data type) or a point (a geometric object).
          * pos elements are positions that are "owned" by the geometric primitive encapsulating this geometric position.
@@ -279,6 +307,14 @@ public class TinType
                 geometricPositionGroup = new ArrayList<>();
             }
             return this.geometricPositionGroup;
+        }
+
+        public boolean isSetGeometricPositionGroup() {
+            return ((this.geometricPositionGroup!= null)&&(!this.geometricPositionGroup.isEmpty()));
+        }
+
+        public void unsetGeometricPositionGroup() {
+            this.geometricPositionGroup = null;
         }
 
     }

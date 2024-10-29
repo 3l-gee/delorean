@@ -91,6 +91,10 @@ public class ElevatedSurfaceType
         this.elevation = value;
     }
 
+    public boolean isSetElevation() {
+        return (this.elevation!= null);
+    }
+
     /**
      * Gets the value of the geoidUndulation property.
      * 
@@ -113,6 +117,10 @@ public class ElevatedSurfaceType
      */
     public void setGeoidUndulation(JAXBElement<Long> value) {
         this.geoidUndulation = value;
+    }
+
+    public boolean isSetGeoidUndulation() {
+        return (this.geoidUndulation!= null);
     }
 
     /**
@@ -139,6 +147,10 @@ public class ElevatedSurfaceType
         this.verticalDatum = value;
     }
 
+    public boolean isSetVerticalDatum() {
+        return (this.verticalDatum!= null);
+    }
+
     /**
      * Gets the value of the verticalAccuracy property.
      * 
@@ -161,6 +173,10 @@ public class ElevatedSurfaceType
      */
     public void setVerticalAccuracy(JAXBElement<Long> value) {
         this.verticalAccuracy = value;
+    }
+
+    public boolean isSetVerticalAccuracy() {
+        return (this.verticalAccuracy!= null);
     }
 
     /**
@@ -193,6 +209,14 @@ public class ElevatedSurfaceType
             extension = new ArrayList<>();
         }
         return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 
@@ -244,8 +268,16 @@ public class ElevatedSurfaceType
          *     {@link Boolean }
          *     
          */
-        public void setOwns(Boolean value) {
+        public void setOwns(boolean value) {
             this.owns = value;
+        }
+
+        public boolean isSetOwns() {
+            return (this.owns!= null);
+        }
+
+        public void unsetOwns() {
+            this.owns = null;
         }
 
     }

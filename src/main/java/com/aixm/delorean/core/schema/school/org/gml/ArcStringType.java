@@ -71,7 +71,7 @@ public class ArcStringType
     protected DirectPositionListType posList;
     protected CoordinatesType coordinates;
     @XmlAttribute(name = "interpolation")
-    protected CurveInterpolationType interpolation;
+    public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CIRCULAR_ARC_3_POINTS;
     @XmlAttribute(name = "numArc")
     protected BigInteger numArc;
 
@@ -109,6 +109,14 @@ public class ArcStringType
         return this.posOrPointPropertyOrPointRep;
     }
 
+    public boolean isSetPosOrPointPropertyOrPointRep() {
+        return ((this.posOrPointPropertyOrPointRep!= null)&&(!this.posOrPointPropertyOrPointRep.isEmpty()));
+    }
+
+    public void unsetPosOrPointPropertyOrPointRep() {
+        this.posOrPointPropertyOrPointRep = null;
+    }
+
     /**
      * Gets the value of the posList property.
      * 
@@ -131,6 +139,10 @@ public class ArcStringType
      */
     public void setPosList(DirectPositionListType value) {
         this.posList = value;
+    }
+
+    public boolean isSetPosList() {
+        return (this.posList!= null);
     }
 
     /**
@@ -157,32 +169,8 @@ public class ArcStringType
         this.coordinates = value;
     }
 
-    /**
-     * Gets the value of the interpolation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public CurveInterpolationType getInterpolation() {
-        if (interpolation == null) {
-            return CurveInterpolationType.CIRCULAR_ARC_3_POINTS;
-        } else {
-            return interpolation;
-        }
-    }
-
-    /**
-     * Sets the value of the interpolation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public void setInterpolation(CurveInterpolationType value) {
-        this.interpolation = value;
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
     }
 
     /**
@@ -207,6 +195,10 @@ public class ArcStringType
      */
     public void setNumArc(BigInteger value) {
         this.numArc = value;
+    }
+
+    public boolean isSetNumArc() {
+        return (this.numArc!= null);
     }
 
 }

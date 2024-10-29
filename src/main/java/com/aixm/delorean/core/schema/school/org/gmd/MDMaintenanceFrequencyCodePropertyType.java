@@ -72,6 +72,10 @@ public class MDMaintenanceFrequencyCodePropertyType {
         this.mdMaintenanceFrequencyCode = value;
     }
 
+    public boolean isSetMDMaintenanceFrequencyCode() {
+        return (this.mdMaintenanceFrequencyCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class MDMaintenanceFrequencyCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

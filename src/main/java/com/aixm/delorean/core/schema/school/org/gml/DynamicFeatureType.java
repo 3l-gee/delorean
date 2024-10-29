@@ -94,6 +94,10 @@ public class DynamicFeatureType
         this.validTime = value;
     }
 
+    public boolean isSetValidTime() {
+        return (this.validTime!= null);
+    }
+
     /**
      * A generic sequence of events constitute a gml:history of an object.
      * The gml:history element contains a set of elements in the substitution group headed by the abstract element gml:AbstractTimeSlice, representing the time-varying properties of interest. The history property of a dynamic feature associates a feature instance with a sequence of time slices (i.e. change events) that encapsulate the evolution of the feature.
@@ -122,6 +126,10 @@ public class DynamicFeatureType
         this.history = value;
     }
 
+    public boolean isSetHistory() {
+        return (this.history!= null);
+    }
+
     /**
      * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data. The remote link attributes of the gml:dataSource element have been deprecated along with its current type.
      * 
@@ -147,6 +155,10 @@ public class DynamicFeatureType
         this.dataSource = value;
     }
 
+    public boolean isSetDataSource() {
+        return (this.dataSource!= null);
+    }
+
     /**
      * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data.
      * 
@@ -170,6 +182,10 @@ public class DynamicFeatureType
      */
     public void setDataSourceReference(ReferenceType value) {
         this.dataSourceReference = value;
+    }
+
+    public boolean isSetDataSourceReference() {
+        return (this.dataSourceReference!= null);
     }
 
 }

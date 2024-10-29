@@ -103,6 +103,10 @@ public class GeodeticCRSType
         this.ellipsoidalCS = value;
     }
 
+    public boolean isSetEllipsoidalCS() {
+        return (this.ellipsoidalCS!= null);
+    }
+
     /**
      * gml:cartesianCS is an association role to the Cartesian coordinate system used by this CRS.
      * 
@@ -128,6 +132,10 @@ public class GeodeticCRSType
      */
     public void setCartesianCS(JAXBElement<CartesianCSPropertyType> value) {
         this.cartesianCS = value;
+    }
+
+    public boolean isSetCartesianCS() {
+        return (this.cartesianCS!= null);
     }
 
     /**
@@ -157,6 +165,10 @@ public class GeodeticCRSType
         this.sphericalCS = value;
     }
 
+    public boolean isSetSphericalCS() {
+        return (this.sphericalCS!= null);
+    }
+
     /**
      * gml:geodeticDatum is an association role to the geodetic datum used by this CRS.
      * 
@@ -182,6 +194,10 @@ public class GeodeticCRSType
      */
     public void setGeodeticDatum(JAXBElement<GeodeticDatumPropertyType> value) {
         this.geodeticDatum = value;
+    }
+
+    public boolean isSetGeodeticDatum() {
+        return (this.geodeticDatum!= null);
     }
 
 }

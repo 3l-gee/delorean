@@ -81,6 +81,10 @@ public class NumberPropertyType {
         this.real = value;
     }
 
+    public boolean isSetReal() {
+        return (this.real!= null);
+    }
+
     /**
      * Gets the value of the decimal property.
      * 
@@ -105,6 +109,10 @@ public class NumberPropertyType {
         this.decimal = value;
     }
 
+    public boolean isSetDecimal() {
+        return (this.decimal!= null);
+    }
+
     /**
      * Gets the value of the integer property.
      * 
@@ -127,6 +135,10 @@ public class NumberPropertyType {
      */
     public void setInteger(BigInteger value) {
         this.integer = value;
+    }
+
+    public boolean isSetInteger() {
+        return (this.integer!= null);
     }
 
     /**
@@ -159,6 +171,14 @@ public class NumberPropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

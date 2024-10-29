@@ -68,4 +68,8 @@ public class UnitOfMeasureType {
         this.uom = value;
     }
 
+    public boolean isSetUom() {
+        return (this.uom!= null);
+    }
+
 }

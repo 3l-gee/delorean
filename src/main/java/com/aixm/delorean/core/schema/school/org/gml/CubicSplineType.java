@@ -76,9 +76,9 @@ public class CubicSplineType
     @XmlElement(required = true)
     protected VectorType vectorAtEnd;
     @XmlAttribute(name = "interpolation")
-    protected CurveInterpolationType interpolation;
+    public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CUBIC_SPLINE;
     @XmlAttribute(name = "degree")
-    protected BigInteger degree;
+    public static final BigInteger DEGREE = new BigInteger("3");
 
     /**
      * Gets the value of the posOrPointPropertyOrPointRep property.
@@ -114,6 +114,14 @@ public class CubicSplineType
         return this.posOrPointPropertyOrPointRep;
     }
 
+    public boolean isSetPosOrPointPropertyOrPointRep() {
+        return ((this.posOrPointPropertyOrPointRep!= null)&&(!this.posOrPointPropertyOrPointRep.isEmpty()));
+    }
+
+    public void unsetPosOrPointPropertyOrPointRep() {
+        this.posOrPointPropertyOrPointRep = null;
+    }
+
     /**
      * Gets the value of the posList property.
      * 
@@ -136,6 +144,10 @@ public class CubicSplineType
      */
     public void setPosList(DirectPositionListType value) {
         this.posList = value;
+    }
+
+    public boolean isSetPosList() {
+        return (this.posList!= null);
     }
 
     /**
@@ -162,6 +174,10 @@ public class CubicSplineType
         this.coordinates = value;
     }
 
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
+    }
+
     /**
      * Gets the value of the vectorAtStart property.
      * 
@@ -184,6 +200,10 @@ public class CubicSplineType
      */
     public void setVectorAtStart(VectorType value) {
         this.vectorAtStart = value;
+    }
+
+    public boolean isSetVectorAtStart() {
+        return (this.vectorAtStart!= null);
     }
 
     /**
@@ -210,60 +230,8 @@ public class CubicSplineType
         this.vectorAtEnd = value;
     }
 
-    /**
-     * Gets the value of the interpolation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public CurveInterpolationType getInterpolation() {
-        if (interpolation == null) {
-            return CurveInterpolationType.CUBIC_SPLINE;
-        } else {
-            return interpolation;
-        }
-    }
-
-    /**
-     * Sets the value of the interpolation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public void setInterpolation(CurveInterpolationType value) {
-        this.interpolation = value;
-    }
-
-    /**
-     * Gets the value of the degree property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getDegree() {
-        if (degree == null) {
-            return new BigInteger("3");
-        } else {
-            return degree;
-        }
-    }
-
-    /**
-     * Sets the value of the degree property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setDegree(BigInteger value) {
-        this.degree = value;
+    public boolean isSetVectorAtEnd() {
+        return (this.vectorAtEnd!= null);
     }
 
 }

@@ -7,10 +7,15 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import com.aixm.delorean.core.adapter.gis.ElevatedSurfaceTypeAdapter;
+import com.aixm.delorean.core.adapter.type.gis.AixmElevatedSurfaceType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -36,12 +41,15 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "ElevatedSurfacePropertyType", propOrder = {
     "surface"
 })
+@Embeddable
 public class ElevatedSurfacePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true)
-    protected String surface;
+    @XmlElement(required = true, type = ElevatedSurfaceType.class)
+    @XmlJavaTypeAdapter(ElevatedSurfaceTypeAdapter.class)
+    @Embedded
+    protected AixmElevatedSurfaceType surface;
 
     /**
      * Gets the value of the surface property.
@@ -51,7 +59,7 @@ public class ElevatedSurfacePropertyType
      *     {@link String }
      *     
      */
-    public String getSurface() {
+    public AixmElevatedSurfaceType getSurface() {
         return surface;
     }
 
@@ -63,8 +71,12 @@ public class ElevatedSurfacePropertyType
      *     {@link String }
      *     
      */
-    public void setSurface(String value) {
+    public void setSurface(AixmElevatedSurfaceType value) {
         this.surface = value;
+    }
+
+    public boolean isSetSurface() {
+        return (this.surface!= null);
     }
 
 }

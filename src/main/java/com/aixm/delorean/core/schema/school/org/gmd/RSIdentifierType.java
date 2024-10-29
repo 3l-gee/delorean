@@ -69,6 +69,10 @@ public class RSIdentifierType
         this.codeSpace = value;
     }
 
+    public boolean isSetCodeSpace() {
+        return (this.codeSpace!= null);
+    }
+
     /**
      * Gets the value of the version property.
      * 
@@ -91,6 +95,10 @@ public class RSIdentifierType
      */
     public void setVersion(CharacterStringPropertyType value) {
         this.version = value;
+    }
+
+    public boolean isSetVersion() {
+        return (this.version!= null);
     }
 
 }

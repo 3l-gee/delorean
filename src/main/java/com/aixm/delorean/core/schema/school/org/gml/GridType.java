@@ -91,6 +91,10 @@ public class GridType
         this.limits = value;
     }
 
+    public boolean isSetLimits() {
+        return (this.limits!= null);
+    }
+
     /**
      * Gets the value of the gridAxisLabels property.
      * 
@@ -121,6 +125,14 @@ public class GridType
             gridAxisLabels = new ArrayList<>();
         }
         return this.gridAxisLabels;
+    }
+
+    public boolean isSetGridAxisLabels() {
+        return ((this.gridAxisLabels!= null)&&(!this.gridAxisLabels.isEmpty()));
+    }
+
+    public void unsetGridAxisLabels() {
+        this.gridAxisLabels = null;
     }
 
     /**
@@ -155,6 +167,14 @@ public class GridType
         return this.axisName;
     }
 
+    public boolean isSetAxisName() {
+        return ((this.axisName!= null)&&(!this.axisName.isEmpty()));
+    }
+
+    public void unsetAxisName() {
+        this.axisName = null;
+    }
+
     /**
      * Gets the value of the dimension property.
      * 
@@ -177,6 +197,10 @@ public class GridType
      */
     public void setDimension(BigInteger value) {
         this.dimension = value;
+    }
+
+    public boolean isSetDimension() {
+        return (this.dimension!= null);
     }
 
 }

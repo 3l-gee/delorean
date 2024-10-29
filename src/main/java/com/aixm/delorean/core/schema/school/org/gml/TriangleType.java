@@ -49,7 +49,7 @@ public class TriangleType
     @XmlElement(required = true)
     protected AbstractRingPropertyType exterior;
     @XmlAttribute(name = "interpolation")
-    protected SurfaceInterpolationType interpolation;
+    public static final SurfaceInterpolationType INTERPOLATION = SurfaceInterpolationType.PLANAR;
 
     /**
      * A boundary of a surface consists of a number of rings. In the normal 2D case, one of these rings is distinguished as being the exterior boundary. In a general manifold this is not always possible, in which case all boundaries shall be listed as interior boundaries, and the exterior will be empty.
@@ -76,32 +76,8 @@ public class TriangleType
         this.exterior = value;
     }
 
-    /**
-     * Gets the value of the interpolation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SurfaceInterpolationType }
-     *     
-     */
-    public SurfaceInterpolationType getInterpolation() {
-        if (interpolation == null) {
-            return SurfaceInterpolationType.PLANAR;
-        } else {
-            return interpolation;
-        }
-    }
-
-    /**
-     * Sets the value of the interpolation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SurfaceInterpolationType }
-     *     
-     */
-    public void setInterpolation(SurfaceInterpolationType value) {
-        this.interpolation = value;
+    public boolean isSetExterior() {
+        return (this.exterior!= null);
     }
 
 }

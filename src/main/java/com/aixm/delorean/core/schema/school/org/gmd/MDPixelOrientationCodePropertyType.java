@@ -73,6 +73,10 @@ public class MDPixelOrientationCodePropertyType {
         this.mdPixelOrientationCode = value;
     }
 
+    public boolean isSetMDPixelOrientationCode() {
+        return (this.mdPixelOrientationCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -103,6 +107,14 @@ public class MDPixelOrientationCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

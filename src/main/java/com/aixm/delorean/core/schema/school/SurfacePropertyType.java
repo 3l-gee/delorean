@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import com.aixm.delorean.core.adapter.gis.SurfaceTypeAdapter;
 import com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
@@ -46,7 +47,7 @@ public class SurfacePropertyType
 {
 
     @XmlElement(required = true, type = SurfaceType.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(SurfaceTypeAdapter.class)
     @Embedded
     protected AixmSurfaceType surface;
 
@@ -72,6 +73,10 @@ public class SurfacePropertyType
      */
     public void setSurface(AixmSurfaceType value) {
         this.surface = value;
+    }
+
+    public boolean isSetSurface() {
+        return (this.surface!= null);
     }
 
 }

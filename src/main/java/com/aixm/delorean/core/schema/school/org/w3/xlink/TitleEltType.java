@@ -46,7 +46,7 @@ public class TitleEltType {
     @XmlAnyElement(lax = true)
     protected List<Object> content;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.TITLE;
     /**
      * xml:lang is not required, but provides much of the
      *      motivation for title elements in addition to attributes, and so
@@ -90,32 +90,12 @@ public class TitleEltType {
         return this.content;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.TITLE;
-        } else {
-            return type;
-        }
+    public boolean isSetContent() {
+        return ((this.content!= null)&&(!this.content.isEmpty()));
     }
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public void unsetContent() {
+        this.content = null;
     }
 
     /**
@@ -143,6 +123,10 @@ public class TitleEltType {
      */
     public void setLang(String value) {
         this.lang = value;
+    }
+
+    public boolean isSetLang() {
+        return (this.lang!= null);
     }
 
 }

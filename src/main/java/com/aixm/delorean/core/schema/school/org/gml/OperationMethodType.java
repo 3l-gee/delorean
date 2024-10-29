@@ -110,6 +110,10 @@ public class OperationMethodType
         this.formulaCitation = value;
     }
 
+    public boolean isSetFormulaCitation() {
+        return (this.formulaCitation!= null);
+    }
+
     /**
      * gml:formula Formula(s) or procedure used by an operation method. The use of the codespace attribite has been deprecated. The property value shall be a character string.
      * 
@@ -137,6 +141,10 @@ public class OperationMethodType
         this.formula = value;
     }
 
+    public boolean isSetFormula() {
+        return (this.formula!= null);
+    }
+
     /**
      * gml:sourceDimensions is the number of dimensions in the source CRS of this operation method.
      * 
@@ -162,6 +170,10 @@ public class OperationMethodType
         this.sourceDimensions = value;
     }
 
+    public boolean isSetSourceDimensions() {
+        return (this.sourceDimensions!= null);
+    }
+
     /**
      * gml:targetDimensions is the number of dimensions in the target CRS of this operation method.
      * 
@@ -185,6 +197,10 @@ public class OperationMethodType
      */
     public void setTargetDimensions(BigInteger value) {
         this.targetDimensions = value;
+    }
+
+    public boolean isSetTargetDimensions() {
+        return (this.targetDimensions!= null);
     }
 
     /**
@@ -222,6 +238,14 @@ public class OperationMethodType
             parameter = new ArrayList<>();
         }
         return this.parameter;
+    }
+
+    public boolean isSetParameter() {
+        return ((this.parameter!= null)&&(!this.parameter.isEmpty()));
+    }
+
+    public void unsetParameter() {
+        this.parameter = null;
     }
 
 }

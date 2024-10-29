@@ -90,6 +90,10 @@ public class BoundingShapeType {
         this.envelope = value;
     }
 
+    public boolean isSetEnvelope() {
+        return (this.envelope!= null);
+    }
+
     /**
      * Gets the value of the null property.
      * 
@@ -122,6 +126,14 @@ public class BoundingShapeType {
         return this._null;
     }
 
+    public boolean isSetNull() {
+        return ((this._null!= null)&&(!this._null.isEmpty()));
+    }
+
+    public void unsetNull() {
+        this._null = null;
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -152,6 +164,14 @@ public class BoundingShapeType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

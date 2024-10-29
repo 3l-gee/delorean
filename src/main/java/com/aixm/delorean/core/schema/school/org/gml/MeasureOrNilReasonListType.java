@@ -88,6 +88,14 @@ public class MeasureOrNilReasonListType {
         return this.value;
     }
 
+    public boolean isSetValue() {
+        return ((this.value!= null)&&(!this.value.isEmpty()));
+    }
+
+    public void unsetValue() {
+        this.value = null;
+    }
+
     /**
      * Gets the value of the uom property.
      * 
@@ -110,6 +118,10 @@ public class MeasureOrNilReasonListType {
      */
     public void setUom(String value) {
         this.uom = value;
+    }
+
+    public boolean isSetUom() {
+        return (this.uom!= null);
     }
 
 }

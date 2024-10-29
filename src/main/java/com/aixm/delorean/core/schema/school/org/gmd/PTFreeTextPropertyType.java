@@ -68,4 +68,8 @@ public class PTFreeTextPropertyType
         this.ptFreeText = value;
     }
 
+    public boolean isSetPTFreeText() {
+        return (this.ptFreeText!= null);
+    }
+
 }

@@ -72,6 +72,10 @@ public class MDCellGeometryCodePropertyType {
         this.mdCellGeometryCode = value;
     }
 
+    public boolean isSetMDCellGeometryCode() {
+        return (this.mdCellGeometryCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class MDCellGeometryCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

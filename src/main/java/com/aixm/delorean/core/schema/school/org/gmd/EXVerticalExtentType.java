@@ -80,6 +80,10 @@ public class EXVerticalExtentType
         this.minimumValue = value;
     }
 
+    public boolean isSetMinimumValue() {
+        return (this.minimumValue!= null);
+    }
+
     /**
      * Gets the value of the maximumValue property.
      * 
@@ -104,6 +108,10 @@ public class EXVerticalExtentType
         this.maximumValue = value;
     }
 
+    public boolean isSetMaximumValue() {
+        return (this.maximumValue!= null);
+    }
+
     /**
      * Gets the value of the verticalCRS property.
      * 
@@ -126,6 +134,10 @@ public class EXVerticalExtentType
      */
     public void setVerticalCRS(SCCRSPropertyType value) {
         this.verticalCRS = value;
+    }
+
+    public boolean isSetVerticalCRS() {
+        return (this.verticalCRS!= null);
     }
 
 }

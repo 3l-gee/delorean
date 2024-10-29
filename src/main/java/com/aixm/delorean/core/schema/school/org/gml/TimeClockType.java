@@ -84,6 +84,10 @@ public class TimeClockType
         this.referenceEvent = value;
     }
 
+    public boolean isSetReferenceEvent() {
+        return (this.referenceEvent!= null);
+    }
+
     /**
      * Gets the value of the referenceTime property.
      * 
@@ -108,6 +112,10 @@ public class TimeClockType
         this.referenceTime = value;
     }
 
+    public boolean isSetReferenceTime() {
+        return (this.referenceTime!= null);
+    }
+
     /**
      * Gets the value of the utcReference property.
      * 
@@ -130,6 +138,10 @@ public class TimeClockType
      */
     public void setUtcReference(XMLGregorianCalendar value) {
         this.utcReference = value;
+    }
+
+    public boolean isSetUtcReference() {
+        return (this.utcReference!= null);
     }
 
     /**
@@ -162,6 +174,14 @@ public class TimeClockType
             dateBasis = new ArrayList<>();
         }
         return this.dateBasis;
+    }
+
+    public boolean isSetDateBasis() {
+        return ((this.dateBasis!= null)&&(!this.dateBasis.isEmpty()));
+    }
+
+    public void unsetDateBasis() {
+        this.dateBasis = null;
     }
 
 }

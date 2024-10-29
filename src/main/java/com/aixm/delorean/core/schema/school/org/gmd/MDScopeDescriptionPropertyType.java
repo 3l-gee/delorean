@@ -71,6 +71,10 @@ public class MDScopeDescriptionPropertyType {
         this.mdScopeDescription = value;
     }
 
+    public boolean isSetMDScopeDescription() {
+        return (this.mdScopeDescription!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -101,6 +105,14 @@ public class MDScopeDescriptionPropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

@@ -79,4 +79,12 @@ public class EXSpatialTemporalExtentType
         return this.spatialExtent;
     }
 
+    public boolean isSetSpatialExtent() {
+        return ((this.spatialExtent!= null)&&(!this.spatialExtent.isEmpty()));
+    }
+
+    public void unsetSpatialExtent() {
+        this.spatialExtent = null;
+    }
+
 }

@@ -88,6 +88,14 @@ public class MultiSurfaceType
         return this.surfaceMember;
     }
 
+    public boolean isSetSurfaceMember() {
+        return ((this.surfaceMember!= null)&&(!this.surfaceMember.isEmpty()));
+    }
+
+    public void unsetSurfaceMember() {
+        this.surfaceMember = null;
+    }
+
     /**
      * This property element contains a list of surfaces. The order of the elements is significant and shall be preserved when processing the array.
      * 
@@ -111,6 +119,10 @@ public class MultiSurfaceType
      */
     public void setSurfaceMembers(SurfaceArrayPropertyType value) {
         this.surfaceMembers = value;
+    }
+
+    public boolean isSetSurfaceMembers() {
+        return (this.surfaceMembers!= null);
     }
 
 }

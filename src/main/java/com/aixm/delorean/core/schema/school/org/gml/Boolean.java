@@ -60,6 +60,10 @@ public class Boolean {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return true;
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -90,6 +94,14 @@ public class Boolean {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

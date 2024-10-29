@@ -84,7 +84,7 @@ public class ValuePropertyType {
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
@@ -154,6 +154,10 @@ public class ValuePropertyType {
      */
     public void setAbstractValue(JAXBElement<?> value) {
         this.abstractValue = value;
+    }
+
+    public boolean isSetAbstractValue() {
+        return (this.abstractValue!= null);
     }
 
     /**
@@ -257,6 +261,10 @@ public class ValuePropertyType {
         this.abstractGeometry = value;
     }
 
+    public boolean isSetAbstractGeometry() {
+        return (this.abstractGeometry!= null);
+    }
+
     /**
      * gml:AbstractTimeObject acts as the head of a substitution group for all temporal primitives and complexes.
      * 
@@ -300,6 +308,10 @@ public class ValuePropertyType {
         this.abstractTimeObject = value;
     }
 
+    public boolean isSetAbstractTimeObject() {
+        return (this.abstractTimeObject!= null);
+    }
+
     /**
      * Gets the value of the null property.
      * 
@@ -330,6 +342,14 @@ public class ValuePropertyType {
             _null = new ArrayList<>();
         }
         return this._null;
+    }
+
+    public boolean isSetNull() {
+        return ((this._null!= null)&&(!this._null.isEmpty()));
+    }
+
+    public void unsetNull() {
+        this._null = null;
     }
 
     /**
@@ -364,6 +384,14 @@ public class ValuePropertyType {
         return this.nilReason;
     }
 
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
+    }
+
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -388,32 +416,8 @@ public class ValuePropertyType {
         this.remoteSchema = value;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.SIMPLE;
-        } else {
-            return type;
-        }
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public boolean isSetRemoteSchema() {
+        return (this.remoteSchema!= null);
     }
 
     /**
@@ -440,6 +444,10 @@ public class ValuePropertyType {
         this.href = value;
     }
 
+    public boolean isSetHref() {
+        return (this.href!= null);
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -462,6 +470,10 @@ public class ValuePropertyType {
      */
     public void setRole(String value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -488,6 +500,10 @@ public class ValuePropertyType {
         this.arcrole = value;
     }
 
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -510,6 +526,10 @@ public class ValuePropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -536,6 +556,10 @@ public class ValuePropertyType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -558,6 +582,10 @@ public class ValuePropertyType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
+    }
+
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
     /**
@@ -584,8 +612,16 @@ public class ValuePropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

@@ -84,6 +84,10 @@ public class LIProcessStepType
         this.description = value;
     }
 
+    public boolean isSetDescription() {
+        return (this.description!= null);
+    }
+
     /**
      * Gets the value of the rationale property.
      * 
@@ -108,6 +112,10 @@ public class LIProcessStepType
         this.rationale = value;
     }
 
+    public boolean isSetRationale() {
+        return (this.rationale!= null);
+    }
+
     /**
      * Gets the value of the dateTime property.
      * 
@@ -130,6 +138,10 @@ public class LIProcessStepType
      */
     public void setDateTime(DateTimePropertyType value) {
         this.dateTime = value;
+    }
+
+    public boolean isSetDateTime() {
+        return (this.dateTime!= null);
     }
 
     /**
@@ -164,6 +176,14 @@ public class LIProcessStepType
         return this.processor;
     }
 
+    public boolean isSetProcessor() {
+        return ((this.processor!= null)&&(!this.processor.isEmpty()));
+    }
+
+    public void unsetProcessor() {
+        this.processor = null;
+    }
+
     /**
      * Gets the value of the source property.
      * 
@@ -194,6 +214,14 @@ public class LIProcessStepType
             source = new ArrayList<>();
         }
         return this.source;
+    }
+
+    public boolean isSetSource() {
+        return ((this.source!= null)&&(!this.source.isEmpty()));
+    }
+
+    public void unsetSource() {
+        this.source = null;
     }
 
 }

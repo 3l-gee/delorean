@@ -72,6 +72,10 @@ public class DSAssociationTypeCodePropertyType {
         this.dsAssociationTypeCode = value;
     }
 
+    public boolean isSetDSAssociationTypeCode() {
+        return (this.dsAssociationTypeCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class DSAssociationTypeCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

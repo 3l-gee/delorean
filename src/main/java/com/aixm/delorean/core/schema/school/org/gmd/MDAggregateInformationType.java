@@ -79,6 +79,10 @@ public class MDAggregateInformationType
         this.aggregateDataSetName = value;
     }
 
+    public boolean isSetAggregateDataSetName() {
+        return (this.aggregateDataSetName!= null);
+    }
+
     /**
      * Gets the value of the aggregateDataSetIdentifier property.
      * 
@@ -101,6 +105,10 @@ public class MDAggregateInformationType
      */
     public void setAggregateDataSetIdentifier(MDIdentifierPropertyType value) {
         this.aggregateDataSetIdentifier = value;
+    }
+
+    public boolean isSetAggregateDataSetIdentifier() {
+        return (this.aggregateDataSetIdentifier!= null);
     }
 
     /**
@@ -127,6 +135,10 @@ public class MDAggregateInformationType
         this.associationType = value;
     }
 
+    public boolean isSetAssociationType() {
+        return (this.associationType!= null);
+    }
+
     /**
      * Gets the value of the initiativeType property.
      * 
@@ -149,6 +161,10 @@ public class MDAggregateInformationType
      */
     public void setInitiativeType(DSInitiativeTypeCodePropertyType value) {
         this.initiativeType = value;
+    }
+
+    public boolean isSetInitiativeType() {
+        return (this.initiativeType!= null);
     }
 
 }

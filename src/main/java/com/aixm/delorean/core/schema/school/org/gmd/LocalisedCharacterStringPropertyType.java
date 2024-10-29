@@ -68,4 +68,8 @@ public class LocalisedCharacterStringPropertyType
         this.localisedCharacterString = value;
     }
 
+    public boolean isSetLocalisedCharacterString() {
+        return (this.localisedCharacterString!= null);
+    }
+
 }

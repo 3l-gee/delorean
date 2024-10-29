@@ -74,4 +74,8 @@ public class AbstractAIXMPropertyType {
         this.nilReason = value;
     }
 
+    public boolean isSetNilReason() {
+        return (this.nilReason!= null);
+    }
+
 }

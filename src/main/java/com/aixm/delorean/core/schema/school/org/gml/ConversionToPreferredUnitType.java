@@ -74,6 +74,10 @@ public class ConversionToPreferredUnitType
         this.factor = value;
     }
 
+    public boolean isSetFactor() {
+        return (this.factor!= null);
+    }
+
     /**
      * Gets the value of the formula property.
      * 
@@ -96,6 +100,10 @@ public class ConversionToPreferredUnitType
      */
     public void setFormula(FormulaType value) {
         this.formula = value;
+    }
+
+    public boolean isSetFormula() {
+        return (this.formula!= null);
     }
 
 }

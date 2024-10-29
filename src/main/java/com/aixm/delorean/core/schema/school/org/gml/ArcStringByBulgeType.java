@@ -80,7 +80,7 @@ public class ArcStringByBulgeType
     @XmlElement(required = true)
     protected List<VectorType> normal;
     @XmlAttribute(name = "interpolation")
-    protected CurveInterpolationType interpolation;
+    public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CIRCULAR_ARC_2_POINT_WITH_BULGE;
     @XmlAttribute(name = "numArc")
     protected BigInteger numArc;
 
@@ -118,6 +118,14 @@ public class ArcStringByBulgeType
         return this.posOrPointPropertyOrPointRep;
     }
 
+    public boolean isSetPosOrPointPropertyOrPointRep() {
+        return ((this.posOrPointPropertyOrPointRep!= null)&&(!this.posOrPointPropertyOrPointRep.isEmpty()));
+    }
+
+    public void unsetPosOrPointPropertyOrPointRep() {
+        this.posOrPointPropertyOrPointRep = null;
+    }
+
     /**
      * Gets the value of the posList property.
      * 
@@ -142,6 +150,10 @@ public class ArcStringByBulgeType
         this.posList = value;
     }
 
+    public boolean isSetPosList() {
+        return (this.posList!= null);
+    }
+
     /**
      * Gets the value of the coordinates property.
      * 
@@ -164,6 +176,10 @@ public class ArcStringByBulgeType
      */
     public void setCoordinates(CoordinatesType value) {
         this.coordinates = value;
+    }
+
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
     }
 
     /**
@@ -198,6 +214,14 @@ public class ArcStringByBulgeType
         return this.bulge;
     }
 
+    public boolean isSetBulge() {
+        return ((this.bulge!= null)&&(!this.bulge.isEmpty()));
+    }
+
+    public void unsetBulge() {
+        this.bulge = null;
+    }
+
     /**
      * Gets the value of the normal property.
      * 
@@ -230,32 +254,12 @@ public class ArcStringByBulgeType
         return this.normal;
     }
 
-    /**
-     * Gets the value of the interpolation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public CurveInterpolationType getInterpolation() {
-        if (interpolation == null) {
-            return CurveInterpolationType.CIRCULAR_ARC_2_POINT_WITH_BULGE;
-        } else {
-            return interpolation;
-        }
+    public boolean isSetNormal() {
+        return ((this.normal!= null)&&(!this.normal.isEmpty()));
     }
 
-    /**
-     * Sets the value of the interpolation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public void setInterpolation(CurveInterpolationType value) {
-        this.interpolation = value;
+    public void unsetNormal() {
+        this.normal = null;
     }
 
     /**
@@ -280,6 +284,10 @@ public class ArcStringByBulgeType
      */
     public void setNumArc(BigInteger value) {
         this.numArc = value;
+    }
+
+    public boolean isSetNumArc() {
+        return (this.numArc!= null);
     }
 
 }

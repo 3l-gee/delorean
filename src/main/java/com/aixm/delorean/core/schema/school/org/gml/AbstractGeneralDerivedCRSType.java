@@ -80,4 +80,8 @@ public abstract class AbstractGeneralDerivedCRSType
         this.conversion = value;
     }
 
+    public boolean isSetConversion() {
+        return (this.conversion!= null);
+    }
+
 }

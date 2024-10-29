@@ -75,6 +75,10 @@ public class TimeCoordinateSystemType
         this.originPosition = value;
     }
 
+    public boolean isSetOriginPosition() {
+        return (this.originPosition!= null);
+    }
+
     /**
      * Gets the value of the origin property.
      * 
@@ -99,6 +103,10 @@ public class TimeCoordinateSystemType
         this.origin = value;
     }
 
+    public boolean isSetOrigin() {
+        return (this.origin!= null);
+    }
+
     /**
      * Gets the value of the interval property.
      * 
@@ -121,6 +129,10 @@ public class TimeCoordinateSystemType
      */
     public void setInterval(TimeIntervalLengthType value) {
         this.interval = value;
+    }
+
+    public boolean isSetInterval() {
+        return (this.interval!= null);
     }
 
 }

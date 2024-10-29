@@ -36,8 +36,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="DirectionKeyword" type="{http://www.opengis.net/gml/3.2}CodeType"/>
  *         <element name="DirectionString" type="{http://www.opengis.net/gml/3.2}StringOrRefType"/>
  *       </choice>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -66,13 +66,15 @@ public class DirectionPropertyType {
     protected CodeType directionKeyword;
     @XmlElement(name = "DirectionString")
     protected StringOrRefType directionString;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
@@ -85,8 +87,6 @@ public class DirectionPropertyType {
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
 
     /**
      * Gets the value of the directionVector property.
@@ -110,6 +110,10 @@ public class DirectionPropertyType {
      */
     public void setDirectionVector(DirectionVectorType value) {
         this.directionVector = value;
+    }
+
+    public boolean isSetDirectionVector() {
+        return (this.directionVector!= null);
     }
 
     /**
@@ -136,6 +140,10 @@ public class DirectionPropertyType {
         this.directionDescription = value;
     }
 
+    public boolean isSetDirectionDescription() {
+        return (this.directionDescription!= null);
+    }
+
     /**
      * Gets the value of the compassPoint property.
      * 
@@ -158,6 +166,10 @@ public class DirectionPropertyType {
      */
     public void setCompassPoint(CompassPointEnumeration value) {
         this.compassPoint = value;
+    }
+
+    public boolean isSetCompassPoint() {
+        return (this.compassPoint!= null);
     }
 
     /**
@@ -184,6 +196,10 @@ public class DirectionPropertyType {
         this.directionKeyword = value;
     }
 
+    public boolean isSetDirectionKeyword() {
+        return (this.directionKeyword!= null);
+    }
+
     /**
      * Gets the value of the directionString property.
      * 
@@ -206,6 +222,46 @@ public class DirectionPropertyType {
      */
     public void setDirectionString(StringOrRefType value) {
         this.directionString = value;
+    }
+
+    public boolean isSetDirectionString() {
+        return (this.directionString!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
     /**
@@ -240,6 +296,14 @@ public class DirectionPropertyType {
         return this.nilReason;
     }
 
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
+    }
+
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -264,32 +328,8 @@ public class DirectionPropertyType {
         this.remoteSchema = value;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.SIMPLE;
-        } else {
-            return type;
-        }
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public boolean isSetRemoteSchema() {
+        return (this.remoteSchema!= null);
     }
 
     /**
@@ -316,6 +356,10 @@ public class DirectionPropertyType {
         this.href = value;
     }
 
+    public boolean isSetHref() {
+        return (this.href!= null);
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -338,6 +382,10 @@ public class DirectionPropertyType {
      */
     public void setRole(String value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -364,6 +412,10 @@ public class DirectionPropertyType {
         this.arcrole = value;
     }
 
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -386,6 +438,10 @@ public class DirectionPropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -412,6 +468,10 @@ public class DirectionPropertyType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -436,32 +496,8 @@ public class DirectionPropertyType {
         this.actuate = value;
     }
 
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(java.lang.Boolean value) {
-        this.owns = value;
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
 }

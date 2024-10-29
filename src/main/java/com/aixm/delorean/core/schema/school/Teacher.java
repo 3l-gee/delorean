@@ -92,6 +92,10 @@ public class Teacher
         this.role = value;
     }
 
+    public boolean isSetRole() {
+        return (this.role!= null);
+    }
+
     /**
      * Gets the value of the assignedclassroomid property.
      * 
@@ -108,6 +112,10 @@ public class Teacher
         this.assignedclassroomid = value;
     }
 
+    public boolean isSetAssignedclassroomid() {
+        return true;
+    }
+
     /**
      * Gets the value of the dbid property.
      * 
@@ -116,7 +124,7 @@ public class Teacher
      *     {@link Long }
      *     
      */
-    public Long getDbid() {
+    public long getDbid() {
         return dbid;
     }
 
@@ -128,8 +136,16 @@ public class Teacher
      *     {@link Long }
      *     
      */
-    public void setDbid(Long value) {
+    public void setDbid(long value) {
         this.dbid = value;
+    }
+
+    public boolean isSetDbid() {
+        return (this.dbid!= null);
+    }
+
+    public void unsetDbid() {
+        this.dbid = null;
     }
 
 }

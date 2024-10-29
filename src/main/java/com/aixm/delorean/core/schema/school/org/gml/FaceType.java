@@ -109,6 +109,14 @@ public class FaceType
         return this.isolated;
     }
 
+    public boolean isSetIsolated() {
+        return ((this.isolated!= null)&&(!this.isolated.isEmpty()));
+    }
+
+    public void unsetIsolated() {
+        this.isolated = null;
+    }
+
     /**
      * A gml:directedEdge property element describes the boundary of topology faces, the coBoundary of topology nodes and is used in the support of topological line features via the gml:TopoCurve expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included edge is used, i.e. forward or reverse.
      * 
@@ -141,6 +149,14 @@ public class FaceType
             directedEdge = new ArrayList<>();
         }
         return this.directedEdge;
+    }
+
+    public boolean isSetDirectedEdge() {
+        return ((this.directedEdge!= null)&&(!this.directedEdge.isEmpty()));
+    }
+
+    public void unsetDirectedEdge() {
+        this.directedEdge = null;
     }
 
     /**
@@ -177,6 +193,14 @@ public class FaceType
         return this.directedTopoSolid;
     }
 
+    public boolean isSetDirectedTopoSolid() {
+        return ((this.directedTopoSolid!= null)&&(!this.directedTopoSolid.isEmpty()));
+    }
+
+    public void unsetDirectedTopoSolid() {
+        this.directedTopoSolid = null;
+    }
+
     /**
      * This property element either references a surface via the XLink-attributes or contains the surface element. surfaceProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for AbstractSurface.
      * 
@@ -200,6 +224,10 @@ public class FaceType
      */
     public void setSurfaceProperty(SurfacePropertyType value) {
         this.surfaceProperty = value;
+    }
+
+    public boolean isSetSurfaceProperty() {
+        return (this.surfaceProperty!= null);
     }
 
     /**
@@ -227,8 +255,16 @@ public class FaceType
      *     
      * @see #isUniversal()
      */
-    public void setUniversal(java.lang.Boolean value) {
+    public void setUniversal(boolean value) {
         this.universal = value;
+    }
+
+    public boolean isSetUniversal() {
+        return (this.universal!= null);
+    }
+
+    public void unsetUniversal() {
+        this.universal = null;
     }
 
     /**
@@ -253,6 +289,10 @@ public class FaceType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

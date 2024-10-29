@@ -73,6 +73,10 @@ public class URLPropertyType {
         this.url = value;
     }
 
+    public boolean isSetURL() {
+        return (this.url!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -103,6 +107,14 @@ public class URLPropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

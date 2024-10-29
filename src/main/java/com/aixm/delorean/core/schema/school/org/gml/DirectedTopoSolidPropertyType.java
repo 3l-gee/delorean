@@ -57,7 +57,7 @@ public class DirectedTopoSolidPropertyType {
     @XmlElement(name = "TopoSolid")
     protected TopoSolidType topoSolid;
     @XmlAttribute(name = "orientation")
-    protected String orientation;
+    protected SignType orientation;
     @XmlAttribute(name = "owns")
     protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
@@ -66,7 +66,7 @@ public class DirectedTopoSolidPropertyType {
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
@@ -107,17 +107,21 @@ public class DirectedTopoSolidPropertyType {
         this.topoSolid = value;
     }
 
+    public boolean isSetTopoSolid() {
+        return (this.topoSolid!= null);
+    }
+
     /**
      * Gets the value of the orientation property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link SignType }
      *     
      */
-    public String getOrientation() {
+    public SignType getOrientation() {
         if (orientation == null) {
-            return "+";
+            return SignType.VALUE_2;
         } else {
             return orientation;
         }
@@ -128,11 +132,15 @@ public class DirectedTopoSolidPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link SignType }
      *     
      */
-    public void setOrientation(String value) {
+    public void setOrientation(SignType value) {
         this.orientation = value;
+    }
+
+    public boolean isSetOrientation() {
+        return (this.orientation!= null);
     }
 
     /**
@@ -159,8 +167,16 @@ public class DirectedTopoSolidPropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
     /**
@@ -195,6 +211,14 @@ public class DirectedTopoSolidPropertyType {
         return this.nilReason;
     }
 
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
+    }
+
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -219,32 +243,8 @@ public class DirectedTopoSolidPropertyType {
         this.remoteSchema = value;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.SIMPLE;
-        } else {
-            return type;
-        }
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public boolean isSetRemoteSchema() {
+        return (this.remoteSchema!= null);
     }
 
     /**
@@ -271,6 +271,10 @@ public class DirectedTopoSolidPropertyType {
         this.href = value;
     }
 
+    public boolean isSetHref() {
+        return (this.href!= null);
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -293,6 +297,10 @@ public class DirectedTopoSolidPropertyType {
      */
     public void setRole(String value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -319,6 +327,10 @@ public class DirectedTopoSolidPropertyType {
         this.arcrole = value;
     }
 
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -341,6 +353,10 @@ public class DirectedTopoSolidPropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -367,6 +383,10 @@ public class DirectedTopoSolidPropertyType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -389,6 +409,10 @@ public class DirectedTopoSolidPropertyType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
+    }
+
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
 }

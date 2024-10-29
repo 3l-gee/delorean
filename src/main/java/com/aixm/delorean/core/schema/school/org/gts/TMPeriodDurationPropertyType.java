@@ -72,6 +72,10 @@ public class TMPeriodDurationPropertyType {
         this.tmPeriodDuration = value;
     }
 
+    public boolean isSetTMPeriodDuration() {
+        return (this.tmPeriodDuration!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class TMPeriodDurationPropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

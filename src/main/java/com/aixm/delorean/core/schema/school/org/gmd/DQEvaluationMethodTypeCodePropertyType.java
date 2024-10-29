@@ -72,6 +72,10 @@ public class DQEvaluationMethodTypeCodePropertyType {
         this.dqEvaluationMethodTypeCode = value;
     }
 
+    public boolean isSetDQEvaluationMethodTypeCode() {
+        return (this.dqEvaluationMethodTypeCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class DQEvaluationMethodTypeCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

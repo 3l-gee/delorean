@@ -86,6 +86,10 @@ public class ImplementationAixmCurve {
         this.aixmCurve = value;
     }
 
+    public boolean isSetAixmCurve() {
+        return (this.aixmCurve!= null);
+    }
+
     /**
      * Gets the value of the name property.
      * 
@@ -110,6 +114,10 @@ public class ImplementationAixmCurve {
         this.name = value;
     }
 
+    public boolean isSetName() {
+        return (this.name!= null);
+    }
+
     /**
      * Gets the value of the id property.
      * 
@@ -124,6 +132,10 @@ public class ImplementationAixmCurve {
      */
     public void setId(long value) {
         this.id = value;
+    }
+
+    public boolean isSetId() {
+        return true;
     }
 
 }

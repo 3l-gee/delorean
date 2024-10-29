@@ -89,6 +89,10 @@ public class ObservationType
         this.validTime = value;
     }
 
+    public boolean isSetValidTime() {
+        return (this.validTime!= null);
+    }
+
     /**
      * Gets the value of the using property.
      * 
@@ -111,6 +115,10 @@ public class ObservationType
      */
     public void setUsing(ProcedurePropertyType value) {
         this.using = value;
+    }
+
+    public boolean isSetUsing() {
+        return (this.using!= null);
     }
 
     /**
@@ -139,6 +147,10 @@ public class ObservationType
         this.target = value;
     }
 
+    public boolean isSetTarget() {
+        return (this.target!= null);
+    }
+
     /**
      * Gets the value of the resultOf property.
      * 
@@ -161,6 +173,10 @@ public class ObservationType
      */
     public void setResultOf(ResultType value) {
         this.resultOf = value;
+    }
+
+    public boolean isSetResultOf() {
+        return (this.resultOf!= null);
     }
 
 }

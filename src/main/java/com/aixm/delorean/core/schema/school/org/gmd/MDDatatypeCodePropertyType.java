@@ -72,6 +72,10 @@ public class MDDatatypeCodePropertyType {
         this.mdDatatypeCode = value;
     }
 
+    public boolean isSetMDDatatypeCode() {
+        return (this.mdDatatypeCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class MDDatatypeCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

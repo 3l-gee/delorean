@@ -73,6 +73,10 @@ public class MultiplicityRangeType
         this.lower = value;
     }
 
+    public boolean isSetLower() {
+        return (this.lower!= null);
+    }
+
     /**
      * Gets the value of the upper property.
      * 
@@ -95,6 +99,10 @@ public class MultiplicityRangeType
      */
     public void setUpper(UnlimitedIntegerPropertyType value) {
         this.upper = value;
+    }
+
+    public boolean isSetUpper() {
+        return (this.upper!= null);
     }
 
 }

@@ -86,6 +86,10 @@ public class MDGeoreferenceableType
         this.controlPointAvailability = value;
     }
 
+    public boolean isSetControlPointAvailability() {
+        return (this.controlPointAvailability!= null);
+    }
+
     /**
      * Gets the value of the orientationParameterAvailability property.
      * 
@@ -108,6 +112,10 @@ public class MDGeoreferenceableType
      */
     public void setOrientationParameterAvailability(BooleanPropertyType value) {
         this.orientationParameterAvailability = value;
+    }
+
+    public boolean isSetOrientationParameterAvailability() {
+        return (this.orientationParameterAvailability!= null);
     }
 
     /**
@@ -134,6 +142,10 @@ public class MDGeoreferenceableType
         this.orientationParameterDescription = value;
     }
 
+    public boolean isSetOrientationParameterDescription() {
+        return (this.orientationParameterDescription!= null);
+    }
+
     /**
      * Gets the value of the georeferencedParameters property.
      * 
@@ -156,6 +168,10 @@ public class MDGeoreferenceableType
      */
     public void setGeoreferencedParameters(RecordPropertyType value) {
         this.georeferencedParameters = value;
+    }
+
+    public boolean isSetGeoreferencedParameters() {
+        return (this.georeferencedParameters!= null);
     }
 
     /**
@@ -188,6 +204,14 @@ public class MDGeoreferenceableType
             parameterCitation = new ArrayList<>();
         }
         return this.parameterCitation;
+    }
+
+    public boolean isSetParameterCitation() {
+        return ((this.parameterCitation!= null)&&(!this.parameterCitation.isEmpty()));
+    }
+
+    public void unsetParameterCitation() {
+        this.parameterCitation = null;
     }
 
 }

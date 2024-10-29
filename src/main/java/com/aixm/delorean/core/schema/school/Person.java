@@ -79,6 +79,10 @@ public class Person {
         this.name = value;
     }
 
+    public boolean isSetName() {
+        return (this.name!= null);
+    }
+
     /**
      * Gets the value of the surname property.
      * 
@@ -101,6 +105,10 @@ public class Person {
      */
     public void setSurname(String value) {
         this.surname = value;
+    }
+
+    public boolean isSetSurname() {
+        return (this.surname!= null);
     }
 
 }

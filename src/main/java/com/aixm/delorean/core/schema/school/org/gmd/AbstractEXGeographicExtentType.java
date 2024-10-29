@@ -75,4 +75,8 @@ public abstract class AbstractEXGeographicExtentType
         this.extentTypeCode = value;
     }
 
+    public boolean isSetExtentTypeCode() {
+        return (this.extentTypeCode!= null);
+    }
+
 }

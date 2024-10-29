@@ -73,6 +73,10 @@ public class CIDateType
         this.date = value;
     }
 
+    public boolean isSetDate() {
+        return (this.date!= null);
+    }
+
     /**
      * Gets the value of the dateType property.
      * 
@@ -95,6 +99,10 @@ public class CIDateType
      */
     public void setDateType(CIDateTypeCodePropertyType value) {
         this.dateType = value;
+    }
+
+    public boolean isSetDateType() {
+        return (this.dateType!= null);
     }
 
 }

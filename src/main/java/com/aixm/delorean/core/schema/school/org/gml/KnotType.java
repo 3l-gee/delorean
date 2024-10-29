@@ -66,6 +66,10 @@ public class KnotType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return true;
+    }
+
     /**
      * Gets the value of the multiplicity property.
      * 
@@ -90,6 +94,10 @@ public class KnotType {
         this.multiplicity = value;
     }
 
+    public boolean isSetMultiplicity() {
+        return (this.multiplicity!= null);
+    }
+
     /**
      * Gets the value of the weight property.
      * 
@@ -104,6 +112,10 @@ public class KnotType {
      */
     public void setWeight(double value) {
         this.weight = value;
+    }
+
+    public boolean isSetWeight() {
+        return true;
     }
 
 }

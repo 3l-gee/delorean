@@ -139,8 +139,7 @@
 	</jaxb:bindings>
 
     <jaxb:bindings schemaLocation="AIXM_DataTypes.xsd" node="/xs:schema">
-
-        <jaxb:bindings node="//xs:simpleType[@name='CodeBuoyDesignatorBaseType']">
+        <!-- <jaxb:bindings node="//xs:simpleType[@name='CodeBuoyDesignatorBaseType']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "code_buoy_designator")</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='CodeBuoyDesignatorType']">
@@ -5662,7 +5661,7 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='XHTMLType']//xs:attribute[@name='nilReason']">
             <annox:annotate target="field">@jakarta.persistence.Column(name = "_nil_reason")</annox:annotate>
-        </jaxb:bindings>
+        </jaxb:bindings> -->
     </jaxb:bindings>
 
 </jaxb:bindings>

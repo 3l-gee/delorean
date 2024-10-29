@@ -76,4 +76,8 @@ public class CurveType
         this.segments = value;
     }
 
+    public boolean isSetSegments() {
+        return (this.segments!= null);
+    }
+
 }

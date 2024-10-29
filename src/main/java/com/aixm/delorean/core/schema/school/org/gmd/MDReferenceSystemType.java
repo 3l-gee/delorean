@@ -66,4 +66,8 @@ public class MDReferenceSystemType
         this.referenceSystemIdentifier = value;
     }
 
+    public boolean isSetReferenceSystemIdentifier() {
+        return (this.referenceSystemIdentifier!= null);
+    }
+
 }

@@ -89,6 +89,10 @@ public class ConventionalUnitType
         this.conversionToPreferredUnit = value;
     }
 
+    public boolean isSetConversionToPreferredUnit() {
+        return (this.conversionToPreferredUnit!= null);
+    }
+
     /**
      * The elements gml:conversionToPreferredUnit and gml:roughConversionToPreferredUnit represent parameters used to convert conventional units to preferred units for this physical quantity type.  A preferred unit is either a Base Unit or a Derived Unit that is selected for all values of one physical quantity type.
      * 
@@ -112,6 +116,10 @@ public class ConventionalUnitType
      */
     public void setRoughConversionToPreferredUnit(ConversionToPreferredUnitType value) {
         this.roughConversionToPreferredUnit = value;
+    }
+
+    public boolean isSetRoughConversionToPreferredUnit() {
+        return (this.roughConversionToPreferredUnit!= null);
     }
 
     /**
@@ -147,6 +155,14 @@ public class ConventionalUnitType
             derivationUnitTerm = new ArrayList<>();
         }
         return this.derivationUnitTerm;
+    }
+
+    public boolean isSetDerivationUnitTerm() {
+        return ((this.derivationUnitTerm!= null)&&(!this.derivationUnitTerm.isEmpty()));
+    }
+
+    public void unsetDerivationUnitTerm() {
+        this.derivationUnitTerm = null;
     }
 
 }
