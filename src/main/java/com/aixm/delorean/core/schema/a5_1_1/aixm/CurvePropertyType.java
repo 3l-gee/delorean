@@ -7,11 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.xml.bind.JAXBElement;
+import com.aixm.delorean.core.adapter.gis.CurveTypeAdapter;
+import com.aixm.delorean.core.adapter.type.gis.AixmCurveType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -24,7 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMPropertyType">
  *       <sequence>
- *         <element ref="{http://www.aixm.aero/schema/5.1.1}Curve"/>
+ *         <element name="curve" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -37,23 +41,25 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "CurvePropertyType", propOrder = {
     "curve"
 })
+@Embeddable
 public class CurvePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElementRef(name = "Curve", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class)
-    protected JAXBElement<? extends CurveType> curve;
+    @XmlElement(required = true, type = CurveType.class)
+    @XmlJavaTypeAdapter(CurveTypeAdapter.class)
+    @Embedded
+    protected AixmCurveType curve;
 
     /**
      * Gets the value of the curve property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CurveType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<? extends CurveType> getCurve() {
+    public AixmCurveType getCurve() {
         return curve;
     }
 
@@ -62,11 +68,10 @@ public class CurvePropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CurveType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
+     *     {@link String }
      *     
      */
-    public void setCurve(JAXBElement<? extends CurveType> value) {
+    public void setCurve(AixmCurveType value) {
         this.curve = value;
     }
 

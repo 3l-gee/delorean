@@ -7,11 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.xml.bind.JAXBElement;
+import com.aixm.delorean.core.adapter.gis.PointTypeAdapter;
+import com.aixm.delorean.core.adapter.type.gis.AixmPointType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -24,7 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMPropertyType">
  *       <sequence>
- *         <element ref="{http://www.aixm.aero/schema/5.1.1}Point"/>
+ *         <element name="point" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -37,23 +41,25 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "PointPropertyType", propOrder = {
     "point"
 })
+@Embeddable
 public class PointPropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElementRef(name = "Point", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class)
-    protected JAXBElement<? extends PointType> point;
+    @XmlElement(required = true, type = PointType.class)
+    @XmlJavaTypeAdapter(PointTypeAdapter.class)
+    @Embedded
+    protected AixmPointType point;
 
     /**
      * Gets the value of the point property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link PointType }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<? extends PointType> getPoint() {
+    public AixmPointType getPoint() {
         return point;
     }
 
@@ -62,11 +68,10 @@ public class PointPropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link PointType }{@code >}
+     *     {@link String }
      *     
      */
-    public void setPoint(JAXBElement<? extends PointType> value) {
+    public void setPoint(AixmPointType value) {
         this.point = value;
     }
 

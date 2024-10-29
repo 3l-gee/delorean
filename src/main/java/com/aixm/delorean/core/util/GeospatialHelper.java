@@ -79,8 +79,12 @@ public class GeospatialHelper {
         DirectPositionListType posList = new DirectPositionListType();
         
         for (Coordinate coord : coordinates) {
-            posList.getValue().add(coord.getX());
-            posList.getValue().add(coord.getY());
+            if(coord == null) {
+                return new GeodesicStringType();
+            } else {
+                posList.getValue().add(coord.getX());
+                posList.getValue().add(coord.getY());
+            }
         }
         
         segment.setPosList(posList);
@@ -152,9 +156,12 @@ public class GeospatialHelper {
     public static PointType printGMLPoint(Point value){  
         DirectPositionType pos = new DirectPositionType();
 
-        pos.getValue().add(value.getX());
-        pos.getValue().add(value.getY());
-
+        if (value.getX() == Double.NaN || value.getY() == Double.NaN) {
+            return new PointType();
+        } else {
+            pos.getValue().add(value.getX());
+            pos.getValue().add(value.getY());
+        }
 
         PointType pointType = new PointType();
         pointType.setPos(pos);
@@ -180,8 +187,12 @@ public class GeospatialHelper {
         com.aixm.delorean.core.schema.school.PointType point = new com.aixm.delorean.core.schema.school.PointType();
         DirectPositionType pos = new DirectPositionType();
 
-        pos.getValue().add(value.getPoint().getX());
-        pos.getValue().add(value.getPoint().getY());
+        if (value.getPoint().getX() == Double.NaN || value.getPoint().getY() == Double.NaN) {
+            return new com.aixm.delorean.core.schema.school.PointType();
+        } else {
+            pos.getValue().add(value.getPoint().getX());
+            pos.getValue().add(value.getPoint().getY());
+        }
 
         point.setPos(pos);
 
@@ -213,8 +224,12 @@ public class GeospatialHelper {
         ElevatedPointType elevatedPoint = new ElevatedPointType();
         DirectPositionType pos = new DirectPositionType();
 
-        pos.getValue().add(value.getPoint().getX());
-        pos.getValue().add(value.getPoint().getY());
+        if (value.getPoint().getX() == Double.NaN || value.getPoint().getY() == Double.NaN) {
+            return new ElevatedPointType();
+        } else {
+            pos.getValue().add(value.getPoint().getX());
+            pos.getValue().add(value.getPoint().getY());
+        }
 
         elevatedPoint.setPos(pos);
 
@@ -274,8 +289,12 @@ public class GeospatialHelper {
         DirectPositionListType posList = new DirectPositionListType();
 
         for (Coordinate coord : value.getCoordinates()) {
-            posList.getValue().add(coord.getX());
-            posList.getValue().add(coord.getY());
+            if(coord == null) {
+                    return new CurveType();
+            } else {
+                posList.getValue().add(coord.getX());
+                posList.getValue().add(coord.getY());
+            }
         }
 
         curve.setSrsDimension(BigInteger.valueOf(2));
@@ -314,8 +333,12 @@ public class GeospatialHelper {
         DirectPositionListType posList = new DirectPositionListType();
 
         for (Coordinate coord : value.getLineString().getCoordinates()) {
-            posList.getValue().add(coord.getX());
-            posList.getValue().add(coord.getY());
+            if(coord == null) {
+                return new com.aixm.delorean.core.schema.school.CurveType();
+            } else {
+                posList.getValue().add(coord.getX());
+                posList.getValue().add(coord.getY());
+            }
         }
 
         curve.setSrsDimension(BigInteger.valueOf(2));
@@ -361,8 +384,12 @@ public class GeospatialHelper {
         DirectPositionListType posList = new DirectPositionListType();
 
         for (Coordinate coord : value.getLineString().getCoordinates()) {
-            posList.getValue().add(coord.getX());
-            posList.getValue().add(coord.getY());
+            if(coord == null) {
+                return new ElevatedCurveType();
+            } else {
+                posList.getValue().add(coord.getX());
+                posList.getValue().add(coord.getY());
+            }
         }
 
         elevatedCurve.setSrsDimension(BigInteger.valueOf(2));

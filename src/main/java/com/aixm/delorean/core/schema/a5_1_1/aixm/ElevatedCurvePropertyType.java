@@ -7,10 +7,15 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import com.aixm.delorean.core.adapter.gis.ElevatedCurveTypeAdapter;
+import com.aixm.delorean.core.adapter.type.gis.AixmElevatedCurveType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -23,7 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMPropertyType">
  *       <sequence>
- *         <element ref="{http://www.aixm.aero/schema/5.1.1}ElevatedCurve"/>
+ *         <element name="curve" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -34,41 +39,44 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ElevatedCurvePropertyType", propOrder = {
-    "elevatedCurve"
+    "curve"
 })
+@Embeddable
 public class ElevatedCurvePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(name = "ElevatedCurve", required = true)
-    protected ElevatedCurveType elevatedCurve;
+    @XmlElement(required = true, type = ElevatedCurveType.class)
+    @XmlJavaTypeAdapter(ElevatedCurveTypeAdapter.class)
+    @Embedded
+    protected AixmElevatedCurveType curve;
 
     /**
-     * Gets the value of the elevatedCurve property.
+     * Gets the value of the curve property.
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedCurveType }
+     *     {@link String }
      *     
      */
-    public ElevatedCurveType getElevatedCurve() {
-        return elevatedCurve;
+    public AixmElevatedCurveType getCurve() {
+        return curve;
     }
 
     /**
-     * Sets the value of the elevatedCurve property.
+     * Sets the value of the curve property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedCurveType }
+     *     {@link String }
      *     
      */
-    public void setElevatedCurve(ElevatedCurveType value) {
-        this.elevatedCurve = value;
+    public void setCurve(AixmElevatedCurveType value) {
+        this.curve = value;
     }
 
-    public boolean isSetElevatedCurve() {
-        return (this.elevatedCurve!= null);
+    public boolean isSetCurve() {
+        return (this.curve!= null);
     }
 
 }

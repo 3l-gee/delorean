@@ -8,6 +8,8 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.math.BigDecimal;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -36,11 +38,14 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "ValMagneticVariationType", propOrder = {
     "value"
 })
+@Embeddable
 public class ValMagneticVariationType {
 
     @XmlValue
+    @Column(name = "val_magnetic_variation")
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
+    @Column(name = "val_magnetic_variation_base_type_nil_reason")
     protected String nilReason;
 
     /**

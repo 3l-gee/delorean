@@ -8,13 +8,10 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- * 
  * <p>Java class for CodeTransponderBaseType</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
@@ -37,47 +34,20 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum CodeTransponderBaseType {
 
-    MODE_1("MODE_1"),
-    MODE_2("MODE_2"),
-    @XmlEnumValue("MODE_3A")
-    MODE_3_A("MODE_3A"),
-    MODE_4("MODE_4"),
-    MODE_5("MODE_5"),
-    MODE_C("MODE_C"),
-    MODE_S("MODE_S");
-    private final String value;
+    MODE_1,
+    MODE_2,
+    MODE_3A,
+    MODE_4,
+    MODE_5,
+    MODE_C,
+    MODE_S;
 
-    CodeTransponderBaseType(String v) {
-        value = v;
-    }
-
-    /**
-     * Gets the value associated to the enum constant.
-     * 
-     * @return
-     *     The value linked to the enum.
-     */
     public String value() {
-        return value;
+        return name();
     }
 
-    /**
-     * Gets the enum associated to the value passed as parameter.
-     * 
-     * @param v
-     *     The value to get the enum from.
-     * @return
-     *     The enum which corresponds to the value, if it exists.
-     * @throws IllegalArgumentException
-     *     If no value matches in the enum declaration.
-     */
     public static CodeTransponderBaseType fromValue(String v) {
-        for (CodeTransponderBaseType c: CodeTransponderBaseType.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return valueOf(v);
     }
 
 }

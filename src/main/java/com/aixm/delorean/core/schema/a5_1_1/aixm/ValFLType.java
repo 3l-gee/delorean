@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -36,13 +38,17 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "ValFLType", propOrder = {
     "value"
 })
+@Embeddable
 public class ValFLType {
 
     @XmlValue
+    @Column(name = "val_fl")
     protected long value;
     @XmlAttribute(name = "uom")
+    @Column(name = "val_fl_base_type_uom")
     protected UomFLType uom;
     @XmlAttribute(name = "nilReason")
+    @Column(name = "val_fl_base_type_nil_reason")
     protected String nilReason;
 
     /**

@@ -7,16 +7,11 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
-import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -32,7 +27,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}sequenceNumber" minOccurs="0"/>
  *         <element name="messageMetadata" type="{http://www.aixm.aero/schema/5.1.1}MessageMetadataPropertyType" minOccurs="0"/>
- *         <element name="dbID" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -44,8 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AbstractAIXMMessageBaseType", propOrder = {
     "sequenceNumber",
-    "messageMetadata",
-    "dbID"
+    "messageMetadata"
 })
 @XmlSeeAlso({
     AbstractAIXMMessageType.class
@@ -62,11 +55,6 @@ public abstract class AbstractAIXMMessageBaseType
     protected Long sequenceNumber;
     @Transient
     protected MessageMetadataPropertyType messageMetadata;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "db_id", nullable = false)
-    @XmlTransient
-    protected long dbID;
 
     /**
      * Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details.
@@ -123,26 +111,6 @@ public abstract class AbstractAIXMMessageBaseType
 
     public boolean isSetMessageMetadata() {
         return (this.messageMetadata!= null);
-    }
-
-    /**
-     * Gets the value of the dbID property.
-     * 
-     */
-    public long getDbID() {
-        return dbID;
-    }
-
-    /**
-     * Sets the value of the dbID property.
-     * 
-     */
-    public void setDbID(long value) {
-        this.dbID = value;
-    }
-
-    public boolean isSetDbID() {
-        return true;
     }
 
 }

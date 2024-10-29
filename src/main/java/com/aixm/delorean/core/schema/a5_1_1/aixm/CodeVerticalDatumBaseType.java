@@ -8,13 +8,10 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- * 
  * <p>Java class for CodeVerticalDatumBaseType</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
@@ -33,43 +30,16 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum CodeVerticalDatumBaseType {
 
-    EGM_96("EGM_96"),
-    AHD("AHD"),
-    @XmlEnumValue("NAVD88")
-    NAVD_88("NAVD88");
-    private final String value;
+    EGM_96,
+    AHD,
+    NAVD88;
 
-    CodeVerticalDatumBaseType(String v) {
-        value = v;
-    }
-
-    /**
-     * Gets the value associated to the enum constant.
-     * 
-     * @return
-     *     The value linked to the enum.
-     */
     public String value() {
-        return value;
+        return name();
     }
 
-    /**
-     * Gets the enum associated to the value passed as parameter.
-     * 
-     * @param v
-     *     The value to get the enum from.
-     * @return
-     *     The enum which corresponds to the value, if it exists.
-     * @throws IllegalArgumentException
-     *     If no value matches in the enum declaration.
-     */
     public static CodeVerticalDatumBaseType fromValue(String v) {
-        for (CodeVerticalDatumBaseType c: CodeVerticalDatumBaseType.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return valueOf(v);
     }
 
 }

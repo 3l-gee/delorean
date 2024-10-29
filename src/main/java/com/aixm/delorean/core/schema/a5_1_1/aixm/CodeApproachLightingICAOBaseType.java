@@ -8,13 +8,10 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- * 
  * <p>Java class for CodeApproachLightingICAOBaseType</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
@@ -36,47 +33,19 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum CodeApproachLightingICAOBaseType {
 
-    SIMPLE("SIMPLE"),
-    @XmlEnumValue("CAT1")
-    CAT_1("CAT1"),
-    @XmlEnumValue("CAT23")
-    CAT_23("CAT23"),
-    CIRCLING("CIRCLING"),
-    LEADIN("LEADIN"),
-    NONE("NONE");
-    private final String value;
+    SIMPLE,
+    CAT1,
+    CAT23,
+    CIRCLING,
+    LEADIN,
+    NONE;
 
-    CodeApproachLightingICAOBaseType(String v) {
-        value = v;
-    }
-
-    /**
-     * Gets the value associated to the enum constant.
-     * 
-     * @return
-     *     The value linked to the enum.
-     */
     public String value() {
-        return value;
+        return name();
     }
 
-    /**
-     * Gets the enum associated to the value passed as parameter.
-     * 
-     * @param v
-     *     The value to get the enum from.
-     * @return
-     *     The enum which corresponds to the value, if it exists.
-     * @throws IllegalArgumentException
-     *     If no value matches in the enum declaration.
-     */
     public static CodeApproachLightingICAOBaseType fromValue(String v) {
-        for (CodeApproachLightingICAOBaseType c: CodeApproachLightingICAOBaseType.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return valueOf(v);
     }
 
 }

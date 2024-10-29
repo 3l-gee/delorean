@@ -8,6 +8,8 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.math.BigDecimal;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -37,13 +39,17 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "ValWeightType", propOrder = {
     "value"
 })
+@Embeddable
 public class ValWeightType {
 
     @XmlValue
+    @Column(name = "val_weight")
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
+    @Column(name = "val_weight_base_type_uom")
     protected UomWeightType uom;
     @XmlAttribute(name = "nilReason")
+    @Column(name = "val_weight_base_type_nil_reason")
     protected String nilReason;
 
     /**

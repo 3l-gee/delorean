@@ -64,7 +64,7 @@ public class VerticalStructureTimeSliceType
      * <p>
      * You are getting this "catch-all" property because of the following reason: 
      * The field name "Name" is used by two different parts of a schema. See: 
-     * line 6366 of file:/C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 6380 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
      * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
      * <p>
      * To get rid of this property, apply a property customization to one 
@@ -103,7 +103,7 @@ public class VerticalStructureTimeSliceType
      * <p>
      * You are getting this "catch-all" property because of the following reason: 
      * The field name "Name" is used by two different parts of a schema. See: 
-     * line 6366 of file:/C:/Users/gerth/source/repos/3l-gee/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
+     * line 6380 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
      * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
      * <p>
      * To get rid of this property, apply a property customization to one 

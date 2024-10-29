@@ -8,13 +8,10 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- * 
  * <p>Java class for CodeObstacleAreaBaseType</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
@@ -37,51 +34,20 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum CodeObstacleAreaBaseType {
 
-    @XmlEnumValue("AREA1")
-    AREA_1("AREA1"),
-    @XmlEnumValue("AREA2")
-    AREA_2("AREA2"),
-    @XmlEnumValue("AREA3")
-    AREA_3("AREA3"),
-    @XmlEnumValue("AREA4")
-    AREA_4("AREA4"),
-    OLS("OLS"),
-    @XmlEnumValue("FAR77")
-    FAR_77("FAR77"),
-    MANAGED("MANAGED");
-    private final String value;
+    AREA1,
+    AREA2,
+    AREA3,
+    AREA4,
+    OLS,
+    FAR77,
+    MANAGED;
 
-    CodeObstacleAreaBaseType(String v) {
-        value = v;
-    }
-
-    /**
-     * Gets the value associated to the enum constant.
-     * 
-     * @return
-     *     The value linked to the enum.
-     */
     public String value() {
-        return value;
+        return name();
     }
 
-    /**
-     * Gets the enum associated to the value passed as parameter.
-     * 
-     * @param v
-     *     The value to get the enum from.
-     * @return
-     *     The enum which corresponds to the value, if it exists.
-     * @throws IllegalArgumentException
-     *     If no value matches in the enum declaration.
-     */
     public static CodeObstacleAreaBaseType fromValue(String v) {
-        for (CodeObstacleAreaBaseType c: CodeObstacleAreaBaseType.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return valueOf(v);
     }
 
 }

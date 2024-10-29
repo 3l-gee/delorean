@@ -12,8 +12,6 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- * 
  * <p>Java class for CodeRoadBaseType</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>

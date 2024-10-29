@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -35,11 +37,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "CodeDayType", propOrder = {
     "value"
 })
+@Embeddable
 public class CodeDayType {
 
     @XmlValue
     protected CodeDayBaseType value;
     @XmlAttribute(name = "nilReason")
+    @Column(name = "code_day_base_type_nil_reason")
     protected String nilReason;
 
     /**
