@@ -119,6 +119,14 @@ public class RangeSetType {
         return this.valueArray;
     }
 
+    public boolean isSetValueArray() {
+        return ((this.valueArray!= null)&&(!this.valueArray.isEmpty()));
+    }
+
+    public void unsetValueArray() {
+        this.valueArray = null;
+    }
+
     /**
      * gml:AbstractScalarValueList is an abstract element which acts as the head of a substitution group which contains gml:BooleanList, gml:CategoryList, gml:CountList and gml:QuantityList, and (transitively) the elements in their substitution groups.
      * 
@@ -157,6 +165,14 @@ public class RangeSetType {
         return this.abstractScalarValueList;
     }
 
+    public boolean isSetAbstractScalarValueList() {
+        return ((this.abstractScalarValueList!= null)&&(!this.abstractScalarValueList.isEmpty()));
+    }
+
+    public void unsetAbstractScalarValueList() {
+        this.abstractScalarValueList = null;
+    }
+
     /**
      * gml:DataBlock describes the Range as a block of text encoded values similar to a Common Separated Value (CSV) representation.
      * The range set parameterization is described by the property gml:rangeParameters.
@@ -181,6 +197,10 @@ public class RangeSetType {
      */
     public void setDataBlock(DataBlockType value) {
         this.dataBlock = value;
+    }
+
+    public boolean isSetDataBlock() {
+        return (this.dataBlock!= null);
     }
 
     /**
@@ -213,6 +233,10 @@ public class RangeSetType {
      */
     public void setFile(FileType value) {
         this.file = value;
+    }
+
+    public boolean isSetFile() {
+        return (this.file!= null);
     }
 
 }

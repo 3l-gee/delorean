@@ -70,6 +70,10 @@ public class SolidType
         this.exterior = value;
     }
 
+    public boolean isSetExterior() {
+        return (this.exterior!= null);
+    }
+
     /**
      * Gets the value of the interior property.
      * 
@@ -100,6 +104,14 @@ public class SolidType
             interior = new ArrayList<>();
         }
         return this.interior;
+    }
+
+    public boolean isSetInterior() {
+        return ((this.interior!= null)&&(!this.interior.isEmpty()));
+    }
+
+    public void unsetInterior() {
+        this.interior = null;
     }
 
 }

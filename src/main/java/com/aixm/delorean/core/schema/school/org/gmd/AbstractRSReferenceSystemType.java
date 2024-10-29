@@ -75,6 +75,10 @@ public abstract class AbstractRSReferenceSystemType
         this.name = value;
     }
 
+    public boolean isSetName() {
+        return (this.name!= null);
+    }
+
     /**
      * Gets the value of the domainOfValidity property.
      * 
@@ -105,6 +109,14 @@ public abstract class AbstractRSReferenceSystemType
             domainOfValidity = new ArrayList<>();
         }
         return this.domainOfValidity;
+    }
+
+    public boolean isSetDomainOfValidity() {
+        return ((this.domainOfValidity!= null)&&(!this.domainOfValidity.isEmpty()));
+    }
+
+    public void unsetDomainOfValidity() {
+        this.domainOfValidity = null;
     }
 
 }

@@ -32,8 +32,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <choice minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}Node"/>
  *       </choice>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -56,13 +56,15 @@ public class NodePropertyType {
      */
     @XmlElement(name = "Node")
     protected NodeType node;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
@@ -75,8 +77,6 @@ public class NodePropertyType {
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
 
     /**
      * gml:Node represents the 0-dimensional primitive.
@@ -104,6 +104,46 @@ public class NodePropertyType {
      */
     public void setNode(NodeType value) {
         this.node = value;
+    }
+
+    public boolean isSetNode() {
+        return (this.node!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
     /**
@@ -138,6 +178,14 @@ public class NodePropertyType {
         return this.nilReason;
     }
 
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
+    }
+
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -162,32 +210,8 @@ public class NodePropertyType {
         this.remoteSchema = value;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.SIMPLE;
-        } else {
-            return type;
-        }
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public boolean isSetRemoteSchema() {
+        return (this.remoteSchema!= null);
     }
 
     /**
@@ -214,6 +238,10 @@ public class NodePropertyType {
         this.href = value;
     }
 
+    public boolean isSetHref() {
+        return (this.href!= null);
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -236,6 +264,10 @@ public class NodePropertyType {
      */
     public void setRole(String value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -262,6 +294,10 @@ public class NodePropertyType {
         this.arcrole = value;
     }
 
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -284,6 +320,10 @@ public class NodePropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -310,6 +350,10 @@ public class NodePropertyType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -334,32 +378,8 @@ public class NodePropertyType {
         this.actuate = value;
     }
 
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(java.lang.Boolean value) {
-        this.owns = value;
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
 }

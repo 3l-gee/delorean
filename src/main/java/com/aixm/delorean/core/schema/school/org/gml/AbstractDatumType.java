@@ -113,6 +113,10 @@ public abstract class AbstractDatumType
         this.domainOfValidity = value;
     }
 
+    public boolean isSetDomainOfValidity() {
+        return (this.domainOfValidity!= null);
+    }
+
     /**
      * The gml:scope property provides a description of the usage, or limitations of usage, for which this CRS-related object is valid. If unknown, enter "not known".
      * 
@@ -147,6 +151,14 @@ public abstract class AbstractDatumType
         return this.scope;
     }
 
+    public boolean isSetScope() {
+        return ((this.scope!= null)&&(!this.scope.isEmpty()));
+    }
+
+    public void unsetScope() {
+        this.scope = null;
+    }
+
     /**
      * gml:anchorDefinition is a description, possibly including coordinates, of the definition used to anchor the datum to the Earth. Also known as the "origin", especially for engineering and image datums. The codeSpace attribute may be used to reference a source of more detailed on this point or surface, or on a set of such descriptions.
      * -	For a geodetic datum, this point is also known as the fundamental point, which is traditionally the point where the relationship between geoid and ellipsoid is defined. In some cases, the "fundamental point" may consist of a number of points. In those cases, the parameters defining the geoid/ellipsoid relationship have been averaged for these points, and the averages adopted as the datum definition.
@@ -178,6 +190,10 @@ public abstract class AbstractDatumType
         this.anchorDefinition = value;
     }
 
+    public boolean isSetAnchorDefinition() {
+        return (this.anchorDefinition!= null);
+    }
+
     /**
      * gml:realizationEpoch is the time after which this datum definition is valid. See ISO 19111 Table 32 for details.
      * 
@@ -201,6 +217,10 @@ public abstract class AbstractDatumType
      */
     public void setRealizationEpoch(XMLGregorianCalendar value) {
         this.realizationEpoch = value;
+    }
+
+    public boolean isSetRealizationEpoch() {
+        return (this.realizationEpoch!= null);
     }
 
 }

@@ -76,6 +76,10 @@ public class DQDataQualityType
         this.scope = value;
     }
 
+    public boolean isSetScope() {
+        return (this.scope!= null);
+    }
+
     /**
      * Gets the value of the report property.
      * 
@@ -108,6 +112,14 @@ public class DQDataQualityType
         return this.report;
     }
 
+    public boolean isSetReport() {
+        return ((this.report!= null)&&(!this.report.isEmpty()));
+    }
+
+    public void unsetReport() {
+        this.report = null;
+    }
+
     /**
      * Gets the value of the lineage property.
      * 
@@ -130,6 +142,10 @@ public class DQDataQualityType
      */
     public void setLineage(LILineagePropertyType value) {
         this.lineage = value;
+    }
+
+    public boolean isSetLineage() {
+        return (this.lineage!= null);
     }
 
 }

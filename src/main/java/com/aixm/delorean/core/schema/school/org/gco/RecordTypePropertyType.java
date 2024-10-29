@@ -71,6 +71,10 @@ public class RecordTypePropertyType {
         this.recordType = value;
     }
 
+    public boolean isSetRecordType() {
+        return (this.recordType!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -101,6 +105,14 @@ public class RecordTypePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

@@ -73,6 +73,10 @@ public class MDObligationCodePropertyType {
         this.mdObligationCode = value;
     }
 
+    public boolean isSetMDObligationCode() {
+        return (this.mdObligationCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -103,6 +107,14 @@ public class MDObligationCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

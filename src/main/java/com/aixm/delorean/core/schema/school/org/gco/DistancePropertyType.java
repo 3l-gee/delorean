@@ -72,6 +72,10 @@ public class DistancePropertyType {
         this.distance = value;
     }
 
+    public boolean isSetDistance() {
+        return (this.distance!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class DistancePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

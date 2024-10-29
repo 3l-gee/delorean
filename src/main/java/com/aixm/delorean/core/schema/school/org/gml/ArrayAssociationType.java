@@ -273,6 +273,14 @@ public class ArrayAssociationType {
         return this.abstractObject;
     }
 
+    public boolean isSetAbstractObject() {
+        return ((this.abstractObject!= null)&&(!this.abstractObject.isEmpty()));
+    }
+
+    public void unsetAbstractObject() {
+        this.abstractObject = null;
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -297,8 +305,16 @@ public class ArrayAssociationType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

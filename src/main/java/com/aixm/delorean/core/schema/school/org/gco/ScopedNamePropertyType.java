@@ -72,6 +72,10 @@ public class ScopedNamePropertyType {
         this.scopedName = value;
     }
 
+    public boolean isSetScopedName() {
+        return (this.scopedName!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class ScopedNamePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

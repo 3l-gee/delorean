@@ -82,4 +82,8 @@ public class SurfaceType
         this.patches = value;
     }
 
+    public boolean isSetPatches() {
+        return (this.patches!= null);
+    }
+
 }

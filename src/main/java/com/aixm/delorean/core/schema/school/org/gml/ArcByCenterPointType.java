@@ -80,9 +80,9 @@ public class ArcByCenterPointType
     protected AngleType startAngle;
     protected AngleType endAngle;
     @XmlAttribute(name = "interpolation")
-    protected CurveInterpolationType interpolation;
+    public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CIRCULAR_ARC_CENTER_POINT_WITH_RADIUS;
     @XmlAttribute(name = "numArc", required = true)
-    protected BigInteger numArc;
+    public static final BigInteger NUM_ARC = new BigInteger("1");
 
     /**
      * Gets the value of the pos property.
@@ -106,6 +106,10 @@ public class ArcByCenterPointType
      */
     public void setPos(DirectPositionType value) {
         this.pos = value;
+    }
+
+    public boolean isSetPos() {
+        return (this.pos!= null);
     }
 
     /**
@@ -133,6 +137,10 @@ public class ArcByCenterPointType
         this.pointProperty = value;
     }
 
+    public boolean isSetPointProperty() {
+        return (this.pointProperty!= null);
+    }
+
     /**
      * Gets the value of the pointRep property.
      * 
@@ -155,6 +163,10 @@ public class ArcByCenterPointType
      */
     public void setPointRep(PointPropertyType value) {
         this.pointRep = value;
+    }
+
+    public boolean isSetPointRep() {
+        return (this.pointRep!= null);
     }
 
     /**
@@ -181,6 +193,10 @@ public class ArcByCenterPointType
         this.posList = value;
     }
 
+    public boolean isSetPosList() {
+        return (this.posList!= null);
+    }
+
     /**
      * Gets the value of the coordinates property.
      * 
@@ -203,6 +219,10 @@ public class ArcByCenterPointType
      */
     public void setCoordinates(CoordinatesType value) {
         this.coordinates = value;
+    }
+
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
     }
 
     /**
@@ -229,6 +249,10 @@ public class ArcByCenterPointType
         this.radius = value;
     }
 
+    public boolean isSetRadius() {
+        return (this.radius!= null);
+    }
+
     /**
      * Gets the value of the startAngle property.
      * 
@@ -251,6 +275,10 @@ public class ArcByCenterPointType
      */
     public void setStartAngle(AngleType value) {
         this.startAngle = value;
+    }
+
+    public boolean isSetStartAngle() {
+        return (this.startAngle!= null);
     }
 
     /**
@@ -277,60 +305,8 @@ public class ArcByCenterPointType
         this.endAngle = value;
     }
 
-    /**
-     * Gets the value of the interpolation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public CurveInterpolationType getInterpolation() {
-        if (interpolation == null) {
-            return CurveInterpolationType.CIRCULAR_ARC_CENTER_POINT_WITH_RADIUS;
-        } else {
-            return interpolation;
-        }
-    }
-
-    /**
-     * Sets the value of the interpolation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public void setInterpolation(CurveInterpolationType value) {
-        this.interpolation = value;
-    }
-
-    /**
-     * Gets the value of the numArc property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getNumArc() {
-        if (numArc == null) {
-            return new BigInteger("1");
-        } else {
-            return numArc;
-        }
-    }
-
-    /**
-     * Sets the value of the numArc property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setNumArc(BigInteger value) {
-        this.numArc = value;
+    public boolean isSetEndAngle() {
+        return (this.endAngle!= null);
     }
 
 }

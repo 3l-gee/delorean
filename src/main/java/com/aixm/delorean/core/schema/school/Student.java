@@ -73,6 +73,10 @@ public class Student
         this.assignedclassroomid = value;
     }
 
+    public boolean isSetAssignedclassroomid() {
+        return true;
+    }
+
     /**
      * Gets the value of the dbid property.
      * 
@@ -81,7 +85,7 @@ public class Student
      *     {@link Long }
      *     
      */
-    public Long getDbid() {
+    public long getDbid() {
         return dbid;
     }
 
@@ -93,8 +97,16 @@ public class Student
      *     {@link Long }
      *     
      */
-    public void setDbid(Long value) {
+    public void setDbid(long value) {
         this.dbid = value;
+    }
+
+    public boolean isSetDbid() {
+        return (this.dbid!= null);
+    }
+
+    public void unsetDbid() {
+        this.dbid = null;
     }
 
 }

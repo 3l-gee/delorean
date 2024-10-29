@@ -99,6 +99,14 @@ public class DirectPositionType {
         return this.value;
     }
 
+    public boolean isSetValue() {
+        return ((this.value!= null)&&(!this.value.isEmpty()));
+    }
+
+    public void unsetValue() {
+        this.value = null;
+    }
+
     /**
      * Gets the value of the srsName property.
      * 
@@ -123,6 +131,10 @@ public class DirectPositionType {
         this.srsName = value;
     }
 
+    public boolean isSetSrsName() {
+        return (this.srsName!= null);
+    }
+
     /**
      * Gets the value of the srsDimension property.
      * 
@@ -145,6 +157,10 @@ public class DirectPositionType {
      */
     public void setSrsDimension(BigInteger value) {
         this.srsDimension = value;
+    }
+
+    public boolean isSetSrsDimension() {
+        return (this.srsDimension!= null);
     }
 
     /**
@@ -179,6 +195,14 @@ public class DirectPositionType {
         return this.axisLabels;
     }
 
+    public boolean isSetAxisLabels() {
+        return ((this.axisLabels!= null)&&(!this.axisLabels.isEmpty()));
+    }
+
+    public void unsetAxisLabels() {
+        this.axisLabels = null;
+    }
+
     /**
      * Gets the value of the uomLabels property.
      * 
@@ -209,6 +233,14 @@ public class DirectPositionType {
             uomLabels = new ArrayList<>();
         }
         return this.uomLabels;
+    }
+
+    public boolean isSetUomLabels() {
+        return ((this.uomLabels!= null)&&(!this.uomLabels.isEmpty()));
+    }
+
+    public void unsetUomLabels() {
+        this.uomLabels = null;
     }
 
 }

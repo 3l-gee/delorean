@@ -67,6 +67,10 @@ public class MDResolutionType {
         this.equivalentScale = value;
     }
 
+    public boolean isSetEquivalentScale() {
+        return (this.equivalentScale!= null);
+    }
+
     /**
      * Gets the value of the distance property.
      * 
@@ -89,6 +93,10 @@ public class MDResolutionType {
      */
     public void setDistance(DistancePropertyType value) {
         this.distance = value;
+    }
+
+    public boolean isSetDistance() {
+        return (this.distance!= null);
     }
 
 }

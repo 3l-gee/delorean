@@ -43,7 +43,7 @@ public class ArcType {
 
     protected List<TitleEltType> title;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.ARC;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
@@ -95,32 +95,12 @@ public class ArcType {
         return this.title;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.ARC;
-        } else {
-            return type;
-        }
+    public boolean isSetTitle() {
+        return ((this.title!= null)&&(!this.title.isEmpty()));
     }
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public void unsetTitle() {
+        this.title = null;
     }
 
     /**
@@ -147,6 +127,10 @@ public class ArcType {
         this.arcrole = value;
     }
 
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -169,6 +153,10 @@ public class ArcType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -195,6 +183,10 @@ public class ArcType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -217,6 +209,10 @@ public class ArcType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
+    }
+
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
     /**
@@ -243,6 +239,10 @@ public class ArcType {
         this.from = value;
     }
 
+    public boolean isSetFrom() {
+        return (this.from!= null);
+    }
+
     /**
      * from and to have default behavior when values are missing
      * 
@@ -266,6 +266,10 @@ public class ArcType {
      */
     public void setTo(String value) {
         this.to = value;
+    }
+
+    public boolean isSetTo() {
+        return (this.to!= null);
     }
 
 }

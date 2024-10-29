@@ -73,4 +73,12 @@ public class Category
         return this.nilReason;
     }
 
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
+    }
+
 }

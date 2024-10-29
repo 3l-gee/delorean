@@ -76,6 +76,10 @@ public class TimeIntervalLengthType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return (this.value!= null);
+    }
+
     /**
      * Gets the value of the unit property.
      * 
@@ -98,6 +102,10 @@ public class TimeIntervalLengthType {
      */
     public void setUnit(String value) {
         this.unit = value;
+    }
+
+    public boolean isSetUnit() {
+        return (this.unit!= null);
     }
 
     /**
@@ -124,6 +132,10 @@ public class TimeIntervalLengthType {
         this.radix = value;
     }
 
+    public boolean isSetRadix() {
+        return (this.radix!= null);
+    }
+
     /**
      * Gets the value of the factor property.
      * 
@@ -146,6 +158,10 @@ public class TimeIntervalLengthType {
      */
     public void setFactor(BigInteger value) {
         this.factor = value;
+    }
+
+    public boolean isSetFactor() {
+        return (this.factor!= null);
     }
 
 }

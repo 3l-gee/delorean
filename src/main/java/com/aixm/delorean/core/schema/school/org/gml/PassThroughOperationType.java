@@ -100,6 +100,14 @@ public class PassThroughOperationType
         return this.modifiedCoordinate;
     }
 
+    public boolean isSetModifiedCoordinate() {
+        return ((this.modifiedCoordinate!= null)&&(!this.modifiedCoordinate.isEmpty()));
+    }
+
+    public void unsetModifiedCoordinate() {
+        this.modifiedCoordinate = null;
+    }
+
     /**
      * gml:coordOperation is an association role to a coordinate operation.
      * 
@@ -129,6 +137,10 @@ public class PassThroughOperationType
         this.coordOperation = value;
     }
 
+    public boolean isSetCoordOperation() {
+        return (this.coordOperation!= null);
+    }
+
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -151,6 +163,10 @@ public class PassThroughOperationType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

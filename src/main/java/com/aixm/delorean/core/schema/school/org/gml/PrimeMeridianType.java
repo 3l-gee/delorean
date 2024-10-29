@@ -72,4 +72,8 @@ public class PrimeMeridianType
         this.greenwichLongitude = value;
     }
 
+    public boolean isSetGreenwichLongitude() {
+        return (this.greenwichLongitude!= null);
+    }
+
 }

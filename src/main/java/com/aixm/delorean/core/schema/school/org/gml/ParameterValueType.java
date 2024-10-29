@@ -135,6 +135,10 @@ public class ParameterValueType
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return (this.value!= null);
+    }
+
     /**
      * Gets the value of the dmsAngleValue property.
      * 
@@ -157,6 +161,10 @@ public class ParameterValueType
      */
     public void setDmsAngleValue(DMSAngleType value) {
         this.dmsAngleValue = value;
+    }
+
+    public boolean isSetDmsAngleValue() {
+        return (this.dmsAngleValue!= null);
     }
 
     /**
@@ -184,6 +192,10 @@ public class ParameterValueType
         this.stringValue = value;
     }
 
+    public boolean isSetStringValue() {
+        return (this.stringValue!= null);
+    }
+
     /**
      * gml:integerValue is a positive integer value of an operation parameter, usually used for a count. An integer value does not have an associated unit of measure.
      * 
@@ -207,6 +219,10 @@ public class ParameterValueType
      */
     public void setIntegerValue(BigInteger value) {
         this.integerValue = value;
+    }
+
+    public boolean isSetIntegerValue() {
+        return (this.integerValue!= null);
     }
 
     /**
@@ -234,6 +250,10 @@ public class ParameterValueType
         this.booleanValue = value;
     }
 
+    public boolean isSetBooleanValue() {
+        return (this.booleanValue!= null);
+    }
+
     /**
      * gml:valueList is an ordered sequence of two or more numeric values of an operation parameter list, where each value has the same associated unit of measure. An element of this type contains a space-separated sequence of double values.
      * 
@@ -257,6 +277,10 @@ public class ParameterValueType
      */
     public void setValueList(MeasureListType value) {
         this.valueList = value;
+    }
+
+    public boolean isSetValueList() {
+        return (this.valueList!= null);
     }
 
     /**
@@ -293,6 +317,14 @@ public class ParameterValueType
         return this.integerValueList;
     }
 
+    public boolean isSetIntegerValueList() {
+        return ((this.integerValueList!= null)&&(!this.integerValueList.isEmpty()));
+    }
+
+    public void unsetIntegerValueList() {
+        this.integerValueList = null;
+    }
+
     /**
      * gml:valueFile is a reference to a file or a part of a file containing one or more parameter values, each numeric value with its associated unit of measure. When referencing a part of a file, that file shall contain multiple identified parts, such as an XML encoded document. Furthermore, the referenced file or part of a file may reference another part of the same or different files, as allowed in XML documents.
      * 
@@ -316,6 +348,10 @@ public class ParameterValueType
      */
     public void setValueFile(String value) {
         this.valueFile = value;
+    }
+
+    public boolean isSetValueFile() {
+        return (this.valueFile!= null);
     }
 
     /**
@@ -343,6 +379,10 @@ public class ParameterValueType
      */
     public void setOperationParameter(JAXBElement<OperationParameterPropertyType> value) {
         this.operationParameter = value;
+    }
+
+    public boolean isSetOperationParameter() {
+        return (this.operationParameter!= null);
     }
 
 }

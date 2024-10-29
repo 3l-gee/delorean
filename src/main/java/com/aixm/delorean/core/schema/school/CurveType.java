@@ -78,6 +78,10 @@ public class CurveType
         this.horizontalAccuracy = value;
     }
 
+    public boolean isSetHorizontalAccuracy() {
+        return (this.horizontalAccuracy!= null);
+    }
+
     /**
      * Gets the value of the annotation property.
      * 
@@ -108,6 +112,14 @@ public class CurveType
             annotation = new ArrayList<>();
         }
         return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
     }
 
 }

@@ -101,6 +101,14 @@ public class DirectPositionListType {
         return this.value;
     }
 
+    public boolean isSetValue() {
+        return ((this.value!= null)&&(!this.value.isEmpty()));
+    }
+
+    public void unsetValue() {
+        this.value = null;
+    }
+
     /**
      * Gets the value of the count property.
      * 
@@ -123,6 +131,10 @@ public class DirectPositionListType {
      */
     public void setCount(BigInteger value) {
         this.count = value;
+    }
+
+    public boolean isSetCount() {
+        return (this.count!= null);
     }
 
     /**
@@ -149,6 +161,10 @@ public class DirectPositionListType {
         this.srsName = value;
     }
 
+    public boolean isSetSrsName() {
+        return (this.srsName!= null);
+    }
+
     /**
      * Gets the value of the srsDimension property.
      * 
@@ -171,6 +187,10 @@ public class DirectPositionListType {
      */
     public void setSrsDimension(BigInteger value) {
         this.srsDimension = value;
+    }
+
+    public boolean isSetSrsDimension() {
+        return (this.srsDimension!= null);
     }
 
     /**
@@ -205,6 +225,14 @@ public class DirectPositionListType {
         return this.axisLabels;
     }
 
+    public boolean isSetAxisLabels() {
+        return ((this.axisLabels!= null)&&(!this.axisLabels.isEmpty()));
+    }
+
+    public void unsetAxisLabels() {
+        this.axisLabels = null;
+    }
+
     /**
      * Gets the value of the uomLabels property.
      * 
@@ -235,6 +263,14 @@ public class DirectPositionListType {
             uomLabels = new ArrayList<>();
         }
         return this.uomLabels;
+    }
+
+    public boolean isSetUomLabels() {
+        return ((this.uomLabels!= null)&&(!this.uomLabels.isEmpty()));
+    }
+
+    public void unsetUomLabels() {
+        this.uomLabels = null;
     }
 
 }

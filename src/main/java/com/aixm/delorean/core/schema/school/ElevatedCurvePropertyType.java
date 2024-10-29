@@ -75,4 +75,8 @@ public class ElevatedCurvePropertyType
         this.elevatedCurve = value;
     }
 
+    public boolean isSetElevatedCurve() {
+        return (this.elevatedCurve!= null);
+    }
+
 }

@@ -86,6 +86,10 @@ public class ImplementationAixmElevatedPoint {
         this.aixmElevatedPoint = value;
     }
 
+    public boolean isSetAixmElevatedPoint() {
+        return (this.aixmElevatedPoint!= null);
+    }
+
     /**
      * Gets the value of the name property.
      * 
@@ -110,6 +114,10 @@ public class ImplementationAixmElevatedPoint {
         this.name = value;
     }
 
+    public boolean isSetName() {
+        return (this.name!= null);
+    }
+
     /**
      * Gets the value of the id property.
      * 
@@ -124,6 +132,10 @@ public class ImplementationAixmElevatedPoint {
      */
     public void setId(long value) {
         this.id = value;
+    }
+
+    public boolean isSetId() {
+        return true;
     }
 
 }

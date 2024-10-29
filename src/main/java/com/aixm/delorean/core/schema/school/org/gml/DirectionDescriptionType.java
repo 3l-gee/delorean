@@ -80,6 +80,10 @@ public class DirectionDescriptionType {
         this.compassPoint = value;
     }
 
+    public boolean isSetCompassPoint() {
+        return (this.compassPoint!= null);
+    }
+
     /**
      * Gets the value of the keyword property.
      * 
@@ -102,6 +106,10 @@ public class DirectionDescriptionType {
      */
     public void setKeyword(CodeType value) {
         this.keyword = value;
+    }
+
+    public boolean isSetKeyword() {
+        return (this.keyword!= null);
     }
 
     /**
@@ -128,6 +136,10 @@ public class DirectionDescriptionType {
         this.description = value;
     }
 
+    public boolean isSetDescription() {
+        return (this.description!= null);
+    }
+
     /**
      * Gets the value of the reference property.
      * 
@@ -150,6 +162,10 @@ public class DirectionDescriptionType {
      */
     public void setReference(ReferenceType value) {
         this.reference = value;
+    }
+
+    public boolean isSetReference() {
+        return (this.reference!= null);
     }
 
 }

@@ -84,6 +84,14 @@ public class SolidArrayPropertyType {
         return this.abstractSolid;
     }
 
+    public boolean isSetAbstractSolid() {
+        return ((this.abstractSolid!= null)&&(!this.abstractSolid.isEmpty()));
+    }
+
+    public void unsetAbstractSolid() {
+        this.abstractSolid = null;
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -108,8 +116,16 @@ public class SolidArrayPropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

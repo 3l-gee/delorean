@@ -72,6 +72,10 @@ public class CIOnLineFunctionCodePropertyType {
         this.ciOnLineFunctionCode = value;
     }
 
+    public boolean isSetCIOnLineFunctionCode() {
+        return (this.ciOnLineFunctionCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class CIOnLineFunctionCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

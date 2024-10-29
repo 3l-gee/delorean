@@ -38,64 +38,8 @@ public class SphereType
 {
 
     @XmlAttribute(name = "horizontalCurveType")
-    protected CurveInterpolationType horizontalCurveType;
+    public static final CurveInterpolationType HORIZONTAL_CURVE_TYPE = CurveInterpolationType.CIRCULAR_ARC_3_POINTS;
     @XmlAttribute(name = "verticalCurveType")
-    protected CurveInterpolationType verticalCurveType;
-
-    /**
-     * Gets the value of the horizontalCurveType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public CurveInterpolationType getHorizontalCurveType() {
-        if (horizontalCurveType == null) {
-            return CurveInterpolationType.CIRCULAR_ARC_3_POINTS;
-        } else {
-            return horizontalCurveType;
-        }
-    }
-
-    /**
-     * Sets the value of the horizontalCurveType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public void setHorizontalCurveType(CurveInterpolationType value) {
-        this.horizontalCurveType = value;
-    }
-
-    /**
-     * Gets the value of the verticalCurveType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public CurveInterpolationType getVerticalCurveType() {
-        if (verticalCurveType == null) {
-            return CurveInterpolationType.CIRCULAR_ARC_3_POINTS;
-        } else {
-            return verticalCurveType;
-        }
-    }
-
-    /**
-     * Sets the value of the verticalCurveType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public void setVerticalCurveType(CurveInterpolationType value) {
-        this.verticalCurveType = value;
-    }
+    public static final CurveInterpolationType VERTICAL_CURVE_TYPE = CurveInterpolationType.CIRCULAR_ARC_3_POINTS;
 
 }

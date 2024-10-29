@@ -88,6 +88,14 @@ public class MultiSolidType
         return this.solidMember;
     }
 
+    public boolean isSetSolidMember() {
+        return ((this.solidMember!= null)&&(!this.solidMember.isEmpty()));
+    }
+
+    public void unsetSolidMember() {
+        this.solidMember = null;
+    }
+
     /**
      * This property element contains a list of solids. The order of the elements is significant and shall be preserved when processing the array.
      * 
@@ -111,6 +119,10 @@ public class MultiSolidType
      */
     public void setSolidMembers(SolidArrayPropertyType value) {
         this.solidMembers = value;
+    }
+
+    public boolean isSetSolidMembers() {
+        return (this.solidMembers!= null);
     }
 
 }

@@ -55,7 +55,7 @@ public class Extended {
     })
     protected List<Object> extendedModel;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.EXTENDED;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
     protected String role;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
@@ -96,32 +96,12 @@ public class Extended {
         return this.extendedModel;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.EXTENDED;
-        } else {
-            return type;
-        }
+    public boolean isSetExtendedModel() {
+        return ((this.extendedModel!= null)&&(!this.extendedModel.isEmpty()));
     }
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public void unsetExtendedModel() {
+        this.extendedModel = null;
     }
 
     /**
@@ -148,6 +128,10 @@ public class Extended {
         this.role = value;
     }
 
+    public boolean isSetRole() {
+        return (this.role!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -170,6 +154,10 @@ public class Extended {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
 }

@@ -64,7 +64,7 @@ public class MultiSurfacePropertyType {
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
@@ -104,6 +104,10 @@ public class MultiSurfacePropertyType {
         this.multiSurface = value;
     }
 
+    public boolean isSetMultiSurface() {
+        return (this.multiSurface!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -128,8 +132,16 @@ public class MultiSurfacePropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
     /**
@@ -164,6 +176,14 @@ public class MultiSurfacePropertyType {
         return this.nilReason;
     }
 
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
+    }
+
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -188,32 +208,8 @@ public class MultiSurfacePropertyType {
         this.remoteSchema = value;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.SIMPLE;
-        } else {
-            return type;
-        }
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public boolean isSetRemoteSchema() {
+        return (this.remoteSchema!= null);
     }
 
     /**
@@ -240,6 +236,10 @@ public class MultiSurfacePropertyType {
         this.href = value;
     }
 
+    public boolean isSetHref() {
+        return (this.href!= null);
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -262,6 +262,10 @@ public class MultiSurfacePropertyType {
      */
     public void setRole(String value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -288,6 +292,10 @@ public class MultiSurfacePropertyType {
         this.arcrole = value;
     }
 
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -310,6 +318,10 @@ public class MultiSurfacePropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -336,6 +348,10 @@ public class MultiSurfacePropertyType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -358,6 +374,10 @@ public class MultiSurfacePropertyType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
+    }
+
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
 }

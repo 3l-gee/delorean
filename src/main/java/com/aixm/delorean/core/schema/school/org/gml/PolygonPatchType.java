@@ -56,7 +56,7 @@ public class PolygonPatchType
      */
     protected List<AbstractRingPropertyType> interior;
     @XmlAttribute(name = "interpolation")
-    protected SurfaceInterpolationType interpolation;
+    public static final SurfaceInterpolationType INTERPOLATION = SurfaceInterpolationType.PLANAR;
 
     /**
      * A boundary of a surface consists of a number of rings. In the normal 2D case, one of these rings is distinguished as being the exterior boundary. In a general manifold this is not always possible, in which case all boundaries shall be listed as interior boundaries, and the exterior will be empty.
@@ -81,6 +81,10 @@ public class PolygonPatchType
      */
     public void setExterior(AbstractRingPropertyType value) {
         this.exterior = value;
+    }
+
+    public boolean isSetExterior() {
+        return (this.exterior!= null);
     }
 
     /**
@@ -117,32 +121,12 @@ public class PolygonPatchType
         return this.interior;
     }
 
-    /**
-     * Gets the value of the interpolation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SurfaceInterpolationType }
-     *     
-     */
-    public SurfaceInterpolationType getInterpolation() {
-        if (interpolation == null) {
-            return SurfaceInterpolationType.PLANAR;
-        } else {
-            return interpolation;
-        }
+    public boolean isSetInterior() {
+        return ((this.interior!= null)&&(!this.interior.isEmpty()));
     }
 
-    /**
-     * Sets the value of the interpolation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SurfaceInterpolationType }
-     *     
-     */
-    public void setInterpolation(SurfaceInterpolationType value) {
-        this.interpolation = value;
+    public void unsetInterior() {
+        this.interior = null;
     }
 
 }

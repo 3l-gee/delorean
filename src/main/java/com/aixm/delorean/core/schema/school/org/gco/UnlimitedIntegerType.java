@@ -69,6 +69,10 @@ public class UnlimitedIntegerType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return (this.value!= null);
+    }
+
     /**
      * Gets the value of the isInfinite property.
      * 
@@ -77,7 +81,7 @@ public class UnlimitedIntegerType {
      *     {@link Boolean }
      *     
      */
-    public Boolean isIsInfinite() {
+    public boolean isIsInfinite() {
         return isInfinite;
     }
 
@@ -89,8 +93,16 @@ public class UnlimitedIntegerType {
      *     {@link Boolean }
      *     
      */
-    public void setIsInfinite(Boolean value) {
+    public void setIsInfinite(boolean value) {
         this.isInfinite = value;
+    }
+
+    public boolean isSetIsInfinite() {
+        return (this.isInfinite!= null);
+    }
+
+    public void unsetIsInfinite() {
+        this.isInfinite = null;
     }
 
 }

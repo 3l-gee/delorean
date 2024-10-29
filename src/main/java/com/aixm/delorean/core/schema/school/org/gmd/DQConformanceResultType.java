@@ -79,6 +79,10 @@ public class DQConformanceResultType
         this.specification = value;
     }
 
+    public boolean isSetSpecification() {
+        return (this.specification!= null);
+    }
+
     /**
      * Gets the value of the explanation property.
      * 
@@ -103,6 +107,10 @@ public class DQConformanceResultType
         this.explanation = value;
     }
 
+    public boolean isSetExplanation() {
+        return (this.explanation!= null);
+    }
+
     /**
      * Gets the value of the pass property.
      * 
@@ -125,6 +133,10 @@ public class DQConformanceResultType
      */
     public void setPass(BooleanPropertyType value) {
         this.pass = value;
+    }
+
+    public boolean isSetPass() {
+        return (this.pass!= null);
     }
 
 }

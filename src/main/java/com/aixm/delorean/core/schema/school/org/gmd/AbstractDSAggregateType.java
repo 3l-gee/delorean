@@ -96,6 +96,14 @@ public abstract class AbstractDSAggregateType
         return this.composedOf;
     }
 
+    public boolean isSetComposedOf() {
+        return ((this.composedOf!= null)&&(!this.composedOf.isEmpty()));
+    }
+
+    public void unsetComposedOf() {
+        this.composedOf = null;
+    }
+
     /**
      * Gets the value of the seriesMetadata property.
      * 
@@ -126,6 +134,14 @@ public abstract class AbstractDSAggregateType
             seriesMetadata = new ArrayList<>();
         }
         return this.seriesMetadata;
+    }
+
+    public boolean isSetSeriesMetadata() {
+        return ((this.seriesMetadata!= null)&&(!this.seriesMetadata.isEmpty()));
+    }
+
+    public void unsetSeriesMetadata() {
+        this.seriesMetadata = null;
     }
 
     /**
@@ -160,6 +176,14 @@ public abstract class AbstractDSAggregateType
         return this.subset;
     }
 
+    public boolean isSetSubset() {
+        return ((this.subset!= null)&&(!this.subset.isEmpty()));
+    }
+
+    public void unsetSubset() {
+        this.subset = null;
+    }
+
     /**
      * Gets the value of the superset property.
      * 
@@ -190,6 +214,14 @@ public abstract class AbstractDSAggregateType
             superset = new ArrayList<>();
         }
         return this.superset;
+    }
+
+    public boolean isSetSuperset() {
+        return ((this.superset!= null)&&(!this.superset.isEmpty()));
+    }
+
+    public void unsetSuperset() {
+        this.superset = null;
     }
 
 }

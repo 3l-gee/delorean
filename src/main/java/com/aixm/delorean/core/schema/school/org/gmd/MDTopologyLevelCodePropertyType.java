@@ -72,6 +72,10 @@ public class MDTopologyLevelCodePropertyType {
         this.mdTopologyLevelCode = value;
     }
 
+    public boolean isSetMDTopologyLevelCode() {
+        return (this.mdTopologyLevelCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class MDTopologyLevelCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

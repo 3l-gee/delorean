@@ -91,6 +91,10 @@ public abstract class AbstractFeatureType
         this.boundedBy = value;
     }
 
+    public boolean isSetBoundedBy() {
+        return (this.boundedBy!= null);
+    }
+
     /**
      * Gets the value of the location property.
      * 
@@ -115,6 +119,10 @@ public abstract class AbstractFeatureType
      */
     public void setLocation(JAXBElement<? extends LocationPropertyType> value) {
         this.location = value;
+    }
+
+    public boolean isSetLocation() {
+        return (this.location!= null);
     }
 
 }

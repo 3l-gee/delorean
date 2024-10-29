@@ -85,6 +85,10 @@ public class OperationParameterGroupType
         this.maximumOccurs = value;
     }
 
+    public boolean isSetMaximumOccurs() {
+        return (this.maximumOccurs!= null);
+    }
+
     /**
      * gml:parameter is an association to an operation parameter or parameter group.
      * 
@@ -120,6 +124,14 @@ public class OperationParameterGroupType
             parameter = new ArrayList<>();
         }
         return this.parameter;
+    }
+
+    public boolean isSetParameter() {
+        return ((this.parameter!= null)&&(!this.parameter.isEmpty()));
+    }
+
+    public void unsetParameter() {
+        this.parameter = null;
     }
 
 }

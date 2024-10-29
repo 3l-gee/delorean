@@ -94,6 +94,10 @@ public class EnvelopeType {
         this.lowerCorner = value;
     }
 
+    public boolean isSetLowerCorner() {
+        return (this.lowerCorner!= null);
+    }
+
     /**
      * Gets the value of the upperCorner property.
      * 
@@ -116,6 +120,10 @@ public class EnvelopeType {
      */
     public void setUpperCorner(DirectPositionType value) {
         this.upperCorner = value;
+    }
+
+    public boolean isSetUpperCorner() {
+        return (this.upperCorner!= null);
     }
 
     /**
@@ -150,6 +158,14 @@ public class EnvelopeType {
         return this.pos;
     }
 
+    public boolean isSetPos() {
+        return ((this.pos!= null)&&(!this.pos.isEmpty()));
+    }
+
+    public void unsetPos() {
+        this.pos = null;
+    }
+
     /**
      * Gets the value of the coordinates property.
      * 
@@ -172,6 +188,10 @@ public class EnvelopeType {
      */
     public void setCoordinates(CoordinatesType value) {
         this.coordinates = value;
+    }
+
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
     }
 
     /**
@@ -198,6 +218,10 @@ public class EnvelopeType {
         this.srsName = value;
     }
 
+    public boolean isSetSrsName() {
+        return (this.srsName!= null);
+    }
+
     /**
      * Gets the value of the srsDimension property.
      * 
@@ -220,6 +244,10 @@ public class EnvelopeType {
      */
     public void setSrsDimension(BigInteger value) {
         this.srsDimension = value;
+    }
+
+    public boolean isSetSrsDimension() {
+        return (this.srsDimension!= null);
     }
 
     /**
@@ -254,6 +282,14 @@ public class EnvelopeType {
         return this.axisLabels;
     }
 
+    public boolean isSetAxisLabels() {
+        return ((this.axisLabels!= null)&&(!this.axisLabels.isEmpty()));
+    }
+
+    public void unsetAxisLabels() {
+        this.axisLabels = null;
+    }
+
     /**
      * Gets the value of the uomLabels property.
      * 
@@ -284,6 +320,14 @@ public class EnvelopeType {
             uomLabels = new ArrayList<>();
         }
         return this.uomLabels;
+    }
+
+    public boolean isSetUomLabels() {
+        return ((this.uomLabels!= null)&&(!this.uomLabels.isEmpty()));
+    }
+
+    public void unsetUomLabels() {
+        this.uomLabels = null;
     }
 
 }

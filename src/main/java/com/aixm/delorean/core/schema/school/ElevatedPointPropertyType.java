@@ -75,4 +75,8 @@ public class ElevatedPointPropertyType
         this.point = value;
     }
 
+    public boolean isSetPoint() {
+        return (this.point!= null);
+    }
+
 }

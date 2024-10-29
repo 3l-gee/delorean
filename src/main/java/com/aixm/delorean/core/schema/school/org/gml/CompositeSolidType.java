@@ -87,6 +87,14 @@ public class CompositeSolidType
         return this.solidMember;
     }
 
+    public boolean isSetSolidMember() {
+        return ((this.solidMember!= null)&&(!this.solidMember.isEmpty()));
+    }
+
+    public void unsetSolidMember() {
+        this.solidMember = null;
+    }
+
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -109,6 +117,10 @@ public class CompositeSolidType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

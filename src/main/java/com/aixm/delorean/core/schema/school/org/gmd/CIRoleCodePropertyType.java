@@ -72,6 +72,10 @@ public class CIRoleCodePropertyType {
         this.ciRoleCode = value;
     }
 
+    public boolean isSetCIRoleCode() {
+        return (this.ciRoleCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class CIRoleCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

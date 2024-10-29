@@ -66,7 +66,7 @@ public class ClothoidType
     protected double startParameter;
     protected double endParameter;
     @XmlAttribute(name = "interpolation")
-    protected CurveInterpolationType interpolation;
+    public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.CLOTHOID;
 
     /**
      * Gets the value of the refLocation property.
@@ -90,6 +90,10 @@ public class ClothoidType
      */
     public void setRefLocation(ClothoidType.RefLocation value) {
         this.refLocation = value;
+    }
+
+    public boolean isSetRefLocation() {
+        return (this.refLocation!= null);
     }
 
     /**
@@ -116,6 +120,10 @@ public class ClothoidType
         this.scaleFactor = value;
     }
 
+    public boolean isSetScaleFactor() {
+        return (this.scaleFactor!= null);
+    }
+
     /**
      * Gets the value of the startParameter property.
      * 
@@ -130,6 +138,10 @@ public class ClothoidType
      */
     public void setStartParameter(double value) {
         this.startParameter = value;
+    }
+
+    public boolean isSetStartParameter() {
+        return true;
     }
 
     /**
@@ -148,32 +160,8 @@ public class ClothoidType
         this.endParameter = value;
     }
 
-    /**
-     * Gets the value of the interpolation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public CurveInterpolationType getInterpolation() {
-        if (interpolation == null) {
-            return CurveInterpolationType.CLOTHOID;
-        } else {
-            return interpolation;
-        }
-    }
-
-    /**
-     * Sets the value of the interpolation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public void setInterpolation(CurveInterpolationType value) {
-        this.interpolation = value;
+    public boolean isSetEndParameter() {
+        return true;
     }
 
 
@@ -232,6 +220,10 @@ public class ClothoidType
          */
         public void setAffinePlacement(AffinePlacementType value) {
             this.affinePlacement = value;
+        }
+
+        public boolean isSetAffinePlacement() {
+            return (this.affinePlacement!= null);
         }
 
     }

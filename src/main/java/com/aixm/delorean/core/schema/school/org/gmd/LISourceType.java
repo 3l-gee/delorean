@@ -84,6 +84,10 @@ public class LISourceType
         this.description = value;
     }
 
+    public boolean isSetDescription() {
+        return (this.description!= null);
+    }
+
     /**
      * Gets the value of the scaleDenominator property.
      * 
@@ -106,6 +110,10 @@ public class LISourceType
      */
     public void setScaleDenominator(MDRepresentativeFractionPropertyType value) {
         this.scaleDenominator = value;
+    }
+
+    public boolean isSetScaleDenominator() {
+        return (this.scaleDenominator!= null);
     }
 
     /**
@@ -132,6 +140,10 @@ public class LISourceType
         this.sourceReferenceSystem = value;
     }
 
+    public boolean isSetSourceReferenceSystem() {
+        return (this.sourceReferenceSystem!= null);
+    }
+
     /**
      * Gets the value of the sourceCitation property.
      * 
@@ -154,6 +166,10 @@ public class LISourceType
      */
     public void setSourceCitation(CICitationPropertyType value) {
         this.sourceCitation = value;
+    }
+
+    public boolean isSetSourceCitation() {
+        return (this.sourceCitation!= null);
     }
 
     /**
@@ -188,6 +204,14 @@ public class LISourceType
         return this.sourceExtent;
     }
 
+    public boolean isSetSourceExtent() {
+        return ((this.sourceExtent!= null)&&(!this.sourceExtent.isEmpty()));
+    }
+
+    public void unsetSourceExtent() {
+        this.sourceExtent = null;
+    }
+
     /**
      * Gets the value of the sourceStep property.
      * 
@@ -218,6 +242,14 @@ public class LISourceType
             sourceStep = new ArrayList<>();
         }
         return this.sourceStep;
+    }
+
+    public boolean isSetSourceStep() {
+        return ((this.sourceStep!= null)&&(!this.sourceStep.isEmpty()));
+    }
+
+    public void unsetSourceStep() {
+        this.sourceStep = null;
     }
 
 }

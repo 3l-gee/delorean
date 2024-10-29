@@ -72,6 +72,10 @@ public class MeasureType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return true;
+    }
+
     /**
      * Gets the value of the uom property.
      * 
@@ -94,6 +98,10 @@ public class MeasureType {
      */
     public void setUom(String value) {
         this.uom = value;
+    }
+
+    public boolean isSetUom() {
+        return (this.uom!= null);
     }
 
 }

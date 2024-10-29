@@ -83,6 +83,14 @@ public class DSDataSetType
         return this.has;
     }
 
+    public boolean isSetHas() {
+        return ((this.has!= null)&&(!this.has.isEmpty()));
+    }
+
+    public void unsetHas() {
+        this.has = null;
+    }
+
     /**
      * Gets the value of the partOf property.
      * 
@@ -113,6 +121,14 @@ public class DSDataSetType
             partOf = new ArrayList<>();
         }
         return this.partOf;
+    }
+
+    public boolean isSetPartOf() {
+        return ((this.partOf!= null)&&(!this.partOf.isEmpty()));
+    }
+
+    public void unsetPartOf() {
+        this.partOf = null;
     }
 
 }

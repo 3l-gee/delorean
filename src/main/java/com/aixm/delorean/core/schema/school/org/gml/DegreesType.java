@@ -69,6 +69,10 @@ public class DegreesType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return true;
+    }
+
     /**
      * Gets the value of the direction property.
      * 
@@ -91,6 +95,10 @@ public class DegreesType {
      */
     public void setDirection(String value) {
         this.direction = value;
+    }
+
+    public boolean isSetDirection() {
+        return (this.direction!= null);
     }
 
 }

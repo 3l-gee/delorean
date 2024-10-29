@@ -86,6 +86,10 @@ public class DataBlockType {
         this.rangeParameters = value;
     }
 
+    public boolean isSetRangeParameters() {
+        return (this.rangeParameters!= null);
+    }
+
     /**
      * gml:CoordinatesType consists of a list of coordinate tuples, with each coordinate tuple separated by the ts or tuple separator (whitespace), and each coordinate in the tuple by the cs or coordinate separator (comma).
      * The gml:tupleList encoding is effectively "band-interleaved".
@@ -110,6 +114,10 @@ public class DataBlockType {
      */
     public void setTupleList(CoordinatesType value) {
         this.tupleList = value;
+    }
+
+    public boolean isSetTupleList() {
+        return (this.tupleList!= null);
     }
 
     /**
@@ -144,6 +152,14 @@ public class DataBlockType {
             doubleOrNilReasonTupleList = new ArrayList<>();
         }
         return this.doubleOrNilReasonTupleList;
+    }
+
+    public boolean isSetDoubleOrNilReasonTupleList() {
+        return ((this.doubleOrNilReasonTupleList!= null)&&(!this.doubleOrNilReasonTupleList.isEmpty()));
+    }
+
+    public void unsetDoubleOrNilReasonTupleList() {
+        this.doubleOrNilReasonTupleList = null;
     }
 
 }

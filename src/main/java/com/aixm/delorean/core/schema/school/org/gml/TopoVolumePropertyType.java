@@ -74,6 +74,10 @@ public class TopoVolumePropertyType {
         this.topoVolume = value;
     }
 
+    public boolean isSetTopoVolume() {
+        return (this.topoVolume!= null);
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -98,8 +102,16 @@ public class TopoVolumePropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

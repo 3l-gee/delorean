@@ -65,4 +65,8 @@ public class ArrayType
         this.members = value;
     }
 
+    public boolean isSetMembers() {
+        return (this.members!= null);
+    }
+
 }

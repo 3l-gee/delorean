@@ -28,11 +28,20 @@
 
     <!-- Enumeration for teacher roles -->
     <xs:simpleType name="teacherrole">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="math"/>
-            <xs:enumeration value="german"/>
-            <xs:enumeration value="english"/>
-        </xs:restriction>
+		<!-- <xs:union> -->
+			<!-- <xs:simpleType> -->
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="math"/>
+					<xs:enumeration value="german"/>
+					<xs:enumeration value="english"/>
+				</xs:restriction>
+			<!-- </xs:simpleType> -->
+			<!-- <xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="other"/>
+				</xs:restriction>
+			</xs:simpleType> -->
+		<!-- </xs:union> -->
     </xs:simpleType>
 
     <!-- student complexType extending person with an assigned classroom -->

@@ -71,6 +71,10 @@ public class UnlimitedIntegerPropertyType {
         this.unlimitedInteger = value;
     }
 
+    public boolean isSetUnlimitedInteger() {
+        return (this.unlimitedInteger!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -101,6 +105,14 @@ public class UnlimitedIntegerPropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

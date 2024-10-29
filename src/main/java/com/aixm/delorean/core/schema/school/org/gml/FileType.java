@@ -88,6 +88,10 @@ public class FileType {
         this.rangeParameters = value;
     }
 
+    public boolean isSetRangeParameters() {
+        return (this.rangeParameters!= null);
+    }
+
     /**
      * Gets the value of the fileName property.
      * 
@@ -110,6 +114,10 @@ public class FileType {
      */
     public void setFileName(String value) {
         this.fileName = value;
+    }
+
+    public boolean isSetFileName() {
+        return (this.fileName!= null);
     }
 
     /**
@@ -136,6 +144,10 @@ public class FileType {
         this.fileReference = value;
     }
 
+    public boolean isSetFileReference() {
+        return (this.fileReference!= null);
+    }
+
     /**
      * Gets the value of the fileStructure property.
      * 
@@ -158,6 +170,10 @@ public class FileType {
      */
     public void setFileStructure(CodeType value) {
         this.fileStructure = value;
+    }
+
+    public boolean isSetFileStructure() {
+        return (this.fileStructure!= null);
     }
 
     /**
@@ -184,6 +200,10 @@ public class FileType {
         this.mimeType = value;
     }
 
+    public boolean isSetMimeType() {
+        return (this.mimeType!= null);
+    }
+
     /**
      * Gets the value of the compression property.
      * 
@@ -206,6 +226,10 @@ public class FileType {
      */
     public void setCompression(String value) {
         this.compression = value;
+    }
+
+    public boolean isSetCompression() {
+        return (this.compression!= null);
     }
 
 }

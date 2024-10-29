@@ -73,6 +73,10 @@ public class DirectionVectorType {
         this.vector = value;
     }
 
+    public boolean isSetVector() {
+        return (this.vector!= null);
+    }
+
     /**
      * Gets the value of the horizontalAngle property.
      * 
@@ -97,6 +101,10 @@ public class DirectionVectorType {
         this.horizontalAngle = value;
     }
 
+    public boolean isSetHorizontalAngle() {
+        return (this.horizontalAngle!= null);
+    }
+
     /**
      * Gets the value of the verticalAngle property.
      * 
@@ -119,6 +127,10 @@ public class DirectionVectorType {
      */
     public void setVerticalAngle(AngleType value) {
         this.verticalAngle = value;
+    }
+
+    public boolean isSetVerticalAngle() {
+        return (this.verticalAngle!= null);
     }
 
 }

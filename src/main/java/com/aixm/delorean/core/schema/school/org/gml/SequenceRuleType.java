@@ -45,7 +45,7 @@ public class SequenceRuleType {
     @XmlValue
     protected SequenceRuleEnumeration value;
     @XmlAttribute(name = "order")
-    protected String order;
+    protected IncrementOrder order;
     @XmlAttribute(name = "axisOrder")
     protected List<String> axisOrder;
 
@@ -73,15 +73,19 @@ public class SequenceRuleType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return (this.value!= null);
+    }
+
     /**
      * Gets the value of the order property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link IncrementOrder }
      *     
      */
-    public String getOrder() {
+    public IncrementOrder getOrder() {
         return order;
     }
 
@@ -90,11 +94,15 @@ public class SequenceRuleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link IncrementOrder }
      *     
      */
-    public void setOrder(String value) {
+    public void setOrder(IncrementOrder value) {
         this.order = value;
+    }
+
+    public boolean isSetOrder() {
+        return (this.order!= null);
     }
 
     /**
@@ -127,6 +135,14 @@ public class SequenceRuleType {
             axisOrder = new ArrayList<>();
         }
         return this.axisOrder;
+    }
+
+    public boolean isSetAxisOrder() {
+        return ((this.axisOrder!= null)&&(!this.axisOrder.isEmpty()));
+    }
+
+    public void unsetAxisOrder() {
+        this.axisOrder = null;
     }
 
 }

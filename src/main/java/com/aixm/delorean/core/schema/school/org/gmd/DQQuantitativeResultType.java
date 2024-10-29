@@ -85,6 +85,10 @@ public class DQQuantitativeResultType
         this.valueType = value;
     }
 
+    public boolean isSetValueType() {
+        return (this.valueType!= null);
+    }
+
     /**
      * Gets the value of the valueUnit property.
      * 
@@ -109,6 +113,10 @@ public class DQQuantitativeResultType
         this.valueUnit = value;
     }
 
+    public boolean isSetValueUnit() {
+        return (this.valueUnit!= null);
+    }
+
     /**
      * Gets the value of the errorStatistic property.
      * 
@@ -131,6 +139,10 @@ public class DQQuantitativeResultType
      */
     public void setErrorStatistic(CharacterStringPropertyType value) {
         this.errorStatistic = value;
+    }
+
+    public boolean isSetErrorStatistic() {
+        return (this.errorStatistic!= null);
     }
 
     /**
@@ -163,6 +175,14 @@ public class DQQuantitativeResultType
             value = new ArrayList<>();
         }
         return this.value;
+    }
+
+    public boolean isSetValue() {
+        return ((this.value!= null)&&(!this.value.isEmpty()));
+    }
+
+    public void unsetValue() {
+        this.value = null;
     }
 
 }

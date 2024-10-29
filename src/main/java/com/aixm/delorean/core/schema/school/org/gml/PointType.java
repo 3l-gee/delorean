@@ -74,6 +74,10 @@ public class PointType
         this.pos = value;
     }
 
+    public boolean isSetPos() {
+        return (this.pos!= null);
+    }
+
     /**
      * Gets the value of the coordinates property.
      * 
@@ -96,6 +100,10 @@ public class PointType
      */
     public void setCoordinates(CoordinatesType value) {
         this.coordinates = value;
+    }
+
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
     }
 
 }

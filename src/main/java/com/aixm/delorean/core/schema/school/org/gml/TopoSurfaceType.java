@@ -87,6 +87,14 @@ public class TopoSurfaceType
         return this.directedFace;
     }
 
+    public boolean isSetDirectedFace() {
+        return ((this.directedFace!= null)&&(!this.directedFace.isEmpty()));
+    }
+
+    public void unsetDirectedFace() {
+        this.directedFace = null;
+    }
+
     /**
      * Gets the value of the aggregationType property.
      * 
@@ -109,6 +117,10 @@ public class TopoSurfaceType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

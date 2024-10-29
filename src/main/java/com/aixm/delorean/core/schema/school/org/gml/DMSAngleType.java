@@ -81,6 +81,10 @@ public class DMSAngleType {
         this.degrees = value;
     }
 
+    public boolean isSetDegrees() {
+        return (this.degrees!= null);
+    }
+
     /**
      * Gets the value of the decimalMinutes property.
      * 
@@ -103,6 +107,10 @@ public class DMSAngleType {
      */
     public void setDecimalMinutes(BigDecimal value) {
         this.decimalMinutes = value;
+    }
+
+    public boolean isSetDecimalMinutes() {
+        return (this.decimalMinutes!= null);
     }
 
     /**
@@ -129,6 +137,10 @@ public class DMSAngleType {
         this.minutes = value;
     }
 
+    public boolean isSetMinutes() {
+        return (this.minutes!= null);
+    }
+
     /**
      * Gets the value of the seconds property.
      * 
@@ -151,6 +163,10 @@ public class DMSAngleType {
      */
     public void setSeconds(BigDecimal value) {
         this.seconds = value;
+    }
+
+    public boolean isSetSeconds() {
+        return (this.seconds!= null);
     }
 
 }

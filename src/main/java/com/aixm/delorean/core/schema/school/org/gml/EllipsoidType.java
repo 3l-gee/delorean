@@ -82,6 +82,10 @@ public class EllipsoidType
         this.semiMajorAxis = value;
     }
 
+    public boolean isSetSemiMajorAxis() {
+        return (this.semiMajorAxis!= null);
+    }
+
     /**
      * gml:secondDefiningParameter is a property containing the definition of the second parameter that defines the shape of an ellipsoid. An ellipsoid requires two defining parameters: semi-major axis and inverse flattening or semi-major axis and semi-minor axis. When the reference body is a sphere rather than an ellipsoid, only a single defining parameter is required, namely the radius of the sphere; in that case, the semi-major axis "degenerates" into the radius of the sphere.
      * The inverseFlattening element contains the inverse flattening value of the ellipsoid. This value is a scale factor (or ratio). It uses gml:LengthType with the restriction that the unit of measure referenced by the uom attribute must be suitable for a scale factor, such as percent, permil, or parts-per-million.
@@ -107,6 +111,10 @@ public class EllipsoidType
      */
     public void setSecondDefiningParameter(SecondDefiningParameterPropertyElement value) {
         this.secondDefiningParameter = value;
+    }
+
+    public boolean isSetSecondDefiningParameter() {
+        return (this.secondDefiningParameter!= null);
     }
 
 }

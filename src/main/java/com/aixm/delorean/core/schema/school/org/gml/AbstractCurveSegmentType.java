@@ -84,6 +84,10 @@ public abstract class AbstractCurveSegmentType {
         this.numDerivativesAtStart = value;
     }
 
+    public boolean isSetNumDerivativesAtStart() {
+        return (this.numDerivativesAtStart!= null);
+    }
+
     /**
      * Gets the value of the numDerivativesAtEnd property.
      * 
@@ -112,6 +116,10 @@ public abstract class AbstractCurveSegmentType {
         this.numDerivativesAtEnd = value;
     }
 
+    public boolean isSetNumDerivativesAtEnd() {
+        return (this.numDerivativesAtEnd!= null);
+    }
+
     /**
      * Gets the value of the numDerivativeInterior property.
      * 
@@ -138,6 +146,10 @@ public abstract class AbstractCurveSegmentType {
      */
     public void setNumDerivativeInterior(BigInteger value) {
         this.numDerivativeInterior = value;
+    }
+
+    public boolean isSetNumDerivativeInterior() {
+        return (this.numDerivativeInterior!= null);
     }
 
 }

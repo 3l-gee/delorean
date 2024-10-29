@@ -81,6 +81,10 @@ public class MDDigitalTransferOptionsType
         this.unitsOfDistribution = value;
     }
 
+    public boolean isSetUnitsOfDistribution() {
+        return (this.unitsOfDistribution!= null);
+    }
+
     /**
      * Gets the value of the transferSize property.
      * 
@@ -103,6 +107,10 @@ public class MDDigitalTransferOptionsType
      */
     public void setTransferSize(RealPropertyType value) {
         this.transferSize = value;
+    }
+
+    public boolean isSetTransferSize() {
+        return (this.transferSize!= null);
     }
 
     /**
@@ -137,6 +145,14 @@ public class MDDigitalTransferOptionsType
         return this.onLine;
     }
 
+    public boolean isSetOnLine() {
+        return ((this.onLine!= null)&&(!this.onLine.isEmpty()));
+    }
+
+    public void unsetOnLine() {
+        this.onLine = null;
+    }
+
     /**
      * Gets the value of the offLine property.
      * 
@@ -159,6 +175,10 @@ public class MDDigitalTransferOptionsType
      */
     public void setOffLine(MDMediumPropertyType value) {
         this.offLine = value;
+    }
+
+    public boolean isSetOffLine() {
+        return (this.offLine!= null);
     }
 
 }

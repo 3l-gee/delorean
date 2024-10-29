@@ -49,7 +49,7 @@ public class OrientableSurfaceType
     @XmlElement(required = true)
     protected SurfacePropertyType baseSurface;
     @XmlAttribute(name = "orientation")
-    protected String orientation;
+    protected SignType orientation;
 
     /**
      * The property baseSurface references or contains the base surface. The property baseSurface either references the base surface via the XLink-attributes or contains the surface element. A surface element is any element which is substitutable for gml:AbstractSurface. The base surface has positive orientation.
@@ -76,17 +76,21 @@ public class OrientableSurfaceType
         this.baseSurface = value;
     }
 
+    public boolean isSetBaseSurface() {
+        return (this.baseSurface!= null);
+    }
+
     /**
      * Gets the value of the orientation property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link SignType }
      *     
      */
-    public String getOrientation() {
+    public SignType getOrientation() {
         if (orientation == null) {
-            return "+";
+            return SignType.VALUE_2;
         } else {
             return orientation;
         }
@@ -97,11 +101,15 @@ public class OrientableSurfaceType
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link SignType }
      *     
      */
-    public void setOrientation(String value) {
+    public void setOrientation(SignType value) {
         this.orientation = value;
+    }
+
+    public boolean isSetOrientation() {
+        return (this.orientation!= null);
     }
 
 }

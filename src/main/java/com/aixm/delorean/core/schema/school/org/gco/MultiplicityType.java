@@ -79,4 +79,12 @@ public class MultiplicityType
         return this.range;
     }
 
+    public boolean isSetRange() {
+        return ((this.range!= null)&&(!this.range.isEmpty()));
+    }
+
+    public void unsetRange() {
+        this.range = null;
+    }
+
 }

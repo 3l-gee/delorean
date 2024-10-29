@@ -84,6 +84,10 @@ public class MeasurePropertyType {
         this.measure = value;
     }
 
+    public boolean isSetMeasure() {
+        return (this.measure!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -114,6 +118,14 @@ public class MeasurePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

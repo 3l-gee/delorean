@@ -73,6 +73,10 @@ public class CISeriesType
         this.name = value;
     }
 
+    public boolean isSetName() {
+        return (this.name!= null);
+    }
+
     /**
      * Gets the value of the issueIdentification property.
      * 
@@ -97,6 +101,10 @@ public class CISeriesType
         this.issueIdentification = value;
     }
 
+    public boolean isSetIssueIdentification() {
+        return (this.issueIdentification!= null);
+    }
+
     /**
      * Gets the value of the page property.
      * 
@@ -119,6 +127,10 @@ public class CISeriesType
      */
     public void setPage(CharacterStringPropertyType value) {
         this.page = value;
+    }
+
+    public boolean isSetPage() {
+        return (this.page!= null);
     }
 
 }

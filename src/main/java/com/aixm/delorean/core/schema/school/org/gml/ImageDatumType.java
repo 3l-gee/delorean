@@ -72,4 +72,8 @@ public class ImageDatumType
         this.pixelInCell = value;
     }
 
+    public boolean isSetPixelInCell() {
+        return (this.pixelInCell!= null);
+    }
+
 }

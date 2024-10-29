@@ -83,6 +83,10 @@ public abstract class AbstractTimeSliceType
         this.validTime = value;
     }
 
+    public boolean isSetValidTime() {
+        return (this.validTime!= null);
+    }
+
     /**
      * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data. The remote link attributes of the gml:dataSource element have been deprecated along with its current type.
      * 
@@ -106,6 +110,10 @@ public abstract class AbstractTimeSliceType
      */
     public void setDataSource(StringOrRefType value) {
         this.dataSource = value;
+    }
+
+    public boolean isSetDataSource() {
+        return (this.dataSource!= null);
     }
 
 }

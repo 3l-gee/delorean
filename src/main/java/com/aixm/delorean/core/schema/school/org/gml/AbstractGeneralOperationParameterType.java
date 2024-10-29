@@ -78,4 +78,8 @@ public abstract class AbstractGeneralOperationParameterType
         this.minimumOccurs = value;
     }
 
+    public boolean isSetMinimumOccurs() {
+        return (this.minimumOccurs!= null);
+    }
+
 }

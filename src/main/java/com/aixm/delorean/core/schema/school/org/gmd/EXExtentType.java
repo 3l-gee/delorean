@@ -80,6 +80,10 @@ public class EXExtentType
         this.description = value;
     }
 
+    public boolean isSetDescription() {
+        return (this.description!= null);
+    }
+
     /**
      * Gets the value of the geographicElement property.
      * 
@@ -110,6 +114,14 @@ public class EXExtentType
             geographicElement = new ArrayList<>();
         }
         return this.geographicElement;
+    }
+
+    public boolean isSetGeographicElement() {
+        return ((this.geographicElement!= null)&&(!this.geographicElement.isEmpty()));
+    }
+
+    public void unsetGeographicElement() {
+        this.geographicElement = null;
     }
 
     /**
@@ -144,6 +156,14 @@ public class EXExtentType
         return this.temporalElement;
     }
 
+    public boolean isSetTemporalElement() {
+        return ((this.temporalElement!= null)&&(!this.temporalElement.isEmpty()));
+    }
+
+    public void unsetTemporalElement() {
+        this.temporalElement = null;
+    }
+
     /**
      * Gets the value of the verticalElement property.
      * 
@@ -174,6 +194,14 @@ public class EXExtentType
             verticalElement = new ArrayList<>();
         }
         return this.verticalElement;
+    }
+
+    public boolean isSetVerticalElement() {
+        return ((this.verticalElement!= null)&&(!this.verticalElement.isEmpty()));
+    }
+
+    public void unsetVerticalElement() {
+        this.verticalElement = null;
     }
 
 }

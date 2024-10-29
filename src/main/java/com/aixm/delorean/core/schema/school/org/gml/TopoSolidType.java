@@ -102,6 +102,14 @@ public class TopoSolidType
         return this.isolated;
     }
 
+    public boolean isSetIsolated() {
+        return ((this.isolated!= null)&&(!this.isolated.isEmpty()));
+    }
+
+    public void unsetIsolated() {
+        this.isolated = null;
+    }
+
     /**
      * The gml:directedFace property element describes the boundary of topology solids, in the coBoundary of topology edges and is used in the support of surface features via the gml:TopoSurface expression, see below. The orientation attribute of type gml:SignType expresses the sense in which the included face is used i.e. inward or outward with respect to the surface normal in any geometric realisation.
      * 
@@ -136,6 +144,14 @@ public class TopoSolidType
         return this.directedFace;
     }
 
+    public boolean isSetDirectedFace() {
+        return ((this.directedFace!= null)&&(!this.directedFace.isEmpty()));
+    }
+
+    public void unsetDirectedFace() {
+        this.directedFace = null;
+    }
+
     /**
      * This property element either references a solid via the XLink-attributes or contains the solid element. solidProperty is the predefined property which may be used by GML Application Schemas whenever a GML feature has a property with a value that is substitutable for AbstractSolid.
      * 
@@ -159,6 +175,10 @@ public class TopoSolidType
      */
     public void setSolidProperty(SolidPropertyType value) {
         this.solidProperty = value;
+    }
+
+    public boolean isSetSolidProperty() {
+        return (this.solidProperty!= null);
     }
 
     /**
@@ -186,8 +206,16 @@ public class TopoSolidType
      *     
      * @see #isUniversal()
      */
-    public void setUniversal(java.lang.Boolean value) {
+    public void setUniversal(boolean value) {
         this.universal = value;
+    }
+
+    public boolean isSetUniversal() {
+        return (this.universal!= null);
+    }
+
+    public void unsetUniversal() {
+        this.universal = null;
     }
 
     /**
@@ -212,6 +240,10 @@ public class TopoSolidType
      */
     public void setAggregationType(AggregationType value) {
         this.aggregationType = value;
+    }
+
+    public boolean isSetAggregationType() {
+        return (this.aggregationType!= null);
     }
 
 }

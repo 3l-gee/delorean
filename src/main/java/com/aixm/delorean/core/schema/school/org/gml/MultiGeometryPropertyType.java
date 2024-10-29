@@ -62,7 +62,7 @@ public class MultiGeometryPropertyType {
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
@@ -113,6 +113,10 @@ public class MultiGeometryPropertyType {
         this.abstractGeometricAggregate = value;
     }
 
+    public boolean isSetAbstractGeometricAggregate() {
+        return (this.abstractGeometricAggregate!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -145,6 +149,14 @@ public class MultiGeometryPropertyType {
         return this.nilReason;
     }
 
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
+    }
+
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -169,32 +181,8 @@ public class MultiGeometryPropertyType {
         this.remoteSchema = value;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.SIMPLE;
-        } else {
-            return type;
-        }
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public boolean isSetRemoteSchema() {
+        return (this.remoteSchema!= null);
     }
 
     /**
@@ -221,6 +209,10 @@ public class MultiGeometryPropertyType {
         this.href = value;
     }
 
+    public boolean isSetHref() {
+        return (this.href!= null);
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -243,6 +235,10 @@ public class MultiGeometryPropertyType {
      */
     public void setRole(String value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -269,6 +265,10 @@ public class MultiGeometryPropertyType {
         this.arcrole = value;
     }
 
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -291,6 +291,10 @@ public class MultiGeometryPropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -317,6 +321,10 @@ public class MultiGeometryPropertyType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -339,6 +347,10 @@ public class MultiGeometryPropertyType {
      */
     public void setActuate(ActuateType value) {
         this.actuate = value;
+    }
+
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
     /**
@@ -365,8 +377,16 @@ public class MultiGeometryPropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

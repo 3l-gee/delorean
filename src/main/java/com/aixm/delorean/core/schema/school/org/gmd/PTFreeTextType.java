@@ -78,4 +78,12 @@ public class PTFreeTextType
         return this.textGroup;
     }
 
+    public boolean isSetTextGroup() {
+        return ((this.textGroup!= null)&&(!this.textGroup.isEmpty()));
+    }
+
+    public void unsetTextGroup() {
+        this.textGroup = null;
+    }
+
 }

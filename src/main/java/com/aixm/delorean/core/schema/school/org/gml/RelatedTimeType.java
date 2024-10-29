@@ -83,4 +83,8 @@ public class RelatedTimeType
         this.relativePosition = value;
     }
 
+    public boolean isSetRelativePosition() {
+        return (this.relativePosition!= null);
+    }
+
 }

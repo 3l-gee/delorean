@@ -49,7 +49,7 @@ public class OrientableCurveType
     @XmlElement(required = true)
     protected CurvePropertyType baseCurve;
     @XmlAttribute(name = "orientation")
-    protected String orientation;
+    protected SignType orientation;
 
     /**
      * The property baseCurve references or contains the base curve, i.e. it either references the base curve via the XLink-attributes or contains the curve element. A curve element is any element which is substitutable for AbstractCurve. The base curve has positive orientation.
@@ -76,17 +76,21 @@ public class OrientableCurveType
         this.baseCurve = value;
     }
 
+    public boolean isSetBaseCurve() {
+        return (this.baseCurve!= null);
+    }
+
     /**
      * Gets the value of the orientation property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link SignType }
      *     
      */
-    public String getOrientation() {
+    public SignType getOrientation() {
         if (orientation == null) {
-            return "+";
+            return SignType.VALUE_2;
         } else {
             return orientation;
         }
@@ -97,11 +101,15 @@ public class OrientableCurveType
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link SignType }
      *     
      */
-    public void setOrientation(String value) {
+    public void setOrientation(SignType value) {
         this.orientation = value;
+    }
+
+    public boolean isSetOrientation() {
+        return (this.orientation!= null);
     }
 
 }

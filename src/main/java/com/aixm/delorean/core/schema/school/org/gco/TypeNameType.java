@@ -69,4 +69,8 @@ public class TypeNameType
         this.aName = value;
     }
 
+    public boolean isSetAName() {
+        return (this.aName!= null);
+    }
+
 }

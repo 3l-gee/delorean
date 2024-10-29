@@ -71,6 +71,10 @@ public class GridFunctionType {
         this.sequenceRule = value;
     }
 
+    public boolean isSetSequenceRule() {
+        return (this.sequenceRule!= null);
+    }
+
     /**
      * Gets the value of the startPoint property.
      * 
@@ -101,6 +105,14 @@ public class GridFunctionType {
             startPoint = new ArrayList<>();
         }
         return this.startPoint;
+    }
+
+    public boolean isSetStartPoint() {
+        return ((this.startPoint!= null)&&(!this.startPoint.isEmpty()));
+    }
+
+    public void unsetStartPoint() {
+        this.startPoint = null;
     }
 
 }

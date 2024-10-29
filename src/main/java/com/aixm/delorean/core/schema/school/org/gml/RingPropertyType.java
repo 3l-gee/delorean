@@ -76,4 +76,8 @@ public class RingPropertyType {
         this.ring = value;
     }
 
+    public boolean isSetRing() {
+        return (this.ring!= null);
+    }
+
 }

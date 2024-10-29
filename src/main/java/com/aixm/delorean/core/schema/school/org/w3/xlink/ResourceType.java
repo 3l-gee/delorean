@@ -48,7 +48,7 @@ public class ResourceType {
     @XmlAnyElement(lax = true)
     protected List<Object> content;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink", required = true)
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.RESOURCE;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
     protected String role;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
@@ -91,32 +91,12 @@ public class ResourceType {
         return this.content;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.RESOURCE;
-        } else {
-            return type;
-        }
+    public boolean isSetContent() {
+        return ((this.content!= null)&&(!this.content.isEmpty()));
     }
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public void unsetContent() {
+        this.content = null;
     }
 
     /**
@@ -143,6 +123,10 @@ public class ResourceType {
         this.role = value;
     }
 
+    public boolean isSetRole() {
+        return (this.role!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -167,6 +151,10 @@ public class ResourceType {
         this.titleAttribute = value;
     }
 
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
+    }
+
     /**
      * Gets the value of the label property.
      * 
@@ -189,6 +177,10 @@ public class ResourceType {
      */
     public void setLabel(String value) {
         this.label = value;
+    }
+
+    public boolean isSetLabel() {
+        return (this.label!= null);
     }
 
 }

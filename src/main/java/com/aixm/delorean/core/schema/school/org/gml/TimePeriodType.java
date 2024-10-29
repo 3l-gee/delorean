@@ -94,6 +94,10 @@ public class TimePeriodType
         this.beginPosition = value;
     }
 
+    public boolean isSetBeginPosition() {
+        return (this.beginPosition!= null);
+    }
+
     /**
      * Gets the value of the begin property.
      * 
@@ -116,6 +120,10 @@ public class TimePeriodType
      */
     public void setBegin(TimeInstantPropertyType value) {
         this.begin = value;
+    }
+
+    public boolean isSetBegin() {
+        return (this.begin!= null);
     }
 
     /**
@@ -142,6 +150,10 @@ public class TimePeriodType
         this.endPosition = value;
     }
 
+    public boolean isSetEndPosition() {
+        return (this.endPosition!= null);
+    }
+
     /**
      * Gets the value of the end property.
      * 
@@ -164,6 +176,10 @@ public class TimePeriodType
      */
     public void setEnd(TimeInstantPropertyType value) {
         this.end = value;
+    }
+
+    public boolean isSetEnd() {
+        return (this.end!= null);
     }
 
     /**
@@ -191,6 +207,10 @@ public class TimePeriodType
         this.duration = value;
     }
 
+    public boolean isSetDuration() {
+        return (this.duration!= null);
+    }
+
     /**
      * gml:timeInterval conforms to ISO 11404 which is based on floating point values for temporal length.
      * ISO 11404 syntax specifies the use of a positiveInteger together with appropriate values for radix and factor. The resolution of the time interval is to one radix ^(-factor) of the specified time unit.
@@ -216,6 +236,10 @@ public class TimePeriodType
      */
     public void setTimeInterval(TimeIntervalLengthType value) {
         this.timeInterval = value;
+    }
+
+    public boolean isSetTimeInterval() {
+        return (this.timeInterval!= null);
     }
 
 }

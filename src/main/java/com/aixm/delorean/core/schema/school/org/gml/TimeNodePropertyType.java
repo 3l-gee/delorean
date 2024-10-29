@@ -34,8 +34,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}TimeNode"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -55,13 +55,15 @@ public class TimeNodePropertyType {
      */
     @XmlElement(name = "TimeNode")
     protected TimeNodeType timeNode;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
@@ -74,8 +76,6 @@ public class TimeNodePropertyType {
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
 
     /**
      * A time node is a zero-dimensional topological primitive that represents an identifiable node in time (it is equivalent to a point in space). A node may act as the termination or initiation of any number of time edges. A time node may be realised as a geometry, its position, whose value is a time instant.
@@ -100,6 +100,46 @@ public class TimeNodePropertyType {
      */
     public void setTimeNode(TimeNodeType value) {
         this.timeNode = value;
+    }
+
+    public boolean isSetTimeNode() {
+        return (this.timeNode!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
     /**
@@ -134,6 +174,14 @@ public class TimeNodePropertyType {
         return this.nilReason;
     }
 
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
+    }
+
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -158,32 +206,8 @@ public class TimeNodePropertyType {
         this.remoteSchema = value;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.SIMPLE;
-        } else {
-            return type;
-        }
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public boolean isSetRemoteSchema() {
+        return (this.remoteSchema!= null);
     }
 
     /**
@@ -210,6 +234,10 @@ public class TimeNodePropertyType {
         this.href = value;
     }
 
+    public boolean isSetHref() {
+        return (this.href!= null);
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -232,6 +260,10 @@ public class TimeNodePropertyType {
      */
     public void setRole(String value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -258,6 +290,10 @@ public class TimeNodePropertyType {
         this.arcrole = value;
     }
 
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -280,6 +316,10 @@ public class TimeNodePropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -306,6 +346,10 @@ public class TimeNodePropertyType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -330,32 +374,8 @@ public class TimeNodePropertyType {
         this.actuate = value;
     }
 
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(java.lang.Boolean value) {
-        this.owns = value;
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
 }

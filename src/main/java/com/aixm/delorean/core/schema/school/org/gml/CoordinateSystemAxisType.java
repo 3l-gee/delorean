@@ -111,6 +111,10 @@ public class CoordinateSystemAxisType
         this.axisAbbrev = value;
     }
 
+    public boolean isSetAxisAbbrev() {
+        return (this.axisAbbrev!= null);
+    }
+
     /**
      * gml:axisDirection is the direction of this coordinate system axis (or in the case of Cartesian projected coordinates, the direction of this coordinate system axis at the origin).
      * Within any set of coordinate system axes, only one of each pair of terms may be used. For earth-fixed CRSs, this direction is often approximate and intended to provide a human interpretable meaning to the axis. When a geodetic datum is used, the precise directions of the axes may therefore vary slightly from this approximate direction.
@@ -138,6 +142,10 @@ public class CoordinateSystemAxisType
         this.axisDirection = value;
     }
 
+    public boolean isSetAxisDirection() {
+        return (this.axisDirection!= null);
+    }
+
     /**
      * The gml:minimumValue and gml:maximumValue properties allow the specification of minimum and maximum value normally allowed for this axis, in the unit of measure for the axis. For a continuous angular axis such as longitude, the values wrap-around at this value. Also, values beyond this minimum/maximum can be used for specified purposes, such as in a bounding box. A value of minus infinity shall be allowed for the gml:minimumValue element, a value of plus infiniy for the gml:maximumValue element. If these elements are omitted, the value is unspecified.
      * 
@@ -161,6 +169,10 @@ public class CoordinateSystemAxisType
      */
     public void setMinimumValue(Double value) {
         this.minimumValue = value;
+    }
+
+    public boolean isSetMinimumValue() {
+        return (this.minimumValue!= null);
     }
 
     /**
@@ -188,6 +200,10 @@ public class CoordinateSystemAxisType
         this.maximumValue = value;
     }
 
+    public boolean isSetMaximumValue() {
+        return (this.maximumValue!= null);
+    }
+
     /**
      * gml:rangeMeaning describes the meaning of axis value range specified by gml:minimumValue and gml:maximumValue. This element shall be omitted when both gml:minimumValue and gml:maximumValue are omitted. This element should be included when gml:minimumValue and/or gml:maximumValue are included. If this element is omitted when the gml:minimumValue and/or gml:maximumValue are included, the meaning is unspecified. The codeSpace attribute shall reference a source of information specifying the values and meanings of all the allowed string values for this property.
      * 
@@ -213,6 +229,10 @@ public class CoordinateSystemAxisType
         this.rangeMeaning = value;
     }
 
+    public boolean isSetRangeMeaning() {
+        return (this.rangeMeaning!= null);
+    }
+
     /**
      * The uom attribute provides an identifier of the unit of measure used for this coordinate system axis. The value of this coordinate in a coordinate tuple shall be recorded using this unit of measure, whenever those coordinates use a coordinate reference system that uses a coordinate system that uses this axis.
      * 
@@ -236,6 +256,10 @@ public class CoordinateSystemAxisType
      */
     public void setUom(String value) {
         this.uom = value;
+    }
+
+    public boolean isSetUom() {
+        return (this.uom!= null);
     }
 
 }

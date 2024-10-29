@@ -39,8 +39,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *           <element ref="{http://www.opengis.net/gml/3.2}CompositeSolid"/>
  *         </choice>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -83,13 +83,15 @@ public class GeometricComplexPropertyType {
      */
     @XmlElement(name = "CompositeSolid")
     protected CompositeSolidType compositeSolid;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    protected TypeType type;
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
@@ -102,8 +104,6 @@ public class GeometricComplexPropertyType {
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected ActuateType actuate;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
 
     /**
      * Gets the value of the geometricComplex property.
@@ -127,6 +127,10 @@ public class GeometricComplexPropertyType {
      */
     public void setGeometricComplex(GeometricComplexType value) {
         this.geometricComplex = value;
+    }
+
+    public boolean isSetGeometricComplex() {
+        return (this.geometricComplex!= null);
     }
 
     /**
@@ -156,6 +160,10 @@ public class GeometricComplexPropertyType {
         this.compositeCurve = value;
     }
 
+    public boolean isSetCompositeCurve() {
+        return (this.compositeCurve!= null);
+    }
+
     /**
      * A gml:CompositeSurface is represented by a set of orientable surfaces. It is geometry type with all the geometric properties of a (primitive) surface. Essentially, a composite surface is a collection of surfaces that join in pairs on common boundary curves and which, when considered as a whole, form a single surface.
      * surfaceMember references or contains inline one surface in the composite surface. 
@@ -183,6 +191,10 @@ public class GeometricComplexPropertyType {
         this.compositeSurface = value;
     }
 
+    public boolean isSetCompositeSurface() {
+        return (this.compositeSurface!= null);
+    }
+
     /**
      * gml:CompositeSolid implements ISO 19107 GM_CompositeSolid (see ISO 19107:2003, 6.6.7) as specified in D.2.3.6. 
      * A gml:CompositeSolid is represented by a set of orientable surfaces. It is a geometry type with all the geometric properties of a (primitive) solid. Essentially, a composite solid is a collection of solids that join in pairs on common boundary surfaces and which, when considered as a whole, form a single solid. 
@@ -208,6 +220,46 @@ public class GeometricComplexPropertyType {
      */
     public void setCompositeSolid(CompositeSolidType value) {
         this.compositeSolid = value;
+    }
+
+    public boolean isSetCompositeSolid() {
+        return (this.compositeSolid!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
     /**
@@ -242,6 +294,14 @@ public class GeometricComplexPropertyType {
         return this.nilReason;
     }
 
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
+    }
+
     /**
      * Gets the value of the remoteSchema property.
      * 
@@ -266,32 +326,8 @@ public class GeometricComplexPropertyType {
         this.remoteSchema = value;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeType }
-     *     
-     */
-    public TypeType getType() {
-        if (type == null) {
-            return TypeType.SIMPLE;
-        } else {
-            return type;
-        }
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeType }
-     *     
-     */
-    public void setType(TypeType value) {
-        this.type = value;
+    public boolean isSetRemoteSchema() {
+        return (this.remoteSchema!= null);
     }
 
     /**
@@ -318,6 +354,10 @@ public class GeometricComplexPropertyType {
         this.href = value;
     }
 
+    public boolean isSetHref() {
+        return (this.href!= null);
+    }
+
     /**
      * Gets the value of the role property.
      * 
@@ -340,6 +380,10 @@ public class GeometricComplexPropertyType {
      */
     public void setRole(String value) {
         this.role = value;
+    }
+
+    public boolean isSetRole() {
+        return (this.role!= null);
     }
 
     /**
@@ -366,6 +410,10 @@ public class GeometricComplexPropertyType {
         this.arcrole = value;
     }
 
+    public boolean isSetArcrole() {
+        return (this.arcrole!= null);
+    }
+
     /**
      * Gets the value of the titleAttribute property.
      * 
@@ -388,6 +436,10 @@ public class GeometricComplexPropertyType {
      */
     public void setTitleAttribute(String value) {
         this.titleAttribute = value;
+    }
+
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
@@ -414,6 +466,10 @@ public class GeometricComplexPropertyType {
         this.show = value;
     }
 
+    public boolean isSetShow() {
+        return (this.show!= null);
+    }
+
     /**
      * Gets the value of the actuate property.
      * 
@@ -438,32 +494,8 @@ public class GeometricComplexPropertyType {
         this.actuate = value;
     }
 
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(java.lang.Boolean value) {
-        this.owns = value;
+    public boolean isSetActuate() {
+        return (this.actuate!= null);
     }
 
 }

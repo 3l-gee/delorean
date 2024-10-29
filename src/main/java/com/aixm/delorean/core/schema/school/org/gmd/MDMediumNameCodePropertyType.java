@@ -72,6 +72,10 @@ public class MDMediumNameCodePropertyType {
         this.mdMediumNameCode = value;
     }
 
+    public boolean isSetMDMediumNameCode() {
+        return (this.mdMediumNameCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class MDMediumNameCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

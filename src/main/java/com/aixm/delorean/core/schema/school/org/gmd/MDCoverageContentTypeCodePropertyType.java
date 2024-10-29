@@ -72,6 +72,10 @@ public class MDCoverageContentTypeCodePropertyType {
         this.mdCoverageContentTypeCode = value;
     }
 
+    public boolean isSetMDCoverageContentTypeCode() {
+        return (this.mdCoverageContentTypeCode!= null);
+    }
+
     /**
      * Gets the value of the nilReason property.
      * 
@@ -102,6 +106,14 @@ public class MDCoverageContentTypeCodePropertyType {
             nilReason = new ArrayList<>();
         }
         return this.nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return ((this.nilReason!= null)&&(!this.nilReason.isEmpty()));
+    }
+
+    public void unsetNilReason() {
+        this.nilReason = null;
     }
 
 }

@@ -76,6 +76,10 @@ public class CodeType {
         this.value = value;
     }
 
+    public boolean isSetValue() {
+        return (this.value!= null);
+    }
+
     /**
      * Gets the value of the codeSpace property.
      * 
@@ -98,6 +102,10 @@ public class CodeType {
      */
     public void setCodeSpace(String value) {
         this.codeSpace = value;
+    }
+
+    public boolean isSetCodeSpace() {
+        return (this.codeSpace!= null);
     }
 
 }

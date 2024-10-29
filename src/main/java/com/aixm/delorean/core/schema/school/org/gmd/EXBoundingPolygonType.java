@@ -80,4 +80,12 @@ public class EXBoundingPolygonType
         return this.polygon;
     }
 
+    public boolean isSetPolygon() {
+        return ((this.polygon!= null)&&(!this.polygon.isEmpty()));
+    }
+
+    public void unsetPolygon() {
+        this.polygon = null;
+    }
+
 }

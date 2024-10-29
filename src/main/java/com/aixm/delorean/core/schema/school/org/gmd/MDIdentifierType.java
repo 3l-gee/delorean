@@ -76,6 +76,10 @@ public class MDIdentifierType
         this.authority = value;
     }
 
+    public boolean isSetAuthority() {
+        return (this.authority!= null);
+    }
+
     /**
      * Gets the value of the code property.
      * 
@@ -98,6 +102,10 @@ public class MDIdentifierType
      */
     public void setCode(CharacterStringPropertyType value) {
         this.code = value;
+    }
+
+    public boolean isSetCode() {
+        return (this.code!= null);
     }
 
 }

@@ -67,4 +67,8 @@ public class BaseUnitType
         this.unitsSystem = value;
     }
 
+    public boolean isSetUnitsSystem() {
+        return (this.unitsSystem!= null);
+    }
+
 }

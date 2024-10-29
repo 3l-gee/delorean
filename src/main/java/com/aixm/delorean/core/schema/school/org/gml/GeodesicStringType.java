@@ -64,7 +64,7 @@ public class GeodesicStringType
     })
     protected List<Object> geometricPositionGroup;
     @XmlAttribute(name = "interpolation")
-    protected CurveInterpolationType interpolation;
+    public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.GEODESIC;
 
     /**
      * Gets the value of the posList property.
@@ -88,6 +88,10 @@ public class GeodesicStringType
      */
     public void setPosList(DirectPositionListType value) {
         this.posList = value;
+    }
+
+    public boolean isSetPosList() {
+        return (this.posList!= null);
     }
 
     /**
@@ -127,32 +131,12 @@ public class GeodesicStringType
         return this.geometricPositionGroup;
     }
 
-    /**
-     * Gets the value of the interpolation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public CurveInterpolationType getInterpolation() {
-        if (interpolation == null) {
-            return CurveInterpolationType.GEODESIC;
-        } else {
-            return interpolation;
-        }
+    public boolean isSetGeometricPositionGroup() {
+        return ((this.geometricPositionGroup!= null)&&(!this.geometricPositionGroup.isEmpty()));
     }
 
-    /**
-     * Sets the value of the interpolation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CurveInterpolationType }
-     *     
-     */
-    public void setInterpolation(CurveInterpolationType value) {
-        this.interpolation = value;
+    public void unsetGeometricPositionGroup() {
+        this.geometricPositionGroup = null;
     }
 
 }

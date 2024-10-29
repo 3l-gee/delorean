@@ -73,6 +73,10 @@ public class SecondDefiningParameter {
         this.inverseFlattening = value;
     }
 
+    public boolean isSetInverseFlattening() {
+        return (this.inverseFlattening!= null);
+    }
+
     /**
      * Gets the value of the semiMinorAxis property.
      * 
@@ -97,6 +101,10 @@ public class SecondDefiningParameter {
         this.semiMinorAxis = value;
     }
 
+    public boolean isSetSemiMinorAxis() {
+        return (this.semiMinorAxis!= null);
+    }
+
     /**
      * Gets the value of the isSphere property.
      * 
@@ -119,6 +127,10 @@ public class SecondDefiningParameter {
      */
     public void setIsSphere(java.lang.Boolean value) {
         this.isSphere = value;
+    }
+
+    public boolean isSetIsSphere() {
+        return (this.isSphere!= null);
     }
 
 }

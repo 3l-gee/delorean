@@ -123,6 +123,14 @@ public class BSplineType
         return this.posOrPointPropertyOrPointRep;
     }
 
+    public boolean isSetPosOrPointPropertyOrPointRep() {
+        return ((this.posOrPointPropertyOrPointRep!= null)&&(!this.posOrPointPropertyOrPointRep.isEmpty()));
+    }
+
+    public void unsetPosOrPointPropertyOrPointRep() {
+        this.posOrPointPropertyOrPointRep = null;
+    }
+
     /**
      * Gets the value of the posList property.
      * 
@@ -145,6 +153,10 @@ public class BSplineType
      */
     public void setPosList(DirectPositionListType value) {
         this.posList = value;
+    }
+
+    public boolean isSetPosList() {
+        return (this.posList!= null);
     }
 
     /**
@@ -171,6 +183,10 @@ public class BSplineType
         this.coordinates = value;
     }
 
+    public boolean isSetCoordinates() {
+        return (this.coordinates!= null);
+    }
+
     /**
      * Gets the value of the degree property.
      * 
@@ -193,6 +209,10 @@ public class BSplineType
      */
     public void setDegree(BigInteger value) {
         this.degree = value;
+    }
+
+    public boolean isSetDegree() {
+        return (this.degree!= null);
     }
 
     /**
@@ -227,6 +247,14 @@ public class BSplineType
         return this.knot;
     }
 
+    public boolean isSetKnot() {
+        return ((this.knot!= null)&&(!this.knot.isEmpty()));
+    }
+
+    public void unsetKnot() {
+        this.knot = null;
+    }
+
     /**
      * Gets the value of the interpolation property.
      * 
@@ -255,6 +283,10 @@ public class BSplineType
         this.interpolation = value;
     }
 
+    public boolean isSetInterpolation() {
+        return (this.interpolation!= null);
+    }
+
     /**
      * Gets the value of the isPolynomial property.
      * 
@@ -263,7 +295,7 @@ public class BSplineType
      *     {@link java.lang.Boolean }
      *     
      */
-    public java.lang.Boolean isIsPolynomial() {
+    public boolean isIsPolynomial() {
         return isPolynomial;
     }
 
@@ -275,8 +307,16 @@ public class BSplineType
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setIsPolynomial(java.lang.Boolean value) {
+    public void setIsPolynomial(boolean value) {
         this.isPolynomial = value;
+    }
+
+    public boolean isSetIsPolynomial() {
+        return (this.isPolynomial!= null);
+    }
+
+    public void unsetIsPolynomial() {
+        this.isPolynomial = null;
     }
 
     /**
@@ -301,6 +341,10 @@ public class BSplineType
      */
     public void setKnotType(KnotTypesType value) {
         this.knotType = value;
+    }
+
+    public boolean isSetKnotType() {
+        return (this.knotType!= null);
     }
 
 }

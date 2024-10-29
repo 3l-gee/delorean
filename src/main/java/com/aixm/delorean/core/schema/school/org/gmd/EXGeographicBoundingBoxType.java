@@ -82,6 +82,10 @@ public class EXGeographicBoundingBoxType
         this.westBoundLongitude = value;
     }
 
+    public boolean isSetWestBoundLongitude() {
+        return (this.westBoundLongitude!= null);
+    }
+
     /**
      * Gets the value of the eastBoundLongitude property.
      * 
@@ -104,6 +108,10 @@ public class EXGeographicBoundingBoxType
      */
     public void setEastBoundLongitude(DecimalPropertyType value) {
         this.eastBoundLongitude = value;
+    }
+
+    public boolean isSetEastBoundLongitude() {
+        return (this.eastBoundLongitude!= null);
     }
 
     /**
@@ -130,6 +138,10 @@ public class EXGeographicBoundingBoxType
         this.southBoundLatitude = value;
     }
 
+    public boolean isSetSouthBoundLatitude() {
+        return (this.southBoundLatitude!= null);
+    }
+
     /**
      * Gets the value of the northBoundLatitude property.
      * 
@@ -152,6 +164,10 @@ public class EXGeographicBoundingBoxType
      */
     public void setNorthBoundLatitude(DecimalPropertyType value) {
         this.northBoundLatitude = value;
+    }
+
+    public boolean isSetNorthBoundLatitude() {
+        return (this.northBoundLatitude!= null);
     }
 
 }

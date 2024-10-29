@@ -77,4 +77,12 @@ public class TimeOrdinalReferenceSystemType
         return this.component;
     }
 
+    public boolean isSetComponent() {
+        return ((this.component!= null)&&(!this.component.isEmpty()));
+    }
+
+    public void unsetComponent() {
+        this.component = null;
+    }
+
 }

@@ -7,6 +7,13 @@
 
 package com.aixm.delorean.core.schema.school;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -40,12 +47,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "name",
     "id"
 })
+@Entity
+@Table(name = "impl_aixm_elevated_surface")
 public class ImplementationAixmElevatedSurface {
 
     @XmlElement(required = true)
+    @Embedded
     protected ElevatedSurfacePropertyType aixmElevatedSurface;
     @XmlElement(required = true)
+    @Column(name = "name")
     protected String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     protected long id;
 
     /**
@@ -72,6 +86,10 @@ public class ImplementationAixmElevatedSurface {
         this.aixmElevatedSurface = value;
     }
 
+    public boolean isSetAixmElevatedSurface() {
+        return (this.aixmElevatedSurface!= null);
+    }
+
     /**
      * Gets the value of the name property.
      * 
@@ -96,6 +114,10 @@ public class ImplementationAixmElevatedSurface {
         this.name = value;
     }
 
+    public boolean isSetName() {
+        return (this.name!= null);
+    }
+
     /**
      * Gets the value of the id property.
      * 
@@ -110,6 +132,10 @@ public class ImplementationAixmElevatedSurface {
      */
     public void setId(long value) {
         this.id = value;
+    }
+
+    public boolean isSetId() {
+        return true;
     }
 
 }

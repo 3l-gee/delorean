@@ -83,6 +83,14 @@ public class GridEnvelopeType {
         return this.low;
     }
 
+    public boolean isSetLow() {
+        return ((this.low!= null)&&(!this.low.isEmpty()));
+    }
+
+    public void unsetLow() {
+        this.low = null;
+    }
+
     /**
      * Gets the value of the high property.
      * 
@@ -113,6 +121,14 @@ public class GridEnvelopeType {
             high = new ArrayList<>();
         }
         return this.high;
+    }
+
+    public boolean isSetHigh() {
+        return ((this.high!= null)&&(!this.high.isEmpty()));
+    }
+
+    public void unsetHigh() {
+        this.high = null;
     }
 
 }

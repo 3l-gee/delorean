@@ -107,6 +107,10 @@ public abstract class AbstractCoverageType
         this.domainSet = value;
     }
 
+    public boolean isSetDomainSet() {
+        return (this.domainSet!= null);
+    }
+
     /**
      * The gml:rangeSet property element contains the values of the coverage (sometimes called the attribute values).  Its content model is given by gml:RangeSetType.
      * This content model supports a structural description of the range.  The semantic information describing the range set is embedded using a uniform method, as part of the explicit values, or as a template value accompanying the representation using gml:DataBlock and gml:File.
@@ -132,6 +136,10 @@ public abstract class AbstractCoverageType
      */
     public void setRangeSet(RangeSetType value) {
         this.rangeSet = value;
+    }
+
+    public boolean isSetRangeSet() {
+        return (this.rangeSet!= null);
     }
 
 }

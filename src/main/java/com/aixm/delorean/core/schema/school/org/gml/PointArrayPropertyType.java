@@ -85,6 +85,14 @@ public class PointArrayPropertyType {
         return this.point;
     }
 
+    public boolean isSetPoint() {
+        return ((this.point!= null)&&(!this.point.isEmpty()));
+    }
+
+    public void unsetPoint() {
+        this.point = null;
+    }
+
     /**
      * Gets the value of the owns property.
      * 
@@ -109,8 +117,16 @@ public class PointArrayPropertyType {
      *     {@link java.lang.Boolean }
      *     
      */
-    public void setOwns(java.lang.Boolean value) {
+    public void setOwns(boolean value) {
         this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

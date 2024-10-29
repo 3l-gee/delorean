@@ -79,6 +79,10 @@ public class MDStandardOrderProcessType
         this.fees = value;
     }
 
+    public boolean isSetFees() {
+        return (this.fees!= null);
+    }
+
     /**
      * Gets the value of the plannedAvailableDateTime property.
      * 
@@ -101,6 +105,10 @@ public class MDStandardOrderProcessType
      */
     public void setPlannedAvailableDateTime(DateTimePropertyType value) {
         this.plannedAvailableDateTime = value;
+    }
+
+    public boolean isSetPlannedAvailableDateTime() {
+        return (this.plannedAvailableDateTime!= null);
     }
 
     /**
@@ -127,6 +135,10 @@ public class MDStandardOrderProcessType
         this.orderingInstructions = value;
     }
 
+    public boolean isSetOrderingInstructions() {
+        return (this.orderingInstructions!= null);
+    }
+
     /**
      * Gets the value of the turnaround property.
      * 
@@ -149,6 +161,10 @@ public class MDStandardOrderProcessType
      */
     public void setTurnaround(CharacterStringPropertyType value) {
         this.turnaround = value;
+    }
+
+    public boolean isSetTurnaround() {
+        return (this.turnaround!= null);
     }
 
 }
