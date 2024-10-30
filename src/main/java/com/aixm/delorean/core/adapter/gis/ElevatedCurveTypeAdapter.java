@@ -3,7 +3,7 @@ package com.aixm.delorean.core.adapter.gis;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedCurveType;
-import com.aixm.delorean.core.schema.school.ElevatedCurveType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
 
 public class ElevatedCurveTypeAdapter extends XmlAdapter<ElevatedCurveType, AixmElevatedCurveType>
 {

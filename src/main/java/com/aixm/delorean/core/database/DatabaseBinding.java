@@ -4,7 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.aixm.delorean.core.schema.school.School;
+// import com.aixm.delorean.core.schema.school.School;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 
 import org.hibernate.Transaction;
 
@@ -82,7 +83,7 @@ public class DatabaseBinding {
 
         try {
             transaction = session.beginTransaction();
-            object = session.get(School.class, id);
+            object = session.get(AIXMBasicMessageType.class, id);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

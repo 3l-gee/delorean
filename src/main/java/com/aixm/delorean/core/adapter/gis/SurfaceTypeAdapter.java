@@ -3,7 +3,7 @@ package com.aixm.delorean.core.adapter.gis;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 import com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType;
-import com.aixm.delorean.core.schema.school.SurfaceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType;
 
 public class SurfaceTypeAdapter extends XmlAdapter<SurfaceType, AixmSurfaceType>
 {
