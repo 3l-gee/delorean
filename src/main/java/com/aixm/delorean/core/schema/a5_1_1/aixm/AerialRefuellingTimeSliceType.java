@@ -15,7 +15,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -52,113 +51,775 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AerialRefuellingTimeSliceType", propOrder = {
-    "rest"
+    "designatorPrefix",
+    "designatorNumber",
+    "designatorSuffix",
+    "designatorDirection",
+    "aixmName",
+    "type",
+    "radarBeaconSetting",
+    "xbandRadarSetting",
+    "tankerChannel",
+    "receiverChannel",
+    "helicopterRoute",
+    "specialRefuelling",
+    "bidirectionalUse",
+    "reverseDirectionTurn",
+    "availability",
+    "protectingAirspace",
+    "track",
+    "anchor",
+    "oppositeTrack",
+    "managingOrganisation",
+    "annotation",
+    "extension"
 })
 public class AerialRefuellingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 82 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
-     * 
-     */
-    @XmlElementRefs({
-        @XmlElementRef(name = "designatorPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "designatorNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "designatorSuffix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "designatorDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "radarBeaconSetting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "xbandRadarSetting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "tankerChannel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "receiverChannel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "helicopterRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "specialRefuelling", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "bidirectionalUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "reverseDirectionTurn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "availability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "protectingAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "track", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "anchor", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "oppositeTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "managingOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    })
-    protected List<JAXBElement<?>> rest;
+    @XmlElementRef(name = "designatorPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAerialRefuellingPrefixType> designatorPrefix;
+    @XmlElementRef(name = "designatorNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<NoNumberType> designatorNumber;
+    @XmlElementRef(name = "designatorSuffix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextDesignatorType> designatorSuffix;
+    @XmlElementRef(name = "designatorDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeCardinalDirectionType> designatorDirection;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextNameType> aixmName;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAerialRefuellingType> type;
+    @XmlElementRef(name = "radarBeaconSetting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<NoNumberType> radarBeaconSetting;
+    @XmlElementRef(name = "xbandRadarSetting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<NoNumberType> xbandRadarSetting;
+    @XmlElementRef(name = "tankerChannel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeTACANChannelType> tankerChannel;
+    @XmlElementRef(name = "receiverChannel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeTACANChannelType> receiverChannel;
+    @XmlElementRef(name = "helicopterRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> helicopterRoute;
+    @XmlElementRef(name = "specialRefuelling", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> specialRefuelling;
+    @XmlElementRef(name = "bidirectionalUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> bidirectionalUse;
+    @XmlElementRef(name = "reverseDirectionTurn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeDirectionTurnType> reverseDirectionTurn;
+    @XmlElement(nillable = true)
+    protected List<RouteAvailabilityPropertyType> availability;
+    @XmlElement(nillable = true)
+    protected List<AirspacePropertyType> protectingAirspace;
+    @XmlElement(nillable = true)
+    protected List<AerialRefuellingTrackPropertyType> track;
+    @XmlElement(nillable = true)
+    protected List<AerialRefuellingAnchorPropertyType> anchor;
+    @XmlElementRef(name = "oppositeTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<AerialRefuellingPropertyType> oppositeTrack;
+    @XmlElement(nillable = true)
+    protected List<AuthorityForAerialRefuellingPropertyType> managingOrganisation;
+    @XmlElement(nillable = true)
+    protected List<NotePropertyType> annotation;
+    protected List<AerialRefuellingTimeSliceType.Extension> extension;
 
     /**
-     * Gets the rest of the content model. 
+     * Gets the value of the designatorPrefix property.
      * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 82 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeAerialRefuellingPrefixType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeAerialRefuellingPrefixType> getDesignatorPrefix() {
+        return designatorPrefix;
+    }
+
+    /**
+     * Sets the value of the designatorPrefix property.
      * 
-     * Gets the value of the rest property.
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeAerialRefuellingPrefixType }{@code >}
+     *     
+     */
+    public void setDesignatorPrefix(JAXBElement<CodeAerialRefuellingPrefixType> value) {
+        this.designatorPrefix = value;
+    }
+
+    public boolean isSetDesignatorPrefix() {
+        return (this.designatorPrefix!= null);
+    }
+
+    /**
+     * Gets the value of the designatorNumber property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     
+     */
+    public JAXBElement<NoNumberType> getDesignatorNumber() {
+        return designatorNumber;
+    }
+
+    /**
+     * Sets the value of the designatorNumber property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     
+     */
+    public void setDesignatorNumber(JAXBElement<NoNumberType> value) {
+        this.designatorNumber = value;
+    }
+
+    public boolean isSetDesignatorNumber() {
+        return (this.designatorNumber!= null);
+    }
+
+    /**
+     * Gets the value of the designatorSuffix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     
+     */
+    public JAXBElement<TextDesignatorType> getDesignatorSuffix() {
+        return designatorSuffix;
+    }
+
+    /**
+     * Sets the value of the designatorSuffix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     
+     */
+    public void setDesignatorSuffix(JAXBElement<TextDesignatorType> value) {
+        this.designatorSuffix = value;
+    }
+
+    public boolean isSetDesignatorSuffix() {
+        return (this.designatorSuffix!= null);
+    }
+
+    /**
+     * Gets the value of the designatorDirection property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeCardinalDirectionType> getDesignatorDirection() {
+        return designatorDirection;
+    }
+
+    /**
+     * Sets the value of the designatorDirection property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
+     *     
+     */
+    public void setDesignatorDirection(JAXBElement<CodeCardinalDirectionType> value) {
+        this.designatorDirection = value;
+    }
+
+    public boolean isSetDesignatorDirection() {
+        return (this.designatorDirection!= null);
+    }
+
+    /**
+     * Gets the value of the aixmName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public JAXBElement<TextNameType> getAIXMName() {
+        return aixmName;
+    }
+
+    /**
+     * Sets the value of the aixmName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public void setAIXMName(JAXBElement<TextNameType> value) {
+        this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
+    /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeAerialRefuellingType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeAerialRefuellingType> getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeAerialRefuellingType }{@code >}
+     *     
+     */
+    public void setType(JAXBElement<CodeAerialRefuellingType> value) {
+        this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
+    /**
+     * Gets the value of the radarBeaconSetting property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     
+     */
+    public JAXBElement<NoNumberType> getRadarBeaconSetting() {
+        return radarBeaconSetting;
+    }
+
+    /**
+     * Sets the value of the radarBeaconSetting property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     
+     */
+    public void setRadarBeaconSetting(JAXBElement<NoNumberType> value) {
+        this.radarBeaconSetting = value;
+    }
+
+    public boolean isSetRadarBeaconSetting() {
+        return (this.radarBeaconSetting!= null);
+    }
+
+    /**
+     * Gets the value of the xbandRadarSetting property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     
+     */
+    public JAXBElement<NoNumberType> getXbandRadarSetting() {
+        return xbandRadarSetting;
+    }
+
+    /**
+     * Sets the value of the xbandRadarSetting property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     
+     */
+    public void setXbandRadarSetting(JAXBElement<NoNumberType> value) {
+        this.xbandRadarSetting = value;
+    }
+
+    public boolean isSetXbandRadarSetting() {
+        return (this.xbandRadarSetting!= null);
+    }
+
+    /**
+     * Gets the value of the tankerChannel property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeTACANChannelType> getTankerChannel() {
+        return tankerChannel;
+    }
+
+    /**
+     * Sets the value of the tankerChannel property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
+     *     
+     */
+    public void setTankerChannel(JAXBElement<CodeTACANChannelType> value) {
+        this.tankerChannel = value;
+    }
+
+    public boolean isSetTankerChannel() {
+        return (this.tankerChannel!= null);
+    }
+
+    /**
+     * Gets the value of the receiverChannel property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeTACANChannelType> getReceiverChannel() {
+        return receiverChannel;
+    }
+
+    /**
+     * Sets the value of the receiverChannel property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
+     *     
+     */
+    public void setReceiverChannel(JAXBElement<CodeTACANChannelType> value) {
+        this.receiverChannel = value;
+    }
+
+    public boolean isSetReceiverChannel() {
+        return (this.receiverChannel!= null);
+    }
+
+    /**
+     * Gets the value of the helicopterRoute property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeYesNoType> getHelicopterRoute() {
+        return helicopterRoute;
+    }
+
+    /**
+     * Sets the value of the helicopterRoute property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public void setHelicopterRoute(JAXBElement<CodeYesNoType> value) {
+        this.helicopterRoute = value;
+    }
+
+    public boolean isSetHelicopterRoute() {
+        return (this.helicopterRoute!= null);
+    }
+
+    /**
+     * Gets the value of the specialRefuelling property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeYesNoType> getSpecialRefuelling() {
+        return specialRefuelling;
+    }
+
+    /**
+     * Sets the value of the specialRefuelling property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public void setSpecialRefuelling(JAXBElement<CodeYesNoType> value) {
+        this.specialRefuelling = value;
+    }
+
+    public boolean isSetSpecialRefuelling() {
+        return (this.specialRefuelling!= null);
+    }
+
+    /**
+     * Gets the value of the bidirectionalUse property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeYesNoType> getBidirectionalUse() {
+        return bidirectionalUse;
+    }
+
+    /**
+     * Sets the value of the bidirectionalUse property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public void setBidirectionalUse(JAXBElement<CodeYesNoType> value) {
+        this.bidirectionalUse = value;
+    }
+
+    public boolean isSetBidirectionalUse() {
+        return (this.bidirectionalUse!= null);
+    }
+
+    /**
+     * Gets the value of the reverseDirectionTurn property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeDirectionTurnType> getReverseDirectionTurn() {
+        return reverseDirectionTurn;
+    }
+
+    /**
+     * Sets the value of the reverseDirectionTurn property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
+     *     
+     */
+    public void setReverseDirectionTurn(JAXBElement<CodeDirectionTurnType> value) {
+        this.reverseDirectionTurn = value;
+    }
+
+    public boolean isSetReverseDirectionTurn() {
+        return (this.reverseDirectionTurn!= null);
+    }
+
+    /**
+     * Gets the value of the availability property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the availability property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getRest().add(newItem);
+     * getAvailability().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link AerialRefuellingAnchorPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AerialRefuellingTimeSliceType.Extension }{@code >}
-     * {@link JAXBElement }{@code <}{@link AerialRefuellingTrackPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AuthorityForAerialRefuellingPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeAerialRefuellingPrefixType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeAerialRefuellingType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RouteAvailabilityPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link RouteAvailabilityPropertyType }
      * </p>
      * 
      * 
      * @return
-     *     The value of the rest property.
+     *     The value of the availability property.
      */
-    public List<JAXBElement<?>> getRest() {
-        if (rest == null) {
-            rest = new ArrayList<>();
+    public List<RouteAvailabilityPropertyType> getAvailability() {
+        if (availability == null) {
+            availability = new ArrayList<>();
         }
-        return this.rest;
+        return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
+    /**
+     * Gets the value of the protectingAirspace property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the protectingAirspace property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getProtectingAirspace().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AirspacePropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the protectingAirspace property.
+     */
+    public List<AirspacePropertyType> getProtectingAirspace() {
+        if (protectingAirspace == null) {
+            protectingAirspace = new ArrayList<>();
+        }
+        return this.protectingAirspace;
+    }
+
+    public boolean isSetProtectingAirspace() {
+        return ((this.protectingAirspace!= null)&&(!this.protectingAirspace.isEmpty()));
+    }
+
+    public void unsetProtectingAirspace() {
+        this.protectingAirspace = null;
+    }
+
+    /**
+     * Gets the value of the track property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the track property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getTrack().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AerialRefuellingTrackPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the track property.
+     */
+    public List<AerialRefuellingTrackPropertyType> getTrack() {
+        if (track == null) {
+            track = new ArrayList<>();
+        }
+        return this.track;
+    }
+
+    public boolean isSetTrack() {
+        return ((this.track!= null)&&(!this.track.isEmpty()));
+    }
+
+    public void unsetTrack() {
+        this.track = null;
+    }
+
+    /**
+     * Gets the value of the anchor property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the anchor property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAnchor().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AerialRefuellingAnchorPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the anchor property.
+     */
+    public List<AerialRefuellingAnchorPropertyType> getAnchor() {
+        if (anchor == null) {
+            anchor = new ArrayList<>();
+        }
+        return this.anchor;
+    }
+
+    public boolean isSetAnchor() {
+        return ((this.anchor!= null)&&(!this.anchor.isEmpty()));
+    }
+
+    public void unsetAnchor() {
+        this.anchor = null;
+    }
+
+    /**
+     * Gets the value of the oppositeTrack property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<AerialRefuellingPropertyType> getOppositeTrack() {
+        return oppositeTrack;
+    }
+
+    /**
+     * Sets the value of the oppositeTrack property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
+     *     
+     */
+    public void setOppositeTrack(JAXBElement<AerialRefuellingPropertyType> value) {
+        this.oppositeTrack = value;
+    }
+
+    public boolean isSetOppositeTrack() {
+        return (this.oppositeTrack!= null);
+    }
+
+    /**
+     * Gets the value of the managingOrganisation property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the managingOrganisation property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getManagingOrganisation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AuthorityForAerialRefuellingPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the managingOrganisation property.
+     */
+    public List<AuthorityForAerialRefuellingPropertyType> getManagingOrganisation() {
+        if (managingOrganisation == null) {
+            managingOrganisation = new ArrayList<>();
+        }
+        return this.managingOrganisation;
+    }
+
+    public boolean isSetManagingOrganisation() {
+        return ((this.managingOrganisation!= null)&&(!this.managingOrganisation.isEmpty()));
+    }
+
+    public void unsetManagingOrganisation() {
+        this.managingOrganisation = null;
+    }
+
+    /**
+     * Gets the value of the annotation property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAnnotation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link NotePropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the annotation property.
+     */
+    public List<NotePropertyType> getAnnotation() {
+        if (annotation == null) {
+            annotation = new ArrayList<>();
+        }
+        return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getExtension().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AerialRefuellingTimeSliceType.Extension }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the extension property.
+     */
+    public List<AerialRefuellingTimeSliceType.Extension> getExtension() {
+        if (extension == null) {
+            extension = new ArrayList<>();
+        }
+        return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 

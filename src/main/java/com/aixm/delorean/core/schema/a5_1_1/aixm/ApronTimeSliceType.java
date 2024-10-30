@@ -15,7 +15,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -52,85 +51,305 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ApronTimeSliceType", propOrder = {
-    "rest"
+    "aixmName",
+    "abandoned",
+    "surfaceProperties",
+    "associatedAirportHeliport",
+    "contaminant",
+    "annotation",
+    "availability",
+    "extension"
 })
 public class ApronTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 1072 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
-     * 
-     */
-    @XmlElementRefs({
-        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "contaminant", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "availability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    })
-    protected List<JAXBElement<?>> rest;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextNameType> aixmName;
+    @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> abandoned;
+    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
+    @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
+    @XmlElement(nillable = true)
+    protected List<ApronContaminationPropertyType> contaminant;
+    @XmlElement(nillable = true)
+    protected List<NotePropertyType> annotation;
+    @XmlElement(nillable = true)
+    protected List<ApronAreaAvailabilityPropertyType> availability;
+    protected List<ApronTimeSliceType.Extension> extension;
 
     /**
-     * Gets the rest of the content model. 
+     * Gets the value of the aixmName property.
      * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 1072 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public JAXBElement<TextNameType> getAIXMName() {
+        return aixmName;
+    }
+
+    /**
+     * Sets the value of the aixmName property.
      * 
-     * Gets the value of the rest property.
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public void setAIXMName(JAXBElement<TextNameType> value) {
+        this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
+    /**
+     * Gets the value of the abandoned property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeYesNoType> getAbandoned() {
+        return abandoned;
+    }
+
+    /**
+     * Sets the value of the abandoned property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public void setAbandoned(JAXBElement<CodeYesNoType> value) {
+        this.abandoned = value;
+    }
+
+    public boolean isSetAbandoned() {
+        return (this.abandoned!= null);
+    }
+
+    /**
+     * Gets the value of the surfaceProperties property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
+        return surfaceProperties;
+    }
+
+    /**
+     * Sets the value of the surfaceProperties property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     
+     */
+    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
+        this.surfaceProperties = value;
+    }
+
+    public boolean isSetSurfaceProperties() {
+        return (this.surfaceProperties!= null);
+    }
+
+    /**
+     * Gets the value of the associatedAirportHeliport property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirportHeliport() {
+        return associatedAirportHeliport;
+    }
+
+    /**
+     * Sets the value of the associatedAirportHeliport property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     
+     */
+    public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+        this.associatedAirportHeliport = value;
+    }
+
+    public boolean isSetAssociatedAirportHeliport() {
+        return (this.associatedAirportHeliport!= null);
+    }
+
+    /**
+     * Gets the value of the contaminant property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the contaminant property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getRest().add(newItem);
+     * getContaminant().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ApronAreaAvailabilityPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ApronContaminationPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ApronTimeSliceType.Extension }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link ApronContaminationPropertyType }
      * </p>
      * 
      * 
      * @return
-     *     The value of the rest property.
+     *     The value of the contaminant property.
      */
-    public List<JAXBElement<?>> getRest() {
-        if (rest == null) {
-            rest = new ArrayList<>();
+    public List<ApronContaminationPropertyType> getContaminant() {
+        if (contaminant == null) {
+            contaminant = new ArrayList<>();
         }
-        return this.rest;
+        return this.contaminant;
+    }
+
+    public boolean isSetContaminant() {
+        return ((this.contaminant!= null)&&(!this.contaminant.isEmpty()));
+    }
+
+    public void unsetContaminant() {
+        this.contaminant = null;
+    }
+
+    /**
+     * Gets the value of the annotation property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAnnotation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link NotePropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the annotation property.
+     */
+    public List<NotePropertyType> getAnnotation() {
+        if (annotation == null) {
+            annotation = new ArrayList<>();
+        }
+        return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
+    /**
+     * Gets the value of the availability property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the availability property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAvailability().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ApronAreaAvailabilityPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the availability property.
+     */
+    public List<ApronAreaAvailabilityPropertyType> getAvailability() {
+        if (availability == null) {
+            availability = new ArrayList<>();
+        }
+        return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getExtension().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ApronTimeSliceType.Extension }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the extension property.
+     */
+    public List<ApronTimeSliceType.Extension> getExtension() {
+        if (extension == null) {
+            extension = new ArrayList<>();
+        }
+        return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 

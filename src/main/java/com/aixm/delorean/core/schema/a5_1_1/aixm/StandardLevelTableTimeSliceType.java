@@ -15,7 +15,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -52,77 +51,157 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "StandardLevelTableTimeSliceType", propOrder = {
-    "rest"
+    "aixmName",
+    "standardICAO",
+    "annotation",
+    "extension"
 })
 public class StandardLevelTableTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 11041 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
-     * 
-     */
-    @XmlElementRefs({
-        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "standardICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    })
-    protected List<JAXBElement<?>> rest;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeLevelTableDesignatorType> aixmName;
+    @XmlElementRef(name = "standardICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> standardICAO;
+    @XmlElement(nillable = true)
+    protected List<NotePropertyType> annotation;
+    protected List<StandardLevelTableTimeSliceType.Extension> extension;
 
     /**
-     * Gets the rest of the content model. 
+     * Gets the value of the aixmName property.
      * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 11041 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeLevelTableDesignatorType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeLevelTableDesignatorType> getAIXMName() {
+        return aixmName;
+    }
+
+    /**
+     * Sets the value of the aixmName property.
      * 
-     * Gets the value of the rest property.
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeLevelTableDesignatorType }{@code >}
+     *     
+     */
+    public void setAIXMName(JAXBElement<CodeLevelTableDesignatorType> value) {
+        this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
+    /**
+     * Gets the value of the standardICAO property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeYesNoType> getStandardICAO() {
+        return standardICAO;
+    }
+
+    /**
+     * Sets the value of the standardICAO property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public void setStandardICAO(JAXBElement<CodeYesNoType> value) {
+        this.standardICAO = value;
+    }
+
+    public boolean isSetStandardICAO() {
+        return (this.standardICAO!= null);
+    }
+
+    /**
+     * Gets the value of the annotation property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getRest().add(newItem);
+     * getAnnotation().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link CodeLevelTableDesignatorType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link StandardLevelTableTimeSliceType.Extension }{@code >}
+     * {@link NotePropertyType }
      * </p>
      * 
      * 
      * @return
-     *     The value of the rest property.
+     *     The value of the annotation property.
      */
-    public List<JAXBElement<?>> getRest() {
-        if (rest == null) {
-            rest = new ArrayList<>();
+    public List<NotePropertyType> getAnnotation() {
+        if (annotation == null) {
+            annotation = new ArrayList<>();
         }
-        return this.rest;
+        return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getExtension().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link StandardLevelTableTimeSliceType.Extension }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the extension property.
+     */
+    public List<StandardLevelTableTimeSliceType.Extension> getExtension() {
+        if (extension == null) {
+            extension = new ArrayList<>();
+        }
+        return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 

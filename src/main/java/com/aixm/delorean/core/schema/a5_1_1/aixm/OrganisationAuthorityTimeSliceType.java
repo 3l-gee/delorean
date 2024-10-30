@@ -15,7 +15,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -52,85 +51,305 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OrganisationAuthorityTimeSliceType", propOrder = {
-    "rest"
+    "aixmName",
+    "designator",
+    "type",
+    "military",
+    "contact",
+    "relatedOrganisationAuthority",
+    "annotation",
+    "extension"
 })
 public class OrganisationAuthorityTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 6532 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
-     * 
-     */
-    @XmlElementRefs({
-        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "military", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "contact", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "relatedOrganisationAuthority", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    })
-    protected List<JAXBElement<?>> rest;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextNameType> aixmName;
+    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeOrganisationDesignatorType> designator;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeOrganisationType> type;
+    @XmlElementRef(name = "military", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeMilitaryOperationsType> military;
+    @XmlElement(nillable = true)
+    protected List<ContactInformationPropertyType> contact;
+    @XmlElement(nillable = true)
+    protected List<OrganisationAuthorityAssociationPropertyType> relatedOrganisationAuthority;
+    @XmlElement(nillable = true)
+    protected List<NotePropertyType> annotation;
+    protected List<OrganisationAuthorityTimeSliceType.Extension> extension;
 
     /**
-     * Gets the rest of the content model. 
+     * Gets the value of the aixmName property.
      * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 6532 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public JAXBElement<TextNameType> getAIXMName() {
+        return aixmName;
+    }
+
+    /**
+     * Sets the value of the aixmName property.
      * 
-     * Gets the value of the rest property.
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public void setAIXMName(JAXBElement<TextNameType> value) {
+        this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
+    /**
+     * Gets the value of the designator property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeOrganisationDesignatorType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeOrganisationDesignatorType> getDesignator() {
+        return designator;
+    }
+
+    /**
+     * Sets the value of the designator property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeOrganisationDesignatorType }{@code >}
+     *     
+     */
+    public void setDesignator(JAXBElement<CodeOrganisationDesignatorType> value) {
+        this.designator = value;
+    }
+
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
+    /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeOrganisationType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeOrganisationType> getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeOrganisationType }{@code >}
+     *     
+     */
+    public void setType(JAXBElement<CodeOrganisationType> value) {
+        this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
+    /**
+     * Gets the value of the military property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeMilitaryOperationsType> getMilitary() {
+        return military;
+    }
+
+    /**
+     * Sets the value of the military property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     *     
+     */
+    public void setMilitary(JAXBElement<CodeMilitaryOperationsType> value) {
+        this.military = value;
+    }
+
+    public boolean isSetMilitary() {
+        return (this.military!= null);
+    }
+
+    /**
+     * Gets the value of the contact property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the contact property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getRest().add(newItem);
+     * getContact().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeOrganisationDesignatorType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeOrganisationType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link OrganisationAuthorityAssociationPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link OrganisationAuthorityTimeSliceType.Extension }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link ContactInformationPropertyType }
      * </p>
      * 
      * 
      * @return
-     *     The value of the rest property.
+     *     The value of the contact property.
      */
-    public List<JAXBElement<?>> getRest() {
-        if (rest == null) {
-            rest = new ArrayList<>();
+    public List<ContactInformationPropertyType> getContact() {
+        if (contact == null) {
+            contact = new ArrayList<>();
         }
-        return this.rest;
+        return this.contact;
+    }
+
+    public boolean isSetContact() {
+        return ((this.contact!= null)&&(!this.contact.isEmpty()));
+    }
+
+    public void unsetContact() {
+        this.contact = null;
+    }
+
+    /**
+     * Gets the value of the relatedOrganisationAuthority property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the relatedOrganisationAuthority property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getRelatedOrganisationAuthority().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link OrganisationAuthorityAssociationPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the relatedOrganisationAuthority property.
+     */
+    public List<OrganisationAuthorityAssociationPropertyType> getRelatedOrganisationAuthority() {
+        if (relatedOrganisationAuthority == null) {
+            relatedOrganisationAuthority = new ArrayList<>();
+        }
+        return this.relatedOrganisationAuthority;
+    }
+
+    public boolean isSetRelatedOrganisationAuthority() {
+        return ((this.relatedOrganisationAuthority!= null)&&(!this.relatedOrganisationAuthority.isEmpty()));
+    }
+
+    public void unsetRelatedOrganisationAuthority() {
+        this.relatedOrganisationAuthority = null;
+    }
+
+    /**
+     * Gets the value of the annotation property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAnnotation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link NotePropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the annotation property.
+     */
+    public List<NotePropertyType> getAnnotation() {
+        if (annotation == null) {
+            annotation = new ArrayList<>();
+        }
+        return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getExtension().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link OrganisationAuthorityTimeSliceType.Extension }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the extension property.
+     */
+    public List<OrganisationAuthorityTimeSliceType.Extension> getExtension() {
+        if (extension == null) {
+            extension = new ArrayList<>();
+        }
+        return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 

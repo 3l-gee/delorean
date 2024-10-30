@@ -15,7 +15,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -52,97 +51,467 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RouteTimeSliceType", propOrder = {
-    "rest"
+    "designatorPrefix",
+    "designatorSecondLetter",
+    "designatorNumber",
+    "multipleIdentifier",
+    "locationDesignator",
+    "aixmName",
+    "type",
+    "flightRule",
+    "internationalUse",
+    "militaryUse",
+    "militaryTrainingType",
+    "userOrganisation",
+    "annotation",
+    "extension"
 })
 public class RouteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 8563 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
-     * 
-     */
-    @XmlElementRefs({
-        @XmlElementRef(name = "designatorPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "designatorSecondLetter", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "designatorNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "multipleIdentifier", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "locationDesignator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "flightRule", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "internationalUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "militaryUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "militaryTrainingType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "userOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    })
-    protected List<JAXBElement<?>> rest;
+    @XmlElementRef(name = "designatorPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRouteDesignatorPrefixType> designatorPrefix;
+    @XmlElementRef(name = "designatorSecondLetter", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRouteDesignatorLetterType> designatorSecondLetter;
+    @XmlElementRef(name = "designatorNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<NoNumberType> designatorNumber;
+    @XmlElementRef(name = "multipleIdentifier", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeUpperAlphaType> multipleIdentifier;
+    @XmlElementRef(name = "locationDesignator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextDesignatorType> locationDesignator;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextNameType> aixmName;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRouteType> type;
+    @XmlElementRef(name = "flightRule", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeFlightRuleType> flightRule;
+    @XmlElementRef(name = "internationalUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeRouteOriginType> internationalUse;
+    @XmlElementRef(name = "militaryUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeMilitaryStatusType> militaryUse;
+    @XmlElementRef(name = "militaryTrainingType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeMilitaryTrainingType> militaryTrainingType;
+    @XmlElementRef(name = "userOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<OrganisationAuthorityPropertyType> userOrganisation;
+    @XmlElement(nillable = true)
+    protected List<NotePropertyType> annotation;
+    protected List<RouteTimeSliceType.Extension> extension;
 
     /**
-     * Gets the rest of the content model. 
+     * Gets the value of the designatorPrefix property.
      * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 8563 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeRouteDesignatorPrefixType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeRouteDesignatorPrefixType> getDesignatorPrefix() {
+        return designatorPrefix;
+    }
+
+    /**
+     * Sets the value of the designatorPrefix property.
      * 
-     * Gets the value of the rest property.
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeRouteDesignatorPrefixType }{@code >}
+     *     
+     */
+    public void setDesignatorPrefix(JAXBElement<CodeRouteDesignatorPrefixType> value) {
+        this.designatorPrefix = value;
+    }
+
+    public boolean isSetDesignatorPrefix() {
+        return (this.designatorPrefix!= null);
+    }
+
+    /**
+     * Gets the value of the designatorSecondLetter property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeRouteDesignatorLetterType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeRouteDesignatorLetterType> getDesignatorSecondLetter() {
+        return designatorSecondLetter;
+    }
+
+    /**
+     * Sets the value of the designatorSecondLetter property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeRouteDesignatorLetterType }{@code >}
+     *     
+     */
+    public void setDesignatorSecondLetter(JAXBElement<CodeRouteDesignatorLetterType> value) {
+        this.designatorSecondLetter = value;
+    }
+
+    public boolean isSetDesignatorSecondLetter() {
+        return (this.designatorSecondLetter!= null);
+    }
+
+    /**
+     * Gets the value of the designatorNumber property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     
+     */
+    public JAXBElement<NoNumberType> getDesignatorNumber() {
+        return designatorNumber;
+    }
+
+    /**
+     * Sets the value of the designatorNumber property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     
+     */
+    public void setDesignatorNumber(JAXBElement<NoNumberType> value) {
+        this.designatorNumber = value;
+    }
+
+    public boolean isSetDesignatorNumber() {
+        return (this.designatorNumber!= null);
+    }
+
+    /**
+     * Gets the value of the multipleIdentifier property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeUpperAlphaType> getMultipleIdentifier() {
+        return multipleIdentifier;
+    }
+
+    /**
+     * Sets the value of the multipleIdentifier property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     
+     */
+    public void setMultipleIdentifier(JAXBElement<CodeUpperAlphaType> value) {
+        this.multipleIdentifier = value;
+    }
+
+    public boolean isSetMultipleIdentifier() {
+        return (this.multipleIdentifier!= null);
+    }
+
+    /**
+     * Gets the value of the locationDesignator property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     
+     */
+    public JAXBElement<TextDesignatorType> getLocationDesignator() {
+        return locationDesignator;
+    }
+
+    /**
+     * Sets the value of the locationDesignator property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     
+     */
+    public void setLocationDesignator(JAXBElement<TextDesignatorType> value) {
+        this.locationDesignator = value;
+    }
+
+    public boolean isSetLocationDesignator() {
+        return (this.locationDesignator!= null);
+    }
+
+    /**
+     * Gets the value of the aixmName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public JAXBElement<TextNameType> getAIXMName() {
+        return aixmName;
+    }
+
+    /**
+     * Sets the value of the aixmName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public void setAIXMName(JAXBElement<TextNameType> value) {
+        this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
+    /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeRouteType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeRouteType> getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeRouteType }{@code >}
+     *     
+     */
+    public void setType(JAXBElement<CodeRouteType> value) {
+        this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
+    /**
+     * Gets the value of the flightRule property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeFlightRuleType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeFlightRuleType> getFlightRule() {
+        return flightRule;
+    }
+
+    /**
+     * Sets the value of the flightRule property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeFlightRuleType }{@code >}
+     *     
+     */
+    public void setFlightRule(JAXBElement<CodeFlightRuleType> value) {
+        this.flightRule = value;
+    }
+
+    public boolean isSetFlightRule() {
+        return (this.flightRule!= null);
+    }
+
+    /**
+     * Gets the value of the internationalUse property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeRouteOriginType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeRouteOriginType> getInternationalUse() {
+        return internationalUse;
+    }
+
+    /**
+     * Sets the value of the internationalUse property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeRouteOriginType }{@code >}
+     *     
+     */
+    public void setInternationalUse(JAXBElement<CodeRouteOriginType> value) {
+        this.internationalUse = value;
+    }
+
+    public boolean isSetInternationalUse() {
+        return (this.internationalUse!= null);
+    }
+
+    /**
+     * Gets the value of the militaryUse property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryStatusType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeMilitaryStatusType> getMilitaryUse() {
+        return militaryUse;
+    }
+
+    /**
+     * Sets the value of the militaryUse property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryStatusType }{@code >}
+     *     
+     */
+    public void setMilitaryUse(JAXBElement<CodeMilitaryStatusType> value) {
+        this.militaryUse = value;
+    }
+
+    public boolean isSetMilitaryUse() {
+        return (this.militaryUse!= null);
+    }
+
+    /**
+     * Gets the value of the militaryTrainingType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryTrainingType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeMilitaryTrainingType> getMilitaryTrainingType() {
+        return militaryTrainingType;
+    }
+
+    /**
+     * Sets the value of the militaryTrainingType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryTrainingType }{@code >}
+     *     
+     */
+    public void setMilitaryTrainingType(JAXBElement<CodeMilitaryTrainingType> value) {
+        this.militaryTrainingType = value;
+    }
+
+    public boolean isSetMilitaryTrainingType() {
+        return (this.militaryTrainingType!= null);
+    }
+
+    /**
+     * Gets the value of the userOrganisation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<OrganisationAuthorityPropertyType> getUserOrganisation() {
+        return userOrganisation;
+    }
+
+    /**
+     * Sets the value of the userOrganisation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     
+     */
+    public void setUserOrganisation(JAXBElement<OrganisationAuthorityPropertyType> value) {
+        this.userOrganisation = value;
+    }
+
+    public boolean isSetUserOrganisation() {
+        return (this.userOrganisation!= null);
+    }
+
+    /**
+     * Gets the value of the annotation property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getRest().add(newItem);
+     * getAnnotation().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link CodeFlightRuleType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeMilitaryStatusType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeMilitaryTrainingType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeRouteDesignatorLetterType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeRouteDesignatorPrefixType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeRouteOriginType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeRouteType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RouteTimeSliceType.Extension }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * {@link NotePropertyType }
      * </p>
      * 
      * 
      * @return
-     *     The value of the rest property.
+     *     The value of the annotation property.
      */
-    public List<JAXBElement<?>> getRest() {
-        if (rest == null) {
-            rest = new ArrayList<>();
+    public List<NotePropertyType> getAnnotation() {
+        if (annotation == null) {
+            annotation = new ArrayList<>();
         }
-        return this.rest;
+        return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getExtension().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link RouteTimeSliceType.Extension }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the extension property.
+     */
+    public List<RouteTimeSliceType.Extension> getExtension() {
+        if (extension == null) {
+            extension = new ArrayList<>();
+        }
+        return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 

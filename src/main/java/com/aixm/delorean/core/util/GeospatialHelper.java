@@ -1,6 +1,7 @@
 package com.aixm.delorean.core.util;
 
 import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -22,33 +23,35 @@ import org.locationtech.proj4j.ProjCoordinate;
 import org.locationtech.proj4j.CoordinateTransform;
 
 import jakarta.xml.bind.JAXBElement;
-import com.aixm.delorean.core.schema.school.org.gml.CurveType;
-import com.aixm.delorean.core.schema.school.org.gml.DirectPositionListType;
-import com.aixm.delorean.core.schema.school.org.gml.DirectPositionType;
-import com.aixm.delorean.core.schema.school.org.gml.GeodesicStringType;
-import com.aixm.delorean.core.schema.school.org.gml.PointType;
-import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
-import com.aixm.delorean.core.schema.school.org.gml.SurfaceType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionListType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicStringType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.PointType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.PolygonPatchType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.SurfaceType;
 import com.aixm.delorean.core.adapter.type.gis.AixmCurveType;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedCurveType;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedPointType;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedSurfaceType;
 import com.aixm.delorean.core.adapter.type.gis.AixmPointType;
 import com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType;
-import com.aixm.delorean.core.schema.school.org.gml.CurveSegmentArrayPropertyType;
-import com.aixm.delorean.core.schema.school.org.gml.AbstractCurveSegmentType;
-import com.aixm.delorean.core.schema.school.org.gml.AbstractRingPropertyType;
-import com.aixm.delorean.core.schema.school.org.gml.AbstractRingType;
-import com.aixm.delorean.core.schema.school.org.gml.SurfacePatchArrayPropertyType;
-import com.aixm.delorean.core.schema.school.org.gml.AbstractSurfacePatchType;
-import com.aixm.delorean.core.schema.school.org.gml.CurvePropertyType;
-import com.aixm.delorean.core.schema.school.org.gml.PolygonPatchType;
-import com.aixm.delorean.core.schema.school.org.gml.RingType;
-import com.aixm.delorean.core.schema.school.ElevatedCurvePropertyType;
-import com.aixm.delorean.core.schema.school.ElevatedCurveType;
-import com.aixm.delorean.core.schema.school.ElevatedPointType;
-import com.aixm.delorean.core.schema.school.ElevatedSurfaceType;
-import com.aixm.delorean.core.schema.school.ElevatedCurvePropertyType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveSegmentArrayPropertyType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractCurveSegmentType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractRingPropertyType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractRingType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.SurfacePatchArrayPropertyType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractSurfacePatchType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurvePropertyType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.RingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurvePropertyType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceSignedType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType;
 
 public class GeospatialHelper {    
     private static int SRID = 4326; // EPSG:4326
@@ -139,11 +142,13 @@ public class GeospatialHelper {
     }
 
     public static Point parseGMLPoint(PointType value) {
+        System.out.println("Starting parseGMLPoint");
         DirectPositionType pos = value.getPos();
         String srsName = value.getSrsName();
         Coordinate srcCoord = new Coordinate(pos.getValue().get(0), pos.getValue().get(1));
         if (srsName == null) {
             // No transformation needed
+            System.out.println("X: " + srcCoord.x + " Y: " + srcCoord.y);
             return geometryFactory.createPoint(new Coordinate(srcCoord.x, srcCoord.y));
         }
         
@@ -154,11 +159,17 @@ public class GeospatialHelper {
     }
 
     public static PointType printGMLPoint(Point value){  
+        System.out.println("Starting printGMLPoint");
+        if (value == null) {
+            System.out.println("Value is null");
+            return new PointType();
+        }
         DirectPositionType pos = new DirectPositionType();
 
         if (value.getX() == Double.NaN || value.getY() == Double.NaN) {
             return new PointType();
         } else {
+            System.out.println("X: " + value.getX() + " Y: " + value.getY());
             pos.getValue().add(value.getX());
             pos.getValue().add(value.getY());
         }
@@ -173,22 +184,26 @@ public class GeospatialHelper {
         return pointType;
     }
 
-    public static AixmPointType parseAIXMPoint (com.aixm.delorean.core.schema.school.PointType value) {
-        AixmPointType aixmPoint = new AixmPointType();
-        aixmPoint.setPoint(parseGMLPoint(value));
-        aixmPoint.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
-        aixmPoint.setAnnotation((value.getAnnotation()));
-        // aixmPoint.setId(value.getId());
+    public static AixmPointType parseAIXMPoint (com.aixm.delorean.core.schema.a5_1_1.aixm.PointType value) {
+        AixmPointType point = new AixmPointType();
+        point.setPoint(parseGMLPoint(value));
 
-        return aixmPoint;
+        ValDistanceType valDistance = value.getHorizontalAccuracy().getValue();
+        point.setHorizontalAccuracy(valDistance.getValue());
+        point.setHorizontalAccuracy_uom(valDistance.getUom());
+
+        return point;
     }
 
-    public static com.aixm.delorean.core.schema.school.PointType printAIXMPoint(AixmPointType value) {
-        com.aixm.delorean.core.schema.school.PointType point = new com.aixm.delorean.core.schema.school.PointType();
+    public static com.aixm.delorean.core.schema.a5_1_1.aixm.PointType printAIXMPoint(AixmPointType value) {
+        if (value == null) {
+            return new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
+        }
+        com.aixm.delorean.core.schema.a5_1_1.aixm.PointType point = new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
         DirectPositionType pos = new DirectPositionType();
 
         if (value.getPoint().getX() == Double.NaN || value.getPoint().getY() == Double.NaN) {
-            return new com.aixm.delorean.core.schema.school.PointType();
+            return new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
         } else {
             pos.getValue().add(value.getPoint().getX());
             pos.getValue().add(value.getPoint().getY());
@@ -200,28 +215,51 @@ public class GeospatialHelper {
             point.setSrsName("EPSG:" + value.getPoint().getSRID());
         }
 
-        // point.setId(value.getId());
+        ValDistanceType valDistance = new ValDistanceType();
+        valDistance.setValue(value.getHorizontalAccuracy());
+        valDistance.setUom(value.getHorizontalAccuracy_uom());
+        JAXBElement<ValDistanceType> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), ValDistanceType.class, valDistance);
+        point.setHorizontalAccuracy(horizontalAccuracy);
 
-        point.setHorizontalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, Long.valueOf(10)));
-        point.getAnnotation().add("annotation");
         return point;
     }
 
     public static AixmElevatedPointType parseAIXMElevatedPoint (ElevatedPointType value) {
-        AixmElevatedPointType aixmElevatedPoint= new AixmElevatedPointType();
-        aixmElevatedPoint.setPoint(parseGMLPoint(value));
-        aixmElevatedPoint.setElevation(value.getElevation().getValue());
-        aixmElevatedPoint.setGeoidUndulation(value.getGeoidUndulation().getValue());
-        aixmElevatedPoint.setVerticalDatum(value.getVerticalDatum().getValue());
-        aixmElevatedPoint.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
-        aixmElevatedPoint.setVerticalAccuracy(value.getVerticalAccuracy().getValue());
-        aixmElevatedPoint.setAnnotation(value.getAnnotation());
+        AixmElevatedPointType point = new AixmElevatedPointType();
+        point.setPoint(parseGMLPoint(value));
 
-        return aixmElevatedPoint;
+        ValDistanceType valDistanceHorizontalAccurarcy = value.getHorizontalAccuracy().getValue();
+        point.setHorizontalAccuracy(valDistanceHorizontalAccurarcy.getValue());
+        point.setHorizontalAccuracy_uom(valDistanceHorizontalAccurarcy.getUom());
+        point.setHorizontalAccuracy_nilReason(valDistanceHorizontalAccurarcy.getNilReason());
+
+        ValDistanceType valDisanceVerticalAccuracy = value.getVerticalAccuracy().getValue();
+        point.setVerticalAccuracy(valDisanceVerticalAccuracy.getValue());
+        point.setVerticalAccuracy_uom(valDisanceVerticalAccuracy.getUom());
+        point.setVerticalAccuracy_nilReason(valDisanceVerticalAccuracy.getNilReason());
+
+        ValDistanceVerticalType valDistanceVertical = value.getElevation().getValue();
+        point.setElevation(new BigDecimal(valDistanceVertical.getValue()));
+        point.setElevation_uom(valDistanceVertical.getUom());
+        point.setElevation_nilReason(valDistanceVertical.getNilReason());
+
+        ValDistanceSignedType valDistanceSigned = value.getGeoidUndulation().getValue();
+        point.setGeoidUndulation(valDistanceSigned.getValue());
+        point.setGeoidUndulation_uom(valDistanceSigned.getUom());
+        point.setGeoidUndulation_nilReason(valDistanceSigned.getNilReason());
+
+        CodeVerticalDatumType codeVerticalDatum = value.getVerticalDatum().getValue();
+        point.setVerticalDatum(codeVerticalDatum.getValue());
+        point.setVerticalDatum_nilReason(codeVerticalDatum.getNilReason());
+
+        return point;
     }
     
     public static ElevatedPointType printAIXMElevatedPoint(AixmElevatedPointType value) {
-        ElevatedPointType elevatedPoint = new ElevatedPointType();
+        if (value == null) {
+            return new ElevatedPointType();
+        }
+        ElevatedPointType point = new ElevatedPointType();
         DirectPositionType pos = new DirectPositionType();
 
         if (value.getPoint().getX() == Double.NaN || value.getPoint().getY() == Double.NaN) {
@@ -231,20 +269,47 @@ public class GeospatialHelper {
             pos.getValue().add(value.getPoint().getY());
         }
 
-        elevatedPoint.setPos(pos);
+        point.setPos(pos);
 
         if (value.getPoint().getSRID() != 0) {
-            elevatedPoint.setSrsName("EPSG:" + value.getPoint().getSRID());
+            point.setSrsName("EPSG:" + value.getPoint().getSRID());
         }
 
-        elevatedPoint.setElevation(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "elevation"), Long.class, value.getElevation()));
-        elevatedPoint.setGeoidUndulation(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), Long.class, value.getGeoidUndulation()));
-        elevatedPoint.setVerticalDatum(new JAXBElement<String>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), String.class, value.getVerticalDatum()));
-        elevatedPoint.setHorizontalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy()));
-        elevatedPoint.setVerticalAccuracy(new JAXBElement<Long>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), Long.class, value.getVerticalAccuracy()));
-        elevatedPoint.getAnnotation().addAll(value.getAnnotation());
+        ValDistanceType valDistance = new ValDistanceType();
+        valDistance.setValue(value.getHorizontalAccuracy());
+        valDistance.setUom(value.getHorizontalAccuracy_uom());
+        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
+        JAXBElement<ValDistanceType> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), ValDistanceType.class, valDistance);
+        point.setHorizontalAccuracy(horizontalAccuracy);
 
-        return new ElevatedPointType();
+        ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
+        valDistanceVertical.setValue(String.valueOf(value.getElevation().doubleValue()));
+        valDistanceVertical.setUom(value.getElevation_uom());
+        valDistanceVertical.setNilReason(value.getElevation_nilReason());
+        JAXBElement<ValDistanceVerticalType> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), ValDistanceVerticalType.class, valDistanceVertical);
+        point.setElevation(elevation);
+
+        ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
+        valDistanceSigned.setValue(value.getGeoidUndulation());
+        valDistanceSigned.setUom(value.getGeoidUndulation_uom());
+        valDistanceSigned.setNilReason(value.getGeoidUndulation_nilReason());
+        JAXBElement<ValDistanceSignedType> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), ValDistanceSignedType.class, valDistanceSigned);
+        point.setGeoidUndulation(geoidUndulation);
+
+        CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
+        codeVerticalDatum.setValue(value.getVerticalDatum());
+        codeVerticalDatum.setNilReason(value.getVerticalDatum_nilReason());
+        JAXBElement<CodeVerticalDatumType> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), CodeVerticalDatumType.class, codeVerticalDatum);
+        point.setVerticalDatum(verticalDatum);
+
+        ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
+        valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
+        valDistanceVerticalAccuracy.setUom(value.getVerticalAccuracy_uom());
+        valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
+        JAXBElement<ValDistanceType> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), ValDistanceType.class, valDistanceVerticalAccuracy);
+        point.setVerticalAccuracy(verticalAccuracy);
+
+        return point;
     }
 
     public static List<Point> parseGMLPoints(List<PointType> values) {
@@ -283,6 +348,9 @@ public class GeospatialHelper {
     }
 
     public static CurveType printGMLCurve(LineString value) {
+        if (value == null) {
+            return new CurveType();
+        }
         CurveType curve = new CurveType();
         CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();
         GeodesicStringType geodesicString = new GeodesicStringType();
@@ -317,115 +385,109 @@ public class GeospatialHelper {
         return curve;
     }
 
-    public static AixmCurveType parseAIXMCurve(com.aixm.delorean.core.schema.school.CurveType value) {
-        AixmCurveType aixmCurve = new AixmCurveType();
-        aixmCurve.setLineString(parseGMLCurve(value));
-        aixmCurve.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
-        aixmCurve.setAnnotation(value.getAnnotation());
-        
-        return aixmCurve;
+    public static AixmCurveType parseAIXMCurve(com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType value) {
+        AixmCurveType curve = new AixmCurveType();
+        curve.setLineString(parseGMLCurve(value));
+
+        ValDistanceType valDistance = value.getHorizontalAccuracy().getValue();
+        curve.setHorizontalAccuracy(valDistance.getValue());
+        curve.setHorizontalAccuracy_uom(valDistance.getUom());
+        curve.setHorizontalAccuracy_nilReason(valDistance.getNilReason());
+
+        return curve;
     }
 
-    public static com.aixm.delorean.core.schema.school.CurveType printAIXMCurve(AixmCurveType value) {
-        com.aixm.delorean.core.schema.school.CurveType curve = new com.aixm.delorean.core.schema.school.CurveType();
+    public static com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType printAIXMCurve(AixmCurveType value) {
+        if (value == null) {
+            return new com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType();
+        }
+        com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType curve = new com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType();
         CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();
         GeodesicStringType geodesicString = new GeodesicStringType();
         DirectPositionListType posList = new DirectPositionListType();
 
+        if (value.getLineString() == null || value.getLineString().getCoordinates() == null) {
+            return new com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType();
+        }
+
         for (Coordinate coord : value.getLineString().getCoordinates()) {
-            if(coord == null) {
-                return new com.aixm.delorean.core.schema.school.CurveType();
-            } else {
-                posList.getValue().add(coord.getX());
-                posList.getValue().add(coord.getY());
-            }
+            posList.getValue().add(coord.getX());
+            posList.getValue().add(coord.getY());
         }
 
         curve.setSrsDimension(BigInteger.valueOf(2));
 
         geodesicString.setPosList(posList);
 
-        JAXBElement<GeodesicStringType> geodesicElement = new JAXBElement<>(
-            new QName("http://www.opengis.net/gml/3.2", "GeodesicString"), 
-            GeodesicStringType.class, 
-            geodesicString
-        );
-
-        segments.getAbstractCurveSegment().add(geodesicElement);
-        curve.setSegments(segments);
-        JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
-        curve.setHorizontalAccuracy(horizontalAccuracy);
-        curve.getAnnotation().addAll(value.getAnnotation());
-        
         if (value.getLineString().getSRID() != 0) {
             curve.setSrsName("EPSG:" + value.getLineString().getSRID());
-        }
+        }      
 
         return curve;
     }
 
     public static AixmElevatedCurveType parseAIXMElevatedCurve(ElevatedCurveType value) {
-        AixmElevatedCurveType aixmElevatedCurve = new AixmElevatedCurveType();
-        aixmElevatedCurve.setLineString(parseGMLCurve(value));
-        aixmElevatedCurve.setElevation(value.getElevation().getValue());
-        aixmElevatedCurve.setGeoidUndulation(value.getGeoidUndulation().getValue());
-        aixmElevatedCurve.setVerticalDatum(value.getVerticalDatum().getValue());
-        aixmElevatedCurve.setVerticalAccuracy(value.getVerticalAccuracy().getValue());
-        aixmElevatedCurve.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
-        aixmElevatedCurve.setAnnotation(value.getAnnotation());
+        AixmElevatedCurveType curve = new AixmElevatedCurveType();
+        curve.setLineString(parseGMLCurve(value));
+        // aixmElevatedCurve.setElevation(value.getElevation().getValue());
+        // aixmElevatedCurve.setGeoidUndulation(value.getGeoidUndulation().getValue());
+        // aixmElevatedCurve.setVerticalDatum(value.getVerticalDatum().getValue());
+        // aixmElevatedCurve.setVerticalAccuracy(value.getVerticalAccuracy().getValue());
+        // aixmElevatedCurve.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
+        // aixmElevatedCurve.setAnnotation(value.getAnnotation());
 
-        return aixmElevatedCurve;
+        return curve;
     }
 
     public static ElevatedCurveType printAIXMElevatedCurve(AixmElevatedCurveType value) {
-        ElevatedCurveType elevatedCurve = new ElevatedCurveType();
+        if (value == null) {
+            return new ElevatedCurveType();
+        }
+        ElevatedCurveType curve = new ElevatedCurveType();
         CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();
         GeodesicStringType geodesicString = new GeodesicStringType();
         DirectPositionListType posList = new DirectPositionListType();
 
-        for (Coordinate coord : value.getLineString().getCoordinates()) {
-            if(coord == null) {
-                return new ElevatedCurveType();
-            } else {
-                posList.getValue().add(coord.getX());
-                posList.getValue().add(coord.getY());
-            }
+        if (value.getLineString() == null || value.getLineString().getCoordinates() == null) {
+            return new ElevatedCurveType();
         }
 
-        elevatedCurve.setSrsDimension(BigInteger.valueOf(2));
+        for (Coordinate coord : value.getLineString().getCoordinates()) {
+            posList.getValue().add(coord.getX());
+            posList.getValue().add(coord.getY());
+        }
 
+        curve.setSrsDimension(BigInteger.valueOf(2));
         geodesicString.setPosList(posList);
 
-        JAXBElement<GeodesicStringType> geodesicElement = new JAXBElement<>(
-            new QName("http://www.opengis.net/gml/3.2", "GeodesicString"), 
-            GeodesicStringType.class, 
-            geodesicString
-        );
-
-        JAXBElement<Long> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), Long.class, value.getElevation());
-        elevatedCurve.setElevation(elevation);
-
-        JAXBElement<Long> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), Long.class, value.getGeoidUndulation());
-        elevatedCurve.setGeoidUndulation(geoidUndulation);
-
-        segments.getAbstractCurveSegment().add(geodesicElement);
-        elevatedCurve.setSegments(segments);
-        JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
-        elevatedCurve.setHorizontalAccuracy(horizontalAccuracy);
-        
-        JAXBElement<Long> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), Long.class, value.getVerticalAccuracy());
-        elevatedCurve.setVerticalAccuracy(verticalAccuracy);
-
-        JAXBElement<String> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), String.class, value.getVerticalDatum());
-        elevatedCurve.setVerticalDatum(verticalDatum);
-
-        elevatedCurve.getAnnotation().addAll(value.getAnnotation());
-        
         if (value.getLineString().getSRID() != 0) {
-            elevatedCurve.setSrsName("EPSG:" + value.getLineString().getSRID());
+            curve.setSrsName("EPSG:" + value.getLineString().getSRID());
         }
 
-        return elevatedCurve;
+        JAXBElement<GeodesicStringType> geodesicElement = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "GeodesicString"), GeodesicStringType.class, geodesicString);
+        segments.getAbstractCurveSegment().add(geodesicElement);
+        curve.setSegments(segments);
+
+        // JAXBElement<Long> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), Long.class, value.getElevation());
+        // elevatedCurve.setElevation(elevation);
+
+        // JAXBElement<Long> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), Long.class, value.getGeoidUndulation());
+        // elevatedCurve.setGeoidUndulation(geoidUndulation);
+
+        // segments.getAbstractCurveSegment().add(geodesicElement);
+        // elevatedCurve.setSegments(segments);
+        // JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
+        // elevatedCurve.setHorizontalAccuracy(horizontalAccuracy);
+        
+        // JAXBElement<Long> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), Long.class, value.getVerticalAccuracy());
+        // elevatedCurve.setVerticalAccuracy(verticalAccuracy);
+
+        // JAXBElement<String> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), String.class, value.getVerticalDatum());
+        // elevatedCurve.setVerticalDatum(verticalDatum);
+
+        // elevatedCurve.getAnnotation().addAll(value.getAnnotation());
+        
+        return curve;
     }
 
     public static List<LineString> parseGMLCurves(List<CurveType> values) {
@@ -445,12 +507,10 @@ public class GeospatialHelper {
     }
 
     public static Polygon parseGMLSurface(SurfaceType value) { 
-        System.out.println("parseGMLSurface(SurfaceType value)");
         List<PolygonPatchType> patches = new ArrayList<>();
         Integer counter = 0;
         GeodesicStringType exteriorMap = null;
         Map<Integer, GeodesicStringType> interiorMap = new HashMap<>(256);
-
 
         for (JAXBElement<? extends AbstractSurfacePatchType> element : value.getPatches().getValue().getAbstractSurfacePatch()) {
             if (element.getValue() instanceof PolygonPatchType) {
@@ -515,6 +575,9 @@ public class GeospatialHelper {
     }
 
     public static SurfaceType printGMLSurface(Polygon value){
+        if (value == null) {
+            return new SurfaceType();
+        }
         GeodesicStringType shell = coordinateToSegment(value.getExteriorRing().getCoordinates());
         RingType exterior = geodesicStringTypeWrapper(shell);
         AbstractRingPropertyType exteriorRing = new AbstractRingPropertyType();
@@ -544,17 +607,20 @@ public class GeospatialHelper {
         return surface;
     }
    
-    public static AixmSurfaceType parseAIXMSurface(com.aixm.delorean.core.schema.school.SurfaceType value) {
-        AixmSurfaceType aixmSurface = new AixmSurfaceType();
-        aixmSurface.setPolygon(parseGMLSurface(value));
-        aixmSurface.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
-        aixmSurface.setAnnotation(value.getAnnotation());
+    public static AixmSurfaceType parseAIXMSurface(com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType value) {
+        AixmSurfaceType surface = new AixmSurfaceType();
+        surface.setPolygon(parseGMLSurface(value));
+        // surface.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
+        // surface.setAnnotation(value.getAnnotation());
 
-        return aixmSurface;
+        return surface;
     }
 
-    public static com.aixm.delorean.core.schema.school.SurfaceType printAIXMSurface(AixmSurfaceType value){
-        com.aixm.delorean.core.schema.school.SurfaceType surface = new com.aixm.delorean.core.schema.school.SurfaceType();
+    public static com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType printAIXMSurface(AixmSurfaceType value){
+        if (value == null) {
+            return new com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType();
+        }
+        com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType surface = new com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType();
         GeodesicStringType shell = coordinateToSegment(value.getPolygon().getExteriorRing().getCoordinates());
         RingType exterior = geodesicStringTypeWrapper(shell);
         AbstractRingPropertyType exteriorRing = new AbstractRingPropertyType();
@@ -579,27 +645,30 @@ public class GeospatialHelper {
         surface.setPatches(new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.opengis.net/gml/3.2", "patches"), SurfacePatchArrayPropertyType.class, patches));
         surface.setSrsDimension(BigInteger.valueOf(2));
         surface.setSrsName("EPSG:4326");
-        JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
-        surface.setHorizontalAccuracy(horizontalAccuracy);
-        surface.getAnnotation().addAll(value.getAnnotation());
+        // JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
+        // surface.setHorizontalAccuracy(horizontalAccuracy);
+        // surface.getAnnotation().addAll(value.getAnnotation());
 
         return surface;
     }
 
     public static AixmElevatedSurfaceType parseAIXMElevatedSurface(ElevatedSurfaceType value) {
-        AixmElevatedSurfaceType aixmElevatedSurface = new AixmElevatedSurfaceType();
-        aixmElevatedSurface.setPolygon(parseGMLSurface(value));
-        aixmElevatedSurface.setElevation(value.getElevation().getValue());
-        aixmElevatedSurface.setGeoidUndulation(value.getGeoidUndulation().getValue());
-        aixmElevatedSurface.setVerticalDatum(value.getVerticalDatum().getValue());
-        aixmElevatedSurface.setVerticalAccuracy(value.getVerticalAccuracy().getValue());
-        aixmElevatedSurface.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
-        aixmElevatedSurface.setAnnotation(value.getAnnotation());
+        AixmElevatedSurfaceType surface = new AixmElevatedSurfaceType();
+        surface.setPolygon(parseGMLSurface(value));
+        // aixmElevatedSurface.setElevation(value.getElevation().getValue());
+        // aixmElevatedSurface.setGeoidUndulation(value.getGeoidUndulation().getValue());
+        // aixmElevatedSurface.setVerticalDatum(value.getVerticalDatum().getValue());
+        // aixmElevatedSurface.setVerticalAccuracy(value.getVerticalAccuracy().getValue());
+        // aixmElevatedSurface.setHorizontalAccuracy(value.getHorizontalAccuracy().getValue());
+        // aixmElevatedSurface.setAnnotation(value.getAnnotation());
 
-        return aixmElevatedSurface;
+        return surface;
     }
 
     public static ElevatedSurfaceType printAIXMElevatedSurface(AixmElevatedSurfaceType value) {
+        if (value == null) {
+            return new ElevatedSurfaceType();
+        }
         ElevatedSurfaceType elevatedSurface = new ElevatedSurfaceType();
         GeodesicStringType shell = coordinateToSegment(value.getPolygon().getExteriorRing().getCoordinates());
         RingType exterior = geodesicStringTypeWrapper(shell);
@@ -626,22 +695,22 @@ public class GeospatialHelper {
         elevatedSurface.setSrsDimension(BigInteger.valueOf(2));
         elevatedSurface.setSrsName("EPSG:4326");
 
-        JAXBElement<Long> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), Long.class, value.getElevation());
-        elevatedSurface.setElevation(elevation);
+        // JAXBElement<Long> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), Long.class, value.getElevation());
+        // elevatedSurface.setElevation(elevation);
 
-        JAXBElement<Long> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), Long.class, value.getGeoidUndulation());
-        elevatedSurface.setGeoidUndulation(geoidUndulation);
+        // JAXBElement<Long> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), Long.class, value.getGeoidUndulation());
+        // elevatedSurface.setGeoidUndulation(geoidUndulation);
 
-        JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
-        elevatedSurface.setHorizontalAccuracy(horizontalAccuracy);
+        // JAXBElement<Long> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), Long.class, value.getHorizontalAccuracy());
+        // elevatedSurface.setHorizontalAccuracy(horizontalAccuracy);
 
-        JAXBElement<Long> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), Long.class, value.getVerticalAccuracy());
-        elevatedSurface.setVerticalAccuracy(verticalAccuracy);
+        // JAXBElement<Long> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), Long.class, value.getVerticalAccuracy());
+        // elevatedSurface.setVerticalAccuracy(verticalAccuracy);
 
-        JAXBElement<String> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), String.class, value.getVerticalDatum());
-        elevatedSurface.setVerticalDatum(verticalDatum);
+        // JAXBElement<String> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), String.class, value.getVerticalDatum());
+        // elevatedSurface.setVerticalDatum(verticalDatum);
 
-        elevatedSurface.getAnnotation().addAll(value.getAnnotation());
+        // elevatedSurface.getAnnotation().addAll(value.getAnnotation());
 
         return elevatedSurface;
     }
