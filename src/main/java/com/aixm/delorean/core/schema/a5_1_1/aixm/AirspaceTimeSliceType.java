@@ -15,7 +15,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -52,95 +51,472 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AirspaceTimeSliceType", propOrder = {
-    "rest"
+    "type",
+    "designator",
+    "localType",
+    "aixmName",
+    "designatorICAO",
+    "controlType",
+    "upperLowerSeparation",
+    "clazz",
+    "protectedRoute",
+    "geometryComponent",
+    "activation",
+    "annotation",
+    "extension"
 })
 public class AirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 3938 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
-     * 
-     */
-    @XmlElementRefs({
-        @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "localType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "designatorICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "controlType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "upperLowerSeparation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "class", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "protectedRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "geometryComponent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "activation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    })
-    protected List<JAXBElement<?>> rest;
+    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAirspaceType> type;
+    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeAirspaceDesignatorType> designator;
+    @XmlElementRef(name = "localType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextNameType> localType;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextNameType> aixmName;
+    @XmlElementRef(name = "designatorICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> designatorICAO;
+    @XmlElementRef(name = "controlType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeMilitaryOperationsType> controlType;
+    @XmlElementRef(name = "upperLowerSeparation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValFLType> upperLowerSeparation;
+    @XmlElement(name = "class", nillable = true)
+    protected List<AirspaceLayerClassPropertyType> clazz;
+    @XmlElementRef(name = "protectedRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<RoutePropertyType> protectedRoute;
+    @XmlElement(nillable = true)
+    protected List<AirspaceGeometryComponentPropertyType> geometryComponent;
+    @XmlElement(nillable = true)
+    protected List<AirspaceActivationPropertyType> activation;
+    @XmlElement(nillable = true)
+    protected List<NotePropertyType> annotation;
+    protected List<AirspaceTimeSliceType.Extension> extension;
 
     /**
-     * Gets the rest of the content model. 
+     * Gets the value of the type property.
      * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 3938 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeAirspaceType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeAirspaceType> getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
      * 
-     * Gets the value of the rest property.
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeAirspaceType }{@code >}
+     *     
+     */
+    public void setType(JAXBElement<CodeAirspaceType> value) {
+        this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
+    /**
+     * Gets the value of the designator property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeAirspaceDesignatorType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeAirspaceDesignatorType> getDesignator() {
+        return designator;
+    }
+
+    /**
+     * Sets the value of the designator property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeAirspaceDesignatorType }{@code >}
+     *     
+     */
+    public void setDesignator(JAXBElement<CodeAirspaceDesignatorType> value) {
+        this.designator = value;
+    }
+
+    public boolean isSetDesignator() {
+        return (this.designator!= null);
+    }
+
+    /**
+     * Gets the value of the localType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public JAXBElement<TextNameType> getLocalType() {
+        return localType;
+    }
+
+    /**
+     * Sets the value of the localType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public void setLocalType(JAXBElement<TextNameType> value) {
+        this.localType = value;
+    }
+
+    public boolean isSetLocalType() {
+        return (this.localType!= null);
+    }
+
+    /**
+     * Gets the value of the aixmName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public JAXBElement<TextNameType> getAIXMName() {
+        return aixmName;
+    }
+
+    /**
+     * Sets the value of the aixmName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public void setAIXMName(JAXBElement<TextNameType> value) {
+        this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
+    /**
+     * Gets the value of the designatorICAO property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeYesNoType> getDesignatorICAO() {
+        return designatorICAO;
+    }
+
+    /**
+     * Sets the value of the designatorICAO property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public void setDesignatorICAO(JAXBElement<CodeYesNoType> value) {
+        this.designatorICAO = value;
+    }
+
+    public boolean isSetDesignatorICAO() {
+        return (this.designatorICAO!= null);
+    }
+
+    /**
+     * Gets the value of the controlType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeMilitaryOperationsType> getControlType() {
+        return controlType;
+    }
+
+    /**
+     * Sets the value of the controlType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
+     *     
+     */
+    public void setControlType(JAXBElement<CodeMilitaryOperationsType> value) {
+        this.controlType = value;
+    }
+
+    public boolean isSetControlType() {
+        return (this.controlType!= null);
+    }
+
+    /**
+     * Gets the value of the upperLowerSeparation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link ValFLType }{@code >}
+     *     
+     */
+    public JAXBElement<ValFLType> getUpperLowerSeparation() {
+        return upperLowerSeparation;
+    }
+
+    /**
+     * Sets the value of the upperLowerSeparation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link ValFLType }{@code >}
+     *     
+     */
+    public void setUpperLowerSeparation(JAXBElement<ValFLType> value) {
+        this.upperLowerSeparation = value;
+    }
+
+    public boolean isSetUpperLowerSeparation() {
+        return (this.upperLowerSeparation!= null);
+    }
+
+    /**
+     * Gets the value of the clazz property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the clazz property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getRest().add(newItem);
+     * getClazz().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link AirspaceActivationPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AirspaceGeometryComponentPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AirspaceLayerClassPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AirspaceTimeSliceType.Extension }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeAirspaceDesignatorType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeAirspaceType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeMilitaryOperationsType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ValFLType }{@code >}
+     * {@link AirspaceLayerClassPropertyType }
      * </p>
      * 
      * 
      * @return
-     *     The value of the rest property.
+     *     The value of the clazz property.
      */
-    public List<JAXBElement<?>> getRest() {
-        if (rest == null) {
-            rest = new ArrayList<>();
+    public List<AirspaceLayerClassPropertyType> getClazz() {
+        if (clazz == null) {
+            clazz = new ArrayList<>();
         }
-        return this.rest;
+        return this.clazz;
+    }
+
+    public boolean isSetClazz() {
+        return ((this.clazz!= null)&&(!this.clazz.isEmpty()));
+    }
+
+    public void unsetClazz() {
+        this.clazz = null;
+    }
+
+    /**
+     * Gets the value of the protectedRoute property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<RoutePropertyType> getProtectedRoute() {
+        return protectedRoute;
+    }
+
+    /**
+     * Sets the value of the protectedRoute property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
+     *     
+     */
+    public void setProtectedRoute(JAXBElement<RoutePropertyType> value) {
+        this.protectedRoute = value;
+    }
+
+    public boolean isSetProtectedRoute() {
+        return (this.protectedRoute!= null);
+    }
+
+    /**
+     * Gets the value of the geometryComponent property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the geometryComponent property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getGeometryComponent().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AirspaceGeometryComponentPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the geometryComponent property.
+     */
+    public List<AirspaceGeometryComponentPropertyType> getGeometryComponent() {
+        if (geometryComponent == null) {
+            geometryComponent = new ArrayList<>();
+        }
+        return this.geometryComponent;
+    }
+
+    public boolean isSetGeometryComponent() {
+        return ((this.geometryComponent!= null)&&(!this.geometryComponent.isEmpty()));
+    }
+
+    public void unsetGeometryComponent() {
+        this.geometryComponent = null;
+    }
+
+    /**
+     * Gets the value of the activation property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the activation property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getActivation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AirspaceActivationPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the activation property.
+     */
+    public List<AirspaceActivationPropertyType> getActivation() {
+        if (activation == null) {
+            activation = new ArrayList<>();
+        }
+        return this.activation;
+    }
+
+    public boolean isSetActivation() {
+        return ((this.activation!= null)&&(!this.activation.isEmpty()));
+    }
+
+    public void unsetActivation() {
+        this.activation = null;
+    }
+
+    /**
+     * Gets the value of the annotation property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAnnotation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link NotePropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the annotation property.
+     */
+    public List<NotePropertyType> getAnnotation() {
+        if (annotation == null) {
+            annotation = new ArrayList<>();
+        }
+        return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getExtension().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AirspaceTimeSliceType.Extension }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the extension property.
+     */
+    public List<AirspaceTimeSliceType.Extension> getExtension() {
+        if (extension == null) {
+            extension = new ArrayList<>();
+        }
+        return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 

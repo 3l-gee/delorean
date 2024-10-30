@@ -15,7 +15,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -53,127 +52,992 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InstrumentApproachProcedureTimeSliceType", propOrder = {
-    "rest"
+    "communicationFailureInstruction",
+    "instruction",
+    "designCriteria",
+    "codingStandard",
+    "flightChecked",
+    "aixmName",
+    "rnav",
+    "availability",
+    "airportHeliport",
+    "aircraftCharacteristic",
+    "flightTransition",
+    "guidanceFacilitySpecialNavigationSystem",
+    "guidanceFacilityRadar",
+    "guidanceFacilityNavaid",
+    "annotation",
+    "safeAltitude",
+    "approachPrefix",
+    "approachType",
+    "multipleIdentification",
+    "copterTrack",
+    "circlingIdentification",
+    "courseReversalInstruction",
+    "additionalEquipment",
+    "channelGNSS",
+    "waasReliable",
+    "landing",
+    "missedInstruction",
+    "finalProfile",
+    "extension"
 })
 public class InstrumentApproachProcedureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 8237 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
-     * 
-     */
-    @XmlElementRefs({
-        @XmlElementRef(name = "communicationFailureInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "designCriteria", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "codingStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "RNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "availability", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "aircraftCharacteristic", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "flightTransition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "guidanceFacility_specialNavigationSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "guidanceFacility_radar", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "guidanceFacility_navaid", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "annotation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "safeAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "approachPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "approachType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "multipleIdentification", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "copterTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "circlingIdentification", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "courseReversalInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "additionalEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "channelGNSS", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "WAASReliable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "landing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "missedInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "finalProfile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "extension", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    })
-    protected List<JAXBElement<?>> rest;
+    @XmlElementRef(name = "communicationFailureInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextInstructionType> communicationFailureInstruction;
+    @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextInstructionType> instruction;
+    @XmlElementRef(name = "designCriteria", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeDesignStandardType> designCriteria;
+    @XmlElementRef(name = "codingStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeProcedureCodingStandardType> codingStandard;
+    @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> flightChecked;
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextNameType> aixmName;
+    @XmlElementRef(name = "RNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> rnav;
+    @XmlElement(nillable = true)
+    protected List<ProcedureAvailabilityPropertyType> availability;
+    @XmlElement(nillable = true)
+    protected List<AirportHeliportPropertyType> airportHeliport;
+    @XmlElement(nillable = true)
+    protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
+    @XmlElement(nillable = true)
+    protected List<ProcedureTransitionPropertyType> flightTransition;
+    @XmlElementRef(name = "guidanceFacility_specialNavigationSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<SpecialNavigationSystemPropertyType> guidanceFacilitySpecialNavigationSystem;
+    @XmlElementRef(name = "guidanceFacility_radar", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<RadarSystemPropertyType> guidanceFacilityRadar;
+    @XmlElementRef(name = "guidanceFacility_navaid", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<NavaidPropertyType> guidanceFacilityNavaid;
+    @XmlElement(nillable = true)
+    protected List<NotePropertyType> annotation;
+    @XmlElementRef(name = "safeAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<SafeAltitudeAreaPropertyType> safeAltitude;
+    @XmlElementRef(name = "approachPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeApproachPrefixType> approachPrefix;
+    @XmlElementRef(name = "approachType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeApproachType> approachType;
+    @XmlElementRef(name = "multipleIdentification", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeUpperAlphaType> multipleIdentification;
+    @XmlElementRef(name = "copterTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValBearingType> copterTrack;
+    @XmlElementRef(name = "circlingIdentification", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeUpperAlphaType> circlingIdentification;
+    @XmlElementRef(name = "courseReversalInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<TextInstructionType> courseReversalInstruction;
+    @XmlElementRef(name = "additionalEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeApproachEquipmentAdditionalType> additionalEquipment;
+    @XmlElementRef(name = "channelGNSS", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<ValChannelNumberType> channelGNSS;
+    @XmlElementRef(name = "WAASReliable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<CodeYesNoType> waasReliable;
+    @XmlElementRef(name = "landing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<LandingTakeoffAreaCollectionPropertyType> landing;
+    @XmlElement(nillable = true)
+    protected List<MissedApproachGroupPropertyType> missedInstruction;
+    @XmlElementRef(name = "finalProfile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected JAXBElement<FinalProfilePropertyType> finalProfile;
+    protected List<InstrumentApproachProcedureTimeSliceType.Extension> extension;
 
     /**
-     * Gets the rest of the content model. 
+     * Gets the value of the communicationFailureInstruction property.
      * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Name" is used by two different parts of a schema. See: 
-     * line 8237 of file:/C:/Users/rapha/Documents/project/delorean/src/main/resources/a5_1_1/AIXM_Features.xsd
-     * line 43 of http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names:
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     
+     */
+    public JAXBElement<TextInstructionType> getCommunicationFailureInstruction() {
+        return communicationFailureInstruction;
+    }
+
+    /**
+     * Sets the value of the communicationFailureInstruction property.
      * 
-     * Gets the value of the rest property.
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     
+     */
+    public void setCommunicationFailureInstruction(JAXBElement<TextInstructionType> value) {
+        this.communicationFailureInstruction = value;
+    }
+
+    public boolean isSetCommunicationFailureInstruction() {
+        return (this.communicationFailureInstruction!= null);
+    }
+
+    /**
+     * Gets the value of the instruction property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     
+     */
+    public JAXBElement<TextInstructionType> getInstruction() {
+        return instruction;
+    }
+
+    /**
+     * Sets the value of the instruction property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     
+     */
+    public void setInstruction(JAXBElement<TextInstructionType> value) {
+        this.instruction = value;
+    }
+
+    public boolean isSetInstruction() {
+        return (this.instruction!= null);
+    }
+
+    /**
+     * Gets the value of the designCriteria property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeDesignStandardType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeDesignStandardType> getDesignCriteria() {
+        return designCriteria;
+    }
+
+    /**
+     * Sets the value of the designCriteria property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeDesignStandardType }{@code >}
+     *     
+     */
+    public void setDesignCriteria(JAXBElement<CodeDesignStandardType> value) {
+        this.designCriteria = value;
+    }
+
+    public boolean isSetDesignCriteria() {
+        return (this.designCriteria!= null);
+    }
+
+    /**
+     * Gets the value of the codingStandard property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeProcedureCodingStandardType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeProcedureCodingStandardType> getCodingStandard() {
+        return codingStandard;
+    }
+
+    /**
+     * Sets the value of the codingStandard property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeProcedureCodingStandardType }{@code >}
+     *     
+     */
+    public void setCodingStandard(JAXBElement<CodeProcedureCodingStandardType> value) {
+        this.codingStandard = value;
+    }
+
+    public boolean isSetCodingStandard() {
+        return (this.codingStandard!= null);
+    }
+
+    /**
+     * Gets the value of the flightChecked property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeYesNoType> getFlightChecked() {
+        return flightChecked;
+    }
+
+    /**
+     * Sets the value of the flightChecked property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public void setFlightChecked(JAXBElement<CodeYesNoType> value) {
+        this.flightChecked = value;
+    }
+
+    public boolean isSetFlightChecked() {
+        return (this.flightChecked!= null);
+    }
+
+    /**
+     * Gets the value of the aixmName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public JAXBElement<TextNameType> getAIXMName() {
+        return aixmName;
+    }
+
+    /**
+     * Sets the value of the aixmName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     
+     */
+    public void setAIXMName(JAXBElement<TextNameType> value) {
+        this.aixmName = value;
+    }
+
+    public boolean isSetAIXMName() {
+        return (this.aixmName!= null);
+    }
+
+    /**
+     * Gets the value of the rnav property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeYesNoType> getRNAV() {
+        return rnav;
+    }
+
+    /**
+     * Sets the value of the rnav property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public void setRNAV(JAXBElement<CodeYesNoType> value) {
+        this.rnav = value;
+    }
+
+    public boolean isSetRNAV() {
+        return (this.rnav!= null);
+    }
+
+    /**
+     * Gets the value of the availability property.
      * 
      * <p>This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rest property.</p>
+     * This is why there is not a <CODE>set</CODE> method for the availability property.</p>
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * </p>
      * <pre>
-     * getRest().add(newItem);
+     * getAvailability().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeApproachEquipmentAdditionalType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeApproachPrefixType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeApproachType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeDesignStandardType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeProcedureCodingStandardType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
-     * {@link JAXBElement }{@code <}{@link FinalProfilePropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link InstrumentApproachProcedureTimeSliceType.Extension }{@code >}
-     * {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link MissedApproachGroupPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ProcedureAvailabilityPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ProcedureTransitionPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RadarSystemPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link SafeAltitudeAreaPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ValChannelNumberType }{@code >}
+     * {@link ProcedureAvailabilityPropertyType }
      * </p>
      * 
      * 
      * @return
-     *     The value of the rest property.
+     *     The value of the availability property.
      */
-    public List<JAXBElement<?>> getRest() {
-        if (rest == null) {
-            rest = new ArrayList<>();
+    public List<ProcedureAvailabilityPropertyType> getAvailability() {
+        if (availability == null) {
+            availability = new ArrayList<>();
         }
-        return this.rest;
+        return this.availability;
+    }
+
+    public boolean isSetAvailability() {
+        return ((this.availability!= null)&&(!this.availability.isEmpty()));
+    }
+
+    public void unsetAvailability() {
+        this.availability = null;
+    }
+
+    /**
+     * Gets the value of the airportHeliport property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the airportHeliport property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAirportHeliport().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AirportHeliportPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the airportHeliport property.
+     */
+    public List<AirportHeliportPropertyType> getAirportHeliport() {
+        if (airportHeliport == null) {
+            airportHeliport = new ArrayList<>();
+        }
+        return this.airportHeliport;
+    }
+
+    public boolean isSetAirportHeliport() {
+        return ((this.airportHeliport!= null)&&(!this.airportHeliport.isEmpty()));
+    }
+
+    public void unsetAirportHeliport() {
+        this.airportHeliport = null;
+    }
+
+    /**
+     * Gets the value of the aircraftCharacteristic property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the aircraftCharacteristic property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAircraftCharacteristic().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AircraftCharacteristicPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the aircraftCharacteristic property.
+     */
+    public List<AircraftCharacteristicPropertyType> getAircraftCharacteristic() {
+        if (aircraftCharacteristic == null) {
+            aircraftCharacteristic = new ArrayList<>();
+        }
+        return this.aircraftCharacteristic;
+    }
+
+    public boolean isSetAircraftCharacteristic() {
+        return ((this.aircraftCharacteristic!= null)&&(!this.aircraftCharacteristic.isEmpty()));
+    }
+
+    public void unsetAircraftCharacteristic() {
+        this.aircraftCharacteristic = null;
+    }
+
+    /**
+     * Gets the value of the flightTransition property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the flightTransition property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getFlightTransition().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ProcedureTransitionPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the flightTransition property.
+     */
+    public List<ProcedureTransitionPropertyType> getFlightTransition() {
+        if (flightTransition == null) {
+            flightTransition = new ArrayList<>();
+        }
+        return this.flightTransition;
+    }
+
+    public boolean isSetFlightTransition() {
+        return ((this.flightTransition!= null)&&(!this.flightTransition.isEmpty()));
+    }
+
+    public void unsetFlightTransition() {
+        this.flightTransition = null;
+    }
+
+    /**
+     * Gets the value of the guidanceFacilitySpecialNavigationSystem property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<SpecialNavigationSystemPropertyType> getGuidanceFacilitySpecialNavigationSystem() {
+        return guidanceFacilitySpecialNavigationSystem;
+    }
+
+    /**
+     * Sets the value of the guidanceFacilitySpecialNavigationSystem property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     
+     */
+    public void setGuidanceFacilitySpecialNavigationSystem(JAXBElement<SpecialNavigationSystemPropertyType> value) {
+        this.guidanceFacilitySpecialNavigationSystem = value;
+    }
+
+    public boolean isSetGuidanceFacilitySpecialNavigationSystem() {
+        return (this.guidanceFacilitySpecialNavigationSystem!= null);
+    }
+
+    /**
+     * Gets the value of the guidanceFacilityRadar property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link RadarSystemPropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<RadarSystemPropertyType> getGuidanceFacilityRadar() {
+        return guidanceFacilityRadar;
+    }
+
+    /**
+     * Sets the value of the guidanceFacilityRadar property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link RadarSystemPropertyType }{@code >}
+     *     
+     */
+    public void setGuidanceFacilityRadar(JAXBElement<RadarSystemPropertyType> value) {
+        this.guidanceFacilityRadar = value;
+    }
+
+    public boolean isSetGuidanceFacilityRadar() {
+        return (this.guidanceFacilityRadar!= null);
+    }
+
+    /**
+     * Gets the value of the guidanceFacilityNavaid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<NavaidPropertyType> getGuidanceFacilityNavaid() {
+        return guidanceFacilityNavaid;
+    }
+
+    /**
+     * Sets the value of the guidanceFacilityNavaid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     
+     */
+    public void setGuidanceFacilityNavaid(JAXBElement<NavaidPropertyType> value) {
+        this.guidanceFacilityNavaid = value;
+    }
+
+    public boolean isSetGuidanceFacilityNavaid() {
+        return (this.guidanceFacilityNavaid!= null);
+    }
+
+    /**
+     * Gets the value of the annotation property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the annotation property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getAnnotation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link NotePropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the annotation property.
+     */
+    public List<NotePropertyType> getAnnotation() {
+        if (annotation == null) {
+            annotation = new ArrayList<>();
+        }
+        return this.annotation;
+    }
+
+    public boolean isSetAnnotation() {
+        return ((this.annotation!= null)&&(!this.annotation.isEmpty()));
+    }
+
+    public void unsetAnnotation() {
+        this.annotation = null;
+    }
+
+    /**
+     * Gets the value of the safeAltitude property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link SafeAltitudeAreaPropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<SafeAltitudeAreaPropertyType> getSafeAltitude() {
+        return safeAltitude;
+    }
+
+    /**
+     * Sets the value of the safeAltitude property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link SafeAltitudeAreaPropertyType }{@code >}
+     *     
+     */
+    public void setSafeAltitude(JAXBElement<SafeAltitudeAreaPropertyType> value) {
+        this.safeAltitude = value;
+    }
+
+    public boolean isSetSafeAltitude() {
+        return (this.safeAltitude!= null);
+    }
+
+    /**
+     * Gets the value of the approachPrefix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeApproachPrefixType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeApproachPrefixType> getApproachPrefix() {
+        return approachPrefix;
+    }
+
+    /**
+     * Sets the value of the approachPrefix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeApproachPrefixType }{@code >}
+     *     
+     */
+    public void setApproachPrefix(JAXBElement<CodeApproachPrefixType> value) {
+        this.approachPrefix = value;
+    }
+
+    public boolean isSetApproachPrefix() {
+        return (this.approachPrefix!= null);
+    }
+
+    /**
+     * Gets the value of the approachType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeApproachType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeApproachType> getApproachType() {
+        return approachType;
+    }
+
+    /**
+     * Sets the value of the approachType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeApproachType }{@code >}
+     *     
+     */
+    public void setApproachType(JAXBElement<CodeApproachType> value) {
+        this.approachType = value;
+    }
+
+    public boolean isSetApproachType() {
+        return (this.approachType!= null);
+    }
+
+    /**
+     * Gets the value of the multipleIdentification property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeUpperAlphaType> getMultipleIdentification() {
+        return multipleIdentification;
+    }
+
+    /**
+     * Sets the value of the multipleIdentification property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     
+     */
+    public void setMultipleIdentification(JAXBElement<CodeUpperAlphaType> value) {
+        this.multipleIdentification = value;
+    }
+
+    public boolean isSetMultipleIdentification() {
+        return (this.multipleIdentification!= null);
+    }
+
+    /**
+     * Gets the value of the copterTrack property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     
+     */
+    public JAXBElement<ValBearingType> getCopterTrack() {
+        return copterTrack;
+    }
+
+    /**
+     * Sets the value of the copterTrack property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     
+     */
+    public void setCopterTrack(JAXBElement<ValBearingType> value) {
+        this.copterTrack = value;
+    }
+
+    public boolean isSetCopterTrack() {
+        return (this.copterTrack!= null);
+    }
+
+    /**
+     * Gets the value of the circlingIdentification property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeUpperAlphaType> getCirclingIdentification() {
+        return circlingIdentification;
+    }
+
+    /**
+     * Sets the value of the circlingIdentification property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     
+     */
+    public void setCirclingIdentification(JAXBElement<CodeUpperAlphaType> value) {
+        this.circlingIdentification = value;
+    }
+
+    public boolean isSetCirclingIdentification() {
+        return (this.circlingIdentification!= null);
+    }
+
+    /**
+     * Gets the value of the courseReversalInstruction property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     
+     */
+    public JAXBElement<TextInstructionType> getCourseReversalInstruction() {
+        return courseReversalInstruction;
+    }
+
+    /**
+     * Sets the value of the courseReversalInstruction property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     
+     */
+    public void setCourseReversalInstruction(JAXBElement<TextInstructionType> value) {
+        this.courseReversalInstruction = value;
+    }
+
+    public boolean isSetCourseReversalInstruction() {
+        return (this.courseReversalInstruction!= null);
+    }
+
+    /**
+     * Gets the value of the additionalEquipment property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeApproachEquipmentAdditionalType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeApproachEquipmentAdditionalType> getAdditionalEquipment() {
+        return additionalEquipment;
+    }
+
+    /**
+     * Sets the value of the additionalEquipment property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeApproachEquipmentAdditionalType }{@code >}
+     *     
+     */
+    public void setAdditionalEquipment(JAXBElement<CodeApproachEquipmentAdditionalType> value) {
+        this.additionalEquipment = value;
+    }
+
+    public boolean isSetAdditionalEquipment() {
+        return (this.additionalEquipment!= null);
+    }
+
+    /**
+     * Gets the value of the channelGNSS property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link ValChannelNumberType }{@code >}
+     *     
+     */
+    public JAXBElement<ValChannelNumberType> getChannelGNSS() {
+        return channelGNSS;
+    }
+
+    /**
+     * Sets the value of the channelGNSS property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link ValChannelNumberType }{@code >}
+     *     
+     */
+    public void setChannelGNSS(JAXBElement<ValChannelNumberType> value) {
+        this.channelGNSS = value;
+    }
+
+    public boolean isSetChannelGNSS() {
+        return (this.channelGNSS!= null);
+    }
+
+    /**
+     * Gets the value of the waasReliable property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public JAXBElement<CodeYesNoType> getWAASReliable() {
+        return waasReliable;
+    }
+
+    /**
+     * Sets the value of the waasReliable property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     
+     */
+    public void setWAASReliable(JAXBElement<CodeYesNoType> value) {
+        this.waasReliable = value;
+    }
+
+    public boolean isSetWAASReliable() {
+        return (this.waasReliable!= null);
+    }
+
+    /**
+     * Gets the value of the landing property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<LandingTakeoffAreaCollectionPropertyType> getLanding() {
+        return landing;
+    }
+
+    /**
+     * Sets the value of the landing property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
+     *     
+     */
+    public void setLanding(JAXBElement<LandingTakeoffAreaCollectionPropertyType> value) {
+        this.landing = value;
+    }
+
+    public boolean isSetLanding() {
+        return (this.landing!= null);
+    }
+
+    /**
+     * Gets the value of the missedInstruction property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the missedInstruction property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getMissedInstruction().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link MissedApproachGroupPropertyType }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the missedInstruction property.
+     */
+    public List<MissedApproachGroupPropertyType> getMissedInstruction() {
+        if (missedInstruction == null) {
+            missedInstruction = new ArrayList<>();
+        }
+        return this.missedInstruction;
+    }
+
+    public boolean isSetMissedInstruction() {
+        return ((this.missedInstruction!= null)&&(!this.missedInstruction.isEmpty()));
+    }
+
+    public void unsetMissedInstruction() {
+        this.missedInstruction = null;
+    }
+
+    /**
+     * Gets the value of the finalProfile property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link FinalProfilePropertyType }{@code >}
+     *     
+     */
+    public JAXBElement<FinalProfilePropertyType> getFinalProfile() {
+        return finalProfile;
+    }
+
+    /**
+     * Sets the value of the finalProfile property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link FinalProfilePropertyType }{@code >}
+     *     
+     */
+    public void setFinalProfile(JAXBElement<FinalProfilePropertyType> value) {
+        this.finalProfile = value;
+    }
+
+    public boolean isSetFinalProfile() {
+        return (this.finalProfile!= null);
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * <p>This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the extension property.</p>
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * </p>
+     * <pre>
+     * getExtension().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link InstrumentApproachProcedureTimeSliceType.Extension }
+     * </p>
+     * 
+     * 
+     * @return
+     *     The value of the extension property.
+     */
+    public List<InstrumentApproachProcedureTimeSliceType.Extension> getExtension() {
+        if (extension == null) {
+            extension = new ArrayList<>();
+        }
+        return this.extension;
+    }
+
+    public boolean isSetExtension() {
+        return ((this.extension!= null)&&(!this.extension.isEmpty()));
+    }
+
+    public void unsetExtension() {
+        this.extension = null;
     }
 
 

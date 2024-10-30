@@ -701,20 +701,16 @@ public class ObjectFactory {
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeMagneticVariation_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "magneticVariation");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeMagneticVariationAccuracy_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "magneticVariationAccuracy");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeDateMagneticVariation_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "dateMagneticVariation");
-    private static final QName _SecondarySurveillanceRadarTimeSliceTypeContact_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "contact");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeLocation_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "location");
-    private static final QName _SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "annotation");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeVerticalCoverageAltitude_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "verticalCoverageAltitude");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeVerticalCoverageDistance_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "verticalCoverageDistance");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeVerticalCoverageAzimuth_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "verticalCoverageAzimuth");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeAntennaTiltFixed_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "antennaTiltFixed");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeTiltAngle_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "tiltAngle");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeAutomatedRadarTerminalSystem_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "automatedRadarTerminalSystem");
-    private static final QName _SecondarySurveillanceRadarTimeSliceTypeGroundStation_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "groundStation");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeTransponder_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "transponder");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeAutonomous_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "autonomous");
     private static final QName _SecondarySurveillanceRadarTimeSliceTypeMonopulse_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "monopulse");
-    private static final QName _SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "extension");
     private static final QName _ReflectorTypeType_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "type");
     private static final QName _ReflectorTypeTouchdownReflector_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "touchdownReflector");
     private static final QName _RadarSystemTimeSliceTypeModel_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "model");
@@ -725,7 +721,6 @@ public class ObjectFactory {
     private static final QName _PrecisionApproachRadarTimeSliceTypePrecisionApproachRadarType_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "precisionApproachRadarType");
     private static final QName _PrecisionApproachRadarTimeSliceTypeSlope_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "slope");
     private static final QName _PrecisionApproachRadarTimeSliceTypeSlopeAccuracy_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "slopeAccuracy");
-    private static final QName _PrecisionApproachRadarTimeSliceTypeReflector_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "reflector");
     private static final QName _ObstructionTypeRequiredClearance_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "requiredClearance");
     private static final QName _ObstructionTypeMinimumAltitude_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "minimumAltitude");
     private static final QName _ObstructionTypeSurfacePenetration_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "surfacePenetration");
@@ -850,20 +845,11 @@ public class ObjectFactory {
     private static final QName _OnlineContactTypeProtocol_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "protocol");
     private static final QName _OnlineContactTypeEMail_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "eMail");
     private static final QName _ContactInformationTypeTitle_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "title");
-    private static final QName _ContactInformationTypeAddress_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "address");
-    private static final QName _ContactInformationTypeNetworkNode_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "networkNode");
-    private static final QName _ContactInformationTypePhoneFax_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "phoneFax");
     private static final QName _ServiceOperationalStatusTypeOperationalStatus_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "operationalStatus");
     private static final QName _SearchRescueServiceTimeSliceTypeFlightOperations_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "flightOperations");
     private static final QName _SearchRescueServiceTimeSliceTypeRank_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "rank");
     private static final QName _SearchRescueServiceTimeSliceTypeCompliantICAO_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "compliantICAO");
     private static final QName _SearchRescueServiceTimeSliceTypeServiceProvider_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "serviceProvider");
-    private static final QName _SearchRescueServiceTimeSliceTypeCallSign_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "call-sign");
-    private static final QName _SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "radioCommunication");
-    private static final QName _SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "groundCommunication");
-    private static final QName _SearchRescueServiceTimeSliceTypeAvailability_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "availability");
-    private static final QName _SearchRescueServiceTimeSliceTypeClientAirspace_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "clientAirspace");
-    private static final QName _SearchRescueServiceTimeSliceTypeClientRoute_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "clientRoute");
     private static final QName _RadioCommunicationChannelTimeSliceTypeMode_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "mode");
     private static final QName _RadioCommunicationChannelTimeSliceTypeFrequencyTransmission_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "frequencyTransmission");
     private static final QName _RadioCommunicationChannelTimeSliceTypeFrequencyReception_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "frequencyReception");
@@ -881,22 +867,14 @@ public class ObjectFactory {
     private static final QName _OilTypeCategory_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "category");
     private static final QName _InformationServiceTimeSliceTypeDataLink_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "dataLink");
     private static final QName _InformationServiceTimeSliceTypeRecorded_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "recorded");
-    private static final QName _InformationServiceTimeSliceTypeNavaidBroadcast_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "navaidBroadcast");
-    private static final QName _InformationServiceTimeSliceTypeClientAirport_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "clientAirport");
-    private static final QName _InformationServiceTimeSliceTypeClientProcedure_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "clientProcedure");
-    private static final QName _InformationServiceTimeSliceTypeClientHolding_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "clientHolding");
-    private static final QName _InformationServiceTimeSliceTypeClientAerialRefuelling_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "clientAerialRefuelling");
     private static final QName _GroundTrafficControlServiceTimeSliceTypeRadarAssisted_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "radarAssisted");
     private static final QName _GroundTrafficControlServiceTimeSliceTypeDataLinkEnabled_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "dataLinkEnabled");
     private static final QName _GroundTrafficControlServiceTimeSliceTypeDataLinkChannel_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "dataLinkChannel");
+    private static final QName _GroundTrafficControlServiceTimeSliceTypeClientAirport_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "clientAirport");
     private static final QName _FireFightingServiceTimeSliceTypeStandard_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "standard");
     private static final QName _CallsignDetailTypeCallSign_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "callSign");
     private static final QName _CallsignDetailTypeLanguage_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "language");
     private static final QName _AirTrafficControlServiceTimeSliceTypeAircraftLocator_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "aircraftLocator");
-    private static final QName _AirportSuppliesServiceTimeSliceTypeFuelSupply_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "fuelSupply");
-    private static final QName _AirportSuppliesServiceTimeSliceTypeOilSupply_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "oilSupply");
-    private static final QName _AirportSuppliesServiceTimeSliceTypeNitrogenSupply_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "nitrogenSupply");
-    private static final QName _AirportSuppliesServiceTimeSliceTypeOxygenSupply_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "oxygenSupply");
     private static final QName _AirportClearanceServiceTimeSliceTypeSnowPlan_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "snowPlan");
     private static final QName _RulesProceduresTimeSliceTypeContent_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "content");
     private static final QName _FlightRoutingElementTypeOrderNumber_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "orderNumber");
@@ -1056,6 +1034,28 @@ public class ObjectFactory {
     private static final QName _FinalLegTimeSliceTypeCourseOffsetSide_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "courseOffsetSide");
     private static final QName _FinalLegTimeSliceTypeCourseCentrelineDistance_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "courseCentrelineDistance");
     private static final QName _FinalLegTimeSliceTypeCourseOffsetDistance_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "courseOffsetDistance");
+    private static final QName _FinalLegTimeSliceTypeCourseCentrelineIntersect_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "courseCentrelineIntersect");
+    private static final QName _FinalLegTimeSliceTypeFinalPathAlignmentPointFixDesignatedPoint_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_fixDesignatedPoint");
+    private static final QName _FinalLegTimeSliceTypeFinalPathAlignmentPointNavaidSystem_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_navaidSystem");
+    private static final QName _FinalLegTimeSliceTypeFinalPathAlignmentPointPosition_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_position");
+    private static final QName _FinalLegTimeSliceTypeFinalPathAlignmentPointRunwayPoint_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_runwayPoint");
+    private static final QName _FinalLegTimeSliceTypeFinalPathAlignmentPointAimingPoint_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_aimingPoint");
+    private static final QName _FinalLegTimeSliceTypeFinalPathAlignmentPointAirportReferencePoint_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_airportReferencePoint");
+    private static final QName _FinalLegTimeSliceTypeVisualDescentPoint_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "visualDescentPoint");
+    private static final QName _FinalLegTimeSliceTypeFASData_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "FASData");
+    private static final QName _DepartureLegTimeSliceTypeDeparture_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "departure");
+    private static final QName _ArrivalLegTimeSliceTypeArrival_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "arrival");
+    private static final QName _SafeAltitudeAreaSectorTypeBufferWidth_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "bufferWidth");
+    private static final QName _SafeAltitudeAreaSectorTypeExtent_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "extent");
+    private static final QName _SafeAltitudeAreaTimeSliceTypeSafeAreaType_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "safeAreaType");
+    private static final QName _SafeAltitudeAreaTimeSliceTypeCentrePointFixDesignatedPoint_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_fixDesignatedPoint");
+    private static final QName _SafeAltitudeAreaTimeSliceTypeCentrePointNavaidSystem_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_navaidSystem");
+    private static final QName _SafeAltitudeAreaTimeSliceTypeCentrePointPosition_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_position");
+    private static final QName _SafeAltitudeAreaTimeSliceTypeCentrePointRunwayPoint_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_runwayPoint");
+    private static final QName _SafeAltitudeAreaTimeSliceTypeCentrePointAimingPoint_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_aimingPoint");
+    private static final QName _SafeAltitudeAreaTimeSliceTypeCentrePointAirportReferencePoint_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_airportReferencePoint");
+    private static final QName _StandardInstrumentDepartureTimeSliceTypeCommunicationFailureInstruction_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "communicationFailureInstruction");
+    private static final QName _StandardInstrumentDepartureTimeSliceTypeDesignCriteria_QNAME = new QName("http://www.aixm.aero/schema/5.1.1", "designCriteria");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.aixm.delorean.core.schema.a5_1_1.aixm
@@ -22725,19 +22725,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "contact", scope = SecondarySurveillanceRadarTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createSecondarySurveillanceRadarTimeSliceTypeContact(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeContact_QNAME, ContactInformationPropertyType.class, SecondarySurveillanceRadarTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      * 
      * @param value
@@ -22748,19 +22735,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "location", scope = SecondarySurveillanceRadarTimeSliceType.class)
     public JAXBElement<ElevatedPointPropertyType> createSecondarySurveillanceRadarTimeSliceTypeLocation(ElevatedPointPropertyType value) {
         return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeLocation_QNAME, ElevatedPointPropertyType.class, SecondarySurveillanceRadarTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = SecondarySurveillanceRadarTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createSecondarySurveillanceRadarTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, SecondarySurveillanceRadarTimeSliceType.class, value);
     }
 
     /**
@@ -22842,19 +22816,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SurveillanceGroundStationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SurveillanceGroundStationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundStation", scope = SecondarySurveillanceRadarTimeSliceType.class)
-    public JAXBElement<SurveillanceGroundStationPropertyType> createSecondarySurveillanceRadarTimeSliceTypeGroundStation(SurveillanceGroundStationPropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeGroundStation_QNAME, SurveillanceGroundStationPropertyType.class, SecondarySurveillanceRadarTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeTransponderType }{@code >}
      * 
      * @param value
@@ -22891,19 +22852,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monopulse", scope = SecondarySurveillanceRadarTimeSliceType.class)
     public JAXBElement<CodeYesNoType> createSecondarySurveillanceRadarTimeSliceTypeMonopulse(CodeYesNoType value) {
         return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeMonopulse_QNAME, CodeYesNoType.class, SecondarySurveillanceRadarTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SecondarySurveillanceRadarTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SecondarySurveillanceRadarTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = SecondarySurveillanceRadarTimeSliceType.class)
-    public JAXBElement<SecondarySurveillanceRadarTimeSliceType.Extension> createSecondarySurveillanceRadarTimeSliceTypeExtension(SecondarySurveillanceRadarTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, SecondarySurveillanceRadarTimeSliceType.Extension.class, SecondarySurveillanceRadarTimeSliceType.class, value);
     }
 
     /**
@@ -23206,19 +23154,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "contact", scope = PrimarySurveillanceRadarTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createPrimarySurveillanceRadarTimeSliceTypeContact(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeContact_QNAME, ContactInformationPropertyType.class, PrimarySurveillanceRadarTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      * 
      * @param value
@@ -23229,19 +23164,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "location", scope = PrimarySurveillanceRadarTimeSliceType.class)
     public JAXBElement<ElevatedPointPropertyType> createPrimarySurveillanceRadarTimeSliceTypeLocation(ElevatedPointPropertyType value) {
         return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeLocation_QNAME, ElevatedPointPropertyType.class, PrimarySurveillanceRadarTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = PrimarySurveillanceRadarTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createPrimarySurveillanceRadarTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, PrimarySurveillanceRadarTimeSliceType.class, value);
     }
 
     /**
@@ -23323,19 +23245,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SurveillanceGroundStationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SurveillanceGroundStationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundStation", scope = PrimarySurveillanceRadarTimeSliceType.class)
-    public JAXBElement<SurveillanceGroundStationPropertyType> createPrimarySurveillanceRadarTimeSliceTypeGroundStation(SurveillanceGroundStationPropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeGroundStation_QNAME, SurveillanceGroundStationPropertyType.class, PrimarySurveillanceRadarTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodePrimaryRadarType }{@code >}
      * 
      * @param value
@@ -23346,19 +23255,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "type", scope = PrimarySurveillanceRadarTimeSliceType.class)
     public JAXBElement<CodePrimaryRadarType> createPrimarySurveillanceRadarTimeSliceTypeType(CodePrimaryRadarType value) {
         return new JAXBElement<>(_ReflectorTypeType_QNAME, CodePrimaryRadarType.class, PrimarySurveillanceRadarTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PrimarySurveillanceRadarTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PrimarySurveillanceRadarTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = PrimarySurveillanceRadarTimeSliceType.class)
-    public JAXBElement<PrimarySurveillanceRadarTimeSliceType.Extension> createPrimarySurveillanceRadarTimeSliceTypeExtension(PrimarySurveillanceRadarTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, PrimarySurveillanceRadarTimeSliceType.Extension.class, PrimarySurveillanceRadarTimeSliceType.class, value);
     }
 
     /**
@@ -23544,19 +23440,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "contact", scope = PrecisionApproachRadarTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createPrecisionApproachRadarTimeSliceTypeContact(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeContact_QNAME, ContactInformationPropertyType.class, PrecisionApproachRadarTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      * 
      * @param value
@@ -23567,19 +23450,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "location", scope = PrecisionApproachRadarTimeSliceType.class)
     public JAXBElement<ElevatedPointPropertyType> createPrecisionApproachRadarTimeSliceTypeLocation(ElevatedPointPropertyType value) {
         return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeLocation_QNAME, ElevatedPointPropertyType.class, PrecisionApproachRadarTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = PrecisionApproachRadarTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createPrecisionApproachRadarTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, PrecisionApproachRadarTimeSliceType.class, value);
     }
 
     /**
@@ -23619,32 +23489,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "slopeAccuracy", scope = PrecisionApproachRadarTimeSliceType.class)
     public JAXBElement<ValAngleType> createPrecisionApproachRadarTimeSliceTypeSlopeAccuracy(ValAngleType value) {
         return new JAXBElement<>(_PrecisionApproachRadarTimeSliceTypeSlopeAccuracy_QNAME, ValAngleType.class, PrecisionApproachRadarTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ReflectorPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ReflectorPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "reflector", scope = PrecisionApproachRadarTimeSliceType.class)
-    public JAXBElement<ReflectorPropertyType> createPrecisionApproachRadarTimeSliceTypeReflector(ReflectorPropertyType value) {
-        return new JAXBElement<>(_PrecisionApproachRadarTimeSliceTypeReflector_QNAME, ReflectorPropertyType.class, PrecisionApproachRadarTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PrecisionApproachRadarTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PrecisionApproachRadarTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = PrecisionApproachRadarTimeSliceType.class)
-    public JAXBElement<PrecisionApproachRadarTimeSliceType.Extension> createPrecisionApproachRadarTimeSliceTypeExtension(PrecisionApproachRadarTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, PrecisionApproachRadarTimeSliceType.Extension.class, PrecisionApproachRadarTimeSliceType.class, value);
     }
 
     /**
@@ -24155,32 +23999,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = StandardLevelTableTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createStandardLevelTableTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, StandardLevelTableTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StandardLevelTableTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link StandardLevelTableTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = StandardLevelTableTimeSliceType.class)
-    public JAXBElement<StandardLevelTableTimeSliceType.Extension> createStandardLevelTableTimeSliceTypeExtension(StandardLevelTableTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, StandardLevelTableTimeSliceType.Extension.class, StandardLevelTableTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeFlightRuleType }{@code >}
      * 
      * @param value
@@ -24558,19 +24376,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = SpecialDateTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createSpecialDateTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, SpecialDateTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
      * 
      * @param value
@@ -24581,19 +24386,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = SpecialDateTimeSliceType.class)
     public JAXBElement<OrganisationAuthorityPropertyType> createSpecialDateTimeSliceTypeAuthority(OrganisationAuthorityPropertyType value) {
         return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, OrganisationAuthorityPropertyType.class, SpecialDateTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SpecialDateTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SpecialDateTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = SpecialDateTimeSliceType.class)
-    public JAXBElement<SpecialDateTimeSliceType.Extension> createSpecialDateTimeSliceTypeExtension(SpecialDateTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, SpecialDateTimeSliceType.Extension.class, SpecialDateTimeSliceType.class, value);
     }
 
     /**
@@ -25585,71 +25377,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PostalAddressPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PostalAddressPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "address", scope = ContactInformationType.class)
-    public JAXBElement<PostalAddressPropertyType> createContactInformationTypeAddress(PostalAddressPropertyType value) {
-        return new JAXBElement<>(_ContactInformationTypeAddress_QNAME, PostalAddressPropertyType.class, ContactInformationType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OnlineContactPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link OnlineContactPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "networkNode", scope = ContactInformationType.class)
-    public JAXBElement<OnlineContactPropertyType> createContactInformationTypeNetworkNode(OnlineContactPropertyType value) {
-        return new JAXBElement<>(_ContactInformationTypeNetworkNode_QNAME, OnlineContactPropertyType.class, ContactInformationType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TelephoneContactPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link TelephoneContactPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "phoneFax", scope = ContactInformationType.class)
-    public JAXBElement<TelephoneContactPropertyType> createContactInformationTypePhoneFax(TelephoneContactPropertyType value) {
-        return new JAXBElement<>(_ContactInformationTypePhoneFax_QNAME, TelephoneContactPropertyType.class, ContactInformationType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = ContactInformationType.class)
-    public JAXBElement<NotePropertyType> createContactInformationTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, ContactInformationType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = ContactInformationType.class)
-    public JAXBElement<ContactInformationType.Extension> createContactInformationTypeExtension(ContactInformationType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, ContactInformationType.Extension.class, ContactInformationType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeStatusServiceType }{@code >}
      * 
      * @param value
@@ -25741,71 +25468,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "call-sign", scope = SearchRescueServiceTimeSliceType.class)
-    public JAXBElement<CallsignDetailPropertyType> createSearchRescueServiceTimeSliceTypeCallSign(CallsignDetailPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeCallSign_QNAME, CallsignDetailPropertyType.class, SearchRescueServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "radioCommunication", scope = SearchRescueServiceTimeSliceType.class)
-    public JAXBElement<RadioCommunicationChannelPropertyType> createSearchRescueServiceTimeSliceTypeRadioCommunication(RadioCommunicationChannelPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME, RadioCommunicationChannelPropertyType.class, SearchRescueServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundCommunication", scope = SearchRescueServiceTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createSearchRescueServiceTimeSliceTypeGroundCommunication(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME, ContactInformationPropertyType.class, SearchRescueServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = SearchRescueServiceTimeSliceType.class)
-    public JAXBElement<ServiceOperationalStatusPropertyType> createSearchRescueServiceTimeSliceTypeAvailability(ServiceOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ServiceOperationalStatusPropertyType.class, SearchRescueServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = SearchRescueServiceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createSearchRescueServiceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, SearchRescueServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeServiceSARType }{@code >}
      * 
      * @param value
@@ -25816,45 +25478,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "type", scope = SearchRescueServiceTimeSliceType.class)
     public JAXBElement<CodeServiceSARType> createSearchRescueServiceTimeSliceTypeType(CodeServiceSARType value) {
         return new JAXBElement<>(_ReflectorTypeType_QNAME, CodeServiceSARType.class, SearchRescueServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientAirspace", scope = SearchRescueServiceTimeSliceType.class)
-    public JAXBElement<AirspacePropertyType> createSearchRescueServiceTimeSliceTypeClientAirspace(AirspacePropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeClientAirspace_QNAME, AirspacePropertyType.class, SearchRescueServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientRoute", scope = SearchRescueServiceTimeSliceType.class)
-    public JAXBElement<RoutePortionPropertyType> createSearchRescueServiceTimeSliceTypeClientRoute(RoutePortionPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeClientRoute_QNAME, RoutePortionPropertyType.class, SearchRescueServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SearchRescueServiceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SearchRescueServiceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = SearchRescueServiceTimeSliceType.class)
-    public JAXBElement<SearchRescueServiceTimeSliceType.Extension> createSearchRescueServiceTimeSliceTypeExtension(SearchRescueServiceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, SearchRescueServiceTimeSliceType.Extension.class, SearchRescueServiceTimeSliceType.class, value);
     }
 
     /**
@@ -26157,84 +25780,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "call-sign", scope = PassengerServiceTimeSliceType.class)
-    public JAXBElement<CallsignDetailPropertyType> createPassengerServiceTimeSliceTypeCallSign(CallsignDetailPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeCallSign_QNAME, CallsignDetailPropertyType.class, PassengerServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "radioCommunication", scope = PassengerServiceTimeSliceType.class)
-    public JAXBElement<RadioCommunicationChannelPropertyType> createPassengerServiceTimeSliceTypeRadioCommunication(RadioCommunicationChannelPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME, RadioCommunicationChannelPropertyType.class, PassengerServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundCommunication", scope = PassengerServiceTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createPassengerServiceTimeSliceTypeGroundCommunication(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME, ContactInformationPropertyType.class, PassengerServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = PassengerServiceTimeSliceType.class)
-    public JAXBElement<ServiceOperationalStatusPropertyType> createPassengerServiceTimeSliceTypeAvailability(ServiceOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ServiceOperationalStatusPropertyType.class, PassengerServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = PassengerServiceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createPassengerServiceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, PassengerServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "airportHeliport", scope = PassengerServiceTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createPassengerServiceTimeSliceTypeAirportHeliport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_RadarSystemTimeSliceTypeAirportHeliport_QNAME, AirportHeliportPropertyType.class, PassengerServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodePassengerServiceType }{@code >}
      * 
      * @param value
@@ -26245,19 +25790,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "type", scope = PassengerServiceTimeSliceType.class)
     public JAXBElement<CodePassengerServiceType> createPassengerServiceTimeSliceTypeType(CodePassengerServiceType value) {
         return new JAXBElement<>(_ReflectorTypeType_QNAME, CodePassengerServiceType.class, PassengerServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PassengerServiceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PassengerServiceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = PassengerServiceTimeSliceType.class)
-    public JAXBElement<PassengerServiceTimeSliceType.Extension> createPassengerServiceTimeSliceTypeExtension(PassengerServiceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, PassengerServiceTimeSliceType.Extension.class, PassengerServiceTimeSliceType.class, value);
     }
 
     /**
@@ -26378,71 +25910,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "call-sign", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<CallsignDetailPropertyType> createInformationServiceTimeSliceTypeCallSign(CallsignDetailPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeCallSign_QNAME, CallsignDetailPropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "radioCommunication", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<RadioCommunicationChannelPropertyType> createInformationServiceTimeSliceTypeRadioCommunication(RadioCommunicationChannelPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME, RadioCommunicationChannelPropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundCommunication", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createInformationServiceTimeSliceTypeGroundCommunication(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME, ContactInformationPropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<ServiceOperationalStatusPropertyType> createInformationServiceTimeSliceTypeAvailability(ServiceOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ServiceOperationalStatusPropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createInformationServiceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeServiceInformationType }{@code >}
      * 
      * @param value
@@ -26492,110 +25959,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "recorded", scope = InformationServiceTimeSliceType.class)
     public JAXBElement<CodeYesNoType> createInformationServiceTimeSliceTypeRecorded(CodeYesNoType value) {
         return new JAXBElement<>(_InformationServiceTimeSliceTypeRecorded_QNAME, CodeYesNoType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VORPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link VORPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "navaidBroadcast", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<VORPropertyType> createInformationServiceTimeSliceTypeNavaidBroadcast(VORPropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeNavaidBroadcast_QNAME, VORPropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientAirspace", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<AirspacePropertyType> createInformationServiceTimeSliceTypeClientAirspace(AirspacePropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeClientAirspace_QNAME, AirspacePropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientAirport", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createInformationServiceTimeSliceTypeClientAirport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeClientAirport_QNAME, AirportHeliportPropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientRoute", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<RoutePortionPropertyType> createInformationServiceTimeSliceTypeClientRoute(RoutePortionPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeClientRoute_QNAME, RoutePortionPropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ProcedurePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ProcedurePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientProcedure", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<ProcedurePropertyType> createInformationServiceTimeSliceTypeClientProcedure(ProcedurePropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeClientProcedure_QNAME, ProcedurePropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HoldingPatternPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link HoldingPatternPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientHolding", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<HoldingPatternPropertyType> createInformationServiceTimeSliceTypeClientHolding(HoldingPatternPropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeClientHolding_QNAME, HoldingPatternPropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientAerialRefuelling", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<AerialRefuellingPropertyType> createInformationServiceTimeSliceTypeClientAerialRefuelling(AerialRefuellingPropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeClientAerialRefuelling_QNAME, AerialRefuellingPropertyType.class, InformationServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InformationServiceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link InformationServiceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = InformationServiceTimeSliceType.class)
-    public JAXBElement<InformationServiceTimeSliceType.Extension> createInformationServiceTimeSliceTypeExtension(InformationServiceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, InformationServiceTimeSliceType.Extension.class, InformationServiceTimeSliceType.class, value);
     }
 
     /**
@@ -26677,71 +26040,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "call-sign", scope = GroundTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<CallsignDetailPropertyType> createGroundTrafficControlServiceTimeSliceTypeCallSign(CallsignDetailPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeCallSign_QNAME, CallsignDetailPropertyType.class, GroundTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "radioCommunication", scope = GroundTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<RadioCommunicationChannelPropertyType> createGroundTrafficControlServiceTimeSliceTypeRadioCommunication(RadioCommunicationChannelPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME, RadioCommunicationChannelPropertyType.class, GroundTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundCommunication", scope = GroundTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createGroundTrafficControlServiceTimeSliceTypeGroundCommunication(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME, ContactInformationPropertyType.class, GroundTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = GroundTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<ServiceOperationalStatusPropertyType> createGroundTrafficControlServiceTimeSliceTypeAvailability(ServiceOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ServiceOperationalStatusPropertyType.class, GroundTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = GroundTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createGroundTrafficControlServiceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, GroundTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      * 
      * @param value
@@ -26803,20 +26101,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientAirport", scope = GroundTrafficControlServiceTimeSliceType.class)
     public JAXBElement<AirportHeliportPropertyType> createGroundTrafficControlServiceTimeSliceTypeClientAirport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeClientAirport_QNAME, AirportHeliportPropertyType.class, GroundTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GroundTrafficControlServiceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GroundTrafficControlServiceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = GroundTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<GroundTrafficControlServiceTimeSliceType.Extension> createGroundTrafficControlServiceTimeSliceTypeExtension(GroundTrafficControlServiceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, GroundTrafficControlServiceTimeSliceType.Extension.class, GroundTrafficControlServiceTimeSliceType.class, value);
+        return new JAXBElement<>(_GroundTrafficControlServiceTimeSliceTypeClientAirport_QNAME, AirportHeliportPropertyType.class, GroundTrafficControlServiceTimeSliceType.class, value);
     }
 
     /**
@@ -26911,84 +26196,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "call-sign", scope = FireFightingServiceTimeSliceType.class)
-    public JAXBElement<CallsignDetailPropertyType> createFireFightingServiceTimeSliceTypeCallSign(CallsignDetailPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeCallSign_QNAME, CallsignDetailPropertyType.class, FireFightingServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "radioCommunication", scope = FireFightingServiceTimeSliceType.class)
-    public JAXBElement<RadioCommunicationChannelPropertyType> createFireFightingServiceTimeSliceTypeRadioCommunication(RadioCommunicationChannelPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME, RadioCommunicationChannelPropertyType.class, FireFightingServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundCommunication", scope = FireFightingServiceTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createFireFightingServiceTimeSliceTypeGroundCommunication(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME, ContactInformationPropertyType.class, FireFightingServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = FireFightingServiceTimeSliceType.class)
-    public JAXBElement<ServiceOperationalStatusPropertyType> createFireFightingServiceTimeSliceTypeAvailability(ServiceOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ServiceOperationalStatusPropertyType.class, FireFightingServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = FireFightingServiceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createFireFightingServiceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, FireFightingServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "airportHeliport", scope = FireFightingServiceTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createFireFightingServiceTimeSliceTypeAirportHeliport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_RadarSystemTimeSliceTypeAirportHeliport_QNAME, AirportHeliportPropertyType.class, FireFightingServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeFireFightingType }{@code >}
      * 
      * @param value
@@ -27012,19 +26219,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "standard", scope = FireFightingServiceTimeSliceType.class)
     public JAXBElement<CodeAviationStandardsType> createFireFightingServiceTimeSliceTypeStandard(CodeAviationStandardsType value) {
         return new JAXBElement<>(_FireFightingServiceTimeSliceTypeStandard_QNAME, CodeAviationStandardsType.class, FireFightingServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FireFightingServiceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link FireFightingServiceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = FireFightingServiceTimeSliceType.class)
-    public JAXBElement<FireFightingServiceTimeSliceType.Extension> createFireFightingServiceTimeSliceTypeExtension(FireFightingServiceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, FireFightingServiceTimeSliceType.Extension.class, FireFightingServiceTimeSliceType.class, value);
     }
 
     /**
@@ -27132,71 +26326,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "call-sign", scope = AirTrafficManagementServiceTimeSliceType.class)
-    public JAXBElement<CallsignDetailPropertyType> createAirTrafficManagementServiceTimeSliceTypeCallSign(CallsignDetailPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeCallSign_QNAME, CallsignDetailPropertyType.class, AirTrafficManagementServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "radioCommunication", scope = AirTrafficManagementServiceTimeSliceType.class)
-    public JAXBElement<RadioCommunicationChannelPropertyType> createAirTrafficManagementServiceTimeSliceTypeRadioCommunication(RadioCommunicationChannelPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME, RadioCommunicationChannelPropertyType.class, AirTrafficManagementServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundCommunication", scope = AirTrafficManagementServiceTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createAirTrafficManagementServiceTimeSliceTypeGroundCommunication(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME, ContactInformationPropertyType.class, AirTrafficManagementServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = AirTrafficManagementServiceTimeSliceType.class)
-    public JAXBElement<ServiceOperationalStatusPropertyType> createAirTrafficManagementServiceTimeSliceTypeAvailability(ServiceOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ServiceOperationalStatusPropertyType.class, AirTrafficManagementServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = AirTrafficManagementServiceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createAirTrafficManagementServiceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, AirTrafficManagementServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeServiceATFMType }{@code >}
      * 
      * @param value
@@ -27207,58 +26336,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "type", scope = AirTrafficManagementServiceTimeSliceType.class)
     public JAXBElement<CodeServiceATFMType> createAirTrafficManagementServiceTimeSliceTypeType(CodeServiceATFMType value) {
         return new JAXBElement<>(_ReflectorTypeType_QNAME, CodeServiceATFMType.class, AirTrafficManagementServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientAirspace", scope = AirTrafficManagementServiceTimeSliceType.class)
-    public JAXBElement<AirspacePropertyType> createAirTrafficManagementServiceTimeSliceTypeClientAirspace(AirspacePropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeClientAirspace_QNAME, AirspacePropertyType.class, AirTrafficManagementServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientAerialRefuelling", scope = AirTrafficManagementServiceTimeSliceType.class)
-    public JAXBElement<AerialRefuellingPropertyType> createAirTrafficManagementServiceTimeSliceTypeClientAerialRefuelling(AerialRefuellingPropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeClientAerialRefuelling_QNAME, AerialRefuellingPropertyType.class, AirTrafficManagementServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientRoute", scope = AirTrafficManagementServiceTimeSliceType.class)
-    public JAXBElement<RoutePortionPropertyType> createAirTrafficManagementServiceTimeSliceTypeClientRoute(RoutePortionPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeClientRoute_QNAME, RoutePortionPropertyType.class, AirTrafficManagementServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirTrafficManagementServiceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirTrafficManagementServiceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = AirTrafficManagementServiceTimeSliceType.class)
-    public JAXBElement<AirTrafficManagementServiceTimeSliceType.Extension> createAirTrafficManagementServiceTimeSliceTypeExtension(AirTrafficManagementServiceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, AirTrafficManagementServiceTimeSliceType.Extension.class, AirTrafficManagementServiceTimeSliceType.class, value);
     }
 
     /**
@@ -27340,71 +26417,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "call-sign", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<CallsignDetailPropertyType> createAirTrafficControlServiceTimeSliceTypeCallSign(CallsignDetailPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeCallSign_QNAME, CallsignDetailPropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "radioCommunication", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<RadioCommunicationChannelPropertyType> createAirTrafficControlServiceTimeSliceTypeRadioCommunication(RadioCommunicationChannelPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME, RadioCommunicationChannelPropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundCommunication", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createAirTrafficControlServiceTimeSliceTypeGroundCommunication(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME, ContactInformationPropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<ServiceOperationalStatusPropertyType> createAirTrafficControlServiceTimeSliceTypeAvailability(ServiceOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ServiceOperationalStatusPropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createAirTrafficControlServiceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      * 
      * @param value
@@ -27457,84 +26469,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientAirport", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createAirTrafficControlServiceTimeSliceTypeClientAirport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeClientAirport_QNAME, AirportHeliportPropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientAirspace", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<AirspacePropertyType> createAirTrafficControlServiceTimeSliceTypeClientAirspace(AirspacePropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeClientAirspace_QNAME, AirspacePropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientRoute", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<RoutePortionPropertyType> createAirTrafficControlServiceTimeSliceTypeClientRoute(RoutePortionPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeClientRoute_QNAME, RoutePortionPropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ProcedurePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ProcedurePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientProcedure", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<ProcedurePropertyType> createAirTrafficControlServiceTimeSliceTypeClientProcedure(ProcedurePropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeClientProcedure_QNAME, ProcedurePropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HoldingPatternPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link HoldingPatternPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientHolding", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<HoldingPatternPropertyType> createAirTrafficControlServiceTimeSliceTypeClientHolding(HoldingPatternPropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeClientHolding_QNAME, HoldingPatternPropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "clientAerialRefuelling", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<AerialRefuellingPropertyType> createAirTrafficControlServiceTimeSliceTypeClientAerialRefuelling(AerialRefuellingPropertyType value) {
-        return new JAXBElement<>(_InformationServiceTimeSliceTypeClientAerialRefuelling_QNAME, AerialRefuellingPropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DirectionFinderPropertyType }{@code >}
      * 
      * @param value
@@ -27545,19 +26479,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "aircraftLocator", scope = AirTrafficControlServiceTimeSliceType.class)
     public JAXBElement<DirectionFinderPropertyType> createAirTrafficControlServiceTimeSliceTypeAircraftLocator(DirectionFinderPropertyType value) {
         return new JAXBElement<>(_AirTrafficControlServiceTimeSliceTypeAircraftLocator_QNAME, DirectionFinderPropertyType.class, AirTrafficControlServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirTrafficControlServiceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirTrafficControlServiceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = AirTrafficControlServiceTimeSliceType.class)
-    public JAXBElement<AirTrafficControlServiceTimeSliceType.Extension> createAirTrafficControlServiceTimeSliceTypeExtension(AirTrafficControlServiceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, AirTrafficControlServiceTimeSliceType.Extension.class, AirTrafficControlServiceTimeSliceType.class, value);
     }
 
     /**
@@ -27639,149 +26560,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "call-sign", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<CallsignDetailPropertyType> createAirportSuppliesServiceTimeSliceTypeCallSign(CallsignDetailPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeCallSign_QNAME, CallsignDetailPropertyType.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "radioCommunication", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<RadioCommunicationChannelPropertyType> createAirportSuppliesServiceTimeSliceTypeRadioCommunication(RadioCommunicationChannelPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME, RadioCommunicationChannelPropertyType.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundCommunication", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createAirportSuppliesServiceTimeSliceTypeGroundCommunication(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME, ContactInformationPropertyType.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<ServiceOperationalStatusPropertyType> createAirportSuppliesServiceTimeSliceTypeAvailability(ServiceOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ServiceOperationalStatusPropertyType.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createAirportSuppliesServiceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "airportHeliport", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createAirportSuppliesServiceTimeSliceTypeAirportHeliport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_RadarSystemTimeSliceTypeAirportHeliport_QNAME, AirportHeliportPropertyType.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FuelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link FuelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "fuelSupply", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<FuelPropertyType> createAirportSuppliesServiceTimeSliceTypeFuelSupply(FuelPropertyType value) {
-        return new JAXBElement<>(_AirportSuppliesServiceTimeSliceTypeFuelSupply_QNAME, FuelPropertyType.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OilPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link OilPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "oilSupply", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<OilPropertyType> createAirportSuppliesServiceTimeSliceTypeOilSupply(OilPropertyType value) {
-        return new JAXBElement<>(_AirportSuppliesServiceTimeSliceTypeOilSupply_QNAME, OilPropertyType.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NitrogenPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NitrogenPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "nitrogenSupply", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<NitrogenPropertyType> createAirportSuppliesServiceTimeSliceTypeNitrogenSupply(NitrogenPropertyType value) {
-        return new JAXBElement<>(_AirportSuppliesServiceTimeSliceTypeNitrogenSupply_QNAME, NitrogenPropertyType.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OxygenPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link OxygenPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "oxygenSupply", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<OxygenPropertyType> createAirportSuppliesServiceTimeSliceTypeOxygenSupply(OxygenPropertyType value) {
-        return new JAXBElement<>(_AirportSuppliesServiceTimeSliceTypeOxygenSupply_QNAME, OxygenPropertyType.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportSuppliesServiceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportSuppliesServiceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = AirportSuppliesServiceTimeSliceType.class)
-    public JAXBElement<AirportSuppliesServiceTimeSliceType.Extension> createAirportSuppliesServiceTimeSliceTypeExtension(AirportSuppliesServiceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, AirportSuppliesServiceTimeSliceType.Extension.class, AirportSuppliesServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeFlightDestinationType }{@code >}
      * 
      * @param value
@@ -27860,84 +26638,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "call-sign", scope = AirportClearanceServiceTimeSliceType.class)
-    public JAXBElement<CallsignDetailPropertyType> createAirportClearanceServiceTimeSliceTypeCallSign(CallsignDetailPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeCallSign_QNAME, CallsignDetailPropertyType.class, AirportClearanceServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "radioCommunication", scope = AirportClearanceServiceTimeSliceType.class)
-    public JAXBElement<RadioCommunicationChannelPropertyType> createAirportClearanceServiceTimeSliceTypeRadioCommunication(RadioCommunicationChannelPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME, RadioCommunicationChannelPropertyType.class, AirportClearanceServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundCommunication", scope = AirportClearanceServiceTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createAirportClearanceServiceTimeSliceTypeGroundCommunication(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME, ContactInformationPropertyType.class, AirportClearanceServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = AirportClearanceServiceTimeSliceType.class)
-    public JAXBElement<ServiceOperationalStatusPropertyType> createAirportClearanceServiceTimeSliceTypeAvailability(ServiceOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ServiceOperationalStatusPropertyType.class, AirportClearanceServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = AirportClearanceServiceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createAirportClearanceServiceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, AirportClearanceServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "airportHeliport", scope = AirportClearanceServiceTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createAirportClearanceServiceTimeSliceTypeAirportHeliport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_RadarSystemTimeSliceTypeAirportHeliport_QNAME, AirportHeliportPropertyType.class, AirportClearanceServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
      * 
      * @param value
@@ -27948,19 +26648,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "snowPlan", scope = AirportClearanceServiceTimeSliceType.class)
     public JAXBElement<TextInstructionType> createAirportClearanceServiceTimeSliceTypeSnowPlan(TextInstructionType value) {
         return new JAXBElement<>(_AirportClearanceServiceTimeSliceTypeSnowPlan_QNAME, TextInstructionType.class, AirportClearanceServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportClearanceServiceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportClearanceServiceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = AirportClearanceServiceTimeSliceType.class)
-    public JAXBElement<AirportClearanceServiceTimeSliceType.Extension> createAirportClearanceServiceTimeSliceTypeExtension(AirportClearanceServiceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, AirportClearanceServiceTimeSliceType.Extension.class, AirportClearanceServiceTimeSliceType.class, value);
     }
 
     /**
@@ -28042,84 +26729,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CallsignDetailPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "call-sign", scope = AircraftGroundServiceTimeSliceType.class)
-    public JAXBElement<CallsignDetailPropertyType> createAircraftGroundServiceTimeSliceTypeCallSign(CallsignDetailPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeCallSign_QNAME, CallsignDetailPropertyType.class, AircraftGroundServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "radioCommunication", scope = AircraftGroundServiceTimeSliceType.class)
-    public JAXBElement<RadioCommunicationChannelPropertyType> createAircraftGroundServiceTimeSliceTypeRadioCommunication(RadioCommunicationChannelPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeRadioCommunication_QNAME, RadioCommunicationChannelPropertyType.class, AircraftGroundServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "groundCommunication", scope = AircraftGroundServiceTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createAircraftGroundServiceTimeSliceTypeGroundCommunication(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeGroundCommunication_QNAME, ContactInformationPropertyType.class, AircraftGroundServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServiceOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = AircraftGroundServiceTimeSliceType.class)
-    public JAXBElement<ServiceOperationalStatusPropertyType> createAircraftGroundServiceTimeSliceTypeAvailability(ServiceOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ServiceOperationalStatusPropertyType.class, AircraftGroundServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = AircraftGroundServiceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createAircraftGroundServiceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, AircraftGroundServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "airportHeliport", scope = AircraftGroundServiceTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createAircraftGroundServiceTimeSliceTypeAirportHeliport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_RadarSystemTimeSliceTypeAirportHeliport_QNAME, AirportHeliportPropertyType.class, AircraftGroundServiceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeAircraftGroundServiceType }{@code >}
      * 
      * @param value
@@ -28130,19 +26739,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "type", scope = AircraftGroundServiceTimeSliceType.class)
     public JAXBElement<CodeAircraftGroundServiceType> createAircraftGroundServiceTimeSliceTypeType(CodeAircraftGroundServiceType value) {
         return new JAXBElement<>(_ReflectorTypeType_QNAME, CodeAircraftGroundServiceType.class, AircraftGroundServiceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AircraftGroundServiceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AircraftGroundServiceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = AircraftGroundServiceTimeSliceType.class)
-    public JAXBElement<AircraftGroundServiceTimeSliceType.Extension> createAircraftGroundServiceTimeSliceTypeExtension(AircraftGroundServiceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, AircraftGroundServiceTimeSliceType.Extension.class, AircraftGroundServiceTimeSliceType.class, value);
     }
 
     /**
@@ -29898,32 +28494,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "userOrganisation", scope = RouteTimeSliceType.class)
     public JAXBElement<OrganisationAuthorityPropertyType> createRouteTimeSliceTypeUserOrganisation(OrganisationAuthorityPropertyType value) {
         return new JAXBElement<>(_RouteTimeSliceTypeUserOrganisation_QNAME, OrganisationAuthorityPropertyType.class, RouteTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = RouteTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createRouteTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, RouteTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RouteTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RouteTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = RouteTimeSliceType.class)
-    public JAXBElement<RouteTimeSliceType.Extension> createRouteTimeSliceTypeExtension(RouteTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, RouteTimeSliceType.Extension.class, RouteTimeSliceType.class, value);
     }
 
     /**
@@ -32029,7 +30599,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "courseCentrelineIntersect", scope = FinalLegTimeSliceType.class)
     public JAXBElement<CodeRelativePositionType> createFinalLegTimeSliceTypeCourseCentrelineIntersect(CodeRelativePositionType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "courseCentrelineIntersect"), CodeRelativePositionType.class, FinalLegTimeSliceType.class, value);
+        return new JAXBElement<>(_FinalLegTimeSliceTypeCourseCentrelineIntersect_QNAME, CodeRelativePositionType.class, FinalLegTimeSliceType.class, value);
     }
 
     /**
@@ -32042,7 +30612,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "finalPathAlignmentPoint_fixDesignatedPoint", scope = FinalLegTimeSliceType.class)
     public JAXBElement<DesignatedPointPropertyType> createFinalLegTimeSliceTypeFinalPathAlignmentPointFixDesignatedPoint(DesignatedPointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_fixDesignatedPoint"), DesignatedPointPropertyType.class, FinalLegTimeSliceType.class, value);
+        return new JAXBElement<>(_FinalLegTimeSliceTypeFinalPathAlignmentPointFixDesignatedPoint_QNAME, DesignatedPointPropertyType.class, FinalLegTimeSliceType.class, value);
     }
 
     /**
@@ -32055,7 +30625,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "finalPathAlignmentPoint_navaidSystem", scope = FinalLegTimeSliceType.class)
     public JAXBElement<NavaidPropertyType> createFinalLegTimeSliceTypeFinalPathAlignmentPointNavaidSystem(NavaidPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_navaidSystem"), NavaidPropertyType.class, FinalLegTimeSliceType.class, value);
+        return new JAXBElement<>(_FinalLegTimeSliceTypeFinalPathAlignmentPointNavaidSystem_QNAME, NavaidPropertyType.class, FinalLegTimeSliceType.class, value);
     }
 
     /**
@@ -32068,7 +30638,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "finalPathAlignmentPoint_position", scope = FinalLegTimeSliceType.class)
     public JAXBElement<PointPropertyType> createFinalLegTimeSliceTypeFinalPathAlignmentPointPosition(PointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_position"), PointPropertyType.class, FinalLegTimeSliceType.class, value);
+        return new JAXBElement<>(_FinalLegTimeSliceTypeFinalPathAlignmentPointPosition_QNAME, PointPropertyType.class, FinalLegTimeSliceType.class, value);
     }
 
     /**
@@ -32081,7 +30651,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "finalPathAlignmentPoint_runwayPoint", scope = FinalLegTimeSliceType.class)
     public JAXBElement<RunwayCentrelinePointPropertyType> createFinalLegTimeSliceTypeFinalPathAlignmentPointRunwayPoint(RunwayCentrelinePointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_runwayPoint"), RunwayCentrelinePointPropertyType.class, FinalLegTimeSliceType.class, value);
+        return new JAXBElement<>(_FinalLegTimeSliceTypeFinalPathAlignmentPointRunwayPoint_QNAME, RunwayCentrelinePointPropertyType.class, FinalLegTimeSliceType.class, value);
     }
 
     /**
@@ -32094,7 +30664,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "finalPathAlignmentPoint_aimingPoint", scope = FinalLegTimeSliceType.class)
     public JAXBElement<TouchDownLiftOffPropertyType> createFinalLegTimeSliceTypeFinalPathAlignmentPointAimingPoint(TouchDownLiftOffPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_aimingPoint"), TouchDownLiftOffPropertyType.class, FinalLegTimeSliceType.class, value);
+        return new JAXBElement<>(_FinalLegTimeSliceTypeFinalPathAlignmentPointAimingPoint_QNAME, TouchDownLiftOffPropertyType.class, FinalLegTimeSliceType.class, value);
     }
 
     /**
@@ -32107,7 +30677,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "finalPathAlignmentPoint_airportReferencePoint", scope = FinalLegTimeSliceType.class)
     public JAXBElement<AirportHeliportPropertyType> createFinalLegTimeSliceTypeFinalPathAlignmentPointAirportReferencePoint(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "finalPathAlignmentPoint_airportReferencePoint"), AirportHeliportPropertyType.class, FinalLegTimeSliceType.class, value);
+        return new JAXBElement<>(_FinalLegTimeSliceTypeFinalPathAlignmentPointAirportReferencePoint_QNAME, AirportHeliportPropertyType.class, FinalLegTimeSliceType.class, value);
     }
 
     /**
@@ -32120,7 +30690,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "visualDescentPoint", scope = FinalLegTimeSliceType.class)
     public JAXBElement<TerminalSegmentPointPropertyType> createFinalLegTimeSliceTypeVisualDescentPoint(TerminalSegmentPointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "visualDescentPoint"), TerminalSegmentPointPropertyType.class, FinalLegTimeSliceType.class, value);
+        return new JAXBElement<>(_FinalLegTimeSliceTypeVisualDescentPoint_QNAME, TerminalSegmentPointPropertyType.class, FinalLegTimeSliceType.class, value);
     }
 
     /**
@@ -32133,7 +30703,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "FASData", scope = FinalLegTimeSliceType.class)
     public JAXBElement<FASDataBlockPropertyType> createFinalLegTimeSliceTypeFASData(FASDataBlockPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "FASData"), FASDataBlockPropertyType.class, FinalLegTimeSliceType.class, value);
+        return new JAXBElement<>(_FinalLegTimeSliceTypeFASData_QNAME, FASDataBlockPropertyType.class, FinalLegTimeSliceType.class, value);
     }
 
     /**
@@ -32549,7 +31119,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "departure", scope = DepartureLegTimeSliceType.class)
     public JAXBElement<StandardInstrumentDeparturePropertyType> createDepartureLegTimeSliceTypeDeparture(StandardInstrumentDeparturePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "departure"), StandardInstrumentDeparturePropertyType.class, DepartureLegTimeSliceType.class, value);
+        return new JAXBElement<>(_DepartureLegTimeSliceTypeDeparture_QNAME, StandardInstrumentDeparturePropertyType.class, DepartureLegTimeSliceType.class, value);
     }
 
     /**
@@ -32952,7 +31522,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "arrival", scope = ArrivalLegTimeSliceType.class)
     public JAXBElement<StandardInstrumentArrivalPropertyType> createArrivalLegTimeSliceTypeArrival(StandardInstrumentArrivalPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "arrival"), StandardInstrumentArrivalPropertyType.class, ArrivalLegTimeSliceType.class, value);
+        return new JAXBElement<>(_ArrivalLegTimeSliceTypeArrival_QNAME, StandardInstrumentArrivalPropertyType.class, ArrivalLegTimeSliceType.class, value);
     }
 
     /**
@@ -33368,7 +31938,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "bufferWidth", scope = SafeAltitudeAreaSectorType.class)
     public JAXBElement<ValDistanceType> createSafeAltitudeAreaSectorTypeBufferWidth(ValDistanceType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "bufferWidth"), ValDistanceType.class, SafeAltitudeAreaSectorType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeBufferWidth_QNAME, ValDistanceType.class, SafeAltitudeAreaSectorType.class, value);
     }
 
     /**
@@ -33381,7 +31951,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = SafeAltitudeAreaSectorType.class)
     public JAXBElement<SurfacePropertyType> createSafeAltitudeAreaSectorTypeExtent(SurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), SurfacePropertyType.class, SafeAltitudeAreaSectorType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, SurfacePropertyType.class, SafeAltitudeAreaSectorType.class, value);
     }
 
     /**
@@ -33407,7 +31977,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "safeAreaType", scope = SafeAltitudeAreaTimeSliceType.class)
     public JAXBElement<CodeSafeAltitudeType> createSafeAltitudeAreaTimeSliceTypeSafeAreaType(CodeSafeAltitudeType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "safeAreaType"), CodeSafeAltitudeType.class, SafeAltitudeAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeSafeAreaType_QNAME, CodeSafeAltitudeType.class, SafeAltitudeAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33420,7 +31990,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_fixDesignatedPoint", scope = SafeAltitudeAreaTimeSliceType.class)
     public JAXBElement<DesignatedPointPropertyType> createSafeAltitudeAreaTimeSliceTypeCentrePointFixDesignatedPoint(DesignatedPointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_fixDesignatedPoint"), DesignatedPointPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointFixDesignatedPoint_QNAME, DesignatedPointPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33433,7 +32003,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_navaidSystem", scope = SafeAltitudeAreaTimeSliceType.class)
     public JAXBElement<NavaidPropertyType> createSafeAltitudeAreaTimeSliceTypeCentrePointNavaidSystem(NavaidPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_navaidSystem"), NavaidPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointNavaidSystem_QNAME, NavaidPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33446,7 +32016,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_position", scope = SafeAltitudeAreaTimeSliceType.class)
     public JAXBElement<PointPropertyType> createSafeAltitudeAreaTimeSliceTypeCentrePointPosition(PointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_position"), PointPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointPosition_QNAME, PointPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33459,7 +32029,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_runwayPoint", scope = SafeAltitudeAreaTimeSliceType.class)
     public JAXBElement<RunwayCentrelinePointPropertyType> createSafeAltitudeAreaTimeSliceTypeCentrePointRunwayPoint(RunwayCentrelinePointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_runwayPoint"), RunwayCentrelinePointPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointRunwayPoint_QNAME, RunwayCentrelinePointPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33472,7 +32042,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_aimingPoint", scope = SafeAltitudeAreaTimeSliceType.class)
     public JAXBElement<TouchDownLiftOffPropertyType> createSafeAltitudeAreaTimeSliceTypeCentrePointAimingPoint(TouchDownLiftOffPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_aimingPoint"), TouchDownLiftOffPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointAimingPoint_QNAME, TouchDownLiftOffPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33485,7 +32055,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_airportReferencePoint", scope = SafeAltitudeAreaTimeSliceType.class)
     public JAXBElement<AirportHeliportPropertyType> createSafeAltitudeAreaTimeSliceTypeCentrePointAirportReferencePoint(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_airportReferencePoint"), AirportHeliportPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointAirportReferencePoint_QNAME, AirportHeliportPropertyType.class, SafeAltitudeAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33498,7 +32068,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "communicationFailureInstruction", scope = StandardInstrumentDepartureTimeSliceType.class)
     public JAXBElement<TextInstructionType> createStandardInstrumentDepartureTimeSliceTypeCommunicationFailureInstruction(TextInstructionType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "communicationFailureInstruction"), TextInstructionType.class, StandardInstrumentDepartureTimeSliceType.class, value);
+        return new JAXBElement<>(_StandardInstrumentDepartureTimeSliceTypeCommunicationFailureInstruction_QNAME, TextInstructionType.class, StandardInstrumentDepartureTimeSliceType.class, value);
     }
 
     /**
@@ -33524,7 +32094,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "designCriteria", scope = StandardInstrumentDepartureTimeSliceType.class)
     public JAXBElement<CodeDesignStandardType> createStandardInstrumentDepartureTimeSliceTypeDesignCriteria(CodeDesignStandardType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "designCriteria"), CodeDesignStandardType.class, StandardInstrumentDepartureTimeSliceType.class, value);
+        return new JAXBElement<>(_StandardInstrumentDepartureTimeSliceTypeDesignCriteria_QNAME, CodeDesignStandardType.class, StandardInstrumentDepartureTimeSliceType.class, value);
     }
 
     /**
@@ -33580,58 +32150,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ProcedureAvailabilityPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ProcedureAvailabilityPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = StandardInstrumentDepartureTimeSliceType.class)
-    public JAXBElement<ProcedureAvailabilityPropertyType> createStandardInstrumentDepartureTimeSliceTypeAvailability(ProcedureAvailabilityPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ProcedureAvailabilityPropertyType.class, StandardInstrumentDepartureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "airportHeliport", scope = StandardInstrumentDepartureTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createStandardInstrumentDepartureTimeSliceTypeAirportHeliport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_RadarSystemTimeSliceTypeAirportHeliport_QNAME, AirportHeliportPropertyType.class, StandardInstrumentDepartureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "aircraftCharacteristic", scope = StandardInstrumentDepartureTimeSliceType.class)
-    public JAXBElement<AircraftCharacteristicPropertyType> createStandardInstrumentDepartureTimeSliceTypeAircraftCharacteristic(AircraftCharacteristicPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "aircraftCharacteristic"), AircraftCharacteristicPropertyType.class, StandardInstrumentDepartureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ProcedureTransitionPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ProcedureTransitionPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "flightTransition", scope = StandardInstrumentDepartureTimeSliceType.class)
-    public JAXBElement<ProcedureTransitionPropertyType> createStandardInstrumentDepartureTimeSliceTypeFlightTransition(ProcedureTransitionPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "flightTransition"), ProcedureTransitionPropertyType.class, StandardInstrumentDepartureTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
      * 
      * @param value
@@ -33668,19 +32186,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "guidanceFacility_navaid", scope = StandardInstrumentDepartureTimeSliceType.class)
     public JAXBElement<NavaidPropertyType> createStandardInstrumentDepartureTimeSliceTypeGuidanceFacilityNavaid(NavaidPropertyType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "guidanceFacility_navaid"), NavaidPropertyType.class, StandardInstrumentDepartureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = StandardInstrumentDepartureTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createStandardInstrumentDepartureTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, StandardInstrumentDepartureTimeSliceType.class, value);
     }
 
     /**
@@ -33733,19 +32238,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "takeoff", scope = StandardInstrumentDepartureTimeSliceType.class)
     public JAXBElement<LandingTakeoffAreaCollectionPropertyType> createStandardInstrumentDepartureTimeSliceTypeTakeoff(LandingTakeoffAreaCollectionPropertyType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "takeoff"), LandingTakeoffAreaCollectionPropertyType.class, StandardInstrumentDepartureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StandardInstrumentDepartureTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link StandardInstrumentDepartureTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = StandardInstrumentDepartureTimeSliceType.class)
-    public JAXBElement<StandardInstrumentDepartureTimeSliceType.Extension> createStandardInstrumentDepartureTimeSliceTypeExtension(StandardInstrumentDepartureTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, StandardInstrumentDepartureTimeSliceType.Extension.class, StandardInstrumentDepartureTimeSliceType.class, value);
     }
 
     /**
@@ -33823,7 +32315,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = NavigationAreaSectorType.class)
     public JAXBElement<SurfacePropertyType> createNavigationAreaSectorTypeExtent(SurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), SurfacePropertyType.class, NavigationAreaSectorType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, SurfacePropertyType.class, NavigationAreaSectorType.class, value);
     }
 
     /**
@@ -33875,7 +32367,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "departure", scope = NavigationAreaTimeSliceType.class)
     public JAXBElement<StandardInstrumentDeparturePropertyType> createNavigationAreaTimeSliceTypeDeparture(StandardInstrumentDeparturePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "departure"), StandardInstrumentDeparturePropertyType.class, NavigationAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_DepartureLegTimeSliceTypeDeparture_QNAME, StandardInstrumentDeparturePropertyType.class, NavigationAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33888,7 +32380,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_fixDesignatedPoint", scope = NavigationAreaTimeSliceType.class)
     public JAXBElement<DesignatedPointPropertyType> createNavigationAreaTimeSliceTypeCentrePointFixDesignatedPoint(DesignatedPointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_fixDesignatedPoint"), DesignatedPointPropertyType.class, NavigationAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointFixDesignatedPoint_QNAME, DesignatedPointPropertyType.class, NavigationAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33901,7 +32393,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_navaidSystem", scope = NavigationAreaTimeSliceType.class)
     public JAXBElement<NavaidPropertyType> createNavigationAreaTimeSliceTypeCentrePointNavaidSystem(NavaidPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_navaidSystem"), NavaidPropertyType.class, NavigationAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointNavaidSystem_QNAME, NavaidPropertyType.class, NavigationAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33914,7 +32406,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_position", scope = NavigationAreaTimeSliceType.class)
     public JAXBElement<PointPropertyType> createNavigationAreaTimeSliceTypeCentrePointPosition(PointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_position"), PointPropertyType.class, NavigationAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointPosition_QNAME, PointPropertyType.class, NavigationAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33927,7 +32419,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_runwayPoint", scope = NavigationAreaTimeSliceType.class)
     public JAXBElement<RunwayCentrelinePointPropertyType> createNavigationAreaTimeSliceTypeCentrePointRunwayPoint(RunwayCentrelinePointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_runwayPoint"), RunwayCentrelinePointPropertyType.class, NavigationAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointRunwayPoint_QNAME, RunwayCentrelinePointPropertyType.class, NavigationAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33940,7 +32432,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_aimingPoint", scope = NavigationAreaTimeSliceType.class)
     public JAXBElement<TouchDownLiftOffPropertyType> createNavigationAreaTimeSliceTypeCentrePointAimingPoint(TouchDownLiftOffPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_aimingPoint"), TouchDownLiftOffPropertyType.class, NavigationAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointAimingPoint_QNAME, TouchDownLiftOffPropertyType.class, NavigationAreaTimeSliceType.class, value);
     }
 
     /**
@@ -33953,7 +32445,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "centrePoint_airportReferencePoint", scope = NavigationAreaTimeSliceType.class)
     public JAXBElement<AirportHeliportPropertyType> createNavigationAreaTimeSliceTypeCentrePointAirportReferencePoint(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "centrePoint_airportReferencePoint"), AirportHeliportPropertyType.class, NavigationAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaTimeSliceTypeCentrePointAirportReferencePoint_QNAME, AirportHeliportPropertyType.class, NavigationAreaTimeSliceType.class, value);
     }
 
     /**
@@ -34044,7 +32536,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "communicationFailureInstruction", scope = StandardInstrumentArrivalTimeSliceType.class)
     public JAXBElement<TextInstructionType> createStandardInstrumentArrivalTimeSliceTypeCommunicationFailureInstruction(TextInstructionType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "communicationFailureInstruction"), TextInstructionType.class, StandardInstrumentArrivalTimeSliceType.class, value);
+        return new JAXBElement<>(_StandardInstrumentDepartureTimeSliceTypeCommunicationFailureInstruction_QNAME, TextInstructionType.class, StandardInstrumentArrivalTimeSliceType.class, value);
     }
 
     /**
@@ -34070,7 +32562,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "designCriteria", scope = StandardInstrumentArrivalTimeSliceType.class)
     public JAXBElement<CodeDesignStandardType> createStandardInstrumentArrivalTimeSliceTypeDesignCriteria(CodeDesignStandardType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "designCriteria"), CodeDesignStandardType.class, StandardInstrumentArrivalTimeSliceType.class, value);
+        return new JAXBElement<>(_StandardInstrumentDepartureTimeSliceTypeDesignCriteria_QNAME, CodeDesignStandardType.class, StandardInstrumentArrivalTimeSliceType.class, value);
     }
 
     /**
@@ -34126,58 +32618,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ProcedureAvailabilityPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ProcedureAvailabilityPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = StandardInstrumentArrivalTimeSliceType.class)
-    public JAXBElement<ProcedureAvailabilityPropertyType> createStandardInstrumentArrivalTimeSliceTypeAvailability(ProcedureAvailabilityPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ProcedureAvailabilityPropertyType.class, StandardInstrumentArrivalTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "airportHeliport", scope = StandardInstrumentArrivalTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createStandardInstrumentArrivalTimeSliceTypeAirportHeliport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_RadarSystemTimeSliceTypeAirportHeliport_QNAME, AirportHeliportPropertyType.class, StandardInstrumentArrivalTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "aircraftCharacteristic", scope = StandardInstrumentArrivalTimeSliceType.class)
-    public JAXBElement<AircraftCharacteristicPropertyType> createStandardInstrumentArrivalTimeSliceTypeAircraftCharacteristic(AircraftCharacteristicPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "aircraftCharacteristic"), AircraftCharacteristicPropertyType.class, StandardInstrumentArrivalTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ProcedureTransitionPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ProcedureTransitionPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "flightTransition", scope = StandardInstrumentArrivalTimeSliceType.class)
-    public JAXBElement<ProcedureTransitionPropertyType> createStandardInstrumentArrivalTimeSliceTypeFlightTransition(ProcedureTransitionPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "flightTransition"), ProcedureTransitionPropertyType.class, StandardInstrumentArrivalTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
      * 
      * @param value
@@ -34217,19 +32657,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = StandardInstrumentArrivalTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createStandardInstrumentArrivalTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, StandardInstrumentArrivalTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SafeAltitudeAreaPropertyType }{@code >}
      * 
      * @param value
@@ -34265,20 +32692,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "arrival", scope = StandardInstrumentArrivalTimeSliceType.class)
     public JAXBElement<LandingTakeoffAreaCollectionPropertyType> createStandardInstrumentArrivalTimeSliceTypeArrival(LandingTakeoffAreaCollectionPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "arrival"), LandingTakeoffAreaCollectionPropertyType.class, StandardInstrumentArrivalTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StandardInstrumentArrivalTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link StandardInstrumentArrivalTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = StandardInstrumentArrivalTimeSliceType.class)
-    public JAXBElement<StandardInstrumentArrivalTimeSliceType.Extension> createStandardInstrumentArrivalTimeSliceTypeExtension(StandardInstrumentArrivalTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, StandardInstrumentArrivalTimeSliceType.Extension.class, StandardInstrumentArrivalTimeSliceType.class, value);
+        return new JAXBElement<>(_ArrivalLegTimeSliceTypeArrival_QNAME, LandingTakeoffAreaCollectionPropertyType.class, StandardInstrumentArrivalTimeSliceType.class, value);
     }
 
     /**
@@ -34564,7 +32978,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = CirclingAreaTimeSliceType.class)
     public JAXBElement<SurfacePropertyType> createCirclingAreaTimeSliceTypeExtent(SurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), SurfacePropertyType.class, CirclingAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, SurfacePropertyType.class, CirclingAreaTimeSliceType.class, value);
     }
 
     /**
@@ -34811,7 +33225,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = TerminalArrivalAreaSectorType.class)
     public JAXBElement<SurfacePropertyType> createTerminalArrivalAreaSectorTypeExtent(SurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), SurfacePropertyType.class, TerminalArrivalAreaSectorType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, SurfacePropertyType.class, TerminalArrivalAreaSectorType.class, value);
     }
 
     /**
@@ -35084,7 +33498,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "communicationFailureInstruction", scope = InstrumentApproachProcedureTimeSliceType.class)
     public JAXBElement<TextInstructionType> createInstrumentApproachProcedureTimeSliceTypeCommunicationFailureInstruction(TextInstructionType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "communicationFailureInstruction"), TextInstructionType.class, InstrumentApproachProcedureTimeSliceType.class, value);
+        return new JAXBElement<>(_StandardInstrumentDepartureTimeSliceTypeCommunicationFailureInstruction_QNAME, TextInstructionType.class, InstrumentApproachProcedureTimeSliceType.class, value);
     }
 
     /**
@@ -35110,7 +33524,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "designCriteria", scope = InstrumentApproachProcedureTimeSliceType.class)
     public JAXBElement<CodeDesignStandardType> createInstrumentApproachProcedureTimeSliceTypeDesignCriteria(CodeDesignStandardType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "designCriteria"), CodeDesignStandardType.class, InstrumentApproachProcedureTimeSliceType.class, value);
+        return new JAXBElement<>(_StandardInstrumentDepartureTimeSliceTypeDesignCriteria_QNAME, CodeDesignStandardType.class, InstrumentApproachProcedureTimeSliceType.class, value);
     }
 
     /**
@@ -35166,58 +33580,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ProcedureAvailabilityPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ProcedureAvailabilityPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = InstrumentApproachProcedureTimeSliceType.class)
-    public JAXBElement<ProcedureAvailabilityPropertyType> createInstrumentApproachProcedureTimeSliceTypeAvailability(ProcedureAvailabilityPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ProcedureAvailabilityPropertyType.class, InstrumentApproachProcedureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "airportHeliport", scope = InstrumentApproachProcedureTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createInstrumentApproachProcedureTimeSliceTypeAirportHeliport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(_RadarSystemTimeSliceTypeAirportHeliport_QNAME, AirportHeliportPropertyType.class, InstrumentApproachProcedureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AircraftCharacteristicPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "aircraftCharacteristic", scope = InstrumentApproachProcedureTimeSliceType.class)
-    public JAXBElement<AircraftCharacteristicPropertyType> createInstrumentApproachProcedureTimeSliceTypeAircraftCharacteristic(AircraftCharacteristicPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "aircraftCharacteristic"), AircraftCharacteristicPropertyType.class, InstrumentApproachProcedureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ProcedureTransitionPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ProcedureTransitionPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "flightTransition", scope = InstrumentApproachProcedureTimeSliceType.class)
-    public JAXBElement<ProcedureTransitionPropertyType> createInstrumentApproachProcedureTimeSliceTypeFlightTransition(ProcedureTransitionPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "flightTransition"), ProcedureTransitionPropertyType.class, InstrumentApproachProcedureTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
      * 
      * @param value
@@ -35254,19 +33616,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "guidanceFacility_navaid", scope = InstrumentApproachProcedureTimeSliceType.class)
     public JAXBElement<NavaidPropertyType> createInstrumentApproachProcedureTimeSliceTypeGuidanceFacilityNavaid(NavaidPropertyType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "guidanceFacility_navaid"), NavaidPropertyType.class, InstrumentApproachProcedureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = InstrumentApproachProcedureTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createInstrumentApproachProcedureTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, InstrumentApproachProcedureTimeSliceType.class, value);
     }
 
     /**
@@ -35413,19 +33762,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MissedApproachGroupPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link MissedApproachGroupPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "missedInstruction", scope = InstrumentApproachProcedureTimeSliceType.class)
-    public JAXBElement<MissedApproachGroupPropertyType> createInstrumentApproachProcedureTimeSliceTypeMissedInstruction(MissedApproachGroupPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "missedInstruction"), MissedApproachGroupPropertyType.class, InstrumentApproachProcedureTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FinalProfilePropertyType }{@code >}
      * 
      * @param value
@@ -35436,19 +33772,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "finalProfile", scope = InstrumentApproachProcedureTimeSliceType.class)
     public JAXBElement<FinalProfilePropertyType> createInstrumentApproachProcedureTimeSliceTypeFinalProfile(FinalProfilePropertyType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "finalProfile"), FinalProfilePropertyType.class, InstrumentApproachProcedureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InstrumentApproachProcedureTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link InstrumentApproachProcedureTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = InstrumentApproachProcedureTimeSliceType.class)
-    public JAXBElement<InstrumentApproachProcedureTimeSliceType.Extension> createInstrumentApproachProcedureTimeSliceTypeExtension(InstrumentApproachProcedureTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, InstrumentApproachProcedureTimeSliceType.Extension.class, InstrumentApproachProcedureTimeSliceType.class, value);
     }
 
     /**
@@ -35790,71 +34113,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "contact", scope = UnitTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createUnitTimeSliceTypeContact(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeContact_QNAME, ContactInformationPropertyType.class, UnitTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UnitDependencyPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link UnitDependencyPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "relatedUnit", scope = UnitTimeSliceType.class)
-    public JAXBElement<UnitDependencyPropertyType> createUnitTimeSliceTypeRelatedUnit(UnitDependencyPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "relatedUnit"), UnitDependencyPropertyType.class, UnitTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UnitAvailabilityPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link UnitAvailabilityPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = UnitTimeSliceType.class)
-    public JAXBElement<UnitAvailabilityPropertyType> createUnitTimeSliceTypeAvailability(UnitAvailabilityPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, UnitAvailabilityPropertyType.class, UnitTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = UnitTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createUnitTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, UnitTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UnitTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link UnitTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = UnitTimeSliceType.class)
-    public JAXBElement<UnitTimeSliceType.Extension> createUnitTimeSliceTypeExtension(UnitTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, UnitTimeSliceType.Extension.class, UnitTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeOrganisationHierarchyType }{@code >}
      * 
      * @param value
@@ -35917,58 +34175,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "military", scope = OrganisationAuthorityTimeSliceType.class)
     public JAXBElement<CodeMilitaryOperationsType> createOrganisationAuthorityTimeSliceTypeMilitary(CodeMilitaryOperationsType value) {
         return new JAXBElement<>(_FlightCharacteristicTypeMilitary_QNAME, CodeMilitaryOperationsType.class, OrganisationAuthorityTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "contact", scope = OrganisationAuthorityTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createOrganisationAuthorityTimeSliceTypeContact(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeContact_QNAME, ContactInformationPropertyType.class, OrganisationAuthorityTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OrganisationAuthorityAssociationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link OrganisationAuthorityAssociationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "relatedOrganisationAuthority", scope = OrganisationAuthorityTimeSliceType.class)
-    public JAXBElement<OrganisationAuthorityAssociationPropertyType> createOrganisationAuthorityTimeSliceTypeRelatedOrganisationAuthority(OrganisationAuthorityAssociationPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "relatedOrganisationAuthority"), OrganisationAuthorityAssociationPropertyType.class, OrganisationAuthorityTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = OrganisationAuthorityTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createOrganisationAuthorityTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, OrganisationAuthorityTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OrganisationAuthorityTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link OrganisationAuthorityTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = OrganisationAuthorityTimeSliceType.class)
-    public JAXBElement<OrganisationAuthorityTimeSliceType.Extension> createOrganisationAuthorityTimeSliceTypeExtension(OrganisationAuthorityTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, OrganisationAuthorityTimeSliceType.Extension.class, OrganisationAuthorityTimeSliceType.class, value);
     }
 
     /**
@@ -36310,149 +34516,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VerticalStructurePartPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link VerticalStructurePartPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "part", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<VerticalStructurePartPropertyType> createVerticalStructureTimeSliceTypePart(VerticalStructurePartPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "part"), VerticalStructurePartPropertyType.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PassengerServicePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PassengerServicePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "hostedPassengerService", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<PassengerServicePropertyType> createVerticalStructureTimeSliceTypeHostedPassengerService(PassengerServicePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "hostedPassengerService"), PassengerServicePropertyType.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GroundLightSystemPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GroundLightSystemPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "supportedGroundLight", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<GroundLightSystemPropertyType> createVerticalStructureTimeSliceTypeSupportedGroundLight(GroundLightSystemPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "supportedGroundLight"), GroundLightSystemPropertyType.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "hostedNavaidEquipment", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentPropertyType> createVerticalStructureTimeSliceTypeHostedNavaidEquipment(NavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "hostedNavaidEquipment"), NavaidEquipmentPropertyType.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SpecialNavigationStationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SpecialNavigationStationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "hostedSpecialNavStation", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<SpecialNavigationStationPropertyType> createVerticalStructureTimeSliceTypeHostedSpecialNavStation(SpecialNavigationStationPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "hostedSpecialNavStation"), SpecialNavigationStationPropertyType.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UnitPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link UnitPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "hostedUnit", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<UnitPropertyType> createVerticalStructureTimeSliceTypeHostedUnit(UnitPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "hostedUnit"), UnitPropertyType.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "hostedOrganisation", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<OrganisationAuthorityPropertyType> createVerticalStructureTimeSliceTypeHostedOrganisation(OrganisationAuthorityPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "hostedOrganisation"), OrganisationAuthorityPropertyType.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ServicePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ServicePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "supportedService", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<ServicePropertyType> createVerticalStructureTimeSliceTypeSupportedService(ServicePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "supportedService"), ServicePropertyType.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createVerticalStructureTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VerticalStructureLightingStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link VerticalStructureLightingStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "lightingAvailability", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<VerticalStructureLightingStatusPropertyType> createVerticalStructureTimeSliceTypeLightingAvailability(VerticalStructureLightingStatusPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "lightingAvailability"), VerticalStructureLightingStatusPropertyType.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VerticalStructureTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link VerticalStructureTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = VerticalStructureTimeSliceType.class)
-    public JAXBElement<VerticalStructureTimeSliceType.Extension> createVerticalStructureTimeSliceTypeExtension(VerticalStructureTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, VerticalStructureTimeSliceType.Extension.class, VerticalStructureTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeObstacleAreaType }{@code >}
      * 
      * @param value
@@ -36661,32 +34724,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = AeronauticalGroundLightTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createAeronauticalGroundLightTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, AeronauticalGroundLightTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AeronauticalGroundLightTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AeronauticalGroundLightTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = AeronauticalGroundLightTimeSliceType.class)
-    public JAXBElement<AeronauticalGroundLightTimeSliceType.Extension> createAeronauticalGroundLightTimeSliceTypeExtension(AeronauticalGroundLightTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, AeronauticalGroundLightTimeSliceType.Extension.class, AeronauticalGroundLightTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeAirspacePointRoleType }{@code >}
      * 
      * @param value
@@ -36892,32 +34929,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "runwayPoint", scope = DesignatedPointTimeSliceType.class)
     public JAXBElement<RunwayCentrelinePointPropertyType> createDesignatedPointTimeSliceTypeRunwayPoint(RunwayCentrelinePointPropertyType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "runwayPoint"), RunwayCentrelinePointPropertyType.class, DesignatedPointTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = DesignatedPointTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createDesignatedPointTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, DesignatedPointTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DesignatedPointTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DesignatedPointTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = DesignatedPointTimeSliceType.class)
-    public JAXBElement<DesignatedPointTimeSliceType.Extension> createDesignatedPointTimeSliceTypeExtension(DesignatedPointTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, DesignatedPointTimeSliceType.Extension.class, DesignatedPointTimeSliceType.class, value);
     }
 
     /**
@@ -37805,58 +35816,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = VORTimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createVORTimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, VORTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = VORTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createVORTimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, VORTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = VORTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createVORTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, VORTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = VORTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createVORTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, VORTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeVORType }{@code >}
      * 
      * @param value
@@ -37906,19 +35865,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "declination", scope = VORTimeSliceType.class)
     public JAXBElement<ValMagneticVariationType> createVORTimeSliceTypeDeclination(ValMagneticVariationType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "declination"), ValMagneticVariationType.class, VORTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VORTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link VORTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = VORTimeSliceType.class)
-    public JAXBElement<VORTimeSliceType.Extension> createVORTimeSliceTypeExtension(VORTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, VORTimeSliceType.Extension.class, VORTimeSliceType.class, value);
     }
 
     /**
@@ -38039,58 +35985,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = TACANTimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createTACANTimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, TACANTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = TACANTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createTACANTimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, TACANTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = TACANTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createTACANTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, TACANTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = TACANTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createTACANTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, TACANTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
      * 
      * @param value
@@ -38114,19 +36008,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "declination", scope = TACANTimeSliceType.class)
     public JAXBElement<ValMagneticVariationType> createTACANTimeSliceTypeDeclination(ValMagneticVariationType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "declination"), ValMagneticVariationType.class, TACANTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TACANTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link TACANTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = TACANTimeSliceType.class)
-    public JAXBElement<TACANTimeSliceType.Extension> createTACANTimeSliceTypeExtension(TACANTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, TACANTimeSliceType.Extension.class, TACANTimeSliceType.class, value);
     }
 
     /**
@@ -38179,32 +36060,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "responsibleOrganisation", scope = SpecialNavigationSystemTimeSliceType.class)
     public JAXBElement<AuthorityForSpecialNavigationSystemPropertyType> createSpecialNavigationSystemTimeSliceTypeResponsibleOrganisation(AuthorityForSpecialNavigationSystemPropertyType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "responsibleOrganisation"), AuthorityForSpecialNavigationSystemPropertyType.class, SpecialNavigationSystemTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = SpecialNavigationSystemTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createSpecialNavigationSystemTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, SpecialNavigationSystemTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SpecialNavigationSystemTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SpecialNavigationSystemTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = SpecialNavigationSystemTimeSliceType.class)
-    public JAXBElement<SpecialNavigationSystemTimeSliceType.Extension> createSpecialNavigationSystemTimeSliceTypeExtension(SpecialNavigationSystemTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, SpecialNavigationSystemTimeSliceType.Extension.class, SpecialNavigationSystemTimeSliceType.class, value);
     }
 
     /**
@@ -38309,45 +36164,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "position", scope = SpecialNavigationStationTimeSliceType.class)
     public JAXBElement<ElevatedPointPropertyType> createSpecialNavigationStationTimeSliceTypePosition(ElevatedPointPropertyType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "position"), ElevatedPointPropertyType.class, SpecialNavigationStationTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SpecialNavigationStationStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SpecialNavigationStationStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = SpecialNavigationStationTimeSliceType.class)
-    public JAXBElement<SpecialNavigationStationStatusPropertyType> createSpecialNavigationStationTimeSliceTypeAvailability(SpecialNavigationStationStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, SpecialNavigationStationStatusPropertyType.class, SpecialNavigationStationTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = SpecialNavigationStationTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createSpecialNavigationStationTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, SpecialNavigationStationTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SpecialNavigationStationTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SpecialNavigationStationTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = SpecialNavigationStationTimeSliceType.class)
-    public JAXBElement<SpecialNavigationStationTimeSliceType.Extension> createSpecialNavigationStationTimeSliceTypeExtension(SpecialNavigationStationTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, SpecialNavigationStationTimeSliceType.Extension.class, SpecialNavigationStationTimeSliceType.class, value);
     }
 
     /**
@@ -38468,58 +36284,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = SDFTimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createSDFTimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, SDFTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = SDFTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createSDFTimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, SDFTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = SDFTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createSDFTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, SDFTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = SDFTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createSDFTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, SDFTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
      * 
      * @param value
@@ -38556,19 +36320,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "trueBearing", scope = SDFTimeSliceType.class)
     public JAXBElement<ValBearingType> createSDFTimeSliceTypeTrueBearing(ValBearingType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "trueBearing"), ValBearingType.class, SDFTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SDFTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SDFTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = SDFTimeSliceType.class)
-    public JAXBElement<SDFTimeSliceType.Extension> createSDFTimeSliceTypeExtension(SDFTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, SDFTimeSliceType.Extension.class, SDFTimeSliceType.class, value);
     }
 
     /**
@@ -38689,58 +36440,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = NDBTimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createNDBTimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, NDBTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = NDBTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createNDBTimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, NDBTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = NDBTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createNDBTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, NDBTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = NDBTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createNDBTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, NDBTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
      * 
      * @param value
@@ -38777,19 +36476,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "emissionBand", scope = NDBTimeSliceType.class)
     public JAXBElement<CodeEmissionBandType> createNDBTimeSliceTypeEmissionBand(CodeEmissionBandType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "emissionBand"), CodeEmissionBandType.class, NDBTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NDBTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NDBTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = NDBTimeSliceType.class)
-    public JAXBElement<NDBTimeSliceType.Extension> createNDBTimeSliceTypeExtension(NDBTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, NDBTimeSliceType.Extension.class, NDBTimeSliceType.class, value);
     }
 
     /**
@@ -38975,32 +36661,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "touchDownLiftOff", scope = NavaidTimeSliceType.class)
-    public JAXBElement<TouchDownLiftOffPropertyType> createNavaidTimeSliceTypeTouchDownLiftOff(TouchDownLiftOffPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "touchDownLiftOff"), TouchDownLiftOffPropertyType.class, NavaidTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidComponentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidComponentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "navaidEquipment", scope = NavaidTimeSliceType.class)
-    public JAXBElement<NavaidComponentPropertyType> createNavaidTimeSliceTypeNavaidEquipment(NavaidComponentPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "navaidEquipment"), NavaidComponentPropertyType.class, NavaidTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      * 
      * @param value
@@ -39011,71 +36671,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "location", scope = NavaidTimeSliceType.class)
     public JAXBElement<ElevatedPointPropertyType> createNavaidTimeSliceTypeLocation(ElevatedPointPropertyType value) {
         return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeLocation_QNAME, ElevatedPointPropertyType.class, NavaidTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "runwayDirection", scope = NavaidTimeSliceType.class)
-    public JAXBElement<RunwayDirectionPropertyType> createNavaidTimeSliceTypeRunwayDirection(RunwayDirectionPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "runwayDirection"), RunwayDirectionPropertyType.class, NavaidTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "servedAirport", scope = NavaidTimeSliceType.class)
-    public JAXBElement<AirportHeliportPropertyType> createNavaidTimeSliceTypeServedAirport(AirportHeliportPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "servedAirport"), AirportHeliportPropertyType.class, NavaidTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = NavaidTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createNavaidTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, NavaidTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = NavaidTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createNavaidTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, NavaidTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = NavaidTimeSliceType.class)
-    public JAXBElement<NavaidTimeSliceType.Extension> createNavaidTimeSliceTypeExtension(NavaidTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, NavaidTimeSliceType.Extension.class, NavaidTimeSliceType.class, value);
     }
 
     /**
@@ -39196,58 +36791,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = MarkerBeaconTimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createMarkerBeaconTimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, MarkerBeaconTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = MarkerBeaconTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createMarkerBeaconTimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, MarkerBeaconTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = MarkerBeaconTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createMarkerBeaconTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, MarkerBeaconTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = MarkerBeaconTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createMarkerBeaconTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, MarkerBeaconTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeMarkerBeaconSignalType }{@code >}
      * 
      * @param value
@@ -39297,19 +36840,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "auralMorseCode", scope = MarkerBeaconTimeSliceType.class)
     public JAXBElement<CodeAuralMorseType> createMarkerBeaconTimeSliceTypeAuralMorseCode(CodeAuralMorseType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "auralMorseCode"), CodeAuralMorseType.class, MarkerBeaconTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MarkerBeaconTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link MarkerBeaconTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = MarkerBeaconTimeSliceType.class)
-    public JAXBElement<MarkerBeaconTimeSliceType.Extension> createMarkerBeaconTimeSliceTypeExtension(MarkerBeaconTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, MarkerBeaconTimeSliceType.Extension.class, MarkerBeaconTimeSliceType.class, value);
     }
 
     /**
@@ -39430,58 +36960,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = LocalizerTimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createLocalizerTimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, LocalizerTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = LocalizerTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createLocalizerTimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, LocalizerTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = LocalizerTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createLocalizerTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, LocalizerTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = LocalizerTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createLocalizerTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, LocalizerTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
      * 
      * @param value
@@ -39596,19 +37074,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "backCourseUsable", scope = LocalizerTimeSliceType.class)
     public JAXBElement<CodeILSBackCourseType> createLocalizerTimeSliceTypeBackCourseUsable(CodeILSBackCourseType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "backCourseUsable"), CodeILSBackCourseType.class, LocalizerTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LocalizerTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link LocalizerTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = LocalizerTimeSliceType.class)
-    public JAXBElement<LocalizerTimeSliceType.Extension> createLocalizerTimeSliceTypeExtension(LocalizerTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, LocalizerTimeSliceType.Extension.class, LocalizerTimeSliceType.class, value);
     }
 
     /**
@@ -39729,58 +37194,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = GlidepathTimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createGlidepathTimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, GlidepathTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = GlidepathTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createGlidepathTimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, GlidepathTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = GlidepathTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createGlidepathTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, GlidepathTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = GlidepathTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createGlidepathTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, GlidepathTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
      * 
      * @param value
@@ -39843,19 +37256,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "rdhAccuracy", scope = GlidepathTimeSliceType.class)
     public JAXBElement<ValDistanceVerticalType> createGlidepathTimeSliceTypeRdhAccuracy(ValDistanceVerticalType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "rdhAccuracy"), ValDistanceVerticalType.class, GlidepathTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlidepathTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GlidepathTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = GlidepathTimeSliceType.class)
-    public JAXBElement<GlidepathTimeSliceType.Extension> createGlidepathTimeSliceTypeExtension(GlidepathTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, GlidepathTimeSliceType.Extension.class, GlidepathTimeSliceType.class, value);
     }
 
     /**
@@ -39976,58 +37376,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = ElevationTimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createElevationTimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, ElevationTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = ElevationTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createElevationTimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, ElevationTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = ElevationTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createElevationTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, ElevationTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = ElevationTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createElevationTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, ElevationTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
      * 
      * @param value
@@ -40077,19 +37425,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "angleAccuracy", scope = ElevationTimeSliceType.class)
     public JAXBElement<ValAngleType> createElevationTimeSliceTypeAngleAccuracy(ValAngleType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "angleAccuracy"), ValAngleType.class, ElevationTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ElevationTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ElevationTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = ElevationTimeSliceType.class)
-    public JAXBElement<ElevationTimeSliceType.Extension> createElevationTimeSliceTypeExtension(ElevationTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, ElevationTimeSliceType.Extension.class, ElevationTimeSliceType.class, value);
     }
 
     /**
@@ -40210,58 +37545,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = DMETimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createDMETimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, DMETimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = DMETimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createDMETimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, DMETimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = DMETimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createDMETimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, DMETimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = DMETimeSliceType.class)
-    public JAXBElement<NotePropertyType> createDMETimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, DMETimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeDMEType }{@code >}
      * 
      * @param value
@@ -40311,19 +37594,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "displace", scope = DMETimeSliceType.class)
     public JAXBElement<ValDistanceType> createDMETimeSliceTypeDisplace(ValDistanceType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "displace"), ValDistanceType.class, DMETimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DMETimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DMETimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = DMETimeSliceType.class)
-    public JAXBElement<DMETimeSliceType.Extension> createDMETimeSliceTypeExtension(DMETimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, DMETimeSliceType.Extension.class, DMETimeSliceType.class, value);
     }
 
     /**
@@ -40444,58 +37714,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = DirectionFinderTimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createDirectionFinderTimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, DirectionFinderTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = DirectionFinderTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createDirectionFinderTimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, DirectionFinderTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = DirectionFinderTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createDirectionFinderTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, DirectionFinderTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = DirectionFinderTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createDirectionFinderTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, DirectionFinderTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
      * 
      * @param value
@@ -40506,32 +37724,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "doppler", scope = DirectionFinderTimeSliceType.class)
     public JAXBElement<CodeYesNoType> createDirectionFinderTimeSliceTypeDoppler(CodeYesNoType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "doppler"), CodeYesNoType.class, DirectionFinderTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InformationServicePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link InformationServicePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "informationProvision", scope = DirectionFinderTimeSliceType.class)
-    public JAXBElement<InformationServicePropertyType> createDirectionFinderTimeSliceTypeInformationProvision(InformationServicePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "informationProvision"), InformationServicePropertyType.class, DirectionFinderTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DirectionFinderTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DirectionFinderTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = DirectionFinderTimeSliceType.class)
-    public JAXBElement<DirectionFinderTimeSliceType.Extension> createDirectionFinderTimeSliceTypeExtension(DirectionFinderTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, DirectionFinderTimeSliceType.Extension.class, DirectionFinderTimeSliceType.class, value);
     }
 
     /**
@@ -40925,58 +38117,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForNavaidEquipmentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "authority", scope = AzimuthTimeSliceType.class)
-    public JAXBElement<AuthorityForNavaidEquipmentPropertyType> createAzimuthTimeSliceTypeAuthority(AuthorityForNavaidEquipmentPropertyType value) {
-        return new JAXBElement<>(_SpecialDateTimeSliceTypeAuthority_QNAME, AuthorityForNavaidEquipmentPropertyType.class, AzimuthTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidEquipmentMonitoringPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "monitoring", scope = AzimuthTimeSliceType.class)
-    public JAXBElement<NavaidEquipmentMonitoringPropertyType> createAzimuthTimeSliceTypeMonitoring(NavaidEquipmentMonitoringPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "monitoring"), NavaidEquipmentMonitoringPropertyType.class, AzimuthTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NavaidOperationalStatusPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = AzimuthTimeSliceType.class)
-    public JAXBElement<NavaidOperationalStatusPropertyType> createAzimuthTimeSliceTypeAvailability(NavaidOperationalStatusPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, NavaidOperationalStatusPropertyType.class, AzimuthTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = AzimuthTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createAzimuthTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, AzimuthTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeMLSAzimuthType }{@code >}
      * 
      * @param value
@@ -41091,19 +38231,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "channel", scope = AzimuthTimeSliceType.class)
     public JAXBElement<CodeMLSChannelType> createAzimuthTimeSliceTypeChannel(CodeMLSChannelType value) {
         return new JAXBElement<>(_RadioCommunicationChannelTimeSliceTypeChannel_QNAME, CodeMLSChannelType.class, AzimuthTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AzimuthTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AzimuthTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = AzimuthTimeSliceType.class)
-    public JAXBElement<AzimuthTimeSliceType.Extension> createAzimuthTimeSliceTypeExtension(AzimuthTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, AzimuthTimeSliceType.Extension.class, AzimuthTimeSliceType.class, value);
     }
 
     /**
@@ -41454,7 +38581,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = HoldingPatternTimeSliceType.class)
     public JAXBElement<CurvePropertyType> createHoldingPatternTimeSliceTypeExtent(CurvePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), CurvePropertyType.class, HoldingPatternTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, CurvePropertyType.class, HoldingPatternTimeSliceType.class, value);
     }
 
     /**
@@ -41689,32 +38816,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "border", scope = GeoBorderTimeSliceType.class)
     public JAXBElement<CurvePropertyType> createGeoBorderTimeSliceTypeBorder(CurvePropertyType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "border"), CurvePropertyType.class, GeoBorderTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = GeoBorderTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createGeoBorderTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, GeoBorderTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GeoBorderTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GeoBorderTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = GeoBorderTimeSliceType.class)
-    public JAXBElement<GeoBorderTimeSliceType.Extension> createGeoBorderTimeSliceTypeExtension(GeoBorderTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, GeoBorderTimeSliceType.Extension.class, GeoBorderTimeSliceType.class, value);
     }
 
     /**
@@ -42095,19 +39196,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirspaceLayerClassPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirspaceLayerClassPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "class", scope = AirspaceTimeSliceType.class)
-    public JAXBElement<AirspaceLayerClassPropertyType> createAirspaceTimeSliceTypeClass(AirspaceLayerClassPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "class"), AirspaceLayerClassPropertyType.class, AirspaceTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
      * 
      * @param value
@@ -42118,58 +39206,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "protectedRoute", scope = AirspaceTimeSliceType.class)
     public JAXBElement<RoutePropertyType> createAirspaceTimeSliceTypeProtectedRoute(RoutePropertyType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "protectedRoute"), RoutePropertyType.class, AirspaceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirspaceGeometryComponentPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirspaceGeometryComponentPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "geometryComponent", scope = AirspaceTimeSliceType.class)
-    public JAXBElement<AirspaceGeometryComponentPropertyType> createAirspaceTimeSliceTypeGeometryComponent(AirspaceGeometryComponentPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "geometryComponent"), AirspaceGeometryComponentPropertyType.class, AirspaceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirspaceActivationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirspaceActivationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "activation", scope = AirspaceTimeSliceType.class)
-    public JAXBElement<AirspaceActivationPropertyType> createAirspaceTimeSliceTypeActivation(AirspaceActivationPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "activation"), AirspaceActivationPropertyType.class, AirspaceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = AirspaceTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createAirspaceTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, AirspaceTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirspaceTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirspaceTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = AirspaceTimeSliceType.class)
-    public JAXBElement<AirspaceTimeSliceType.Extension> createAirspaceTimeSliceTypeExtension(AirspaceTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, AirspaceTimeSliceType.Extension.class, AirspaceTimeSliceType.class, value);
     }
 
     /**
@@ -42260,7 +39296,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = TaxiwayElementTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createTaxiwayElementTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, TaxiwayElementTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, TaxiwayElementTimeSliceType.class, value);
     }
 
     /**
@@ -42481,7 +39517,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = GuidanceLineTimeSliceType.class)
     public JAXBElement<ElevatedCurvePropertyType> createGuidanceLineTimeSliceTypeExtent(ElevatedCurvePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedCurvePropertyType.class, GuidanceLineTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedCurvePropertyType.class, GuidanceLineTimeSliceType.class, value);
     }
 
     /**
@@ -43612,7 +40648,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = SeaplaneRampSiteTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createSeaplaneRampSiteTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, SeaplaneRampSiteTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, SeaplaneRampSiteTimeSliceType.class, value);
     }
 
     /**
@@ -43638,7 +40674,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = SeaplaneLandingAreaTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createSeaplaneLandingAreaTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, SeaplaneLandingAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, SeaplaneLandingAreaTimeSliceType.class, value);
     }
 
     /**
@@ -43716,7 +40752,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = FloatingDockSiteTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createFloatingDockSiteTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, FloatingDockSiteTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, FloatingDockSiteTimeSliceType.class, value);
     }
 
     /**
@@ -43950,7 +40986,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = RunwayProtectAreaTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createRunwayProtectAreaTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, RunwayProtectAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, RunwayProtectAreaTimeSliceType.class, value);
     }
 
     /**
@@ -44067,7 +41103,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = RunwayElementTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createRunwayElementTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, RunwayElementTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, RunwayElementTimeSliceType.class, value);
     }
 
     /**
@@ -44392,7 +41428,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = RunwayBlastPadTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createRunwayBlastPadTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, RunwayBlastPadTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, RunwayBlastPadTimeSliceType.class, value);
     }
 
     /**
@@ -46017,7 +43053,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = TouchDownLiftOffSafeAreaTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createTouchDownLiftOffSafeAreaTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, TouchDownLiftOffSafeAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, TouchDownLiftOffSafeAreaTimeSliceType.class, value);
     }
 
     /**
@@ -46134,7 +43170,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = TouchDownLiftOffTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createTouchDownLiftOffTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, TouchDownLiftOffTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, TouchDownLiftOffTimeSliceType.class, value);
     }
 
     /**
@@ -46290,7 +43326,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = PassengerLoadingBridgeTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createPassengerLoadingBridgeTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, PassengerLoadingBridgeTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, PassengerLoadingBridgeTimeSliceType.class, value);
     }
 
     /**
@@ -46355,7 +43391,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = DeicingAreaTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createDeicingAreaTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, DeicingAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, DeicingAreaTimeSliceType.class, value);
     }
 
     /**
@@ -46485,7 +43521,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = ApronElementTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createApronElementTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, ApronElementTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, ApronElementTimeSliceType.class, value);
     }
 
     /**
@@ -46606,58 +43642,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ApronContaminationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ApronContaminationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "contaminant", scope = ApronTimeSliceType.class)
-    public JAXBElement<ApronContaminationPropertyType> createApronTimeSliceTypeContaminant(ApronContaminationPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "contaminant"), ApronContaminationPropertyType.class, ApronTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = ApronTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createApronTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, ApronTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ApronAreaAvailabilityPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ApronAreaAvailabilityPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = ApronTimeSliceType.class)
-    public JAXBElement<ApronAreaAvailabilityPropertyType> createApronTimeSliceTypeAvailability(ApronAreaAvailabilityPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, ApronAreaAvailabilityPropertyType.class, ApronTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ApronTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ApronTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = ApronTimeSliceType.class)
-    public JAXBElement<ApronTimeSliceType.Extension> createApronTimeSliceTypeExtension(ApronTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, ApronTimeSliceType.Extension.class, ApronTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
      * 
      * @param value
@@ -46745,7 +43729,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = AircraftStandTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createAircraftStandTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, AircraftStandTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, AircraftStandTimeSliceType.class, value);
     }
 
     /**
@@ -46810,7 +43794,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = WorkAreaTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createWorkAreaTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, WorkAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, WorkAreaTimeSliceType.class, value);
     }
 
     /**
@@ -47031,7 +44015,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = NonMovementAreaTimeSliceType.class)
     public JAXBElement<ElevatedSurfacePropertyType> createNonMovementAreaTimeSliceTypeExtent(ElevatedSurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), ElevatedSurfacePropertyType.class, NonMovementAreaTimeSliceType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, ElevatedSurfacePropertyType.class, NonMovementAreaTimeSliceType.class, value);
     }
 
     /**
@@ -47058,32 +44042,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "name", scope = CityType.class)
     public JAXBElement<TextNameType> createCityTypeName(TextNameType value) {
         return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeName_QNAME, TextNameType.class, CityType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = CityType.class)
-    public JAXBElement<NotePropertyType> createCityTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, CityType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CityType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CityType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = CityType.class)
-    public JAXBElement<CityType.Extension> createCityTypeExtension(CityType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, CityType.Extension.class, CityType.class, value);
     }
 
     /**
@@ -47646,32 +44604,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportContaminationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportContaminationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "contaminant", scope = AirportHeliportTimeSliceType.class)
-    public JAXBElement<AirportHeliportContaminationPropertyType> createAirportHeliportTimeSliceTypeContaminant(AirportHeliportContaminationPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "contaminant"), AirportHeliportContaminationPropertyType.class, AirportHeliportTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CityPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CityPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "servedCity", scope = AirportHeliportTimeSliceType.class)
-    public JAXBElement<CityPropertyType> createAirportHeliportTimeSliceTypeServedCity(CityPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "servedCity"), CityPropertyType.class, AirportHeliportTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportResponsibilityOrganisationPropertyType }{@code >}
      * 
      * @param value
@@ -47711,71 +44643,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AltimeterSourcePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AltimeterSourcePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "altimeterSource", scope = AirportHeliportTimeSliceType.class)
-    public JAXBElement<AltimeterSourcePropertyType> createAirportHeliportTimeSliceTypeAltimeterSource(AltimeterSourcePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "altimeterSource"), AltimeterSourcePropertyType.class, AirportHeliportTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ContactInformationPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "contact", scope = AirportHeliportTimeSliceType.class)
-    public JAXBElement<ContactInformationPropertyType> createAirportHeliportTimeSliceTypeContact(ContactInformationPropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeContact_QNAME, ContactInformationPropertyType.class, AirportHeliportTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportAvailabilityPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportAvailabilityPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = AirportHeliportTimeSliceType.class)
-    public JAXBElement<AirportHeliportAvailabilityPropertyType> createAirportHeliportTimeSliceTypeAvailability(AirportHeliportAvailabilityPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, AirportHeliportAvailabilityPropertyType.class, AirportHeliportTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = AirportHeliportTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createAirportHeliportTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, AirportHeliportTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirportHeliportTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirportHeliportTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = AirportHeliportTimeSliceType.class)
-    public JAXBElement<AirportHeliportTimeSliceType.Extension> createAirportHeliportTimeSliceTypeExtension(AirportHeliportTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, AirportHeliportTimeSliceType.Extension.class, AirportHeliportTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeAuthorityType }{@code >}
      * 
      * @param value
@@ -47798,7 +44665,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = AerialRefuellingTrackType.class)
     public JAXBElement<CurvePropertyType> createAerialRefuellingTrackTypeExtent(CurvePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), CurvePropertyType.class, AerialRefuellingTrackType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, CurvePropertyType.class, AerialRefuellingTrackType.class, value);
     }
 
     /**
@@ -48097,7 +44964,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extent", scope = AerialRefuellingAnchorType.class)
     public JAXBElement<SurfacePropertyType> createAerialRefuellingAnchorTypeExtent(SurfacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "extent"), SurfacePropertyType.class, AerialRefuellingAnchorType.class, value);
+        return new JAXBElement<>(_SafeAltitudeAreaSectorTypeExtent_QNAME, SurfacePropertyType.class, AerialRefuellingAnchorType.class, value);
     }
 
     /**
@@ -48283,58 +45150,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RouteAvailabilityPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RouteAvailabilityPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "availability", scope = AerialRefuellingTimeSliceType.class)
-    public JAXBElement<RouteAvailabilityPropertyType> createAerialRefuellingTimeSliceTypeAvailability(RouteAvailabilityPropertyType value) {
-        return new JAXBElement<>(_SearchRescueServiceTimeSliceTypeAvailability_QNAME, RouteAvailabilityPropertyType.class, AerialRefuellingTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "protectingAirspace", scope = AerialRefuellingTimeSliceType.class)
-    public JAXBElement<AirspacePropertyType> createAerialRefuellingTimeSliceTypeProtectingAirspace(AirspacePropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "protectingAirspace"), AirspacePropertyType.class, AerialRefuellingTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AerialRefuellingTrackPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AerialRefuellingTrackPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "track", scope = AerialRefuellingTimeSliceType.class)
-    public JAXBElement<AerialRefuellingTrackPropertyType> createAerialRefuellingTimeSliceTypeTrack(AerialRefuellingTrackPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "track"), AerialRefuellingTrackPropertyType.class, AerialRefuellingTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AerialRefuellingAnchorPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AerialRefuellingAnchorPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "anchor", scope = AerialRefuellingTimeSliceType.class)
-    public JAXBElement<AerialRefuellingAnchorPropertyType> createAerialRefuellingTimeSliceTypeAnchor(AerialRefuellingAnchorPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "anchor"), AerialRefuellingAnchorPropertyType.class, AerialRefuellingTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
      * 
      * @param value
@@ -48345,45 +45160,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "oppositeTrack", scope = AerialRefuellingTimeSliceType.class)
     public JAXBElement<AerialRefuellingPropertyType> createAerialRefuellingTimeSliceTypeOppositeTrack(AerialRefuellingPropertyType value) {
         return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "oppositeTrack"), AerialRefuellingPropertyType.class, AerialRefuellingTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorityForAerialRefuellingPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuthorityForAerialRefuellingPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "managingOrganisation", scope = AerialRefuellingTimeSliceType.class)
-    public JAXBElement<AuthorityForAerialRefuellingPropertyType> createAerialRefuellingTimeSliceTypeManagingOrganisation(AuthorityForAerialRefuellingPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "managingOrganisation"), AuthorityForAerialRefuellingPropertyType.class, AerialRefuellingTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NotePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "annotation", scope = AerialRefuellingTimeSliceType.class)
-    public JAXBElement<NotePropertyType> createAerialRefuellingTimeSliceTypeAnnotation(NotePropertyType value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeAnnotation_QNAME, NotePropertyType.class, AerialRefuellingTimeSliceType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AerialRefuellingTimeSliceType.Extension }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AerialRefuellingTimeSliceType.Extension }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "extension", scope = AerialRefuellingTimeSliceType.class)
-    public JAXBElement<AerialRefuellingTimeSliceType.Extension> createAerialRefuellingTimeSliceTypeExtension(AerialRefuellingTimeSliceType.Extension value) {
-        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeExtension_QNAME, AerialRefuellingTimeSliceType.Extension.class, AerialRefuellingTimeSliceType.class, value);
     }
 
 }
