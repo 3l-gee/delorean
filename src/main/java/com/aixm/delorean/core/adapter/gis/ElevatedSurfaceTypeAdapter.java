@@ -3,7 +3,7 @@ package com.aixm.delorean.core.adapter.gis;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedSurfaceType;
-import com.aixm.delorean.core.schema.school.ElevatedSurfaceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
 
 public class ElevatedSurfaceTypeAdapter extends XmlAdapter<ElevatedSurfaceType, AixmElevatedSurfaceType>
 {

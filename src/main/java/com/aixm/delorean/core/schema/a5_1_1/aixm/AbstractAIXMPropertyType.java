@@ -27,7 +27,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <attribute name="nilReason" type="{http://www.opengis.net/gml/3.2}NilReasonEnumeration" />
- *       <attribute name="dbID" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -169,8 +168,6 @@ public abstract class AbstractAIXMPropertyType {
 
     @XmlAttribute(name = "nilReason")
     protected String nilReason;
-    @XmlAttribute(name = "dbID")
-    protected Long dbID;
 
     /**
      * Gets the value of the nilReason property.
@@ -198,38 +195,6 @@ public abstract class AbstractAIXMPropertyType {
 
     public boolean isSetNilReason() {
         return (this.nilReason!= null);
-    }
-
-    /**
-     * Gets the value of the dbID property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    public long getDbID() {
-        return dbID;
-    }
-
-    /**
-     * Sets the value of the dbID property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    public void setDbID(long value) {
-        this.dbID = value;
-    }
-
-    public boolean isSetDbID() {
-        return (this.dbID!= null);
-    }
-
-    public void unsetDbID() {
-        this.dbID = null;
     }
 
 }

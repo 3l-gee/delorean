@@ -1,16 +1,15 @@
 package com.aixm.delorean.core.adapter.type.gis;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 import org.locationtech.jts.geom.LineString;
 
+import com.aixm.delorean.core.schema.a5_1_1.aixm.UomDistanceType;
+
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Embeddable
 public class AixmCurveType {
@@ -20,23 +19,22 @@ public class AixmCurveType {
     // @Column(name = "id"/* , nullable = false*/)
     // protected String id;
 
+    // @ElementCollection
+    // @Column(name = "point_annotation")
+    // protected List<String> annotation;
+
     @Column(name = "linestring", columnDefinition = "geometry(Linestring, 4326)")
     protected LineString lineString;
 
-    @Column(name = "horizontalAccuracy")
-    protected Long horizontalAccuracy;
+    @Column(name = "linestring_horizontalAccuracy_value")
+    protected BigDecimal horizontalAccuracy;
     
-    @ElementCollection
-    @Column(name = "annotation")
-    protected List<String> annotation;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "linestring_horizontalAccuracy_uom")
+    protected UomDistanceType horizontalAccuracy_uom;
 
-    // public String getId() {
-    //     return id;
-    // }
-
-    // public void setId(String value) {
-    //     this.id = value;
-    // }
+    @Column(name = "linestring_horizontalAccuracy_nilReason")
+    protected String horizontalAccuracy_nilReason;
 
     public LineString getLineString() {
         return lineString;
@@ -46,20 +44,27 @@ public class AixmCurveType {
         this.lineString = value;
     }
 
-    public Long getHorizontalAccuracy() {
+    public BigDecimal getHorizontalAccuracy() {
         return horizontalAccuracy;
     }
 
-    public void setHorizontalAccuracy(Long value) {
+    public void setHorizontalAccuracy(BigDecimal value) {
         this.horizontalAccuracy = value;
     }
 
-    public List<String> getAnnotation() {
-        return annotation;
+    public UomDistanceType getHorizontalAccuracy_uom() {
+        return horizontalAccuracy_uom;
     }
 
-    public void setAnnotation(List<String> annotation) {
-        this.annotation = annotation;
+    public void setHorizontalAccuracy_uom(UomDistanceType value) {
+        this.horizontalAccuracy_uom = value;
     }
 
+    public String getHorizontalAccuracy_nilReason() {
+        return horizontalAccuracy_nilReason;
+    }
+
+    public void setHorizontalAccuracy_nilReason(String value) {
+        this.horizontalAccuracy_nilReason = value;
+    }
 }
