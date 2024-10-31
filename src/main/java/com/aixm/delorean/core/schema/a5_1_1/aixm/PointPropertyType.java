@@ -46,7 +46,7 @@ public class PointPropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true, type = PointType.class)
+    @XmlElement(required = true, type = PointType.class, name = "Point")
     @XmlJavaTypeAdapter(PointTypeAdapter.class)
     @Embedded
     protected AixmPointType point;

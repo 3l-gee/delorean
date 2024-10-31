@@ -150,8 +150,8 @@ public class AirportHeliportTimeSliceType
     protected List<CityPropertyType> servedCity;
     @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<AirportHeliportResponsibilityOrganisationPropertyType> responsibleOrganisation;
-    @XmlElementRef(name = "ARP", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    protected JAXBElement<ElevatedPointPropertyType> arp;
+    @XmlElement(name = "ARP", nillable = true)
+    protected ElevatedPointPropertyType arp;
     @XmlElementRef(name = "aviationBoundary", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected JAXBElement<ElevatedSurfacePropertyType> aviationBoundary;
     @XmlElement(nillable = true)
@@ -1005,10 +1005,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getARP() {
+    public ElevatedPointPropertyType getARP() {
         return arp;
     }
 
@@ -1017,10 +1017,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setARP(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setARP(ElevatedPointPropertyType value) {
         this.arp = value;
     }
 

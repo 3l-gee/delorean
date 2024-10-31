@@ -46,7 +46,7 @@ public class SurfacePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true, type = SurfaceType.class)
+    @XmlElement(required = true, type = SurfaceType.class, name = "Surface")
     @XmlJavaTypeAdapter(SurfaceTypeAdapter.class)
     @Embedded
     protected AixmSurfaceType surface;

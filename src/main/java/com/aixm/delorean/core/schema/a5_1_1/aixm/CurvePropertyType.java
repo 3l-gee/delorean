@@ -46,7 +46,7 @@ public class CurvePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true, type = CurveType.class)
+    @XmlElement(required = true, type = CurveType.class, name = "Curve")
     @XmlJavaTypeAdapter(CurveTypeAdapter.class)
     @Embedded
     protected AixmCurveType curve;

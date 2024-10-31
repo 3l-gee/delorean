@@ -39,44 +39,44 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ElevatedPointPropertyType", propOrder = {
-    "point"
+    "elevatedPoint"
 })
 @Embeddable
 public class ElevatedPointPropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true, type = ElevatedPointType.class)
+    @XmlElement(name = "ElevatedPoint", required = true, type = ElevatedPointType.class)
     @XmlJavaTypeAdapter(ElevatedPointTypeAdapter.class)
     @Embedded
-    protected AixmElevatedPointType point;
+    protected AixmElevatedPointType elevatedPoint;
 
     /**
-     * Gets the value of the point property.
+     * Gets the value of the elevatedPoint property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public AixmElevatedPointType getPoint() {
-        return point;
+    public AixmElevatedPointType getElevatedPoint() {
+        return elevatedPoint;
     }
 
     /**
-     * Sets the value of the point property.
+     * Sets the value of the elevatedPoint property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPoint(AixmElevatedPointType value) {
-        this.point = value;
+    public void setElevatedPoint(AixmElevatedPointType value) {
+        this.elevatedPoint = value;
     }
 
-    public boolean isSetPoint() {
-        return (this.point!= null);
+    public boolean isSetElevatedPoint() {
+        return (this.elevatedPoint!= null);
     }
 
 }
