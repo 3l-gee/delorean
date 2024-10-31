@@ -95,15 +95,27 @@ public class GeospatialHelper {
     }
 
     private static CoordinateTransform createCoordinateTransform(String sourceCRS, String targetCRS) {
-        if (!isValidCRS(sourceCRS)) {
-            throw new IllegalArgumentException("Invalid source CRS: " + sourceCRS);
+        String formattedSourceCRS = null;
+        if (!sourceCRS.contains("EPSG")) {
+            throw new IllegalArgumentException("Invalid CRS format: " + sourceCRS);
+        } else {
+            String[] parts = sourceCRS.split(":");
+            for (String part : parts) {
+                if (part.matches("\\d+")) {
+                    formattedSourceCRS = "EPSG:" + part;
+                }
+            }
         }
 
-        if (!isValidCRS(targetCRS)) {
-            throw new IllegalArgumentException("Invalid target CRS: " + targetCRS);
+        if (!isValidCRS(formattedSourceCRS)) {
+            throw new IllegalArgumentException("Invalid source CRS: " + formattedSourceCRS);
         }
 
-        CoordinateReferenceSystem srcCrs = crsFactory.createFromName(sourceCRS);
+        if (!isValidCRS(formattedSourceCRS)) {
+            throw new IllegalArgumentException("Invalid target CRS: " + formattedSourceCRS);
+        }
+
+        CoordinateReferenceSystem srcCrs = crsFactory.createFromName(formattedSourceCRS);
         CoordinateReferenceSystem tgtCrs = crsFactory.createFromName(targetCRS);
         return ctFactory.createTransform(srcCrs, tgtCrs);
     }
@@ -142,13 +154,13 @@ public class GeospatialHelper {
     }
 
     public static Point parseGMLPoint(PointType value) {
-        System.out.println("Starting parseGMLPoint");
         DirectPositionType pos = value.getPos();
         String srsName = value.getSrsName();
-        Coordinate srcCoord = new Coordinate(pos.getValue().get(0), pos.getValue().get(1));
+        Double x = pos.getValue().get(0);
+        Double y = pos.getValue().get(1);
+        Coordinate srcCoord = new Coordinate(x, y);
         if (srsName == null) {
             // No transformation needed
-            System.out.println("X: " + srcCoord.x + " Y: " + srcCoord.y);
             return geometryFactory.createPoint(new Coordinate(srcCoord.x, srcCoord.y));
         }
         
@@ -159,9 +171,7 @@ public class GeospatialHelper {
     }
 
     public static PointType printGMLPoint(Point value){  
-        System.out.println("Starting printGMLPoint");
         if (value == null) {
-            System.out.println("Value is null");
             return new PointType();
         }
         DirectPositionType pos = new DirectPositionType();
@@ -219,6 +229,9 @@ public class GeospatialHelper {
         valDistance.setValue(value.getHorizontalAccuracy());
         valDistance.setUom(value.getHorizontalAccuracy_uom());
         JAXBElement<ValDistanceType> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), ValDistanceType.class, valDistance);
+        if (value.getHorizontalAccuracy() == null) {
+            horizontalAccuracy.setNil(true);
+        }
         point.setHorizontalAccuracy(horizontalAccuracy);
 
         return point;
@@ -228,41 +241,57 @@ public class GeospatialHelper {
         AixmElevatedPointType point = new AixmElevatedPointType();
         point.setPoint(parseGMLPoint(value));
 
+        System.out.println("id  :" + value.getId());
+        System.out.println("pos :" + value.getPos().getValue().toString());
+        System.out.println("coo :" + point.getPoint().getCoordinates().toString());
+
         ValDistanceType valDistanceHorizontalAccurarcy = value.getHorizontalAccuracy().getValue();
-        point.setHorizontalAccuracy(valDistanceHorizontalAccurarcy.getValue());
-        point.setHorizontalAccuracy_uom(valDistanceHorizontalAccurarcy.getUom());
-        point.setHorizontalAccuracy_nilReason(valDistanceHorizontalAccurarcy.getNilReason());
+        if (valDistanceHorizontalAccurarcy != null) {
+            point.setHorizontalAccuracy(valDistanceHorizontalAccurarcy.getValue());
+            point.setHorizontalAccuracy_uom(valDistanceHorizontalAccurarcy.getUom());
+            point.setHorizontalAccuracy_nilReason(valDistanceHorizontalAccurarcy.getNilReason());
+        }
 
         ValDistanceType valDisanceVerticalAccuracy = value.getVerticalAccuracy().getValue();
-        point.setVerticalAccuracy(valDisanceVerticalAccuracy.getValue());
-        point.setVerticalAccuracy_uom(valDisanceVerticalAccuracy.getUom());
-        point.setVerticalAccuracy_nilReason(valDisanceVerticalAccuracy.getNilReason());
+        if (valDisanceVerticalAccuracy != null) {
+            point.setVerticalAccuracy(valDisanceVerticalAccuracy.getValue());
+            point.setVerticalAccuracy_uom(valDisanceVerticalAccuracy.getUom());
+            point.setVerticalAccuracy_nilReason(valDisanceVerticalAccuracy.getNilReason());
+        }
 
         ValDistanceVerticalType valDistanceVertical = value.getElevation().getValue();
-        point.setElevation(new BigDecimal(valDistanceVertical.getValue()));
-        point.setElevation_uom(valDistanceVertical.getUom());
-        point.setElevation_nilReason(valDistanceVertical.getNilReason());
+        if (valDistanceVertical != null) {
+            point.setElevation(valDistanceVertical.getValue() != null ? new BigDecimal(valDistanceVertical.getValue()) : BigDecimal.ZERO);
+            point.setElevation_uom(valDistanceVertical.getUom());
+            point.setElevation_nilReason(valDistanceVertical.getNilReason());
+        }
 
         ValDistanceSignedType valDistanceSigned = value.getGeoidUndulation().getValue();
-        point.setGeoidUndulation(valDistanceSigned.getValue());
-        point.setGeoidUndulation_uom(valDistanceSigned.getUom());
-        point.setGeoidUndulation_nilReason(valDistanceSigned.getNilReason());
+        if (valDistanceSigned != null) {
+            point.setGeoidUndulation(valDistanceSigned.getValue());
+            point.setGeoidUndulation_uom(valDistanceSigned.getUom());
+            point.setGeoidUndulation_nilReason(valDistanceSigned.getNilReason());
+        }
 
         CodeVerticalDatumType codeVerticalDatum = value.getVerticalDatum().getValue();
-        point.setVerticalDatum(codeVerticalDatum.getValue());
-        point.setVerticalDatum_nilReason(codeVerticalDatum.getNilReason());
+        if (codeVerticalDatum != null) {
+            point.setVerticalDatum(codeVerticalDatum.getValue());
+            point.setVerticalDatum_nilReason(codeVerticalDatum.getNilReason());
+        }
 
         return point;
     }
     
     public static ElevatedPointType printAIXMElevatedPoint(AixmElevatedPointType value) {
         if (value == null) {
+            System.out.println("no value");
             return new ElevatedPointType();
         }
         ElevatedPointType point = new ElevatedPointType();
         DirectPositionType pos = new DirectPositionType();
 
         if (value.getPoint().getX() == Double.NaN || value.getPoint().getY() == Double.NaN) {
+            System.out.println("no coordinates");
             return new ElevatedPointType();
         } else {
             pos.getValue().add(value.getPoint().getX());
@@ -280,13 +309,19 @@ public class GeospatialHelper {
         valDistance.setUom(value.getHorizontalAccuracy_uom());
         valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
         JAXBElement<ValDistanceType> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), ValDistanceType.class, valDistance);
+        if (value.getHorizontalAccuracy() == null) {
+            horizontalAccuracy.setNil(true);
+        }
         point.setHorizontalAccuracy(horizontalAccuracy);
 
         ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
-        valDistanceVertical.setValue(String.valueOf(value.getElevation().doubleValue()));
+        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
         JAXBElement<ValDistanceVerticalType> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), ValDistanceVerticalType.class, valDistanceVertical);
+        if (value.getElevation() == null) {
+            elevation.setNil(true);
+        }
         point.setElevation(elevation);
 
         ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
@@ -294,12 +329,18 @@ public class GeospatialHelper {
         valDistanceSigned.setUom(value.getGeoidUndulation_uom());
         valDistanceSigned.setNilReason(value.getGeoidUndulation_nilReason());
         JAXBElement<ValDistanceSignedType> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), ValDistanceSignedType.class, valDistanceSigned);
+        if (value.getGeoidUndulation() == null) {
+            geoidUndulation.setNil(true);
+        }
         point.setGeoidUndulation(geoidUndulation);
 
         CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
         codeVerticalDatum.setValue(value.getVerticalDatum());
         codeVerticalDatum.setNilReason(value.getVerticalDatum_nilReason());
         JAXBElement<CodeVerticalDatumType> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), CodeVerticalDatumType.class, codeVerticalDatum);
+        if (value.getVerticalDatum() == null) {
+            verticalDatum.setNil(true);
+        }
         point.setVerticalDatum(verticalDatum);
 
         ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
@@ -307,6 +348,9 @@ public class GeospatialHelper {
         valDistanceVerticalAccuracy.setUom(value.getVerticalAccuracy_uom());
         valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
         JAXBElement<ValDistanceType> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), ValDistanceType.class, valDistanceVerticalAccuracy);
+        if (value.getVerticalAccuracy() == null) {
+            verticalAccuracy.setNil(true);
+        }
         point.setVerticalAccuracy(verticalAccuracy);
 
         return point;

@@ -44617,19 +44617,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "ARP", scope = AirportHeliportTimeSliceType.class)
-    public JAXBElement<ElevatedPointPropertyType> createAirportHeliportTimeSliceTypeARP(ElevatedPointPropertyType value) {
-        return new JAXBElement<>(new QName("http://www.aixm.aero/schema/5.1.1", "ARP"), ElevatedPointPropertyType.class, AirportHeliportTimeSliceType.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
      * 
      * @param value

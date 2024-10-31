@@ -39,44 +39,44 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ElevatedSurfacePropertyType", propOrder = {
-    "surface"
+    "elevatedSurface"
 })
 @Embeddable
 public class ElevatedSurfacePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true, type = ElevatedSurfaceType.class)
+    @XmlElement(name = "ElevatedSurface", required = true, type = ElevatedSurfaceType.class)
     @XmlJavaTypeAdapter(ElevatedSurfaceTypeAdapter.class)
     @Embedded
-    protected AixmElevatedSurfaceType surface;
+    protected AixmElevatedSurfaceType elevatedSurface;
 
     /**
-     * Gets the value of the surface property.
+     * Gets the value of the elevatedSurface property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public AixmElevatedSurfaceType getSurface() {
-        return surface;
+    public AixmElevatedSurfaceType getElevatedSurface() {
+        return elevatedSurface;
     }
 
     /**
-     * Sets the value of the surface property.
+     * Sets the value of the elevatedSurface property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setSurface(AixmElevatedSurfaceType value) {
-        this.surface = value;
+    public void setElevatedSurface(AixmElevatedSurfaceType value) {
+        this.elevatedSurface = value;
     }
 
-    public boolean isSetSurface() {
-        return (this.surface!= null);
+    public boolean isSetElevatedSurface() {
+        return (this.elevatedSurface!= null);
     }
 
 }

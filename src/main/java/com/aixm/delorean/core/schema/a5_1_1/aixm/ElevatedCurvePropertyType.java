@@ -39,44 +39,44 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ElevatedCurvePropertyType", propOrder = {
-    "curve"
+    "elevatedCurve"
 })
 @Embeddable
 public class ElevatedCurvePropertyType
     extends AbstractAIXMPropertyType
 {
 
-    @XmlElement(required = true, type = ElevatedCurveType.class)
+    @XmlElement(name = "ElevatedCurve", required = true, type = ElevatedCurveType.class)
     @XmlJavaTypeAdapter(ElevatedCurveTypeAdapter.class)
     @Embedded
-    protected AixmElevatedCurveType curve;
+    protected AixmElevatedCurveType elevatedCurve;
 
     /**
-     * Gets the value of the curve property.
+     * Gets the value of the elevatedCurve property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public AixmElevatedCurveType getCurve() {
-        return curve;
+    public AixmElevatedCurveType getElevatedCurve() {
+        return elevatedCurve;
     }
 
     /**
-     * Sets the value of the curve property.
+     * Sets the value of the elevatedCurve property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCurve(AixmElevatedCurveType value) {
-        this.curve = value;
+    public void setElevatedCurve(AixmElevatedCurveType value) {
+        this.elevatedCurve = value;
     }
 
-    public boolean isSetCurve() {
-        return (this.curve!= null);
+    public boolean isSetElevatedCurve() {
+        return (this.elevatedCurve!= null);
     }
 
 }
