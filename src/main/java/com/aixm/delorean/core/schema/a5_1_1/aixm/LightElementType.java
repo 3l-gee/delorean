@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,24 +63,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
+@Entity
+@Table(name = "light_element_type")
 public class LightElementType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeColourType> colour;
     @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeLightIntensityType> intensityLevel;
     @XmlElementRef(name = "intensity", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValLightIntensityType> intensity;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeLightSourceType> type;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<LightElementStatusPropertyType> availability;
+    @Transient
     protected List<LightElementType.Extension> extension;
 
     /**
@@ -368,6 +381,7 @@ public class LightElementType
     public static class Extension {
 
         @XmlElement(name = "AbstractLightElementExtension")
+        @Transient
         protected AbstractExtensionType abstractLightElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

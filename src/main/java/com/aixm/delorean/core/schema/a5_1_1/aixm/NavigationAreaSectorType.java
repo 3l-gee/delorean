@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -58,20 +61,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "navigation_area_sector_type")
 public class NavigationAreaSectorType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
+    @Transient
     protected List<SectorDesignPropertyType> sectorCriteria;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<NavigationAreaSectorType.Extension> extension;
 
     /**
@@ -318,6 +329,7 @@ public class NavigationAreaSectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavigationAreaSectorExtension")
+        @Transient
         protected AbstractExtensionType abstractNavigationAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

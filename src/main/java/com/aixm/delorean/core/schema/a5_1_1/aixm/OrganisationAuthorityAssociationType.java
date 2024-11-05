@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -56,15 +59,21 @@ import jakarta.xml.bind.annotation.XmlType;
     "theOrganisationAuthority",
     "extension"
 })
+@Entity
+@Table(name = "organisation_authority_association_type")
 public class OrganisationAuthorityAssociationType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeOrganisationHierarchyType> type;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected OrganisationAuthorityPropertyType theOrganisationAuthority;
+    @Transient
     protected List<OrganisationAuthorityAssociationType.Extension> extension;
 
     /**
@@ -231,6 +240,7 @@ public class OrganisationAuthorityAssociationType
     public static class Extension {
 
         @XmlElement(name = "AbstractOrganisationAuthorityAssociationExtension")
+        @Transient
         protected AbstractExtensionType abstractOrganisationAuthorityAssociationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

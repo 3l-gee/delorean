@@ -8,6 +8,9 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureBaseType;
+
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -44,6 +47,7 @@ import jakarta.xml.bind.annotation.XmlType;
     DynamicFeatureCollectionType.class,
     AbstractAIXMFeatureBaseType.class
 })
+@MappedSuperclass
 public class DynamicFeatureType
     extends AbstractFeatureType
 {
@@ -52,6 +56,7 @@ public class DynamicFeatureType
      * gml:validTime is a convenience property element.
      * 
      */
+    @Transient
     protected TimePrimitivePropertyType validTime;
     /**
      * A generic sequence of events constitute a gml:history of an object.
@@ -59,16 +64,19 @@ public class DynamicFeatureType
      * 
      */
     @XmlElementRef(name = "history", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<HistoryPropertyType> history;
     /**
      * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data. The remote link attributes of the gml:dataSource element have been deprecated along with its current type.
      * 
      */
+    @Transient
     protected StringOrRefType dataSource;
     /**
      * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data.
      * 
      */
+    @Transient
     protected ReferenceType dataSourceReference;
 
     /**

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,22 +61,30 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class TaxiHoldingPositionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "landingCategory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeHoldingCategoryType> landingCategory;
     @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeStatusOperationsType> status;
     @XmlElementRef(name = "associatedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<GuidanceLinePropertyType> associatedGuidanceLine;
     @XmlElement(nillable = true)
+    @Transient
     protected List<RunwayPropertyType> protectedRunway;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<TaxiHoldingPositionTimeSliceType.Extension> extension;
 
     /**
@@ -337,6 +347,7 @@ public class TaxiHoldingPositionTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTaxiHoldingPositionExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractTaxiHoldingPositionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

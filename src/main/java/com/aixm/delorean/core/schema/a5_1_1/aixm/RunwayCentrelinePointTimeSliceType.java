@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,24 +62,33 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class RunwayCentrelinePointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "role", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRunwayPointRoleType> role;
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextDesignatorType> designator;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElementRef(name = "onRunway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayDirectionPropertyType> onRunway;
     @XmlElement(nillable = true)
+    @Transient
     protected List<RunwayDeclaredDistancePropertyType> associatedDeclaredDistance;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NavaidEquipmentDistancePropertyType> navaidEquipment;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<RunwayCentrelinePointTimeSliceType.Extension> extension;
 
     /**
@@ -380,6 +391,7 @@ public class RunwayCentrelinePointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayCentrelinePointExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractRunwayCentrelinePointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

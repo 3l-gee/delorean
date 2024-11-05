@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,20 +63,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "facsimile",
     "extension"
 })
+@Entity
+@Table(name = "telephone_contact_type")
 public class TelephoneContactType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "voice", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextPhoneType> voice;
     @XmlElementRef(name = "facsimile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextPhoneType> facsimile;
+    @Transient
     protected List<TelephoneContactType.Extension> extension;
 
     /**
@@ -322,8 +333,10 @@ public class TelephoneContactType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractTelephoneContactExtension")
+        @Transient
         protected AbstractExtensionType abstractTelephoneContactExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,24 +63,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "departure_arrival_condition_type")
 public class DepartureArrivalConditionType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "minimumEnrouteAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> minimumEnrouteAltitude;
     @XmlElementRef(name = "minimumCrossingAtEnd", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> minimumCrossingAtEnd;
     @XmlElementRef(name = "minimumCrossingAtEndReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> minimumCrossingAtEndReference;
     @XmlElementRef(name = "maximumCrossingAtEnd", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> maximumCrossingAtEnd;
     @XmlElementRef(name = "maximumCrossingAtEndReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> maximumCrossingAtEndReference;
     @XmlElementRef(name = "engineType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AircraftCharacteristicPropertyType> engineType;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<DepartureArrivalConditionType.Extension> extension;
 
     /**
@@ -356,6 +369,7 @@ public class DepartureArrivalConditionType
     public static class Extension {
 
         @XmlElement(name = "AbstractDepartureArrivalConditionExtension")
+        @Transient
         protected AbstractExtensionType abstractDepartureArrivalConditionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

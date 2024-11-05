@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -73,46 +76,67 @@ import jakarta.xml.bind.annotation.XmlType;
     "lighting",
     "extension"
 })
+@Entity
+@Table(name = "vertical_structure_part_type")
 public class VerticalStructurePartType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "verticalExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> verticalExtent;
     @XmlElementRef(name = "verticalExtentAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> verticalExtentAccuracy;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalStructureType> type;
     @XmlElementRef(name = "constructionStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeStatusConstructionType> constructionStatus;
     @XmlElementRef(name = "markingPattern", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalStructureMarkingType> markingPattern;
     @XmlElementRef(name = "markingFirstColour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeColourType> markingFirstColour;
     @XmlElementRef(name = "markingSecondColour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeColourType> markingSecondColour;
     @XmlElementRef(name = "mobile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> mobile;
     @XmlElementRef(name = "frangible", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> frangible;
     @XmlElementRef(name = "visibleMaterial", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalStructureMaterialType> visibleMaterial;
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextDesignatorType> designator;
     @XmlElementRef(name = "horizontalProjection_surfaceExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedSurfacePropertyType> horizontalProjectionSurfaceExtent;
     @XmlElementRef(name = "horizontalProjection_linearExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedCurvePropertyType> horizontalProjectionLinearExtent;
     @XmlElementRef(name = "horizontalProjection_location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedPointPropertyType> horizontalProjectionLocation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<LightElementPropertyType> lighting;
+    @Transient
     protected List<VerticalStructurePartType.Extension> extension;
 
     /**
@@ -737,8 +761,10 @@ public class VerticalStructurePartType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractVerticalStructurePartExtension")
+        @Transient
         protected AbstractExtensionType abstractVerticalStructurePartExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

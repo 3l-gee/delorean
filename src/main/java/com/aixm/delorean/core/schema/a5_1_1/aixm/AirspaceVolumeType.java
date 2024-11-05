@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,36 +69,52 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "airspace_volume_type")
 public class AirspaceVolumeType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "upperLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> upperLimit;
     @XmlElementRef(name = "upperLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> upperLimitReference;
     @XmlElementRef(name = "maximumLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> maximumLimit;
     @XmlElementRef(name = "maximumLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> maximumLimitReference;
     @XmlElementRef(name = "lowerLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> lowerLimit;
     @XmlElementRef(name = "lowerLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> lowerLimitReference;
     @XmlElementRef(name = "minimumLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> minimumLimit;
     @XmlElementRef(name = "minimumLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> minimumLimitReference;
     @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> width;
     @XmlElementRef(name = "horizontalProjection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfacePropertyType> horizontalProjection;
     @XmlElementRef(name = "centreline", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CurvePropertyType> centreline;
     @XmlElementRef(name = "contributorAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirspaceVolumeDependencyPropertyType> contributorAirspace;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AirspaceVolumeType.Extension> extension;
 
     /**
@@ -542,6 +561,7 @@ public class AirspaceVolumeType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceVolumeExtension")
+        @Transient
         protected AbstractExtensionType abstractAirspaceVolumeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,22 +62,30 @@ import jakarta.xml.bind.annotation.XmlType;
     "markedRunway",
     "extension"
 })
+@Embeddable
 public class RunwayMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> markingICAOStandard;
     @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
+    @Transient
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "markingLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRunwaySectionType> markingLocation;
     @XmlElementRef(name = "markedRunway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayPropertyType> markedRunway;
+    @Transient
     protected List<RunwayMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -340,8 +350,10 @@ public class RunwayMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayMarkingExtension")
+        @Transient
         protected AbstractExtensionType abstractRunwayMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
+        @Transient
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

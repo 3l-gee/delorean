@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -62,28 +64,39 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class SpecialNavigationStationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSpecialNavigationStationType> type;
     @XmlElementRef(name = "frequency", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValFrequencyType> frequency;
     @XmlElementRef(name = "emission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRadioEmissionType> emission;
     @XmlElementRef(name = "systemChain", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SpecialNavigationSystemPropertyType> systemChain;
     @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AuthorityForSpecialNavigationStationPropertyType> responsibleOrganisation;
     @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedPointPropertyType> position;
     @XmlElement(nillable = true)
+    @Transient
     protected List<SpecialNavigationStationStatusPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<SpecialNavigationStationTimeSliceType.Extension> extension;
 
     /**
@@ -430,6 +443,7 @@ public class SpecialNavigationStationTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSpecialNavigationStationExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractSpecialNavigationStationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

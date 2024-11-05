@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -57,14 +60,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "exceedLength",
     "extension"
 })
+@Entity
+@Table(name = "direct_flight_class_type")
 public class DirectFlightClassType
     extends AbstractDirectFlightType
 {
 
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "exceedLength", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> exceedLength;
+    @Transient
     protected List<DirectFlightClassType.Extension> extension;
 
     /**
@@ -205,8 +213,10 @@ public class DirectFlightClassType
     public static class Extension {
 
         @XmlElement(name = "AbstractDirectFlightExtension")
+        @Transient
         protected AbstractExtensionType abstractDirectFlightExtension;
         @XmlElement(name = "AbstractDirectFlightClassExtension")
+        @Transient
         protected AbstractExtensionType abstractDirectFlightClassExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

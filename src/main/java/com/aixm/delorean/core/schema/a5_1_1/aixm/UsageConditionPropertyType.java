@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -37,11 +39,13 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "UsageConditionPropertyType", propOrder = {
     "abstractUsageCondition"
 })
+@Embeddable
 public class UsageConditionPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElementRef(name = "AbstractUsageCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class)
+    @Transient
     protected JAXBElement<? extends AbstractUsageConditionType> abstractUsageCondition;
 
     /**

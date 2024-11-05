@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -36,11 +38,13 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "ApronContaminationPropertyType", propOrder = {
     "apronContamination"
 })
+@Embeddable
 public class ApronContaminationPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "ApronContamination", required = true)
+    @Transient
     protected ApronContaminationType apronContamination;
 
     /**

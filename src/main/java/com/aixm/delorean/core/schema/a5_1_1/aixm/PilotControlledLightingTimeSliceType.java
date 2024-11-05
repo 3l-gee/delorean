@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -62,28 +64,39 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class PilotControlledLightingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodePilotControlledLightingType> type;
     @XmlElementRef(name = "duration", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDurationType> duration;
     @XmlElementRef(name = "intensitySteps", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NoNumberType> intensitySteps;
     @XmlElementRef(name = "standByIntensity", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeIntensityStandByType> standByIntensity;
     @XmlElementRef(name = "radioFrequency", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValFrequencyType> radioFrequency;
     @XmlElementRef(name = "activationInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextInstructionType> activationInstruction;
     @XmlElement(nillable = true)
+    @Transient
     protected List<LightActivationPropertyType> controlledLightIntensity;
     @XmlElement(nillable = true)
+    @Transient
     protected List<GroundLightSystemPropertyType> activatedGroundLighting;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<PilotControlledLightingTimeSliceType.Extension> extension;
 
     /**
@@ -442,6 +455,7 @@ public class PilotControlledLightingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPilotControlledLightingExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractPilotControlledLightingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

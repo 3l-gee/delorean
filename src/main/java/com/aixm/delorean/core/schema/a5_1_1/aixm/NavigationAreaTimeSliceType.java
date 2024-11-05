@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,34 +67,48 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class NavigationAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "navigationAreaType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeNavigationAreaType> navigationAreaType;
     @XmlElementRef(name = "minimumCeiling", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> minimumCeiling;
     @XmlElementRef(name = "minimumVisibility", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> minimumVisibility;
     @XmlElementRef(name = "departure", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<StandardInstrumentDeparturePropertyType> departure;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NavigationAreaSectorPropertyType> sector;
     @XmlElementRef(name = "centrePoint_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DesignatedPointPropertyType> centrePointFixDesignatedPoint;
     @XmlElementRef(name = "centrePoint_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NavaidPropertyType> centrePointNavaidSystem;
     @XmlElementRef(name = "centrePoint_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<PointPropertyType> centrePointPosition;
     @XmlElementRef(name = "centrePoint_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayCentrelinePointPropertyType> centrePointRunwayPoint;
     @XmlElementRef(name = "centrePoint_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TouchDownLiftOffPropertyType> centrePointAimingPoint;
     @XmlElementRef(name = "centrePoint_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> centrePointAirportReferencePoint;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<NavigationAreaTimeSliceType.Extension> extension;
 
     /**
@@ -523,6 +539,7 @@ public class NavigationAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavigationAreaExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractNavigationAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

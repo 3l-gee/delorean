@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -72,48 +75,70 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "flight_routing_element_type")
 public class FlightRoutingElementType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "orderNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NoSequenceType> orderNumber;
     @XmlElementRef(name = "speed", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValSpeedType> speed;
     @XmlElementRef(name = "speedReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSpeedReferenceType> speedReference;
     @XmlElementRef(name = "speedCriteria", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeComparisonType> speedCriteria;
     @XmlElement(nillable = true)
+    @Transient
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
     @XmlElementRef(name = "element_directFlightElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DirectFlightSegmentPropertyType> elementDirectFlightElement;
     @XmlElementRef(name = "element_routePortionElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RoutePortionPropertyType> elementRoutePortionElement;
     @XmlElementRef(name = "element_standardInstrumentDepartureElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<StandardInstrumentDeparturePropertyType> elementStandardInstrumentDepartureElement;
     @XmlElementRef(name = "element_standardInstrumentArrivalElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<StandardInstrumentArrivalPropertyType> elementStandardInstrumentArrivalElement;
     @XmlElementRef(name = "pointElement_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DesignatedPointPropertyType> pointElementFixDesignatedPoint;
     @XmlElementRef(name = "pointElement_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NavaidPropertyType> pointElementNavaidSystem;
     @XmlElementRef(name = "pointElement_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<PointPropertyType> pointElementPosition;
     @XmlElementRef(name = "pointElement_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayCentrelinePointPropertyType> pointElementRunwayPoint;
     @XmlElementRef(name = "pointElement_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TouchDownLiftOffPropertyType> pointElementAimingPoint;
     @XmlElementRef(name = "pointElement_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> pointElementAirportReferencePoint;
     @XmlElementRef(name = "element_airspaceElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirspacePropertyType> elementAirspaceElement;
     @XmlElementRef(name = "element_airportHeliportElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> elementAirportHeliportElement;
     @XmlElementRef(name = "element_aerialRefuellingElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AerialRefuellingPropertyType> elementAerialRefuellingElement;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<FlightRoutingElementType.Extension> extension;
 
     /**
@@ -740,6 +765,7 @@ public class FlightRoutingElementType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightRoutingElementExtension")
+        @Transient
         protected AbstractExtensionType abstractFlightRoutingElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,18 +62,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "status",
     "extension"
 })
+@Entity
+@Table(name = "procedure_availability_type")
 public class ProcedureAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeProcedureAvailabilityType> status;
+    @Transient
     protected List<ProcedureAvailabilityType.Extension> extension;
 
     /**
@@ -291,8 +301,10 @@ public class ProcedureAvailabilityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractProcedureAvailabilityExtension")
+        @Transient
         protected AbstractExtensionType abstractProcedureAvailabilityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

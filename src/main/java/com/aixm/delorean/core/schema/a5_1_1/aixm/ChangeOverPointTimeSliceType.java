@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -62,28 +64,39 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class ChangeOverPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> distance;
     @XmlElementRef(name = "location_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DesignatedPointPropertyType> locationFixDesignatedPoint;
     @XmlElementRef(name = "location_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NavaidPropertyType> locationNavaidSystem;
     @XmlElementRef(name = "location_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<PointPropertyType> locationPosition;
     @XmlElementRef(name = "location_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayCentrelinePointPropertyType> locationRunwayPoint;
     @XmlElementRef(name = "location_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TouchDownLiftOffPropertyType> locationAimingPoint;
     @XmlElementRef(name = "location_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> locationAirportReferencePoint;
     @XmlElementRef(name = "applicableRoutePortion", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RoutePortionPropertyType> applicableRoutePortion;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<ChangeOverPointTimeSliceType.Extension> extension;
 
     /**
@@ -418,6 +431,7 @@ public class ChangeOverPointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractChangeOverPointExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractChangeOverPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -58,20 +60,27 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class AirportHotSpotTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextDesignatorType> designator;
     @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextInstructionType> instruction;
     @XmlElementRef(name = "area", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedSurfacePropertyType> area;
     @XmlElementRef(name = "affectedAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> affectedAirport;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AirportHotSpotTimeSliceType.Extension> extension;
 
     /**
@@ -294,6 +303,7 @@ public class AirportHotSpotTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportHotSpotExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractAirportHotSpotExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

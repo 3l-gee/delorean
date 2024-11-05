@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,22 +61,30 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class CirclingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfacePropertyType> extent;
     @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ApproachConditionPropertyType> condition;
     @XmlElementRef(name = "aircraftCategory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<CirclingAreaTimeSliceType.Extension> extension;
 
     /**
@@ -349,6 +359,7 @@ public class CirclingAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractCirclingAreaExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractCirclingAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

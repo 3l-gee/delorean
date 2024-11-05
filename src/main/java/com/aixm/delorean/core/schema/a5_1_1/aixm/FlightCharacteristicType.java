@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,24 +63,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "flight_characteristic_type")
 public class FlightCharacteristicType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeFlightType> type;
     @XmlElementRef(name = "rule", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeFlightRuleType> rule;
     @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeFlightStatusType> status;
     @XmlElementRef(name = "military", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeMilitaryStatusType> military;
     @XmlElementRef(name = "origin", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeFlightOriginType> origin;
     @XmlElementRef(name = "purpose", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeFlightPurposeType> purpose;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<FlightCharacteristicType.Extension> extension;
 
     /**
@@ -356,6 +369,7 @@ public class FlightCharacteristicType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightCharacteristicExtension")
+        @Transient
         protected AbstractExtensionType abstractFlightCharacteristicExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

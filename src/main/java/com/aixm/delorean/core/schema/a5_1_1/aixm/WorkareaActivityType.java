@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,18 +62,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "isActive",
     "extension"
 })
+@Entity
+@Table(name = "workarea_activity_type")
 public class WorkareaActivityType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "isActive", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> isActive;
+    @Transient
     protected List<WorkareaActivityType.Extension> extension;
 
     /**
@@ -291,8 +301,10 @@ public class WorkareaActivityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractWorkareaActivityExtension")
+        @Transient
         protected AbstractExtensionType abstractWorkareaActivityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

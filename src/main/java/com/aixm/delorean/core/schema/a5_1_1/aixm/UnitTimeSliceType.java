@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,34 +67,48 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class UnitTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeUnitType> type;
     @XmlElementRef(name = "compliantICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> compliantICAO;
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeOrganisationDesignatorType> designator;
     @XmlElementRef(name = "military", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeMilitaryOperationsType> military;
     @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedPointPropertyType> position;
     @XmlElementRef(name = "airportLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> airportLocation;
     @XmlElementRef(name = "ownerOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<OrganisationAuthorityPropertyType> ownerOrganisation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
+    @Transient
     protected List<UnitDependencyPropertyType> relatedUnit;
     @XmlElement(nillable = true)
+    @Transient
     protected List<UnitAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<UnitTimeSliceType.Extension> extension;
 
     /**
@@ -547,6 +563,7 @@ public class UnitTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractUnitExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractUnitExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

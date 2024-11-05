@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -58,20 +61,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "approach_distance_table_type")
 public class ApproachDistanceTableType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "startingMeasurementPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeProcedureDistanceType> startingMeasurementPoint;
     @XmlElementRef(name = "valueHAT", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> valueHAT;
     @XmlElementRef(name = "endingMeasurementPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeProcedureDistanceType> endingMeasurementPoint;
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> distance;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<ApproachDistanceTableType.Extension> extension;
 
     /**
@@ -294,6 +305,7 @@ public class ApproachDistanceTableType
     public static class Extension {
 
         @XmlElement(name = "AbstractApproachDistanceTableExtension")
+        @Transient
         protected AbstractExtensionType abstractApproachDistanceTableExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

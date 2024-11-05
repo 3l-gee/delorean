@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,22 +61,30 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class UnplannedHoldingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "unplannedHolding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeApprovalType> unplannedHolding;
     @XmlElementRef(name = "authorizedAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> authorizedAltitude;
     @XmlElementRef(name = "altitudeReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> altitudeReference;
     @XmlElementRef(name = "controlledAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> controlledAirspace;
     @XmlElementRef(name = "holdingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SegmentPointPropertyType> holdingPoint;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<UnplannedHoldingTimeSliceType.Extension> extension;
 
     /**
@@ -325,6 +335,7 @@ public class UnplannedHoldingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractUnplannedHoldingExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractUnplannedHoldingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

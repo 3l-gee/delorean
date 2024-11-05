@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -72,44 +75,64 @@ import jakarta.xml.bind.annotation.XmlType;
     "indicatorFACF",
     "extension"
 })
+@Entity
+@Table(name = "terminal_segment_point_type")
 public class TerminalSegmentPointType
     extends AbstractSegmentPointType
 {
 
     @XmlElementRef(name = "reportingATC", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeATCReportingType> reportingATC;
     @XmlElementRef(name = "flyOver", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> flyOver;
     @XmlElementRef(name = "waypoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> waypoint;
     @XmlElementRef(name = "radarGuidance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> radarGuidance;
     @XmlElement(nillable = true)
+    @Transient
     protected List<PointReferencePropertyType> facilityMakeup;
     @XmlElementRef(name = "pointChoice_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DesignatedPointPropertyType> pointChoiceFixDesignatedPoint;
     @XmlElementRef(name = "pointChoice_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NavaidPropertyType> pointChoiceNavaidSystem;
     @XmlElementRef(name = "pointChoice_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<PointPropertyType> pointChoicePosition;
     @XmlElementRef(name = "pointChoice_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayCentrelinePointPropertyType> pointChoiceRunwayPoint;
     @XmlElementRef(name = "pointChoice_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TouchDownLiftOffPropertyType> pointChoiceAimingPoint;
     @XmlElementRef(name = "pointChoice_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> pointChoiceAirportReferencePoint;
     @XmlElementRef(name = "extendedServiceVolume", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RadioFrequencyAreaPropertyType> extendedServiceVolume;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "role", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeProcedureFixRoleType> role;
     @XmlElementRef(name = "leadRadial", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> leadRadial;
     @XmlElementRef(name = "leadDME", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> leadDME;
     @XmlElementRef(name = "indicatorFACF", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> indicatorFACF;
+    @Transient
     protected List<TerminalSegmentPointType.Extension> extension;
 
     /**
@@ -682,8 +705,10 @@ public class TerminalSegmentPointType
     public static class Extension {
 
         @XmlElement(name = "AbstractSegmentPointExtension")
+        @Transient
         protected AbstractExtensionType abstractSegmentPointExtension;
         @XmlElement(name = "AbstractTerminalSegmentPointExtension")
+        @Transient
         protected AbstractExtensionType abstractTerminalSegmentPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

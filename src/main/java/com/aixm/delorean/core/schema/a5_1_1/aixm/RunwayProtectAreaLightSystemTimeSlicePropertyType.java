@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -38,9 +40,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "RunwayProtectAreaLightSystemTimeSlicePropertyType", propOrder = {
     "runwayProtectAreaLightSystemTimeSlice"
 })
+@Embeddable
 public class RunwayProtectAreaLightSystemTimeSlicePropertyType {
 
     @XmlElement(name = "RunwayProtectAreaLightSystemTimeSlice", required = true)
+    @Transient
     protected RunwayProtectAreaLightSystemTimeSliceType runwayProtectAreaLightSystemTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;

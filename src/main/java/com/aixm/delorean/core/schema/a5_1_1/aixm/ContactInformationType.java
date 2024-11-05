@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,22 +62,31 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "contact_information_type")
 public class ContactInformationType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "title", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> title;
     @XmlElement(nillable = true)
+    @Transient
     protected List<PostalAddressPropertyType> address;
     @XmlElement(nillable = true)
+    @Transient
     protected List<OnlineContactPropertyType> networkNode;
     @XmlElement(nillable = true)
+    @Transient
     protected List<TelephoneContactPropertyType> phoneFax;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<ContactInformationType.Extension> extension;
 
     /**
@@ -361,6 +373,7 @@ public class ContactInformationType
     public static class Extension {
 
         @XmlElement(name = "AbstractContactInformationExtension")
+        @Transient
         protected AbstractExtensionType abstractContactInformationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,56 +79,82 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "flight_condition_element_type")
 public class FlightConditionElementType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "index", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NoSequenceType> index;
     @XmlElementRef(name = "flightCondition_weather", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<MeteorologyPropertyType> flightConditionWeather;
     @XmlElementRef(name = "flightCondition_aircraft", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AircraftCharacteristicPropertyType> flightConditionAircraft;
     @XmlElementRef(name = "flightCondition_flight", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<FlightCharacteristicPropertyType> flightConditionFlight;
     @XmlElementRef(name = "flightCondition_directFlightCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DirectFlightPropertyType> flightConditionDirectFlightCondition;
     @XmlElementRef(name = "flightCondition_borderCrossingCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirspaceBorderCrossingPropertyType> flightConditionBorderCrossingCondition;
     @XmlElementRef(name = "flightCondition_operand", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<FlightConditionCombinationPropertyType> flightConditionOperand;
     @XmlElementRef(name = "flightCondition_routePortionCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RoutePortionPropertyType> flightConditionRoutePortionCondition;
     @XmlElementRef(name = "flightCondition_standardInstrumentDepartureCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<StandardInstrumentDeparturePropertyType> flightConditionStandardInstrumentDepartureCondition;
     @XmlElementRef(name = "flightCondition_standardInstrumentArrivalCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<StandardInstrumentArrivalPropertyType> flightConditionStandardInstrumentArrivalCondition;
     @XmlElementRef(name = "flightCondition_organisationCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<OrganisationAuthorityPropertyType> flightConditionOrganisationCondition;
     @XmlElementRef(name = "significantPointCondition_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DesignatedPointPropertyType> significantPointConditionFixDesignatedPoint;
     @XmlElementRef(name = "significantPointCondition_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NavaidPropertyType> significantPointConditionNavaidSystem;
     @XmlElementRef(name = "significantPointCondition_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<PointPropertyType> significantPointConditionPosition;
     @XmlElementRef(name = "significantPointCondition_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayCentrelinePointPropertyType> significantPointConditionRunwayPoint;
     @XmlElementRef(name = "significantPointCondition_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TouchDownLiftOffPropertyType> significantPointConditionAimingPoint;
     @XmlElementRef(name = "significantPointCondition_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> significantPointConditionAirportReferencePoint;
     @XmlElementRef(name = "flightCondition_airspaceCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirspacePropertyType> flightConditionAirspaceCondition;
     @XmlElementRef(name = "flightCondition_airportHeliportCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> flightConditionAirportHeliportCondition;
     @XmlElementRef(name = "flightCondition_aerialRefuellingCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AerialRefuellingPropertyType> flightConditionAerialRefuellingCondition;
     @XmlElementRef(name = "operationalCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<FlightConditionCircumstancePropertyType> operationalCondition;
     @XmlElement(nillable = true)
+    @Transient
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<FlightConditionElementType.Extension> extension;
 
     /**
@@ -864,6 +893,7 @@ public class FlightConditionElementType
     public static class Extension {
 
         @XmlElement(name = "AbstractFlightConditionElementExtension")
+        @Transient
         protected AbstractExtensionType abstractFlightConditionElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

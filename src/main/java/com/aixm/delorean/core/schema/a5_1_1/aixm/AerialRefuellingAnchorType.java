@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,36 +69,52 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "aerial_refuelling_anchor_type")
 public class AerialRefuellingAnchorType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "outboundCourse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> outboundCourse;
     @XmlElementRef(name = "outboundCourseType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeCourseType> outboundCourseType;
     @XmlElementRef(name = "inboundCourse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> inboundCourse;
     @XmlElementRef(name = "turnDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDirectionTurnType> turnDirection;
     @XmlElementRef(name = "speedLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValSpeedType> speedLimit;
     @XmlElementRef(name = "legSeparation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> legSeparation;
     @XmlElementRef(name = "legLength", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> legLength;
     @XmlElementRef(name = "refuellingBaseLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> refuellingBaseLevel;
     @XmlElementRef(name = "refuellingBaseLevelReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> refuellingBaseLevelReference;
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirspaceLayerPropertyType> verticalExtent;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AerialRefuellingPointPropertyType> point;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AerialRefuellingAnchorType.Extension> extension;
 
     /**
@@ -566,6 +585,7 @@ public class AerialRefuellingAnchorType
     public static class Extension {
 
         @XmlElement(name = "AbstractAerialRefuellingAnchorExtension")
+        @Transient
         protected AbstractExtensionType abstractAerialRefuellingAnchorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

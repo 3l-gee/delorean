@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -57,18 +60,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "light_activation_type")
 public class LightActivationType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "clicks", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NoNumberType> clicks;
     @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeLightIntensityType> intensityLevel;
     @XmlElementRef(name = "activation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSystemActivationType> activation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<LightActivationType.Extension> extension;
 
     /**
@@ -263,6 +273,7 @@ public class LightActivationType
     public static class Extension {
 
         @XmlElement(name = "AbstractLightActivationExtension")
+        @Transient
         protected AbstractExtensionType abstractLightActivationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

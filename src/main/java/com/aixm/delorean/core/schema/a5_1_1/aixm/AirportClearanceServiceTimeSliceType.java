@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,36 +70,51 @@ import jakarta.xml.bind.annotation.XmlType;
     "snowPlan",
     "extension"
 })
+@Embeddable
 public class AirportClearanceServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "flightOperations", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeFlightDestinationType> flightOperations;
     @XmlElementRef(name = "rank", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeFacilityRankingType> rank;
     @XmlElementRef(name = "compliantICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> compliantICAO;
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<UnitPropertyType> serviceProvider;
     @XmlElement(name = "call-sign", nillable = true)
+    @Transient
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
+    @Transient
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElementRef(name = "snowPlan", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextInstructionType> snowPlan;
+    @Transient
     protected List<AirportClearanceServiceTimeSliceType.Extension> extension;
 
     /**
@@ -608,10 +625,13 @@ public class AirportClearanceServiceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportClearanceServiceExtension")
+        @Transient
         protected AbstractExtensionType abstractAirportClearanceServiceExtension;
         @XmlElement(name = "AbstractAirportGroundServiceExtension")
+        @Transient
         protected AbstractExtensionType abstractAirportGroundServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
+        @Transient
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

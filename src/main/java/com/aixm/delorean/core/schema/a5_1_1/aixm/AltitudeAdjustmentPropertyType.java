@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -36,11 +38,13 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "AltitudeAdjustmentPropertyType", propOrder = {
     "altitudeAdjustment"
 })
+@Embeddable
 public class AltitudeAdjustmentPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "AltitudeAdjustment", required = true)
+    @Transient
     protected AltitudeAdjustmentType altitudeAdjustment;
 
     /**

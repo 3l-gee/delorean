@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,24 +63,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "terminal_arrival_area_sector_type")
 public class TerminalArrivalAreaSectorType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "flyByCode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> flyByCode;
     @XmlElementRef(name = "procedureTurnRequired", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> procedureTurnRequired;
     @XmlElementRef(name = "altitudeDescription", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAltitudeUseType> altitudeDescription;
     @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<TerminalArrivalAreaSectorType.Extension> extension;
 
     /**
@@ -368,6 +381,7 @@ public class TerminalArrivalAreaSectorType
     public static class Extension {
 
         @XmlElement(name = "AbstractTerminalArrivalAreaSectorExtension")
+        @Transient
         protected AbstractExtensionType abstractTerminalArrivalAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

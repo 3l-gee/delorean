@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,11 +41,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "RunwayDirectionLightSystemType", propOrder = {
     "timeSlice"
 })
+@Entity
+@Table(name = "runway_direction_light_system_type")
 public class RunwayDirectionLightSystemType
     extends AbstractGroundLightSystemType
 {
 
     @XmlElement(required = true)
+    @Transient
     protected List<RunwayDirectionLightSystemTimeSlicePropertyType> timeSlice;
 
     /**

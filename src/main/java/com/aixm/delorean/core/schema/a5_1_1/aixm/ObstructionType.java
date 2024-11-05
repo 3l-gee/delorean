@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -63,30 +66,43 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "obstruction_type")
 public class ObstructionType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "requiredClearance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> requiredClearance;
     @XmlElementRef(name = "minimumAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> minimumAltitude;
     @XmlElementRef(name = "surfacePenetration", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> surfacePenetration;
     @XmlElementRef(name = "slopePenetration", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValAngleType> slopePenetration;
     @XmlElementRef(name = "controlling", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> controlling;
     @XmlElementRef(name = "closeIn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> closeIn;
     @XmlElementRef(name = "theVerticalStructure", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<VerticalStructurePropertyType> theVerticalStructure;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AltitudeAdjustmentPropertyType> adjustment;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ObstaclePlacementPropertyType> obstaclePlacement;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<ObstructionType.Extension> extension;
 
     /**
@@ -473,6 +489,7 @@ public class ObstructionType
     public static class Extension {
 
         @XmlElement(name = "AbstractObstructionExtension")
+        @Transient
         protected AbstractExtensionType abstractObstructionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

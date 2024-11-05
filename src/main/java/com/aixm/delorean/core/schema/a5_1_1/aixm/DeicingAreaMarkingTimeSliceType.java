@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,20 +61,27 @@ import jakarta.xml.bind.annotation.XmlType;
     "markedDeicingArea",
     "extension"
 })
+@Embeddable
 public class DeicingAreaMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> markingICAOStandard;
     @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
+    @Transient
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "markedDeicingArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DeicingAreaPropertyType> markedDeicingArea;
+    @Transient
     protected List<DeicingAreaMarkingTimeSliceType.Extension> extension;
 
     /**
@@ -309,8 +318,10 @@ public class DeicingAreaMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDeicingAreaMarkingExtension")
+        @Transient
         protected AbstractExtensionType abstractDeicingAreaMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
+        @Transient
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

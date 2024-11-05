@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -106,112 +108,165 @@ import jakarta.xml.bind.annotation.XmlType;
     "fasData",
     "extension"
 })
+@Embeddable
 public class FinalLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "endConditionDesignator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSegmentTerminationType> endConditionDesignator;
     @XmlElementRef(name = "legPath", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeTrajectoryType> legPath;
     @XmlElementRef(name = "legTypeARINC", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSegmentPathType> legTypeARINC;
     @XmlElementRef(name = "course", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> course;
     @XmlElementRef(name = "courseType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeCourseType> courseType;
     @XmlElementRef(name = "courseDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDirectionReferenceType> courseDirection;
     @XmlElementRef(name = "turnDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDirectionTurnType> turnDirection;
     @XmlElementRef(name = "speedLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValSpeedType> speedLimit;
     @XmlElementRef(name = "speedReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSpeedReferenceType> speedReference;
     @XmlElementRef(name = "speedInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAltitudeUseType> speedInterpretation;
     @XmlElementRef(name = "bankAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValAngleType> bankAngle;
     @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> length;
     @XmlElementRef(name = "duration", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDurationType> duration;
     @XmlElementRef(name = "procedureTurnRequired", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> procedureTurnRequired;
     @XmlElementRef(name = "upperLimitAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> upperLimitAltitude;
     @XmlElementRef(name = "upperLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> upperLimitReference;
     @XmlElementRef(name = "lowerLimitAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> lowerLimitAltitude;
     @XmlElementRef(name = "lowerLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> lowerLimitReference;
     @XmlElementRef(name = "altitudeInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAltitudeUseType> altitudeInterpretation;
     @XmlElementRef(name = "altitudeOverrideATC", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> altitudeOverrideATC;
     @XmlElementRef(name = "altitudeOverrideReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> altitudeOverrideReference;
     @XmlElementRef(name = "verticalAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValAngleType> verticalAngle;
     @XmlElementRef(name = "startPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TerminalSegmentPointPropertyType> startPoint;
     @XmlElementRef(name = "endPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TerminalSegmentPointPropertyType> endPoint;
     @XmlElementRef(name = "trajectory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CurvePropertyType> trajectory;
     @XmlElementRef(name = "arcCentre", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TerminalSegmentPointPropertyType> arcCentre;
     @XmlElementRef(name = "angle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AngleIndicationPropertyType> angle;
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DistanceIndicationPropertyType> distance;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElementRef(name = "holding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<HoldingUsePropertyType> holding;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
     @XmlElementRef(name = "guidanceSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeFinalGuidanceType> guidanceSystem;
     @XmlElementRef(name = "landingSystemCategory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeApproachGuidanceType> landingSystemCategory;
     @XmlElementRef(name = "minimumBaroVnavTemperature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValTemperatureType> minimumBaroVnavTemperature;
     @XmlElementRef(name = "rnpDMEAuthorized", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> rnpDMEAuthorized;
     @XmlElementRef(name = "courseOffsetAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> courseOffsetAngle;
     @XmlElementRef(name = "courseOffsetSide", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSideType> courseOffsetSide;
     @XmlElementRef(name = "courseCentrelineDistance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> courseCentrelineDistance;
     @XmlElementRef(name = "courseOffsetDistance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> courseOffsetDistance;
     @XmlElementRef(name = "courseCentrelineIntersect", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRelativePositionType> courseCentrelineIntersect;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ApproachConditionPropertyType> condition;
     @XmlElementRef(name = "finalPathAlignmentPoint_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DesignatedPointPropertyType> finalPathAlignmentPointFixDesignatedPoint;
     @XmlElementRef(name = "finalPathAlignmentPoint_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NavaidPropertyType> finalPathAlignmentPointNavaidSystem;
     @XmlElementRef(name = "finalPathAlignmentPoint_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<PointPropertyType> finalPathAlignmentPointPosition;
     @XmlElementRef(name = "finalPathAlignmentPoint_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayCentrelinePointPropertyType> finalPathAlignmentPointRunwayPoint;
     @XmlElementRef(name = "finalPathAlignmentPoint_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TouchDownLiftOffPropertyType> finalPathAlignmentPointAimingPoint;
     @XmlElementRef(name = "finalPathAlignmentPoint_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> finalPathAlignmentPointAirportReferencePoint;
     @XmlElementRef(name = "visualDescentPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TerminalSegmentPointPropertyType> visualDescentPoint;
     @XmlElementRef(name = "FASData", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<FASDataBlockPropertyType> fasData;
+    @Transient
     protected List<FinalLegTimeSliceType.Extension> extension;
 
     /**
@@ -1762,10 +1817,13 @@ public class FinalLegTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractFinalLegExtension")
+        @Transient
         protected AbstractExtensionType abstractFinalLegExtension;
         @XmlElement(name = "AbstractApproachLegExtension")
+        @Transient
         protected AbstractExtensionType abstractApproachLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
+        @Transient
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

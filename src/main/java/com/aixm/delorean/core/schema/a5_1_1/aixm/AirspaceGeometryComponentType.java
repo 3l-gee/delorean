@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -57,18 +60,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "theAirspaceVolume",
     "extension"
 })
+@Entity
+@Table(name = "airspace_geometry_component_type")
 public class AirspaceGeometryComponentType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "operation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAirspaceAggregationType> operation;
     @XmlElementRef(name = "operationSequence", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NoSequenceType> operationSequence;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "theAirspaceVolume", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirspaceVolumePropertyType> theAirspaceVolume;
+    @Transient
     protected List<AirspaceGeometryComponentType.Extension> extension;
 
     /**
@@ -263,6 +273,7 @@ public class AirspaceGeometryComponentType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceGeometryComponentExtension")
+        @Transient
         protected AbstractExtensionType abstractAirspaceGeometryComponentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

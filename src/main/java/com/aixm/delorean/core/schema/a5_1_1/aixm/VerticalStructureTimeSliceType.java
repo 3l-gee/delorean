@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -74,52 +76,75 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightingAvailability",
     "extension"
 })
+@Embeddable
 public class VerticalStructureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalStructureType> type;
     @XmlElementRef(name = "lighted", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> lighted;
     @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> markingICAOStandard;
     @XmlElementRef(name = "group", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> group;
     @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> length;
     @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> width;
     @XmlElementRef(name = "radius", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> radius;
     @XmlElementRef(name = "lightingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> lightingICAOStandard;
     @XmlElementRef(name = "synchronisedLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> synchronisedLighting;
     @XmlElementRef(name = "marker", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<MarkerBeaconPropertyType> marker;
     @XmlElement(nillable = true)
+    @Transient
     protected List<VerticalStructurePartPropertyType> part;
     @XmlElement(nillable = true)
+    @Transient
     protected List<PassengerServicePropertyType> hostedPassengerService;
     @XmlElement(nillable = true)
+    @Transient
     protected List<GroundLightSystemPropertyType> supportedGroundLight;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NavaidEquipmentPropertyType> hostedNavaidEquipment;
     @XmlElement(nillable = true)
+    @Transient
     protected List<SpecialNavigationStationPropertyType> hostedSpecialNavStation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<UnitPropertyType> hostedUnit;
     @XmlElement(nillable = true)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> hostedOrganisation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ServicePropertyType> supportedService;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<VerticalStructureLightingStatusPropertyType> lightingAvailability;
+    @Transient
     protected List<VerticalStructureTimeSliceType.Extension> extension;
 
     /**
@@ -898,6 +923,7 @@ public class VerticalStructureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractVerticalStructureExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractVerticalStructureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

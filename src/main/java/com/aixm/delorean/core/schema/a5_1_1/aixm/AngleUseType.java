@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -56,15 +59,21 @@ import jakarta.xml.bind.annotation.XmlType;
     "theAngleIndication",
     "extension"
 })
+@Entity
+@Table(name = "angle_use_type")
 public class AngleUseType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "alongCourseGuidance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> alongCourseGuidance;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected AngleIndicationPropertyType theAngleIndication;
+    @Transient
     protected List<AngleUseType.Extension> extension;
 
     /**
@@ -231,6 +240,7 @@ public class AngleUseType
     public static class Extension {
 
         @XmlElement(name = "AbstractAngleUseExtension")
+        @Transient
         protected AbstractExtensionType abstractAngleUseExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

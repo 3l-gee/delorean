@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,36 +69,52 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "surface_characteristics_type")
 public class SurfaceCharacteristicsType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "composition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSurfaceCompositionType> composition;
     @XmlElementRef(name = "preparation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSurfacePreparationType> preparation;
     @XmlElementRef(name = "surfaceCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSurfaceConditionType> surfaceCondition;
     @XmlElementRef(name = "classPCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValPCNType> classPCN;
     @XmlElementRef(name = "pavementTypePCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodePCNPavementType> pavementTypePCN;
     @XmlElementRef(name = "pavementSubgradePCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodePCNSubgradeType> pavementSubgradePCN;
     @XmlElementRef(name = "maxTyrePressurePCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodePCNTyrePressureType> maxTyrePressurePCN;
     @XmlElementRef(name = "evaluationMethodPCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodePCNMethodType> evaluationMethodPCN;
     @XmlElementRef(name = "classLCN", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValLCNType> classLCN;
     @XmlElementRef(name = "weightSIWL", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValWeightType> weightSIWL;
     @XmlElementRef(name = "tyrePressureSIWL", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValPressureType> tyrePressureSIWL;
     @XmlElementRef(name = "weightAUW", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValWeightType> weightAUW;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<SurfaceCharacteristicsType.Extension> extension;
 
     /**
@@ -542,6 +561,7 @@ public class SurfaceCharacteristicsType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceCharacteristicsExtension")
+        @Transient
         protected AbstractExtensionType abstractSurfaceCharacteristicsExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

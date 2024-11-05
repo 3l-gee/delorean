@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,24 +62,33 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class StandardLevelSectorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "flightRule", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeFlightRuleType> flightRule;
     @XmlElementRef(name = "fromTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> fromTrack;
     @XmlElementRef(name = "toTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> toTrack;
     @XmlElementRef(name = "angleType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeNorthReferenceType> angleType;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirspacePropertyType> applicableAirspace;
     @XmlElementRef(name = "applicableLevelColumn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<StandardLevelColumnPropertyType> applicableLevelColumn;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<StandardLevelSectorTimeSliceType.Extension> extension;
 
     /**
@@ -368,6 +379,7 @@ public class StandardLevelSectorTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelSectorExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractStandardLevelSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

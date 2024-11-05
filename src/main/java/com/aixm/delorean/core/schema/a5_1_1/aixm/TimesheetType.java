@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,42 +72,61 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "timesheet_type")
 public class TimesheetType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "timeReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeTimeReferenceType> timeReference;
     @XmlElementRef(name = "startDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DateMonthDayType> startDate;
     @XmlElementRef(name = "endDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DateMonthDayType> endDate;
     @XmlElementRef(name = "day", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDayType> day;
     @XmlElementRef(name = "dayTil", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDayType> dayTil;
     @XmlElementRef(name = "startTime", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TimeType> startTime;
     @XmlElementRef(name = "startEvent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeTimeEventType> startEvent;
     @XmlElementRef(name = "startTimeRelativeEvent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDurationType> startTimeRelativeEvent;
     @XmlElementRef(name = "startEventInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeTimeEventCombinationType> startEventInterpretation;
     @XmlElementRef(name = "endTime", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TimeType> endTime;
     @XmlElementRef(name = "endEvent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeTimeEventType> endEvent;
     @XmlElementRef(name = "endTimeRelativeEvent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDurationType> endTimeRelativeEvent;
     @XmlElementRef(name = "endEventInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeTimeEventCombinationType> endEventInterpretation;
     @XmlElementRef(name = "daylightSavingAdjust", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> daylightSavingAdjust;
     @XmlElementRef(name = "excluded", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> excluded;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<TimesheetType.Extension> extension;
 
     /**
@@ -635,6 +657,7 @@ public class TimesheetType
     public static class Extension {
 
         @XmlElement(name = "AbstractTimesheetExtension")
+        @Transient
         protected AbstractExtensionType abstractTimesheetExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
