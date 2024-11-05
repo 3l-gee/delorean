@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -58,20 +61,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "altitude_adjustment_type")
 public class AltitudeAdjustmentType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "altitudeAdjustmentType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAltitudeAdjustmentType> altitudeAdjustmentType;
     @XmlElementRef(name = "primaryAlternateMinimum", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> primaryAlternateMinimum;
     @XmlElementRef(name = "altitudeAdjustment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> altitudeAdjustment;
     @XmlElementRef(name = "localRemoteCode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> localRemoteCode;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AltitudeAdjustmentType.Extension> extension;
 
     /**
@@ -294,6 +305,7 @@ public class AltitudeAdjustmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractAltitudeAdjustmentExtension")
+        @Transient
         protected AbstractExtensionType abstractAltitudeAdjustmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

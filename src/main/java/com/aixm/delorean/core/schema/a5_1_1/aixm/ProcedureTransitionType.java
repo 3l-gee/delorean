@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -61,26 +64,37 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "procedure_transition_type")
 public class ProcedureTransitionType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "transitionId", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDesignatedPointDesignatorType> transitionId;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeProcedurePhaseType> type;
     @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextInstructionType> instruction;
     @XmlElementRef(name = "vectorHeading", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> vectorHeading;
     @XmlElementRef(name = "departureRunwayTransition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<LandingTakeoffAreaCollectionPropertyType> departureRunwayTransition;
     @XmlElementRef(name = "trajectory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CurvePropertyType> trajectory;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ProcedureTransitionLegPropertyType> transitionLeg;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<ProcedureTransitionType.Extension> extension;
 
     /**
@@ -399,6 +413,7 @@ public class ProcedureTransitionType
     public static class Extension {
 
         @XmlElement(name = "AbstractProcedureTransitionExtension")
+        @Transient
         protected AbstractExtensionType abstractProcedureTransitionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

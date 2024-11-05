@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,22 +61,30 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class StandardLevelColumnTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "series", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeLevelSeriesType> series;
     @XmlElementRef(name = "unitOfMeasurement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<UomDistanceVerticalType> unitOfMeasurement;
     @XmlElementRef(name = "separation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRVSMType> separation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<StandardLevelPropertyType> level;
     @XmlElementRef(name = "levelTable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<StandardLevelTablePropertyType> levelTable;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<StandardLevelColumnTimeSliceType.Extension> extension;
 
     /**
@@ -337,6 +347,7 @@ public class StandardLevelColumnTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelColumnExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractStandardLevelColumnExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

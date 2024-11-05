@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -82,66 +84,96 @@ import jakarta.xml.bind.annotation.XmlType;
     "finalProfile",
     "extension"
 })
+@Embeddable
 public class InstrumentApproachProcedureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "communicationFailureInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextInstructionType> communicationFailureInstruction;
     @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextInstructionType> instruction;
     @XmlElementRef(name = "designCriteria", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDesignStandardType> designCriteria;
     @XmlElementRef(name = "codingStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeProcedureCodingStandardType> codingStandard;
     @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> flightChecked;
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "RNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> rnav;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ProcedureAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ProcedureTransitionPropertyType> flightTransition;
     @XmlElementRef(name = "guidanceFacility_specialNavigationSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SpecialNavigationSystemPropertyType> guidanceFacilitySpecialNavigationSystem;
     @XmlElementRef(name = "guidanceFacility_radar", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RadarSystemPropertyType> guidanceFacilityRadar;
     @XmlElementRef(name = "guidanceFacility_navaid", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NavaidPropertyType> guidanceFacilityNavaid;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "safeAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SafeAltitudeAreaPropertyType> safeAltitude;
     @XmlElementRef(name = "approachPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeApproachPrefixType> approachPrefix;
     @XmlElementRef(name = "approachType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeApproachType> approachType;
     @XmlElementRef(name = "multipleIdentification", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeUpperAlphaType> multipleIdentification;
     @XmlElementRef(name = "copterTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> copterTrack;
     @XmlElementRef(name = "circlingIdentification", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeUpperAlphaType> circlingIdentification;
     @XmlElementRef(name = "courseReversalInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextInstructionType> courseReversalInstruction;
     @XmlElementRef(name = "additionalEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeApproachEquipmentAdditionalType> additionalEquipment;
     @XmlElementRef(name = "channelGNSS", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValChannelNumberType> channelGNSS;
     @XmlElementRef(name = "WAASReliable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> waasReliable;
     @XmlElementRef(name = "landing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<LandingTakeoffAreaCollectionPropertyType> landing;
     @XmlElement(nillable = true)
+    @Transient
     protected List<MissedApproachGroupPropertyType> missedInstruction;
     @XmlElementRef(name = "finalProfile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<FinalProfilePropertyType> finalProfile;
+    @Transient
     protected List<InstrumentApproachProcedureTimeSliceType.Extension> extension;
 
     /**
@@ -1070,8 +1102,10 @@ public class InstrumentApproachProcedureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractInstrumentApproachProcedureExtension")
+        @Transient
         protected AbstractExtensionType abstractInstrumentApproachProcedureExtension;
         @XmlElement(name = "AbstractProcedureExtension")
+        @Transient
         protected AbstractExtensionType abstractProcedureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

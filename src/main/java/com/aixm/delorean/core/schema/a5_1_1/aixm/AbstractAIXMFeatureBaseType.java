@@ -8,6 +8,8 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.DynamicFeatureType;
+
+import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -51,6 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
     AbstractAIXMFeatureType.class,
     AbstractAIXMMessageBaseType.class
 })
+@MappedSuperclass
 public abstract class AbstractAIXMFeatureBaseType
     extends DynamicFeatureType
 {

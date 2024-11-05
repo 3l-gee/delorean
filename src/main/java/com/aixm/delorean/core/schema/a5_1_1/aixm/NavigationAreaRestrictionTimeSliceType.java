@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -58,20 +60,27 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class NavigationAreaRestrictionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeNavigationAreaRestrictionType> type;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ProcedurePropertyType> procedure;
     @XmlElementRef(name = "designSurface", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<NavigationAreaRestrictionTimeSliceType.Extension> extension;
 
     /**
@@ -306,6 +315,7 @@ public class NavigationAreaRestrictionTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavigationAreaRestrictionExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractNavigationAreaRestrictionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

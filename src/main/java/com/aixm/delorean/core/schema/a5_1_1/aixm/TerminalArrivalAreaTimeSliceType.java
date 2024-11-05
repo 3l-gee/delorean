@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -72,48 +74,69 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class TerminalArrivalAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "arrivalAreaType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeTAAType> arrivalAreaType;
     @XmlElementRef(name = "outerBufferWidth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> outerBufferWidth;
     @XmlElementRef(name = "lateralBufferWidth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> lateralBufferWidth;
     @XmlElementRef(name = "IF_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DesignatedPointPropertyType> ifFixDesignatedPoint;
     @XmlElementRef(name = "IF_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NavaidPropertyType> ifNavaidSystem;
     @XmlElementRef(name = "IF_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<PointPropertyType> ifPosition;
     @XmlElementRef(name = "IF_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayCentrelinePointPropertyType> ifRunwayPoint;
     @XmlElementRef(name = "IF_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TouchDownLiftOffPropertyType> ifAimingPoint;
     @XmlElementRef(name = "IF_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> ifAirportReferencePoint;
     @XmlElementRef(name = "IAF_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DesignatedPointPropertyType> iafFixDesignatedPoint;
     @XmlElementRef(name = "IAF_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NavaidPropertyType> iafNavaidSystem;
     @XmlElementRef(name = "IAF_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<PointPropertyType> iafPosition;
     @XmlElementRef(name = "IAF_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayCentrelinePointPropertyType> iafRunwayPoint;
     @XmlElementRef(name = "IAF_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TouchDownLiftOffPropertyType> iafAimingPoint;
     @XmlElementRef(name = "IAF_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> iafAirportReferencePoint;
     @XmlElementRef(name = "buffer", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfacePropertyType> buffer;
     @XmlElement(nillable = true)
+    @Transient
     protected List<TerminalArrivalAreaSectorPropertyType> sector;
     @XmlElementRef(name = "approachRNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<InstrumentApproachProcedurePropertyType> approachRNAV;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<TerminalArrivalAreaTimeSliceType.Extension> extension;
 
     /**
@@ -740,6 +763,7 @@ public class TerminalArrivalAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTerminalArrivalAreaExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractTerminalArrivalAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

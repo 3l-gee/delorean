@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,20 +63,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "distanceAccuracy",
     "extension"
 })
+@Entity
+@Table(name = "runway_declared_distance_value_type")
 public class RunwayDeclaredDistanceValueType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> distance;
     @XmlElementRef(name = "distanceAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> distanceAccuracy;
+    @Transient
     protected List<RunwayDeclaredDistanceValueType.Extension> extension;
 
     /**
@@ -322,8 +333,10 @@ public class RunwayDeclaredDistanceValueType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractRunwayDeclaredDistanceValueExtension")
+        @Transient
         protected AbstractExtensionType abstractRunwayDeclaredDistanceValueExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -61,22 +64,31 @@ import jakarta.xml.bind.annotation.XmlType;
     "operation",
     "extension"
 })
+@Entity
+@Table(name = "airport_heliport_usage_type")
 public class AirportHeliportUsageType
     extends AbstractUsageConditionType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeUsageLimitationType> type;
     @XmlElementRef(name = "priorPermission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDurationType> priorPermission;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ContactInformationPropertyType> contact;
     @XmlElementRef(name = "selection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ConditionCombinationPropertyType> selection;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "operation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeOperationAirportHeliportType> operation;
+    @Transient
     protected List<AirportHeliportUsageType.Extension> extension;
 
     /**
@@ -341,8 +353,10 @@ public class AirportHeliportUsageType
     public static class Extension {
 
         @XmlElement(name = "AbstractUsageConditionExtension")
+        @Transient
         protected AbstractExtensionType abstractUsageConditionExtension;
         @XmlElement(name = "AbstractAirportHeliportUsageExtension")
+        @Transient
         protected AbstractExtensionType abstractAirportHeliportUsageExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

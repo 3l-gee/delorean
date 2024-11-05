@@ -10,12 +10,19 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMObjectBaseType;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlID;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -61,38 +68,44 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     AbstractTimeSliceType.class,
     AbstractFeatureType.class
 })
+@MappedSuperclass
 public abstract class AbstractGMLType {
 
+    @Transient
     protected List<MetaDataPropertyType> metaDataProperty;
     /**
      * The value of this property is a text description of the object. gml:description uses gml:StringOrRefType as its content model, so it may contain a simple text string content, or carry a reference to an external description. The use of gml:description to reference an external description has been deprecated and replaced by the gml:descriptionReference property.
      * 
      */
+    @Transient
     protected StringOrRefType description;
     /**
      * The value of this property is a remote text description of the object. The xlink:href attribute of the gml:descriptionReference property references the external description.
      * 
      */
+    @Transient
     protected ReferenceType descriptionReference;
     /**
      * Often, a special identifier is assigned to an object by the maintaining authority with the intention that it is used in references to the object For such cases, the codeSpace shall be provided. That identifier is usually unique either globally or within an application domain. gml:identifier is a pre-defined property for such identifiers.
      * 
      */
+    @Transient
     protected CodeWithAuthorityType identifier;
     /**
      * The gml:name property provides a label or identifier for the object, commonly a descriptive name. An object may have several names, typically assigned by different authorities. gml:name uses the gml:CodeType content model.  The authority for a name is indicated by the value of its (optional) codeSpace attribute.  The name may or may not be unique, as determined by the rules of the organization responsible for the codeSpace.  In common usage there will be one name per authority, so a processing application may select the name from its preferred codeSpace.
      * 
      */
+    @Transient
     protected List<CodeType> name;
-    /**
-     * The attribute gml:id supports provision of a handle for the XML element representing a GML Object. Its use is mandatory for all GML objects. It is of XML type ID, so is constrained to be unique in the XML document within which it occurs.
-     * 
-     */
-    @XmlAttribute(name = "id", namespace = "http://www.opengis.net/gml/3.2")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String id;
+    // @XmlAttribute(name = "id", namespace = "http://www.opengis.net/gml/3.2")
+    // @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    // @XmlID
+    // @XmlSchemaType(name = "ID")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    @XmlTransient
+    protected int id;
 
     /**
      * Gets the value of the metaDataProperty property.
@@ -264,14 +277,14 @@ public abstract class AbstractGMLType {
     }
 
     /**
-     * The attribute gml:id supports provision of a handle for the XML element representing a GML Object. Its use is mandatory for all GML objects. It is of XML type ID, so is constrained to be unique in the XML document within which it occurs.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -282,14 +295,13 @@ public abstract class AbstractGMLType {
      *     allowed object is
      *     {@link String }
      *     
-     * @see #getId()
      */
-    public void setId(String value) {
+    public void setId(int value) {
         this.id = value;
     }
 
     public boolean isSetId() {
-        return (this.id!= null);
+        return (this.id != 0);
     }
 
 }

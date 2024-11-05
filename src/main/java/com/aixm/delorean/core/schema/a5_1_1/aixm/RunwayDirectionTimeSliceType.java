@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,42 +71,60 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
+@Embeddable
 public class RunwayDirectionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextDesignatorType> designator;
     @XmlElementRef(name = "trueBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> trueBearing;
     @XmlElementRef(name = "trueBearingAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValAngleType> trueBearingAccuracy;
     @XmlElementRef(name = "magneticBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValBearingType> magneticBearing;
     @XmlElementRef(name = "patternVFR", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDirectionTurnType> patternVFR;
     @XmlElementRef(name = "slopeTDZ", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValSlopeType> slopeTDZ;
     @XmlElementRef(name = "elevationTDZ", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> elevationTDZ;
     @XmlElementRef(name = "elevationTDZAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> elevationTDZAccuracy;
     @XmlElementRef(name = "approachMarkingType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRunwayMarkingType> approachMarkingType;
     @XmlElementRef(name = "approachMarkingCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeMarkingConditionType> approachMarkingCondition;
     @XmlElementRef(name = "classLightingJAR", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeLightingJARType> classLightingJAR;
     @XmlElementRef(name = "precisionApproachGuidance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeApproachGuidanceType> precisionApproachGuidance;
     @XmlElementRef(name = "usedRunway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayPropertyType> usedRunway;
     @XmlElementRef(name = "startingElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayElementPropertyType> startingElement;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
+    @Transient
     protected List<RunwayDirectionTimeSliceType.Extension> extension;
 
     /**
@@ -647,6 +667,7 @@ public class RunwayDirectionTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayDirectionExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractRunwayDirectionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

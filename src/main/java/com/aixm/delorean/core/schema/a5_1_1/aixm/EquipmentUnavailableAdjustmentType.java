@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -57,18 +60,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "equipment_unavailable_adjustment_type")
 public class EquipmentUnavailableAdjustmentType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeEquipmentUnavailableType> type;
     @XmlElementRef(name = "approachLightingInoperative", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> approachLightingInoperative;
     @XmlElement(nillable = true)
+    @Transient
     protected List<EquipmentUnavailableAdjustmentColumnPropertyType> adjustmentINOPCol;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<EquipmentUnavailableAdjustmentType.Extension> extension;
 
     /**
@@ -275,6 +285,7 @@ public class EquipmentUnavailableAdjustmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractEquipmentUnavailableAdjustmentExtension")
+        @Transient
         protected AbstractExtensionType abstractEquipmentUnavailableAdjustmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

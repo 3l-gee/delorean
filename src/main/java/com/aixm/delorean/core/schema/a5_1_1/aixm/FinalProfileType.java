@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -55,18 +58,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "final_profile_type")
 public class FinalProfileType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
+    @Transient
     protected List<ApproachAltitudeTablePropertyType> altitude;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ApproachDistanceTablePropertyType> distance;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ApproachTimingTablePropertyType> timing;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<FinalProfileType.Extension> extension;
 
     /**
@@ -297,6 +307,7 @@ public class FinalProfileType
     public static class Extension {
 
         @XmlElement(name = "AbstractFinalProfileExtension")
+        @Transient
         protected AbstractExtensionType abstractFinalProfileExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

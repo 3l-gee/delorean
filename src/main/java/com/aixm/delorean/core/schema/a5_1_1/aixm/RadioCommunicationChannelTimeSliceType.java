@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,36 +68,51 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class RadioCommunicationChannelTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "mode", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeCommunicationModeType> mode;
     @XmlElementRef(name = "rank", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeFacilityRankingType> rank;
     @XmlElementRef(name = "frequencyTransmission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValFrequencyType> frequencyTransmission;
     @XmlElementRef(name = "frequencyReception", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValFrequencyType> frequencyReception;
     @XmlElementRef(name = "channel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeCommunicationChannelType> channel;
     @XmlElementRef(name = "logon", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextDesignatorType> logon;
     @XmlElementRef(name = "emissionType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRadioEmissionType> emissionType;
     @XmlElementRef(name = "selectiveCall", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> selectiveCall;
     @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> flightChecked;
     @XmlElementRef(name = "trafficDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeCommunicationDirectionType> trafficDirection;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
+    @Transient
     protected List<RadioCommunicationOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<RadioCommunicationChannelTimeSliceType.Extension> extension;
 
     /**
@@ -566,6 +583,7 @@ public class RadioCommunicationChannelTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRadioCommunicationChannelExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractRadioCommunicationChannelExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -61,26 +63,36 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class ObstacleAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeObstacleAreaType> type;
     @XmlElementRef(name = "obstructionIdSurfaceCondition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeObstacleAssessmentSurfaceType> obstructionIdSurfaceCondition;
     @XmlElementRef(name = "reference_ownerOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<OrganisationAuthorityPropertyType> referenceOwnerOrganisation;
     @XmlElementRef(name = "reference_ownerRunway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayDirectionPropertyType> referenceOwnerRunway;
     @XmlElementRef(name = "reference_ownerAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> referenceOwnerAirport;
     @XmlElementRef(name = "surfaceExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfacePropertyType> surfaceExtent;
     @XmlElement(nillable = true)
+    @Transient
     protected List<VerticalStructurePropertyType> obstacle;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<ObstacleAreaTimeSliceType.Extension> extension;
 
     /**
@@ -399,6 +411,7 @@ public class ObstacleAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractObstacleAreaExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractObstacleAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

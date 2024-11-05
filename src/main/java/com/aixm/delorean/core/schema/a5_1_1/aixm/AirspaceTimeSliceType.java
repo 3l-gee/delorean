@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,34 +67,48 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class AirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAirspaceType> type;
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAirspaceDesignatorType> designator;
     @XmlElementRef(name = "localType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> localType;
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "designatorICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> designatorICAO;
     @XmlElementRef(name = "controlType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeMilitaryOperationsType> controlType;
     @XmlElementRef(name = "upperLowerSeparation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValFLType> upperLowerSeparation;
     @XmlElement(name = "class", nillable = true)
+    @Transient
     protected List<AirspaceLayerClassPropertyType> clazz;
     @XmlElementRef(name = "protectedRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RoutePropertyType> protectedRoute;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirspaceGeometryComponentPropertyType> geometryComponent;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirspaceActivationPropertyType> activation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AirspaceTimeSliceType.Extension> extension;
 
     /**
@@ -547,6 +563,7 @@ public class AirspaceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractAirspaceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

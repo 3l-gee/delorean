@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -56,15 +59,21 @@ import jakarta.xml.bind.annotation.XmlType;
     "theRadarEquipment",
     "extension"
 })
+@Entity
+@Table(name = "radar_component_type")
 public class RadarComponentType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "collocationGroup", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NoSequenceType> collocationGroup;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected RadarEquipmentPropertyType theRadarEquipment;
+    @Transient
     protected List<RadarComponentType.Extension> extension;
 
     /**
@@ -231,6 +240,7 @@ public class RadarComponentType
     public static class Extension {
 
         @XmlElement(name = "AbstractRadarComponentExtension")
+        @Transient
         protected AbstractExtensionType abstractRadarComponentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -53,6 +55,7 @@ import jakarta.xml.bind.annotation.XmlType;
     BoundedFeatureType.class,
     DynamicFeatureType.class
 })
+@MappedSuperclass
 public abstract class AbstractFeatureType
     extends AbstractGMLType
 {
@@ -62,8 +65,10 @@ public abstract class AbstractFeatureType
      * 
      */
     @XmlElement(nillable = true)
+    @Transient
     protected BoundingShapeType boundedBy;
     @XmlElementRef(name = "location", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<? extends LocationPropertyType> location;
 
     /**

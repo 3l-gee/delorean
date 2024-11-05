@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -70,44 +72,63 @@ import jakarta.xml.bind.annotation.XmlType;
     "areaContaminant",
     "extension"
 })
+@Embeddable
 public class RunwayTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextDesignatorType> designator;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRunwayType> type;
     @XmlElementRef(name = "nominalLength", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> nominalLength;
     @XmlElementRef(name = "lengthAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> lengthAccuracy;
     @XmlElementRef(name = "nominalWidth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> nominalWidth;
     @XmlElementRef(name = "widthAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> widthAccuracy;
     @XmlElementRef(name = "widthShoulder", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> widthShoulder;
     @XmlElementRef(name = "lengthStrip", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> lengthStrip;
     @XmlElementRef(name = "widthStrip", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> widthStrip;
     @XmlElementRef(name = "lengthOffset", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceSignedType> lengthOffset;
     @XmlElementRef(name = "widthOffset", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceSignedType> widthOffset;
     @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> abandoned;
     @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
     @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
     @XmlElement(nillable = true)
+    @Transient
     protected List<RunwayContaminationPropertyType> overallContaminant;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<RunwaySectionContaminationPropertyType> areaContaminant;
+    @Transient
     protected List<RunwayTimeSliceType.Extension> extension;
 
     /**
@@ -690,6 +711,7 @@ public class RunwayTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractRunwayExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

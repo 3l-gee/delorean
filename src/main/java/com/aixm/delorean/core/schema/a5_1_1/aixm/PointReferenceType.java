@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -61,26 +64,37 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "point_reference_type")
 public class PointReferenceType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "role", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeReferenceRoleType> role;
     @XmlElementRef(name = "priorFixTolerance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceSignedType> priorFixTolerance;
     @XmlElementRef(name = "postFixTolerance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceSignedType> postFixTolerance;
     @XmlElementRef(name = "point", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DesignatedPointPropertyType> point;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AngleUsePropertyType> facilityAngle;
     @XmlElement(nillable = true)
+    @Transient
     protected List<DistanceIndicationPropertyType> facilityDistance;
     @XmlElementRef(name = "fixToleranceArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfacePropertyType> fixToleranceArea;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<PointReferenceType.Extension> extension;
 
     /**
@@ -411,6 +425,7 @@ public class PointReferenceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPointReferenceExtension")
+        @Transient
         protected AbstractExtensionType abstractPointReferenceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

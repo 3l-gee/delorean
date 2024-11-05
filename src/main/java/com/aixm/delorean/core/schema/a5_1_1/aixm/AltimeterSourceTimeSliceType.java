@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -57,18 +59,24 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class AltimeterSourceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "isRemote", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> isRemote;
     @XmlElementRef(name = "isPrimary", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> isPrimary;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AltimeterSourceStatusPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AltimeterSourceTimeSliceType.Extension> extension;
 
     /**
@@ -275,6 +283,7 @@ public class AltimeterSourceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAltimeterSourceExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractAltimeterSourceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

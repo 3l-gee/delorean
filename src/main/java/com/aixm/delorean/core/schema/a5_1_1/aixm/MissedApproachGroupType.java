@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -58,20 +61,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "missed_approach_group_type")
 public class MissedApproachGroupType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextInstructionType> instruction;
     @XmlElementRef(name = "alternateClimbInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextInstructionType> alternateClimbInstruction;
     @XmlElementRef(name = "alternateClimbAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> alternateClimbAltitude;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AltimeterSourcePropertyType> altimeter;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<MissedApproachGroupType.Extension> extension;
 
     /**
@@ -306,6 +317,7 @@ public class MissedApproachGroupType
     public static class Extension {
 
         @XmlElement(name = "AbstractMissedApproachGroupExtension")
+        @Transient
         protected AbstractExtensionType abstractMissedApproachGroupExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

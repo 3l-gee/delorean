@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -63,30 +65,42 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class RadarSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRadarServiceType> type;
     @XmlElementRef(name = "model", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> model;
     @XmlElementRef(name = "generalTerrainMonitor", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> generalTerrainMonitor;
     @XmlElementRef(name = "broadcastIdentifier", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextDesignatorType> broadcastIdentifier;
     @XmlElement(nillable = true)
+    @Transient
     protected List<RadarComponentPropertyType> radarEquipment;
     @XmlElement(nillable = true)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> office;
     @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(name = "PARRunway", nillable = true)
+    @Transient
     protected List<RunwayPropertyType> parRunway;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<RadarSystemTimeSliceType.Extension> extension;
 
     /**
@@ -485,6 +499,7 @@ public class RadarSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRadarSystemExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractRadarSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

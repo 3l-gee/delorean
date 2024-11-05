@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,22 +61,30 @@ import jakarta.xml.bind.annotation.XmlType;
     "authority",
     "extension"
 })
+@Embeddable
 public class SpecialDateTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSpecialDateType> type;
     @XmlElementRef(name = "dateDay", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DateMonthDayType> dateDay;
     @XmlElementRef(name = "dateYear", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DateYearType> dateYear;
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "authority", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<OrganisationAuthorityPropertyType> authority;
+    @Transient
     protected List<SpecialDateTimeSliceType.Extension> extension;
 
     /**
@@ -325,6 +335,7 @@ public class SpecialDateTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSpecialDateExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractSpecialDateExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

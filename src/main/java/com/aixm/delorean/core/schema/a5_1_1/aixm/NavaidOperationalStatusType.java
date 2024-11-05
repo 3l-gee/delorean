@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,20 +63,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "signalType",
     "extension"
 })
+@Entity
+@Table(name = "navaid_operational_status_type")
 public class NavaidOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
+    @Transient
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElementRef(name = "operationalStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeStatusNavaidType> operationalStatus;
     @XmlElementRef(name = "signalType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRadioSignalType> signalType;
+    @Transient
     protected List<NavaidOperationalStatusType.Extension> extension;
 
     /**
@@ -322,8 +333,10 @@ public class NavaidOperationalStatusType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
+        @Transient
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractNavaidOperationalStatusExtension")
+        @Transient
         protected AbstractExtensionType abstractNavaidOperationalStatusExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,32 +66,45 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class GuidanceLineTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> designator;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeGuidanceLineType> type;
     @XmlElementRef(name = "maxSpeed", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValSpeedType> maxSpeed;
     @XmlElementRef(name = "usageDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDirectionType> usageDirection;
     @XmlElement(nillable = true)
+    @Transient
     protected List<TouchDownLiftOffPropertyType> connectedTouchDownLiftOff;
     @XmlElement(nillable = true)
+    @Transient
     protected List<RunwayCentrelinePointPropertyType> connectedRunwayCentrelinePoint;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ApronPropertyType> connectedApron;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AircraftStandPropertyType> connectedStand;
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedCurvePropertyType> extent;
     @XmlElement(nillable = true)
+    @Transient
     protected List<TaxiwayPropertyType> connectedTaxiway;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<GuidanceLineTimeSliceType.Extension> extension;
 
     /**
@@ -540,6 +555,7 @@ public class GuidanceLineTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractGuidanceLineExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractGuidanceLineExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

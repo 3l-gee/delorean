@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -57,18 +59,24 @@ import jakarta.xml.bind.annotation.XmlType;
     "verticalAccuracy",
     "extension"
 })
+@Embeddable
 public class ElevatedCurveType
     extends CurveType
 {
 
     @XmlElementRef(name = "elevation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> elevation;
     @XmlElementRef(name = "geoidUndulation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceSignedType> geoidUndulation;
     @XmlElementRef(name = "verticalDatum", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalDatumType> verticalDatum;
     @XmlElementRef(name = "verticalAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> verticalAccuracy;
+    @Transient
     protected List<ElevatedCurveType.Extension> extension;
 
     /**
@@ -251,6 +259,7 @@ public class ElevatedCurveType
     public static class Extension {
 
         @XmlElement(name = "AbstractElevatedCurveExtension")
+        @Transient
         protected AbstractExtensionType abstractElevatedCurveExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

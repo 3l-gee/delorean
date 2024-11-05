@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -57,17 +60,24 @@ import jakarta.xml.bind.annotation.XmlType;
     "theNavaidEquipment",
     "extension"
 })
+@Entity
+@Table(name = "navaid_equipment_distance_type")
 public class NavaidEquipmentDistanceType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> distance;
     @XmlElementRef(name = "distanceAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceType> distanceAccuracy;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected NavaidEquipmentPropertyType theNavaidEquipment;
+    @Transient
     protected List<NavaidEquipmentDistanceType.Extension> extension;
 
     /**
@@ -262,6 +272,7 @@ public class NavaidEquipmentDistanceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidEquipmentDistanceExtension")
+        @Transient
         protected AbstractExtensionType abstractNavaidEquipmentDistanceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

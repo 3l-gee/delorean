@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -74,52 +76,75 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class AerialRefuellingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "designatorPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAerialRefuellingPrefixType> designatorPrefix;
     @XmlElementRef(name = "designatorNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NoNumberType> designatorNumber;
     @XmlElementRef(name = "designatorSuffix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextDesignatorType> designatorSuffix;
     @XmlElementRef(name = "designatorDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeCardinalDirectionType> designatorDirection;
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAerialRefuellingType> type;
     @XmlElementRef(name = "radarBeaconSetting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NoNumberType> radarBeaconSetting;
     @XmlElementRef(name = "xbandRadarSetting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NoNumberType> xbandRadarSetting;
     @XmlElementRef(name = "tankerChannel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeTACANChannelType> tankerChannel;
     @XmlElementRef(name = "receiverChannel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeTACANChannelType> receiverChannel;
     @XmlElementRef(name = "helicopterRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> helicopterRoute;
     @XmlElementRef(name = "specialRefuelling", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> specialRefuelling;
     @XmlElementRef(name = "bidirectionalUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> bidirectionalUse;
     @XmlElementRef(name = "reverseDirectionTurn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDirectionTurnType> reverseDirectionTurn;
     @XmlElement(nillable = true)
+    @Transient
     protected List<RouteAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirspacePropertyType> protectingAirspace;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AerialRefuellingTrackPropertyType> track;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AerialRefuellingAnchorPropertyType> anchor;
     @XmlElementRef(name = "oppositeTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AerialRefuellingPropertyType> oppositeTrack;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AuthorityForAerialRefuellingPropertyType> managingOrganisation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AerialRefuellingTimeSliceType.Extension> extension;
 
     /**
@@ -850,6 +875,7 @@ public class AerialRefuellingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAerialRefuellingExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractAerialRefuellingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

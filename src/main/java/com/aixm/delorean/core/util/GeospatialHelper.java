@@ -280,7 +280,7 @@ public class GeospatialHelper {
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.PointType printAIXMPoint(AixmPointType value) {
         if (value == null) {
             com.aixm.delorean.core.schema.a5_1_1.aixm.PointType out = new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
-            out.setId("FAIL666");
+            out.setId(666);
             return out;
         }
         com.aixm.delorean.core.schema.a5_1_1.aixm.PointType point = new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
@@ -299,7 +299,7 @@ public class GeospatialHelper {
             point.setSrsName("EPSG:" + value.getPoint().getSRID());
         }
 
-        point.setId(value.getId());
+        // point.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
@@ -321,13 +321,13 @@ public class GeospatialHelper {
         System.out.println("pos :" + value.getPos().getValue().toString());
         System.out.println("coo :" + point.getPoint().getCoordinates().toString());
 
-        return (AixmElevatedPointType) parseElevatedGeometry(point, value.getId(), value.getHorizontalAccuracy(), value.getVerticalAccuracy(), value.getElevation(), value.getGeoidUndulation(), value.getVerticalDatum());
+        return (AixmElevatedPointType) parseElevatedGeometry(point, null, value.getHorizontalAccuracy(), value.getVerticalAccuracy(), value.getElevation(), value.getGeoidUndulation(), value.getVerticalDatum());
     }
     
     public static ElevatedPointType printAIXMElevatedPoint(AixmElevatedPointType value) {
         if (value == null) {
             ElevatedPointType out = new ElevatedPointType();
-            out.setId("FAIL666");
+            out.setId(666);
             return out;
             // return null;
         }
@@ -348,7 +348,7 @@ public class GeospatialHelper {
             point.setSrsName("EPSG:" + value.getPoint().getSRID());
         }
 
-        point.setId(value.getId());
+        // point.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
@@ -473,13 +473,13 @@ public class GeospatialHelper {
         AixmCurveType curve = new AixmCurveType();
         curve.setLineString(parseGMLCurve(value));
 
-        return (AixmCurveType) parseGeometry(curve, value.getId(), value.getHorizontalAccuracy());
+        return (AixmCurveType) parseGeometry(curve, null, value.getHorizontalAccuracy());
     }
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType printAIXMCurve(AixmCurveType value) {
         if (value == null) {
             com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType out = new com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType();
-            out.setId("FAIL666");
+            out.setId(666);
             return out;
         }
         com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType curve = new com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType();
@@ -507,7 +507,7 @@ public class GeospatialHelper {
             curve.setSrsName("EPSG:" + value.getLineString().getSRID());
         }      
 
-        curve.setId(value.getId());
+        // curve.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
@@ -525,13 +525,13 @@ public class GeospatialHelper {
         AixmElevatedCurveType curve = new AixmElevatedCurveType();
         curve.setLineString(parseGMLCurve(value));
 
-        return (AixmElevatedCurveType) parseElevatedGeometry(curve, value.getId(), value.getHorizontalAccuracy(), value.getVerticalAccuracy(), value.getElevation(), value.getGeoidUndulation(), value.getVerticalDatum());
+        return (AixmElevatedCurveType) parseElevatedGeometry(curve, null, value.getHorizontalAccuracy(), value.getVerticalAccuracy(), value.getElevation(), value.getGeoidUndulation(), value.getVerticalDatum());
     }
 
     public static ElevatedCurveType printAIXMElevatedCurve(AixmElevatedCurveType value) {
         if (value == null) {
             ElevatedCurveType out = new ElevatedCurveType();
-            out.setId("FAIL666");
+            out.setId(666);
             return out;
             // return null;
         }
@@ -560,7 +560,7 @@ public class GeospatialHelper {
             curve.setSrsName("EPSG:" + value.getLineString().getSRID());
         }
 
-        curve.setId(value.getId());
+        // curve.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
@@ -741,7 +741,7 @@ public class GeospatialHelper {
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType printAIXMSurface(AixmSurfaceType value){
         if (value == null) {
             com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType out = new com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType();
-            out.setId("FAIL666");
+            out.setId(666);
             return out;
             // return null;
         }
@@ -771,7 +771,7 @@ public class GeospatialHelper {
         surface.setSrsDimension(BigInteger.valueOf(2));
         surface.setSrsName("EPSG:4326");
 
-        surface.setId(value.getId());
+        // surface.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
@@ -790,13 +790,13 @@ public class GeospatialHelper {
         AixmElevatedSurfaceType surface = new AixmElevatedSurfaceType();
         surface.setPolygon(parseGMLSurface(value));
 
-        return (AixmElevatedSurfaceType) parseElevatedGeometry(surface, value.getId(), value.getHorizontalAccuracy(), value.getVerticalAccuracy(), value.getElevation(), value.getGeoidUndulation(), value.getVerticalDatum());
+        return (AixmElevatedSurfaceType) parseElevatedGeometry(surface, null, value.getHorizontalAccuracy(), value.getVerticalAccuracy(), value.getElevation(), value.getGeoidUndulation(), value.getVerticalDatum());
     }
 
     public static ElevatedSurfaceType printAIXMElevatedSurface(AixmElevatedSurfaceType value) {
         if (value == null) {
             ElevatedSurfaceType out = new ElevatedSurfaceType();
-            out.setId("FAIL666");
+            out.setId(666);
             return out;
             // return null;
         }
@@ -826,7 +826,7 @@ public class GeospatialHelper {
         surface.setSrsDimension(BigInteger.valueOf(2));
         surface.setSrsName("EPSG:4326");
 
-        surface.setId(value.getId());
+        // surface.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());

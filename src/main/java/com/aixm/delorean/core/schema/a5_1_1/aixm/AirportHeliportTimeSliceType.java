@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -88,80 +90,117 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class AirportHeliportTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAirportHeliportDesignatorType> designator;
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "locationIndicatorICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeICAOType> locationIndicatorICAO;
     @XmlElementRef(name = "designatorIATA", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeIATAType> designatorIATA;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeAirportHeliportType> type;
     @XmlElementRef(name = "certifiedICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> certifiedICAO;
     @XmlElementRef(name = "privateUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> privateUse;
     @XmlElementRef(name = "controlType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeMilitaryOperationsType> controlType;
     @XmlElementRef(name = "fieldElevation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> fieldElevation;
     @XmlElementRef(name = "fieldElevationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> fieldElevationAccuracy;
     @XmlElementRef(name = "verticalDatum", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalDatumType> verticalDatum;
     @XmlElementRef(name = "magneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValMagneticVariationType> magneticVariation;
     @XmlElementRef(name = "magneticVariationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValAngleType> magneticVariationAccuracy;
     @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DateYearType> dateMagneticVariation;
     @XmlElementRef(name = "magneticVariationChange", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValMagneticVariationChangeType> magneticVariationChange;
     @XmlElementRef(name = "referenceTemperature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValTemperatureType> referenceTemperature;
     @XmlElementRef(name = "altimeterCheckLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> altimeterCheckLocation;
     @XmlElementRef(name = "secondaryPowerSupply", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> secondaryPowerSupply;
     @XmlElementRef(name = "windDirectionIndicator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> windDirectionIndicator;
     @XmlElementRef(name = "landingDirectionIndicator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> landingDirectionIndicator;
     @XmlElementRef(name = "transitionAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> transitionAltitude;
     @XmlElementRef(name = "transitionLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValFLType> transitionLevel;
     @XmlElementRef(name = "lowestTemperature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValTemperatureType> lowestTemperature;
     @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> abandoned;
     @XmlElementRef(name = "certificationDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DateType> certificationDate;
     @XmlElementRef(name = "certificationExpirationDate", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<DateType> certificationExpirationDate;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirportHeliportContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
+    @Transient
     protected List<CityPropertyType> servedCity;
     @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AirportHeliportResponsibilityOrganisationPropertyType> responsibleOrganisation;
-    @XmlElement(name = "ARP", nillable = true)
-    protected ElevatedPointPropertyType arp;
+    @XmlElementRef(name = "ARP", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<ElevatedPointPropertyType> arp;
     @XmlElementRef(name = "aviationBoundary", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedSurfacePropertyType> aviationBoundary;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AltimeterSourcePropertyType> altimeterSource;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirportHeliportAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<AirportHeliportTimeSliceType.Extension> extension;
 
     /**
@@ -1005,10 +1044,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public ElevatedPointPropertyType getARP() {
+    public JAXBElement<ElevatedPointPropertyType> getARP() {
         return arp;
     }
 
@@ -1017,10 +1056,10 @@ public class AirportHeliportTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link ElevatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
      *     
      */
-    public void setARP(ElevatedPointPropertyType value) {
+    public void setARP(JAXBElement<ElevatedPointPropertyType> value) {
         this.arp = value;
     }
 
@@ -1284,6 +1323,7 @@ public class AirportHeliportTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportHeliportExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractAirportHeliportExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

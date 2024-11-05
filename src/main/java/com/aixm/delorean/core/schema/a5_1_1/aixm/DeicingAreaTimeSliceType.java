@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,24 +62,33 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
+@Embeddable
 public class DeicingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "associatedApron", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ApronPropertyType> associatedApron;
     @XmlElementRef(name = "taxiwayLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TaxiwayPropertyType> taxiwayLocation;
     @XmlElementRef(name = "standLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<AircraftStandPropertyType> standLocation;
     @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ApronAreaAvailabilityPropertyType> availability;
+    @Transient
     protected List<DeicingAreaTimeSliceType.Extension> extension;
 
     /**
@@ -368,6 +379,7 @@ public class DeicingAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDeicingAreaExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractDeicingAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

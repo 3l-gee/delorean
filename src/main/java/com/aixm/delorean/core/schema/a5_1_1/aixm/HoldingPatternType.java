@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,11 +41,14 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "HoldingPatternType", propOrder = {
     "timeSlice"
 })
+@Entity
+@Table(name = "holding_pattern_type")
 public class HoldingPatternType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
+    @Transient
     protected List<HoldingPatternTimeSlicePropertyType> timeSlice;
 
     /**

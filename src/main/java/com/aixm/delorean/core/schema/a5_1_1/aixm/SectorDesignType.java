@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -58,20 +61,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "sector_design_type")
 public class SectorDesignType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "turnDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeDirectionTurnType> turnDirection;
     @XmlElementRef(name = "designGradient", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValSlopeType> designGradient;
     @XmlElementRef(name = "terminationAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> terminationAltitude;
     @XmlElementRef(name = "turnPermitted", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> turnPermitted;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<SectorDesignType.Extension> extension;
 
     /**
@@ -294,6 +305,7 @@ public class SectorDesignType
     public static class Extension {
 
         @XmlElement(name = "AbstractSectorDesignExtension")
+        @Transient
         protected AbstractExtensionType abstractSectorDesignExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

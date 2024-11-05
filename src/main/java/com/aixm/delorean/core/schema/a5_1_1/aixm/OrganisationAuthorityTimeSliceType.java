@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,24 +62,33 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class OrganisationAuthorityTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeOrganisationDesignatorType> designator;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeOrganisationType> type;
     @XmlElementRef(name = "military", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeMilitaryOperationsType> military;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
+    @Transient
     protected List<OrganisationAuthorityAssociationPropertyType> relatedOrganisationAuthority;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<OrganisationAuthorityTimeSliceType.Extension> extension;
 
     /**
@@ -380,6 +391,7 @@ public class OrganisationAuthorityTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractOrganisationAuthorityExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractOrganisationAuthorityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,40 +70,57 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class NavaidTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeNavaidServiceType> type;
     @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeNavaidDesignatorType> designator;
     @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> flightChecked;
     @XmlElementRef(name = "purpose", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeNavaidPurposeType> purpose;
     @XmlElementRef(name = "signalPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeSignalPerformanceILSType> signalPerformance;
     @XmlElementRef(name = "courseQuality", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeCourseQualityILSType> courseQuality;
     @XmlElementRef(name = "integrityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeIntegrityLevelILSType> integrityLevel;
     @XmlElement(nillable = true)
+    @Transient
     protected List<TouchDownLiftOffPropertyType> touchDownLiftOff;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NavaidComponentPropertyType> navaidEquipment;
     @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
+    @Transient
     protected List<RunwayDirectionPropertyType> runwayDirection;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirportHeliportPropertyType> servedAirport;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<NavaidTimeSliceType.Extension> extension;
 
     /**
@@ -664,6 +683,7 @@ public class NavaidTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavaidExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractNavaidExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

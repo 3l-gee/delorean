@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,22 +61,30 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class RulesProceduresTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "category", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRuleProcedureType> category;
     @XmlElementRef(name = "title", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeRuleProcedureTitleType> title;
     @XmlElementRef(name = "content", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<XHTMLType> content;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirportHeliportPropertyType> affectedLocation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AirspacePropertyType> affectedArea;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<RulesProceduresTimeSliceType.Extension> extension;
 
     /**
@@ -349,6 +359,7 @@ public class RulesProceduresTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRulesProceduresExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractRulesProceduresExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

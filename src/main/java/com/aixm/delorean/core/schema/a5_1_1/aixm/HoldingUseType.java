@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -59,21 +62,30 @@ import jakarta.xml.bind.annotation.XmlType;
     "theHoldingPattern",
     "extension"
 })
+@Entity
+@Table(name = "holding_use_type")
 public class HoldingUseType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "holdingUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeHoldingUseType> holdingUse;
     @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextInstructionType> instruction;
     @XmlElementRef(name = "instructedAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> instructedAltitude;
     @XmlElementRef(name = "instructionAltitudeReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeVerticalReferenceType> instructionAltitudeReference;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected HoldingPatternPropertyType theHoldingPattern;
+    @Transient
     protected List<HoldingUseType.Extension> extension;
 
     /**
@@ -324,6 +336,7 @@ public class HoldingUseType
     public static class Extension {
 
         @XmlElement(name = "AbstractHoldingUseExtension")
+        @Transient
         protected AbstractExtensionType abstractHoldingUseExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

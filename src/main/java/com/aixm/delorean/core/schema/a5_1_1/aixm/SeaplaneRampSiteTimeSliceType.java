@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -56,16 +58,21 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Embeddable
 public class SeaplaneRampSiteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedSurfacePropertyType> extent;
     @XmlElementRef(name = "centreline", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ElevatedCurvePropertyType> centreline;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<SeaplaneRampSiteTimeSliceType.Extension> extension;
 
     /**
@@ -232,6 +239,7 @@ public class SeaplaneRampSiteTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSeaplaneRampSiteExtension", required = true)
+        @Transient
         protected AbstractExtensionType abstractSeaplaneRampSiteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

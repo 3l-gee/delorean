@@ -95,6 +95,7 @@ class JaxbAnnotations(Enum):
     ENUM_MEMBER = lambda x : f'''                <jaxb:typesafeEnumMember name="{x}" value="{x}"/>'''
     PROPERTY_GENERATEELEMENT = f'''            <jaxb:property generateElementProperty="false"/>'''
     PROPERTY_NAME_GENERATEELEMENT =  f'''            <jaxb:property name="AIXMName" generateElementProperty="false"/>'''
+    PROPERTY_NAME = f'''            <jaxb:property name="AIXMName"/>'''
     END = '        </jaxb:bindings>'
 
 class AnnoxAnnotations(Enum):
@@ -167,9 +168,9 @@ class PersistenceAnnotationMachinery:
                 print(f"Processing {child.attrib.get('name')}")
 
                 self._process_child_class(child)
-                self._process_child_field(child)
+                self._process_child_field(child, True)
 
-    def _process_child_class(self, child):
+    def _process_child_class(self, child, transient: bool = False):
         """Dispatch processing based on the XML tag type."""
         abstract = bool(child.attrib.get('abstract', "")) or "Abstract" in child.attrib.get('name', "")
         nilreason = any(
@@ -197,7 +198,7 @@ class PersistenceAnnotationMachinery:
         else:
             self._log_unrecognized_tag(child)
 
-    def _process_child_field(self, child):
+    def _process_child_field(self, child, transient: bool = False):
         """Dispatch processing based on the XML tag type."""
 
         if child.tag in [XmlTags.TAG_IMPORT.value, XmlTags.TAG_ANNOTATION.value, XmlTags.TAG_INCLUDE.value, XmlTags.TAG_ELEMENT.value]:
@@ -218,20 +219,20 @@ class PersistenceAnnotationMachinery:
                     child,
                     element,
                     None,
-                    False,
+                    transient,
                     embedable
                 )
         elif child.tag in [XmlTags.TAG_COMPLEX_TYPE.value]:
             for element in child.findall('.//xs:element', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'}):
                 try :
-                    embedable = element.attrib.get('type', "").split(":")[1] in self.embedable
+                    embedable = element.attrib.get('type', "").split(":")[1] in self.embedable 
                 except : 
                     embedable = False
                 self.annotations += AnnoationsFunctions.cmplx_field_writer(
                     child,
                     element,
                     None,
-                    False,
+                    transient,
                     embedable
                 )
 
@@ -244,7 +245,7 @@ class PersistenceAnnotationMachinery:
                     child,
                     element,
                     None,
-                    False,
+                    transient,
                     embedable
                 )
         else:
@@ -271,7 +272,7 @@ class AnnoationsFunctions:
             res.append(AnnoxAnnotations.CLASS(CoreAnnotations.MAPPEDSUPERCLASS.value))
         elif nilreason or embedable:
             res.append(AnnoxAnnotations.CLASS(AdditionalAnnotations.EMBEDDABLE.value))
-        elif "TimeSliceType" in child.get("name"):
+        elif "TimeSliceType" in child.get("name") or "PropertyType" in child.get("name"):
             res.append(AnnoxAnnotations.CLASS(AdditionalAnnotations.EMBEDDABLE.value)) 
         else :
             EntityClass.add_to_entity_class(child.attrib['name'])
@@ -313,8 +314,13 @@ class AnnoationsFunctions:
         res = []
         res.append(JaxbAnnotations.GROUP_ELEMENT(parent.attrib['name'], child.attrib['name']))
 
+        child_name = child.get("name")
+
+        if child_name == "name":
+            res.append(JaxbAnnotations.PROPERTY_NAME.value)
+
         if trensient :
-            res.append(AnnoxAnnotations.FIELD(AdditionalAnnotations.TRANSIENT.value))
+            res.append(AnnoxAnnotations.FIELD(CoreAnnotations.TRANSIENT_DB.value))
             res.append(JaxbAnnotations.END.value)
             return res
         
@@ -334,13 +340,6 @@ class AnnoationsFunctions:
             res.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(child.attrib['name'])))
         else:
             pass
-
-        child_name = child.get("name")
-
-        if child_name == "name":
-            res.append(JaxbAnnotations.PROPERTY_NAME_GENERATEELEMENT.value)
-        else:
-            res.append(JaxbAnnotations.PROPERTY_GENERATEELEMENT.value)
 
         res.append(JaxbAnnotations.END.value)
         return res
@@ -448,9 +447,21 @@ task = [
         "input_path": "src/main/resources/a5_1_1/AIXM_DataTypes.xsd",
         "output_path": "util/AIXM_DataTypes.xjb",
         "ignore": [
-            "CodeDistanceVerticalUomType"
+            "CodeDistanceVerticalUomType",
+            "PointPropertyType",
+            "ElevatedPointPropertyType",
+            "CurvePropertyType",
+            "ElevatedCurvePropertyType",
+            "SurfacePropertyType",
+            "ElevatedSurfacePropertyType",
         ],
         "embedable": [
+            "PointType",
+            "ElevatedPointType",
+            "CurveType"
+            "ElevatedCurveType"
+            "SurfaceType",
+            "ElevatedSurfaceType",
             "CodeBuoyDesignatorType",
             "CodeICAOCountryType",
             "CodeReferencePathIdentifierType",
@@ -745,10 +756,14 @@ task = [
         "name": "AIXM_Features.xsd",
         "input_path": "src/main/resources/a5_1_1/AIXM_Features.xsd",
         "output_path": "util/AIXM_Features.xjb",
-        "rename" :[
-            
-        ] 
         "ignore": [
+            "CodeDistanceVerticalUomType",
+            "PointPropertyType",
+            "ElevatedPointPropertyType",
+            "CurvePropertyType",
+            "ElevatedCurvePropertyType",
+            "SurfacePropertyType",
+            "ElevatedSurfacePropertyType",
             "AerialRefuellingPropertyType",
             "AirportHeliportPropertyType",
             "AirportHeliportCollocationPropertyType",
@@ -889,6 +904,12 @@ task = [
             "SurveillanceRadarPropertyType",
         ],
         "embedable": [
+            "PointType",
+            "ElevatedPointType",
+            "CurveType",
+            "ElevatedCurveType",
+            "SurfaceType",
+            "ElevatedSurfaceType",
             "CodeBuoyDesignatorType",
             "CodeICAOCountryType",
             "CodeReferencePathIdentifierType",
@@ -1198,7 +1219,7 @@ task = [
 
 PesitenceAnnotationsManager(task)
 
-# EntityClass.pint_embedable()
+EntityClass.print_entity_class()
 
 # PersistenceAnnotationMachinery("src/main/resources/a5_1_1/AIXM_BasicMessage.xsd","util/test2.xml")
 

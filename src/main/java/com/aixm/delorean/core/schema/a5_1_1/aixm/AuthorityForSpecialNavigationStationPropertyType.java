@@ -7,6 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -36,11 +38,13 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "AuthorityForSpecialNavigationStationPropertyType", propOrder = {
     "authorityForSpecialNavigationStation"
 })
+@Embeddable
 public class AuthorityForSpecialNavigationStationPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "AuthorityForSpecialNavigationStation", required = true)
+    @Transient
     protected AuthorityForSpecialNavigationStationType authorityForSpecialNavigationStation;
 
     /**

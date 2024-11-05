@@ -17,6 +17,15 @@
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
 
+	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/gmlBase.xsd" node="/xs:schema">
+		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:attribute [@ref='gml:id']">
+            <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "id", nullable = false)</annox:annotate>
+            <!-- <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate> -->
+        </jaxb:bindings>
+	</jaxb:bindings>
+
 	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/geometryPrimitives.xsd" node="/xs:schema">
 		<jaxb:bindings>
 			<jaxb:bindings node="//xs:group[@name='PointGrid']/xs:sequence/xs:element[@name='rows']">

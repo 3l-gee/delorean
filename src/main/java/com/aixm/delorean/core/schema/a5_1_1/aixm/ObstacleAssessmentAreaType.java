@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,36 +69,52 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "obstacle_assessment_area_type")
 public class ObstacleAssessmentAreaType
     extends AbstractAIXMObjectType
 {
 
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeObstacleAssessmentSurfaceType> type;
     @XmlElementRef(name = "sectionNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<NoNumberType> sectionNumber;
     @XmlElementRef(name = "slope", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValSlopeType> slope;
     @XmlElementRef(name = "assessedAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> assessedAltitude;
     @XmlElementRef(name = "slopeLowerAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValDistanceVerticalType> slopeLowerAltitude;
     @XmlElementRef(name = "gradientLowHigh", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<ValSlopeType> gradientLowHigh;
     @XmlElementRef(name = "surfaceZone", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeObstructionIdSurfaceZoneType> surfaceZone;
     @XmlElementRef(name = "safetyRegulation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<TextNameType> safetyRegulation;
     @XmlElement(nillable = true)
+    @Transient
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElement(nillable = true)
+    @Transient
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElementRef(name = "surface", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<SurfacePropertyType> surface;
     @XmlElementRef(name = "startingCurve", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CurvePropertyType> startingCurve;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<ObstacleAssessmentAreaType.Extension> extension;
 
     /**
@@ -566,6 +585,7 @@ public class ObstacleAssessmentAreaType
     public static class Extension {
 
         @XmlElement(name = "AbstractObstacleAssessmentAreaExtension")
+        @Transient
         protected AbstractExtensionType abstractObstacleAssessmentAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

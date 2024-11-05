@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -61,24 +63,33 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightedGuidanceLine",
     "extension"
 })
+@Embeddable
 public class GuidanceLineLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "emergencyLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> emergencyLighting;
     @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeLightIntensityType> intensityLevel;
     @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
+    @Transient
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
+    @Transient
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "lightedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<GuidanceLinePropertyType> lightedGuidanceLine;
+    @Transient
     protected List<GuidanceLineLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -383,8 +394,10 @@ public class GuidanceLineLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractGuidanceLineLightSystemExtension")
+        @Transient
         protected AbstractExtensionType abstractGuidanceLineLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
+        @Transient
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

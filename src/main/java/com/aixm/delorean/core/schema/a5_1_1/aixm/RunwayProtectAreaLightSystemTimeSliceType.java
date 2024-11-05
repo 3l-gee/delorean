@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -62,26 +64,36 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightedArea",
     "extension"
 })
+@Embeddable
 public class RunwayProtectAreaLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElementRef(name = "emergencyLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeYesNoType> emergencyLighting;
     @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeLightIntensityType> intensityLevel;
     @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
+    @Transient
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
+    @Transient
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
     @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<CodeProtectAreaSectionType> position;
     @XmlElementRef(name = "lightedArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
     protected JAXBElement<RunwayProtectAreaPropertyType> lightedArea;
+    @Transient
     protected List<RunwayProtectAreaLightSystemTimeSliceType.Extension> extension;
 
     /**
@@ -414,8 +426,10 @@ public class RunwayProtectAreaLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayProtectAreaLightSystemExtension")
+        @Transient
         protected AbstractExtensionType abstractRunwayProtectAreaLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
+        @Transient
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

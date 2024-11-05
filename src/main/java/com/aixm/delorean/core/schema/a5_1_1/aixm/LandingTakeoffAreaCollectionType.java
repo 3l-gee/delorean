@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -54,16 +57,22 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
+@Entity
+@Table(name = "landing_takeoff_area_collection_type")
 public class LandingTakeoffAreaCollectionType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
+    @Transient
     protected List<RunwayDirectionPropertyType> runway;
     @XmlElement(name = "TLOF", nillable = true)
+    @Transient
     protected List<TouchDownLiftOffPropertyType> tlof;
     @XmlElement(nillable = true)
+    @Transient
     protected List<NotePropertyType> annotation;
+    @Transient
     protected List<LandingTakeoffAreaCollectionType.Extension> extension;
 
     /**
@@ -254,6 +263,7 @@ public class LandingTakeoffAreaCollectionType
     public static class Extension {
 
         @XmlElement(name = "AbstractLandingTakeoffAreaCollectionExtension")
+        @Transient
         protected AbstractExtensionType abstractLandingTakeoffAreaCollectionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
