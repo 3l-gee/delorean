@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "safe_altitude_area_type")
+@Table(name = "safe_altitude_area")
 public class SafeAltitudeAreaType
     extends AbstractAIXMFeatureType
 {

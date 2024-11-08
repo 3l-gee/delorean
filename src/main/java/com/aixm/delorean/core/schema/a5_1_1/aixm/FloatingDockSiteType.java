@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "floating_dock_site_type")
+@Table(name = "floating_dock_site")
 public class FloatingDockSiteType
     extends AbstractAIXMFeatureType
 {

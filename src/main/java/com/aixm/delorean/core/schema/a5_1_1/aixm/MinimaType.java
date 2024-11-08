@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "minima_type")
+@Table(name = "minima")
 public class MinimaType
     extends AbstractAIXMObjectType
 {

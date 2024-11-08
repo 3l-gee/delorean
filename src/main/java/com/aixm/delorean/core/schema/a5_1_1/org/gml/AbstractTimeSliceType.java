@@ -8,6 +8,8 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMTimeSliceBaseType;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -44,24 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     MovingObjectStatusType.class,
     AbstractAIXMTimeSliceBaseType.class
 })
+@MappedSuperclass
 public abstract class AbstractTimeSliceType
     extends AbstractGMLType
 {
 
-    /**
-     * gml:validTime is a convenience property element.
-     * 
-     */
     @XmlElement(required = true)
+    @Transient
     protected TimePrimitivePropertyType validTime;
-    /**
-     * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data. The remote link attributes of the gml:dataSource element have been deprecated along with its current type.
-     * 
-     */
+    @Transient
     protected StringOrRefType dataSource;
 
     /**
-     * gml:validTime is a convenience property element.
+     * Gets the value of the validTime property.
      * 
      * @return
      *     possible object is
@@ -79,7 +76,6 @@ public abstract class AbstractTimeSliceType
      *     allowed object is
      *     {@link TimePrimitivePropertyType }
      *     
-     * @see #getValidTime()
      */
     public void setValidTime(TimePrimitivePropertyType value) {
         this.validTime = value;
@@ -90,7 +86,7 @@ public abstract class AbstractTimeSliceType
     }
 
     /**
-     * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data. The remote link attributes of the gml:dataSource element have been deprecated along with its current type.
+     * Gets the value of the dataSource property.
      * 
      * @return
      *     possible object is
@@ -108,7 +104,6 @@ public abstract class AbstractTimeSliceType
      *     allowed object is
      *     {@link StringOrRefType }
      *     
-     * @see #getDataSource()
      */
     public void setDataSource(StringOrRefType value) {
         this.dataSource = value;

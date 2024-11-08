@@ -191,7 +191,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "abstractAIXMFeature"
 })
 @Entity
-@Table(name = "basic_message_member_aixm_property_type")
+@Table(name = "basic_message_member")
 public class BasicMessageMemberAIXMPropertyType
     extends AbstractFeatureMemberType
 {

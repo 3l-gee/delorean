@@ -59,7 +59,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "final_profile_type")
+@Table(name = "final_profile")
 public class FinalProfileType
     extends AbstractAIXMObjectType
 {

@@ -66,7 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "route_availability_type")
+@Table(name = "route_availability")
 public class RouteAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {

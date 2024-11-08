@@ -77,7 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "vertical_structure_part_type")
+@Table(name = "vertical_structure_part")
 public class VerticalStructurePartType
     extends AbstractPropertiesWithScheduleType
 {

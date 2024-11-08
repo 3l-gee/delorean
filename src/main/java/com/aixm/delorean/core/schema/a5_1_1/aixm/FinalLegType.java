@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "final_leg_type")
+@Table(name = "final_leg")
 public class FinalLegType
     extends AbstractApproachLegType
 {

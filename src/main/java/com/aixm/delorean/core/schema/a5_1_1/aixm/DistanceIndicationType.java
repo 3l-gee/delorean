@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "distance_indication_type")
+@Table(name = "distance_indication")
 public class DistanceIndicationType
     extends AbstractAIXMFeatureType
 {

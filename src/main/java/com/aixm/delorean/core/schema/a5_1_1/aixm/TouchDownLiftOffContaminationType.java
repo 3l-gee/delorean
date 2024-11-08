@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "touch_down_lift_off_contamination_type")
+@Table(name = "touch_down_lift_off_contamination")
 public class TouchDownLiftOffContaminationType
     extends AbstractSurfaceContaminationType
 {

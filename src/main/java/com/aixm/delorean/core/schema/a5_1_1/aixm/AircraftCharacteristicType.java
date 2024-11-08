@@ -79,7 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aircraft_characteristic_type")
+@Table(name = "aircraft_characteristic")
 public class AircraftCharacteristicType
     extends AbstractAIXMObjectType
 {

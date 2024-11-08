@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "change_over_point_type")
+@Table(name = "change_over_point")
 public class ChangeOverPointType
     extends AbstractAIXMFeatureType
 {

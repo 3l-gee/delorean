@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "unit_dependency_type")
+@Table(name = "unit_dependency")
 public class UnitDependencyType
     extends AbstractAIXMObjectType
 {

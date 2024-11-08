@@ -76,7 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "en_route_segment_point_type")
+@Table(name = "en_route_segment_point")
 public class EnRouteSegmentPointType
     extends AbstractSegmentPointType
 {

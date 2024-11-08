@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "vertical_structure_type")
+@Table(name = "vertical_structure")
 public class VerticalStructureType
     extends AbstractAIXMFeatureType
 {

@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "note_type")
+@Table(name = "note")
 public class NoteType
     extends AbstractAIXMObjectType
 {

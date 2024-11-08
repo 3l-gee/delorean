@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "runway_protect_area_type")
+@Table(name = "runway_protect_area")
 public class RunwayProtectAreaType
     extends AbstractAirportHeliportProtectionAreaType
 {

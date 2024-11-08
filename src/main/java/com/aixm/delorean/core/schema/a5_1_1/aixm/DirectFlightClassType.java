@@ -61,7 +61,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "direct_flight_class_type")
+@Table(name = "direct_flight_class")
 public class DirectFlightClassType
     extends AbstractDirectFlightType
 {

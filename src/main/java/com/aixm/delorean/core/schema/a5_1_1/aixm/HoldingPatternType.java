@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "holding_pattern_type")
+@Table(name = "holding_pattern")
 public class HoldingPatternType
     extends AbstractAIXMFeatureType
 {

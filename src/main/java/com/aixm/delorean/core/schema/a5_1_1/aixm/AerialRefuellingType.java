@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "aerial_refuelling_type")
+@Table(name = "aerial_refuelling")
 public class AerialRefuellingType
     extends AbstractAIXMFeatureType
 {

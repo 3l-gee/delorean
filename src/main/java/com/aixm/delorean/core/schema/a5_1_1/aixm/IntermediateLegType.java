@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "intermediate_leg_type")
+@Table(name = "intermediate_leg")
 public class IntermediateLegType
     extends AbstractApproachLegType
 {

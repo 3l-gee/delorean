@@ -61,7 +61,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "equipment_unavailable_adjustment_type")
+@Table(name = "equipment_unavailable_adjustment")
 public class EquipmentUnavailableAdjustmentType
     extends AbstractAIXMObjectType
 {

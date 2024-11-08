@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerial_refuelling_point_type")
+@Table(name = "aerial_refuelling_point")
 public class AerialRefuellingPointType
     extends AbstractSegmentPointType
 {

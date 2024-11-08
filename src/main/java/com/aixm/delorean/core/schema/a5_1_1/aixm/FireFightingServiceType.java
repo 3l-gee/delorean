@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "fire_fighting_service_type")
+@Table(name = "fire_fighting_service")
 public class FireFightingServiceType
     extends AbstractAirportGroundServiceType
 {

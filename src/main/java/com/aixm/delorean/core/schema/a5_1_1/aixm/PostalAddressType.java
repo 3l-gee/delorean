@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "postal_address_type")
+@Table(name = "postal_address")
 public class PostalAddressType
     extends AbstractPropertiesWithScheduleType
 {

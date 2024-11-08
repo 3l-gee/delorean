@@ -59,7 +59,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "oxygen_type")
+@Table(name = "oxygen")
 public class OxygenType
     extends AbstractAIXMObjectType
 {

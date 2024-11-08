@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "survey_control_point_type")
+@Table(name = "survey_control_point")
 public class SurveyControlPointType
     extends AbstractAIXMFeatureType
 {

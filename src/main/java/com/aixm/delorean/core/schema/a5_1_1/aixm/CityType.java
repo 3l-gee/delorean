@@ -59,7 +59,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "city_type")
+@Table(name = "city")
 public class CityType
     extends AbstractAIXMObjectType
 {

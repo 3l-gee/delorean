@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "work_area_type")
+@Table(name = "work_area")
 public class WorkAreaType
     extends AbstractAIXMFeatureType
 {

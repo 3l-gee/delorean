@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "seaplane_landing_area_type")
+@Table(name = "seaplane_landing_area")
 public class SeaplaneLandingAreaType
     extends AbstractAIXMFeatureType
 {

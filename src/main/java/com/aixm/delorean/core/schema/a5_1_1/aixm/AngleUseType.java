@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "angle_use_type")
+@Table(name = "angle_use")
 public class AngleUseType
     extends AbstractAIXMObjectType
 {

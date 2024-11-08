@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "condition_combination_type")
+@Table(name = "condition_combination")
 public class ConditionCombinationType
     extends AbstractPropertiesWithScheduleType
 {

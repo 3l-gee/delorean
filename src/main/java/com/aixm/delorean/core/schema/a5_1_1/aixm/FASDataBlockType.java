@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "fas_data_block_type")
+@Table(name = "fas_data_block")
 public class FASDataBlockType
     extends AbstractAIXMObjectType
 {

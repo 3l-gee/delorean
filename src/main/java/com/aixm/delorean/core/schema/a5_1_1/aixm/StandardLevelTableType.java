@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "standard_level_table_type")
+@Table(name = "standard_level_table")
 public class StandardLevelTableType
     extends AbstractAIXMFeatureType
 {

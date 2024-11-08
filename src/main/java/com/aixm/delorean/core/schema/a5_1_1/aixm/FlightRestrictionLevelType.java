@@ -62,7 +62,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flight_restriction_level_type")
+@Table(name = "flight_restriction_level")
 public class FlightRestrictionLevelType
     extends AbstractAIXMObjectType
 {

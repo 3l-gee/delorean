@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureBaseType;
-
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
@@ -52,35 +51,18 @@ public class DynamicFeatureType
     extends AbstractFeatureType
 {
 
-    /**
-     * gml:validTime is a convenience property element.
-     * 
-     */
     @Transient
     protected TimePrimitivePropertyType validTime;
-    /**
-     * A generic sequence of events constitute a gml:history of an object.
-     * The gml:history element contains a set of elements in the substitution group headed by the abstract element gml:AbstractTimeSlice, representing the time-varying properties of interest. The history property of a dynamic feature associates a feature instance with a sequence of time slices (i.e. change events) that encapsulate the evolution of the feature.
-     * 
-     */
     @XmlElementRef(name = "history", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     @Transient
     protected JAXBElement<HistoryPropertyType> history;
-    /**
-     * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data. The remote link attributes of the gml:dataSource element have been deprecated along with its current type.
-     * 
-     */
     @Transient
     protected StringOrRefType dataSource;
-    /**
-     * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data.
-     * 
-     */
     @Transient
     protected ReferenceType dataSourceReference;
 
     /**
-     * gml:validTime is a convenience property element.
+     * Gets the value of the validTime property.
      * 
      * @return
      *     possible object is
@@ -98,7 +80,6 @@ public class DynamicFeatureType
      *     allowed object is
      *     {@link TimePrimitivePropertyType }
      *     
-     * @see #getValidTime()
      */
     public void setValidTime(TimePrimitivePropertyType value) {
         this.validTime = value;
@@ -109,8 +90,7 @@ public class DynamicFeatureType
     }
 
     /**
-     * A generic sequence of events constitute a gml:history of an object.
-     * The gml:history element contains a set of elements in the substitution group headed by the abstract element gml:AbstractTimeSlice, representing the time-varying properties of interest. The history property of a dynamic feature associates a feature instance with a sequence of time slices (i.e. change events) that encapsulate the evolution of the feature.
+     * Gets the value of the history property.
      * 
      * @return
      *     possible object is
@@ -130,7 +110,6 @@ public class DynamicFeatureType
      *     {@link JAXBElement }{@code <}{@link HistoryPropertyType }{@code >}
      *     {@link JAXBElement }{@code <}{@link HistoryPropertyType }{@code >}
      *     
-     * @see #getHistory()
      */
     public void setHistory(JAXBElement<HistoryPropertyType> value) {
         this.history = value;
@@ -141,7 +120,7 @@ public class DynamicFeatureType
     }
 
     /**
-     * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data. The remote link attributes of the gml:dataSource element have been deprecated along with its current type.
+     * Gets the value of the dataSource property.
      * 
      * @return
      *     possible object is
@@ -159,7 +138,6 @@ public class DynamicFeatureType
      *     allowed object is
      *     {@link StringOrRefType }
      *     
-     * @see #getDataSource()
      */
     public void setDataSource(StringOrRefType value) {
         this.dataSource = value;
@@ -170,7 +148,7 @@ public class DynamicFeatureType
     }
 
     /**
-     * Evidence is represented by a simple gml:dataSource or gml:dataSourceReference property that indicates the source of the temporal data.
+     * Gets the value of the dataSourceReference property.
      * 
      * @return
      *     possible object is
@@ -188,7 +166,6 @@ public class DynamicFeatureType
      *     allowed object is
      *     {@link ReferenceType }
      *     
-     * @see #getDataSourceReference()
      */
     public void setDataSourceReference(ReferenceType value) {
         this.dataSourceReference = value;

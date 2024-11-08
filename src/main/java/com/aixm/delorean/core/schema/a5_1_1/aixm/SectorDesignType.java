@@ -62,7 +62,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "sector_design_type")
+@Table(name = "sector_design")
 public class SectorDesignType
     extends AbstractAIXMObjectType
 {

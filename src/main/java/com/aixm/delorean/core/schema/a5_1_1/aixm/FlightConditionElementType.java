@@ -80,7 +80,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flight_condition_element_type")
+@Table(name = "flight_condition_element")
 public class FlightConditionElementType
     extends AbstractAIXMObjectType
 {

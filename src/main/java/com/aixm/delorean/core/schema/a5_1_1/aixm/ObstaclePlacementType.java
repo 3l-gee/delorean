@@ -62,7 +62,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "obstacle_placement_type")
+@Table(name = "obstacle_placement")
 public class ObstaclePlacementType
     extends AbstractAIXMObjectType
 {

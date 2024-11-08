@@ -59,7 +59,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "oil_type")
+@Table(name = "oil")
 public class OilType
     extends AbstractAIXMObjectType
 {

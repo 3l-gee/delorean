@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "rules_procedures_type")
+@Table(name = "rules_procedures")
 public class RulesProceduresType
     extends AbstractAIXMFeatureType
 {

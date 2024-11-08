@@ -61,7 +61,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaid_equipment_distance_type")
+@Table(name = "navaid_equipment_distance")
 public class NavaidEquipmentDistanceType
     extends AbstractAIXMObjectType
 {

@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "obstacle_assessment_area_type")
+@Table(name = "obstacle_assessment_area")
 public class ObstacleAssessmentAreaType
     extends AbstractAIXMObjectType
 {

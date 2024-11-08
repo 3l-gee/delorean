@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "meteorology_type")
+@Table(name = "meteorology")
 public class MeteorologyType
     extends AbstractAIXMObjectType
 {

@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "procedure_dme_type")
+@Table(name = "procedure_dme")
 public class ProcedureDMEType
     extends AbstractAIXMFeatureType
 {

@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "taxiway_light_system_type")
+@Table(name = "taxiway_light_system")
 public class TaxiwayLightSystemType
     extends AbstractGroundLightSystemType
 {

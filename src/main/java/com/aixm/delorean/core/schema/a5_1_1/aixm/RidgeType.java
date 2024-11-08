@@ -61,7 +61,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "ridge_type")
+@Table(name = "ridge")
 public class RidgeType
     extends AbstractAIXMObjectType
 {

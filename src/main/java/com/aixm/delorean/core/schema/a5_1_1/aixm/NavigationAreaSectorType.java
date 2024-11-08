@@ -62,7 +62,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navigation_area_sector_type")
+@Table(name = "navigation_area_sector")
 public class NavigationAreaSectorType
     extends AbstractAIXMObjectType
 {

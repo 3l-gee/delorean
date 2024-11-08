@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "organisation_authority_association_type")
+@Table(name = "organisation_authority_association")
 public class OrganisationAuthorityAssociationType
     extends AbstractAIXMObjectType
 {

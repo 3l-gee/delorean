@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "light_element_type")
+@Table(name = "light_element")
 public class LightElementType
     extends AbstractAIXMObjectType
 {

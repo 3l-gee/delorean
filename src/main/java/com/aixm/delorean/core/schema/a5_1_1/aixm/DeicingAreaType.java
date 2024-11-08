@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "deicing_area_type")
+@Table(name = "deicing_area")
 public class DeicingAreaType
     extends AbstractAIXMFeatureType
 {

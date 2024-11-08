@@ -61,7 +61,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approach_altitude_table_type")
+@Table(name = "approach_altitude_table")
 public class ApproachAltitudeTableType
     extends AbstractAIXMObjectType
 {

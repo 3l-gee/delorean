@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "callsign_detail_type")
+@Table(name = "callsign_detail")
 public class CallsignDetailType
     extends AbstractAIXMObjectType
 {

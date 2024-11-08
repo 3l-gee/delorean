@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "vor_type")
+@Table(name = "vor")
 public class VORType
     extends AbstractNavaidEquipmentType
 {

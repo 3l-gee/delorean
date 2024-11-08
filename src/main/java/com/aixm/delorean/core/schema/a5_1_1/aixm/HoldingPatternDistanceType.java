@@ -59,7 +59,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "holding_pattern_distance_type")
+@Table(name = "holding_pattern_distance")
 public class HoldingPatternDistanceType
     extends AbstractAIXMObjectType
 {

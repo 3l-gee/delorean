@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "terminal_arrival_area_sector_type")
+@Table(name = "terminal_arrival_area_sector")
 public class TerminalArrivalAreaSectorType
     extends AbstractAIXMObjectType
 {

@@ -66,7 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "online_contact_type")
+@Table(name = "online_contact")
 public class OnlineContactType
     extends AbstractPropertiesWithScheduleType
 {

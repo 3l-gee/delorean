@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "navaid_type")
+@Table(name = "navaid")
 public class NavaidType
     extends AbstractAIXMFeatureType
 {

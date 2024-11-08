@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "marking_element_type")
+@Table(name = "marking_element")
 public class MarkingElementType
     extends AbstractAIXMObjectType
 {

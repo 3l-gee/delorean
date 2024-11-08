@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aircraft_stand_contamination_type")
+@Table(name = "aircraft_stand_contamination")
 public class AircraftStandContaminationType
     extends AbstractSurfaceContaminationType
 {

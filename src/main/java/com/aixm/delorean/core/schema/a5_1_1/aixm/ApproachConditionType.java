@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approach_condition_type")
+@Table(name = "approach_condition")
 public class ApproachConditionType
     extends AbstractAIXMObjectType
 {

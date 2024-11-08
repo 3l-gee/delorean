@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "timesheet_type")
+@Table(name = "timesheet")
 public class TimesheetType
     extends AbstractAIXMObjectType
 {
