@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "apron_light_system_type")
+@Table(name = "apron_light_system")
 public class ApronLightSystemType
     extends AbstractGroundLightSystemType
 {

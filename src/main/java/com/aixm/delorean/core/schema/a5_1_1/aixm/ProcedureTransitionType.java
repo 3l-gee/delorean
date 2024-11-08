@@ -65,7 +65,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "procedure_transition_type")
+@Table(name = "procedure_transition")
 public class ProcedureTransitionType
     extends AbstractAIXMObjectType
 {

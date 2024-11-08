@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "primary_surveillance_radar_type")
+@Table(name = "primary_surveillance_radar")
 public class PrimarySurveillanceRadarType
     extends AbstractSurveillanceRadarType
 {

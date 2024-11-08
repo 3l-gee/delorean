@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "surveillance_ground_station_type")
+@Table(name = "surveillance_ground_station")
 public class SurveillanceGroundStationType
     extends AbstractAIXMObjectType
 {

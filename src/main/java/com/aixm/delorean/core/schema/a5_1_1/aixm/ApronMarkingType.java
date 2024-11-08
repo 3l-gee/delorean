@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "apron_marking_type")
+@Table(name = "apron_marking")
 public class ApronMarkingType
     extends AbstractMarkingType
 {

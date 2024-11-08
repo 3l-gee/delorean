@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "organisation_authority_type")
+@Table(name = "organisation_authority")
 public class OrganisationAuthorityType
     extends AbstractAIXMFeatureType
 {

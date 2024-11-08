@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "apron_element_type")
+@Table(name = "apron_element")
 public class ApronElementType
     extends AbstractAIXMFeatureType
 {

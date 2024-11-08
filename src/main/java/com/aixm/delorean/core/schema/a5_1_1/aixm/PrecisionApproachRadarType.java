@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "precision_approach_radar_type")
+@Table(name = "precision_approach_radar")
 public class PrecisionApproachRadarType
     extends AbstractRadarEquipmentType
 {

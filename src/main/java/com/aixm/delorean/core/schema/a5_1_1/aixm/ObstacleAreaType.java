@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "obstacle_area_type")
+@Table(name = "obstacle_area")
 public class ObstacleAreaType
     extends AbstractAIXMFeatureType
 {

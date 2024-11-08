@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspace_volume_type")
+@Table(name = "airspace_volume")
 public class AirspaceVolumeType
     extends AbstractAIXMObjectType
 {

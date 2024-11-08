@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspace_activation_type")
+@Table(name = "airspace_activation")
 public class AirspaceActivationType
     extends AbstractPropertiesWithScheduleType
 {

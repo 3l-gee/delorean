@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "runway_centreline_point_type")
+@Table(name = "runway_centreline_point")
 public class RunwayCentrelinePointType
     extends AbstractAIXMFeatureType
 {

@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radar_component_type")
+@Table(name = "radar_component")
 public class RadarComponentType
     extends AbstractAIXMObjectType
 {

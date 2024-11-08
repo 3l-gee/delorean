@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airport_heliport_responsibility_organisation_type")
+@Table(name = "airport_heliport_responsibility_organisation")
 public class AirportHeliportResponsibilityOrganisationType
     extends AbstractPropertiesWithScheduleType
 {

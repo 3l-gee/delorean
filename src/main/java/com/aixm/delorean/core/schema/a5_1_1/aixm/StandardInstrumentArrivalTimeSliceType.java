@@ -9,7 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -74,7 +75,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "arrival",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "standard_instrument_arrival_time_slice")
 public class StandardInstrumentArrivalTimeSliceType
     extends AbstractAIXMTimeSliceType
 {

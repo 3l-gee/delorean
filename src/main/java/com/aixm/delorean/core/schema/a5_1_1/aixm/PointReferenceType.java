@@ -65,7 +65,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "point_reference_type")
+@Table(name = "point_reference")
 public class PointReferenceType
     extends AbstractAIXMObjectType
 {

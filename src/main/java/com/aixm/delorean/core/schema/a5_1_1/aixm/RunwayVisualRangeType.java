@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "runway_visual_range_type")
+@Table(name = "runway_visual_range")
 public class RunwayVisualRangeType
     extends AbstractAIXMFeatureType
 {

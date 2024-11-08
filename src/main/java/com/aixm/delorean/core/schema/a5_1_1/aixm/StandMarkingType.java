@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "stand_marking_type")
+@Table(name = "stand_marking")
 public class StandMarkingType
     extends AbstractMarkingType
 {

@@ -61,7 +61,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "surface_contamination_layer_type")
+@Table(name = "surface_contamination_layer")
 public class SurfaceContaminationLayerType
     extends AbstractAIXMObjectType
 {

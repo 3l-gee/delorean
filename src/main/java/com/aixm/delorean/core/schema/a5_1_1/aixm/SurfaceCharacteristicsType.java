@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "surface_characteristics_type")
+@Table(name = "surface_characteristics")
 public class SurfaceCharacteristicsType
     extends AbstractAIXMObjectType
 {

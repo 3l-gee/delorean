@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "non_movement_area_type")
+@Table(name = "non_movement_area")
 public class NonMovementAreaType
     extends AbstractAIXMFeatureType
 {

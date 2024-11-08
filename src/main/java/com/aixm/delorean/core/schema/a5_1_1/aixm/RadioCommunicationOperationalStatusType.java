@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radio_communication_operational_status_type")
+@Table(name = "radio_communication_operational_status")
 public class RadioCommunicationOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {

@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "special_navigation_station_status_type")
+@Table(name = "special_navigation_station_status")
 public class SpecialNavigationStationStatusType
     extends AbstractPropertiesWithScheduleType
 {

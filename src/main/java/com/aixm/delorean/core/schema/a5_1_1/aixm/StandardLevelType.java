@@ -59,7 +59,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standard_level_type")
+@Table(name = "standard_level")
 public class StandardLevelType
     extends AbstractAIXMObjectType
 {

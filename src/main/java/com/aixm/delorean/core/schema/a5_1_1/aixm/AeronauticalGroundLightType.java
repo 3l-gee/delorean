@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "aeronautical_ground_light_type")
+@Table(name = "aeronautical_ground_light")
 public class AeronauticalGroundLightType
     extends AbstractAIXMFeatureType
 {

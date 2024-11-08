@@ -280,7 +280,7 @@ public class GeospatialHelper {
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.PointType printAIXMPoint(AixmPointType value) {
         if (value == null) {
             com.aixm.delorean.core.schema.a5_1_1.aixm.PointType out = new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
-            out.setId(666);
+            out.setId("id666");
             return out;
         }
         com.aixm.delorean.core.schema.a5_1_1.aixm.PointType point = new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
@@ -327,7 +327,7 @@ public class GeospatialHelper {
     public static ElevatedPointType printAIXMElevatedPoint(AixmElevatedPointType value) {
         if (value == null) {
             ElevatedPointType out = new ElevatedPointType();
-            out.setId(666);
+            out.setId("id666");
             return out;
             // return null;
         }
@@ -479,7 +479,7 @@ public class GeospatialHelper {
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType printAIXMCurve(AixmCurveType value) {
         if (value == null) {
             com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType out = new com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType();
-            out.setId(666);
+            out.setId("id666");
             return out;
         }
         com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType curve = new com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType();
@@ -531,7 +531,7 @@ public class GeospatialHelper {
     public static ElevatedCurveType printAIXMElevatedCurve(AixmElevatedCurveType value) {
         if (value == null) {
             ElevatedCurveType out = new ElevatedCurveType();
-            out.setId(666);
+            out.setId("id666");
             return out;
             // return null;
         }
@@ -741,7 +741,7 @@ public class GeospatialHelper {
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType printAIXMSurface(AixmSurfaceType value){
         if (value == null) {
             com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType out = new com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType();
-            out.setId(666);
+            out.setId("id666");
             return out;
             // return null;
         }
@@ -796,7 +796,7 @@ public class GeospatialHelper {
     public static ElevatedSurfaceType printAIXMElevatedSurface(AixmElevatedSurfaceType value) {
         if (value == null) {
             ElevatedSurfaceType out = new ElevatedSurfaceType();
-            out.setId(666);
+            out.setId("id666");
             return out;
             // return null;
         }

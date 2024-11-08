@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "visual_glide_slope_indicator_type")
+@Table(name = "visual_glide_slope_indicator")
 public class VisualGlideSlopeIndicatorType
     extends AbstractGroundLightSystemType
 {

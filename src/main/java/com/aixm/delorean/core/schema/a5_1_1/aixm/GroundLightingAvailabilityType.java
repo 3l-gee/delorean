@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "ground_lighting_availability_type")
+@Table(name = "ground_lighting_availability")
 public class GroundLightingAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {

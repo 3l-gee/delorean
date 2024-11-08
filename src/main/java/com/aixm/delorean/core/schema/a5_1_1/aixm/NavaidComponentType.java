@@ -62,7 +62,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaid_component_type")
+@Table(name = "navaid_component")
 public class NavaidComponentType
     extends AbstractAIXMObjectType
 {

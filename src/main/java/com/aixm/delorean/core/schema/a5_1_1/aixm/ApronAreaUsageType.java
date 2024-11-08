@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "apron_area_usage_type")
+@Table(name = "apron_area_usage")
 public class ApronAreaUsageType
     extends AbstractUsageConditionType
 {

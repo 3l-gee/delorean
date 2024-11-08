@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "navigation_area_restriction_type")
+@Table(name = "navigation_area_restriction")
 public class NavigationAreaRestrictionType
     extends AbstractAIXMFeatureType
 {

@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "tacan_type")
+@Table(name = "tacan")
 public class TACANType
     extends AbstractNavaidEquipmentType
 {

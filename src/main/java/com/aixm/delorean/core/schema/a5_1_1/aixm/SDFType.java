@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "sdf_type")
+@Table(name = "sdf")
 public class SDFType
     extends AbstractNavaidEquipmentType
 {

@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "localizer_type")
+@Table(name = "localizer")
 public class LocalizerType
     extends AbstractNavaidEquipmentType
 {

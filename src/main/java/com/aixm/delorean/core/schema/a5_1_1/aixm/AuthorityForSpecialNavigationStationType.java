@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "authority_for_special_navigation_station_type")
+@Table(name = "authority_for_special_navigation_station")
 public class AuthorityForSpecialNavigationStationType
     extends AbstractAIXMObjectType
 {

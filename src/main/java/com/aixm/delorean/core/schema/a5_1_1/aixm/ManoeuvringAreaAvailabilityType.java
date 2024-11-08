@@ -65,7 +65,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "manoeuvring_area_availability_type")
+@Table(name = "manoeuvring_area_availability")
 public class ManoeuvringAreaAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {

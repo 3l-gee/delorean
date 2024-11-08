@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runway_declared_distance_type")
+@Table(name = "runway_declared_distance")
 public class RunwayDeclaredDistanceType
     extends AbstractAIXMObjectType
 {

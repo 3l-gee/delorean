@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "touch_down_lift_off_safe_area_type")
+@Table(name = "touch_down_lift_off_safe_area")
 public class TouchDownLiftOffSafeAreaType
     extends AbstractAirportHeliportProtectionAreaType
 {

@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "departure_arrival_condition_type")
+@Table(name = "departure_arrival_condition")
 public class DepartureArrivalConditionType
     extends AbstractAIXMObjectType
 {

@@ -77,7 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "route_portion_type")
+@Table(name = "route_portion")
 public class RoutePortionType
     extends AbstractAIXMObjectType
 {

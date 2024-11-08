@@ -61,7 +61,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerial_refuelling_track_type")
+@Table(name = "aerial_refuelling_track")
 public class AerialRefuellingTrackType
     extends AbstractAIXMObjectType
 {

@@ -8,7 +8,7 @@ class Util:
     @staticmethod
     def snake_case(name):
         s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
-        return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+        return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower().replace("_type","")
     
     def snake_case_dbl_point(name):
         if ":" in name:
@@ -16,7 +16,7 @@ class Util:
         else:
             s1 = name
         s2 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', s1)
-        return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s2).lower()
+        return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s2).lower().replace("_type","")
 
     def simple_column_name(name):
         s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
@@ -270,14 +270,23 @@ class AnnoationsFunctions:
         res.append(JaxbAnnotations.COMPLEXTYPE(child.attrib['name']))
         if abstract:
             res.append(AnnoxAnnotations.CLASS(CoreAnnotations.MAPPEDSUPERCLASS.value))
+
         elif nilreason or embedable:
             res.append(AnnoxAnnotations.CLASS(AdditionalAnnotations.EMBEDDABLE.value))
-        elif "TimeSliceType" in child.get("name") or "PropertyType" in child.get("name"):
+
+        elif "PropertyType" in child.get("name"):
             res.append(AnnoxAnnotations.CLASS(AdditionalAnnotations.EMBEDDABLE.value)) 
+
+        elif "TimeSliceType" in child.get("name"):
+            EntityClass.add_to_entity_class(child.attrib['name'])
+            res.append(AnnoxAnnotations.CLASS(CoreAnnotations.ENTITY.value))
+            res.append(AnnoxAnnotations.CLASS(CoreAnnotations.TABLE_SNAKE(child.attrib['name'])))
+
         else :
             EntityClass.add_to_entity_class(child.attrib['name'])
             res.append(AnnoxAnnotations.CLASS(CoreAnnotations.ENTITY.value))
             res.append(AnnoxAnnotations.CLASS(CoreAnnotations.TABLE_SNAKE(child.attrib['name'])))
+            
         res.append(JaxbAnnotations.END.value)
         return res
     

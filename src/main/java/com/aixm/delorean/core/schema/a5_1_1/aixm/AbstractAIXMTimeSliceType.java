@@ -8,11 +8,17 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePrimitivePropertyType;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -33,6 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}correctionNumber" minOccurs="0"/>
  *         <element name="timeSliceMetadata" type="{http://www.aixm.aero/schema/5.1.1}FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}featureLifetime" minOccurs="0"/>
+ *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -181,31 +188,25 @@ public abstract class AbstractAIXMTimeSliceType
     extends AbstractAIXMTimeSliceBaseType
 {
 
-    /**
-     * Property indicating how the timeslice is to be interpreted.  See the AIXM Temporality model for details.
-     * 
-     */
     @XmlElement(required = true)
+    @Transient
     protected String interpretation;
-    /**
-     * Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details.
-     * 
-     */
+    @Transient
     protected Long sequenceNumber;
-    /**
-     * Used for indicating the order of the corrections of a Time Slice. See the AIXM Temporality model for details.
-     * 
-     */
+    @Transient
     protected Long correctionNumber;
+    @Transient
     protected FeatureTimeSliceMetadataPropertyType timeSliceMetadata;
-    /**
-     * The start and end of life of the feature. See the AIXM Temporality model for details.
-     * 
-     */
+    @Transient
     protected TimePrimitivePropertyType featureLifetime;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    @XmlTransient
+    protected long dbid;
 
     /**
-     * Property indicating how the timeslice is to be interpreted.  See the AIXM Temporality model for details.
+     * Gets the value of the interpretation property.
      * 
      * @return
      *     possible object is
@@ -223,7 +224,6 @@ public abstract class AbstractAIXMTimeSliceType
      *     allowed object is
      *     {@link String }
      *     
-     * @see #getInterpretation()
      */
     public void setInterpretation(String value) {
         this.interpretation = value;
@@ -234,7 +234,7 @@ public abstract class AbstractAIXMTimeSliceType
     }
 
     /**
-     * Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details.
+     * Gets the value of the sequenceNumber property.
      * 
      * @return
      *     possible object is
@@ -252,7 +252,6 @@ public abstract class AbstractAIXMTimeSliceType
      *     allowed object is
      *     {@link Long }
      *     
-     * @see #getSequenceNumber()
      */
     public void setSequenceNumber(Long value) {
         this.sequenceNumber = value;
@@ -263,7 +262,7 @@ public abstract class AbstractAIXMTimeSliceType
     }
 
     /**
-     * Used for indicating the order of the corrections of a Time Slice. See the AIXM Temporality model for details.
+     * Gets the value of the correctionNumber property.
      * 
      * @return
      *     possible object is
@@ -281,7 +280,6 @@ public abstract class AbstractAIXMTimeSliceType
      *     allowed object is
      *     {@link Long }
      *     
-     * @see #getCorrectionNumber()
      */
     public void setCorrectionNumber(Long value) {
         this.correctionNumber = value;
@@ -320,7 +318,7 @@ public abstract class AbstractAIXMTimeSliceType
     }
 
     /**
-     * The start and end of life of the feature. See the AIXM Temporality model for details.
+     * Gets the value of the featureLifetime property.
      * 
      * @return
      *     possible object is
@@ -338,7 +336,6 @@ public abstract class AbstractAIXMTimeSliceType
      *     allowed object is
      *     {@link TimePrimitivePropertyType }
      *     
-     * @see #getFeatureLifetime()
      */
     public void setFeatureLifetime(TimePrimitivePropertyType value) {
         this.featureLifetime = value;
@@ -346,6 +343,26 @@ public abstract class AbstractAIXMTimeSliceType
 
     public boolean isSetFeatureLifetime() {
         return (this.featureLifetime!= null);
+    }
+
+    /**
+     * Gets the value of the dbid property.
+     * 
+     */
+    public long getDbid() {
+        return dbid;
+    }
+
+    /**
+     * Sets the value of the dbid property.
+     * 
+     */
+    public void setDbid(long value) {
+        this.dbid = value;
+    }
+
+    public boolean isSetDbid() {
+        return true;
     }
 
 }

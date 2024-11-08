@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "runway_direction_type")
+@Table(name = "runway_direction")
 public class RunwayDirectionType
     extends AbstractAIXMFeatureType
 {

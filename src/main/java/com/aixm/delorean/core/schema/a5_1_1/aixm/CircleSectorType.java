@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "circle_sector_type")
+@Table(name = "circle_sector")
 public class CircleSectorType
     extends AbstractAIXMObjectType
 {

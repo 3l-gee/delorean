@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerial_refuelling_anchor_type")
+@Table(name = "aerial_refuelling_anchor")
 public class AerialRefuellingAnchorType
     extends AbstractAIXMObjectType
 {

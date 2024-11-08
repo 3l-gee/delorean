@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "designated_point_type")
+@Table(name = "designated_point")
 public class DesignatedPointType
     extends AbstractAIXMFeatureType
 {

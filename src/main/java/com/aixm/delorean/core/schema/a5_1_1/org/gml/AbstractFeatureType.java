@@ -60,10 +60,6 @@ public abstract class AbstractFeatureType
     extends AbstractGMLType
 {
 
-    /**
-     * This property describes the minimum bounding box or rectangle that encloses the entire feature.
-     * 
-     */
     @XmlElement(nillable = true)
     @Transient
     protected BoundingShapeType boundedBy;
@@ -72,7 +68,7 @@ public abstract class AbstractFeatureType
     protected JAXBElement<? extends LocationPropertyType> location;
 
     /**
-     * This property describes the minimum bounding box or rectangle that encloses the entire feature.
+     * Gets the value of the boundedBy property.
      * 
      * @return
      *     possible object is
@@ -90,7 +86,6 @@ public abstract class AbstractFeatureType
      *     allowed object is
      *     {@link BoundingShapeType }
      *     
-     * @see #getBoundedBy()
      */
     public void setBoundedBy(BoundingShapeType value) {
         this.boundedBy = value;

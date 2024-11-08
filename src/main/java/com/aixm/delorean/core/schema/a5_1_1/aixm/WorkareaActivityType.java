@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "workarea_activity_type")
+@Table(name = "workarea_activity")
 public class WorkareaActivityType
     extends AbstractPropertiesWithScheduleType
 {

@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "service_operational_status_type")
+@Table(name = "service_operational_status")
 public class ServiceOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {

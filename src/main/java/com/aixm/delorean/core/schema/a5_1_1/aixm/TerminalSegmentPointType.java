@@ -76,7 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "terminal_segment_point_type")
+@Table(name = "terminal_segment_point")
 public class TerminalSegmentPointType
     extends AbstractSegmentPointType
 {

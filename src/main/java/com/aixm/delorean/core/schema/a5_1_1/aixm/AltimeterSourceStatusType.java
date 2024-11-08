@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "altimeter_source_status_type")
+@Table(name = "altimeter_source_status")
 public class AltimeterSourceStatusType
     extends AbstractPropertiesWithScheduleType
 {

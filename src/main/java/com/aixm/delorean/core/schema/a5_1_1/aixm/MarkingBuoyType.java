@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "marking_buoy_type")
+@Table(name = "marking_buoy")
 public class MarkingBuoyType
     extends AbstractAIXMFeatureType
 {

@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "altimeter_source_type")
+@Table(name = "altimeter_source")
 public class AltimeterSourceType
     extends AbstractAIXMFeatureType
 {

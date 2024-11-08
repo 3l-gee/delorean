@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "holding_use_type")
+@Table(name = "holding_use")
 public class HoldingUseType
     extends AbstractAIXMObjectType
 {

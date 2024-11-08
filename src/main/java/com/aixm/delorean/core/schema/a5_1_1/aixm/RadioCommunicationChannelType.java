@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "radio_communication_channel_type")
+@Table(name = "radio_communication_channel")
 public class RadioCommunicationChannelType
     extends AbstractAIXMFeatureType
 {

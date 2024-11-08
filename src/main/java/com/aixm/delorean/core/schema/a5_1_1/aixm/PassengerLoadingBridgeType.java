@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "passenger_loading_bridge_type")
+@Table(name = "passenger_loading_bridge")
 public class PassengerLoadingBridgeType
     extends AbstractAIXMFeatureType
 {

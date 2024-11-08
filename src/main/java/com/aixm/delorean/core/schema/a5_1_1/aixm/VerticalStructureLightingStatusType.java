@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "vertical_structure_lighting_status_type")
+@Table(name = "vertical_structure_lighting_status")
 public class VerticalStructureLightingStatusType
     extends AbstractPropertiesWithScheduleType
 {

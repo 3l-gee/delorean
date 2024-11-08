@@ -66,8 +66,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="aixm:AbstractAIXMFeatureBaseType">
 				<sequence>
 					<element name="featureMetadata" type="aixm:FeatureMetadataPropertyType" minOccurs="0"/>
-					<!-- Adding dbID as a new field -->
-                	<!-- <element name="dbID" type="xs:long"/> -->
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -97,8 +97,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMObjectBaseType">
 				<sequence>
-					<!-- Adding dbID as a new field -->
-                	<!-- <element name="dbID" type="xs:long"/> -->
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -112,8 +112,10 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<annotation>
 			<documentation>It provides a basis for deriving AIXM feature/object properties. It defines the nilReason attribute and currently, it is only used for properties that are derived from association with an AIM object.</documentation>
 		</annotation>
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
 		<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
-        <!-- <attribute name="dbID" type="xs:long"/> -->
 	</complexType>
 	<!--====================================================================-->
 	<!--AIXM TimeSlice-->
@@ -149,8 +151,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element ref="aixm:correctionNumber" minOccurs="0"/>
 					<element name="timeSliceMetadata" type="aixm:FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
 					<element ref="aixm:featureLifetime" minOccurs="0"/>
-					<!-- Adding dbID as a new field -->
-                	<!-- <element name="dbID" type="xs:long"/> -->
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -164,8 +166,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				<sequence>
 					<element ref="aixm:sequenceNumber" minOccurs="0"/>
 					<element name="messageMetadata" type="aixm:MessageMetadataPropertyType" minOccurs="0"/>
-					<!-- Adding dbID as a new field -->
-					<!-- <element name="dbID" type="xs:long"/> -->
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>

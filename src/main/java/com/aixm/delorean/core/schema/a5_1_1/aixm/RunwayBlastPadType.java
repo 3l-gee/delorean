@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "runway_blast_pad_type")
+@Table(name = "runway_blast_pad")
 public class RunwayBlastPadType
     extends AbstractAIXMFeatureType
 {

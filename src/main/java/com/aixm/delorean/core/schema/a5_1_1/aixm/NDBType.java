@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "ndb_type")
+@Table(name = "ndb")
 public class NDBType
     extends AbstractNavaidEquipmentType
 {

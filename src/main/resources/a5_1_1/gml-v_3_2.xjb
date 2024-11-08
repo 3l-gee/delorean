@@ -22,24 +22,24 @@
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:attribute[@ref='gml:id']">
-            <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
-			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
-			<annox:annotate target="field">@jakarta.persistence.Column(name = "id", nullable = false)</annox:annotate>
-            <!-- <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate> -->
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "xml_id")</annox:annotate>
         </jaxb:bindings>
-		<jaxb:bindings node="xs:group [@name='StandardObjectProperties']//xs:element[@ref='gml:metaDataProperty']">
+		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:metaDataProperty']">
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
-		<jaxb:bindings node="xs:group [@name='StandardObjectProperties']//xs:element[@ref='gml:description']">
+		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:description']">
+			<!-- <annox:annotate target="field">@jakarta.persistence.Column(name = "description")</annox:annotate> -->
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
-		<jaxb:bindings node="xs:group [@name='StandardObjectProperties']//xs:element[@ref='gml:descriptionReference']">
+		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:descriptionReference']">
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
-		<jaxb:bindings node="xs:group [@name='StandardObjectProperties']//xs:element[@ref='gml:identifier']">
+		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:identifier']">
+			<!-- <annox:annotate target="field">@jakarta.persistence.Column(name = "identifier")</annox:annotate> -->
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
-		<jaxb:bindings node="xs:group [@name='StandardObjectProperties']//xs:element[@ref='gml:name']">
+		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:name']">
+			<!-- <annox:annotate target="field">@jakarta.persistence.Column(name = "name")</annox:annotate> -->
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
 	</jaxb:bindings>
@@ -47,6 +47,40 @@
 	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/feature.xsd" node="/xs:schema">
 		<jaxb:bindings node="//xs:complexType[@name='AbstractFeatureType']">
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+        </jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractFeatureType']//xs:element[@ref='gml:boundedBy']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractFeatureType']//xs:element[@ref='gml:location']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+	</jaxb:bindings>
+
+	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/dynamicFeature.xsd" node="/xs:schema">
+		<jaxb:bindings node="//xs:complexType[@name='DynamicFeatureType']">
+            <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+        </jaxb:bindings>
+		<jaxb:bindings node="xs:group[@name='dynamicProperties']//xs:element[@ref='gml:validTime']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+		<jaxb:bindings node="xs:group[@name='dynamicProperties']//xs:element[@ref='gml:history']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+		<jaxb:bindings node="xs:group[@name='dynamicProperties']//xs:element[@ref='gml:dataSource']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+		<jaxb:bindings node="xs:group[@name='dynamicProperties']//xs:element[@ref='gml:dataSourceReference']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+
+		<jaxb:bindings node="//xs:complexType[@name='AbstractTimeSliceType']">
+            <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
+        </jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractTimeSliceType']//xs:element[@ref='gml:validTime']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractTimeSliceType']//xs:element[@ref='gml:dataSource']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
 	</jaxb:bindings>
 

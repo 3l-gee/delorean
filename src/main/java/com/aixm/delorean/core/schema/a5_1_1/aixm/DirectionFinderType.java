@@ -42,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "direction_finder_type")
+@Table(name = "direction_finder")
 public class DirectionFinderType
     extends AbstractNavaidEquipmentType
 {

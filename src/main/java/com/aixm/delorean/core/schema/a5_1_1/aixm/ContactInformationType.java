@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "contact_information_type")
+@Table(name = "contact_information")
 public class ContactInformationType
     extends AbstractAIXMObjectType
 {

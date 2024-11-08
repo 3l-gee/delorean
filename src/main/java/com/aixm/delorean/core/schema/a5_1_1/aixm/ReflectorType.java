@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "reflector_type")
+@Table(name = "reflector")
 public class ReflectorType
     extends AbstractAIXMObjectType
 {

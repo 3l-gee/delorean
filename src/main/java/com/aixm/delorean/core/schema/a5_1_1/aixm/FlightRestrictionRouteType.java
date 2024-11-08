@@ -61,7 +61,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flight_restriction_route_type")
+@Table(name = "flight_restriction_route")
 public class FlightRestrictionRouteType
     extends AbstractAIXMObjectType
 {

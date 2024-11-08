@@ -58,7 +58,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "landing_takeoff_area_collection_type")
+@Table(name = "landing_takeoff_area_collection")
 public class LandingTakeoffAreaCollectionType
     extends AbstractAIXMObjectType
 {

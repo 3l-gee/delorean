@@ -62,7 +62,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "missed_approach_group_type")
+@Table(name = "missed_approach_group")
 public class MissedApproachGroupType
     extends AbstractAIXMObjectType
 {
