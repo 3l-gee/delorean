@@ -98,6 +98,9 @@ class JaxbAnnotations(Enum):
     PROPERTY_NAME = f'''            <jaxb:property name="AIXMName"/>'''
     END = '        </jaxb:bindings>'
 
+class XmlAnnotations(Enum):
+    XMLTYPE = lambda x, y, z: f'''@jakarta.xml.bind.annotation.XmlType(name = "{x}", propOrder = {{"{y.lower()+ z}"}})'''
+
 class AnnoxAnnotations(Enum):
     CLASS = lambda x : f'''            <annox:annotate target="class">{x}</annox:annotate>'''
     FIELD = lambda x : f'''            <annox:annotate target="field">{x}</annox:annotate>'''
@@ -178,12 +181,6 @@ class PersistenceAnnotationMachinery:
             attribute.get('name') == 'nilReason' for attribute in child.findall('.//xs:attribute', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'})
         )
         embedable = child.attrib.get('name') in self.embedable
-
-        try :
-            extension = child[0][0].get('base', "").split(":")[1]
-            print(child.attrib.get('name') + " extends " + extension)
-        except :
-            pass
         
         if child.tag in [XmlTags.TAG_IMPORT.value, XmlTags.TAG_ANNOTATION.value, XmlTags.TAG_INCLUDE.value, XmlTags.TAG_GROUP.value, XmlTags.TAG_ELEMENT.value]:
             pass
@@ -272,7 +269,7 @@ class PersistenceAnnotationMachinery:
 
 class AnnoationsFunctions:
     @staticmethod
-    def class_writer(child, abstract: bool, nilreason: bool, embedable: bool):
+    def class_writer(child, abstract: bool, nilreason: bool, embedable: bool, extension: str = None):
         res = []
         res.append(JaxbAnnotations.COMPLEXTYPE(child.attrib['name']))
         if abstract:
@@ -283,8 +280,12 @@ class AnnoationsFunctions:
         elif nilreason or embedable:
             res.append(AnnoxAnnotations.CLASS(AdditionalAnnotations.EMBEDDABLE.value))
 
-        elif "PropertyType" in child.get("name"):
-            res.append(AnnoxAnnotations.CLASS(AdditionalAnnotations.EMBEDDABLE.value)) 
+        elif "PropertyType" in child.get("name") or "TimeSlicePropertyType" in child.get("name"):
+            EntityClass.add_to_entity_class(child.attrib['name'])
+            if "TimeSlicePropertyType" in child.get("name"):
+                res.append(AnnoxAnnotations.CLASS(XmlAnnotations.XMLTYPE(child.attrib['name'], child.attrib['name'].split("TimeSlicePropertyType")[0], "TimeSlice")))
+            res.append(AnnoxAnnotations.CLASS(CoreAnnotations.ENTITY.value))
+            res.append(AnnoxAnnotations.CLASS(CoreAnnotations.TABLE_SNAKE(child.attrib['name'])))
 
         elif "TimeSliceType" in child.get("name"):
             EntityClass.add_to_entity_class(child.attrib['name'])
@@ -375,7 +376,7 @@ class AnnoationsFunctions:
             print(child.tag == XmlTags.TAG_ATTRIBUTE)
             print(parent.attrib, child.attrib, child.tag)
 
-        if child.get('name') == "dbID" :
+        if child.get('name') == "dbid" :
             res.append(AnnoxAnnotations.FIELD(CoreAnnotations.ID.value))
             res.append(AnnoxAnnotations.FIELD(CoreAnnotations.GENERATED_VALUE.value))
             res.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE_NULLABLE(child.attrib['name'], "false")))

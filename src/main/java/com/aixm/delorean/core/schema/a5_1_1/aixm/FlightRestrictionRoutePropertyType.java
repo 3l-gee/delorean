@@ -7,7 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -38,7 +39,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "FlightRestrictionRoutePropertyType", propOrder = {
     "flightRestrictionRoute"
 })
-@Embeddable
+@Entity
+@Table(name = "flight_restriction_route_property")
 public class FlightRestrictionRoutePropertyType
     extends AbstractAIXMPropertyType
 {
