@@ -8,10 +8,13 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -124,13 +127,15 @@ import jakarta.xml.bind.annotation.XmlType;
     ReflectorType.class,
     SurveillanceGroundStationType.class
 })
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractAIXMObjectType
     extends AbstractAIXMObjectBaseType
 {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_object_seq")
+    @SequenceGenerator(name = "aixm_object_seq", sequenceName = "aixm_object_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
     @XmlTransient
     protected long dbid;
