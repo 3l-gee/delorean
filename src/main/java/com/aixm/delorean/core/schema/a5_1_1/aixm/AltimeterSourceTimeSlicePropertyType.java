@@ -7,12 +7,18 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -27,6 +33,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}AltimeterSourceTimeSlice"/>
+ *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *     </restriction>
@@ -40,12 +47,18 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "AltimeterSourceTimeSlicePropertyType", propOrder = {
     "altimeterSourceTimeSlice"
 })
-@Embeddable
+@Entity
+@Table(name = "altimeter_source_time_slice_property")
 public class AltimeterSourceTimeSlicePropertyType {
 
     @XmlElement(name = "AltimeterSourceTimeSlice", required = true)
     @Transient
     protected AltimeterSourceTimeSliceType altimeterSourceTimeSlice;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "dbid", nullable = false)
+    @XmlTransient
+    protected long dbid;
     @XmlAttribute(name = "owns")
     protected Boolean owns;
 
@@ -75,6 +88,26 @@ public class AltimeterSourceTimeSlicePropertyType {
 
     public boolean isSetAltimeterSourceTimeSlice() {
         return (this.altimeterSourceTimeSlice!= null);
+    }
+
+    /**
+     * Gets the value of the dbid property.
+     * 
+     */
+    public long getDbid() {
+        return dbid;
+    }
+
+    /**
+     * Sets the value of the dbid property.
+     * 
+     */
+    public void setDbid(long value) {
+        this.dbid = value;
+    }
+
+    public boolean isSetDbid() {
+        return true;
     }
 
     /**
