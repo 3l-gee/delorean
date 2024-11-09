@@ -255,7 +255,6 @@ public class GeospatialHelper {
         if (value.getX() == Double.NaN || value.getY() == Double.NaN) {
             return new PointType();
         } else {
-            System.out.println("X: " + value.getX() + " Y: " + value.getY());
             pos.getValue().add(value.getX());
             pos.getValue().add(value.getY());
         }
@@ -316,11 +315,6 @@ public class GeospatialHelper {
     public static AixmElevatedPointType parseAIXMElevatedPoint (ElevatedPointType value) {
         AixmElevatedPointType point = new AixmElevatedPointType();
         point.setPoint(parseGMLPoint(value));
-
-        System.out.println("id  :" + value.getId());
-        System.out.println("pos :" + value.getPos().getValue().toString());
-        System.out.println("coo :" + point.getPoint().getCoordinates().toString());
-
         return (AixmElevatedPointType) parseElevatedGeometry(point, null, value.getHorizontalAccuracy(), value.getVerticalAccuracy(), value.getElevation(), value.getGeoidUndulation(), value.getVerticalDatum());
     }
     
@@ -335,7 +329,6 @@ public class GeospatialHelper {
         DirectPositionType pos = new DirectPositionType();
 
         if (value.getPoint().getX() == Double.NaN || value.getPoint().getY() == Double.NaN) {
-            System.out.println("no coordinates");
             return new ElevatedPointType();
         } else {
             pos.getValue().add(value.getPoint().getX());

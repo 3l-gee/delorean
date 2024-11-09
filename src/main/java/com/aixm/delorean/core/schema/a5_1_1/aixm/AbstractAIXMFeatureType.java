@@ -8,10 +8,13 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -126,7 +129,8 @@ import jakarta.xml.bind.annotation.XmlType;
     RadarSystemType.class,
     AbstractRadarEquipmentType.class
 })
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractAIXMFeatureType
     extends AbstractAIXMFeatureBaseType
 {
@@ -134,7 +138,8 @@ public abstract class AbstractAIXMFeatureType
     @Transient
     protected FeatureMetadataPropertyType featureMetadata;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_feature_seq")
+    @SequenceGenerator(name = "aixm_feature_seq", sequenceName = "aixm_feature_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
     @XmlTransient
     protected long dbid;

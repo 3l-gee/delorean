@@ -8,11 +8,23 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Transient;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -40,14 +52,25 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "NavaidTimeSlicePropertyType", propOrder = {
     "navaidTimeSlice"
 })
-@Embeddable
+@Entity
+@Table(name = "navaid_time_slice_property")
 public class NavaidTimeSlicePropertyType {
 
     @XmlElement(name = "NavaidTimeSlice", required = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    })
+    @JoinColumn(name = "navaid_time_slice_id")
     protected NavaidTimeSliceType navaidTimeSlice;
     @XmlAttribute(name = "owns")
     protected Boolean owns;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    @XmlTransient
+    protected long dbid;
+
 
     /**
      * Gets the value of the navaidTimeSlice property.

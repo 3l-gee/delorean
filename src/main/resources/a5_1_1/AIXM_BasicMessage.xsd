@@ -48,10 +48,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="gml:AbstractFeatureMemberType">
 				<sequence>
 					<choice>
-						<element ref="aixm:AbstractAIXMFeature"/>
+						<!-- <element ref="aixm:AbstractAIXMFeature"/> -->
+						<!-- Abstract feature Handeling -->
+						<element name="abstractAIXMFeature" type="xs:string" />
 					</choice>
 					<!-- Adding dbID as a new field inside the sequence -->
-					<!-- <element name="dbID" type="xs:long"/> -->
+					<element name="dbid" type="xs:long"/>
 				</sequence>
 				<attributeGroup ref="gml:AssociationAttributeGroup"/>
 			</extension>

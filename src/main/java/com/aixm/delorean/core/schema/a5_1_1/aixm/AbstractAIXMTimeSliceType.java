@@ -9,10 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePrimitivePropertyType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -183,7 +186,8 @@ import jakarta.xml.bind.annotation.XmlType;
     RadarSystemTimeSliceType.class,
     SecondarySurveillanceRadarTimeSliceType.class
 })
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractAIXMTimeSliceType
     extends AbstractAIXMTimeSliceBaseType
 {
@@ -200,7 +204,8 @@ public abstract class AbstractAIXMTimeSliceType
     @Transient
     protected TimePrimitivePropertyType featureLifetime;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_property_seq")
+    @SequenceGenerator(name = "aixm_property_seq", sequenceName = "aixm_property_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
     @XmlTransient
     protected long dbid;

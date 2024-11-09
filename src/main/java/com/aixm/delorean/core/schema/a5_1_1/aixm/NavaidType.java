@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -48,7 +49,7 @@ public class NavaidType
 {
 
     @XmlElement(required = true)
-    @Transient
+    @OneToMany(targetEntity = NavaidTimeSlicePropertyType.class)
     protected List<NavaidTimeSlicePropertyType> timeSlice;
 
     /**
