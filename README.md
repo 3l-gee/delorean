@@ -466,3 +466,36 @@ mindmap
             Update
             Delete
 ```
+
+xsd / xjb processing tree
+
+```mermaid
+---
+title : xsd to xjb annotation for datatypes.xsd
+---
+flowchart TB
+classDef annotation fill:#4a3e59
+classDef annotation_pending fill:#6b3e2b
+datatype.xsd
+datatype.xsd -- type --> simpleType
+datatype.xsd -- type --> complexType
+
+simpleType --base--> SIMPLE:::annotation
+SIMPLE --base--> string
+
+string --enumeration--> ENUM_CLASS_START:::annotation
+string --restriction--> COLUMN:::annotation
+COLUMN --size--> SIZE:::annotation_pending
+COLUMN --pattern--> PATTERN:::annotation_pending
+
+ENUM_CLASS_START --> ENUM_MEMBER:::annotation
+ENUM_MEMBER --> ENUM_CLASS_END:::annotation
+ENUM_CLASS_END --> END:::annotation
+COLUMN --> END:::annotation
+SIZE --> END
+PATTERN --> END
+
+```
+
+```mermaid
+```
