@@ -21,6 +21,7 @@ class Util:
     def simple_column_name(name):
         s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
         return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower().replace("_base_type","")
+
     
 # Core Annotations
 class CoreAnnotations(Enum):
@@ -166,13 +167,24 @@ class PersistenceAnnotationMachinery:
         """Main function to process XML schema elements."""
         for child in self.root:
             if child.attrib.get("name") in self.ignore:
-                print(f"Ignoring {child.attrib.get('name')}")
+                pass
+                # print(f"Ignoring {child.attrib.get('name')}")
                 
             else:
-                print(f"Processing {child.attrib.get('name')}")
+                pass
+                # self._process_child_class(child)
+                # print(f"Processing {child.attrib.get('name')}")
 
-                self._process_child_class(child)
+
+
+        for child in self.root:
+            if child.attrib.get("name") in self.ignore:
+                pass
+                # print(f"Ignoring {child.attrib.get('name')}")
+                
+            else:
                 self._process_child_field(child, True)
+                # print(f"Processing {child.attrib.get('name')}")
 
     def _process_child_class(self, child, transient: bool = False):
         """Dispatch processing based on the XML tag type."""
@@ -379,11 +391,22 @@ class AnnoationsFunctions:
         if child.get('name') == "dbid" :
             res.append(AnnoxAnnotations.FIELD(CoreAnnotations.ID.value))
             res.append(AnnoxAnnotations.FIELD(CoreAnnotations.GENERATED_VALUE.value))
-            res.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE_NULLABLE(child.attrib['name'], "false")))
+            res.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE_NULLABLE("id", "false")))
             res.append(AnnoxAnnotations.FIELD(CoreAnnotations.TRANSIENT_XML.value))
             res.append(JaxbAnnotations.END.value)
             return res
-    
+        
+        if child.get('name') != None and "timeslice" in child.get('name').lower() :
+            res.append(AnnoxAnnotations.FIELD(RelationshipAnnotations.ONE_TO_MANY.value))
+            res.append(JaxbAnnotations.END.value)
+            return res
+
+        if child.get('ref') != None and "timeslice" in child.get('ref').lower() :
+            res.append(AnnoxAnnotations.FIELD(RelationshipAnnotations.ONE_TO_ONE.value))
+            res.append(AnnoxAnnotations.FIELD(RelationshipAnnotations.JOIN_COLUMN(child.get('ref'))))
+            res.append(JaxbAnnotations.END.value)
+            return res 
+                   
         if trensient :
             res.append(AnnoxAnnotations.FIELD(CoreAnnotations.TRANSIENT_DB.value))
             res.append(JaxbAnnotations.END.value)
@@ -457,8 +480,6 @@ class PesitenceAnnotationsManager:
                 f.write(annotation)
                 f.write("\n")
 
-class ExceptionTypes(Enum): 
-    IGNORE = "ignore"
 
 task = [
     # {
