@@ -471,30 +471,121 @@ xsd / xjb processing tree
 
 ```mermaid
 ---
-title : xsd to xjb annotation for datatypes.xsd
+title : xsd to xjb annotation for any.xsd
 ---
-flowchart TB
-classDef annotation fill:#4a3e59
-classDef annotation_pending fill:#6b3e2b
-datatype.xsd
-datatype.xsd -- type --> simpleType
-datatype.xsd -- type --> complexType
+flowchart LR
+classDef simple fill:#4a3e59
+classDef simple_pending fill:#6b3e2b
+classDef group fill:#4a3e59
+classDef group_pending fill:#6b3e2b
+classDef complex fill:#4a3e59
+classDef complex_pending fill:#6b3e2b
+classDef complex_manual fill:#2a5445
 
-simpleType --base--> SIMPLE:::annotation
-SIMPLE --base--> string
 
-string --enumeration--> ENUM_CLASS_START:::annotation
-string --restriction--> COLUMN:::annotation
-COLUMN --size--> SIZE:::annotation_pending
-COLUMN --pattern--> PATTERN:::annotation_pending
+any.xsd
+END_A:::simple
+END_B:::group
+END_C:::complex
 
-ENUM_CLASS_START --> ENUM_MEMBER:::annotation
-ENUM_MEMBER --> ENUM_CLASS_END:::annotation
-ENUM_CLASS_END --> END:::annotation
-COLUMN --> END:::annotation
-SIZE --> END
-PATTERN --> END
+any.xsd -- tag --> field
+field -- tag? --> simpleType
+field -- tag? --> group
+field -- tag? --> complexType
+field -- tag? --> import
+field -- tag? --> annotation
+field -- tag? --> include
 
+import --> pass[*pass*]
+annotation --> pass
+include --> pass
+%% field -- tag? --> element
+
+%% simpleType
+simpleType --> SIMPLE:::simple
+SIMPLE --base?--> string
+SIMPLE --base?--> decimal
+SIMPLE --base?--> integer
+SIMPLE --base?--> boolean
+SIMPLE --base?--> date
+SIMPLE --base?--> time
+string --> persistence_A[*persistence*]
+persistence_A --enumeration?--> ENUM_START:::simple
+persistence_A --restriction?--> COLUMN_A[COLUMN]:::simple
+COLUMN_A --size?--> SIZE:::simple_pending
+COLUMN_A --pattern?--> PATTERN:::simple_pending
+
+ENUM_START --members?--> ENUM_MEMBER:::simple
+ENUM_MEMBER --> ENUM_END:::simple
+ENUM_END --> END_A[END]
+COLUMN_A[COLUMN] --> END_A
+SIZE --> END_A
+PATTERN --> END_A
+
+%% group
+group --findall--> element_A[element]
+element_A --foreach--> GROUP:::group
+GROUP --> ELEMENT_C[ELEMENT]:::group
+ELEMENT_C --> persistence_B[*persistence*]
+persistence_B --name=name?--> PROPERTY_NAME:::group
+PROPERTY_NAME --ignore?--> TRANSIENT_DB:::group
+PROPERTY_NAME --embeded?--> EMBEDED:::group
+PROPERTY_NAME --unbounded?--> ONE_TO_MANY:::group
+PROPERTY_NAME --bounded=1?--> COLUMN_B[COLUMN]:::group
+TRANSIENT_DB --> END_B[END]
+EMBEDED --> END_B
+ONE_TO_MANY --> END_B
+COLUMN_B --> END_B
+
+%% complextype
+complexType --findall--> attribute
+complexType --findall--> element_B[element]
+
+attribute --foreach--> COMPLEX_A[COMPLEX]:::complex
+COMPLEX_A --> ATTRIBUTE:::complex
+ATTRIBUTE --> NAME_A[NAME]:::complex
+
+element_B --foreach--> COMPLEX_B[COMPLEX]:::complex
+COMPLEX_B --> ELEMENT:::complex
+ELEMENT --> NAME_B[NAME]:::complex
+
+ELEMENT --> REF:::complex
+
+NAME_B --> persistence_C[*persistence*]
+NAME_A --> persistence_C[*persistence*]
+REF --> persistence_C[*persistence*]
+
+persistence_C --ignore?--> IDTRANSIENT_DB_A[TRANSIENT_DB]:::complex
+persistence_C --embeded?--> EMBEDDED:::complex
+persistence_C --unbounded?--> ONE_TO_MANY_A[ONE_TO_MANY]:::complex
+persistence_C --bounded=1?--> ONE_TO_ONE:::complex
+persistence_C --adapter?-->JAVA_TYPE:::complex_manual
+persistence_C --dbid?--> ID_A[ID]:::complex
+
+JAVA_TYPE --> XML_ELEMENT:::complex_manual
+JAVA_TYPE --> XML_ELEMENT_REF:::complex_manual
+XML_ELEMENT --> ONE_TO_ONE_A[ONE_TO_ONE]:::complex_manual
+XML_ELEMENT_REF --> ONE_TO_ONE_A
+ONE_TO_ONE_A --> JOIN_COLUMN_A[JOIN_COLUMN]:::complex_manual
+JOIN_COLUMN_A --> JAVA_TYPE_ADAPTER:::complex_manual
+
+ID_A --> GENERATED_IDENTITY:::complex
+ID_A --> GENERATED_SEQUENCE:::complex
+GENERATED_SEQUENCE --> SEQUENCE_GENERATOR:::complex
+SEQUENCE_GENERATOR --> COLUMN_C[COLUMN]:::complex
+GENERATED_IDENTITY --> COLUMN_C:::complex
+COLUMN_C --> TRANSIENT_XML:::complex
+
+ONE_TO_ONE --> JOIN_COLUMN:::complex
+
+ONE_TO_MANY_A --> END_C[END]
+JAVA_TYPE_ADAPTER --> END_C
+JOIN_COLUMN --> END_C
+IDTRANSIENT_DB_A --> END_C
+EMBEDDED --> END_C
+TRANSIENT_XML --> END_C
+
+END_C
 ```
 
 ```mermaid
