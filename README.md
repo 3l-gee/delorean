@@ -471,7 +471,7 @@ xsd / xjb processing tree
 
 ```mermaid
 ---
-title : xsd to xjb annotation for any.xsd
+title : xsd to xjb annotation for any.xsd fields annotation
 ---
 flowchart LR
 classDef simple fill:#4a3e59
@@ -589,4 +589,60 @@ END_C
 ```
 
 ```mermaid
+---
+title : xsd to xjb annotation for any.xsd class annotations
+---
+flowchart LR
+classDef simple fill:#4a3e59
+classDef simple_pending fill:#6b3e2b
+classDef group fill:#4a3e59
+classDef group_pending fill:#6b3e2b
+classDef complex fill:#4a3e59
+classDef complex_pending fill:#6b3e2b
+classDef complex_manual fill:#2a5445
+
+any.xsd
+
+any.xsd -- tag --> class_[class]
+%% any.xsd -- tag --> class_[class]
+
+class_[class] -- tag? --> simpleType_A[simpleType]
+class_[class] -- tag? --> group_A[group]
+class_[class] -- tag? --> complexType_A[complexType]
+class_[class] -- tag? --> import_A[import]
+class_[class] -- tag? --> annotation_A[annotation]
+class_[class] -- tag? --> include_A[include]
+class_[class] -- tag? --> element_A[element]
+
+import_A --> pass[*pass*]
+annotation_A --> pass
+include_A --> pass
+element_A --> pass
+group_A --> pass
+simpleType_A --> pass
+
+%% complexType
+complexType_A --> COMPLEX:::complex
+COMPLEX --superclass?--> MAPPEDSUPERCLASS:::complex
+COMPLEX --ignore?--> TRANSIENT_DB:::complex
+COMPLEX --embedable?--> EMBEDDABLE:::complex
+COMPLEX --inheritance?--> TABLE_PER_CLASS:::complex
+COMPLEX --entity?--> ENTITY:::complex
+
+ENTITY --> TABLE:::complex
+TABLE --root?--> XML_ROOT:::complex_manual
+
+EMBEDDABLE --adapter?--> XML_TYPE:::complex_manual
+ENTITY --adapter?--> XML_TYPE:::complex_manual
+
+
+
+MAPPEDSUPERCLASS --> END:::complex
+TRANSIENT_DB --> END:::complex
+EMBEDDABLE --> END:::complex
+XML_TYPE --> END:::complex
+TABLE_PER_CLASS --> END:::complex
+TABLE --> END:::complex
+XML_ROOT --> END:::complex
+
 ```
