@@ -69,8 +69,7 @@ class Annox:
         else : 
             ValueError("add must be True or False")
 
-
-class Xml:
+class Tag:
     XS_NAMESPACE = "{http://www.w3.org/2001/XMLSchema}"
     
     IMPORT = XS_NAMESPACE + "import"
@@ -98,27 +97,79 @@ class Xml:
     DOCUMENTATION = XS_NAMESPACE + "documentation"
     APPINFO = XS_NAMESPACE + "appinfo"
 
+class Xml:
+    TAG = Tag
+    TRANSIENT = '@jakarta.xml.bind.annotation.XmlTransient'
+    @staticmethod
+    def TYPE(name, propOrder):
+        return f'@jakarta.xml.bind.annotation.XmlType(name = "{name}", propOrder = {{"{propOrder}"}})'
+
 class Relation:
     @staticmethod
     def ONE_TO_ONE(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=False):   
-        return f'@jakarta.persistence.OneToOne(cascade={cascade}, fetch={fetch}, orphanRemoval={str(orphanRemoval).lower()})'
+        if orphanRemoval==False:
+            return f'@jakarta.persistence.OneToOne(cascade={cascade}, fetch={fetch})'
+        
+        else :
+            return f'@jakarta.persistence.OneToOne(cascade={cascade}, fetch={fetch}, orphanRemoval={str(orphanRemoval).lower()})'
 
+    @staticmethod
+    def ONE_TO_MANY(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=False):   
+        if orphanRemoval==False:
+            return f'@jakarta.persistence.OneToMany(cascade={cascade}, fetch={fetch})'
+        
+        else :
+            return f'@jakarta.persistence.OneToMany(cascade={cascade}, fetch={fetch}, orphanRemoval={str(orphanRemoval).lower()})'
+    
+    @staticmethod
+    def MANY_TO_ONE(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=False):  
+        if orphanRemoval==False:
+            return f'@jakarta.persistence.ManyToOne(cascade={cascade}, fetch={fetch})'
+        
+        else :
+            return f'@jakarta.persistence.ManyToOne(cascade={cascade}, fetch={fetch}, orphanRemoval={str(orphanRemoval).lower()})'
+    
+    @staticmethod
+    def MANY_TO_MANY(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=False):  
+        if orphanRemoval==False:
+            return f'@jakarta.persistence.ManyToMany(cascade={cascade}, fetch={fetch})'
+        
+        else :
+            return f'@jakarta.persistence.ManyToMany(cascade={cascade}, fetch={fetch}, orphanRemoval={str(orphanRemoval).lower()})'
+    
+    @staticmethod
+    def JOIN_COLUMN(name, referencedColumnName="id"):
+        return f'@jakarta.persistence.JoinColumn(name="{Util.snake_case(name)}_id", referencedColumnName={referencedColumnName})'
+    
+   
 
-    ONE_TO_MANY = '@jakarta.persistence.OneToMany'
-    MANY_TO_ONE = '@jakarta.persistence.ManyToOne'
-    MANY_TO_MANY = '@jakarta.persistence.ManyToMany'
-    JOIN_COLUMN = lambda x : f'@jakarta.persistence.JoinColumn(name="{Util.snake_case(x)}_id")'
-
-class Trensient:
-    DB = '@jakarta.persistence.Transient'
-    XML = '@jakarta.xml.bind.annotation.XmlTransient'
-
-
-
-class Jpa:
+class jpa:
     
     ENTITY = '@jakarta.persistence.Entity'
     ID = '@jakarta.persistence.Id'
+    TRANSIENT = '@jakarta.persistence.Transient'
+    EMBEDDABLE = '@jakarta.persistence.Embeddable'
+    EMBEDDED = '@jakarta.persistence.Embedded'
+
+    @staticmethod
+    def COLUMN(name, columnDefinition=None, nullable=True, 	unique=False):
+        if columnDefinition is None:
+            return f'@jakarta.persistence.Column(name = "{Util.snake_case(name)}", nullable = {nullable}, unique = {unique})'
+
+        else:
+            return  f'@jakarta.persistence.Column(name = "{Util.snake_case(name)}", columnDefinition = "{columnDefinition}",  nullable = {nullable}, unique = {unique})'
+        
+    @staticmethod
+    def TABLE(name, schema=None):
+        if schema is None:
+            return f'@jakarta.persistence.Table(name = "{Util.snake_case(name)}")'
+    
+        else:
+            return f'@jakarta.persistence.Table(name = "{Util.snake_case(name)}", schema = "{schema}")'
+
+    @staticmethod
+    def ENUMERATED(value="STRING"):
+        return f'@jakarta.persistence.Enumerated(jakarta.persistence.EnumType.{value})'
 
 
 
