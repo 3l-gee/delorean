@@ -53,3 +53,10 @@ tmp/
 *.iml
 *.ipr
 out/
+
+# python 
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
