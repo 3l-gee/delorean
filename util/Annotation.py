@@ -1,5 +1,3 @@
-from enum import Enum
-import xml.etree.ElementTree as ET
 import re
 
 class Util:
@@ -170,9 +168,3 @@ class jpa:
     @staticmethod
     def ENUMERATED(value="STRING"):
         return f'@jakarta.persistence.Enumerated(jakarta.persistence.EnumType.{value})'
-
-
-
-print(Jaxb.PROPERTY.NAME_ELEMENT)
-print(Jaxb.PROPERTY.NAME)
-print(Relation.ONE_TO_ONE())
