@@ -23,6 +23,10 @@ class Jaxb:
     @staticmethod
     def schema(value):
         return f'''<jaxb:bindings schemaLocation="{value}" node="/xs:schema">'''
+    
+    @staticmethod
+    def package(value):
+        return f'''<jaxb:package name="{value}" />'''
 
     @staticmethod
     def simple(value, at="name"):
@@ -54,6 +58,8 @@ class Jaxb:
 
     enum_end = '</jaxb:typesafeEnumClass>'
     end = '</jaxb:bindings>'
+    binding_start = '<jaxb:schemaBindings>'
+    binding_end = '</jaxb:schemaBindings>'
 
     PROPERTY = Property
 
@@ -100,6 +106,7 @@ class Tag:
     notation = xs_namespace + "notation"
     documentation = xs_namespace + "documentation"
     appinfo = xs_namespace + "appinfo"
+    enumeration = xs_namespace + "enumeration"
 
 class Xml:
     tag = Tag
@@ -145,7 +152,7 @@ class Relation:
     def join_column(name, referencedColumnName="id"):
         return f'@jakarta.persistence.JoinColumn(name="{Util.snake_case(name)}_id", referencedColumnName={referencedColumnName})'
 
-class jpa:
+class Jpa:
     
     entity = '@jakarta.persistence.Entity'
     id = '@jakarta.persistence.Id'
@@ -168,3 +175,8 @@ class jpa:
     @staticmethod
     def enumerated(value="STRING"):
         return f'@jakarta.persistence.Enumerated(jakarta.persistence.EnumType.{value})'
+
+
+class AixmEncoding : 
+    FIELD = ["Code", "Val", "Date", "Time", "NoNumber", "NoSequence", "Text"]
+    CLASS = ["BaseType", "PropertyType", "TimeSlicePropertyType", "TimeSlice" ]
