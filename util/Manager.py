@@ -5,13 +5,15 @@ config = {
     "embedable": ["embedable"],
     "embedded": ["embedded"],
     "constraint_methode": "psql",
-    "package": "com.aixm.delorean.core.schema.a5_1_1.aixm"
+    "package": "com.aixm.delorean.core.schema.a5_1_1.aixm",
+    "output_path": "util/test_aixm.xjb"
 }
 
 feature = {
     "name" : "AIXM_Features",
     "path" : "src/main/resources/a5_1_1/AIXM_Features.xsd",
-    "strategie" : Machinery.strategie.feature
+    "strategie" : Machinery.strategie.feature,
+    "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm.feature"
 }
 
 data_types = {
@@ -29,7 +31,8 @@ abstract = {
 message = {
     "name" : "AIXM_BasicMessage",
     "path" : "src/main/resources/a5_1_1/AIXM_BasicMessage.xsd",
-    "strategie" : Machinery.strategie.other
+    "strategie" : Machinery.strategie.other,
+    "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm.message"
 }
 
 machinery = Machinery.runner(config, [data_types, feature, abstract, message])

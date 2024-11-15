@@ -2174,6 +2174,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			</simpleType>
 		</union>
 	</simpleType>
+	<!-- <simpleType name="CodeCommunicationChannelBaseType">
+		<restriction base="string">
+			<pattern value="OTHER(:(\w|_){1,58})?"/>
+		</restriction>
+	</simpleType> -->
 	<complexType name="CodeCommunicationChannelType">
 		<simpleContent>
 			<extension base="aixm:CodeCommunicationChannelBaseType">
