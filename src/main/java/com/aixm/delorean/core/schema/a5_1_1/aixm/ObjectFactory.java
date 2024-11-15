@@ -45020,6 +45020,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1.1", name = "name", scope = AerialRefuellingTimeSliceType.class)
+    public JAXBElement<TextNameType> createAerialRefuellingTimeSliceTypeName(TextNameType value) {
+        return new JAXBElement<>(_SecondarySurveillanceRadarTimeSliceTypeName_QNAME, TextNameType.class, AerialRefuellingTimeSliceType.class, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CodeAerialRefuellingType }{@code >}
      * 
      * @param value

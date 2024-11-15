@@ -106,7 +106,24 @@ class Tag:
     notation = xs_namespace + "notation"
     documentation = xs_namespace + "documentation"
     appinfo = xs_namespace + "appinfo"
+   
+
+    #restriction 
     enumeration = xs_namespace + "enumeration"
+    fractionDigits = xs_namespace + "fractionDigits"
+    length = xs_namespace + "length"
+    maxExclusive = xs_namespace + "maxExclusive"
+    maxInclusive = xs_namespace + "maxInclusive"
+    maxLength = xs_namespace + "maxLength"
+    minExclusive = xs_namespace + "minExclusive"
+    minInclusive = xs_namespace + "minInclusive"
+    minLength  = xs_namespace + "minLength"
+    pattern = xs_namespace + "pattern"
+    totalDigits = xs_namespace + "totalDigits"
+    whiteSpace = xs_namespace + "whiteSpace "
+    
+
+
 
 class Xml:
     tag = Tag
@@ -114,6 +131,7 @@ class Xml:
     @staticmethod
     def type(name, propOrder):
         return f'@jakarta.xml.bind.annotation.XmlType(name = "{name}", propOrder = {{"{propOrder}"}})'
+
 
 class Relation:
     @staticmethod
