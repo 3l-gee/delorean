@@ -57,6 +57,6 @@ out/
 # python 
 __pycache__/
 *.pyc
-*.pyo
+*.py
 *.pyd
 

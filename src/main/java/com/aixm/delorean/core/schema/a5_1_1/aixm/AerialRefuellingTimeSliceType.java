@@ -95,9 +95,9 @@ public class AerialRefuellingTimeSliceType
     @XmlElementRef(name = "designatorDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
     protected JAXBElement<CodeCardinalDirectionType> designatorDirection;
-    @XmlElement(name = "name", nillable = true)
+    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected TextNameType aixmName;
+    protected JAXBElement<TextNameType> aixmName;
     @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
     protected JAXBElement<CodeAerialRefuellingType> type;
@@ -266,10 +266,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public TextNameType getAixmName() {
+    public JAXBElement<TextNameType> getAIXMName() {
         return aixmName;
     }
 
@@ -278,14 +278,14 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TextNameType }
+     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
      *     
      */
-    public void setAixmName(TextNameType value) {
+    public void setAIXMName(JAXBElement<TextNameType> value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAixmName() {
+    public boolean isSetAIXMName() {
         return (this.aixmName!= null);
     }
 

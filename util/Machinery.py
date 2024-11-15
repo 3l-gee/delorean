@@ -12,7 +12,6 @@ def runner(config: dict, xsds: List[dict]):
     machinery = Machinery(xsds, config)
 
     machinery.xjb_initializer()
-    machinery.insight_simple_types()
     machinery.field_writer_simple_type()
     machinery.xjb_writer()
 
@@ -32,11 +31,11 @@ class Xsd:
         self.namespaces = self.get_namespaces()
         self.strategie = strategie
         self.elements = self.root.findall(Annotation.Tag.element, self.namespaces) or []
-        self.groups = self.root.findall("{http://www.w3.org/2001/XMLSchema}group", self.namespaces) or []
-        self.attributes = self.root.findall("{http://www.w3.org/2001/XMLSchema}attribute", self.namespaces) or []
-        self.extension = self.root.findall("{http://www.w3.org/2001/XMLSchema}extension", self.namespaces) or []
+        self.groups = self.root.findall(Annotation.Tag.group, self.namespaces) or []
+        self.attributes = self.root.findall(Annotation.Tag.attribute, self.namespaces) or []
+        self.extension = self.root.findall(Annotation.Tag.extension, self.namespaces) or []
         self.simple_type = self.root.findall(Annotation.Tag.simple_type, self.namespaces) or []
-        self.complex_type = self.root.findall("{http://www.w3.org/2001/XMLSchema}complexType", self.namespaces) or []
+        self.complex_type = self.root.findall(Annotation.Tag.complex_type, self.namespaces) or []
 
     def get_elements(self):
         return self.elements
@@ -106,8 +105,9 @@ class Machinery:
         self.all_attributes = self.get_all_attributes()
         self.all_extensions = self.get_all_extensions()
         self.all_simple_types = self.get_all_simple_types()
-        self.simple_types_base_graph = self.insight_simple_types()
-        self.all_complex_types = self.get_all_complex_types()  
+        self.simple_types_graph = self.simple_type_graph_builder()
+        self.all_complex_types = self.get_all_complex_types()
+
         self.abstract = {}
         self.entity = {}
         self.embedable = {}
@@ -123,46 +123,86 @@ class Machinery:
             for element in value:
                 print(key, element.attrib)
 
-    def insight_simple_types(self):
-        base = {}
+    def simple_type_graph_builder(self):
+        res = {}
         for key, value in self.all_simple_types.items():
             for element in value:
-                extension = element.findall(Annotation.Tag.extension) or []
-                restriction = element.findall(Annotation.Tag.restriction) or []
-                if restriction != []:
-                    if restriction[0].attrib["base"] not in base.keys():
-                        base[restriction[0].attrib["base"]] = {"extension": [], "restriction": []}
-                    base[restriction[0].attrib["base"]]["restriction"].append(element.attrib["name"])
+                base = element.findall(Annotation.Tag.extension) or element.findall(Annotation.Tag.restriction) or []
+                if base != []:
+                    if base[0].attrib["base"] not in res.keys():
+                        name = base[0].attrib["base"]
 
-                if extension != []:
-                    if extension[0].attrib["base"] not in base.keys():
-                        base[extension[0].attrib["base"]] = {"extension": [], "restriction": []}
-                    base[extension[0].attrib["base"]]["extension"].append(element.attrib["name"])
+                        try : 
+                            name = name.split(":")[-1]
+                        except:
+                            pass
 
-        print(json.dumps(base, indent=4))
-        return base
+                        if name not in res : 
+                            res[name] = []
+                        
+                        res[name].append(element.attrib["name"])
+
+        print(json.dumps(res, indent=4))
+        return res
+    
+    def simple_type_transposition_worker(self, element, list) : 
+        res = {}
+        restriction = element.find(Annotation.Tag.restriction)
+        fractionDigits = restriction.find(Annotation.Tag.fractionDigits)
+        length = restriction.find(Annotation.Tag.length)
+        maxExclusive = restriction.find(Annotation.Tag.maxExclusive)
+        maxInclusive = restriction.find(Annotation.Tag.maxInclusive)
+        maxLength = restriction.find(Annotation.Tag.maxLength)
+        minInclusive = restriction.find(Annotation.Tag.minInclusive)
+        minLength = restriction.find(Annotation.Tag.minLength)
+        pattern = restriction.find(Annotation.Tag.pattern)
+        totalDigits = restriction.find(Annotation.Tag.totalDigits)
+        whiteSpace = restriction.find(Annotation.Tag.whiteSpace)
+        for item in list :
+            res[item] = []
+
+        return res
+
 
     def field_writer_simple_type(self):
+        transposition = {}
+        print(self.simple_types_graph.keys())
+        for xsd_name, list in self.all_simple_types.items():
+            for element in list:
+                if element.attrib["name"] in self.simple_types_graph.keys() :
+                    transposition.update(self.simple_type_transposition_worker(element, self.simple_types_graph[element.attrib["name"]]))
+
+        print(json.dumps(transposition, indent=4))
+
         for xsd_name, list in self.all_simple_types.items():
             for element in list:
                 node = []
-                node.append(Annotation.Jaxb.simple(element.attrib["name"]))
+                name = element.attrib["name"]
 
-                enum_values = element.findall(".//" + Annotation.Tag.enumeration) or []
-                base = element.findall(".//" + Annotation.Tag.restriction) or None
+                if name in self.simple_types_graph.keys() : 
+                    continue
+                
+                else :
+                    node.append(Annotation.Jaxb.simple(element.attrib["name"]))
+                    
+                    if name in transposition :
+                        node.extend(transposition[name])
 
-                if enum_values != [] :
-                    node.append(Annotation.Jaxb.enum_start(element.attrib["name"]))
-                    for enum in enum_values:
-                        node.append(Annotation.Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]))
-                    node.append(Annotation.Jaxb.enum_end)
+                    enum_values = element.findall(".//" + Annotation.Tag.enumeration) or []
+                    base = element.findall(".//" + Annotation.Tag.restriction) or None
 
-                if base is not None or base != "string ":
-                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"])))
+                    if enum_values != [] :
+                        node.append(Annotation.Jaxb.enum_start(element.attrib["name"]))
+                        for enum in enum_values:
+                            node.append(Annotation.Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]))
+                        node.append(Annotation.Jaxb.enum_end)
+                    
+                    else :
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"])))
 
-                node.append(Annotation.Jaxb.end)
+                    node.append(Annotation.Jaxb.end)
 
-                self.xjb[xsd_name]["auto"]["default"].extend(node)
+                    self.xjb[xsd_name]["auto"]["default"].extend(node)
 
 
 

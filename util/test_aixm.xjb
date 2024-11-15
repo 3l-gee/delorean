@@ -18,28 +18,12 @@
 <jaxb:bindings node="//xs:simpleType[@name='CodeRouteIndicatorBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_route_indicator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
-<jaxb:bindings node="//xs:simpleType[@name='AlphaType']">
-<annox:annotate target="field">@jakarta.persistence.Column(name = "alpha", nullable = False, unique = False)</annox:annotate>
-</jaxb:bindings>
-<jaxb:bindings node="//xs:simpleType[@name='AlphanumericType']">
-<annox:annotate target="field">@jakarta.persistence.Column(name = "alphanumeric", nullable = False, unique = False)</annox:annotate>
-</jaxb:bindings>
-<jaxb:bindings node="//xs:simpleType[@name='Character1Type']">
-<annox:annotate target="field">@jakarta.persistence.Column(name = "character1", nullable = False, unique = False)</annox:annotate>
-</jaxb:bindings>
-<jaxb:bindings node="//xs:simpleType[@name='Character2Type']">
-<annox:annotate target="field">@jakarta.persistence.Column(name = "character2", nullable = False, unique = False)</annox:annotate>
-</jaxb:bindings>
-<jaxb:bindings node="//xs:simpleType[@name='Character3Type']">
-<annox:annotate target="field">@jakarta.persistence.Column(name = "character3", nullable = False, unique = False)</annox:annotate>
-</jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAerialRefuellingBaseType']">
 <jaxb:typesafeEnumClass name="CodeAerialRefuellingBaseType">
 <jaxb:typesafeEnumMember name="TRACK" value="TRACK"/>
 <jaxb:typesafeEnumMember name="ANCHOR" value="ANCHOR"/>
 <jaxb:typesafeEnumMember name="BOTH" value="BOTH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aerial_refuelling", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAerialRefuellingPointBaseType']">
 <jaxb:typesafeEnumClass name="CodeAerialRefuellingPointBaseType">
@@ -51,13 +35,11 @@
 <jaxb:typesafeEnumMember name="ANCHOR" value="ANCHOR"/>
 <jaxb:typesafeEnumMember name="PATTERN" value="PATTERN"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aerial_refuelling_point", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAerialRefuellingPrefixBaseType']">
 <jaxb:typesafeEnumClass name="CodeAerialRefuellingPrefixBaseType">
 <jaxb:typesafeEnumMember name="AR" value="AR"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aerial_refuelling_prefix", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAircraftBaseType']">
 <jaxb:typesafeEnumClass name="CodeAircraftBaseType">
@@ -76,7 +58,6 @@
 <jaxb:typesafeEnumMember name="UAV" value="UAV"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aircraft", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAircraftCategoryBaseType']">
 <jaxb:typesafeEnumClass name="CodeAircraftCategoryBaseType">
@@ -88,7 +69,6 @@
 <jaxb:typesafeEnumMember name="H" value="H"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aircraft_category", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAircraftEngineBaseType']">
 <jaxb:typesafeEnumClass name="CodeAircraftEngineBaseType">
@@ -98,7 +78,6 @@
 <jaxb:typesafeEnumMember name="ELECTRIC" value="ELECTRIC"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aircraft_engine", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAircraftEngineNumberBaseType']">
 <jaxb:typesafeEnumClass name="CodeAircraftEngineNumberBaseType">
@@ -110,7 +89,6 @@
 <jaxb:typesafeEnumMember name="8" value="8"/>
 <jaxb:typesafeEnumMember name="2C" value="2C"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aircraft_engine_number", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAircraftGroundServiceBaseType']">
 <jaxb:typesafeEnumClass name="CodeAircraftGroundServiceBaseType">
@@ -120,7 +98,6 @@
 <jaxb:typesafeEnumMember name="REPAIR" value="REPAIR"/>
 <jaxb:typesafeEnumMember name="REMOVE" value="REMOVE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aircraft_ground_service", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAircraftICAOBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_aircraft_icao", nullable = False, unique = False)</annox:annotate>
@@ -134,7 +111,6 @@
 <jaxb:typesafeEnumMember name="RMT" value="RMT"/>
 <jaxb:typesafeEnumMember name="ISOL" value="ISOL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aircraft_stand", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAircraftWingspanClassBaseType']">
 <jaxb:typesafeEnumClass name="CodeAircraftWingspanClassBaseType">
@@ -145,7 +121,6 @@
 <jaxb:typesafeEnumMember name="V" value="V"/>
 <jaxb:typesafeEnumMember name="VI" value="VI"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aircraft_wingspan_class", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirportHeliportBaseType']">
 <jaxb:typesafeEnumClass name="CodeAirportHeliportBaseType">
@@ -154,7 +129,6 @@
 <jaxb:typesafeEnumMember name="HP" value="HP"/>
 <jaxb:typesafeEnumMember name="LS" value="LS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_airport_heliport", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirportHeliportCollocationBaseType']">
 <jaxb:typesafeEnumClass name="CodeAirportHeliportCollocationBaseType">
@@ -164,7 +138,6 @@
 <jaxb:typesafeEnumMember name="UNILATERAL" value="UNILATERAL"/>
 <jaxb:typesafeEnumMember name="SEPARATED" value="SEPARATED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_airport_heliport_collocation", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirportHeliportDesignatorBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_airport_heliport_designator", nullable = False, unique = False)</annox:annotate>
@@ -184,7 +157,6 @@
 <jaxb:typesafeEnumMember name="GRASS_CUTTING" value="GRASS_CUTTING"/>
 <jaxb:typesafeEnumMember name="CALIBRATION" value="CALIBRATION"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_airport_warning", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirspaceActivityBaseType']">
 <jaxb:typesafeEnumClass name="CodeAirspaceActivityBaseType">
@@ -243,7 +215,6 @@
 <jaxb:typesafeEnumMember name="ATS" value="ATS"/>
 <jaxb:typesafeEnumMember name="PROCEDURE" value="PROCEDURE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_airspace_activity", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirspaceAggregationBaseType']">
 <jaxb:typesafeEnumClass name="CodeAirspaceAggregationBaseType">
@@ -252,7 +223,6 @@
 <jaxb:typesafeEnumMember name="INTERS" value="INTERS"/>
 <jaxb:typesafeEnumMember name="SUBTR" value="SUBTR"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_airspace_aggregation", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirspaceBaseType']">
 <jaxb:typesafeEnumClass name="CodeAirspaceBaseType">
@@ -302,7 +272,6 @@
 <jaxb:typesafeEnumMember name="HTZ" value="HTZ"/>
 <jaxb:typesafeEnumMember name="NAS_P" value="NAS_P"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_airspace", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirspaceClassificationBaseType']">
 <jaxb:typesafeEnumClass name="CodeAirspaceClassificationBaseType">
@@ -314,14 +283,12 @@
 <jaxb:typesafeEnumMember name="F" value="F"/>
 <jaxb:typesafeEnumMember name="G" value="G"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_airspace_classification", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirspaceDependencyBaseType']">
 <jaxb:typesafeEnumClass name="CodeAirspaceDependencyBaseType">
 <jaxb:typesafeEnumMember name="FULL_GEOMETRY" value="FULL_GEOMETRY"/>
 <jaxb:typesafeEnumMember name="HORZ_PROJECTION" value="HORZ_PROJECTION"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_airspace_dependency", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirspaceDesignatorBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_airspace_designator", nullable = False, unique = False)</annox:annotate>
@@ -332,7 +299,6 @@
 <jaxb:typesafeEnumMember name="OUT" value="OUT"/>
 <jaxb:typesafeEnumMember name="BORDER" value="BORDER"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_airspace_point_position", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirspacePointRoleBaseType']">
 <jaxb:typesafeEnumClass name="CodeAirspacePointRoleBaseType">
@@ -340,7 +306,6 @@
 <jaxb:typesafeEnumMember name="EXIT" value="EXIT"/>
 <jaxb:typesafeEnumMember name="ENTRY_EXIT" value="ENTRY_EXIT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_airspace_point_role", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAltitudeAdjustmentBaseType']">
 <jaxb:typesafeEnumClass name="CodeAltitudeAdjustmentBaseType">
@@ -363,7 +328,6 @@
 <jaxb:typesafeEnumMember name="AAO" value="AAO"/>
 <jaxb:typesafeEnumMember name="VA" value="VA"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_altitude_adjustment", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAltitudeUseBaseType']">
 <jaxb:typesafeEnumClass name="CodeAltitudeUseBaseType">
@@ -375,7 +339,6 @@
 <jaxb:typesafeEnumMember name="EXPECT_LOWER" value="EXPECT_LOWER"/>
 <jaxb:typesafeEnumMember name="AS_ASSIGNED" value="AS_ASSIGNED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_altitude_use", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeApproachBaseType']">
 <jaxb:typesafeEnumClass name="CodeApproachBaseType">
@@ -411,7 +374,6 @@
 <jaxb:typesafeEnumMember name="RNAV" value="RNAV"/>
 <jaxb:typesafeEnumMember name="IGS" value="IGS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_approach", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeApproachEquipmentAdditionalBaseType']">
 <jaxb:typesafeEnumClass name="CodeApproachEquipmentAdditionalBaseType">
@@ -430,7 +392,6 @@
 <jaxb:typesafeEnumMember name="DUALADF_DME" value="DUALADF_DME"/>
 <jaxb:typesafeEnumMember name="RADAR_RNAV" value="RADAR_RNAV"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_approach_equipment_additional", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeApproachGuidanceBaseType']">
 <jaxb:typesafeEnumClass name="CodeApproachGuidanceBaseType">
@@ -443,7 +404,6 @@
 <jaxb:typesafeEnumMember name="ILS_PRECISION_CAT_IIID" value="ILS_PRECISION_CAT_IIID"/>
 <jaxb:typesafeEnumMember name="MLS_PRECISION" value="MLS_PRECISION"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_approach_guidance", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeApproachLightingBaseType']">
 <jaxb:typesafeEnumClass name="CodeApproachLightingBaseType">
@@ -459,7 +419,6 @@
 <jaxb:typesafeEnumMember name="MILOVRN" value="MILOVRN"/>
 <jaxb:typesafeEnumMember name="CALVERT" value="CALVERT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_approach_lighting", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeApproachLightingICAOBaseType']">
 <jaxb:typesafeEnumClass name="CodeApproachLightingICAOBaseType">
@@ -470,7 +429,6 @@
 <jaxb:typesafeEnumMember name="LEADIN" value="LEADIN"/>
 <jaxb:typesafeEnumMember name="NONE" value="NONE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_approach_lighting_icao", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeApproachPrefixBaseType']">
 <jaxb:typesafeEnumClass name="CodeApproachPrefixBaseType">
@@ -478,7 +436,6 @@
 <jaxb:typesafeEnumMember name="COPTER" value="COPTER"/>
 <jaxb:typesafeEnumMember name="CONVERGING" value="CONVERGING"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_approach_prefix", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeApprovalBaseType']">
 <jaxb:typesafeEnumClass name="CodeApprovalBaseType">
@@ -487,7 +444,6 @@
 <jaxb:typesafeEnumMember name="NOT_AUTHORISED" value="NOT_AUTHORISED"/>
 <jaxb:typesafeEnumMember name="RESTRICTED" value="RESTRICTED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_approval", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeApronElementBaseType']">
 <jaxb:typesafeEnumClass name="CodeApronElementBaseType">
@@ -505,20 +461,17 @@
 <jaxb:typesafeEnumMember name="TEMPORARY" value="TEMPORARY"/>
 <jaxb:typesafeEnumMember name="STAIRS" value="STAIRS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_apron_element", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeApronSectionBaseType']">
 <jaxb:typesafeEnumClass name="CodeApronSectionBaseType">
 <jaxb:typesafeEnumMember name="EDGE" value="EDGE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_apron_section", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeArcDirectionBaseType']">
 <jaxb:typesafeEnumClass name="CodeArcDirectionBaseType">
 <jaxb:typesafeEnumMember name="CWA" value="CWA"/>
 <jaxb:typesafeEnumMember name="CCA" value="CCA"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_arc_direction", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeArrestingGearEnergyAbsorbBaseType']">
 <jaxb:typesafeEnumClass name="CodeArrestingGearEnergyAbsorbBaseType">
@@ -596,7 +549,6 @@
 <jaxb:typesafeEnumMember name="BARRIER_DISK_SAFELAND" value="BARRIER_DISK_SAFELAND"/>
 <jaxb:typesafeEnumMember name="LINEAR_SPRAG_MK_1" value="LINEAR_SPRAG_MK_1"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_arresting_gear_energy_absorb", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeArrestingGearEngageDeviceBaseType']">
 <jaxb:typesafeEnumClass name="CodeArrestingGearEngageDeviceBaseType">
@@ -620,7 +572,6 @@
 <jaxb:typesafeEnumMember name="NET" value="NET"/>
 <jaxb:typesafeEnumMember name="HOOK_H" value="HOOK_H"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_arresting_gear_engage_device", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeATCReportingBaseType']">
 <jaxb:typesafeEnumClass name="CodeATCReportingBaseType">
@@ -628,7 +579,6 @@
 <jaxb:typesafeEnumMember name="ON_REQUEST" value="ON_REQUEST"/>
 <jaxb:typesafeEnumMember name="NO_REPORT" value="NO_REPORT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_atc_reporting", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAuralMorseBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_aural_morse", nullable = False, unique = False)</annox:annotate>
@@ -639,7 +589,6 @@
 <jaxb:typesafeEnumMember name="DLGT" value="DLGT"/>
 <jaxb:typesafeEnumMember name="AIS" value="AIS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_authority", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAuthorityRoleBaseType']">
 <jaxb:typesafeEnumClass name="CodeAuthorityRoleBaseType">
@@ -647,7 +596,6 @@
 <jaxb:typesafeEnumMember name="OPERATE" value="OPERATE"/>
 <jaxb:typesafeEnumMember name="SUPERVISE" value="SUPERVISE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_authority_role", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAviationStandardsBaseType']">
 <jaxb:typesafeEnumClass name="CodeAviationStandardsBaseType">
@@ -656,7 +604,6 @@
 <jaxb:typesafeEnumMember name="NATO" value="NATO"/>
 <jaxb:typesafeEnumMember name="FAA" value="FAA"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_aviation_standards", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeBearingBaseType']">
 <jaxb:typesafeEnumClass name="CodeBearingBaseType">
@@ -666,7 +613,6 @@
 <jaxb:typesafeEnumMember name="TRK" value="TRK"/>
 <jaxb:typesafeEnumMember name="HDG" value="HDG"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_bearing", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeBuoyBaseType']">
 <jaxb:typesafeEnumClass name="CodeBuoyBaseType">
@@ -683,7 +629,6 @@
 <jaxb:typesafeEnumMember name="WHITE" value="WHITE"/>
 <jaxb:typesafeEnumMember name="YELLOW" value="YELLOW"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_buoy", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeCardinalDirectionBaseType']">
 <jaxb:typesafeEnumClass name="CodeCardinalDirectionBaseType">
@@ -704,14 +649,12 @@
 <jaxb:typesafeEnumMember name="WNW" value="WNW"/>
 <jaxb:typesafeEnumMember name="NNW" value="NNW"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_cardinal_direction", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeCheckpointCategoryBaseType']">
 <jaxb:typesafeEnumClass name="CodeCheckpointCategoryBaseType">
 <jaxb:typesafeEnumMember name="A" value="A"/>
 <jaxb:typesafeEnumMember name="G" value="G"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_checkpoint_category", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeColourBaseType']">
 <jaxb:typesafeEnumClass name="CodeColourBaseType">
@@ -731,7 +674,6 @@
 <jaxb:typesafeEnumMember name="PINK" value="PINK"/>
 <jaxb:typesafeEnumMember name="VIOLET" value="VIOLET"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_colour", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeCommunicationChannelBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_communication_channel", nullable = False, unique = False)</annox:annotate>
@@ -744,7 +686,6 @@
 <jaxb:typesafeEnumMember name="UPCAST" value="UPCAST"/>
 <jaxb:typesafeEnumMember name="DOWNCAST" value="DOWNCAST"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_communication_direction", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeCommunicationModeBaseType']">
 <jaxb:typesafeEnumClass name="CodeCommunicationModeBaseType">
@@ -760,7 +701,6 @@
 <jaxb:typesafeEnumMember name="VHF_833" value="VHF_833"/>
 <jaxb:typesafeEnumMember name="UHF" value="UHF"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_communication_mode", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeComparisonBaseType']">
 <jaxb:typesafeEnumClass name="CodeComparisonBaseType">
@@ -770,7 +710,6 @@
 <jaxb:typesafeEnumMember name="GREATER_OR_EQUAL" value="GREATER_OR_EQUAL"/>
 <jaxb:typesafeEnumMember name="GREATER" value="GREATER"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_comparison", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeContaminationBaseType']">
 <jaxb:typesafeEnumClass name="CodeContaminationBaseType">
@@ -790,7 +729,6 @@
 <jaxb:typesafeEnumMember name="RUBBER" value="RUBBER"/>
 <jaxb:typesafeEnumMember name="GRAS" value="GRAS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_contamination", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeCourseBaseType']">
 <jaxb:typesafeEnumClass name="CodeCourseBaseType">
@@ -801,7 +739,6 @@
 <jaxb:typesafeEnumMember name="HDG" value="HDG"/>
 <jaxb:typesafeEnumMember name="RDL" value="RDL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_course", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeCourseQualityILSBaseType']">
 <jaxb:typesafeEnumClass name="CodeCourseQualityILSBaseType">
@@ -812,7 +749,6 @@
 <jaxb:typesafeEnumMember name="E" value="E"/>
 <jaxb:typesafeEnumMember name="T" value="T"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_course_quality_ils", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDayBaseType']">
 <jaxb:typesafeEnumClass name="CodeDayBaseType">
@@ -832,7 +768,6 @@
 <jaxb:typesafeEnumMember name="ANY" value="ANY"/>
 <jaxb:typesafeEnumMember name="BUSY_FRI" value="BUSY_FRI"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_day", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDeclaredDistanceBaseType']">
 <jaxb:typesafeEnumClass name="CodeDeclaredDistanceBaseType">
@@ -845,7 +780,6 @@
 <jaxb:typesafeEnumMember name="RTODAH" value="RTODAH"/>
 <jaxb:typesafeEnumMember name="LDAH" value="LDAH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_declared_distance", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDesignatedPointBaseType']">
 <jaxb:typesafeEnumClass name="CodeDesignatedPointBaseType">
@@ -857,7 +791,6 @@
 <jaxb:typesafeEnumMember name="TERMINAL" value="TERMINAL"/>
 <jaxb:typesafeEnumMember name="BRG_DIST" value="BRG_DIST"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_designated_point", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDesignatedPointDesignatorBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_designated_point_designator", nullable = False, unique = False)</annox:annotate>
@@ -869,7 +802,6 @@
 <jaxb:typesafeEnumMember name="CANADA_TERPS" value="CANADA_TERPS"/>
 <jaxb:typesafeEnumMember name="NATO" value="NATO"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_design_standard", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDirectionBaseType']">
 <jaxb:typesafeEnumClass name="CodeDirectionBaseType">
@@ -877,14 +809,12 @@
 <jaxb:typesafeEnumMember name="BACKWARD" value="BACKWARD"/>
 <jaxb:typesafeEnumMember name="BOTH" value="BOTH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_direction", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDirectionReferenceBaseType']">
 <jaxb:typesafeEnumClass name="CodeDirectionReferenceBaseType">
 <jaxb:typesafeEnumMember name="TO" value="TO"/>
 <jaxb:typesafeEnumMember name="FROM" value="FROM"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_direction_reference", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDirectionTurnBaseType']">
 <jaxb:typesafeEnumClass name="CodeDirectionTurnBaseType">
@@ -892,14 +822,12 @@
 <jaxb:typesafeEnumMember name="RIGHT" value="RIGHT"/>
 <jaxb:typesafeEnumMember name="EITHER" value="EITHER"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_direction_turn", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDistanceIndicationBaseType']">
 <jaxb:typesafeEnumClass name="CodeDistanceIndicationBaseType">
 <jaxb:typesafeEnumMember name="DME" value="DME"/>
 <jaxb:typesafeEnumMember name="GEODETIC" value="GEODETIC"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_distance_indication", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDMEBaseType']">
 <jaxb:typesafeEnumClass name="CodeDMEBaseType">
@@ -907,7 +835,6 @@
 <jaxb:typesafeEnumMember name="PRECISION" value="PRECISION"/>
 <jaxb:typesafeEnumMember name="WIDE" value="WIDE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_dme", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDMEChannelBaseType']">
 <jaxb:typesafeEnumClass name="CodeDMEChannelBaseType">
@@ -1264,7 +1191,6 @@
 <jaxb:typesafeEnumMember name="126X" value="126X"/>
 <jaxb:typesafeEnumMember name="126Y" value="126Y"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_dme_channel", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeEmissionBandBaseType']">
 <jaxb:typesafeEnumClass name="CodeEmissionBandBaseType">
@@ -1272,7 +1198,6 @@
 <jaxb:typesafeEnumMember name="H" value="H"/>
 <jaxb:typesafeEnumMember name="M" value="M"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_emission_band", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeEquipmentAntiCollisionBaseType']">
 <jaxb:typesafeEnumClass name="CodeEquipmentAntiCollisionBaseType">
@@ -1280,14 +1205,12 @@
 <jaxb:typesafeEnumMember name="ACAS_II" value="ACAS_II"/>
 <jaxb:typesafeEnumMember name="GPWS" value="GPWS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_equipment_anti_collision", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeEquipmentUnavailableBaseType']">
 <jaxb:typesafeEnumClass name="CodeEquipmentUnavailableBaseType">
 <jaxb:typesafeEnumMember name="STANDARD" value="STANDARD"/>
 <jaxb:typesafeEnumMember name="NONSTANDARD" value="NONSTANDARD"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_equipment_unavailable", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFacilityRankingBaseType']">
 <jaxb:typesafeEnumClass name="CodeFacilityRankingBaseType">
@@ -1297,7 +1220,6 @@
 <jaxb:typesafeEnumMember name="EMERG" value="EMERG"/>
 <jaxb:typesafeEnumMember name="GUARD" value="GUARD"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_facility_ranking", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFinalGuidanceBaseType']">
 <jaxb:typesafeEnumClass name="CodeFinalGuidanceBaseType">
@@ -1331,7 +1253,6 @@
 <jaxb:typesafeEnumMember name="DME" value="DME"/>
 <jaxb:typesafeEnumMember name="LP" value="LP"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_final_guidance", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFireFightingBaseType']">
 <jaxb:typesafeEnumClass name="CodeFireFightingBaseType">
@@ -1349,7 +1270,6 @@
 <jaxb:typesafeEnumMember name="A9" value="A9"/>
 <jaxb:typesafeEnumMember name="A10" value="A10"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_fire_fighting", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFlightBaseType']">
 <jaxb:typesafeEnumClass name="CodeFlightBaseType">
@@ -1357,7 +1277,6 @@
 <jaxb:typesafeEnumMember name="GAT" value="GAT"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_flight", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFlightDestinationBaseType']">
 <jaxb:typesafeEnumClass name="CodeFlightDestinationBaseType">
@@ -1366,7 +1285,6 @@
 <jaxb:typesafeEnumMember name="OVERFLY" value="OVERFLY"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_flight_destination", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFlightOriginBaseType']">
 <jaxb:typesafeEnumClass name="CodeFlightOriginBaseType">
@@ -1375,7 +1293,6 @@
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 <jaxb:typesafeEnumMember name="HOME_BASED" value="HOME_BASED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_flight_origin", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFlightPurposeBaseType']">
 <jaxb:typesafeEnumClass name="CodeFlightPurposeBaseType">
@@ -1387,7 +1304,6 @@
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 <jaxb:typesafeEnumMember name="PARTICIPANT" value="PARTICIPANT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_flight_purpose", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFlightRestrictionBaseType']">
 <jaxb:typesafeEnumClass name="CodeFlightRestrictionBaseType">
@@ -1396,7 +1312,6 @@
 <jaxb:typesafeEnumMember name="CLSD" value="CLSD"/>
 <jaxb:typesafeEnumMember name="ALLOWED" value="ALLOWED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_flight_restriction", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFlightRestrictionDesignatorBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_flight_restriction_designator", nullable = False, unique = False)</annox:annotate>
@@ -1407,7 +1322,6 @@
 <jaxb:typesafeEnumMember name="VFR" value="VFR"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_flight_rule", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFlightStatusBaseType']">
 <jaxb:typesafeEnumClass name="CodeFlightStatusBaseType">
@@ -1419,7 +1333,6 @@
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 <jaxb:typesafeEnumMember name="EMERGENCY" value="EMERGENCY"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_flight_status", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFlowConditionOperationBaseType']">
 <jaxb:typesafeEnumClass name="CodeFlowConditionOperationBaseType">
@@ -1429,14 +1342,12 @@
 <jaxb:typesafeEnumMember name="SEQ" value="SEQ"/>
 <jaxb:typesafeEnumMember name="NONE" value="NONE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_flow_condition_operation", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFreeFlightBaseType']">
 <jaxb:typesafeEnumClass name="CodeFreeFlightBaseType">
 <jaxb:typesafeEnumMember name="PITCH" value="PITCH"/>
 <jaxb:typesafeEnumMember name="CATCH" value="CATCH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_free_flight", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFrictionDeviceBaseType']">
 <jaxb:typesafeEnumClass name="CodeFrictionDeviceBaseType">
@@ -1450,7 +1361,6 @@
 <jaxb:typesafeEnumMember name="SKL" value="SKL"/>
 <jaxb:typesafeEnumMember name="TAP" value="TAP"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_friction_device", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFrictionEstimateBaseType']">
 <jaxb:typesafeEnumClass name="CodeFrictionEstimateBaseType">
@@ -1461,7 +1371,6 @@
 <jaxb:typesafeEnumMember name="POOR" value="POOR"/>
 <jaxb:typesafeEnumMember name="UNRELIABLE" value="UNRELIABLE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_friction_estimate", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFuelBaseType']">
 <jaxb:typesafeEnumClass name="CodeFuelBaseType">
@@ -1504,7 +1413,6 @@
 <jaxb:typesafeEnumMember name="RT" value="RT"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_fuel", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeGeoBorderBaseType']">
 <jaxb:typesafeEnumClass name="CodeGeoBorderBaseType">
@@ -1514,14 +1422,12 @@
 <jaxb:typesafeEnumMember name="RIVER" value="RIVER"/>
 <jaxb:typesafeEnumMember name="BANK" value="BANK"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_geo_border", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeGradeSeparationBaseType']">
 <jaxb:typesafeEnumClass name="CodeGradeSeparationBaseType">
 <jaxb:typesafeEnumMember name="UNDERPASS" value="UNDERPASS"/>
 <jaxb:typesafeEnumMember name="OVERPASS" value="OVERPASS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_grade_separation", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeGroundLightingBaseType']">
 <jaxb:typesafeEnumClass name="CodeGroundLightingBaseType">
@@ -1534,7 +1440,6 @@
 <jaxb:typesafeEnumMember name="TWR_BCN" value="TWR_BCN"/>
 <jaxb:typesafeEnumMember name="HAZ_BCN" value="HAZ_BCN"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_ground_lighting", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeGuidanceLineBaseType']">
 <jaxb:typesafeEnumClass name="CodeGuidanceLineBaseType">
@@ -1546,7 +1451,6 @@
 <jaxb:typesafeEnumMember name="LO_TLANE" value="LO_TLANE"/>
 <jaxb:typesafeEnumMember name="AIR_TLANE" value="AIR_TLANE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_guidance_line", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeHeightReferenceBaseType']">
 <jaxb:typesafeEnumClass name="CodeHeightReferenceBaseType">
@@ -1555,7 +1459,6 @@
 <jaxb:typesafeEnumMember name="HAL" value="HAL"/>
 <jaxb:typesafeEnumMember name="HAS" value="HAS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_height_reference", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeHelicopterPerformanceBaseType']">
 <jaxb:typesafeEnumClass name="CodeHelicopterPerformanceBaseType">
@@ -1563,7 +1466,6 @@
 <jaxb:typesafeEnumMember name="2" value="2"/>
 <jaxb:typesafeEnumMember name="3" value="3"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_helicopter_performance", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeHoldingCategoryBaseType']">
 <jaxb:typesafeEnumClass name="CodeHoldingCategoryBaseType">
@@ -1571,14 +1473,12 @@
 <jaxb:typesafeEnumMember name="CAT_I" value="CAT_I"/>
 <jaxb:typesafeEnumMember name="CAT_II_III" value="CAT_II_III"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_holding_category", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeHoldingUsageBaseType']">
 <jaxb:typesafeEnumClass name="CodeHoldingUsageBaseType">
 <jaxb:typesafeEnumMember name="ENR" value="ENR"/>
 <jaxb:typesafeEnumMember name="TER" value="TER"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_holding_usage", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeHoldingUseBaseType']">
 <jaxb:typesafeEnumClass name="CodeHoldingUseBaseType">
@@ -1588,7 +1488,6 @@
 <jaxb:typesafeEnumMember name="CLIMB" value="CLIMB"/>
 <jaxb:typesafeEnumMember name="ATC" value="ATC"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_holding_use", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeIATABaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_iata", nullable = False, unique = False)</annox:annotate>
@@ -1602,7 +1501,6 @@
 <jaxb:typesafeEnumMember name="NO" value="NO"/>
 <jaxb:typesafeEnumMember name="RSTR" value="RSTR"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_ils_back_course", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeIntegrityLevelILSBaseType']">
 <jaxb:typesafeEnumClass name="CodeIntegrityLevelILSBaseType">
@@ -1611,14 +1509,12 @@
 <jaxb:typesafeEnumMember name="3" value="3"/>
 <jaxb:typesafeEnumMember name="4" value="4"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_integrity_level_ils", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeIntensityStandByBaseType']">
 <jaxb:typesafeEnumClass name="CodeIntensityStandByBaseType">
 <jaxb:typesafeEnumMember name="OFF" value="OFF"/>
 <jaxb:typesafeEnumMember name="LOW" value="LOW"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_intensity_stand_by", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeLanguageBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_language", nullable = False, unique = False)</annox:annotate>
@@ -1629,7 +1525,6 @@
 <jaxb:typesafeEnumMember name="LOWER" value="LOWER"/>
 <jaxb:typesafeEnumMember name="BOTH" value="BOTH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_level", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeLevelSeriesBaseType']">
 <jaxb:typesafeEnumClass name="CodeLevelSeriesBaseType">
@@ -1638,7 +1533,6 @@
 <jaxb:typesafeEnumMember name="ODD_HALF" value="ODD_HALF"/>
 <jaxb:typesafeEnumMember name="EVEN_HALF" value="EVEN_HALF"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_level_series", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeLevelTableDesignatorBaseType']">
 <jaxb:typesafeEnumClass name="CodeLevelTableDesignatorBaseType">
@@ -1651,14 +1545,12 @@
 <jaxb:typesafeEnumMember name="VFR_RVSM" value="VFR_RVSM"/>
 <jaxb:typesafeEnumMember name="VFR_METRES_RVSM" value="VFR_METRES_RVSM"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_level_table_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeLightHoldingPositionBaseType']">
 <jaxb:typesafeEnumClass name="CodeLightHoldingPositionBaseType">
 <jaxb:typesafeEnumMember name="STOP_BAR" value="STOP_BAR"/>
 <jaxb:typesafeEnumMember name="SIGN" value="SIGN"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_light_holding_position", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeLightingJARBaseType']">
 <jaxb:typesafeEnumClass name="CodeLightingJARBaseType">
@@ -1667,7 +1559,6 @@
 <jaxb:typesafeEnumMember name="BALS" value="BALS"/>
 <jaxb:typesafeEnumMember name="NALS" value="NALS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_lighting_jar", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeLightIntensityBaseType']">
 <jaxb:typesafeEnumClass name="CodeLightIntensityBaseType">
@@ -1677,14 +1568,12 @@
 <jaxb:typesafeEnumMember name="LIL_LIH" value="LIL_LIH"/>
 <jaxb:typesafeEnumMember name="PREDETERMINED" value="PREDETERMINED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_light_intensity", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeLightSourceBaseType']">
 <jaxb:typesafeEnumClass name="CodeLightSourceBaseType">
 <jaxb:typesafeEnumMember name="FLOOD" value="FLOOD"/>
 <jaxb:typesafeEnumMember name="STROBE" value="STROBE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_light_source", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeLoadingBridgeBaseType']">
 <jaxb:typesafeEnumClass name="CodeLoadingBridgeBaseType">
@@ -1693,7 +1582,6 @@
 <jaxb:typesafeEnumMember name="PORTABLE_RAMP" value="PORTABLE_RAMP"/>
 <jaxb:typesafeEnumMember name="PORTABLE_STAIRS" value="PORTABLE_STAIRS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_loading_bridge", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeLocationQualifierBaseType']">
 <jaxb:typesafeEnumClass name="CodeLocationQualifierBaseType">
@@ -1703,7 +1591,6 @@
 <jaxb:typesafeEnumMember name="ACT" value="ACT"/>
 <jaxb:typesafeEnumMember name="AVBL" value="AVBL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_location_qualifier", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeLogicalOperatorBaseType']">
 <jaxb:typesafeEnumClass name="CodeLogicalOperatorBaseType">
@@ -1712,7 +1599,6 @@
 <jaxb:typesafeEnumMember name="NOT" value="NOT"/>
 <jaxb:typesafeEnumMember name="NONE" value="NONE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_logical_operator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMarkerBeaconSignalBaseType']">
 <jaxb:typesafeEnumClass name="CodeMarkerBeaconSignalBaseType">
@@ -1721,7 +1607,6 @@
 <jaxb:typesafeEnumMember name="Z" value="Z"/>
 <jaxb:typesafeEnumMember name="BONES" value="BONES"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_marker_beacon_signal", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMarkingConditionBaseType']">
 <jaxb:typesafeEnumClass name="CodeMarkingConditionBaseType">
@@ -1730,7 +1615,6 @@
 <jaxb:typesafeEnumMember name="POOR" value="POOR"/>
 <jaxb:typesafeEnumMember name="EXCELLENT" value="EXCELLENT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_marking_condition", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMarkingStyleBaseType']">
 <jaxb:typesafeEnumClass name="CodeMarkingStyleBaseType">
@@ -1738,7 +1622,6 @@
 <jaxb:typesafeEnumMember name="DASHED" value="DASHED"/>
 <jaxb:typesafeEnumMember name="DOTTED" value="DOTTED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_marking_style", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMeteoConditionsBaseType']">
 <jaxb:typesafeEnumClass name="CodeMeteoConditionsBaseType">
@@ -1746,7 +1629,6 @@
 <jaxb:typesafeEnumMember name="VMC" value="VMC"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_meteo_conditions", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMilitaryOperationsBaseType']">
 <jaxb:typesafeEnumClass name="CodeMilitaryOperationsBaseType">
@@ -1754,7 +1636,6 @@
 <jaxb:typesafeEnumMember name="MIL" value="MIL"/>
 <jaxb:typesafeEnumMember name="JOINT" value="JOINT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_military_operations", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMilitaryRoutePointBaseType']">
 <jaxb:typesafeEnumClass name="CodeMilitaryRoutePointBaseType">
@@ -1765,7 +1646,6 @@
 <jaxb:typesafeEnumMember name="AX" value="AX"/>
 <jaxb:typesafeEnumMember name="ASX" value="ASX"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_military_route_point", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMilitaryStatusBaseType']">
 <jaxb:typesafeEnumClass name="CodeMilitaryStatusBaseType">
@@ -1773,7 +1653,6 @@
 <jaxb:typesafeEnumMember name="CIVIL" value="CIVIL"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_military_status", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMilitaryTrainingBaseType']">
 <jaxb:typesafeEnumClass name="CodeMilitaryTrainingBaseType">
@@ -1781,7 +1660,6 @@
 <jaxb:typesafeEnumMember name="VR" value="VR"/>
 <jaxb:typesafeEnumMember name="SR" value="SR"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_military_training", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMinimaFinalApproachPathBaseType']">
 <jaxb:typesafeEnumClass name="CodeMinimaFinalApproachPathBaseType">
@@ -1789,7 +1667,6 @@
 <jaxb:typesafeEnumMember name="CIRCLING" value="CIRCLING"/>
 <jaxb:typesafeEnumMember name="SIDESTEP" value="SIDESTEP"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_minima_final_approach_path", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMinimumAltitudeBaseType']">
 <jaxb:typesafeEnumClass name="CodeMinimumAltitudeBaseType">
@@ -1797,7 +1674,6 @@
 <jaxb:typesafeEnumMember name="DA" value="DA"/>
 <jaxb:typesafeEnumMember name="MDA" value="MDA"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_minimum_altitude", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMinimumHeightBaseType']">
 <jaxb:typesafeEnumClass name="CodeMinimumHeightBaseType">
@@ -1805,7 +1681,6 @@
 <jaxb:typesafeEnumMember name="OCH" value="OCH"/>
 <jaxb:typesafeEnumMember name="MDH" value="MDH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_minimum_height", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMissedApproachBaseType']">
 <jaxb:typesafeEnumClass name="CodeMissedApproachBaseType">
@@ -1816,14 +1691,12 @@
 <jaxb:typesafeEnumMember name="TACANALT" value="TACANALT"/>
 <jaxb:typesafeEnumMember name="ENGINEOUT" value="ENGINEOUT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_missed_approach", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMLSAzimuthBaseType']">
 <jaxb:typesafeEnumClass name="CodeMLSAzimuthBaseType">
 <jaxb:typesafeEnumMember name="FWD" value="FWD"/>
 <jaxb:typesafeEnumMember name="BWD" value="BWD"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_mls_azimuth", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeMLSChannelBaseType']">
 <jaxb:typesafeEnumClass name="CodeMLSChannelBaseType">
@@ -2028,7 +1901,6 @@
 <jaxb:typesafeEnumMember name="698" value="698"/>
 <jaxb:typesafeEnumMember name="699" value="699"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_mls_channel", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNavaidDesignatorBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_navaid_designator", nullable = False, unique = False)</annox:annotate>
@@ -2039,7 +1911,6 @@
 <jaxb:typesafeEnumMember name="ENROUTE" value="ENROUTE"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_navaid_purpose", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNavaidServiceBaseType']">
 <jaxb:typesafeEnumClass name="CodeNavaidServiceBaseType">
@@ -2062,7 +1933,6 @@
 <jaxb:typesafeEnumMember name="DF" value="DF"/>
 <jaxb:typesafeEnumMember name="SDF" value="SDF"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_navaid_service", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNavigationAreaBaseType']">
 <jaxb:typesafeEnumClass name="CodeNavigationAreaBaseType">
@@ -2070,14 +1940,12 @@
 <jaxb:typesafeEnumMember name="OMNI" value="OMNI"/>
 <jaxb:typesafeEnumMember name="DVA" value="DVA"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_navigation_area", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNavigationAreaRestrictionBaseType']">
 <jaxb:typesafeEnumClass name="CodeNavigationAreaRestrictionBaseType">
 <jaxb:typesafeEnumMember name="VECTOR" value="VECTOR"/>
 <jaxb:typesafeEnumMember name="OMNIDIRECTIONAL" value="OMNIDIRECTIONAL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_navigation_area_restriction", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNavigationEquipmentBaseType']">
 <jaxb:typesafeEnumClass name="CodeNavigationEquipmentBaseType">
@@ -2093,7 +1961,6 @@
 <jaxb:typesafeEnumMember name="INS" value="INS"/>
 <jaxb:typesafeEnumMember name="FMS" value="FMS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_navigation_equipment", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNavigationSpecificationBaseType']">
 <jaxb:typesafeEnumClass name="CodeNavigationSpecificationBaseType">
@@ -2108,7 +1975,6 @@
 <jaxb:typesafeEnumMember name="RNP_APCH" value="RNP_APCH"/>
 <jaxb:typesafeEnumMember name="RNP_AR_APCH" value="RNP_AR_APCH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_navigation_specification", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNDBUsageBaseType']">
 <jaxb:typesafeEnumClass name="CodeNDBUsageBaseType">
@@ -2116,7 +1982,6 @@
 <jaxb:typesafeEnumMember name="L" value="L"/>
 <jaxb:typesafeEnumMember name="MAR" value="MAR"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_ndb_usage", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNitrogenBaseType']">
 <jaxb:typesafeEnumClass name="CodeNitrogenBaseType">
@@ -2129,7 +1994,6 @@
 <jaxb:typesafeEnumMember name="LNGRB" value="LNGRB"/>
 <jaxb:typesafeEnumMember name="NG" value="NG"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_nitrogen", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNorthReferenceBaseType']">
 <jaxb:typesafeEnumClass name="CodeNorthReferenceBaseType">
@@ -2137,7 +2001,6 @@
 <jaxb:typesafeEnumMember name="MAG" value="MAG"/>
 <jaxb:typesafeEnumMember name="GRID" value="GRID"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_north_reference", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNotePurposeBaseType']">
 <jaxb:typesafeEnumClass name="CodeNotePurposeBaseType">
@@ -2146,7 +2009,6 @@
 <jaxb:typesafeEnumMember name="WARNING" value="WARNING"/>
 <jaxb:typesafeEnumMember name="DISCLAIMER" value="DISCLAIMER"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_note_purpose", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeObstacleAreaBaseType']">
 <jaxb:typesafeEnumClass name="CodeObstacleAreaBaseType">
@@ -2158,7 +2020,6 @@
 <jaxb:typesafeEnumMember name="FAR77" value="FAR77"/>
 <jaxb:typesafeEnumMember name="MANAGED" value="MANAGED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_obstacle_area", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeObstacleAssessmentSurfaceBaseType']">
 <jaxb:typesafeEnumClass name="CodeObstacleAssessmentSurfaceBaseType">
@@ -2179,7 +2040,6 @@
 <jaxb:typesafeEnumMember name="TURN" value="TURN"/>
 <jaxb:typesafeEnumMember name="DER" value="DER"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_obstacle_assessment_surface", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeObstructionIdSurfaceZoneBaseType']">
 <jaxb:typesafeEnumClass name="CodeObstructionIdSurfaceZoneBaseType">
@@ -2189,7 +2049,6 @@
 <jaxb:typesafeEnumMember name="PRIMARY" value="PRIMARY"/>
 <jaxb:typesafeEnumMember name="TRANSITION" value="TRANSITION"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_obstruction_id_surface_zone", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeOilBaseType']">
 <jaxb:typesafeEnumClass name="CodeOilBaseType">
@@ -2197,7 +2056,6 @@
 <jaxb:typesafeEnumMember name="TURBO" value="TURBO"/>
 <jaxb:typesafeEnumMember name="HYDRAULIC" value="HYDRAULIC"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_oil", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeOperationAirportHeliportBaseType']">
 <jaxb:typesafeEnumClass name="CodeOperationAirportHeliportBaseType">
@@ -2209,7 +2067,6 @@
 <jaxb:typesafeEnumMember name="AIRSHOW" value="AIRSHOW"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_operation_airport_heliport", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeOperationManoeuvringAreaBaseType']">
 <jaxb:typesafeEnumClass name="CodeOperationManoeuvringAreaBaseType">
@@ -2222,7 +2079,6 @@
 <jaxb:typesafeEnumMember name="AIRSHOW" value="AIRSHOW"/>
 <jaxb:typesafeEnumMember name="ALL" value="ALL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_operation_manoeuvring_area", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeOrganisationBaseType']">
 <jaxb:typesafeEnumClass name="CodeOrganisationBaseType">
@@ -2236,7 +2092,6 @@
 <jaxb:typesafeEnumMember name="ATS" value="ATS"/>
 <jaxb:typesafeEnumMember name="COMMERCIAL" value="COMMERCIAL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_organisation", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeOrganisationDesignatorBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_organisation_designator", nullable = False, unique = False)</annox:annotate>
@@ -2247,7 +2102,6 @@
 <jaxb:typesafeEnumMember name="OWNED_BY" value="OWNED_BY"/>
 <jaxb:typesafeEnumMember name="SUPERVISED_BY" value="SUPERVISED_BY"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_organisation_hierarchy", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeOxygenBaseType']">
 <jaxb:typesafeEnumClass name="CodeOxygenBaseType">
@@ -2260,7 +2114,6 @@
 <jaxb:typesafeEnumMember name="LOXRB" value="LOXRB"/>
 <jaxb:typesafeEnumMember name="OX" value="OX"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_oxygen", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodePARBaseType']">
 <jaxb:typesafeEnumClass name="CodePARBaseType">
@@ -2271,7 +2124,6 @@
 <jaxb:typesafeEnumMember name="MPN14K" value="MPN14K"/>
 <jaxb:typesafeEnumMember name="TPN19" value="TPN19"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_par", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodePassengerServiceBaseType']">
 <jaxb:typesafeEnumClass name="CodePassengerServiceBaseType">
@@ -2287,21 +2139,18 @@
 <jaxb:typesafeEnumMember name="POST" value="POST"/>
 <jaxb:typesafeEnumMember name="MEDIC" value="MEDIC"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_passenger_service", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodePCNMethodBaseType']">
 <jaxb:typesafeEnumClass name="CodePCNMethodBaseType">
 <jaxb:typesafeEnumMember name="TECH" value="TECH"/>
 <jaxb:typesafeEnumMember name="ACFT" value="ACFT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_pcn_method", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodePCNPavementBaseType']">
 <jaxb:typesafeEnumClass name="CodePCNPavementBaseType">
 <jaxb:typesafeEnumMember name="RIGID" value="RIGID"/>
 <jaxb:typesafeEnumMember name="FLEXIBLE" value="FLEXIBLE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_pcn_pavement", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodePCNSubgradeBaseType']">
 <jaxb:typesafeEnumClass name="CodePCNSubgradeBaseType">
@@ -2310,7 +2159,6 @@
 <jaxb:typesafeEnumMember name="C" value="C"/>
 <jaxb:typesafeEnumMember name="D" value="D"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_pcn_subgrade", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodePCNTyrePressureBaseType']">
 <jaxb:typesafeEnumClass name="CodePCNTyrePressureBaseType">
@@ -2319,14 +2167,12 @@
 <jaxb:typesafeEnumMember name="Y" value="Y"/>
 <jaxb:typesafeEnumMember name="Z" value="Z"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_pcn_tyre_pressure", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodePilotControlledLightingBaseType']">
 <jaxb:typesafeEnumClass name="CodePilotControlledLightingBaseType">
 <jaxb:typesafeEnumMember name="STANDARD_FAA" value="STANDARD_FAA"/>
 <jaxb:typesafeEnumMember name="NON_STANDARD" value="NON_STANDARD"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_pilot_controlled_lighting", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodePositionInILSBaseType']">
 <jaxb:typesafeEnumClass name="CodePositionInILSBaseType">
@@ -2335,21 +2181,18 @@
 <jaxb:typesafeEnumMember name="INNER" value="INNER"/>
 <jaxb:typesafeEnumMember name="BACKCOURSE" value="BACKCOURSE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_position_in_ils", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodePrimaryRadarBaseType']">
 <jaxb:typesafeEnumClass name="CodePrimaryRadarBaseType">
 <jaxb:typesafeEnumMember name="ASR" value="ASR"/>
 <jaxb:typesafeEnumMember name="ARSR" value="ARSR"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_primary_radar", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeProcedureAvailabilityBaseType']">
 <jaxb:typesafeEnumClass name="CodeProcedureAvailabilityBaseType">
 <jaxb:typesafeEnumMember name="USABLE" value="USABLE"/>
 <jaxb:typesafeEnumMember name="UNUSABLE" value="UNUSABLE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_procedure_availability", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeProcedureCodingStandardBaseType']">
 <jaxb:typesafeEnumClass name="CodeProcedureCodingStandardBaseType">
@@ -2358,7 +2201,6 @@
 <jaxb:typesafeEnumMember name="ARINC_424_18" value="ARINC_424_18"/>
 <jaxb:typesafeEnumMember name="ARINC_424_19" value="ARINC_424_19"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_procedure_coding_standard", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeProcedureDistanceBaseType']">
 <jaxb:typesafeEnumClass name="CodeProcedureDistanceBaseType">
@@ -2374,7 +2216,6 @@
 <jaxb:typesafeEnumMember name="VDP" value="VDP"/>
 <jaxb:typesafeEnumMember name="RECH" value="RECH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_procedure_distance", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeProcedureFixRoleBaseType']">
 <jaxb:typesafeEnumClass name="CodeProcedureFixRoleBaseType">
@@ -2392,7 +2233,6 @@
 <jaxb:typesafeEnumMember name="TP" value="TP"/>
 <jaxb:typesafeEnumMember name="VDP" value="VDP"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_procedure_fix_role", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeProcedurePhaseBaseType']">
 <jaxb:typesafeEnumClass name="CodeProcedurePhaseBaseType">
@@ -2406,7 +2246,6 @@
 <jaxb:typesafeEnumMember name="MISSED_S" value="MISSED_S"/>
 <jaxb:typesafeEnumMember name="ENGINE_OUT" value="ENGINE_OUT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_procedure_phase", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeProtectAreaSectionBaseType']">
 <jaxb:typesafeEnumClass name="CodeProtectAreaSectionBaseType">
@@ -2414,7 +2253,6 @@
 <jaxb:typesafeEnumMember name="END" value="END"/>
 <jaxb:typesafeEnumMember name="CL" value="CL"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_protect_area_section", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRadarServiceBaseType']">
 <jaxb:typesafeEnumClass name="CodeRadarServiceBaseType">
@@ -2423,7 +2261,6 @@
 <jaxb:typesafeEnumMember name="ASR" value="ASR"/>
 <jaxb:typesafeEnumMember name="SSR" value="SSR"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_radar_service", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRadioEmissionBaseType']">
 <jaxb:typesafeEnumClass name="CodeRadioEmissionBaseType">
@@ -2444,7 +2281,6 @@
 <jaxb:typesafeEnumMember name="NOX" value="NOX"/>
 <jaxb:typesafeEnumMember name="G1D" value="G1D"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_radio_emission", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRadioFrequencyAreaBaseType']">
 <jaxb:typesafeEnumClass name="CodeRadioFrequencyAreaBaseType">
@@ -2458,7 +2294,6 @@
 <jaxb:typesafeEnumMember name="OUT" value="OUT"/>
 <jaxb:typesafeEnumMember name="ESV" value="ESV"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_radio_frequency_area", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRadioSignalBaseType']">
 <jaxb:typesafeEnumClass name="CodeRadioSignalBaseType">
@@ -2468,7 +2303,6 @@
 <jaxb:typesafeEnumMember name="VOICE" value="VOICE"/>
 <jaxb:typesafeEnumMember name="DATALINK" value="DATALINK"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_radio_signal", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeReferenceRoleBaseType']">
 <jaxb:typesafeEnumClass name="CodeReferenceRoleBaseType">
@@ -2477,7 +2311,6 @@
 <jaxb:typesafeEnumMember name="ATD" value="ATD"/>
 <jaxb:typesafeEnumMember name="RAD_DME" value="RAD_DME"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_reference_role", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeReflectorBaseType']">
 <jaxb:typesafeEnumClass name="CodeReflectorBaseType">
@@ -2485,7 +2318,6 @@
 <jaxb:typesafeEnumMember name="RUNWAY_END" value="RUNWAY_END"/>
 <jaxb:typesafeEnumMember name="REFERENCE" value="REFERENCE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_reflector", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRelativePositionBaseType']">
 <jaxb:typesafeEnumClass name="CodeRelativePositionBaseType">
@@ -2493,7 +2325,6 @@
 <jaxb:typesafeEnumMember name="AT" value="AT"/>
 <jaxb:typesafeEnumMember name="AFTER" value="AFTER"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_relative_position", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRNPBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_rnp", nullable = False, unique = False)</annox:annotate>
@@ -2503,7 +2334,6 @@
 <jaxb:typesafeEnumMember name="SERVICE" value="SERVICE"/>
 <jaxb:typesafeEnumMember name="PUBLIC" value="PUBLIC"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_road", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRouteAvailabilityBaseType']">
 <jaxb:typesafeEnumClass name="CodeRouteAvailabilityBaseType">
@@ -2511,14 +2341,12 @@
 <jaxb:typesafeEnumMember name="COND" value="COND"/>
 <jaxb:typesafeEnumMember name="CLSD" value="CLSD"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_route_availability", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRouteBaseType']">
 <jaxb:typesafeEnumClass name="CodeRouteBaseType">
 <jaxb:typesafeEnumMember name="ATS" value="ATS"/>
 <jaxb:typesafeEnumMember name="NAT" value="NAT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_route", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRouteDesignatorLetterBaseType']">
 <jaxb:typesafeEnumClass name="CodeRouteDesignatorLetterBaseType">
@@ -2539,7 +2367,6 @@
 <jaxb:typesafeEnumMember name="Y" value="Y"/>
 <jaxb:typesafeEnumMember name="Z" value="Z"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_route_designator_letter", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRouteDesignatorPrefixBaseType']">
 <jaxb:typesafeEnumClass name="CodeRouteDesignatorPrefixBaseType">
@@ -2548,14 +2375,12 @@
 <jaxb:typesafeEnumMember name="S" value="S"/>
 <jaxb:typesafeEnumMember name="T" value="T"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_route_designator_prefix", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRouteDesignatorSuffixBaseType']">
 <jaxb:typesafeEnumClass name="CodeRouteDesignatorSuffixBaseType">
 <jaxb:typesafeEnumMember name="F" value="F"/>
 <jaxb:typesafeEnumMember name="G" value="G"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_route_designator_suffix", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRouteNavigationBaseType']">
 <jaxb:typesafeEnumClass name="CodeRouteNavigationBaseType">
@@ -2563,7 +2388,6 @@
 <jaxb:typesafeEnumMember name="RNAV" value="RNAV"/>
 <jaxb:typesafeEnumMember name="TACAN" value="TACAN"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_route_navigation", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRouteOriginBaseType']">
 <jaxb:typesafeEnumClass name="CodeRouteOriginBaseType">
@@ -2571,7 +2395,6 @@
 <jaxb:typesafeEnumMember name="DOM" value="DOM"/>
 <jaxb:typesafeEnumMember name="BOTH" value="BOTH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_route_origin", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRouteSegmentPathBaseType']">
 <jaxb:typesafeEnumClass name="CodeRouteSegmentPathBaseType">
@@ -2579,7 +2402,6 @@
 <jaxb:typesafeEnumMember name="RHL" value="RHL"/>
 <jaxb:typesafeEnumMember name="GDS" value="GDS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_route_segment_path", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRuleProcedureBaseType']">
 <jaxb:typesafeEnumClass name="CodeRuleProcedureBaseType">
@@ -2589,7 +2411,6 @@
 <jaxb:typesafeEnumMember name="PRACTICE" value="PRACTICE"/>
 <jaxb:typesafeEnumMember name="ICAO_DIFF" value="ICAO_DIFF"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_rule_procedure", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRuleProcedureTitleBaseType']">
 <jaxb:typesafeEnumClass name="CodeRuleProcedureTitleBaseType">
@@ -2630,14 +2451,12 @@
 <jaxb:typesafeEnumMember name="AERODROME_FLIGHT_PROCEDURES" value="AERODROME_FLIGHT_PROCEDURES"/>
 <jaxb:typesafeEnumMember name="AERODROME_BIRD_CONCENTRATION" value="AERODROME_BIRD_CONCENTRATION"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_rule_procedure_title", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRunwayBaseType']">
 <jaxb:typesafeEnumClass name="CodeRunwayBaseType">
 <jaxb:typesafeEnumMember name="RWY" value="RWY"/>
 <jaxb:typesafeEnumMember name="FATO" value="FATO"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_runway", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRunwayElementBaseType']">
 <jaxb:typesafeEnumClass name="CodeRunwayElementBaseType">
@@ -2646,7 +2465,6 @@
 <jaxb:typesafeEnumMember name="DISPLACED" value="DISPLACED"/>
 <jaxb:typesafeEnumMember name="SHOULDER" value="SHOULDER"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_runway_element", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRunwayMarkingBaseType']">
 <jaxb:typesafeEnumClass name="CodeRunwayMarkingBaseType">
@@ -2658,7 +2476,6 @@
 <jaxb:typesafeEnumMember name="NON_STANDARD" value="NON_STANDARD"/>
 <jaxb:typesafeEnumMember name="HELIPORT" value="HELIPORT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_runway_marking", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRunwayPointRoleBaseType']">
 <jaxb:typesafeEnumClass name="CodeRunwayPointRoleBaseType">
@@ -2676,7 +2493,6 @@
 <jaxb:typesafeEnumMember name="ABEAM_TDR" value="ABEAM_TDR"/>
 <jaxb:typesafeEnumMember name="ABEAM_RER" value="ABEAM_RER"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_runway_point_role", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRunwayProtectionAreaBaseType']">
 <jaxb:typesafeEnumClass name="CodeRunwayProtectionAreaBaseType">
@@ -2689,7 +2505,6 @@
 <jaxb:typesafeEnumMember name="VGSI" value="VGSI"/>
 <jaxb:typesafeEnumMember name="STOPWAY" value="STOPWAY"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_runway_protection_area", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRunwaySectionBaseType']">
 <jaxb:typesafeEnumClass name="CodeRunwaySectionBaseType">
@@ -2708,7 +2523,6 @@
 <jaxb:typesafeEnumMember name="2_THIRD" value="2_THIRD"/>
 <jaxb:typesafeEnumMember name="3_THIRD" value="3_THIRD"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_runway_section", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRVRReadingBaseType']">
 <jaxb:typesafeEnumClass name="CodeRVRReadingBaseType">
@@ -2716,14 +2530,12 @@
 <jaxb:typesafeEnumMember name="MID" value="MID"/>
 <jaxb:typesafeEnumMember name="TO" value="TO"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_rvr_reading", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRVSMBaseType']">
 <jaxb:typesafeEnumClass name="CodeRVSMBaseType">
 <jaxb:typesafeEnumMember name="RVSM" value="RVSM"/>
 <jaxb:typesafeEnumMember name="NON_RVSM" value="NON_RVSM"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_rvsm", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRVSMPointRoleBaseType']">
 <jaxb:typesafeEnumClass name="CodeRVSMPointRoleBaseType">
@@ -2731,14 +2543,12 @@
 <jaxb:typesafeEnumMember name="OUT" value="OUT"/>
 <jaxb:typesafeEnumMember name="IN_OUT" value="IN_OUT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_rvsm_point_role", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSafeAltitudeBaseType']">
 <jaxb:typesafeEnumClass name="CodeSafeAltitudeBaseType">
 <jaxb:typesafeEnumMember name="MSA" value="MSA"/>
 <jaxb:typesafeEnumMember name="ESA" value="ESA"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_safe_altitude", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSegmentPathBaseType']">
 <jaxb:typesafeEnumClass name="CodeSegmentPathBaseType">
@@ -2768,7 +2578,6 @@
 <jaxb:typesafeEnumMember name="VA" value="VA"/>
 <jaxb:typesafeEnumMember name="RF" value="RF"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_segment_path", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSegmentTerminationBaseType']">
 <jaxb:typesafeEnumClass name="CodeSegmentTerminationBaseType">
@@ -2777,7 +2586,6 @@
 <jaxb:typesafeEnumMember name="DURATION" value="DURATION"/>
 <jaxb:typesafeEnumMember name="INTERCEPT" value="INTERCEPT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_segment_termination", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeServiceATCBaseType']">
 <jaxb:typesafeEnumClass name="CodeServiceATCBaseType">
@@ -2790,7 +2598,6 @@
 <jaxb:typesafeEnumMember name="EFAS" value="EFAS"/>
 <jaxb:typesafeEnumMember name="CTAF" value="CTAF"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_service_atc", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeServiceATFMBaseType']">
 <jaxb:typesafeEnumClass name="CodeServiceATFMBaseType">
@@ -2800,7 +2607,6 @@
 <jaxb:typesafeEnumMember name="CLEARANCE" value="CLEARANCE"/>
 <jaxb:typesafeEnumMember name="SCHED" value="SCHED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_service_atfm", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeServiceGroundControlBaseType']">
 <jaxb:typesafeEnumClass name="CodeServiceGroundControlBaseType">
@@ -2808,7 +2614,6 @@
 <jaxb:typesafeEnumMember name="SMGCS" value="SMGCS"/>
 <jaxb:typesafeEnumMember name="TAXI" value="TAXI"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_service_ground_control", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeServiceInformationBaseType']">
 <jaxb:typesafeEnumClass name="CodeServiceInformationBaseType">
@@ -2831,7 +2636,6 @@
 <jaxb:typesafeEnumMember name="ASOS" value="ASOS"/>
 <jaxb:typesafeEnumMember name="AWOS" value="AWOS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_service_information", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeServiceSARBaseType']">
 <jaxb:typesafeEnumClass name="CodeServiceSARBaseType">
@@ -2839,7 +2643,6 @@
 <jaxb:typesafeEnumMember name="SAR" value="SAR"/>
 <jaxb:typesafeEnumMember name="RCC" value="RCC"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_service_sar", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSideBaseType']">
 <jaxb:typesafeEnumClass name="CodeSideBaseType">
@@ -2847,7 +2650,6 @@
 <jaxb:typesafeEnumMember name="RIGHT" value="RIGHT"/>
 <jaxb:typesafeEnumMember name="BOTH" value="BOTH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_side", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSignalPerformanceILSBaseType']">
 <jaxb:typesafeEnumClass name="CodeSignalPerformanceILSBaseType">
@@ -2858,14 +2660,12 @@
 <jaxb:typesafeEnumMember name="IIIB" value="IIIB"/>
 <jaxb:typesafeEnumMember name="IIIC" value="IIIC"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_signal_performance_ils", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSpecialDateBaseType']">
 <jaxb:typesafeEnumClass name="CodeSpecialDateBaseType">
 <jaxb:typesafeEnumMember name="HOL" value="HOL"/>
 <jaxb:typesafeEnumMember name="BUSY_FRI" value="BUSY_FRI"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_special_date", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSpecialNavigationChainDesignatorBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_special_navigation_chain_designator", nullable = False, unique = False)</annox:annotate>
@@ -2878,7 +2678,6 @@
 <jaxb:typesafeEnumMember name="GREEN_SLAVE" value="GREEN_SLAVE"/>
 <jaxb:typesafeEnumMember name="PURPLE_SLAVE" value="PURPLE_SLAVE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_special_navigation_station", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSpecialNavigationSystemBaseType']">
 <jaxb:typesafeEnumClass name="CodeSpecialNavigationSystemBaseType">
@@ -2888,7 +2687,6 @@
 <jaxb:typesafeEnumMember name="DECCA" value="DECCA"/>
 <jaxb:typesafeEnumMember name="GNSS" value="GNSS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_special_navigation_system", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSpeedReferenceBaseType']">
 <jaxb:typesafeEnumClass name="CodeSpeedReferenceBaseType">
@@ -2896,7 +2694,6 @@
 <jaxb:typesafeEnumMember name="TAS" value="TAS"/>
 <jaxb:typesafeEnumMember name="GS" value="GS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_speed_reference", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeStandbyPowerBaseType']">
 <jaxb:typesafeEnumClass name="CodeStandbyPowerBaseType">
@@ -2906,7 +2703,6 @@
 <jaxb:typesafeEnumMember name="UNKNOWN" value="UNKNOWN"/>
 <jaxb:typesafeEnumMember name="NONE" value="NONE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_standby_power", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeStatusAirportBaseType']">
 <jaxb:typesafeEnumClass name="CodeStatusAirportBaseType">
@@ -2914,7 +2710,6 @@
 <jaxb:typesafeEnumMember name="LIMITED" value="LIMITED"/>
 <jaxb:typesafeEnumMember name="CLOSED" value="CLOSED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_status_airport", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeStatusAirspaceBaseType']">
 <jaxb:typesafeEnumClass name="CodeStatusAirspaceBaseType">
@@ -2924,7 +2719,6 @@
 <jaxb:typesafeEnumMember name="INACTIVE" value="INACTIVE"/>
 <jaxb:typesafeEnumMember name="INTERMITTENT" value="INTERMITTENT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_status_airspace", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeStatusConstructionBaseType']">
 <jaxb:typesafeEnumClass name="CodeStatusConstructionBaseType">
@@ -2933,7 +2727,6 @@
 <jaxb:typesafeEnumMember name="DEMOLITION_PLANNED" value="DEMOLITION_PLANNED"/>
 <jaxb:typesafeEnumMember name="IN_DEMOLITION" value="IN_DEMOLITION"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_status_construction", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeStatusNavaidBaseType']">
 <jaxb:typesafeEnumClass name="CodeStatusNavaidBaseType">
@@ -2948,7 +2741,6 @@
 <jaxb:typesafeEnumMember name="DISPLACED" value="DISPLACED"/>
 <jaxb:typesafeEnumMember name="IN_CONSTRUCTION" value="IN_CONSTRUCTION"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_status_navaid", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeStatusOperationsBaseType']">
 <jaxb:typesafeEnumClass name="CodeStatusOperationsBaseType">
@@ -2957,7 +2749,6 @@
 <jaxb:typesafeEnumMember name="UNSERVICEABLE" value="UNSERVICEABLE"/>
 <jaxb:typesafeEnumMember name="WORK_IN_PROGRESS" value="WORK_IN_PROGRESS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_status_operations", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeStatusServiceBaseType']">
 <jaxb:typesafeEnumClass name="CodeStatusServiceBaseType">
@@ -2966,7 +2757,6 @@
 <jaxb:typesafeEnumMember name="ONTEST" value="ONTEST"/>
 <jaxb:typesafeEnumMember name="UNSERVICEABLE" value="UNSERVICEABLE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_status_service", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSurfaceCompositionBaseType']">
 <jaxb:typesafeEnumClass name="CodeSurfaceCompositionBaseType">
@@ -2996,7 +2786,6 @@
 <jaxb:typesafeEnumMember name="WOOD" value="WOOD"/>
 <jaxb:typesafeEnumMember name="NON_BITUM_MIX" value="NON_BITUM_MIX"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_surface_composition", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSurfaceConditionBaseType']">
 <jaxb:typesafeEnumClass name="CodeSurfaceConditionBaseType">
@@ -3006,7 +2795,6 @@
 <jaxb:typesafeEnumMember name="UNSAFE" value="UNSAFE"/>
 <jaxb:typesafeEnumMember name="DEFORMED" value="DEFORMED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_surface_condition", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSurfacePreparationBaseType']">
 <jaxb:typesafeEnumClass name="CodeSurfacePreparationBaseType">
@@ -3022,7 +2810,6 @@
 <jaxb:typesafeEnumMember name="RFSC" value="RFSC"/>
 <jaxb:typesafeEnumMember name="NON_GROOVED" value="NON_GROOVED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_surface_preparation", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSystemActivationBaseType']">
 <jaxb:typesafeEnumClass name="CodeSystemActivationBaseType">
@@ -3030,7 +2817,6 @@
 <jaxb:typesafeEnumMember name="ON_OR_OFF" value="ON_OR_OFF"/>
 <jaxb:typesafeEnumMember name="OFF" value="OFF"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_system_activation", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTAABaseType']">
 <jaxb:typesafeEnumClass name="CodeTAABaseType">
@@ -3038,7 +2824,6 @@
 <jaxb:typesafeEnumMember name="RIGHT_BASE" value="RIGHT_BASE"/>
 <jaxb:typesafeEnumMember name="STRAIGHT_IN" value="STRAIGHT_IN"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_taa", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTACANChannelBaseType']">
 <jaxb:typesafeEnumClass name="CodeTACANChannelBaseType">
@@ -3395,7 +3180,6 @@
 <jaxb:typesafeEnumMember name="126X" value="126X"/>
 <jaxb:typesafeEnumMember name="126Y" value="126Y"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_tacan_channel", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTaxiwayBaseType']">
 <jaxb:typesafeEnumClass name="CodeTaxiwayBaseType">
@@ -3408,7 +3192,6 @@
 <jaxb:typesafeEnumMember name="PARALLEL" value="PARALLEL"/>
 <jaxb:typesafeEnumMember name="BYPASS" value="BYPASS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_taxiway", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTaxiwayElementBaseType']">
 <jaxb:typesafeEnumClass name="CodeTaxiwayElementBaseType">
@@ -3417,7 +3200,6 @@
 <jaxb:typesafeEnumMember name="SHOULDER" value="SHOULDER"/>
 <jaxb:typesafeEnumMember name="HOLDING_BAY" value="HOLDING_BAY"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_taxiway_element", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTaxiwaySectionBaseType']">
 <jaxb:typesafeEnumClass name="CodeTaxiwaySectionBaseType">
@@ -3427,7 +3209,6 @@
 <jaxb:typesafeEnumMember name="RWY_INT" value="RWY_INT"/>
 <jaxb:typesafeEnumMember name="TWY_INT" value="TWY_INT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_taxiway_section", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTelecomNetworkBaseType']">
 <jaxb:typesafeEnumClass name="CodeTelecomNetworkBaseType">
@@ -3438,21 +3219,18 @@
 <jaxb:typesafeEnumMember name="ACARS" value="ACARS"/>
 <jaxb:typesafeEnumMember name="ADNS" value="ADNS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_telecom_network", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTimeEventBaseType']">
 <jaxb:typesafeEnumClass name="CodeTimeEventBaseType">
 <jaxb:typesafeEnumMember name="SR" value="SR"/>
 <jaxb:typesafeEnumMember name="SS" value="SS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_time_event", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTimeEventCombinationBaseType']">
 <jaxb:typesafeEnumClass name="CodeTimeEventCombinationBaseType">
 <jaxb:typesafeEnumMember name="EARLIEST" value="EARLIEST"/>
 <jaxb:typesafeEnumMember name="LATEST" value="LATEST"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_time_event_combination", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTimeReferenceBaseType']">
 <jaxb:typesafeEnumClass name="CodeTimeReferenceBaseType">
@@ -3484,14 +3262,12 @@
 <jaxb:typesafeEnumMember name="UTC+13" value="UTC+13"/>
 <jaxb:typesafeEnumMember name="UTC+14" value="UTC+14"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_time_reference", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTLOFSectionBaseType']">
 <jaxb:typesafeEnumClass name="CodeTLOFSectionBaseType">
 <jaxb:typesafeEnumMember name="AIM" value="AIM"/>
 <jaxb:typesafeEnumMember name="EDGE" value="EDGE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_tlof_section", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTrajectoryBaseType']">
 <jaxb:typesafeEnumClass name="CodeTrajectoryBaseType">
@@ -3501,7 +3277,6 @@
 <jaxb:typesafeEnumMember name="BASETURN" value="BASETURN"/>
 <jaxb:typesafeEnumMember name="HOLDING" value="HOLDING"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_trajectory", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeTransponderBaseType']">
 <jaxb:typesafeEnumClass name="CodeTransponderBaseType">
@@ -3513,7 +3288,6 @@
 <jaxb:typesafeEnumMember name="MODE_C" value="MODE_C"/>
 <jaxb:typesafeEnumMember name="MODE_S" value="MODE_S"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_transponder", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeUnitBaseType']">
 <jaxb:typesafeEnumClass name="CodeUnitBaseType">
@@ -3563,7 +3337,6 @@
 <jaxb:typesafeEnumMember name="MIL" value="MIL"/>
 <jaxb:typesafeEnumMember name="MILOPS" value="MILOPS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_unit", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeUnitDependencyBaseType']">
 <jaxb:typesafeEnumClass name="CodeUnitDependencyBaseType">
@@ -3571,7 +3344,6 @@
 <jaxb:typesafeEnumMember name="PROVIDER" value="PROVIDER"/>
 <jaxb:typesafeEnumMember name="ALTERNATE" value="ALTERNATE"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_unit_dependency", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeUpperAlphaBaseType']">
 <jaxb:typesafeEnumClass name="CodeUpperAlphaBaseType">
@@ -3602,7 +3374,6 @@
 <jaxb:typesafeEnumMember name="Y" value="Y"/>
 <jaxb:typesafeEnumMember name="Z" value="Z"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_upper_alpha", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeUsageLimitationBaseType']">
 <jaxb:typesafeEnumClass name="CodeUsageLimitationBaseType">
@@ -3611,7 +3382,6 @@
 <jaxb:typesafeEnumMember name="FORBID" value="FORBID"/>
 <jaxb:typesafeEnumMember name="RESERV" value="RESERV"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_usage_limitation", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeUUIDBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_uuid", nullable = False, unique = False)</annox:annotate>
@@ -3623,7 +3393,6 @@
 <jaxb:typesafeEnumMember name="AT_OR_BELOW" value="AT_OR_BELOW"/>
 <jaxb:typesafeEnumMember name="BELOW" value="BELOW"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_value_interpretation", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeVASISBaseType']">
 <jaxb:typesafeEnumClass name="CodeVASISBaseType">
@@ -3644,7 +3413,6 @@
 <jaxb:typesafeEnumMember name="OLS" value="OLS"/>
 <jaxb:typesafeEnumMember name="LCVASI" value="LCVASI"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_vasis", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeVerticalDatumBaseType']">
 <jaxb:typesafeEnumClass name="CodeVerticalDatumBaseType">
@@ -3652,7 +3420,6 @@
 <jaxb:typesafeEnumMember name="AHD" value="AHD"/>
 <jaxb:typesafeEnumMember name="NAVD88" value="NAVD88"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_vertical_datum", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeVerticalReferenceBaseType']">
 <jaxb:typesafeEnumClass name="CodeVerticalReferenceBaseType">
@@ -3661,7 +3428,6 @@
 <jaxb:typesafeEnumMember name="W84" value="W84"/>
 <jaxb:typesafeEnumMember name="STD" value="STD"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_vertical_reference", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeVerticalStructureBaseType']">
 <jaxb:typesafeEnumClass name="CodeVerticalStructureBaseType">
@@ -3720,7 +3486,6 @@
 <jaxb:typesafeEnumMember name="WINDMILL" value="WINDMILL"/>
 <jaxb:typesafeEnumMember name="WINDMILL_FARMS" value="WINDMILL_FARMS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_vertical_structure", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeVerticalStructureMarkingBaseType']">
 <jaxb:typesafeEnumClass name="CodeVerticalStructureMarkingBaseType">
@@ -3731,7 +3496,6 @@
 <jaxb:typesafeEnumMember name="FLAG" value="FLAG"/>
 <jaxb:typesafeEnumMember name="MARKERS" value="MARKERS"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_vertical_structure_marking", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeVerticalStructureMaterialBaseType']">
 <jaxb:typesafeEnumClass name="CodeVerticalStructureMaterialBaseType">
@@ -3754,7 +3518,6 @@
 <jaxb:typesafeEnumMember name="TREATED_TIMBER" value="TREATED_TIMBER"/>
 <jaxb:typesafeEnumMember name="WOOD" value="WOOD"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_vertical_structure_material", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeVisualDockingGuidanceBaseType']">
 <jaxb:typesafeEnumClass name="CodeVisualDockingGuidanceBaseType">
@@ -3767,7 +3530,6 @@
 <jaxb:typesafeEnumMember name="AGNIS_STOP" value="AGNIS_STOP"/>
 <jaxb:typesafeEnumMember name="AGNIS_PAPA" value="AGNIS_PAPA"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_visual_docking_guidance", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeVORBaseType']">
 <jaxb:typesafeEnumClass name="CodeVORBaseType">
@@ -3775,7 +3537,6 @@
 <jaxb:typesafeEnumMember name="DVOR" value="DVOR"/>
 <jaxb:typesafeEnumMember name="VOT" value="VOT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_vor", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeWakeTurbulenceBaseType']">
 <jaxb:typesafeEnumClass name="CodeWakeTurbulenceBaseType">
@@ -3783,7 +3544,6 @@
 <jaxb:typesafeEnumMember name="MEDIUM" value="MEDIUM"/>
 <jaxb:typesafeEnumMember name="HIGH" value="HIGH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_wake_turbulence", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeWorkAreaBaseType']">
 <jaxb:typesafeEnumClass name="CodeWorkAreaBaseType">
@@ -3791,14 +3551,12 @@
 <jaxb:typesafeEnumMember name="SURFACEWORK" value="SURFACEWORK"/>
 <jaxb:typesafeEnumMember name="PARKED" value="PARKED"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_work_area", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeYesNoBaseType']">
 <jaxb:typesafeEnumClass name="CodeYesNoBaseType">
 <jaxb:typesafeEnumMember name="YES" value="YES"/>
 <jaxb:typesafeEnumMember name="NO" value="NO"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "code_yes_no", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='DateBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "date", nullable = False, unique = False)</annox:annotate>
@@ -3855,7 +3613,6 @@
 <jaxb:typesafeEnumMember name="IN" value="IN"/>
 <jaxb:typesafeEnumMember name="FT" value="FT"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_depth", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='UomDistanceType']">
 <jaxb:typesafeEnumClass name="UomDistanceType">
@@ -3866,16 +3623,6 @@
 <jaxb:typesafeEnumMember name="MI" value="MI"/>
 <jaxb:typesafeEnumMember name="CM" value="CM"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_distance", nullable = False, unique = False)</annox:annotate>
-</jaxb:bindings>
-<jaxb:bindings node="//xs:simpleType[@name='UomDistanceVerticalType']">
-<jaxb:typesafeEnumClass name="UomDistanceVerticalType">
-<jaxb:typesafeEnumMember name="FT" value="FT"/>
-<jaxb:typesafeEnumMember name="M" value="M"/>
-<jaxb:typesafeEnumMember name="FL" value="FL"/>
-<jaxb:typesafeEnumMember name="SM" value="SM"/>
-</jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_distance_vertical", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='UomDurationType']">
 <jaxb:typesafeEnumClass name="UomDurationType">
@@ -3883,14 +3630,12 @@
 <jaxb:typesafeEnumMember name="MIN" value="MIN"/>
 <jaxb:typesafeEnumMember name="SEC" value="SEC"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_duration", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='UomFLType']">
 <jaxb:typesafeEnumClass name="UomFLType">
 <jaxb:typesafeEnumMember name="FL" value="FL"/>
 <jaxb:typesafeEnumMember name="SM" value="SM"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_fl", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='UomFrequencyType']">
 <jaxb:typesafeEnumClass name="UomFrequencyType">
@@ -3899,13 +3644,11 @@
 <jaxb:typesafeEnumMember name="MHZ" value="MHZ"/>
 <jaxb:typesafeEnumMember name="GHZ" value="GHZ"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_frequency", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='UomLightIntensityType']">
 <jaxb:typesafeEnumClass name="UomLightIntensityType">
 <jaxb:typesafeEnumMember name="CD" value="CD"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_light_intensity", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='UomPressureType']">
 <jaxb:typesafeEnumClass name="UomPressureType">
@@ -3917,7 +3660,6 @@
 <jaxb:typesafeEnumMember name="ATM" value="ATM"/>
 <jaxb:typesafeEnumMember name="HPA" value="HPA"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_pressure", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='UomSpeedType']">
 <jaxb:typesafeEnumClass name="UomSpeedType">
@@ -3930,7 +3672,6 @@
 <jaxb:typesafeEnumMember name="FT_SEC" value="FT_SEC"/>
 <jaxb:typesafeEnumMember name="MPH" value="MPH"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_speed", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='UomTemperatureType']">
 <jaxb:typesafeEnumClass name="UomTemperatureType">
@@ -3938,7 +3679,6 @@
 <jaxb:typesafeEnumMember name="F" value="F"/>
 <jaxb:typesafeEnumMember name="K" value="K"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_temperature", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='UomWeightType']">
 <jaxb:typesafeEnumClass name="UomWeightType">
@@ -3947,7 +3687,6 @@
 <jaxb:typesafeEnumMember name="LB" value="LB"/>
 <jaxb:typesafeEnumMember name="TON" value="TON"/>
 </jaxb:typesafeEnumClass>
-<annox:annotate target="field">@jakarta.persistence.Column(name = "uom_weight", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='ValAlarmLimitBaseType']">
 <annox:annotate target="field">@jakarta.persistence.Column(name = "val_alarm_limit", nullable = False, unique = False)</annox:annotate>
