@@ -11,9 +11,8 @@ def runner(config: dict, xsds: List[dict]):
     config = Config(config)
     machinery = Machinery(xsds, config)
 
-    machinery.xjb_initializer()
-    machinery.field_writer_simple_type()
-    machinery.xjb_writer()
+    machinery.generate_xjb()
+    machinery.export_xjb()
 
 
 class strategie(Enum):
@@ -97,16 +96,11 @@ class Machinery:
     def __init__(self, xsds: List[Xsd], config: Config):
         self.xsds = xsds
         self.config = config
+        self.xjb = self.init_xjb(self.xsds)
 
-        self.all_roots = self.get_all_roots()
-        self.all_namespaces = self.get_all_namespaces()
-        self.all_elements = self.get_all_elements()
-        self.all_groups = self.get_all_groups()
-        self.all_attributes = self.get_all_attributes()
-        self.all_extensions = self.get_all_extensions()
-        self.all_simple_types = self.get_all_simple_types()
-        self.simple_types_graph = self.simple_type_graph_builder()
-        self.all_complex_types = self.get_all_complex_types()
+        self.content = self.init_content(self.xsds)
+
+        # self.graph = self.build_type_relationships(self.content)
 
         self.abstract = {}
         self.entity = {}
@@ -115,7 +109,7 @@ class Machinery:
         self.ignore = {}
         self.folder = {}
 
-        self.xjb = {}
+        
 
     def insight_elements(self):
         attrib = {}
@@ -123,29 +117,63 @@ class Machinery:
             for element in value:
                 print(key, element.attrib)
 
-    def simple_type_graph_builder(self):
+    def init_content(self, xsds: List[Xsd]): 
         res = {}
-        for key, value in self.all_simple_types.items():
-            for element in value:
-                base = element.findall(Annotation.Tag.extension) or element.findall(Annotation.Tag.restriction) or []
-                if base != []:
-                    if base[0].attrib["base"] not in res.keys():
-                        name = base[0].attrib["base"]
+        for xsd in xsds:
+            content = xsd.get_simple_type()
+            graph = self.build_simple_type_graph(content)
+            transposition = self.build_simple_type_transposition(content, graph)
 
-                        try : 
-                            name = name.split(":")[-1]
-                        except:
-                            pass
+            res[xsd.name] = {
+                "simple_type" : {
+                    "type" : content,
+                    "graph" : graph,
+                    "transposition" : transposition
+                    }
+                }
 
-                        if name not in res : 
-                            res[name] = []
-                        
-                        res[name].append(element.attrib["name"])
-
-        print(json.dumps(res, indent=4))
         return res
     
-    def simple_type_transposition_worker(self, element, list) : 
+    def build_simple_type_graph(self, type: List):
+        res = {}
+        for element in type:
+            base = element.findall(Annotation.Tag.extension) or element.findall(Annotation.Tag.restriction) or []
+            if base != []:
+                name = base[0].attrib["base"]
+                try : 
+                    name = name.split(":")[-1]
+                except:
+                    pass
+                if name not in res : 
+                    res[name] = [element.attrib["name"]]
+                else :
+                    res[name].append(element.attrib["name"])
+
+        return res
+
+    # def field_writer_simple_type(self):
+    #     transposition = {}
+    #     print(self.simple_types_graph.keys())
+    #     for xsd_name, list in self.all_simple_types.items():
+    #         for element in list:
+    #             if element.attrib["name"] in self.simple_types_graph.keys() :
+    #                 transposition.update(self.simple_type_transposition_worker(element, self.simple_types_graph[element.attrib["name"]]))
+
+    def build_simple_type_transposition(self, type: list,  graph):
+        transposition = {}
+        for element in type : 
+            name = element.attrib["name"]
+            if name in graph.keys():
+                for item in graph[name]:
+                    transposition[item] = "TEST"
+
+        return transposition
+
+        # print(json.dumps(graph, indent=4))
+
+        # print(simple_types)
+    
+    def constraints_builder(self, element, list) : 
         res = {}
         restriction = element.find(Annotation.Tag.restriction)
         fractionDigits = restriction.find(Annotation.Tag.fractionDigits)
@@ -159,55 +187,54 @@ class Machinery:
         totalDigits = restriction.find(Annotation.Tag.totalDigits)
         whiteSpace = restriction.find(Annotation.Tag.whiteSpace)
         for item in list :
-            res[item] = []
+            res[item] = ["HEHE"]
+
+        return res
+    
+    def generate_xjb(self):
+        for key, value in self.content.items() :
+            self.xjb[key]["auto"]["default"].extend(self.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"]))
+
+            
+
+
+    def generate_simple_types(self,type, graph, transposition):
+        res = []
+        for element in type:
+            node = []
+            name = element.attrib["name"]
+
+            if name in graph.keys(): 
+                continue
+            
+            else :
+                node.append(Annotation.Jaxb.simple(element.attrib["name"]))
+                
+                if name in transposition :
+                    node.extend(transposition[name])
+
+                enum_values = element.findall(".//" + Annotation.Tag.enumeration) or []
+                base = element.findall(".//" + Annotation.Tag.restriction) or None
+
+                if enum_values != [] :
+                    node.append(Annotation.Jaxb.enum_start(element.attrib["name"]))
+                    for enum in enum_values:
+                        node.append(Annotation.Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]))
+                    node.append(Annotation.Jaxb.enum_end)
+                
+                else :
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"])))
+
+                node.append(Annotation.Jaxb.end)
+
+                res.extend(node)
 
         return res
 
 
-    def field_writer_simple_type(self):
-        transposition = {}
-        print(self.simple_types_graph.keys())
-        for xsd_name, list in self.all_simple_types.items():
-            for element in list:
-                if element.attrib["name"] in self.simple_types_graph.keys() :
-                    transposition.update(self.simple_type_transposition_worker(element, self.simple_types_graph[element.attrib["name"]]))
-
-        print(json.dumps(transposition, indent=4))
-
-        for xsd_name, list in self.all_simple_types.items():
-            for element in list:
-                node = []
-                name = element.attrib["name"]
-
-                if name in self.simple_types_graph.keys() : 
-                    continue
-                
-                else :
-                    node.append(Annotation.Jaxb.simple(element.attrib["name"]))
-                    
-                    if name in transposition :
-                        node.extend(transposition[name])
-
-                    enum_values = element.findall(".//" + Annotation.Tag.enumeration) or []
-                    base = element.findall(".//" + Annotation.Tag.restriction) or None
-
-                    if enum_values != [] :
-                        node.append(Annotation.Jaxb.enum_start(element.attrib["name"]))
-                        for enum in enum_values:
-                            node.append(Annotation.Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]))
-                        node.append(Annotation.Jaxb.enum_end)
-                    
-                    else :
-                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"])))
-
-                    node.append(Annotation.Jaxb.end)
-
-                    self.xjb[xsd_name]["auto"]["default"].extend(node)
-
-
-
-    def xjb_initializer(self):
-        for xsd in self.xsds:
+    def init_xjb(self, xsds: List[Xsd]):
+        res = {}
+        for xsd in xsds:
             start_annotations = [
                 Annotation.Jaxb.schema(xsd.name)
             ]
@@ -218,14 +245,16 @@ class Machinery:
                     Annotation.Jaxb.binding_end
                 ])
             
-            self.xjb[xsd.name] = {
+            res[xsd.name] = {
                 "start": start_annotations,
                 "manual": {"default": []},
                 "auto": {"default": []},
                 "end": [Annotation.Jaxb.end]
             }
 
-    def xjb_writer(self):
+        return res
+
+    def export_xjb(self):
         os.makedirs(os.path.dirname(self.config.output_path), exist_ok=True)
         with open(self.config.output_path, 'w') as f:
             for xjb in self.xjb:
@@ -260,6 +289,18 @@ class Machinery:
         for xsd in self.xsds:
             roots.append(xsd.root)
         return roots
+
+    def get_all_content(self, xsds: List[Xsd]): 
+        res = {
+            "simple_type" : {}
+        }
+        for xsd in xsds:
+            if xsd.name in res["simple_type"]:
+                res["simple_type"][xsd.name].extend(xsd.get_simple_type())
+            else:
+                res["simple_type"][xsd.name] = xsd.get_simple_type()
+
+        return res
 
     def get_all_simple_types(self):
         simple_types = {}

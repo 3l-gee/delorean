@@ -4,18 +4,38 @@
 <!-- section : auto -->
 <!-- part : default -->
 <jaxb:bindings node="//xs:simpleType[@name='CodeBuoyDesignatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_buoy_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDistanceVerticalUomType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_distance_vertical_uom", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeICAOCountryBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_icao_country", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeReferencePathIdentifierBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_reference_path_identifier", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeRouteIndicatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_route_indicator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAerialRefuellingBaseType']">
@@ -100,6 +120,10 @@
 </jaxb:typesafeEnumClass>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAircraftICAOBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_aircraft_icao", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAircraftStandBaseType']">
@@ -140,6 +164,10 @@
 </jaxb:typesafeEnumClass>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirportHeliportDesignatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_airport_heliport_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirportWarningBaseType']">
@@ -291,6 +319,10 @@
 </jaxb:typesafeEnumClass>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirspaceDesignatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_airspace_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeAirspacePointPositionBaseType']">
@@ -793,6 +825,10 @@
 </jaxb:typesafeEnumClass>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDesignatedPointDesignatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_designated_point_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeDesignStandardBaseType']">
@@ -1314,6 +1350,10 @@
 </jaxb:typesafeEnumClass>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFlightRestrictionDesignatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_flight_restriction_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeFlightRuleBaseType']">
@@ -1490,9 +1530,17 @@
 </jaxb:typesafeEnumClass>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeIATABaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_iata", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeICAOBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_icao", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeILSBackCourseBaseType']">
@@ -1903,6 +1951,10 @@
 </jaxb:typesafeEnumClass>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNavaidDesignatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_navaid_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeNavaidPurposeBaseType']">
@@ -2094,6 +2146,10 @@
 </jaxb:typesafeEnumClass>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeOrganisationDesignatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_organisation_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeOrganisationHierarchyBaseType']">
@@ -2668,6 +2724,10 @@
 </jaxb:typesafeEnumClass>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSpecialNavigationChainDesignatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "code_special_navigation_chain_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='CodeSpecialNavigationStationBaseType']">
@@ -3577,18 +3637,38 @@
 <annox:annotate target="field">@jakarta.persistence.Column(name = "no_sequence", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='TextAddressBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "text_address", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='TextDesignatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "text_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='TextInstructionBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "text_instruction", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='TextNameBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "text_name", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='TextNoteBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "text_note", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='TextPhoneBaseType']">
@@ -3598,9 +3678,17 @@
 <annox:annotate target="field">@jakarta.persistence.Column(name = "text_property_name", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='TextRemarkBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "text_remark", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='TextSIDSTARDesignatorBaseType']">
+T
+E
+S
+T
 <annox:annotate target="field">@jakarta.persistence.Column(name = "text_sidstar_designator", nullable = False, unique = False)</annox:annotate>
 </jaxb:bindings>
 <jaxb:bindings node="//xs:simpleType[@name='TimeBaseType']">
