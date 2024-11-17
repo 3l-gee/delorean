@@ -1,10 +1,11 @@
 import Machinery
 
 config = {
-    "ignore": ["ignore"],
-    "embedable": ["embedable"],
-    "embedded": ["embedded"],
-    "constraint_methode": "psql",
+    "ignore": [],
+    "transient" : [],
+    "embedable": [],
+    "embedded": [],
+    "constraint_methode": "xjb",
     "package": "com.aixm.delorean.core.schema.a5_1_1.aixm",
     "output_path": "util/test_aixm.xjb"
 }
