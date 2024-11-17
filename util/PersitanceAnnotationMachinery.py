@@ -332,7 +332,7 @@ class AnnoationsFunctions:
             res.append(JaxbAnnotations.ENUM_CLASS_END.value)
         
         elif any(keyword in child_name for keyword in ["Code", "Val", "Date", "Time", "NoNumber", "NoSequence", "Text"]):
-            res.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(Util.simple_column_name(child_name))))
+            res.append(AnnoxAnnotations.FIELD(CoreAnnotations.COLUMN_SNAKE(Util.simple_column_name(child_name, True))))
         
         else :
             print(child.attrib['name'])

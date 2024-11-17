@@ -1,5 +1,6 @@
 from enum import Enum
 import xml.etree.ElementTree as ET
+from lxml import etree
 from typing import List
 import re
 import os
@@ -87,6 +88,7 @@ class Xsd:
 class Config:
     def __init__(self, config: dict):
         self.ignore = config["ignore"]
+        self.transient = config["transient"]
         self.embedable = config["embedable"]
         self.embedded = config["embedded"]
         self.constraint_methode = config["constraint_methode"] # psql / xjb
@@ -121,8 +123,8 @@ class Machinery:
         res = {}
         for xsd in xsds:
             content = xsd.get_simple_type()
-            graph = self.build_simple_type_graph(content)
-            transposition = self.build_simple_type_transposition(content, graph)
+            graph = self.build_graph(content)
+            transposition = self.build_transposition(content, graph)
 
             res[xsd.name] = {
                 "simple_type" : {
@@ -134,7 +136,7 @@ class Machinery:
 
         return res
     
-    def build_simple_type_graph(self, type: List):
+    def build_graph(self, type: List):
         res = {}
         for element in type:
             base = element.findall(Annotation.Tag.extension) or element.findall(Annotation.Tag.restriction) or []
@@ -151,43 +153,85 @@ class Machinery:
 
         return res
 
-    # def field_writer_simple_type(self):
-    #     transposition = {}
-    #     print(self.simple_types_graph.keys())
-    #     for xsd_name, list in self.all_simple_types.items():
-    #         for element in list:
-    #             if element.attrib["name"] in self.simple_types_graph.keys() :
-    #                 transposition.update(self.simple_type_transposition_worker(element, self.simple_types_graph[element.attrib["name"]]))
-
-    def build_simple_type_transposition(self, type: list,  graph):
+    def build_transposition(self, type: list,  graph):
         transposition = {}
         for element in type : 
+            temp_transposition = {}
             name = element.attrib["name"]
             if name in graph.keys():
-                for item in graph[name]:
-                    transposition[item] = "TEST"
+                temp_transposition = self.graph_traversal(element, name, graph)
+
+            for key, value in temp_transposition.items():
+                if key in transposition:
+                    transposition[key].extend(value)
+                else :
+                    transposition[key] = value
 
         return transposition
-
-        # print(json.dumps(graph, indent=4))
-
-        # print(simple_types)
     
-    def constraints_builder(self, element, list) : 
+
+    def graph_traversal(self,element,  name, graph, dict=None):
+        if dict is None:
+            dict = {}
+
+        if name in graph.keys():
+           
+            deep_dict = {}
+            for item in graph[name]:
+                deep_dict.update({item : self.generate_constraints(element)})
+                deep_dict.update(self.graph_traversal(element, item, graph))
+                
+                dict.update(deep_dict)
+        return dict        
+            
+    
+    def generate_constraints(self, element) : 
         res = {}
         restriction = element.find(Annotation.Tag.restriction)
+        if restriction is None:
+            return res
+
         fractionDigits = restriction.find(Annotation.Tag.fractionDigits)
         length = restriction.find(Annotation.Tag.length)
         maxExclusive = restriction.find(Annotation.Tag.maxExclusive)
+        minExclusive = restriction.find(Annotation.Tag.minExclusive)
         maxInclusive = restriction.find(Annotation.Tag.maxInclusive)
-        maxLength = restriction.find(Annotation.Tag.maxLength)
         minInclusive = restriction.find(Annotation.Tag.minInclusive)
+        maxLength = restriction.find(Annotation.Tag.maxLength)
         minLength = restriction.find(Annotation.Tag.minLength)
         pattern = restriction.find(Annotation.Tag.pattern)
         totalDigits = restriction.find(Annotation.Tag.totalDigits)
         whiteSpace = restriction.find(Annotation.Tag.whiteSpace)
-        for item in list :
-            res[item] = ["HEHE"]
+
+        if fractionDigits is not None:
+            pass
+
+        if length is not None:
+            pass
+
+        if maxExclusive is not None:
+            pass
+
+        if minExclusive is not None:
+            pass
+    
+        if maxInclusive is not None:
+            pass
+
+        if minInclusive is not None:
+            pass
+
+        if minLength is not None or maxLength is not None:
+            res["Size"] = (Annotation.Annox.field_add(Annotation.Jpa.constraint.size(minLength.attrib["value"], maxLength.attrib["value"])))
+
+        if pattern is not None:
+            res["Pattern"] = (Annotation.Annox.field_add(Annotation.Jpa.constraint.pattern(pattern.attrib["value"], "good luck bro...")))
+
+        if totalDigits is not None:
+            pass
+
+        if whiteSpace is not None:
+            pass        
 
         return res
     
@@ -195,39 +239,34 @@ class Machinery:
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(self.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"]))
 
-            
-
-
-    def generate_simple_types(self,type, graph, transposition):
+    
+    def generate_simple_types(self, type, graph, transposition):
         res = []
         for element in type:
-            node = []
-            name = element.attrib["name"]
-
-            if name in graph.keys(): 
+            if element is None or element.attrib["name"] in graph or element.attrib["name"] in self.config.ignore:
                 continue
-            
-            else :
-                node.append(Annotation.Jaxb.simple(element.attrib["name"]))
-                
-                if name in transposition :
-                    node.extend(transposition[name])
 
-                enum_values = element.findall(".//" + Annotation.Tag.enumeration) or []
-                base = element.findall(".//" + Annotation.Tag.restriction) or None
+            node = [Annotation.Jaxb.simple(element.attrib["name"])]
+            enum_values = element.findall(".//" + Annotation.Tag.enumeration) or []
+            base = element.findall(".//" + Annotation.Tag.restriction) or None
 
-                if enum_values != [] :
-                    node.append(Annotation.Jaxb.enum_start(element.attrib["name"]))
-                    for enum in enum_values:
-                        node.append(Annotation.Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]))
-                    node.append(Annotation.Jaxb.enum_end)
-                
-                else :
-                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"])))
-
+            if element.attrib["name"] in self.config.transient:
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
                 node.append(Annotation.Jaxb.end)
-
                 res.extend(node)
+                continue
+            elif enum_values:
+                node.append(Annotation.Jaxb.enum_start(element.attrib["name"]))
+                node.extend([Annotation.Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]) for enum in enum_values])
+                node.append(Annotation.Jaxb.enum_end)
+            else:
+                constraints = {**transposition.get(element.attrib["name"], {}), **self.generate_constraints(element)}
+                if self.config.constraint_methode == "xjb":
+                    node.extend(constraints.values())
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+
+            node.append(Annotation.Jaxb.end)
+            res.extend(node)
 
         return res
 
@@ -257,6 +296,7 @@ class Machinery:
     def export_xjb(self):
         os.makedirs(os.path.dirname(self.config.output_path), exist_ok=True)
         with open(self.config.output_path, 'w') as f:
+            f.write(Annotation.Jaxb.start)
             for xjb in self.xjb:
                 for annotation in self.xjb[xjb]["start"]:
                     f.write(annotation + "\n")
@@ -278,7 +318,15 @@ class Machinery:
                 for annotation in self.xjb[xjb]["end"]:
                     f.write(annotation + "\n")
 
+            f.write(Annotation.Jaxb.end)
 
+        self.format_xml(self.config.output_path)
+
+    def format_xml(self, file_path):
+        parser = etree.XMLParser(remove_blank_text=True)
+        tree = etree.parse(file_path, parser)
+        root = tree.getroot()
+        tree.write(file_path, pretty_print=True, encoding='utf-8', xml_declaration=True)
 
     def class_writer(self, element):
         pass
@@ -301,66 +349,57 @@ class Machinery:
                 res["simple_type"][xsd.name] = xsd.get_simple_type()
 
         return res
-
-    def get_all_simple_types(self):
-        simple_types = {}
-        for xsd in self.xsds:
-            if xsd.name in simple_types:
-                simple_types[xsd.name].extend(xsd.get_simple_type())
-            else:
-                simple_types[xsd.name] = xsd.get_simple_type()
-        return simple_types
     
-    def get_all_complex_types(self):
-        complex_types = {}
-        for xsd in self.xsds:
-            if xsd.strategie in complex_types:
-                complex_types[xsd.strategie].extend(xsd.get_complex_type())
-            else:
-                complex_types[xsd.strategie] = xsd.get_complex_type()
-        return complex_types
+    # def get_all_complex_types(self):
+    #     complex_types = {}
+    #     for xsd in self.xsds:
+    #         if xsd.strategie in complex_types:
+    #             complex_types[xsd.strategie].extend(xsd.get_complex_type())
+    #         else:
+    #             complex_types[xsd.strategie] = xsd.get_complex_type()
+    #     return complex_types
 
-    def get_all_extensions(self):
-        extensions = {}
-        for xsd in self.xsds:
-            if xsd.strategie in extensions:
-                extensions[xsd.strategie].extend(xsd.get_extension())
-            else:
-                extensions[xsd.strategie] = xsd.get_extension()
-        return extensions
+    # def get_all_extensions(self):
+    #     extensions = {}
+    #     for xsd in self.xsds:
+    #         if xsd.strategie in extensions:
+    #             extensions[xsd.strategie].extend(xsd.get_extension())
+    #         else:
+    #             extensions[xsd.strategie] = xsd.get_extension()
+    #     return extensions
 
-    def get_all_attributes(self):
-        attributes = {}
-        for xsd in self.xsds:
-            if xsd.strategie in attributes:
-                attributes[xsd.strategie].extend(xsd.get_attributes())
-            else:
-                attributes[xsd.strategie] = xsd.get_attributes()
-        return attributes
+    # def get_all_attributes(self):
+    #     attributes = {}
+    #     for xsd in self.xsds:
+    #         if xsd.strategie in attributes:
+    #             attributes[xsd.strategie].extend(xsd.get_attributes())
+    #         else:
+    #             attributes[xsd.strategie] = xsd.get_attributes()
+    #     return attributes
 
-    def get_all_groups(self):
-        groups = {}
-        for xsd in self.xsds:
-            if xsd.strategie in groups:
-                groups[xsd.strategie].extend(xsd.get_groups())
-            else:
-                groups[xsd.strategie] = xsd.get_groups()
-        return groups
+    # def get_all_groups(self):
+    #     groups = {}
+    #     for xsd in self.xsds:
+    #         if xsd.strategie in groups:
+    #             groups[xsd.strategie].extend(xsd.get_groups())
+    #         else:
+    #             groups[xsd.strategie] = xsd.get_groups()
+    #     return groups
 
-    def get_all_elements(self):
-        elements = {}
-        for xsd in self.xsds:
-            if xsd.strategie in elements:
-                elements[xsd.strategie].extend(xsd.get_elements())
-            else:
-                elements[xsd.strategie] = xsd.get_elements()
-        return elements
+    # def get_all_elements(self):
+    #     elements = {}
+    #     for xsd in self.xsds:
+    #         if xsd.strategie in elements:
+    #             elements[xsd.strategie].extend(xsd.get_elements())
+    #         else:
+    #             elements[xsd.strategie] = xsd.get_elements()
+    #     return elements
     
-    def get_all_namespaces(self):
-        namespaces = {}
-        for xsd in self.xsds:
-            if xsd.strategie in namespaces:
-                namespaces[xsd.strategie].update(xsd.get_namespaces())
-            else:
-                namespaces[xsd.strategie] = xsd.get_namespaces()
-        return namespaces
+    # def get_all_namespaces(self):
+    #     namespaces = {}
+    #     for xsd in self.xsds:
+    #         if xsd.strategie in namespaces:
+    #             namespaces[xsd.strategie].update(xsd.get_namespaces())
+    #         else:
+    #             namespaces[xsd.strategie] = xsd.get_namespaces()
+    #     return namespaces

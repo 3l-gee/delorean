@@ -3,14 +3,21 @@ import re
 class Util:
 
     @staticmethod
-    def snake_case(name):
+    def snake_case(name, is_simple_type=False):
         value = name
-        try : 
-            value = name.split(':')[-1]
+        if is_simple_type:
+            for prefix in ["Code", "Val", "Date", "Time", "NoNumber", "NoSequence", "Text"]:
+                if name.startswith(prefix):
+                    value = name.replace(prefix, "")
+                    break
+        try: 
+            value = value.split(':')[-1]
         except:
             pass
         s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', value)
-        return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower().replace("_base_type","").replace("_type","")
+        result = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower().replace("_base_type", "").replace("_type", "")
+
+        return result
     
 class Property:
     name = '<jaxb:property name="aixmName"/>'
@@ -55,7 +62,17 @@ class Jaxb:
     @staticmethod
     def enum_member(name, value):
         return f'''<jaxb:typesafeEnumMember name="{name}" value="{value}"/>'''
-
+    start ="""
+<jaxb:bindings 
+    version="3.0"
+    xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:annox="urn:jaxb.jvnet.org:annox"
+    jaxb:extensionBindingPrefixes="xjc annox">
+"""
     enum_end = '</jaxb:typesafeEnumClass>'
     end = '</jaxb:bindings>'
     binding_start = '<jaxb:schemaBindings>'
@@ -121,7 +138,6 @@ class Tag:
     pattern = xs_namespace + "pattern"
     totalDigits = xs_namespace + "totalDigits"
     whiteSpace = xs_namespace + "whiteSpace "
-    
 
 
 
@@ -132,6 +148,26 @@ class Xml:
     def type(name, propOrder):
         return f'@jakarta.xml.bind.annotation.XmlType(name = "{name}", propOrder = {{"{propOrder}"}})'
 
+class Constraint: 
+    @staticmethod
+    def fraction_digits(value):
+        pass
+
+    @staticmethod
+    def size(min, max):
+        if min is None :
+            return f'@jakarta.persistence.Size(max={max})'
+
+        elif max is None :
+            return f'@jakarta.persistence.Size(min={min})'
+        
+        else :
+            return f'@jakarta.persistence.Size(min={min}, max={max})'
+        
+    @staticmethod
+    def pattern(value, message):
+        escaped_value = value.replace('"', '&quot;').replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        return f'@jakarta.persistence.Pattern(regexp = "{escaped_value}", message = "{message}")'
 
 class Relation:
     @staticmethod
@@ -171,7 +207,7 @@ class Relation:
         return f'@jakarta.persistence.JoinColumn(name="{Util.snake_case(name)}_id", referencedColumnName={referencedColumnName})'
 
 class Jpa:
-    
+    constraint = Constraint
     entity = '@jakarta.persistence.Entity'
     id = '@jakarta.persistence.Id'
     transient = '@jakarta.persistence.Transient'
@@ -179,12 +215,12 @@ class Jpa:
     embedded = '@jakarta.persistence.Embedded'
 
     @staticmethod
-    def column(name, nullable=False, unique=False):
-        return f'@jakarta.persistence.Column(name = "{Util.snake_case(name)}", nullable = {nullable}, unique = {unique})'
+    def column(name, is_simple_type=False, nullable=True, unique=False):
+        return f'@jakarta.persistence.Column(name = "{Util.snake_case(name, is_simple_type)}", nullable = {nullable}, unique = {unique})'
 
     @staticmethod
-    def column_with_definition(name, columnDefinition, nullable=False, unique=False):
-        return f'@jakarta.persistence.Column(name = "{Util.snake_case(name)}", columnDefinition = "{columnDefinition}", nullable = {nullable}, unique = {unique})'
+    def column_with_definition(name, columnDefinition, is_simple_type=False, nullable=True, unique=False):
+        return f'@jakarta.persistence.Column(name = "{Util.snake_case(name, is_simple_type,)}", columnDefinition = "{columnDefinition}", nullable = {nullable}, unique = {unique})'
         
     @staticmethod
     def table(name, schema):
