@@ -102,22 +102,12 @@ class Machinery:
 
         self.content = self.init_content(self.xsds)
 
-        # self.graph = self.build_type_relationships(self.content)
-
         self.abstract = {}
         self.entity = {}
         self.embedable = {}
         self.embedded = {}
         self.ignore = {}
         self.folder = {}
-
-        
-
-    def insight_elements(self):
-        attrib = {}
-        for key, value in self.all_elements.items():
-            for element in value:
-                print(key, element.attrib)
 
     def init_content(self, xsds: List[Xsd]): 
         res = {}
@@ -237,13 +227,17 @@ class Machinery:
     
     def generate_xjb(self):
         for key, value in self.content.items() :
-            self.xjb[key]["auto"]["default"].extend(self.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"]))
-
+            self.xjb[key]["auto"]["default"].extend(
+                self.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"]))
     
     def generate_simple_types(self, type, graph, transposition):
         res = []
         for element in type:
-            if element is None or element.attrib["name"] in graph or element.attrib["name"] in self.config.ignore:
+            if element is None :
+                print("element is None : ", element, type)
+                continue
+
+            if element.attrib["name"] in graph or element.attrib["name"] in self.config.ignore:
                 continue
 
             node = [Annotation.Jaxb.simple(element.attrib["name"])]
@@ -269,6 +263,16 @@ class Machinery:
             res.extend(node)
 
         return res
+    
+    def generate_complex_types(self, type, graph, transposition):
+        res = []
+        for element in type :
+            if element is None :
+                print("element is None : ", element, type)
+                continue
+
+            
+        pass
 
 
     def init_xjb(self, xsds: List[Xsd]):
@@ -328,9 +332,6 @@ class Machinery:
         root = tree.getroot()
         tree.write(file_path, pretty_print=True, encoding='utf-8', xml_declaration=True)
 
-    def class_writer(self, element):
-        pass
-
 
     def get_all_roots(self):
         roots = []
@@ -340,7 +341,8 @@ class Machinery:
 
     def get_all_content(self, xsds: List[Xsd]): 
         res = {
-            "simple_type" : {}
+            "simple_type" : {},
+            "complex_type" : {}
         }
         for xsd in xsds:
             if xsd.name in res["simple_type"]:
@@ -348,58 +350,9 @@ class Machinery:
             else:
                 res["simple_type"][xsd.name] = xsd.get_simple_type()
 
+            if xsd.name in res["complex_type"]:
+                res["complex_type"][xsd.name].extend(xsd.get_complex_type())
+            else:
+                res["complex_type"][xsd.name] = xsd.get_complex_type()
+
         return res
-    
-    # def get_all_complex_types(self):
-    #     complex_types = {}
-    #     for xsd in self.xsds:
-    #         if xsd.strategie in complex_types:
-    #             complex_types[xsd.strategie].extend(xsd.get_complex_type())
-    #         else:
-    #             complex_types[xsd.strategie] = xsd.get_complex_type()
-    #     return complex_types
-
-    # def get_all_extensions(self):
-    #     extensions = {}
-    #     for xsd in self.xsds:
-    #         if xsd.strategie in extensions:
-    #             extensions[xsd.strategie].extend(xsd.get_extension())
-    #         else:
-    #             extensions[xsd.strategie] = xsd.get_extension()
-    #     return extensions
-
-    # def get_all_attributes(self):
-    #     attributes = {}
-    #     for xsd in self.xsds:
-    #         if xsd.strategie in attributes:
-    #             attributes[xsd.strategie].extend(xsd.get_attributes())
-    #         else:
-    #             attributes[xsd.strategie] = xsd.get_attributes()
-    #     return attributes
-
-    # def get_all_groups(self):
-    #     groups = {}
-    #     for xsd in self.xsds:
-    #         if xsd.strategie in groups:
-    #             groups[xsd.strategie].extend(xsd.get_groups())
-    #         else:
-    #             groups[xsd.strategie] = xsd.get_groups()
-    #     return groups
-
-    # def get_all_elements(self):
-    #     elements = {}
-    #     for xsd in self.xsds:
-    #         if xsd.strategie in elements:
-    #             elements[xsd.strategie].extend(xsd.get_elements())
-    #         else:
-    #             elements[xsd.strategie] = xsd.get_elements()
-    #     return elements
-    
-    # def get_all_namespaces(self):
-    #     namespaces = {}
-    #     for xsd in self.xsds:
-    #         if xsd.strategie in namespaces:
-    #             namespaces[xsd.strategie].update(xsd.get_namespaces())
-    #         else:
-    #             namespaces[xsd.strategie] = xsd.get_namespaces()
-    #     return namespaces
