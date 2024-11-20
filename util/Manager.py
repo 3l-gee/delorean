@@ -3,8 +3,8 @@ import Machinery
 config = {
     "ignore": [],
     "transient" : [],
-    "embedable": [],
-    "embedded": [],
+    "embed": [],
+    "abstract": [],
     "constraint_methode": "xjb",
     "package": "com.aixm.delorean.core.schema.a5_1_1.aixm",
     "output_path": "util/test_aixm.xjb"

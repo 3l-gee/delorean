@@ -89,8 +89,8 @@ class Config:
     def __init__(self, config: dict):
         self.ignore = config["ignore"]
         self.transient = config["transient"]
-        self.embedable = config["embedable"]
-        self.embedded = config["embedded"]
+        self.embed = config["embed"]
+        self.abstract = config["abstract"]
         self.constraint_methode = config["constraint_methode"] # psql / xjb
         self.output_path = config["output_path"]
 
@@ -102,11 +102,9 @@ class Machinery:
 
         self.content = self.init_content(self.xsds)
 
-        self.abstract = {}
-        self.entity = {}
-        self.embedable = {}
-        self.embedded = {}
-        self.ignore = {}
+        self.abstract_feature = []
+        self.entity_feature = []
+        self.ignore_feature = []
         self.folder = {}
 
     def init_content(self, xsds: List[Xsd]): 
@@ -121,6 +119,9 @@ class Machinery:
                     "type" : content,
                     "graph" : graph,
                     "transposition" : transposition
+                    },
+                "complex_type" : {
+                    "type" : xsd.get_complex_type(),
                     }
                 }
 
@@ -159,7 +160,6 @@ class Machinery:
 
         return transposition
     
-
     def graph_traversal(self,element,  name, graph, dict=None):
         if dict is None:
             dict = {}
@@ -174,7 +174,6 @@ class Machinery:
                 dict.update(deep_dict)
         return dict        
             
-    
     def generate_constraints(self, element) : 
         res = {}
         restriction = element.find(Annotation.Tag.restriction)
@@ -229,6 +228,10 @@ class Machinery:
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(
                 self.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"]))
+
+        for key, value in self.content.items() :
+            self.xjb[key]["auto"]["default"].extend(
+                self.generate_complex_types(value["complex_type"]["type"], self.config.embed, self.config.abstract))
     
     def generate_simple_types(self, type, graph, transposition):
         res = []
@@ -237,7 +240,7 @@ class Machinery:
                 print("element is None : ", element, type)
                 continue
 
-            if element.attrib["name"] in graph or element.attrib["name"] in self.config.ignore:
+            if element.attrib["name"] in graph.keys() or element.attrib["name"] in self.config.ignore:
                 continue
 
             node = [Annotation.Jaxb.simple(element.attrib["name"])]
@@ -264,15 +267,41 @@ class Machinery:
 
         return res
     
-    def generate_complex_types(self, type, graph, transposition):
+    def generate_complex_types(self, type, embed, abstract):
         res = []
         for element in type :
             if element is None :
                 print("element is None : ", element, type)
                 continue
 
+            if element.attrib["name"] in self.config.ignore:
+                continue
+
+            #Class writer 
+            res.extend(self.class_writer(element, embed, abstract))
+
+            res.append(Annotation.Jaxb.end)
             
-        pass
+        return res
+
+    def class_writer(self, element, embed, asbtract):
+        node = [Annotation.Jaxb.complex(element.attrib["name"])]
+
+        if element.attrib["name"] in asbtract:
+            self.entity_feature.append(element.attrib["name"])
+            node.append(Annotation.Annox.class_add(Annotation.Jpa.entity))
+            node.append(Annotation.Annox.class_add(Annotation.Jpa.relation.inhertiance()))
+            return node
+
+        if element.attrib["name"] in embed:
+            node.append(Annotation.Annox.class_add(Annotation.Jpa.embeddable))
+            return node
+        
+        self.entity_feature.append(element.attrib["name"])
+        node.append(Annotation.Annox.class_add(Annotation.Jpa.entity))
+        node.append(Annotation.Annox.class_add(Annotation.Jpa.table(Annotation.Util.snake_case(element.attrib["name"]),"public")))
+
+        return node
 
 
     def init_xjb(self, xsds: List[Xsd]):
