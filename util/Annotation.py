@@ -1,7 +1,6 @@
 import re
 
 class Util:
-
     @staticmethod
     def snake_case(name, is_simple_type=False):
         value = name
@@ -170,6 +169,11 @@ class Constraint:
         return f'@jakarta.persistence.Pattern(regexp = "{escaped_value}", message = "{message}")'
 
 class Relation:
+
+    @staticmethod
+    def inhertiance(strategy="InheritanceType.TABLE_PER_CLASS"):
+        return f'@jakarta.persistence.Inheritance(strategy = {strategy})'
+        return
     @staticmethod
     def one_to_one(cascade="CascadeType.ALL", fetch="FetchType.EAGER"):   
         return f'@jakarta.persistence.OneToOne(cascade={cascade}, fetch={fetch})'
@@ -207,6 +211,7 @@ class Relation:
         return f'@jakarta.persistence.JoinColumn(name="{Util.snake_case(name)}_id", referencedColumnName={referencedColumnName})'
 
 class Jpa:
+    relation = Relation
     constraint = Constraint
     entity = '@jakarta.persistence.Entity'
     id = '@jakarta.persistence.Id'
