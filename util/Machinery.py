@@ -8,7 +8,7 @@ import Annotation
 import json
 
 def runner(config: dict, xsds: List[dict]):
-    xsds = [Xsd(xsd["name"], xsd["path"], xsd["strategie"], xsd.get("package")) for xsd in xsds]
+    xsds = [Xsd(xsd["name"], xsd["path"], xsd["strategie"], xsd["manual"], xsd.get("package")) for xsd in xsds]
     config = Config(config)
     machinery = Machinery(xsds, config)
 
@@ -23,13 +23,14 @@ class strategie(Enum):
     other = "other"
 
 class Xsd: 
-    def __init__(self, name:str, path:str, strategie: strategie, package: str = None):
+    def __init__(self, name:str, path:str, strategie: strategie, manual: dict, package: str = None):
         self.name = name
         self.package = package
         self.path = path
+        self.strategie = strategie
+        self.manual = manual
         self.root = ET.parse(path).getroot()
         self.namespaces = self.get_namespaces()
-        self.strategie = strategie
         self.elements = self.root.findall(Annotation.Tag.element, self.namespaces) or []
         self.groups = self.root.findall(Annotation.Tag.group, self.namespaces) or []
         self.attributes = self.root.findall(Annotation.Tag.attribute, self.namespaces) or []
@@ -243,27 +244,26 @@ class Machinery:
             if element.attrib["name"] in graph.keys() or element.attrib["name"] in self.config.ignore:
                 continue
 
-            node = [Annotation.Jaxb.simple(element.attrib["name"])]
+            res.append(Annotation.Jaxb.simple(element.attrib["name"]))
             enum_values = element.findall(".//" + Annotation.Tag.enumeration) or []
             base = element.findall(".//" + Annotation.Tag.restriction) or None
 
             if element.attrib["name"] in self.config.transient:
-                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
-                node.append(Annotation.Jaxb.end)
-                res.extend(node)
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                res.append(Annotation.Jaxb.end)
                 continue
+            
             elif enum_values:
-                node.append(Annotation.Jaxb.enum_start(element.attrib["name"]))
-                node.extend([Annotation.Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]) for enum in enum_values])
-                node.append(Annotation.Jaxb.enum_end)
+                res.append(Annotation.Jaxb.enum_start(element.attrib["name"]))
+                res.extend([Annotation.Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]) for enum in enum_values])
+                res.append(Annotation.Jaxb.enum_end)
             else:
                 constraints = {**transposition.get(element.attrib["name"], {}), **self.generate_constraints(element)}
                 if self.config.constraint_methode == "xjb":
-                    node.extend(constraints.values())
-                node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                    res.extend(constraints.values())
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
 
-            node.append(Annotation.Jaxb.end)
-            res.extend(node)
+            res.append(Annotation.Jaxb.end)
 
         return res
     
@@ -278,15 +278,110 @@ class Machinery:
                 continue
 
             #Class writer 
+            res.append(Annotation.Jaxb.complex(element.attrib["name"]))
             res.extend(self.class_writer(element, embed, abstract))
+
+            res.extend(self.field_writer(element, embed, abstract))
 
             res.append(Annotation.Jaxb.end)
             
         return res
+    
+    def field_writer(self, parent, embed, abstract):
+        node = []
+        #simpleContent flow
+        simple_content = parent.find(Annotation.Tag.simple_content) or None
+        if simple_content is not None:
+            extension = simple_content.find(Annotation.Tag.extension)
+            restriction = simple_content.find(Annotation.Tag.restriction)
+
+            if extension is not None:
+                attribute_list = extension.findall(Annotation.Tag.attribute)
+                for attribute in attribute_list:
+                    node.append(Annotation.Jaxb.attribute(attribute.attrib["name"]))
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(attribute.attrib["name"], True)))
+                    node.append(Annotation.Jaxb.end)
+
+            if restriction is not None:
+                attribute_list = restriction.findall(Annotation.Tag.attribute)
+                for attribute in attribute_list:
+                    node.append(Annotation.Jaxb.attribute(attribute.attrib["name"]))
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(attribute.attrib["name"], True)))
+                    node.append(Annotation.Jaxb.end)
+
+
+        #sequence flow
+        # sequence = parent.find(Annotation.Tag.sequence) or None
+        # if sequence is not None:
+        #     element = sequence.findall(Annotation.Tag.element, Annotation.Tag.namespaces) or None
+
+
+        #complexContent flow
+        complex_content = parent.find(Annotation.Tag.complex_content) or None
+        if complex_content is not None:
+            extension = complex_content.find(Annotation.Tag.extension)
+            restriction = complex_content.find(Annotation.Tag.restriction)
+
+            if extension is not None:
+                attribute_list = extension.findall(Annotation.Tag.attribute)
+                element_list = extension.findall(Annotation.Tag.element)
+                for attribute in attribute_list:
+                    node.append(Annotation.Jaxb.attribute(attribute.attrib["name"]))
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(attribute.attrib["name"], True)))
+                    node.append(Annotation.Jaxb.end)
+
+                for element in element_list:
+                    node.append(Annotation.Jaxb.element(element.attrib["name"]))
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                    node.append(Annotation.Jaxb.end)
+            
+            if restriction is not None:
+                attribute_list = restriction.findall(Annotation.Tag.attribute)
+                element_list = restriction.findall(Annotation.Tag.element)
+                for attribute in attribute_list:
+                    if attribute.attrib.get("name") is not None:
+                        node.append(Annotation.Jaxb.attribute(attribute.attrib["name"]))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(attribute.attrib["name"], True)))
+                        node.append(Annotation.Jaxb.end)
+                    if attribute.attrib.get("ref") is not None:
+                        node.append(Annotation.Jaxb.attribute(attribute.attrib["ref"]))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(attribute.attrib["ref"], True)))
+                        node.append(Annotation.Jaxb.end)
+                    else : 
+                        print(attribute.attrib)
+
+                for element in element_list:
+                    node.append(Annotation.Jaxb.element(element.attrib["name"]))
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                    node.append(Annotation.Jaxb.end)
+
+        return node
+
+
+        # element = parent.find(".//xs:"+ Annotation.Tag.element, Annotation.Tag.namespaces) or None
+        # attrribute = parent.find(".//xs:"+ Annotation.Tag.attribute, Annotation.Tag.namespaces) or None
+        # if element is not None:
+        #     for child in element:
+        #         if child.attrib["name"] in self.config.ignore:
+        #             continue
+        #         node = [Annotation.Jaxb.element(child.attrib["name"])]
+        #         node.append(Annotation.Annox.field_add(Annotation.Jpa.column(child.attrib["name"], True)))
+        #         node.append(Annotation.Jaxb.end)
+
+        # if attrribute is not None:
+        #     for child in attrribute:
+        #         if child.attrib["name"] in self.config.ignore:
+        #             continue
+        #         node = [Annotation.Jaxb.attribute(child.attrib["name"])]
+        #         node.append(Annotation.Annox.field_add(Annotation.Jpa.column(child.attrib["name"], True)))
+        #         node.append(Annotation.Jaxb.end)
+
+
+        return node
+
 
     def class_writer(self, element, embed, asbtract):
-        node = [Annotation.Jaxb.complex(element.attrib["name"])]
-
+        node = []
         if element.attrib["name"] in asbtract:
             self.entity_feature.append(element.attrib["name"])
             node.append(Annotation.Annox.class_add(Annotation.Jpa.entity))
@@ -308,7 +403,7 @@ class Machinery:
         res = {}
         for xsd in xsds:
             start_annotations = [
-                Annotation.Jaxb.schema(xsd.name)
+                Annotation.Jaxb.schema(xsd.name + ".xsd")
             ]
             if xsd.package is not None:
                 start_annotations.extend([
@@ -356,9 +451,28 @@ class Machinery:
         self.format_xml(self.config.output_path)
 
     def format_xml(self, file_path):
-        parser = etree.XMLParser(remove_blank_text=True)
-        tree = etree.parse(file_path, parser)
+        main = etree.XMLParser(remove_blank_text=True, huge_tree=True)
+        tree = etree.parse(file_path, main)
         root = tree.getroot()
+        branch = etree.parse("util/manual/AIXM_BasicMessage.xjb", main)
+
+        for binding in branch.getroot().findall(".//jaxb:bindings", namespaces = branch.getroot().nsmap): 
+            schema_location = binding.get("schemaLocation")
+            node = binding.get("node")
+
+            match = tree.xpath(
+                """.//jaxb:bindings[@schemaLocation="AIXM_BasicMessage.xsd"]""",
+                namespaces=root.nsmap,
+            )
+
+            if match :
+                for child in binding:
+                    match[0].append(child)
+
+            else : 
+                root.append(binding)
+
+
         tree.write(file_path, pretty_print=True, encoding='utf-8', xml_declaration=True)
 
 
