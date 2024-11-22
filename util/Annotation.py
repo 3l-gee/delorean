@@ -4,11 +4,10 @@ class Util:
     @staticmethod
     def snake_case(name, is_simple_type=False):
         value = name
-        if is_simple_type:
-            for prefix in ["Code", "Val", "Date", "Time", "NoNumber", "NoSequence", "Text"]:
-                if name.startswith(prefix):
-                    value = name.replace(prefix, "")
-                    break
+        # if is_simple_type:
+        for prefix in ["Code", "Val", "Date", "Time", "NoNumber", "NoSequence", "Text"]:
+            value = value.replace(prefix, "")
+                    # break
         try: 
             value = value.split(':')[-1]
         except:
@@ -96,47 +95,48 @@ class Annox:
         return f'''<annox:removeAnnotation target="field">{annotation}</annox:annotate>'''
 
 class Tag:
-    xs_namespace = "{http://www.w3.org/2001/XMLSchema}"
+    _xs_namespace = "{http://www.w3.org/2001/XMLSchema}"
+    namespaces = {'xs': 'http://www.w3.org/2001/XMLSchema'}
     
-    import_ = xs_namespace + "import"
-    annotation = xs_namespace + "annotation"
-    include = xs_namespace + "include"
-    element = xs_namespace + "element"
-    attribute = xs_namespace + "attribute"
-    complex_type = xs_namespace + "complexType"
-    simple_type = xs_namespace + "simpleType"
-    group = xs_namespace + "group"
-    all = xs_namespace + "all"
-    any = xs_namespace + "any"
-    any_attribute = xs_namespace + "anyAttribute"
-    choice = xs_namespace + "choice"
-    sequence = xs_namespace + "sequence"
-    restriction = xs_namespace + "restriction"
-    extension = xs_namespace + "extension"
-    key = xs_namespace + "key"
-    keyref = xs_namespace + "keyref"
-    unique = xs_namespace + "unique"
-    attribute_group = xs_namespace + "attributeGroup"
-    complex_content = xs_namespace + "complexContent"
-    simple_content = xs_namespace + "simpleContent"
-    notation = xs_namespace + "notation"
-    documentation = xs_namespace + "documentation"
-    appinfo = xs_namespace + "appinfo"
+    import_ = _xs_namespace + "import"
+    annotation = _xs_namespace + "annotation"
+    include = _xs_namespace + "include"
+    element = _xs_namespace + "element"
+    attribute = _xs_namespace + "attribute"
+    complex_type = _xs_namespace + "complexType"
+    simple_type = _xs_namespace + "simpleType"
+    group = _xs_namespace + "group"
+    all = _xs_namespace + "all"
+    any = _xs_namespace + "any"
+    any_attribute = _xs_namespace + "anyAttribute"
+    choice = _xs_namespace + "choice"
+    sequence = _xs_namespace + "sequence"
+    restriction = _xs_namespace + "restriction"
+    extension = _xs_namespace + "extension"
+    key = _xs_namespace + "key"
+    keyref = _xs_namespace + "keyref"
+    unique = _xs_namespace + "unique"
+    attribute_group = _xs_namespace + "attributeGroup"
+    complex_content = _xs_namespace + "complexContent"
+    simple_content = _xs_namespace + "simpleContent"
+    notation = _xs_namespace + "notation"
+    documentation = _xs_namespace + "documentation"
+    appinfo = _xs_namespace + "appinfo"
    
 
     #restriction 
-    enumeration = xs_namespace + "enumeration"
-    fractionDigits = xs_namespace + "fractionDigits"
-    length = xs_namespace + "length"
-    maxExclusive = xs_namespace + "maxExclusive"
-    maxInclusive = xs_namespace + "maxInclusive"
-    maxLength = xs_namespace + "maxLength"
-    minExclusive = xs_namespace + "minExclusive"
-    minInclusive = xs_namespace + "minInclusive"
-    minLength  = xs_namespace + "minLength"
-    pattern = xs_namespace + "pattern"
-    totalDigits = xs_namespace + "totalDigits"
-    whiteSpace = xs_namespace + "whiteSpace "
+    enumeration = _xs_namespace + "enumeration"
+    fractionDigits = _xs_namespace + "fractionDigits"
+    length = _xs_namespace + "length"
+    maxExclusive = _xs_namespace + "maxExclusive"
+    maxInclusive = _xs_namespace + "maxInclusive"
+    maxLength = _xs_namespace + "maxLength"
+    minExclusive = _xs_namespace + "minExclusive"
+    minInclusive = _xs_namespace + "minInclusive"
+    minLength  = _xs_namespace + "minLength"
+    pattern = _xs_namespace + "pattern"
+    totalDigits = _xs_namespace + "totalDigits"
+    whiteSpace = _xs_namespace + "whiteSpace "
 
 
 
@@ -164,7 +164,7 @@ class Constraint:
             return f'@jakarta.persistence.Size(min={min}, max={max})'
         
     @staticmethod
-    def pattern(value, message):
+    def pattern(value, message=""):
         escaped_value = value.replace('"', '&quot;').replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         return f'@jakarta.persistence.Pattern(regexp = "{escaped_value}", message = "{message}")'
 
