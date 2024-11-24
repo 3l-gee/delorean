@@ -16,31 +16,31 @@ config = {
 feature = {
     "name" : "AIXM_Features",
     "path" : "src/main/resources/a5_1_1/AIXM_Features.xsd",
-    "strategie" : Machinery.strategie.feature,
+    "strategy" : Machinery.strategy.feature,
     "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm.feature",
-    "manual" : []
+    "manual" : "util/manual/AIXM_Features.xjb"
 }
 
 data_types = {
     "name" : "AIXM_DataTypes",
     "path" : "src/main/resources/a5_1_1/AIXM_DataTypes.xsd",
-    "strategie" : Machinery.strategie.data_type,
-    "manual" : {}
+    "strategy" : Machinery.strategy.data_type,
+    "manual" : "util/manual/AIXM_DataTypes.xjb"
 }
 
 abstract = {
     "name" : "AIXM_AbstractGML_ObjectTypes",
     "path" : "src/main/resources/a5_1_1/AIXM_AbstractGML_ObjectTypes.xsd",
-    "strategie" : Machinery.strategie.abstract,
-    "manual" : {}
+    "strategy" : Machinery.strategy.abstract,
+    "manual" : "util/manual/AIXM_AbstractGML_ObjectTypes.xjb"
 }
 
 message = {
     "name" : "AIXM_BasicMessage",
     "path" : "src/main/resources/a5_1_1/AIXM_BasicMessage.xsd",
-    "strategie" : Machinery.strategie.other,
+    "strategy" : Machinery.strategy.other,
     "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm.message",
-    "manual" : {}
+    "manual" : "util/manual/AIXM_BasicMessage.xjb"
 }
 
-machinery = Machinery.runner(config, [data_types, feature, abstract])
+machinery = Machinery.runner(config, [data_types, feature, abstract, message])
