@@ -8,7 +8,7 @@ import Annotation
 import json
 
 def runner(config: dict, xsds: List[dict]):
-    xsds = [Xsd(xsd["name"], xsd["path"], xsd["strategie"], xsd["manual"], xsd.get("package")) for xsd in xsds]
+    xsds = [Xsd(xsd["name"], xsd["path"], xsd["strategy"], xsd["manual"], xsd.get("package")) for xsd in xsds]
     config = Config(config)
     machinery = Machinery(xsds, config)
 
@@ -16,18 +16,18 @@ def runner(config: dict, xsds: List[dict]):
     machinery.export_xjb()
 
 
-class strategie(Enum):
+class strategy(Enum):
     abstract = "abstract"
     feature = "feature"
     data_type = "data_type"
     other = "other"
 
 class Xsd: 
-    def __init__(self, name:str, path:str, strategie: strategie, manual: dict, package: str = None):
+    def __init__(self, name:str, path:str, strategie: strategy, manual: dict, package: str = None):
         self.name = name
         self.package = package
         self.path = path
-        self.strategie = strategie
+        self.strategy = strategie
         self.manual = manual
         self.root = ET.parse(path).getroot()
         self.namespaces = self.get_namespaces()
@@ -114,8 +114,11 @@ class Machinery:
             content = xsd.get_simple_type()
             graph = self.build_graph(content)
             transposition = self.build_transposition(content, graph)
+            if xsd.strategy == strategy.data_type:
+                self.config.embed.extend(self.extract_embed(xsd.root))
 
             res[xsd.name] = {
+                "strategy" : xsd.strategy,
                 "simple_type" : {
                     "type" : content,
                     "graph" : graph,
@@ -126,6 +129,14 @@ class Machinery:
                     }
                 }
 
+        return res
+    
+    def extract_embed(self, root):
+        res = []
+        complexType = root.findall(Annotation.Tag.complex_type) or []
+        for element in complexType:
+            print(element.attrib)
+            res.append(element.attrib["name"])
         return res
     
     def build_graph(self, type: List):
@@ -225,6 +236,22 @@ class Machinery:
 
         return res
     
+    def generate_cardinality(self, parent, element):
+        nillable = element.attrib.get("nillable")
+        minOccurs = element.attrib.get("minOccurs")
+        maxOccurs = element.attrib.get("maxOccurs")
+        parent_type = parent.tag
+
+        if nillable :
+            pass
+
+        if maxOccurs != 1 :
+            print("unbounded : unbounded")
+        
+        if maxOccurs == 1:
+            print("maxOccurs : 1")
+        
+
     def generate_xjb(self):
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(
@@ -233,6 +260,9 @@ class Machinery:
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(
                 self.generate_complex_types(value["complex_type"]["type"], self.config.embed, self.config.abstract))
+            
+        for key, value in self.content.items() :
+            self.xjb[key]["auto"]["default"].extend()
     
     def generate_simple_types(self, type, graph, transposition):
         res = []
@@ -280,13 +310,28 @@ class Machinery:
             #Class writer 
             res.append(Annotation.Jaxb.complex(element.attrib["name"]))
             res.extend(self.class_writer(element, embed, abstract))
-
             res.extend(self.field_writer(element, embed, abstract))
 
             res.append(Annotation.Jaxb.end)
             
         return res
     
+    def generate_groupe_types(self, type, embed, abstract):
+        res = []
+        for element in type:
+            if element is None :
+                print("element is None : ", element, type)
+                continue
+
+            if element.attrib["name"] in self.config.ignore:
+                continue
+
+            #Class writer
+            res.append(Annotation.Jaxb.group(element.attrib["name"]))
+            res.extend(self.class_writer(element, embed, abstract))
+
+
+
     def field_writer(self, parent, embed, abstract):
         node = []
         #simpleContent flow
@@ -295,18 +340,21 @@ class Machinery:
             extension = simple_content.find(Annotation.Tag.extension)
             restriction = simple_content.find(Annotation.Tag.restriction)
 
+            parent_name = parent.attrib["name"]
+
             if extension is not None:
                 attribute_list = extension.findall(Annotation.Tag.attribute)
                 for attribute in attribute_list:
                     node.append(Annotation.Jaxb.attribute(attribute.attrib["name"]))
-                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(attribute.attrib["name"], True)))
+                    name = parent_name + "_" + attribute.attrib["name"]
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(name, True)))
                     node.append(Annotation.Jaxb.end)
 
             if restriction is not None:
                 attribute_list = restriction.findall(Annotation.Tag.attribute)
                 for attribute in attribute_list:
                     node.append(Annotation.Jaxb.attribute(attribute.attrib["name"]))
-                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(attribute.attrib["name"], True)))
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(name, True)))
                     node.append(Annotation.Jaxb.end)
 
 
@@ -376,19 +424,15 @@ class Machinery:
         #         node.append(Annotation.Annox.field_add(Annotation.Jpa.column(child.attrib["name"], True)))
         #         node.append(Annotation.Jaxb.end)
 
-
-        return node
-
-
     def class_writer(self, element, embed, asbtract):
         node = []
-        if element.attrib["name"] in asbtract:
+        if element.attrib.get("name") in asbtract:
             self.entity_feature.append(element.attrib["name"])
             node.append(Annotation.Annox.class_add(Annotation.Jpa.entity))
             node.append(Annotation.Annox.class_add(Annotation.Jpa.relation.inhertiance()))
             return node
 
-        if element.attrib["name"] in embed:
+        if element.attrib.get("name") in embed :
             node.append(Annotation.Annox.class_add(Annotation.Jpa.embeddable))
             return node
         
@@ -410,16 +454,44 @@ class Machinery:
                     Annotation.Jaxb.binding_start,
                     Annotation.Jaxb.package(xsd.package),
                     Annotation.Jaxb.binding_end
-                ])
+                ])  
             
             res[xsd.name] = {
                 "start": start_annotations,
-                "manual": {"default": []},
+                "manual": {"default": self.init_manual(xsd.manual)},
                 "auto": {"default": []},
                 "end": [Annotation.Jaxb.end]
             }
 
         return res
+    
+    def init_manual(self, file_path):
+        main = etree.XMLParser(remove_blank_text=True, huge_tree=True)
+        tree = etree.parse(file_path, main)
+        root = tree.getroot()
+        bindings = root.findall(".//jaxb:bindings", namespaces=root.nsmap)
+        binding_names = [f"'{binding.get('node')}'" for binding in bindings]
+        print(binding_names)
+
+        isContent = False
+        bindingsCounter = 0
+        res = []
+        with open(file_path, 'r') as file :
+            for line in file :
+                if isContent:
+                    res.append(line.replace("\n", ""))
+
+                if '<jaxb:bindings node="manual">' in line:
+                    isContent = True
+
+                if '<jaxb:bindings' in line:
+                    bindingsCounter += 1
+
+                if '</jaxb:bindings' in line:
+                    bindingsCounter -= 1
+                    if isContent and bindingsCounter == 2:
+                        return res[:-1]
+        return res[:-1]
 
     def export_xjb(self):
         os.makedirs(os.path.dirname(self.config.output_path), exist_ok=True)
@@ -464,13 +536,13 @@ class Machinery:
                 """.//jaxb:bindings[@schemaLocation="AIXM_BasicMessage.xsd"]""",
                 namespaces=root.nsmap,
             )
+            print(match[0].tag)  
+            # if match :
+            #     for child in binding:
+            #         match[0].append(child)
 
-            if match :
-                for child in binding:
-                    match[0].append(child)
-
-            else : 
-                root.append(binding)
+            # else : 
+            #     root.append(binding)
 
 
         tree.write(file_path, pretty_print=True, encoding='utf-8', xml_declaration=True)
