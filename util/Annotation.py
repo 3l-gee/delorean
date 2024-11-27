@@ -143,6 +143,7 @@ class Tag:
 class Xml:
     tag = Tag
     transient = '@jakarta.xml.bind.annotation.XmlTransient'
+    
     @staticmethod
     def type(name, propOrder):
         return f'@jakarta.xml.bind.annotation.XmlType(name = "{name}", propOrder = {{"{propOrder}"}})'
@@ -234,6 +235,10 @@ class Jpa:
     @staticmethod
     def enumerated(value="STRING"):
         return f'@jakarta.persistence.Enumerated(jakarta.persistence.EnumType.{value})'
+    
+    @staticmethod
+    def generated_value(strategy="jakarta.persistence.GenerationType.IDENTITY"):
+        return f'@jakarta.persistence.GeneratedValue(strategy = {strategy})'
 
 
 class AixmEncoding : 

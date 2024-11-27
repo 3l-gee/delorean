@@ -5658,6 +5658,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aerial_refuelling_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AerialRefuellingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "aerial_refuelling_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5706,6 +5715,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_heliport_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AirportHeliportTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "airport_heliport_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5730,6 +5748,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportCollocationTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_heliport_collocation_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AirportHeliportCollocationTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "airport_heliport_collocation_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportCollocationTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5770,6 +5797,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AirportHotSpotTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_hot_spot_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AirportHotSpotTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "airport_hot_spot_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHotSpotTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5786,6 +5822,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AltimeterSourceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "altimeter_source_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AltimeterSourceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "altimeter_source_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AltimeterSourceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5826,6 +5871,15 @@
     <jaxb:bindings node="//xs:complexType[@name='NonMovementAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "non_movement_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:NonMovementAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "non_movement_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NonMovementAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5850,6 +5904,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SurveyControlPointTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "survey_control_point_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SurveyControlPointTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "survey_control_point_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SurveyControlPointTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5874,6 +5937,15 @@
     <jaxb:bindings node="//xs:complexType[@name='WorkAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "work_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:WorkAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "work_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='WorkAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5898,6 +5970,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AircraftStandTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aircraft_stand_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AircraftStandTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "aircraft_stand_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftStandTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5914,6 +5995,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ApronTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "apron_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ApronTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "apron_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5946,6 +6036,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ApronElementTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "apron_element_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ApronElementTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "apron_element_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronElementTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5962,6 +6061,15 @@
     <jaxb:bindings node="//xs:complexType[@name='DeicingAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "deicing_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:DeicingAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "deicing_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DeicingAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5978,6 +6086,15 @@
     <jaxb:bindings node="//xs:complexType[@name='PassengerLoadingBridgeTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "passenger_loading_bridge_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:PassengerLoadingBridgeTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "passenger_loading_bridge_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PassengerLoadingBridgeTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -5994,6 +6111,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RoadTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "road_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RoadTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "road_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RoadTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6010,6 +6136,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "touch_down_lift_off_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TouchDownLiftOffTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "touch_down_lift_off_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6026,6 +6161,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffSafeAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "touch_down_lift_off_safe_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TouchDownLiftOffSafeAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "touch_down_lift_off_safe_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffSafeAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6042,6 +6186,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ApproachLightingSystemTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "approach_lighting_system_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ApproachLightingSystemTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "approach_lighting_system_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApproachLightingSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6058,6 +6211,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ApronLightSystemTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "apron_light_system_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ApronLightSystemTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "apron_light_system_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6090,6 +6252,15 @@
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineLightSystemTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "guidance_line_light_system_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:GuidanceLineLightSystemTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "guidance_line_light_system_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6114,6 +6285,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionLightSystemTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_direction_light_system_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RunwayDirectionLightSystemTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_direction_light_system_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6130,6 +6310,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaLightSystemTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_protect_area_light_system_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RunwayProtectAreaLightSystemTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_protect_area_light_system_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6146,6 +6335,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionLightSystemTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxi_holding_position_light_system_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TaxiHoldingPositionLightSystemTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "taxi_holding_position_light_system_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6162,6 +6360,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayLightSystemTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiway_light_system_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TaxiwayLightSystemTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "taxiway_light_system_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6178,6 +6385,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffLightSystemTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "touch_down_lift_off_light_system_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TouchDownLiftOffLightSystemTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "touch_down_lift_off_light_system_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6194,6 +6410,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AirportProtectionAreaMarkingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_protection_area_marking_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AirportProtectionAreaMarkingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "airport_protection_area_marking_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportProtectionAreaMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6210,6 +6435,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ApronMarkingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "apron_marking_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ApronMarkingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "apron_marking_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6226,6 +6460,15 @@
     <jaxb:bindings node="//xs:complexType[@name='DeicingAreaMarkingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "deicing_area_marking_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:DeicingAreaMarkingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "deicing_area_marking_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DeicingAreaMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6242,6 +6485,15 @@
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineMarkingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "guidance_line_marking_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:GuidanceLineMarkingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "guidance_line_marking_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6274,6 +6526,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RunwayMarkingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_marking_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RunwayMarkingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_marking_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6290,6 +6551,15 @@
     <jaxb:bindings node="//xs:complexType[@name='StandMarkingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "stand_marking_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:StandMarkingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "stand_marking_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6306,6 +6576,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionMarkingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxi_holding_position_marking_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TaxiHoldingPositionMarkingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "taxi_holding_position_marking_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6322,6 +6601,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayMarkingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiway_marking_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TaxiwayMarkingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "taxiway_marking_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6338,6 +6626,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffMarkingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "touch_down_lift_off_marking_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TouchDownLiftOffMarkingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "touch_down_lift_off_marking_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6354,6 +6651,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ArrestingGearTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "arresting_gear_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ArrestingGearTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "arresting_gear_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrestingGearTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6394,6 +6700,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RunwayTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RunwayTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6410,6 +6725,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RunwayBlastPadTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_blast_pad_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RunwayBlastPadTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_blast_pad_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayBlastPadTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6426,6 +6750,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RunwayCentrelinePointTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_centreline_point_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RunwayCentrelinePointTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_centreline_point_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayCentrelinePointTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6458,6 +6791,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_direction_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RunwayDirectionTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_direction_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6474,6 +6816,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RunwayElementTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_element_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RunwayElementTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_element_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayElementTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6490,6 +6841,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_protect_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RunwayProtectAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_protect_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6506,6 +6866,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RunwayVisualRangeTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_visual_range_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RunwayVisualRangeTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "runway_visual_range_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayVisualRangeTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6522,6 +6891,15 @@
     <jaxb:bindings node="//xs:complexType[@name='VisualGlideSlopeIndicatorTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "visual_glide_slope_indicator_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:VisualGlideSlopeIndicatorTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "visual_glide_slope_indicator_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VisualGlideSlopeIndicatorTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6538,6 +6916,15 @@
     <jaxb:bindings node="//xs:complexType[@name='FloatingDockSiteTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "floating_dock_site_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:FloatingDockSiteTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "floating_dock_site_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FloatingDockSiteTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6554,6 +6941,15 @@
     <jaxb:bindings node="//xs:complexType[@name='MarkingBuoyTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "marking_buoy_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:MarkingBuoyTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "marking_buoy_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MarkingBuoyTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6570,6 +6966,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SeaplaneLandingAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "seaplane_landing_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SeaplaneLandingAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "seaplane_landing_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SeaplaneLandingAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6586,6 +6991,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SeaplaneRampSiteTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "seaplane_ramp_site_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SeaplaneRampSiteTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "seaplane_ramp_site_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SeaplaneRampSiteTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6682,6 +7096,15 @@
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "guidance_line_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:GuidanceLineTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "guidance_line_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6698,6 +7121,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxi_holding_position_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TaxiHoldingPositionTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "taxi_holding_position_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6714,6 +7146,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiway_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TaxiwayTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "taxiway_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6730,6 +7171,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayElementTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiway_element_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TaxiwayElementTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "taxiway_element_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayElementTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6746,6 +7196,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AirspaceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airspace_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AirspaceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "airspace_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirspaceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6802,6 +7261,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AuthorityForAirspaceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "authority_for_airspace_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AuthorityForAirspaceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "authority_for_airspace_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AuthorityForAirspaceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6818,6 +7286,15 @@
     <jaxb:bindings node="//xs:complexType[@name='GeoBorderTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "geo_border_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:GeoBorderTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "geo_border_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GeoBorderTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6882,6 +7359,15 @@
     <jaxb:bindings node="//xs:complexType[@name='HoldingPatternTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "holding_pattern_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:HoldingPatternTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "holding_pattern_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='HoldingPatternTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6914,6 +7400,15 @@
     <jaxb:bindings node="//xs:complexType[@name='UnplannedHoldingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "unplanned_holding_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:UnplannedHoldingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "unplanned_holding_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='UnplannedHoldingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6954,6 +7449,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AzimuthTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "azimuth_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AzimuthTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "azimuth_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AzimuthTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6970,6 +7474,15 @@
     <jaxb:bindings node="//xs:complexType[@name='CheckpointINSTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "checkpoint_ins_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:CheckpointINSTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "checkpoint_ins_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CheckpointINSTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -6986,6 +7499,15 @@
     <jaxb:bindings node="//xs:complexType[@name='CheckpointVORTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "checkpoint_vor_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:CheckpointVORTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "checkpoint_vor_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CheckpointVORTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7002,6 +7524,15 @@
     <jaxb:bindings node="//xs:complexType[@name='DirectionFinderTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "direction_finder_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:DirectionFinderTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "direction_finder_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DirectionFinderTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7018,6 +7549,15 @@
     <jaxb:bindings node="//xs:complexType[@name='DMETimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "dme_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:DMETimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dme_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DMETimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7034,6 +7574,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ElevationTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "elevation_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ElevationTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "elevation_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ElevationTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7050,6 +7599,15 @@
     <jaxb:bindings node="//xs:complexType[@name='GlidepathTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "glidepath_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:GlidepathTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "glidepath_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GlidepathTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7066,6 +7624,15 @@
     <jaxb:bindings node="//xs:complexType[@name='LocalizerTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "localizer_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:LocalizerTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "localizer_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='LocalizerTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7082,6 +7649,15 @@
     <jaxb:bindings node="//xs:complexType[@name='MarkerBeaconTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "marker_beacon_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:MarkerBeaconTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "marker_beacon_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MarkerBeaconTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7098,6 +7674,15 @@
     <jaxb:bindings node="//xs:complexType[@name='NavaidTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "navaid_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:NavaidTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "navaid_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavaidTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7154,6 +7739,15 @@
     <jaxb:bindings node="//xs:complexType[@name='NDBTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "ndb_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:NDBTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "ndb_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NDBTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7170,6 +7764,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SDFTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "sdf_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SDFTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "sdf_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SDFTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7186,6 +7789,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationStationTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "special_navigation_station_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SpecialNavigationStationTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "special_navigation_station_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationStationTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7210,6 +7822,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationSystemTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "special_navigation_system_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SpecialNavigationSystemTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "special_navigation_system_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7226,6 +7847,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TACANTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "tacan_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TACANTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "tacan_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TACANTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7242,6 +7872,15 @@
     <jaxb:bindings node="//xs:complexType[@name='VORTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "vor_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:VORTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "vor_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VORTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7258,6 +7897,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AngleIndicationTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "angle_indication_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AngleIndicationTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "angle_indication_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AngleIndicationTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7282,6 +7930,15 @@
     <jaxb:bindings node="//xs:complexType[@name='DistanceIndicationTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "distance_indication_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:DistanceIndicationTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "distance_indication_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DistanceIndicationTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7330,6 +7987,15 @@
     <jaxb:bindings node="//xs:complexType[@name='DesignatedPointTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "designated_point_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:DesignatedPointTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "designated_point_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DesignatedPointTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7346,6 +8012,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SignificantPointInAirspaceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "significant_point_in_airspace_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SignificantPointInAirspaceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "significant_point_in_airspace_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SignificantPointInAirspaceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7362,6 +8037,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AeronauticalGroundLightTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aeronautical_ground_light_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AeronauticalGroundLightTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "aeronautical_ground_light_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AeronauticalGroundLightTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7394,6 +8078,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ObstacleAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "obstacle_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ObstacleAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "obstacle_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ObstacleAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7410,6 +8103,15 @@
     <jaxb:bindings node="//xs:complexType[@name='VerticalStructureTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "vertical_structure_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:VerticalStructureTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "vertical_structure_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VerticalStructureTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7442,6 +8144,15 @@
     <jaxb:bindings node="//xs:complexType[@name='OrganisationAuthorityTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "organisation_authority_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:OrganisationAuthorityTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "organisation_authority_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='OrganisationAuthorityTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7466,6 +8177,15 @@
     <jaxb:bindings node="//xs:complexType[@name='UnitTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "unit_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:UnitTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "unit_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='UnitTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7538,6 +8258,15 @@
     <jaxb:bindings node="//xs:complexType[@name='InstrumentApproachProcedureTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "instrument_approach_procedure_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:InstrumentApproachProcedureTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "instrument_approach_procedure_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InstrumentApproachProcedureTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7562,6 +8291,15 @@
     <jaxb:bindings node="//xs:complexType[@name='TerminalArrivalAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "terminal_arrival_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:TerminalArrivalAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "terminal_arrival_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TerminalArrivalAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7594,6 +8332,15 @@
     <jaxb:bindings node="//xs:complexType[@name='CirclingAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "circling_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:CirclingAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "circling_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CirclingAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7642,6 +8389,15 @@
     <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentArrivalTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standard_instrument_arrival_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:StandardInstrumentArrivalTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "standard_instrument_arrival_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentArrivalTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7666,6 +8422,15 @@
     <jaxb:bindings node="//xs:complexType[@name='NavigationAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "navigation_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:NavigationAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "navigation_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavigationAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7698,6 +8463,15 @@
     <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentDepartureTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standard_instrument_departure_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:StandardInstrumentDepartureTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "standard_instrument_departure_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentDepartureTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7714,6 +8488,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SafeAltitudeAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "safe_altitude_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SafeAltitudeAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "safe_altitude_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SafeAltitudeAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7746,6 +8529,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ArrivalFeederLegTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "arrival_feeder_leg_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ArrivalFeederLegTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "arrival_feeder_leg_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrivalFeederLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7762,6 +8554,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ArrivalLegTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "arrival_leg_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ArrivalLegTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "arrival_leg_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrivalLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7778,6 +8579,15 @@
     <jaxb:bindings node="//xs:complexType[@name='DepartureLegTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "departure_leg_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:DepartureLegTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "departure_leg_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DepartureLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7794,6 +8604,15 @@
     <jaxb:bindings node="//xs:complexType[@name='FinalLegTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "final_leg_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:FinalLegTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "final_leg_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FinalLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7818,6 +8637,15 @@
     <jaxb:bindings node="//xs:complexType[@name='InitialLegTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "initial_leg_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:InitialLegTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "initial_leg_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InitialLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7834,6 +8662,15 @@
     <jaxb:bindings node="//xs:complexType[@name='IntermediateLegTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "intermediate_leg_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:IntermediateLegTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "intermediate_leg_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='IntermediateLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7858,6 +8695,15 @@
     <jaxb:bindings node="//xs:complexType[@name='MissedApproachLegTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "missed_approach_leg_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:MissedApproachLegTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "missed_approach_leg_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MissedApproachLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7874,6 +8720,15 @@
     <jaxb:bindings node="//xs:complexType[@name='NavigationAreaRestrictionTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "navigation_area_restriction_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:NavigationAreaRestrictionTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "navigation_area_restriction_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavigationAreaRestrictionTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7898,6 +8753,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ProcedureDMETimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "procedure_dme_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ProcedureDMETimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "procedure_dme_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ProcedureDMETimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7946,6 +8810,15 @@
     <jaxb:bindings node="//xs:complexType[@name='ChangeOverPointTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "change_over_point_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:ChangeOverPointTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "change_over_point_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ChangeOverPointTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7962,6 +8835,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RouteTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "route_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RouteTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "route_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -7986,6 +8868,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RouteDMETimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "route_dme_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RouteDMETimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "route_dme_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteDMETimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8010,6 +8901,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RouteSegmentTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "route_segment_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RouteSegmentTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "route_segment_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteSegmentTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8026,6 +8926,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AirspaceBorderCrossingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airspace_border_crossing_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AirspaceBorderCrossingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "airspace_border_crossing_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirspaceBorderCrossingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8090,6 +8999,15 @@
     <jaxb:bindings node="//xs:complexType[@name='FlightRestrictionTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "flight_restriction_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:FlightRestrictionTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "flight_restriction_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FlightRestrictionTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8130,6 +9048,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RulesProceduresTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "rules_procedures_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RulesProceduresTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "rules_procedures_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RulesProceduresTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8146,6 +9073,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AircraftGroundServiceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aircraft_ground_service_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AircraftGroundServiceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "aircraft_ground_service_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftGroundServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8162,6 +9098,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AirportClearanceServiceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_clearance_service_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AirportClearanceServiceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "airport_clearance_service_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportClearanceServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8186,6 +9131,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AirportSuppliesServiceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airport_supplies_service_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AirportSuppliesServiceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "airport_supplies_service_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportSuppliesServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8202,6 +9156,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AirTrafficControlServiceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "air_traffic_control_service_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AirTrafficControlServiceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "air_traffic_control_service_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirTrafficControlServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8218,6 +9181,15 @@
     <jaxb:bindings node="//xs:complexType[@name='AirTrafficManagementServiceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "air_traffic_management_service_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:AirTrafficManagementServiceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "air_traffic_management_service_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirTrafficManagementServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8242,6 +9214,15 @@
     <jaxb:bindings node="//xs:complexType[@name='FireFightingServiceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "fire_fighting_service_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:FireFightingServiceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "fire_fighting_service_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FireFightingServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8266,6 +9247,15 @@
     <jaxb:bindings node="//xs:complexType[@name='GroundTrafficControlServiceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "ground_traffic_control_service_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:GroundTrafficControlServiceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "ground_traffic_control_service_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GroundTrafficControlServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8282,6 +9272,15 @@
     <jaxb:bindings node="//xs:complexType[@name='InformationServiceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "information_service_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:InformationServiceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "information_service_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InformationServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8322,6 +9321,15 @@
     <jaxb:bindings node="//xs:complexType[@name='PassengerServiceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "passenger_service_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:PassengerServiceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "passenger_service_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PassengerServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8338,6 +9346,15 @@
     <jaxb:bindings node="//xs:complexType[@name='PilotControlledLightingTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "pilot_controlled_lighting_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:PilotControlledLightingTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "pilot_controlled_lighting_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PilotControlledLightingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8354,6 +9371,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RadioCommunicationChannelTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "radio_communication_channel_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RadioCommunicationChannelTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "radio_communication_channel_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadioCommunicationChannelTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8378,6 +9404,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SearchRescueServiceTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "search_rescue_service_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SearchRescueServiceTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "search_rescue_service_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SearchRescueServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8506,6 +9541,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RadioFrequencyAreaTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "radio_frequency_area_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RadioFrequencyAreaTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "radio_frequency_area_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadioFrequencyAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8530,6 +9574,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SpecialDateTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "special_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SpecialDateTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "special_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialDateTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8562,6 +9615,15 @@
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelColumnTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standard_level_column_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:StandardLevelColumnTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "standard_level_column_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelColumnTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8578,6 +9640,15 @@
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelSectorTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standard_level_sector_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:StandardLevelSectorTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "standard_level_sector_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelSectorTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8594,6 +9665,15 @@
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelTableTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standard_level_table_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:StandardLevelTableTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "standard_level_table_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelTableTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8618,6 +9698,15 @@
     <jaxb:bindings node="//xs:complexType[@name='HoldingAssessmentTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "holding_assessment_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:HoldingAssessmentTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "holding_assessment_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='HoldingAssessmentTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8658,6 +9747,15 @@
     <jaxb:bindings node="//xs:complexType[@name='PrecisionApproachRadarTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "precision_approach_radar_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:PrecisionApproachRadarTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "precision_approach_radar_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PrecisionApproachRadarTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8674,6 +9772,15 @@
     <jaxb:bindings node="//xs:complexType[@name='PrimarySurveillanceRadarTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "primary_surveillance_radar_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:PrimarySurveillanceRadarTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "primary_surveillance_radar_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PrimarySurveillanceRadarTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8706,6 +9813,15 @@
     <jaxb:bindings node="//xs:complexType[@name='RadarSystemTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "radar_system_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:RadarSystemTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "radar_system_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadarSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8730,6 +9846,15 @@
     <jaxb:bindings node="//xs:complexType[@name='SecondarySurveillanceRadarTimeSlicePropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "secondary_surveillance_radar_slice_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='aixm:SecondarySurveillanceRadarTimeSlice']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "secondary_surveillance_radar_slice", nullable = True, unique = False)</annox:annotate>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SecondarySurveillanceRadarTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -8881,6 +10006,12 @@
     <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMPropertyType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "abstract_aixm_property", schema = "public")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='dbid']">
+        <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "dbid", nullable = False, unique = False)</annox:annotate>
+        <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+      </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AbstractAIXMTimeSliceBaseType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
