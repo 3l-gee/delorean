@@ -236,20 +236,39 @@ class Machinery:
 
         return res
     
-    def generate_cardinality(self, parent, element):
-        nillable = element.attrib.get("nillable")
-        minOccurs = element.attrib.get("minOccurs")
-        maxOccurs = element.attrib.get("maxOccurs")
-        parent_type = parent.tag
+    def generate_cardinality(self, parent, element, embed):
+        res = []
+        nillable = element.attrib.get("nillable", "false").lower() == "true"
+        minOccurs = int(element.attrib.get("minOccurs", "1"))
+        maxOccurs = element.attrib.get("maxOccurs", "1")  # Default is 1
 
-        if nillable :
-            pass
+        if maxOccurs.lower() == "unbounded":
+            maxOccurs = "unbounded"
+        else:
+            maxOccurs = int(maxOccurs)
 
-        if maxOccurs != 1 :
-            print("unbounded : unbounded")
-        
+        if maxOccurs == "unbounded":
+            res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_many()))
+            res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))))
+
         if maxOccurs == 1:
-            print("maxOccurs : 1")
+            if element.attrib.get("name",element.attrib.get("ref")) in embed:
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_one()))
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))))
+            else:
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_one()))
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))))
+            
+
+        elif minOccurs == maxOccurs_value:
+            print(f"Cardinality: exactly {minOccurs}")
+        else:
+            print(f"Cardinality: {minOccurs}..{maxOccurs_value}")
+
+        # Handle nillable if needed
+        if nillable:
+            print("Note: Element is nillable (can be explicitly nil).")
+
         
 
     def generate_xjb(self):
@@ -261,8 +280,8 @@ class Machinery:
             self.xjb[key]["auto"]["default"].extend(
                 self.generate_complex_types(value["complex_type"]["type"], self.config.embed, self.config.abstract))
             
-        for key, value in self.content.items() :
-            self.xjb[key]["auto"]["default"].extend()
+        # for key, value in self.content.items() :
+        #     self.xjb[key]["auto"]["default"].extend("<!-- section : groupe -->")
     
     def generate_simple_types(self, type, graph, transposition):
         res = []
@@ -327,10 +346,6 @@ class Machinery:
                 continue
 
             #Class writer
-            res.append(Annotation.Jaxb.group(element.attrib["name"]))
-            res.extend(self.class_writer(element, embed, abstract))
-
-
 
     def field_writer(self, parent, embed, abstract):
         node = []
@@ -359,9 +374,41 @@ class Machinery:
 
 
         #sequence flow
-        # sequence = parent.find(Annotation.Tag.sequence) or None
-        # if sequence is not None:
-        #     element = sequence.findall(Annotation.Tag.element, Annotation.Tag.namespaces) or None
+        sequence = parent.find(Annotation.Tag.sequence) or None
+        if sequence is not None:
+            element_list = sequence.findall(Annotation.Tag.element, Annotation.Tag.namespaces) or []
+            attribute_list = sequence.findall(Annotation.Tag.attribute, Annotation.Tag.namespaces) or []
+
+            for element in element_list:
+                if element.attrib.get("ref") is not None:
+                    node.append(Annotation.Jaxb.element(element.attrib["ref"]))
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["ref"], True)))
+                    node.append(Annotation.Jaxb.end)
+
+                if element.attrib.get("name") is not None:
+                    node.append(Annotation.Jaxb.element(element.attrib["name"]))
+                    if element.attrib.get("name") == "dbid":
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.id))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.generated_value()))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], False, False)))
+                        node.append(Annotation.Annox.field_add(Annotation.Xml.transient))
+                        node.append(Annotation.Jaxb.end)
+                    else :
+                        node.append(Annotation.Jaxb.element(element.attrib["name"]))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                        node.append(Annotation.Jaxb.end)
+
+            for attribute in attribute_list:
+                if attribute.attrib.get("name") is not None:
+                    node.append(Annotation.Jaxb.attribute(attribute.attrib["name"]))
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(attribute.attrib["name"], True)))
+                    node.append(Annotation.Jaxb.end)
+                if attribute.attrib.get("ref") is not None:
+                    node.append(Annotation.Jaxb.attribute(attribute.attrib["ref"]))
+                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(attribute.attrib["ref"], True)))
+                    node.append(Annotation.Jaxb.end)
+                else : 
+                    print(attribute.attrib)
 
 
         #complexContent flow
@@ -380,8 +427,15 @@ class Machinery:
 
                 for element in element_list:
                     node.append(Annotation.Jaxb.element(element.attrib["name"]))
-                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
-                    node.append(Annotation.Jaxb.end)
+                    if element.attrib.get("name") == "dbid":
+                        node.append(Annotation.Jaxb.field_add(Annotation.Jpa.id))
+                        node.append(Annotation.Jaxb.field_add(Annotation.Jpa.generated_value))
+                        node.append(Annotation.Jaxb.field_add(Annotation.Jpa.column(element.attrib["name"], False, False)))
+                        node.append(Annotation.Jaxb.field_add(Annotation.Xml.transient))
+                    else :
+                        node.append(Annotation.Jaxb.element(element.attrib["name"]))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                        node.append(Annotation.Jaxb.end)
             
             if restriction is not None:
                 attribute_list = restriction.findall(Annotation.Tag.attribute)
@@ -400,29 +454,16 @@ class Machinery:
 
                 for element in element_list:
                     node.append(Annotation.Jaxb.element(element.attrib["name"]))
-                    node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
-                    node.append(Annotation.Jaxb.end)
-
+                    if element.attrib.get("name") == "dbid":
+                        node.append(Annotation.Jaxb.field_add(Annotation.Jpa.id))
+                        node.append(Annotation.Jaxb.field_add(Annotation.Jpa.generated_value))
+                        node.append(Annotation.Jaxb.field_add(Annotation.Jpa.column(element.attrib["name"], False, False)))
+                        node.append(Annotation.Jaxb.field_add(Annotation.Xml.transient))
+                    else :
+                        node.append(Annotation.Jaxb.element(element.attrib["name"]))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                        node.append(Annotation.Jaxb.end)
         return node
-
-
-        # element = parent.find(".//xs:"+ Annotation.Tag.element, Annotation.Tag.namespaces) or None
-        # attrribute = parent.find(".//xs:"+ Annotation.Tag.attribute, Annotation.Tag.namespaces) or None
-        # if element is not None:
-        #     for child in element:
-        #         if child.attrib["name"] in self.config.ignore:
-        #             continue
-        #         node = [Annotation.Jaxb.element(child.attrib["name"])]
-        #         node.append(Annotation.Annox.field_add(Annotation.Jpa.column(child.attrib["name"], True)))
-        #         node.append(Annotation.Jaxb.end)
-
-        # if attrribute is not None:
-        #     for child in attrribute:
-        #         if child.attrib["name"] in self.config.ignore:
-        #             continue
-        #         node = [Annotation.Jaxb.attribute(child.attrib["name"])]
-        #         node.append(Annotation.Annox.field_add(Annotation.Jpa.column(child.attrib["name"], True)))
-        #         node.append(Annotation.Jaxb.end)
 
     def class_writer(self, element, embed, asbtract):
         node = []
