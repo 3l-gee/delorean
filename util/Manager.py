@@ -44,3 +44,4 @@ message = {
 }
 
 machinery = Machinery.runner(config, [data_types, feature, abstract, message])
+# machinery = Machinery.runner(config, [message])
