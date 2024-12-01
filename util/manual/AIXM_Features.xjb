@@ -18,7 +18,9 @@
                 <xjc:noValidatingUnmarshaller />
             </jaxb:globalBindings>
             <jaxb:bindings node="//xs:complexType[@name='PointPropertyType']">
-                <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+                <!-- <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate> -->
+                <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+                <annox:annotate target="class">@jakarta.persistence.Table(name = "point", schema = "public")</annox:annotate>
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "PointPropertyType", propOrder = {"point"})</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="//xs:complexType[@name='PointPropertyType']//xs:element[@name='point']">
@@ -29,7 +31,9 @@
                 <jaxb:property name="point"/>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='ElevatedPointPropertyType']">
-                <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+                <!-- <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate> -->
+                <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+                <annox:annotate target="class">@jakarta.persistence.Table(name = "elevated_point", schema = "public")</annox:annotate>
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "ElevatedPointPropertyType", propOrder = {"elevatedPoint"})</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='ElevatedPointPropertyType']//xs:element[@name='point']">
@@ -40,7 +44,9 @@
                 <jaxb:property name="elevatedPoint"/>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='CurvePropertyType']">
-                <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+                <!-- <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate> -->
+                <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+                <annox:annotate target="class">@jakarta.persistence.Table(name = "curve", schema = "public")</annox:annotate>
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "CurvePropertyType", propOrder = {"curve"})</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='CurvePropertyType']//xs:element[@name='curve']">
@@ -51,7 +57,9 @@
                 <jaxb:property name="curve"/>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='ElevatedCurvePropertyType']">
-                <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+                <!-- <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate> -->
+                <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+                <annox:annotate target="class">@jakarta.persistence.Table(name = "elevated_curve", schema = "public")</annox:annotate>
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "ElevatedCurvePropertyType", propOrder = {"elevatedCurve"})</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='ElevatedCurvePropertyType']//xs:element[@name='curve']">
@@ -62,7 +70,9 @@
                 <jaxb:property name="elevatedCurve"/>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='SurfacePropertyType']">
-                <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+                <!-- <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate> -->
+                <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+                <annox:annotate target="class">@jakarta.persistence.Table(name = "surface", schema = "public")</annox:annotate>
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "SurfacePropertyType", propOrder = {"surface"})</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='SurfacePropertyType']//xs:element[@name='surface']">
@@ -73,7 +83,9 @@
                 <jaxb:property name="surface"/>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='ElevatedSurfacePropertyType']">
-                <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+                <!-- <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate> -->
+                <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+                <annox:annotate target="class">@jakarta.persistence.Table(name = "elevated_surface", schema = "public")</annox:annotate>
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "ElevatedSurfacePropertyType", propOrder = {"elevatedSurface"})</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='ElevatedSurfacePropertyType']//xs:element[@name='surface']">
