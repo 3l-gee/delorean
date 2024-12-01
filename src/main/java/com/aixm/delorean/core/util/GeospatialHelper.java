@@ -155,11 +155,16 @@ public class GeospatialHelper {
 
     public static AixmElevatedGeometryType parseElevatedGeometry(AixmElevatedGeometryType target,
         String id,
-        JAXBElement<ValDistanceType> horizontalElement,
-        JAXBElement<ValDistanceType> verticalElement,
-        JAXBElement<ValDistanceVerticalType> elevationElement,
-        JAXBElement<ValDistanceSignedType> geoidElement,
-        JAXBElement<CodeVerticalDatumType> verticalDatumElement) {
+        ValDistanceType horizontalElement,
+        ValDistanceType verticalElement,
+        ValDistanceVerticalType elevationElement,
+        ValDistanceSignedType geoidElement,
+        CodeVerticalDatumType verticalDatumElement) {
+        // JAXBElement<ValDistanceType> horizontalElement,
+        // JAXBElement<ValDistanceType> verticalElement,
+        // JAXBElement<ValDistanceVerticalType> elevationElement,
+        // JAXBElement<ValDistanceSignedType> geoidElement,
+        // JAXBElement<CodeVerticalDatumType> verticalDatumElement) {
 
         if (id != null) {
             target.setId(id);
@@ -167,52 +172,70 @@ public class GeospatialHelper {
 
         // Handle Horizontal Accuracy
         if (horizontalElement != null) {
-            ValDistanceType valDistanceHorizontalAccuracy = horizontalElement.getValue();
-            target.setHorizontalAccuracy(valDistanceHorizontalAccuracy.getValue());
-            target.setHorizontalAccuracy_uom(valDistanceHorizontalAccuracy.getUom());
-            target.setHorizontalAccuracy_nilReason(valDistanceHorizontalAccuracy.getNilReason());
+            // ValDistanceType valDistanceHorizontalAccuracy = horizontalElement.getValue();
+            // target.setHorizontalAccuracy(valDistanceHorizontalAccuracy.getValue());
+            // target.setHorizontalAccuracy_uom(valDistanceHorizontalAccuracy.getUom());
+            // target.setHorizontalAccuracy_nilReason(valDistanceHorizontalAccuracy.getNilReason());
+            target.setHorizontalAccuracy(horizontalElement.getValue());
+            target.setHorizontalAccuracy_uom(horizontalElement.getUom());
+            target.setHorizontalAccuracy_nilReason(horizontalElement.getNilReason());
         }
         
         // Handle Vertical Accuracy
         if (verticalElement != null) {
-            ValDistanceType valDistanceVerticalAccuracy = verticalElement.getValue();
-            target.setVerticalAccuracy(valDistanceVerticalAccuracy.getValue());
-            target.setVerticalAccuracy_uom(valDistanceVerticalAccuracy.getUom());
-            target.setVerticalAccuracy_nilReason(valDistanceVerticalAccuracy.getNilReason());
+            // ValDistanceType valDistanceVerticalAccuracy = verticalElement.getValue();
+            // target.setVerticalAccuracy(valDistanceVerticalAccuracy.getValue());
+            // target.setVerticalAccuracy_uom(valDistanceVerticalAccuracy.getUom());
+            // target.setVerticalAccuracy_nilReason(valDistanceVerticalAccuracy.getNilReason());
+            target.setVerticalAccuracy(verticalElement.getValue());
+            target.setVerticalAccuracy_uom(verticalElement.getUom());
+            target.setVerticalAccuracy_nilReason(verticalElement.getNilReason());
         }
         
         // Handle Elevation
         if (elevationElement != null) {
-            ValDistanceVerticalType valDistanceVertical = elevationElement.getValue();
-            target.setElevation(valDistanceVertical.getValue() != null 
-                ? new BigDecimal(valDistanceVertical.getValue()) 
+            // ValDistanceVerticalType valDistanceVertical = elevationElement.getValue();
+            // target.setElevation(valDistanceVertical.getValue() != null 
+            //     ? new BigDecimal(valDistanceVertical.getValue()) 
+            //     : BigDecimal.ZERO);
+            // target.setElevation_uom(valDistanceVertical.getUom());
+            // target.setElevation_nilReason(valDistanceVertical.getNilReason());
+            target.setElevation(elevationElement.getValue() != null 
+                ? new BigDecimal(elevationElement.getValue()) 
                 : BigDecimal.ZERO);
-            target.setElevation_uom(valDistanceVertical.getUom());
-            target.setElevation_nilReason(valDistanceVertical.getNilReason());
+            target.setElevation_uom(elevationElement.getUom());
+            target.setElevation_nilReason(elevationElement.getNilReason());
         }
         
         // Handle Geoid Undulation
         if (geoidElement != null) {
-            ValDistanceSignedType valDistanceSigned = geoidElement.getValue();
-            target.setGeoidUndulation(valDistanceSigned.getValue());
-            target.setGeoidUndulation_uom(valDistanceSigned.getUom());
-            target.setGeoidUndulation_nilReason(valDistanceSigned.getNilReason());
+            // ValDistanceSignedType valDistanceSigned = geoidElement.getValue();
+            // target.setGeoidUndulation(valDistanceSigned.getValue());
+            // target.setGeoidUndulation_uom(valDistanceSigned.getUom());
+            // target.setGeoidUndulation_nilReason(valDistanceSigned.getNilReason());
+            target.setGeoidUndulation(geoidElement.getValue());
+            target.setGeoidUndulation_uom(geoidElement.getUom());
+            target.setGeoidUndulation_nilReason(geoidElement.getNilReason());
         }
         
         // Handle Vertical Datum
         if (verticalDatumElement != null) {
-            CodeVerticalDatumType codeVerticalDatum = verticalDatumElement.getValue();
-            target.setVerticalDatum(codeVerticalDatum.getValue());
-            target.setVerticalDatum_nilReason(codeVerticalDatum.getNilReason());
+            // CodeVerticalDatumType codeVerticalDatum = verticalDatumElement.getValue();
+            // target.setVerticalDatum(codeVerticalDatum.getValue());
+            // target.setVerticalDatum_nilReason(codeVerticalDatum.getNilReason());
+            target.setVerticalDatum(verticalDatumElement.getValue());
+            target.setVerticalDatum_nilReason(verticalDatumElement.getNilReason());
         }
 
         return target;  
     }
 
 
-    public static AixmGeometryType parseGeometry(AixmGeometryType target,
+    public static AixmGeometryType parseGeometry(
+        AixmGeometryType target,
         String id,
-        JAXBElement<ValDistanceType> horizontalElement) {
+        ValDistanceType horizontalElement) {
+        // JAXBElement<ValDistanceType> horizontalElement) {
 
         if (id != null) {
             target.setId(id);
@@ -220,10 +243,13 @@ public class GeospatialHelper {
 
         // Handle Horizontal Accuracy
         if (horizontalElement != null) {
-            ValDistanceType valDistanceHorizontalAccuracy = horizontalElement.getValue();
-            target.setHorizontalAccuracy(valDistanceHorizontalAccuracy.getValue());
-            target.setHorizontalAccuracy_uom(valDistanceHorizontalAccuracy.getUom());
-            target.setHorizontalAccuracy_nilReason(valDistanceHorizontalAccuracy.getNilReason());
+            // ValDistanceType valDistanceHorizontalAccuracy = horizontalElement.getValue();
+            // target.setHorizontalAccuracy(valDistanceHorizontalAccuracy.getValue());
+            // target.setHorizontalAccuracy_uom(valDistanceHorizontalAccuracy.getUom());
+            // target.setHorizontalAccuracy_nilReason(valDistanceHorizontalAccuracy.getNilReason());
+            target.setHorizontalAccuracy(horizontalElement.getValue());
+            target.setHorizontalAccuracy_uom(horizontalElement.getUom());
+            target.setHorizontalAccuracy_nilReason(horizontalElement.getNilReason());
         }
         
         return target;  
@@ -307,7 +333,7 @@ public class GeospatialHelper {
         if (value.getHorizontalAccuracy() == null) {
             horizontalAccuracy.setNil(true);
         }
-        point.setHorizontalAccuracy(horizontalAccuracy);
+        // point.setHorizontalAccuracy(horizontalAccuracy);
 
         return point;
     }
@@ -351,7 +377,7 @@ public class GeospatialHelper {
         if (value.getHorizontalAccuracy() == null) {
             horizontalAccuracy.setNil(true);
         }
-        point.setHorizontalAccuracy(horizontalAccuracy);
+        // point.setHorizontalAccuracy(horizontalAccuracy);
 
         ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
         valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
@@ -361,7 +387,7 @@ public class GeospatialHelper {
         if (value.getElevation() == null) {
             elevation.setNil(true);
         }
-        point.setElevation(elevation);
+        // point.setElevation(elevation);
 
         ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
         valDistanceSigned.setValue(value.getGeoidUndulation());
@@ -371,7 +397,7 @@ public class GeospatialHelper {
         if (value.getGeoidUndulation() == null) {
             geoidUndulation.setNil(true);
         }
-        point.setGeoidUndulation(geoidUndulation);
+        // point.setGeoidUndulation(geoidUndulation);
 
         CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
         codeVerticalDatum.setValue(value.getVerticalDatum());
@@ -380,7 +406,7 @@ public class GeospatialHelper {
         if (value.getVerticalDatum() == null) {
             verticalDatum.setNil(true);
         }
-        point.setVerticalDatum(verticalDatum);
+        // point.setVerticalDatum(verticalDatum);
 
         ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
         valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
@@ -390,7 +416,7 @@ public class GeospatialHelper {
         if (value.getVerticalAccuracy() == null) {
             verticalAccuracy.setNil(true);
         }
-        point.setVerticalAccuracy(verticalAccuracy);
+        // point.setVerticalAccuracy(verticalAccuracy);
 
         return point;
     }
@@ -509,7 +535,7 @@ public class GeospatialHelper {
         if (value.getHorizontalAccuracy() == null) {
             horizontalAccuracy.setNil(true);
         }
-        curve.setHorizontalAccuracy(horizontalAccuracy);
+        // curve.setHorizontalAccuracy(horizontalAccuracy);
 
         return curve;
     }
@@ -563,7 +589,7 @@ public class GeospatialHelper {
         if (value.getHorizontalAccuracy() == null) {
             horizontalAccuracy.setNil(true);
         }
-        curve.setHorizontalAccuracy(horizontalAccuracy);
+        // curve.setHorizontalAccuracy(horizontalAccuracy);
 
         ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
         valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
@@ -573,7 +599,7 @@ public class GeospatialHelper {
         if (value.getElevation() == null) {
             elevation.setNil(true);
         }
-        curve.setElevation(elevation);
+        // curve.setElevation(elevation);
 
         ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
         valDistanceSigned.setValue(value.getGeoidUndulation());
@@ -583,7 +609,7 @@ public class GeospatialHelper {
         if (value.getGeoidUndulation() == null) {
             geoidUndulation.setNil(true);
         }
-        curve.setGeoidUndulation(geoidUndulation);
+        // curve.setGeoidUndulation(geoidUndulation);
 
         CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
         codeVerticalDatum.setValue(value.getVerticalDatum());
@@ -592,7 +618,7 @@ public class GeospatialHelper {
         if (value.getVerticalDatum() == null) {
             verticalDatum.setNil(true);
         }
-        curve.setVerticalDatum(verticalDatum);
+        // curve.setVerticalDatum(verticalDatum);
 
         ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
         valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
@@ -602,7 +628,7 @@ public class GeospatialHelper {
         if (value.getVerticalAccuracy() == null) {
             verticalAccuracy.setNil(true);
         }
-        curve.setVerticalAccuracy(verticalAccuracy);
+        // curve.setVerticalAccuracy(verticalAccuracy);
         
         return curve;
     }
@@ -774,7 +800,7 @@ public class GeospatialHelper {
         if (value.getHorizontalAccuracy() == null) {
             horizontalAccuracy.setNil(true);
         }
-        surface.setHorizontalAccuracy(horizontalAccuracy);
+        // surface.setHorizontalAccuracy(horizontalAccuracy);
 
         return surface;
     }
@@ -829,7 +855,7 @@ public class GeospatialHelper {
         if (value.getHorizontalAccuracy() == null) {
             horizontalAccuracy.setNil(true);
         }
-        surface.setHorizontalAccuracy(horizontalAccuracy);
+        // surface.setHorizontalAccuracy(horizontalAccuracy);
 
         ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
         valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
@@ -839,7 +865,7 @@ public class GeospatialHelper {
         if (value.getElevation() == null) {
             elevation.setNil(true);
         }
-        surface.setElevation(elevation);
+        // surface.setElevation(elevation);
 
         ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
         valDistanceSigned.setValue(value.getGeoidUndulation());
@@ -849,7 +875,7 @@ public class GeospatialHelper {
         if (value.getGeoidUndulation() == null) {
             geoidUndulation.setNil(true);
         }
-        surface.setGeoidUndulation(geoidUndulation);
+        // surface.setGeoidUndulation(geoidUndulation);
 
         CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
         codeVerticalDatum.setValue(value.getVerticalDatum());
@@ -858,7 +884,7 @@ public class GeospatialHelper {
         if (value.getVerticalDatum() == null) {
             verticalDatum.setNil(true);
         }
-        surface.setVerticalDatum(verticalDatum);
+        // surface.setVerticalDatum(verticalDatum);
 
         ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
         valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
@@ -868,7 +894,7 @@ public class GeospatialHelper {
         if (value.getVerticalAccuracy() == null) {
             verticalAccuracy.setNil(true);
         }
-        surface.setVerticalAccuracy(verticalAccuracy);
+        // surface.setVerticalAccuracy(verticalAccuracy);
 
         return surface;
     }

@@ -9,9 +9,6 @@
 	xmlns:annox="urn:jaxb.jvnet.org:annox"
     jaxb:extensionBindingPrefixes="xjc annox">
 	<jaxb:bindings schemaLocation="AIXM_BasicMessage.xsd" node="/xs:schema">
-		<jaxb:schemaBindings>
-			<jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.aixm.message.HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"/>
-		</jaxb:schemaBindings>
         <jaxb:bindings node="manual">
             <jaxb:bindings node="xs:complexType[@name='AIXMBasicMessageType']">
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement</annox:annotate>

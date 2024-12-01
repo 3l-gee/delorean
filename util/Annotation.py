@@ -1,4 +1,10 @@
 import re
+from enum import Enum
+
+class Xpath(Enum):
+    RELATIVE= "/xs:"
+    ABSOLUTE= "xs:"
+    GLOBAL =  "//xs:"
 
 class Util:
     @staticmethod
@@ -17,6 +23,11 @@ class Util:
 
         return result
     
+    @staticmethod
+    def bool_str(value):
+        return str(value).lower()
+    
+
 class Property:
     name = '<jaxb:property name="aixmName"/>'
     element = '<jaxb:property generateElementProperty="false"/>'
@@ -34,24 +45,32 @@ class Jaxb:
         return f'''<jaxb:package name="{value}" />'''
 
     @staticmethod
-    def simple(value, at="name"):
-        return f'''<jaxb:bindings node="//xs:simpleType[@{at}='{value}']">'''
+    def simple(value, xpath = Xpath.GLOBAL.value, at="name", ):
+        return f'''<jaxb:bindings node="{xpath}simpleType[@{at}='{value}']">'''
     
     @staticmethod
-    def complex(value, at="name"):
-        return f'''<jaxb:bindings node="//xs:complexType[@{at}='{value}']">'''
+    def complex(value, xpath = Xpath.GLOBAL.value, at="name"):
+        return f'''<jaxb:bindings node="{xpath}complexType[@{at}='{value}']">'''
+    
+    @staticmethod
+    def complex_xpath(value, xpath = Xpath.GLOBAL.value, at="name"):
+        return f'''{xpath}complexType[@{at}='{value}']'''
 
     @staticmethod
-    def group(value, at="name"):
-        return f'''<jaxb:bindings node="//xs:group[@{at}='{value}']">'''
+    def group(value, xpath = Xpath.GLOBAL.value, at="name"):
+        return f'''<jaxb:bindings node="{xpath}group[@{at}='{value}']">'''
+    
+    @staticmethod
+    def group_xpath(value, xpath = Xpath.GLOBAL.value, at="name"):
+        return f'''{xpath}group[@{at}='{value}']'''
+    
+    @staticmethod
+    def element(value, parent="", xpath = Xpath.GLOBAL.value, at="name"):
+        return f'''<jaxb:bindings node="{parent}{xpath}element[@{at}='{value}']">'''
 
     @staticmethod
-    def element(value, at="name"):
-        return f'''<jaxb:bindings node="//xs:element[@{at}='{value}']">'''
-
-    @staticmethod
-    def attribute(value, at="name"):
-        return f'''<jaxb:bindings node="//xs:attribute[@{at}='{value}']">'''
+    def attribute(value, parent="", xpath = Xpath.GLOBAL.value, at="name"):
+        return f'''<jaxb:bindings node="{parent}{xpath}attribute[@{at}='{value}']">'''
 
     @staticmethod
     def enum_start(value):
@@ -166,7 +185,29 @@ class Constraint:
         
     @staticmethod
     def pattern(value, message=""):
-        escaped_value = value.replace('"', '&quot;').replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        """
+        Escapes special characters in the provided value and returns a formatted Jakarta Persistence Pattern annotation.
+        
+        Args:
+            value (str): The regular expression value to escape and embed in the annotation.
+            message (str, optional): The validation message for the annotation. Default is an empty string.
+            
+        Returns:
+            str: The formatted annotation string with escaped values.
+        """
+        if not value:
+            raise ValueError("The 'value' parameter cannot be empty or None.")
+
+        # Escape special characters for XML and Java
+        escaped_value = (
+            value.replace("\\", "\\\\")  # Escape backslashes for Java
+                 .replace('"', '&quot;')  # Escape double quotes for XML
+                 .replace('&', '&amp;')   # Escape ampersands for XML
+                 .replace('<', '&lt;')    # Escape less-than symbols for XML
+                 .replace('>', '&gt;')    # Escape greater-than symbols for XML
+        )
+        
+        # Format the annotation string using f-strings
         return f'@jakarta.persistence.Pattern(regexp = "{escaped_value}", message = "{message}")'
 
 class Relation:
@@ -181,7 +222,7 @@ class Relation:
     
     @staticmethod
     def one_to_one_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=True):   
-        return f'@jakarta.persistence.OneToOne(cascade={cascade}, fetch={fetch}, orphanRemoval={str(orphanRemoval).lower()})'
+        return f'@jakarta.persistence.OneToOne(cascade={cascade}, fetch={fetch}, orphanRemoval={Util.bool_str(orphanRemoval)})'
 
     @staticmethod
     def one_to_many(cascade="CascadeType.ALL", fetch="FetchType.EAGER"):   
@@ -189,7 +230,7 @@ class Relation:
     
     @staticmethod
     def one_to_many_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=True):   
-        return f'@jakarta.persistence.OneToMany(cascade={cascade}, fetch={fetch}, orphanRemoval={str(orphanRemoval).lower()})'
+        return f'@jakarta.persistence.OneToMany(cascade={cascade}, fetch={fetch}, orphanRemoval={Util.bool_str(orphanRemoval)})'
     
     @staticmethod
     def many_to_one(cascade="CascadeType.ALL", fetch="FetchType.EAGER"):  
@@ -197,7 +238,7 @@ class Relation:
 
     @staticmethod
     def many_to_one_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=True):  
-        return f'@jakarta.persistence.ManyToOne(cascade={cascade}, fetch={fetch}, orphanRemoval={str(orphanRemoval).lower()})'
+        return f'@jakarta.persistence.ManyToOne(cascade={cascade}, fetch={fetch}, orphanRemoval={Util.bool_str(orphanRemoval)})'
     
     @staticmethod
     def many_to_many(cascade="CascadeType.ALL", fetch="FetchType.EAGER"):  
@@ -205,11 +246,11 @@ class Relation:
     
     @staticmethod
     def many_to_many_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=True):  
-        return f'@jakarta.persistence.ManyToMany(cascade={cascade}, fetch={fetch}, orphanRemoval={str(orphanRemoval).lower()})'
+        return f'@jakarta.persistence.ManyToMany(cascade={cascade}, fetch={fetch}, orphanRemoval={Util.bool_str(orphanRemoval)})'
     
     @staticmethod
     def join_column(name, referencedColumnName="id"):
-        return f'@jakarta.persistence.JoinColumn(name="{Util.snake_case(name)}_id", referencedColumnName={referencedColumnName})'
+        return f'@jakarta.persistence.JoinColumn(name="{Util.snake_case(name)}_id", referencedColumnName="{referencedColumnName}")'
 
 class Jpa:
     relation = Relation
@@ -222,11 +263,11 @@ class Jpa:
 
     @staticmethod
     def column(name, is_simple_type=False, nullable=True, unique=False):
-        return f'@jakarta.persistence.Column(name = "{Util.snake_case(name, is_simple_type)}", nullable = {nullable}, unique = {unique})'
+        return f'@jakarta.persistence.Column(name = "{Util.snake_case(name, is_simple_type)}", nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
 
     @staticmethod
     def column_with_definition(name, columnDefinition, is_simple_type=False, nullable=True, unique=False):
-        return f'@jakarta.persistence.Column(name = "{Util.snake_case(name, is_simple_type,)}", columnDefinition = "{columnDefinition}", nullable = {nullable}, unique = {unique})'
+        return f'@jakarta.persistence.Column(name = "{Util.snake_case(name, is_simple_type,)}", columnDefinition = "{columnDefinition}", nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
         
     @staticmethod
     def table(name, schema):

@@ -233,6 +233,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="gml:AbstractMetadataPropertyType">
 				<sequence minOccurs="0">
 					<element ref="gmd:MD_Metadata"/>
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -242,6 +244,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="gml:AbstractMetadataPropertyType">
 				<sequence minOccurs="0">
 					<element ref="gmd:MD_Metadata"/>
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -251,6 +255,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="gml:AbstractMetadataPropertyType">
 				<sequence minOccurs="0">
 					<element ref="gmd:MD_Metadata"/>
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>

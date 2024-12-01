@@ -2,8 +2,6 @@ package com.aixm.delorean.core.adapter.type.gis;
 
 import java.math.BigDecimal;
 
-import com.aixm.delorean.core.schema.a5_1_1.aixm.UomDistanceType;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -27,7 +25,7 @@ abstract public class AixmGeometryType {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "horizontalAccuracy_uom")
-    protected UomDistanceType horizontalAccuracy_uom;
+    protected String horizontalAccuracy_uom;
 
     @Column(name = "horizontalAccuracy_nilReason")
     protected String horizontalAccuracy_nilReason;
@@ -48,11 +46,11 @@ abstract public class AixmGeometryType {
         this.horizontalAccuracy = value;
     }
 
-    public UomDistanceType getHorizontalAccuracy_uom() {
+    public String getHorizontalAccuracy_uom() {
         return horizontalAccuracy_uom;
     }
 
-    public void setHorizontalAccuracy_uom(UomDistanceType value) {
+    public void setHorizontalAccuracy_uom(String value) {
         this.horizontalAccuracy_uom = value;
     }
 

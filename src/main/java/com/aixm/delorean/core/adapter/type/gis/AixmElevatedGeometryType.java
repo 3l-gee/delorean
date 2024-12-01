@@ -2,10 +2,6 @@ package com.aixm.delorean.core.adapter.type.gis;
 
 import java.math.BigDecimal;
 
-import com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumBaseType;
-import com.aixm.delorean.core.schema.a5_1_1.aixm.UomDistanceType;
-import com.aixm.delorean.core.schema.a5_1_1.aixm.UomDistanceVerticalType;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -27,7 +23,7 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "elevation_uom")
-    protected UomDistanceVerticalType elevation_uom;
+    protected String elevation_uom;
 
     @Column(name = "eleveation_nilReason")
     protected String elevation_nilReason;
@@ -37,14 +33,14 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "geoidUndulation_uom")
-    protected UomDistanceType geoidUndulation_uom;
+    protected String geoidUndulation_uom;
 
     @Column(name = "geoidUndulation_nilReason")
     protected String geoidUndulation_nilReason;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "verticalDatum_value")
-    protected CodeVerticalDatumBaseType verticalDatum;
+    protected String verticalDatum;
 
     @Column(name = "verticalDatum_nilReason")
     protected String verticalDatum_nilReason;
@@ -54,7 +50,7 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "verticalAccuracy_uom")
-    protected UomDistanceType verticalAccuracy_uom;
+    protected String verticalAccuracy_uom;
 
     @Column(name = "verticalAccuracy_nilReason")
     protected String verticalAccuracy_nilReason;
@@ -67,11 +63,11 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
         this.horizontalAccuracy = value;
     }
 
-    public UomDistanceType getHorizontalAccuracy_uom() {
+    public String getHorizontalAccuracy_uom() {
         return horizontalAccuracy_uom;
     }
 
-    public void setHorizontalAccuracy_uom(UomDistanceType value) {
+    public void setHorizontalAccuracy_uom(String value) {
         this.horizontalAccuracy_uom = value;
     }
 
@@ -91,11 +87,11 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
         this.elevation = value;
     }
 
-    public UomDistanceVerticalType getElevation_uom() {
+    public String getElevation_uom() {
         return elevation_uom;
     }
 
-    public void setElevation_uom(UomDistanceVerticalType value) {
+    public void setElevation_uom(String value) {
         this.elevation_uom = value;
     }
 
@@ -115,11 +111,11 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
         this.geoidUndulation = value;
     }
 
-    public UomDistanceType getGeoidUndulation_uom() {
+    public String getGeoidUndulation_uom() {
         return geoidUndulation_uom;
     }
 
-    public void setGeoidUndulation_uom(UomDistanceType value) {
+    public void setGeoidUndulation_uom(String value) {
         this.geoidUndulation_uom = value;
     }
 
@@ -131,11 +127,11 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
         this.geoidUndulation_nilReason = value;
     }
 
-    public CodeVerticalDatumBaseType getVerticalDatum() {
+    public String getVerticalDatum() {
         return verticalDatum;
     }
 
-    public void setVerticalDatum(CodeVerticalDatumBaseType value) {
+    public void setVerticalDatum(String value) {
         this.verticalDatum = value;
     }
 
@@ -155,11 +151,11 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
         this.verticalAccuracy = value;
     }
 
-    public UomDistanceType getVerticalAccuracy_uom() {
+    public String getVerticalAccuracy_uom() {
         return verticalAccuracy_uom;
     }
 
-    public void setVerticalAccuracy_uom(UomDistanceType value) {
+    public void setVerticalAccuracy_uom(String value) {
         this.verticalAccuracy_uom = value;
     }
 
