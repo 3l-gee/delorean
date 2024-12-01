@@ -76,7 +76,7 @@ class Jaxb:
     binding_start = '<jaxb:schemaBindings>'
     binding_end = '</jaxb:schemaBindings>'
 
-    PROPERTY = Property
+    property = Property
 
 class Annox:
     @staticmethod
