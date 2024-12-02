@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,32 +69,41 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "guidance_line_light_system_time_slice")
+@Table(name = "guidance_line_light_system_slice", schema = "public")
 public class GuidanceLineLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "emergencyLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> emergencyLighting;
-    @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeLightIntensityType> intensityLevel;
-    @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeYesNoType emergencyLighting;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeLightIntensityType intensityLevel;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeColourType colour;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "element_id", referencedColumnName = "id")
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "lightedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @XmlElement(nillable = true)
     @Transient
-    protected JAXBElement<GuidanceLinePropertyType> lightedGuidanceLine;
+    protected GuidanceLinePropertyType lightedGuidanceLine;
     @Transient
     protected List<GuidanceLineLightSystemTimeSliceType.Extension> extension;
 
@@ -99,10 +112,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getEmergencyLighting() {
+    public CodeYesNoType getEmergencyLighting() {
         return emergencyLighting;
     }
 
@@ -111,10 +124,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setEmergencyLighting(JAXBElement<CodeYesNoType> value) {
+    public void setEmergencyLighting(CodeYesNoType value) {
         this.emergencyLighting = value;
     }
 
@@ -127,10 +140,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
+     *     {@link CodeLightIntensityType }
      *     
      */
-    public JAXBElement<CodeLightIntensityType> getIntensityLevel() {
+    public CodeLightIntensityType getIntensityLevel() {
         return intensityLevel;
     }
 
@@ -139,10 +152,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
+     *     {@link CodeLightIntensityType }
      *     
      */
-    public void setIntensityLevel(JAXBElement<CodeLightIntensityType> value) {
+    public void setIntensityLevel(CodeLightIntensityType value) {
         this.intensityLevel = value;
     }
 
@@ -155,10 +168,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public JAXBElement<CodeColourType> getColour() {
+    public CodeColourType getColour() {
         return colour;
     }
 
@@ -167,10 +180,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public void setColour(JAXBElement<CodeColourType> value) {
+    public void setColour(CodeColourType value) {
         this.colour = value;
     }
 
@@ -303,10 +316,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public JAXBElement<GuidanceLinePropertyType> getLightedGuidanceLine() {
+    public GuidanceLinePropertyType getLightedGuidanceLine() {
         return lightedGuidanceLine;
     }
 
@@ -315,10 +328,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public void setLightedGuidanceLine(JAXBElement<GuidanceLinePropertyType> value) {
+    public void setLightedGuidanceLine(GuidanceLinePropertyType value) {
         this.lightedGuidanceLine = value;
     }
 
@@ -396,10 +409,16 @@ public class GuidanceLineLightSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractGuidanceLineLightSystemExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_guidance_line_light_system_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGuidanceLineLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_ground_light_system_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

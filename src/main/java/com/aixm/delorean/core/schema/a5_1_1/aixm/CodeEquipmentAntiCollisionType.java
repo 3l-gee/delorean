@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeEquipmentAntiCollisionType {
 
     @XmlValue
-    protected CodeEquipmentAntiCollisionBaseType value;
+    @Column(name = "equipment_anti_collision", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_equipment_anti_collision_base_type_nil_reason")
+    @Column(name = "equipment_anti_collision_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeEquipmentAntiCollisionType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeEquipmentAntiCollisionBaseType }
+     *     {@link String }
      *     
      */
-    public CodeEquipmentAntiCollisionBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeEquipmentAntiCollisionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeEquipmentAntiCollisionBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeEquipmentAntiCollisionBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

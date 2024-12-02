@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRVRReadingType {
 
     @XmlValue
-    protected CodeRVRReadingBaseType value;
+    @Column(name = "rvr_reading", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_rvr_reading_base_type_nil_reason")
+    @Column(name = "rvr_reading_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeRVRReadingType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeRVRReadingBaseType }
+     *     {@link String }
      *     
      */
-    public CodeRVRReadingBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeRVRReadingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRVRReadingBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeRVRReadingBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

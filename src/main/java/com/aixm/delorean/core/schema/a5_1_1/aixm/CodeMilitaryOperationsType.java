@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMilitaryOperationsType {
 
     @XmlValue
-    protected CodeMilitaryOperationsBaseType value;
+    @Column(name = "military_operations", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_military_operations_base_type_nil_reason")
+    @Column(name = "military_operations_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeMilitaryOperationsType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeMilitaryOperationsBaseType }
+     *     {@link String }
      *     
      */
-    public CodeMilitaryOperationsBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeMilitaryOperationsType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMilitaryOperationsBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeMilitaryOperationsBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeCheckpointCategoryType {
 
     @XmlValue
-    protected CodeCheckpointCategoryBaseType value;
+    @Column(name = "checkpoint_category", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_checkpoint_category_base_type_nil_reason")
+    @Column(name = "checkpoint_category_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeCheckpointCategoryType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeCheckpointCategoryBaseType }
+     *     {@link String }
      *     
      */
-    public CodeCheckpointCategoryBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeCheckpointCategoryType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeCheckpointCategoryBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeCheckpointCategoryBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

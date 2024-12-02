@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeApproachLightingICAOType {
 
     @XmlValue
-    protected CodeApproachLightingICAOBaseType value;
+    @Column(name = "approach_lighting_icao", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_approach_lighting_icao_base_type_nil_reason")
+    @Column(name = "approach_lighting_icao_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeApproachLightingICAOType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeApproachLightingICAOBaseType }
+     *     {@link String }
      *     
      */
-    public CodeApproachLightingICAOBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeApproachLightingICAOType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeApproachLightingICAOBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeApproachLightingICAOBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeGradeSeparationType {
 
     @XmlValue
-    protected CodeGradeSeparationBaseType value;
+    @Column(name = "grade_separation", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_grade_separation_base_type_nil_reason")
+    @Column(name = "grade_separation_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeGradeSeparationType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeGradeSeparationBaseType }
+     *     {@link String }
      *     
      */
-    public CodeGradeSeparationBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeGradeSeparationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeGradeSeparationBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeGradeSeparationBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

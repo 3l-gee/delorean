@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMissedApproachType {
 
     @XmlValue
-    protected CodeMissedApproachBaseType value;
+    @Column(name = "missed_approach", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_missed_approach_base_type_nil_reason")
+    @Column(name = "missed_approach_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeMissedApproachType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeMissedApproachBaseType }
+     *     {@link String }
      *     
      */
-    public CodeMissedApproachBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeMissedApproachType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMissedApproachBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeMissedApproachBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

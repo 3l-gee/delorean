@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSegmentTerminationType {
 
     @XmlValue
-    protected CodeSegmentTerminationBaseType value;
+    @Column(name = "segment_termination", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_segment_termination_base_type_nil_reason")
+    @Column(name = "segment_termination_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeSegmentTerminationType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeSegmentTerminationBaseType }
+     *     {@link String }
      *     
      */
-    public CodeSegmentTerminationBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeSegmentTerminationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSegmentTerminationBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeSegmentTerminationBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,22 +65,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "surface_contamination_layer")
+@Table(name = "surface_contamination_layer", schema = "public")
 public class SurfaceContaminationLayerType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "layerOrder", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NoSequenceType> layerOrder;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeContaminationType> type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected NoSequenceType layerOrder;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeContaminationType type;
     @XmlElement(nillable = true)
     @Transient
     protected List<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<SurfaceContaminationLayerType.Extension> extension;
@@ -86,10 +93,10 @@ public class SurfaceContaminationLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public JAXBElement<NoSequenceType> getLayerOrder() {
+    public NoSequenceType getLayerOrder() {
         return layerOrder;
     }
 
@@ -98,10 +105,10 @@ public class SurfaceContaminationLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoSequenceType }{@code >}
+     *     {@link NoSequenceType }
      *     
      */
-    public void setLayerOrder(JAXBElement<NoSequenceType> value) {
+    public void setLayerOrder(NoSequenceType value) {
         this.layerOrder = value;
     }
 
@@ -114,10 +121,10 @@ public class SurfaceContaminationLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeContaminationType }{@code >}
+     *     {@link CodeContaminationType }
      *     
      */
-    public JAXBElement<CodeContaminationType> getType() {
+    public CodeContaminationType getType() {
         return type;
     }
 
@@ -126,10 +133,10 @@ public class SurfaceContaminationLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeContaminationType }{@code >}
+     *     {@link CodeContaminationType }
      *     
      */
-    public void setType(JAXBElement<CodeContaminationType> value) {
+    public void setType(CodeContaminationType value) {
         this.type = value;
     }
 
@@ -285,7 +292,10 @@ public class SurfaceContaminationLayerType
     public static class Extension {
 
         @XmlElement(name = "AbstractSurfaceContaminationLayerExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_surface_contamination_layer_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSurfaceContaminationLayerExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

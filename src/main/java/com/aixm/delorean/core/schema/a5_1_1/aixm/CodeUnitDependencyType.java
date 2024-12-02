@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeUnitDependencyType {
 
     @XmlValue
-    protected CodeUnitDependencyBaseType value;
+    @Column(name = "unit_dependency", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_unit_dependency_base_type_nil_reason")
+    @Column(name = "unit_dependency_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeUnitDependencyType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeUnitDependencyBaseType }
+     *     {@link String }
      *     
      */
-    public CodeUnitDependencyBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeUnitDependencyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeUnitDependencyBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeUnitDependencyBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLightSourceType {
 
     @XmlValue
-    protected CodeLightSourceBaseType value;
+    @Column(name = "light_source", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_light_source_base_type_nil_reason")
+    @Column(name = "light_source_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeLightSourceType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeLightSourceBaseType }
+     *     {@link String }
      *     
      */
-    public CodeLightSourceBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeLightSourceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLightSourceBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeLightSourceBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

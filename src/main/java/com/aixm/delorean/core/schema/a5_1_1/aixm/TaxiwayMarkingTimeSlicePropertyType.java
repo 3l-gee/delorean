@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,18 +51,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "taxiwayMarkingTimeSlice"
 })
 @Entity
-@Table(name = "taxiway_marking_time_slice_property")
+@Table(name = "taxiway_marking_slice_property", schema = "public")
 public class TaxiwayMarkingTimeSlicePropertyType {
 
     @XmlElement(name = "TaxiwayMarkingTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
-    })
-    @JoinColumn(name = "taxiway_marking_time_slice_id")
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "taxiway_marking_slice_id", referencedColumnName = "id")
     protected TaxiwayMarkingTimeSliceType taxiwayMarkingTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

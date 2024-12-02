@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,25 +68,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspace_layer_class")
+@Table(name = "airspace_layer_class", schema = "public")
 public class AirspaceLayerClassType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "classification", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAirspaceClassificationType> classification;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeAirspaceClassificationType classification;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "associated_levels_id", referencedColumnName = "id")
     protected List<AirspaceLayerPropertyType> associatedLevels;
     @Transient
     protected List<AirspaceLayerClassType.Extension> extension;
@@ -212,10 +225,10 @@ public class AirspaceLayerClassType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirspaceClassificationType }{@code >}
+     *     {@link CodeAirspaceClassificationType }
      *     
      */
-    public JAXBElement<CodeAirspaceClassificationType> getClassification() {
+    public CodeAirspaceClassificationType getClassification() {
         return classification;
     }
 
@@ -224,10 +237,10 @@ public class AirspaceLayerClassType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirspaceClassificationType }{@code >}
+     *     {@link CodeAirspaceClassificationType }
      *     
      */
-    public void setClassification(JAXBElement<CodeAirspaceClassificationType> value) {
+    public void setClassification(CodeAirspaceClassificationType value) {
         this.classification = value;
     }
 
@@ -345,10 +358,16 @@ public class AirspaceLayerClassType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractAirspaceLayerClassExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_airspace_layer_class_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceLayerClassExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

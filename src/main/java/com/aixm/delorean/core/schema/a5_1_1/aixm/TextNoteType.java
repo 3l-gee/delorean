@@ -45,15 +45,14 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class TextNoteType {
 
     @XmlValue
-    @Column(name = "text_note")
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "text_note_base_type_nil_reason")
+    @Column(name = "note_nil_reason", nullable = true, unique = false)
     protected String nilReason;
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "language")
-    @Column(name = "text_note_base_type_lang")
+    @Column(name = "note_lang", nullable = true, unique = false)
     protected String lang;
 
     /**

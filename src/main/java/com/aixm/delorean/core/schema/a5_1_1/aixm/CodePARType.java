@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePARType {
 
     @XmlValue
-    protected CodePARBaseType value;
+    @Column(name = "par", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_par_base_type_nil_reason")
+    @Column(name = "par_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodePARType {
      * 
      * @return
      *     possible object is
-     *     {@link CodePARBaseType }
+     *     {@link String }
      *     
      */
-    public CodePARBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodePARType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodePARBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodePARBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

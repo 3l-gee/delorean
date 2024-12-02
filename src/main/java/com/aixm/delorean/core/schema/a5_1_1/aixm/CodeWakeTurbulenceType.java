@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeWakeTurbulenceType {
 
     @XmlValue
-    protected CodeWakeTurbulenceBaseType value;
+    @Column(name = "wake_turbulence", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_wake_turbulence_base_type_nil_reason")
+    @Column(name = "wake_turbulence_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeWakeTurbulenceType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeWakeTurbulenceBaseType }
+     *     {@link String }
      *     
      */
-    public CodeWakeTurbulenceBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeWakeTurbulenceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeWakeTurbulenceBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeWakeTurbulenceBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

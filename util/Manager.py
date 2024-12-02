@@ -14,6 +14,12 @@ config = {
         "AbstractAIXMPropertyType",
         "AbstractAIXMObjectBaseType",
         "AbstractAIXMObjectType",
+        "PointPropertyType",
+        "CurvePropertyType",
+        "SurfacePropertyType",
+        "ElevatedPointPropertyType",
+        "ElevatedCurvePropertyType",
+        "ElevatedSurfacePropertyType",
         "MessageMetadataPropertyType",
         "FeatureMetadataPropertyType",
         "FeatureTimeSliceMetadataPropertyType",
@@ -157,7 +163,16 @@ config = {
         "SecondarySurveillanceRadarPropertyType",   
         "SurveillanceRadarPropertyType",
     ],
-    "transient" : [],
+    "transient" : [
+        "XHTMLType",
+        "aixm:AbstractDirectFlight",
+        "aixm:AbstractPropertiesWithSchedule",
+        "aixm:AbstractUsageConditio",
+        "aixm:AbstractSurfaceContamination",
+        "aixm:AbstractSegmentPoint",
+        "aixm:AbstractUsageCondition",
+        "extension"
+    ],
     "embed": [
         "PointType",
         "ElevatedPointType",
@@ -201,5 +216,5 @@ message = {
     "manual" : "util/manual/AIXM_BasicMessage.xjb"
 }
 
-# machinery = Machinery.runner(config, [data_types, feature, abstract, message])
-machinery = Machinery.runner(config, [data_types])
+machinery = Machinery.runner(config, [data_types, feature, abstract, message])
+# machinery = Machinery.runner(config, [data_types])

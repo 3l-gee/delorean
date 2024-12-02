@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRunwayElementType {
 
     @XmlValue
-    protected CodeRunwayElementBaseType value;
+    @Column(name = "runway_element", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_runway_element_base_type_nil_reason")
+    @Column(name = "runway_element_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeRunwayElementType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeRunwayElementBaseType }
+     *     {@link String }
      *     
      */
-    public CodeRunwayElementBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeRunwayElementType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRunwayElementBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeRunwayElementBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

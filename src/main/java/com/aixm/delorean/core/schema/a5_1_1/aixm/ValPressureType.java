@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValPressureType {
 
     @XmlValue
-    @Column(name = "val_pressure")
+    @Column(name = "pressure", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_pressure_base_type_uom")
-    protected UomPressureType uom;
+    @Column(name = "pressure_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_pressure_base_type_nil_reason")
+    @Column(name = "pressure_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -85,10 +85,10 @@ public class ValPressureType {
      * 
      * @return
      *     possible object is
-     *     {@link UomPressureType }
+     *     {@link String }
      *     
      */
-    public UomPressureType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -97,10 +97,10 @@ public class ValPressureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomPressureType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomPressureType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

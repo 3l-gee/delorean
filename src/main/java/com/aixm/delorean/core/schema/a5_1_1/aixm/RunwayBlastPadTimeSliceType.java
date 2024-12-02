@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,28 +67,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runway_blast_pad_time_slice")
+@Table(name = "runway_blast_pad_slice", schema = "public")
 public class RunwayBlastPadTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> length;
-    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStatusOperationsType> status;
-    @XmlElementRef(name = "usedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayDirectionPropertyType> usedRunwayDirection;
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedSurfacePropertyType> extent;
-    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType length;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeStatusOperationsType status;
     @XmlElement(nillable = true)
     @Transient
+    protected RunwayDirectionPropertyType usedRunwayDirection;
+    @XmlElement(nillable = true)
+    @Transient
+    protected ElevatedSurfacePropertyType extent;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "surface_properties_id", referencedColumnName = "id")
+    protected SurfaceCharacteristicsPropertyType surfaceProperties;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RunwayBlastPadTimeSliceType.Extension> extension;
@@ -94,10 +104,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLength() {
+    public ValDistanceType getLength() {
         return length;
     }
 
@@ -106,10 +116,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLength(JAXBElement<ValDistanceType> value) {
+    public void setLength(ValDistanceType value) {
         this.length = value;
     }
 
@@ -122,10 +132,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public JAXBElement<CodeStatusOperationsType> getStatus() {
+    public CodeStatusOperationsType getStatus() {
         return status;
     }
 
@@ -134,10 +144,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
+    public void setStatus(CodeStatusOperationsType value) {
         this.status = value;
     }
 
@@ -150,10 +160,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public JAXBElement<RunwayDirectionPropertyType> getUsedRunwayDirection() {
+    public RunwayDirectionPropertyType getUsedRunwayDirection() {
         return usedRunwayDirection;
     }
 
@@ -162,10 +172,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public void setUsedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
+    public void setUsedRunwayDirection(RunwayDirectionPropertyType value) {
         this.usedRunwayDirection = value;
     }
 
@@ -178,10 +188,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getExtent() {
+    public ElevatedSurfacePropertyType getExtent() {
         return extent;
     }
 
@@ -190,10 +200,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setExtent(ElevatedSurfacePropertyType value) {
         this.extent = value;
     }
 
@@ -206,10 +216,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
+    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -218,10 +228,10 @@ public class RunwayBlastPadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
+    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
         this.surfaceProperties = value;
     }
 
@@ -337,7 +347,10 @@ public class RunwayBlastPadTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayBlastPadExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_runway_blast_pad_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRunwayBlastPadExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

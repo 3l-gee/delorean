@@ -12,6 +12,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -44,7 +45,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "touch_down_lift_off")
+@Table(name = "touch_down_lift_off", schema = "public")
 public class TouchDownLiftOffType
     extends AbstractAIXMFeatureType
 {
@@ -52,7 +53,8 @@ public class TouchDownLiftOffType
     @XmlElement(required = true)
     @OneToMany(cascade = {
         CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "time_slice_id", referencedColumnName = "id")
     protected List<TouchDownLiftOffTimeSlicePropertyType> timeSlice;
 
     /**

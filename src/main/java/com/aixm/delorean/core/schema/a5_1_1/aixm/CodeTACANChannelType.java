@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTACANChannelType {
 
     @XmlValue
-    protected CodeTACANChannelBaseType value;
+    @Column(name = "tacan_channel", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_tacan_channel_base_type_nil_reason")
+    @Column(name = "tacan_channel_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeTACANChannelType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeTACANChannelBaseType }
+     *     {@link String }
      *     
      */
-    public CodeTACANChannelBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeTACANChannelType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeTACANChannelBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeTACANChannelBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

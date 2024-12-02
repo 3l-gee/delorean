@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,34 +69,37 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "designated_point_time_slice")
+@Table(name = "designated_point_slice", schema = "public")
 public class DesignatedPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeDesignatedPointDesignatorType> designator;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeDesignatedPointType> type;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<PointPropertyType> location;
-    @XmlElementRef(name = "aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> aimingPoint;
-    @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
-    @XmlElementRef(name = "runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> runwayPoint;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeDesignatedPointDesignatorType designator;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeDesignatedPointType type;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Transient
+    protected PointPropertyType location;
+    @XmlElement(nillable = true)
+    @Transient
+    protected TouchDownLiftOffPropertyType aimingPoint;
+    @XmlElement(nillable = true)
+    @Transient
+    protected AirportHeliportPropertyType airportHeliport;
+    @XmlElement(nillable = true)
+    @Transient
+    protected RunwayCentrelinePointPropertyType runwayPoint;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<DesignatedPointTimeSliceType.Extension> extension;
@@ -102,10 +109,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignatedPointDesignatorType }{@code >}
+     *     {@link CodeDesignatedPointDesignatorType }
      *     
      */
-    public JAXBElement<CodeDesignatedPointDesignatorType> getDesignator() {
+    public CodeDesignatedPointDesignatorType getDesignator() {
         return designator;
     }
 
@@ -114,10 +121,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignatedPointDesignatorType }{@code >}
+     *     {@link CodeDesignatedPointDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<CodeDesignatedPointDesignatorType> value) {
+    public void setDesignator(CodeDesignatedPointDesignatorType value) {
         this.designator = value;
     }
 
@@ -130,10 +137,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignatedPointType }{@code >}
+     *     {@link CodeDesignatedPointType }
      *     
      */
-    public JAXBElement<CodeDesignatedPointType> getType() {
+    public CodeDesignatedPointType getType() {
         return type;
     }
 
@@ -142,10 +149,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignatedPointType }{@code >}
+     *     {@link CodeDesignatedPointType }
      *     
      */
-    public void setType(JAXBElement<CodeDesignatedPointType> value) {
+    public void setType(CodeDesignatedPointType value) {
         this.type = value;
     }
 
@@ -158,10 +165,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -170,14 +177,14 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -186,10 +193,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public JAXBElement<PointPropertyType> getLocation() {
+    public PointPropertyType getLocation() {
         return location;
     }
 
@@ -198,10 +205,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<PointPropertyType> value) {
+    public void setLocation(PointPropertyType value) {
         this.location = value;
     }
 
@@ -214,10 +221,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getAimingPoint() {
+    public TouchDownLiftOffPropertyType getAimingPoint() {
         return aimingPoint;
     }
 
@@ -226,10 +233,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setAimingPoint(TouchDownLiftOffPropertyType value) {
         this.aimingPoint = value;
     }
 
@@ -242,10 +249,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAirportHeliport() {
+    public AirportHeliportPropertyType getAirportHeliport() {
         return airportHeliport;
     }
 
@@ -254,10 +261,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAirportHeliport(AirportHeliportPropertyType value) {
         this.airportHeliport = value;
     }
 
@@ -270,10 +277,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getRunwayPoint() {
         return runwayPoint;
     }
 
@@ -282,10 +289,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.runwayPoint = value;
     }
 
@@ -401,7 +408,10 @@ public class DesignatedPointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractDesignatedPointExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_designated_point_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractDesignatedPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

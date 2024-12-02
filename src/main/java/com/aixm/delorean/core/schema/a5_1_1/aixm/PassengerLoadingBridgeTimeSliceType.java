@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,22 +65,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "passenger_loading_bridge_time_slice")
+@Table(name = "passenger_loading_bridge_slice", schema = "public")
 public class PassengerLoadingBridgeTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeLoadingBridgeType type;
+    @XmlElement(nillable = true)
     @Transient
-    protected JAXBElement<CodeLoadingBridgeType> type;
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedSurfacePropertyType> extent;
+    protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
     @Transient
     protected List<AircraftStandPropertyType> associatedStand;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<PassengerLoadingBridgeTimeSliceType.Extension> extension;
@@ -86,10 +93,10 @@ public class PassengerLoadingBridgeTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeLoadingBridgeType }{@code >}
+     *     {@link CodeLoadingBridgeType }
      *     
      */
-    public JAXBElement<CodeLoadingBridgeType> getType() {
+    public CodeLoadingBridgeType getType() {
         return type;
     }
 
@@ -98,10 +105,10 @@ public class PassengerLoadingBridgeTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeLoadingBridgeType }{@code >}
+     *     {@link CodeLoadingBridgeType }
      *     
      */
-    public void setType(JAXBElement<CodeLoadingBridgeType> value) {
+    public void setType(CodeLoadingBridgeType value) {
         this.type = value;
     }
 
@@ -114,10 +121,10 @@ public class PassengerLoadingBridgeTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getExtent() {
+    public ElevatedSurfacePropertyType getExtent() {
         return extent;
     }
 
@@ -126,10 +133,10 @@ public class PassengerLoadingBridgeTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setExtent(ElevatedSurfacePropertyType value) {
         this.extent = value;
     }
 
@@ -285,7 +292,10 @@ public class PassengerLoadingBridgeTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractPassengerLoadingBridgeExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_passenger_loading_bridge_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPassengerLoadingBridgeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

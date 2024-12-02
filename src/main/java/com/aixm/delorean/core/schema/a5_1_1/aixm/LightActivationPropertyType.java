@@ -7,9 +7,12 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -40,13 +43,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightActivation"
 })
 @Entity
-@Table(name = "light_activation_property")
+@Table(name = "light_activation_property", schema = "public")
 public class LightActivationPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "LightActivation", required = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "light_activation_id", referencedColumnName = "id")
     protected LightActivationType lightActivation;
 
     /**

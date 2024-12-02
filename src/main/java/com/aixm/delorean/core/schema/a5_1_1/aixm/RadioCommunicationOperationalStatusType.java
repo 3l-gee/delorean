@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,23 +67,29 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radio_communication_operational_status")
+@Table(name = "radio_communication_operational_status", schema = "public")
 public class RadioCommunicationOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "operationalStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStatusServiceType> operationalStatus;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeStatusServiceType operationalStatus;
     @Transient
     protected List<RadioCommunicationOperationalStatusType.Extension> extension;
 
@@ -208,10 +218,10 @@ public class RadioCommunicationOperationalStatusType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusServiceType }{@code >}
+     *     {@link CodeStatusServiceType }
      *     
      */
-    public JAXBElement<CodeStatusServiceType> getOperationalStatus() {
+    public CodeStatusServiceType getOperationalStatus() {
         return operationalStatus;
     }
 
@@ -220,10 +230,10 @@ public class RadioCommunicationOperationalStatusType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusServiceType }{@code >}
+     *     {@link CodeStatusServiceType }
      *     
      */
-    public void setOperationalStatus(JAXBElement<CodeStatusServiceType> value) {
+    public void setOperationalStatus(CodeStatusServiceType value) {
         this.operationalStatus = value;
     }
 
@@ -301,10 +311,16 @@ public class RadioCommunicationOperationalStatusType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractRadioCommunicationOperationalStatusExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_radio_communication_operational_status_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRadioCommunicationOperationalStatusExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

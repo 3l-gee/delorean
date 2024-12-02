@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -49,7 +48,6 @@ public class XHTMLType {
     @XmlAnyElement
     protected List<Element> any;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "_nil_reason")
     protected String nilReason;
 
     /**

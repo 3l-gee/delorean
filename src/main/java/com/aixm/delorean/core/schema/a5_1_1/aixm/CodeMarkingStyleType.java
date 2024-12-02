@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMarkingStyleType {
 
     @XmlValue
-    protected CodeMarkingStyleBaseType value;
+    @Column(name = "marking_style", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_marking_style_base_type_nil_reason")
+    @Column(name = "marking_style_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeMarkingStyleType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeMarkingStyleBaseType }
+     *     {@link String }
      *     
      */
-    public CodeMarkingStyleBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeMarkingStyleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMarkingStyleBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeMarkingStyleBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

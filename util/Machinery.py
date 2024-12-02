@@ -289,22 +289,7 @@ class Machinery:
         if maxOccurs == 1:
             if type in embed:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.embedded))
-                return res
-
-            #simple types can be mapped to a column
-            elif element.attrib.get("type",None) in ["string", "integer", "decimal", "double", "float", "boolean", "date", "dateTime"]:
-                if element.attrib.get("type",None) in ["string", "integer", "decimal", "double", "float", "boolean"] :
-                    res.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib.get("name",element.attrib.get("ref")), nillable)))
-                    return res       
-
-                elif element.attrib.get("type",None) == "date":
-                    res.append("AAAAAAAAAAAAAAAAAAAAAAA")
-                    return res
-                
-                elif element.attrib.get("type",None) == "dateTime":
-                    res.append("AAAAAAAAAAAAAAAAAAAAAAA")
-                    return res
-    
+                return res   
             
             else:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_one()))
@@ -332,6 +317,7 @@ class Machinery:
     def generate_simple_types(self, type, graph, transposition):
         res = []
         for element in type:
+            node = []
             if element is None :
                 print("element is None : ", element, type)
                 continue
@@ -339,41 +325,48 @@ class Machinery:
             if element.attrib["name"] in graph["attribute"].keys() or element.attrib["name"] in graph["inheritance"].keys() or element.attrib["name"] in self.config.ignore:
                 continue
 
-            res.append(Annotation.Jaxb.simple(element.attrib["name"]))
+            node.append(Annotation.Jaxb.simple(element.attrib["name"]))
             enum_values = element.findall(Annotation.Tag.enumeration) or []
             base = element.find(".//" + Annotation.Tag.restriction).attrib
             
-            if element.attrib["name"] in self.config.transient:
-                res.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
-                res.append(Annotation.Jaxb.end)
-                continue
+            if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                node.append(Annotation.Jaxb.end)
             
             elif enum_values:
-                res.append(Annotation.Jaxb.enum_start(element.attrib["name"]))
-                res.extend([Annotation.Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]) for enum in enum_values])
-                res.append(Annotation.Jaxb.enum_end)
+                node.append(Annotation.Jaxb.enum_start(element.attrib["name"]))
+                node.extend([Annotation.Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]) for enum in enum_values])
+                node.append(Annotation.Jaxb.enum_end)
+                node.append(Annotation.Jaxb.end)
+
             else:
                 constraints = {**transposition.get(element.attrib["name"], {}), **self.generate_constraints(element)}
                 if self.config.constraint_methode == "xjb":
-                    res.extend(constraints.values())
+                    node.extend(constraints.values())
 
                 if base is not None and base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean", "date", "dateTime"]:
                     if base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean"] :
-                        res.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                        node.append(Annotation.Jaxb.end)
 
                     elif base.get("base") == "date":
-                        pass
+                        node.append(Annotation.Jaxb.java_type("java.sql.Timestamp"))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                        node.append(Annotation.Annox.field_add(Annotation.Xml.adapter("com.aixm.delorean.core.adapter.date.XMLGregorianCalendarAdapter.class")))
+                        node.append(Annotation.Jaxb.end)
                     
                     elif base.get("base") == "dateTime":
-                        pass
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                        node.append(Annotation.Jaxb.end)
 
                 elif base is not None and "aixm" in base.get("base",None) :
-                    pass
+                    node = []
                     
                 else:
                     print(element.attrib, base)
 
-            res.append(Annotation.Jaxb.end)
+
+            res.extend(node)
 
         return res
     
@@ -445,10 +438,10 @@ class Machinery:
             attribute_list = []
 
             if extension is not None:
-                attribute_list.extend(extension.findall(Annotation.Tag.attribute))
+                attribute_list.extend(extension.findall(".//" + Annotation.Tag.attribute))
             
             if restriction is not None:
-                attribute_list.extend(restriction.findall(Annotation.Tag.attribute))
+                attribute_list.extend(restriction.findall(".//" + Annotation.Tag.attribute))
 
             for attribute in attribute_list:
                 node.extend(self.handel_simple_attribute(attribute, parent, embed, parent_xpath))
@@ -458,10 +451,10 @@ class Machinery:
     def process_sequence(self, parent, embed, parent_xpath):
         """Process the sequence flow."""
         node = []
-        sequence = parent.find(Annotation.Tag.sequence)
-        if sequence is not None:
-            element_list = sequence.findall(Annotation.Tag.element, Annotation.Tag.namespaces) or []
-            attribute_list = sequence.findall(Annotation.Tag.attribute, Annotation.Tag.namespaces) or []
+        sequence_list = parent.findall(Annotation.Tag.sequence) or []
+        for sequence in sequence_list:
+            element_list = sequence.findall(".//" + Annotation.Tag.element, Annotation.Tag.namespaces) or []
+            attribute_list = sequence.findall(".//" + Annotation.Tag.attribute, Annotation.Tag.namespaces) or []
 
             for element in element_list :
                 node.extend(self.handle_sequence_element(element, parent, embed, parent_xpath))
@@ -483,13 +476,12 @@ class Machinery:
             element_list = []
 
             if extension is not None:
-                attribute_list.extend(extension.findall(Annotation.Tag.attribute))
-                element_list.extend(extension.findall(Annotation.Tag.element)) 
+                attribute_list.extend(extension.findall(".//" + Annotation.Tag.attribute))
+                element_list.extend(extension.findall(".//" + Annotation.Tag.element)) 
 
-            
             if restriction is not None:
-                attribute_list.extend(restriction.findall(Annotation.Tag.attribute))
-                element_list.extend(restriction.findall(Annotation.Tag.element)) 
+                attribute_list.extend(restriction.findall(".//" + Annotation.Tag.attribute))
+                element_list.extend(restriction.findall(".//" + Annotation.Tag.element)) 
 
             for attribute in attribute_list:
                 node.extend(self.handle_complex_attribute(attribute, parent, embed, parent_xpath))
@@ -503,6 +495,12 @@ class Machinery:
         """Handle attributes in simpleContent."""
         node = []
         node.append(Annotation.Jaxb.attribute(attribute.attrib.get("name"), parent=parent_xpath))
+
+        if attribute.attrib.get("name") in self.config.transient or attribute.attrib.get("ref") in self.config.transient or attribute.attrib.get("type") in self.config.transient:
+            node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+            node.append(Annotation.Jaxb.end)
+            return node
+
         if attribute.attrib.get("name") == "name":
             node.append(Annotation.Jaxb.property.name())
 
@@ -516,9 +514,18 @@ class Machinery:
         node = []
         if element.attrib.get("ref") is not None and element.attrib.get("name") is None :
             node.append(Annotation.Jaxb.element(element.attrib.get("ref"),parent=parent_xpath, xpath=Annotation.Xpath.GLOBAL.value ,at="ref"))
+            if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                node.append(Annotation.Jaxb.end)
+                return node
 
         elif element.attrib.get("name") is not None:
             node.append(Annotation.Jaxb.element(element.attrib.get("name"), parent=parent_xpath, xpath=Annotation.Xpath.GLOBAL.value))
+            if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                node.append(Annotation.Jaxb.end)
+                return node
+            
             if element.attrib.get("name") == "dbid":
                 node.append(Annotation.Annox.field_add(Annotation.Jpa.id))
                 node.append(Annotation.Annox.field_add(Annotation.Jpa.generated_value()))
@@ -546,9 +553,17 @@ class Machinery:
         node = []
         if attribute.attrib.get("ref") is not None and attribute.attrib.get("name") is None :
             node.append(Annotation.Jaxb.attribute(attribute.attrib.get("ref"), parent=parent_xpath, xpath=Annotation.Xpath.GLOBAL.value, at="ref"))
-
+            if attribute.attrib.get("name") in self.config.transient or attribute.attrib.get("ref") in self.config.transient or attribute.attrib.get("type") in self.config.transient:
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                node.append(Annotation.Jaxb.end)
+                return node
+            
         elif attribute.attrib.get("name") is not None:
             node.append(Annotation.Jaxb.attribute(attribute.attrib.get("name"), parent=parent_xpath, xpath=Annotation.Xpath.GLOBAL.value))
+            if attribute.attrib.get("name") in self.config.transient or attribute.attrib.get("ref") in self.config.transient or attribute.attrib.get("type") in self.config.transient:
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                node.append(Annotation.Jaxb.end)
+                return node
             if attribute.attrib.get("name") == "name":
                 node.append(Annotation.Jaxb.property.name())
 
@@ -565,9 +580,18 @@ class Machinery:
         node = []
         if element.attrib.get("ref") is not None and element.attrib.get("name") is None :
             node.append(Annotation.Jaxb.element(element.attrib.get("ref"), parent=parent_xpath, xpath=Annotation.Xpath.GLOBAL.value, at="ref"))
+            if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                node.append(Annotation.Jaxb.end)
+                return node
 
         elif element.attrib.get("name") is not None:
             node.append(Annotation.Jaxb.element(element.attrib.get("name"), parent=parent_xpath, xpath=Annotation.Xpath.GLOBAL.value))
+            if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                node.append(Annotation.Jaxb.end)
+                return node
+            
             if element.attrib.get("name") == "dbid":
                 node.append(Annotation.Jaxb.field_add(Annotation.Jpa.id))
                 node.append(Annotation.Jaxb.field_add(Annotation.Jpa.generated_value))
@@ -594,10 +618,18 @@ class Machinery:
 
         if attribute.attrib.get("ref") is not None and attribute.attrib.get("name") is None :
             node.append(Annotation.Jaxb.attribute(attribute.attrib.get("ref"), parent=parent_xpath, xpath=Annotation.Xpath.GLOBAL.value, at="ref"))
-
+            if attribute.attrib.get("name") in self.config.transient or attribute.attrib.get("ref") in self.config.transient or attribute.attrib.get("type") in self.config.transient:
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                node.append(Annotation.Jaxb.end)
+                return node
+            
         elif attribute.attrib.get("name") is not None:
             node.append(Annotation.Jaxb.attribute(attribute.attrib.get("name"), parent=parent_xpath, xpath=Annotation.Xpath.GLOBAL.value))
-
+            if attribute.attrib.get("name") in self.config.transient or attribute.attrib.get("ref") in self.config.transient or attribute.attrib.get("type") in self.config.transient:
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+                node.append(Annotation.Jaxb.end)
+                return node
+            
             if attribute.attrib.get("name") == "name":
                 node.append(Annotation.Jaxb.property.name())
 

@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSurfaceConditionType {
 
     @XmlValue
-    protected CodeSurfaceConditionBaseType value;
+    @Column(name = "surface_condition", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_surface_condition_base_type_nil_reason")
+    @Column(name = "surface_condition_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeSurfaceConditionType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeSurfaceConditionBaseType }
+     *     {@link String }
      *     
      */
-    public CodeSurfaceConditionBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeSurfaceConditionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSurfaceConditionBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeSurfaceConditionBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

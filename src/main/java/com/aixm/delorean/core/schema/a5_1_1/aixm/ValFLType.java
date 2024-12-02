@@ -42,13 +42,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValFLType {
 
     @XmlValue
-    @Column(name = "val_fl")
+    @Column(name = "fl", nullable = true, unique = false)
     protected long value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_fl_base_type_uom")
-    protected UomFLType uom;
+    @Column(name = "fl_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_fl_base_type_nil_reason")
+    @Column(name = "fl_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -76,10 +76,10 @@ public class ValFLType {
      * 
      * @return
      *     possible object is
-     *     {@link UomFLType }
+     *     {@link String }
      *     
      */
-    public UomFLType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -88,10 +88,10 @@ public class ValFLType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomFLType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomFLType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

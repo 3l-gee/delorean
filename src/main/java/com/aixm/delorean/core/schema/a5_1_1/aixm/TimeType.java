@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class TimeType {
 
     @XmlValue
-    @Column(name = "time")
+    @Column(name = "base", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "time_base_type_nil_reason")
+    @Column(name = "type_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -66,37 +70,46 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "special_navigation_station_time_slice")
+@Table(name = "special_navigation_station_slice", schema = "public")
 public class SpecialNavigationStationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeSpecialNavigationStationType> type;
-    @XmlElementRef(name = "frequency", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValFrequencyType> frequency;
-    @XmlElementRef(name = "emission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRadioEmissionType> emission;
-    @XmlElementRef(name = "systemChain", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SpecialNavigationSystemPropertyType> systemChain;
-    @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AuthorityForSpecialNavigationStationPropertyType> responsibleOrganisation;
-    @XmlElementRef(name = "position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> position;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeSpecialNavigationStationType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValFrequencyType frequency;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRadioEmissionType emission;
     @XmlElement(nillable = true)
     @Transient
+    protected SpecialNavigationSystemPropertyType systemChain;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "responsible_organisation_id", referencedColumnName = "id")
+    protected AuthorityForSpecialNavigationStationPropertyType responsibleOrganisation;
+    @XmlElement(nillable = true)
+    @Transient
+    protected ElevatedPointPropertyType position;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<SpecialNavigationStationStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<SpecialNavigationStationTimeSliceType.Extension> extension;
@@ -106,10 +119,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -118,14 +131,14 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -134,10 +147,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeSpecialNavigationStationType }{@code >}
+     *     {@link CodeSpecialNavigationStationType }
      *     
      */
-    public JAXBElement<CodeSpecialNavigationStationType> getType() {
+    public CodeSpecialNavigationStationType getType() {
         return type;
     }
 
@@ -146,10 +159,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeSpecialNavigationStationType }{@code >}
+     *     {@link CodeSpecialNavigationStationType }
      *     
      */
-    public void setType(JAXBElement<CodeSpecialNavigationStationType> value) {
+    public void setType(CodeSpecialNavigationStationType value) {
         this.type = value;
     }
 
@@ -162,10 +175,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
+     *     {@link ValFrequencyType }
      *     
      */
-    public JAXBElement<ValFrequencyType> getFrequency() {
+    public ValFrequencyType getFrequency() {
         return frequency;
     }
 
@@ -174,10 +187,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
+     *     {@link ValFrequencyType }
      *     
      */
-    public void setFrequency(JAXBElement<ValFrequencyType> value) {
+    public void setFrequency(ValFrequencyType value) {
         this.frequency = value;
     }
 
@@ -190,10 +203,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
+     *     {@link CodeRadioEmissionType }
      *     
      */
-    public JAXBElement<CodeRadioEmissionType> getEmission() {
+    public CodeRadioEmissionType getEmission() {
         return emission;
     }
 
@@ -202,10 +215,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
+     *     {@link CodeRadioEmissionType }
      *     
      */
-    public void setEmission(JAXBElement<CodeRadioEmissionType> value) {
+    public void setEmission(CodeRadioEmissionType value) {
         this.emission = value;
     }
 
@@ -218,10 +231,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     {@link SpecialNavigationSystemPropertyType }
      *     
      */
-    public JAXBElement<SpecialNavigationSystemPropertyType> getSystemChain() {
+    public SpecialNavigationSystemPropertyType getSystemChain() {
         return systemChain;
     }
 
@@ -230,10 +243,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     {@link SpecialNavigationSystemPropertyType }
      *     
      */
-    public void setSystemChain(JAXBElement<SpecialNavigationSystemPropertyType> value) {
+    public void setSystemChain(SpecialNavigationSystemPropertyType value) {
         this.systemChain = value;
     }
 
@@ -246,10 +259,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AuthorityForSpecialNavigationStationPropertyType }{@code >}
+     *     {@link AuthorityForSpecialNavigationStationPropertyType }
      *     
      */
-    public JAXBElement<AuthorityForSpecialNavigationStationPropertyType> getResponsibleOrganisation() {
+    public AuthorityForSpecialNavigationStationPropertyType getResponsibleOrganisation() {
         return responsibleOrganisation;
     }
 
@@ -258,10 +271,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AuthorityForSpecialNavigationStationPropertyType }{@code >}
+     *     {@link AuthorityForSpecialNavigationStationPropertyType }
      *     
      */
-    public void setResponsibleOrganisation(JAXBElement<AuthorityForSpecialNavigationStationPropertyType> value) {
+    public void setResponsibleOrganisation(AuthorityForSpecialNavigationStationPropertyType value) {
         this.responsibleOrganisation = value;
     }
 
@@ -274,10 +287,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getPosition() {
+    public ElevatedPointPropertyType getPosition() {
         return position;
     }
 
@@ -286,10 +299,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setPosition(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setPosition(ElevatedPointPropertyType value) {
         this.position = value;
     }
 
@@ -445,7 +458,10 @@ public class SpecialNavigationStationTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSpecialNavigationStationExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_special_navigation_station_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSpecialNavigationStationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVASISType {
 
     @XmlValue
-    protected CodeVASISBaseType value;
+    @Column(name = "vasis", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_vasis_base_type_nil_reason")
+    @Column(name = "vasis_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeVASISType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeVASISBaseType }
+     *     {@link String }
      *     
      */
-    public CodeVASISBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeVASISType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVASISBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeVASISBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

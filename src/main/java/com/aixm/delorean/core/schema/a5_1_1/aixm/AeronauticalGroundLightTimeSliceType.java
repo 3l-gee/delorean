@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,34 +69,37 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aeronautical_ground_light_time_slice")
+@Table(name = "aeronautical_ground_light_slice", schema = "public")
 public class AeronauticalGroundLightTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeGroundLightingType> type;
-    @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeColourType> colour;
-    @XmlElementRef(name = "flashing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> flashing;
-    @XmlElementRef(name = "structureBeacon", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<VerticalStructurePropertyType> structureBeacon;
-    @XmlElementRef(name = "aerodromeBeacon", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> aerodromeBeacon;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> location;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeGroundLightingType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeColourType colour;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType flashing;
     @XmlElement(nillable = true)
     @Transient
+    protected VerticalStructurePropertyType structureBeacon;
+    @XmlElement(nillable = true)
+    @Transient
+    protected AirportHeliportPropertyType aerodromeBeacon;
+    @XmlElement(nillable = true)
+    @Transient
+    protected ElevatedPointPropertyType location;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AeronauticalGroundLightTimeSliceType.Extension> extension;
@@ -102,10 +109,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -114,14 +121,14 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -130,10 +137,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeGroundLightingType }{@code >}
+     *     {@link CodeGroundLightingType }
      *     
      */
-    public JAXBElement<CodeGroundLightingType> getType() {
+    public CodeGroundLightingType getType() {
         return type;
     }
 
@@ -142,10 +149,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeGroundLightingType }{@code >}
+     *     {@link CodeGroundLightingType }
      *     
      */
-    public void setType(JAXBElement<CodeGroundLightingType> value) {
+    public void setType(CodeGroundLightingType value) {
         this.type = value;
     }
 
@@ -158,10 +165,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public JAXBElement<CodeColourType> getColour() {
+    public CodeColourType getColour() {
         return colour;
     }
 
@@ -170,10 +177,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public void setColour(JAXBElement<CodeColourType> value) {
+    public void setColour(CodeColourType value) {
         this.colour = value;
     }
 
@@ -186,10 +193,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getFlashing() {
+    public CodeYesNoType getFlashing() {
         return flashing;
     }
 
@@ -198,10 +205,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setFlashing(JAXBElement<CodeYesNoType> value) {
+    public void setFlashing(CodeYesNoType value) {
         this.flashing = value;
     }
 
@@ -214,10 +221,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link VerticalStructurePropertyType }{@code >}
+     *     {@link VerticalStructurePropertyType }
      *     
      */
-    public JAXBElement<VerticalStructurePropertyType> getStructureBeacon() {
+    public VerticalStructurePropertyType getStructureBeacon() {
         return structureBeacon;
     }
 
@@ -226,10 +233,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link VerticalStructurePropertyType }{@code >}
+     *     {@link VerticalStructurePropertyType }
      *     
      */
-    public void setStructureBeacon(JAXBElement<VerticalStructurePropertyType> value) {
+    public void setStructureBeacon(VerticalStructurePropertyType value) {
         this.structureBeacon = value;
     }
 
@@ -242,10 +249,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAerodromeBeacon() {
+    public AirportHeliportPropertyType getAerodromeBeacon() {
         return aerodromeBeacon;
     }
 
@@ -254,10 +261,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAerodromeBeacon(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAerodromeBeacon(AirportHeliportPropertyType value) {
         this.aerodromeBeacon = value;
     }
 
@@ -270,10 +277,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getLocation() {
+    public ElevatedPointPropertyType getLocation() {
         return location;
     }
 
@@ -282,10 +289,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setLocation(ElevatedPointPropertyType value) {
         this.location = value;
     }
 
@@ -401,7 +408,10 @@ public class AeronauticalGroundLightTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAeronauticalGroundLightExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_aeronautical_ground_light_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAeronauticalGroundLightExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

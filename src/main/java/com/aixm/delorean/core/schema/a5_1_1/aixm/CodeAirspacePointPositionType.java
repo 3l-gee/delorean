@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAirspacePointPositionType {
 
     @XmlValue
-    protected CodeAirspacePointPositionBaseType value;
+    @Column(name = "airspace_point_position", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_airspace_point_position_base_type_nil_reason")
+    @Column(name = "airspace_point_position_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeAirspacePointPositionType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeAirspacePointPositionBaseType }
+     *     {@link String }
      *     
      */
-    public CodeAirspacePointPositionBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeAirspacePointPositionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAirspacePointPositionBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeAirspacePointPositionBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

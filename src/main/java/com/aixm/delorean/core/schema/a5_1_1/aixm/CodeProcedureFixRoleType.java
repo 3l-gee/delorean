@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProcedureFixRoleType {
 
     @XmlValue
-    protected CodeProcedureFixRoleBaseType value;
+    @Column(name = "procedure_fix_role", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_procedure_fix_role_base_type_nil_reason")
+    @Column(name = "procedure_fix_role_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeProcedureFixRoleType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeProcedureFixRoleBaseType }
+     *     {@link String }
      *     
      */
-    public CodeProcedureFixRoleBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeProcedureFixRoleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeProcedureFixRoleBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeProcedureFixRoleBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,40 +71,46 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "safe_altitude_area_time_slice")
+@Table(name = "safe_altitude_area_slice", schema = "public")
 public class SafeAltitudeAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "safeAreaType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeSafeAltitudeType> safeAreaType;
-    @XmlElementRef(name = "centrePoint_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> centrePointFixDesignatedPoint;
-    @XmlElementRef(name = "centrePoint_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NavaidPropertyType> centrePointNavaidSystem;
-    @XmlElementRef(name = "centrePoint_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<PointPropertyType> centrePointPosition;
-    @XmlElementRef(name = "centrePoint_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> centrePointRunwayPoint;
-    @XmlElementRef(name = "centrePoint_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> centrePointAimingPoint;
-    @XmlElementRef(name = "centrePoint_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> centrePointAirportReferencePoint;
     @XmlElement(nillable = true)
+    @Embedded
+    protected CodeSafeAltitudeType safeAreaType;
+    @XmlElement(name = "centrePoint_fixDesignatedPoint", nillable = true)
     @Transient
+    protected DesignatedPointPropertyType centrePointFixDesignatedPoint;
+    @XmlElement(name = "centrePoint_navaidSystem", nillable = true)
+    @Transient
+    protected NavaidPropertyType centrePointNavaidSystem;
+    @XmlElement(name = "centrePoint_position", nillable = true)
+    @Transient
+    protected PointPropertyType centrePointPosition;
+    @XmlElement(name = "centrePoint_runwayPoint", nillable = true)
+    @Transient
+    protected RunwayCentrelinePointPropertyType centrePointRunwayPoint;
+    @XmlElement(name = "centrePoint_aimingPoint", nillable = true)
+    @Transient
+    protected TouchDownLiftOffPropertyType centrePointAimingPoint;
+    @XmlElement(name = "centrePoint_airportReferencePoint", nillable = true)
+    @Transient
+    protected AirportHeliportPropertyType centrePointAirportReferencePoint;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "sector_id", referencedColumnName = "id")
     protected List<SafeAltitudeAreaSectorPropertyType> sector;
     @XmlElement(nillable = true)
     @Transient
     protected List<AirportHeliportPropertyType> location;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<SafeAltitudeAreaTimeSliceType.Extension> extension;
@@ -110,10 +120,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeSafeAltitudeType }{@code >}
+     *     {@link CodeSafeAltitudeType }
      *     
      */
-    public JAXBElement<CodeSafeAltitudeType> getSafeAreaType() {
+    public CodeSafeAltitudeType getSafeAreaType() {
         return safeAreaType;
     }
 
@@ -122,10 +132,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeSafeAltitudeType }{@code >}
+     *     {@link CodeSafeAltitudeType }
      *     
      */
-    public void setSafeAreaType(JAXBElement<CodeSafeAltitudeType> value) {
+    public void setSafeAreaType(CodeSafeAltitudeType value) {
         this.safeAreaType = value;
     }
 
@@ -138,10 +148,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getCentrePointFixDesignatedPoint() {
+    public DesignatedPointPropertyType getCentrePointFixDesignatedPoint() {
         return centrePointFixDesignatedPoint;
     }
 
@@ -150,10 +160,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setCentrePointFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setCentrePointFixDesignatedPoint(DesignatedPointPropertyType value) {
         this.centrePointFixDesignatedPoint = value;
     }
 
@@ -166,10 +176,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getCentrePointNavaidSystem() {
+    public NavaidPropertyType getCentrePointNavaidSystem() {
         return centrePointNavaidSystem;
     }
 
@@ -178,10 +188,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setCentrePointNavaidSystem(JAXBElement<NavaidPropertyType> value) {
+    public void setCentrePointNavaidSystem(NavaidPropertyType value) {
         this.centrePointNavaidSystem = value;
     }
 
@@ -194,10 +204,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public JAXBElement<PointPropertyType> getCentrePointPosition() {
+    public PointPropertyType getCentrePointPosition() {
         return centrePointPosition;
     }
 
@@ -206,10 +216,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public void setCentrePointPosition(JAXBElement<PointPropertyType> value) {
+    public void setCentrePointPosition(PointPropertyType value) {
         this.centrePointPosition = value;
     }
 
@@ -222,10 +232,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getCentrePointRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getCentrePointRunwayPoint() {
         return centrePointRunwayPoint;
     }
 
@@ -234,10 +244,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setCentrePointRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setCentrePointRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.centrePointRunwayPoint = value;
     }
 
@@ -250,10 +260,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getCentrePointAimingPoint() {
+    public TouchDownLiftOffPropertyType getCentrePointAimingPoint() {
         return centrePointAimingPoint;
     }
 
@@ -262,10 +272,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setCentrePointAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setCentrePointAimingPoint(TouchDownLiftOffPropertyType value) {
         this.centrePointAimingPoint = value;
     }
 
@@ -278,10 +288,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getCentrePointAirportReferencePoint() {
+    public AirportHeliportPropertyType getCentrePointAirportReferencePoint() {
         return centrePointAirportReferencePoint;
     }
 
@@ -290,10 +300,10 @@ public class SafeAltitudeAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setCentrePointAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setCentrePointAirportReferencePoint(AirportHeliportPropertyType value) {
         this.centrePointAirportReferencePoint = value;
     }
 
@@ -489,7 +499,10 @@ public class SafeAltitudeAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSafeAltitudeAreaExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_safe_altitude_area_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSafeAltitudeAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

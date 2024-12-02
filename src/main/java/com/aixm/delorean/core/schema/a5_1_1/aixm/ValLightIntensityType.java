@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValLightIntensityType {
 
     @XmlValue
-    @Column(name = "val_light_intensity")
+    @Column(name = "light_intensity", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_light_intensity_base_type_uom")
-    protected UomLightIntensityType uom;
+    @Column(name = "light_intensity_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_light_intensity_base_type_nil_reason")
+    @Column(name = "light_intensity_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -85,10 +85,10 @@ public class ValLightIntensityType {
      * 
      * @return
      *     possible object is
-     *     {@link UomLightIntensityType }
+     *     {@link String }
      *     
      */
-    public UomLightIntensityType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -97,10 +97,10 @@ public class ValLightIntensityType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomLightIntensityType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomLightIntensityType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

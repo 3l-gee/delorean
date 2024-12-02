@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,34 +71,46 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspace_activation")
+@Table(name = "airspace_activation", schema = "public")
 public class AirspaceActivationType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "activity", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAirspaceActivityType> activity;
-    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStatusAirspaceType> status;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeAirspaceActivityType activity;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeStatusAirspaceType status;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "levels_id", referencedColumnName = "id")
     protected List<AirspaceLayerPropertyType> levels;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> user;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "aircraft_id", referencedColumnName = "id")
     protected List<AircraftCharacteristicPropertyType> aircraft;
     @Transient
     protected List<AirspaceActivationType.Extension> extension;
@@ -224,10 +240,10 @@ public class AirspaceActivationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirspaceActivityType }{@code >}
+     *     {@link CodeAirspaceActivityType }
      *     
      */
-    public JAXBElement<CodeAirspaceActivityType> getActivity() {
+    public CodeAirspaceActivityType getActivity() {
         return activity;
     }
 
@@ -236,10 +252,10 @@ public class AirspaceActivationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirspaceActivityType }{@code >}
+     *     {@link CodeAirspaceActivityType }
      *     
      */
-    public void setActivity(JAXBElement<CodeAirspaceActivityType> value) {
+    public void setActivity(CodeAirspaceActivityType value) {
         this.activity = value;
     }
 
@@ -252,10 +268,10 @@ public class AirspaceActivationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusAirspaceType }{@code >}
+     *     {@link CodeStatusAirspaceType }
      *     
      */
-    public JAXBElement<CodeStatusAirspaceType> getStatus() {
+    public CodeStatusAirspaceType getStatus() {
         return status;
     }
 
@@ -264,10 +280,10 @@ public class AirspaceActivationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusAirspaceType }{@code >}
+     *     {@link CodeStatusAirspaceType }
      *     
      */
-    public void setStatus(JAXBElement<CodeStatusAirspaceType> value) {
+    public void setStatus(CodeStatusAirspaceType value) {
         this.status = value;
     }
 
@@ -465,10 +481,16 @@ public class AirspaceActivationType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractAirspaceActivationExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_airspace_activation_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceActivationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

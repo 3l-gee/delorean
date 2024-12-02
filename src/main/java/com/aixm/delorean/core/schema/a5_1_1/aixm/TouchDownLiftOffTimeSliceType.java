@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,52 +75,64 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "touch_down_lift_off_time_slice")
+@Table(name = "touch_down_lift_off_slice", schema = "public")
 public class TouchDownLiftOffTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextDesignatorType> designator;
-    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> length;
-    @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> width;
-    @XmlElementRef(name = "slope", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValSlopeType> slope;
-    @XmlElementRef(name = "helicopterClass", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeHelicopterPerformanceType> helicopterClass;
-    @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> abandoned;
-    @XmlElementRef(name = "aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> aimingPoint;
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedSurfacePropertyType> extent;
-    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
-    @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
-    @XmlElementRef(name = "approachTakeOffArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayPropertyType> approachTakeOffArea;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextDesignatorType designator;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType length;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType width;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValSlopeType slope;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeHelicopterPerformanceType helicopterClass;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType abandoned;
     @XmlElement(nillable = true)
     @Transient
+    protected ElevatedPointPropertyType aimingPoint;
+    @XmlElement(nillable = true)
+    @Transient
+    protected ElevatedSurfacePropertyType extent;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "surface_properties_id", referencedColumnName = "id")
+    protected SurfaceCharacteristicsPropertyType surfaceProperties;
+    @XmlElement(nillable = true)
+    @Transient
+    protected AirportHeliportPropertyType associatedAirportHeliport;
+    @XmlElement(nillable = true)
+    @Transient
+    protected RunwayPropertyType approachTakeOffArea;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "contaminant_id", referencedColumnName = "id")
     protected List<TouchDownLiftOffContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
     @Transient
     protected List<TouchDownLiftOffTimeSliceType.Extension> extension;
@@ -126,10 +142,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getDesignator() {
+    public TextDesignatorType getDesignator() {
         return designator;
     }
 
@@ -138,10 +154,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<TextDesignatorType> value) {
+    public void setDesignator(TextDesignatorType value) {
         this.designator = value;
     }
 
@@ -154,10 +170,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLength() {
+    public ValDistanceType getLength() {
         return length;
     }
 
@@ -166,10 +182,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLength(JAXBElement<ValDistanceType> value) {
+    public void setLength(ValDistanceType value) {
         this.length = value;
     }
 
@@ -182,10 +198,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getWidth() {
+    public ValDistanceType getWidth() {
         return width;
     }
 
@@ -194,10 +210,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setWidth(JAXBElement<ValDistanceType> value) {
+    public void setWidth(ValDistanceType value) {
         this.width = value;
     }
 
@@ -210,10 +226,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValSlopeType }{@code >}
+     *     {@link ValSlopeType }
      *     
      */
-    public JAXBElement<ValSlopeType> getSlope() {
+    public ValSlopeType getSlope() {
         return slope;
     }
 
@@ -222,10 +238,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValSlopeType }{@code >}
+     *     {@link ValSlopeType }
      *     
      */
-    public void setSlope(JAXBElement<ValSlopeType> value) {
+    public void setSlope(ValSlopeType value) {
         this.slope = value;
     }
 
@@ -238,10 +254,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeHelicopterPerformanceType }{@code >}
+     *     {@link CodeHelicopterPerformanceType }
      *     
      */
-    public JAXBElement<CodeHelicopterPerformanceType> getHelicopterClass() {
+    public CodeHelicopterPerformanceType getHelicopterClass() {
         return helicopterClass;
     }
 
@@ -250,10 +266,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeHelicopterPerformanceType }{@code >}
+     *     {@link CodeHelicopterPerformanceType }
      *     
      */
-    public void setHelicopterClass(JAXBElement<CodeHelicopterPerformanceType> value) {
+    public void setHelicopterClass(CodeHelicopterPerformanceType value) {
         this.helicopterClass = value;
     }
 
@@ -266,10 +282,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getAbandoned() {
+    public CodeYesNoType getAbandoned() {
         return abandoned;
     }
 
@@ -278,10 +294,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setAbandoned(JAXBElement<CodeYesNoType> value) {
+    public void setAbandoned(CodeYesNoType value) {
         this.abandoned = value;
     }
 
@@ -294,10 +310,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getAimingPoint() {
+    public ElevatedPointPropertyType getAimingPoint() {
         return aimingPoint;
     }
 
@@ -306,10 +322,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setAimingPoint(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setAimingPoint(ElevatedPointPropertyType value) {
         this.aimingPoint = value;
     }
 
@@ -322,10 +338,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getExtent() {
+    public ElevatedSurfacePropertyType getExtent() {
         return extent;
     }
 
@@ -334,10 +350,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setExtent(ElevatedSurfacePropertyType value) {
         this.extent = value;
     }
 
@@ -350,10 +366,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
+    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -362,10 +378,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
+    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
         this.surfaceProperties = value;
     }
 
@@ -378,10 +394,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirportHeliport() {
+    public AirportHeliportPropertyType getAssociatedAirportHeliport() {
         return associatedAirportHeliport;
     }
 
@@ -390,10 +406,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAssociatedAirportHeliport(AirportHeliportPropertyType value) {
         this.associatedAirportHeliport = value;
     }
 
@@ -406,10 +422,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayPropertyType }{@code >}
+     *     {@link RunwayPropertyType }
      *     
      */
-    public JAXBElement<RunwayPropertyType> getApproachTakeOffArea() {
+    public RunwayPropertyType getApproachTakeOffArea() {
         return approachTakeOffArea;
     }
 
@@ -418,10 +434,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayPropertyType }{@code >}
+     *     {@link RunwayPropertyType }
      *     
      */
-    public void setApproachTakeOffArea(JAXBElement<RunwayPropertyType> value) {
+    public void setApproachTakeOffArea(RunwayPropertyType value) {
         this.approachTakeOffArea = value;
     }
 
@@ -617,7 +633,10 @@ public class TouchDownLiftOffTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTouchDownLiftOffExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_touch_down_lift_off_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTouchDownLiftOffExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

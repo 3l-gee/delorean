@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,28 +67,31 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "taxi_holding_position_time_slice")
+@Table(name = "taxi_holding_position_slice", schema = "public")
 public class TaxiHoldingPositionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "landingCategory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeHoldingCategoryType landingCategory;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeStatusOperationsType status;
+    @XmlElement(nillable = true)
     @Transient
-    protected JAXBElement<CodeHoldingCategoryType> landingCategory;
-    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStatusOperationsType> status;
-    @XmlElementRef(name = "associatedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<GuidanceLinePropertyType> associatedGuidanceLine;
+    protected GuidanceLinePropertyType associatedGuidanceLine;
     @XmlElement(nillable = true)
     @Transient
     protected List<RunwayPropertyType> protectedRunway;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
     @Transient
+    protected ElevatedPointPropertyType location;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<TaxiHoldingPositionTimeSliceType.Extension> extension;
@@ -94,10 +101,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeHoldingCategoryType }{@code >}
+     *     {@link CodeHoldingCategoryType }
      *     
      */
-    public JAXBElement<CodeHoldingCategoryType> getLandingCategory() {
+    public CodeHoldingCategoryType getLandingCategory() {
         return landingCategory;
     }
 
@@ -106,10 +113,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeHoldingCategoryType }{@code >}
+     *     {@link CodeHoldingCategoryType }
      *     
      */
-    public void setLandingCategory(JAXBElement<CodeHoldingCategoryType> value) {
+    public void setLandingCategory(CodeHoldingCategoryType value) {
         this.landingCategory = value;
     }
 
@@ -122,10 +129,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public JAXBElement<CodeStatusOperationsType> getStatus() {
+    public CodeStatusOperationsType getStatus() {
         return status;
     }
 
@@ -134,10 +141,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
+    public void setStatus(CodeStatusOperationsType value) {
         this.status = value;
     }
 
@@ -150,10 +157,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public JAXBElement<GuidanceLinePropertyType> getAssociatedGuidanceLine() {
+    public GuidanceLinePropertyType getAssociatedGuidanceLine() {
         return associatedGuidanceLine;
     }
 
@@ -162,10 +169,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public void setAssociatedGuidanceLine(JAXBElement<GuidanceLinePropertyType> value) {
+    public void setAssociatedGuidanceLine(GuidanceLinePropertyType value) {
         this.associatedGuidanceLine = value;
     }
 
@@ -218,10 +225,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getLocation() {
+    public ElevatedPointPropertyType getLocation() {
         return location;
     }
 
@@ -230,10 +237,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setLocation(ElevatedPointPropertyType value) {
         this.location = value;
     }
 
@@ -349,7 +356,10 @@ public class TaxiHoldingPositionTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTaxiHoldingPositionExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_taxi_holding_position_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTaxiHoldingPositionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

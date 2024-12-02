@@ -41,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "abstractUsageCondition"
 })
 @Entity
-@Table(name = "usage_condition_property")
+@Table(name = "usage_condition_property", schema = "public")
 public class UsageConditionPropertyType
     extends AbstractAIXMPropertyType
 {

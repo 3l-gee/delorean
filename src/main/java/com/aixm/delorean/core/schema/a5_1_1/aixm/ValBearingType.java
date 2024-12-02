@@ -42,10 +42,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValBearingType {
 
     @XmlValue
-    @Column(name = "val_bearing")
+    @Column(name = "bearing", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_bearing_base_type_nil_reason")
+    @Column(name = "bearing_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

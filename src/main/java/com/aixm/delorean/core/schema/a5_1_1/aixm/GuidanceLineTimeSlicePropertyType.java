@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,18 +51,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "guidanceLineTimeSlice"
 })
 @Entity
-@Table(name = "guidance_line_time_slice_property")
+@Table(name = "guidance_line_slice_property", schema = "public")
 public class GuidanceLineTimeSlicePropertyType {
 
     @XmlElement(name = "GuidanceLineTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
-    })
-    @JoinColumn(name = "guidance_line_time_slice_id")
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "guidance_line_slice_id", referencedColumnName = "id")
     protected GuidanceLineTimeSliceType guidanceLineTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

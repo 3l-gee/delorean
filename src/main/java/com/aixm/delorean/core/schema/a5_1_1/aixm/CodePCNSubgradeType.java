@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePCNSubgradeType {
 
     @XmlValue
-    protected CodePCNSubgradeBaseType value;
+    @Column(name = "pcn_subgrade", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_pcn_subgrade_base_type_nil_reason")
+    @Column(name = "pcn_subgrade_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodePCNSubgradeType {
      * 
      * @return
      *     possible object is
-     *     {@link CodePCNSubgradeBaseType }
+     *     {@link String }
      *     
      */
-    public CodePCNSubgradeBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodePCNSubgradeType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodePCNSubgradeBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodePCNSubgradeBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

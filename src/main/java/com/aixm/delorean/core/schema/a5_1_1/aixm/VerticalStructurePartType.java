@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -77,64 +81,73 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "vertical_structure_part")
+@Table(name = "vertical_structure_part", schema = "public")
 public class VerticalStructurePartType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "verticalExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> verticalExtent;
-    @XmlElementRef(name = "verticalExtentAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> verticalExtentAccuracy;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalStructureType> type;
-    @XmlElementRef(name = "constructionStatus", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStatusConstructionType> constructionStatus;
-    @XmlElementRef(name = "markingPattern", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalStructureMarkingType> markingPattern;
-    @XmlElementRef(name = "markingFirstColour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeColourType> markingFirstColour;
-    @XmlElementRef(name = "markingSecondColour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeColourType> markingSecondColour;
-    @XmlElementRef(name = "mobile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> mobile;
-    @XmlElementRef(name = "frangible", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> frangible;
-    @XmlElementRef(name = "visibleMaterial", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalStructureMaterialType> visibleMaterial;
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextDesignatorType> designator;
-    @XmlElementRef(name = "horizontalProjection_surfaceExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedSurfacePropertyType> horizontalProjectionSurfaceExtent;
-    @XmlElementRef(name = "horizontalProjection_linearExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedCurvePropertyType> horizontalProjectionLinearExtent;
-    @XmlElementRef(name = "horizontalProjection_location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> horizontalProjectionLocation;
     @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType verticalExtent;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType verticalExtentAccuracy;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalStructureType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeStatusConstructionType constructionStatus;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalStructureMarkingType markingPattern;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeColourType markingFirstColour;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeColourType markingSecondColour;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType mobile;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType frangible;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalStructureMaterialType visibleMaterial;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextDesignatorType designator;
+    @XmlElement(name = "horizontalProjection_surfaceExtent", nillable = true)
     @Transient
+    protected ElevatedSurfacePropertyType horizontalProjectionSurfaceExtent;
+    @XmlElement(name = "horizontalProjection_linearExtent", nillable = true)
+    @Transient
+    protected ElevatedCurvePropertyType horizontalProjectionLinearExtent;
+    @XmlElement(name = "horizontalProjection_location", nillable = true)
+    @Transient
+    protected ElevatedPointPropertyType horizontalProjectionLocation;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "lighting_id", referencedColumnName = "id")
     protected List<LightElementPropertyType> lighting;
     @Transient
     protected List<VerticalStructurePartType.Extension> extension;
@@ -264,10 +277,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getVerticalExtent() {
+    public ValDistanceType getVerticalExtent() {
         return verticalExtent;
     }
 
@@ -276,10 +289,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setVerticalExtent(JAXBElement<ValDistanceType> value) {
+    public void setVerticalExtent(ValDistanceType value) {
         this.verticalExtent = value;
     }
 
@@ -292,10 +305,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getVerticalExtentAccuracy() {
+    public ValDistanceType getVerticalExtentAccuracy() {
         return verticalExtentAccuracy;
     }
 
@@ -304,10 +317,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setVerticalExtentAccuracy(JAXBElement<ValDistanceType> value) {
+    public void setVerticalExtentAccuracy(ValDistanceType value) {
         this.verticalExtentAccuracy = value;
     }
 
@@ -320,10 +333,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalStructureType }{@code >}
+     *     {@link CodeVerticalStructureType }
      *     
      */
-    public JAXBElement<CodeVerticalStructureType> getType() {
+    public CodeVerticalStructureType getType() {
         return type;
     }
 
@@ -332,10 +345,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalStructureType }{@code >}
+     *     {@link CodeVerticalStructureType }
      *     
      */
-    public void setType(JAXBElement<CodeVerticalStructureType> value) {
+    public void setType(CodeVerticalStructureType value) {
         this.type = value;
     }
 
@@ -348,10 +361,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusConstructionType }{@code >}
+     *     {@link CodeStatusConstructionType }
      *     
      */
-    public JAXBElement<CodeStatusConstructionType> getConstructionStatus() {
+    public CodeStatusConstructionType getConstructionStatus() {
         return constructionStatus;
     }
 
@@ -360,10 +373,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusConstructionType }{@code >}
+     *     {@link CodeStatusConstructionType }
      *     
      */
-    public void setConstructionStatus(JAXBElement<CodeStatusConstructionType> value) {
+    public void setConstructionStatus(CodeStatusConstructionType value) {
         this.constructionStatus = value;
     }
 
@@ -376,10 +389,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalStructureMarkingType }{@code >}
+     *     {@link CodeVerticalStructureMarkingType }
      *     
      */
-    public JAXBElement<CodeVerticalStructureMarkingType> getMarkingPattern() {
+    public CodeVerticalStructureMarkingType getMarkingPattern() {
         return markingPattern;
     }
 
@@ -388,10 +401,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalStructureMarkingType }{@code >}
+     *     {@link CodeVerticalStructureMarkingType }
      *     
      */
-    public void setMarkingPattern(JAXBElement<CodeVerticalStructureMarkingType> value) {
+    public void setMarkingPattern(CodeVerticalStructureMarkingType value) {
         this.markingPattern = value;
     }
 
@@ -404,10 +417,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public JAXBElement<CodeColourType> getMarkingFirstColour() {
+    public CodeColourType getMarkingFirstColour() {
         return markingFirstColour;
     }
 
@@ -416,10 +429,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public void setMarkingFirstColour(JAXBElement<CodeColourType> value) {
+    public void setMarkingFirstColour(CodeColourType value) {
         this.markingFirstColour = value;
     }
 
@@ -432,10 +445,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public JAXBElement<CodeColourType> getMarkingSecondColour() {
+    public CodeColourType getMarkingSecondColour() {
         return markingSecondColour;
     }
 
@@ -444,10 +457,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public void setMarkingSecondColour(JAXBElement<CodeColourType> value) {
+    public void setMarkingSecondColour(CodeColourType value) {
         this.markingSecondColour = value;
     }
 
@@ -460,10 +473,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMobile() {
+    public CodeYesNoType getMobile() {
         return mobile;
     }
 
@@ -472,10 +485,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMobile(JAXBElement<CodeYesNoType> value) {
+    public void setMobile(CodeYesNoType value) {
         this.mobile = value;
     }
 
@@ -488,10 +501,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getFrangible() {
+    public CodeYesNoType getFrangible() {
         return frangible;
     }
 
@@ -500,10 +513,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setFrangible(JAXBElement<CodeYesNoType> value) {
+    public void setFrangible(CodeYesNoType value) {
         this.frangible = value;
     }
 
@@ -516,10 +529,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalStructureMaterialType }{@code >}
+     *     {@link CodeVerticalStructureMaterialType }
      *     
      */
-    public JAXBElement<CodeVerticalStructureMaterialType> getVisibleMaterial() {
+    public CodeVerticalStructureMaterialType getVisibleMaterial() {
         return visibleMaterial;
     }
 
@@ -528,10 +541,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalStructureMaterialType }{@code >}
+     *     {@link CodeVerticalStructureMaterialType }
      *     
      */
-    public void setVisibleMaterial(JAXBElement<CodeVerticalStructureMaterialType> value) {
+    public void setVisibleMaterial(CodeVerticalStructureMaterialType value) {
         this.visibleMaterial = value;
     }
 
@@ -544,10 +557,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getDesignator() {
+    public TextDesignatorType getDesignator() {
         return designator;
     }
 
@@ -556,10 +569,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<TextDesignatorType> value) {
+    public void setDesignator(TextDesignatorType value) {
         this.designator = value;
     }
 
@@ -572,10 +585,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getHorizontalProjectionSurfaceExtent() {
+    public ElevatedSurfacePropertyType getHorizontalProjectionSurfaceExtent() {
         return horizontalProjectionSurfaceExtent;
     }
 
@@ -584,10 +597,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setHorizontalProjectionSurfaceExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setHorizontalProjectionSurfaceExtent(ElevatedSurfacePropertyType value) {
         this.horizontalProjectionSurfaceExtent = value;
     }
 
@@ -600,10 +613,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedCurvePropertyType }{@code >}
+     *     {@link ElevatedCurvePropertyType }
      *     
      */
-    public JAXBElement<ElevatedCurvePropertyType> getHorizontalProjectionLinearExtent() {
+    public ElevatedCurvePropertyType getHorizontalProjectionLinearExtent() {
         return horizontalProjectionLinearExtent;
     }
 
@@ -612,10 +625,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedCurvePropertyType }{@code >}
+     *     {@link ElevatedCurvePropertyType }
      *     
      */
-    public void setHorizontalProjectionLinearExtent(JAXBElement<ElevatedCurvePropertyType> value) {
+    public void setHorizontalProjectionLinearExtent(ElevatedCurvePropertyType value) {
         this.horizontalProjectionLinearExtent = value;
     }
 
@@ -628,10 +641,10 @@ public class VerticalStructurePartType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getHorizontalProjectionLocation() {
+    public ElevatedPointPropertyType getHorizontalProjectionLocation() {
         return horizontalProjectionLocation;
     }
 
@@ -640,10 +653,10 @@ public class VerticalStructurePartType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setHorizontalProjectionLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setHorizontalProjectionLocation(ElevatedPointPropertyType value) {
         this.horizontalProjectionLocation = value;
     }
 
@@ -761,10 +774,16 @@ public class VerticalStructurePartType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractVerticalStructurePartExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_vertical_structure_part_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractVerticalStructurePartExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

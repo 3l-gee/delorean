@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -86,95 +90,116 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "instrument_approach_procedure_time_slice")
+@Table(name = "instrument_approach_procedure_slice", schema = "public")
 public class InstrumentApproachProcedureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "communicationFailureInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextInstructionType> communicationFailureInstruction;
-    @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextInstructionType> instruction;
-    @XmlElementRef(name = "designCriteria", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeDesignStandardType> designCriteria;
-    @XmlElementRef(name = "codingStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeProcedureCodingStandardType> codingStandard;
-    @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> flightChecked;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "RNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> rnav;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected TextInstructionType communicationFailureInstruction;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextInstructionType instruction;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeDesignStandardType designCriteria;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeProcedureCodingStandardType codingStandard;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType flightChecked;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
+    @XmlElement(name = "RNAV", nillable = true)
+    @Embedded
+    protected CodeYesNoType rnav;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<ProcedureAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @Transient
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "aircraft_characteristic_id", referencedColumnName = "id")
     protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "flight_transition_id", referencedColumnName = "id")
     protected List<ProcedureTransitionPropertyType> flightTransition;
-    @XmlElementRef(name = "guidanceFacility_specialNavigationSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @XmlElement(name = "guidanceFacility_specialNavigationSystem", nillable = true)
     @Transient
-    protected JAXBElement<SpecialNavigationSystemPropertyType> guidanceFacilitySpecialNavigationSystem;
-    @XmlElementRef(name = "guidanceFacility_radar", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected SpecialNavigationSystemPropertyType guidanceFacilitySpecialNavigationSystem;
+    @XmlElement(name = "guidanceFacility_radar", nillable = true)
     @Transient
-    protected JAXBElement<RadarSystemPropertyType> guidanceFacilityRadar;
-    @XmlElementRef(name = "guidanceFacility_navaid", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected RadarSystemPropertyType guidanceFacilityRadar;
+    @XmlElement(name = "guidanceFacility_navaid", nillable = true)
     @Transient
-    protected JAXBElement<NavaidPropertyType> guidanceFacilityNavaid;
+    protected NavaidPropertyType guidanceFacilityNavaid;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "safeAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SafeAltitudeAreaPropertyType> safeAltitude;
-    @XmlElementRef(name = "approachPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeApproachPrefixType> approachPrefix;
-    @XmlElementRef(name = "approachType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeApproachType> approachType;
-    @XmlElementRef(name = "multipleIdentification", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeUpperAlphaType> multipleIdentification;
-    @XmlElementRef(name = "copterTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValBearingType> copterTrack;
-    @XmlElementRef(name = "circlingIdentification", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeUpperAlphaType> circlingIdentification;
-    @XmlElementRef(name = "courseReversalInstruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextInstructionType> courseReversalInstruction;
-    @XmlElementRef(name = "additionalEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeApproachEquipmentAdditionalType> additionalEquipment;
-    @XmlElementRef(name = "channelGNSS", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValChannelNumberType> channelGNSS;
-    @XmlElementRef(name = "WAASReliable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> waasReliable;
-    @XmlElementRef(name = "landing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<LandingTakeoffAreaCollectionPropertyType> landing;
     @XmlElement(nillable = true)
     @Transient
+    protected SafeAltitudeAreaPropertyType safeAltitude;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeApproachPrefixType approachPrefix;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeApproachType approachType;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeUpperAlphaType multipleIdentification;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValBearingType copterTrack;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeUpperAlphaType circlingIdentification;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextInstructionType courseReversalInstruction;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeApproachEquipmentAdditionalType additionalEquipment;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValChannelNumberType channelGNSS;
+    @XmlElement(name = "WAASReliable", nillable = true)
+    @Embedded
+    protected CodeYesNoType waasReliable;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "landing_id", referencedColumnName = "id")
+    protected LandingTakeoffAreaCollectionPropertyType landing;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "missed_instruction_id", referencedColumnName = "id")
     protected List<MissedApproachGroupPropertyType> missedInstruction;
-    @XmlElementRef(name = "finalProfile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<FinalProfilePropertyType> finalProfile;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "final_profile_id", referencedColumnName = "id")
+    protected FinalProfilePropertyType finalProfile;
     @Transient
     protected List<InstrumentApproachProcedureTimeSliceType.Extension> extension;
 
@@ -183,10 +208,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public JAXBElement<TextInstructionType> getCommunicationFailureInstruction() {
+    public TextInstructionType getCommunicationFailureInstruction() {
         return communicationFailureInstruction;
     }
 
@@ -195,10 +220,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public void setCommunicationFailureInstruction(JAXBElement<TextInstructionType> value) {
+    public void setCommunicationFailureInstruction(TextInstructionType value) {
         this.communicationFailureInstruction = value;
     }
 
@@ -211,10 +236,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public JAXBElement<TextInstructionType> getInstruction() {
+    public TextInstructionType getInstruction() {
         return instruction;
     }
 
@@ -223,10 +248,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public void setInstruction(JAXBElement<TextInstructionType> value) {
+    public void setInstruction(TextInstructionType value) {
         this.instruction = value;
     }
 
@@ -239,10 +264,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignStandardType }{@code >}
+     *     {@link CodeDesignStandardType }
      *     
      */
-    public JAXBElement<CodeDesignStandardType> getDesignCriteria() {
+    public CodeDesignStandardType getDesignCriteria() {
         return designCriteria;
     }
 
@@ -251,10 +276,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDesignStandardType }{@code >}
+     *     {@link CodeDesignStandardType }
      *     
      */
-    public void setDesignCriteria(JAXBElement<CodeDesignStandardType> value) {
+    public void setDesignCriteria(CodeDesignStandardType value) {
         this.designCriteria = value;
     }
 
@@ -267,10 +292,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureCodingStandardType }{@code >}
+     *     {@link CodeProcedureCodingStandardType }
      *     
      */
-    public JAXBElement<CodeProcedureCodingStandardType> getCodingStandard() {
+    public CodeProcedureCodingStandardType getCodingStandard() {
         return codingStandard;
     }
 
@@ -279,10 +304,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeProcedureCodingStandardType }{@code >}
+     *     {@link CodeProcedureCodingStandardType }
      *     
      */
-    public void setCodingStandard(JAXBElement<CodeProcedureCodingStandardType> value) {
+    public void setCodingStandard(CodeProcedureCodingStandardType value) {
         this.codingStandard = value;
     }
 
@@ -295,10 +320,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getFlightChecked() {
+    public CodeYesNoType getFlightChecked() {
         return flightChecked;
     }
 
@@ -307,10 +332,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setFlightChecked(JAXBElement<CodeYesNoType> value) {
+    public void setFlightChecked(CodeYesNoType value) {
         this.flightChecked = value;
     }
 
@@ -323,10 +348,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -335,14 +360,14 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -351,10 +376,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getRNAV() {
+    public CodeYesNoType getRNAV() {
         return rnav;
     }
 
@@ -363,10 +388,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setRNAV(JAXBElement<CodeYesNoType> value) {
+    public void setRNAV(CodeYesNoType value) {
         this.rnav = value;
     }
 
@@ -539,10 +564,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     {@link SpecialNavigationSystemPropertyType }
      *     
      */
-    public JAXBElement<SpecialNavigationSystemPropertyType> getGuidanceFacilitySpecialNavigationSystem() {
+    public SpecialNavigationSystemPropertyType getGuidanceFacilitySpecialNavigationSystem() {
         return guidanceFacilitySpecialNavigationSystem;
     }
 
@@ -551,10 +576,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     {@link SpecialNavigationSystemPropertyType }
      *     
      */
-    public void setGuidanceFacilitySpecialNavigationSystem(JAXBElement<SpecialNavigationSystemPropertyType> value) {
+    public void setGuidanceFacilitySpecialNavigationSystem(SpecialNavigationSystemPropertyType value) {
         this.guidanceFacilitySpecialNavigationSystem = value;
     }
 
@@ -567,10 +592,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RadarSystemPropertyType }{@code >}
+     *     {@link RadarSystemPropertyType }
      *     
      */
-    public JAXBElement<RadarSystemPropertyType> getGuidanceFacilityRadar() {
+    public RadarSystemPropertyType getGuidanceFacilityRadar() {
         return guidanceFacilityRadar;
     }
 
@@ -579,10 +604,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RadarSystemPropertyType }{@code >}
+     *     {@link RadarSystemPropertyType }
      *     
      */
-    public void setGuidanceFacilityRadar(JAXBElement<RadarSystemPropertyType> value) {
+    public void setGuidanceFacilityRadar(RadarSystemPropertyType value) {
         this.guidanceFacilityRadar = value;
     }
 
@@ -595,10 +620,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getGuidanceFacilityNavaid() {
+    public NavaidPropertyType getGuidanceFacilityNavaid() {
         return guidanceFacilityNavaid;
     }
 
@@ -607,10 +632,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setGuidanceFacilityNavaid(JAXBElement<NavaidPropertyType> value) {
+    public void setGuidanceFacilityNavaid(NavaidPropertyType value) {
         this.guidanceFacilityNavaid = value;
     }
 
@@ -663,10 +688,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SafeAltitudeAreaPropertyType }{@code >}
+     *     {@link SafeAltitudeAreaPropertyType }
      *     
      */
-    public JAXBElement<SafeAltitudeAreaPropertyType> getSafeAltitude() {
+    public SafeAltitudeAreaPropertyType getSafeAltitude() {
         return safeAltitude;
     }
 
@@ -675,10 +700,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SafeAltitudeAreaPropertyType }{@code >}
+     *     {@link SafeAltitudeAreaPropertyType }
      *     
      */
-    public void setSafeAltitude(JAXBElement<SafeAltitudeAreaPropertyType> value) {
+    public void setSafeAltitude(SafeAltitudeAreaPropertyType value) {
         this.safeAltitude = value;
     }
 
@@ -691,10 +716,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeApproachPrefixType }{@code >}
+     *     {@link CodeApproachPrefixType }
      *     
      */
-    public JAXBElement<CodeApproachPrefixType> getApproachPrefix() {
+    public CodeApproachPrefixType getApproachPrefix() {
         return approachPrefix;
     }
 
@@ -703,10 +728,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeApproachPrefixType }{@code >}
+     *     {@link CodeApproachPrefixType }
      *     
      */
-    public void setApproachPrefix(JAXBElement<CodeApproachPrefixType> value) {
+    public void setApproachPrefix(CodeApproachPrefixType value) {
         this.approachPrefix = value;
     }
 
@@ -719,10 +744,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeApproachType }{@code >}
+     *     {@link CodeApproachType }
      *     
      */
-    public JAXBElement<CodeApproachType> getApproachType() {
+    public CodeApproachType getApproachType() {
         return approachType;
     }
 
@@ -731,10 +756,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeApproachType }{@code >}
+     *     {@link CodeApproachType }
      *     
      */
-    public void setApproachType(JAXBElement<CodeApproachType> value) {
+    public void setApproachType(CodeApproachType value) {
         this.approachType = value;
     }
 
@@ -747,10 +772,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     {@link CodeUpperAlphaType }
      *     
      */
-    public JAXBElement<CodeUpperAlphaType> getMultipleIdentification() {
+    public CodeUpperAlphaType getMultipleIdentification() {
         return multipleIdentification;
     }
 
@@ -759,10 +784,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     {@link CodeUpperAlphaType }
      *     
      */
-    public void setMultipleIdentification(JAXBElement<CodeUpperAlphaType> value) {
+    public void setMultipleIdentification(CodeUpperAlphaType value) {
         this.multipleIdentification = value;
     }
 
@@ -775,10 +800,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getCopterTrack() {
+    public ValBearingType getCopterTrack() {
         return copterTrack;
     }
 
@@ -787,10 +812,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setCopterTrack(JAXBElement<ValBearingType> value) {
+    public void setCopterTrack(ValBearingType value) {
         this.copterTrack = value;
     }
 
@@ -803,10 +828,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     {@link CodeUpperAlphaType }
      *     
      */
-    public JAXBElement<CodeUpperAlphaType> getCirclingIdentification() {
+    public CodeUpperAlphaType getCirclingIdentification() {
         return circlingIdentification;
     }
 
@@ -815,10 +840,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     {@link CodeUpperAlphaType }
      *     
      */
-    public void setCirclingIdentification(JAXBElement<CodeUpperAlphaType> value) {
+    public void setCirclingIdentification(CodeUpperAlphaType value) {
         this.circlingIdentification = value;
     }
 
@@ -831,10 +856,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public JAXBElement<TextInstructionType> getCourseReversalInstruction() {
+    public TextInstructionType getCourseReversalInstruction() {
         return courseReversalInstruction;
     }
 
@@ -843,10 +868,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public void setCourseReversalInstruction(JAXBElement<TextInstructionType> value) {
+    public void setCourseReversalInstruction(TextInstructionType value) {
         this.courseReversalInstruction = value;
     }
 
@@ -859,10 +884,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeApproachEquipmentAdditionalType }{@code >}
+     *     {@link CodeApproachEquipmentAdditionalType }
      *     
      */
-    public JAXBElement<CodeApproachEquipmentAdditionalType> getAdditionalEquipment() {
+    public CodeApproachEquipmentAdditionalType getAdditionalEquipment() {
         return additionalEquipment;
     }
 
@@ -871,10 +896,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeApproachEquipmentAdditionalType }{@code >}
+     *     {@link CodeApproachEquipmentAdditionalType }
      *     
      */
-    public void setAdditionalEquipment(JAXBElement<CodeApproachEquipmentAdditionalType> value) {
+    public void setAdditionalEquipment(CodeApproachEquipmentAdditionalType value) {
         this.additionalEquipment = value;
     }
 
@@ -887,10 +912,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValChannelNumberType }{@code >}
+     *     {@link ValChannelNumberType }
      *     
      */
-    public JAXBElement<ValChannelNumberType> getChannelGNSS() {
+    public ValChannelNumberType getChannelGNSS() {
         return channelGNSS;
     }
 
@@ -899,10 +924,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValChannelNumberType }{@code >}
+     *     {@link ValChannelNumberType }
      *     
      */
-    public void setChannelGNSS(JAXBElement<ValChannelNumberType> value) {
+    public void setChannelGNSS(ValChannelNumberType value) {
         this.channelGNSS = value;
     }
 
@@ -915,10 +940,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getWAASReliable() {
+    public CodeYesNoType getWAASReliable() {
         return waasReliable;
     }
 
@@ -927,10 +952,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setWAASReliable(JAXBElement<CodeYesNoType> value) {
+    public void setWAASReliable(CodeYesNoType value) {
         this.waasReliable = value;
     }
 
@@ -943,10 +968,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
+     *     {@link LandingTakeoffAreaCollectionPropertyType }
      *     
      */
-    public JAXBElement<LandingTakeoffAreaCollectionPropertyType> getLanding() {
+    public LandingTakeoffAreaCollectionPropertyType getLanding() {
         return landing;
     }
 
@@ -955,10 +980,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link LandingTakeoffAreaCollectionPropertyType }{@code >}
+     *     {@link LandingTakeoffAreaCollectionPropertyType }
      *     
      */
-    public void setLanding(JAXBElement<LandingTakeoffAreaCollectionPropertyType> value) {
+    public void setLanding(LandingTakeoffAreaCollectionPropertyType value) {
         this.landing = value;
     }
 
@@ -1011,10 +1036,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link FinalProfilePropertyType }{@code >}
+     *     {@link FinalProfilePropertyType }
      *     
      */
-    public JAXBElement<FinalProfilePropertyType> getFinalProfile() {
+    public FinalProfilePropertyType getFinalProfile() {
         return finalProfile;
     }
 
@@ -1023,10 +1048,10 @@ public class InstrumentApproachProcedureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link FinalProfilePropertyType }{@code >}
+     *     {@link FinalProfilePropertyType }
      *     
      */
-    public void setFinalProfile(JAXBElement<FinalProfilePropertyType> value) {
+    public void setFinalProfile(FinalProfilePropertyType value) {
         this.finalProfile = value;
     }
 
@@ -1104,10 +1129,16 @@ public class InstrumentApproachProcedureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractInstrumentApproachProcedureExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_instrument_approach_procedure_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractInstrumentApproachProcedureExtension;
         @XmlElement(name = "AbstractProcedureExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_procedure_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractProcedureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

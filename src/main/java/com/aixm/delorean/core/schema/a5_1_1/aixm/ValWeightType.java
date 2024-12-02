@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValWeightType {
 
     @XmlValue
-    @Column(name = "val_weight")
+    @Column(name = "weight", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_weight_base_type_uom")
-    protected UomWeightType uom;
+    @Column(name = "weight_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_weight_base_type_nil_reason")
+    @Column(name = "weight_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -85,10 +85,10 @@ public class ValWeightType {
      * 
      * @return
      *     possible object is
-     *     {@link UomWeightType }
+     *     {@link String }
      *     
      */
-    public UomWeightType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -97,10 +97,10 @@ public class ValWeightType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomWeightType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomWeightType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

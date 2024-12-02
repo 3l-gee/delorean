@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValFrequencyType {
 
     @XmlValue
-    @Column(name = "val_frequency")
+    @Column(name = "frequency", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_frequency_base_type_uom")
-    protected UomFrequencyType uom;
+    @Column(name = "frequency_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_frequency_base_type_nil_reason")
+    @Column(name = "frequency_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -85,10 +85,10 @@ public class ValFrequencyType {
      * 
      * @return
      *     possible object is
-     *     {@link UomFrequencyType }
+     *     {@link String }
      *     
      */
-    public UomFrequencyType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -97,10 +97,10 @@ public class ValFrequencyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomFrequencyType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomFrequencyType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

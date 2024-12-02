@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gmd.MDMetadataType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractMetadataPropertyType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,11 +40,13 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "FeatureTimeSliceMetadataPropertyType", propOrder = {
     "mdMetadata"
 })
+@Embeddable
 public class FeatureTimeSliceMetadataPropertyType
     extends AbstractMetadataPropertyType
 {
 
     @XmlElement(name = "MD_Metadata", namespace = "http://www.isotc211.org/2005/gmd")
+    @Transient
     protected MDMetadataType mdMetadata;
 
     /**

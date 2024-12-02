@@ -7,9 +7,12 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -40,13 +43,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "authorityForSpecialNavigationStation"
 })
 @Entity
-@Table(name = "authority_for_special_navigation_station_property")
+@Table(name = "authority_for_special_navigation_station_property", schema = "public")
 public class AuthorityForSpecialNavigationStationPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "AuthorityForSpecialNavigationStation", required = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "authority_for_special_navigation_station_id", referencedColumnName = "id")
     protected AuthorityForSpecialNavigationStationType authorityForSpecialNavigationStation;
 
     /**

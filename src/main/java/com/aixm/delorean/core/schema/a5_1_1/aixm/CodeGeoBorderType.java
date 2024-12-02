@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeGeoBorderType {
 
     @XmlValue
-    protected CodeGeoBorderBaseType value;
+    @Column(name = "geo_border", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_geo_border_base_type_nil_reason")
+    @Column(name = "geo_border_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeGeoBorderType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeGeoBorderBaseType }
+     *     {@link String }
      *     
      */
-    public CodeGeoBorderBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeGeoBorderType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeGeoBorderBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeGeoBorderBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

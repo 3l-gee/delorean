@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -74,59 +78,71 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "sdf_time_slice")
+@Table(name = "sdf_slice", schema = "public")
 public class SDFTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeNavaidDesignatorType> designator;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "emissionClass", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRadioEmissionType> emissionClass;
-    @XmlElementRef(name = "mobile", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> mobile;
-    @XmlElementRef(name = "magneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValMagneticVariationType> magneticVariation;
-    @XmlElementRef(name = "magneticVariationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValAngleType> magneticVariationAccuracy;
-    @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DateYearType> dateMagneticVariation;
-    @XmlElementRef(name = "flightChecked", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> flightChecked;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> location;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeNavaidDesignatorType designator;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRadioEmissionType emissionClass;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType mobile;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValMagneticVariationType magneticVariation;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValAngleType magneticVariationAccuracy;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected DateYearType dateMagneticVariation;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType flightChecked;
     @XmlElement(nillable = true)
     @Transient
+    protected ElevatedPointPropertyType location;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "authority_id", referencedColumnName = "id")
     protected List<AuthorityForNavaidEquipmentPropertyType> authority;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "monitoring_id", referencedColumnName = "id")
     protected List<NavaidEquipmentMonitoringPropertyType> monitoring;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "frequency", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValFrequencyType> frequency;
-    @XmlElementRef(name = "magneticBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValBearingType> magneticBearing;
-    @XmlElementRef(name = "trueBearing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValBearingType> trueBearing;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValFrequencyType frequency;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValBearingType magneticBearing;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValBearingType trueBearing;
     @Transient
     protected List<SDFTimeSliceType.Extension> extension;
 
@@ -135,10 +151,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
+     *     {@link CodeNavaidDesignatorType }
      *     
      */
-    public JAXBElement<CodeNavaidDesignatorType> getDesignator() {
+    public CodeNavaidDesignatorType getDesignator() {
         return designator;
     }
 
@@ -147,10 +163,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeNavaidDesignatorType }{@code >}
+     *     {@link CodeNavaidDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<CodeNavaidDesignatorType> value) {
+    public void setDesignator(CodeNavaidDesignatorType value) {
         this.designator = value;
     }
 
@@ -163,10 +179,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -175,14 +191,14 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -191,10 +207,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
+     *     {@link CodeRadioEmissionType }
      *     
      */
-    public JAXBElement<CodeRadioEmissionType> getEmissionClass() {
+    public CodeRadioEmissionType getEmissionClass() {
         return emissionClass;
     }
 
@@ -203,10 +219,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRadioEmissionType }{@code >}
+     *     {@link CodeRadioEmissionType }
      *     
      */
-    public void setEmissionClass(JAXBElement<CodeRadioEmissionType> value) {
+    public void setEmissionClass(CodeRadioEmissionType value) {
         this.emissionClass = value;
     }
 
@@ -219,10 +235,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMobile() {
+    public CodeYesNoType getMobile() {
         return mobile;
     }
 
@@ -231,10 +247,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMobile(JAXBElement<CodeYesNoType> value) {
+    public void setMobile(CodeYesNoType value) {
         this.mobile = value;
     }
 
@@ -247,10 +263,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     *     {@link ValMagneticVariationType }
      *     
      */
-    public JAXBElement<ValMagneticVariationType> getMagneticVariation() {
+    public ValMagneticVariationType getMagneticVariation() {
         return magneticVariation;
     }
 
@@ -259,10 +275,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     *     {@link ValMagneticVariationType }
      *     
      */
-    public void setMagneticVariation(JAXBElement<ValMagneticVariationType> value) {
+    public void setMagneticVariation(ValMagneticVariationType value) {
         this.magneticVariation = value;
     }
 
@@ -275,10 +291,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getMagneticVariationAccuracy() {
+    public ValAngleType getMagneticVariationAccuracy() {
         return magneticVariationAccuracy;
     }
 
@@ -287,10 +303,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
+    public void setMagneticVariationAccuracy(ValAngleType value) {
         this.magneticVariationAccuracy = value;
     }
 
@@ -303,10 +319,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public JAXBElement<DateYearType> getDateMagneticVariation() {
+    public DateYearType getDateMagneticVariation() {
         return dateMagneticVariation;
     }
 
@@ -315,10 +331,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public void setDateMagneticVariation(JAXBElement<DateYearType> value) {
+    public void setDateMagneticVariation(DateYearType value) {
         this.dateMagneticVariation = value;
     }
 
@@ -331,10 +347,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getFlightChecked() {
+    public CodeYesNoType getFlightChecked() {
         return flightChecked;
     }
 
@@ -343,10 +359,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setFlightChecked(JAXBElement<CodeYesNoType> value) {
+    public void setFlightChecked(CodeYesNoType value) {
         this.flightChecked = value;
     }
 
@@ -359,10 +375,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getLocation() {
+    public ElevatedPointPropertyType getLocation() {
         return location;
     }
 
@@ -371,10 +387,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setLocation(ElevatedPointPropertyType value) {
         this.location = value;
     }
 
@@ -547,10 +563,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
+     *     {@link ValFrequencyType }
      *     
      */
-    public JAXBElement<ValFrequencyType> getFrequency() {
+    public ValFrequencyType getFrequency() {
         return frequency;
     }
 
@@ -559,10 +575,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValFrequencyType }{@code >}
+     *     {@link ValFrequencyType }
      *     
      */
-    public void setFrequency(JAXBElement<ValFrequencyType> value) {
+    public void setFrequency(ValFrequencyType value) {
         this.frequency = value;
     }
 
@@ -575,10 +591,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getMagneticBearing() {
+    public ValBearingType getMagneticBearing() {
         return magneticBearing;
     }
 
@@ -587,10 +603,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setMagneticBearing(JAXBElement<ValBearingType> value) {
+    public void setMagneticBearing(ValBearingType value) {
         this.magneticBearing = value;
     }
 
@@ -603,10 +619,10 @@ public class SDFTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getTrueBearing() {
+    public ValBearingType getTrueBearing() {
         return trueBearing;
     }
 
@@ -615,10 +631,10 @@ public class SDFTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setTrueBearing(JAXBElement<ValBearingType> value) {
+    public void setTrueBearing(ValBearingType value) {
         this.trueBearing = value;
     }
 
@@ -696,10 +712,16 @@ public class SDFTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSDFExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_sdf_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSDFExtension;
         @XmlElement(name = "AbstractNavaidEquipmentExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_navaid_equipment_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

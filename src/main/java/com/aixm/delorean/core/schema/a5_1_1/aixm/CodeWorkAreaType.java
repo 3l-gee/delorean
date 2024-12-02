@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeWorkAreaType {
 
     @XmlValue
-    protected CodeWorkAreaBaseType value;
+    @Column(name = "work_area", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_work_area_base_type_nil_reason")
+    @Column(name = "work_area_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeWorkAreaType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeWorkAreaBaseType }
+     *     {@link String }
      *     
      */
-    public CodeWorkAreaBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeWorkAreaType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeWorkAreaBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeWorkAreaBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

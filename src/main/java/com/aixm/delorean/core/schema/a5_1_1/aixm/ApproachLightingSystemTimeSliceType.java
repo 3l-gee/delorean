@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,47 +74,56 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approach_lighting_system_time_slice")
+@Table(name = "approach_lighting_system_slice", schema = "public")
 public class ApproachLightingSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "emergencyLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> emergencyLighting;
-    @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeLightIntensityType> intensityLevel;
-    @XmlElementRef(name = "colour", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeColourType> colour;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeYesNoType emergencyLighting;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeLightIntensityType intensityLevel;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeColourType colour;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "element_id", referencedColumnName = "id")
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "classICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeApproachLightingICAOType classICAO;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeApproachLightingType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType length;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType sequencedFlashing;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType alignmentIndicator;
+    @XmlElement(nillable = true)
     @Transient
-    protected JAXBElement<CodeApproachLightingICAOType> classICAO;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeApproachLightingType> type;
-    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> length;
-    @XmlElementRef(name = "sequencedFlashing", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> sequencedFlashing;
-    @XmlElementRef(name = "alignmentIndicator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> alignmentIndicator;
-    @XmlElementRef(name = "servedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayDirectionPropertyType> servedRunwayDirection;
+    protected RunwayDirectionPropertyType servedRunwayDirection;
     @Transient
     protected List<ApproachLightingSystemTimeSliceType.Extension> extension;
 
@@ -119,10 +132,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getEmergencyLighting() {
+    public CodeYesNoType getEmergencyLighting() {
         return emergencyLighting;
     }
 
@@ -131,10 +144,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setEmergencyLighting(JAXBElement<CodeYesNoType> value) {
+    public void setEmergencyLighting(CodeYesNoType value) {
         this.emergencyLighting = value;
     }
 
@@ -147,10 +160,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
+     *     {@link CodeLightIntensityType }
      *     
      */
-    public JAXBElement<CodeLightIntensityType> getIntensityLevel() {
+    public CodeLightIntensityType getIntensityLevel() {
         return intensityLevel;
     }
 
@@ -159,10 +172,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
+     *     {@link CodeLightIntensityType }
      *     
      */
-    public void setIntensityLevel(JAXBElement<CodeLightIntensityType> value) {
+    public void setIntensityLevel(CodeLightIntensityType value) {
         this.intensityLevel = value;
     }
 
@@ -175,10 +188,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public JAXBElement<CodeColourType> getColour() {
+    public CodeColourType getColour() {
         return colour;
     }
 
@@ -187,10 +200,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeColourType }{@code >}
+     *     {@link CodeColourType }
      *     
      */
-    public void setColour(JAXBElement<CodeColourType> value) {
+    public void setColour(CodeColourType value) {
         this.colour = value;
     }
 
@@ -323,10 +336,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeApproachLightingICAOType }{@code >}
+     *     {@link CodeApproachLightingICAOType }
      *     
      */
-    public JAXBElement<CodeApproachLightingICAOType> getClassICAO() {
+    public CodeApproachLightingICAOType getClassICAO() {
         return classICAO;
     }
 
@@ -335,10 +348,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeApproachLightingICAOType }{@code >}
+     *     {@link CodeApproachLightingICAOType }
      *     
      */
-    public void setClassICAO(JAXBElement<CodeApproachLightingICAOType> value) {
+    public void setClassICAO(CodeApproachLightingICAOType value) {
         this.classICAO = value;
     }
 
@@ -351,10 +364,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeApproachLightingType }{@code >}
+     *     {@link CodeApproachLightingType }
      *     
      */
-    public JAXBElement<CodeApproachLightingType> getType() {
+    public CodeApproachLightingType getType() {
         return type;
     }
 
@@ -363,10 +376,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeApproachLightingType }{@code >}
+     *     {@link CodeApproachLightingType }
      *     
      */
-    public void setType(JAXBElement<CodeApproachLightingType> value) {
+    public void setType(CodeApproachLightingType value) {
         this.type = value;
     }
 
@@ -379,10 +392,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLength() {
+    public ValDistanceType getLength() {
         return length;
     }
 
@@ -391,10 +404,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLength(JAXBElement<ValDistanceType> value) {
+    public void setLength(ValDistanceType value) {
         this.length = value;
     }
 
@@ -407,10 +420,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getSequencedFlashing() {
+    public CodeYesNoType getSequencedFlashing() {
         return sequencedFlashing;
     }
 
@@ -419,10 +432,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setSequencedFlashing(JAXBElement<CodeYesNoType> value) {
+    public void setSequencedFlashing(CodeYesNoType value) {
         this.sequencedFlashing = value;
     }
 
@@ -435,10 +448,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getAlignmentIndicator() {
+    public CodeYesNoType getAlignmentIndicator() {
         return alignmentIndicator;
     }
 
@@ -447,10 +460,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setAlignmentIndicator(JAXBElement<CodeYesNoType> value) {
+    public void setAlignmentIndicator(CodeYesNoType value) {
         this.alignmentIndicator = value;
     }
 
@@ -463,10 +476,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public JAXBElement<RunwayDirectionPropertyType> getServedRunwayDirection() {
+    public RunwayDirectionPropertyType getServedRunwayDirection() {
         return servedRunwayDirection;
     }
 
@@ -475,10 +488,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public void setServedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
+    public void setServedRunwayDirection(RunwayDirectionPropertyType value) {
         this.servedRunwayDirection = value;
     }
 
@@ -556,10 +569,16 @@ public class ApproachLightingSystemTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractApproachLightingSystemExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_approach_lighting_system_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractApproachLightingSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_ground_light_system_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

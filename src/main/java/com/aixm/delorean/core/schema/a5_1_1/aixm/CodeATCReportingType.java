@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeATCReportingType {
 
     @XmlValue
-    protected CodeATCReportingBaseType value;
+    @Column(name = "atc_reporting", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_atc_reporting_base_type_nil_reason")
+    @Column(name = "atc_reporting_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeATCReportingType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeATCReportingBaseType }
+     *     {@link String }
      *     
      */
-    public CodeATCReportingBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeATCReportingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeATCReportingBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeATCReportingBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -74,61 +78,73 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runway_time_slice")
+@Table(name = "runway_slice", schema = "public")
 public class RunwayTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextDesignatorType> designator;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRunwayType> type;
-    @XmlElementRef(name = "nominalLength", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> nominalLength;
-    @XmlElementRef(name = "lengthAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> lengthAccuracy;
-    @XmlElementRef(name = "nominalWidth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> nominalWidth;
-    @XmlElementRef(name = "widthAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> widthAccuracy;
-    @XmlElementRef(name = "widthShoulder", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> widthShoulder;
-    @XmlElementRef(name = "lengthStrip", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> lengthStrip;
-    @XmlElementRef(name = "widthStrip", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> widthStrip;
-    @XmlElementRef(name = "lengthOffset", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceSignedType> lengthOffset;
-    @XmlElementRef(name = "widthOffset", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceSignedType> widthOffset;
-    @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> abandoned;
-    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
-    @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextDesignatorType designator;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRunwayType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType nominalLength;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType lengthAccuracy;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType nominalWidth;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType widthAccuracy;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType widthShoulder;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType lengthStrip;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType widthStrip;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceSignedType lengthOffset;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceSignedType widthOffset;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType abandoned;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "surface_properties_id", referencedColumnName = "id")
+    protected SurfaceCharacteristicsPropertyType surfaceProperties;
     @XmlElement(nillable = true)
     @Transient
+    protected AirportHeliportPropertyType associatedAirportHeliport;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "overall_contaminant_id", referencedColumnName = "id")
     protected List<RunwayContaminationPropertyType> overallContaminant;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "area_contaminant_id", referencedColumnName = "id")
     protected List<RunwaySectionContaminationPropertyType> areaContaminant;
     @Transient
     protected List<RunwayTimeSliceType.Extension> extension;
@@ -138,10 +154,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getDesignator() {
+    public TextDesignatorType getDesignator() {
         return designator;
     }
 
@@ -150,10 +166,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<TextDesignatorType> value) {
+    public void setDesignator(TextDesignatorType value) {
         this.designator = value;
     }
 
@@ -166,10 +182,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRunwayType }{@code >}
+     *     {@link CodeRunwayType }
      *     
      */
-    public JAXBElement<CodeRunwayType> getType() {
+    public CodeRunwayType getType() {
         return type;
     }
 
@@ -178,10 +194,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRunwayType }{@code >}
+     *     {@link CodeRunwayType }
      *     
      */
-    public void setType(JAXBElement<CodeRunwayType> value) {
+    public void setType(CodeRunwayType value) {
         this.type = value;
     }
 
@@ -194,10 +210,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getNominalLength() {
+    public ValDistanceType getNominalLength() {
         return nominalLength;
     }
 
@@ -206,10 +222,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setNominalLength(JAXBElement<ValDistanceType> value) {
+    public void setNominalLength(ValDistanceType value) {
         this.nominalLength = value;
     }
 
@@ -222,10 +238,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLengthAccuracy() {
+    public ValDistanceType getLengthAccuracy() {
         return lengthAccuracy;
     }
 
@@ -234,10 +250,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLengthAccuracy(JAXBElement<ValDistanceType> value) {
+    public void setLengthAccuracy(ValDistanceType value) {
         this.lengthAccuracy = value;
     }
 
@@ -250,10 +266,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getNominalWidth() {
+    public ValDistanceType getNominalWidth() {
         return nominalWidth;
     }
 
@@ -262,10 +278,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setNominalWidth(JAXBElement<ValDistanceType> value) {
+    public void setNominalWidth(ValDistanceType value) {
         this.nominalWidth = value;
     }
 
@@ -278,10 +294,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getWidthAccuracy() {
+    public ValDistanceType getWidthAccuracy() {
         return widthAccuracy;
     }
 
@@ -290,10 +306,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setWidthAccuracy(JAXBElement<ValDistanceType> value) {
+    public void setWidthAccuracy(ValDistanceType value) {
         this.widthAccuracy = value;
     }
 
@@ -306,10 +322,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getWidthShoulder() {
+    public ValDistanceType getWidthShoulder() {
         return widthShoulder;
     }
 
@@ -318,10 +334,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setWidthShoulder(JAXBElement<ValDistanceType> value) {
+    public void setWidthShoulder(ValDistanceType value) {
         this.widthShoulder = value;
     }
 
@@ -334,10 +350,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLengthStrip() {
+    public ValDistanceType getLengthStrip() {
         return lengthStrip;
     }
 
@@ -346,10 +362,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLengthStrip(JAXBElement<ValDistanceType> value) {
+    public void setLengthStrip(ValDistanceType value) {
         this.lengthStrip = value;
     }
 
@@ -362,10 +378,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getWidthStrip() {
+    public ValDistanceType getWidthStrip() {
         return widthStrip;
     }
 
@@ -374,10 +390,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setWidthStrip(JAXBElement<ValDistanceType> value) {
+    public void setWidthStrip(ValDistanceType value) {
         this.widthStrip = value;
     }
 
@@ -390,10 +406,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
+     *     {@link ValDistanceSignedType }
      *     
      */
-    public JAXBElement<ValDistanceSignedType> getLengthOffset() {
+    public ValDistanceSignedType getLengthOffset() {
         return lengthOffset;
     }
 
@@ -402,10 +418,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
+     *     {@link ValDistanceSignedType }
      *     
      */
-    public void setLengthOffset(JAXBElement<ValDistanceSignedType> value) {
+    public void setLengthOffset(ValDistanceSignedType value) {
         this.lengthOffset = value;
     }
 
@@ -418,10 +434,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
+     *     {@link ValDistanceSignedType }
      *     
      */
-    public JAXBElement<ValDistanceSignedType> getWidthOffset() {
+    public ValDistanceSignedType getWidthOffset() {
         return widthOffset;
     }
 
@@ -430,10 +446,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceSignedType }{@code >}
+     *     {@link ValDistanceSignedType }
      *     
      */
-    public void setWidthOffset(JAXBElement<ValDistanceSignedType> value) {
+    public void setWidthOffset(ValDistanceSignedType value) {
         this.widthOffset = value;
     }
 
@@ -446,10 +462,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getAbandoned() {
+    public CodeYesNoType getAbandoned() {
         return abandoned;
     }
 
@@ -458,10 +474,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setAbandoned(JAXBElement<CodeYesNoType> value) {
+    public void setAbandoned(CodeYesNoType value) {
         this.abandoned = value;
     }
 
@@ -474,10 +490,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
+    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -486,10 +502,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
+    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
         this.surfaceProperties = value;
     }
 
@@ -502,10 +518,10 @@ public class RunwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirportHeliport() {
+    public AirportHeliportPropertyType getAssociatedAirportHeliport() {
         return associatedAirportHeliport;
     }
 
@@ -514,10 +530,10 @@ public class RunwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAssociatedAirportHeliport(AirportHeliportPropertyType value) {
         this.associatedAirportHeliport = value;
     }
 
@@ -713,7 +729,10 @@ public class RunwayTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_runway_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRunwayExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

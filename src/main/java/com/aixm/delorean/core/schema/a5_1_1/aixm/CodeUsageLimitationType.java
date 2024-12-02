@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeUsageLimitationType {
 
     @XmlValue
-    protected CodeUsageLimitationBaseType value;
+    @Column(name = "usage_limitation", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_usage_limitation_base_type_nil_reason")
+    @Column(name = "usage_limitation_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeUsageLimitationType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeUsageLimitationBaseType }
+     *     {@link String }
      *     
      */
-    public CodeUsageLimitationBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeUsageLimitationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeUsageLimitationBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeUsageLimitationBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

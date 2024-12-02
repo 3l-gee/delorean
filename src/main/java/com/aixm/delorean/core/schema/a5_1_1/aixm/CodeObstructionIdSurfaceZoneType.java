@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeObstructionIdSurfaceZoneType {
 
     @XmlValue
-    protected CodeObstructionIdSurfaceZoneBaseType value;
+    @Column(name = "obstruction_id_surface_zone", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_obstruction_id_surface_zone_base_type_nil_reason")
+    @Column(name = "obstruction_id_surface_zone_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeObstructionIdSurfaceZoneType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeObstructionIdSurfaceZoneBaseType }
+     *     {@link String }
      *     
      */
-    public CodeObstructionIdSurfaceZoneBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeObstructionIdSurfaceZoneType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeObstructionIdSurfaceZoneBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeObstructionIdSurfaceZoneBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

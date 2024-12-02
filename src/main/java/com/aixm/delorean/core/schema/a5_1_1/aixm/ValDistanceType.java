@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDistanceType {
 
     @XmlValue
-    @Column(name = "val_distance")
+    @Column(name = "distance", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_distance_base_type_uom")
-    protected UomDistanceType uom;
+    @Column(name = "distance_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_distance_base_type_nil_reason")
+    @Column(name = "distance_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -85,10 +85,10 @@ public class ValDistanceType {
      * 
      * @return
      *     possible object is
-     *     {@link UomDistanceType }
+     *     {@link String }
      *     
      */
-    public UomDistanceType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -97,10 +97,10 @@ public class ValDistanceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomDistanceType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomDistanceType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

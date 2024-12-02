@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -78,46 +82,49 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "vertical_structure_time_slice")
+@Table(name = "vertical_structure_slice", schema = "public")
 public class VerticalStructureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalStructureType> type;
-    @XmlElementRef(name = "lighted", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> lighted;
-    @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> markingICAOStandard;
-    @XmlElementRef(name = "group", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> group;
-    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> length;
-    @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> width;
-    @XmlElementRef(name = "radius", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> radius;
-    @XmlElementRef(name = "lightingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> lightingICAOStandard;
-    @XmlElementRef(name = "synchronisedLighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> synchronisedLighting;
-    @XmlElementRef(name = "marker", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<MarkerBeaconPropertyType> marker;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalStructureType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType lighted;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType markingICAOStandard;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType group;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType length;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType width;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType radius;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType lightingICAOStandard;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType synchronisedLighting;
     @XmlElement(nillable = true)
     @Transient
+    protected MarkerBeaconPropertyType marker;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "part_id", referencedColumnName = "id")
     protected List<VerticalStructurePartPropertyType> part;
     @XmlElement(nillable = true)
     @Transient
@@ -141,10 +148,16 @@ public class VerticalStructureTimeSliceType
     @Transient
     protected List<ServicePropertyType> supportedService;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "lighting_availability_id", referencedColumnName = "id")
     protected List<VerticalStructureLightingStatusPropertyType> lightingAvailability;
     @Transient
     protected List<VerticalStructureTimeSliceType.Extension> extension;
@@ -154,10 +167,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -166,14 +179,14 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -182,10 +195,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalStructureType }{@code >}
+     *     {@link CodeVerticalStructureType }
      *     
      */
-    public JAXBElement<CodeVerticalStructureType> getType() {
+    public CodeVerticalStructureType getType() {
         return type;
     }
 
@@ -194,10 +207,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalStructureType }{@code >}
+     *     {@link CodeVerticalStructureType }
      *     
      */
-    public void setType(JAXBElement<CodeVerticalStructureType> value) {
+    public void setType(CodeVerticalStructureType value) {
         this.type = value;
     }
 
@@ -210,10 +223,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getLighted() {
+    public CodeYesNoType getLighted() {
         return lighted;
     }
 
@@ -222,10 +235,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setLighted(JAXBElement<CodeYesNoType> value) {
+    public void setLighted(CodeYesNoType value) {
         this.lighted = value;
     }
 
@@ -238,10 +251,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMarkingICAOStandard() {
+    public CodeYesNoType getMarkingICAOStandard() {
         return markingICAOStandard;
     }
 
@@ -250,10 +263,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMarkingICAOStandard(JAXBElement<CodeYesNoType> value) {
+    public void setMarkingICAOStandard(CodeYesNoType value) {
         this.markingICAOStandard = value;
     }
 
@@ -266,10 +279,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getGroup() {
+    public CodeYesNoType getGroup() {
         return group;
     }
 
@@ -278,10 +291,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setGroup(JAXBElement<CodeYesNoType> value) {
+    public void setGroup(CodeYesNoType value) {
         this.group = value;
     }
 
@@ -294,10 +307,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLength() {
+    public ValDistanceType getLength() {
         return length;
     }
 
@@ -306,10 +319,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLength(JAXBElement<ValDistanceType> value) {
+    public void setLength(ValDistanceType value) {
         this.length = value;
     }
 
@@ -322,10 +335,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getWidth() {
+    public ValDistanceType getWidth() {
         return width;
     }
 
@@ -334,10 +347,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setWidth(JAXBElement<ValDistanceType> value) {
+    public void setWidth(ValDistanceType value) {
         this.width = value;
     }
 
@@ -350,10 +363,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getRadius() {
+    public ValDistanceType getRadius() {
         return radius;
     }
 
@@ -362,10 +375,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setRadius(JAXBElement<ValDistanceType> value) {
+    public void setRadius(ValDistanceType value) {
         this.radius = value;
     }
 
@@ -378,10 +391,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getLightingICAOStandard() {
+    public CodeYesNoType getLightingICAOStandard() {
         return lightingICAOStandard;
     }
 
@@ -390,10 +403,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setLightingICAOStandard(JAXBElement<CodeYesNoType> value) {
+    public void setLightingICAOStandard(CodeYesNoType value) {
         this.lightingICAOStandard = value;
     }
 
@@ -406,10 +419,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getSynchronisedLighting() {
+    public CodeYesNoType getSynchronisedLighting() {
         return synchronisedLighting;
     }
 
@@ -418,10 +431,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setSynchronisedLighting(JAXBElement<CodeYesNoType> value) {
+    public void setSynchronisedLighting(CodeYesNoType value) {
         this.synchronisedLighting = value;
     }
 
@@ -434,10 +447,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link MarkerBeaconPropertyType }{@code >}
+     *     {@link MarkerBeaconPropertyType }
      *     
      */
-    public JAXBElement<MarkerBeaconPropertyType> getMarker() {
+    public MarkerBeaconPropertyType getMarker() {
         return marker;
     }
 
@@ -446,10 +459,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link MarkerBeaconPropertyType }{@code >}
+     *     {@link MarkerBeaconPropertyType }
      *     
      */
-    public void setMarker(JAXBElement<MarkerBeaconPropertyType> value) {
+    public void setMarker(MarkerBeaconPropertyType value) {
         this.marker = value;
     }
 
@@ -925,7 +938,10 @@ public class VerticalStructureTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractVerticalStructureExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_vertical_structure_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractVerticalStructureExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

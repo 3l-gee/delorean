@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNDBUsageType {
 
     @XmlValue
-    protected CodeNDBUsageBaseType value;
+    @Column(name = "ndb_usage", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_ndb_usage_base_type_nil_reason")
+    @Column(name = "ndb_usage_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeNDBUsageType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeNDBUsageBaseType }
+     *     {@link String }
      *     
      */
-    public CodeNDBUsageBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeNDBUsageType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeNDBUsageBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeNDBUsageBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

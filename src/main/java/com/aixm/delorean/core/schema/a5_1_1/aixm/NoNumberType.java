@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class NoNumberType {
 
     @XmlValue
-    @Column(name = "no_number")
+    @Column(name = "base", nullable = true, unique = false)
     protected long value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "no_number_base_type_nil_reason")
+    @Column(name = "type_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

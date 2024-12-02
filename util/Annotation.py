@@ -42,7 +42,7 @@ class Property:
 class Jaxb:
 
     @staticmethod
-    def javaType(name, type=None):
+    def java_type(name, type=None):
         if type:
             return f'''<jaxb:javaType name="{name}" xmlType="{type}" />'''
         
@@ -168,9 +168,7 @@ class Tag:
     minLength  = _xs_namespace + "minLength"
     pattern = _xs_namespace + "pattern"
     totalDigits = _xs_namespace + "totalDigits"
-    whiteSpace = _xs_namespace + "whiteSpace "
-
-
+    whiteSpace = _xs_namespace + "whiteSpace"
 
 class Xml:
     tag = Tag
@@ -179,6 +177,14 @@ class Xml:
     @staticmethod
     def type(name, propOrder):
         return f'@jakarta.xml.bind.annotation.XmlType(name = "{name}", propOrder = {{"{propOrder}"}})'
+    
+    @staticmethod
+    def element(name, type, required=True):
+        return f'@jakarta.xml.bind.annotation.XmlElement(name = "{name}", required = {Util.bool_str(required)}, type = {type})'
+    
+    @staticmethod
+    def adapter(name):
+        return f'@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter({name})'
 
 class Constraint: 
     @staticmethod

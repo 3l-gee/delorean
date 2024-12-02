@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,18 +51,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "touchDownLiftOffTimeSlice"
 })
 @Entity
-@Table(name = "touch_down_lift_off_time_slice_property")
+@Table(name = "touch_down_lift_off_slice_property", schema = "public")
 public class TouchDownLiftOffTimeSlicePropertyType {
 
     @XmlElement(name = "TouchDownLiftOffTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
-    })
-    @JoinColumn(name = "touch_down_lift_off_time_slice_id")
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "touch_down_lift_off_slice_id", referencedColumnName = "id")
     protected TouchDownLiftOffTimeSliceType touchDownLiftOffTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,18 +51,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "markerBeaconTimeSlice"
 })
 @Entity
-@Table(name = "marker_beacon_time_slice_property")
+@Table(name = "marker_beacon_slice_property", schema = "public")
 public class MarkerBeaconTimeSlicePropertyType {
 
     @XmlElement(name = "MarkerBeaconTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
-    })
-    @JoinColumn(name = "marker_beacon_time_slice_id")
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "marker_beacon_slice_id", referencedColumnName = "id")
     protected MarkerBeaconTimeSliceType markerBeaconTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,22 +65,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "light_activation")
+@Table(name = "light_activation", schema = "public")
 public class LightActivationType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "clicks", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NoNumberType> clicks;
-    @XmlElementRef(name = "intensityLevel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeLightIntensityType> intensityLevel;
-    @XmlElementRef(name = "activation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeSystemActivationType> activation;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected NoNumberType clicks;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeLightIntensityType intensityLevel;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeSystemActivationType activation;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<LightActivationType.Extension> extension;
@@ -86,10 +93,10 @@ public class LightActivationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public JAXBElement<NoNumberType> getClicks() {
+    public NoNumberType getClicks() {
         return clicks;
     }
 
@@ -98,10 +105,10 @@ public class LightActivationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public void setClicks(JAXBElement<NoNumberType> value) {
+    public void setClicks(NoNumberType value) {
         this.clicks = value;
     }
 
@@ -114,10 +121,10 @@ public class LightActivationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
+     *     {@link CodeLightIntensityType }
      *     
      */
-    public JAXBElement<CodeLightIntensityType> getIntensityLevel() {
+    public CodeLightIntensityType getIntensityLevel() {
         return intensityLevel;
     }
 
@@ -126,10 +133,10 @@ public class LightActivationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeLightIntensityType }{@code >}
+     *     {@link CodeLightIntensityType }
      *     
      */
-    public void setIntensityLevel(JAXBElement<CodeLightIntensityType> value) {
+    public void setIntensityLevel(CodeLightIntensityType value) {
         this.intensityLevel = value;
     }
 
@@ -142,10 +149,10 @@ public class LightActivationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeSystemActivationType }{@code >}
+     *     {@link CodeSystemActivationType }
      *     
      */
-    public JAXBElement<CodeSystemActivationType> getActivation() {
+    public CodeSystemActivationType getActivation() {
         return activation;
     }
 
@@ -154,10 +161,10 @@ public class LightActivationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeSystemActivationType }{@code >}
+     *     {@link CodeSystemActivationType }
      *     
      */
-    public void setActivation(JAXBElement<CodeSystemActivationType> value) {
+    public void setActivation(CodeSystemActivationType value) {
         this.activation = value;
     }
 
@@ -273,7 +280,10 @@ public class LightActivationType
     public static class Extension {
 
         @XmlElement(name = "AbstractLightActivationExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_light_activation_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractLightActivationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

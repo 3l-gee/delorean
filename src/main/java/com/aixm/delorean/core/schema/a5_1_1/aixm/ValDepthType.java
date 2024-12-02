@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDepthType {
 
     @XmlValue
-    @Column(name = "val_depth")
+    @Column(name = "depth", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_depth_base_type_uom")
-    protected UomDepthType uom;
+    @Column(name = "depth_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_depth_base_type_nil_reason")
+    @Column(name = "depth_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -85,10 +85,10 @@ public class ValDepthType {
      * 
      * @return
      *     possible object is
-     *     {@link UomDepthType }
+     *     {@link String }
      *     
      */
-    public UomDepthType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -97,10 +97,10 @@ public class ValDepthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomDepthType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomDepthType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

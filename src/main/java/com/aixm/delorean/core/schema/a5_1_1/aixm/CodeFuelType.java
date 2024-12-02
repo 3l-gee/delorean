@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeFuelType {
 
     @XmlValue
-    protected CodeFuelBaseType value;
+    @Column(name = "fuel", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_fuel_base_type_nil_reason")
+    @Column(name = "fuel_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeFuelType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeFuelBaseType }
+     *     {@link String }
      *     
      */
-    public CodeFuelBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeFuelType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFuelBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeFuelBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,18 +51,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "standardLevelColumnTimeSlice"
 })
 @Entity
-@Table(name = "standard_level_column_time_slice_property")
+@Table(name = "standard_level_column_slice_property", schema = "public")
 public class StandardLevelColumnTimeSlicePropertyType {
 
     @XmlElement(name = "StandardLevelColumnTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
-    })
-    @JoinColumn(name = "standard_level_column_time_slice_id")
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "standard_level_column_slice_id", referencedColumnName = "id")
     protected StandardLevelColumnTimeSliceType standardLevelColumnTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

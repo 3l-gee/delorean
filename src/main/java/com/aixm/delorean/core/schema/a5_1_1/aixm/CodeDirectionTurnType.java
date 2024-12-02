@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDirectionTurnType {
 
     @XmlValue
-    protected CodeDirectionTurnBaseType value;
+    @Column(name = "direction_turn", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_direction_turn_base_type_nil_reason")
+    @Column(name = "direction_turn_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeDirectionTurnType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeDirectionTurnBaseType }
+     *     {@link String }
      *     
      */
-    public CodeDirectionTurnBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeDirectionTurnType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDirectionTurnBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeDirectionTurnBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

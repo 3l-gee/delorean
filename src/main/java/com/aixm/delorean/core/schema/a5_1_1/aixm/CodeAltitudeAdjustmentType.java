@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAltitudeAdjustmentType {
 
     @XmlValue
-    protected CodeAltitudeAdjustmentBaseType value;
+    @Column(name = "altitude_adjustment", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_altitude_adjustment_base_type_nil_reason")
+    @Column(name = "altitude_adjustment_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeAltitudeAdjustmentType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeAltitudeAdjustmentBaseType }
+     *     {@link String }
      *     
      */
-    public CodeAltitudeAdjustmentBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeAltitudeAdjustmentType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAltitudeAdjustmentBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeAltitudeAdjustmentBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

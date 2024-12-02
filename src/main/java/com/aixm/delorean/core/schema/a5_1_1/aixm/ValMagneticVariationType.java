@@ -42,10 +42,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValMagneticVariationType {
 
     @XmlValue
-    @Column(name = "val_magnetic_variation")
+    @Column(name = "magnetic_variation", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_magnetic_variation_base_type_nil_reason")
+    @Column(name = "magnetic_variation_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVerticalReferenceType {
 
     @XmlValue
-    protected CodeVerticalReferenceBaseType value;
+    @Column(name = "vertical_reference", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_vertical_reference_base_type_nil_reason")
+    @Column(name = "vertical_reference_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeVerticalReferenceType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeVerticalReferenceBaseType }
+     *     {@link String }
      *     
      */
-    public CodeVerticalReferenceBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeVerticalReferenceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVerticalReferenceBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeVerticalReferenceBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

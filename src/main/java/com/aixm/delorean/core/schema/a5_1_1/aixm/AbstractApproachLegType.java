@@ -8,8 +8,7 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -42,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     MissedApproachLegType.class
 })
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "abstract_approach_leg", schema = "public")
 public abstract class AbstractApproachLegType
     extends AbstractSegmentLegType
 {

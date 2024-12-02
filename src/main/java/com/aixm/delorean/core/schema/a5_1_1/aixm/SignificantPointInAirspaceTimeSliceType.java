@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,40 +71,43 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "significant_point_in_airspace_time_slice")
+@Table(name = "significant_point_in_airspace_slice", schema = "public")
 public class SignificantPointInAirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAirspacePointRoleType> type;
-    @XmlElementRef(name = "relativeLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAirspacePointPositionType> relativeLocation;
-    @XmlElementRef(name = "containingAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirspacePropertyType> containingAirspace;
-    @XmlElementRef(name = "location_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> locationFixDesignatedPoint;
-    @XmlElementRef(name = "location_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NavaidPropertyType> locationNavaidSystem;
-    @XmlElementRef(name = "location_position", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<PointPropertyType> locationPosition;
-    @XmlElementRef(name = "location_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> locationRunwayPoint;
-    @XmlElementRef(name = "location_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> locationAimingPoint;
-    @XmlElementRef(name = "location_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> locationAirportReferencePoint;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeAirspacePointRoleType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeAirspacePointPositionType relativeLocation;
     @XmlElement(nillable = true)
     @Transient
+    protected AirspacePropertyType containingAirspace;
+    @XmlElement(name = "location_fixDesignatedPoint", nillable = true)
+    @Transient
+    protected DesignatedPointPropertyType locationFixDesignatedPoint;
+    @XmlElement(name = "location_navaidSystem", nillable = true)
+    @Transient
+    protected NavaidPropertyType locationNavaidSystem;
+    @XmlElement(name = "location_position", nillable = true)
+    @Transient
+    protected PointPropertyType locationPosition;
+    @XmlElement(name = "location_runwayPoint", nillable = true)
+    @Transient
+    protected RunwayCentrelinePointPropertyType locationRunwayPoint;
+    @XmlElement(name = "location_aimingPoint", nillable = true)
+    @Transient
+    protected TouchDownLiftOffPropertyType locationAimingPoint;
+    @XmlElement(name = "location_airportReferencePoint", nillable = true)
+    @Transient
+    protected AirportHeliportPropertyType locationAirportReferencePoint;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<SignificantPointInAirspaceTimeSliceType.Extension> extension;
@@ -110,10 +117,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirspacePointRoleType }{@code >}
+     *     {@link CodeAirspacePointRoleType }
      *     
      */
-    public JAXBElement<CodeAirspacePointRoleType> getType() {
+    public CodeAirspacePointRoleType getType() {
         return type;
     }
 
@@ -122,10 +129,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirspacePointRoleType }{@code >}
+     *     {@link CodeAirspacePointRoleType }
      *     
      */
-    public void setType(JAXBElement<CodeAirspacePointRoleType> value) {
+    public void setType(CodeAirspacePointRoleType value) {
         this.type = value;
     }
 
@@ -138,10 +145,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirspacePointPositionType }{@code >}
+     *     {@link CodeAirspacePointPositionType }
      *     
      */
-    public JAXBElement<CodeAirspacePointPositionType> getRelativeLocation() {
+    public CodeAirspacePointPositionType getRelativeLocation() {
         return relativeLocation;
     }
 
@@ -150,10 +157,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAirspacePointPositionType }{@code >}
+     *     {@link CodeAirspacePointPositionType }
      *     
      */
-    public void setRelativeLocation(JAXBElement<CodeAirspacePointPositionType> value) {
+    public void setRelativeLocation(CodeAirspacePointPositionType value) {
         this.relativeLocation = value;
     }
 
@@ -166,10 +173,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
+     *     {@link AirspacePropertyType }
      *     
      */
-    public JAXBElement<AirspacePropertyType> getContainingAirspace() {
+    public AirspacePropertyType getContainingAirspace() {
         return containingAirspace;
     }
 
@@ -178,10 +185,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
+     *     {@link AirspacePropertyType }
      *     
      */
-    public void setContainingAirspace(JAXBElement<AirspacePropertyType> value) {
+    public void setContainingAirspace(AirspacePropertyType value) {
         this.containingAirspace = value;
     }
 
@@ -194,10 +201,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getLocationFixDesignatedPoint() {
+    public DesignatedPointPropertyType getLocationFixDesignatedPoint() {
         return locationFixDesignatedPoint;
     }
 
@@ -206,10 +213,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setLocationFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setLocationFixDesignatedPoint(DesignatedPointPropertyType value) {
         this.locationFixDesignatedPoint = value;
     }
 
@@ -222,10 +229,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getLocationNavaidSystem() {
+    public NavaidPropertyType getLocationNavaidSystem() {
         return locationNavaidSystem;
     }
 
@@ -234,10 +241,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setLocationNavaidSystem(JAXBElement<NavaidPropertyType> value) {
+    public void setLocationNavaidSystem(NavaidPropertyType value) {
         this.locationNavaidSystem = value;
     }
 
@@ -250,10 +257,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public JAXBElement<PointPropertyType> getLocationPosition() {
+    public PointPropertyType getLocationPosition() {
         return locationPosition;
     }
 
@@ -262,10 +269,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link PointPropertyType }{@code >}
+     *     {@link PointPropertyType }
      *     
      */
-    public void setLocationPosition(JAXBElement<PointPropertyType> value) {
+    public void setLocationPosition(PointPropertyType value) {
         this.locationPosition = value;
     }
 
@@ -278,10 +285,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getLocationRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getLocationRunwayPoint() {
         return locationRunwayPoint;
     }
 
@@ -290,10 +297,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setLocationRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setLocationRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.locationRunwayPoint = value;
     }
 
@@ -306,10 +313,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getLocationAimingPoint() {
+    public TouchDownLiftOffPropertyType getLocationAimingPoint() {
         return locationAimingPoint;
     }
 
@@ -318,10 +325,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setLocationAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setLocationAimingPoint(TouchDownLiftOffPropertyType value) {
         this.locationAimingPoint = value;
     }
 
@@ -334,10 +341,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getLocationAirportReferencePoint() {
+    public AirportHeliportPropertyType getLocationAirportReferencePoint() {
         return locationAirportReferencePoint;
     }
 
@@ -346,10 +353,10 @@ public class SignificantPointInAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setLocationAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setLocationAirportReferencePoint(AirportHeliportPropertyType value) {
         this.locationAirportReferencePoint = value;
     }
 
@@ -465,7 +472,10 @@ public class SignificantPointInAirspaceTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSignificantPointInAirspaceExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_significant_point_in_airspace_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSignificantPointInAirspaceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

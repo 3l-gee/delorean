@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,49 +74,52 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "route_time_slice")
+@Table(name = "route_slice", schema = "public")
 public class RouteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designatorPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRouteDesignatorPrefixType> designatorPrefix;
-    @XmlElementRef(name = "designatorSecondLetter", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRouteDesignatorLetterType> designatorSecondLetter;
-    @XmlElementRef(name = "designatorNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NoNumberType> designatorNumber;
-    @XmlElementRef(name = "multipleIdentifier", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeUpperAlphaType> multipleIdentifier;
-    @XmlElementRef(name = "locationDesignator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextDesignatorType> locationDesignator;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRouteType> type;
-    @XmlElementRef(name = "flightRule", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeFlightRuleType> flightRule;
-    @XmlElementRef(name = "internationalUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRouteOriginType> internationalUse;
-    @XmlElementRef(name = "militaryUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeMilitaryStatusType> militaryUse;
-    @XmlElementRef(name = "militaryTrainingType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeMilitaryTrainingType> militaryTrainingType;
-    @XmlElementRef(name = "userOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<OrganisationAuthorityPropertyType> userOrganisation;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRouteDesignatorPrefixType designatorPrefix;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRouteDesignatorLetterType designatorSecondLetter;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected NoNumberType designatorNumber;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeUpperAlphaType multipleIdentifier;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextDesignatorType locationDesignator;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRouteType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeFlightRuleType flightRule;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRouteOriginType internationalUse;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeMilitaryStatusType militaryUse;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeMilitaryTrainingType militaryTrainingType;
     @XmlElement(nillable = true)
     @Transient
+    protected OrganisationAuthorityPropertyType userOrganisation;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RouteTimeSliceType.Extension> extension;
@@ -122,10 +129,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteDesignatorPrefixType }{@code >}
+     *     {@link CodeRouteDesignatorPrefixType }
      *     
      */
-    public JAXBElement<CodeRouteDesignatorPrefixType> getDesignatorPrefix() {
+    public CodeRouteDesignatorPrefixType getDesignatorPrefix() {
         return designatorPrefix;
     }
 
@@ -134,10 +141,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteDesignatorPrefixType }{@code >}
+     *     {@link CodeRouteDesignatorPrefixType }
      *     
      */
-    public void setDesignatorPrefix(JAXBElement<CodeRouteDesignatorPrefixType> value) {
+    public void setDesignatorPrefix(CodeRouteDesignatorPrefixType value) {
         this.designatorPrefix = value;
     }
 
@@ -150,10 +157,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteDesignatorLetterType }{@code >}
+     *     {@link CodeRouteDesignatorLetterType }
      *     
      */
-    public JAXBElement<CodeRouteDesignatorLetterType> getDesignatorSecondLetter() {
+    public CodeRouteDesignatorLetterType getDesignatorSecondLetter() {
         return designatorSecondLetter;
     }
 
@@ -162,10 +169,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteDesignatorLetterType }{@code >}
+     *     {@link CodeRouteDesignatorLetterType }
      *     
      */
-    public void setDesignatorSecondLetter(JAXBElement<CodeRouteDesignatorLetterType> value) {
+    public void setDesignatorSecondLetter(CodeRouteDesignatorLetterType value) {
         this.designatorSecondLetter = value;
     }
 
@@ -178,10 +185,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public JAXBElement<NoNumberType> getDesignatorNumber() {
+    public NoNumberType getDesignatorNumber() {
         return designatorNumber;
     }
 
@@ -190,10 +197,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public void setDesignatorNumber(JAXBElement<NoNumberType> value) {
+    public void setDesignatorNumber(NoNumberType value) {
         this.designatorNumber = value;
     }
 
@@ -206,10 +213,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     {@link CodeUpperAlphaType }
      *     
      */
-    public JAXBElement<CodeUpperAlphaType> getMultipleIdentifier() {
+    public CodeUpperAlphaType getMultipleIdentifier() {
         return multipleIdentifier;
     }
 
@@ -218,10 +225,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeUpperAlphaType }{@code >}
+     *     {@link CodeUpperAlphaType }
      *     
      */
-    public void setMultipleIdentifier(JAXBElement<CodeUpperAlphaType> value) {
+    public void setMultipleIdentifier(CodeUpperAlphaType value) {
         this.multipleIdentifier = value;
     }
 
@@ -234,10 +241,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getLocationDesignator() {
+    public TextDesignatorType getLocationDesignator() {
         return locationDesignator;
     }
 
@@ -246,10 +253,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setLocationDesignator(JAXBElement<TextDesignatorType> value) {
+    public void setLocationDesignator(TextDesignatorType value) {
         this.locationDesignator = value;
     }
 
@@ -262,10 +269,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -274,14 +281,14 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -290,10 +297,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteType }{@code >}
+     *     {@link CodeRouteType }
      *     
      */
-    public JAXBElement<CodeRouteType> getType() {
+    public CodeRouteType getType() {
         return type;
     }
 
@@ -302,10 +309,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteType }{@code >}
+     *     {@link CodeRouteType }
      *     
      */
-    public void setType(JAXBElement<CodeRouteType> value) {
+    public void setType(CodeRouteType value) {
         this.type = value;
     }
 
@@ -318,10 +325,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeFlightRuleType }{@code >}
+     *     {@link CodeFlightRuleType }
      *     
      */
-    public JAXBElement<CodeFlightRuleType> getFlightRule() {
+    public CodeFlightRuleType getFlightRule() {
         return flightRule;
     }
 
@@ -330,10 +337,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeFlightRuleType }{@code >}
+     *     {@link CodeFlightRuleType }
      *     
      */
-    public void setFlightRule(JAXBElement<CodeFlightRuleType> value) {
+    public void setFlightRule(CodeFlightRuleType value) {
         this.flightRule = value;
     }
 
@@ -346,10 +353,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteOriginType }{@code >}
+     *     {@link CodeRouteOriginType }
      *     
      */
-    public JAXBElement<CodeRouteOriginType> getInternationalUse() {
+    public CodeRouteOriginType getInternationalUse() {
         return internationalUse;
     }
 
@@ -358,10 +365,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteOriginType }{@code >}
+     *     {@link CodeRouteOriginType }
      *     
      */
-    public void setInternationalUse(JAXBElement<CodeRouteOriginType> value) {
+    public void setInternationalUse(CodeRouteOriginType value) {
         this.internationalUse = value;
     }
 
@@ -374,10 +381,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMilitaryStatusType }{@code >}
+     *     {@link CodeMilitaryStatusType }
      *     
      */
-    public JAXBElement<CodeMilitaryStatusType> getMilitaryUse() {
+    public CodeMilitaryStatusType getMilitaryUse() {
         return militaryUse;
     }
 
@@ -386,10 +393,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMilitaryStatusType }{@code >}
+     *     {@link CodeMilitaryStatusType }
      *     
      */
-    public void setMilitaryUse(JAXBElement<CodeMilitaryStatusType> value) {
+    public void setMilitaryUse(CodeMilitaryStatusType value) {
         this.militaryUse = value;
     }
 
@@ -402,10 +409,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMilitaryTrainingType }{@code >}
+     *     {@link CodeMilitaryTrainingType }
      *     
      */
-    public JAXBElement<CodeMilitaryTrainingType> getMilitaryTrainingType() {
+    public CodeMilitaryTrainingType getMilitaryTrainingType() {
         return militaryTrainingType;
     }
 
@@ -414,10 +421,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMilitaryTrainingType }{@code >}
+     *     {@link CodeMilitaryTrainingType }
      *     
      */
-    public void setMilitaryTrainingType(JAXBElement<CodeMilitaryTrainingType> value) {
+    public void setMilitaryTrainingType(CodeMilitaryTrainingType value) {
         this.militaryTrainingType = value;
     }
 
@@ -430,10 +437,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public JAXBElement<OrganisationAuthorityPropertyType> getUserOrganisation() {
+    public OrganisationAuthorityPropertyType getUserOrganisation() {
         return userOrganisation;
     }
 
@@ -442,10 +449,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public void setUserOrganisation(JAXBElement<OrganisationAuthorityPropertyType> value) {
+    public void setUserOrganisation(OrganisationAuthorityPropertyType value) {
         this.userOrganisation = value;
     }
 
@@ -561,7 +568,10 @@ public class RouteTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRouteExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_route_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRouteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

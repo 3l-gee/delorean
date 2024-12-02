@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRadarServiceType {
 
     @XmlValue
-    protected CodeRadarServiceBaseType value;
+    @Column(name = "radar_service", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_radar_service_base_type_nil_reason")
+    @Column(name = "radar_service_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeRadarServiceType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeRadarServiceBaseType }
+     *     {@link String }
      *     
      */
-    public CodeRadarServiceBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeRadarServiceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRadarServiceBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeRadarServiceBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

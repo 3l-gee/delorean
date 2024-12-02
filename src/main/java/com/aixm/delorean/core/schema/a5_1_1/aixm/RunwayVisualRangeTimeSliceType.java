@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,22 +65,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runway_visual_range_time_slice")
+@Table(name = "runway_visual_range_slice", schema = "public")
 public class RunwayVisualRangeTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "readingPosition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRVRReadingType> readingPosition;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRVRReadingType readingPosition;
     @XmlElement(nillable = true)
     @Transient
     protected List<RunwayDirectionPropertyType> associatedRunwayDirection;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
     @Transient
+    protected ElevatedPointPropertyType location;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RunwayVisualRangeTimeSliceType.Extension> extension;
@@ -86,10 +93,10 @@ public class RunwayVisualRangeTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRVRReadingType }{@code >}
+     *     {@link CodeRVRReadingType }
      *     
      */
-    public JAXBElement<CodeRVRReadingType> getReadingPosition() {
+    public CodeRVRReadingType getReadingPosition() {
         return readingPosition;
     }
 
@@ -98,10 +105,10 @@ public class RunwayVisualRangeTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRVRReadingType }{@code >}
+     *     {@link CodeRVRReadingType }
      *     
      */
-    public void setReadingPosition(JAXBElement<CodeRVRReadingType> value) {
+    public void setReadingPosition(CodeRVRReadingType value) {
         this.readingPosition = value;
     }
 
@@ -154,10 +161,10 @@ public class RunwayVisualRangeTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getLocation() {
+    public ElevatedPointPropertyType getLocation() {
         return location;
     }
 
@@ -166,10 +173,10 @@ public class RunwayVisualRangeTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setLocation(ElevatedPointPropertyType value) {
         this.location = value;
     }
 
@@ -285,7 +292,10 @@ public class RunwayVisualRangeTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayVisualRangeExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_runway_visual_range_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRunwayVisualRangeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

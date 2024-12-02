@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -66,31 +70,40 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "route_availability")
+@Table(name = "route_availability", schema = "public")
 public class RouteAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "direction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeDirectionType> direction;
-    @XmlElementRef(name = "cardinalDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeCardinalDirectionType> cardinalDirection;
-    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRouteAvailabilityType> status;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeDirectionType direction;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeCardinalDirectionType cardinalDirection;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRouteAvailabilityType status;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "levels_id", referencedColumnName = "id")
     protected List<AirspaceLayerPropertyType> levels;
     @Transient
     protected List<RouteAvailabilityType.Extension> extension;
@@ -220,10 +233,10 @@ public class RouteAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionType }{@code >}
+     *     {@link CodeDirectionType }
      *     
      */
-    public JAXBElement<CodeDirectionType> getDirection() {
+    public CodeDirectionType getDirection() {
         return direction;
     }
 
@@ -232,10 +245,10 @@ public class RouteAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionType }{@code >}
+     *     {@link CodeDirectionType }
      *     
      */
-    public void setDirection(JAXBElement<CodeDirectionType> value) {
+    public void setDirection(CodeDirectionType value) {
         this.direction = value;
     }
 
@@ -248,10 +261,10 @@ public class RouteAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
+     *     {@link CodeCardinalDirectionType }
      *     
      */
-    public JAXBElement<CodeCardinalDirectionType> getCardinalDirection() {
+    public CodeCardinalDirectionType getCardinalDirection() {
         return cardinalDirection;
     }
 
@@ -260,10 +273,10 @@ public class RouteAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
+     *     {@link CodeCardinalDirectionType }
      *     
      */
-    public void setCardinalDirection(JAXBElement<CodeCardinalDirectionType> value) {
+    public void setCardinalDirection(CodeCardinalDirectionType value) {
         this.cardinalDirection = value;
     }
 
@@ -276,10 +289,10 @@ public class RouteAvailabilityType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteAvailabilityType }{@code >}
+     *     {@link CodeRouteAvailabilityType }
      *     
      */
-    public JAXBElement<CodeRouteAvailabilityType> getStatus() {
+    public CodeRouteAvailabilityType getStatus() {
         return status;
     }
 
@@ -288,10 +301,10 @@ public class RouteAvailabilityType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRouteAvailabilityType }{@code >}
+     *     {@link CodeRouteAvailabilityType }
      *     
      */
-    public void setStatus(JAXBElement<CodeRouteAvailabilityType> value) {
+    public void setStatus(CodeRouteAvailabilityType value) {
         this.status = value;
     }
 
@@ -409,10 +422,16 @@ public class RouteAvailabilityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractRouteAvailabilityExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_route_availability_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRouteAvailabilityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

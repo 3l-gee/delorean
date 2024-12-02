@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDistanceIndicationType {
 
     @XmlValue
-    protected CodeDistanceIndicationBaseType value;
+    @Column(name = "distance_indication", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_distance_indication_base_type_nil_reason")
+    @Column(name = "distance_indication_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeDistanceIndicationType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeDistanceIndicationBaseType }
+     *     {@link String }
      *     
      */
-    public CodeDistanceIndicationBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeDistanceIndicationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDistanceIndicationBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeDistanceIndicationBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

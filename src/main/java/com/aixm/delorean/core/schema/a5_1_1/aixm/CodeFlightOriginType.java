@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeFlightOriginType {
 
     @XmlValue
-    protected CodeFlightOriginBaseType value;
+    @Column(name = "flight_origin", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_flight_origin_base_type_nil_reason")
+    @Column(name = "flight_origin_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeFlightOriginType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeFlightOriginBaseType }
+     *     {@link String }
      *     
      */
-    public CodeFlightOriginBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeFlightOriginType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFlightOriginBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeFlightOriginBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,41 +72,47 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runway_protect_area_time_slice")
+@Table(name = "runway_protect_area_slice", schema = "public")
 public class RunwayProtectAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> width;
-    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> length;
-    @XmlElementRef(name = "lighting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> lighting;
-    @XmlElementRef(name = "obstacleFree", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> obstacleFree;
-    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedSurfacePropertyType> extent;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType width;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType length;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType lighting;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType obstacleFree;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "surface_properties_id", referencedColumnName = "id")
+    protected SurfaceCharacteristicsPropertyType surfaceProperties;
     @XmlElement(nillable = true)
     @Transient
+    protected ElevatedSurfacePropertyType extent;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRunwayProtectionAreaType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeStatusOperationsType status;
+    @XmlElement(nillable = true)
     @Transient
-    protected JAXBElement<CodeRunwayProtectionAreaType> type;
-    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStatusOperationsType> status;
-    @XmlElementRef(name = "protectedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayDirectionPropertyType> protectedRunwayDirection;
+    protected RunwayDirectionPropertyType protectedRunwayDirection;
     @Transient
     protected List<RunwayProtectAreaTimeSliceType.Extension> extension;
 
@@ -111,10 +121,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getWidth() {
+    public ValDistanceType getWidth() {
         return width;
     }
 
@@ -123,10 +133,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setWidth(JAXBElement<ValDistanceType> value) {
+    public void setWidth(ValDistanceType value) {
         this.width = value;
     }
 
@@ -139,10 +149,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLength() {
+    public ValDistanceType getLength() {
         return length;
     }
 
@@ -151,10 +161,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLength(JAXBElement<ValDistanceType> value) {
+    public void setLength(ValDistanceType value) {
         this.length = value;
     }
 
@@ -167,10 +177,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getLighting() {
+    public CodeYesNoType getLighting() {
         return lighting;
     }
 
@@ -179,10 +189,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setLighting(JAXBElement<CodeYesNoType> value) {
+    public void setLighting(CodeYesNoType value) {
         this.lighting = value;
     }
 
@@ -195,10 +205,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getObstacleFree() {
+    public CodeYesNoType getObstacleFree() {
         return obstacleFree;
     }
 
@@ -207,10 +217,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setObstacleFree(JAXBElement<CodeYesNoType> value) {
+    public void setObstacleFree(CodeYesNoType value) {
         this.obstacleFree = value;
     }
 
@@ -223,10 +233,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
+    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -235,10 +245,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
+    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
         this.surfaceProperties = value;
     }
 
@@ -251,10 +261,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getExtent() {
+    public ElevatedSurfacePropertyType getExtent() {
         return extent;
     }
 
@@ -263,10 +273,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setExtent(ElevatedSurfacePropertyType value) {
         this.extent = value;
     }
 
@@ -319,10 +329,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRunwayProtectionAreaType }{@code >}
+     *     {@link CodeRunwayProtectionAreaType }
      *     
      */
-    public JAXBElement<CodeRunwayProtectionAreaType> getType() {
+    public CodeRunwayProtectionAreaType getType() {
         return type;
     }
 
@@ -331,10 +341,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRunwayProtectionAreaType }{@code >}
+     *     {@link CodeRunwayProtectionAreaType }
      *     
      */
-    public void setType(JAXBElement<CodeRunwayProtectionAreaType> value) {
+    public void setType(CodeRunwayProtectionAreaType value) {
         this.type = value;
     }
 
@@ -347,10 +357,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public JAXBElement<CodeStatusOperationsType> getStatus() {
+    public CodeStatusOperationsType getStatus() {
         return status;
     }
 
@@ -359,10 +369,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
+    public void setStatus(CodeStatusOperationsType value) {
         this.status = value;
     }
 
@@ -375,10 +385,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public JAXBElement<RunwayDirectionPropertyType> getProtectedRunwayDirection() {
+    public RunwayDirectionPropertyType getProtectedRunwayDirection() {
         return protectedRunwayDirection;
     }
 
@@ -387,10 +397,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public void setProtectedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
+    public void setProtectedRunwayDirection(RunwayDirectionPropertyType value) {
         this.protectedRunwayDirection = value;
     }
 
@@ -468,10 +478,16 @@ public class RunwayProtectAreaTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayProtectAreaExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_runway_protect_area_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRunwayProtectAreaExtension;
         @XmlElement(name = "AbstractAirportHeliportProtectionAreaExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_airport_heliport_protection_area_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirportHeliportProtectionAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,29 +68,35 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "touch_down_lift_off_marking_time_slice")
+@Table(name = "touch_down_lift_off_marking_slice", schema = "public")
 public class TouchDownLiftOffMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> markingICAOStandard;
-    @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeYesNoType markingICAOStandard;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeMarkingConditionType condition;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "element_id", referencedColumnName = "id")
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "markingLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeTLOFSectionType markingLocation;
+    @XmlElement(nillable = true)
     @Transient
-    protected JAXBElement<CodeTLOFSectionType> markingLocation;
-    @XmlElementRef(name = "markedTouchDownLiftOff", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> markedTouchDownLiftOff;
+    protected TouchDownLiftOffPropertyType markedTouchDownLiftOff;
     @Transient
     protected List<TouchDownLiftOffMarkingTimeSliceType.Extension> extension;
 
@@ -95,10 +105,10 @@ public class TouchDownLiftOffMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMarkingICAOStandard() {
+    public CodeYesNoType getMarkingICAOStandard() {
         return markingICAOStandard;
     }
 
@@ -107,10 +117,10 @@ public class TouchDownLiftOffMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMarkingICAOStandard(JAXBElement<CodeYesNoType> value) {
+    public void setMarkingICAOStandard(CodeYesNoType value) {
         this.markingICAOStandard = value;
     }
 
@@ -123,10 +133,10 @@ public class TouchDownLiftOffMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
+     *     {@link CodeMarkingConditionType }
      *     
      */
-    public JAXBElement<CodeMarkingConditionType> getCondition() {
+    public CodeMarkingConditionType getCondition() {
         return condition;
     }
 
@@ -135,10 +145,10 @@ public class TouchDownLiftOffMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
+     *     {@link CodeMarkingConditionType }
      *     
      */
-    public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
+    public void setCondition(CodeMarkingConditionType value) {
         this.condition = value;
     }
 
@@ -231,10 +241,10 @@ public class TouchDownLiftOffMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTLOFSectionType }{@code >}
+     *     {@link CodeTLOFSectionType }
      *     
      */
-    public JAXBElement<CodeTLOFSectionType> getMarkingLocation() {
+    public CodeTLOFSectionType getMarkingLocation() {
         return markingLocation;
     }
 
@@ -243,10 +253,10 @@ public class TouchDownLiftOffMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTLOFSectionType }{@code >}
+     *     {@link CodeTLOFSectionType }
      *     
      */
-    public void setMarkingLocation(JAXBElement<CodeTLOFSectionType> value) {
+    public void setMarkingLocation(CodeTLOFSectionType value) {
         this.markingLocation = value;
     }
 
@@ -259,10 +269,10 @@ public class TouchDownLiftOffMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getMarkedTouchDownLiftOff() {
+    public TouchDownLiftOffPropertyType getMarkedTouchDownLiftOff() {
         return markedTouchDownLiftOff;
     }
 
@@ -271,10 +281,10 @@ public class TouchDownLiftOffMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setMarkedTouchDownLiftOff(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setMarkedTouchDownLiftOff(TouchDownLiftOffPropertyType value) {
         this.markedTouchDownLiftOff = value;
     }
 
@@ -352,10 +362,16 @@ public class TouchDownLiftOffMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTouchDownLiftOffMarkingExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_touch_down_lift_off_marking_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTouchDownLiftOffMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_marking_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

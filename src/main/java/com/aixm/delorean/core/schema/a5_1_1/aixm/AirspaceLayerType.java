@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,31 +68,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspace_layer")
+@Table(name = "airspace_layer", schema = "public")
 public class AirspaceLayerType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "upperLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> upperLimit;
-    @XmlElementRef(name = "upperLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> upperLimitReference;
-    @XmlElementRef(name = "lowerLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> lowerLimit;
-    @XmlElementRef(name = "lowerLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> lowerLimitReference;
-    @XmlElementRef(name = "altitudeInterpretation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAltitudeUseType> altitudeInterpretation;
-    @XmlElementRef(name = "discreteLevelSeries", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<StandardLevelColumnPropertyType> discreteLevelSeries;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceVerticalType upperLimit;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalReferenceType upperLimitReference;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceVerticalType lowerLimit;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalReferenceType lowerLimitReference;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeAltitudeUseType altitudeInterpretation;
     @XmlElement(nillable = true)
     @Transient
+    protected StandardLevelColumnPropertyType discreteLevelSeries;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AirspaceLayerType.Extension> extension;
@@ -98,10 +105,10 @@ public class AirspaceLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getUpperLimit() {
+    public ValDistanceVerticalType getUpperLimit() {
         return upperLimit;
     }
 
@@ -110,10 +117,10 @@ public class AirspaceLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setUpperLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setUpperLimit(ValDistanceVerticalType value) {
         this.upperLimit = value;
     }
 
@@ -126,10 +133,10 @@ public class AirspaceLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getUpperLimitReference() {
+    public CodeVerticalReferenceType getUpperLimitReference() {
         return upperLimitReference;
     }
 
@@ -138,10 +145,10 @@ public class AirspaceLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setUpperLimitReference(CodeVerticalReferenceType value) {
         this.upperLimitReference = value;
     }
 
@@ -154,10 +161,10 @@ public class AirspaceLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getLowerLimit() {
+    public ValDistanceVerticalType getLowerLimit() {
         return lowerLimit;
     }
 
@@ -166,10 +173,10 @@ public class AirspaceLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setLowerLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setLowerLimit(ValDistanceVerticalType value) {
         this.lowerLimit = value;
     }
 
@@ -182,10 +189,10 @@ public class AirspaceLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getLowerLimitReference() {
+    public CodeVerticalReferenceType getLowerLimitReference() {
         return lowerLimitReference;
     }
 
@@ -194,10 +201,10 @@ public class AirspaceLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setLowerLimitReference(CodeVerticalReferenceType value) {
         this.lowerLimitReference = value;
     }
 
@@ -210,10 +217,10 @@ public class AirspaceLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
+     *     {@link CodeAltitudeUseType }
      *     
      */
-    public JAXBElement<CodeAltitudeUseType> getAltitudeInterpretation() {
+    public CodeAltitudeUseType getAltitudeInterpretation() {
         return altitudeInterpretation;
     }
 
@@ -222,10 +229,10 @@ public class AirspaceLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAltitudeUseType }{@code >}
+     *     {@link CodeAltitudeUseType }
      *     
      */
-    public void setAltitudeInterpretation(JAXBElement<CodeAltitudeUseType> value) {
+    public void setAltitudeInterpretation(CodeAltitudeUseType value) {
         this.altitudeInterpretation = value;
     }
 
@@ -238,10 +245,10 @@ public class AirspaceLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link StandardLevelColumnPropertyType }{@code >}
+     *     {@link StandardLevelColumnPropertyType }
      *     
      */
-    public JAXBElement<StandardLevelColumnPropertyType> getDiscreteLevelSeries() {
+    public StandardLevelColumnPropertyType getDiscreteLevelSeries() {
         return discreteLevelSeries;
     }
 
@@ -250,10 +257,10 @@ public class AirspaceLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link StandardLevelColumnPropertyType }{@code >}
+     *     {@link StandardLevelColumnPropertyType }
      *     
      */
-    public void setDiscreteLevelSeries(JAXBElement<StandardLevelColumnPropertyType> value) {
+    public void setDiscreteLevelSeries(StandardLevelColumnPropertyType value) {
         this.discreteLevelSeries = value;
     }
 
@@ -369,7 +376,10 @@ public class AirspaceLayerType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceLayerExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_airspace_layer_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceLayerExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

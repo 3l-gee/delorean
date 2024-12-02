@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAircraftWingspanClassType {
 
     @XmlValue
-    protected CodeAircraftWingspanClassBaseType value;
+    @Column(name = "aircraft_wingspan_class", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_aircraft_wingspan_class_base_type_nil_reason")
+    @Column(name = "aircraft_wingspan_class_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeAircraftWingspanClassType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeAircraftWingspanClassBaseType }
+     *     {@link String }
      *     
      */
-    public CodeAircraftWingspanClassBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeAircraftWingspanClassType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAircraftWingspanClassBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeAircraftWingspanClassBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

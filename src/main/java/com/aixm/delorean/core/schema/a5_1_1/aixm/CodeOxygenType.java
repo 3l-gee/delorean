@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeOxygenType {
 
     @XmlValue
-    protected CodeOxygenBaseType value;
+    @Column(name = "oxygen", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_oxygen_base_type_nil_reason")
+    @Column(name = "oxygen_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeOxygenType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeOxygenBaseType }
+     *     {@link String }
      *     
      */
-    public CodeOxygenBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeOxygenType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeOxygenBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeOxygenBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

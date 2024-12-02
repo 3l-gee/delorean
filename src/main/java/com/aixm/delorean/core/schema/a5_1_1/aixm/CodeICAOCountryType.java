@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeICAOCountryType {
 
     @XmlValue
-    @Column(name = "code_icao_country")
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_icao_country_base_type_nil_reason")
+    @Column(name = "icao_country_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

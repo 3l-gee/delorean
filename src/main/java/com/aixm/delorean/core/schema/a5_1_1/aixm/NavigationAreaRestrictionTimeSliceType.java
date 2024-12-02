@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,25 +66,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navigation_area_restriction_time_slice")
+@Table(name = "navigation_area_restriction_slice", schema = "public")
 public class NavigationAreaRestrictionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeNavigationAreaRestrictionType> type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeNavigationAreaRestrictionType type;
     @XmlElement(nillable = true)
     @Transient
     protected List<ProcedurePropertyType> procedure;
-    @XmlElementRef(name = "designSurface", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ObstacleAssessmentAreaPropertyType> designSurface;
-    @XmlElementRef(name = "sectorDefinition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CircleSectorPropertyType> sectorDefinition;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "design_surface_id", referencedColumnName = "id")
+    protected ObstacleAssessmentAreaPropertyType designSurface;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "sector_definition_id", referencedColumnName = "id")
+    protected CircleSectorPropertyType sectorDefinition;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<NavigationAreaRestrictionTimeSliceType.Extension> extension;
@@ -90,10 +103,10 @@ public class NavigationAreaRestrictionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeNavigationAreaRestrictionType }{@code >}
+     *     {@link CodeNavigationAreaRestrictionType }
      *     
      */
-    public JAXBElement<CodeNavigationAreaRestrictionType> getType() {
+    public CodeNavigationAreaRestrictionType getType() {
         return type;
     }
 
@@ -102,10 +115,10 @@ public class NavigationAreaRestrictionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeNavigationAreaRestrictionType }{@code >}
+     *     {@link CodeNavigationAreaRestrictionType }
      *     
      */
-    public void setType(JAXBElement<CodeNavigationAreaRestrictionType> value) {
+    public void setType(CodeNavigationAreaRestrictionType value) {
         this.type = value;
     }
 
@@ -158,10 +171,10 @@ public class NavigationAreaRestrictionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ObstacleAssessmentAreaPropertyType }{@code >}
+     *     {@link ObstacleAssessmentAreaPropertyType }
      *     
      */
-    public JAXBElement<ObstacleAssessmentAreaPropertyType> getDesignSurface() {
+    public ObstacleAssessmentAreaPropertyType getDesignSurface() {
         return designSurface;
     }
 
@@ -170,10 +183,10 @@ public class NavigationAreaRestrictionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ObstacleAssessmentAreaPropertyType }{@code >}
+     *     {@link ObstacleAssessmentAreaPropertyType }
      *     
      */
-    public void setDesignSurface(JAXBElement<ObstacleAssessmentAreaPropertyType> value) {
+    public void setDesignSurface(ObstacleAssessmentAreaPropertyType value) {
         this.designSurface = value;
     }
 
@@ -186,10 +199,10 @@ public class NavigationAreaRestrictionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
+     *     {@link CircleSectorPropertyType }
      *     
      */
-    public JAXBElement<CircleSectorPropertyType> getSectorDefinition() {
+    public CircleSectorPropertyType getSectorDefinition() {
         return sectorDefinition;
     }
 
@@ -198,10 +211,10 @@ public class NavigationAreaRestrictionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CircleSectorPropertyType }{@code >}
+     *     {@link CircleSectorPropertyType }
      *     
      */
-    public void setSectorDefinition(JAXBElement<CircleSectorPropertyType> value) {
+    public void setSectorDefinition(CircleSectorPropertyType value) {
         this.sectorDefinition = value;
     }
 
@@ -317,7 +330,10 @@ public class NavigationAreaRestrictionTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractNavigationAreaRestrictionExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_navigation_area_restriction_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNavigationAreaRestrictionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

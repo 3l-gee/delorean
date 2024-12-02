@@ -12,6 +12,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -44,7 +45,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "aircraft_stand")
+@Table(name = "aircraft_stand", schema = "public")
 public class AircraftStandType
     extends AbstractAIXMFeatureType
 {
@@ -52,7 +53,8 @@ public class AircraftStandType
     @XmlElement(required = true)
     @OneToMany(cascade = {
         CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "time_slice_id", referencedColumnName = "id")
     protected List<AircraftStandTimeSlicePropertyType> timeSlice;
 
     /**

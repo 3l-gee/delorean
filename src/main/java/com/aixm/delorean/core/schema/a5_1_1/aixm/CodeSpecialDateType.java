@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSpecialDateType {
 
     @XmlValue
-    protected CodeSpecialDateBaseType value;
+    @Column(name = "special", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_special_date_base_type_nil_reason")
+    @Column(name = "special_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeSpecialDateType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeSpecialDateBaseType }
+     *     {@link String }
      *     
      */
-    public CodeSpecialDateBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeSpecialDateType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSpecialDateBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeSpecialDateBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
