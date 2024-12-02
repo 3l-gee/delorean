@@ -29,13 +29,25 @@ class Util:
     
 
 class Property:
-    name = '<jaxb:property name="aixmName"/>'
+    @staticmethod
+    def name(name="aixmName"):
+        return f'<jaxb:property name="{name}"/>'
     element = '<jaxb:property generateElementProperty="false"/>'
-    name_element = '<jaxb:property name="aixmName" generateElementProperty="false"/>'
+
+    @staticmethod
+    def name_element(name="aixmName"):
+        return f'<jaxb:property name="{name}" generateElementProperty="false"/>'
 
 
 class Jaxb:
 
+    @staticmethod
+    def javaType(name, type=None):
+        if type:
+            return f'''<jaxb:javaType name="{name}" xmlType="{type}" />'''
+        
+        return f'''<jaxb:javaType name="{name}" />'''
+    
     @staticmethod
     def schema(value):
         return f'''<jaxb:bindings schemaLocation="{value}" node="/xs:schema">'''
@@ -79,6 +91,7 @@ class Jaxb:
     @staticmethod
     def enum_member(name, value):
         return f'''<jaxb:typesafeEnumMember name="{name}" value="{value}"/>'''
+    
     start ="""
 <jaxb:bindings 
     version="3.0"
