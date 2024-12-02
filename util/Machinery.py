@@ -289,6 +289,7 @@ class Machinery:
         if maxOccurs == 1:
             if type in embed:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.embedded))
+                #todo : <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "primary_alt_min_yes_no")),@jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "primary_alt_min_nil_reason"))})</annox:annotate>
                 return res   
             
             else:

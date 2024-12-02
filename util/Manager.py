@@ -2,6 +2,7 @@ import Machinery
 
 config = {
     "ignore": [
+        "XHTMLType",
         "AIXMBasicMessageType",
         "AIXMBasicMessagePropertyGroup",
         "BasicMessageMemberAIXMPropertyType",
@@ -164,7 +165,6 @@ config = {
         "SurveillanceRadarPropertyType",
     ],
     "transient" : [
-        "XHTMLType",
         "aixm:AbstractDirectFlight",
         "aixm:AbstractPropertiesWithSchedule",
         "aixm:AbstractUsageConditio",
