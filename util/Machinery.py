@@ -13,7 +13,7 @@ def runner(config: dict, xsds: List[dict]):
     machinery = Machinery(xsds, config)
 
     machinery.generate_xjb()
-    machinery.print_entity_class(machinery.entity_feature)
+    # machinery.print_entity_class(machinery.entity_feature)
     machinery.export_xjb()
 
 
@@ -263,6 +263,7 @@ class Machinery:
     
     def generate_cardinality(self, parent, element, embed):
         res = []
+        type = element.attrib.get("type", "").replace("aixm:", "")
         name = element.attrib.get("name")
         ref = element.attrib.get("ref")
         type = element.attrib.get("type", "").replace("aixm:", "")
@@ -276,21 +277,39 @@ class Machinery:
         else:
             maxOccurs = int(maxOccurs)
 
+        if type in self.config.ignore:
+            res.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
+            return res
+
         if maxOccurs == "unbounded":
             res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_many()))
             res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))))
+            return res
 
         if maxOccurs == 1:
             if type in embed:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.embedded))
+                return res
 
             #simple types can be mapped to a column
-            elif element.attrib.get("type",None) in ["xs:string", "xs:integer", "xs:decimal", "xs:double", "xs:float", "xs:boolean"]:
-                res.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib.get("name",element.attrib.get("ref")), nillable)))
+            elif element.attrib.get("type",None) in ["string", "integer", "decimal", "double", "float", "boolean", "date", "dateTime"]:
+                if element.attrib.get("type",None) in ["string", "integer", "decimal", "double", "float", "boolean"] :
+                    res.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib.get("name",element.attrib.get("ref")), nillable)))
+                    return res       
+
+                elif element.attrib.get("type",None) == "date":
+                    res.append("AAAAAAAAAAAAAAAAAAAAAAA")
+                    return res
+                
+                elif element.attrib.get("type",None) == "dateTime":
+                    res.append("AAAAAAAAAAAAAAAAAAAAAAA")
+                    return res
+    
             
             else:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_one()))
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))))
+                return res
 
         if nillable:
             pass
@@ -322,8 +341,8 @@ class Machinery:
 
             res.append(Annotation.Jaxb.simple(element.attrib["name"]))
             enum_values = element.findall(Annotation.Tag.enumeration) or []
-            base = element.findall(".//" + Annotation.Tag.restriction) or None
-
+            base = element.find(".//" + Annotation.Tag.restriction).attrib
+            
             if element.attrib["name"] in self.config.transient:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
                 res.append(Annotation.Jaxb.end)
@@ -337,7 +356,22 @@ class Machinery:
                 constraints = {**transposition.get(element.attrib["name"], {}), **self.generate_constraints(element)}
                 if self.config.constraint_methode == "xjb":
                     res.extend(constraints.values())
-                res.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+
+                if base is not None and base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean", "date", "dateTime"]:
+                    if base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean"] :
+                        res.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+
+                    elif base.get("base") == "date":
+                        pass
+                    
+                    elif base.get("base") == "dateTime":
+                        pass
+
+                elif base is not None and "aixm" in base.get("base",None) :
+                    pass
+                    
+                else:
+                    print(element.attrib, base)
 
             res.append(Annotation.Jaxb.end)
 
@@ -470,7 +504,7 @@ class Machinery:
         node = []
         node.append(Annotation.Jaxb.attribute(attribute.attrib.get("name"), parent=parent_xpath))
         if attribute.attrib.get("name") == "name":
-            node.append(Annotation.Jaxb.property.name)
+            node.append(Annotation.Jaxb.property.name())
 
         name = parent.attrib.get("name") + "_" + attribute.attrib.get("name")
         node.append(Annotation.Annox.field_add(Annotation.Jpa.column(name, True)))
@@ -495,7 +529,7 @@ class Machinery:
 
             else :
                 if element.attrib.get("name") == "name":
-                    node.append(Annotation.Jaxb.property.name_element)
+                    node.append(Annotation.Jaxb.property.name_element())
                 else :
                     node.append(Annotation.Jaxb.property.element)
 
@@ -516,7 +550,7 @@ class Machinery:
         elif attribute.attrib.get("name") is not None:
             node.append(Annotation.Jaxb.attribute(attribute.attrib.get("name"), parent=parent_xpath, xpath=Annotation.Xpath.GLOBAL.value))
             if attribute.attrib.get("name") == "name":
-                node.append(Annotation.Jaxb.property.name)
+                node.append(Annotation.Jaxb.property.name())
 
         else : 
             print(attribute.attrib)
@@ -543,7 +577,7 @@ class Machinery:
                 return node
             
             if element.attrib.get("name") == "name":
-                node.append(Annotation.Jaxb.property.name_element)
+                node.append(Annotation.Jaxb.property.name_element())
             else :
                 node.append(Annotation.Jaxb.property.element)
         else : 
@@ -565,7 +599,7 @@ class Machinery:
             node.append(Annotation.Jaxb.attribute(attribute.attrib.get("name"), parent=parent_xpath, xpath=Annotation.Xpath.GLOBAL.value))
 
             if attribute.attrib.get("name") == "name":
-                node.append(Annotation.Jaxb.property.name)
+                node.append(Annotation.Jaxb.property.name())
 
         else : 
             print(attribute.attrib)

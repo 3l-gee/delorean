@@ -154,7 +154,7 @@ config = {
         "PrimarySurveillanceRadarPropertyType",
         "RadarEquipmentPropertyType",
         "RadarSystemPropertyType",
-        "SecondarySurveillanceRadarPropertyType",
+        "SecondarySurveillanceRadarPropertyType",   
         "SurveillanceRadarPropertyType",
     ],
     "transient" : [],
@@ -201,5 +201,5 @@ message = {
     "manual" : "util/manual/AIXM_BasicMessage.xjb"
 }
 
-machinery = Machinery.runner(config, [data_types, feature, abstract, message])
-# machinery = Machinery.runner(config, [feature])
+# machinery = Machinery.runner(config, [data_types, feature, abstract, message])
+machinery = Machinery.runner(config, [data_types])
