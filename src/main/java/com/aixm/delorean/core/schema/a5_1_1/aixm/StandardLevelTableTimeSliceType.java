@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -60,19 +64,22 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standard_level_table_time_slice")
+@Table(name = "standard_level_table_slice", schema = "public")
 public class StandardLevelTableTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeLevelTableDesignatorType> aixmName;
-    @XmlElementRef(name = "standardICAO", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> standardICAO;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected CodeLevelTableDesignatorType aixmName;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeYesNoType standardICAO;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<StandardLevelTableTimeSliceType.Extension> extension;
@@ -82,10 +89,10 @@ public class StandardLevelTableTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeLevelTableDesignatorType }{@code >}
+     *     {@link CodeLevelTableDesignatorType }
      *     
      */
-    public JAXBElement<CodeLevelTableDesignatorType> getAIXMName() {
+    public CodeLevelTableDesignatorType getAixmName() {
         return aixmName;
     }
 
@@ -94,14 +101,14 @@ public class StandardLevelTableTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeLevelTableDesignatorType }{@code >}
+     *     {@link CodeLevelTableDesignatorType }
      *     
      */
-    public void setAIXMName(JAXBElement<CodeLevelTableDesignatorType> value) {
+    public void setAixmName(CodeLevelTableDesignatorType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -110,10 +117,10 @@ public class StandardLevelTableTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getStandardICAO() {
+    public CodeYesNoType getStandardICAO() {
         return standardICAO;
     }
 
@@ -122,10 +129,10 @@ public class StandardLevelTableTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setStandardICAO(JAXBElement<CodeYesNoType> value) {
+    public void setStandardICAO(CodeYesNoType value) {
         this.standardICAO = value;
     }
 
@@ -241,7 +248,10 @@ public class StandardLevelTableTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelTableExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_standard_level_table_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractStandardLevelTableExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

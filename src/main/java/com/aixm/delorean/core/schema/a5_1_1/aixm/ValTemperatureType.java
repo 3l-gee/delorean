@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValTemperatureType {
 
     @XmlValue
-    @Column(name = "val_temperature")
+    @Column(name = "temperature", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_temperature_base_type_uom")
-    protected UomTemperatureType uom;
+    @Column(name = "temperature_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_temperature_base_type_nil_reason")
+    @Column(name = "temperature_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -85,10 +85,10 @@ public class ValTemperatureType {
      * 
      * @return
      *     possible object is
-     *     {@link UomTemperatureType }
+     *     {@link String }
      *     
      */
-    public UomTemperatureType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -97,10 +97,10 @@ public class ValTemperatureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomTemperatureType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomTemperatureType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

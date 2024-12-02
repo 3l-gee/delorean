@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeOperationManoeuvringAreaType {
 
     @XmlValue
-    protected CodeOperationManoeuvringAreaBaseType value;
+    @Column(name = "operation_manoeuvring_area", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_operation_manoeuvring_area_base_type_nil_reason")
+    @Column(name = "operation_manoeuvring_area_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeOperationManoeuvringAreaType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeOperationManoeuvringAreaBaseType }
+     *     {@link String }
      *     
      */
-    public CodeOperationManoeuvringAreaBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeOperationManoeuvringAreaType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeOperationManoeuvringAreaBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeOperationManoeuvringAreaBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

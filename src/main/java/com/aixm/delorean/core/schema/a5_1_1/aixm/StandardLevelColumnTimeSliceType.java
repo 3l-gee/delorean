@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,28 +67,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standard_level_column_time_slice")
+@Table(name = "standard_level_column_slice", schema = "public")
 public class StandardLevelColumnTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "series", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeLevelSeriesType> series;
-    @XmlElementRef(name = "unitOfMeasurement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<UomDistanceVerticalType> unitOfMeasurement;
-    @XmlElementRef(name = "separation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRVSMType> separation;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeLevelSeriesType series;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeDistanceVerticalUomType unitOfMeasurement;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRVSMType separation;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "level_id", referencedColumnName = "id")
     protected List<StandardLevelPropertyType> level;
-    @XmlElementRef(name = "levelTable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<StandardLevelTablePropertyType> levelTable;
     @XmlElement(nillable = true)
     @Transient
+    protected StandardLevelTablePropertyType levelTable;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<StandardLevelColumnTimeSliceType.Extension> extension;
@@ -94,10 +104,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeLevelSeriesType }{@code >}
+     *     {@link CodeLevelSeriesType }
      *     
      */
-    public JAXBElement<CodeLevelSeriesType> getSeries() {
+    public CodeLevelSeriesType getSeries() {
         return series;
     }
 
@@ -106,10 +116,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeLevelSeriesType }{@code >}
+     *     {@link CodeLevelSeriesType }
      *     
      */
-    public void setSeries(JAXBElement<CodeLevelSeriesType> value) {
+    public void setSeries(CodeLevelSeriesType value) {
         this.series = value;
     }
 
@@ -122,10 +132,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link UomDistanceVerticalType }{@code >}
+     *     {@link CodeDistanceVerticalUomType }
      *     
      */
-    public JAXBElement<UomDistanceVerticalType> getUnitOfMeasurement() {
+    public CodeDistanceVerticalUomType getUnitOfMeasurement() {
         return unitOfMeasurement;
     }
 
@@ -134,10 +144,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link UomDistanceVerticalType }{@code >}
+     *     {@link CodeDistanceVerticalUomType }
      *     
      */
-    public void setUnitOfMeasurement(JAXBElement<UomDistanceVerticalType> value) {
+    public void setUnitOfMeasurement(CodeDistanceVerticalUomType value) {
         this.unitOfMeasurement = value;
     }
 
@@ -150,10 +160,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRVSMType }{@code >}
+     *     {@link CodeRVSMType }
      *     
      */
-    public JAXBElement<CodeRVSMType> getSeparation() {
+    public CodeRVSMType getSeparation() {
         return separation;
     }
 
@@ -162,10 +172,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRVSMType }{@code >}
+     *     {@link CodeRVSMType }
      *     
      */
-    public void setSeparation(JAXBElement<CodeRVSMType> value) {
+    public void setSeparation(CodeRVSMType value) {
         this.separation = value;
     }
 
@@ -218,10 +228,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link StandardLevelTablePropertyType }{@code >}
+     *     {@link StandardLevelTablePropertyType }
      *     
      */
-    public JAXBElement<StandardLevelTablePropertyType> getLevelTable() {
+    public StandardLevelTablePropertyType getLevelTable() {
         return levelTable;
     }
 
@@ -230,10 +240,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link StandardLevelTablePropertyType }{@code >}
+     *     {@link StandardLevelTablePropertyType }
      *     
      */
-    public void setLevelTable(JAXBElement<StandardLevelTablePropertyType> value) {
+    public void setLevelTable(StandardLevelTablePropertyType value) {
         this.levelTable = value;
     }
 
@@ -349,7 +359,10 @@ public class StandardLevelColumnTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractStandardLevelColumnExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_standard_level_column_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractStandardLevelColumnExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

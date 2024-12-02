@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDirectionReferenceType {
 
     @XmlValue
-    protected CodeDirectionReferenceBaseType value;
+    @Column(name = "direction_reference", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_direction_reference_base_type_nil_reason")
+    @Column(name = "direction_reference_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeDirectionReferenceType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeDirectionReferenceBaseType }
+     *     {@link String }
      *     
      */
-    public CodeDirectionReferenceBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeDirectionReferenceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDirectionReferenceBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeDirectionReferenceBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

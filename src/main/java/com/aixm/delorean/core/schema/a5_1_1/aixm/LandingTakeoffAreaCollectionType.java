@@ -9,7 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -58,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "landing_takeoff_area_collection")
+@Table(name = "landing_takeoff_area_collection", schema = "public")
 public class LandingTakeoffAreaCollectionType
     extends AbstractAIXMObjectType
 {
@@ -70,7 +75,10 @@ public class LandingTakeoffAreaCollectionType
     @Transient
     protected List<TouchDownLiftOffPropertyType> tlof;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<LandingTakeoffAreaCollectionType.Extension> extension;
@@ -263,7 +271,10 @@ public class LandingTakeoffAreaCollectionType
     public static class Extension {
 
         @XmlElement(name = "AbstractLandingTakeoffAreaCollectionExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_landing_takeoff_area_collection_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractLandingTakeoffAreaCollectionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

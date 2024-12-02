@@ -42,10 +42,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValChannelNumberType {
 
     @XmlValue
-    @Column(name = "val_channel_number")
+    @Column(name = "channel_number", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_channel_number_base_type_nil_reason")
+    @Column(name = "channel_number_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

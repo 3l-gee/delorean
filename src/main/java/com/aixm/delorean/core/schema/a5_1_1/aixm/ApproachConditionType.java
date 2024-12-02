@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,40 +71,58 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approach_condition")
+@Table(name = "approach_condition", schema = "public")
 public class ApproachConditionType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "finalApproachPath", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeMinimaFinalApproachPathType> finalApproachPath;
-    @XmlElementRef(name = "requiredNavigationPerformance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRNPType> requiredNavigationPerformance;
-    @XmlElementRef(name = "climbGradient", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValSlopeType> climbGradient;
-    @XmlElementRef(name = "minimumSet", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<MinimaPropertyType> minimumSet;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeMinimaFinalApproachPathType finalApproachPath;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRNPType requiredNavigationPerformance;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValSlopeType climbGradient;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "minimum_set_id", referencedColumnName = "id")
+    protected MinimaPropertyType minimumSet;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "circling_restriction_id", referencedColumnName = "id")
     protected List<CirclingRestrictionPropertyType> circlingRestriction;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "aircraft_category_id", referencedColumnName = "id")
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "landing_area_id", referencedColumnName = "id")
     protected List<LandingTakeoffAreaCollectionPropertyType> landingArea;
-    @XmlElementRef(name = "altimeter", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AltimeterSourcePropertyType> altimeter;
     @XmlElement(nillable = true)
     @Transient
+    protected AltimeterSourcePropertyType altimeter;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "design_surface_id", referencedColumnName = "id")
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ApproachConditionType.Extension> extension;
@@ -110,10 +132,10 @@ public class ApproachConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMinimaFinalApproachPathType }{@code >}
+     *     {@link CodeMinimaFinalApproachPathType }
      *     
      */
-    public JAXBElement<CodeMinimaFinalApproachPathType> getFinalApproachPath() {
+    public CodeMinimaFinalApproachPathType getFinalApproachPath() {
         return finalApproachPath;
     }
 
@@ -122,10 +144,10 @@ public class ApproachConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMinimaFinalApproachPathType }{@code >}
+     *     {@link CodeMinimaFinalApproachPathType }
      *     
      */
-    public void setFinalApproachPath(JAXBElement<CodeMinimaFinalApproachPathType> value) {
+    public void setFinalApproachPath(CodeMinimaFinalApproachPathType value) {
         this.finalApproachPath = value;
     }
 
@@ -138,10 +160,10 @@ public class ApproachConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRNPType }{@code >}
+     *     {@link CodeRNPType }
      *     
      */
-    public JAXBElement<CodeRNPType> getRequiredNavigationPerformance() {
+    public CodeRNPType getRequiredNavigationPerformance() {
         return requiredNavigationPerformance;
     }
 
@@ -150,10 +172,10 @@ public class ApproachConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRNPType }{@code >}
+     *     {@link CodeRNPType }
      *     
      */
-    public void setRequiredNavigationPerformance(JAXBElement<CodeRNPType> value) {
+    public void setRequiredNavigationPerformance(CodeRNPType value) {
         this.requiredNavigationPerformance = value;
     }
 
@@ -166,10 +188,10 @@ public class ApproachConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValSlopeType }{@code >}
+     *     {@link ValSlopeType }
      *     
      */
-    public JAXBElement<ValSlopeType> getClimbGradient() {
+    public ValSlopeType getClimbGradient() {
         return climbGradient;
     }
 
@@ -178,10 +200,10 @@ public class ApproachConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValSlopeType }{@code >}
+     *     {@link ValSlopeType }
      *     
      */
-    public void setClimbGradient(JAXBElement<ValSlopeType> value) {
+    public void setClimbGradient(ValSlopeType value) {
         this.climbGradient = value;
     }
 
@@ -194,10 +216,10 @@ public class ApproachConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link MinimaPropertyType }{@code >}
+     *     {@link MinimaPropertyType }
      *     
      */
-    public JAXBElement<MinimaPropertyType> getMinimumSet() {
+    public MinimaPropertyType getMinimumSet() {
         return minimumSet;
     }
 
@@ -206,10 +228,10 @@ public class ApproachConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link MinimaPropertyType }{@code >}
+     *     {@link MinimaPropertyType }
      *     
      */
-    public void setMinimumSet(JAXBElement<MinimaPropertyType> value) {
+    public void setMinimumSet(MinimaPropertyType value) {
         this.minimumSet = value;
     }
 
@@ -342,10 +364,10 @@ public class ApproachConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AltimeterSourcePropertyType }{@code >}
+     *     {@link AltimeterSourcePropertyType }
      *     
      */
-    public JAXBElement<AltimeterSourcePropertyType> getAltimeter() {
+    public AltimeterSourcePropertyType getAltimeter() {
         return altimeter;
     }
 
@@ -354,10 +376,10 @@ public class ApproachConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AltimeterSourcePropertyType }{@code >}
+     *     {@link AltimeterSourcePropertyType }
      *     
      */
-    public void setAltimeter(JAXBElement<AltimeterSourcePropertyType> value) {
+    public void setAltimeter(AltimeterSourcePropertyType value) {
         this.altimeter = value;
     }
 
@@ -513,7 +535,10 @@ public class ApproachConditionType
     public static class Extension {
 
         @XmlElement(name = "AbstractApproachConditionExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_approach_condition_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractApproachConditionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

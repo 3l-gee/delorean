@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeOrganisationDesignatorType {
 
     @XmlValue
-    @Column(name = "code_organisation_designator")
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_organisation_designator_base_type_nil_reason")
+    @Column(name = "organisation_designator_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

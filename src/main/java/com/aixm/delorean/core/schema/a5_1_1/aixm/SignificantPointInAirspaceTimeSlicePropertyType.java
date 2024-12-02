@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,18 +51,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "significantPointInAirspaceTimeSlice"
 })
 @Entity
-@Table(name = "significant_point_in_airspace_time_slice_property")
+@Table(name = "significant_point_in_airspace_slice_property", schema = "public")
 public class SignificantPointInAirspaceTimeSlicePropertyType {
 
     @XmlElement(name = "SignificantPointInAirspaceTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
-    })
-    @JoinColumn(name = "significant_point_in_airspace_time_slice_id")
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "significant_point_in_airspace_slice_id", referencedColumnName = "id")
     protected SignificantPointInAirspaceTimeSliceType significantPointInAirspaceTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

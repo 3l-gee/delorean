@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeObstacleAssessmentSurfaceType {
 
     @XmlValue
-    protected CodeObstacleAssessmentSurfaceBaseType value;
+    @Column(name = "obstacle_assessment_surface", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_obstacle_assessment_surface_base_type_nil_reason")
+    @Column(name = "obstacle_assessment_surface_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeObstacleAssessmentSurfaceType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeObstacleAssessmentSurfaceBaseType }
+     *     {@link String }
      *     
      */
-    public CodeObstacleAssessmentSurfaceBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeObstacleAssessmentSurfaceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeObstacleAssessmentSurfaceBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeObstacleAssessmentSurfaceBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMinimumHeightType {
 
     @XmlValue
-    protected CodeMinimumHeightBaseType value;
+    @Column(name = "minimum_height", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_minimum_height_base_type_nil_reason")
+    @Column(name = "minimum_height_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeMinimumHeightType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeMinimumHeightBaseType }
+     *     {@link String }
      *     
      */
-    public CodeMinimumHeightBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeMinimumHeightType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMinimumHeightBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeMinimumHeightBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

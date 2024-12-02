@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -86,92 +90,101 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "secondary_surveillance_radar_time_slice")
+@Table(name = "secondary_surveillance_radar_slice", schema = "public")
 public class SecondarySurveillanceRadarTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "serialNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextDesignatorType> serialNumber;
-    @XmlElementRef(name = "range", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> range;
-    @XmlElementRef(name = "rangeAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> rangeAccuracy;
-    @XmlElementRef(name = "dualChannel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> dualChannel;
-    @XmlElementRef(name = "movingTargetIndicator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> movingTargetIndicator;
-    @XmlElementRef(name = "standbyPower", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStandbyPowerType> standbyPower;
-    @XmlElementRef(name = "digital", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> digital;
-    @XmlElementRef(name = "militaryUseOnly", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> militaryUseOnly;
-    @XmlElementRef(name = "specialUseOnly", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> specialUseOnly;
-    @XmlElementRef(name = "specialAircraftOnly", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> specialAircraftOnly;
-    @XmlElementRef(name = "magneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValMagneticVariationType> magneticVariation;
-    @XmlElementRef(name = "magneticVariationAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValAngleType> magneticVariationAccuracy;
-    @XmlElementRef(name = "dateMagneticVariation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DateYearType> dateMagneticVariation;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected TextDesignatorType serialNumber;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType range;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType rangeAccuracy;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType dualChannel;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType movingTargetIndicator;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeStandbyPowerType standbyPower;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType digital;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType militaryUseOnly;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType specialUseOnly;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType specialAircraftOnly;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValMagneticVariationType magneticVariation;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValAngleType magneticVariationAccuracy;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected DateYearType dateMagneticVariation;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "contact_id", referencedColumnName = "id")
     protected List<ContactInformationPropertyType> contact;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
     @Transient
+    protected ElevatedPointPropertyType location;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "verticalCoverageAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> verticalCoverageAltitude;
-    @XmlElementRef(name = "verticalCoverageDistance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> verticalCoverageDistance;
-    @XmlElementRef(name = "verticalCoverageAzimuth", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValBearingType> verticalCoverageAzimuth;
-    @XmlElementRef(name = "antennaTiltFixed", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> antennaTiltFixed;
-    @XmlElementRef(name = "tiltAngle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValAngleType> tiltAngle;
-    @XmlElementRef(name = "automatedRadarTerminalSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextDesignatorType> automatedRadarTerminalSystem;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected ValDistanceVerticalType verticalCoverageAltitude;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType verticalCoverageDistance;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValBearingType verticalCoverageAzimuth;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType antennaTiltFixed;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValAngleType tiltAngle;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextDesignatorType automatedRadarTerminalSystem;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ground_station_id", referencedColumnName = "id")
     protected List<SurveillanceGroundStationPropertyType> groundStation;
-    @XmlElementRef(name = "transponder", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeTransponderType> transponder;
-    @XmlElementRef(name = "autonomous", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> autonomous;
-    @XmlElementRef(name = "monopulse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> monopulse;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeTransponderType transponder;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType autonomous;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType monopulse;
     @Transient
     protected List<SecondarySurveillanceRadarTimeSliceType.Extension> extension;
 
@@ -180,10 +193,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -192,14 +205,14 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -208,10 +221,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getSerialNumber() {
+    public TextDesignatorType getSerialNumber() {
         return serialNumber;
     }
 
@@ -220,10 +233,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setSerialNumber(JAXBElement<TextDesignatorType> value) {
+    public void setSerialNumber(TextDesignatorType value) {
         this.serialNumber = value;
     }
 
@@ -236,10 +249,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getRange() {
+    public ValDistanceType getRange() {
         return range;
     }
 
@@ -248,10 +261,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setRange(JAXBElement<ValDistanceType> value) {
+    public void setRange(ValDistanceType value) {
         this.range = value;
     }
 
@@ -264,10 +277,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getRangeAccuracy() {
+    public ValDistanceType getRangeAccuracy() {
         return rangeAccuracy;
     }
 
@@ -276,10 +289,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setRangeAccuracy(JAXBElement<ValDistanceType> value) {
+    public void setRangeAccuracy(ValDistanceType value) {
         this.rangeAccuracy = value;
     }
 
@@ -292,10 +305,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getDualChannel() {
+    public CodeYesNoType getDualChannel() {
         return dualChannel;
     }
 
@@ -304,10 +317,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setDualChannel(JAXBElement<CodeYesNoType> value) {
+    public void setDualChannel(CodeYesNoType value) {
         this.dualChannel = value;
     }
 
@@ -320,10 +333,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMovingTargetIndicator() {
+    public CodeYesNoType getMovingTargetIndicator() {
         return movingTargetIndicator;
     }
 
@@ -332,10 +345,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMovingTargetIndicator(JAXBElement<CodeYesNoType> value) {
+    public void setMovingTargetIndicator(CodeYesNoType value) {
         this.movingTargetIndicator = value;
     }
 
@@ -348,10 +361,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStandbyPowerType }{@code >}
+     *     {@link CodeStandbyPowerType }
      *     
      */
-    public JAXBElement<CodeStandbyPowerType> getStandbyPower() {
+    public CodeStandbyPowerType getStandbyPower() {
         return standbyPower;
     }
 
@@ -360,10 +373,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStandbyPowerType }{@code >}
+     *     {@link CodeStandbyPowerType }
      *     
      */
-    public void setStandbyPower(JAXBElement<CodeStandbyPowerType> value) {
+    public void setStandbyPower(CodeStandbyPowerType value) {
         this.standbyPower = value;
     }
 
@@ -376,10 +389,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getDigital() {
+    public CodeYesNoType getDigital() {
         return digital;
     }
 
@@ -388,10 +401,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setDigital(JAXBElement<CodeYesNoType> value) {
+    public void setDigital(CodeYesNoType value) {
         this.digital = value;
     }
 
@@ -404,10 +417,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMilitaryUseOnly() {
+    public CodeYesNoType getMilitaryUseOnly() {
         return militaryUseOnly;
     }
 
@@ -416,10 +429,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMilitaryUseOnly(JAXBElement<CodeYesNoType> value) {
+    public void setMilitaryUseOnly(CodeYesNoType value) {
         this.militaryUseOnly = value;
     }
 
@@ -432,10 +445,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getSpecialUseOnly() {
+    public CodeYesNoType getSpecialUseOnly() {
         return specialUseOnly;
     }
 
@@ -444,10 +457,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setSpecialUseOnly(JAXBElement<CodeYesNoType> value) {
+    public void setSpecialUseOnly(CodeYesNoType value) {
         this.specialUseOnly = value;
     }
 
@@ -460,10 +473,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getSpecialAircraftOnly() {
+    public CodeYesNoType getSpecialAircraftOnly() {
         return specialAircraftOnly;
     }
 
@@ -472,10 +485,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setSpecialAircraftOnly(JAXBElement<CodeYesNoType> value) {
+    public void setSpecialAircraftOnly(CodeYesNoType value) {
         this.specialAircraftOnly = value;
     }
 
@@ -488,10 +501,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     *     {@link ValMagneticVariationType }
      *     
      */
-    public JAXBElement<ValMagneticVariationType> getMagneticVariation() {
+    public ValMagneticVariationType getMagneticVariation() {
         return magneticVariation;
     }
 
@@ -500,10 +513,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValMagneticVariationType }{@code >}
+     *     {@link ValMagneticVariationType }
      *     
      */
-    public void setMagneticVariation(JAXBElement<ValMagneticVariationType> value) {
+    public void setMagneticVariation(ValMagneticVariationType value) {
         this.magneticVariation = value;
     }
 
@@ -516,10 +529,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getMagneticVariationAccuracy() {
+    public ValAngleType getMagneticVariationAccuracy() {
         return magneticVariationAccuracy;
     }
 
@@ -528,10 +541,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setMagneticVariationAccuracy(JAXBElement<ValAngleType> value) {
+    public void setMagneticVariationAccuracy(ValAngleType value) {
         this.magneticVariationAccuracy = value;
     }
 
@@ -544,10 +557,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public JAXBElement<DateYearType> getDateMagneticVariation() {
+    public DateYearType getDateMagneticVariation() {
         return dateMagneticVariation;
     }
 
@@ -556,10 +569,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DateYearType }{@code >}
+     *     {@link DateYearType }
      *     
      */
-    public void setDateMagneticVariation(JAXBElement<DateYearType> value) {
+    public void setDateMagneticVariation(DateYearType value) {
         this.dateMagneticVariation = value;
     }
 
@@ -612,10 +625,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getLocation() {
+    public ElevatedPointPropertyType getLocation() {
         return location;
     }
 
@@ -624,10 +637,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setLocation(ElevatedPointPropertyType value) {
         this.location = value;
     }
 
@@ -680,10 +693,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getVerticalCoverageAltitude() {
+    public ValDistanceVerticalType getVerticalCoverageAltitude() {
         return verticalCoverageAltitude;
     }
 
@@ -692,10 +705,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setVerticalCoverageAltitude(JAXBElement<ValDistanceVerticalType> value) {
+    public void setVerticalCoverageAltitude(ValDistanceVerticalType value) {
         this.verticalCoverageAltitude = value;
     }
 
@@ -708,10 +721,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getVerticalCoverageDistance() {
+    public ValDistanceType getVerticalCoverageDistance() {
         return verticalCoverageDistance;
     }
 
@@ -720,10 +733,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setVerticalCoverageDistance(JAXBElement<ValDistanceType> value) {
+    public void setVerticalCoverageDistance(ValDistanceType value) {
         this.verticalCoverageDistance = value;
     }
 
@@ -736,10 +749,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getVerticalCoverageAzimuth() {
+    public ValBearingType getVerticalCoverageAzimuth() {
         return verticalCoverageAzimuth;
     }
 
@@ -748,10 +761,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setVerticalCoverageAzimuth(JAXBElement<ValBearingType> value) {
+    public void setVerticalCoverageAzimuth(ValBearingType value) {
         this.verticalCoverageAzimuth = value;
     }
 
@@ -764,10 +777,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getAntennaTiltFixed() {
+    public CodeYesNoType getAntennaTiltFixed() {
         return antennaTiltFixed;
     }
 
@@ -776,10 +789,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setAntennaTiltFixed(JAXBElement<CodeYesNoType> value) {
+    public void setAntennaTiltFixed(CodeYesNoType value) {
         this.antennaTiltFixed = value;
     }
 
@@ -792,10 +805,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public JAXBElement<ValAngleType> getTiltAngle() {
+    public ValAngleType getTiltAngle() {
         return tiltAngle;
     }
 
@@ -804,10 +817,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValAngleType }{@code >}
+     *     {@link ValAngleType }
      *     
      */
-    public void setTiltAngle(JAXBElement<ValAngleType> value) {
+    public void setTiltAngle(ValAngleType value) {
         this.tiltAngle = value;
     }
 
@@ -820,10 +833,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getAutomatedRadarTerminalSystem() {
+    public TextDesignatorType getAutomatedRadarTerminalSystem() {
         return automatedRadarTerminalSystem;
     }
 
@@ -832,10 +845,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setAutomatedRadarTerminalSystem(JAXBElement<TextDesignatorType> value) {
+    public void setAutomatedRadarTerminalSystem(TextDesignatorType value) {
         this.automatedRadarTerminalSystem = value;
     }
 
@@ -888,10 +901,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTransponderType }{@code >}
+     *     {@link CodeTransponderType }
      *     
      */
-    public JAXBElement<CodeTransponderType> getTransponder() {
+    public CodeTransponderType getTransponder() {
         return transponder;
     }
 
@@ -900,10 +913,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTransponderType }{@code >}
+     *     {@link CodeTransponderType }
      *     
      */
-    public void setTransponder(JAXBElement<CodeTransponderType> value) {
+    public void setTransponder(CodeTransponderType value) {
         this.transponder = value;
     }
 
@@ -916,10 +929,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getAutonomous() {
+    public CodeYesNoType getAutonomous() {
         return autonomous;
     }
 
@@ -928,10 +941,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setAutonomous(JAXBElement<CodeYesNoType> value) {
+    public void setAutonomous(CodeYesNoType value) {
         this.autonomous = value;
     }
 
@@ -944,10 +957,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMonopulse() {
+    public CodeYesNoType getMonopulse() {
         return monopulse;
     }
 
@@ -956,10 +969,10 @@ public class SecondarySurveillanceRadarTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMonopulse(JAXBElement<CodeYesNoType> value) {
+    public void setMonopulse(CodeYesNoType value) {
         this.monopulse = value;
     }
 
@@ -1039,13 +1052,22 @@ public class SecondarySurveillanceRadarTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractSecondarySurveillanceRadarExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_secondary_surveillance_radar_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSecondarySurveillanceRadarExtension;
         @XmlElement(name = "AbstractSurveillanceRadarExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_surveillance_radar_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSurveillanceRadarExtension;
         @XmlElement(name = "AbstractRadarEquipmentExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_radar_equipment_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRadarEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,32 +69,38 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "taxiway_marking_time_slice")
+@Table(name = "taxiway_marking_slice", schema = "public")
 public class TaxiwayMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "markingICAOStandard", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> markingICAOStandard;
-    @XmlElementRef(name = "condition", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeMarkingConditionType> condition;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeYesNoType markingICAOStandard;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeMarkingConditionType condition;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "element_id", referencedColumnName = "id")
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "markingLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeTaxiwaySectionType markingLocation;
+    @XmlElement(nillable = true)
     @Transient
-    protected JAXBElement<CodeTaxiwaySectionType> markingLocation;
-    @XmlElementRef(name = "markedTaxiway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    protected TaxiwayPropertyType markedTaxiway;
+    @XmlElement(nillable = true)
     @Transient
-    protected JAXBElement<TaxiwayPropertyType> markedTaxiway;
-    @XmlElementRef(name = "markedElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TaxiwayElementPropertyType> markedElement;
+    protected TaxiwayElementPropertyType markedElement;
     @Transient
     protected List<TaxiwayMarkingTimeSliceType.Extension> extension;
 
@@ -99,10 +109,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getMarkingICAOStandard() {
+    public CodeYesNoType getMarkingICAOStandard() {
         return markingICAOStandard;
     }
 
@@ -111,10 +121,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setMarkingICAOStandard(JAXBElement<CodeYesNoType> value) {
+    public void setMarkingICAOStandard(CodeYesNoType value) {
         this.markingICAOStandard = value;
     }
 
@@ -127,10 +137,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
+     *     {@link CodeMarkingConditionType }
      *     
      */
-    public JAXBElement<CodeMarkingConditionType> getCondition() {
+    public CodeMarkingConditionType getCondition() {
         return condition;
     }
 
@@ -139,10 +149,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeMarkingConditionType }{@code >}
+     *     {@link CodeMarkingConditionType }
      *     
      */
-    public void setCondition(JAXBElement<CodeMarkingConditionType> value) {
+    public void setCondition(CodeMarkingConditionType value) {
         this.condition = value;
     }
 
@@ -235,10 +245,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTaxiwaySectionType }{@code >}
+     *     {@link CodeTaxiwaySectionType }
      *     
      */
-    public JAXBElement<CodeTaxiwaySectionType> getMarkingLocation() {
+    public CodeTaxiwaySectionType getMarkingLocation() {
         return markingLocation;
     }
 
@@ -247,10 +257,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTaxiwaySectionType }{@code >}
+     *     {@link CodeTaxiwaySectionType }
      *     
      */
-    public void setMarkingLocation(JAXBElement<CodeTaxiwaySectionType> value) {
+    public void setMarkingLocation(CodeTaxiwaySectionType value) {
         this.markingLocation = value;
     }
 
@@ -263,10 +273,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
+     *     {@link TaxiwayPropertyType }
      *     
      */
-    public JAXBElement<TaxiwayPropertyType> getMarkedTaxiway() {
+    public TaxiwayPropertyType getMarkedTaxiway() {
         return markedTaxiway;
     }
 
@@ -275,10 +285,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
+     *     {@link TaxiwayPropertyType }
      *     
      */
-    public void setMarkedTaxiway(JAXBElement<TaxiwayPropertyType> value) {
+    public void setMarkedTaxiway(TaxiwayPropertyType value) {
         this.markedTaxiway = value;
     }
 
@@ -291,10 +301,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayElementPropertyType }{@code >}
+     *     {@link TaxiwayElementPropertyType }
      *     
      */
-    public JAXBElement<TaxiwayElementPropertyType> getMarkedElement() {
+    public TaxiwayElementPropertyType getMarkedElement() {
         return markedElement;
     }
 
@@ -303,10 +313,10 @@ public class TaxiwayMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayElementPropertyType }{@code >}
+     *     {@link TaxiwayElementPropertyType }
      *     
      */
-    public void setMarkedElement(JAXBElement<TaxiwayElementPropertyType> value) {
+    public void setMarkedElement(TaxiwayElementPropertyType value) {
         this.markedElement = value;
     }
 
@@ -384,10 +394,16 @@ public class TaxiwayMarkingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractTaxiwayMarkingExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_taxiway_marking_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTaxiwayMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_marking_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

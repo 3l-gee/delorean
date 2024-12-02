@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSideType {
 
     @XmlValue
-    protected CodeSideBaseType value;
+    @Column(name = "side", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_side_base_type_nil_reason")
+    @Column(name = "side_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeSideType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeSideBaseType }
+     *     {@link String }
      *     
      */
-    public CodeSideBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeSideType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSideBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeSideBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

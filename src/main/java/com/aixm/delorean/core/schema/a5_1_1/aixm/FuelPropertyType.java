@@ -7,9 +7,12 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -40,13 +43,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "fuel"
 })
 @Entity
-@Table(name = "fuel_property")
+@Table(name = "fuel_property", schema = "public")
 public class FuelPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "Fuel", required = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "fuel_id", referencedColumnName = "id")
     protected FuelType fuel;
 
     /**

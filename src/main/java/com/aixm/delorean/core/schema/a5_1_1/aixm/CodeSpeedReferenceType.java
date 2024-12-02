@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSpeedReferenceType {
 
     @XmlValue
-    protected CodeSpeedReferenceBaseType value;
+    @Column(name = "speed_reference", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_speed_reference_base_type_nil_reason")
+    @Column(name = "speed_reference_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeSpeedReferenceType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeSpeedReferenceBaseType }
+     *     {@link String }
      *     
      */
-    public CodeSpeedReferenceBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeSpeedReferenceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSpeedReferenceBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeSpeedReferenceBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

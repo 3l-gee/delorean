@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeServiceGroundControlType {
 
     @XmlValue
-    protected CodeServiceGroundControlBaseType value;
+    @Column(name = "service_ground_control", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_service_ground_control_base_type_nil_reason")
+    @Column(name = "service_ground_control_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeServiceGroundControlType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeServiceGroundControlBaseType }
+     *     {@link String }
      *     
      */
-    public CodeServiceGroundControlBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeServiceGroundControlType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeServiceGroundControlBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeServiceGroundControlBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

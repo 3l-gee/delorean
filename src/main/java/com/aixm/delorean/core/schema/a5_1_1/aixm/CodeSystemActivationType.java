@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSystemActivationType {
 
     @XmlValue
-    protected CodeSystemActivationBaseType value;
+    @Column(name = "system_activation", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_system_activation_base_type_nil_reason")
+    @Column(name = "system_activation_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeSystemActivationType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeSystemActivationBaseType }
+     *     {@link String }
      *     
      */
-    public CodeSystemActivationBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeSystemActivationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSystemActivationBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeSystemActivationBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -9,6 +9,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gmd.MDMetadataType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractMetadataPropertyType;
+import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -38,6 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "FeatureMetadataPropertyType", propOrder = {
     "mdMetadata"
 })
+@Embeddable
 public class FeatureMetadataPropertyType
     extends AbstractMetadataPropertyType
 {

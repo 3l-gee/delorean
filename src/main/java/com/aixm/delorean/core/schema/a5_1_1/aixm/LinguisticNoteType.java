@@ -9,15 +9,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -58,14 +61,14 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "linguistic_note")
+@Table(name = "linguistic_note", schema = "public")
 public class LinguisticNoteType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "note", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNoteType> note;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextNoteType note;
     @Transient
     protected List<LinguisticNoteType.Extension> extension;
 
@@ -74,10 +77,10 @@ public class LinguisticNoteType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNoteType }{@code >}
+     *     {@link TextNoteType }
      *     
      */
-    public JAXBElement<TextNoteType> getNote() {
+    public TextNoteType getNote() {
         return note;
     }
 
@@ -86,10 +89,10 @@ public class LinguisticNoteType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNoteType }{@code >}
+     *     {@link TextNoteType }
      *     
      */
-    public void setNote(JAXBElement<TextNoteType> value) {
+    public void setNote(TextNoteType value) {
         this.note = value;
     }
 
@@ -165,7 +168,10 @@ public class LinguisticNoteType
     public static class Extension {
 
         @XmlElement(name = "AbstractLinguisticNoteExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_linguistic_note_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractLinguisticNoteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

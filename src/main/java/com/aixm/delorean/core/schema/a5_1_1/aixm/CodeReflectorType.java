@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeReflectorType {
 
     @XmlValue
-    protected CodeReflectorBaseType value;
+    @Column(name = "reflector", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_reflector_base_type_nil_reason")
+    @Column(name = "reflector_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeReflectorType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeReflectorBaseType }
+     *     {@link String }
      *     
      */
-    public CodeReflectorBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeReflectorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeReflectorBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeReflectorBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

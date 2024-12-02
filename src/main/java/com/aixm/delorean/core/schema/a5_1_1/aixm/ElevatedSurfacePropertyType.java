@@ -9,8 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.adapter.gis.ElevatedSurfaceTypeAdapter;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedSurfaceType;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,7 +42,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "ElevatedSurfacePropertyType", propOrder = {
     "elevatedSurface"
 })
-@Embeddable
+@Entity
+@Table(name = "elevated_surface", schema = "public")
 public class ElevatedSurfacePropertyType
     extends AbstractAIXMPropertyType
 {

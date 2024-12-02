@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLevelTableDesignatorType {
 
     @XmlValue
-    protected CodeLevelTableDesignatorBaseType value;
+    @Column(name = "level_table_designator", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_level_table_designator_base_type_nil_reason")
+    @Column(name = "level_table_designator_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeLevelTableDesignatorType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeLevelTableDesignatorBaseType }
+     *     {@link String }
      *     
      */
-    public CodeLevelTableDesignatorBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeLevelTableDesignatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLevelTableDesignatorBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeLevelTableDesignatorBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

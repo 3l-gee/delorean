@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAirportWarningType {
 
     @XmlValue
-    protected CodeAirportWarningBaseType value;
+    @Column(name = "airport_warning", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_airport_warning_base_type_nil_reason")
+    @Column(name = "airport_warning_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeAirportWarningType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeAirportWarningBaseType }
+     *     {@link String }
      *     
      */
-    public CodeAirportWarningBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeAirportWarningType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAirportWarningBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeAirportWarningBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

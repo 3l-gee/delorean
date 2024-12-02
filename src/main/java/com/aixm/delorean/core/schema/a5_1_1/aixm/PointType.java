@@ -9,13 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -52,11 +54,14 @@ public class PointType
     extends com.aixm.delorean.core.schema.a5_1_1.org.gml.PointType
 {
 
-    @XmlElementRef(name = "horizontalAccuracy", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> horizontalAccuracy;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected ValDistanceType horizontalAccuracy;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
 
     /**
@@ -64,10 +69,10 @@ public class PointType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getHorizontalAccuracy() {
+    public ValDistanceType getHorizontalAccuracy() {
         return horizontalAccuracy;
     }
 
@@ -76,10 +81,10 @@ public class PointType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setHorizontalAccuracy(JAXBElement<ValDistanceType> value) {
+    public void setHorizontalAccuracy(ValDistanceType value) {
         this.horizontalAccuracy = value;
     }
 

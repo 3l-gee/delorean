@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDMEType {
 
     @XmlValue
-    protected CodeDMEBaseType value;
+    @Column(name = "dme", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_dme_base_type_nil_reason")
+    @Column(name = "dme_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeDMEType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeDMEBaseType }
+     *     {@link String }
      *     
      */
-    public CodeDMEBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeDMEType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeDMEBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeDMEBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

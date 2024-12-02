@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRelativePositionType {
 
     @XmlValue
-    protected CodeRelativePositionBaseType value;
+    @Column(name = "relative_position", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_relative_position_base_type_nil_reason")
+    @Column(name = "relative_position_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeRelativePositionType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeRelativePositionBaseType }
+     *     {@link String }
      *     
      */
-    public CodeRelativePositionBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeRelativePositionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeRelativePositionBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeRelativePositionBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

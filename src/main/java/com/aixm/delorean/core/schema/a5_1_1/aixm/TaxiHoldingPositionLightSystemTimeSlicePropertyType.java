@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,18 +51,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "taxiHoldingPositionLightSystemTimeSlice"
 })
 @Entity
-@Table(name = "taxi_holding_position_light_system_time_slice_property")
+@Table(name = "taxi_holding_position_light_system_slice_property", schema = "public")
 public class TaxiHoldingPositionLightSystemTimeSlicePropertyType {
 
     @XmlElement(name = "TaxiHoldingPositionLightSystemTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
-    })
-    @JoinColumn(name = "taxi_holding_position_light_system_time_slice_id")
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "taxi_holding_position_light_system_slice_id", referencedColumnName = "id")
     protected TaxiHoldingPositionLightSystemTimeSliceType taxiHoldingPositionLightSystemTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

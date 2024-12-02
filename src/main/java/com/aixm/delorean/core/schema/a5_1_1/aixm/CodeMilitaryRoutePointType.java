@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMilitaryRoutePointType {
 
     @XmlValue
-    protected CodeMilitaryRoutePointBaseType value;
+    @Column(name = "military_route_point", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_military_route_point_base_type_nil_reason")
+    @Column(name = "military_route_point_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeMilitaryRoutePointType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeMilitaryRoutePointBaseType }
+     *     {@link String }
      *     
      */
-    public CodeMilitaryRoutePointBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeMilitaryRoutePointType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMilitaryRoutePointBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeMilitaryRoutePointBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

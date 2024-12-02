@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeFacilityRankingType {
 
     @XmlValue
-    protected CodeFacilityRankingBaseType value;
+    @Column(name = "facility_ranking", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_facility_ranking_base_type_nil_reason")
+    @Column(name = "facility_ranking_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeFacilityRankingType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeFacilityRankingBaseType }
+     *     {@link String }
      *     
      */
-    public CodeFacilityRankingBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeFacilityRankingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeFacilityRankingBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeFacilityRankingBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAirportHeliportType {
 
     @XmlValue
-    protected CodeAirportHeliportBaseType value;
+    @Column(name = "airport_heliport", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_airport_heliport_base_type_nil_reason")
+    @Column(name = "airport_heliport_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeAirportHeliportType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeAirportHeliportBaseType }
+     *     {@link String }
      *     
      */
-    public CodeAirportHeliportBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeAirportHeliportType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAirportHeliportBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeAirportHeliportBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

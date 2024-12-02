@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeIATAType {
 
     @XmlValue
-    @Column(name = "code_iata")
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_iata_base_type_nil_reason")
+    @Column(name = "iata_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeUnitType {
 
     @XmlValue
-    protected CodeUnitBaseType value;
+    @Column(name = "unit", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_unit_base_type_nil_reason")
+    @Column(name = "unit_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeUnitType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeUnitBaseType }
+     *     {@link String }
      *     
      */
-    public CodeUnitBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeUnitType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeUnitBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeUnitBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

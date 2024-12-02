@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDurationType {
 
     @XmlValue
-    @Column(name = "val_duration")
+    @Column(name = "duration", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_duration_base_type_uom")
-    protected UomDurationType uom;
+    @Column(name = "duration_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_duration_base_type_nil_reason")
+    @Column(name = "duration_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -85,10 +85,10 @@ public class ValDurationType {
      * 
      * @return
      *     possible object is
-     *     {@link UomDurationType }
+     *     {@link String }
      *     
      */
-    public UomDurationType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -97,10 +97,10 @@ public class ValDurationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomDurationType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomDurationType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

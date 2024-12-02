@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLogicalOperatorType {
 
     @XmlValue
-    protected CodeLogicalOperatorBaseType value;
+    @Column(name = "logical_operator", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_logical_operator_base_type_nil_reason")
+    @Column(name = "logical_operator_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeLogicalOperatorType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeLogicalOperatorBaseType }
+     *     {@link String }
      *     
      */
-    public CodeLogicalOperatorBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeLogicalOperatorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeLogicalOperatorBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeLogicalOperatorBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

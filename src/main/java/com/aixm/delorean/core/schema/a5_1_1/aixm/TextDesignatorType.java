@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class TextDesignatorType {
 
     @XmlValue
-    @Column(name = "text_designator")
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "text_designator_base_type_nil_reason")
+    @Column(name = "designator_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

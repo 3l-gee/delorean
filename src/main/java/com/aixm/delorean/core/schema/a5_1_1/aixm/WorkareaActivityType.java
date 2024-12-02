@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,23 +67,29 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "workarea_activity")
+@Table(name = "workarea_activity", schema = "public")
 public class WorkareaActivityType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "isActive", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> isActive;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType isActive;
     @Transient
     protected List<WorkareaActivityType.Extension> extension;
 
@@ -208,10 +218,10 @@ public class WorkareaActivityType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getIsActive() {
+    public CodeYesNoType getIsActive() {
         return isActive;
     }
 
@@ -220,10 +230,10 @@ public class WorkareaActivityType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setIsActive(JAXBElement<CodeYesNoType> value) {
+    public void setIsActive(CodeYesNoType value) {
         this.isActive = value;
     }
 
@@ -301,10 +311,16 @@ public class WorkareaActivityType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractWorkareaActivityExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_workarea_activity_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractWorkareaActivityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -75,64 +79,79 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "holding_pattern_time_slice")
+@Table(name = "holding_pattern_slice", schema = "public")
 public class HoldingPatternTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeHoldingUsageType> type;
-    @XmlElementRef(name = "outboundCourse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValBearingType> outboundCourse;
-    @XmlElementRef(name = "outboundCourseType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeCourseType> outboundCourseType;
-    @XmlElementRef(name = "inboundCourse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValBearingType> inboundCourse;
-    @XmlElementRef(name = "turnDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeDirectionTurnType> turnDirection;
-    @XmlElementRef(name = "upperLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> upperLimit;
-    @XmlElementRef(name = "upperLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> upperLimitReference;
-    @XmlElementRef(name = "lowerLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> lowerLimit;
-    @XmlElementRef(name = "lowerLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> lowerLimitReference;
-    @XmlElementRef(name = "speedLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValSpeedType> speedLimit;
-    @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextInstructionType> instruction;
-    @XmlElementRef(name = "nonStandardHolding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> nonStandardHolding;
-    @XmlElementRef(name = "outboundLegSpan_endPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SegmentPointPropertyType> outboundLegSpanEndPoint;
-    @XmlElementRef(name = "outboundLegSpan_endDistance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<HoldingPatternDistancePropertyType> outboundLegSpanEndDistance;
-    @XmlElementRef(name = "outboundLegSpan_endTime", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<HoldingPatternDurationPropertyType> outboundLegSpanEndTime;
-    @XmlElementRef(name = "holdingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SegmentPointPropertyType> holdingPoint;
-    @XmlElementRef(name = "extent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CurvePropertyType> extent;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeHoldingUsageType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValBearingType outboundCourse;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeCourseType outboundCourseType;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValBearingType inboundCourse;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeDirectionTurnType turnDirection;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceVerticalType upperLimit;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalReferenceType upperLimitReference;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceVerticalType lowerLimit;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalReferenceType lowerLimitReference;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValSpeedType speedLimit;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextInstructionType instruction;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType nonStandardHolding;
+    @XmlElement(name = "outboundLegSpan_endPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "outbound_leg_span_end_point_id", referencedColumnName = "id")
+    protected SegmentPointPropertyType outboundLegSpanEndPoint;
+    @XmlElement(name = "outboundLegSpan_endDistance", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "outbound_leg_span_end_distance_id", referencedColumnName = "id")
+    protected HoldingPatternDistancePropertyType outboundLegSpanEndDistance;
+    @XmlElement(name = "outboundLegSpan_endTime", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "outbound_leg_span_end_id", referencedColumnName = "id")
+    protected HoldingPatternDurationPropertyType outboundLegSpanEndTime;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "holding_point_id", referencedColumnName = "id")
+    protected SegmentPointPropertyType holdingPoint;
     @XmlElement(nillable = true)
     @Transient
+    protected CurvePropertyType extent;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<HoldingPatternTimeSliceType.Extension> extension;
@@ -142,10 +161,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeHoldingUsageType }{@code >}
+     *     {@link CodeHoldingUsageType }
      *     
      */
-    public JAXBElement<CodeHoldingUsageType> getType() {
+    public CodeHoldingUsageType getType() {
         return type;
     }
 
@@ -154,10 +173,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeHoldingUsageType }{@code >}
+     *     {@link CodeHoldingUsageType }
      *     
      */
-    public void setType(JAXBElement<CodeHoldingUsageType> value) {
+    public void setType(CodeHoldingUsageType value) {
         this.type = value;
     }
 
@@ -170,10 +189,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getOutboundCourse() {
+    public ValBearingType getOutboundCourse() {
         return outboundCourse;
     }
 
@@ -182,10 +201,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setOutboundCourse(JAXBElement<ValBearingType> value) {
+    public void setOutboundCourse(ValBearingType value) {
         this.outboundCourse = value;
     }
 
@@ -198,10 +217,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeCourseType }{@code >}
+     *     {@link CodeCourseType }
      *     
      */
-    public JAXBElement<CodeCourseType> getOutboundCourseType() {
+    public CodeCourseType getOutboundCourseType() {
         return outboundCourseType;
     }
 
@@ -210,10 +229,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeCourseType }{@code >}
+     *     {@link CodeCourseType }
      *     
      */
-    public void setOutboundCourseType(JAXBElement<CodeCourseType> value) {
+    public void setOutboundCourseType(CodeCourseType value) {
         this.outboundCourseType = value;
     }
 
@@ -226,10 +245,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public JAXBElement<ValBearingType> getInboundCourse() {
+    public ValBearingType getInboundCourse() {
         return inboundCourse;
     }
 
@@ -238,10 +257,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValBearingType }{@code >}
+     *     {@link ValBearingType }
      *     
      */
-    public void setInboundCourse(JAXBElement<ValBearingType> value) {
+    public void setInboundCourse(ValBearingType value) {
         this.inboundCourse = value;
     }
 
@@ -254,10 +273,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
+     *     {@link CodeDirectionTurnType }
      *     
      */
-    public JAXBElement<CodeDirectionTurnType> getTurnDirection() {
+    public CodeDirectionTurnType getTurnDirection() {
         return turnDirection;
     }
 
@@ -266,10 +285,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
+     *     {@link CodeDirectionTurnType }
      *     
      */
-    public void setTurnDirection(JAXBElement<CodeDirectionTurnType> value) {
+    public void setTurnDirection(CodeDirectionTurnType value) {
         this.turnDirection = value;
     }
 
@@ -282,10 +301,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getUpperLimit() {
+    public ValDistanceVerticalType getUpperLimit() {
         return upperLimit;
     }
 
@@ -294,10 +313,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setUpperLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setUpperLimit(ValDistanceVerticalType value) {
         this.upperLimit = value;
     }
 
@@ -310,10 +329,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getUpperLimitReference() {
+    public CodeVerticalReferenceType getUpperLimitReference() {
         return upperLimitReference;
     }
 
@@ -322,10 +341,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setUpperLimitReference(CodeVerticalReferenceType value) {
         this.upperLimitReference = value;
     }
 
@@ -338,10 +357,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getLowerLimit() {
+    public ValDistanceVerticalType getLowerLimit() {
         return lowerLimit;
     }
 
@@ -350,10 +369,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setLowerLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setLowerLimit(ValDistanceVerticalType value) {
         this.lowerLimit = value;
     }
 
@@ -366,10 +385,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getLowerLimitReference() {
+    public CodeVerticalReferenceType getLowerLimitReference() {
         return lowerLimitReference;
     }
 
@@ -378,10 +397,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setLowerLimitReference(CodeVerticalReferenceType value) {
         this.lowerLimitReference = value;
     }
 
@@ -394,10 +413,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
+     *     {@link ValSpeedType }
      *     
      */
-    public JAXBElement<ValSpeedType> getSpeedLimit() {
+    public ValSpeedType getSpeedLimit() {
         return speedLimit;
     }
 
@@ -406,10 +425,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValSpeedType }{@code >}
+     *     {@link ValSpeedType }
      *     
      */
-    public void setSpeedLimit(JAXBElement<ValSpeedType> value) {
+    public void setSpeedLimit(ValSpeedType value) {
         this.speedLimit = value;
     }
 
@@ -422,10 +441,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public JAXBElement<TextInstructionType> getInstruction() {
+    public TextInstructionType getInstruction() {
         return instruction;
     }
 
@@ -434,10 +453,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public void setInstruction(JAXBElement<TextInstructionType> value) {
+    public void setInstruction(TextInstructionType value) {
         this.instruction = value;
     }
 
@@ -450,10 +469,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getNonStandardHolding() {
+    public CodeYesNoType getNonStandardHolding() {
         return nonStandardHolding;
     }
 
@@ -462,10 +481,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setNonStandardHolding(JAXBElement<CodeYesNoType> value) {
+    public void setNonStandardHolding(CodeYesNoType value) {
         this.nonStandardHolding = value;
     }
 
@@ -478,10 +497,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SegmentPointPropertyType }{@code >}
+     *     {@link SegmentPointPropertyType }
      *     
      */
-    public JAXBElement<SegmentPointPropertyType> getOutboundLegSpanEndPoint() {
+    public SegmentPointPropertyType getOutboundLegSpanEndPoint() {
         return outboundLegSpanEndPoint;
     }
 
@@ -490,10 +509,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SegmentPointPropertyType }{@code >}
+     *     {@link SegmentPointPropertyType }
      *     
      */
-    public void setOutboundLegSpanEndPoint(JAXBElement<SegmentPointPropertyType> value) {
+    public void setOutboundLegSpanEndPoint(SegmentPointPropertyType value) {
         this.outboundLegSpanEndPoint = value;
     }
 
@@ -506,10 +525,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link HoldingPatternDistancePropertyType }{@code >}
+     *     {@link HoldingPatternDistancePropertyType }
      *     
      */
-    public JAXBElement<HoldingPatternDistancePropertyType> getOutboundLegSpanEndDistance() {
+    public HoldingPatternDistancePropertyType getOutboundLegSpanEndDistance() {
         return outboundLegSpanEndDistance;
     }
 
@@ -518,10 +537,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link HoldingPatternDistancePropertyType }{@code >}
+     *     {@link HoldingPatternDistancePropertyType }
      *     
      */
-    public void setOutboundLegSpanEndDistance(JAXBElement<HoldingPatternDistancePropertyType> value) {
+    public void setOutboundLegSpanEndDistance(HoldingPatternDistancePropertyType value) {
         this.outboundLegSpanEndDistance = value;
     }
 
@@ -534,10 +553,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link HoldingPatternDurationPropertyType }{@code >}
+     *     {@link HoldingPatternDurationPropertyType }
      *     
      */
-    public JAXBElement<HoldingPatternDurationPropertyType> getOutboundLegSpanEndTime() {
+    public HoldingPatternDurationPropertyType getOutboundLegSpanEndTime() {
         return outboundLegSpanEndTime;
     }
 
@@ -546,10 +565,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link HoldingPatternDurationPropertyType }{@code >}
+     *     {@link HoldingPatternDurationPropertyType }
      *     
      */
-    public void setOutboundLegSpanEndTime(JAXBElement<HoldingPatternDurationPropertyType> value) {
+    public void setOutboundLegSpanEndTime(HoldingPatternDurationPropertyType value) {
         this.outboundLegSpanEndTime = value;
     }
 
@@ -562,10 +581,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SegmentPointPropertyType }{@code >}
+     *     {@link SegmentPointPropertyType }
      *     
      */
-    public JAXBElement<SegmentPointPropertyType> getHoldingPoint() {
+    public SegmentPointPropertyType getHoldingPoint() {
         return holdingPoint;
     }
 
@@ -574,10 +593,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SegmentPointPropertyType }{@code >}
+     *     {@link SegmentPointPropertyType }
      *     
      */
-    public void setHoldingPoint(JAXBElement<SegmentPointPropertyType> value) {
+    public void setHoldingPoint(SegmentPointPropertyType value) {
         this.holdingPoint = value;
     }
 
@@ -590,10 +609,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public JAXBElement<CurvePropertyType> getExtent() {
+    public CurvePropertyType getExtent() {
         return extent;
     }
 
@@ -602,10 +621,10 @@ public class HoldingPatternTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public void setExtent(JAXBElement<CurvePropertyType> value) {
+    public void setExtent(CurvePropertyType value) {
         this.extent = value;
     }
 
@@ -721,7 +740,10 @@ public class HoldingPatternTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractHoldingPatternExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_holding_pattern_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractHoldingPatternExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

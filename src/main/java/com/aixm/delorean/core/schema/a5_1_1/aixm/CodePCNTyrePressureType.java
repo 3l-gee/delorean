@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePCNTyrePressureType {
 
     @XmlValue
-    protected CodePCNTyrePressureBaseType value;
+    @Column(name = "pcn_tyre_pressure", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_pcn_tyre_pressure_base_type_nil_reason")
+    @Column(name = "pcn_tyre_pressure_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodePCNTyrePressureType {
      * 
      * @return
      *     possible object is
-     *     {@link CodePCNTyrePressureBaseType }
+     *     {@link String }
      *     
      */
-    public CodePCNTyrePressureBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodePCNTyrePressureType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodePCNTyrePressureBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodePCNTyrePressureBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

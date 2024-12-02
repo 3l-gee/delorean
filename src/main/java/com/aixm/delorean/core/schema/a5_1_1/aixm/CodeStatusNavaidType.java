@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeStatusNavaidType {
 
     @XmlValue
-    protected CodeStatusNavaidBaseType value;
+    @Column(name = "status_navaid", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_status_navaid_base_type_nil_reason")
+    @Column(name = "status_navaid_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeStatusNavaidType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeStatusNavaidBaseType }
+     *     {@link String }
      *     
      */
-    public CodeStatusNavaidBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeStatusNavaidType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeStatusNavaidBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeStatusNavaidBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class DateMonthDayType {
 
     @XmlValue
-    @Column(name = "date_month_day")
+    @Column(name = "month_day", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "date_month_day_base_type_nil_reason")
+    @Column(name = "month_day_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

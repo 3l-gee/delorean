@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -66,37 +70,43 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "road_time_slice")
+@Table(name = "road_slice", schema = "public")
 public class RoadTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextNameType designator;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeStatusOperationsType status;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRoadType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType abandoned;
+    @XmlElement(nillable = true)
     @Transient
-    protected JAXBElement<TextNameType> designator;
-    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStatusOperationsType> status;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRoadType> type;
-    @XmlElementRef(name = "abandoned", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> abandoned;
-    @XmlElementRef(name = "associatedAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> associatedAirport;
-    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
+    protected AirportHeliportPropertyType associatedAirport;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "surface_properties_id", referencedColumnName = "id")
+    protected SurfaceCharacteristicsPropertyType surfaceProperties;
     @XmlElement(nillable = true)
     @Transient
     protected List<AircraftStandPropertyType> accessibleStand;
-    @XmlElementRef(name = "surfaceExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedSurfacePropertyType> surfaceExtent;
     @XmlElement(nillable = true)
     @Transient
+    protected ElevatedSurfacePropertyType surfaceExtent;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RoadTimeSliceType.Extension> extension;
@@ -106,10 +116,10 @@ public class RoadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getDesignator() {
+    public TextNameType getDesignator() {
         return designator;
     }
 
@@ -118,10 +128,10 @@ public class RoadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setDesignator(JAXBElement<TextNameType> value) {
+    public void setDesignator(TextNameType value) {
         this.designator = value;
     }
 
@@ -134,10 +144,10 @@ public class RoadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public JAXBElement<CodeStatusOperationsType> getStatus() {
+    public CodeStatusOperationsType getStatus() {
         return status;
     }
 
@@ -146,10 +156,10 @@ public class RoadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
+    public void setStatus(CodeStatusOperationsType value) {
         this.status = value;
     }
 
@@ -162,10 +172,10 @@ public class RoadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRoadType }{@code >}
+     *     {@link CodeRoadType }
      *     
      */
-    public JAXBElement<CodeRoadType> getType() {
+    public CodeRoadType getType() {
         return type;
     }
 
@@ -174,10 +184,10 @@ public class RoadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRoadType }{@code >}
+     *     {@link CodeRoadType }
      *     
      */
-    public void setType(JAXBElement<CodeRoadType> value) {
+    public void setType(CodeRoadType value) {
         this.type = value;
     }
 
@@ -190,10 +200,10 @@ public class RoadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getAbandoned() {
+    public CodeYesNoType getAbandoned() {
         return abandoned;
     }
 
@@ -202,10 +212,10 @@ public class RoadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setAbandoned(JAXBElement<CodeYesNoType> value) {
+    public void setAbandoned(CodeYesNoType value) {
         this.abandoned = value;
     }
 
@@ -218,10 +228,10 @@ public class RoadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirport() {
+    public AirportHeliportPropertyType getAssociatedAirport() {
         return associatedAirport;
     }
 
@@ -230,10 +240,10 @@ public class RoadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAssociatedAirport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAssociatedAirport(AirportHeliportPropertyType value) {
         this.associatedAirport = value;
     }
 
@@ -246,10 +256,10 @@ public class RoadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
+    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -258,10 +268,10 @@ public class RoadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
+    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
         this.surfaceProperties = value;
     }
 
@@ -314,10 +324,10 @@ public class RoadTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getSurfaceExtent() {
+    public ElevatedSurfacePropertyType getSurfaceExtent() {
         return surfaceExtent;
     }
 
@@ -326,10 +336,10 @@ public class RoadTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setSurfaceExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setSurfaceExtent(ElevatedSurfacePropertyType value) {
         this.surfaceExtent = value;
     }
 
@@ -445,7 +455,10 @@ public class RoadTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRoadExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_road_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRoadExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

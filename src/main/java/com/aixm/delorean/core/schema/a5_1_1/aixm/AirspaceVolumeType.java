@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,49 +74,55 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspace_volume")
+@Table(name = "airspace_volume", schema = "public")
 public class AirspaceVolumeType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "upperLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> upperLimit;
-    @XmlElementRef(name = "upperLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> upperLimitReference;
-    @XmlElementRef(name = "maximumLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> maximumLimit;
-    @XmlElementRef(name = "maximumLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> maximumLimitReference;
-    @XmlElementRef(name = "lowerLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> lowerLimit;
-    @XmlElementRef(name = "lowerLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> lowerLimitReference;
-    @XmlElementRef(name = "minimumLimit", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceVerticalType> minimumLimit;
-    @XmlElementRef(name = "minimumLimitReference", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeVerticalReferenceType> minimumLimitReference;
-    @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> width;
-    @XmlElementRef(name = "horizontalProjection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SurfacePropertyType> horizontalProjection;
-    @XmlElementRef(name = "centreline", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CurvePropertyType> centreline;
-    @XmlElementRef(name = "contributorAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirspaceVolumeDependencyPropertyType> contributorAirspace;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceVerticalType upperLimit;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalReferenceType upperLimitReference;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceVerticalType maximumLimit;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalReferenceType maximumLimitReference;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceVerticalType lowerLimit;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalReferenceType lowerLimitReference;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceVerticalType minimumLimit;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeVerticalReferenceType minimumLimitReference;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType width;
     @XmlElement(nillable = true)
     @Transient
+    protected SurfacePropertyType horizontalProjection;
+    @XmlElement(nillable = true)
+    @Transient
+    protected CurvePropertyType centreline;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "contributor_airspace_id", referencedColumnName = "id")
+    protected AirspaceVolumeDependencyPropertyType contributorAirspace;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AirspaceVolumeType.Extension> extension;
@@ -122,10 +132,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getUpperLimit() {
+    public ValDistanceVerticalType getUpperLimit() {
         return upperLimit;
     }
 
@@ -134,10 +144,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setUpperLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setUpperLimit(ValDistanceVerticalType value) {
         this.upperLimit = value;
     }
 
@@ -150,10 +160,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getUpperLimitReference() {
+    public CodeVerticalReferenceType getUpperLimitReference() {
         return upperLimitReference;
     }
 
@@ -162,10 +172,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setUpperLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setUpperLimitReference(CodeVerticalReferenceType value) {
         this.upperLimitReference = value;
     }
 
@@ -178,10 +188,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getMaximumLimit() {
+    public ValDistanceVerticalType getMaximumLimit() {
         return maximumLimit;
     }
 
@@ -190,10 +200,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setMaximumLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setMaximumLimit(ValDistanceVerticalType value) {
         this.maximumLimit = value;
     }
 
@@ -206,10 +216,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getMaximumLimitReference() {
+    public CodeVerticalReferenceType getMaximumLimitReference() {
         return maximumLimitReference;
     }
 
@@ -218,10 +228,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setMaximumLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setMaximumLimitReference(CodeVerticalReferenceType value) {
         this.maximumLimitReference = value;
     }
 
@@ -234,10 +244,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getLowerLimit() {
+    public ValDistanceVerticalType getLowerLimit() {
         return lowerLimit;
     }
 
@@ -246,10 +256,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setLowerLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setLowerLimit(ValDistanceVerticalType value) {
         this.lowerLimit = value;
     }
 
@@ -262,10 +272,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getLowerLimitReference() {
+    public CodeVerticalReferenceType getLowerLimitReference() {
         return lowerLimitReference;
     }
 
@@ -274,10 +284,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setLowerLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setLowerLimitReference(CodeVerticalReferenceType value) {
         this.lowerLimitReference = value;
     }
 
@@ -290,10 +300,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public JAXBElement<ValDistanceVerticalType> getMinimumLimit() {
+    public ValDistanceVerticalType getMinimumLimit() {
         return minimumLimit;
     }
 
@@ -302,10 +312,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceVerticalType }{@code >}
+     *     {@link ValDistanceVerticalType }
      *     
      */
-    public void setMinimumLimit(JAXBElement<ValDistanceVerticalType> value) {
+    public void setMinimumLimit(ValDistanceVerticalType value) {
         this.minimumLimit = value;
     }
 
@@ -318,10 +328,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public JAXBElement<CodeVerticalReferenceType> getMinimumLimitReference() {
+    public CodeVerticalReferenceType getMinimumLimitReference() {
         return minimumLimitReference;
     }
 
@@ -330,10 +340,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeVerticalReferenceType }{@code >}
+     *     {@link CodeVerticalReferenceType }
      *     
      */
-    public void setMinimumLimitReference(JAXBElement<CodeVerticalReferenceType> value) {
+    public void setMinimumLimitReference(CodeVerticalReferenceType value) {
         this.minimumLimitReference = value;
     }
 
@@ -346,10 +356,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getWidth() {
+    public ValDistanceType getWidth() {
         return width;
     }
 
@@ -358,10 +368,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setWidth(JAXBElement<ValDistanceType> value) {
+    public void setWidth(ValDistanceType value) {
         this.width = value;
     }
 
@@ -374,10 +384,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public JAXBElement<SurfacePropertyType> getHorizontalProjection() {
+    public SurfacePropertyType getHorizontalProjection() {
         return horizontalProjection;
     }
 
@@ -386,10 +396,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfacePropertyType }{@code >}
+     *     {@link SurfacePropertyType }
      *     
      */
-    public void setHorizontalProjection(JAXBElement<SurfacePropertyType> value) {
+    public void setHorizontalProjection(SurfacePropertyType value) {
         this.horizontalProjection = value;
     }
 
@@ -402,10 +412,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public JAXBElement<CurvePropertyType> getCentreline() {
+    public CurvePropertyType getCentreline() {
         return centreline;
     }
 
@@ -414,10 +424,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public void setCentreline(JAXBElement<CurvePropertyType> value) {
+    public void setCentreline(CurvePropertyType value) {
         this.centreline = value;
     }
 
@@ -430,10 +440,10 @@ public class AirspaceVolumeType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirspaceVolumeDependencyPropertyType }{@code >}
+     *     {@link AirspaceVolumeDependencyPropertyType }
      *     
      */
-    public JAXBElement<AirspaceVolumeDependencyPropertyType> getContributorAirspace() {
+    public AirspaceVolumeDependencyPropertyType getContributorAirspace() {
         return contributorAirspace;
     }
 
@@ -442,10 +452,10 @@ public class AirspaceVolumeType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirspaceVolumeDependencyPropertyType }{@code >}
+     *     {@link AirspaceVolumeDependencyPropertyType }
      *     
      */
-    public void setContributorAirspace(JAXBElement<AirspaceVolumeDependencyPropertyType> value) {
+    public void setContributorAirspace(AirspaceVolumeDependencyPropertyType value) {
         this.contributorAirspace = value;
     }
 
@@ -561,7 +571,10 @@ public class AirspaceVolumeType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirspaceVolumeExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_airspace_volume_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceVolumeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

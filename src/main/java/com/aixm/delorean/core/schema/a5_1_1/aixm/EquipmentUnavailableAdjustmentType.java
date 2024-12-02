@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,22 +65,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "equipment_unavailable_adjustment")
+@Table(name = "equipment_unavailable_adjustment", schema = "public")
 public class EquipmentUnavailableAdjustmentType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeEquipmentUnavailableType> type;
-    @XmlElementRef(name = "approachLightingInoperative", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> approachLightingInoperative;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeEquipmentUnavailableType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType approachLightingInoperative;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "adjustment_inop_col_id", referencedColumnName = "id")
     protected List<EquipmentUnavailableAdjustmentColumnPropertyType> adjustmentINOPCol;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<EquipmentUnavailableAdjustmentType.Extension> extension;
@@ -86,10 +96,10 @@ public class EquipmentUnavailableAdjustmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeEquipmentUnavailableType }{@code >}
+     *     {@link CodeEquipmentUnavailableType }
      *     
      */
-    public JAXBElement<CodeEquipmentUnavailableType> getType() {
+    public CodeEquipmentUnavailableType getType() {
         return type;
     }
 
@@ -98,10 +108,10 @@ public class EquipmentUnavailableAdjustmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeEquipmentUnavailableType }{@code >}
+     *     {@link CodeEquipmentUnavailableType }
      *     
      */
-    public void setType(JAXBElement<CodeEquipmentUnavailableType> value) {
+    public void setType(CodeEquipmentUnavailableType value) {
         this.type = value;
     }
 
@@ -114,10 +124,10 @@ public class EquipmentUnavailableAdjustmentType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getApproachLightingInoperative() {
+    public CodeYesNoType getApproachLightingInoperative() {
         return approachLightingInoperative;
     }
 
@@ -126,10 +136,10 @@ public class EquipmentUnavailableAdjustmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setApproachLightingInoperative(JAXBElement<CodeYesNoType> value) {
+    public void setApproachLightingInoperative(CodeYesNoType value) {
         this.approachLightingInoperative = value;
     }
 
@@ -285,7 +295,10 @@ public class EquipmentUnavailableAdjustmentType
     public static class Extension {
 
         @XmlElement(name = "AbstractEquipmentUnavailableAdjustmentExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_equipment_unavailable_adjustment_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractEquipmentUnavailableAdjustmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,18 +51,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "floatingDockSiteTimeSlice"
 })
 @Entity
-@Table(name = "floating_dock_site_time_slice_property")
+@Table(name = "floating_dock_site_slice_property", schema = "public")
 public class FloatingDockSiteTimeSlicePropertyType {
 
     @XmlElement(name = "FloatingDockSiteTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
-    })
-    @JoinColumn(name = "floating_dock_site_time_slice_id")
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "floating_dock_site_slice_id", referencedColumnName = "id")
     protected FloatingDockSiteTimeSliceType floatingDockSiteTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

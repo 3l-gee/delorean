@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,25 +66,31 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "route_dme_time_slice")
+@Table(name = "route_dme_slice", schema = "public")
 public class RouteDMETimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "criticalDME", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> criticalDME;
-    @XmlElementRef(name = "satisfactory", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> satisfactory;
-    @XmlElementRef(name = "referencedDME", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DMEPropertyType> referencedDME;
-    @XmlElementRef(name = "applicableRoutePortion", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RoutePortionPropertyType> applicableRoutePortion;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType criticalDME;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType satisfactory;
     @XmlElement(nillable = true)
     @Transient
+    protected DMEPropertyType referencedDME;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "applicable_route_portion_id", referencedColumnName = "id")
+    protected RoutePortionPropertyType applicableRoutePortion;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RouteDMETimeSliceType.Extension> extension;
@@ -90,10 +100,10 @@ public class RouteDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getCriticalDME() {
+    public CodeYesNoType getCriticalDME() {
         return criticalDME;
     }
 
@@ -102,10 +112,10 @@ public class RouteDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setCriticalDME(JAXBElement<CodeYesNoType> value) {
+    public void setCriticalDME(CodeYesNoType value) {
         this.criticalDME = value;
     }
 
@@ -118,10 +128,10 @@ public class RouteDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getSatisfactory() {
+    public CodeYesNoType getSatisfactory() {
         return satisfactory;
     }
 
@@ -130,10 +140,10 @@ public class RouteDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setSatisfactory(JAXBElement<CodeYesNoType> value) {
+    public void setSatisfactory(CodeYesNoType value) {
         this.satisfactory = value;
     }
 
@@ -146,10 +156,10 @@ public class RouteDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
+     *     {@link DMEPropertyType }
      *     
      */
-    public JAXBElement<DMEPropertyType> getReferencedDME() {
+    public DMEPropertyType getReferencedDME() {
         return referencedDME;
     }
 
@@ -158,10 +168,10 @@ public class RouteDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
+     *     {@link DMEPropertyType }
      *     
      */
-    public void setReferencedDME(JAXBElement<DMEPropertyType> value) {
+    public void setReferencedDME(DMEPropertyType value) {
         this.referencedDME = value;
     }
 
@@ -174,10 +184,10 @@ public class RouteDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
+     *     {@link RoutePortionPropertyType }
      *     
      */
-    public JAXBElement<RoutePortionPropertyType> getApplicableRoutePortion() {
+    public RoutePortionPropertyType getApplicableRoutePortion() {
         return applicableRoutePortion;
     }
 
@@ -186,10 +196,10 @@ public class RouteDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RoutePortionPropertyType }{@code >}
+     *     {@link RoutePortionPropertyType }
      *     
      */
-    public void setApplicableRoutePortion(JAXBElement<RoutePortionPropertyType> value) {
+    public void setApplicableRoutePortion(RoutePortionPropertyType value) {
         this.applicableRoutePortion = value;
     }
 
@@ -305,7 +315,10 @@ public class RouteDMETimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRouteDMEExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_route_dme_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRouteDMEExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

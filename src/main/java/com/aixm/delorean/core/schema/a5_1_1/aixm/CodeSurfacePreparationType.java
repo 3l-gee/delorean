@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSurfacePreparationType {
 
     @XmlValue
-    protected CodeSurfacePreparationBaseType value;
+    @Column(name = "surface_preparation", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_surface_preparation_base_type_nil_reason")
+    @Column(name = "surface_preparation_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeSurfacePreparationType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeSurfacePreparationBaseType }
+     *     {@link String }
      *     
      */
-    public CodeSurfacePreparationBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeSurfacePreparationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSurfacePreparationBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeSurfacePreparationBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

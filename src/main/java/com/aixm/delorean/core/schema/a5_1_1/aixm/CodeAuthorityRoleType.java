@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAuthorityRoleType {
 
     @XmlValue
-    protected CodeAuthorityRoleBaseType value;
+    @Column(name = "authority_role", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_authority_role_base_type_nil_reason")
+    @Column(name = "authority_role_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeAuthorityRoleType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeAuthorityRoleBaseType }
+     *     {@link String }
      *     
      */
-    public CodeAuthorityRoleBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeAuthorityRoleType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAuthorityRoleBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeAuthorityRoleBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -62,25 +66,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airport_hot_spot_time_slice")
+@Table(name = "airport_hot_spot_slice", schema = "public")
 public class AirportHotSpotTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextDesignatorType> designator;
-    @XmlElementRef(name = "instruction", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextInstructionType> instruction;
-    @XmlElementRef(name = "area", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedSurfacePropertyType> area;
-    @XmlElementRef(name = "affectedAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> affectedAirport;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextDesignatorType designator;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Transient
+    protected ElevatedSurfacePropertyType area;
+    @XmlElement(nillable = true)
+    @Transient
+    protected AirportHeliportPropertyType affectedAirport;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AirportHotSpotTimeSliceType.Extension> extension;
@@ -90,10 +97,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getDesignator() {
+    public TextDesignatorType getDesignator() {
         return designator;
     }
 
@@ -102,10 +109,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<TextDesignatorType> value) {
+    public void setDesignator(TextDesignatorType value) {
         this.designator = value;
     }
 
@@ -118,10 +125,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public JAXBElement<TextInstructionType> getInstruction() {
+    public TextInstructionType getInstruction() {
         return instruction;
     }
 
@@ -130,10 +137,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextInstructionType }{@code >}
+     *     {@link TextInstructionType }
      *     
      */
-    public void setInstruction(JAXBElement<TextInstructionType> value) {
+    public void setInstruction(TextInstructionType value) {
         this.instruction = value;
     }
 
@@ -146,10 +153,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getArea() {
+    public ElevatedSurfacePropertyType getArea() {
         return area;
     }
 
@@ -158,10 +165,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setArea(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setArea(ElevatedSurfacePropertyType value) {
         this.area = value;
     }
 
@@ -174,10 +181,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAffectedAirport() {
+    public AirportHeliportPropertyType getAffectedAirport() {
         return affectedAirport;
     }
 
@@ -186,10 +193,10 @@ public class AirportHotSpotTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAffectedAirport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAffectedAirport(AirportHeliportPropertyType value) {
         this.affectedAirport = value;
     }
 
@@ -305,7 +312,10 @@ public class AirportHotSpotTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAirportHotSpotExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_airport_hot_spot_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirportHotSpotExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

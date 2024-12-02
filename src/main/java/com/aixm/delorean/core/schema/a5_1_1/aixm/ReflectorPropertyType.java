@@ -7,9 +7,12 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -40,13 +43,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "reflector"
 })
 @Entity
-@Table(name = "reflector_property")
+@Table(name = "reflector_property", schema = "public")
 public class ReflectorPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "Reflector", required = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "reflector_id", referencedColumnName = "id")
     protected ReflectorType reflector;
 
     /**

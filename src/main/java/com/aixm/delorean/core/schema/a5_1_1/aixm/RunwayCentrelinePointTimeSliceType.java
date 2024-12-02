@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -64,31 +68,40 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runway_centreline_point_time_slice")
+@Table(name = "runway_centreline_point_slice", schema = "public")
 public class RunwayCentrelinePointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "role", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeRunwayPointRoleType> role;
-    @XmlElementRef(name = "designator", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextDesignatorType> designator;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> location;
-    @XmlElementRef(name = "onRunway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayDirectionPropertyType> onRunway;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeRunwayPointRoleType role;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @Transient
+    protected ElevatedPointPropertyType location;
+    @XmlElement(nillable = true)
+    @Transient
+    protected RunwayDirectionPropertyType onRunway;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "associated_declared_distance_id", referencedColumnName = "id")
     protected List<RunwayDeclaredDistancePropertyType> associatedDeclaredDistance;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "navaid_equipment_id", referencedColumnName = "id")
     protected List<NavaidEquipmentDistancePropertyType> navaidEquipment;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RunwayCentrelinePointTimeSliceType.Extension> extension;
@@ -98,10 +111,10 @@ public class RunwayCentrelinePointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeRunwayPointRoleType }{@code >}
+     *     {@link CodeRunwayPointRoleType }
      *     
      */
-    public JAXBElement<CodeRunwayPointRoleType> getRole() {
+    public CodeRunwayPointRoleType getRole() {
         return role;
     }
 
@@ -110,10 +123,10 @@ public class RunwayCentrelinePointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeRunwayPointRoleType }{@code >}
+     *     {@link CodeRunwayPointRoleType }
      *     
      */
-    public void setRole(JAXBElement<CodeRunwayPointRoleType> value) {
+    public void setRole(CodeRunwayPointRoleType value) {
         this.role = value;
     }
 
@@ -126,10 +139,10 @@ public class RunwayCentrelinePointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getDesignator() {
+    public TextDesignatorType getDesignator() {
         return designator;
     }
 
@@ -138,10 +151,10 @@ public class RunwayCentrelinePointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setDesignator(JAXBElement<TextDesignatorType> value) {
+    public void setDesignator(TextDesignatorType value) {
         this.designator = value;
     }
 
@@ -154,10 +167,10 @@ public class RunwayCentrelinePointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getLocation() {
+    public ElevatedPointPropertyType getLocation() {
         return location;
     }
 
@@ -166,10 +179,10 @@ public class RunwayCentrelinePointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setLocation(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setLocation(ElevatedPointPropertyType value) {
         this.location = value;
     }
 
@@ -182,10 +195,10 @@ public class RunwayCentrelinePointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public JAXBElement<RunwayDirectionPropertyType> getOnRunway() {
+    public RunwayDirectionPropertyType getOnRunway() {
         return onRunway;
     }
 
@@ -194,10 +207,10 @@ public class RunwayCentrelinePointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public void setOnRunway(JAXBElement<RunwayDirectionPropertyType> value) {
+    public void setOnRunway(RunwayDirectionPropertyType value) {
         this.onRunway = value;
     }
 
@@ -393,7 +406,10 @@ public class RunwayCentrelinePointTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractRunwayCentrelinePointExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_runway_centreline_point_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRunwayCentrelinePointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -42,10 +42,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValAlarmLimitType {
 
     @XmlValue
-    @Column(name = "val_alarm_limit")
+    @Column(name = "alarm_limit", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_alarm_limit_base_type_nil_reason")
+    @Column(name = "alarm_limit_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

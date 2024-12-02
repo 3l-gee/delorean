@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAerialRefuellingType {
 
     @XmlValue
-    protected CodeAerialRefuellingBaseType value;
+    @Column(name = "aerial_refuelling", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_aerial_refuelling_base_type_nil_reason")
+    @Column(name = "aerial_refuelling_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeAerialRefuellingType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeAerialRefuellingBaseType }
+     *     {@link String }
      *     
      */
-    public CodeAerialRefuellingBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeAerialRefuellingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeAerialRefuellingBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeAerialRefuellingBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

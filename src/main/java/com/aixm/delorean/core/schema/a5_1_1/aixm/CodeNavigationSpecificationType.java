@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNavigationSpecificationType {
 
     @XmlValue
-    protected CodeNavigationSpecificationBaseType value;
+    @Column(name = "navigation_specification", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_navigation_specification_base_type_nil_reason")
+    @Column(name = "navigation_specification_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeNavigationSpecificationType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeNavigationSpecificationBaseType }
+     *     {@link String }
      *     
      */
-    public CodeNavigationSpecificationBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeNavigationSpecificationType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeNavigationSpecificationBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeNavigationSpecificationBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

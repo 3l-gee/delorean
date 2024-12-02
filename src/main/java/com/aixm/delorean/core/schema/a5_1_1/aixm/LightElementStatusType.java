@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,23 +67,29 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "light_element_status")
+@Table(name = "light_element_status", schema = "public")
 public class LightElementStatusType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStatusOperationsType> status;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeStatusOperationsType status;
     @Transient
     protected List<LightElementStatusType.Extension> extension;
 
@@ -208,10 +218,10 @@ public class LightElementStatusType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public JAXBElement<CodeStatusOperationsType> getStatus() {
+    public CodeStatusOperationsType getStatus() {
         return status;
     }
 
@@ -220,10 +230,10 @@ public class LightElementStatusType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
+    public void setStatus(CodeStatusOperationsType value) {
         this.status = value;
     }
 
@@ -301,10 +311,16 @@ public class LightElementStatusType
     public static class Extension {
 
         @XmlElement(name = "AbstractPropertiesWithScheduleExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractLightElementStatusExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_light_element_status_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractLightElementStatusExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

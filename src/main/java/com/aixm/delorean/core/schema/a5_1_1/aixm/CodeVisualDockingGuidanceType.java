@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVisualDockingGuidanceType {
 
     @XmlValue
-    protected CodeVisualDockingGuidanceBaseType value;
+    @Column(name = "visual_docking_guidance", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_visual_docking_guidance_base_type_nil_reason")
+    @Column(name = "visual_docking_guidance_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeVisualDockingGuidanceType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeVisualDockingGuidanceBaseType }
+     *     {@link String }
      *     
      */
-    public CodeVisualDockingGuidanceBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeVisualDockingGuidanceType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeVisualDockingGuidanceBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeVisualDockingGuidanceBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

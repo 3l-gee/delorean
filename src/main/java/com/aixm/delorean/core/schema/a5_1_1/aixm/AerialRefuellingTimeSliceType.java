@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -78,73 +82,88 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerial_refuelling_time_slice")
+@Table(name = "aerial_refuelling_slice", schema = "public")
 public class AerialRefuellingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "designatorPrefix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAerialRefuellingPrefixType> designatorPrefix;
-    @XmlElementRef(name = "designatorNumber", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NoNumberType> designatorNumber;
-    @XmlElementRef(name = "designatorSuffix", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextDesignatorType> designatorSuffix;
-    @XmlElementRef(name = "designatorDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeCardinalDirectionType> designatorDirection;
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeAerialRefuellingType> type;
-    @XmlElementRef(name = "radarBeaconSetting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NoNumberType> radarBeaconSetting;
-    @XmlElementRef(name = "xbandRadarSetting", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NoNumberType> xbandRadarSetting;
-    @XmlElementRef(name = "tankerChannel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeTACANChannelType> tankerChannel;
-    @XmlElementRef(name = "receiverChannel", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeTACANChannelType> receiverChannel;
-    @XmlElementRef(name = "helicopterRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> helicopterRoute;
-    @XmlElementRef(name = "specialRefuelling", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> specialRefuelling;
-    @XmlElementRef(name = "bidirectionalUse", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> bidirectionalUse;
-    @XmlElementRef(name = "reverseDirectionTurn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeDirectionTurnType> reverseDirectionTurn;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeAerialRefuellingPrefixType designatorPrefix;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected NoNumberType designatorNumber;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected TextDesignatorType designatorSuffix;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeCardinalDirectionType designatorDirection;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeAerialRefuellingType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected NoNumberType radarBeaconSetting;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected NoNumberType xbandRadarSetting;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeTACANChannelType tankerChannel;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeTACANChannelType receiverChannel;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType helicopterRoute;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType specialRefuelling;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType bidirectionalUse;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeDirectionTurnType reverseDirectionTurn;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<RouteAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @Transient
     protected List<AirspacePropertyType> protectingAirspace;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "track_id", referencedColumnName = "id")
     protected List<AerialRefuellingTrackPropertyType> track;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "anchor_id", referencedColumnName = "id")
     protected List<AerialRefuellingAnchorPropertyType> anchor;
-    @XmlElementRef(name = "oppositeTrack", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AerialRefuellingPropertyType> oppositeTrack;
     @XmlElement(nillable = true)
     @Transient
+    protected AerialRefuellingPropertyType oppositeTrack;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "managing_organisation_id", referencedColumnName = "id")
     protected List<AuthorityForAerialRefuellingPropertyType> managingOrganisation;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AerialRefuellingTimeSliceType.Extension> extension;
@@ -154,10 +173,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAerialRefuellingPrefixType }{@code >}
+     *     {@link CodeAerialRefuellingPrefixType }
      *     
      */
-    public JAXBElement<CodeAerialRefuellingPrefixType> getDesignatorPrefix() {
+    public CodeAerialRefuellingPrefixType getDesignatorPrefix() {
         return designatorPrefix;
     }
 
@@ -166,10 +185,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAerialRefuellingPrefixType }{@code >}
+     *     {@link CodeAerialRefuellingPrefixType }
      *     
      */
-    public void setDesignatorPrefix(JAXBElement<CodeAerialRefuellingPrefixType> value) {
+    public void setDesignatorPrefix(CodeAerialRefuellingPrefixType value) {
         this.designatorPrefix = value;
     }
 
@@ -182,10 +201,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public JAXBElement<NoNumberType> getDesignatorNumber() {
+    public NoNumberType getDesignatorNumber() {
         return designatorNumber;
     }
 
@@ -194,10 +213,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public void setDesignatorNumber(JAXBElement<NoNumberType> value) {
+    public void setDesignatorNumber(NoNumberType value) {
         this.designatorNumber = value;
     }
 
@@ -210,10 +229,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public JAXBElement<TextDesignatorType> getDesignatorSuffix() {
+    public TextDesignatorType getDesignatorSuffix() {
         return designatorSuffix;
     }
 
@@ -222,10 +241,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextDesignatorType }{@code >}
+     *     {@link TextDesignatorType }
      *     
      */
-    public void setDesignatorSuffix(JAXBElement<TextDesignatorType> value) {
+    public void setDesignatorSuffix(TextDesignatorType value) {
         this.designatorSuffix = value;
     }
 
@@ -238,10 +257,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
+     *     {@link CodeCardinalDirectionType }
      *     
      */
-    public JAXBElement<CodeCardinalDirectionType> getDesignatorDirection() {
+    public CodeCardinalDirectionType getDesignatorDirection() {
         return designatorDirection;
     }
 
@@ -250,10 +269,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeCardinalDirectionType }{@code >}
+     *     {@link CodeCardinalDirectionType }
      *     
      */
-    public void setDesignatorDirection(JAXBElement<CodeCardinalDirectionType> value) {
+    public void setDesignatorDirection(CodeCardinalDirectionType value) {
         this.designatorDirection = value;
     }
 
@@ -266,10 +285,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -278,14 +297,14 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -294,10 +313,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeAerialRefuellingType }{@code >}
+     *     {@link CodeAerialRefuellingType }
      *     
      */
-    public JAXBElement<CodeAerialRefuellingType> getType() {
+    public CodeAerialRefuellingType getType() {
         return type;
     }
 
@@ -306,10 +325,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeAerialRefuellingType }{@code >}
+     *     {@link CodeAerialRefuellingType }
      *     
      */
-    public void setType(JAXBElement<CodeAerialRefuellingType> value) {
+    public void setType(CodeAerialRefuellingType value) {
         this.type = value;
     }
 
@@ -322,10 +341,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public JAXBElement<NoNumberType> getRadarBeaconSetting() {
+    public NoNumberType getRadarBeaconSetting() {
         return radarBeaconSetting;
     }
 
@@ -334,10 +353,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public void setRadarBeaconSetting(JAXBElement<NoNumberType> value) {
+    public void setRadarBeaconSetting(NoNumberType value) {
         this.radarBeaconSetting = value;
     }
 
@@ -350,10 +369,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public JAXBElement<NoNumberType> getXbandRadarSetting() {
+    public NoNumberType getXbandRadarSetting() {
         return xbandRadarSetting;
     }
 
@@ -362,10 +381,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NoNumberType }{@code >}
+     *     {@link NoNumberType }
      *     
      */
-    public void setXbandRadarSetting(JAXBElement<NoNumberType> value) {
+    public void setXbandRadarSetting(NoNumberType value) {
         this.xbandRadarSetting = value;
     }
 
@@ -378,10 +397,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
+     *     {@link CodeTACANChannelType }
      *     
      */
-    public JAXBElement<CodeTACANChannelType> getTankerChannel() {
+    public CodeTACANChannelType getTankerChannel() {
         return tankerChannel;
     }
 
@@ -390,10 +409,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
+     *     {@link CodeTACANChannelType }
      *     
      */
-    public void setTankerChannel(JAXBElement<CodeTACANChannelType> value) {
+    public void setTankerChannel(CodeTACANChannelType value) {
         this.tankerChannel = value;
     }
 
@@ -406,10 +425,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
+     *     {@link CodeTACANChannelType }
      *     
      */
-    public JAXBElement<CodeTACANChannelType> getReceiverChannel() {
+    public CodeTACANChannelType getReceiverChannel() {
         return receiverChannel;
     }
 
@@ -418,10 +437,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeTACANChannelType }{@code >}
+     *     {@link CodeTACANChannelType }
      *     
      */
-    public void setReceiverChannel(JAXBElement<CodeTACANChannelType> value) {
+    public void setReceiverChannel(CodeTACANChannelType value) {
         this.receiverChannel = value;
     }
 
@@ -434,10 +453,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getHelicopterRoute() {
+    public CodeYesNoType getHelicopterRoute() {
         return helicopterRoute;
     }
 
@@ -446,10 +465,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setHelicopterRoute(JAXBElement<CodeYesNoType> value) {
+    public void setHelicopterRoute(CodeYesNoType value) {
         this.helicopterRoute = value;
     }
 
@@ -462,10 +481,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getSpecialRefuelling() {
+    public CodeYesNoType getSpecialRefuelling() {
         return specialRefuelling;
     }
 
@@ -474,10 +493,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setSpecialRefuelling(JAXBElement<CodeYesNoType> value) {
+    public void setSpecialRefuelling(CodeYesNoType value) {
         this.specialRefuelling = value;
     }
 
@@ -490,10 +509,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getBidirectionalUse() {
+    public CodeYesNoType getBidirectionalUse() {
         return bidirectionalUse;
     }
 
@@ -502,10 +521,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setBidirectionalUse(JAXBElement<CodeYesNoType> value) {
+    public void setBidirectionalUse(CodeYesNoType value) {
         this.bidirectionalUse = value;
     }
 
@@ -518,10 +537,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
+     *     {@link CodeDirectionTurnType }
      *     
      */
-    public JAXBElement<CodeDirectionTurnType> getReverseDirectionTurn() {
+    public CodeDirectionTurnType getReverseDirectionTurn() {
         return reverseDirectionTurn;
     }
 
@@ -530,10 +549,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeDirectionTurnType }{@code >}
+     *     {@link CodeDirectionTurnType }
      *     
      */
-    public void setReverseDirectionTurn(JAXBElement<CodeDirectionTurnType> value) {
+    public void setReverseDirectionTurn(CodeDirectionTurnType value) {
         this.reverseDirectionTurn = value;
     }
 
@@ -706,10 +725,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
+     *     {@link AerialRefuellingPropertyType }
      *     
      */
-    public JAXBElement<AerialRefuellingPropertyType> getOppositeTrack() {
+    public AerialRefuellingPropertyType getOppositeTrack() {
         return oppositeTrack;
     }
 
@@ -718,10 +737,10 @@ public class AerialRefuellingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
+     *     {@link AerialRefuellingPropertyType }
      *     
      */
-    public void setOppositeTrack(JAXBElement<AerialRefuellingPropertyType> value) {
+    public void setOppositeTrack(AerialRefuellingPropertyType value) {
         this.oppositeTrack = value;
     }
 
@@ -877,7 +896,10 @@ public class AerialRefuellingTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractAerialRefuellingExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_aerial_refuelling_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAerialRefuellingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

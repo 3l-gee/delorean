@@ -4,6 +4,7 @@ import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.sql.Timestamp;
 
+
 public class XMLGregorianCalendarAdapter extends XmlAdapter<XMLGregorianCalendar, Timestamp> {
 
     @Override

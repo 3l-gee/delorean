@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProtectAreaSectionType {
 
     @XmlValue
-    protected CodeProtectAreaSectionBaseType value;
+    @Column(name = "protect_area_section", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_protect_area_section_base_type_nil_reason")
+    @Column(name = "protect_area_section_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeProtectAreaSectionType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeProtectAreaSectionBaseType }
+     *     {@link String }
      *     
      */
-    public CodeProtectAreaSectionBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeProtectAreaSectionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeProtectAreaSectionBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeProtectAreaSectionBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

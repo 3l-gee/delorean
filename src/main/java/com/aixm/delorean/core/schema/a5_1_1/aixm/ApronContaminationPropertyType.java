@@ -7,9 +7,12 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -40,13 +43,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "apronContamination"
 })
 @Entity
-@Table(name = "apron_contamination_property")
+@Table(name = "apron_contamination_property", schema = "public")
 public class ApronContaminationPropertyType
     extends AbstractAIXMPropertyType
 {
 
     @XmlElement(name = "ApronContamination", required = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "apron_contamination_id", referencedColumnName = "id")
     protected ApronContaminationType apronContamination;
 
     /**

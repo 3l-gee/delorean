@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValSpeedType {
 
     @XmlValue
-    @Column(name = "val_speed")
+    @Column(name = "speed", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_speed_base_type_uom")
-    protected UomSpeedType uom;
+    @Column(name = "speed_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_speed_base_type_nil_reason")
+    @Column(name = "speed_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -85,10 +85,10 @@ public class ValSpeedType {
      * 
      * @return
      *     possible object is
-     *     {@link UomSpeedType }
+     *     {@link String }
      *     
      */
-    public UomSpeedType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -97,10 +97,10 @@ public class ValSpeedType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomSpeedType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomSpeedType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

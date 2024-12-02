@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSurfaceCompositionType {
 
     @XmlValue
-    protected CodeSurfaceCompositionBaseType value;
+    @Column(name = "surface_composition", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_surface_composition_base_type_nil_reason")
+    @Column(name = "surface_composition_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeSurfaceCompositionType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeSurfaceCompositionBaseType }
+     *     {@link String }
      *     
      */
-    public CodeSurfaceCompositionBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeSurfaceCompositionType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeSurfaceCompositionBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeSurfaceCompositionBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

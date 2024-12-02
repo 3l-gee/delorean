@@ -42,13 +42,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDistanceVerticalType {
 
     @XmlValue
-    @Column(name = "val_distance_vertical")
+    @Column(name = "distance_vertical", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "uom")
-    @Column(name = "val_distance_vertical_base_type_uom")
-    protected UomDistanceVerticalType uom;
+    @Column(name = "distance_vertical_uom", nullable = true, unique = false)
+    protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "val_distance_vertical_base_type_nil_reason")
+    @Column(name = "distance_vertical_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -84,10 +84,10 @@ public class ValDistanceVerticalType {
      * 
      * @return
      *     possible object is
-     *     {@link UomDistanceVerticalType }
+     *     {@link String }
      *     
      */
-    public UomDistanceVerticalType getUom() {
+    public String getUom() {
         return uom;
     }
 
@@ -96,10 +96,10 @@ public class ValDistanceVerticalType {
      * 
      * @param value
      *     allowed object is
-     *     {@link UomDistanceVerticalType }
+     *     {@link String }
      *     
      */
-    public void setUom(UomDistanceVerticalType value) {
+    public void setUom(String value) {
         this.uom = value;
     }
 

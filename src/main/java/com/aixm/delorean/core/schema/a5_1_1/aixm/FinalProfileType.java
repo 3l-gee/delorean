@@ -9,7 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -59,22 +64,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "final_profile")
+@Table(name = "final_profile", schema = "public")
 public class FinalProfileType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "altitude_id", referencedColumnName = "id")
     protected List<ApproachAltitudeTablePropertyType> altitude;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "distance_id", referencedColumnName = "id")
     protected List<ApproachDistanceTablePropertyType> distance;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "timing_id", referencedColumnName = "id")
     protected List<ApproachTimingTablePropertyType> timing;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<FinalProfileType.Extension> extension;
@@ -307,7 +324,10 @@ public class FinalProfileType
     public static class Extension {
 
         @XmlElement(name = "AbstractFinalProfileExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_final_profile_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractFinalProfileExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

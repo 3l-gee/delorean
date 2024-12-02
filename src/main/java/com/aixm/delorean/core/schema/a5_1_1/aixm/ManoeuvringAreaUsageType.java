@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,29 +69,38 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "manoeuvring_area_usage")
+@Table(name = "manoeuvring_area_usage", schema = "public")
 public class ManoeuvringAreaUsageType
     extends AbstractUsageConditionType
 {
 
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeUsageLimitationType> type;
-    @XmlElementRef(name = "priorPermission", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDurationType> priorPermission;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeUsageLimitationType type;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDurationType priorPermission;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "contact_id", referencedColumnName = "id")
     protected List<ContactInformationPropertyType> contact;
-    @XmlElementRef(name = "selection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ConditionCombinationPropertyType> selection;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "selection_id", referencedColumnName = "id")
+    protected ConditionCombinationPropertyType selection;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "operation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeOperationManoeuvringAreaType> operation;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeOperationManoeuvringAreaType operation;
     @Transient
     protected List<ManoeuvringAreaUsageType.Extension> extension;
 
@@ -96,10 +109,10 @@ public class ManoeuvringAreaUsageType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeUsageLimitationType }{@code >}
+     *     {@link CodeUsageLimitationType }
      *     
      */
-    public JAXBElement<CodeUsageLimitationType> getType() {
+    public CodeUsageLimitationType getType() {
         return type;
     }
 
@@ -108,10 +121,10 @@ public class ManoeuvringAreaUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeUsageLimitationType }{@code >}
+     *     {@link CodeUsageLimitationType }
      *     
      */
-    public void setType(JAXBElement<CodeUsageLimitationType> value) {
+    public void setType(CodeUsageLimitationType value) {
         this.type = value;
     }
 
@@ -124,10 +137,10 @@ public class ManoeuvringAreaUsageType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
+     *     {@link ValDurationType }
      *     
      */
-    public JAXBElement<ValDurationType> getPriorPermission() {
+    public ValDurationType getPriorPermission() {
         return priorPermission;
     }
 
@@ -136,10 +149,10 @@ public class ManoeuvringAreaUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDurationType }{@code >}
+     *     {@link ValDurationType }
      *     
      */
-    public void setPriorPermission(JAXBElement<ValDurationType> value) {
+    public void setPriorPermission(ValDurationType value) {
         this.priorPermission = value;
     }
 
@@ -192,10 +205,10 @@ public class ManoeuvringAreaUsageType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ConditionCombinationPropertyType }{@code >}
+     *     {@link ConditionCombinationPropertyType }
      *     
      */
-    public JAXBElement<ConditionCombinationPropertyType> getSelection() {
+    public ConditionCombinationPropertyType getSelection() {
         return selection;
     }
 
@@ -204,10 +217,10 @@ public class ManoeuvringAreaUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ConditionCombinationPropertyType }{@code >}
+     *     {@link ConditionCombinationPropertyType }
      *     
      */
-    public void setSelection(JAXBElement<ConditionCombinationPropertyType> value) {
+    public void setSelection(ConditionCombinationPropertyType value) {
         this.selection = value;
     }
 
@@ -260,10 +273,10 @@ public class ManoeuvringAreaUsageType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeOperationManoeuvringAreaType }{@code >}
+     *     {@link CodeOperationManoeuvringAreaType }
      *     
      */
-    public JAXBElement<CodeOperationManoeuvringAreaType> getOperation() {
+    public CodeOperationManoeuvringAreaType getOperation() {
         return operation;
     }
 
@@ -272,10 +285,10 @@ public class ManoeuvringAreaUsageType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeOperationManoeuvringAreaType }{@code >}
+     *     {@link CodeOperationManoeuvringAreaType }
      *     
      */
-    public void setOperation(JAXBElement<CodeOperationManoeuvringAreaType> value) {
+    public void setOperation(CodeOperationManoeuvringAreaType value) {
         this.operation = value;
     }
 
@@ -353,10 +366,16 @@ public class ManoeuvringAreaUsageType
     public static class Extension {
 
         @XmlElement(name = "AbstractUsageConditionExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_usage_condition_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractUsageConditionExtension;
         @XmlElement(name = "AbstractManoeuvringAreaUsageExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_manoeuvring_area_usage_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractManoeuvringAreaUsageExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

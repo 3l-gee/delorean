@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMarkerBeaconSignalType {
 
     @XmlValue
-    protected CodeMarkerBeaconSignalBaseType value;
+    @Column(name = "marker_beacon_signal", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_marker_beacon_signal_base_type_nil_reason")
+    @Column(name = "marker_beacon_signal_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeMarkerBeaconSignalType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeMarkerBeaconSignalBaseType }
+     *     {@link String }
      *     
      */
-    public CodeMarkerBeaconSignalBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeMarkerBeaconSignalType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMarkerBeaconSignalBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeMarkerBeaconSignalBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

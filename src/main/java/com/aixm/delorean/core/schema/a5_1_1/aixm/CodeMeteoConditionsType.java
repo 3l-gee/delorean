@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMeteoConditionsType {
 
     @XmlValue
-    protected CodeMeteoConditionsBaseType value;
+    @Column(name = "meteo_conditions", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_meteo_conditions_base_type_nil_reason")
+    @Column(name = "meteo_conditions_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeMeteoConditionsType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeMeteoConditionsBaseType }
+     *     {@link String }
      *     
      */
-    public CodeMeteoConditionsBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeMeteoConditionsType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMeteoConditionsBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeMeteoConditionsBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

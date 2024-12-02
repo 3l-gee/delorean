@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -60,16 +64,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "angle_use")
+@Table(name = "angle_use", schema = "public")
 public class AngleUseType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "alongCourseGuidance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> alongCourseGuidance;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeYesNoType alongCourseGuidance;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected AngleIndicationPropertyType theAngleIndication;
@@ -81,10 +88,10 @@ public class AngleUseType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getAlongCourseGuidance() {
+    public CodeYesNoType getAlongCourseGuidance() {
         return alongCourseGuidance;
     }
 
@@ -93,10 +100,10 @@ public class AngleUseType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setAlongCourseGuidance(JAXBElement<CodeYesNoType> value) {
+    public void setAlongCourseGuidance(CodeYesNoType value) {
         this.alongCourseGuidance = value;
     }
 
@@ -240,7 +247,10 @@ public class AngleUseType
     public static class Extension {
 
         @XmlElement(name = "AbstractAngleUseExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_angle_use_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAngleUseExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

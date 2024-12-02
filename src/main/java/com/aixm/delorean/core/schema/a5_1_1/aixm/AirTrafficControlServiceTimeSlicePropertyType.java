@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,18 +51,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "airTrafficControlServiceTimeSlice"
 })
 @Entity
-@Table(name = "air_traffic_control_service_time_slice_property")
+@Table(name = "air_traffic_control_service_slice_property", schema = "public")
 public class AirTrafficControlServiceTimeSlicePropertyType {
 
     @XmlElement(name = "AirTrafficControlServiceTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
-    })
-    @JoinColumn(name = "air_traffic_control_service_time_slice_id")
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "air_traffic_control_service_slice_id", referencedColumnName = "id")
     protected AirTrafficControlServiceTimeSliceType airTrafficControlServiceTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMLSAzimuthType {
 
     @XmlValue
-    protected CodeMLSAzimuthBaseType value;
+    @Column(name = "mls_azimuth", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_mls_azimuth_base_type_nil_reason")
+    @Column(name = "mls_azimuth_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeMLSAzimuthType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeMLSAzimuthBaseType }
+     *     {@link String }
      *     
      */
-    public CodeMLSAzimuthBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeMLSAzimuthType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeMLSAzimuthBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeMLSAzimuthBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,49 +74,55 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "arresting_gear_time_slice")
+@Table(name = "arresting_gear_slice", schema = "public")
 public class ArrestingGearTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "status", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeStatusOperationsType> status;
-    @XmlElementRef(name = "length", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> length;
-    @XmlElementRef(name = "width", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> width;
-    @XmlElementRef(name = "engageDevice", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeArrestingGearEngageDeviceType> engageDevice;
-    @XmlElementRef(name = "absorbType", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeArrestingGearEnergyAbsorbType> absorbType;
-    @XmlElementRef(name = "bidirectional", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeYesNoType> bidirectional;
-    @XmlElementRef(name = "location", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ValDistanceType> location;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeStatusOperationsType status;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType length;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType width;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeArrestingGearEngageDeviceType engageDevice;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeArrestingGearEnergyAbsorbType absorbType;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeYesNoType bidirectional;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected ValDistanceType location;
     @XmlElement(nillable = true)
     @Transient
     protected List<RunwayDirectionPropertyType> runwayDirection;
-    @XmlElementRef(name = "surfaceProperties", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SurfaceCharacteristicsPropertyType> surfaceProperties;
-    @XmlElementRef(name = "extent_surfaceExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedSurfacePropertyType> extentSurfaceExtent;
-    @XmlElementRef(name = "extent_curveExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedCurvePropertyType> extentCurveExtent;
-    @XmlElementRef(name = "extent_pointExtent", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ElevatedPointPropertyType> extentPointExtent;
     @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "surface_properties_id", referencedColumnName = "id")
+    protected SurfaceCharacteristicsPropertyType surfaceProperties;
+    @XmlElement(name = "extent_surfaceExtent", nillable = true)
     @Transient
+    protected ElevatedSurfacePropertyType extentSurfaceExtent;
+    @XmlElement(name = "extent_curveExtent", nillable = true)
+    @Transient
+    protected ElevatedCurvePropertyType extentCurveExtent;
+    @XmlElement(name = "extent_pointExtent", nillable = true)
+    @Transient
+    protected ElevatedPointPropertyType extentPointExtent;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ArrestingGearTimeSliceType.Extension> extension;
@@ -122,10 +132,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public JAXBElement<CodeStatusOperationsType> getStatus() {
+    public CodeStatusOperationsType getStatus() {
         return status;
     }
 
@@ -134,10 +144,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeStatusOperationsType }{@code >}
+     *     {@link CodeStatusOperationsType }
      *     
      */
-    public void setStatus(JAXBElement<CodeStatusOperationsType> value) {
+    public void setStatus(CodeStatusOperationsType value) {
         this.status = value;
     }
 
@@ -150,10 +160,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLength() {
+    public ValDistanceType getLength() {
         return length;
     }
 
@@ -162,10 +172,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLength(JAXBElement<ValDistanceType> value) {
+    public void setLength(ValDistanceType value) {
         this.length = value;
     }
 
@@ -178,10 +188,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getWidth() {
+    public ValDistanceType getWidth() {
         return width;
     }
 
@@ -190,10 +200,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setWidth(JAXBElement<ValDistanceType> value) {
+    public void setWidth(ValDistanceType value) {
         this.width = value;
     }
 
@@ -206,10 +216,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeArrestingGearEngageDeviceType }{@code >}
+     *     {@link CodeArrestingGearEngageDeviceType }
      *     
      */
-    public JAXBElement<CodeArrestingGearEngageDeviceType> getEngageDevice() {
+    public CodeArrestingGearEngageDeviceType getEngageDevice() {
         return engageDevice;
     }
 
@@ -218,10 +228,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeArrestingGearEngageDeviceType }{@code >}
+     *     {@link CodeArrestingGearEngageDeviceType }
      *     
      */
-    public void setEngageDevice(JAXBElement<CodeArrestingGearEngageDeviceType> value) {
+    public void setEngageDevice(CodeArrestingGearEngageDeviceType value) {
         this.engageDevice = value;
     }
 
@@ -234,10 +244,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeArrestingGearEnergyAbsorbType }{@code >}
+     *     {@link CodeArrestingGearEnergyAbsorbType }
      *     
      */
-    public JAXBElement<CodeArrestingGearEnergyAbsorbType> getAbsorbType() {
+    public CodeArrestingGearEnergyAbsorbType getAbsorbType() {
         return absorbType;
     }
 
@@ -246,10 +256,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeArrestingGearEnergyAbsorbType }{@code >}
+     *     {@link CodeArrestingGearEnergyAbsorbType }
      *     
      */
-    public void setAbsorbType(JAXBElement<CodeArrestingGearEnergyAbsorbType> value) {
+    public void setAbsorbType(CodeArrestingGearEnergyAbsorbType value) {
         this.absorbType = value;
     }
 
@@ -262,10 +272,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public JAXBElement<CodeYesNoType> getBidirectional() {
+    public CodeYesNoType getBidirectional() {
         return bidirectional;
     }
 
@@ -274,10 +284,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeYesNoType }{@code >}
+     *     {@link CodeYesNoType }
      *     
      */
-    public void setBidirectional(JAXBElement<CodeYesNoType> value) {
+    public void setBidirectional(CodeYesNoType value) {
         this.bidirectional = value;
     }
 
@@ -290,10 +300,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public JAXBElement<ValDistanceType> getLocation() {
+    public ValDistanceType getLocation() {
         return location;
     }
 
@@ -302,10 +312,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ValDistanceType }{@code >}
+     *     {@link ValDistanceType }
      *     
      */
-    public void setLocation(JAXBElement<ValDistanceType> value) {
+    public void setLocation(ValDistanceType value) {
         this.location = value;
     }
 
@@ -358,10 +368,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public JAXBElement<SurfaceCharacteristicsPropertyType> getSurfaceProperties() {
+    public SurfaceCharacteristicsPropertyType getSurfaceProperties() {
         return surfaceProperties;
     }
 
@@ -370,10 +380,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SurfaceCharacteristicsPropertyType }{@code >}
+     *     {@link SurfaceCharacteristicsPropertyType }
      *     
      */
-    public void setSurfaceProperties(JAXBElement<SurfaceCharacteristicsPropertyType> value) {
+    public void setSurfaceProperties(SurfaceCharacteristicsPropertyType value) {
         this.surfaceProperties = value;
     }
 
@@ -386,10 +396,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public JAXBElement<ElevatedSurfacePropertyType> getExtentSurfaceExtent() {
+    public ElevatedSurfacePropertyType getExtentSurfaceExtent() {
         return extentSurfaceExtent;
     }
 
@@ -398,10 +408,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedSurfacePropertyType }{@code >}
+     *     {@link ElevatedSurfacePropertyType }
      *     
      */
-    public void setExtentSurfaceExtent(JAXBElement<ElevatedSurfacePropertyType> value) {
+    public void setExtentSurfaceExtent(ElevatedSurfacePropertyType value) {
         this.extentSurfaceExtent = value;
     }
 
@@ -414,10 +424,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedCurvePropertyType }{@code >}
+     *     {@link ElevatedCurvePropertyType }
      *     
      */
-    public JAXBElement<ElevatedCurvePropertyType> getExtentCurveExtent() {
+    public ElevatedCurvePropertyType getExtentCurveExtent() {
         return extentCurveExtent;
     }
 
@@ -426,10 +436,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedCurvePropertyType }{@code >}
+     *     {@link ElevatedCurvePropertyType }
      *     
      */
-    public void setExtentCurveExtent(JAXBElement<ElevatedCurvePropertyType> value) {
+    public void setExtentCurveExtent(ElevatedCurvePropertyType value) {
         this.extentCurveExtent = value;
     }
 
@@ -442,10 +452,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public JAXBElement<ElevatedPointPropertyType> getExtentPointExtent() {
+    public ElevatedPointPropertyType getExtentPointExtent() {
         return extentPointExtent;
     }
 
@@ -454,10 +464,10 @@ public class ArrestingGearTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ElevatedPointPropertyType }{@code >}
+     *     {@link ElevatedPointPropertyType }
      *     
      */
-    public void setExtentPointExtent(JAXBElement<ElevatedPointPropertyType> value) {
+    public void setExtentPointExtent(ElevatedPointPropertyType value) {
         this.extentPointExtent = value;
     }
 
@@ -573,7 +583,10 @@ public class ArrestingGearTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractArrestingGearExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_arresting_gear_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractArrestingGearExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

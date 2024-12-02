@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,28 +67,40 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "contact_information")
+@Table(name = "contact_information", schema = "public")
 public class ContactInformationType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "title", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> title;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected TextNameType title;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     protected List<PostalAddressPropertyType> address;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "network_node_id", referencedColumnName = "id")
     protected List<OnlineContactPropertyType> networkNode;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "phone_fax_id", referencedColumnName = "id")
     protected List<TelephoneContactPropertyType> phoneFax;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ContactInformationType.Extension> extension;
@@ -94,10 +110,10 @@ public class ContactInformationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -106,14 +122,14 @@ public class ContactInformationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -122,10 +138,10 @@ public class ContactInformationType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getTitle() {
+    public TextNameType getTitle() {
         return title;
     }
 
@@ -134,10 +150,10 @@ public class ContactInformationType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setTitle(JAXBElement<TextNameType> value) {
+    public void setTitle(TextNameType value) {
         this.title = value;
     }
 
@@ -373,7 +389,10 @@ public class ContactInformationType
     public static class Extension {
 
         @XmlElement(name = "AbstractContactInformationExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_contact_information_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractContactInformationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

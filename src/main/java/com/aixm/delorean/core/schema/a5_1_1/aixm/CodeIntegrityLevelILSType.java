@@ -41,9 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeIntegrityLevelILSType {
 
     @XmlValue
-    protected CodeIntegrityLevelILSBaseType value;
+    @Column(name = "integrity_level_ils", nullable = true, unique = false)
+    protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_integrity_level_ils_base_type_nil_reason")
+    @Column(name = "integrity_level_ils_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
@@ -51,10 +52,10 @@ public class CodeIntegrityLevelILSType {
      * 
      * @return
      *     possible object is
-     *     {@link CodeIntegrityLevelILSBaseType }
+     *     {@link String }
      *     
      */
-    public CodeIntegrityLevelILSBaseType getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -63,10 +64,10 @@ public class CodeIntegrityLevelILSType {
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeIntegrityLevelILSBaseType }
+     *     {@link String }
      *     
      */
-    public void setValue(CodeIntegrityLevelILSBaseType value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

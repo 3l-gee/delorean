@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAuralMorseType {
 
     @XmlValue
-    @Column(name = "code_aural_morse")
+    @Column(name = "aural_morse", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "code_aural_morse_base_type_nil_reason")
+    @Column(name = "aural_morse_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

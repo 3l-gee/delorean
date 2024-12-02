@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -59,16 +63,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "fuel")
+@Table(name = "fuel", schema = "public")
 public class FuelType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElementRef(name = "category", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeFuelType> category;
     @XmlElement(nillable = true)
-    @Transient
+    @Embedded
+    protected CodeFuelType category;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<FuelType.Extension> extension;
@@ -78,10 +85,10 @@ public class FuelType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeFuelType }{@code >}
+     *     {@link CodeFuelType }
      *     
      */
-    public JAXBElement<CodeFuelType> getCategory() {
+    public CodeFuelType getCategory() {
         return category;
     }
 
@@ -90,10 +97,10 @@ public class FuelType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeFuelType }{@code >}
+     *     {@link CodeFuelType }
      *     
      */
-    public void setCategory(JAXBElement<CodeFuelType> value) {
+    public void setCategory(CodeFuelType value) {
         this.category = value;
     }
 
@@ -209,7 +216,10 @@ public class FuelType
     public static class Extension {
 
         @XmlElement(name = "AbstractFuelExtension")
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_fuel_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractFuelExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

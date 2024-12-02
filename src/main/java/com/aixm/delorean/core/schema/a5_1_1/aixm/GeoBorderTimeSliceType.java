@@ -9,15 +9,19 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -61,22 +65,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "geo_border_time_slice")
+@Table(name = "geo_border_slice", schema = "public")
 public class GeoBorderTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "name", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TextNameType> aixmName;
-    @XmlElementRef(name = "type", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CodeGeoBorderType> type;
-    @XmlElementRef(name = "border", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<CurvePropertyType> border;
+    @XmlElement(name = "name", nillable = true)
+    @Embedded
+    protected TextNameType aixmName;
+    @XmlElement(nillable = true)
+    @Embedded
+    protected CodeGeoBorderType type;
     @XmlElement(nillable = true)
     @Transient
+    protected CurvePropertyType border;
+    @XmlElement(nillable = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<GeoBorderTimeSliceType.Extension> extension;
@@ -86,10 +93,10 @@ public class GeoBorderTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public JAXBElement<TextNameType> getAIXMName() {
+    public TextNameType getAixmName() {
         return aixmName;
     }
 
@@ -98,14 +105,14 @@ public class GeoBorderTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TextNameType }{@code >}
+     *     {@link TextNameType }
      *     
      */
-    public void setAIXMName(JAXBElement<TextNameType> value) {
+    public void setAixmName(TextNameType value) {
         this.aixmName = value;
     }
 
-    public boolean isSetAIXMName() {
+    public boolean isSetAixmName() {
         return (this.aixmName!= null);
     }
 
@@ -114,10 +121,10 @@ public class GeoBorderTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CodeGeoBorderType }{@code >}
+     *     {@link CodeGeoBorderType }
      *     
      */
-    public JAXBElement<CodeGeoBorderType> getType() {
+    public CodeGeoBorderType getType() {
         return type;
     }
 
@@ -126,10 +133,10 @@ public class GeoBorderTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CodeGeoBorderType }{@code >}
+     *     {@link CodeGeoBorderType }
      *     
      */
-    public void setType(JAXBElement<CodeGeoBorderType> value) {
+    public void setType(CodeGeoBorderType value) {
         this.type = value;
     }
 
@@ -142,10 +149,10 @@ public class GeoBorderTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public JAXBElement<CurvePropertyType> getBorder() {
+    public CurvePropertyType getBorder() {
         return border;
     }
 
@@ -154,10 +161,10 @@ public class GeoBorderTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CurvePropertyType }{@code >}
+     *     {@link CurvePropertyType }
      *     
      */
-    public void setBorder(JAXBElement<CurvePropertyType> value) {
+    public void setBorder(CurvePropertyType value) {
         this.border = value;
     }
 
@@ -273,7 +280,10 @@ public class GeoBorderTimeSliceType
     public static class Extension {
 
         @XmlElement(name = "AbstractGeoBorderExtension", required = true)
-        @Transient
+        @OneToOne(cascade = {
+            CascadeType.ALL
+        }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstract_geo_border_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGeoBorderExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

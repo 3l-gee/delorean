@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,18 +51,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "radioFrequencyAreaTimeSlice"
 })
 @Entity
-@Table(name = "radio_frequency_area_time_slice_property")
+@Table(name = "radio_frequency_area_slice_property", schema = "public")
 public class RadioFrequencyAreaTimeSlicePropertyType {
 
     @XmlElement(name = "RadioFrequencyAreaTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
-    })
-    @JoinColumn(name = "radio_frequency_area_time_slice_id")
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "radio_frequency_area_slice_id", referencedColumnName = "id")
     protected RadioFrequencyAreaTimeSliceType radioFrequencyAreaTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")
