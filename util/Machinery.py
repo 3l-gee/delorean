@@ -104,25 +104,38 @@ class Machinery:
 
         self.content = self.init_content(self.xsds)
 
-        self.abstract_feature = []
-        self.entity_feature = []
-        self.ignore_feature = []
+        self.abstract_feature = {}
+        self.entity_feature = [] # todo make it a dict
+        self.ignore_feature = {}
+        self.embed_feature = {}
         self.folder = {}
+
+    def init_embed_feature(self, content):
+        for key, value in content.items():
+            for simple_type in  value["simple_type"]["type"]:
+                if simple_type.attrib["name"] in self.config.embed:
+                    self.embed_feature[simple_type.attrib.get("name", simple_type.attrib.get("ref"))] = simple_type
+
+            for complex_type in  value["complex_type"]["type"]:
+
+            for group in  value["group"]["type"]:
+
+
 
     def init_content(self, xsds: List[Xsd]): 
         res = {}
         for xsd in xsds:
-            content = xsd.get_simple_type()
-            inherit_graph = self.build_inheritance_graph(content)
+            simple_type_content = xsd.get_simple_type()
+            inherit_graph = self.build_inheritance_graph(simple_type_content)
             attrib_graph = self.build_attribute_graph(xsd.get_complex_type())
-            transposition = self.build_transposition(content, inherit_graph)
+            transposition = self.build_transposition(simple_type_content, inherit_graph)
             if xsd.strategy == strategy.data_type:
                 self.config.embed.extend(self.extract_embed(xsd.root))
 
             res[xsd.name] = {
                 "strategy" : xsd.strategy,
                 "simple_type" : {
-                    "type" : content,
+                    "type" : simple_type_content,
                     "graph" : {
                         "inheritance" : inherit_graph,
                         "attribute" : attrib_graph
