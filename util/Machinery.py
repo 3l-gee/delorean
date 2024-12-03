@@ -107,21 +107,29 @@ class Machinery:
         self.abstract_feature = {}
         self.entity_feature = [] # todo make it a dict
         self.ignore_feature = {}
-        self.embed_feature = {}
+        self.embed_feature = self.init_embed_feature(self.content)
         self.folder = {}
 
     def init_embed_feature(self, content):
+        res = {}
         for key, value in content.items():
-            for simple_type in  value["simple_type"]["type"]:
+            for simple_type in value["simple_type"]["type"]:
                 if simple_type.attrib["name"] in self.config.embed:
-                    self.embed_feature[simple_type.attrib.get("name", simple_type.attrib.get("ref"))] = simple_type
+                    res[simple_type.attrib.get("name", simple_type.attrib.get("ref"))] = simple_type
 
-            for complex_type in  value["complex_type"]["type"]:
+            for complex_type in value["complex_type"]["type"]:
+                if complex_type.attrib["name"] in self.config.embed:
+                    res[complex_type.attrib.get("name", complex_type.attrib.get("ref"))] = complex_type
 
-            for group in  value["group"]["type"]:
+            for group in value["group"]["type"]:
+                if group.attrib["name"] in self.config.embed:
+                    res[group.attrib.get("name", group.attrib.get("ref"))] = group
 
+        for key, value in res.items():
+            print(key, value)
 
-
+        return res
+    
     def init_content(self, xsds: List[Xsd]): 
         res = {}
         for xsd in xsds:
@@ -224,6 +232,7 @@ class Machinery:
                 dict.update(deep_dict)
         return dict        
             
+    @staticmethod
     def generate_constraints(self, element) : 
         res = {}
         restriction = element.find(Annotation.Tag.restriction)
@@ -274,7 +283,8 @@ class Machinery:
 
         return res
     
-    def generate_cardinality(self, parent, element, embed):
+    @staticmethod
+    def generate_complex_cardinality(self, parent, element, embed):
         res = []
         type = element.attrib.get("type", "").replace("aixm:", "")
         name = element.attrib.get("name")
@@ -314,6 +324,9 @@ class Machinery:
             pass
 
         return res
+    
+    def generate_simple_cardinality(self, parent, element, embed):
+        
 
     def generate_xjb(self):
         for key, value in self.content.items() :
@@ -322,7 +335,7 @@ class Machinery:
 
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(
-                self.generate_complex_types(value["complex_type"]["type"], self.config.embed, self.config.abstract))
+                self.generate_complex_types(value["complex_type"]["type"], self.config.abstract))
                         
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(

@@ -16057,7 +16057,6 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AltitudeAdjustmentPropertyGroup']//xs:element[@name='primaryAlternateMinimum']">
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "primary_alt_min_yes_no")),@jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "primary_alt_min_nil_reason"))})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AltitudeAdjustmentPropertyGroup']//xs:element[@name='altitudeAdjustment']">
