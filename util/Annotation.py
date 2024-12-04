@@ -8,12 +8,33 @@ class Xpath(Enum):
 
 class Util:
     @staticmethod
-    def snake_case(name, is_simple_type=False):
+    def snake_case(name):
         value = name
-        # if is_simple_type:
-        for prefix in ["Code", "Val", "Date", "Time", "NoNumber", "NoSequence", "Text"]:
+        try: 
+            value = value.split(':')[-1]
+        except:
+            pass
+        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', value)
+        result = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+
+        return result
+
+    @staticmethod
+    def snake_case_table(name):
+        value = name
+        try: 
+            value = value.split(':')[-1]
+        except:
+            pass
+        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', value)
+        result = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+
+        return result
+
+    def snake_case_column(name):
+        value = name
+        for prefix in ["PropertyType", "Code", "Val", "Date", "NoNumber", "NoSequence", "Text", ]:
             value = value.replace(prefix, "")
-                    # break
         try: 
             value = value.split(':')[-1]
         except:
@@ -281,16 +302,16 @@ class Jpa:
     embedded = '@jakarta.persistence.Embedded'
 
     @staticmethod
-    def column(name, is_simple_type=False, nullable=True, unique=False):
-        return f'@jakarta.persistence.Column(name = "{Util.snake_case(name, is_simple_type)}", nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
+    def column(name, nullable=True, unique=False):
+        return f'@jakarta.persistence.Column(name = "{Util.snake_case_column(name)}", nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
 
     @staticmethod
     def column_with_definition(name, columnDefinition, is_simple_type=False, nullable=True, unique=False):
-        return f'@jakarta.persistence.Column(name = "{Util.snake_case(name, is_simple_type,)}", columnDefinition = "{columnDefinition}", nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
+        return f'@jakarta.persistence.Column(name = "{Util.snake_case_column(name, is_simple_type,)}", columnDefinition = "{columnDefinition}", nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
         
     @staticmethod
     def table(name, schema):
-        return f'@jakarta.persistence.Table(name = "{Util.snake_case(name)}", schema = "{schema}")'
+        return f'@jakarta.persistence.Table(name = "{Util.snake_case_table(name)}", schema = "{schema}")'
 
     @staticmethod
     def enumerated(value="STRING"):
@@ -299,7 +320,14 @@ class Jpa:
     @staticmethod
     def generated_value(strategy="jakarta.persistence.GenerationType.IDENTITY"):
         return f'@jakarta.persistence.GeneratedValue(strategy = {strategy})'
+    
+    @staticmethod
+    def attribute_sub_override(attrib_name, column_name):
+        return f'@jakarta.persistence.AttributeOverride(name = "{attrib_name}", column = @jakarta.persistence.Column(name = "{Util.snake_case(column_name) + "_" + attrib_name.lower()}"))'
 
+    @staticmethod
+    def attribute_main_override(value):
+        return f'@jakarta.persistence.AttributeOverrides({{{", ".join([str(v) for v in value])}}})'
 
 class AixmEncoding : 
     FIELD = ["Code", "Val", "Date", "Time", "NoNumber", "NoSequence", "Text"]

@@ -125,9 +125,6 @@ class Machinery:
                 if group.attrib["name"] in self.config.embed:
                     res[group.attrib.get("name", group.attrib.get("ref"))] = group
 
-        for key, value in res.items():
-            print(key, value)
-
         return res
     
     def init_content(self, xsds: List[Xsd]): 
@@ -218,7 +215,7 @@ class Machinery:
 
         return transposition
     
-    def graph_traversal(self,element,  name, graph, dict=None):
+    def graph_traversal(self,element, name, graph, dict=None):
         if dict is None:
             dict = {}
 
@@ -232,7 +229,6 @@ class Machinery:
                 dict.update(deep_dict)
         return dict        
             
-    @staticmethod
     def generate_constraints(self, element) : 
         res = {}
         restriction = element.find(Annotation.Tag.restriction)
@@ -283,13 +279,11 @@ class Machinery:
 
         return res
     
-    @staticmethod
-    def generate_complex_cardinality(self, parent, element, embed):
+    def generate_cardinality(self, parent, element, embed):
         res = []
         type = element.attrib.get("type", "").replace("aixm:", "")
         name = element.attrib.get("name")
         ref = element.attrib.get("ref")
-        type = element.attrib.get("type", "").replace("aixm:", "")
         nillable = element.attrib.get("nillable", "false").lower() == "true"
         minOccurs = int(element.attrib.get("minOccurs", "1"))
         maxOccurs = element.attrib.get("maxOccurs", "1")  # Default is 1
@@ -300,34 +294,34 @@ class Machinery:
         else:
             maxOccurs = int(maxOccurs)
 
-        if type in self.config.ignore:
+        if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
             res.append(Annotation.Annox.field_add(Annotation.Jpa.transient))
             return res
 
         if maxOccurs == "unbounded":
             res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_many()))
-            res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))))
             return res
 
         if maxOccurs == 1:
-            if type in embed:
+            if type in embed.keys():
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.embedded))
-                #todo : <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "primary_alt_min_yes_no")),@jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "primary_alt_min_nil_reason"))})</annox:annotate>
+                temp = [Annotation.Jpa.attribute_sub_override("value", element.attrib["name"])]
+                for attribute in embed[type].findall(".//"+ Annotation.Tag.attribute) or []:
+                    temp.append(Annotation.Jpa.attribute_sub_override(attribute.attrib["name"], element.attrib["name"]))
+
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.attribute_main_override(temp)))
                 return res   
             
             else:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_one()))
-                res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))))
+                # res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))))
                 return res
 
         if nillable:
             pass
 
         return res
-    
-    def generate_simple_cardinality(self, parent, element, embed):
-        
-
+            
     def generate_xjb(self):
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(
@@ -335,11 +329,11 @@ class Machinery:
 
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(
-                self.generate_complex_types(value["complex_type"]["type"], self.config.abstract))
+                self.generate_complex_types(value["complex_type"]["type"],self.embed_feature, self.config.abstract))
                         
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(
-                self.generate_groupe_types(value["group"]["type"], self.config.embed, self.config.abstract))
+                self.generate_groupe_types(value["group"]["type"], self.embed_feature, self.config.abstract))
     
     def generate_simple_types(self, type, graph, transposition):
         res = []
@@ -373,12 +367,12 @@ class Machinery:
 
                 if base is not None and base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean", "date", "dateTime"]:
                     if base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean"] :
-                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"])))
                         node.append(Annotation.Jaxb.end)
 
                     elif base.get("base") == "date":
                         node.append(Annotation.Jaxb.java_type("java.sql.Timestamp"))
-                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"], True)))
+                        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(element.attrib["name"])))
                         node.append(Annotation.Annox.field_add(Annotation.Xml.adapter("com.aixm.delorean.core.adapter.date.XMLGregorianCalendarAdapter.class")))
                         node.append(Annotation.Jaxb.end)
                     
@@ -406,15 +400,6 @@ class Machinery:
 
             if element.attrib["name"] in self.config.ignore:
                 continue
-
-            # attribute_group = list(element.findall(".//" + Annotation.Tag.attribute_group)) or []
-            # if len(attribute_group) == 2 and attribute_group[0].attrib["ref"] == "gml:OwnershipAttributeGroup" and attribute_group[1].attrib["ref"] == "gml:AssociationAttributeGroup":
-
-            #     print(element.attrib["name"])
-
-            # todo PropertyType snowflake case
-            # if "PropertyType"  in element.attrib.get("name") and "TimeSlice" not in element.attrib.get("name"):
-            #     print(element.attrib.get("name"))
 
             res.append(Annotation.Jaxb.complex(element.attrib["name"]))
             res.extend(self.class_writer(element, embed, abstract))
@@ -532,7 +517,7 @@ class Machinery:
             node.append(Annotation.Jaxb.property.name())
 
         name = parent.attrib.get("name") + "_" + attribute.attrib.get("name")
-        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(name, True)))
+        node.append(Annotation.Annox.field_add(Annotation.Jpa.column(name)))
         node.append(Annotation.Jaxb.end)
         return node
 
@@ -556,7 +541,7 @@ class Machinery:
             if element.attrib.get("name") == "dbid":
                 node.append(Annotation.Annox.field_add(Annotation.Jpa.id))
                 node.append(Annotation.Annox.field_add(Annotation.Jpa.generated_value()))
-                node.append(Annotation.Annox.field_add(Annotation.Jpa.column("id", False, False)))
+                node.append(Annotation.Annox.field_add(Annotation.Jpa.column("id", nullable=False, unique=True)))
                 node.append(Annotation.Annox.field_add(Annotation.Xml.transient))
                 node.append(Annotation.Jaxb.end)
                 return node
@@ -622,7 +607,7 @@ class Machinery:
             if element.attrib.get("name") == "dbid":
                 node.append(Annotation.Jaxb.field_add(Annotation.Jpa.id))
                 node.append(Annotation.Jaxb.field_add(Annotation.Jpa.generated_value))
-                node.append(Annotation.Jaxb.field_add(Annotation.Jpa.column("id", False, False)))
+                node.append(Annotation.Jaxb.field_add(Annotation.Jpa.column("id", nullable=False, unique=True)))
                 node.append(Annotation.Jaxb.field_add(Annotation.Xml.transient))
                 node.append(Annotation.Jaxb.end)
                 return node
@@ -668,16 +653,6 @@ class Machinery:
 
         return node
     
-    def handle_dbid_element(self, element):
-        """Handle the special case for dbid elements."""
-        return [
-            Annotation.Annox.field_add(Annotation.Jpa.id),
-            Annotation.Annox.field_add(Annotation.Jpa.generated_value()),
-            Annotation.Annox.field_add(Annotation.Jpa.column("id", False, False)),
-            Annotation.Annox.field_add(Annotation.Xml.transient),
-            Annotation.Jaxb.end
-        ]
-
     def class_writer(self, element, embed, asbtract):
         node = []
         if element.attrib.get("name") in asbtract:
@@ -698,13 +673,13 @@ class Machinery:
 
                 node.append(Annotation.Annox.class_add(Annotation.Xml.type(element.attrib["name"], xmlt_type_name)))
 
-        if element.attrib.get("name") in embed :
+        if element.attrib.get("name") in embed.keys():
             node.append(Annotation.Annox.class_add(Annotation.Jpa.embeddable))
             return node
         
         self.entity_feature.append(element.attrib["name"])
         node.append(Annotation.Annox.class_add(Annotation.Jpa.entity))
-        node.append(Annotation.Annox.class_add(Annotation.Jpa.table(Annotation.Util.snake_case(element.attrib["name"]),"public")))
+        node.append(Annotation.Annox.class_add(Annotation.Jpa.table(element.attrib["name"],"public")))
 
         return node
 
