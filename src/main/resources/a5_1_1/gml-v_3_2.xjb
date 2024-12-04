@@ -28,20 +28,38 @@
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:description']">
-			<!-- <annox:annotate target="field">@jakarta.persistence.Column(name = "description")</annox:annotate> -->
-			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+			<!-- TODO : define use case for description, StringOrRefType has a lot of other used data types-->
+			<annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "description"))})</annox:annotate>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:descriptionReference']">
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
-		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:identifier']">
-			<!-- <annox:annotate target="field">@jakarta.persistence.Column(name = "identifier")</annox:annotate> -->
-			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:identifier']">s
+			<annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "identifier")),@jakarta.persistence.AttributeOverride(name = "codeSpace", column = @jakarta.persistence.Column(name = "identifier_code_space"))})</annox:annotate>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:name']">
-			<!-- <annox:annotate target="field">@jakarta.persistence.Column(name = "name")</annox:annotate> -->
-			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.ElementCollection</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.CollectionTable(name = "code_type_list", joinColumns = @jakarta.persistence.JoinColumn(name = "gml_type_id"))</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name")),@jakarta.persistence.AttributeOverride(name = "codeSpace", column = @jakarta.persistence.Column(name = "name_code_space"))})</annox:annotate>
         </jaxb:bindings>
+	</jaxb:bindings>
+	
+	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/deprecatedTypes.xsd" node="/xs:schema">
+		<jaxb:bindings node="//xs:complexType[@name='StringOrRefType']">
+			<annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+		</jaxb:bindings>
+	</jaxb:bindings>
+
+	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/basicTypes.xsd" node="/xs:schema">
+		<jaxb:bindings node="//xs:complexType[@name='CodeType']">
+			<annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+		</jaxb:bindings>
+		<jaxb:bindings node="//xs:complexType[@name='CodeWithAuthorityType']">
+			<annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+		</jaxb:bindings>
 	</jaxb:bindings>
 
 	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/feature.xsd" node="/xs:schema">
