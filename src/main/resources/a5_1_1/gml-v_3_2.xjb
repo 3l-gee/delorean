@@ -45,6 +45,10 @@
 			<annox:annotate target="field">@jakarta.persistence.CollectionTable(name = "code_type_list", joinColumns = @jakarta.persistence.JoinColumn(name = "gml_type_id"))</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name")),@jakarta.persistence.AttributeOverride(name = "codeSpace", column = @jakarta.persistence.Column(name = "name_code_space"))})</annox:annotate>
         </jaxb:bindings>
+		<jaxb:bindings node="xs:attributeGroup [@name='AggregationAttributeGroup']//xs:attribute[@name='aggregationType']">
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "aggregation_type")</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)</annox:annotate>
+		</jaxb:bindings>
 	</jaxb:bindings>
 	
 	<jaxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/deprecatedTypes.xsd" node="/xs:schema">
