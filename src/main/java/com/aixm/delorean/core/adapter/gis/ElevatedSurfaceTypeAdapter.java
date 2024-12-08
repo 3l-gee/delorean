@@ -9,11 +9,11 @@ public class ElevatedSurfaceTypeAdapter extends XmlAdapter<ElevatedSurfaceType, 
 {
 
     public AixmElevatedSurfaceType unmarshal(ElevatedSurfaceType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.parseAIXMElevatedSurface(value));
+        return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMElevatedSurface(value));
     }
 
     public ElevatedSurfaceType marshal(AixmElevatedSurfaceType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.printAIXMElevatedSurface(value));
+        return (com.aixm.delorean.core.helper.gis.GisHelper.printAIXMElevatedSurface(value));
     }
 
 }

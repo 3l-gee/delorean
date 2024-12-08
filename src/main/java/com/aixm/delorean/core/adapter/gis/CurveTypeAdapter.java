@@ -8,11 +8,11 @@ public class CurveTypeAdapter extends XmlAdapter<com.aixm.delorean.core.schema.a
 {
 
     public AixmCurveType unmarshal(com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.parseAIXMCurve(value));
+        return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMCurve(value));
     }
 
     public com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType marshal(AixmCurveType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.printAIXMCurve(value));
+        return (com.aixm.delorean.core.helper.gis.GisHelper.printAIXMCurve(value));
     }
 
 }

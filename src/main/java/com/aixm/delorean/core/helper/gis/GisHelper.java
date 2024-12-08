@@ -1,4 +1,4 @@
-package com.aixm.delorean.core.util;
+package com.aixm.delorean.core.helper.gis;
 
 import java.math.BigInteger;
 import java.math.BigDecimal;
@@ -53,7 +53,7 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceSignedType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType;
 
-public class GeospatialHelper {    
+public class GisHelper {    
     private static int SRID = 4326; // EPSG:4326
     private static PrecisionModel precisionModel = new PrecisionModel( 0.001);
     private static GeometryFactory geometryFactory = new GeometryFactory(precisionModel, SRID);
@@ -160,11 +160,6 @@ public class GeospatialHelper {
         ValDistanceVerticalType elevationElement,
         ValDistanceSignedType geoidElement,
         CodeVerticalDatumType verticalDatumElement) {
-        // JAXBElement<ValDistanceType> horizontalElement,
-        // JAXBElement<ValDistanceType> verticalElement,
-        // JAXBElement<ValDistanceVerticalType> elevationElement,
-        // JAXBElement<ValDistanceSignedType> geoidElement,
-        // JAXBElement<CodeVerticalDatumType> verticalDatumElement) {
 
         if (id != null) {
             target.setId(id);
@@ -172,10 +167,6 @@ public class GeospatialHelper {
 
         // Handle Horizontal Accuracy
         if (horizontalElement != null) {
-            // ValDistanceType valDistanceHorizontalAccuracy = horizontalElement.getValue();
-            // target.setHorizontalAccuracy(valDistanceHorizontalAccuracy.getValue());
-            // target.setHorizontalAccuracy_uom(valDistanceHorizontalAccuracy.getUom());
-            // target.setHorizontalAccuracy_nilReason(valDistanceHorizontalAccuracy.getNilReason());
             target.setHorizontalAccuracy(horizontalElement.getValue());
             target.setHorizontalAccuracy_uom(horizontalElement.getUom());
             target.setHorizontalAccuracy_nilReason(horizontalElement.getNilReason());
@@ -183,10 +174,6 @@ public class GeospatialHelper {
         
         // Handle Vertical Accuracy
         if (verticalElement != null) {
-            // ValDistanceType valDistanceVerticalAccuracy = verticalElement.getValue();
-            // target.setVerticalAccuracy(valDistanceVerticalAccuracy.getValue());
-            // target.setVerticalAccuracy_uom(valDistanceVerticalAccuracy.getUom());
-            // target.setVerticalAccuracy_nilReason(valDistanceVerticalAccuracy.getNilReason());
             target.setVerticalAccuracy(verticalElement.getValue());
             target.setVerticalAccuracy_uom(verticalElement.getUom());
             target.setVerticalAccuracy_nilReason(verticalElement.getNilReason());
@@ -194,12 +181,6 @@ public class GeospatialHelper {
         
         // Handle Elevation
         if (elevationElement != null) {
-            // ValDistanceVerticalType valDistanceVertical = elevationElement.getValue();
-            // target.setElevation(valDistanceVertical.getValue() != null 
-            //     ? new BigDecimal(valDistanceVertical.getValue()) 
-            //     : BigDecimal.ZERO);
-            // target.setElevation_uom(valDistanceVertical.getUom());
-            // target.setElevation_nilReason(valDistanceVertical.getNilReason());
             target.setElevation(elevationElement.getValue() != null 
                 ? new BigDecimal(elevationElement.getValue()) 
                 : BigDecimal.ZERO);
@@ -209,10 +190,6 @@ public class GeospatialHelper {
         
         // Handle Geoid Undulation
         if (geoidElement != null) {
-            // ValDistanceSignedType valDistanceSigned = geoidElement.getValue();
-            // target.setGeoidUndulation(valDistanceSigned.getValue());
-            // target.setGeoidUndulation_uom(valDistanceSigned.getUom());
-            // target.setGeoidUndulation_nilReason(valDistanceSigned.getNilReason());
             target.setGeoidUndulation(geoidElement.getValue());
             target.setGeoidUndulation_uom(geoidElement.getUom());
             target.setGeoidUndulation_nilReason(geoidElement.getNilReason());
@@ -220,9 +197,6 @@ public class GeospatialHelper {
         
         // Handle Vertical Datum
         if (verticalDatumElement != null) {
-            // CodeVerticalDatumType codeVerticalDatum = verticalDatumElement.getValue();
-            // target.setVerticalDatum(codeVerticalDatum.getValue());
-            // target.setVerticalDatum_nilReason(codeVerticalDatum.getNilReason());
             target.setVerticalDatum(verticalDatumElement.getValue());
             target.setVerticalDatum_nilReason(verticalDatumElement.getNilReason());
         }
@@ -235,18 +209,13 @@ public class GeospatialHelper {
         AixmGeometryType target,
         String id,
         ValDistanceType horizontalElement) {
-        // JAXBElement<ValDistanceType> horizontalElement) {
-
+            
         if (id != null) {
             target.setId(id);
         }
 
         // Handle Horizontal Accuracy
         if (horizontalElement != null) {
-            // ValDistanceType valDistanceHorizontalAccuracy = horizontalElement.getValue();
-            // target.setHorizontalAccuracy(valDistanceHorizontalAccuracy.getValue());
-            // target.setHorizontalAccuracy_uom(valDistanceHorizontalAccuracy.getUom());
-            // target.setHorizontalAccuracy_nilReason(valDistanceHorizontalAccuracy.getNilReason());
             target.setHorizontalAccuracy(horizontalElement.getValue());
             target.setHorizontalAccuracy_uom(horizontalElement.getUom());
             target.setHorizontalAccuracy_nilReason(horizontalElement.getNilReason());
@@ -324,16 +293,13 @@ public class GeospatialHelper {
             point.setSrsName("EPSG:" + value.getPoint().getSRID());
         }
 
-        // point.setId(value.getId());
+        point.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
         valDistance.setUom(value.getHorizontalAccuracy_uom());
-        JAXBElement<ValDistanceType> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), ValDistanceType.class, valDistance);
-        if (value.getHorizontalAccuracy() == null) {
-            horizontalAccuracy.setNil(true);
-        }
-        // point.setHorizontalAccuracy(horizontalAccuracy);
+        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
+        point.setHorizontalAccuracy(valDistance);
 
         return point;
     }
@@ -345,12 +311,6 @@ public class GeospatialHelper {
     }
     
     public static ElevatedPointType printAIXMElevatedPoint(AixmElevatedPointType value) {
-        if (value == null) {
-            ElevatedPointType out = new ElevatedPointType();
-            out.setId("id666");
-            return out;
-            // return null;
-        }
         ElevatedPointType point = new ElevatedPointType();
         DirectPositionType pos = new DirectPositionType();
 
@@ -367,56 +327,36 @@ public class GeospatialHelper {
             point.setSrsName("EPSG:" + value.getPoint().getSRID());
         }
 
-        // point.setId(value.getId());
+        point.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
         valDistance.setUom(value.getHorizontalAccuracy_uom());
         valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
-        JAXBElement<ValDistanceType> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), ValDistanceType.class, valDistance);
-        if (value.getHorizontalAccuracy() == null) {
-            horizontalAccuracy.setNil(true);
-        }
-        // point.setHorizontalAccuracy(horizontalAccuracy);
+        point.setHorizontalAccuracy(valDistance);
 
         ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
         valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
-        JAXBElement<ValDistanceVerticalType> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), ValDistanceVerticalType.class, valDistanceVertical);
-        if (value.getElevation() == null) {
-            elevation.setNil(true);
-        }
-        // point.setElevation(elevation);
+        point.setElevation(valDistanceVertical);
 
         ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
         valDistanceSigned.setValue(value.getGeoidUndulation());
         valDistanceSigned.setUom(value.getGeoidUndulation_uom());
         valDistanceSigned.setNilReason(value.getGeoidUndulation_nilReason());
-        JAXBElement<ValDistanceSignedType> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), ValDistanceSignedType.class, valDistanceSigned);
-        if (value.getGeoidUndulation() == null) {
-            geoidUndulation.setNil(true);
-        }
-        // point.setGeoidUndulation(geoidUndulation);
+        point.setGeoidUndulation(valDistanceSigned);
 
         CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
         codeVerticalDatum.setValue(value.getVerticalDatum());
         codeVerticalDatum.setNilReason(value.getVerticalDatum_nilReason());
-        JAXBElement<CodeVerticalDatumType> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), CodeVerticalDatumType.class, codeVerticalDatum);
-        if (value.getVerticalDatum() == null) {
-            verticalDatum.setNil(true);
-        }
-        // point.setVerticalDatum(verticalDatum);
+        point.setVerticalDatum(codeVerticalDatum);
 
         ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
         valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
         valDistanceVerticalAccuracy.setUom(value.getVerticalAccuracy_uom());
         valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
-        JAXBElement<ValDistanceType> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), ValDistanceType.class, valDistanceVerticalAccuracy);
-        if (value.getVerticalAccuracy() == null) {
-            verticalAccuracy.setNil(true);
-        }
-        // point.setVerticalAccuracy(verticalAccuracy);
+        point.setVerticalAccuracy(valDistanceVerticalAccuracy);
 
         return point;
     }
@@ -496,11 +436,6 @@ public class GeospatialHelper {
     }
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType printAIXMCurve(AixmCurveType value) {
-        if (value == null) {
-            com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType out = new com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType();
-            out.setId("id666");
-            return out;
-        }
         com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType curve = new com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType();
         CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();
         GeodesicStringType geodesicString = new GeodesicStringType();
@@ -526,16 +461,13 @@ public class GeospatialHelper {
             curve.setSrsName("EPSG:" + value.getLineString().getSRID());
         }      
 
-        // curve.setId(value.getId());
+        curve.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
         valDistance.setUom(value.getHorizontalAccuracy_uom());
-        JAXBElement<ValDistanceType> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), ValDistanceType.class, valDistance);
-        if (value.getHorizontalAccuracy() == null) {
-            horizontalAccuracy.setNil(true);
-        }
-        // curve.setHorizontalAccuracy(horizontalAccuracy);
+        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
+        curve.setHorizontalAccuracy(valDistance);
 
         return curve;
     }
@@ -548,12 +480,6 @@ public class GeospatialHelper {
     }
 
     public static ElevatedCurveType printAIXMElevatedCurve(AixmElevatedCurveType value) {
-        if (value == null) {
-            ElevatedCurveType out = new ElevatedCurveType();
-            out.setId("id666");
-            return out;
-            // return null;
-        }
         ElevatedCurveType curve = new ElevatedCurveType();
         CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();
         GeodesicStringType geodesicString = new GeodesicStringType();
@@ -579,56 +505,36 @@ public class GeospatialHelper {
             curve.setSrsName("EPSG:" + value.getLineString().getSRID());
         }
 
-        // curve.setId(value.getId());
+        curve.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
         valDistance.setUom(value.getHorizontalAccuracy_uom());
         valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
-        JAXBElement<ValDistanceType> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), ValDistanceType.class, valDistance);
-        if (value.getHorizontalAccuracy() == null) {
-            horizontalAccuracy.setNil(true);
-        }
-        // curve.setHorizontalAccuracy(horizontalAccuracy);
+        curve.setHorizontalAccuracy(valDistance);
 
         ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
         valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
-        JAXBElement<ValDistanceVerticalType> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), ValDistanceVerticalType.class, valDistanceVertical);
-        if (value.getElevation() == null) {
-            elevation.setNil(true);
-        }
-        // curve.setElevation(elevation);
+        curve.setElevation(valDistanceVertical);
 
         ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
         valDistanceSigned.setValue(value.getGeoidUndulation());
         valDistanceSigned.setUom(value.getGeoidUndulation_uom());
         valDistanceSigned.setNilReason(value.getGeoidUndulation_nilReason());
-        JAXBElement<ValDistanceSignedType> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), ValDistanceSignedType.class, valDistanceSigned);
-        if (value.getGeoidUndulation() == null) {
-            geoidUndulation.setNil(true);
-        }
-        // curve.setGeoidUndulation(geoidUndulation);
+        curve.setGeoidUndulation(valDistanceSigned);
 
         CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
         codeVerticalDatum.setValue(value.getVerticalDatum());
         codeVerticalDatum.setNilReason(value.getVerticalDatum_nilReason());
-        JAXBElement<CodeVerticalDatumType> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), CodeVerticalDatumType.class, codeVerticalDatum);
-        if (value.getVerticalDatum() == null) {
-            verticalDatum.setNil(true);
-        }
-        // curve.setVerticalDatum(verticalDatum);
+        curve.setVerticalDatum(codeVerticalDatum);
 
         ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
         valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
         valDistanceVerticalAccuracy.setUom(value.getVerticalAccuracy_uom());
         valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
-        JAXBElement<ValDistanceType> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), ValDistanceType.class, valDistanceVerticalAccuracy);
-        if (value.getVerticalAccuracy() == null) {
-            verticalAccuracy.setNil(true);
-        }
-        // curve.setVerticalAccuracy(verticalAccuracy);
+        curve.setVerticalAccuracy(valDistanceVerticalAccuracy);
         
         return curve;
     }
@@ -758,12 +664,6 @@ public class GeospatialHelper {
     }
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType printAIXMSurface(AixmSurfaceType value){
-        if (value == null) {
-            com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType out = new com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType();
-            out.setId("id666");
-            return out;
-            // return null;
-        }
         com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType surface = new com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType();
         GeodesicStringType shell = coordinateToSegment(value.getPolygon().getExteriorRing().getCoordinates());
         RingType exterior = geodesicStringTypeWrapper(shell);
@@ -790,17 +690,13 @@ public class GeospatialHelper {
         surface.setSrsDimension(BigInteger.valueOf(2));
         surface.setSrsName("EPSG:4326");
 
-        // surface.setId(value.getId());
+        surface.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
         valDistance.setUom(value.getHorizontalAccuracy_uom());
         valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
-        JAXBElement<ValDistanceType> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), ValDistanceType.class, valDistance);
-        if (value.getHorizontalAccuracy() == null) {
-            horizontalAccuracy.setNil(true);
-        }
-        // surface.setHorizontalAccuracy(horizontalAccuracy);
+        surface.setHorizontalAccuracy(valDistance);
 
         return surface;
     }
@@ -813,12 +709,6 @@ public class GeospatialHelper {
     }
 
     public static ElevatedSurfaceType printAIXMElevatedSurface(AixmElevatedSurfaceType value) {
-        if (value == null) {
-            ElevatedSurfaceType out = new ElevatedSurfaceType();
-            out.setId("id666");
-            return out;
-            // return null;
-        }
         ElevatedSurfaceType surface = new ElevatedSurfaceType();
         GeodesicStringType shell = coordinateToSegment(value.getPolygon().getExteriorRing().getCoordinates());
         RingType exterior = geodesicStringTypeWrapper(shell);
@@ -845,56 +735,36 @@ public class GeospatialHelper {
         surface.setSrsDimension(BigInteger.valueOf(2));
         surface.setSrsName("EPSG:4326");
 
-        // surface.setId(value.getId());
+        surface.setId(value.getId());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
         valDistance.setUom(value.getHorizontalAccuracy_uom());
         valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
-        JAXBElement<ValDistanceType> horizontalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "horizontalAccuracy"), ValDistanceType.class, valDistance);
-        if (value.getHorizontalAccuracy() == null) {
-            horizontalAccuracy.setNil(true);
-        }
-        // surface.setHorizontalAccuracy(horizontalAccuracy);
+        surface.setHorizontalAccuracy(valDistance);
 
         ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
         valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
-        JAXBElement<ValDistanceVerticalType> elevation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "elevation"), ValDistanceVerticalType.class, valDistanceVertical);
-        if (value.getElevation() == null) {
-            elevation.setNil(true);
-        }
-        // surface.setElevation(elevation);
+        surface.setElevation(valDistanceVertical);
 
         ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
         valDistanceSigned.setValue(value.getGeoidUndulation());
         valDistanceSigned.setUom(value.getGeoidUndulation_uom());
         valDistanceSigned.setNilReason(value.getGeoidUndulation_nilReason());
-        JAXBElement<ValDistanceSignedType> geoidUndulation = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "geoidUndulation"), ValDistanceSignedType.class, valDistanceSigned);
-        if (value.getGeoidUndulation() == null) {
-            geoidUndulation.setNil(true);
-        }
-        // surface.setGeoidUndulation(geoidUndulation);
+        surface.setGeoidUndulation(valDistanceSigned);
 
         CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
         codeVerticalDatum.setValue(value.getVerticalDatum());
         codeVerticalDatum.setNilReason(value.getVerticalDatum_nilReason());
-        JAXBElement<CodeVerticalDatumType> verticalDatum = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalDatum"), CodeVerticalDatumType.class, codeVerticalDatum);
-        if (value.getVerticalDatum() == null) {
-            verticalDatum.setNil(true);
-        }
-        // surface.setVerticalDatum(verticalDatum);
+        surface.setVerticalDatum(codeVerticalDatum);
 
         ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
         valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
         valDistanceVerticalAccuracy.setUom(value.getVerticalAccuracy_uom());
         valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
-        JAXBElement<ValDistanceType> verticalAccuracy = new JAXBElement<>(new QName("http://www.opengis.net/gml/3.2", "verticalAccuracy"), ValDistanceType.class, valDistanceVerticalAccuracy);
-        if (value.getVerticalAccuracy() == null) {
-            verticalAccuracy.setNil(true);
-        }
-        // surface.setVerticalAccuracy(verticalAccuracy);
+        surface.setVerticalAccuracy(valDistanceVerticalAccuracy);
 
         return surface;
     }

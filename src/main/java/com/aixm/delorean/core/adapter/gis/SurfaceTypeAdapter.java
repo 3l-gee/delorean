@@ -9,11 +9,11 @@ public class SurfaceTypeAdapter extends XmlAdapter<SurfaceType, AixmSurfaceType>
 {
 
     public AixmSurfaceType unmarshal(SurfaceType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.parseAIXMSurface(value));
+        return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMSurface(value));
     }
 
     public SurfaceType marshal(AixmSurfaceType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.printAIXMSurface(value));
+        return (com.aixm.delorean.core.helper.gis.GisHelper.printAIXMSurface(value));
     }
 
 }

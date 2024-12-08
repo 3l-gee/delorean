@@ -12,7 +12,6 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
     public AbstractAIXMFeatureType unmarshal(JAXBElement<? extends AbstractAIXMFeatureType> v) throws Exception {
 
         if (v != null){
-            System.out.println("FeatureAdapter.unmarshal: " + v.getValue().getId());
             return (AbstractAIXMFeatureType) v.getValue();
         } else {
             System.out.println("FeatureAdapter.unmarshal: null");
@@ -27,8 +26,6 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
         if (v == null) {
             return null;
         }
-
-        System.out.println("FeatureAdapter.marshal: " + v.getId());
 
         Class<? extends AbstractAIXMFeatureType> clazz = v.getClass();
 

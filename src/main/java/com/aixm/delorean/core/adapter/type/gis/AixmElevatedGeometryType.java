@@ -3,25 +3,14 @@ package com.aixm.delorean.core.adapter.type.gis;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.MappedSuperclass;
 
+@MappedSuperclass
 abstract public class AixmElevatedGeometryType extends AixmGeometryType {
-
-    // @Column(name = "point_horizontalAccuracy_value")
-    // protected BigDecimal horizontalAccuracy;
-
-    // @Enumerated(EnumType.STRING)
-    // @Column(name = "point_horizontalAccuracy_uom")
-    // protected UomDistanceType horizontalAccuracy_uom;
-
-    // @Column(name = "point_horizontalAccuracy_nilReason")
-    // protected String horizontalAccuracy_nilReason;
 
     @Column(name = "elevation_value")
     protected BigDecimal elevation;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "elevation_uom")
     protected String elevation_uom;
 
@@ -31,14 +20,12 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
     @Column(name = "geoidUndulation_value")
     protected BigDecimal geoidUndulation;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "geoidUndulation_uom")
     protected String geoidUndulation_uom;
 
     @Column(name = "geoidUndulation_nilReason")
     protected String geoidUndulation_nilReason;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "verticalDatum_value")
     protected String verticalDatum;
 
@@ -48,36 +35,11 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
     @Column(name = "verticalAccuracy_value")
     protected BigDecimal verticalAccuracy;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "verticalAccuracy_uom")
     protected String verticalAccuracy_uom;
 
     @Column(name = "verticalAccuracy_nilReason")
     protected String verticalAccuracy_nilReason;
-
-    public BigDecimal getHorizontalAccuracy() {
-        return horizontalAccuracy;
-    }
-
-    public void setHorizontalAccuracy(BigDecimal value) {
-        this.horizontalAccuracy = value;
-    }
-
-    public String getHorizontalAccuracy_uom() {
-        return horizontalAccuracy_uom;
-    }
-
-    public void setHorizontalAccuracy_uom(String value) {
-        this.horizontalAccuracy_uom = value;
-    }
-
-    public String getHorizontalAccuracy_nilReason() {
-        return horizontalAccuracy_nilReason;
-    }
-
-    public void setHorizontalAccuracy_nilReason(String value) {
-        this.horizontalAccuracy_nilReason = value;
-    }
 
     public BigDecimal getElevation() {
         return elevation;

@@ -9,11 +9,11 @@ public class ElevatedPointTypeAdapter extends XmlAdapter<ElevatedPointType, Aixm
 {
 
     public AixmElevatedPointType unmarshal(ElevatedPointType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.parseAIXMElevatedPoint(value));
+        return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMElevatedPoint(value));
     }
 
     public ElevatedPointType marshal(AixmElevatedPointType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.printAIXMElevatedPoint(value));
+        return (com.aixm.delorean.core.helper.gis.GisHelper.printAIXMElevatedPoint(value));
     }
 
 }
