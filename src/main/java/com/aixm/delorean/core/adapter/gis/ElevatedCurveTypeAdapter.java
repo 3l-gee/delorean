@@ -9,11 +9,11 @@ public class ElevatedCurveTypeAdapter extends XmlAdapter<ElevatedCurveType, Aixm
 {
 
     public AixmElevatedCurveType unmarshal(ElevatedCurveType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.parseAIXMElevatedCurve(value));
+        return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMElevatedCurve(value));
     }
 
     public ElevatedCurveType marshal(AixmElevatedCurveType value) {
-        return (com.aixm.delorean.core.util.GeospatialHelper.printAIXMElevatedCurve(value));
+        return (com.aixm.delorean.core.helper.gis.GisHelper.printAIXMElevatedCurve(value));
     }
 
 }

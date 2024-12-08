@@ -5,25 +5,17 @@ import java.math.BigDecimal;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
+@MappedSuperclass
 abstract public class AixmGeometryType {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "xml_id")
     protected String id;
-
-    // @ElementCollection
-    // @Column(name = "point_annotation")
-    // protected List<String> annotation;
 
     @Column(name = "horizontalAccuracy_value")
     protected BigDecimal horizontalAccuracy;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "horizontalAccuracy_uom")
     protected String horizontalAccuracy_uom;
 
