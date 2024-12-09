@@ -3145,6 +3145,7 @@
                 <ns3:ChangeOverPointTimeSlice ns1:id="COP_WOB_EKO">
                     <ns3:interpretation>BASELINE</ns3:interpretation>
                     <ns3:sequenceNumber>1</ns3:sequenceNumber>
+                    <ns3:correctionNumber>0</ns3:correctionNumber>
                     <ns3:distance uom="KM">489.00</ns3:distance>
                     <ns3:location_position xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                     <ns3:applicableRoutePortion>

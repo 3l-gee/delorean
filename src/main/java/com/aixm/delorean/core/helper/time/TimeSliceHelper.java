@@ -1,5 +1,6 @@
 package com.aixm.delorean.core.helper.time;
 
+import com.aixm.delorean.core.converter.type.time.AixmTimeSliceType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractTimeGeometricPrimitiveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractTimePrimitiveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractTimeTopologyPrimitiveType;
@@ -16,13 +17,10 @@ import jakarta.xml.bind.JAXBElement;
 
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
-import java.util.List;
-
-import com.aixm.delorean.core.adapter.type.time.AixmTimeSliceType;
 
 public class TimeSliceHelper {
 
-    public AixmTimeSliceType parseValidTime(TimePrimitivePropertyType validTime){
+    public static AixmTimeSliceType parseValidTime(TimePrimitivePropertyType validTime){
         if (validTime != null) {
             JAXBElement<? extends AbstractTimePrimitiveType> abstractTimePrimitive = validTime.getAbstractTimePrimitive();
             if (abstractTimePrimitive.getValue() instanceof AbstractTimeGeometricPrimitiveType) {
@@ -53,48 +51,46 @@ public class TimeSliceHelper {
         throw new IllegalArgumentException("ValidTime cannot be null");
     }
 
-    public TimePrimitivePropertyType printValidTime(AixmTimeSliceType aixmTime){
+    public static TimePrimitivePropertyType printValidTime(AixmTimeSliceType aixmTime){
         return null;
 
     }
 
-    public AixmTimeSliceType parseFeatureLifetime(TimePrimitivePropertyType lifeTime){
+    public static AixmTimeSliceType parseFeatureLifetime(TimePrimitivePropertyType lifeTime){
         return null;
 
     }
 
-    public TimePrimitivePropertyType printFeatureLifetime(AixmTimeSliceType aixmTime){
+    public static TimePrimitivePropertyType printFeatureLifetime(AixmTimeSliceType aixmTime){
         return null;
 
     }
 
-    public AixmTimeSliceType parseAbstractTimeGeometricPrimitiveType (AbstractTimeGeometricPrimitiveType v){
+    public static AixmTimeSliceType parseAbstractTimeGeometricPrimitiveType (AbstractTimeGeometricPrimitiveType v){
         throw new IllegalArgumentException("Unsupoorted type" + v.getClass().getName());
     }
 
-    public AixmTimeSliceType parseAbstractTimePrimitiveType (AbstractTimePrimitiveType v){
+    public static AixmTimeSliceType parseAbstractTimePrimitiveType (AbstractTimePrimitiveType v){
         throw new IllegalArgumentException("Unsupoorted type" + v.getClass().getName());
     }
 
-    public AixmTimeSliceType parseAbstractTimeTopologyPrimitiveType (AbstractTimeTopologyPrimitiveType v){
+    public static AixmTimeSliceType parseAbstractTimeTopologyPrimitiveType (AbstractTimeTopologyPrimitiveType v){
         throw new IllegalArgumentException("Unsupoorted type" + v.getClass().getName());
     }
 
-    public AixmTimeSliceType parseTimeEdgeType (TimeEdgeType v){
+    public static AixmTimeSliceType parseTimeEdgeType (TimeEdgeType v){
         throw new IllegalArgumentException("Unsupoorted type" + v.getClass().getName());
     }
 
-    public AixmTimeSliceType parseTimeInstantType (TimeInstantType v){
-        TimePositionType timePosition = v.getTimePosition();
-        // return timePosition;
-        return null;
-    }
-
-    public AixmTimeSliceType parseTimeNodeType (TimeNodeType v){
+    public static AixmTimeSliceType parseTimeInstantType (TimeInstantType v){
         throw new IllegalArgumentException("Unsupoorted type" + v.getClass().getName());
     }
 
-    public AixmTimeSliceType parseTimePeriodType (TimePeriodType v){
+    public static AixmTimeSliceType parseTimeNodeType (TimeNodeType v){
+        throw new IllegalArgumentException("Unsupoorted type" + v.getClass().getName());
+    }
+
+    public static AixmTimeSliceType parseTimePeriodType (TimePeriodType v){
 
         TimePositionType beginPosition = v.getBeginPosition();
         TimePositionType endPosition = v.getEndPosition(); 
@@ -110,21 +106,42 @@ public class TimeSliceHelper {
 
         AixmTimeSliceType aixmTime = new AixmTimeSliceType();
 
-        if (beginPosition == null && endPosition == null) {
+        if (begin == null && end == null) {
+            throw new IllegalArgumentException("Invalid time period " + v.getClass().getName());
 
-        } else if (beginPosition == null && endPosition != null) {
+        } else if (begin == null && end != null) {
+            throw new IllegalArgumentException("Invalid time period " + v.getClass().getName());
 
-        } else if (beginPosition != null && endPosition == null) {
+        } else if (begin != null && end == null) {
+            aixmTime.setBegin(begin);
+            aixmTime.setEnd((parseTimeIndeterminateValueType(endIndeterminate)));
+            return aixmTime;
 
-        } else if (endPosition != null && beginPosition != null) {
-
+        } else if (begin != null && end != null) {
+            aixmTime.setBegin(begin);
+            aixmTime.setEnd(end);
+            return aixmTime;
         }
 
 
         return null;
     }
 
-    public Instant parseTimeString(String timeString) {
+    public static Instant parseTimeIndeterminateValueType (TimeIndeterminateValueType v){
+        if (v == TimeIndeterminateValueType.AFTER) {
+            throw new IllegalArgumentException("Unsupported type " + v.getClass().getName());
+        } else if (v == TimeIndeterminateValueType.BEFORE) {
+            throw new IllegalArgumentException("Unsupported type " + v.getClass().getName());
+        } else if (v == TimeIndeterminateValueType.NOW) {
+            return Instant.now();
+        } else if (v == TimeIndeterminateValueType.UNKNOWN) {
+            return null;
+        } else {
+            throw new IllegalArgumentException("Unsupported type " + v.getClass().getName());
+        }
+    }
+
+    public static Instant parseTimeString(String timeString) {
         // Regex to match ISO 8601 format with optional fractional seconds and timezone offset
         String iso8601Regex = "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?([+-]\\d{2}:\\d{2}|Z)?$";
 
