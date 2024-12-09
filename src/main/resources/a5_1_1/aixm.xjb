@@ -16065,6 +16065,7 @@
       <annox:annotate target="class">@jakarta.persistence.Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@ref='aixm:interpretation']">
+      <annox:annotate target="field">@jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "interpretation", nullable = false)</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@ref='aixm:sequenceNumber']">
@@ -16072,7 +16073,6 @@
     </jaxb:bindings>
     <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@ref='aixm:correctionNumber']">
       <annox:annotate target="field">@jakarta.persistence.Column(name = "correction_number")</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@name='timeSliceMetadata']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>

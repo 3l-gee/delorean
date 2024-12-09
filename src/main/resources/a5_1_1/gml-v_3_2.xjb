@@ -41,7 +41,7 @@
         </jaxb:bindings>
 		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:name']">
 			<annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-			<annox:annotate target="field">@jakarta.persistence.ElementCollection(fetch = @jakarta.persistence.FetchType.EAGER)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.ElementCollection(fetch=FetchType.EAGER)</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.CollectionTable(name = "code_type_list", joinColumns = @jakarta.persistence.JoinColumn(name = "gml_type_id"))</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name")),@jakarta.persistence.AttributeOverride(name = "codeSpace", column = @jakarta.persistence.Column(name = "name_code_space"))})</annox:annotate>
         </jaxb:bindings>
@@ -99,7 +99,9 @@
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractTimeSliceType']//xs:element[@ref='gml:validTime']">
-			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Convert(attributeName = "validTime", converter=com.aixm.delorean.core.converter.time.TimePrimitivePropertyTypeConverter.class)</annox:annotate>
+			<!-- <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate> -->
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractTimeSliceType']//xs:element[@ref='gml:dataSource']">
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
