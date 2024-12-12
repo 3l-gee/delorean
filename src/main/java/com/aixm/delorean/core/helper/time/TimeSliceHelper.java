@@ -23,16 +23,7 @@ public class TimeSliceHelper {
     public static AixmTimeSliceType parseValidTime(TimePrimitivePropertyType validTime){
         if (validTime != null) {
             JAXBElement<? extends AbstractTimePrimitiveType> abstractTimePrimitive = validTime.getAbstractTimePrimitive();
-            if (abstractTimePrimitive.getValue() instanceof AbstractTimeGeometricPrimitiveType) {
-                return parseAbstractTimeGeometricPrimitiveType((AbstractTimeGeometricPrimitiveType) abstractTimePrimitive.getValue());
-
-            } else if (abstractTimePrimitive.getValue() instanceof AbstractTimePrimitiveType) {
-                return parseAbstractTimePrimitiveType((AbstractTimePrimitiveType) abstractTimePrimitive.getValue());
-
-            } else if (abstractTimePrimitive.getValue() instanceof AbstractTimeTopologyPrimitiveType) {
-                return parseAbstractTimeTopologyPrimitiveType((AbstractTimeTopologyPrimitiveType) abstractTimePrimitive.getValue());
-
-            } else if (abstractTimePrimitive.getValue() instanceof TimeEdgeType) {
+            if (abstractTimePrimitive.getValue() instanceof TimeEdgeType) {
                 return parseTimeEdgeType((TimeEdgeType) abstractTimePrimitive.getValue());
 
             } else if (abstractTimePrimitive.getValue() instanceof TimeInstantType) {
@@ -91,7 +82,6 @@ public class TimeSliceHelper {
     }
 
     public static AixmTimeSliceType parseTimePeriodType (TimePeriodType v){
-
         TimePositionType beginPosition = v.getBeginPosition();
         TimePositionType endPosition = v.getEndPosition(); 
 
@@ -113,16 +103,15 @@ public class TimeSliceHelper {
             throw new IllegalArgumentException("Invalid time period " + v.getClass().getName());
 
         } else if (begin != null && end == null) {
-            // aixmTime.setBegin(begin);
-            // aixmTime.setEnd((parseTimeIndeterminateValueType(endIndeterminate)));
+            aixmTime.setBeginPosition(begin);
+            aixmTime.setEndPosition((parseTimeIndeterminateValueType(endIndeterminate)));
             return aixmTime;
 
         } else if (begin != null && end != null) {
-            // aixmTime.setBegin(begin);
-            // aixmTime.setEnd(end);
+            aixmTime.setBeginPosition(begin);
+            aixmTime.setEndPosition(end);
             return aixmTime;
         }
-
 
         return null;
     }
@@ -142,21 +131,27 @@ public class TimeSliceHelper {
     }
 
     public static Instant parseTimeString(String timeString) {
+        // Return null for null or empty strings
+        if (timeString == null || timeString.isEmpty()) {
+            return null;
+        }
+    
         // Regex to match ISO 8601 format with optional fractional seconds and timezone offset
+        // Format: YYYY-MM-DDTHH:mm:ss[.fractionalSeconds][Z|±HH:mm]
         String iso8601Regex = "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?([+-]\\d{2}:\\d{2}|Z)?$";
-
-        // Check if the string matches the ISO 8601 format
+    
+        // Validate and parse the string
         if (timeString.matches(iso8601Regex)) {
             try {
                 return Instant.parse(timeString);
             } catch (DateTimeParseException e) {
-                throw new IllegalArgumentException("Invalid time string", e);
+                throw new IllegalArgumentException("Invalid time string format", e);
             }
-        } else if (timeString == null || timeString.isEmpty()) {
-            return null;
-        } else {
-            throw new IllegalArgumentException("Invalid time string");
         }
+    
+        // If regex doesn't match, throw an exception
+        throw new IllegalArgumentException("Invalid time string format");
     }
+    
 
 }

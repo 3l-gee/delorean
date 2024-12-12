@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AbstractTimeSliceType", propOrder = {
-    "aixmValidTime",
+    "validTime",
     "dataSource"
 })
 @XmlSeeAlso({
@@ -55,39 +55,39 @@ public abstract class AbstractTimeSliceType
     extends AbstractGMLType
 {
 
-    @XmlElement(required = true, type = TimePrimitivePropertyType.class)
+    @XmlElement(name = "validTime", required = true, type = TimePrimitivePropertyType.class)
     @XmlJavaTypeAdapter(TimePrimitivePropertyTypeAdapter.class)
     @Embedded
-    protected AixmTimeSliceType aixmValidTime;
+    protected AixmTimeSliceType validTime;
     @Transient
     protected StringOrRefType dataSource;
 
     /**
-     * Gets the value of the aixmValidTime property.
+     * Gets the value of the validTime property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public AixmTimeSliceType getAixmValidTime() {
-        return aixmValidTime;
+    public AixmTimeSliceType getValidTime() {
+        return validTime;
     }
 
     /**
-     * Sets the value of the aixmValidTime property.
+     * Sets the value of the validTime property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setAixmValidTime(AixmTimeSliceType value) {
-        this.aixmValidTime = value;
+    public void setValidTime(AixmTimeSliceType value) {
+        this.validTime = value;
     }
 
-    public boolean isSetAixmValidTime() {
-        return (this.aixmValidTime!= null);
+    public boolean isSetValidTime() {
+        return (this.validTime!= null);
     }
 
     /**
