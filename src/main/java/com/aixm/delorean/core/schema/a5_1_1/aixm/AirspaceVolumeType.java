@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -74,55 +76,98 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspace_volume", schema = "public")
+@Table(name = "airspace_volume_type", schema = "public")
 public class AirspaceVolumeType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_nilreason"))
+    })
     protected ValDistanceVerticalType upperLimit;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "maximum_limit_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "maximum_limit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "maximum_limit_nilreason"))
+    })
     protected ValDistanceVerticalType maximumLimit;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "maximum_limit_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "maximum_limit_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType maximumLimitReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_nilreason"))
+    })
     protected ValDistanceVerticalType lowerLimit;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_limit_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "minimum_limit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_limit_nilreason"))
+    })
     protected ValDistanceVerticalType minimumLimit;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_limit_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_limit_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType minimumLimitReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "width_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason"))
+    })
     protected ValDistanceType width;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected SurfacePropertyType horizontalProjection;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected CurvePropertyType centreline;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "contributor_airspace_id", referencedColumnName = "id")
     protected AirspaceVolumeDependencyPropertyType contributorAirspace;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AirspaceVolumeType.Extension> extension;
@@ -574,7 +619,6 @@ public class AirspaceVolumeType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_airspace_volume_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceVolumeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -69,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "manoeuvring_area_availability", schema = "public")
+@Table(name = "manoeuvring_area_availability_type", schema = "public")
 public class ManoeuvringAreaAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
@@ -78,28 +80,33 @@ public class ManoeuvringAreaAvailabilityType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "operational_status_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operational_status_nilreason"))
+    })
     protected CodeStatusAirportType operationalStatus;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "warning_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "warning_nilreason"))
+    })
     protected CodeAirportWarningType warning;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "usage_id", referencedColumnName = "id")
     protected List<ManoeuvringAreaUsagePropertyType> usage;
     @Transient
     protected List<ManoeuvringAreaAvailabilityType.Extension> extension;
@@ -393,13 +400,11 @@ public class ManoeuvringAreaAvailabilityType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractManoeuvringAreaAvailabilityExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_manoeuvring_area_availability_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractManoeuvringAreaAvailabilityExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

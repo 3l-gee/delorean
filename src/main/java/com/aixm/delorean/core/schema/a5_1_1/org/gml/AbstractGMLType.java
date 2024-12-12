@@ -10,7 +10,14 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMObjectBaseType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -69,13 +76,28 @@ public abstract class AbstractGMLType {
 
     @Transient
     protected List<MetaDataPropertyType> metaDataProperty;
-    @Transient
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "description"))
+    })
     protected StringOrRefType description;
     @Transient
     protected ReferenceType descriptionReference;
-    @Transient
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "identifier")),
+        @AttributeOverride(name = "codeSpace", column = @Column(name = "identifier_code_space"))
+    })
     protected CodeWithAuthorityType identifier;
-    @Transient
+    @Embedded
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "code_type_list", joinColumns = {
+        @JoinColumn(name = "gml_type_id")
+    })
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
+        @AttributeOverride(name = "codeSpace", column = @Column(name = "name_code_space"))
+    })
     protected List<CodeType> name;
     @XmlAttribute(name = "id", namespace = "http://www.opengis.net/gml/3.2")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

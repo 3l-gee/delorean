@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -65,28 +67,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspace_geometry_component", schema = "public")
+@Table(name = "airspace_geometry_component_type", schema = "public")
 public class AirspaceGeometryComponentType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "operation_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operation_nilreason"))
+    })
     protected CodeAirspaceAggregationType operation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "operation_sequence_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operation_sequence_nilreason"))
+    })
     protected NoSequenceType operationSequence;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "the_airspace_volume_id", referencedColumnName = "id")
     protected AirspaceVolumePropertyType theAirspaceVolume;
     @Transient
     protected List<AirspaceGeometryComponentType.Extension> extension;
@@ -286,7 +294,6 @@ public class AirspaceGeometryComponentType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_airspace_geometry_component_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceGeometryComponentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

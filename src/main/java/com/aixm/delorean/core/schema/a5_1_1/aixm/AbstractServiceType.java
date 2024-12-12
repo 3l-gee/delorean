@@ -41,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     SearchRescueServiceType.class
 })
 @Entity
-@Table(name = "abstract_service", schema = "public")
+@Table(name = "abstract_service_type", schema = "public")
 public abstract class AbstractServiceType
     extends AbstractAIXMFeatureType
 {

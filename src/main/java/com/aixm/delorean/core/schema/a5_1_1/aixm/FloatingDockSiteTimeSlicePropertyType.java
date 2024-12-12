@@ -14,7 +14,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -51,18 +50,17 @@ import jakarta.xml.bind.annotation.XmlType;
     "floatingDockSiteTimeSlice"
 })
 @Entity
-@Table(name = "floating_dock_site_slice_property", schema = "public")
+@Table(name = "floating_dock_site_time_slice_property_type", schema = "public")
 public class FloatingDockSiteTimeSlicePropertyType {
 
     @XmlElement(name = "FloatingDockSiteTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "floating_dock_site_slice_id", referencedColumnName = "id")
     protected FloatingDockSiteTimeSliceType floatingDockSiteTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(name = "id", nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

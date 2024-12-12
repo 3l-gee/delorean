@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -66,28 +68,44 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "obstacle_placement", schema = "public")
+@Table(name = "obstacle_placement_type", schema = "public")
 public class ObstaclePlacementType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "obstacle_bearing_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "obstacle_bearing_nilreason"))
+    })
     protected ValBearingType obstacleBearing;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "obstacle_distance_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "obstacle_distance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "obstacle_distance_nilreason"))
+    })
     protected ValDistanceType obstacleDistance;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "point_type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "point_type_nilreason"))
+    })
     protected TextNameType pointType;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "obstacle_placement_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "obstacle_placement_nilreason"))
+    })
     protected CodeSideType obstaclePlacement;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ObstaclePlacementType.Extension> extension;
@@ -315,7 +333,6 @@ public class ObstaclePlacementType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_obstacle_placement_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractObstaclePlacementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

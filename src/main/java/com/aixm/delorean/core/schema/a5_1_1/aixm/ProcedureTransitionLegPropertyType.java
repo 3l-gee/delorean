@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -43,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "procedureTransitionLeg"
 })
 @Entity
-@Table(name = "procedure_transition_leg_property", schema = "public")
+@Table(name = "procedure_transition_leg_property_type", schema = "public")
 public class ProcedureTransitionLegPropertyType
     extends AbstractAIXMPropertyType
 {
@@ -52,7 +51,6 @@ public class ProcedureTransitionLegPropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "procedure_transition_leg_id", referencedColumnName = "id")
     protected ProcedureTransitionLegType procedureTransitionLeg;
 
     /**

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -65,28 +67,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "altimeter_source_slice", schema = "public")
+@Table(name = "altimeter_source_time_slice_type", schema = "public")
 public class AltimeterSourceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "is_remote_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "is_remote_nilreason"))
+    })
     protected CodeYesNoType isRemote;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "is_primary_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "is_primary_nilreason"))
+    })
     protected CodeYesNoType isPrimary;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<AltimeterSourceStatusPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AltimeterSourceTimeSliceType.Extension> extension;
@@ -298,7 +306,6 @@ public class AltimeterSourceTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_altimeter_source_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAltimeterSourceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

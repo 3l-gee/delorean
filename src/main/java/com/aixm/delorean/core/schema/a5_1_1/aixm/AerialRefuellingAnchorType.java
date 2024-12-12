@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -74,58 +76,97 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerial_refuelling_anchor", schema = "public")
+@Table(name = "aerial_refuelling_anchor_type", schema = "public")
 public class AerialRefuellingAnchorType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "outbound_course_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "outbound_course_nilreason"))
+    })
     protected ValBearingType outboundCourse;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "outbound_course_type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "outbound_course_type_nilreason"))
+    })
     protected CodeCourseType outboundCourseType;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "inbound_course_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "inbound_course_nilreason"))
+    })
     protected ValBearingType inboundCourse;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "turn_direction_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turn_direction_nilreason"))
+    })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "speed_limit_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "speed_limit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speed_limit_nilreason"))
+    })
     protected ValSpeedType speedLimit;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "leg_separation_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "leg_separation_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "leg_separation_nilreason"))
+    })
     protected ValDistanceType legSeparation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "leg_length_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "leg_length_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "leg_length_nilreason"))
+    })
     protected ValDistanceType legLength;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "refuelling_base_level_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "refuelling_base_level_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "refuelling_base_level_nilreason"))
+    })
     protected ValDistanceVerticalType refuellingBaseLevel;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "refuelling_base_level_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "refuelling_base_level_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType refuellingBaseLevelReference;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected SurfacePropertyType extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "vertical_extent_id", referencedColumnName = "id")
     protected List<AirspaceLayerPropertyType> verticalExtent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "point_id", referencedColumnName = "id")
     protected List<AerialRefuellingPointPropertyType> point;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AerialRefuellingAnchorType.Extension> extension;
@@ -601,7 +642,6 @@ public class AerialRefuellingAnchorType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_aerial_refuelling_anchor_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAerialRefuellingAnchorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

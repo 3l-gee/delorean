@@ -9,11 +9,17 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gmd.MDMetadataType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractMetadataPropertyType;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -28,6 +34,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <extension base="{http://www.opengis.net/gml/3.2}AbstractMetadataPropertyType">
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.isotc211.org/2005/gmd}MD_Metadata"/>
+ *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -40,7 +47,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "FeatureTimeSliceMetadataPropertyType", propOrder = {
     "mdMetadata"
 })
-@Embeddable
+@Entity
+@Table(name = "message_metadata_property", schema = "public")
 public class FeatureTimeSliceMetadataPropertyType
     extends AbstractMetadataPropertyType
 {
@@ -48,6 +56,11 @@ public class FeatureTimeSliceMetadataPropertyType
     @XmlElement(name = "MD_Metadata", namespace = "http://www.isotc211.org/2005/gmd")
     @Transient
     protected MDMetadataType mdMetadata;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = false)
+    @XmlTransient
+    protected Long dbid;
 
     /**
      * Gets the value of the mdMetadata property.
@@ -75,6 +88,34 @@ public class FeatureTimeSliceMetadataPropertyType
 
     public boolean isSetMDMetadata() {
         return (this.mdMetadata!= null);
+    }
+
+    /**
+     * Gets the value of the dbid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getDbid() {
+        return dbid;
+    }
+
+    /**
+     * Sets the value of the dbid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setDbid(Long value) {
+        this.dbid = value;
+    }
+
+    public boolean isSetDbid() {
+        return (this.dbid!= null);
     }
 
 }

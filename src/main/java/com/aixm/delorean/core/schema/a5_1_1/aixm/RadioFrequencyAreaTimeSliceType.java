@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,49 +76,61 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radio_frequency_area_slice", schema = "public")
+@Table(name = "radio_frequency_area_time_slice_type", schema = "public")
 public class RadioFrequencyAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeRadioFrequencyAreaType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "angle_scallop_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "angle_scallop_nilreason"))
+    })
     protected ValAngleType angleScallop;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "signal_type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "signal_type_nilreason"))
+    })
     protected CodeRadioSignalType signalType;
-    @XmlElement(name = "equipment_radar", nillable = true)
+    @XmlElementRef(name = "equipment_radar", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected SecondarySurveillanceRadarPropertyType equipmentRadar;
-    @XmlElement(name = "equipment_precisionApproachRadar", nillable = true)
+    protected JAXBElement<SecondarySurveillanceRadarPropertyType> equipmentRadar;
+    @XmlElementRef(name = "equipment_precisionApproachRadar", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected PrecisionApproachRadarPropertyType equipmentPrecisionApproachRadar;
-    @XmlElement(name = "equipment_frequency", nillable = true)
+    protected JAXBElement<PrecisionApproachRadarPropertyType> equipmentPrecisionApproachRadar;
+    @XmlElementRef(name = "equipment_frequency", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected RadioCommunicationChannelPropertyType equipmentFrequency;
-    @XmlElement(name = "equipment_specialNavigationStation", nillable = true)
+    protected JAXBElement<RadioCommunicationChannelPropertyType> equipmentFrequency;
+    @XmlElementRef(name = "equipment_specialNavigationStation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected SpecialNavigationStationPropertyType equipmentSpecialNavigationStation;
-    @XmlElement(name = "equipment_navaidEquipment", nillable = true)
+    protected JAXBElement<SpecialNavigationStationPropertyType> equipmentSpecialNavigationStation;
+    @XmlElementRef(name = "equipment_navaidEquipment", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected NavaidEquipmentPropertyType equipmentNavaidEquipment;
+    protected JAXBElement<NavaidEquipmentPropertyType> equipmentNavaidEquipment;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "sector_id", referencedColumnName = "id")
     protected List<CircleSectorPropertyType> sector;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected List<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RadioFrequencyAreaTimeSliceType.Extension> extension;
@@ -208,10 +224,10 @@ public class RadioFrequencyAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SecondarySurveillanceRadarPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SecondarySurveillanceRadarPropertyType }{@code >}
      *     
      */
-    public SecondarySurveillanceRadarPropertyType getEquipmentRadar() {
+    public JAXBElement<SecondarySurveillanceRadarPropertyType> getEquipmentRadar() {
         return equipmentRadar;
     }
 
@@ -220,10 +236,10 @@ public class RadioFrequencyAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SecondarySurveillanceRadarPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SecondarySurveillanceRadarPropertyType }{@code >}
      *     
      */
-    public void setEquipmentRadar(SecondarySurveillanceRadarPropertyType value) {
+    public void setEquipmentRadar(JAXBElement<SecondarySurveillanceRadarPropertyType> value) {
         this.equipmentRadar = value;
     }
 
@@ -236,10 +252,10 @@ public class RadioFrequencyAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link PrecisionApproachRadarPropertyType }
+     *     {@link JAXBElement }{@code <}{@link PrecisionApproachRadarPropertyType }{@code >}
      *     
      */
-    public PrecisionApproachRadarPropertyType getEquipmentPrecisionApproachRadar() {
+    public JAXBElement<PrecisionApproachRadarPropertyType> getEquipmentPrecisionApproachRadar() {
         return equipmentPrecisionApproachRadar;
     }
 
@@ -248,10 +264,10 @@ public class RadioFrequencyAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link PrecisionApproachRadarPropertyType }
+     *     {@link JAXBElement }{@code <}{@link PrecisionApproachRadarPropertyType }{@code >}
      *     
      */
-    public void setEquipmentPrecisionApproachRadar(PrecisionApproachRadarPropertyType value) {
+    public void setEquipmentPrecisionApproachRadar(JAXBElement<PrecisionApproachRadarPropertyType> value) {
         this.equipmentPrecisionApproachRadar = value;
     }
 
@@ -264,10 +280,10 @@ public class RadioFrequencyAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RadioCommunicationChannelPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
      *     
      */
-    public RadioCommunicationChannelPropertyType getEquipmentFrequency() {
+    public JAXBElement<RadioCommunicationChannelPropertyType> getEquipmentFrequency() {
         return equipmentFrequency;
     }
 
@@ -276,10 +292,10 @@ public class RadioFrequencyAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RadioCommunicationChannelPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RadioCommunicationChannelPropertyType }{@code >}
      *     
      */
-    public void setEquipmentFrequency(RadioCommunicationChannelPropertyType value) {
+    public void setEquipmentFrequency(JAXBElement<RadioCommunicationChannelPropertyType> value) {
         this.equipmentFrequency = value;
     }
 
@@ -292,10 +308,10 @@ public class RadioFrequencyAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SpecialNavigationStationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SpecialNavigationStationPropertyType }{@code >}
      *     
      */
-    public SpecialNavigationStationPropertyType getEquipmentSpecialNavigationStation() {
+    public JAXBElement<SpecialNavigationStationPropertyType> getEquipmentSpecialNavigationStation() {
         return equipmentSpecialNavigationStation;
     }
 
@@ -304,10 +320,10 @@ public class RadioFrequencyAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SpecialNavigationStationPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SpecialNavigationStationPropertyType }{@code >}
      *     
      */
-    public void setEquipmentSpecialNavigationStation(SpecialNavigationStationPropertyType value) {
+    public void setEquipmentSpecialNavigationStation(JAXBElement<SpecialNavigationStationPropertyType> value) {
         this.equipmentSpecialNavigationStation = value;
     }
 
@@ -320,10 +336,10 @@ public class RadioFrequencyAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link NavaidEquipmentPropertyType }
+     *     {@link JAXBElement }{@code <}{@link NavaidEquipmentPropertyType }{@code >}
      *     
      */
-    public NavaidEquipmentPropertyType getEquipmentNavaidEquipment() {
+    public JAXBElement<NavaidEquipmentPropertyType> getEquipmentNavaidEquipment() {
         return equipmentNavaidEquipment;
     }
 
@@ -332,10 +348,10 @@ public class RadioFrequencyAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link NavaidEquipmentPropertyType }
+     *     {@link JAXBElement }{@code <}{@link NavaidEquipmentPropertyType }{@code >}
      *     
      */
-    public void setEquipmentNavaidEquipment(NavaidEquipmentPropertyType value) {
+    public void setEquipmentNavaidEquipment(JAXBElement<NavaidEquipmentPropertyType> value) {
         this.equipmentNavaidEquipment = value;
     }
 
@@ -534,7 +550,6 @@ public class RadioFrequencyAreaTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_radio_frequency_area_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRadioFrequencyAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

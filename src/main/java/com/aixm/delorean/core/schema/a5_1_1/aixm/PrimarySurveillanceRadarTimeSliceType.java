@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -88,94 +90,181 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "primary_surveillance_radar_slice", schema = "public")
+@Table(name = "primary_surveillance_radar_time_slice_type", schema = "public")
 public class PrimarySurveillanceRadarTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(name = "name", nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+    })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "serial_number_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "serial_number_nilreason"))
+    })
     protected TextDesignatorType serialNumber;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "range_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "range_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "range_nilreason"))
+    })
     protected ValDistanceType range;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "range_accuracy_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "range_accuracy_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "range_accuracy_nilreason"))
+    })
     protected ValDistanceType rangeAccuracy;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "dual_channel_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "dual_channel_nilreason"))
+    })
     protected CodeYesNoType dualChannel;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "moving_target_indicator_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "moving_target_indicator_nilreason"))
+    })
     protected CodeYesNoType movingTargetIndicator;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "standby_power_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "standby_power_nilreason"))
+    })
     protected CodeStandbyPowerType standbyPower;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "digital_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "digital_nilreason"))
+    })
     protected CodeYesNoType digital;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "military_use_only_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "military_use_only_nilreason"))
+    })
     protected CodeYesNoType militaryUseOnly;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "special_use_only_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "special_use_only_nilreason"))
+    })
     protected CodeYesNoType specialUseOnly;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "special_aircraft_only_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "special_aircraft_only_nilreason"))
+    })
     protected CodeYesNoType specialAircraftOnly;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_variation_nilreason"))
+    })
     protected ValMagneticVariationType magneticVariation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation_accuracy_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_variation_accuracy_nilreason"))
+    })
     protected ValAngleType magneticVariationAccuracy;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "date_magnetic_variation_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "date_magnetic_variation_nilreason"))
+    })
     protected DateYearType dateMagneticVariation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "contact_id", referencedColumnName = "id")
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_coverage_altitude_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "vertical_coverage_altitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_coverage_altitude_nilreason"))
+    })
     protected ValDistanceVerticalType verticalCoverageAltitude;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_coverage_distance_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "vertical_coverage_distance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_coverage_distance_nilreason"))
+    })
     protected ValDistanceType verticalCoverageDistance;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_coverage_azimuth_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_coverage_azimuth_nilreason"))
+    })
     protected ValBearingType verticalCoverageAzimuth;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "antenna_tilt_fixed_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "antenna_tilt_fixed_nilreason"))
+    })
     protected CodeYesNoType antennaTiltFixed;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "tilt_angle_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "tilt_angle_nilreason"))
+    })
     protected ValAngleType tiltAngle;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "automated_radar_terminal_system_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "automated_radar_terminal_system_nilreason"))
+    })
     protected TextDesignatorType automatedRadarTerminalSystem;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "ground_station_id", referencedColumnName = "id")
     protected List<SurveillanceGroundStationPropertyType> groundStation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodePrimaryRadarType type;
     @Transient
     protected List<PrimarySurveillanceRadarTimeSliceType.Extension> extension;
@@ -991,19 +1080,16 @@ public class PrimarySurveillanceRadarTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_primary_surveillance_radar_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPrimarySurveillanceRadarExtension;
         @XmlElement(name = "AbstractSurveillanceRadarExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_surveillance_radar_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSurveillanceRadarExtension;
         @XmlElement(name = "AbstractRadarEquipmentExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_radar_equipment_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRadarEquipmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

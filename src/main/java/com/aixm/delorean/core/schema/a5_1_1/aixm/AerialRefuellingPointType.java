@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -78,61 +82,85 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerial_refuelling_point", schema = "public")
+@Table(name = "aerial_refuelling_point_type", schema = "public")
 public class AerialRefuellingPointType
     extends AbstractSegmentPointType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "reporting_atc_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "reporting_atc_nilreason"))
+    })
     protected CodeATCReportingType reportingATC;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "fly_over_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "fly_over_nilreason"))
+    })
     protected CodeYesNoType flyOver;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "waypoint_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "waypoint_nilreason"))
+    })
     protected CodeYesNoType waypoint;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "radar_guidance_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "radar_guidance_nilreason"))
+    })
     protected CodeYesNoType radarGuidance;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "facility_makeup_id", referencedColumnName = "id")
     protected List<PointReferencePropertyType> facilityMakeup;
-    @XmlElement(name = "pointChoice_fixDesignatedPoint", nillable = true)
+    @XmlElementRef(name = "pointChoice_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected DesignatedPointPropertyType pointChoiceFixDesignatedPoint;
-    @XmlElement(name = "pointChoice_navaidSystem", nillable = true)
+    protected JAXBElement<DesignatedPointPropertyType> pointChoiceFixDesignatedPoint;
+    @XmlElementRef(name = "pointChoice_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected NavaidPropertyType pointChoiceNavaidSystem;
+    protected JAXBElement<NavaidPropertyType> pointChoiceNavaidSystem;
     @XmlElement(name = "pointChoice_position", nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected PointPropertyType pointChoicePosition;
-    @XmlElement(name = "pointChoice_runwayPoint", nillable = true)
+    @XmlElementRef(name = "pointChoice_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected RunwayCentrelinePointPropertyType pointChoiceRunwayPoint;
-    @XmlElement(name = "pointChoice_aimingPoint", nillable = true)
+    protected JAXBElement<RunwayCentrelinePointPropertyType> pointChoiceRunwayPoint;
+    @XmlElementRef(name = "pointChoice_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected TouchDownLiftOffPropertyType pointChoiceAimingPoint;
-    @XmlElement(name = "pointChoice_airportReferencePoint", nillable = true)
+    protected JAXBElement<TouchDownLiftOffPropertyType> pointChoiceAimingPoint;
+    @XmlElementRef(name = "pointChoice_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirportHeliportPropertyType pointChoiceAirportReferencePoint;
-    @XmlElement(nillable = true)
+    protected JAXBElement<AirportHeliportPropertyType> pointChoiceAirportReferencePoint;
+    @XmlElementRef(name = "extendedServiceVolume", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected RadioFrequencyAreaPropertyType extendedServiceVolume;
+    protected JAXBElement<RadioFrequencyAreaPropertyType> extendedServiceVolume;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "sequence_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "sequence_nilreason"))
+    })
     protected NoSequenceType sequence;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "usage_type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "usage_type_nilreason"))
+    })
     protected CodeAerialRefuellingPointType usageType;
     @Transient
     protected List<AerialRefuellingPointType.Extension> extension;
@@ -294,10 +322,10 @@ public class AerialRefuellingPointType
      * 
      * @return
      *     possible object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public DesignatedPointPropertyType getPointChoiceFixDesignatedPoint() {
+    public JAXBElement<DesignatedPointPropertyType> getPointChoiceFixDesignatedPoint() {
         return pointChoiceFixDesignatedPoint;
     }
 
@@ -306,10 +334,10 @@ public class AerialRefuellingPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceFixDesignatedPoint(DesignatedPointPropertyType value) {
+    public void setPointChoiceFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.pointChoiceFixDesignatedPoint = value;
     }
 
@@ -322,10 +350,10 @@ public class AerialRefuellingPointType
      * 
      * @return
      *     possible object is
-     *     {@link NavaidPropertyType }
+     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
      *     
      */
-    public NavaidPropertyType getPointChoiceNavaidSystem() {
+    public JAXBElement<NavaidPropertyType> getPointChoiceNavaidSystem() {
         return pointChoiceNavaidSystem;
     }
 
@@ -334,10 +362,10 @@ public class AerialRefuellingPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link NavaidPropertyType }
+     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceNavaidSystem(NavaidPropertyType value) {
+    public void setPointChoiceNavaidSystem(JAXBElement<NavaidPropertyType> value) {
         this.pointChoiceNavaidSystem = value;
     }
 
@@ -378,10 +406,10 @@ public class AerialRefuellingPointType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayCentrelinePointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
      *     
      */
-    public RunwayCentrelinePointPropertyType getPointChoiceRunwayPoint() {
+    public JAXBElement<RunwayCentrelinePointPropertyType> getPointChoiceRunwayPoint() {
         return pointChoiceRunwayPoint;
     }
 
@@ -390,10 +418,10 @@ public class AerialRefuellingPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayCentrelinePointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceRunwayPoint(RunwayCentrelinePointPropertyType value) {
+    public void setPointChoiceRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
         this.pointChoiceRunwayPoint = value;
     }
 
@@ -406,10 +434,10 @@ public class AerialRefuellingPointType
      * 
      * @return
      *     possible object is
-     *     {@link TouchDownLiftOffPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
      *     
      */
-    public TouchDownLiftOffPropertyType getPointChoiceAimingPoint() {
+    public JAXBElement<TouchDownLiftOffPropertyType> getPointChoiceAimingPoint() {
         return pointChoiceAimingPoint;
     }
 
@@ -418,10 +446,10 @@ public class AerialRefuellingPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link TouchDownLiftOffPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceAimingPoint(TouchDownLiftOffPropertyType value) {
+    public void setPointChoiceAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.pointChoiceAimingPoint = value;
     }
 
@@ -434,10 +462,10 @@ public class AerialRefuellingPointType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getPointChoiceAirportReferencePoint() {
+    public JAXBElement<AirportHeliportPropertyType> getPointChoiceAirportReferencePoint() {
         return pointChoiceAirportReferencePoint;
     }
 
@@ -446,10 +474,10 @@ public class AerialRefuellingPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setPointChoiceAirportReferencePoint(AirportHeliportPropertyType value) {
+    public void setPointChoiceAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.pointChoiceAirportReferencePoint = value;
     }
 
@@ -462,10 +490,10 @@ public class AerialRefuellingPointType
      * 
      * @return
      *     possible object is
-     *     {@link RadioFrequencyAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RadioFrequencyAreaPropertyType }{@code >}
      *     
      */
-    public RadioFrequencyAreaPropertyType getExtendedServiceVolume() {
+    public JAXBElement<RadioFrequencyAreaPropertyType> getExtendedServiceVolume() {
         return extendedServiceVolume;
     }
 
@@ -474,10 +502,10 @@ public class AerialRefuellingPointType
      * 
      * @param value
      *     allowed object is
-     *     {@link RadioFrequencyAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RadioFrequencyAreaPropertyType }{@code >}
      *     
      */
-    public void setExtendedServiceVolume(RadioFrequencyAreaPropertyType value) {
+    public void setExtendedServiceVolume(JAXBElement<RadioFrequencyAreaPropertyType> value) {
         this.extendedServiceVolume = value;
     }
 
@@ -654,13 +682,11 @@ public class AerialRefuellingPointType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_segment_point_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSegmentPointExtension;
         @XmlElement(name = "AbstractAerialRefuellingPointExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_aerial_refuelling_point_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAerialRefuellingPointExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

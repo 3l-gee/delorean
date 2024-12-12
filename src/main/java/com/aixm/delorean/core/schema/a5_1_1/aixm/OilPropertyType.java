@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -43,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "oil"
 })
 @Entity
-@Table(name = "oil_property", schema = "public")
+@Table(name = "oil_property_type", schema = "public")
 public class OilPropertyType
     extends AbstractAIXMPropertyType
 {
@@ -52,7 +51,6 @@ public class OilPropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "oil_id", referencedColumnName = "id")
     protected OilType oil;
 
     /**

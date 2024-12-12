@@ -9,7 +9,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
@@ -42,7 +41,6 @@ import org.w3c.dom.Element;
 @XmlType(name = "XHTMLType", propOrder = {
     "any"
 })
-@Embeddable
 public class XHTMLType {
 
     @XmlAnyElement

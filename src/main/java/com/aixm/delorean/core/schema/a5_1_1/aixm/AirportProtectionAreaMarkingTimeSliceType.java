@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,35 +72,45 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airport_protection_area_marking_slice", schema = "public")
+@Table(name = "airport_protection_area_marking_time_slice_type", schema = "public")
 public class AirportProtectionAreaMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "marking_icao_standard_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "marking_icao_standard_nilreason"))
+    })
     protected CodeYesNoType markingICAOStandard;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "condition_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "condition_nilreason"))
+    })
     protected CodeMarkingConditionType condition;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "element_id", referencedColumnName = "id")
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "marking_location_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "marking_location_nilreason"))
+    })
     protected CodeProtectAreaSectionType markingLocation;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "markedProtectionArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirportHeliportProtectionAreaPropertyType markedProtectionArea;
+    protected JAXBElement<AirportHeliportProtectionAreaPropertyType> markedProtectionArea;
     @Transient
     protected List<AirportProtectionAreaMarkingTimeSliceType.Extension> extension;
 
@@ -269,10 +283,10 @@ public class AirportProtectionAreaMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportProtectionAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportProtectionAreaPropertyType }{@code >}
      *     
      */
-    public AirportHeliportProtectionAreaPropertyType getMarkedProtectionArea() {
+    public JAXBElement<AirportHeliportProtectionAreaPropertyType> getMarkedProtectionArea() {
         return markedProtectionArea;
     }
 
@@ -281,10 +295,10 @@ public class AirportProtectionAreaMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportProtectionAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportProtectionAreaPropertyType }{@code >}
      *     
      */
-    public void setMarkedProtectionArea(AirportHeliportProtectionAreaPropertyType value) {
+    public void setMarkedProtectionArea(JAXBElement<AirportHeliportProtectionAreaPropertyType> value) {
         this.markedProtectionArea = value;
     }
 
@@ -365,13 +379,11 @@ public class AirportProtectionAreaMarkingTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_airport_protection_area_marking_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirportProtectionAreaMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_marking_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

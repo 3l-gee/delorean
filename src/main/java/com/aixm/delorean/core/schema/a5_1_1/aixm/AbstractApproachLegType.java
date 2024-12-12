@@ -41,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     MissedApproachLegType.class
 })
 @Entity
-@Table(name = "abstract_approach_leg", schema = "public")
+@Table(name = "abstract_approach_leg_type", schema = "public")
 public abstract class AbstractApproachLegType
     extends AbstractSegmentLegType
 {

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -66,13 +68,17 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navigation_area_restriction_slice", schema = "public")
+@Table(name = "navigation_area_restriction_time_slice_type", schema = "public")
 public class NavigationAreaRestrictionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeNavigationAreaRestrictionType type;
     @XmlElement(nillable = true)
     @Transient
@@ -81,19 +87,16 @@ public class NavigationAreaRestrictionTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "design_surface_id", referencedColumnName = "id")
     protected ObstacleAssessmentAreaPropertyType designSurface;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "sector_definition_id", referencedColumnName = "id")
     protected CircleSectorPropertyType sectorDefinition;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<NavigationAreaRestrictionTimeSliceType.Extension> extension;
@@ -333,7 +336,6 @@ public class NavigationAreaRestrictionTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_navigation_area_restriction_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNavigationAreaRestrictionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

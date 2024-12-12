@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -66,28 +68,44 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "sector_design", schema = "public")
+@Table(name = "sector_design_type", schema = "public")
 public class SectorDesignType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "turn_direction_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turn_direction_nilreason"))
+    })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "design_gradient_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "design_gradient_nilreason"))
+    })
     protected ValSlopeType designGradient;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "termination_altitude_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "termination_altitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "termination_altitude_nilreason"))
+    })
     protected ValDistanceVerticalType terminationAltitude;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "turn_permitted_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turn_permitted_nilreason"))
+    })
     protected CodeYesNoType turnPermitted;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<SectorDesignType.Extension> extension;
@@ -315,7 +333,6 @@ public class SectorDesignType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_sector_design_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSectorDesignExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

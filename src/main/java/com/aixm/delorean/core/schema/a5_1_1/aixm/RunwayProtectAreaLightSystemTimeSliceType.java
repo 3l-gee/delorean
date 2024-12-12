@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,44 +74,57 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runway_protect_area_light_system_slice", schema = "public")
+@Table(name = "runway_protect_area_light_system_time_slice_type", schema = "public")
 public class RunwayProtectAreaLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "emergency_lighting_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emergency_lighting_nilreason"))
+    })
     protected CodeYesNoType emergencyLighting;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "intensity_level_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_level_nilreason"))
+    })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "colour_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
+    })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "element_id", referencedColumnName = "id")
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "position_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "position_nilreason"))
+    })
     protected CodeProtectAreaSectionType position;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "lightedArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected RunwayProtectAreaPropertyType lightedArea;
+    protected JAXBElement<RunwayProtectAreaPropertyType> lightedArea;
     @Transient
     protected List<RunwayProtectAreaLightSystemTimeSliceType.Extension> extension;
 
@@ -348,10 +365,10 @@ public class RunwayProtectAreaLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayProtectAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayProtectAreaPropertyType }{@code >}
      *     
      */
-    public RunwayProtectAreaPropertyType getLightedArea() {
+    public JAXBElement<RunwayProtectAreaPropertyType> getLightedArea() {
         return lightedArea;
     }
 
@@ -360,10 +377,10 @@ public class RunwayProtectAreaLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayProtectAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayProtectAreaPropertyType }{@code >}
      *     
      */
-    public void setLightedArea(RunwayProtectAreaPropertyType value) {
+    public void setLightedArea(JAXBElement<RunwayProtectAreaPropertyType> value) {
         this.lightedArea = value;
     }
 
@@ -444,13 +461,11 @@ public class RunwayProtectAreaLightSystemTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_runway_protect_area_light_system_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRunwayProtectAreaLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_ground_light_system_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

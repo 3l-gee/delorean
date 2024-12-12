@@ -41,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     ManoeuvringAreaUsageType.class
 })
 @Entity
-@Table(name = "abstract_usage_condition", schema = "public")
+@Table(name = "abstract_usage_condition_type", schema = "public")
 public class AbstractUsageConditionType
     extends AbstractAIXMObjectType
 {

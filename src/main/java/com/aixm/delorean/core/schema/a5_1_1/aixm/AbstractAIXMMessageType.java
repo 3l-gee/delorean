@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AggregationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -45,6 +48,8 @@ public abstract class AbstractAIXMMessageType
 {
 
     @XmlAttribute(name = "aggregationType")
+    @Column(name = "aggregation_type")
+    @Enumerated(EnumType.STRING)
     protected AggregationType aggregationType;
 
     /**

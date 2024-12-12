@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,44 +74,57 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "taxi_holding_position_light_system_slice", schema = "public")
+@Table(name = "taxi_holding_position_light_system_time_slice_type", schema = "public")
 public class TaxiHoldingPositionLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "emergency_lighting_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emergency_lighting_nilreason"))
+    })
     protected CodeYesNoType emergencyLighting;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "intensity_level_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_level_nilreason"))
+    })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "colour_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
+    })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "element_id", referencedColumnName = "id")
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeLightHoldingPositionType type;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "taxiHolding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected TaxiHoldingPositionPropertyType taxiHolding;
+    protected JAXBElement<TaxiHoldingPositionPropertyType> taxiHolding;
     @Transient
     protected List<TaxiHoldingPositionLightSystemTimeSliceType.Extension> extension;
 
@@ -348,10 +365,10 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TaxiHoldingPositionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TaxiHoldingPositionPropertyType }{@code >}
      *     
      */
-    public TaxiHoldingPositionPropertyType getTaxiHolding() {
+    public JAXBElement<TaxiHoldingPositionPropertyType> getTaxiHolding() {
         return taxiHolding;
     }
 
@@ -360,10 +377,10 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TaxiHoldingPositionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TaxiHoldingPositionPropertyType }{@code >}
      *     
      */
-    public void setTaxiHolding(TaxiHoldingPositionPropertyType value) {
+    public void setTaxiHolding(JAXBElement<TaxiHoldingPositionPropertyType> value) {
         this.taxiHolding = value;
     }
 
@@ -444,13 +461,11 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_taxi_holding_position_light_system_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTaxiHoldingPositionLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_ground_light_system_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -77,61 +79,122 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "sheet", schema = "public")
+@Table(name = "timesheet_type", schema = "public")
 public class TimesheetType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "time_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "time_reference_nilreason"))
+    })
     protected CodeTimeReferenceType timeReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "start_date_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "start_date_nilreason"))
+    })
     protected DateMonthDayType startDate;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "end_date_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "end_date_nilreason"))
+    })
     protected DateMonthDayType endDate;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "day_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "day_nilreason"))
+    })
     protected CodeDayType day;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "day_til_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "day_til_nilreason"))
+    })
     protected CodeDayType dayTil;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "start_time_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "start_time_nilreason"))
+    })
     protected TimeType startTime;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "start_event_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "start_event_nilreason"))
+    })
     protected CodeTimeEventType startEvent;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "start_time_relative_event_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "start_time_relative_event_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "start_time_relative_event_nilreason"))
+    })
     protected ValDurationType startTimeRelativeEvent;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "start_event_interpretation_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "start_event_interpretation_nilreason"))
+    })
     protected CodeTimeEventCombinationType startEventInterpretation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "end_time_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "end_time_nilreason"))
+    })
     protected TimeType endTime;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "end_event_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "end_event_nilreason"))
+    })
     protected CodeTimeEventType endEvent;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "end_time_relative_event_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "end_time_relative_event_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "end_time_relative_event_nilreason"))
+    })
     protected ValDurationType endTimeRelativeEvent;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "end_event_interpretation_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "end_event_interpretation_nilreason"))
+    })
     protected CodeTimeEventCombinationType endEventInterpretation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "daylight_saving_adjust_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "daylight_saving_adjust_nilreason"))
+    })
     protected CodeYesNoType daylightSavingAdjust;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "excluded_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "excluded_nilreason"))
+    })
     protected CodeYesNoType excluded;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<TimesheetType.Extension> extension;
@@ -667,7 +730,6 @@ public class TimesheetType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstractsheet_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTimesheetExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

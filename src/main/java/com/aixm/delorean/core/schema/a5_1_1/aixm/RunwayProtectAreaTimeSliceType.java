@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,47 +76,73 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runway_protect_area_slice", schema = "public")
+@Table(name = "runway_protect_area_time_slice_type", schema = "public")
 public class RunwayProtectAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "width_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason"))
+    })
     protected ValDistanceType width;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "length_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
+    })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "lighting_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lighting_nilreason"))
+    })
     protected CodeYesNoType lighting;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "obstacle_free_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "obstacle_free_nilreason"))
+    })
     protected CodeYesNoType obstacleFree;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "surface_properties_id", referencedColumnName = "id")
     protected SurfaceCharacteristicsPropertyType surfaceProperties;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeRunwayProtectionAreaType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "status_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason"))
+    })
     protected CodeStatusOperationsType status;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "protectedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected RunwayDirectionPropertyType protectedRunwayDirection;
+    protected JAXBElement<RunwayDirectionPropertyType> protectedRunwayDirection;
     @Transient
     protected List<RunwayProtectAreaTimeSliceType.Extension> extension;
 
@@ -385,10 +415,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public RunwayDirectionPropertyType getProtectedRunwayDirection() {
+    public JAXBElement<RunwayDirectionPropertyType> getProtectedRunwayDirection() {
         return protectedRunwayDirection;
     }
 
@@ -397,10 +427,10 @@ public class RunwayProtectAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public void setProtectedRunwayDirection(RunwayDirectionPropertyType value) {
+    public void setProtectedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
         this.protectedRunwayDirection = value;
     }
 
@@ -481,13 +511,11 @@ public class RunwayProtectAreaTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_runway_protect_area_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRunwayProtectAreaExtension;
         @XmlElement(name = "AbstractAirportHeliportProtectionAreaExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_airport_heliport_protection_area_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirportHeliportProtectionAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

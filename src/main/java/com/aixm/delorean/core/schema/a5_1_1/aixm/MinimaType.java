@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -75,58 +77,110 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "minima", schema = "public")
+@Table(name = "minima_type", schema = "public")
 public class MinimaType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "altitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_nilreason"))
+    })
     protected ValDistanceVerticalType altitude;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_code_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_code_nilreason"))
+    })
     protected CodeMinimumAltitudeType altitudeCode;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType altitudeReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "height_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "height_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "height_nilreason"))
+    })
     protected ValDistanceVerticalType height;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "military_height_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "military_height_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "military_height_nilreason"))
+    })
     protected ValDistanceVerticalType militaryHeight;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "radio_height_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "radio_height_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "radio_height_nilreason"))
+    })
     protected ValDistanceVerticalType radioHeight;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "height_code_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "height_code_nilreason"))
+    })
     protected CodeMinimumHeightType heightCode;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "height_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "height_reference_nilreason"))
+    })
     protected CodeHeightReferenceType heightReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "visibility_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "visibility_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "visibility_nilreason"))
+    })
     protected ValDistanceType visibility;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "military_visibility_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "military_visibility_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "military_visibility_nilreason"))
+    })
     protected ValDistanceType militaryVisibility;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "mandatory_rvr_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "mandatory_rvr_nilreason"))
+    })
     protected CodeYesNoType mandatoryRVR;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "remote_altimeter_minima_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "remote_altimeter_minima_nilreason"))
+    })
     protected CodeYesNoType remoteAltimeterMinima;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "adjustment_inop_id", referencedColumnName = "id")
     protected List<EquipmentUnavailableAdjustmentPropertyType> adjustmentINOP;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<MinimaType.Extension> extension;
@@ -618,7 +672,6 @@ public class MinimaType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_minima_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMinimaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -14,7 +14,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -51,18 +50,17 @@ import jakarta.xml.bind.annotation.XmlType;
     "obstacleAreaTimeSlice"
 })
 @Entity
-@Table(name = "obstacle_area_slice_property", schema = "public")
+@Table(name = "obstacle_area_time_slice_property_type", schema = "public")
 public class ObstacleAreaTimeSlicePropertyType {
 
     @XmlElement(name = "ObstacleAreaTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "obstacle_area_slice_id", referencedColumnName = "id")
     protected ObstacleAreaTimeSliceType obstacleAreaTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(name = "id", nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

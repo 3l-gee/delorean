@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
     GroundTrafficControlServiceType.class
 })
 @Entity
-@Table(name = "abstract_traffic_separation_service", schema = "public")
+@Table(name = "abstract_traffic_separation_service_type", schema = "public")
 public abstract class AbstractTrafficSeparationServiceType
     extends AbstractServiceType
 {

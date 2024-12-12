@@ -14,7 +14,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -51,18 +50,17 @@ import jakarta.xml.bind.annotation.XmlType;
     "navigationAreaRestrictionTimeSlice"
 })
 @Entity
-@Table(name = "navigation_area_restriction_slice_property", schema = "public")
+@Table(name = "navigation_area_restriction_time_slice_property_type", schema = "public")
 public class NavigationAreaRestrictionTimeSlicePropertyType {
 
     @XmlElement(name = "NavigationAreaRestrictionTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "navigation_area_restriction_slice_id", referencedColumnName = "id")
     protected NavigationAreaRestrictionTimeSliceType navigationAreaRestrictionTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(name = "id", nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

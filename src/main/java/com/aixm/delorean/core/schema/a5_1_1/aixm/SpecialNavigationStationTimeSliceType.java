@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,46 +74,62 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "special_navigation_station_slice", schema = "public")
+@Table(name = "special_navigation_station_time_slice_type", schema = "public")
 public class SpecialNavigationStationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(name = "name", nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+    })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeSpecialNavigationStationType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "frequency_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "frequency_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "frequency_nilreason"))
+    })
     protected ValFrequencyType frequency;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "emission_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emission_nilreason"))
+    })
     protected CodeRadioEmissionType emission;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "systemChain", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected SpecialNavigationSystemPropertyType systemChain;
+    protected JAXBElement<SpecialNavigationSystemPropertyType> systemChain;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "responsible_organisation_id", referencedColumnName = "id")
     protected AuthorityForSpecialNavigationStationPropertyType responsibleOrganisation;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedPointPropertyType position;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<SpecialNavigationStationStatusPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<SpecialNavigationStationTimeSliceType.Extension> extension;
@@ -231,10 +251,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SpecialNavigationSystemPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
      *     
      */
-    public SpecialNavigationSystemPropertyType getSystemChain() {
+    public JAXBElement<SpecialNavigationSystemPropertyType> getSystemChain() {
         return systemChain;
     }
 
@@ -243,10 +263,10 @@ public class SpecialNavigationStationTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SpecialNavigationSystemPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
      *     
      */
-    public void setSystemChain(SpecialNavigationSystemPropertyType value) {
+    public void setSystemChain(JAXBElement<SpecialNavigationSystemPropertyType> value) {
         this.systemChain = value;
     }
 
@@ -461,7 +481,6 @@ public class SpecialNavigationStationTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_special_navigation_station_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSpecialNavigationStationExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

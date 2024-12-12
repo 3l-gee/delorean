@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -43,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "manoeuvringAreaUsage"
 })
 @Entity
-@Table(name = "manoeuvring_area_usage_property", schema = "public")
+@Table(name = "manoeuvring_area_usage_property_type", schema = "public")
 public class ManoeuvringAreaUsagePropertyType
     extends AbstractAIXMPropertyType
 {
@@ -52,7 +51,6 @@ public class ManoeuvringAreaUsagePropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "manoeuvring_area_usage_id", referencedColumnName = "id")
     protected ManoeuvringAreaUsageType manoeuvringAreaUsage;
 
     /**

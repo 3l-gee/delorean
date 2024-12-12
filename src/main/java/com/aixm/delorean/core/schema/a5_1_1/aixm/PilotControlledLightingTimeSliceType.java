@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -70,34 +72,59 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "pilot_controlled_lighting_slice", schema = "public")
+@Table(name = "pilot_controlled_lighting_time_slice_type", schema = "public")
 public class PilotControlledLightingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodePilotControlledLightingType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "duration_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "duration_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "duration_nilreason"))
+    })
     protected ValDurationType duration;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "intensity_steps_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_steps_nilreason"))
+    })
     protected NoNumberType intensitySteps;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "stand_by_intensity_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "stand_by_intensity_nilreason"))
+    })
     protected CodeIntensityStandByType standByIntensity;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "radio_frequency_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "radio_frequency_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "radio_frequency_nilreason"))
+    })
     protected ValFrequencyType radioFrequency;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "activation_instruction_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "activation_instruction_nilreason"))
+    })
     protected TextInstructionType activationInstruction;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "controlled_light_intensity_id", referencedColumnName = "id")
     protected List<LightActivationPropertyType> controlledLightIntensity;
     @XmlElement(nillable = true)
     @Transient
@@ -106,7 +133,6 @@ public class PilotControlledLightingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<PilotControlledLightingTimeSliceType.Extension> extension;
@@ -470,7 +496,6 @@ public class PilotControlledLightingTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_pilot_controlled_lighting_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPilotControlledLightingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

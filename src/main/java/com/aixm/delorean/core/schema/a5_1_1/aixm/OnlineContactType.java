@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -70,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "online_contact", schema = "public")
+@Table(name = "online_contact_type", schema = "public")
 public class OnlineContactType
     extends AbstractPropertiesWithScheduleType
 {
@@ -79,28 +81,42 @@ public class OnlineContactType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "network_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "network_nilreason"))
+    })
     protected CodeTelecomNetworkType network;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "linkage_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "linkage_nilreason"))
+    })
     protected TextAddressType linkage;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "protocol_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "protocol_nilreason"))
+    })
     protected TextNameType protocol;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "e_mail_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "e_mail_nilreason"))
+    })
     protected TextAddressType eMail;
     @Transient
     protected List<OnlineContactType.Extension> extension;
@@ -410,13 +426,11 @@ public class OnlineContactType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractOnlineContactExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_online_contact_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractOnlineContactExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

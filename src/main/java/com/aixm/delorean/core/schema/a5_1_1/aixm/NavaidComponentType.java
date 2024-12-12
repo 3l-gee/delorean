@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -66,25 +68,36 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaid_component", schema = "public")
+@Table(name = "navaid_component_type", schema = "public")
 public class NavaidComponentType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "collocation_group_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "collocation_group_nilreason"))
+    })
     protected NoSequenceType collocationGroup;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "marker_position_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "marker_position_nilreason"))
+    })
     protected CodePositionInILSType markerPosition;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "provides_navigable_location_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "provides_navigable_location_nilreason"))
+    })
     protected CodeYesNoType providesNavigableLocation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected NavaidEquipmentPropertyType theNavaidEquipment;
@@ -314,7 +327,6 @@ public class NavaidComponentType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_navaid_component_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNavaidComponentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

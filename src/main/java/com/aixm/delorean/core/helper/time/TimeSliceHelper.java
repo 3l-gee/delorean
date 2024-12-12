@@ -1,6 +1,6 @@
 package com.aixm.delorean.core.helper.time;
 
-import com.aixm.delorean.core.converter.type.time.AixmTimeSliceType;
+import com.aixm.delorean.core.adapter.type.time.AixmTimeSliceType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractTimeGeometricPrimitiveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractTimePrimitiveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractTimeTopologyPrimitiveType;
@@ -113,13 +113,13 @@ public class TimeSliceHelper {
             throw new IllegalArgumentException("Invalid time period " + v.getClass().getName());
 
         } else if (begin != null && end == null) {
-            aixmTime.setBegin(begin);
-            aixmTime.setEnd((parseTimeIndeterminateValueType(endIndeterminate)));
+            // aixmTime.setBegin(begin);
+            // aixmTime.setEnd((parseTimeIndeterminateValueType(endIndeterminate)));
             return aixmTime;
 
         } else if (begin != null && end != null) {
-            aixmTime.setBegin(begin);
-            aixmTime.setEnd(end);
+            // aixmTime.setBegin(begin);
+            // aixmTime.setEnd(end);
             return aixmTime;
         }
 

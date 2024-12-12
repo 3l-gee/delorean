@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -68,37 +70,58 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "departure_arrival_condition", schema = "public")
+@Table(name = "departure_arrival_condition_type", schema = "public")
 public class DepartureArrivalConditionType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_enroute_altitude_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "minimum_enroute_altitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_enroute_altitude_nilreason"))
+    })
     protected ValDistanceVerticalType minimumEnrouteAltitude;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "minimum_crossing_at_end_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_crossing_at_end_nilreason"))
+    })
     protected ValDistanceVerticalType minimumCrossingAtEnd;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_crossing_at_end_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType minimumCrossingAtEndReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "maximum_crossing_at_end_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "maximum_crossing_at_end_nilreason"))
+    })
     protected ValDistanceVerticalType maximumCrossingAtEnd;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "maximum_crossing_at_end_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType maximumCrossingAtEndReference;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "engine_id", referencedColumnName = "id")
     protected AircraftCharacteristicPropertyType engineType;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<DepartureArrivalConditionType.Extension> extension;
@@ -382,7 +405,6 @@ public class DepartureArrivalConditionType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_departure_arrival_condition_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractDepartureArrivalConditionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

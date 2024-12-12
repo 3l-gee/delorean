@@ -10,6 +10,8 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePrimitivePropertyType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -193,11 +195,12 @@ public abstract class AbstractAIXMTimeSliceType
 {
 
     @XmlElement(required = true)
-    @Transient
-    protected String interpretation;
-    @Transient
+    @Enumerated(EnumType.STRING)
+    @Column(name = "interpretation", nullable = false)
+    protected InterpretationType interpretation;
+    @Column(name = "sequence_number")
     protected Long sequenceNumber;
-    @Transient
+    @Column(name = "correction_number")
     protected Long correctionNumber;
     @Transient
     protected FeatureTimeSliceMetadataPropertyType timeSliceMetadata;
@@ -215,10 +218,10 @@ public abstract class AbstractAIXMTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link InterpretationType }
      *     
      */
-    public String getInterpretation() {
+    public InterpretationType getInterpretation() {
         return interpretation;
     }
 
@@ -227,10 +230,10 @@ public abstract class AbstractAIXMTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link InterpretationType }
      *     
      */
-    public void setInterpretation(String value) {
+    public void setInterpretation(InterpretationType value) {
         this.interpretation = value;
     }
 

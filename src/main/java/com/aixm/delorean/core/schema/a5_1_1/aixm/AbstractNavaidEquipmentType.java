@@ -47,7 +47,7 @@ import jakarta.xml.bind.annotation.XmlType;
     VORType.class
 })
 @Entity
-@Table(name = "abstract_navaid_equipment", schema = "public")
+@Table(name = "abstract_navaid_equipment_type", schema = "public")
 public abstract class AbstractNavaidEquipmentType
     extends AbstractAIXMFeatureType
 {

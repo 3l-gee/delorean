@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -69,15 +71,34 @@ public class ElevatedSurfaceType
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "elevation_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "elevation_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "elevation_nilreason"))
+    })
     protected ValDistanceVerticalType elevation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "geoid_undulation_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "geoid_undulation_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "geoid_undulation_nilreason"))
+    })
     protected ValDistanceSignedType geoidUndulation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_datum_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_datum_nilreason"))
+    })
     protected CodeVerticalDatumType verticalDatum;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_accuracy_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "vertical_accuracy_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_accuracy_nilreason"))
+    })
     protected ValDistanceType verticalAccuracy;
     @Transient
     protected List<ElevatedSurfaceType.Extension> extension;
@@ -265,7 +286,6 @@ public class ElevatedSurfaceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_elevated_surface_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractElevatedSurfaceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

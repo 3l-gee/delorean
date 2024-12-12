@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -75,61 +79,99 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "holding_assessment_slice", schema = "public")
+@Table(name = "holding_assessment_time_slice_type", schema = "public")
 public class HoldingAssessmentTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_nilreason"))
+    })
     protected ValDistanceVerticalType upperLimit;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_nilreason"))
+    })
     protected ValDistanceVerticalType lowerLimit;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "speed_limit_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "speed_limit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speed_limit_nilreason"))
+    })
     protected ValSpeedType speedLimit;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "pattern_template_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "pattern_template_nilreason"))
+    })
     protected TextNameType patternTemplate;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "turbulent_air_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turbulent_air_nilreason"))
+    })
     protected CodeYesNoType turbulentAir;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "leg_length_toward_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "leg_length_toward_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "leg_length_toward_nilreason"))
+    })
     protected ValDistanceType legLengthToward;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "leg_length_away_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "leg_length_away_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "leg_length_away_nilreason"))
+    })
     protected ValDistanceType legLengthAway;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "holding_point_id", referencedColumnName = "id")
     protected SegmentPointPropertyType holdingPoint;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "unplannedHolding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected UnplannedHoldingPropertyType unplannedHolding;
-    @XmlElement(nillable = true)
+    protected JAXBElement<UnplannedHoldingPropertyType> unplannedHolding;
+    @XmlElementRef(name = "assessedHoldingPattern", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected HoldingPatternPropertyType assessedHoldingPattern;
+    protected JAXBElement<HoldingPatternPropertyType> assessedHoldingPattern;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "obstacle_assessment_id", referencedColumnName = "id")
     protected List<ObstacleAssessmentAreaPropertyType> obstacleAssessment;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<HoldingAssessmentTimeSliceType.Extension> extension;
@@ -419,10 +461,10 @@ public class HoldingAssessmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link UnplannedHoldingPropertyType }
+     *     {@link JAXBElement }{@code <}{@link UnplannedHoldingPropertyType }{@code >}
      *     
      */
-    public UnplannedHoldingPropertyType getUnplannedHolding() {
+    public JAXBElement<UnplannedHoldingPropertyType> getUnplannedHolding() {
         return unplannedHolding;
     }
 
@@ -431,10 +473,10 @@ public class HoldingAssessmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link UnplannedHoldingPropertyType }
+     *     {@link JAXBElement }{@code <}{@link UnplannedHoldingPropertyType }{@code >}
      *     
      */
-    public void setUnplannedHolding(UnplannedHoldingPropertyType value) {
+    public void setUnplannedHolding(JAXBElement<UnplannedHoldingPropertyType> value) {
         this.unplannedHolding = value;
     }
 
@@ -447,10 +489,10 @@ public class HoldingAssessmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link HoldingPatternPropertyType }
+     *     {@link JAXBElement }{@code <}{@link HoldingPatternPropertyType }{@code >}
      *     
      */
-    public HoldingPatternPropertyType getAssessedHoldingPattern() {
+    public JAXBElement<HoldingPatternPropertyType> getAssessedHoldingPattern() {
         return assessedHoldingPattern;
     }
 
@@ -459,10 +501,10 @@ public class HoldingAssessmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link HoldingPatternPropertyType }
+     *     {@link JAXBElement }{@code <}{@link HoldingPatternPropertyType }{@code >}
      *     
      */
-    public void setAssessedHoldingPattern(HoldingPatternPropertyType value) {
+    public void setAssessedHoldingPattern(JAXBElement<HoldingPatternPropertyType> value) {
         this.assessedHoldingPattern = value;
     }
 
@@ -621,7 +663,6 @@ public class HoldingAssessmentTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_holding_assessment_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractHoldingAssessmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

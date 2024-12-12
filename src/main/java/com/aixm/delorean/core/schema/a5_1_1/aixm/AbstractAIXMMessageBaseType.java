@@ -7,12 +7,14 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.Transient;
+import jakarta.persistence.OneToOne;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -54,12 +56,11 @@ public abstract class AbstractAIXMMessageBaseType
     extends AbstractAIXMFeatureBaseType
 {
 
-    /**
-     * Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details.
-     * 
-     */
+    @Column(name = "sequence_number", nullable = true)
     protected Long sequenceNumber;
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected MessageMetadataPropertyType messageMetadata;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,7 +69,7 @@ public abstract class AbstractAIXMMessageBaseType
     protected long dbid;
 
     /**
-     * Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details.
+     * Gets the value of the sequenceNumber property.
      * 
      * @return
      *     possible object is
@@ -86,7 +87,6 @@ public abstract class AbstractAIXMMessageBaseType
      *     allowed object is
      *     {@link Long }
      *     
-     * @see #getSequenceNumber()
      */
     public void setSequenceNumber(Long value) {
         this.sequenceNumber = value;

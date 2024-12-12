@@ -41,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     TerminalSegmentPointType.class
 })
 @Entity
-@Table(name = "abstract_segment_point", schema = "public")
+@Table(name = "abstract_segment_point_type", schema = "public")
 public class AbstractSegmentPointType
     extends AbstractAIXMObjectType
 {

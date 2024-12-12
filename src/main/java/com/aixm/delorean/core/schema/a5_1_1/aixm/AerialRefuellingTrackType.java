@@ -12,7 +12,6 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -64,31 +63,30 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerial_refuelling_track", schema = "public")
+@Table(name = "aerial_refuelling_track_type", schema = "public")
 public class AerialRefuellingTrackType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected CurvePropertyType extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "point_id", referencedColumnName = "id")
     protected List<AerialRefuellingPointPropertyType> point;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "vertical_extent_id", referencedColumnName = "id")
     protected List<AirspaceLayerPropertyType> verticalExtent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AerialRefuellingTrackType.Extension> extension;
@@ -312,7 +310,6 @@ public class AerialRefuellingTrackType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_aerial_refuelling_track_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAerialRefuellingTrackExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

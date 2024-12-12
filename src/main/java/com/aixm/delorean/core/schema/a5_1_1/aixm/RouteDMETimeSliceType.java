@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -66,31 +70,37 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "route_dme_slice", schema = "public")
+@Table(name = "route_dme_time_slice_type", schema = "public")
 public class RouteDMETimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "critical_dme_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "critical_dme_nilreason"))
+    })
     protected CodeYesNoType criticalDME;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "satisfactory_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "satisfactory_nilreason"))
+    })
     protected CodeYesNoType satisfactory;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "referencedDME", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected DMEPropertyType referencedDME;
+    protected JAXBElement<DMEPropertyType> referencedDME;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "applicable_route_portion_id", referencedColumnName = "id")
     protected RoutePortionPropertyType applicableRoutePortion;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RouteDMETimeSliceType.Extension> extension;
@@ -156,10 +166,10 @@ public class RouteDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link DMEPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
      *     
      */
-    public DMEPropertyType getReferencedDME() {
+    public JAXBElement<DMEPropertyType> getReferencedDME() {
         return referencedDME;
     }
 
@@ -168,10 +178,10 @@ public class RouteDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link DMEPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
      *     
      */
-    public void setReferencedDME(DMEPropertyType value) {
+    public void setReferencedDME(JAXBElement<DMEPropertyType> value) {
         this.referencedDME = value;
     }
 
@@ -318,7 +328,6 @@ public class RouteDMETimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_route_dme_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRouteDMEExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

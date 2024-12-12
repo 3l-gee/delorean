@@ -7,7 +7,10 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import com.aixm.delorean.core.adapter.time.TimePrimitivePropertyTypeAdapter;
+import com.aixm.delorean.core.adapter.type.time.AixmTimeSliceType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMTimeSliceBaseType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -15,6 +18,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -27,7 +31,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.opengis.net/gml/3.2}AbstractGMLType">
  *       <sequence>
- *         <element ref="{http://www.opengis.net/gml/3.2}validTime"/>
+ *         <element ref="{http://www.opengis.net/gml/3.2}aixmValidTime"/>
  *         <element ref="{http://www.opengis.net/gml/3.2}dataSource" minOccurs="0"/>
  *       </sequence>
  *     </extension>
@@ -39,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AbstractTimeSliceType", propOrder = {
-    "validTime",
+    "aixmValidTime",
     "dataSource"
 })
 @XmlSeeAlso({
@@ -51,38 +55,39 @@ public abstract class AbstractTimeSliceType
     extends AbstractGMLType
 {
 
-    @XmlElement(required = true)
-    @Transient
-    protected TimePrimitivePropertyType validTime;
+    @XmlElement(required = true, type = TimePrimitivePropertyType.class)
+    @XmlJavaTypeAdapter(TimePrimitivePropertyTypeAdapter.class)
+    @Embedded
+    protected AixmTimeSliceType aixmValidTime;
     @Transient
     protected StringOrRefType dataSource;
 
     /**
-     * Gets the value of the validTime property.
+     * Gets the value of the aixmValidTime property.
      * 
      * @return
      *     possible object is
-     *     {@link TimePrimitivePropertyType }
+     *     {@link String }
      *     
      */
-    public TimePrimitivePropertyType getValidTime() {
-        return validTime;
+    public AixmTimeSliceType getAixmValidTime() {
+        return aixmValidTime;
     }
 
     /**
-     * Sets the value of the validTime property.
+     * Sets the value of the aixmValidTime property.
      * 
      * @param value
      *     allowed object is
-     *     {@link TimePrimitivePropertyType }
+     *     {@link String }
      *     
      */
-    public void setValidTime(TimePrimitivePropertyType value) {
-        this.validTime = value;
+    public void setAixmValidTime(AixmTimeSliceType value) {
+        this.aixmValidTime = value;
     }
 
-    public boolean isSetValidTime() {
-        return (this.validTime!= null);
+    public boolean isSetAixmValidTime() {
+        return (this.aixmValidTime!= null);
     }
 
     /**

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -74,55 +76,97 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radio_communication_channel_slice", schema = "public")
+@Table(name = "radio_communication_channel_time_slice_type", schema = "public")
 public class RadioCommunicationChannelTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "mode_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "mode_nilreason"))
+    })
     protected CodeCommunicationModeType mode;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "rank_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "rank_nilreason"))
+    })
     protected CodeFacilityRankingType rank;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "frequency_transmission_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "frequency_transmission_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "frequency_transmission_nilreason"))
+    })
     protected ValFrequencyType frequencyTransmission;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "frequency_reception_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "frequency_reception_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "frequency_reception_nilreason"))
+    })
     protected ValFrequencyType frequencyReception;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "channel_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "channel_nilreason"))
+    })
     protected CodeCommunicationChannelType channel;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "logon_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "logon_nilreason"))
+    })
     protected TextDesignatorType logon;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "emission_type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emission_type_nilreason"))
+    })
     protected CodeRadioEmissionType emissionType;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "selective_call_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "selective_call_nilreason"))
+    })
     protected CodeYesNoType selectiveCall;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "flight_checked_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flight_checked_nilreason"))
+    })
     protected CodeYesNoType flightChecked;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "traffic_direction_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "traffic_direction_nilreason"))
+    })
     protected CodeCommunicationDirectionType trafficDirection;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected List<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<RadioCommunicationOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RadioCommunicationChannelTimeSliceType.Extension> extension;
@@ -598,7 +642,6 @@ public class RadioCommunicationChannelTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_radio_communication_channel_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRadioCommunicationChannelExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

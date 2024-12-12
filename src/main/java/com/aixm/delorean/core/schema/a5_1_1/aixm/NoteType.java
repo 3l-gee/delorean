@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -64,22 +66,29 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "note", schema = "public")
+@Table(name = "note_type", schema = "public")
 public class NoteType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "property_name_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "property_name_nilreason"))
+    })
     protected TextPropertyNameType propertyName;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "purpose_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason"))
+    })
     protected CodeNotePurposeType purpose;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "translated_note_id", referencedColumnName = "id")
     protected List<LinguisticNotePropertyType> translatedNote;
     @Transient
     protected List<NoteType.Extension> extension;
@@ -251,7 +260,6 @@ public class NoteType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_note_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNoteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
