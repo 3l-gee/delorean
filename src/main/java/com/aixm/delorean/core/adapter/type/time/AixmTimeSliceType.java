@@ -10,7 +10,7 @@ public class AixmTimeSliceType {
     @Column(name = "begin_position", columnDefinition = "TIMESTAMP")
     protected Instant beginPosition;
     
-    @Column(name = "end_position", columnDefinition = "TIMESTAMPTZ")
+    @Column(name = "end_position", columnDefinition = "TIMESTAMP")
     protected Instant endPosition;
     
 
