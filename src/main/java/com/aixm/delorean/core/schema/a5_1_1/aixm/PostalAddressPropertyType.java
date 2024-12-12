@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -43,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "postalAddress"
 })
 @Entity
-@Table(name = "postal_address_property", schema = "public")
+@Table(name = "postal_address_property_type", schema = "public")
 public class PostalAddressPropertyType
     extends AbstractAIXMPropertyType
 {
@@ -52,7 +51,6 @@ public class PostalAddressPropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "postal_address_id", referencedColumnName = "id")
     protected PostalAddressType postalAddress;
 
     /**

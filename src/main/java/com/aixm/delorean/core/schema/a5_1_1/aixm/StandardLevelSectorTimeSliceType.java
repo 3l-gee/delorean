@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,34 +72,49 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standard_level_sector_slice", schema = "public")
+@Table(name = "standard_level_sector_time_slice_type", schema = "public")
 public class StandardLevelSectorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "flight_rule_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flight_rule_nilreason"))
+    })
     protected CodeFlightRuleType flightRule;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "from_track_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "from_track_nilreason"))
+    })
     protected ValBearingType fromTrack;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "to_track_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "to_track_nilreason"))
+    })
     protected ValBearingType toTrack;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "angle_type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "angle_type_nilreason"))
+    })
     protected CodeNorthReferenceType angleType;
     @XmlElement(nillable = true)
     @Transient
     protected List<AirspacePropertyType> applicableAirspace;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "applicableLevelColumn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected StandardLevelColumnPropertyType applicableLevelColumn;
+    protected JAXBElement<StandardLevelColumnPropertyType> applicableLevelColumn;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<StandardLevelSectorTimeSliceType.Extension> extension;
@@ -257,10 +276,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link StandardLevelColumnPropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardLevelColumnPropertyType }{@code >}
      *     
      */
-    public StandardLevelColumnPropertyType getApplicableLevelColumn() {
+    public JAXBElement<StandardLevelColumnPropertyType> getApplicableLevelColumn() {
         return applicableLevelColumn;
     }
 
@@ -269,10 +288,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link StandardLevelColumnPropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardLevelColumnPropertyType }{@code >}
      *     
      */
-    public void setApplicableLevelColumn(StandardLevelColumnPropertyType value) {
+    public void setApplicableLevelColumn(JAXBElement<StandardLevelColumnPropertyType> value) {
         this.applicableLevelColumn = value;
     }
 
@@ -391,7 +410,6 @@ public class StandardLevelSectorTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_standard_level_sector_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractStandardLevelSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

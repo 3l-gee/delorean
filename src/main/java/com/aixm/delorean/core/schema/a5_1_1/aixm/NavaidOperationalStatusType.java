@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -68,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaid_operational_status", schema = "public")
+@Table(name = "navaid_operational_status_type", schema = "public")
 public class NavaidOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {
@@ -77,22 +79,28 @@ public class NavaidOperationalStatusType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "operational_status_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operational_status_nilreason"))
+    })
     protected CodeStatusNavaidType operationalStatus;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "signal_type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "signal_type_nilreason"))
+    })
     protected CodeRadioSignalType signalType;
     @Transient
     protected List<NavaidOperationalStatusType.Extension> extension;
@@ -346,13 +354,11 @@ public class NavaidOperationalStatusType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractNavaidOperationalStatusExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_navaid_operational_status_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNavaidOperationalStatusExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

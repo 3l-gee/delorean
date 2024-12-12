@@ -14,7 +14,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -51,18 +50,17 @@ import jakarta.xml.bind.annotation.XmlType;
     "elevationTimeSlice"
 })
 @Entity
-@Table(name = "elevation_slice_property", schema = "public")
+@Table(name = "elevation_time_slice_property_type", schema = "public")
 public class ElevationTimeSlicePropertyType {
 
     @XmlElement(name = "ElevationTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "elevation_slice_id", referencedColumnName = "id")
     protected ElevationTimeSliceType elevationTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(name = "id", nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

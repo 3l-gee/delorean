@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,28 +73,38 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "obstacle_area_slice", schema = "public")
+@Table(name = "obstacle_area_time_slice_type", schema = "public")
 public class ObstacleAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeObstacleAreaType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "obstruction_id_surface_condition_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "obstruction_id_surface_condition_nilreason"))
+    })
     protected CodeObstacleAssessmentSurfaceType obstructionIdSurfaceCondition;
-    @XmlElement(name = "reference_ownerOrganisation", nillable = true)
+    @XmlElementRef(name = "reference_ownerOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected OrganisationAuthorityPropertyType referenceOwnerOrganisation;
-    @XmlElement(name = "reference_ownerRunway", nillable = true)
+    protected JAXBElement<OrganisationAuthorityPropertyType> referenceOwnerOrganisation;
+    @XmlElementRef(name = "reference_ownerRunway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected RunwayDirectionPropertyType referenceOwnerRunway;
-    @XmlElement(name = "reference_ownerAirport", nillable = true)
+    protected JAXBElement<RunwayDirectionPropertyType> referenceOwnerRunway;
+    @XmlElementRef(name = "reference_ownerAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirportHeliportPropertyType referenceOwnerAirport;
+    protected JAXBElement<AirportHeliportPropertyType> referenceOwnerAirport;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected SurfacePropertyType surfaceExtent;
     @XmlElement(nillable = true)
     @Transient
@@ -99,7 +113,6 @@ public class ObstacleAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ObstacleAreaTimeSliceType.Extension> extension;
@@ -165,10 +178,10 @@ public class ObstacleAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link OrganisationAuthorityPropertyType }
+     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
      *     
      */
-    public OrganisationAuthorityPropertyType getReferenceOwnerOrganisation() {
+    public JAXBElement<OrganisationAuthorityPropertyType> getReferenceOwnerOrganisation() {
         return referenceOwnerOrganisation;
     }
 
@@ -177,10 +190,10 @@ public class ObstacleAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link OrganisationAuthorityPropertyType }
+     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
      *     
      */
-    public void setReferenceOwnerOrganisation(OrganisationAuthorityPropertyType value) {
+    public void setReferenceOwnerOrganisation(JAXBElement<OrganisationAuthorityPropertyType> value) {
         this.referenceOwnerOrganisation = value;
     }
 
@@ -193,10 +206,10 @@ public class ObstacleAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public RunwayDirectionPropertyType getReferenceOwnerRunway() {
+    public JAXBElement<RunwayDirectionPropertyType> getReferenceOwnerRunway() {
         return referenceOwnerRunway;
     }
 
@@ -205,10 +218,10 @@ public class ObstacleAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public void setReferenceOwnerRunway(RunwayDirectionPropertyType value) {
+    public void setReferenceOwnerRunway(JAXBElement<RunwayDirectionPropertyType> value) {
         this.referenceOwnerRunway = value;
     }
 
@@ -221,10 +234,10 @@ public class ObstacleAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getReferenceOwnerAirport() {
+    public JAXBElement<AirportHeliportPropertyType> getReferenceOwnerAirport() {
         return referenceOwnerAirport;
     }
 
@@ -233,10 +246,10 @@ public class ObstacleAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setReferenceOwnerAirport(AirportHeliportPropertyType value) {
+    public void setReferenceOwnerAirport(JAXBElement<AirportHeliportPropertyType> value) {
         this.referenceOwnerAirport = value;
     }
 
@@ -423,7 +436,6 @@ public class ObstacleAreaTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_obstacle_area_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractObstacleAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

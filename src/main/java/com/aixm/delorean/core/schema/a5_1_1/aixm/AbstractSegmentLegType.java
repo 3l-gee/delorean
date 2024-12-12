@@ -39,7 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
     AbstractApproachLegType.class
 })
 @Entity
-@Table(name = "abstract_segment_leg", schema = "public")
+@Table(name = "abstract_segment_leg_type", schema = "public")
 public abstract class AbstractSegmentLegType
     extends AbstractAIXMFeatureType
 {

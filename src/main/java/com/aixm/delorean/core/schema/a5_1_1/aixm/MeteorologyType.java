@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -67,31 +69,52 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "meteorology", schema = "public")
+@Table(name = "meteorology_type", schema = "public")
 public class MeteorologyType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "flight_conditions_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flight_conditions_nilreason"))
+    })
     protected CodeMeteoConditionsType flightConditions;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "visibility_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "visibility_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "visibility_nilreason"))
+    })
     protected ValDistanceType visibility;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "visibility_interpretation_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "visibility_interpretation_nilreason"))
+    })
     protected CodeValueInterpretationType visibilityInterpretation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "runway_visual_range_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "runway_visual_range_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "runway_visual_range_nilreason"))
+    })
     protected ValDistanceType runwayVisualRange;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "runway_visual_range_interpretation_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "runway_visual_range_interpretation_nilreason"))
+    })
     protected CodeValueInterpretationType runwayVisualRangeInterpretation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<MeteorologyType.Extension> extension;
@@ -347,7 +370,6 @@ public class MeteorologyType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_meteorology_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMeteorologyExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

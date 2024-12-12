@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -51,6 +54,8 @@ public class CompositeSurfaceType
     @XmlElement(required = true)
     protected List<SurfacePropertyType> surfaceMember;
     @XmlAttribute(name = "aggregationType")
+    @Column(name = "aggregation_type")
+    @Enumerated(EnumType.STRING)
     protected AggregationType aggregationType;
 
     /**

@@ -12,15 +12,16 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,22 +64,21 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspace_border_crossing_slice", schema = "public")
+@Table(name = "airspace_border_crossing_time_slice_type", schema = "public")
 public class AirspaceBorderCrossingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "exitedAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirspacePropertyType exitedAirspace;
-    @XmlElement(nillable = true)
+    protected JAXBElement<AirspacePropertyType> exitedAirspace;
+    @XmlElementRef(name = "enteredAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirspacePropertyType enteredAirspace;
+    protected JAXBElement<AirspacePropertyType> enteredAirspace;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AirspaceBorderCrossingTimeSliceType.Extension> extension;
@@ -88,10 +88,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirspacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
      *     
      */
-    public AirspacePropertyType getExitedAirspace() {
+    public JAXBElement<AirspacePropertyType> getExitedAirspace() {
         return exitedAirspace;
     }
 
@@ -100,10 +100,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirspacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
      *     
      */
-    public void setExitedAirspace(AirspacePropertyType value) {
+    public void setExitedAirspace(JAXBElement<AirspacePropertyType> value) {
         this.exitedAirspace = value;
     }
 
@@ -116,10 +116,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirspacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
      *     
      */
-    public AirspacePropertyType getEnteredAirspace() {
+    public JAXBElement<AirspacePropertyType> getEnteredAirspace() {
         return enteredAirspace;
     }
 
@@ -128,10 +128,10 @@ public class AirspaceBorderCrossingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirspacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
      *     
      */
-    public void setEnteredAirspace(AirspacePropertyType value) {
+    public void setEnteredAirspace(JAXBElement<AirspacePropertyType> value) {
         this.enteredAirspace = value;
     }
 
@@ -250,7 +250,6 @@ public class AirspaceBorderCrossingTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_airspace_border_crossing_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceBorderCrossingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -66,28 +68,45 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approach_distance_table", schema = "public")
+@Table(name = "approach_distance_table_type", schema = "public")
 public class ApproachDistanceTableType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "starting_measurement_point_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "starting_measurement_point_nilreason"))
+    })
     protected CodeProcedureDistanceType startingMeasurementPoint;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "value_hat_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "value_hat_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "value_hat_nilreason"))
+    })
     protected ValDistanceVerticalType valueHAT;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "ending_measurement_point_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "ending_measurement_point_nilreason"))
+    })
     protected CodeProcedureDistanceType endingMeasurementPoint;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "distance_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "distance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason"))
+    })
     protected ValDistanceType distance;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ApproachDistanceTableType.Extension> extension;
@@ -315,7 +334,6 @@ public class ApproachDistanceTableType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_approach_distance_table_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractApproachDistanceTableExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

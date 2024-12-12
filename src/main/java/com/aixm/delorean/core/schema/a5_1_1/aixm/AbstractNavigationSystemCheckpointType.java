@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
     CheckpointVORType.class
 })
 @Entity
-@Table(name = "abstract_navigation_system_checkpoint", schema = "public")
+@Table(name = "abstract_navigation_system_checkpoint_type", schema = "public")
 public abstract class AbstractNavigationSystemCheckpointType
     extends AbstractAIXMFeatureType
 {

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -61,13 +63,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "linguistic_note", schema = "public")
+@Table(name = "linguistic_note_type", schema = "public")
 public class LinguisticNoteType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "note_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "note_nilreason")),
+        @AttributeOverride(name = "lang", column = @Column(name = "note_lang"))
+    })
     protected TextNoteType note;
     @Transient
     protected List<LinguisticNoteType.Extension> extension;
@@ -171,7 +178,6 @@ public class LinguisticNoteType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_linguistic_note_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractLinguisticNoteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,31 +71,44 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "marking_buoy_slice", schema = "public")
+@Table(name = "marking_buoy_time_slice_type", schema = "public")
 public class MarkingBuoyTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+    })
     protected CodeBuoyDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeBuoyType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "colour_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
+    })
     protected CodeColourType colour;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "theSeaplaneLandingArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected SeaplaneLandingAreaPropertyType theSeaplaneLandingArea;
+    protected JAXBElement<SeaplaneLandingAreaPropertyType> theSeaplaneLandingArea;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<MarkingBuoyTimeSliceType.Extension> extension;
@@ -185,10 +202,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link SeaplaneLandingAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SeaplaneLandingAreaPropertyType }{@code >}
      *     
      */
-    public SeaplaneLandingAreaPropertyType getTheSeaplaneLandingArea() {
+    public JAXBElement<SeaplaneLandingAreaPropertyType> getTheSeaplaneLandingArea() {
         return theSeaplaneLandingArea;
     }
 
@@ -197,10 +214,10 @@ public class MarkingBuoyTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link SeaplaneLandingAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link SeaplaneLandingAreaPropertyType }{@code >}
      *     
      */
-    public void setTheSeaplaneLandingArea(SeaplaneLandingAreaPropertyType value) {
+    public void setTheSeaplaneLandingArea(JAXBElement<SeaplaneLandingAreaPropertyType> value) {
         this.theSeaplaneLandingArea = value;
     }
 
@@ -347,7 +364,6 @@ public class MarkingBuoyTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_marking_buoy_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMarkingBuoyExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

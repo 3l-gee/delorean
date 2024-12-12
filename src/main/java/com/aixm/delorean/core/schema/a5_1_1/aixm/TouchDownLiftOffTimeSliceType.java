@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -75,64 +79,90 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "touch_down_lift_off_slice", schema = "public")
+@Table(name = "touch_down_lift_off_time_slice_type", schema = "public")
 public class TouchDownLiftOffTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+    })
     protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "length_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
+    })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "width_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason"))
+    })
     protected ValDistanceType width;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "slope_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "slope_nilreason"))
+    })
     protected ValSlopeType slope;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "helicopter_class_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "helicopter_class_nilreason"))
+    })
     protected CodeHelicopterPerformanceType helicopterClass;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "abandoned_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason"))
+    })
     protected CodeYesNoType abandoned;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedPointPropertyType aimingPoint;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "surface_properties_id", referencedColumnName = "id")
     protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirportHeliportPropertyType associatedAirportHeliport;
-    @XmlElement(nillable = true)
+    protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
+    @XmlElementRef(name = "approachTakeOffArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected RunwayPropertyType approachTakeOffArea;
+    protected JAXBElement<RunwayPropertyType> approachTakeOffArea;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "contaminant_id", referencedColumnName = "id")
     protected List<TouchDownLiftOffContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
     @Transient
     protected List<TouchDownLiftOffTimeSliceType.Extension> extension;
@@ -394,10 +424,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getAssociatedAirportHeliport() {
+    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirportHeliport() {
         return associatedAirportHeliport;
     }
 
@@ -406,10 +436,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setAssociatedAirportHeliport(AirportHeliportPropertyType value) {
+    public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.associatedAirportHeliport = value;
     }
 
@@ -422,10 +452,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayPropertyType }{@code >}
      *     
      */
-    public RunwayPropertyType getApproachTakeOffArea() {
+    public JAXBElement<RunwayPropertyType> getApproachTakeOffArea() {
         return approachTakeOffArea;
     }
 
@@ -434,10 +464,10 @@ public class TouchDownLiftOffTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayPropertyType }{@code >}
      *     
      */
-    public void setApproachTakeOffArea(RunwayPropertyType value) {
+    public void setApproachTakeOffArea(JAXBElement<RunwayPropertyType> value) {
         this.approachTakeOffArea = value;
     }
 
@@ -636,7 +666,6 @@ public class TouchDownLiftOffTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_touch_down_lift_off_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTouchDownLiftOffExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -12,7 +12,6 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -65,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navigation_area_sector", schema = "public")
+@Table(name = "navigation_area_sector_type", schema = "public")
 public class NavigationAreaSectorType
     extends AbstractAIXMObjectType
 {
@@ -74,28 +73,26 @@ public class NavigationAreaSectorType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "sector_definition_id", referencedColumnName = "id")
     protected CircleSectorPropertyType sectorDefinition;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "significant_obstacle_id", referencedColumnName = "id")
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected SurfacePropertyType extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "sector_criteria_id", referencedColumnName = "id")
     protected List<SectorDesignPropertyType> sectorCriteria;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<NavigationAreaSectorType.Extension> extension;
@@ -347,7 +344,6 @@ public class NavigationAreaSectorType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_navigation_area_sector_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNavigationAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

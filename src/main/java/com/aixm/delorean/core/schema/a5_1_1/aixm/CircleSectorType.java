@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -73,49 +75,96 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "circle_sector", schema = "public")
+@Table(name = "circle_sector_type", schema = "public")
 public class CircleSectorType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "arc_direction_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "arc_direction_nilreason"))
+    })
     protected CodeArcDirectionType arcDirection;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "from_angle_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "from_angle_nilreason"))
+    })
     protected ValBearingType fromAngle;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "to_angle_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "to_angle_nilreason"))
+    })
     protected ValBearingType toAngle;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "angle_type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "angle_type_nilreason"))
+    })
     protected CodeBearingType angleType;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "angle_direction_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "angle_direction_reference_nilreason"))
+    })
     protected CodeDirectionReferenceType angleDirectionReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "inner_distance_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "inner_distance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "inner_distance_nilreason"))
+    })
     protected ValDistanceType innerDistance;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "outer_distance_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "outer_distance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "outer_distance_nilreason"))
+    })
     protected ValDistanceType outerDistance;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_nilreason"))
+    })
     protected ValDistanceVerticalType upperLimit;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_nilreason"))
+    })
     protected ValDistanceVerticalType lowerLimit;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<CircleSectorType.Extension> extension;
@@ -539,7 +588,6 @@ public class CircleSectorType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_circle_sector_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractCircleSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

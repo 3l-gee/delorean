@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,32 +71,38 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "deicing_area_marking_slice", schema = "public")
+@Table(name = "deicing_area_marking_time_slice_type", schema = "public")
 public class DeicingAreaMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "marking_icao_standard_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "marking_icao_standard_nilreason"))
+    })
     protected CodeYesNoType markingICAOStandard;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "condition_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "condition_nilreason"))
+    })
     protected CodeMarkingConditionType condition;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "element_id", referencedColumnName = "id")
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "markedDeicingArea", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected DeicingAreaPropertyType markedDeicingArea;
+    protected JAXBElement<DeicingAreaPropertyType> markedDeicingArea;
     @Transient
     protected List<DeicingAreaMarkingTimeSliceType.Extension> extension;
 
@@ -237,10 +247,10 @@ public class DeicingAreaMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link DeicingAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DeicingAreaPropertyType }{@code >}
      *     
      */
-    public DeicingAreaPropertyType getMarkedDeicingArea() {
+    public JAXBElement<DeicingAreaPropertyType> getMarkedDeicingArea() {
         return markedDeicingArea;
     }
 
@@ -249,10 +259,10 @@ public class DeicingAreaMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link DeicingAreaPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DeicingAreaPropertyType }{@code >}
      *     
      */
-    public void setMarkedDeicingArea(DeicingAreaPropertyType value) {
+    public void setMarkedDeicingArea(JAXBElement<DeicingAreaPropertyType> value) {
         this.markedDeicingArea = value;
     }
 
@@ -333,13 +343,11 @@ public class DeicingAreaMarkingTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_deicing_area_marking_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractDeicingAreaMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_marking_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

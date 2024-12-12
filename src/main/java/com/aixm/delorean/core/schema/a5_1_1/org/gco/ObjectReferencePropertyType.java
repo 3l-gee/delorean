@@ -13,6 +13,7 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gmd.LocalisedCharacterStringProp
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
 import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -54,16 +55,22 @@ public class ObjectReferencePropertyType {
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
     public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
+    @Transient
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
+    @Transient
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
+    @Transient
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
+    @Transient
     protected String titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
+    @Transient
     protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
+    @Transient
     protected ActuateType actuate;
 
     /**

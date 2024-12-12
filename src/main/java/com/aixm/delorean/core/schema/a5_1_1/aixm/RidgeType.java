@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -65,25 +67,38 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "ridge", schema = "public")
+@Table(name = "ridge_type", schema = "public")
 public class RidgeType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "side_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "side_nilreason"))
+    })
     protected CodeSideType side;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "distance_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "distance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason"))
+    })
     protected ValDistanceType distance;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "depth_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "depth_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "depth_nilreason"))
+    })
     protected ValDepthType depth;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RidgeType.Extension> extension;
@@ -283,7 +298,6 @@ public class RidgeType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_ridge_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRidgeExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

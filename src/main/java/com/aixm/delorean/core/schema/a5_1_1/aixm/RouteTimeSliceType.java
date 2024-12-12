@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -74,52 +78,95 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "route_slice", schema = "public")
+@Table(name = "route_time_slice_type", schema = "public")
 public class RouteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "designator_prefix_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_prefix_nilreason"))
+    })
     protected CodeRouteDesignatorPrefixType designatorPrefix;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "designator_second_letter_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_second_letter_nilreason"))
+    })
     protected CodeRouteDesignatorLetterType designatorSecondLetter;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "designator_number_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_number_nilreason"))
+    })
     protected NoNumberType designatorNumber;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "multiple_identifier_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "multiple_identifier_nilreason"))
+    })
     protected CodeUpperAlphaType multipleIdentifier;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "location_designator_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "location_designator_nilreason"))
+    })
     protected TextDesignatorType locationDesignator;
     @XmlElement(name = "name", nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+    })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeRouteType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "flight_rule_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flight_rule_nilreason"))
+    })
     protected CodeFlightRuleType flightRule;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "international_use_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "international_use_nilreason"))
+    })
     protected CodeRouteOriginType internationalUse;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "military_use_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "military_use_nilreason"))
+    })
     protected CodeMilitaryStatusType militaryUse;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "military_training_type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "military_training_type_nilreason"))
+    })
     protected CodeMilitaryTrainingType militaryTrainingType;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "userOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected OrganisationAuthorityPropertyType userOrganisation;
+    protected JAXBElement<OrganisationAuthorityPropertyType> userOrganisation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RouteTimeSliceType.Extension> extension;
@@ -437,10 +484,10 @@ public class RouteTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link OrganisationAuthorityPropertyType }
+     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
      *     
      */
-    public OrganisationAuthorityPropertyType getUserOrganisation() {
+    public JAXBElement<OrganisationAuthorityPropertyType> getUserOrganisation() {
         return userOrganisation;
     }
 
@@ -449,10 +496,10 @@ public class RouteTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link OrganisationAuthorityPropertyType }
+     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
      *     
      */
-    public void setUserOrganisation(OrganisationAuthorityPropertyType value) {
+    public void setUserOrganisation(JAXBElement<OrganisationAuthorityPropertyType> value) {
         this.userOrganisation = value;
     }
 
@@ -571,7 +618,6 @@ public class RouteTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_route_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRouteExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

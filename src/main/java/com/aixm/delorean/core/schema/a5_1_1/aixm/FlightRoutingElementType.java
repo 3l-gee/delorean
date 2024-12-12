@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -80,79 +84,94 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flight_routing_element", schema = "public")
+@Table(name = "flight_routing_element_type", schema = "public")
 public class FlightRoutingElementType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "order_number_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "order_number_nilreason"))
+    })
     protected NoSequenceType orderNumber;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "speed_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "speed_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speed_nilreason"))
+    })
     protected ValSpeedType speed;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "speed_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speed_reference_nilreason"))
+    })
     protected CodeSpeedReferenceType speedReference;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "speed_criteria_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speed_criteria_nilreason"))
+    })
     protected CodeComparisonType speedCriteria;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "flight_level_id", referencedColumnName = "id")
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
     @XmlElement(name = "element_directFlightElement", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "element_direct_flight_element_id", referencedColumnName = "id")
     protected DirectFlightSegmentPropertyType elementDirectFlightElement;
     @XmlElement(name = "element_routePortionElement", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "element_route_portion_element_id", referencedColumnName = "id")
     protected RoutePortionPropertyType elementRoutePortionElement;
-    @XmlElement(name = "element_standardInstrumentDepartureElement", nillable = true)
+    @XmlElementRef(name = "element_standardInstrumentDepartureElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected StandardInstrumentDeparturePropertyType elementStandardInstrumentDepartureElement;
-    @XmlElement(name = "element_standardInstrumentArrivalElement", nillable = true)
+    protected JAXBElement<StandardInstrumentDeparturePropertyType> elementStandardInstrumentDepartureElement;
+    @XmlElementRef(name = "element_standardInstrumentArrivalElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected StandardInstrumentArrivalPropertyType elementStandardInstrumentArrivalElement;
-    @XmlElement(name = "pointElement_fixDesignatedPoint", nillable = true)
+    protected JAXBElement<StandardInstrumentArrivalPropertyType> elementStandardInstrumentArrivalElement;
+    @XmlElementRef(name = "pointElement_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected DesignatedPointPropertyType pointElementFixDesignatedPoint;
-    @XmlElement(name = "pointElement_navaidSystem", nillable = true)
+    protected JAXBElement<DesignatedPointPropertyType> pointElementFixDesignatedPoint;
+    @XmlElementRef(name = "pointElement_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected NavaidPropertyType pointElementNavaidSystem;
+    protected JAXBElement<NavaidPropertyType> pointElementNavaidSystem;
     @XmlElement(name = "pointElement_position", nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected PointPropertyType pointElementPosition;
-    @XmlElement(name = "pointElement_runwayPoint", nillable = true)
+    @XmlElementRef(name = "pointElement_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected RunwayCentrelinePointPropertyType pointElementRunwayPoint;
-    @XmlElement(name = "pointElement_aimingPoint", nillable = true)
+    protected JAXBElement<RunwayCentrelinePointPropertyType> pointElementRunwayPoint;
+    @XmlElementRef(name = "pointElement_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected TouchDownLiftOffPropertyType pointElementAimingPoint;
-    @XmlElement(name = "pointElement_airportReferencePoint", nillable = true)
+    protected JAXBElement<TouchDownLiftOffPropertyType> pointElementAimingPoint;
+    @XmlElementRef(name = "pointElement_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirportHeliportPropertyType pointElementAirportReferencePoint;
-    @XmlElement(name = "element_airspaceElement", nillable = true)
+    protected JAXBElement<AirportHeliportPropertyType> pointElementAirportReferencePoint;
+    @XmlElementRef(name = "element_airspaceElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirspacePropertyType elementAirspaceElement;
-    @XmlElement(name = "element_airportHeliportElement", nillable = true)
+    protected JAXBElement<AirspacePropertyType> elementAirspaceElement;
+    @XmlElementRef(name = "element_airportHeliportElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirportHeliportPropertyType elementAirportHeliportElement;
-    @XmlElement(name = "element_aerialRefuellingElement", nillable = true)
+    protected JAXBElement<AirportHeliportPropertyType> elementAirportHeliportElement;
+    @XmlElementRef(name = "element_aerialRefuellingElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AerialRefuellingPropertyType elementAerialRefuellingElement;
+    protected JAXBElement<AerialRefuellingPropertyType> elementAerialRefuellingElement;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<FlightRoutingElementType.Extension> extension;
@@ -370,10 +389,10 @@ public class FlightRoutingElementType
      * 
      * @return
      *     possible object is
-     *     {@link StandardInstrumentDeparturePropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardInstrumentDeparturePropertyType }{@code >}
      *     
      */
-    public StandardInstrumentDeparturePropertyType getElementStandardInstrumentDepartureElement() {
+    public JAXBElement<StandardInstrumentDeparturePropertyType> getElementStandardInstrumentDepartureElement() {
         return elementStandardInstrumentDepartureElement;
     }
 
@@ -382,10 +401,10 @@ public class FlightRoutingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link StandardInstrumentDeparturePropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardInstrumentDeparturePropertyType }{@code >}
      *     
      */
-    public void setElementStandardInstrumentDepartureElement(StandardInstrumentDeparturePropertyType value) {
+    public void setElementStandardInstrumentDepartureElement(JAXBElement<StandardInstrumentDeparturePropertyType> value) {
         this.elementStandardInstrumentDepartureElement = value;
     }
 
@@ -398,10 +417,10 @@ public class FlightRoutingElementType
      * 
      * @return
      *     possible object is
-     *     {@link StandardInstrumentArrivalPropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardInstrumentArrivalPropertyType }{@code >}
      *     
      */
-    public StandardInstrumentArrivalPropertyType getElementStandardInstrumentArrivalElement() {
+    public JAXBElement<StandardInstrumentArrivalPropertyType> getElementStandardInstrumentArrivalElement() {
         return elementStandardInstrumentArrivalElement;
     }
 
@@ -410,10 +429,10 @@ public class FlightRoutingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link StandardInstrumentArrivalPropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardInstrumentArrivalPropertyType }{@code >}
      *     
      */
-    public void setElementStandardInstrumentArrivalElement(StandardInstrumentArrivalPropertyType value) {
+    public void setElementStandardInstrumentArrivalElement(JAXBElement<StandardInstrumentArrivalPropertyType> value) {
         this.elementStandardInstrumentArrivalElement = value;
     }
 
@@ -426,10 +445,10 @@ public class FlightRoutingElementType
      * 
      * @return
      *     possible object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public DesignatedPointPropertyType getPointElementFixDesignatedPoint() {
+    public JAXBElement<DesignatedPointPropertyType> getPointElementFixDesignatedPoint() {
         return pointElementFixDesignatedPoint;
     }
 
@@ -438,10 +457,10 @@ public class FlightRoutingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link DesignatedPointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
      *     
      */
-    public void setPointElementFixDesignatedPoint(DesignatedPointPropertyType value) {
+    public void setPointElementFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
         this.pointElementFixDesignatedPoint = value;
     }
 
@@ -454,10 +473,10 @@ public class FlightRoutingElementType
      * 
      * @return
      *     possible object is
-     *     {@link NavaidPropertyType }
+     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
      *     
      */
-    public NavaidPropertyType getPointElementNavaidSystem() {
+    public JAXBElement<NavaidPropertyType> getPointElementNavaidSystem() {
         return pointElementNavaidSystem;
     }
 
@@ -466,10 +485,10 @@ public class FlightRoutingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link NavaidPropertyType }
+     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
      *     
      */
-    public void setPointElementNavaidSystem(NavaidPropertyType value) {
+    public void setPointElementNavaidSystem(JAXBElement<NavaidPropertyType> value) {
         this.pointElementNavaidSystem = value;
     }
 
@@ -510,10 +529,10 @@ public class FlightRoutingElementType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayCentrelinePointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
      *     
      */
-    public RunwayCentrelinePointPropertyType getPointElementRunwayPoint() {
+    public JAXBElement<RunwayCentrelinePointPropertyType> getPointElementRunwayPoint() {
         return pointElementRunwayPoint;
     }
 
@@ -522,10 +541,10 @@ public class FlightRoutingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayCentrelinePointPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
      *     
      */
-    public void setPointElementRunwayPoint(RunwayCentrelinePointPropertyType value) {
+    public void setPointElementRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
         this.pointElementRunwayPoint = value;
     }
 
@@ -538,10 +557,10 @@ public class FlightRoutingElementType
      * 
      * @return
      *     possible object is
-     *     {@link TouchDownLiftOffPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
      *     
      */
-    public TouchDownLiftOffPropertyType getPointElementAimingPoint() {
+    public JAXBElement<TouchDownLiftOffPropertyType> getPointElementAimingPoint() {
         return pointElementAimingPoint;
     }
 
@@ -550,10 +569,10 @@ public class FlightRoutingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link TouchDownLiftOffPropertyType }
+     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
      *     
      */
-    public void setPointElementAimingPoint(TouchDownLiftOffPropertyType value) {
+    public void setPointElementAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
         this.pointElementAimingPoint = value;
     }
 
@@ -566,10 +585,10 @@ public class FlightRoutingElementType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getPointElementAirportReferencePoint() {
+    public JAXBElement<AirportHeliportPropertyType> getPointElementAirportReferencePoint() {
         return pointElementAirportReferencePoint;
     }
 
@@ -578,10 +597,10 @@ public class FlightRoutingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setPointElementAirportReferencePoint(AirportHeliportPropertyType value) {
+    public void setPointElementAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
         this.pointElementAirportReferencePoint = value;
     }
 
@@ -594,10 +613,10 @@ public class FlightRoutingElementType
      * 
      * @return
      *     possible object is
-     *     {@link AirspacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
      *     
      */
-    public AirspacePropertyType getElementAirspaceElement() {
+    public JAXBElement<AirspacePropertyType> getElementAirspaceElement() {
         return elementAirspaceElement;
     }
 
@@ -606,10 +625,10 @@ public class FlightRoutingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirspacePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
      *     
      */
-    public void setElementAirspaceElement(AirspacePropertyType value) {
+    public void setElementAirspaceElement(JAXBElement<AirspacePropertyType> value) {
         this.elementAirspaceElement = value;
     }
 
@@ -622,10 +641,10 @@ public class FlightRoutingElementType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getElementAirportHeliportElement() {
+    public JAXBElement<AirportHeliportPropertyType> getElementAirportHeliportElement() {
         return elementAirportHeliportElement;
     }
 
@@ -634,10 +653,10 @@ public class FlightRoutingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setElementAirportHeliportElement(AirportHeliportPropertyType value) {
+    public void setElementAirportHeliportElement(JAXBElement<AirportHeliportPropertyType> value) {
         this.elementAirportHeliportElement = value;
     }
 
@@ -650,10 +669,10 @@ public class FlightRoutingElementType
      * 
      * @return
      *     possible object is
-     *     {@link AerialRefuellingPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
      *     
      */
-    public AerialRefuellingPropertyType getElementAerialRefuellingElement() {
+    public JAXBElement<AerialRefuellingPropertyType> getElementAerialRefuellingElement() {
         return elementAerialRefuellingElement;
     }
 
@@ -662,10 +681,10 @@ public class FlightRoutingElementType
      * 
      * @param value
      *     allowed object is
-     *     {@link AerialRefuellingPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AerialRefuellingPropertyType }{@code >}
      *     
      */
-    public void setElementAerialRefuellingElement(AerialRefuellingPropertyType value) {
+    public void setElementAerialRefuellingElement(JAXBElement<AerialRefuellingPropertyType> value) {
         this.elementAerialRefuellingElement = value;
     }
 
@@ -784,7 +803,6 @@ public class FlightRoutingElementType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_flight_routing_element_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractFlightRoutingElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

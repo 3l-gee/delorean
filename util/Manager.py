@@ -342,7 +342,7 @@ config = {
 }
 
 feature = {
-    "name" : "AIXM_Features",
+    "name" : "../aixm/AIXM_Features",
     "path" : "src/main/resources/a5_1_1/AIXM_Features.xsd",
     "strategy" : Machinery.strategy.feature,
     "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm",
@@ -350,21 +350,21 @@ feature = {
 }
 
 data_types = {
-    "name" : "AIXM_DataTypes",
+    "name" : "../aixm/AIXM_DataTypes",
     "path" : "src/main/resources/a5_1_1/AIXM_DataTypes.xsd",
     "strategy" : Machinery.strategy.data_type,
     "manual" : "util/manual/AIXM_DataTypes.xjb"
 }
 
 abstract = {
-    "name" : "AIXM_AbstractGML_ObjectTypes",
+    "name" : "../aixm/AIXM_AbstractGML_ObjectTypes",
     "path" : "src/main/resources/a5_1_1/AIXM_AbstractGML_ObjectTypes.xsd",
     "strategy" : Machinery.strategy.abstract,
     "manual" : "util/manual/AIXM_AbstractGML_ObjectTypes.xjb"
 }
 
 message = {
-    "name" : "AIXM_BasicMessage",
+    "name" : "../aixm/message/AIXM_BasicMessage",
     "path" : "src/main/resources/a5_1_1/AIXM_BasicMessage.xsd",
     "strategy" : Machinery.strategy.other,
     "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm.message",
@@ -372,4 +372,3 @@ message = {
 }
 
 machinery = Machinery.runner(config, [data_types, feature, abstract, message])
-# machinery = Machinery.runner(config, [data_types])

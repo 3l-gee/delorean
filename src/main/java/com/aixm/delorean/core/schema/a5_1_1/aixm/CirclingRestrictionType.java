@@ -12,7 +12,6 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -67,7 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "circling_restriction", schema = "public")
+@Table(name = "circling_restriction_type", schema = "public")
 public class CirclingRestrictionType
     extends AbstractPropertiesWithScheduleType
 {
@@ -76,13 +75,11 @@ public class CirclingRestrictionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
@@ -91,10 +88,11 @@ public class CirclingRestrictionType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "sector_description_id", referencedColumnName = "id")
     protected CircleSectorPropertyType sectorDescription;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected SurfacePropertyType restrictionArea;
     @Transient
     protected List<CirclingRestrictionType.Extension> extension;
@@ -348,13 +346,11 @@ public class CirclingRestrictionType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractCirclingRestrictionExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_circling_restriction_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractCirclingRestrictionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

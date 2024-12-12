@@ -14,7 +14,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -51,18 +50,17 @@ import jakarta.xml.bind.annotation.XmlType;
     "airTrafficManagementServiceTimeSlice"
 })
 @Entity
-@Table(name = "air_traffic_management_service_slice_property", schema = "public")
+@Table(name = "air_traffic_management_service_time_slice_property_type", schema = "public")
 public class AirTrafficManagementServiceTimeSlicePropertyType {
 
     @XmlElement(name = "AirTrafficManagementServiceTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "air_traffic_management_service_slice_id", referencedColumnName = "id")
     protected AirTrafficManagementServiceTimeSliceType airTrafficManagementServiceTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(name = "id", nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

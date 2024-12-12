@@ -46,7 +46,7 @@ public class DateTimeType {
     @Transient
     protected XMLGregorianCalendar value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "type_nil_reason", nullable = true, unique = false)
+    @Column(name = "time_nil_reason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -67,31 +69,44 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "marking_element", schema = "public")
+@Table(name = "marking_element_type", schema = "public")
 public class MarkingElementType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "colour_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
+    })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "style_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "style_nilreason"))
+    })
     protected CodeMarkingStyleType style;
     @XmlElement(name = "extent_curveExtent", nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedCurvePropertyType extentCurveExtent;
     @XmlElement(name = "extent_surfaceExtent", nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedSurfacePropertyType extentSurfaceExtent;
     @XmlElement(name = "extent_location", nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedPointPropertyType extentLocation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<MarkingElementType.Extension> extension;
@@ -347,7 +362,6 @@ public class MarkingElementType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_marking_element_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMarkingElementExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

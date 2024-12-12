@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -68,40 +70,51 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "terminal_arrival_area_sector", schema = "public")
+@Table(name = "terminal_arrival_area_sector_type", schema = "public")
 public class TerminalArrivalAreaSectorType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "fly_by_code_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "fly_by_code_nilreason"))
+    })
     protected CodeYesNoType flyByCode;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "procedure_turn_required_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "procedure_turn_required_nilreason"))
+    })
     protected CodeYesNoType procedureTurnRequired;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_description_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_description_nilreason"))
+    })
     protected CodeAltitudeUseType altitudeDescription;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "sector_definition_id", referencedColumnName = "id")
     protected CircleSectorPropertyType sectorDefinition;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected SurfacePropertyType extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "significant_obstacle_id", referencedColumnName = "id")
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<TerminalArrivalAreaSectorType.Extension> extension;
@@ -397,7 +410,6 @@ public class TerminalArrivalAreaSectorType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_terminal_arrival_area_sector_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTerminalArrivalAreaSectorExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -45,7 +45,7 @@ import jakarta.xml.bind.annotation.XmlType;
     TouchDownLiftOffContaminationType.class
 })
 @Entity
-@Table(name = "abstract_surface_contamination", schema = "public")
+@Table(name = "abstract_surface_contamination_type", schema = "public")
 public class AbstractSurfaceContaminationType
     extends AbstractAIXMObjectType
 {

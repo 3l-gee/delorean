@@ -12,15 +12,16 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -63,22 +64,23 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "non_movement_area_slice", schema = "public")
+@Table(name = "non_movement_area_time_slice_type", schema = "public")
 public class NonMovementAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirportHeliportPropertyType associatedAirportHeliport;
+    protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<NonMovementAreaTimeSliceType.Extension> extension;
@@ -88,10 +90,10 @@ public class NonMovementAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getAssociatedAirportHeliport() {
+    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirportHeliport() {
         return associatedAirportHeliport;
     }
 
@@ -100,10 +102,10 @@ public class NonMovementAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setAssociatedAirportHeliport(AirportHeliportPropertyType value) {
+    public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.associatedAirportHeliport = value;
     }
 
@@ -250,7 +252,6 @@ public class NonMovementAreaTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_non_movement_area_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNonMovementAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -68,34 +70,40 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "apron_area_usage", schema = "public")
+@Table(name = "apron_area_usage_type", schema = "public")
 public class ApronAreaUsageType
     extends AbstractUsageConditionType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeUsageLimitationType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "prior_permission_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "prior_permission_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "prior_permission_nilreason"))
+    })
     protected ValDurationType priorPermission;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "contact_id", referencedColumnName = "id")
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "selection_id", referencedColumnName = "id")
     protected ConditionCombinationPropertyType selection;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ApronAreaUsageType.Extension> extension;
@@ -337,13 +345,11 @@ public class ApronAreaUsageType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_usage_condition_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractUsageConditionExtension;
         @XmlElement(name = "AbstractApronAreaUsageExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_apron_area_usage_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractApronAreaUsageExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

@@ -39,7 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
     StandardInstrumentDepartureType.class
 })
 @Entity
-@Table(name = "abstract_procedure", schema = "public")
+@Table(name = "abstract_procedure_type", schema = "public")
 public abstract class AbstractProcedureType
     extends AbstractAIXMFeatureType
 {

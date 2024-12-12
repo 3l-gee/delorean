@@ -122,6 +122,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-55</artifactId>
+            <version>2.21.1</version>
+        </dependency>
+
         <!-- <dependency>
             <groupId>org.geotools</groupId>
             <artifactId>gt-main</artifactId>
@@ -296,7 +302,7 @@
                 </executions>
             </plugin> -->
 
-            <plugin>
+            <!-- <plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
@@ -314,11 +320,11 @@
                         </plugin>
                     </plugins>
                     <verbose>true</verbose>
-                    <schemaDirectory>${project.basedir}/src/main/resources/a5_1_1/</schemaDirectory>
+                    <schemaDirectory>${project.basedir}/schema/aixm5_1_1/aixm/message</schemaDirectory>
                     <schemaIncludes>
                         <include>AIXM_BasicMessage.xsd</include>
                     </schemaIncludes>
-                    <bindingDirectory>${project.basedir}/src/main/resources/a5_1_1</bindingDirectory>
+                    <bindingDirectory>${project.basedir}/schema/aixm5_1_1/binding</bindingDirectory>
                     <bindingIncludes>
                         <include>*.xjb</include>
                     </bindingIncludes>
@@ -359,7 +365,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 
 			<!-- Added maven-shade-plugin to create a fat jar including dependencies -->
             <plugin>

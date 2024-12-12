@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -43,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "approachDistanceTable"
 })
 @Entity
-@Table(name = "approach_distance_table_property", schema = "public")
+@Table(name = "approach_distance_table_property_type", schema = "public")
 public class ApproachDistanceTablePropertyType
     extends AbstractAIXMPropertyType
 {
@@ -52,7 +51,6 @@ public class ApproachDistanceTablePropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "approach_distance_table_id", referencedColumnName = "id")
     protected ApproachDistanceTableType approachDistanceTable;
 
     /**

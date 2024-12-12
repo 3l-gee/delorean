@@ -14,7 +14,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -51,18 +50,17 @@ import jakarta.xml.bind.annotation.XmlType;
     "routeTimeSlice"
 })
 @Entity
-@Table(name = "route_slice_property", schema = "public")
+@Table(name = "route_time_slice_property_type", schema = "public")
 public class RouteTimeSlicePropertyType {
 
     @XmlElement(name = "RouteTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "route_slice_id", referencedColumnName = "id")
     protected RouteTimeSliceType routeTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(name = "id", nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

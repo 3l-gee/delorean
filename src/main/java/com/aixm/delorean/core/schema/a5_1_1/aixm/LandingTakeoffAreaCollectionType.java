@@ -12,7 +12,6 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -63,7 +62,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "landing_takeoff_area_collection", schema = "public")
+@Table(name = "landing_takeoff_area_collection_type", schema = "public")
 public class LandingTakeoffAreaCollectionType
     extends AbstractAIXMObjectType
 {
@@ -78,7 +77,6 @@ public class LandingTakeoffAreaCollectionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<LandingTakeoffAreaCollectionType.Extension> extension;
@@ -274,7 +272,6 @@ public class LandingTakeoffAreaCollectionType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_landing_takeoff_area_collection_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractLandingTakeoffAreaCollectionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

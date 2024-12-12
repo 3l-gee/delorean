@@ -33,7 +33,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AbstractExtensionType")
 @Entity
-@Table(name = "abstract_extension", schema = "public")
+@Table(name = "abstract_extension_type", schema = "public")
 public abstract class AbstractExtensionType
     extends AbstractAIXMObjectType
 {

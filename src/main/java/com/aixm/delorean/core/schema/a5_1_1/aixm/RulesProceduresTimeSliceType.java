@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,20 +71,28 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "rules_procedures_slice", schema = "public")
+@Table(name = "rules_procedures_time_slice_type", schema = "public")
 public class RulesProceduresTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "category_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "category_nilreason"))
+    })
     protected CodeRuleProcedureType category;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "title_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "title_nilreason"))
+    })
     protected CodeRuleProcedureTitleType title;
-    @XmlElement(nillable = true)
-    @Embedded
-    protected XHTMLType content;
+    @XmlElementRef(name = "content", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
+    @Transient
+    protected JAXBElement<XHTMLType> content;
     @XmlElement(nillable = true)
     @Transient
     protected List<AirportHeliportPropertyType> affectedLocation;
@@ -91,7 +103,6 @@ public class RulesProceduresTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RulesProceduresTimeSliceType.Extension> extension;
@@ -157,10 +168,10 @@ public class RulesProceduresTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link XHTMLType }
+     *     {@link JAXBElement }{@code <}{@link XHTMLType }{@code >}
      *     
      */
-    public XHTMLType getContent() {
+    public JAXBElement<XHTMLType> getContent() {
         return content;
     }
 
@@ -169,10 +180,10 @@ public class RulesProceduresTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link XHTMLType }
+     *     {@link JAXBElement }{@code <}{@link XHTMLType }{@code >}
      *     
      */
-    public void setContent(XHTMLType value) {
+    public void setContent(JAXBElement<XHTMLType> value) {
         this.content = value;
     }
 
@@ -371,7 +382,6 @@ public class RulesProceduresTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_rules_procedures_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRulesProceduresExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

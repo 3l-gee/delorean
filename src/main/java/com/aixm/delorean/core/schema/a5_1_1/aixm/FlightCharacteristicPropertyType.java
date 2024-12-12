@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -43,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "flightCharacteristic"
 })
 @Entity
-@Table(name = "flight_characteristic_property", schema = "public")
+@Table(name = "flight_characteristic_property_type", schema = "public")
 public class FlightCharacteristicPropertyType
     extends AbstractAIXMPropertyType
 {
@@ -52,7 +51,6 @@ public class FlightCharacteristicPropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "flight_characteristic_id", referencedColumnName = "id")
     protected FlightCharacteristicType flightCharacteristic;
 
     /**

@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,58 +75,64 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approach_condition", schema = "public")
+@Table(name = "approach_condition_type", schema = "public")
 public class ApproachConditionType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "final_approach_path_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "final_approach_path_nilreason"))
+    })
     protected CodeMinimaFinalApproachPathType finalApproachPath;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "required_navigation_performance_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "required_navigation_performance_nilreason"))
+    })
     protected CodeRNPType requiredNavigationPerformance;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "climb_gradient_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "climb_gradient_nilreason"))
+    })
     protected ValSlopeType climbGradient;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "minimum_set_id", referencedColumnName = "id")
     protected MinimaPropertyType minimumSet;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "circling_restriction_id", referencedColumnName = "id")
     protected List<CirclingRestrictionPropertyType> circlingRestriction;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "aircraft_category_id", referencedColumnName = "id")
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "landing_area_id", referencedColumnName = "id")
     protected List<LandingTakeoffAreaCollectionPropertyType> landingArea;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "altimeter", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AltimeterSourcePropertyType altimeter;
+    protected JAXBElement<AltimeterSourcePropertyType> altimeter;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "design_surface_id", referencedColumnName = "id")
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ApproachConditionType.Extension> extension;
@@ -364,10 +374,10 @@ public class ApproachConditionType
      * 
      * @return
      *     possible object is
-     *     {@link AltimeterSourcePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AltimeterSourcePropertyType }{@code >}
      *     
      */
-    public AltimeterSourcePropertyType getAltimeter() {
+    public JAXBElement<AltimeterSourcePropertyType> getAltimeter() {
         return altimeter;
     }
 
@@ -376,10 +386,10 @@ public class ApproachConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link AltimeterSourcePropertyType }
+     *     {@link JAXBElement }{@code <}{@link AltimeterSourcePropertyType }{@code >}
      *     
      */
-    public void setAltimeter(AltimeterSourcePropertyType value) {
+    public void setAltimeter(JAXBElement<AltimeterSourcePropertyType> value) {
         this.altimeter = value;
     }
 
@@ -538,7 +548,6 @@ public class ApproachConditionType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_approach_condition_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractApproachConditionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

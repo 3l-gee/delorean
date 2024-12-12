@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -65,28 +67,34 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "equipment_unavailable_adjustment", schema = "public")
+@Table(name = "equipment_unavailable_adjustment_type", schema = "public")
 public class EquipmentUnavailableAdjustmentType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeEquipmentUnavailableType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "approach_lighting_inoperative_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approach_lighting_inoperative_nilreason"))
+    })
     protected CodeYesNoType approachLightingInoperative;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "adjustment_inop_col_id", referencedColumnName = "id")
     protected List<EquipmentUnavailableAdjustmentColumnPropertyType> adjustmentINOPCol;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<EquipmentUnavailableAdjustmentType.Extension> extension;
@@ -298,7 +306,6 @@ public class EquipmentUnavailableAdjustmentType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_equipment_unavailable_adjustment_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractEquipmentUnavailableAdjustmentExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

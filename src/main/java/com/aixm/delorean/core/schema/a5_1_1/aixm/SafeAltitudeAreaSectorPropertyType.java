@@ -10,7 +10,6 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -43,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "safeAltitudeAreaSector"
 })
 @Entity
-@Table(name = "safe_altitude_area_sector_property", schema = "public")
+@Table(name = "safe_altitude_area_sector_property_type", schema = "public")
 public class SafeAltitudeAreaSectorPropertyType
     extends AbstractAIXMPropertyType
 {
@@ -52,7 +51,6 @@ public class SafeAltitudeAreaSectorPropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "safe_altitude_area_sector_id", referencedColumnName = "id")
     protected SafeAltitudeAreaSectorType safeAltitudeAreaSector;
 
     /**

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -65,22 +67,31 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaid_equipment_distance", schema = "public")
+@Table(name = "navaid_equipment_distance_type", schema = "public")
 public class NavaidEquipmentDistanceType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "distance_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "distance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason"))
+    })
     protected ValDistanceType distance;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "distance_accuracy_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "distance_accuracy_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_accuracy_nilreason"))
+    })
     protected ValDistanceType distanceAccuracy;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected NavaidEquipmentPropertyType theNavaidEquipment;
@@ -282,7 +293,6 @@ public class NavaidEquipmentDistanceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_navaid_equipment_distance_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNavaidEquipmentDistanceExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

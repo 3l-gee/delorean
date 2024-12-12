@@ -12,7 +12,6 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -65,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "seaplane_landing_area_slice", schema = "public")
+@Table(name = "seaplane_landing_area_time_slice_type", schema = "public")
 public class SeaplaneLandingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -77,19 +76,19 @@ public class SeaplaneLandingAreaTimeSliceType
     @Transient
     protected List<FloatingDockSitePropertyType> dockSite;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
     @Transient
     protected List<SeaplaneLandingAreaTimeSliceType.Extension> extension;
@@ -353,7 +352,6 @@ public class SeaplaneLandingAreaTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_seaplane_landing_area_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSeaplaneLandingAreaExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

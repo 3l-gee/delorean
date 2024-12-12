@@ -41,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     PassengerServiceType.class
 })
 @Entity
-@Table(name = "abstract_airport_ground_service", schema = "public")
+@Table(name = "abstract_airport_ground_service_type", schema = "public")
 public abstract class AbstractAirportGroundServiceType
     extends AbstractServiceType
 {

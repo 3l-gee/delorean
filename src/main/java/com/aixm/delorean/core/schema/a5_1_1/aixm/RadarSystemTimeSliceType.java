@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,46 +75,62 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radar_system_slice", schema = "public")
+@Table(name = "radar_system_time_slice_type", schema = "public")
 public class RadarSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeRadarServiceType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "model_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "model_nilreason"))
+    })
     protected TextNameType model;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "general_terrain_monitor_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "general_terrain_monitor_nilreason"))
+    })
     protected CodeYesNoType generalTerrainMonitor;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "broadcast_identifier_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "broadcast_identifier_nilreason"))
+    })
     protected TextDesignatorType broadcastIdentifier;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "radar_equipment_id", referencedColumnName = "id")
     protected List<RadarComponentPropertyType> radarEquipment;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> office;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected AirportHeliportPropertyType airportHeliport;
+    protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(name = "PARRunway", nillable = true)
     @Transient
     protected List<RunwayPropertyType> parRunway;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RadarSystemTimeSliceType.Extension> extension;
@@ -312,10 +332,10 @@ public class RadarSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public AirportHeliportPropertyType getAirportHeliport() {
+    public JAXBElement<AirportHeliportPropertyType> getAirportHeliport() {
         return airportHeliport;
     }
 
@@ -324,10 +344,10 @@ public class RadarSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link AirportHeliportPropertyType }
+     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
      *     
      */
-    public void setAirportHeliport(AirportHeliportPropertyType value) {
+    public void setAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
         this.airportHeliport = value;
     }
 
@@ -514,7 +534,6 @@ public class RadarSystemTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_radar_system_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRadarSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

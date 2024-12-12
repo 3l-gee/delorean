@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -72,22 +74,39 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "guidance_line_slice", schema = "public")
+@Table(name = "guidance_line_time_slice_type", schema = "public")
 public class GuidanceLineTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+    })
     protected TextNameType designator;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeGuidanceLineType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "max_speed_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "max_speed_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "max_speed_nilreason"))
+    })
     protected ValSpeedType maxSpeed;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "usage_direction_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "usage_direction_nilreason"))
+    })
     protected CodeDirectionType usageDirection;
     @XmlElement(nillable = true)
     @Transient
@@ -102,7 +121,9 @@ public class GuidanceLineTimeSliceType
     @Transient
     protected List<AircraftStandPropertyType> connectedStand;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedCurvePropertyType extent;
     @XmlElement(nillable = true)
     @Transient
@@ -111,7 +132,6 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<GuidanceLineTimeSliceType.Extension> extension;
@@ -567,7 +587,6 @@ public class GuidanceLineTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_guidance_line_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGuidanceLineExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

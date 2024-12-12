@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -75,59 +79,93 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "visual_glide_slope_indicator_slice", schema = "public")
+@Table(name = "visual_glide_slope_indicator_time_slice_type", schema = "public")
 public class VisualGlideSlopeIndicatorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "emergency_lighting_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emergency_lighting_nilreason"))
+    })
     protected CodeYesNoType emergencyLighting;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "intensity_level_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_level_nilreason"))
+    })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "colour_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
+    })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "element_id", referencedColumnName = "id")
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeVASISType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "position_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "position_nilreason"))
+    })
     protected CodeSideType position;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "number_box_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "number_box_nilreason"))
+    })
     protected NoNumberType numberBox;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "portable_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "portable_nilreason"))
+    })
     protected CodeYesNoType portable;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "slope_angle_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "slope_angle_nilreason"))
+    })
     protected ValAngleType slopeAngle;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_eye_height_over_threshold_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "minimum_eye_height_over_threshold_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_eye_height_over_threshold_nilreason"))
+    })
     protected ValDistanceVerticalType minimumEyeHeightOverThreshold;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "runwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected RunwayDirectionPropertyType runwayDirection;
+    protected JAXBElement<RunwayDirectionPropertyType> runwayDirection;
     @Transient
     protected List<VisualGlideSlopeIndicatorTimeSliceType.Extension> extension;
 
@@ -508,10 +546,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public RunwayDirectionPropertyType getRunwayDirection() {
+    public JAXBElement<RunwayDirectionPropertyType> getRunwayDirection() {
         return runwayDirection;
     }
 
@@ -520,10 +558,10 @@ public class VisualGlideSlopeIndicatorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link RunwayDirectionPropertyType }
+     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
      *     
      */
-    public void setRunwayDirection(RunwayDirectionPropertyType value) {
+    public void setRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
         this.runwayDirection = value;
     }
 
@@ -604,13 +642,11 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_visual_glide_slope_indicator_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractVisualGlideSlopeIndicatorExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_ground_light_system_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

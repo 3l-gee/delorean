@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,34 +71,44 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standard_level_column_slice", schema = "public")
+@Table(name = "standard_level_column_time_slice_type", schema = "public")
 public class StandardLevelColumnTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "series_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "series_nilreason"))
+    })
     protected CodeLevelSeriesType series;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "unit_of_measurement_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "unit_of_measurement_nilreason"))
+    })
     protected CodeDistanceVerticalUomType unitOfMeasurement;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "separation_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "separation_nilreason"))
+    })
     protected CodeRVSMType separation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "level_id", referencedColumnName = "id")
     protected List<StandardLevelPropertyType> level;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "levelTable", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected StandardLevelTablePropertyType levelTable;
+    protected JAXBElement<StandardLevelTablePropertyType> levelTable;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<StandardLevelColumnTimeSliceType.Extension> extension;
@@ -228,10 +242,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link StandardLevelTablePropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardLevelTablePropertyType }{@code >}
      *     
      */
-    public StandardLevelTablePropertyType getLevelTable() {
+    public JAXBElement<StandardLevelTablePropertyType> getLevelTable() {
         return levelTable;
     }
 
@@ -240,10 +254,10 @@ public class StandardLevelColumnTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link StandardLevelTablePropertyType }
+     *     {@link JAXBElement }{@code <}{@link StandardLevelTablePropertyType }{@code >}
      *     
      */
-    public void setLevelTable(StandardLevelTablePropertyType value) {
+    public void setLevelTable(JAXBElement<StandardLevelTablePropertyType> value) {
         this.levelTable = value;
     }
 
@@ -362,7 +376,6 @@ public class StandardLevelColumnTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_standard_level_column_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractStandardLevelColumnExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

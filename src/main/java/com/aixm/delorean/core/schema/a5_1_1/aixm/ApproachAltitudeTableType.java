@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -65,25 +67,37 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approach_altitude_table", schema = "public")
+@Table(name = "approach_altitude_table_type", schema = "public")
 public class ApproachAltitudeTableType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "measurement_point_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "measurement_point_nilreason"))
+    })
     protected CodeProcedureDistanceType measurementPoint;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "altitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_nilreason"))
+    })
     protected ValDistanceVerticalType altitude;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType altitudeReference;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ApproachAltitudeTableType.Extension> extension;
@@ -283,7 +297,6 @@ public class ApproachAltitudeTableType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_approach_altitude_table_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractApproachAltitudeTableExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

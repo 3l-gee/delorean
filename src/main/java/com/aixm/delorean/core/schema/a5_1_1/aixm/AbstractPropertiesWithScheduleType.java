@@ -65,7 +65,7 @@ import jakarta.xml.bind.annotation.XmlType;
     LightElementStatusType.class
 })
 @Entity
-@Table(name = "abstract_properties_with_schedule", schema = "public")
+@Table(name = "abstract_properties_with_schedule_type", schema = "public")
 public class AbstractPropertiesWithScheduleType
     extends AbstractAIXMObjectType
 {

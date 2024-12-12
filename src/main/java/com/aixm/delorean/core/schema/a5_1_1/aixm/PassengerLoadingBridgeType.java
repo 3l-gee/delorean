@@ -12,7 +12,6 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -45,7 +44,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "passenger_loading_bridge", schema = "public")
+@Table(name = "passenger_loading_bridge_type", schema = "public")
 public class PassengerLoadingBridgeType
     extends AbstractAIXMFeatureType
 {
@@ -54,7 +53,6 @@ public class PassengerLoadingBridgeType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "time_slice_id", referencedColumnName = "id")
     protected List<PassengerLoadingBridgeTimeSlicePropertyType> timeSlice;
 
     /**

@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -96,112 +98,223 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airport_heliport_slice", schema = "public")
+@Table(name = "airport_heliport_time_slice_type", schema = "public")
 public class AirportHeliportTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+    })
     protected CodeAirportHeliportDesignatorType designator;
     @XmlElement(name = "name", nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+    })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "location_indicator_icao_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "location_indicator_icao_nilreason"))
+    })
     protected CodeICAOType locationIndicatorICAO;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "designator_iata_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_iata_nilreason"))
+    })
     protected CodeIATAType designatorIATA;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeAirportHeliportType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "certified_icao_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "certified_icao_nilreason"))
+    })
     protected CodeYesNoType certifiedICAO;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "private_use_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "private_use_nilreason"))
+    })
     protected CodeYesNoType privateUse;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "control_type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "control_type_nilreason"))
+    })
     protected CodeMilitaryOperationsType controlType;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "field_elevation_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "field_elevation_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "field_elevation_nilreason"))
+    })
     protected ValDistanceVerticalType fieldElevation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "field_elevation_accuracy_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "field_elevation_accuracy_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "field_elevation_accuracy_nilreason"))
+    })
     protected ValDistanceVerticalType fieldElevationAccuracy;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_datum_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_datum_nilreason"))
+    })
     protected CodeVerticalDatumType verticalDatum;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_variation_nilreason"))
+    })
     protected ValMagneticVariationType magneticVariation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation_accuracy_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_variation_accuracy_nilreason"))
+    })
     protected ValAngleType magneticVariationAccuracy;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "date_magnetic_variation_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "date_magnetic_variation_nilreason"))
+    })
     protected DateYearType dateMagneticVariation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation_change_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_variation_change_nilreason"))
+    })
     protected ValMagneticVariationChangeType magneticVariationChange;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "reference_temperature_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "reference_temperature_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "reference_temperature_nilreason"))
+    })
     protected ValTemperatureType referenceTemperature;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "altimeter_check_location_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altimeter_check_location_nilreason"))
+    })
     protected CodeYesNoType altimeterCheckLocation;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "secondary_power_supply_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "secondary_power_supply_nilreason"))
+    })
     protected CodeYesNoType secondaryPowerSupply;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "wind_direction_indicator_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "wind_direction_indicator_nilreason"))
+    })
     protected CodeYesNoType windDirectionIndicator;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "landing_direction_indicator_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "landing_direction_indicator_nilreason"))
+    })
     protected CodeYesNoType landingDirectionIndicator;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "transition_altitude_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "transition_altitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "transition_altitude_nilreason"))
+    })
     protected ValDistanceVerticalType transitionAltitude;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "transition_level_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "transition_level_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "transition_level_nilreason"))
+    })
     protected ValFLType transitionLevel;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "lowest_temperature_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "lowest_temperature_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowest_temperature_nilreason"))
+    })
     protected ValTemperatureType lowestTemperature;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "abandoned_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason"))
+    })
     protected CodeYesNoType abandoned;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "certification_date_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "certification_date_nilreason"))
+    })
     protected DateType certificationDate;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "certification_expiration_date_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "certification_expiration_date_nilreason"))
+    })
     protected DateType certificationExpirationDate;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "contaminant_id", referencedColumnName = "id")
     protected List<AirportHeliportContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "served_city_id", referencedColumnName = "id")
     protected List<CityPropertyType> servedCity;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "responsible_organisation_id", referencedColumnName = "id")
     protected AirportHeliportResponsibilityOrganisationPropertyType responsibleOrganisation;
     @XmlElement(name = "ARP", nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedPointPropertyType arp;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedSurfacePropertyType aviationBoundary;
     @XmlElement(nillable = true)
     @Transient
@@ -210,19 +323,16 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "contact_id", referencedColumnName = "id")
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "availability_id", referencedColumnName = "id")
     protected List<AirportHeliportAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AirportHeliportTimeSliceType.Extension> extension;
@@ -1350,7 +1460,6 @@ public class AirportHeliportTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_airport_heliport_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirportHeliportExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

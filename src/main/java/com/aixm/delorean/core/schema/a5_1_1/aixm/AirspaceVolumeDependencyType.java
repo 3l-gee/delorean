@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -64,19 +66,22 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspace_volume_dependency", schema = "public")
+@Table(name = "airspace_volume_dependency_type", schema = "public")
 public class AirspaceVolumeDependencyType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "dependency_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "dependency_nilreason"))
+    })
     protected CodeAirspaceDependencyType dependency;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected AirspacePropertyType theAirspace;
@@ -250,7 +255,6 @@ public class AirspaceVolumeDependencyType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_airspace_volume_dependency_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceVolumeDependencyExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

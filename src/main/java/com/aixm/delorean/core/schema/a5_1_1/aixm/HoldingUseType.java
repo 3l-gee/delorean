@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -67,28 +69,44 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "holding_use", schema = "public")
+@Table(name = "holding_use_type", schema = "public")
 public class HoldingUseType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "holding_use_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "holding_use_nilreason"))
+    })
     protected CodeHoldingUseType holdingUse;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason"))
+    })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "instructed_altitude_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "instructed_altitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instructed_altitude_nilreason"))
+    })
     protected ValDistanceVerticalType instructedAltitude;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_altitude_reference_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_altitude_reference_nilreason"))
+    })
     protected CodeVerticalReferenceType instructionAltitudeReference;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected HoldingPatternPropertyType theHoldingPattern;
@@ -346,7 +364,6 @@ public class HoldingUseType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_holding_use_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractHoldingUseExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

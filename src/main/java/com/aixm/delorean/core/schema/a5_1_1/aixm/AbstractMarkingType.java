@@ -45,7 +45,7 @@ import jakarta.xml.bind.annotation.XmlType;
     TouchDownLiftOffMarkingType.class
 })
 @Entity
-@Table(name = "abstract_marking", schema = "public")
+@Table(name = "abstract_marking_type", schema = "public")
 public abstract class AbstractMarkingType
     extends AbstractAIXMFeatureType
 {

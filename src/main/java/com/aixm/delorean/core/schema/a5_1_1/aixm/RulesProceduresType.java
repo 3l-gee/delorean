@@ -12,7 +12,6 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -45,7 +44,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "rules_procedures", schema = "public")
+@Table(name = "rules_procedures_type", schema = "public")
 public class RulesProceduresType
     extends AbstractAIXMFeatureType
 {
@@ -54,7 +53,6 @@ public class RulesProceduresType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "time_slice_id", referencedColumnName = "id")
     protected List<RulesProceduresTimeSlicePropertyType> timeSlice;
 
     /**

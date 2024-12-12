@@ -9,11 +9,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -81,7 +83,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "vertical_structure_part", schema = "public")
+@Table(name = "vertical_structure_part_type", schema = "public")
 public class VerticalStructurePartType
     extends AbstractPropertiesWithScheduleType
 {
@@ -90,64 +92,113 @@ public class VerticalStructurePartType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "time_interval_id", referencedColumnName = "id")
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Transient
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_extent_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "vertical_extent_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_extent_nilreason"))
+    })
     protected ValDistanceType verticalExtent;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_extent_accuracy_value")),
+        @AttributeOverride(name = "uom", column = @Column(name = "vertical_extent_accuracy_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_extent_accuracy_nilreason"))
+    })
     protected ValDistanceType verticalExtentAccuracy;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+    })
     protected CodeVerticalStructureType type;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "construction_status_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "construction_status_nilreason"))
+    })
     protected CodeStatusConstructionType constructionStatus;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "marking_pattern_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "marking_pattern_nilreason"))
+    })
     protected CodeVerticalStructureMarkingType markingPattern;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "marking_first_colour_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "marking_first_colour_nilreason"))
+    })
     protected CodeColourType markingFirstColour;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "marking_second_colour_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "marking_second_colour_nilreason"))
+    })
     protected CodeColourType markingSecondColour;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "mobile_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "mobile_nilreason"))
+    })
     protected CodeYesNoType mobile;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "frangible_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "frangible_nilreason"))
+    })
     protected CodeYesNoType frangible;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "visible_material_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "visible_material_nilreason"))
+    })
     protected CodeVerticalStructureMaterialType visibleMaterial;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+    })
     protected TextDesignatorType designator;
     @XmlElement(name = "horizontalProjection_surfaceExtent", nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedSurfacePropertyType horizontalProjectionSurfaceExtent;
     @XmlElement(name = "horizontalProjection_linearExtent", nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedCurvePropertyType horizontalProjectionLinearExtent;
     @XmlElement(name = "horizontalProjection_location", nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedPointPropertyType horizontalProjectionLocation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "lighting_id", referencedColumnName = "id")
     protected List<LightElementPropertyType> lighting;
     @Transient
     protected List<VerticalStructurePartType.Extension> extension;
@@ -777,13 +828,11 @@ public class VerticalStructurePartType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_properties_with_schedule_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractVerticalStructurePartExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_vertical_structure_part_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractVerticalStructurePartExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;

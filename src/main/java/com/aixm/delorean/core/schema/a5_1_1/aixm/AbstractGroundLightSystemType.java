@@ -45,7 +45,7 @@ import jakarta.xml.bind.annotation.XmlType;
     VisualGlideSlopeIndicatorType.class
 })
 @Entity
-@Table(name = "abstract_ground_light_system", schema = "public")
+@Table(name = "abstract_ground_light_system_type", schema = "public")
 public abstract class AbstractGroundLightSystemType
     extends AbstractAIXMFeatureType
 {

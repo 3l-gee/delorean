@@ -9,6 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -52,6 +55,8 @@ public class CompoundCRSType
     @XmlElementRef(name = "componentReferenceSystem", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class)
     protected List<JAXBElement<SingleCRSPropertyType>> componentReferenceSystem;
     @XmlAttribute(name = "aggregationType")
+    @Column(name = "aggregation_type")
+    @Enumerated(EnumType.STRING)
     protected AggregationType aggregationType;
 
     /**

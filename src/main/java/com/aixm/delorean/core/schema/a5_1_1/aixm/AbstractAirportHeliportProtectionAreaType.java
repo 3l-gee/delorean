@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
     RunwayProtectAreaType.class
 })
 @Entity
-@Table(name = "abstract_airport_heliport_protection_area", schema = "public")
+@Table(name = "abstract_airport_heliport_protection_area_type", schema = "public")
 public abstract class AbstractAirportHeliportProtectionAreaType
     extends AbstractAIXMFeatureType
 {

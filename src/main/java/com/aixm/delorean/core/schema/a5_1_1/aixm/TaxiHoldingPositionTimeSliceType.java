@@ -9,19 +9,23 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,31 +71,40 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "taxi_holding_position_slice", schema = "public")
+@Table(name = "taxi_holding_position_time_slice_type", schema = "public")
 public class TaxiHoldingPositionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "landing_category_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "landing_category_nilreason"))
+    })
     protected CodeHoldingCategoryType landingCategory;
     @XmlElement(nillable = true)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "status_value")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason"))
+    })
     protected CodeStatusOperationsType status;
-    @XmlElement(nillable = true)
+    @XmlElementRef(name = "associatedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
-    protected GuidanceLinePropertyType associatedGuidanceLine;
+    protected JAXBElement<GuidanceLinePropertyType> associatedGuidanceLine;
     @XmlElement(nillable = true)
     @Transient
     protected List<RunwayPropertyType> protectedRunway;
     @XmlElement(nillable = true)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "annotation_id", referencedColumnName = "id")
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<TaxiHoldingPositionTimeSliceType.Extension> extension;
@@ -157,10 +170,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link GuidanceLinePropertyType }
+     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
      *     
      */
-    public GuidanceLinePropertyType getAssociatedGuidanceLine() {
+    public JAXBElement<GuidanceLinePropertyType> getAssociatedGuidanceLine() {
         return associatedGuidanceLine;
     }
 
@@ -169,10 +182,10 @@ public class TaxiHoldingPositionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link GuidanceLinePropertyType }
+     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
      *     
      */
-    public void setAssociatedGuidanceLine(GuidanceLinePropertyType value) {
+    public void setAssociatedGuidanceLine(JAXBElement<GuidanceLinePropertyType> value) {
         this.associatedGuidanceLine = value;
     }
 
@@ -359,7 +372,6 @@ public class TaxiHoldingPositionTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
-        @JoinColumn(name = "abstract_taxi_holding_position_extension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTaxiHoldingPositionExtension;
         @XmlAttribute(name = "owns")
         protected Boolean owns;
