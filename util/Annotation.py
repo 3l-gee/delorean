@@ -323,7 +323,10 @@ class Jpa:
     
     @staticmethod
     def attribute_sub_override(attrib_name, column_name):
-        return f'@jakarta.persistence.AttributeOverride(name = "{attrib_name}", column = @jakarta.persistence.Column(name = "{Util.snake_case(column_name) + "_" + attrib_name.lower()}"))'
+        if attrib_name == "value" :
+            return f'@jakarta.persistence.AttributeOverride(name = "{attrib_name}", column = @jakarta.persistence.Column(name = "{Util.snake_case(column_name)}"))'
+        else : 
+            return f'@jakarta.persistence.AttributeOverride(name = "{attrib_name}", column = @jakarta.persistence.Column(name = "{Util.snake_case(column_name) + "_" + attrib_name.lower()}"))'
 
     @staticmethod
     def attribute_main_override(value):
