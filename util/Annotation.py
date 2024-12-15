@@ -22,6 +22,28 @@ class Util:
     @staticmethod
     def snake_case_table(name):
         value = name
+
+        if "Abstract" in value : 
+            value = value.replace("AbstractS", "abs")
+
+        if "Element" in value : 
+            value = value.replace("Element", "elm")
+
+        if "PropertyGroup" in value :
+            value = value.replace("PropertyGroup", "grp")
+
+        if "PropertyType" in value :
+            value = value.replace("PropertyType", "prp")
+
+        if "TimeSliceType" in value :
+            value = value.replace("TimeSliceType", "tsl")
+
+        if "TimeSlicePropertyType" in value :
+            value = value.replace("TimeSlicePropertyType", "tslprp")
+
+        if "Type" in value:
+            value = value.replace("Type", "")
+
         try: 
             value = value.split(':')[-1]
         except:
@@ -289,8 +311,12 @@ class Relation:
         return f'@jakarta.persistence.ManyToMany(cascade={cascade}, fetch={fetch}, orphanRemoval={Util.bool_str(orphanRemoval)})'
     
     @staticmethod
-    def join_column(name, referencedColumnName="id"):
-        return f'@jakarta.persistence.JoinColumn(name="{Util.snake_case(name)}_id", referencedColumnName="{referencedColumnName}")'
+    def join_column(name, referenced_column_name="id"):
+        return f'@jakarta.persistence.JoinColumn(name="{Util.snake_case(name)}_id", referencedColumnName="{referenced_column_name}")'
+    
+    @staticmethod
+    def join_table(name, join_columns, inverse_join_columns):
+        return f'@jakarta.persistence.JoinTable(name = "{Util.snake_case_table(name)}", joinColumns = {join_columns}, inverseJoinColumns = {inverse_join_columns})'
 
 class Jpa:
     relation = Relation

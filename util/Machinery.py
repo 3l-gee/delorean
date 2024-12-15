@@ -314,7 +314,18 @@ class Machinery:
             
             else:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_one()))
-                # res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))))
+                column = Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))
+                inverse_column = Annotation.Jpa.relation.join_column(parent.attrib.get("name",parent.attrib.get("ref")))
+
+                
+                if len(Annotation.Util.snake_case_table(parent.attrib.get("name",parent.attrib.get("ref"))) + "_" + Annotation.Util.snake_case_table(element.attrib.get("name",element.attrib.get("ref")))) > 63 :
+                    print(parent.attrib.get("name",parent.attrib.get("ref")))
+                    print(Annotation.Util.snake_case_table(parent.attrib.get("name",parent.attrib.get("ref"))) + "_" + Annotation.Util.snake_case_table(element.attrib.get("name",element.attrib.get("ref"))))
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_table(
+                    name = str(parent.attrib.get("name",parent.attrib.get("ref"))) + "_" + element.attrib.get("name",element.attrib.get("ref")),
+                    join_columns = column,
+                    inverse_join_columns = inverse_column
+                )))
                 return res
 
         if nillable:
