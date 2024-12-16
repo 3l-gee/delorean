@@ -317,12 +317,17 @@ class Machinery:
                 column = Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))
                 inverse_column = Annotation.Jpa.relation.join_column(parent.attrib.get("name",parent.attrib.get("ref")))
 
-                
-                if len(Annotation.Util.snake_case_table(parent.attrib.get("name",parent.attrib.get("ref"))) + "_" + Annotation.Util.snake_case_table(element.attrib.get("name",element.attrib.get("ref")))) > 63 :
+                long_ass_name = Annotation.Util.snake_case_join_table(parent.attrib.get("name",parent.attrib.get("ref")), element.attrib.get("name",element.attrib.get("ref")))
+                if len(long_ass_name) >63 :
+                    print("---------------------------------------------------------------")
                     print(parent.attrib.get("name",parent.attrib.get("ref")))
-                    print(Annotation.Util.snake_case_table(parent.attrib.get("name",parent.attrib.get("ref"))) + "_" + Annotation.Util.snake_case_table(element.attrib.get("name",element.attrib.get("ref"))))
+                    print(element.attrib.get("name",element.attrib.get("ref")))
+                    print(long_ass_name)
+                    print("---------------------------------------------------------------")
+
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_table(
-                    name = str(parent.attrib.get("name",parent.attrib.get("ref"))) + "_" + element.attrib.get("name",element.attrib.get("ref")),
+                    name1 = parent.attrib.get("name",parent.attrib.get("ref")),
+                    name2 = element.attrib.get("name",element.attrib.get("ref")),
                     join_columns = column,
                     inverse_join_columns = inverse_column
                 )))

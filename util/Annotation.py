@@ -21,36 +21,50 @@ class Util:
 
     @staticmethod
     def snake_case_table(name):
-        value = name
-
-        if "Abstract" in value : 
-            value = value.replace("AbstractS", "abs")
-
-        if "Element" in value : 
-            value = value.replace("Element", "elm")
-
-        if "PropertyGroup" in value :
-            value = value.replace("PropertyGroup", "grp")
-
-        if "PropertyType" in value :
-            value = value.replace("PropertyType", "prp")
-
-        if "TimeSliceType" in value :
-            value = value.replace("TimeSliceType", "tsl")
-
-        if "TimeSlicePropertyType" in value :
-            value = value.replace("TimeSlicePropertyType", "tslprp")
-
-        if "Type" in value:
-            value = value.replace("Type", "")
+        value = Util.short_name(name)
 
         try: 
             value = value.split(':')[-1]
         except:
             pass
-        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', value)
-        result = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1\2', value)
+        s2 = re.sub('([a-z0-9])([A-Z])', r'\1\2', s1).lower()
 
+        return s2
+
+    def short_name(name):  
+        replacements = {
+            "For": "",
+            "Elevated": "Elv",
+            "Extension": "Ext",
+            "Abstract": "Abs",
+            "Element": "Elm",
+            "TimeSlicePropertyType": "Prp",
+            "TimeSliceType": "Tsl",
+            "TimeSlice": "Tsl",
+            "PropertyGroup": "Prp",
+            "PropertyType": "Prp",
+            "Equipment": "Eqp",
+            "Organisation" : "Org",
+            "Surveillance" : "Srv",
+            "Standard" : "Std",
+            "Communication" : "Com",
+            "Operational" : "Ops",
+            "Condition" : "Cnd",
+            "Type": "",
+        }
+        
+        for key, value in replacements.items():
+            name = name.replace(key, value)
+
+        return name    
+
+    def snake_case_join_table(name1, name2):
+
+        name1 = Util.snake_case_table(name1)
+        name2 = Util.snake_case_table(name2)
+
+        result = f"{name1}{name2}"
         return result
 
     def snake_case_column(name):
@@ -315,8 +329,9 @@ class Relation:
         return f'@jakarta.persistence.JoinColumn(name="{Util.snake_case(name)}_id", referencedColumnName="{referenced_column_name}")'
     
     @staticmethod
-    def join_table(name, join_columns, inverse_join_columns):
-        return f'@jakarta.persistence.JoinTable(name = "{Util.snake_case_table(name)}", joinColumns = {join_columns}, inverseJoinColumns = {inverse_join_columns})'
+    def join_table(name1, name2, join_columns, inverse_join_columns):
+        name = Util.snake_case_join_table(name1, name2)
+        return f'@jakarta.persistence.JoinTable(name = "{name}", joinColumns = {join_columns}, inverseJoinColumns = {inverse_join_columns})'
 
 class Jpa:
     relation = Relation
