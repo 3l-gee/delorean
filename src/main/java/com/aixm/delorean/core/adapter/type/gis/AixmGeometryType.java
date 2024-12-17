@@ -13,7 +13,7 @@ abstract public class AixmGeometryType {
     @Column(name = "xml_id")
     protected String id;
 
-    @Column(name = "horizontalAccuracy_value")
+    @Column(name = "horizontalAccuracy")
     protected BigDecimal horizontalAccuracy;
 
     @Column(name = "horizontalAccuracy_uom")

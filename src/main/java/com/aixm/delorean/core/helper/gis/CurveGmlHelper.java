@@ -83,34 +83,48 @@ public class CurveGmlHelper {
     public static LineString parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value) {
         for (JAXBElement<? extends AbstractCurveSegmentType> element : value.getAbstractCurveSegment()){
             if (element.getValue() instanceof ArcByBulgeType) {
+                //AIXM-5.1_RULE-1A3EC2
 
             } else if (element.getValue() instanceof ArcByCenterPointType) {
+                //TODO: Implement this
 
             } else if (element.getValue() instanceof ArcStringByBulgeType) {
+                //AIXM-5.1_RULE-1A3EC1	
 
             } else if (element.getValue() instanceof ArcStringType) {
+                //AIXM-5.1_RULE-1A3EC3
 
             } else if (element.getValue() instanceof ArcType) {
+                //TODO: Implement this
 
             } else if (element.getValue() instanceof BSplineType) {
+                //AIXM-5.1_RULE-1A3EC4	
 
             } else if (element.getValue() instanceof BezierType) {
+                //AIXM-5.1_RULE-1A3EC5	
 
             } else if (element.getValue() instanceof CircleByCenterPointType) {
+                //TODO: Implement this
 
             } else if (element.getValue() instanceof CircleType) {
+                //TODO: Implement this
 
             } else if (element.getValue() instanceof ClothoidType) {
+                //AIXM-5.1_RULE-1A3EC7	
 
             } else if (element.getValue() instanceof CubicSplineType) {
+                //AIXM-5.1_RULE-1A3EC6	
 
             } else if (element.getValue() instanceof GeodesicStringType) {
 
             } else if (element.getValue() instanceof GeodesicType) {
+                //TODO: Implement this
 
             } else if (element.getValue() instanceof LineStringSegmentType) {
+                //TODO: Implement this
 
             } else if (element.getValue() instanceof OffsetCurveType) {
+                //AIXM-5.1_RULE-1A3EC8	
 
             } else {
                 throw new IllegalArgumentException("Unsupported type " + element.getValue().getClass().getName());
@@ -120,9 +134,42 @@ public class CurveGmlHelper {
         return new LineString(null, null);
     }
 
-    // public static CurveSegmentArrayPropertyType printCurveSegmentArrayPropertyType (){
+    public static CurveSegmentArrayPropertyType printCurveSegmentArrayPropertyType (){
 
-    // }
+        return new CurveSegmentArrayPropertyType();
+    }
+
+    public static LineString parseArcByCenterPoint(ArcByCenterPointType value) {
+        return new LineString(null, null);
+    }
+
+    public static ArcByCenterPointType printArcByCenterPoint (LineString value) {
+        return new ArcByCenterPointType();
+    }
+
+    public static LineString parseArc(ArcType value) {
+        return new LineString(null, null);
+    }
+
+    public static ArcType printArc (LineString value) {
+        return new ArcType();
+    }
+
+    public static LineString parseCircleByCenterPoint(CircleByCenterPointType value) {
+        return new LineString(null, null);
+    }  
+
+    public static CircleByCenterPointType printCircleByCenterPoint (LineString value) {
+        return new CircleByCenterPointType();
+    }
+
+    public static LineString parseCircle(CircleType value) {
+        return new LineString(null, null);
+    }
+
+    public static CircleType printCircle (LineString value) {
+        return new CircleType();
+    }
 
     public static LineString parseGeodesicString (GeodesicStringType value) {
 
@@ -132,6 +179,26 @@ public class CurveGmlHelper {
     public static GeodesicStringType printGeodesicString (LineString value) {
 
         return new GeodesicStringType();
+    }
+
+    public static LineString parseGeodesic (GeodesicType value) {
+
+        return new LineString(null, null);
+    }
+
+    public static GeodesicType printGeodesic (LineString value) {
+
+        return new GeodesicType();
+    }
+
+    public static LineString parseLineStringSegment (LineStringSegmentType value) {
+
+        return new LineString(null, null);
+    }
+
+    public static LineStringSegmentType printLineStringSegment (LineString value) {
+
+        return new LineStringSegmentType();
     }
 
     public static LineString parseDirectPositionList (DirectPositionListType value) {

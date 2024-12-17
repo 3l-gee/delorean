@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.namespace.QName;
 
@@ -60,8 +61,8 @@ public class PointGmlHelper {
         DirectPositionType pos = value.getPos();
         String srsName = value.getSrsName();
         BigInteger srsDiemnesion = value.getSrsDimension();
-
         Coordinate coordinate = parseDirectPosition(pos);
+
         return new Point(null, null);
     }
 
@@ -70,7 +71,33 @@ public class PointGmlHelper {
     }
 
     public static Coordinate parseDirectPosition (DirectPositionType value) {
-        return new Coordinate();
+        if (value == null) {
+            throw new IllegalArgumentException("DirectPositionType is null");
+        }
+        List<Double> coordinatesList = value.getValue();
+
+        if (coordinatesList == null || coordinatesList.isEmpty()) {
+            throw new IllegalArgumentException("list<Double> value is null or empty");
+        }
+
+        if (coordinatesList.size() == 2) {
+            Double x = coordinatesList.get(0);
+            Double y = coordinatesList.get(1);
+            if (x == null || y == null) {
+                throw new IllegalArgumentException("Coordinate values cannot be null");
+            }
+            return new Coordinate(x, y);
+        } else if (coordinatesList.size() == 3) {
+            Double x = coordinatesList.get(0);
+            Double y = coordinatesList.get(1);
+            Double z = coordinatesList.get(2);
+            if (x == null || y == null || z == null) {
+                throw new IllegalArgumentException("Coordinate values cannot be null");
+            }
+            return new Coordinate(x, y, z);
+        } else {
+            throw new IllegalArgumentException("list<Double> value is not 2 or 3");
+        }
     }
 
     public static DirectPositionListType printDirectPosition (Coordinate value) {

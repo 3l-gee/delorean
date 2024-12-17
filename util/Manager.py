@@ -338,7 +338,7 @@ config = {
     ],
     "abstract": [],
     "package": "com.aixm.delorean.core.schema.a5_1_1.aixm",
-    "output_path": "src/main/resources/a5_1_1/aixm.xjb"
+    "output_path": "schema/aixm5_1_1/binding/aixm.xjb"
 }
 
 feature = {

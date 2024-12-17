@@ -8,7 +8,7 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 abstract public class AixmElevatedGeometryType extends AixmGeometryType {
 
-    @Column(name = "elevation_value")
+    @Column(name = "elevation")
     protected BigDecimal elevation;
 
     @Column(name = "elevation_uom")
@@ -17,7 +17,7 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
     @Column(name = "eleveation_nilReason")
     protected String elevation_nilReason;
 
-    @Column(name = "geoidUndulation_value")
+    @Column(name = "geoidUndulation")
     protected BigDecimal geoidUndulation;
 
     @Column(name = "geoidUndulation_uom")
@@ -26,13 +26,13 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
     @Column(name = "geoidUndulation_nilReason")
     protected String geoidUndulation_nilReason;
 
-    @Column(name = "verticalDatum_value")
+    @Column(name = "verticalDatum")
     protected String verticalDatum;
 
     @Column(name = "verticalDatum_nilReason")
     protected String verticalDatum_nilReason;
 
-    @Column(name = "verticalAccuracy_value")
+    @Column(name = "verticalAccuracy")
     protected BigDecimal verticalAccuracy;
 
     @Column(name = "verticalAccuracy_uom")
