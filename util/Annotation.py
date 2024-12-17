@@ -40,10 +40,10 @@ class Util:
             "Abstract": "Abs",
             "Element": "Elm",
             "TimeSlicePropertyType": "Prp",
-            "TimeSliceType": "Tsl",
-            "TimeSlice": "Tsl",
-            "PropertyGroup": "Prp",
-            "PropertyType": "Prp",
+            "TimeSliceType": "_Tsl",
+            "TimeSlice": "_Tsl",
+            "PropertyGroup": "_Prp",
+            "PropertyType": "_Prp",
             "Equipment": "Eqp",
             "Organisation" : "Org",
             "Surveillance" : "Srv",
@@ -51,6 +51,12 @@ class Util:
             "Communication" : "Com",
             "Operational" : "Ops",
             "Condition" : "Cnd",
+            "Runway" : "Rwy",
+            "Direction" : "Dir",
+            "Service" : "Svc",
+            "Surface" : "Srf",
+            "lighting" : "Lgt",
+            "Control" : "Ctl",
             "Type": "",
         }
         
@@ -64,7 +70,7 @@ class Util:
         name1 = Util.snake_case_table(name1)
         name2 = Util.snake_case_table(name2)
 
-        result = f"{name1}{name2}"
+        result = f"{name1}_{name2}"
         return result
 
     def snake_case_column(name):
