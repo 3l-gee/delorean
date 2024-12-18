@@ -58,13 +58,30 @@ public class PointGmlHelper {
     
     //Point
     public static Point parseGMLPoint (PointType value){
-        DirectPositionType pos = value.getPos();
-        String srsName = value.getSrsName();
-        BigInteger srsDiemnesion = value.getSrsDimension();
-        Coordinate coordinate = parseDirectPosition(pos);
+        if (value == null) {
+            return null;
+        }
 
-        return new Point(null, null);
+        DirectPositionType pos = value.getPos();
+        if (pos == null) {
+            throw new IllegalArgumentException("DirectPositionType is null");
+        }
+
+        String srsName = value.getSrsName();
+
+        if (srsName == null) {
+            throw new IllegalArgumentException("srsName is null");
+        }
+
+        // BigInteger srsDiemnesion = value.getSrsDimension();
+        Coordinate Coordinate = parseDirectPosition(pos);
+        if (Coordinate == null) {
+            throw new IllegalArgumentException("Coordinate is null");
+        }
+
+        return CoordinateTransformeHelper.transformToPoint(srsName, "EPSG:4326", Coordinate);
     }
+
 
     public static PointType printGMLPoint (Point value){
         return new PointType();
@@ -101,6 +118,7 @@ public class PointGmlHelper {
     }
 
     public static DirectPositionListType printDirectPosition (Coordinate value) {
+        
         return new DirectPositionListType();
     }
 }
