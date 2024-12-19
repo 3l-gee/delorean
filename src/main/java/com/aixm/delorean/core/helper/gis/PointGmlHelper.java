@@ -83,10 +83,6 @@ public class PointGmlHelper {
     }
 
 
-    public static PointType printGMLPoint (Point value){
-        return new PointType();
-    }
-
     public static Coordinate parseDirectPosition (DirectPositionType value) {
         if (value == null) {
             throw new IllegalArgumentException("DirectPositionType is null");
@@ -116,9 +112,23 @@ public class PointGmlHelper {
             throw new IllegalArgumentException("list<Double> value is not 2 or 3");
         }
     }
+   
 
     public static DirectPositionListType printDirectPosition (Coordinate value) {
-        
+        if (value == null) {
+            return null;
+        } else {
+            DirectPositionListType pos = new DirectPositionListType();
+
+            pos.getValue().add(value.getX());
+            pos.getValue().add(value.getY());
+            if (!Double.isNaN(value.getZ())) {
+                pos.getValue().add(value.getZ());
+            }
+
+            return pos;
+        }
+
         return new DirectPositionListType();
     }
 }
