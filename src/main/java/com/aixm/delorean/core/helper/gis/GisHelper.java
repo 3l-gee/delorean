@@ -266,7 +266,8 @@ public class GisHelper {
 
     public static AixmPointType parseAIXMPoint (com.aixm.delorean.core.schema.a5_1_1.aixm.PointType value) {
         AixmPointType point = new AixmPointType();
-        point.setPoint(parseGMLPoint(value));
+        // point.setPoint(parseGMLPoint(value));
+        point.setPoint(PointGmlHelper.parseGMLPoint(value));
 
         return (AixmPointType) parseGeometry(point, point.getId(), value.getHorizontalAccuracy());
     }
