@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -69,8 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "procedure_dme_time_slice_type", schema = "public")
+@Embeddable
 public class ProcedureDMETimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -78,14 +76,14 @@ public class ProcedureDMETimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "critical_dme_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "critical_dme")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "critical_dme_nilreason"))
     })
     protected CodeYesNoType criticalDME;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "satisfactory_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "satisfactory")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "satisfactory_nilreason"))
     })
     protected CodeYesNoType satisfactory;

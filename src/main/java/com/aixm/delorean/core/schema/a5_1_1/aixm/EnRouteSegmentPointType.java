@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -83,8 +82,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "roleMilitaryTraining",
     "extension"
 })
-@Entity
-@Table(name = "en_route_segment_point_type", schema = "public")
+@Embeddable
 public class EnRouteSegmentPointType
     extends AbstractSegmentPointType
 {
@@ -92,28 +90,28 @@ public class EnRouteSegmentPointType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "reporting_atc_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "reporting_atc")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "reporting_atc_nilreason"))
     })
     protected CodeATCReportingType reportingATC;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "fly_over_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "fly_over")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "fly_over_nilreason"))
     })
     protected CodeYesNoType flyOver;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "waypoint_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "waypoint")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "waypoint_nilreason"))
     })
     protected CodeYesNoType waypoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "radar_guidance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "radar_guidance")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "radar_guidance_nilreason"))
     })
     protected CodeYesNoType radarGuidance;
@@ -153,21 +151,21 @@ public class EnRouteSegmentPointType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "role_free_flight_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "role_free_flight")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "role_free_flight_nilreason"))
     })
     protected CodeFreeFlightType roleFreeFlight;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "role_rvsm_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "role_rvsm")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "role_rvsm_nilreason"))
     })
     protected CodeRVSMPointRoleType roleRVSM;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turn_radius_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "turn_radius")),
         @AttributeOverride(name = "uom", column = @Column(name = "turn_radius_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turn_radius_nilreason"))
     })
@@ -175,7 +173,7 @@ public class EnRouteSegmentPointType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "role_military_training_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "role_military_training")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "role_military_training_nilreason"))
     })
     protected CodeMilitaryRoutePointType roleMilitaryTraining;

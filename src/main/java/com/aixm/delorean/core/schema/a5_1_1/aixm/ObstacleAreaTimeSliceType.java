@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -72,8 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "obstacle_area_time_slice_type", schema = "public")
+@Embeddable
 public class ObstacleAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -81,14 +79,14 @@ public class ObstacleAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeObstacleAreaType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "obstruction_id_surface_condition_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "obstruction_id_surface_condition")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obstruction_id_surface_condition_nilreason"))
     })
     protected CodeObstacleAssessmentSurfaceType obstructionIdSurfaceCondition;

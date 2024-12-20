@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -84,8 +83,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "aircraft_characteristic_type", schema = "public")
+@Embeddable
 public class AircraftCharacteristicType
     extends AbstractAIXMObjectType
 {
@@ -93,42 +91,42 @@ public class AircraftCharacteristicType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeAircraftType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "engine_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "engine")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "engine_nilreason"))
     })
     protected CodeAircraftEngineType engine;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "number_engine_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "number_engine")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "number_engine_nilreason"))
     })
     protected CodeAircraftEngineNumberType numberEngine;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_aircraft_icao_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type_aircraft_icao")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_aircraft_icao_nilreason"))
     })
     protected CodeAircraftICAOType typeAircraftICAO;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "aircraft_landing_category_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "aircraft_landing_category")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "aircraft_landing_category_nilreason"))
     })
     protected CodeAircraftCategoryType aircraftLandingCategory;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "wing_span_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "wing_span")),
         @AttributeOverride(name = "uom", column = @Column(name = "wing_span_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "wing_span_nilreason"))
     })
@@ -136,21 +134,21 @@ public class AircraftCharacteristicType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "wing_span_interpretation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "wing_span_interpretation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "wing_span_interpretation_nilreason"))
     })
     protected CodeValueInterpretationType wingSpanInterpretation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "class_wing_span_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "class_wing_span")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "class_wing_span_nilreason"))
     })
     protected CodeAircraftWingspanClassType classWingSpan;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "weight_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "weight")),
         @AttributeOverride(name = "uom", column = @Column(name = "weight_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "weight_nilreason"))
     })
@@ -158,28 +156,28 @@ public class AircraftCharacteristicType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "weight_interpretation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "weight_interpretation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "weight_interpretation_nilreason"))
     })
     protected CodeValueInterpretationType weightInterpretation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "passengers_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "passengers")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "passengers_nilreason"))
     })
     protected NoNumberType passengers;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "passengers_interpretation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "passengers_interpretation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "passengers_interpretation_nilreason"))
     })
     protected CodeValueInterpretationType passengersInterpretation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "speed")),
         @AttributeOverride(name = "uom", column = @Column(name = "speed_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_nilreason"))
     })
@@ -187,56 +185,56 @@ public class AircraftCharacteristicType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_interpretation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "speed_interpretation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_interpretation_nilreason"))
     })
     protected CodeValueInterpretationType speedInterpretation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "wake_turbulence_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "wake_turbulence")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "wake_turbulence_nilreason"))
     })
     protected CodeWakeTurbulenceType wakeTurbulence;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "navigation_equipment_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "navigation_equipment")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "navigation_equipment_nilreason"))
     })
     protected CodeNavigationEquipmentType navigationEquipment;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "navigation_specification_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "navigation_specification")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "navigation_specification_nilreason"))
     })
     protected CodeNavigationSpecificationType navigationSpecification;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "vertical_separation_capability_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_separation_capability")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_separation_capability_nilreason"))
     })
     protected CodeRVSMType verticalSeparationCapability;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "anti_collision_and_separation_equipment_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "anti_collision_and_separation_equipment")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "anti_collision_and_separation_equipment_nilreason"))
     })
     protected CodeEquipmentAntiCollisionType antiCollisionAndSeparationEquipment;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "communication_equipment_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "communication_equipment")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "communication_equipment_nilreason"))
     })
     protected CodeCommunicationModeType communicationEquipment;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "surveillance_equipment_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "surveillance_equipment")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "surveillance_equipment_nilreason"))
     })
     protected CodeTransponderType surveillanceEquipment;

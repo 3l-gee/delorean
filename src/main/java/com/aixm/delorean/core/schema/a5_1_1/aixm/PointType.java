@@ -59,7 +59,7 @@ public class PointType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "horizontal_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "horizontal_accuracy")),
         @AttributeOverride(name = "uom", column = @Column(name = "horizontal_accuracy_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "horizontal_accuracy_nilreason"))
     })

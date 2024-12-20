@@ -13,6 +13,7 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -78,7 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaid_time_slice_type", schema = "public")
+@Table(name = "navaid_time_slice")
 public class NavaidTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -86,56 +87,56 @@ public class NavaidTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeNavaidServiceType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
     })
     protected CodeNavaidDesignatorType designator;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flight_checked_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "flight_checked")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flight_checked_nilreason"))
     })
     protected CodeYesNoType flightChecked;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "purpose_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "purpose")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason"))
     })
     protected CodeNavaidPurposeType purpose;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "signal_performance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "signal_performance")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "signal_performance_nilreason"))
     })
     protected CodeSignalPerformanceILSType signalPerformance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_quality_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "course_quality")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "course_quality_nilreason"))
     })
     protected CodeCourseQualityILSType courseQuality;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "integrity_level_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "integrity_level")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "integrity_level_nilreason"))
     })
     protected CodeIntegrityLevelILSType integrityLevel;
@@ -143,9 +144,10 @@ public class NavaidTimeSliceType
     @Transient
     protected List<TouchDownLiftOffPropertyType> touchDownLiftOff;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    // @OneToMany(cascade = {
+    //     CascadeType.ALL
+    // }, fetch = FetchType.EAGER)
+    @Transient
     protected List<NavaidComponentPropertyType> navaidEquipment;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
@@ -159,14 +161,10 @@ public class NavaidTimeSliceType
     @Transient
     protected List<AirportHeliportPropertyType> servedAirport;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    @Transient
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<NavaidTimeSliceType.Extension> extension;

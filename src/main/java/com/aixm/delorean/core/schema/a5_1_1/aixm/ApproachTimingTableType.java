@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,8 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "approach_timing_table_type", schema = "public")
+@Embeddable
 public class ApproachTimingTableType
     extends AbstractAIXMObjectType
 {
@@ -76,21 +74,21 @@ public class ApproachTimingTableType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "starting_measurement_point_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "starting_measurement_point")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "starting_measurement_point_nilreason"))
     })
     protected CodeProcedureDistanceType startingMeasurementPoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "ending_measurement_point_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "ending_measurement_point")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "ending_measurement_point_nilreason"))
     })
     protected CodeProcedureDistanceType endingMeasurementPoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "time_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "time")),
         @AttributeOverride(name = "uom", column = @Column(name = "time_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "time_nilreason"))
     })
@@ -98,7 +96,7 @@ public class ApproachTimingTableType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "speed")),
         @AttributeOverride(name = "uom", column = @Column(name = "speed_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_nilreason"))
     })

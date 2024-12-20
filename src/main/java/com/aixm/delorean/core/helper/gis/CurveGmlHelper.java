@@ -73,6 +73,13 @@ public class CurveGmlHelper {
         CurveSegmentArrayPropertyType segments = value.getSegments();
         String srsName = value.getSrsName();
         BigInteger srsDimension = value.getSrsDimension();
+
+        Coordinate[] coordinates = null;
+
+        if (segments != null) {
+            coordinates = parseCurveSegementArrayProperty(segments);
+        }
+
         return new LineString(null, null);
     }
 
@@ -80,9 +87,11 @@ public class CurveGmlHelper {
         return new CurveType();
     }
 
-    public static LineString parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value) {
+    public static Coordinate[] parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value) {
         for (JAXBElement<? extends AbstractCurveSegmentType> element : value.getAbstractCurveSegment()){
-            if (element.getValue() instanceof ArcByBulgeType) {
+            if (element.getValue() == null) {
+                return new Coordinate[0];
+            } else if (element.getValue() instanceof ArcByBulgeType) {
                 //AIXM-5.1_RULE-1A3EC2
 
             } else if (element.getValue() instanceof ArcByCenterPointType) {
@@ -116,6 +125,7 @@ public class CurveGmlHelper {
                 //AIXM-5.1_RULE-1A3EC6	
 
             } else if (element.getValue() instanceof GeodesicStringType) {
+                return parseGeodesicString((GeodesicStringType) element.getValue());
 
             } else if (element.getValue() instanceof GeodesicType) {
                 //TODO: Implement this
@@ -131,7 +141,7 @@ public class CurveGmlHelper {
             }
         }
 
-        return new LineString(null, null);
+        return new Coordinate[0];
     }
 
     public static CurveSegmentArrayPropertyType printCurveSegmentArrayPropertyType (){
@@ -139,41 +149,41 @@ public class CurveGmlHelper {
         return new CurveSegmentArrayPropertyType();
     }
 
-    public static LineString parseArcByCenterPoint(ArcByCenterPointType value) {
-        return new LineString(null, null);
+    public static Coordinate[] parseArcByCenterPoint(ArcByCenterPointType value) {
+        return new Coordinate[0];
     }
 
     public static ArcByCenterPointType printArcByCenterPoint (LineString value) {
         return new ArcByCenterPointType();
     }
 
-    public static LineString parseArc(ArcType value) {
-        return new LineString(null, null);
+    public static Coordinate[] parseArc(ArcType value) {
+        return new Coordinate[0];
     }
 
     public static ArcType printArc (LineString value) {
         return new ArcType();
     }
 
-    public static LineString parseCircleByCenterPoint(CircleByCenterPointType value) {
-        return new LineString(null, null);
+    public static Coordinate[] parseCircleByCenterPoint(CircleByCenterPointType value) {
+        return new Coordinate[0];
     }  
 
     public static CircleByCenterPointType printCircleByCenterPoint (LineString value) {
         return new CircleByCenterPointType();
     }
 
-    public static LineString parseCircle(CircleType value) {
-        return new LineString(null, null);
+    public static Coordinate[] parseCircle(CircleType value) {
+        return new Coordinate[0];
     }
 
     public static CircleType printCircle (LineString value) {
         return new CircleType();
     }
 
-    public static LineString parseGeodesicString (GeodesicStringType value) {
-
-        return new LineString(null, null);
+    public static Coordinate[] parseGeodesicString (GeodesicStringType value) {
+        DirectPositionListType posList = value.getPosList();
+        return parseDirectPositionList(posList);
     }
 
     public static GeodesicStringType printGeodesicString (LineString value) {
@@ -181,9 +191,8 @@ public class CurveGmlHelper {
         return new GeodesicStringType();
     }
 
-    public static LineString parseGeodesic (GeodesicType value) {
-
-        return new LineString(null, null);
+    public static Coordinate[] parseGeodesic (GeodesicType value) {
+        return new Coordinate[0];
     }
 
     public static GeodesicType printGeodesic (LineString value) {
@@ -191,9 +200,8 @@ public class CurveGmlHelper {
         return new GeodesicType();
     }
 
-    public static LineString parseLineStringSegment (LineStringSegmentType value) {
-
-        return new LineString(null, null);
+    public static Coordinate[] parseLineStringSegment (LineStringSegmentType value) {
+        return new Coordinate[0];
     }
 
     public static LineStringSegmentType printLineStringSegment (LineString value) {
@@ -201,9 +209,10 @@ public class CurveGmlHelper {
         return new LineStringSegmentType();
     }
 
-    public static LineString parseDirectPositionList (DirectPositionListType value) {
-
-        return new LineString(null, null);
+    public static Coordinate[] parseDirectPositionList (DirectPositionListType value) {
+        List<Double> values = value.getValue();
+        for 
+        return new Coordinate[0];
     }
 
     public static DirectPositionListType printDirectPositionList (LineString value) {

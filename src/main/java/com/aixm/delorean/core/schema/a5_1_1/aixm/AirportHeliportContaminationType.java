@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -77,8 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "airport_heliport_contamination_type", schema = "public")
+@Embeddable
 public class AirportHeliportContaminationType
     extends AbstractSurfaceContaminationType
 {
@@ -86,14 +84,14 @@ public class AirportHeliportContaminationType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "observation_time_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "observation_time")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "observation_time_nilreason"))
     })
     protected DateTimeType observationTime;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "depth_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "depth")),
         @AttributeOverride(name = "uom", column = @Column(name = "depth_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "depth_nilreason"))
     })
@@ -101,56 +99,56 @@ public class AirportHeliportContaminationType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "friction_coefficient_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "friction_coefficient")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "friction_coefficient_nilreason"))
     })
     protected ValFrictionType frictionCoefficient;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "friction_estimation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "friction_estimation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "friction_estimation_nilreason"))
     })
     protected CodeFrictionEstimateType frictionEstimation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "friction_device_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "friction_device")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "friction_device_nilreason"))
     })
     protected CodeFrictionDeviceType frictionDevice;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "obscured_lights_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "obscured_lights")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obscured_lights_nilreason"))
     })
     protected CodeYesNoType obscuredLights;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "further_clearance_time_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "further_clearance_time")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "further_clearance_time_nilreason"))
     })
     protected TimeType furtherClearanceTime;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "further_total_clearance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "further_total_clearance")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "further_total_clearance_nilreason"))
     })
     protected CodeYesNoType furtherTotalClearance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "next_observation_time_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "next_observation_time")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "next_observation_time_nilreason"))
     })
     protected DateTimeType nextObservationTime;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "proportion_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "proportion")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "proportion_nilreason"))
     })
     protected ValPercentType proportion;

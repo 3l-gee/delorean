@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -80,8 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
-@Entity
-@Table(name = "runway_direction_time_slice_type", schema = "public")
+@Embeddable
 public class RunwayDirectionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -89,49 +87,49 @@ public class RunwayDirectionTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
     })
     protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "true_bearing_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "true_bearing")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "true_bearing_nilreason"))
     })
     protected ValBearingType trueBearing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "true_bearing_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "true_bearing_accuracy")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "true_bearing_accuracy_nilreason"))
     })
     protected ValAngleType trueBearingAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "magnetic_bearing_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_bearing")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_bearing_nilreason"))
     })
     protected ValBearingType magneticBearing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "pattern_vfr_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "pattern_vfr")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "pattern_vfr_nilreason"))
     })
     protected CodeDirectionTurnType patternVFR;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "slope_tdz_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "slope_tdz")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "slope_tdz_nilreason"))
     })
     protected ValSlopeType slopeTDZ;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "elevation_tdz_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "elevation_tdz")),
         @AttributeOverride(name = "uom", column = @Column(name = "elevation_tdz_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "elevation_tdz_nilreason"))
     })
@@ -139,7 +137,7 @@ public class RunwayDirectionTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "elevation_tdz_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "elevation_tdz_accuracy")),
         @AttributeOverride(name = "uom", column = @Column(name = "elevation_tdz_accuracy_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "elevation_tdz_accuracy_nilreason"))
     })
@@ -147,28 +145,28 @@ public class RunwayDirectionTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "approach_marking_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "approach_marking_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "approach_marking_type_nilreason"))
     })
     protected CodeRunwayMarkingType approachMarkingType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "approach_marking_condition_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "approach_marking_condition")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "approach_marking_condition_nilreason"))
     })
     protected CodeMarkingConditionType approachMarkingCondition;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "class_lighting_jar_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "class_lighting_jar")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "class_lighting_jar_nilreason"))
     })
     protected CodeLightingJARType classLightingJAR;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "precision_approach_guidance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "precision_approach_guidance")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "precision_approach_guidance_nilreason"))
     })
     protected CodeApproachGuidanceType precisionApproachGuidance;

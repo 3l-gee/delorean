@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -76,8 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "airspace_time_slice_type", schema = "public")
+@Embeddable
 public class AirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -85,49 +83,49 @@ public class AirspaceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeAirspaceType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
     })
     protected CodeAirspaceDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "local_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "local_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "local_type_nilreason"))
     })
     protected TextNameType localType;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_icao_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_icao")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_icao_nilreason"))
     })
     protected CodeYesNoType designatorICAO;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "control_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "control_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "control_type_nilreason"))
     })
     protected CodeMilitaryOperationsType controlType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_lower_separation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_lower_separation")),
         @AttributeOverride(name = "uom", column = @Column(name = "upper_lower_separation_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_lower_separation_nilreason"))
     })

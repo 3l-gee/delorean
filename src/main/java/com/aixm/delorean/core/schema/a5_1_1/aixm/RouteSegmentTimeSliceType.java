@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -95,8 +94,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "route_segment_time_slice_type", schema = "public")
+@Embeddable
 public class RouteSegmentTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -104,14 +102,14 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "level_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "level")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "level_nilreason"))
     })
     protected CodeLevelType level;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_nilreason"))
     })
@@ -119,14 +117,14 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
     })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_nilreason"))
     })
@@ -134,14 +132,14 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_obstacle_clearance_altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_obstacle_clearance_altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "minimum_obstacle_clearance_altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_obstacle_clearance_altitude_nilreason"))
     })
@@ -149,42 +147,42 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "path_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "path_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "path_type_nilreason"))
     })
     protected CodeRouteSegmentPathType pathType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "true_track_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "true_track")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "true_track_nilreason"))
     })
     protected ValBearingType trueTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "magnetic_track_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_track")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_track_nilreason"))
     })
     protected ValBearingType magneticTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "reverse_true_track_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "reverse_true_track")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "reverse_true_track_nilreason"))
     })
     protected ValBearingType reverseTrueTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "reverse_magnetic_track_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "reverse_magnetic_track")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "reverse_magnetic_track_nilreason"))
     })
     protected ValBearingType reverseMagneticTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "length")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
     })
@@ -192,7 +190,7 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_left_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width_left")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_left_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_left_nilreason"))
     })
@@ -200,7 +198,7 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_right_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width_right")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_right_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_right_nilreason"))
     })
@@ -208,21 +206,21 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turn_direction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "turn_direction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turn_direction_nilreason"))
     })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "signal_gap_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "signal_gap")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "signal_gap_nilreason"))
     })
     protected CodeYesNoType signalGap;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_enroute_altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_enroute_altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "minimum_enroute_altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_enroute_altitude_nilreason"))
     })
@@ -230,7 +228,7 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end")),
         @AttributeOverride(name = "uom", column = @Column(name = "minimum_crossing_at_end_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_crossing_at_end_nilreason"))
     })
@@ -238,14 +236,14 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_crossing_at_end_reference_nilreason"))
     })
     protected CodeVerticalReferenceType minimumCrossingAtEndReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end")),
         @AttributeOverride(name = "uom", column = @Column(name = "maximum_crossing_at_end_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "maximum_crossing_at_end_nilreason"))
     })
@@ -253,28 +251,28 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "maximum_crossing_at_end_reference_nilreason"))
     })
     protected CodeVerticalReferenceType maximumCrossingAtEndReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "navigation_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "navigation_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "navigation_type_nilreason"))
     })
     protected CodeRouteNavigationType navigationType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "required_navigation_performance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "required_navigation_performance")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "required_navigation_performance_nilreason"))
     })
     protected CodeRNPType requiredNavigationPerformance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_suffix_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_suffix")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_suffix_nilreason"))
     })
     protected CodeRouteDesignatorSuffixType designatorSuffix;

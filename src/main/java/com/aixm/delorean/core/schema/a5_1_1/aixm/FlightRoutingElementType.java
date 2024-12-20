@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -83,8 +82,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "flight_routing_element_type", schema = "public")
+@Embeddable
 public class FlightRoutingElementType
     extends AbstractAIXMObjectType
 {
@@ -92,14 +90,14 @@ public class FlightRoutingElementType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "order_number_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "order_number")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "order_number_nilreason"))
     })
     protected NoSequenceType orderNumber;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "speed")),
         @AttributeOverride(name = "uom", column = @Column(name = "speed_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_nilreason"))
     })
@@ -107,14 +105,14 @@ public class FlightRoutingElementType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "speed_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_reference_nilreason"))
     })
     protected CodeSpeedReferenceType speedReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_criteria_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "speed_criteria")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_criteria_nilreason"))
     })
     protected CodeComparisonType speedCriteria;

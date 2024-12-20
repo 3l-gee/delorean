@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -85,8 +84,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightingAvailability",
     "extension"
 })
-@Entity
-@Table(name = "vertical_structure_time_slice_type", schema = "public")
+@Embeddable
 public class VerticalStructureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -94,42 +92,42 @@ public class VerticalStructureTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeVerticalStructureType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lighted_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lighted")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lighted_nilreason"))
     })
     protected CodeYesNoType lighted;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "marking_icao_standard_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "marking_icao_standard")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "marking_icao_standard_nilreason"))
     })
     protected CodeYesNoType markingICAOStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "group_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "group")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "group_nilreason"))
     })
     protected CodeYesNoType group;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "length")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
     })
@@ -137,7 +135,7 @@ public class VerticalStructureTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason"))
     })
@@ -145,7 +143,7 @@ public class VerticalStructureTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "radius_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "radius")),
         @AttributeOverride(name = "uom", column = @Column(name = "radius_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "radius_nilreason"))
     })
@@ -153,14 +151,14 @@ public class VerticalStructureTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lighting_icao_standard_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lighting_icao_standard")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lighting_icao_standard_nilreason"))
     })
     protected CodeYesNoType lightingICAOStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "synchronised_lighting_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "synchronised_lighting")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "synchronised_lighting_nilreason"))
     })
     protected CodeYesNoType synchronisedLighting;

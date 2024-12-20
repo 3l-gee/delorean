@@ -10,11 +10,10 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -67,8 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
-@Entity
-@Table(name = "deicing_area_time_slice_type", schema = "public")
+@Embeddable
 public class DeicingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {

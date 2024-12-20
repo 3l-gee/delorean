@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -77,8 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "servedRunwayDirection",
     "extension"
 })
-@Entity
-@Table(name = "approach_lighting_system_time_slice_type", schema = "public")
+@Embeddable
 public class ApproachLightingSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -86,21 +84,21 @@ public class ApproachLightingSystemTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "emergency_lighting_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "emergency_lighting")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "emergency_lighting_nilreason"))
     })
     protected CodeYesNoType emergencyLighting;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "intensity_level_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "intensity_level")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_level_nilreason"))
     })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "colour_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "colour")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
     })
     protected CodeColourType colour;
@@ -122,21 +120,21 @@ public class ApproachLightingSystemTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "class_icao_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "class_icao")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "class_icao_nilreason"))
     })
     protected CodeApproachLightingICAOType classICAO;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeApproachLightingType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "length")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
     })
@@ -144,14 +142,14 @@ public class ApproachLightingSystemTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "sequenced_flashing_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "sequenced_flashing")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "sequenced_flashing_nilreason"))
     })
     protected CodeYesNoType sequencedFlashing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "alignment_indicator_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "alignment_indicator")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "alignment_indicator_nilreason"))
     })
     protected CodeYesNoType alignmentIndicator;

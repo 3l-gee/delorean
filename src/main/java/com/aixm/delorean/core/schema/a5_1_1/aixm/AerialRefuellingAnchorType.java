@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,8 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "aerial_refuelling_anchor_type", schema = "public")
+@Embeddable
 public class AerialRefuellingAnchorType
     extends AbstractAIXMObjectType
 {
@@ -84,35 +82,35 @@ public class AerialRefuellingAnchorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "outbound_course_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "outbound_course")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "outbound_course_nilreason"))
     })
     protected ValBearingType outboundCourse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "outbound_course_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "outbound_course_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "outbound_course_type_nilreason"))
     })
     protected CodeCourseType outboundCourseType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "inbound_course_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "inbound_course")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "inbound_course_nilreason"))
     })
     protected ValBearingType inboundCourse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turn_direction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "turn_direction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turn_direction_nilreason"))
     })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "speed_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "speed_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_limit_nilreason"))
     })
@@ -120,7 +118,7 @@ public class AerialRefuellingAnchorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "leg_separation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "leg_separation")),
         @AttributeOverride(name = "uom", column = @Column(name = "leg_separation_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "leg_separation_nilreason"))
     })
@@ -128,7 +126,7 @@ public class AerialRefuellingAnchorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "leg_length_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "leg_length")),
         @AttributeOverride(name = "uom", column = @Column(name = "leg_length_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "leg_length_nilreason"))
     })
@@ -136,7 +134,7 @@ public class AerialRefuellingAnchorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "refuelling_base_level_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "refuelling_base_level")),
         @AttributeOverride(name = "uom", column = @Column(name = "refuelling_base_level_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "refuelling_base_level_nilreason"))
     })
@@ -144,7 +142,7 @@ public class AerialRefuellingAnchorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "refuelling_base_level_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "refuelling_base_level_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "refuelling_base_level_reference_nilreason"))
     })
     protected CodeVerticalReferenceType refuellingBaseLevelReference;

@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -81,8 +80,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "areaContaminant",
     "extension"
 })
-@Entity
-@Table(name = "runway_time_slice_type", schema = "public")
+@Embeddable
 public class RunwayTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -90,21 +88,21 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
     })
     protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeRunwayType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "nominal_length_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "nominal_length")),
         @AttributeOverride(name = "uom", column = @Column(name = "nominal_length_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "nominal_length_nilreason"))
     })
@@ -112,7 +110,7 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "length_accuracy")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_accuracy_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_accuracy_nilreason"))
     })
@@ -120,7 +118,7 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "nominal_width_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "nominal_width")),
         @AttributeOverride(name = "uom", column = @Column(name = "nominal_width_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "nominal_width_nilreason"))
     })
@@ -128,7 +126,7 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width_accuracy")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_accuracy_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_accuracy_nilreason"))
     })
@@ -136,7 +134,7 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_shoulder_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width_shoulder")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_shoulder_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_shoulder_nilreason"))
     })
@@ -144,7 +142,7 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length_strip_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "length_strip")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_strip_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_strip_nilreason"))
     })
@@ -152,7 +150,7 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_strip_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width_strip")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_strip_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_strip_nilreason"))
     })
@@ -160,7 +158,7 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length_offset_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "length_offset")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_offset_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_offset_nilreason"))
     })
@@ -168,7 +166,7 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_offset_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width_offset")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_offset_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_offset_nilreason"))
     })
@@ -176,7 +174,7 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "abandoned_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "abandoned")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason"))
     })
     protected CodeYesNoType abandoned;

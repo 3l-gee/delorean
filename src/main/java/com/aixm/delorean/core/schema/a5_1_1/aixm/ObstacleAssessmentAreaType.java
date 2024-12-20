@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,8 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "obstacle_assessment_area_type", schema = "public")
+@Embeddable
 public class ObstacleAssessmentAreaType
     extends AbstractAIXMObjectType
 {
@@ -84,28 +82,28 @@ public class ObstacleAssessmentAreaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeObstacleAssessmentSurfaceType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "section_number_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "section_number")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "section_number_nilreason"))
     })
     protected NoNumberType sectionNumber;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "slope_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "slope")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "slope_nilreason"))
     })
     protected ValSlopeType slope;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "assessed_altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "assessed_altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "assessed_altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "assessed_altitude_nilreason"))
     })
@@ -113,7 +111,7 @@ public class ObstacleAssessmentAreaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "slope_lower_altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "slope_lower_altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "slope_lower_altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "slope_lower_altitude_nilreason"))
     })
@@ -121,21 +119,21 @@ public class ObstacleAssessmentAreaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "gradient_low_high_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "gradient_low_high")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "gradient_low_high_nilreason"))
     })
     protected ValSlopeType gradientLowHigh;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "surface_zone_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "surface_zone")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "surface_zone_nilreason"))
     })
     protected CodeObstructionIdSurfaceZoneType surfaceZone;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "safety_regulation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "safety_regulation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "safety_regulation_nilreason"))
     })
     protected TextNameType safetyRegulation;

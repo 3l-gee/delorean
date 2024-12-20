@@ -7,13 +7,18 @@ import os
 import Annotation
 import json
 
-def runner(config: dict, xsds: List[dict]):
+def runner(config: dict, debug: dict, xsds: List[dict]):
     xsds = [Xsd(xsd["name"], xsd["path"], xsd["strategy"], xsd["manual"], xsd.get("package")) for xsd in xsds]
+
+    if debug["mode"] == True:
+        debug = Debug(debug)
+    else : 
+        debug = Debug({})
+
     config = Config(config)
-    machinery = Machinery(xsds, config)
+    machinery = Machinery(xsds, config, debug)
 
     machinery.generate_xjb()
-    # machinery.print_entity_class(machinery.entity_feature)
     machinery.export_xjb()
 
 
@@ -22,6 +27,7 @@ class strategy(Enum):
     feature = "feature"
     data_type = "data_type"
     other = "other"
+    debug = "debug"
 
 class Xsd: 
     def __init__(self, name:str, path:str, strategie: strategy, manual: dict, package: str = None):
@@ -96,14 +102,19 @@ class Config:
         self.constraint_methode = "psql"
         self.output_path = config["output_path"]
 
+class Debug:
+    def __init__(self, debug: dict):
+        self.mode = debug.get("mode", False)
+        self.entity = debug.get("entity", {})
+        self.feature = debug.get("feature", {})
+
 class Machinery:
-    def __init__(self, xsds: List[Xsd], config: Config):
+    def __init__(self, xsds: List[Xsd], config: Config, debug: Debug): 
         self.xsds = xsds
         self.config = config
+        self.debug = debug
         self.xjb = self.init_xjb(self.xsds)
-
         self.content = self.init_content(self.xsds)
-
         self.abstract_feature = {}
         self.entity_feature = [] # todo make it a dict
         self.ignore_feature = {}
@@ -288,7 +299,6 @@ class Machinery:
         minOccurs = int(element.attrib.get("minOccurs", "1"))
         maxOccurs = element.attrib.get("maxOccurs", "1")  # Default is 1
 
-
         if maxOccurs.lower() == "unbounded":
             maxOccurs = "unbounded"
         else:
@@ -314,23 +324,6 @@ class Machinery:
             
             else:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_one()))
-                # column = Annotation.Jpa.relation.join_column(element.attrib.get("name",element.attrib.get("ref")))
-                # inverse_column = Annotation.Jpa.relation.join_column(parent.attrib.get("name",parent.attrib.get("ref")))
-
-                # long_ass_name = Annotation.Util.snake_case_join_table(parent.attrib.get("name",parent.attrib.get("ref")), element.attrib.get("name",element.attrib.get("ref")))
-                # if len(long_ass_name) >63 :
-                #     print("---------------------------------------------------------------")
-                #     print(parent.attrib.get("name",parent.attrib.get("ref")))
-                #     print(element.attrib.get("name",element.attrib.get("ref")))
-                #     print(long_ass_name)
-                #     print("---------------------------------------------------------------")
-
-                # res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.join_table(
-                #     name1 = parent.attrib.get("name",parent.attrib.get("ref")),
-                #     name2 = element.attrib.get("name",element.attrib.get("ref")),
-                #     join_columns = column,
-                #     inverse_join_columns = inverse_column
-                # )))
                 return res
 
         if nillable:
@@ -671,11 +664,6 @@ class Machinery:
     
     def class_writer(self, element, embed, asbtract):
         node = []
-        if element.attrib.get("name") in asbtract:
-            self.entity_feature.append(element.attrib["name"])
-            node.append(Annotation.Annox.class_add(Annotation.Jpa.entity))
-            node.append(Annotation.Annox.class_add(Annotation.Jpa.relation.inhertiance()))
-            return node
         
         sub_element_list = element.findall(".//"+ Annotation.Tag.element) or []
         for sub_element in sub_element_list:
@@ -688,6 +676,16 @@ class Machinery:
                     xmlt_type_name = xmlt_type_name[0].lower() + xmlt_type_name[1:] + "TimeSlice"
 
                 node.append(Annotation.Annox.class_add(Annotation.Xml.type(element.attrib["name"], xmlt_type_name)))
+
+        if self.debug.entity.get("mode") == True and element.attrib.get("name") not in self.debug.entity.get("name", []):
+            node.append(Annotation.Annox.class_add(Annotation.Jpa.embeddable))
+            return node
+
+        if element.attrib.get("name") in asbtract :
+            self.entity_feature.append(element.attrib["name"])
+            node.append(Annotation.Annox.class_add(Annotation.Jpa.entity))
+            node.append(Annotation.Annox.class_add(Annotation.Jpa.relation.inhertiance()))
+            return node
 
         if element.attrib.get("name") in embed.keys():
             node.append(Annotation.Annox.class_add(Annotation.Jpa.embeddable))

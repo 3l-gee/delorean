@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,8 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "unplanned_holding_time_slice_type", schema = "public")
+@Embeddable
 public class UnplannedHoldingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -77,14 +75,14 @@ public class UnplannedHoldingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "unplanned_holding_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "unplanned_holding")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "unplanned_holding_nilreason"))
     })
     protected CodeApprovalType unplannedHolding;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "authorized_altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "authorized_altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "authorized_altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "authorized_altitude_nilreason"))
     })
@@ -92,14 +90,14 @@ public class UnplannedHoldingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_reference_nilreason"))
     })
     protected CodeVerticalReferenceType altitudeReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "controlled_airspace_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "controlled_airspace")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "controlled_airspace_nilreason"))
     })
     protected CodeYesNoType controlledAirspace;

@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,8 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "signalType",
     "extension"
 })
-@Entity
-@Table(name = "navaid_operational_status_type", schema = "public")
+@Embeddable
 public class NavaidOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {
@@ -91,14 +89,14 @@ public class NavaidOperationalStatusType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "operational_status_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "operational_status")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "operational_status_nilreason"))
     })
     protected CodeStatusNavaidType operationalStatus;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "signal_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "signal_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "signal_type_nilreason"))
     })
     protected CodeRadioSignalType signalType;

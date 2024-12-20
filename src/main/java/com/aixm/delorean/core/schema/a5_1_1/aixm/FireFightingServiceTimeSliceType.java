@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -80,8 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "standard",
     "extension"
 })
-@Entity
-@Table(name = "fire_fighting_service_time_slice_type", schema = "public")
+@Embeddable
 public class FireFightingServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -89,28 +87,28 @@ public class FireFightingServiceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flight_operations_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "flight_operations")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flight_operations_nilreason"))
     })
     protected CodeFlightDestinationType flightOperations;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "rank_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "rank")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "rank_nilreason"))
     })
     protected CodeFacilityRankingType rank;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "compliant_icao_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "compliant_icao")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "compliant_icao_nilreason"))
     })
     protected CodeYesNoType compliantICAO;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
     })
     protected TextNameType aixmName;
@@ -151,14 +149,14 @@ public class FireFightingServiceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "category_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "category")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "category_nilreason"))
     })
     protected CodeFireFightingType category;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "standard_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "standard")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "standard_nilreason"))
     })
     protected CodeAviationStandardsType standard;

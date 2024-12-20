@@ -131,8 +131,8 @@ public class Main {
         logger.log(LogLevel.INFO, "xml - load src/main/resources/a5_1_1/a5_1_1_dataset.xml");
         executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/main/resources/a5_1_1/a5_1_1_dataset.xml");
 
-        logger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/importExport.xml");
+        // logger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/importExport.xml");
         
         logger.log(LogLevel.INFO, "db_config - a5_1_1");
         executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", "");

@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,8 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "obstacle_placement_type", schema = "public")
+@Embeddable
 public class ObstaclePlacementType
     extends AbstractAIXMObjectType
 {
@@ -76,14 +74,14 @@ public class ObstaclePlacementType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "obstacle_bearing_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "obstacle_bearing")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obstacle_bearing_nilreason"))
     })
     protected ValBearingType obstacleBearing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "obstacle_distance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "obstacle_distance")),
         @AttributeOverride(name = "uom", column = @Column(name = "obstacle_distance_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obstacle_distance_nilreason"))
     })
@@ -91,14 +89,14 @@ public class ObstaclePlacementType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "point_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "point_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "point_type_nilreason"))
     })
     protected TextNameType pointType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "obstacle_placement_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "obstacle_placement")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obstacle_placement_nilreason"))
     })
     protected CodeSideType obstaclePlacement;

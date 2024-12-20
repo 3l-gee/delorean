@@ -15,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -58,9 +59,10 @@ public abstract class AbstractAIXMMessageBaseType
 
     @Column(name = "sequence_number", nullable = true)
     protected Long sequenceNumber;
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    // @OneToOne(cascade = {
+    //     CascadeType.ALL
+    // }, fetch = FetchType.EAGER)
+    @Transient
     protected MessageMetadataPropertyType messageMetadata;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

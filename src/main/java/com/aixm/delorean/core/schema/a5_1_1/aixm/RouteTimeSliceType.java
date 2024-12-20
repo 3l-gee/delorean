@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -77,8 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "route_time_slice_type", schema = "public")
+@Embeddable
 public class RouteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -86,77 +84,77 @@ public class RouteTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_prefix_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_prefix")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_prefix_nilreason"))
     })
     protected CodeRouteDesignatorPrefixType designatorPrefix;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_second_letter_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_second_letter")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_second_letter_nilreason"))
     })
     protected CodeRouteDesignatorLetterType designatorSecondLetter;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_number_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_number")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_number_nilreason"))
     })
     protected NoNumberType designatorNumber;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "multiple_identifier_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "multiple_identifier")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "multiple_identifier_nilreason"))
     })
     protected CodeUpperAlphaType multipleIdentifier;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "location_designator_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "location_designator")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "location_designator_nilreason"))
     })
     protected TextDesignatorType locationDesignator;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeRouteType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flight_rule_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "flight_rule")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flight_rule_nilreason"))
     })
     protected CodeFlightRuleType flightRule;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "international_use_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "international_use")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "international_use_nilreason"))
     })
     protected CodeRouteOriginType internationalUse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "military_use_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "military_use")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "military_use_nilreason"))
     })
     protected CodeMilitaryStatusType militaryUse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "military_training_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "military_training_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "military_training_type_nilreason"))
     })
     protected CodeMilitaryTrainingType militaryTrainingType;

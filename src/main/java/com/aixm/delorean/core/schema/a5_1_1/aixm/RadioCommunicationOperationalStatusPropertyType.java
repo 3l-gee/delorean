@@ -8,10 +8,9 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,8 +40,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "RadioCommunicationOperationalStatusPropertyType", propOrder = {
     "radioCommunicationOperationalStatus"
 })
-@Entity
-@Table(name = "radio_communication_operational_status_property_type", schema = "public")
+@Embeddable
 public class RadioCommunicationOperationalStatusPropertyType
     extends AbstractAIXMPropertyType
 {

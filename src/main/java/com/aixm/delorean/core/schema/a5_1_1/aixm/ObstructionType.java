@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -74,8 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "obstruction_type", schema = "public")
+@Embeddable
 public class ObstructionType
     extends AbstractAIXMObjectType
 {
@@ -83,7 +81,7 @@ public class ObstructionType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "required_clearance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "required_clearance")),
         @AttributeOverride(name = "uom", column = @Column(name = "required_clearance_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "required_clearance_nilreason"))
     })
@@ -91,7 +89,7 @@ public class ObstructionType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "minimum_altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_altitude_nilreason"))
     })
@@ -99,28 +97,28 @@ public class ObstructionType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "surface_penetration_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "surface_penetration")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "surface_penetration_nilreason"))
     })
     protected CodeYesNoType surfacePenetration;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "slope_penetration_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "slope_penetration")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "slope_penetration_nilreason"))
     })
     protected ValAngleType slopePenetration;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "controlling_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "controlling")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "controlling_nilreason"))
     })
     protected CodeYesNoType controlling;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "close_in_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "close_in")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "close_in_nilreason"))
     })
     protected CodeYesNoType closeIn;

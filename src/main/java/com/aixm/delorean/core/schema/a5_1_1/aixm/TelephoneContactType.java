@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,8 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "facsimile",
     "extension"
 })
-@Entity
-@Table(name = "telephone_contact_type", schema = "public")
+@Embeddable
 public class TelephoneContactType
     extends AbstractPropertiesWithScheduleType
 {
@@ -91,14 +89,14 @@ public class TelephoneContactType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "voice_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "voice")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "voice_nilreason"))
     })
     protected TextPhoneType voice;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "facsimile_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "facsimile")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "facsimile_nilreason"))
     })
     protected TextPhoneType facsimile;

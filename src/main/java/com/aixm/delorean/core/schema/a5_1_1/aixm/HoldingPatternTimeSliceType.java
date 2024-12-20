@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -80,8 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "holding_pattern_time_slice_type", schema = "public")
+@Embeddable
 public class HoldingPatternTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -89,42 +87,42 @@ public class HoldingPatternTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeHoldingUsageType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "outbound_course_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "outbound_course")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "outbound_course_nilreason"))
     })
     protected ValBearingType outboundCourse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "outbound_course_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "outbound_course_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "outbound_course_type_nilreason"))
     })
     protected CodeCourseType outboundCourseType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "inbound_course_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "inbound_course")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "inbound_course_nilreason"))
     })
     protected ValBearingType inboundCourse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turn_direction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "turn_direction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turn_direction_nilreason"))
     })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_nilreason"))
     })
@@ -132,14 +130,14 @@ public class HoldingPatternTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
     })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_nilreason"))
     })
@@ -147,14 +145,14 @@ public class HoldingPatternTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "speed_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "speed_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_limit_nilreason"))
     })
@@ -162,14 +160,14 @@ public class HoldingPatternTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason"))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "non_standard_holding_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "non_standard_holding")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "non_standard_holding_nilreason"))
     })
     protected CodeYesNoType nonStandardHolding;

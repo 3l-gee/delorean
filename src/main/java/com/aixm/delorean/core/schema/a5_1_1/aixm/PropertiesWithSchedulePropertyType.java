@@ -7,8 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -40,8 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "PropertiesWithSchedulePropertyType", propOrder = {
     "abstractPropertiesWithSchedule"
 })
-@Entity
-@Table(name = "properties_with_schedule_property_type", schema = "public")
+@Embeddable
 public class PropertiesWithSchedulePropertyType
     extends AbstractAIXMPropertyType
 {

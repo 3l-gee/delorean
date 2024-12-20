@@ -9,6 +9,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -50,7 +51,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "navaidTimeSlice"
 })
 @Entity
-@Table(name = "navaid_time_slice_property_type", schema = "public")
+@Table(name = "navaid_time_slice_property")
 public class NavaidTimeSlicePropertyType {
 
     @XmlElement(name = "NavaidTimeSlice", required = true)

@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -85,8 +84,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "aerial_refuelling_time_slice_type", schema = "public")
+@Embeddable
 public class AerialRefuellingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -94,98 +92,98 @@ public class AerialRefuellingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_prefix_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_prefix")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_prefix_nilreason"))
     })
     protected CodeAerialRefuellingPrefixType designatorPrefix;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_number_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_number")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_number_nilreason"))
     })
     protected NoNumberType designatorNumber;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_suffix_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_suffix")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_suffix_nilreason"))
     })
     protected TextDesignatorType designatorSuffix;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_direction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_direction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_direction_nilreason"))
     })
     protected CodeCardinalDirectionType designatorDirection;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeAerialRefuellingType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "radar_beacon_setting_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "radar_beacon_setting")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "radar_beacon_setting_nilreason"))
     })
     protected NoNumberType radarBeaconSetting;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "xband_radar_setting_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "xband_radar_setting")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "xband_radar_setting_nilreason"))
     })
     protected NoNumberType xbandRadarSetting;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "tanker_channel_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "tanker_channel")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "tanker_channel_nilreason"))
     })
     protected CodeTACANChannelType tankerChannel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "receiver_channel_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "receiver_channel")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "receiver_channel_nilreason"))
     })
     protected CodeTACANChannelType receiverChannel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "helicopter_route_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "helicopter_route")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "helicopter_route_nilreason"))
     })
     protected CodeYesNoType helicopterRoute;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "special_refuelling_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "special_refuelling")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "special_refuelling_nilreason"))
     })
     protected CodeYesNoType specialRefuelling;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "bidirectional_use_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "bidirectional_use")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "bidirectional_use_nilreason"))
     })
     protected CodeYesNoType bidirectionalUse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "reverse_direction_turn_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "reverse_direction_turn")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "reverse_direction_turn_nilreason"))
     })
     protected CodeDirectionTurnType reverseDirectionTurn;

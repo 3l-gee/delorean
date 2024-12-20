@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,8 +65,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "light_activation_type", schema = "public")
+@Embeddable
 public class LightActivationType
     extends AbstractAIXMObjectType
 {
@@ -75,21 +73,21 @@ public class LightActivationType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "clicks_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "clicks")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "clicks_nilreason"))
     })
     protected NoNumberType clicks;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "intensity_level_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "intensity_level")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_level_nilreason"))
     })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "activation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "activation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "activation_nilreason"))
     })
     protected CodeSystemActivationType activation;

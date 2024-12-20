@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -73,8 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "guidance_line_time_slice_type", schema = "public")
+@Embeddable
 public class GuidanceLineTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -82,21 +80,21 @@ public class GuidanceLineTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
     })
     protected TextNameType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeGuidanceLineType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "max_speed_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "max_speed")),
         @AttributeOverride(name = "uom", column = @Column(name = "max_speed_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "max_speed_nilreason"))
     })
@@ -104,7 +102,7 @@ public class GuidanceLineTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "usage_direction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "usage_direction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "usage_direction_nilreason"))
     })
     protected CodeDirectionType usageDirection;

@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,8 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "theHoldingPattern",
     "extension"
 })
-@Entity
-@Table(name = "holding_use_type", schema = "public")
+@Embeddable
 public class HoldingUseType
     extends AbstractAIXMObjectType
 {
@@ -77,21 +75,21 @@ public class HoldingUseType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "holding_use_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "holding_use")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "holding_use_nilreason"))
     })
     protected CodeHoldingUseType holdingUse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason"))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instructed_altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "instructed_altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "instructed_altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instructed_altitude_nilreason"))
     })
@@ -99,7 +97,7 @@ public class HoldingUseType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction_altitude_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_altitude_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_altitude_reference_nilreason"))
     })
     protected CodeVerticalReferenceType instructionAltitudeReference;

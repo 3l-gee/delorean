@@ -10,10 +10,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -43,8 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "TaxiwayElementType", propOrder = {
     "timeSlice"
 })
-@Entity
-@Table(name = "taxiway_element_type", schema = "public")
+@Embeddable
 public class TaxiwayElementType
     extends AbstractAIXMFeatureType
 {

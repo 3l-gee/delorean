@@ -73,7 +73,7 @@ public class BasicMessageMemberAIXMPropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     })
-    @JoinColumn(name = "abstract_aixm_feature_id")
+    // @JoinColumn(name = "abstract_aixm_feature_id")
     @XmlElementRef(name = "AbstractAIXMFeature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected AbstractAIXMFeatureType abstractAIXMFeature;
     @Id
