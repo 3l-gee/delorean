@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -93,8 +92,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "finalProfile",
     "extension"
 })
-@Entity
-@Table(name = "instrument_approach_procedure_time_slice_type", schema = "public")
+@Embeddable
 public class InstrumentApproachProcedureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -102,49 +100,49 @@ public class InstrumentApproachProcedureTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "communication_failure_instruction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "communication_failure_instruction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "communication_failure_instruction_nilreason"))
     })
     protected TextInstructionType communicationFailureInstruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason"))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "design_criteria_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "design_criteria")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "design_criteria_nilreason"))
     })
     protected CodeDesignStandardType designCriteria;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "coding_standard_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "coding_standard")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "coding_standard_nilreason"))
     })
     protected CodeProcedureCodingStandardType codingStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flight_checked_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "flight_checked")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flight_checked_nilreason"))
     })
     protected CodeYesNoType flightChecked;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
     })
     protected TextNameType aixmName;
     @XmlElement(name = "RNAV", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "rnav_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "rnav")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "rnav_nilreason"))
     })
     protected CodeYesNoType rnav;
@@ -186,63 +184,63 @@ public class InstrumentApproachProcedureTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "approach_prefix_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "approach_prefix")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "approach_prefix_nilreason"))
     })
     protected CodeApproachPrefixType approachPrefix;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "approach_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "approach_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "approach_type_nilreason"))
     })
     protected CodeApproachType approachType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "multiple_identification_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "multiple_identification")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "multiple_identification_nilreason"))
     })
     protected CodeUpperAlphaType multipleIdentification;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "copter_track_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "copter_track")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "copter_track_nilreason"))
     })
     protected ValBearingType copterTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "circling_identification_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "circling_identification")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "circling_identification_nilreason"))
     })
     protected CodeUpperAlphaType circlingIdentification;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_reversal_instruction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "course_reversal_instruction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "course_reversal_instruction_nilreason"))
     })
     protected TextInstructionType courseReversalInstruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "additional_equipment_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "additional_equipment")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "additional_equipment_nilreason"))
     })
     protected CodeApproachEquipmentAdditionalType additionalEquipment;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "channel_gnss_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "channel_gnss")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "channel_gnss_nilreason"))
     })
     protected ValChannelNumberType channelGNSS;
     @XmlElement(name = "WAASReliable", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "waas_reliable_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "waas_reliable")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "waas_reliable_nilreason"))
     })
     protected CodeYesNoType waasReliable;

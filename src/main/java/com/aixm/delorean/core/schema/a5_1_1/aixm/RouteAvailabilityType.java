@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -71,8 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "levels",
     "extension"
 })
-@Entity
-@Table(name = "route_availability_type", schema = "public")
+@Embeddable
 public class RouteAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
@@ -93,21 +91,21 @@ public class RouteAvailabilityType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "direction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "direction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "direction_nilreason"))
     })
     protected CodeDirectionType direction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "cardinal_direction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "cardinal_direction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "cardinal_direction_nilreason"))
     })
     protected CodeCardinalDirectionType cardinalDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "status_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "status")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason"))
     })
     protected CodeRouteAvailabilityType status;

@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -72,8 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "point_reference_type", schema = "public")
+@Embeddable
 public class PointReferenceType
     extends AbstractAIXMObjectType
 {
@@ -81,14 +79,14 @@ public class PointReferenceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "role_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "role")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason"))
     })
     protected CodeReferenceRoleType role;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "prior_fix_tolerance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "prior_fix_tolerance")),
         @AttributeOverride(name = "uom", column = @Column(name = "prior_fix_tolerance_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "prior_fix_tolerance_nilreason"))
     })
@@ -96,7 +94,7 @@ public class PointReferenceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "post_fix_tolerance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "post_fix_tolerance")),
         @AttributeOverride(name = "uom", column = @Column(name = "post_fix_tolerance_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "post_fix_tolerance_nilreason"))
     })

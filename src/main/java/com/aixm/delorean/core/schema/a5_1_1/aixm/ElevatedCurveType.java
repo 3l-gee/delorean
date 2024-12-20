@@ -72,7 +72,7 @@ public class ElevatedCurveType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "elevation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "elevation")),
         @AttributeOverride(name = "uom", column = @Column(name = "elevation_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "elevation_nilreason"))
     })
@@ -80,7 +80,7 @@ public class ElevatedCurveType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "geoid_undulation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "geoid_undulation")),
         @AttributeOverride(name = "uom", column = @Column(name = "geoid_undulation_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "geoid_undulation_nilreason"))
     })
@@ -88,14 +88,14 @@ public class ElevatedCurveType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "vertical_datum_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_datum")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_datum_nilreason"))
     })
     protected CodeVerticalDatumType verticalDatum;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "vertical_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_accuracy")),
         @AttributeOverride(name = "uom", column = @Column(name = "vertical_accuracy_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_accuracy_nilreason"))
     })

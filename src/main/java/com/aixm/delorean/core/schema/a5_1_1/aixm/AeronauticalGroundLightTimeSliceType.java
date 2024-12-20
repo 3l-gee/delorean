@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -72,8 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "aeronautical_ground_light_time_slice_type", schema = "public")
+@Embeddable
 public class AeronauticalGroundLightTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -81,28 +79,28 @@ public class AeronauticalGroundLightTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeGroundLightingType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "colour_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "colour")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
     })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flashing_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "flashing")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flashing_nilreason"))
     })
     protected CodeYesNoType flashing;

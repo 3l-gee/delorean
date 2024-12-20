@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -82,8 +81,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "lighting",
     "extension"
 })
-@Entity
-@Table(name = "vertical_structure_part_type", schema = "public")
+@Embeddable
 public class VerticalStructurePartType
     extends AbstractPropertiesWithScheduleType
 {
@@ -104,7 +102,7 @@ public class VerticalStructurePartType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "vertical_extent_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_extent")),
         @AttributeOverride(name = "uom", column = @Column(name = "vertical_extent_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_extent_nilreason"))
     })
@@ -112,7 +110,7 @@ public class VerticalStructurePartType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "vertical_extent_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "vertical_extent_accuracy")),
         @AttributeOverride(name = "uom", column = @Column(name = "vertical_extent_accuracy_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_extent_accuracy_nilreason"))
     })
@@ -120,63 +118,63 @@ public class VerticalStructurePartType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeVerticalStructureType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "construction_status_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "construction_status")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "construction_status_nilreason"))
     })
     protected CodeStatusConstructionType constructionStatus;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "marking_pattern_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "marking_pattern")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "marking_pattern_nilreason"))
     })
     protected CodeVerticalStructureMarkingType markingPattern;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "marking_first_colour_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "marking_first_colour")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "marking_first_colour_nilreason"))
     })
     protected CodeColourType markingFirstColour;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "marking_second_colour_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "marking_second_colour")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "marking_second_colour_nilreason"))
     })
     protected CodeColourType markingSecondColour;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "mobile_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "mobile")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "mobile_nilreason"))
     })
     protected CodeYesNoType mobile;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "frangible_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "frangible")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "frangible_nilreason"))
     })
     protected CodeYesNoType frangible;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "visible_material_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "visible_material")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "visible_material_nilreason"))
     })
     protected CodeVerticalStructureMaterialType visibleMaterial;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
     })
     protected TextDesignatorType designator;

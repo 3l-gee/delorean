@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -73,8 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "special_navigation_station_time_slice_type", schema = "public")
+@Embeddable
 public class SpecialNavigationStationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -82,21 +80,21 @@ public class SpecialNavigationStationTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeSpecialNavigationStationType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "frequency_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "frequency")),
         @AttributeOverride(name = "uom", column = @Column(name = "frequency_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "frequency_nilreason"))
     })
@@ -104,7 +102,7 @@ public class SpecialNavigationStationTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "emission_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "emission")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "emission_nilreason"))
     })
     protected CodeRadioEmissionType emission;

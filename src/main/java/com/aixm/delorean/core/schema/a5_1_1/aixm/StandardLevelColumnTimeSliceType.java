@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -70,8 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "standard_level_column_time_slice_type", schema = "public")
+@Embeddable
 public class StandardLevelColumnTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -79,21 +77,21 @@ public class StandardLevelColumnTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "series_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "series")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "series_nilreason"))
     })
     protected CodeLevelSeriesType series;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "unit_of_measurement_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "unit_of_measurement")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "unit_of_measurement_nilreason"))
     })
     protected CodeDistanceVerticalUomType unitOfMeasurement;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "separation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "separation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "separation_nilreason"))
     })
     protected CodeRVSMType separation;

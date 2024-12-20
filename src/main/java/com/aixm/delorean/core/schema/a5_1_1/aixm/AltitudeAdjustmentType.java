@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,8 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "altitude_adjustment_type", schema = "public")
+@Embeddable
 public class AltitudeAdjustmentType
     extends AbstractAIXMObjectType
 {
@@ -76,21 +74,21 @@ public class AltitudeAdjustmentType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_adjustment_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_adjustment_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_adjustment_type_nilreason"))
     })
     protected CodeAltitudeAdjustmentType altitudeAdjustmentType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "primary_alternate_minimum_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "primary_alternate_minimum")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "primary_alternate_minimum_nilreason"))
     })
     protected CodeYesNoType primaryAlternateMinimum;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_adjustment_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_adjustment")),
         @AttributeOverride(name = "uom", column = @Column(name = "altitude_adjustment_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_adjustment_nilreason"))
     })
@@ -98,7 +96,7 @@ public class AltitudeAdjustmentType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "local_remote_code_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "local_remote_code")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "local_remote_code_nilreason"))
     })
     protected CodeYesNoType localRemoteCode;

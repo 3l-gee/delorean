@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,8 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "terminal_arrival_area_sector_type", schema = "public")
+@Embeddable
 public class TerminalArrivalAreaSectorType
     extends AbstractAIXMObjectType
 {
@@ -78,21 +76,21 @@ public class TerminalArrivalAreaSectorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "fly_by_code_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "fly_by_code")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "fly_by_code_nilreason"))
     })
     protected CodeYesNoType flyByCode;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "procedure_turn_required_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "procedure_turn_required")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "procedure_turn_required_nilreason"))
     })
     protected CodeYesNoType procedureTurnRequired;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_description_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_description")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_description_nilreason"))
     })
     protected CodeAltitudeUseType altitudeDescription;

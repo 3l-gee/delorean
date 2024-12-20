@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,8 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "flight_restriction_level_type", schema = "public")
+@Embeddable
 public class FlightRestrictionLevelType
     extends AbstractAIXMObjectType
 {
@@ -76,7 +74,7 @@ public class FlightRestrictionLevelType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_level_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_level")),
         @AttributeOverride(name = "uom", column = @Column(name = "upper_level_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_level_nilreason"))
     })
@@ -84,14 +82,14 @@ public class FlightRestrictionLevelType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_level_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_level_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_level_reference_nilreason"))
     })
     protected CodeVerticalReferenceType upperLevelReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_level_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lower_level")),
         @AttributeOverride(name = "uom", column = @Column(name = "lower_level_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lower_level_nilreason"))
     })
@@ -99,7 +97,7 @@ public class FlightRestrictionLevelType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_level_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lower_level_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lower_level_reference_nilreason"))
     })
     protected CodeVerticalReferenceType lowerLevelReference;

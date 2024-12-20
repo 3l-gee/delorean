@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -83,8 +82,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "indicatorFACF",
     "extension"
 })
-@Entity
-@Table(name = "terminal_segment_point_type", schema = "public")
+@Embeddable
 public class TerminalSegmentPointType
     extends AbstractSegmentPointType
 {
@@ -92,28 +90,28 @@ public class TerminalSegmentPointType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "reporting_atc_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "reporting_atc")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "reporting_atc_nilreason"))
     })
     protected CodeATCReportingType reportingATC;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "fly_over_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "fly_over")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "fly_over_nilreason"))
     })
     protected CodeYesNoType flyOver;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "waypoint_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "waypoint")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "waypoint_nilreason"))
     })
     protected CodeYesNoType waypoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "radar_guidance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "radar_guidance")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "radar_guidance_nilreason"))
     })
     protected CodeYesNoType radarGuidance;
@@ -153,21 +151,21 @@ public class TerminalSegmentPointType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "role_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "role")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason"))
     })
     protected CodeProcedureFixRoleType role;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lead_radial_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lead_radial")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lead_radial_nilreason"))
     })
     protected ValBearingType leadRadial;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lead_dme_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lead_dme")),
         @AttributeOverride(name = "uom", column = @Column(name = "lead_dme_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lead_dme_nilreason"))
     })
@@ -175,7 +173,7 @@ public class TerminalSegmentPointType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "indicator_facf_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "indicator_facf")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "indicator_facf_nilreason"))
     })
     protected CodeYesNoType indicatorFACF;

@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -76,8 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "minima_type", schema = "public")
+@Embeddable
 public class MinimaType
     extends AbstractAIXMObjectType
 {
@@ -85,7 +83,7 @@ public class MinimaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_nilreason"))
     })
@@ -93,21 +91,21 @@ public class MinimaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_code_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_code")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_code_nilreason"))
     })
     protected CodeMinimumAltitudeType altitudeCode;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_reference_nilreason"))
     })
     protected CodeVerticalReferenceType altitudeReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "height_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "height")),
         @AttributeOverride(name = "uom", column = @Column(name = "height_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "height_nilreason"))
     })
@@ -115,7 +113,7 @@ public class MinimaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "military_height_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "military_height")),
         @AttributeOverride(name = "uom", column = @Column(name = "military_height_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "military_height_nilreason"))
     })
@@ -123,7 +121,7 @@ public class MinimaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "radio_height_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "radio_height")),
         @AttributeOverride(name = "uom", column = @Column(name = "radio_height_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "radio_height_nilreason"))
     })
@@ -131,21 +129,21 @@ public class MinimaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "height_code_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "height_code")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "height_code_nilreason"))
     })
     protected CodeMinimumHeightType heightCode;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "height_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "height_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "height_reference_nilreason"))
     })
     protected CodeHeightReferenceType heightReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "visibility_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "visibility")),
         @AttributeOverride(name = "uom", column = @Column(name = "visibility_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "visibility_nilreason"))
     })
@@ -153,7 +151,7 @@ public class MinimaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "military_visibility_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "military_visibility")),
         @AttributeOverride(name = "uom", column = @Column(name = "military_visibility_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "military_visibility_nilreason"))
     })
@@ -161,14 +159,14 @@ public class MinimaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "mandatory_rvr_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "mandatory_rvr")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "mandatory_rvr_nilreason"))
     })
     protected CodeYesNoType mandatoryRVR;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "remote_altimeter_minima_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "remote_altimeter_minima")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "remote_altimeter_minima_nilreason"))
     })
     protected CodeYesNoType remoteAltimeterMinima;

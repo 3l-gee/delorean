@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -78,8 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "holding_assessment_time_slice_type", schema = "public")
+@Embeddable
 public class HoldingAssessmentTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -87,7 +85,7 @@ public class HoldingAssessmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_nilreason"))
     })
@@ -95,14 +93,14 @@ public class HoldingAssessmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
     })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_nilreason"))
     })
@@ -110,14 +108,14 @@ public class HoldingAssessmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "speed_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "speed_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_limit_nilreason"))
     })
@@ -125,21 +123,21 @@ public class HoldingAssessmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "pattern_template_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "pattern_template")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "pattern_template_nilreason"))
     })
     protected TextNameType patternTemplate;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turbulent_air_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "turbulent_air")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turbulent_air_nilreason"))
     })
     protected CodeYesNoType turbulentAir;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "leg_length_toward_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "leg_length_toward")),
         @AttributeOverride(name = "uom", column = @Column(name = "leg_length_toward_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "leg_length_toward_nilreason"))
     })
@@ -147,7 +145,7 @@ public class HoldingAssessmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "leg_length_away_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "leg_length_away")),
         @AttributeOverride(name = "uom", column = @Column(name = "leg_length_away_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "leg_length_away_nilreason"))
     })

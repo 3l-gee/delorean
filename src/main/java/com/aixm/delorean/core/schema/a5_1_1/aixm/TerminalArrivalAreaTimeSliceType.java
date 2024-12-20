@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -83,8 +82,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "terminal_arrival_area_time_slice_type", schema = "public")
+@Embeddable
 public class TerminalArrivalAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -92,14 +90,14 @@ public class TerminalArrivalAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "arrival_area_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "arrival_area_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "arrival_area_type_nilreason"))
     })
     protected CodeTAAType arrivalAreaType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "outer_buffer_width_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "outer_buffer_width")),
         @AttributeOverride(name = "uom", column = @Column(name = "outer_buffer_width_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "outer_buffer_width_nilreason"))
     })
@@ -107,7 +105,7 @@ public class TerminalArrivalAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lateral_buffer_width_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lateral_buffer_width")),
         @AttributeOverride(name = "uom", column = @Column(name = "lateral_buffer_width_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lateral_buffer_width_nilreason"))
     })

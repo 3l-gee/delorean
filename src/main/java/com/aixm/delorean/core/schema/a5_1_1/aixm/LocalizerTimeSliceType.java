@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -85,8 +84,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "backCourseUsable",
     "extension"
 })
-@Entity
-@Table(name = "localizer_time_slice_type", schema = "public")
+@Embeddable
 public class LocalizerTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -94,56 +92,56 @@ public class LocalizerTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
     })
     protected CodeNavaidDesignatorType designator;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "emission_class_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "emission_class")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "emission_class_nilreason"))
     })
     protected CodeRadioEmissionType emissionClass;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "mobile_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "mobile")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "mobile_nilreason"))
     })
     protected CodeYesNoType mobile;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_variation_nilreason"))
     })
     protected ValMagneticVariationType magneticVariation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation_accuracy")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_variation_accuracy_nilreason"))
     })
     protected ValAngleType magneticVariationAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "date_magnetic_variation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "date_magnetic_variation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "date_magnetic_variation_nilreason"))
     })
     protected DateYearType dateMagneticVariation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flight_checked_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "flight_checked")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flight_checked_nilreason"))
     })
     protected CodeYesNoType flightChecked;
@@ -175,7 +173,7 @@ public class LocalizerTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "frequency_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "frequency")),
         @AttributeOverride(name = "uom", column = @Column(name = "frequency_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "frequency_nilreason"))
     })
@@ -183,56 +181,56 @@ public class LocalizerTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "magnetic_bearing_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_bearing")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_bearing_nilreason"))
     })
     protected ValBearingType magneticBearing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "magnetic_bearing_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "magnetic_bearing_accuracy")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_bearing_accuracy_nilreason"))
     })
     protected ValAngleType magneticBearingAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "true_bearing_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "true_bearing")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "true_bearing_nilreason"))
     })
     protected ValBearingType trueBearing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "true_bearing_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "true_bearing_accuracy")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "true_bearing_accuracy_nilreason"))
     })
     protected ValAngleType trueBearingAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "declination_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "declination")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "declination_nilreason"))
     })
     protected ValMagneticVariationType declination;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_course_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width_course")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_course_nilreason"))
     })
     protected ValAngleType widthCourse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_course_accuracy_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width_course_accuracy")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_course_accuracy_nilreason"))
     })
     protected ValAngleType widthCourseAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "back_course_usable_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "back_course_usable")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "back_course_usable_nilreason"))
     })
     protected CodeILSBackCourseType backCourseUsable;

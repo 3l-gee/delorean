@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -70,8 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "usage",
     "extension"
 })
-@Entity
-@Table(name = "airport_heliport_availability_type", schema = "public")
+@Embeddable
 public class AirportHeliportAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
@@ -92,14 +90,14 @@ public class AirportHeliportAvailabilityType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "operational_status_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "operational_status")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "operational_status_nilreason"))
     })
     protected CodeStatusAirportType operationalStatus;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "warning_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "warning")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "warning_nilreason"))
     })
     protected CodeAirportWarningType warning;

@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,8 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "apron_area_usage_type", schema = "public")
+@Embeddable
 public class ApronAreaUsageType
     extends AbstractUsageConditionType
 {
@@ -78,14 +76,14 @@ public class ApronAreaUsageType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeUsageLimitationType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "prior_permission_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "prior_permission")),
         @AttributeOverride(name = "uom", column = @Column(name = "prior_permission_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "prior_permission_nilreason"))
     })

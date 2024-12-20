@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,8 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "approach_distance_table_type", schema = "public")
+@Embeddable
 public class ApproachDistanceTableType
     extends AbstractAIXMObjectType
 {
@@ -76,14 +74,14 @@ public class ApproachDistanceTableType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "starting_measurement_point_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "starting_measurement_point")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "starting_measurement_point_nilreason"))
     })
     protected CodeProcedureDistanceType startingMeasurementPoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "value_hat_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "value_hat")),
         @AttributeOverride(name = "uom", column = @Column(name = "value_hat_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "value_hat_nilreason"))
     })
@@ -91,14 +89,14 @@ public class ApproachDistanceTableType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "ending_measurement_point_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "ending_measurement_point")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "ending_measurement_point_nilreason"))
     })
     protected CodeProcedureDistanceType endingMeasurementPoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "distance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "distance")),
         @AttributeOverride(name = "uom", column = @Column(name = "distance_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason"))
     })

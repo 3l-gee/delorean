@@ -37,8 +37,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}AbstractTimePrimitive"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -61,8 +61,6 @@ public class TimePrimitivePropertyType {
      */
     @XmlElementRef(name = "AbstractTimePrimitive", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractTimePrimitiveType> abstractTimePrimitive;
-    @XmlAttribute(name = "owns")
-    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
@@ -88,6 +86,8 @@ public class TimePrimitivePropertyType {
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     @Transient
     protected ActuateType actuate;
+    @XmlAttribute(name = "owns")
+    protected java.lang.Boolean owns;
 
     /**
      * gml:AbstractTimePrimitive acts as the head of a substitution group for geometric and topological temporal primitives.
@@ -128,42 +128,6 @@ public class TimePrimitivePropertyType {
 
     public boolean isSetAbstractTimePrimitive() {
         return (this.abstractTimePrimitive!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
     /**
@@ -400,6 +364,42 @@ public class TimePrimitivePropertyType {
 
     public boolean isSetActuate() {
         return (this.actuate!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

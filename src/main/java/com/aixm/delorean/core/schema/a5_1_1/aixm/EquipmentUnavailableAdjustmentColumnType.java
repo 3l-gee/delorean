@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,8 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "equipment_unavailable_adjustment_column_type", schema = "public")
+@Embeddable
 public class EquipmentUnavailableAdjustmentColumnType
     extends AbstractAIXMObjectType
 {
@@ -77,28 +75,28 @@ public class EquipmentUnavailableAdjustmentColumnType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "guidance_equipment_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "guidance_equipment")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "guidance_equipment_nilreason"))
     })
     protected CodeApproachType guidanceEquipment;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "landing_system_lights_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "landing_system_lights")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "landing_system_lights_nilreason"))
     })
     protected CodeYesNoType landingSystemLights;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "equipment_rvr_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "equipment_rvr")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "equipment_rvr_nilreason"))
     })
     protected CodeYesNoType equipmentRVR;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "visibility_adjustment_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "visibility_adjustment")),
         @AttributeOverride(name = "uom", column = @Column(name = "visibility_adjustment_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "visibility_adjustment_nilreason"))
     })
@@ -106,7 +104,7 @@ public class EquipmentUnavailableAdjustmentColumnType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "approach_lighting_inoperative_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "approach_lighting_inoperative")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "approach_lighting_inoperative_nilreason"))
     })
     protected CodeYesNoType approachLightingInoperative;

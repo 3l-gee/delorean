@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,8 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "sector_design_type", schema = "public")
+@Embeddable
 public class SectorDesignType
     extends AbstractAIXMObjectType
 {
@@ -76,21 +74,21 @@ public class SectorDesignType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turn_direction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "turn_direction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turn_direction_nilreason"))
     })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "design_gradient_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "design_gradient")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "design_gradient_nilreason"))
     })
     protected ValSlopeType designGradient;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "termination_altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "termination_altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "termination_altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "termination_altitude_nilreason"))
     })
@@ -98,7 +96,7 @@ public class SectorDesignType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turn_permitted_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "turn_permitted")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turn_permitted_nilreason"))
     })
     protected CodeYesNoType turnPermitted;

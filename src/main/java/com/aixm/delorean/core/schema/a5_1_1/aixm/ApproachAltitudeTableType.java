@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,8 +65,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "approach_altitude_table_type", schema = "public")
+@Embeddable
 public class ApproachAltitudeTableType
     extends AbstractAIXMObjectType
 {
@@ -75,14 +73,14 @@ public class ApproachAltitudeTableType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "measurement_point_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "measurement_point")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "measurement_point_nilreason"))
     })
     protected CodeProcedureDistanceType measurementPoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_nilreason"))
     })
@@ -90,7 +88,7 @@ public class ApproachAltitudeTableType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_reference_nilreason"))
     })
     protected CodeVerticalReferenceType altitudeReference;

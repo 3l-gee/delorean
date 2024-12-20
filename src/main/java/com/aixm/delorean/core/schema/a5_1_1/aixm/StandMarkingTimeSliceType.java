@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -70,8 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "markedStand",
     "extension"
 })
-@Entity
-@Table(name = "stand_marking_time_slice_type", schema = "public")
+@Embeddable
 public class StandMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -79,14 +77,14 @@ public class StandMarkingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "marking_icao_standard_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "marking_icao_standard")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "marking_icao_standard_nilreason"))
     })
     protected CodeYesNoType markingICAOStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "condition_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "condition")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "condition_nilreason"))
     })
     protected CodeMarkingConditionType condition;

@@ -8,10 +8,9 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -41,8 +40,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "ApproachTimingTablePropertyType", propOrder = {
     "approachTimingTable"
 })
-@Entity
-@Table(name = "approach_timing_table_property_type", schema = "public")
+@Embeddable
 public class ApproachTimingTablePropertyType
     extends AbstractAIXMPropertyType
 {

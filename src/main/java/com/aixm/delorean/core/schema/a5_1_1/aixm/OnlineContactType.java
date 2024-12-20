@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -71,8 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "eMail",
     "extension"
 })
-@Entity
-@Table(name = "online_contact_type", schema = "public")
+@Embeddable
 public class OnlineContactType
     extends AbstractPropertiesWithScheduleType
 {
@@ -93,28 +91,28 @@ public class OnlineContactType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "network_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "network")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "network_nilreason"))
     })
     protected CodeTelecomNetworkType network;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "linkage_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "linkage")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "linkage_nilreason"))
     })
     protected TextAddressType linkage;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "protocol_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "protocol")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "protocol_nilreason"))
     })
     protected TextNameType protocol;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "e_mail_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "e_mail")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "e_mail_nilreason"))
     })
     protected TextAddressType eMail;

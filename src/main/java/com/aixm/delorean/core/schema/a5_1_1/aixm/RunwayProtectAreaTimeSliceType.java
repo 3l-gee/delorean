@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -75,8 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "protectedRunwayDirection",
     "extension"
 })
-@Entity
-@Table(name = "runway_protect_area_time_slice_type", schema = "public")
+@Embeddable
 public class RunwayProtectAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -84,7 +82,7 @@ public class RunwayProtectAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason"))
     })
@@ -92,7 +90,7 @@ public class RunwayProtectAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "length")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
     })
@@ -100,14 +98,14 @@ public class RunwayProtectAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lighting_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lighting")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lighting_nilreason"))
     })
     protected CodeYesNoType lighting;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "obstacle_free_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "obstacle_free")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obstacle_free_nilreason"))
     })
     protected CodeYesNoType obstacleFree;
@@ -129,14 +127,14 @@ public class RunwayProtectAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeRunwayProtectionAreaType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "status_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "status")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason"))
     })
     protected CodeStatusOperationsType status;

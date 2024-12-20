@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -74,8 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
-@Entity
-@Table(name = "aircraft_stand_time_slice_type", schema = "public")
+@Embeddable
 public class AircraftStandTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -83,21 +81,21 @@ public class AircraftStandTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
     })
     protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeAircraftStandType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "visual_docking_system_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "visual_docking_system")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "visual_docking_system_nilreason"))
     })
     protected CodeVisualDockingGuidanceType visualDockingSystem;

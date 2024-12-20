@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -75,8 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "arresting_gear_time_slice_type", schema = "public")
+@Embeddable
 public class ArrestingGearTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -84,14 +82,14 @@ public class ArrestingGearTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "status_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "status")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason"))
     })
     protected CodeStatusOperationsType status;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "length")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
     })
@@ -99,7 +97,7 @@ public class ArrestingGearTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "width")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason"))
     })
@@ -107,28 +105,28 @@ public class ArrestingGearTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "engage_device_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "engage_device")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "engage_device_nilreason"))
     })
     protected CodeArrestingGearEngageDeviceType engageDevice;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "absorb_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "absorb_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "absorb_type_nilreason"))
     })
     protected CodeArrestingGearEnergyAbsorbType absorbType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "bidirectional_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "bidirectional")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "bidirectional_nilreason"))
     })
     protected CodeYesNoType bidirectional;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "location_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "location")),
         @AttributeOverride(name = "uom", column = @Column(name = "location_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "location_nilreason"))
     })

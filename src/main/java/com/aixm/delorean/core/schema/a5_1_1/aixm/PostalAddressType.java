@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -72,8 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "country",
     "extension"
 })
-@Entity
-@Table(name = "postal_address_type", schema = "public")
+@Embeddable
 public class PostalAddressType
     extends AbstractPropertiesWithScheduleType
 {
@@ -94,35 +92,35 @@ public class PostalAddressType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "delivery_point_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "delivery_point")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "delivery_point_nilreason"))
     })
     protected TextAddressType deliveryPoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "city_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "city")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "city_nilreason"))
     })
     protected TextNameType city;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "administrative_area_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "administrative_area")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "administrative_area_nilreason"))
     })
     protected TextNameType administrativeArea;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "postal_code_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "postal_code")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "postal_code_nilreason"))
     })
     protected TextNameType postalCode;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "country_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "country")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "country_nilreason"))
     })
     protected TextNameType country;

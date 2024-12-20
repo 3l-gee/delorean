@@ -2527,9 +2527,8 @@
                     <ns3:type>ICAO</ns3:type>
                     <ns3:name>TEMPO</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>56.84000000000001 -29.860000000000007</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">100</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2554,9 +2553,8 @@
                     <ns3:type>ICAO</ns3:type>
                     <ns3:name>ABOLA</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>45.71 -35.169999999999995</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">100</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2581,9 +2579,8 @@
                     <ns3:type>ICAO</ns3:type>
                     <ns3:name>ATLIM</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>54.718333333333334 -47.0</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">100</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2608,9 +2605,8 @@
                     <ns3:type>ICAO</ns3:type>
                     <ns3:name>UKORO</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>40.92333333333333 -36.81333333333333</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">100</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2635,9 +2631,8 @@
                     <ns3:type>ICAO</ns3:type>
                     <ns3:name>VEGAT</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>49.3583333333333 -21.1333333333333</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">100</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2662,9 +2657,8 @@
                     <ns3:type>ICAO</ns3:type>
                     <ns3:name>EBOTO</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>42.501666666666665 -26.015</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">100</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2689,9 +2683,8 @@
                     <ns3:type>ICAO</ns3:type>
                     <ns3:name>BARIM</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>42.5016666666667 -37.0016666666667</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">100</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2716,9 +2709,8 @@
                     <ns3:type>ICAO</ns3:type>
                     <ns3:name>SANOK</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>41.41333333333334 -30.051666666666662</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">100</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2743,9 +2735,8 @@
                     <ns3:type>ICAO</ns3:type>
                     <ns3:name>ODMUS</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>49.358333333333334 -20.15</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">100</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2770,9 +2761,8 @@
                     <ns3:type>ICAO</ns3:type>
                     <ns3:name>ILURU</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>50.019999999999996 -41.61333333333334</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">100</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2797,9 +2787,8 @@
                     <ns3:type>BRG_DIST</ns3:type>
                     <ns3:name>BOR029010</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>51.529284 -33.555661</ns1:pos>
-                            <ns3:horizontalAccuracy/>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2824,9 +2813,8 @@
                     <ns3:type>COORD</ns3:type>
                     <ns3:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>52.0 -75.0</ns1:pos>
-                            <ns3:horizontalAccuracy/>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2851,9 +2839,8 @@
                     <ns3:type>OTHER:NAMED_REPORTING_POINT</ns3:type>
                     <ns3:name>TORSADA</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>52.0 -10.0</ns1:pos>
-                            <ns3:horizontalAccuracy/>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>
@@ -2878,9 +2865,8 @@
                     <ns3:type>OTHER:ARP</ns3:type>
                     <ns3:name>EADH ARP</ns3:name>
                     <ns3:location>
-                        <ns3:Point srsName="EPSG:4326">
-                            <ns1:pos>52.288888888888884 -32.035</ns1:pos>
-                            <ns3:horizontalAccuracy uom="M">30</ns3:horizontalAccuracy>
+                        <ns3:Point ns1:id="id666">
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                         </ns3:Point>
                     </ns3:location>
                 </ns3:DesignatedPointTimeSlice>

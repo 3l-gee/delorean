@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -71,8 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "airspace_layer_type", schema = "public")
+@Embeddable
 public class AirspaceLayerType
     extends AbstractAIXMObjectType
 {
@@ -80,7 +78,7 @@ public class AirspaceLayerType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_nilreason"))
     })
@@ -88,14 +86,14 @@ public class AirspaceLayerType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
     })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit")),
         @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_nilreason"))
     })
@@ -103,14 +101,14 @@ public class AirspaceLayerType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_interpretation_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_interpretation")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_interpretation_nilreason"))
     })
     protected CodeAltitudeUseType altitudeInterpretation;

@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 import javax.xml.namespace.QName;
 
+import com.aixm.delorean.core.helper.gis.PointGmlHelper;
+import com.aixm.delorean.core.helper.gis.CurveGmlHelper;
+import com.aixm.delorean.core.helper.gis.SurfaceGmlHelper;
+
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LineString;
@@ -204,6 +208,97 @@ public class GisHelper {
         return target;  
     }
 
+    public static <T extends AixmGeometryType> T aixmGeometryAttributesFactory(
+        Class<T> target,
+        String id,
+        ValDistanceType horizontalElement) {
+
+        T obj;
+        if (target == AixmPointType.class) {
+            obj = target.cast(new AixmPointType());
+        } else if (target == AixmCurveType.class) {
+            obj = target.cast(new AixmCurveType());
+        } else if (target == AixmSurfaceType.class) {
+            obj = target.cast(new AixmSurfaceType());
+        } else {
+            throw new IllegalArgumentException("Unsupported target type: " + target.getName());
+        }
+            
+        if (id != null) {
+            obj.setId(id);
+        }
+
+        // Handle Horizontal Accuracy
+        if (horizontalElement != null) {
+            obj.setHorizontalAccuracy(horizontalElement.getValue());
+            obj.setHorizontalAccuracy_uom(horizontalElement.getUom());
+            obj.setHorizontalAccuracy_nilReason(horizontalElement.getNilReason());
+        }
+        
+        return obj;  
+    }
+
+    public static <T extends AixmElevatedGeometryType> T elevatedAixmGeometryAttributesFactory(
+        Class<T> target,
+        String id,
+        ValDistanceType horizontalElement,
+        ValDistanceType verticalElement,
+        ValDistanceVerticalType elevationElement,
+        ValDistanceSignedType geoidElement,
+        CodeVerticalDatumType verticalDatumElement) {
+
+        T obj;
+        if (target == AixmElevatedPointType.class) {
+            obj = target.cast(new AixmElevatedPointType());
+        } else if (target == AixmElevatedCurveType.class) {
+            obj = target.cast(new AixmElevatedCurveType());
+        } else if (target == AixmElevatedSurfaceType.class) {
+            obj = target.cast(new AixmElevatedSurfaceType());
+        } else {
+            throw new IllegalArgumentException("Unsupported target type: " + target.getName());
+        }
+
+        if (id != null) {
+            obj.setId(id);
+        }
+
+        // Handle Horizontal Accuracy
+        if (horizontalElement != null) {
+            obj.setHorizontalAccuracy(horizontalElement.getValue());
+            obj.setHorizontalAccuracy_uom(horizontalElement.getUom());
+            obj.setHorizontalAccuracy_nilReason(horizontalElement.getNilReason());
+        }
+        
+        // Handle Vertical Accuracy
+        if (verticalElement != null) {
+            obj.setVerticalAccuracy(verticalElement.getValue());
+            obj.setVerticalAccuracy_uom(verticalElement.getUom());
+            obj.setVerticalAccuracy_nilReason(verticalElement.getNilReason());
+        }
+        
+        // Handle Elevation
+        if (elevationElement != null) {
+            obj.setElevation(elevationElement.getValue() != null 
+                ? new BigDecimal(elevationElement.getValue()) 
+                : BigDecimal.ZERO);
+            obj.setElevation_uom(elevationElement.getUom());
+            obj.setElevation_nilReason(elevationElement.getNilReason());
+        }
+        
+        // Handle Geoid Undulation
+        if (geoidElement != null) {
+            obj.setGeoidUndulation(geoidElement.getValue());
+            obj.setGeoidUndulation_uom(geoidElement.getUom());
+            obj.setGeoidUndulation_nilReason(geoidElement.getNilReason());
+        }
+        
+        // Handle Vertical Datum
+        if (verticalDatumElement != null) {
+            obj.setVerticalDatum(verticalDatumElement.getValue());
+            obj.setVerticalDatum_nilReason(verticalDatumElement.getNilReason());
+        }
+        return obj;  
+    }
 
     public static AixmGeometryType parseGeometry(
         AixmGeometryType target,
@@ -224,158 +319,120 @@ public class GisHelper {
         return target;  
     }
 
-    public static Point parseGMLPoint(PointType value) {
-        DirectPositionType pos = value.getPos();
-        String srsName = value.getSrsName();
-        Double x = pos.getValue().get(0);
-        Double y = pos.getValue().get(1);
-        Coordinate srcCoord = new Coordinate(x, y);
-        if (srsName == null) {
-            // No transformation needed
-            return geometryFactory.createPoint(new Coordinate(srcCoord.x, srcCoord.y));
-        }
-        
-        CoordinateTransform transform = createCoordinateTransform(srsName, "EPSG:4326");
-        Coordinate tgtCoord = transformCoordinates(new Coordinate(srcCoord.x, srcCoord.y), transform);
+    public static AixmPointType parseAIXMPoint (com.aixm.delorean.core.schema.a5_1_1.aixm.PointType value) {
+        AixmPointType aixmPoint = aixmGeometryAttributesFactory(
+            AixmPointType.class, 
+            value.getId(), 
+            value.getHorizontalAccuracy()
+            );
 
-        return geometryFactory.createPoint(new Coordinate(tgtCoord.x, tgtCoord.y));
+        aixmPoint.setPoint(PointGmlHelper.parseGMLPoint(value));
+        return aixmPoint;
     }
 
-    public static PointType printGMLPoint(Point value){  
-        if (value == null) {
-            return new PointType();
-        }
+    public static com.aixm.delorean.core.schema.a5_1_1.aixm.PointType printAIXMPoint(AixmPointType value) {
+        //output object
+        com.aixm.delorean.core.schema.a5_1_1.aixm.PointType pointType = new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
         DirectPositionType pos = new DirectPositionType();
 
-        if (value.getX() == Double.NaN || value.getY() == Double.NaN) {
-            return new PointType();
+        //setting id
+        pointType.setId(value.getId());
+
+        //setting srsName
+
+        ValDistanceType valDistance = new ValDistanceType();
+        valDistance.setValue(value.getHorizontalAccuracy());
+        valDistance.setUom(value.getHorizontalAccuracy_uom());
+        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
+        pointType.setHorizontalAccuracy(valDistance);
+    
+        //attributes extraction
+        Point point = value.getPoint();
+
+        // setting point
+        if (point == null) {
+            return pointType;
+        } else if (point.getX() == Double.NaN || point.getY() == Double.NaN) {
+            return pointType;
         } else {
-            pos.getValue().add(value.getX());
-            pos.getValue().add(value.getY());
-        }
-
-        PointType pointType = new PointType();
-        pointType.setPos(pos);
-
-        if (value.getSRID() != 0) {
-            pointType.setSrsName("EPSG:" + value.getSRID());
-        }
+            pos.getValue().add(point.getX());
+            pos.getValue().add(point.getY());
+            pointType.setPos(pos);
+        } 
 
         return pointType;
     }
 
-    public static AixmPointType parseAIXMPoint (com.aixm.delorean.core.schema.a5_1_1.aixm.PointType value) {
-        AixmPointType point = new AixmPointType();
-        // point.setPoint(parseGMLPoint(value));
-        point.setPoint(PointGmlHelper.parseGMLPoint(value));
-
-        return (AixmPointType) parseGeometry(point, point.getId(), value.getHorizontalAccuracy());
-    }
-
-    public static com.aixm.delorean.core.schema.a5_1_1.aixm.PointType printAIXMPoint(AixmPointType value) {
-        if (value == null) {
-            com.aixm.delorean.core.schema.a5_1_1.aixm.PointType out = new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
-            out.setId("id666");
-            return out;
-        }
-        com.aixm.delorean.core.schema.a5_1_1.aixm.PointType point = new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
-        DirectPositionType pos = new DirectPositionType();
-
-        if (value.getPoint().getX() == Double.NaN || value.getPoint().getY() == Double.NaN) {
-            return new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
-        } else {
-            pos.getValue().add(value.getPoint().getX());
-            pos.getValue().add(value.getPoint().getY());
-        }
-
-        point.setPos(pos);
-
-        if (value.getPoint().getSRID() != 0) {
-            point.setSrsName("EPSG:" + value.getPoint().getSRID());
-        }
-
-        point.setId(value.getId());
-
-        ValDistanceType valDistance = new ValDistanceType();
-        valDistance.setValue(value.getHorizontalAccuracy());
-        valDistance.setUom(value.getHorizontalAccuracy_uom());
-        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
-        point.setHorizontalAccuracy(valDistance);
-
-        return point;
-    }
-
     public static AixmElevatedPointType parseAIXMElevatedPoint (ElevatedPointType value) {
-        AixmElevatedPointType point = new AixmElevatedPointType();
-        point.setPoint(parseGMLPoint(value));
-        return (AixmElevatedPointType) parseElevatedGeometry(point, null, value.getHorizontalAccuracy(), value.getVerticalAccuracy(), value.getElevation(), value.getGeoidUndulation(), value.getVerticalDatum());
+        AixmElevatedPointType aixmElevatedPoint = elevatedAixmGeometryAttributesFactory(
+            AixmElevatedPointType.class, 
+            value.getId(), 
+            value.getHorizontalAccuracy(), 
+            value.getVerticalAccuracy(), 
+            value.getElevation(), 
+            value.getGeoidUndulation(), 
+            value.getVerticalDatum()
+            );
+
+        aixmElevatedPoint.setPoint(PointGmlHelper.parseGMLPoint(value));
+        return aixmElevatedPoint;
     }
-    
+
     public static ElevatedPointType printAIXMElevatedPoint(AixmElevatedPointType value) {
-        ElevatedPointType point = new ElevatedPointType();
+        // Output object
+        ElevatedPointType elevatedPointType = new ElevatedPointType();
         DirectPositionType pos = new DirectPositionType();
 
-        if (value.getPoint().getX() == Double.NaN || value.getPoint().getY() == Double.NaN) {
-            return new ElevatedPointType();
-        } else {
-            pos.getValue().add(value.getPoint().getX());
-            pos.getValue().add(value.getPoint().getY());
-        }
+        // setting id
+        elevatedPointType.setId(value.getId());
 
-        point.setPos(pos);
-
-        if (value.getPoint().getSRID() != 0) {
-            point.setSrsName("EPSG:" + value.getPoint().getSRID());
-        }
-
-        point.setId(value.getId());
+        // setting srsName
+        elevatedPointType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getPoint().getSRID());
 
         ValDistanceType valDistance = new ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
         valDistance.setUom(value.getHorizontalAccuracy_uom());
         valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
-        point.setHorizontalAccuracy(valDistance);
+        elevatedPointType.setHorizontalAccuracy(valDistance);
 
         ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
         valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
-        point.setElevation(valDistanceVertical);
+        elevatedPointType.setElevation(valDistanceVertical);
 
         ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
         valDistanceSigned.setValue(value.getGeoidUndulation());
         valDistanceSigned.setUom(value.getGeoidUndulation_uom());
         valDistanceSigned.setNilReason(value.getGeoidUndulation_nilReason());
-        point.setGeoidUndulation(valDistanceSigned);
+        elevatedPointType.setGeoidUndulation(valDistanceSigned);
 
         CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
         codeVerticalDatum.setValue(value.getVerticalDatum());
         codeVerticalDatum.setNilReason(value.getVerticalDatum_nilReason());
-        point.setVerticalDatum(codeVerticalDatum);
+        elevatedPointType.setVerticalDatum(codeVerticalDatum);
 
         ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
         valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
         valDistanceVerticalAccuracy.setUom(value.getVerticalAccuracy_uom());
         valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
-        point.setVerticalAccuracy(valDistanceVerticalAccuracy);
+        elevatedPointType.setVerticalAccuracy(valDistanceVerticalAccuracy);
 
-        return point;
-    }
+        //attributes extraction
+        Point point = value.getPoint();
 
-    public static List<Point> parseGMLPoints(List<PointType> values) {
-        List<Point> points = new ArrayList<>(values.size());
-        for (PointType value : values) {
-            points.add(parseGMLPoint(value));
-        }
-        return points;
-    }
-    
-    public static List<PointType> printGMLPoints(List<Point> values){
-        List<PointType> points = new ArrayList<>(values.size());
-        for (Point value : values) {
-            points.add(printGMLPoint(value));
-        }
-        return points;
+        // setting point
+        if (point == null) {
+            return elevatedPointType;
+        } else if (point.getX() == Double.NaN || point.getY() == Double.NaN) {
+            return elevatedPointType;
+        } else {
+            pos.getValue().add(point.getX());
+            pos.getValue().add(point.getY());
+            elevatedPointType.setPos(pos);
+        } 
+
+        return elevatedPointType;
     }
 
     public static LineString parseGMLCurve(CurveType value) {

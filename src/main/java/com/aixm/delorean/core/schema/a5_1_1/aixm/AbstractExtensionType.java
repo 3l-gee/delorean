@@ -7,8 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -32,8 +31,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AbstractExtensionType")
-@Entity
-@Table(name = "abstract_extension_type", schema = "public")
+@Embeddable
 public abstract class AbstractExtensionType
     extends AbstractAIXMObjectType
 {

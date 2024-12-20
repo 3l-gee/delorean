@@ -1,5 +1,13 @@
 import Machinery
 
+debug = {
+    "mode" : True,
+    "entity" : {
+        "mode" : True,
+        "list" : ["PointPropertyType"]
+    },
+}
+
 config = {
     "ignore": [
         "XHTMLType",
@@ -371,4 +379,4 @@ message = {
     "manual" : "util/manual/AIXM_BasicMessage.xjb"
 }
 
-machinery = Machinery.runner(config, [data_types, feature, abstract, message])
+machinery = Machinery.runner(config, debug, [data_types, feature, abstract, message],)

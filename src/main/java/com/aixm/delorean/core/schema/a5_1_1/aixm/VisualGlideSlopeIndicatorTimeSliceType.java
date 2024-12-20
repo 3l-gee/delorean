@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -78,8 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "runwayDirection",
     "extension"
 })
-@Entity
-@Table(name = "visual_glide_slope_indicator_time_slice_type", schema = "public")
+@Embeddable
 public class VisualGlideSlopeIndicatorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -87,21 +85,21 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "emergency_lighting_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "emergency_lighting")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "emergency_lighting_nilreason"))
     })
     protected CodeYesNoType emergencyLighting;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "intensity_level_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "intensity_level")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_level_nilreason"))
     })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "colour_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "colour")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
     })
     protected CodeColourType colour;
@@ -123,42 +121,42 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeVASISType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "position_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "position")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "position_nilreason"))
     })
     protected CodeSideType position;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "number_box_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "number_box")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "number_box_nilreason"))
     })
     protected NoNumberType numberBox;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "portable_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "portable")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "portable_nilreason"))
     })
     protected CodeYesNoType portable;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "slope_angle_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "slope_angle")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "slope_angle_nilreason"))
     })
     protected ValAngleType slopeAngle;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_eye_height_over_threshold_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_eye_height_over_threshold")),
         @AttributeOverride(name = "uom", column = @Column(name = "minimum_eye_height_over_threshold_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_eye_height_over_threshold_nilreason"))
     })

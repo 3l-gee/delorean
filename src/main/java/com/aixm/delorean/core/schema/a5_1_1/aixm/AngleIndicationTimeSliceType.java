@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -78,8 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "angle_indication_time_slice_type", schema = "public")
+@Embeddable
 public class AngleIndicationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -87,42 +85,42 @@ public class AngleIndicationTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "angle_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "angle")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "angle_nilreason"))
     })
     protected ValBearingType angle;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "angle_type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "angle_type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "angle_type_nilreason"))
     })
     protected CodeBearingType angleType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "indication_direction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "indication_direction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "indication_direction_nilreason"))
     })
     protected CodeDirectionReferenceType indicationDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "true_angle_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "true_angle")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "true_angle_nilreason"))
     })
     protected ValBearingType trueAngle;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "cardinal_direction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "cardinal_direction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "cardinal_direction_nilreason"))
     })
     protected CodeCardinalDirectionType cardinalDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_reception_altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_reception_altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "minimum_reception_altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_reception_altitude_nilreason"))
     })

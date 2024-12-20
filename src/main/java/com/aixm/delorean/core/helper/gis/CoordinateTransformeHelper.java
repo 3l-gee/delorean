@@ -52,8 +52,8 @@ public class CoordinateTransformeHelper {
         Map.entry("urn:ogc:def:crs:EPSG::4313", crsFactory.createFromName("EPSG:4313")),
         Map.entry("urn:ogc:def:crs:EPSG::4124", crsFactory.createFromName("EPSG:4124")),
         Map.entry("urn:ogc:def:crs:EPSG::4267", crsFactory.createFromName("EPSG:4267")),
-        Map.entry("urn:ogc:def:crs:EPSG::4269", crsFactory.createFromName("EPSG:4269")),
-        Map.entry("urn:ogc:def:crs:OGC:1.3:CRS84", crsFactory.createFromName("OGC:1.3:CRS84"))
+        Map.entry("urn:ogc:def:crs:EPSG::4269", crsFactory.createFromName("EPSG:4269"))
+        // Map.entry("urn:ogc:def:crs:OGC:1.3:CRS84", crsFactory.createFromName("OGC:1.3:CRS84")) // CRS84 not supported by proj4j
     );
 
     private Map<String, CoordinateTransform> transformMap = new HashMap<>();
@@ -92,10 +92,17 @@ public class CoordinateTransformeHelper {
 
     private Coordinate transform(String sourceCRS, String targetCRS, Coordinate sourceCoordinate) {
         CoordinateTransform transform = getTransform(sourceCRS, targetCRS);
-        ProjCoordinate source = new ProjCoordinate(sourceCoordinate.x, sourceCoordinate.y);
-        ProjCoordinate target = new ProjCoordinate();
-        transform.transform(source, target);
-        return new Coordinate(target.x, target.y);
+        if (sourceCoordinate.getZ() == Double.NaN) {
+            ProjCoordinate source = new ProjCoordinate(sourceCoordinate.getX(), sourceCoordinate.getY());
+            ProjCoordinate target = new ProjCoordinate();
+            transform.transform(source, target);
+            return new Coordinate(target.x, target.y);
+        } else {
+            ProjCoordinate source = new ProjCoordinate(sourceCoordinate.getX(), sourceCoordinate.getY(), sourceCoordinate.getZ());
+            ProjCoordinate target = new ProjCoordinate();
+            transform.transform(source, target);
+            return new Coordinate(target.x, target.y, target.z);
+        }
     }
 
     private Coordinate[] transform(String sourceCRS, String targetCRS, Coordinate[] sourceCoordinates) {

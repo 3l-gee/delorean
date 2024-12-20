@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,8 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "departure_arrival_condition_type", schema = "public")
+@Embeddable
 public class DepartureArrivalConditionType
     extends AbstractAIXMObjectType
 {
@@ -78,7 +76,7 @@ public class DepartureArrivalConditionType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_enroute_altitude_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_enroute_altitude")),
         @AttributeOverride(name = "uom", column = @Column(name = "minimum_enroute_altitude_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_enroute_altitude_nilreason"))
     })
@@ -86,7 +84,7 @@ public class DepartureArrivalConditionType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end")),
         @AttributeOverride(name = "uom", column = @Column(name = "minimum_crossing_at_end_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_crossing_at_end_nilreason"))
     })
@@ -94,14 +92,14 @@ public class DepartureArrivalConditionType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_crossing_at_end_reference_nilreason"))
     })
     protected CodeVerticalReferenceType minimumCrossingAtEndReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end")),
         @AttributeOverride(name = "uom", column = @Column(name = "maximum_crossing_at_end_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "maximum_crossing_at_end_nilreason"))
     })
@@ -109,7 +107,7 @@ public class DepartureArrivalConditionType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end_reference_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end_reference")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "maximum_crossing_at_end_reference_nilreason"))
     })
     protected CodeVerticalReferenceType maximumCrossingAtEndReference;

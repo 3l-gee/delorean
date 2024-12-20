@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -71,8 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "pilot_controlled_lighting_time_slice_type", schema = "public")
+@Embeddable
 public class PilotControlledLightingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -80,14 +78,14 @@ public class PilotControlledLightingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodePilotControlledLightingType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "duration_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "duration")),
         @AttributeOverride(name = "uom", column = @Column(name = "duration_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "duration_nilreason"))
     })
@@ -95,21 +93,21 @@ public class PilotControlledLightingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "intensity_steps_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "intensity_steps")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_steps_nilreason"))
     })
     protected NoNumberType intensitySteps;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "stand_by_intensity_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "stand_by_intensity")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "stand_by_intensity_nilreason"))
     })
     protected CodeIntensityStandByType standByIntensity;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "radio_frequency_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "radio_frequency")),
         @AttributeOverride(name = "uom", column = @Column(name = "radio_frequency_uom")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "radio_frequency_nilreason"))
     })
@@ -117,7 +115,7 @@ public class PilotControlledLightingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "activation_instruction_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "activation_instruction")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "activation_instruction_nilreason"))
     })
     protected TextInstructionType activationInstruction;

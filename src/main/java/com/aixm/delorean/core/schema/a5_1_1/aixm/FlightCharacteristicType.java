@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,8 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "flight_characteristic_type", schema = "public")
+@Embeddable
 public class FlightCharacteristicType
     extends AbstractAIXMObjectType
 {
@@ -78,42 +76,42 @@ public class FlightCharacteristicType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "type")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
     })
     protected CodeFlightType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "rule_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "rule")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "rule_nilreason"))
     })
     protected CodeFlightRuleType rule;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "status_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "status")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason"))
     })
     protected CodeFlightStatusType status;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "military_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "military")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "military_nilreason"))
     })
     protected CodeMilitaryStatusType military;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "origin_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "origin")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "origin_nilreason"))
     })
     protected CodeFlightOriginType origin;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "purpose_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "purpose")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason"))
     })
     protected CodeFlightPurposeType purpose;

@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,8 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "monitored",
     "extension"
 })
-@Entity
-@Table(name = "navaid_equipment_monitoring_type", schema = "public")
+@Embeddable
 public class NavaidEquipmentMonitoringType
     extends AbstractPropertiesWithScheduleType
 {
@@ -90,7 +88,7 @@ public class NavaidEquipmentMonitoringType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "monitored_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "monitored")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "monitored_nilreason"))
     })
     protected CodeYesNoType monitored;

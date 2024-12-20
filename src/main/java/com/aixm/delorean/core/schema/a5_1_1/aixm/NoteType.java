@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,8 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "translatedNote",
     "extension"
 })
-@Entity
-@Table(name = "note_type", schema = "public")
+@Embeddable
 public class NoteType
     extends AbstractAIXMObjectType
 {
@@ -74,14 +72,14 @@ public class NoteType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "property_name_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "property_name")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "property_name_nilreason"))
     })
     protected TextPropertyNameType propertyName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "purpose_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "purpose")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason"))
     })
     protected CodeNotePurposeType purpose;

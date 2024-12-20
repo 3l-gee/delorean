@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -74,8 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "approach_condition_type", schema = "public")
+@Embeddable
 public class ApproachConditionType
     extends AbstractAIXMObjectType
 {
@@ -83,21 +81,21 @@ public class ApproachConditionType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "final_approach_path_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "final_approach_path")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "final_approach_path_nilreason"))
     })
     protected CodeMinimaFinalApproachPathType finalApproachPath;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "required_navigation_performance_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "required_navigation_performance")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "required_navigation_performance_nilreason"))
     })
     protected CodeRNPType requiredNavigationPerformance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "climb_gradient_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "climb_gradient")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "climb_gradient_nilreason"))
     })
     protected ValSlopeType climbGradient;

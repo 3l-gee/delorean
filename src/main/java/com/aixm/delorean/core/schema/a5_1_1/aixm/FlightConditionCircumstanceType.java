@@ -13,12 +13,11 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,8 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Entity
-@Table(name = "flight_condition_circumstance_type", schema = "public")
+@Embeddable
 public class FlightConditionCircumstanceType
     extends AbstractAIXMObjectType
 {
@@ -74,14 +72,14 @@ public class FlightConditionCircumstanceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "reference_location_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "reference_location")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "reference_location_nilreason"))
     })
     protected CodeYesNoType referenceLocation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "relation_with_location_value")),
+        @AttributeOverride(name = "value", column = @Column(name = "relation_with_location")),
         @AttributeOverride(name = "nilReason", column = @Column(name = "relation_with_location_nilreason"))
     })
     protected CodeLocationQualifierType relationWithLocation;

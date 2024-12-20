@@ -10,15 +10,25 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
 
     @Override
     public AbstractAIXMFeatureType unmarshal(JAXBElement<? extends AbstractAIXMFeatureType> v) throws Exception {
-
-        if (v != null){
-            return (AbstractAIXMFeatureType) v.getValue();
+        if (v != null) {
+            Class<? extends AbstractAIXMFeatureType> clazz = v.getDeclaredType();
+    
+            if (clazz.equals(NavaidType.class)) {
+                return (NavaidType) v.getValue();
+            }
+    
+            if (clazz.equals(AerialRefuellingType.class)) {
+                return (AerialRefuellingType) v.getValue();
+            }
+    
+            // Optional: Add a fallback for other subtypes
+            throw new IllegalArgumentException("Unsupported feature type: " + clazz.getName());
         } else {
             System.out.println("FeatureAdapter.unmarshal: null");
             return null;
         }
-
     }
+    
 
     @Override
     //TODO JAVAAAAA !! what the fuck is this? is ther really no other way to do this ??
