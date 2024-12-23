@@ -1,5 +1,6 @@
 package com.aixm.delorean.core.adapter.type.gis;
 
+import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Polygon;
 
 import jakarta.persistence.Column;
@@ -8,14 +9,14 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class AixmSurfaceType extends AixmGeometryType {
 
-    @Column(name = "surface", columnDefinition = "geometry(Polygon, 4326)")
-    protected Polygon polygon;
+    @Column(name = "polygon", columnDefinition = "geometry(MultiPolygon, 4326)")
+    protected MultiPolygon multiPolygon;
 
-    public Polygon getPolygon() {
-        return polygon;
+    public MultiPolygon getMultiPolygon() {
+        return multiPolygon;
     }
 
-    public void setPolygon(Polygon value) {
-        this.polygon = value;
+    public void setMultiPolygon(MultiPolygon value) {
+        this.multiPolygon = value;
     }
 }

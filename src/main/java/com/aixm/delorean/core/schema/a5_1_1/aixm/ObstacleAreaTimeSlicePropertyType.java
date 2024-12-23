@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.persistence.Table;
 
 
 /**
@@ -48,7 +50,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "ObstacleAreaTimeSlicePropertyType", propOrder = {
     "obstacleAreaTimeSlice"
 })
-@Embeddable
+@Entity
+@Table(name = "obstacle_area_time_slice_property")
 public class ObstacleAreaTimeSlicePropertyType {
 
     @XmlElement(name = "ObstacleAreaTimeSlice", required = true)

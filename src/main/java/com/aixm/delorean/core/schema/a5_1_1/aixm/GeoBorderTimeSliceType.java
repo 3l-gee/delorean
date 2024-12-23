@@ -15,9 +15,11 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -65,7 +67,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "geo_border_time_slice")
 public class GeoBorderTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -90,9 +93,10 @@ public class GeoBorderTimeSliceType
     }, fetch = FetchType.EAGER)
     protected CurvePropertyType border;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    // @OneToMany(cascade = {
+    //     CascadeType.ALL
+    // }, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<GeoBorderTimeSliceType.Extension> extension;

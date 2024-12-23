@@ -12,16 +12,318 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
     public AbstractAIXMFeatureType unmarshal(JAXBElement<? extends AbstractAIXMFeatureType> v) throws Exception {
         if (v != null) {
             Class<? extends AbstractAIXMFeatureType> clazz = v.getDeclaredType();
-    
-            if (clazz.equals(NavaidType.class)) {
-                return (NavaidType) v.getValue();
-            }
-    
+        
             if (clazz.equals(AerialRefuellingType.class)) {
                 return (AerialRefuellingType) v.getValue();
             }
-    
-            // Optional: Add a fallback for other subtypes
+
+            if (clazz.equals(AirportHeliportType.class)) {
+                return (AirportHeliportType) v.getValue();
+            }
+
+            if (clazz.equals(AirportHeliportCollocationType.class)) {
+                return (AirportHeliportCollocationType) v.getValue();
+            }
+
+            if (clazz.equals(AirportHotSpotType.class)) {
+                return (AirportHotSpotType) v.getValue();
+            }
+            
+            if (clazz.equals(AltimeterSourceType.class)) {
+                return (AltimeterSourceType) v.getValue();
+            }
+
+            if (clazz.equals(NonMovementAreaType.class)) {
+                return (NonMovementAreaType) v.getValue();
+            }
+
+            if (clazz.equals(SurveyControlPointType.class)) {
+                return (SurveyControlPointType) v.getValue();
+            }
+            
+            if (clazz.equals(WorkAreaType.class)) {
+                return (WorkAreaType) v.getValue();
+            }
+
+            if (clazz.equals(AircraftStandType.class)) {
+                return (AircraftStandType) v.getValue();
+            }
+
+            if (clazz.equals(ApronType.class)) {
+                return (ApronType) v.getValue();
+            }
+
+            if (clazz.equals(ApronElementType.class)) {
+                return (ApronElementType) v.getValue();
+            }
+
+            if (clazz.equals(DeicingAreaType.class)) {
+                return (DeicingAreaType) v.getValue();
+            }
+
+            if (clazz.equals(PassengerLoadingBridgeType.class)) {
+                return (PassengerLoadingBridgeType) v.getValue();
+            }
+            if (clazz.equals(RoadType.class)) {
+                return (RoadType) v.getValue();
+            }
+
+            if (clazz.equals(TouchDownLiftOffType.class)) {
+                return (TouchDownLiftOffType) v.getValue();
+            }
+
+            if (clazz.equals(AbstractMarkingType.class)) {
+                return (AbstractMarkingType) v.getValue();
+            }
+
+            if (clazz.equals(ArrestingGearType.class)) {
+                return (ArrestingGearType) v.getValue();
+            }
+
+            if (clazz.equals(RunwayType.class)) {
+                return (RunwayType) v.getValue();
+            }
+
+            if (clazz.equals(RunwayBlastPadType.class)) {
+                return (RunwayBlastPadType) v.getValue();
+            }
+
+            if (clazz.equals(RunwayCentrelinePointType.class)) {
+                return (RunwayCentrelinePointType) v.getValue();
+            }
+
+            if (clazz.equals(RunwayDirectionType.class)) {
+                return (RunwayDirectionType) v.getValue();
+            }
+
+            if (clazz.equals(RunwayElementType.class)) {
+                return (RunwayElementType) v.getValue();
+            }
+
+            if (clazz.equals(AbstractAirportHeliportProtectionAreaType.class)) {
+                return (AbstractAirportHeliportProtectionAreaType) v.getValue();
+            }
+
+            if (clazz.equals(RunwayVisualRangeType.class)) {
+                return (RunwayVisualRangeType) v.getValue();
+            }
+
+            if (clazz.equals(AbstractGroundLightSystemType.class)) {
+                return (AbstractGroundLightSystemType) v.getValue();
+            }
+
+            if (clazz.equals(FloatingDockSiteType.class)) {
+                return (FloatingDockSiteType) v.getValue();
+            }
+
+            if (clazz.equals(MarkingBuoyType.class)) {
+                return (MarkingBuoyType) v.getValue();
+            }
+
+            if (clazz.equals(SeaplaneLandingAreaType.class)) {
+                return (SeaplaneLandingAreaType) v.getValue();
+            }
+
+            if (clazz.equals(SeaplaneRampSiteType.class)) {
+                return (SeaplaneRampSiteType) v.getValue();
+            }
+
+            if (clazz.equals(GuidanceLineType.class)) {
+                return (GuidanceLineType) v.getValue();
+            }
+
+            if (clazz.equals(TaxiHoldingPositionType.class)) {
+                return (TaxiHoldingPositionType) v.getValue();
+            }
+
+            if (clazz.equals(TaxiwayType.class)) {
+                return (TaxiwayType) v.getValue();
+            }
+
+            if (clazz.equals(TaxiwayElementType.class)) {
+                return (TaxiwayElementType) v.getValue();
+            }
+
+            if (clazz.equals(AirspaceType.class)) {
+                return (AirspaceType) v.getValue();
+            }
+
+            if (clazz.equals(AuthorityForAirspaceType.class)) {
+                return (AuthorityForAirspaceType) v.getValue();
+            }
+
+            if (clazz.equals(GeoBorderType.class)) {
+                return (GeoBorderType) v.getValue();
+            }
+
+            if (clazz.equals(HoldingPatternType.class)) {
+                return (HoldingPatternType) v.getValue();
+            }
+
+            if (clazz.equals(UnplannedHoldingType.class)) {
+                return (UnplannedHoldingType) v.getValue();
+            }
+
+            if (clazz.equals(AbstractNavigationSystemCheckpointType.class)) {
+                
+                return (AbstractNavigationSystemCheckpointType) v.getValue();
+            }
+            if (clazz.equals(NavaidType.class)) {
+                return (NavaidType) v.getValue();
+            }
+
+            if (clazz.equals(SpecialNavigationStationType.class)) {
+                return (SpecialNavigationStationType) v.getValue();
+            }
+
+            if (clazz.equals(SpecialNavigationSystemType.class)) {
+                return (SpecialNavigationSystemType) v.getValue();
+            }
+
+            if (clazz.equals(AbstractNavaidEquipmentType.class)) {
+                return (AbstractNavaidEquipmentType) v.getValue();
+            }
+
+            if (clazz.equals(AngleIndicationType.class)) {
+                return (AngleIndicationType) v.getValue();
+            }
+
+            if (clazz.equals(DistanceIndicationType.class)) {
+                return (DistanceIndicationType) v.getValue();
+            }
+
+            if (clazz.equals(DesignatedPointType.class)) {
+                return (DesignatedPointType) v.getValue();
+            }
+
+            if (clazz.equals(SignificantPointInAirspaceType.class)) {
+                return (SignificantPointInAirspaceType) v.getValue();
+            }
+
+            if (clazz.equals(AeronauticalGroundLightType.class)) {
+                return (AeronauticalGroundLightType) v.getValue();
+            }
+
+            if (clazz.equals(ObstacleAreaType.class)) {
+                return (ObstacleAreaType) v.getValue();
+            }
+
+            if (clazz.equals(VerticalStructureType.class)) {
+                return (VerticalStructureType) v.getValue();
+            }
+
+            if (clazz.equals(OrganisationAuthorityType.class)) {
+                return (OrganisationAuthorityType) v.getValue();
+            }
+
+            if (clazz.equals(UnitType.class)) {
+                return (UnitType) v.getValue();
+            }
+
+            if (clazz.equals(TerminalArrivalAreaType.class)) {
+                return (TerminalArrivalAreaType) v.getValue();
+            }
+
+            if (clazz.equals(CirclingAreaType.class)) {
+                return (CirclingAreaType) v.getValue();
+            }
+
+            if (clazz.equals(NavigationAreaType.class)) {
+                return (NavigationAreaType) v.getValue();
+            }
+
+            if (clazz.equals(AbstractProcedureType.class)) {
+                return (AbstractProcedureType) v.getValue();
+            }
+
+            if (clazz.equals(SafeAltitudeAreaType.class)) {
+                return (SafeAltitudeAreaType) v.getValue();
+            }
+
+            if (clazz.equals(AbstractSegmentLegType.class)) {
+                return (AbstractSegmentLegType) v.getValue();
+            }
+
+            if (clazz.equals(NavigationAreaRestrictionType.class)) {
+                return (NavigationAreaRestrictionType) v.getValue();
+            }
+
+            if (clazz.equals(ProcedureDMEType.class)) {
+                return (ProcedureDMEType) v.getValue();
+            }
+
+            if (clazz.equals(ChangeOverPointType.class)) {
+                return (ChangeOverPointType) v.getValue();
+            }
+
+            if (clazz.equals(RouteType.class)) {
+                return (RouteType) v.getValue();
+            }
+
+            if (clazz.equals(RouteDMEType.class)) {
+                return (RouteDMEType) v.getValue();
+            }
+
+            if (clazz.equals(RouteSegmentType.class)) {
+                return (RouteSegmentType) v.getValue();
+            }
+
+            if (clazz.equals(AirspaceBorderCrossingType.class)) {
+                return (AirspaceBorderCrossingType) v.getValue();
+            }
+
+            if (clazz.equals(FlightRestrictionType.class)) {
+                return (FlightRestrictionType) v.getValue();
+            }
+
+            if (clazz.equals(RulesProceduresType.class)) {
+                return (RulesProceduresType) v.getValue();
+            }
+
+            if (clazz.equals(PilotControlledLightingType.class)) {
+                return (PilotControlledLightingType) v.getValue();
+            }
+
+            if (clazz.equals(RadioCommunicationChannelType.class)) {
+                return (RadioCommunicationChannelType) v.getValue();
+            }
+
+            if (clazz.equals(AbstractServiceType.class)) {
+                return (AbstractServiceType) v.getValue();
+            }
+
+            if (clazz.equals(RadioFrequencyAreaType.class)) {
+                return (RadioFrequencyAreaType) v.getValue();
+            }
+
+            if (clazz.equals(SpecialDateType.class)) {
+                return (SpecialDateType) v.getValue();
+            }
+
+            if (clazz.equals(StandardLevelColumnType.class)) {
+                return (StandardLevelColumnType) v.getValue();
+            }
+
+            if (clazz.equals(StandardLevelSectorType.class)) {
+                return (StandardLevelSectorType) v.getValue();
+            }
+
+            if (clazz.equals(StandardLevelTableType.class)) {
+                return (StandardLevelTableType) v.getValue();
+            }
+
+            if (clazz.equals(HoldingAssessmentType.class)) {
+                return (HoldingAssessmentType) v.getValue();
+            }
+
+            if (clazz.equals(RadarSystemType.class)) {
+                return (RadarSystemType) v.getValue();
+            }
+
+            if (clazz.equals(AbstractRadarEquipmentType.class)) {
+                return (AbstractRadarEquipmentType) v.getValue();
+            }
+
             throw new IllegalArgumentException("Unsupported feature type: " + clazz.getName());
         } else {
             System.out.println("FeatureAdapter.unmarshal: null");

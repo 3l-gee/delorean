@@ -15,7 +15,7 @@ public class TimePrimitivePropertyTypeAdapter extends XmlAdapter<TimePrimitivePr
 
     @Override
     public TimePrimitivePropertyType marshal(AixmTimeSliceType v) throws Exception {
-        return null;
+        return (TimeSliceHelper.printValidTime(v));
     }
 
 }

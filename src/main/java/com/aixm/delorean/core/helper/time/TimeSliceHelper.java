@@ -17,6 +17,8 @@ import jakarta.xml.bind.JAXBElement;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
 
+import javax.xml.namespace.QName;
+
 public class TimeSliceHelper {
 
     public static AixmTimeSliceType parseValidTime(TimePrimitivePropertyType validTime){
@@ -44,7 +46,7 @@ public class TimeSliceHelper {
     public static TimePrimitivePropertyType printValidTime(AixmTimeSliceType aixmTime){
         TimePrimitivePropertyType validTime = new TimePrimitivePropertyType();
         TimePeriodType timePeriod = printTimePeriodType(aixmTime);
-        JAXBElement<TimePeriodType> timePeriodElement = new JAXBElement<>(null, TimePeriodType.class, timePeriod);
+        JAXBElement<TimePeriodType> timePeriodElement = new JAXBElement<TimePeriodType>(new QName("http://www.example.com/schema", "TimePeriod"), TimePeriodType.class, timePeriod);
         validTime.setAbstractTimePrimitive(timePeriodElement);
         return validTime;
     }
@@ -145,11 +147,18 @@ public class TimeSliceHelper {
         TimePositionType beginPosition = new TimePositionType();
         TimePositionType endPosition = new TimePositionType();
 
-        beginPosition.getValue().add(v.getBeginPosition() == null ? null : v.getBeginPosition().toString());
-        beginPosition.setIndeterminatePosition(printTimeIndeterminateValueType(v.getBeginPosition()));
+        
+        if (v.getBeginPosition() == null) {
+            beginPosition.setIndeterminatePosition(TimeIndeterminateValueType.UNKNOWN);
+        } else {
+            beginPosition.getValue().add(v.getBeginPosition().toString());
+        }
 
-        endPosition.getValue().add(v.getEndPosition() == null ? null : v.getEndPosition().toString());
-        endPosition.setIndeterminatePosition(printTimeIndeterminateValueType(v.getEndPosition()));
+        if (v.getEndPosition() == null) {
+            endPosition.setIndeterminatePosition(TimeIndeterminateValueType.UNKNOWN);
+        } else {
+            endPosition.getValue().add(v.getEndPosition().toString());
+        }
 
         timePeriod.setBeginPosition(beginPosition);
         timePeriod.setEndPosition(endPosition);
@@ -167,14 +176,6 @@ public class TimeSliceHelper {
             throw new IllegalArgumentException("Unsupported type " + v.getClass().getName());
         } else if (v == TimeIndeterminateValueType.UNKNOWN) {
             return null;
-        } else {
-            throw new IllegalArgumentException("Unsupported type " + v.getClass().getName());
-        }
-    }
-
-    public static TimeIndeterminateValueType printTimeIndeterminateValueType (Instant v){
-        if (v == null) {
-            return TimeIndeterminateValueType.UNKNOWN;
         } else {
             throw new IllegalArgumentException("Unsupported type " + v.getClass().getName());
         }
