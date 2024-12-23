@@ -15,9 +15,11 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -94,7 +96,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "route_segment_time_slice_type")
 public class RouteSegmentTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -277,17 +280,19 @@ public class RouteSegmentTimeSliceType
     })
     protected CodeRouteDesignatorSuffixType designatorSuffix;
     @XmlElement(nillable = true)
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    // @OneToOne(cascade = {
+    //     CascadeType.ALL
+    // }, fetch = FetchType.EAGER)
+    @Transient
     protected EnRouteSegmentPointPropertyType start;
     @XmlElementRef(name = "routeFormed", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
     protected JAXBElement<RoutePropertyType> routeFormed;
     @XmlElement(nillable = true)
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    // @OneToOne(cascade = {
+    //     CascadeType.ALL
+    // }, fetch = FetchType.EAGER)
+    @Transient
     protected ObstacleAssessmentAreaPropertyType evaluationArea;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
@@ -295,19 +300,22 @@ public class RouteSegmentTimeSliceType
     }, fetch = FetchType.EAGER)
     protected CurvePropertyType curveExtent;
     @XmlElement(nillable = true)
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    // @OneToOne(cascade = {
+    //     CascadeType.ALL
+    // }, fetch = FetchType.EAGER)
+    @Transient
     protected EnRouteSegmentPointPropertyType end;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    // @OneToMany(cascade = {
+    //     CascadeType.ALL
+    // }, fetch = FetchType.EAGER)
+    @Transient
     protected List<RouteAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    // @OneToMany(cascade = {
+    //     CascadeType.ALL
+    // }, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RouteSegmentTimeSliceType.Extension> extension;

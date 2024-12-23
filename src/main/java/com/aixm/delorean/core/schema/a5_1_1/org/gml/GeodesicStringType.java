@@ -64,7 +64,7 @@ public class GeodesicStringType
     })
     protected List<Object> geometricPositionGroup;
     @XmlAttribute(name = "interpolation")
-    public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.GEODESIC;
+    public static final CurveInterpolationType INTERPOLATION = CurveInterpolationType.GEODESIC; 
 
     /**
      * Gets the value of the posList property.

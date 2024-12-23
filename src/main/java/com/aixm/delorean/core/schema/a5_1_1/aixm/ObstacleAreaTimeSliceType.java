@@ -15,9 +15,11 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -71,7 +73,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "obstacle_area_time_slice")
 public class ObstacleAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -108,9 +111,10 @@ public class ObstacleAreaTimeSliceType
     @Transient
     protected List<VerticalStructurePropertyType> obstacle;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
+    // @OneToMany(cascade = {
+    //     CascadeType.ALL
+    // }, fetch = FetchType.EAGER)
+    @Transient
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ObstacleAreaTimeSliceType.Extension> extension;

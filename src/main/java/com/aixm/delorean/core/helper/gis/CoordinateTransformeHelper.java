@@ -1,19 +1,17 @@
 package com.aixm.delorean.core.helper.gis;
 
 import java.util.List;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.PrecisionModel;
-import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.LinearRing;
+import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
-import org.locationtech.jts.geom.PrecisionModel;
 import org.locationtech.proj4j.CRSFactory;
 import org.locationtech.proj4j.CoordinateReferenceSystem;
 import org.locationtech.proj4j.CoordinateTransform;
@@ -93,26 +91,32 @@ public class CoordinateTransformeHelper {
     private Coordinate transform(String sourceCRS, String targetCRS, Coordinate sourceCoordinate) {
         CoordinateTransform transform = getTransform(sourceCRS, targetCRS);
         if (sourceCoordinate.getZ() == Double.NaN) {
-            ProjCoordinate source = new ProjCoordinate(sourceCoordinate.getX(), sourceCoordinate.getY());
+            // GML does latitute, longitude in that order
+            // Proj4j expects longitude, latitude  in that order
+            ProjCoordinate source = new ProjCoordinate(sourceCoordinate.getY(), sourceCoordinate.getX());
             ProjCoordinate target = new ProjCoordinate();
             transform.transform(source, target);
             return new Coordinate(target.x, target.y);
         } else {
-            ProjCoordinate source = new ProjCoordinate(sourceCoordinate.getX(), sourceCoordinate.getY(), sourceCoordinate.getZ());
+            // GML does latitute, longitude, altitude in that order
+            // Proj4j expects longitude, latitude, altitude  in that order
+            ProjCoordinate source = new ProjCoordinate(sourceCoordinate.getY(), sourceCoordinate.getX(), sourceCoordinate.getZ());
             ProjCoordinate target = new ProjCoordinate();
             transform.transform(source, target);
             return new Coordinate(target.x, target.y, target.z);
         }
     }
 
-    private Coordinate[] transform(String sourceCRS, String targetCRS, Coordinate[] sourceCoordinates) {
+    private List<Coordinate> transform(String sourceCRS, String targetCRS, List<Coordinate> sourceCoordinates) {
         CoordinateTransform transform = getTransform(sourceCRS, targetCRS);
-        Coordinate[] targetCoordinates = new Coordinate[sourceCoordinates.length];
-        for (int i = 0; i < sourceCoordinates.length; i++) {
-            ProjCoordinate source = new ProjCoordinate(sourceCoordinates[i].x, sourceCoordinates[i].y);
+        List<Coordinate> targetCoordinates = new ArrayList<>();
+        for (Coordinate sourceCoordinate : sourceCoordinates) {
+            // GML does latitute, longitude, altitude in that order
+            // Proj4j expects longitude, latitude, altitude  in that order
+            ProjCoordinate source = new ProjCoordinate(sourceCoordinate.getY(), sourceCoordinate.getX());
             ProjCoordinate target = new ProjCoordinate();
             transform.transform(source, target);
-            targetCoordinates[i] = new Coordinate(target.x, target.y);
+            targetCoordinates.add(new Coordinate(target.x, target.y));
         }
         return targetCoordinates;
     }
@@ -123,10 +127,32 @@ public class CoordinateTransformeHelper {
         return geometryFactory.createPoint(targetCoordinate);
     }
 
-    public static LineString  transformToLineString(String sourceCRS, String targetCRS, Coordinate[] sourceCoordinates) {
+    public static LineString transformToLineString(String sourceCRS, String targetCRS, List<Coordinate> sourceCoordinates) {
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
-        Coordinate[] targetCoordinates = instance.transform(sourceCRS, targetCRS, sourceCoordinates);
+        List<Coordinate> targetCoordinatesList = instance.transform(sourceCRS, targetCRS, sourceCoordinates);
+        Coordinate[] targetCoordinates = targetCoordinatesList.toArray(new Coordinate[0]);
         return geometryFactory.createLineString(targetCoordinates);
+    }
+
+    public static Polygon transformToPolygon(String sourceCRS, String targetCRS, List<Coordinate> shell, List<List<Coordinate>> holes) {
+        CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
+        List<Coordinate> targetShell = instance.transform(sourceCRS, targetCRS, shell);
+        LinearRing[] targetHoles = new LinearRing[holes.size()];
+        for (List<Coordinate> hole : holes) {
+            List<Coordinate> targetHole = instance.transform(sourceCRS, targetCRS, hole);
+            Coordinate[] targetHoleArray = targetHole.toArray(new Coordinate[0]);
+            LinearRing targetHoleRing = geometryFactory.createLinearRing(targetHoleArray);
+            targetHoles[holes.indexOf(hole)] = targetHoleRing;
+        }
+
+        Coordinate[] targetShellArray = targetShell.toArray(new Coordinate[0]);
+        LinearRing targetShellRing = geometryFactory.createLinearRing(targetShellArray);
+        return geometryFactory.createPolygon(targetShellRing, targetHoles);
+    }
+
+    public static MultiPolygon mergeToMultiPolygon(List<Polygon> polygons) {
+        Polygon[] polygonArray = polygons.toArray(new Polygon[0]);
+        return geometryFactory.createMultiPolygon(polygonArray);
     }
 
 }
