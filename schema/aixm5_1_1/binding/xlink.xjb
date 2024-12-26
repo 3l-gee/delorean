@@ -21,8 +21,11 @@
         <jaxb:bindings node="//xs:attribute[@name='title']">
             <jaxb:property name="titleAttribute"/>
         </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:href']">
+        <!-- <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:type']">
             <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+        </jaxb:bindings> -->
+        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:href']">
+            <annox:annotate target="field">@jakarta.persistence.Column(name = "href")</annox:annotate>
         </jaxb:bindings>
         <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:role']">
             <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>

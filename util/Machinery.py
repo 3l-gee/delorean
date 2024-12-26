@@ -309,6 +309,11 @@ class Machinery:
             return res
 
         if maxOccurs == "unbounded":
+            if type in embed.keys():
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.collection_element()))
+                res.append(Annotation.Annox.field_add())
+                return res 
+
             res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_many()))
             return res
 

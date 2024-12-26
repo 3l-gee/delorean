@@ -95,6 +95,7 @@ class Property:
     @staticmethod
     def name(name="aixmName"):
         return f'<jaxb:property name="{name}"/>'
+    
     element = '<jaxb:property generateElementProperty="false"/>'
 
     @staticmethod
@@ -338,6 +339,14 @@ class Relation:
     def join_table(name1, name2, join_columns, inverse_join_columns):
         name = Util.snake_case_join_table(name1, name2)
         return f'@jakarta.persistence.JoinTable(name = "{name}", joinColumns = {join_columns}, inverseJoinColumns = {inverse_join_columns})'
+    
+    @staticmethod
+    def collection_element():
+        return f'@jakarta.persistence.ElementCollection'
+    
+    @staticmethod
+    def collection_table(name, parent):
+        return f'@jakarta.persistence.CollectionTable(namne = "{name}", joinColumns = @JoinColumns(name = {parent}))'
 
 class Jpa:
     relation = Relation
