@@ -6,7 +6,28 @@ class Xpath(Enum):
     ABSOLUTE= "xs:"
     GLOBAL =  "//xs:"
 
+SQL_FORBIDEN_KEY_WORD = [
+    "SELECT", "INSERT", "UPDATE", "DELETE", "DROP", "CREATE", 
+    "ALTER", "TRUNCATE", "GRANT", "REVOKE", "GROUP", "ORDER", "WHERE",
+    "JOIN", "UNION", "HAVING", "DISTINCT", "EXCEPT", "INTERSECT",
+    "AS", "BETWEEN", "CASE", "COLUMN", "CONSTRAINT", "DEFAULT", "DEFERRABLE",
+    "DESC", "EXPLAIN", "FOREIGN", "IN", "IS", "LIKE", "LIMIT", "LOCK",
+    "NOT", "NULL", "OFFSET", "ON", "ONLY", "OR", "REFERENCES", "RETURNING",
+    "SELECTIVE", "SET", "TABLE", "TO", "TRANSACTION", "UNIQUE", "UPDATE",
+    "VALUES", "VIEW", "WHERE", "WITH", "WITHIN", "WITHOUT", "CASCADE", "NO", 
+    "ARRAY", "BOOLEAN", "CHARACTER", "DATE", "DECIMAL", "FLOAT", "INHERITS", 
+    "INTEGER", "NUMERIC", "REAL", "SMALLINT", "TEXT", "TIME", "TIMESTAMP", 
+    "UUID", "XML", "BIGINT", "BYTEA", "SERIAL", "SMALLSERIAL", "TIMESTAMPTZ", 
+    "CITEXT", "JSON", "JSONB", "HSTORE", "INET", "MACADDR", "MONEY", "PG_SLEEP"
+]
+
 class Util:
+    @staticmethod
+    def modify_forbiden_key_word(name):
+        if name.upper() in SQL_FORBIDEN_KEY_WORD:
+            name += "_"
+        return name
+
     @staticmethod
     def snake_case(name):
         value = name
@@ -14,9 +35,11 @@ class Util:
             value = value.split(':')[-1]
         except:
             pass
-        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', value)
-        result = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1\2', value)
+        result = re.sub('([a-z0-9])([A-Z])', r'\1\2', s1).lower()
 
+        result = Util.modify_forbiden_key_word(result)
+            
         return result
 
     @staticmethod
@@ -34,16 +57,16 @@ class Util:
 
     def short_name(name):  
         replacements = {
-            "For": "",
+            "TimeSlicePropertyType": "_Tspt",
+            "PropertyGroup": "_Pg",
+            "PropertyType": "_Pp",
+            "TimeSliceType": "_Tst",
+            "TimeSlice": "_Ts",
             "Elevated": "Elv",
             "Extension": "Ext",
             "Abstract": "Abs",
             "Element": "Elm",
-            "TimeSlicePropertyType": "Prp",
-            "TimeSliceType": "_Tsl",
-            "TimeSlice": "_Tsl",
-            "PropertyGroup": "_Prp",
-            "PropertyType": "_Prp",
+            "Association": "Asn",
             "Equipment": "Eqp",
             "Organisation" : "Org",
             "Surveillance" : "Srv",
@@ -57,11 +80,22 @@ class Util:
             "Surface" : "Srf",
             "lighting" : "Lgt",
             "Control" : "Ctl",
-            "Type": "",
+            "Taxiway" : "Txw",
+            "Taxi" : "Tx",
+            "Holding" : "Hld",
+            "Position" : "Pos",
+            "Lighting" : "Lgt",
+            "System" : "Sys",
+            "Airports": "Apt",
+            "Heliports": "Hpt",
+            "Responsibility": "Rsp",
+            "Oragnisation": "Org",
+            "For": "",
+            "Type": "", 
         }
         
-        for key, value in replacements.items():
-            name = name.replace(key, value)
+        # for key, value in replacements.items():
+        #     name = name.replace(key, value)
 
         return name    
 
@@ -71,6 +105,9 @@ class Util:
         name2 = Util.snake_case_table(name2)
 
         result = f"{name1}_{name2}"
+
+        result = Util.modify_forbiden_key_word(result)
+
         return result
 
     def snake_case_column(name):
@@ -81,8 +118,13 @@ class Util:
             value = value.split(':')[-1]
         except:
             pass
-        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', value)
-        result = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower().replace("_base_type", "").replace("_type", "")
+
+        value = Util.short_name(value)
+
+        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1\2', value)
+        result = re.sub('([a-z0-9])([A-Z])', r'\1\2', s1).lower().replace("_base_type", "").replace("_type", "")
+
+        result = Util.modify_forbiden_key_word(result)
 
         return result
     
@@ -239,8 +281,11 @@ class Xml:
     transient = '@jakarta.xml.bind.annotation.XmlTransient'
     
     @staticmethod
-    def type(name, propOrder):
-        return f'@jakarta.xml.bind.annotation.XmlType(name = "{name}", propOrder = {{"{propOrder}"}})'
+    def type(name, propOrder=None):
+        if propOrder is None:
+            return f'@jakarta.xml.bind.annotation.XmlType(name = "{name}", propOrder = {{}})'
+        else :
+            return f'@jakarta.xml.bind.annotation.XmlType(name = "{name}", propOrder = {{"{propOrder}"}})'
     
     @staticmethod
     def element(name, type, required=True):
@@ -338,15 +383,18 @@ class Relation:
     @staticmethod
     def join_table(name1, name2, join_columns, inverse_join_columns):
         name = Util.snake_case_join_table(name1, name2)
-        return f'@jakarta.persistence.JoinTable(name = "{name}", joinColumns = {join_columns}, inverseJoinColumns = {inverse_join_columns})'
+        return f'@jakarta.persistence.JoinTable(name = "{name}", joinColumns = @jakarta.persistence.JoinColumn(name = "{Util.snake_case(join_columns) + "_id"}"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "{Util.snake_case(inverse_join_columns) + "_id"}"))'
     
     @staticmethod
     def collection_element():
         return f'@jakarta.persistence.ElementCollection'
     
     @staticmethod
-    def collection_table(name, parent):
-        return f'@jakarta.persistence.CollectionTable(namne = "{name}", joinColumns = @JoinColumns(name = {parent}))'
+    def collection_table(name, parent=None):
+        if parent is None :
+            return f'@jakarta.persistence.CollectionTable(name = "{Util.snake_case(name) + "_col"}")'
+        else :
+            return f'@jakarta.persistence.CollectionTable(name = "{Util.snake_case(name)}, joinColumns = @jakarta.persistence.JoinColumn(name = "{Util.snake_case(parent)}_id"))'
 
 class Jpa:
     relation = Relation
@@ -366,8 +414,11 @@ class Jpa:
         return f'@jakarta.persistence.Column(name = "{Util.snake_case_column(name, is_simple_type,)}", columnDefinition = "{columnDefinition}", nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
         
     @staticmethod
-    def table(name, schema):
-        return f'@jakarta.persistence.Table(name = "{Util.snake_case_table(name)}", schema = "{schema}")'
+    def table(name, schema, prefix=None):
+        if prefix is None:
+            return f'@jakarta.persistence.Table(name = "{Util.snake_case(name)}", schema = "{schema}")'
+        else:
+            return f'@jakarta.persistence.Table(name = "{Util.snake_case(prefix) + "_" + Util.snake_case_table(name)}", schema = "{schema}")'
 
     @staticmethod
     def enumerated(value="STRING"):

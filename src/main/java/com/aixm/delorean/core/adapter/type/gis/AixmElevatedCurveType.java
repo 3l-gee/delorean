@@ -1,37 +1,26 @@
 package com.aixm.delorean.core.adapter.type.gis;
 
-import org.locationtech.jts.geom.LineString;
+import java.util.List;
 
-import jakarta.persistence.Column;
+import com.aixm.delorean.core.gis.type.Segment;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
 @Embeddable
 public class AixmElevatedCurveType extends AixmElevatedGeometryType {
 
-    @Column(name = "linestring", columnDefinition = "geometry(LineString, 4326)")
-    protected LineString lineString;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    // @JoinColumn(name = "segment_id")
+    protected List<Segment> segments;
 
-    public enum Interpretation {
-        GEODESIC,
-        LINESTRING
+    public List<Segment> getSegments() {
+        return segments;
     }
 
-    @Column(name = "interpretation")
-    public Interpretation interpretation;
-
-    public LineString getLineString() {
-        return lineString;
-    }
-
-    public void setLineString(LineString value) {
-        this.lineString = value;
-    }
-
-    public Interpretation getInterpretation() {
-        return interpretation;
-    }
-
-    public void setInterpretation(Interpretation value) {
-        this.interpretation = value;
+    public void setSegments(List<Segment> segments) {
+        this.segments = segments;
     }
 }

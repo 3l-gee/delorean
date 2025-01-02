@@ -2,18 +2,23 @@ package com.aixm.delorean.core.helper.gis;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
 
 import jakarta.xml.bind.JAXBElement;
+import net.postgis.jdbc.geometry.Point;
+
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionListType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicStringType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.OffsetCurveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.LineStringSegmentType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveSegmentArrayPropertyType;
+import com.aixm.delorean.core.gis.type.Segment;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractCurveSegmentType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcByBulgeType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcByCenterPointType;
@@ -28,7 +33,7 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gml.CubicSplineType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcStringType;
 public class CurveGmlHelper {
 
-    public static LineString parseGMLcurve (CurveType value) {
+    public static List<Segment> parseGMLcurve (CurveType value) {
         if (value == null) {
             return null;
         }
@@ -44,28 +49,20 @@ public class CurveGmlHelper {
         }
 
         // BigInteger srsDimension = value.getSrsDimension();
-        List<Coordinate> coordinates = parseCurveSegementArrayProperty(segments);
 
-        return CoordinateTransformeHelper.transformToLineString(srsName, "urn:ogc:def:crs:EPSG::4326", coordinates);
+        return parseCurveSegementArrayProperty(segments, srsName);
     }
 
 
-    public static List<Coordinate> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value){
-        List<Coordinate> coordinates = new ArrayList<>();
-        Class<?> segmentType = null;
+    public static List<Segment> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value, String srsName) {
+        List<Segment> segment = new ArrayList<>();
+        
 
         for (JAXBElement<? extends AbstractCurveSegmentType> element : value.getAbstractCurveSegment()) {
             if (element.getValue() == null) {
                 throw new IllegalArgumentException("AbstractCurveSegmentType is null" + value.getClass().getName());
-    
-            } else {
-                if (segmentType == null) {
-                    segmentType = element.getValue().getClass();
-                } else if (!segmentType.equals(element.getValue().getClass())) {
-                    throw new IllegalArgumentException("Mixed types are not allowed in the list");
-                }
 
-            if (element.getValue() instanceof ArcByBulgeType) {
+            } else if (element.getValue() instanceof ArcByBulgeType) {
                 //AIXM-5.1_RULE-1A3EC2
 
             } else if (element.getValue() instanceof ArcByCenterPointType) {
@@ -99,13 +96,13 @@ public class CurveGmlHelper {
                 //AIXM-5.1_RULE-1A3EC6    
 
             } else if (element.getValue() instanceof GeodesicStringType) {
-                coordinates.addAll(parseGeodesicString((GeodesicStringType) element.getValue()));
+                segment.add(parseGeodesicString((GeodesicStringType) element.getValue(), srsName));
 
             } else if (element.getValue() instanceof GeodesicType) {
-                //TODO: Implement this
+                segment.add(parseGeodesicString((GeodesicType) element.getValue(), srsName));
 
             } else if (element.getValue() instanceof LineStringSegmentType) {
-                //TODO: Implement this
+                segment.add(parseLineStringSegment((LineStringSegmentType) element.getValue(), srsName));
 
             } else if (element.getValue() instanceof OffsetCurveType) {
                 //AIXM-5.1_RULE-1A3EC8    
@@ -113,13 +110,12 @@ public class CurveGmlHelper {
             } else {
                 throw new IllegalArgumentException("Unsupported type " + element.getValue().getClass().getName());
             }
-            }
         }
 
-        return coordinates;
-        }
+        return segment;
+    }
 
-        public static CurveSegmentArrayPropertyType printCurveSegmentArrayPropertyType (){
+    public static CurveSegmentArrayPropertyType printCurveSegmentArrayPropertyType (){
 
         return new CurveSegmentArrayPropertyType();
     }
@@ -160,14 +156,16 @@ public class CurveGmlHelper {
         return new CircleType();
     }
 
-    public static List<Coordinate> parseGeodesicString (GeodesicStringType value) {
+    public static Segment parseGeodesicString (GeodesicStringType value, String srsName) {
         DirectPositionListType posList = value.getPosList();
-
+        
         if (posList == null) {
             throw new IllegalArgumentException("DirectPositionListType is null" + value.getClass().getName());
         }
 
-        return parseDirectPositionList(posList);
+        String actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
+
+        return parseDirectPositionList(posList, actualSrsName, Segment.Interpretation.GEODESIC);
     }
 
     public static GeodesicStringType printGeodesicString (List<Coordinate> value) {
@@ -190,9 +188,21 @@ public class CurveGmlHelper {
         return new GeodesicType();
     }
 
-    //TODO: to implement
-    public static List<Coordinate> parseLineStringSegment (LineStringSegmentType value) {
-        return new ArrayList<Coordinate>();
+    public static Segment parseLineStringSegment (LineStringSegmentType value, String srsName) {
+        DirectPositionListType posList = value.getPosList();
+        List<JAXBElement<?>> posOrPointPropertyOrPointRep = value.getPosOrPointPropertyOrPointRep();
+        if (posList != null) {
+            String actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
+
+            return parseDirectPositionList(posList, actualSrsName, Segment.Interpretation.LINESTRING);
+        } else if (posOrPointPropertyOrPointRep != null) {
+            return parseListOfDirectPosition(posOrPointPropertyOrPointRep, srsName, Segment.Interpretation.LINESTRING);
+
+        } else {
+            throw new IllegalArgumentException("DirectPositionListType is null" + value.getClass().getName());
+        }
+
+    
     }
 
     public static LineStringSegmentType printLineStringSegment (LineString value) {
@@ -200,7 +210,7 @@ public class CurveGmlHelper {
         return new LineStringSegmentType();
     }
 
-    public static List<Coordinate> parseDirectPositionList (DirectPositionListType value) {
+    public static Segment parseDirectPositionList (DirectPositionListType value, String srsName, Segment.Interpretation interpretation) {
         if (value == null) {
             throw new IllegalArgumentException("DirectPositionListType is null" + value.getClass().getName());
         }
@@ -228,7 +238,12 @@ public class CurveGmlHelper {
             }
         }
 
-        return coordinates;
+        LineString lineString = CoordinateTransformeHelper.transformToLineString(srsName, "EPSG:4326", coordinates);
+        Segment segment = new Segment();
+        segment.setLineString(lineString);
+        segment.setInterpretation(interpretation);
+
+        return segment;
     }
 
     public static DirectPositionListType printDirectPositionList (List<Coordinate> value) {
@@ -252,6 +267,34 @@ public class CurveGmlHelper {
         }
 
         return posList;
+    }
+
+    public static Segment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, Segment.Interpretation interpretation) {
+        if (value == null) {
+            throw new IllegalArgumentException("JAXBElement<?> values cannot be null" + value.getClass().getName());
+        }
+
+        HashMap<Coordinate, String> coordinates = new HashMap<>();
+        for (JAXBElement<?> element : value) {
+            if (element.getValue() == null) {
+                throw new IllegalArgumentException("JAXBElement<?> values cannot be null" + value.getClass().getName());
+            }
+
+            if (element.getValue() instanceof DirectPositionType) {
+                DirectPositionType pos = (DirectPositionType) element.getValue();
+                String actualSrsName = pos.getSrsName() != null ? pos.getSrsName() : srsName;
+                coordinates.put(PointGmlHelper.parseDirectPositionToCoordinate(pos), actualSrsName);
+            } else {
+                throw new IllegalArgumentException("Unsupported type " + element.getValue().getClass().getName());
+            }
+        }
+
+        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinates, "unr:ogc:deg:crs:PSG:4326");
+        Segment segment = new Segment();
+        segment.setLineString(lineString);
+        segment.setInterpretation(interpretation);
+
+        return segment;
     }
 
 

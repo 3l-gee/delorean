@@ -193,12 +193,12 @@ public class SurfaceGmlHelper {
             //TODO is this allowed in AIXM?
 
         } else if (element.getValue() instanceof com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType){
-            CurveType curveType = (CurveType) element.getValue();
-            if (curveType == null || curveType.getSegments() == null) {
-                return coordinates;
-            } else {
-                coordinates.addAll(CurveGmlHelper.parseCurveSegementArrayProperty(curveType.getSegments()));
-            }
+            // CurveType curveType = (CurveType) element.getValue();
+            // if (curveType == null || curveType.getSegments() == null) {
+            //     return coordinates;
+            // } else {
+            //     coordinates.addAll(CurveGmlHelper.parseCurveSegementArrayProperty(curveType.getSegments()));
+            // }
         } else if (element.getValue() instanceof LineStringType){
             //TODO is this allowed in AIXM?
             

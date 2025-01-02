@@ -134,6 +134,16 @@ public class CoordinateTransformeHelper {
         return geometryFactory.createLineString(targetCoordinates);
     }
 
+    public static LineString transformToLineString(HashMap<Coordinate, String> sourceCoordinates, String targetCRS) {
+        CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
+        List<Coordinate> targetCoordinatesList = new ArrayList<>();
+        for (Map.Entry<Coordinate, String> entry : sourceCoordinates.entrySet()) {
+            targetCoordinatesList.add(instance.transform(entry.getValue(), targetCRS, entry.getKey()));
+        }
+        Coordinate[] targetCoordinates = targetCoordinatesList.toArray(new Coordinate[0]);
+        return geometryFactory.createLineString(targetCoordinates);
+    }
+
     public static Polygon transformToPolygon(String sourceCRS, String targetCRS, List<Coordinate> shell, List<List<Coordinate>> holes) {
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         List<Coordinate> targetShell = instance.transform(sourceCRS, targetCRS, shell);

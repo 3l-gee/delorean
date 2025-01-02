@@ -29,18 +29,15 @@ public class PointGmlHelper {
         }
 
         // BigInteger srsDiemnesion = value.getSrsDimension();
-        Coordinate coordinate = parseDirectPosition(pos);
-        if (coordinate == null) {
-            throw new IllegalArgumentException("Coordinate is null" + value.getClass().getName());
-        }
-
-        return CoordinateTransformeHelper.transformToPoint(srsName, "urn:ogc:def:crs:EPSG::4326", coordinate);
+        return parseDirectPosition(pos, srsName);        
     }
 
-    public static Coordinate parseDirectPosition (DirectPositionType value) {
+    public static Point parseDirectPosition (DirectPositionType value, String srsName){
         if (value == null) {
             throw new IllegalArgumentException("DirectPositionType is null" + value.getClass().getName());
         }
+
+        String actualSrsName = value.getSrsName() != null ? value.getSrsName() : srsName;
         List<Double> coordinatesList = value.getValue();
 
         if (coordinatesList == null || coordinatesList.isEmpty()) {
@@ -53,7 +50,7 @@ public class PointGmlHelper {
             if (x == null || y == null) {
                 throw new IllegalArgumentException("Coordinate values cannot be null" + value.getClass().getName());
             }
-            return new Coordinate(x, y);
+            return CoordinateTransformeHelper.transformToPoint(actualSrsName, "urn:ogc:def:crs:EPSG::4326", new Coordinate(x, y));
         } else if (coordinatesList.size() == 3) {
             Double x = coordinatesList.get(0);
             Double y = coordinatesList.get(1);
@@ -61,7 +58,38 @@ public class PointGmlHelper {
             if (x == null || y == null || z == null) {
                 throw new IllegalArgumentException("Coordinate values cannot be null" + value.getClass().getName());
             }
-            return new Coordinate(x, y, z);
+            return CoordinateTransformeHelper.transformToPoint(actualSrsName, "urn:ogc:def:crs:EPSG::4326", new Coordinate(x, y, z));
+        } else {
+            throw new IllegalArgumentException("list<Double> value is not 2 or 3" + value.getClass().getName());
+        }
+    }
+
+    public static Coordinate parseDirectPositionToCoordinate (DirectPositionType value){
+        if (value == null) {
+            throw new IllegalArgumentException("DirectPositionType is null" + value.getClass().getName());
+        }
+
+        List<Double> coordinatesList = value.getValue();
+
+        if (coordinatesList == null || coordinatesList.isEmpty()) {
+            throw new IllegalArgumentException("list<Double> value is null or empty" + value.getClass().getName());
+        }
+
+        if (coordinatesList.size() == 2) {
+            Double x = coordinatesList.get(0);
+            Double y = coordinatesList.get(1);
+            if (x == null || y == null) {
+                throw new IllegalArgumentException("Coordinate values cannot be null" + value.getClass().getName());
+            }
+            return  new Coordinate(x, y);
+        } else if (coordinatesList.size() == 3) {
+            Double x = coordinatesList.get(0);
+            Double y = coordinatesList.get(1);
+            Double z = coordinatesList.get(2);
+            if (x == null || y == null || z == null) {
+                throw new IllegalArgumentException("Coordinate values cannot be null" + value.getClass().getName());
+            }
+            return  new Coordinate(x, y, z);
         } else {
             throw new IllegalArgumentException("list<Double> value is not 2 or 3" + value.getClass().getName());
         }
