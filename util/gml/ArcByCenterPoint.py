@@ -6,11 +6,17 @@ gml_arc_by_center_point = """
 <?xml version="1.0" encoding="UTF-8"?>
 <gml:Work xmlns:gml="http://www.opengis.net/gml/3.2">
     <gml:Tasks>
-        <gml:ArcByCenterPoint numArc="1">
-            <gml:pos>46.94809 7.44744</gml:pos>
-            <gml:radius uom="NM">50</gml:radius>
-            <gml:startAngle uom="deg">96.17559801259146</gml:startAngle>
-            <gml:endAngle uom="deg">66.39569333746066</gml:endAngle>
+        <gml:ArcByCenterPoint numArc="1" srsName="urn:ogc:def:crs:EPSG::4326">
+            <gml:pos>44.82694444445 -0.72111111111</gml:pos>
+            <gml:radius uom="[nmi_i]">23.0</gml:radius>
+            <gml:startAngle uom="deg">-39.056642</gml:startAngle>
+            <gml:endAngle  uom="deg">96.278174</gml:endAngle>
+        </gml:ArcByCenterPoint>
+        <gml:ArcByCenterPoint numArc="1" srsName="urn:ogc:def:crs:OGC:1.3:CRS84">
+            <gml:pos>8.550420833 47.460000556</gml:pos>
+            <gml:radius uom="NM">8.974</gml:radius>
+            <gml:startAngle uom="deg">179.37175697186672</gml:startAngle>
+            <gml:endAngle uom="deg">-19.184697052876686</gml:endAngle>
         </gml:ArcByCenterPoint>
     </gml:Tasks>
 </gml:Work>
@@ -18,102 +24,119 @@ gml_arc_by_center_point = """
 
 
 class GMLTransformer:
-    RADIUS_EARTH = 6371.0  # km (Used for distance calculation)
+    A = 6378137.0  # semi-major axis in meters
+    F = 1 / 298.257223563  # flattening
+    B = A * (1 - F)  # semi-minor axis
+
+    DISTANCE_UNIT_CONVERSION = {
+        "[nmi_i]": 1852,
+        'NM': 1852,
+        'KM': 1000,
+        'M': 1.0,
+        'MI': 1609.34,
+        'FT': 0.3048
+    }
+
+    ANGLE_UNIT_CONVERSION = {
+        'deg': np.pi / 180.0,
+        'rad': 1.0
+    }
     namespace = {'gml': 'http://www.opengis.net/gml/3.2'}
 
     def __init__(self, gml):
         self.root = ET.fromstring(gml.strip())
-        self.tasks = self.root.findall('.//{http://www.opengis.net/gml/3.2}Tasks', namespaces=self.namespace)
-        print(self.tasks)
+        self.tasks = self.root.find('.//{http://www.opengis.net/gml/3.2}Tasks', namespaces=self.namespace)
         self.output = []
         self.runner()
 
+    def pos_to_lon_latI(self, pos, srs):
+        x, y = map(float, pos.split())
+        if srs == 'urn:ogc:def:crs:OGC:1.3:CRS84':
+            return x, y
+        
+        if srs == 'urn:ogc:def:crs:EPSG::4326':
+            return y, x
+
+    def angle_unit_to_rad(self, angle, unit, srs):
+        if unit in self.ANGLE_UNIT_CONVERSION:
+            if srs == 'urn:ogc:def:crs:OGC:1.3:CRS84':
+                return 2 * np.pi - (angle * self.ANGLE_UNIT_CONVERSION[unit]) + np.pi/2
+            
+            if srs == 'urn:ogc:def:crs:EPSG::4326':
+                return angle * self.ANGLE_UNIT_CONVERSION[unit]
+                # return (angle * self.ANGLE_UNIT_CONVERSION[unit]) * -1 + np.pi/2
+            
+            else :
+                return angle * self.ANGLE_UNIT_CONVERSION[unit]
+        
+        else :
+            raise ValueError(f"Unknown angle unit: {unit}")
+
+    def distance_unit_to_m(self, distance, unit):
+        if unit in self.DISTANCE_UNIT_CONVERSION:
+            return distance * self.DISTANCE_UNIT_CONVERSION[unit]
+        
+        else :
+            raise ValueError(f"Unknown distance unit: {unit}")
+    
+
     def runner(self):
         for task in self.tasks:
-            
-            if task.find('.//gml:ArcByCenterPoint', namespaces=self.namespace) is not None:
+            print(task.tag)
+            print()
+            if task.tag == '{http://www.opengis.net/gml/3.2}ArcByCenterPoint':
                 self.arc_by_center_point(task)
 
     def arc_by_center_point(self, task):
         pos = task.find('.//gml:pos', namespaces=self.namespace).text
-        center_lon, center_lat = map(float, pos.split())
+        
+        srs_name = task.get('srsName')
 
-        radius = float(task.find('.//gml:radius', namespaces=self.namespace).text)
+        center_lon, center_lat = self.pos_to_lon_latI(pos, task.get('srsName'))
 
-        start_angle = float(task.find('.//gml:startAngle', namespaces=self.namespace).text)
-        end_angle = float(task.find('.//gml:endAngle', namespaces=self.namespace).text)
+        radius_raw = float(task.find('.//gml:radius', namespaces=self.namespace).text)
+        radius_unit = task.find('.//gml:radius', namespaces=self.namespace).get('uom')
 
-        start_angle_rad = np.radians(start_angle)
-        end_angle_rad = np.radians(end_angle)
+        start_angle_raw = float(task.find('.//gml:startAngle', namespaces=self.namespace).text)
+        start_angle_unit = task.find('.//gml:startAngle', namespaces=self.namespace).get('uom')
+
+        end_angle_raw = float(task.find('.//gml:endAngle', namespaces=self.namespace).text)
+        end_angle_unit = task.find('.//gml:endAngle', namespaces=self.namespace).get('uom')
+
+        radius = self.distance_unit_to_m(radius_raw, radius_unit)
+        start_angle_rad = self.angle_unit_to_rad(start_angle_raw, start_angle_unit, srs_name)
+        end_angle_rad = self.angle_unit_to_rad(end_angle_raw, end_angle_unit, srs_name)
+
+        print(f"Center      : {center_lat}, {center_lon}")
+        print(f"Radius [m]  : {radius}")
+        print(f"srs_name    : {srs_name}")
+        print(f"Start angle : {start_angle_rad}")
+        print(f"End angle   : {end_angle_rad}")
 
         start_lon, start_lat = self.compute_new_point(center_lon, center_lat, radius, start_angle_rad)
         end_lon, end_lat = self.compute_new_point(center_lon, center_lat, radius, end_angle_rad)
 
-        line_string = f"LINESTRING ({start_lon} {start_lat}, {center_lon} {center_lat}, {end_lon} {end_lat})"
-        self.output.append(line_string)
-
+        return self.output.append(f"LINESTRING ({start_lon} {start_lat}, {center_lon} {center_lat}, {end_lon} {end_lat})")
+        
     def compute_new_point(self, lon, lat, radius, angle):
-        lat_rad = np.radians(lat)
-        lon_rad = np.radians(lon)
 
-        new_lat_rad = np.arcsin(np.sin(lat_rad) * np.cos(radius / self.RADIUS_EARTH) + np.cos(lat_rad) * np.sin(radius / self.RADIUS_EARTH) * np.cos(angle))
-        new_lon_rad = lon_rad + np.arctan2(np.sin(angle) * np.sin(radius / self.RADIUS_EARTH) * np.cos(lat_rad), np.cos(radius / self.RADIUS_EARTH) - np.sin(lat_rad) * np.sin(new_lat_rad))
+        # Convert latitude and longitude to radians
+        lat = np.radians(lat)   
+        lon = np.radians(lon)
+        radius = radius / self.A
 
-        new_lat = np.degrees(new_lat_rad)
-        new_lon = np.degrees(new_lon_rad)
+        new_lat = np.arcsin(np.sin(lat) * np.cos(radius) + np.cos(lat) * np.sin(radius) * np.cos(angle))
+        new_lon = lon + np.arctan2(np.sin(angle) * np.sin(radius) * np.cos(lat), np.cos(radius) - np.sin(lat) * np.sin(new_lat))
+
+        # Convert back to degrees
+        new_lat = np.degrees(new_lat)
+        new_lon = np.degrees(new_lon)
 
         return new_lon, new_lat
+
     
     def __str__(self):
-        return str(self.output)
+        return '\n'.join(self.output)
         
 
 print(GMLTransformer(gml_arc_by_center_point))  
-
-
-# Parse the GML input with the correct namespace
-# root = ET.fromstring(gml_arc_by_center_point.strip())
-
-# # Define the namespace for GML elements
-# namespace = {'gml': 'http://www.opengis.net/gml/3.2'}
-
-# # Extract the values from the GML using the correct namespace
-# pos = root.find('.//gml:pos', namespaces=namespace).text
-# center_lon, center_lat = map(float, pos.split())
-
-# radius = float(root.find('.//gml:radius', namespaces=namespace).text)
-
-# start_angle = float(root.find('.//gml:startAngle', namespaces=namespace).text)
-# end_angle = float(root.find('.//gml:endAngle', namespaces=namespace).text)
-
-# # Convert angles from degrees to radians
-# start_angle_rad = np.radians(start_angle)
-# end_angle_rad = np.radians(end_angle)
-
-# # Define the WGS84 constants
-# RADIUS_EARTH = 6371.0  # km (Used for distance calculation)
-
-# # Function to compute new coordinates given a start point, distance (radius), and angle
-# def compute_new_point(lon, lat, radius, angle):
-#     # Convert lat/lon to radians
-#     lat_rad = np.radians(lat)
-#     lon_rad = np.radians(lon)
-
-#     # Calculate new lat and lon
-#     new_lat_rad = np.arcsin(np.sin(lat_rad) * np.cos(radius / RADIUS_EARTH) + np.cos(lat_rad) * np.sin(radius / RADIUS_EARTH) * np.cos(angle))
-#     new_lon_rad = lon_rad + np.arctan2(np.sin(angle) * np.sin(radius / RADIUS_EARTH) * np.cos(lat_rad), np.cos(radius / RADIUS_EARTH) - np.sin(lat_rad) * np.sin(new_lat_rad))
-
-#     # Convert back to degrees
-#     new_lat = np.degrees(new_lat_rad)
-#     new_lon = np.degrees(new_lon_rad)
-    
-#     return new_lon, new_lat
-
-# # Calculate start and end points
-# start_lon, start_lat = compute_new_point(center_lon, center_lat, radius, start_angle_rad)
-# end_lon, end_lat = compute_new_point(center_lon, center_lat, radius, end_angle_rad)
-
-# # Prepare the LineString (start, center, end)
-# line_string = f"LINESTRING ({start_lon} {start_lat}, {center_lon} {center_lat}, {end_lon} {end_lat})"
-
-# Output the result

@@ -7,7 +7,7 @@ import os
 import Annotation
 import json
 
-def runner(config: dict, debug: dict, xsds: List[dict]):
+def runner(config: dict, debug: dict,  xsds: List[dict]):
     xsds = [Xsd(xsd["name"], xsd["path"], xsd["strategy"], xsd["manual"], xsd.get("package")) for xsd in xsds]
 
     if debug["mode"] == True:
@@ -20,6 +20,7 @@ def runner(config: dict, debug: dict, xsds: List[dict]):
 
     machinery.generate_xjb()
     machinery.export_xjb()
+    # machinery.print_entity_class(machinery.entity_feature)
 
 
 class strategy(Enum):
@@ -108,6 +109,24 @@ class Debug:
         self.entity = debug.get("entity", {})
         self.feature = debug.get("feature", {})
 
+class Hirarchy:
+    def __init__(self, hirarchy: dict):
+        self.feature = hirarchy.get("feature", [])
+        self.time_slice = hirarchy.get("time_slice", [])
+        self.object = hirarchy.get("object", [])
+
+    def get_prefix(self, type): 
+        type = type.split(":")[-1]
+        if type in self.feature:
+            return "feat"
+        elif type in self.time_slice:
+            return "tmsl"
+        elif type in self.object:
+            return "obj"
+        else:
+            return None
+
+
 class Machinery:
     def __init__(self, xsds: List[Xsd], config: Config, debug: Debug): 
         self.xsds = xsds
@@ -120,6 +139,7 @@ class Machinery:
         self.ignore_feature = {}
         self.embed_feature = self.init_embed_feature(self.content)
         self.folder = {}
+        self.table_name = {}
 
     def init_embed_feature(self, content):
         res = {}
@@ -311,24 +331,42 @@ class Machinery:
         if maxOccurs == "unbounded":
             if type in embed.keys():
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.collection_element()))
-                res.append(Annotation.Annox.field_add())
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.collection_table(type)))
+                temp = [Annotation.Jpa.attribute_sub_override("href", element.attrib["name"])]
+                temp.append(Annotation.Jpa.attribute_sub_override("nilReason", element.attrib["name"]))
+                res.append(Annotation.Annox.field_add(Annotation.Jpa.attribute_main_override(temp)))
                 return res 
 
             res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_many()))
+            print()
+            res.append(Annotation.Annox.field_add(Annotation.Relation.join_table(
+                parent.attrib["name"], element.attrib["name"], parent.attrib["name"], element.attrib["type"])))
+            join_column_name = element.attrib.get("name") if element.attrib.get("name") else element.attrib.get("ref")
             return res
 
         if maxOccurs == 1:
             if type in embed.keys():
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.embedded))
-                temp = [Annotation.Jpa.attribute_sub_override("value", element.attrib["name"])]
+                temp = []
                 for attribute in embed[type].findall(".//"+ Annotation.Tag.attribute) or []:
                     temp.append(Annotation.Jpa.attribute_sub_override(attribute.attrib["name"], element.attrib["name"]))
+                
+                #PropertyType with Ownership and Association
+                if temp == []:
+                    temp.append(Annotation.Jpa.attribute_sub_override("href", element.attrib["name"]))
+                    temp.append(Annotation.Jpa.attribute_sub_override("nilReason", element.attrib["name"]))
+
+                else: 
+                    temp.append(Annotation.Jpa.attribute_sub_override("value", element.attrib["name"]))
 
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.attribute_main_override(temp)))
+
                 return res   
             
             else:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_one()))
+                join_column_name = element.attrib.get("name") if element.attrib.get("name") else element.attrib.get("ref")
+                res.append(Annotation.Annox.field_add(Annotation.Relation.join_column(join_column_name)))
                 return res
 
         if nillable:
@@ -478,7 +516,12 @@ class Machinery:
         """Process the sequence flow."""
         node = []
         sequence_list = parent.findall(Annotation.Tag.sequence) or []
+        # if parent_xpath == "//xs:complexType[@name='AerialRefuellingPropertyType']":
+        #         print(parent[0])
+        #         print(parent.attrib)
+        #         print(sequence_list)
         for sequence in sequence_list:
+
             element_list = sequence.findall(".//" + Annotation.Tag.element, Annotation.Tag.namespaces) or []
             attribute_list = sequence.findall(".//" + Annotation.Tag.attribute, Annotation.Tag.namespaces) or []
 
@@ -671,16 +714,33 @@ class Machinery:
         node = []
         
         sub_element_list = element.findall(".//"+ Annotation.Tag.element) or []
+        ownership = False
+        association = False
+
+        for attribute in element.findall(".//"+ Annotation.Tag.attribute_group) or []:
+            if attribute.attrib.get("ref") == "gml:OwnershipAttributeGroup" : 
+                ownership = True
+
+            if attribute.attrib.get("ref") == "gml:AssociationAttributeGroup" : 
+                association = True
+
         for sub_element in sub_element_list:
-            if sub_element.attrib.get("name") == "dbid":
-                xmlt_type_name = element.attrib.get("name").replace("TimeSlicePropertyType", "")
-                if xmlt_type_name.isupper():
-                    xmlt_type_name = xmlt_type_name.lower() + "TimeSlice"
 
-                else:
-                    xmlt_type_name = xmlt_type_name[0].lower() + xmlt_type_name[1:] + "TimeSlice"
+            if sub_element.attrib.get("name") == "dbid" :
+                if "TimeSlicePropertyType" in element.attrib.get("name"):
+                    xmlt_type_name = element.attrib.get("name").replace("TimeSlicePropertyType", "")
+                    if xmlt_type_name.isupper():
+                        xmlt_type_name = xmlt_type_name.lower() + "TimeSlice"
 
-                node.append(Annotation.Annox.class_add(Annotation.Xml.type(element.attrib["name"], xmlt_type_name)))
+                    else:
+                        xmlt_type_name = xmlt_type_name[0].lower() + xmlt_type_name[1:] + "TimeSlice"
+
+                    node.append(Annotation.Annox.class_add(Annotation.Xml.type(element.attrib["name"], xmlt_type_name)))
+                    continue
+
+                elif "PropertyType" in element.attrib.get("name"):
+                    node.append(Annotation.Annox.class_add(Annotation.Xml.type(element.attrib["name"])))
+
 
         if self.debug.entity.get("mode") == True and element.attrib.get("name") not in self.debug.entity.get("name", []):
             node.append(Annotation.Annox.class_add(Annotation.Jpa.embeddable))
@@ -698,7 +758,11 @@ class Machinery:
         
         self.entity_feature.append(element.attrib["name"])
         node.append(Annotation.Annox.class_add(Annotation.Jpa.entity))
-        node.append(Annotation.Annox.class_add(Annotation.Jpa.table(element.attrib["name"],"public")))
+        base = element.find(".//" + Annotation.Tag.restriction) or element.find(".//" + Annotation.Tag.extension) 
+        if base is not None:
+            node.append(Annotation.Annox.class_add(Annotation.Jpa.table(element.attrib["name"],"public")))
+        else :  
+            node.append(Annotation.Annox.class_add(Annotation.Jpa.table(element.attrib["name"],"public")))
 
         return node
 

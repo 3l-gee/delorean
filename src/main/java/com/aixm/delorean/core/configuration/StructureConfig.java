@@ -2,6 +2,10 @@ package com.aixm.delorean.core.configuration;
 
 
 public enum StructureConfig {
+    HOUSE(
+        "house", 
+        "com.aixm.delorean.core.schema.house.House"
+        ),
 
     AIXM_5_1_1(
         "a5_1_1", 

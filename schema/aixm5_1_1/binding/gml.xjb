@@ -23,6 +23,7 @@
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:attribute[@ref='gml:id']">
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "xml_id")</annox:annotate>
+			<jaxb:property name="xmlId"/>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:metaDataProperty']">
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -54,6 +55,9 @@
 		</jaxb:bindings>
 		<jaxb:bindings node="xs:attributeGroup[@name='AssociationAttributeGroup']//xs:attribute[@name='nilReason']">
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "nilReason")</annox:annotate>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:attributeGroup[@name='OwnershipAttributeGroup']//xs:attribute[@name='owns']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
 		</jaxb:bindings>
 	</jaxb:bindings>
 	
