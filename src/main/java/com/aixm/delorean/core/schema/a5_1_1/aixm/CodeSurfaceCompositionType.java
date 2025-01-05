@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSurfaceCompositionType {
 
     @XmlValue
-    @Column(name = "surface_composition", nullable = true, unique = false)
+    @Column(name = "surfacecompositionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "surface_composition_nil_reason", nullable = true, unique = false)
+    @Column(name = "surfacecompositiontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

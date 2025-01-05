@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,35 +71,58 @@ import jakarta.xml.bind.annotation.XmlType;
     "associatedLevels",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "airspacelayerclasstype", schema = "public")
 public class AirspaceLayerClassType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airspacelayerclasstype_timeinterval", joinColumns = {
+        @JoinColumn(name = "airspacelayerclasstype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "timesheetpropertytype_id")
+    })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airspacelayerclasstype_annotation", joinColumns = {
+        @JoinColumn(name = "airspacelayerclasstype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airspacelayerclasstype_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "airspacelayerclasstype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertytype_id")
+    })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "classification")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "classification_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "classification_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "classification"))
     })
     protected CodeAirspaceClassificationType classification;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airspacelayerclasstype_associatedlevels", joinColumns = {
+        @JoinColumn(name = "airspacelayerclasstype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airspacelayerpropertytype_id")
+    })
     protected List<AirspaceLayerPropertyType> associatedLevels;
     @Transient
     protected List<AirspaceLayerClassType.Extension> extension;
@@ -362,13 +388,16 @@ public class AirspaceLayerClassType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractpropertieswithscheduleextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractAirspaceLayerClassExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractairspacelayerclassextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceLayerClassExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

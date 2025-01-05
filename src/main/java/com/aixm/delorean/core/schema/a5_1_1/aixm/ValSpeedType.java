@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValSpeedType {
 
     @XmlValue
-    @Column(name = "speed", nullable = true, unique = false)
+    @Column(name = "speedbasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "speed_uom", nullable = true, unique = false)
+    @Column(name = "speedtype_uom", nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "speed_nil_reason", nullable = true, unique = false)
+    @Column(name = "speedtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

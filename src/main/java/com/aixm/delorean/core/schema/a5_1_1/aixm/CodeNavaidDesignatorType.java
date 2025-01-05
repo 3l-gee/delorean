@@ -43,7 +43,7 @@ public class CodeNavaidDesignatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "navaid_designator_nil_reason", nullable = true, unique = false)
+    @Column(name = "navaiddesignatortype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

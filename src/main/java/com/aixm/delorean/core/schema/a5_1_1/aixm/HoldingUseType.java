@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,7 +70,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "theHoldingPattern",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "holdingusetype", schema = "public")
 public class HoldingUseType
     extends AbstractAIXMObjectType
 {
@@ -75,38 +79,46 @@ public class HoldingUseType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "holding_use")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "holding_use_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "holdinguse_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "holdinguse"))
     })
     protected CodeHoldingUseType holdingUse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction"))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instructed_altitude")),
-        @AttributeOverride(name = "uom", column = @Column(name = "instructed_altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instructed_altitude_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "instructedaltitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instructedaltitude_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "instructedaltitude"))
     })
     protected ValDistanceVerticalType instructedAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction_altitude_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_altitude_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instructionaltitudereference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "instructionaltitudereference"))
     })
     protected CodeVerticalReferenceType instructionAltitudeReference;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "holdingusepropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "holdingusepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "theholdingpattern_id", referencedColumnName = "id")
     protected HoldingPatternPropertyType theHoldingPattern;
     @Transient
     protected List<HoldingUseType.Extension> extension;
@@ -362,8 +374,10 @@ public class HoldingUseType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractholdinguseextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractHoldingUseExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

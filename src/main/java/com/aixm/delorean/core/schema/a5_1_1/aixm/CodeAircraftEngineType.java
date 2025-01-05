@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAircraftEngineType {
 
     @XmlValue
-    @Column(name = "aircraft_engine", nullable = true, unique = false)
+    @Column(name = "aircraftenginebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "aircraft_engine_nil_reason", nullable = true, unique = false)
+    @Column(name = "aircraftenginetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLocationQualifierType {
 
     @XmlValue
-    @Column(name = "location_qualifier", nullable = true, unique = false)
+    @Column(name = "locationqualifierbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "location_qualifier_nil_reason", nullable = true, unique = false)
+    @Column(name = "locationqualifiertype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

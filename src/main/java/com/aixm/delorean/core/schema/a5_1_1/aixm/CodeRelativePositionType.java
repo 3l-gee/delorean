@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRelativePositionType {
 
     @XmlValue
-    @Column(name = "relative_position", nullable = true, unique = false)
+    @Column(name = "relativepositionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "relative_position_nil_reason", nullable = true, unique = false)
+    @Column(name = "relativepositiontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

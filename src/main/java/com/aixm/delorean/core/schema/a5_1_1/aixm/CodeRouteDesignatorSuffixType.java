@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRouteDesignatorSuffixType {
 
     @XmlValue
-    @Column(name = "route_designator_suffix", nullable = true, unique = false)
+    @Column(name = "routedesignatorsuffixbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "route_designator_suffix_nil_reason", nullable = true, unique = false)
+    @Column(name = "routedesignatorsuffixtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,7 +72,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightedGuidanceLine",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "guidancelinelightsystemtimeslicetype", schema = "public")
 public class GuidanceLineLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -79,42 +81,60 @@ public class GuidanceLineLightSystemTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "emergency_lighting")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "emergency_lighting_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emergencylighting_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "emergencylighting"))
     })
     protected CodeYesNoType emergencyLighting;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "intensity_level")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_level_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensitylevel_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "intensitylevel"))
     })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "colour")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "colour"))
     })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundlightsystempropertygroup_element", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "lightelementpropertytype_id")
+    })
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundlightsystempropertygroup_availability", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "groundlightingavailabilitypropertytype_id")
+    })
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundlightsystempropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "lightedGuidanceLine", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<GuidanceLinePropertyType> lightedGuidanceLine;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "lightedguidanceline_id", referencedColumnName = "id")
+    protected GuidanceLinePropertyType lightedGuidanceLine;
     @Transient
     protected List<GuidanceLineLightSystemTimeSliceType.Extension> extension;
 
@@ -327,10 +347,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public JAXBElement<GuidanceLinePropertyType> getLightedGuidanceLine() {
+    public GuidanceLinePropertyType getLightedGuidanceLine() {
         return lightedGuidanceLine;
     }
 
@@ -339,10 +359,10 @@ public class GuidanceLineLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link GuidanceLinePropertyType }{@code >}
+     *     {@link GuidanceLinePropertyType }
      *     
      */
-    public void setLightedGuidanceLine(JAXBElement<GuidanceLinePropertyType> value) {
+    public void setLightedGuidanceLine(GuidanceLinePropertyType value) {
         this.lightedGuidanceLine = value;
     }
 
@@ -423,13 +443,16 @@ public class GuidanceLineLightSystemTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractguidancelinelightsystemextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGuidanceLineLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractgroundlightsystemextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

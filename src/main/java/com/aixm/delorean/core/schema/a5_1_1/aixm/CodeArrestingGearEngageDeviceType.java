@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeArrestingGearEngageDeviceType {
 
     @XmlValue
-    @Column(name = "arresting_gear_engage_device", nullable = true, unique = false)
+    @Column(name = "arrestinggearengagedevicebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "arresting_gear_engage_device_nil_reason", nullable = true, unique = false)
+    @Column(name = "arrestinggearengagedevicetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

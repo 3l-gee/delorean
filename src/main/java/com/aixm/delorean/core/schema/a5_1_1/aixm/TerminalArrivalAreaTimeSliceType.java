@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -82,7 +83,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "terminalarrivalareatimeslicetype", schema = "public")
 public class TerminalArrivalAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -90,83 +92,129 @@ public class TerminalArrivalAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "arrival_area_type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "arrival_area_type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "arrivalareatype_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "arrivalareatype"))
     })
     protected CodeTAAType arrivalAreaType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "outer_buffer_width")),
-        @AttributeOverride(name = "uom", column = @Column(name = "outer_buffer_width_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "outer_buffer_width_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "outerbufferwidth_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "outerbufferwidth_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "outerbufferwidth"))
     })
     protected ValDistanceType outerBufferWidth;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lateral_buffer_width")),
-        @AttributeOverride(name = "uom", column = @Column(name = "lateral_buffer_width_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lateral_buffer_width_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "lateralbufferwidth_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lateralbufferwidth_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lateralbufferwidth"))
     })
     protected ValDistanceType lateralBufferWidth;
-    @XmlElementRef(name = "IF_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> ifFixDesignatedPoint;
-    @XmlElementRef(name = "IF_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NavaidPropertyType> ifNavaidSystem;
+    @XmlElement(name = "IF_fixDesignatedPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "if_fixdesignatedpoint_id", referencedColumnName = "id")
+    protected DesignatedPointPropertyType ifFixDesignatedPoint;
+    @XmlElement(name = "IF_navaidSystem", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "if_navaidsystem_id", referencedColumnName = "id")
+    protected NavaidPropertyType ifNavaidSystem;
     @XmlElement(name = "IF_position", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "if_position_id", referencedColumnName = "id")
     protected PointPropertyType ifPosition;
-    @XmlElementRef(name = "IF_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> ifRunwayPoint;
-    @XmlElementRef(name = "IF_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> ifAimingPoint;
-    @XmlElementRef(name = "IF_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> ifAirportReferencePoint;
-    @XmlElementRef(name = "IAF_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> iafFixDesignatedPoint;
-    @XmlElementRef(name = "IAF_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NavaidPropertyType> iafNavaidSystem;
+    @XmlElement(name = "IF_runwayPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "if_runwaypoint_id", referencedColumnName = "id")
+    protected RunwayCentrelinePointPropertyType ifRunwayPoint;
+    @XmlElement(name = "IF_aimingPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "if_aimingpoint_id", referencedColumnName = "id")
+    protected TouchDownLiftOffPropertyType ifAimingPoint;
+    @XmlElement(name = "IF_airportReferencePoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "if_airportreferencepoint_id", referencedColumnName = "id")
+    protected AirportHeliportPropertyType ifAirportReferencePoint;
+    @XmlElement(name = "IAF_fixDesignatedPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "iaf_fixdesignatedpoint_id", referencedColumnName = "id")
+    protected DesignatedPointPropertyType iafFixDesignatedPoint;
+    @XmlElement(name = "IAF_navaidSystem", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "iaf_navaidsystem_id", referencedColumnName = "id")
+    protected NavaidPropertyType iafNavaidSystem;
     @XmlElement(name = "IAF_position", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "iaf_position_id", referencedColumnName = "id")
     protected PointPropertyType iafPosition;
-    @XmlElementRef(name = "IAF_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> iafRunwayPoint;
-    @XmlElementRef(name = "IAF_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> iafAimingPoint;
-    @XmlElementRef(name = "IAF_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> iafAirportReferencePoint;
+    @XmlElement(name = "IAF_runwayPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "iaf_runwaypoint_id", referencedColumnName = "id")
+    protected RunwayCentrelinePointPropertyType iafRunwayPoint;
+    @XmlElement(name = "IAF_aimingPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "iaf_aimingpoint_id", referencedColumnName = "id")
+    protected TouchDownLiftOffPropertyType iafAimingPoint;
+    @XmlElement(name = "IAF_airportReferencePoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "iaf_airportreferencepoint_id", referencedColumnName = "id")
+    protected AirportHeliportPropertyType iafAirportReferencePoint;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "buffer_id", referencedColumnName = "id")
     protected SurfacePropertyType buffer;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "terminalarrivalareapropertygroup_sector", joinColumns = {
+        @JoinColumn(name = "terminalarrivalareapropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "terminalarrivalareasectorpropertytype_id")
+    })
     protected List<TerminalArrivalAreaSectorPropertyType> sector;
-    @XmlElementRef(name = "approachRNAV", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<InstrumentApproachProcedurePropertyType> approachRNAV;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "approachrnav_id", referencedColumnName = "id")
+    protected InstrumentApproachProcedurePropertyType approachRNAV;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "terminalarrivalareapropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "terminalarrivalareapropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<TerminalArrivalAreaTimeSliceType.Extension> extension;
@@ -260,10 +308,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getIFFixDesignatedPoint() {
+    public DesignatedPointPropertyType getIFFixDesignatedPoint() {
         return ifFixDesignatedPoint;
     }
 
@@ -272,10 +320,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setIFFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setIFFixDesignatedPoint(DesignatedPointPropertyType value) {
         this.ifFixDesignatedPoint = value;
     }
 
@@ -288,10 +336,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getIFNavaidSystem() {
+    public NavaidPropertyType getIFNavaidSystem() {
         return ifNavaidSystem;
     }
 
@@ -300,10 +348,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setIFNavaidSystem(JAXBElement<NavaidPropertyType> value) {
+    public void setIFNavaidSystem(NavaidPropertyType value) {
         this.ifNavaidSystem = value;
     }
 
@@ -344,10 +392,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getIFRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getIFRunwayPoint() {
         return ifRunwayPoint;
     }
 
@@ -356,10 +404,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setIFRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setIFRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.ifRunwayPoint = value;
     }
 
@@ -372,10 +420,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getIFAimingPoint() {
+    public TouchDownLiftOffPropertyType getIFAimingPoint() {
         return ifAimingPoint;
     }
 
@@ -384,10 +432,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setIFAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setIFAimingPoint(TouchDownLiftOffPropertyType value) {
         this.ifAimingPoint = value;
     }
 
@@ -400,10 +448,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getIFAirportReferencePoint() {
+    public AirportHeliportPropertyType getIFAirportReferencePoint() {
         return ifAirportReferencePoint;
     }
 
@@ -412,10 +460,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setIFAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setIFAirportReferencePoint(AirportHeliportPropertyType value) {
         this.ifAirportReferencePoint = value;
     }
 
@@ -428,10 +476,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getIAFFixDesignatedPoint() {
+    public DesignatedPointPropertyType getIAFFixDesignatedPoint() {
         return iafFixDesignatedPoint;
     }
 
@@ -440,10 +488,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setIAFFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setIAFFixDesignatedPoint(DesignatedPointPropertyType value) {
         this.iafFixDesignatedPoint = value;
     }
 
@@ -456,10 +504,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getIAFNavaidSystem() {
+    public NavaidPropertyType getIAFNavaidSystem() {
         return iafNavaidSystem;
     }
 
@@ -468,10 +516,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setIAFNavaidSystem(JAXBElement<NavaidPropertyType> value) {
+    public void setIAFNavaidSystem(NavaidPropertyType value) {
         this.iafNavaidSystem = value;
     }
 
@@ -512,10 +560,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getIAFRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getIAFRunwayPoint() {
         return iafRunwayPoint;
     }
 
@@ -524,10 +572,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setIAFRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setIAFRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.iafRunwayPoint = value;
     }
 
@@ -540,10 +588,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getIAFAimingPoint() {
+    public TouchDownLiftOffPropertyType getIAFAimingPoint() {
         return iafAimingPoint;
     }
 
@@ -552,10 +600,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setIAFAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setIAFAimingPoint(TouchDownLiftOffPropertyType value) {
         this.iafAimingPoint = value;
     }
 
@@ -568,10 +616,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getIAFAirportReferencePoint() {
+    public AirportHeliportPropertyType getIAFAirportReferencePoint() {
         return iafAirportReferencePoint;
     }
 
@@ -580,10 +628,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setIAFAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setIAFAirportReferencePoint(AirportHeliportPropertyType value) {
         this.iafAirportReferencePoint = value;
     }
 
@@ -664,10 +712,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public JAXBElement<InstrumentApproachProcedurePropertyType> getApproachRNAV() {
+    public InstrumentApproachProcedurePropertyType getApproachRNAV() {
         return approachRNAV;
     }
 
@@ -676,10 +724,10 @@ public class TerminalArrivalAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public void setApproachRNAV(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
+    public void setApproachRNAV(InstrumentApproachProcedurePropertyType value) {
         this.approachRNAV = value;
     }
 
@@ -798,8 +846,10 @@ public class TerminalArrivalAreaTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractterminalarrivalareaextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTerminalArrivalAreaExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

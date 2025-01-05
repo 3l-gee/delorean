@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRunwayType {
 
     @XmlValue
-    @Column(name = "runway", nullable = true, unique = false)
+    @Column(name = "runwaybasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "runway_nil_reason", nullable = true, unique = false)
+    @Column(name = "runwaytype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

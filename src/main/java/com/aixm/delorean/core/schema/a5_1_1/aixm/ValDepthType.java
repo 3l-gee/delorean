@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDepthType {
 
     @XmlValue
-    @Column(name = "depth", nullable = true, unique = false)
+    @Column(name = "depthbasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "depth_uom", nullable = true, unique = false)
+    @Column(name = "depthtype_uom", nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "depth_nil_reason", nullable = true, unique = false)
+    @Column(name = "depthtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

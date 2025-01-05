@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePrimaryRadarType {
 
     @XmlValue
-    @Column(name = "primary_radar", nullable = true, unique = false)
+    @Column(name = "primaryradarbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "primary_radar_nil_reason", nullable = true, unique = false)
+    @Column(name = "primaryradartype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,7 +67,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "theUnit",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "surveillancegroundstationtype", schema = "public")
 public class SurveillanceGroundStationType
     extends AbstractAIXMObjectType
 {
@@ -72,16 +76,24 @@ public class SurveillanceGroundStationType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "video_map")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "video_map_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "videomap_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "videomap"))
     })
     protected CodeYesNoType videoMap;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "surveillancegroundstationpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "surveillancegroundstationpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "theunit_id", referencedColumnName = "id")
     protected UnitPropertyType theUnit;
     @Transient
     protected List<SurveillanceGroundStationType.Extension> extension;
@@ -253,8 +265,10 @@ public class SurveillanceGroundStationType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractsurveillancegroundstationextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSurveillanceGroundStationExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

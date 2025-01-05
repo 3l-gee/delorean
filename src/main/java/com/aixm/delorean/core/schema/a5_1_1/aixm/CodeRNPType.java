@@ -42,10 +42,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRNPType {
 
     @XmlValue
-    @Column(name = "rnp", nullable = true, unique = false)
+    @Column(name = "rnpbasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "rnp_nil_reason", nullable = true, unique = false)
+    @Column(name = "rnptype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -81,7 +82,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "oxygenSupply",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "airportsuppliesservicetimeslicetype", schema = "public")
 public class AirportSuppliesServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -89,84 +91,142 @@ public class AirportSuppliesServiceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flight_operations")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flight_operations_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flightoperations_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "flightoperations"))
     })
     protected CodeFlightDestinationType flightOperations;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "rank")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "rank_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "rank_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "rank"))
     })
     protected CodeFacilityRankingType rank;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "compliant_icao")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "compliant_icao_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "complianticao_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "complianticao"))
     })
     protected CodeYesNoType compliantICAO;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "name"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
-    @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<UnitPropertyType> serviceProvider;
-    @XmlElement(name = "call-sign", nillable = true)
-    @OneToMany(cascade = {
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "serviceprovider_id", referencedColumnName = "id")
+    protected UnitPropertyType serviceProvider;
+    @XmlElement(name = "call-sign", nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airportsuppliesservicetimeslicetype_call-sign", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "callsigndetailpropertytype_id")
+    })
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "sairportsuppliesservicetimeslicetype_radiocommunication", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "radiocommunicationchannelpropertytype_id")
+    })
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airportsuppliesservicetimeslicetype_groundcommunication", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "contactinformationpropertytype_id")
+    })
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airportsuppliesservicetimeslicetype_availability", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "serviceoperationalstatuspropertytype_id")
+    })
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airportsuppliesservicetimeslicetype_annotation", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "aairportsuppliesservicetimeslicetype_airportheliport", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airportheliportpropertytype_id")
+    })
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airportsuppliesservicetimeslicetype_fuelsupply", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "fuelpropertytype_id")
+    })
     protected List<FuelPropertyType> fuelSupply;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airportsuppliesservicetimeslicetype_oilsupply", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "oilpropertytype_id")
+    })
     protected List<OilPropertyType> oilSupply;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airportsuppliesservicetimeslicetype_nitrogensupply", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "nitrogenpropertytype_id")
+    })
     protected List<NitrogenPropertyType> nitrogenSupply;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airportsuppliesservicetimeslicetype_oxygensupply", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "oxygenpropertytype_id")
+    })
     protected List<OxygenPropertyType> oxygenSupply;
     @Transient
     protected List<AirportSuppliesServiceTimeSliceType.Extension> extension;
@@ -316,10 +376,10 @@ public class AirportSuppliesServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link UnitPropertyType }{@code >}
+     *     {@link UnitPropertyType }
      *     
      */
-    public JAXBElement<UnitPropertyType> getServiceProvider() {
+    public UnitPropertyType getServiceProvider() {
         return serviceProvider;
     }
 
@@ -328,10 +388,10 @@ public class AirportSuppliesServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link UnitPropertyType }{@code >}
+     *     {@link UnitPropertyType }
      *     
      */
-    public void setServiceProvider(JAXBElement<UnitPropertyType> value) {
+    public void setServiceProvider(UnitPropertyType value) {
         this.serviceProvider = value;
     }
 
@@ -814,18 +874,22 @@ public class AirportSuppliesServiceTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractairportsuppliesserviceextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirportSuppliesServiceExtension;
         @XmlElement(name = "AbstractAirportGroundServiceExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractairportgroundserviceextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirportGroundServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractserviceextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

@@ -43,7 +43,7 @@ public class CodeDesignatedPointDesignatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "designated_point_designator_nil_reason", nullable = true, unique = false)
+    @Column(name = "designatedpointdesignatortype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

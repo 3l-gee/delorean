@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDirectionTurnType {
 
     @XmlValue
-    @Column(name = "direction_turn", nullable = true, unique = false)
+    @Column(name = "directionturnbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "direction_turn_nil_reason", nullable = true, unique = false)
+    @Column(name = "directionturntype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeGroundLightingType {
 
     @XmlValue
-    @Column(name = "ground_lighting", nullable = true, unique = false)
+    @Column(name = "groundlightingbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "ground_lighting_nil_reason", nullable = true, unique = false)
+    @Column(name = "groundlightingtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

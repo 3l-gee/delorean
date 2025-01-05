@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeUUIDType {
 
     @XmlValue
-    @Column(name = "uuid", nullable = true, unique = false)
+    @Column(name = "uuidbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "uuid_nil_reason", nullable = true, unique = false)
+    @Column(name = "uuidtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

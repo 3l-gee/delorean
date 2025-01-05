@@ -1,5 +1,12 @@
 import Machinery
 
+# Snowflake : 
+# segmentpointpropertygroup_facilitymakeup (3)
+# propertieswithschedulepropertygroup_timeinterval (28)
+# propertieswithschedulepropertygroup_annotation 
+# propertieswithschedulepropertygroup_specialdateauthority (28)
+# airspacelayerclasspropertygroup_associatedlevels 
+
 debug = {
     "mode" : False,
     "entity" : {

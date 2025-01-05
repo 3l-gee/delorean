@@ -9,20 +9,21 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.persistence.Table;
 
 
 /**
@@ -51,13 +52,14 @@ import jakarta.persistence.Table;
     "obstacleAreaTimeSlice"
 })
 @Entity
-@Table(name = "obstacle_area_time_slice_property")
+@Table(name = "obstacleareatimeslicepropertytype", schema = "public")
 public class ObstacleAreaTimeSlicePropertyType {
 
     @XmlElement(name = "ObstacleAreaTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "obstacleareatimeslice_id", referencedColumnName = "id")
     protected ObstacleAreaTimeSliceType obstacleAreaTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,6 +67,7 @@ public class ObstacleAreaTimeSlicePropertyType {
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")
+    @Transient
     protected Boolean owns;
 
     /**

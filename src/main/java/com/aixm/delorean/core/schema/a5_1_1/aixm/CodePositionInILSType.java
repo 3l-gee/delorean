@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePositionInILSType {
 
     @XmlValue
-    @Column(name = "position_in_ils", nullable = true, unique = false)
+    @Column(name = "positioninilsbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "position_in_ils_nil_reason", nullable = true, unique = false)
+    @Column(name = "positioninilstype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

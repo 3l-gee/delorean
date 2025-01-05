@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeReflectorType {
 
     @XmlValue
-    @Column(name = "reflector", nullable = true, unique = false)
+    @Column(name = "reflectorbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "reflector_nil_reason", nullable = true, unique = false)
+    @Column(name = "reflectortype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

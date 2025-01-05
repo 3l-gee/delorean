@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDayType {
 
     @XmlValue
-    @Column(name = "day", nullable = true, unique = false)
+    @Column(name = "daybasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "day_nil_reason", nullable = true, unique = false)
+    @Column(name = "daytype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

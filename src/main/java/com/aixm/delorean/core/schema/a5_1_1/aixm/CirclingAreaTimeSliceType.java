@@ -10,17 +10,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,7 +66,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "circlingareatimeslicetype", schema = "public")
 public class CirclingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -74,29 +76,49 @@ public class CirclingAreaTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected SurfacePropertyType extent;
-    @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "approach_id", referencedColumnName = "id")
+    protected InstrumentApproachProcedurePropertyType approach;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "circlingareapropertygroup_condition", joinColumns = {
+        @JoinColumn(name = "circlingareapropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "approachconditionpropertytype_id")
+    })
     protected List<ApproachConditionPropertyType> condition;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "aircraftcategory_id", referencedColumnName = "id")
     protected AircraftCharacteristicPropertyType aircraftCategory;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "circlingareapropertygroup_designsurface", joinColumns = {
+        @JoinColumn(name = "circlingareapropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "obstacleassessmentareapropertytype_id")
+    })
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "circlingareapropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "circlingareapropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<CirclingAreaTimeSliceType.Extension> extension;
@@ -134,10 +156,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public JAXBElement<InstrumentApproachProcedurePropertyType> getApproach() {
+    public InstrumentApproachProcedurePropertyType getApproach() {
         return approach;
     }
 
@@ -146,10 +168,10 @@ public class CirclingAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public void setApproach(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
+    public void setApproach(InstrumentApproachProcedurePropertyType value) {
         this.approach = value;
     }
 
@@ -376,8 +398,10 @@ public class CirclingAreaTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractcirclingareaextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractCirclingAreaExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

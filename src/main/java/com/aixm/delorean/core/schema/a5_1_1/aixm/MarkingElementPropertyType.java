@@ -8,9 +8,11 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -40,7 +42,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "MarkingElementPropertyType", propOrder = {
     "markingElement"
 })
-@Embeddable
+@Entity
+@Table(name = "markingelementpropertytype", schema = "public")
 public class MarkingElementPropertyType
     extends AbstractAIXMPropertyType
 {
@@ -49,6 +52,7 @@ public class MarkingElementPropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "markingelement_id", referencedColumnName = "id")
     protected MarkingElementType markingElement;
 
     /**

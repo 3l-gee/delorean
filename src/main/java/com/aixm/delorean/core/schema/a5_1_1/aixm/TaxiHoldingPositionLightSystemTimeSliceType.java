@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,7 +73,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "taxiHolding",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "taxiholdingpositionlightsystemtimeslicetype", schema = "public")
 public class TaxiHoldingPositionLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -80,49 +82,67 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "emergency_lighting")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "emergency_lighting_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emergencylighting_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "emergencylighting"))
     })
     protected CodeYesNoType emergencyLighting;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "intensity_level")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_level_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensitylevel_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "intensitylevel"))
     })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "colour")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "colour"))
     })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundlightsystempropertygroup_element", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "lightelementpropertytype_id")
+    })
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundlightsystempropertygroup_availability", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "groundlightingavailabilitypropertytype_id")
+    })
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundlightsystempropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeLightHoldingPositionType type;
-    @XmlElementRef(name = "taxiHolding", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TaxiHoldingPositionPropertyType> taxiHolding;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "taxiholding_id", referencedColumnName = "id")
+    protected TaxiHoldingPositionPropertyType taxiHolding;
     @Transient
     protected List<TaxiHoldingPositionLightSystemTimeSliceType.Extension> extension;
 
@@ -363,10 +383,10 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TaxiHoldingPositionPropertyType }{@code >}
+     *     {@link TaxiHoldingPositionPropertyType }
      *     
      */
-    public JAXBElement<TaxiHoldingPositionPropertyType> getTaxiHolding() {
+    public TaxiHoldingPositionPropertyType getTaxiHolding() {
         return taxiHolding;
     }
 
@@ -375,10 +395,10 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TaxiHoldingPositionPropertyType }{@code >}
+     *     {@link TaxiHoldingPositionPropertyType }
      *     
      */
-    public void setTaxiHolding(JAXBElement<TaxiHoldingPositionPropertyType> value) {
+    public void setTaxiHolding(TaxiHoldingPositionPropertyType value) {
         this.taxiHolding = value;
     }
 
@@ -459,13 +479,16 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstracttaxiholdingpositionlightsystemextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTaxiHoldingPositionLightSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractgroundlightsystemextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

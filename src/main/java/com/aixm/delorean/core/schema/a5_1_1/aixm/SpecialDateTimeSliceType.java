@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,7 +70,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "authority",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "specialdatetimeslicetype", schema = "public")
 public class SpecialDateTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -77,39 +79,47 @@ public class SpecialDateTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeSpecialDateType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "date_day")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "date_day_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "dateday_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "dateday"))
     })
     protected DateMonthDayType dateDay;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "date_year")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "date_year_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "dateyear_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "dateyear"))
     })
     protected DateYearType dateYear;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "name"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "specialdatepropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "specialdatepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "authority", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<OrganisationAuthorityPropertyType> authority;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "authority_id", referencedColumnName = "id")
+    protected OrganisationAuthorityPropertyType authority;
     @Transient
     protected List<SpecialDateTimeSliceType.Extension> extension;
 
@@ -270,10 +280,10 @@ public class SpecialDateTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public JAXBElement<OrganisationAuthorityPropertyType> getAuthority() {
+    public OrganisationAuthorityPropertyType getAuthority() {
         return authority;
     }
 
@@ -282,10 +292,10 @@ public class SpecialDateTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public void setAuthority(JAXBElement<OrganisationAuthorityPropertyType> value) {
+    public void setAuthority(OrganisationAuthorityPropertyType value) {
         this.authority = value;
     }
 
@@ -364,8 +374,10 @@ public class SpecialDateTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractspecialdateextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSpecialDateExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

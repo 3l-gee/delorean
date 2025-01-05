@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,7 +69,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "altitudeadjustmenttype", schema = "public")
 public class AltitudeAdjustmentType
     extends AbstractAIXMObjectType
 {
@@ -74,36 +78,41 @@ public class AltitudeAdjustmentType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_adjustment_type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_adjustment_type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeadjustmenttype_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitudeadjustmenttype"))
     })
     protected CodeAltitudeAdjustmentType altitudeAdjustmentType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "primary_alternate_minimum")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "primary_alternate_minimum_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "primaryalternateminimum_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "primaryalternateminimum"))
     })
     protected CodeYesNoType primaryAlternateMinimum;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_adjustment")),
-        @AttributeOverride(name = "uom", column = @Column(name = "altitude_adjustment_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_adjustment_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "altitudeadjustment_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeadjustment_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitudeadjustment"))
     })
     protected ValDistanceVerticalType altitudeAdjustment;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "local_remote_code")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "local_remote_code_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "localremotecode_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "localremotecode"))
     })
     protected CodeYesNoType localRemoteCode;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "altitudeadjustmentpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "altitudeadjustmentpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AltitudeAdjustmentType.Extension> extension;
@@ -331,8 +340,10 @@ public class AltitudeAdjustmentType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractaltitudeadjustmentextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAltitudeAdjustmentExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

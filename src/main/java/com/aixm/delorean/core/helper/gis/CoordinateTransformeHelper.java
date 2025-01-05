@@ -1,6 +1,7 @@
 package com.aixm.delorean.core.helper.gis;
 
 import java.util.List;
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -18,6 +19,10 @@ import org.locationtech.proj4j.CoordinateTransform;
 import org.locationtech.proj4j.CoordinateTransformFactory;
 import org.locationtech.proj4j.ProjCoordinate;
 import java.util.HashMap;
+import java.util.Set;
+
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
 
 public class CoordinateTransformeHelper {
     //TODO should this be configurable?
@@ -50,8 +55,8 @@ public class CoordinateTransformeHelper {
         Map.entry("urn:ogc:def:crs:EPSG::4313", crsFactory.createFromName("EPSG:4313")),
         Map.entry("urn:ogc:def:crs:EPSG::4124", crsFactory.createFromName("EPSG:4124")),
         Map.entry("urn:ogc:def:crs:EPSG::4267", crsFactory.createFromName("EPSG:4267")),
-        Map.entry("urn:ogc:def:crs:EPSG::4269", crsFactory.createFromName("EPSG:4269"))
-        // Map.entry("urn:ogc:def:crs:OGC:1.3:CRS84", crsFactory.createFromName("OGC:1.3:CRS84")) // CRS84 not supported by proj4j
+        Map.entry("urn:ogc:def:crs:EPSG::4269", crsFactory.createFromName("EPSG:4269")),
+        Map.entry("urn:ogc:def:crs:OGC:1.3:CRS84", crsFactory.createFromParameters("CRS84", new String[]{"+proj=longlat", "+datum=WGS84", "+no_defs", "+axis=enu"}))
     );
 
     private Map<String, CoordinateTransform> transformMap = new HashMap<>();
@@ -64,6 +69,48 @@ public class CoordinateTransformeHelper {
         // Initialization code here
     }
 
+    private boolean isLongLatCRS(String crsIdentifier) {
+        Set<String> latLongCRSIdentifiers = Set.of(
+            "urn:ogc:def:crs:EPSG::4326",
+            "urn:ogc:def:crs:EPSG::4258",
+            "urn:ogc:def:crs:EPSG::4322",
+            "urn:ogc:def:crs:EPSG::4230",
+            "urn:ogc:def:crs:EPSG::4668",
+            "urn:ogc:def:crs:EPSG::4312",
+            "urn:ogc:def:crs:EPSG::4215",
+            "urn:ogc:def:crs:EPSG::4801",
+            "urn:ogc:def:crs:EPSG::4149",
+            "urn:ogc:def:crs:EPSG::4275",
+            "urn:ogc:def:crs:EPSG::4746",
+            "urn:ogc:def:crs:EPSG::4121",
+            "urn:ogc:def:crs:EPSG::4658",
+            "urn:ogc:def:crs:EPSG::4299",
+            "urn:ogc:def:crs:EPSG::4806",
+            "urn:ogc:def:crs:EPSG::4277",
+            "urn:ogc:def:crs:EPSG::4207",
+            "urn:ogc:def:crs:EPSG::4274",
+            "urn:ogc:def:crs:EPSG::4740",
+            "urn:ogc:def:crs:EPSG::4313",
+            "urn:ogc:def:crs:EPSG::4124",
+            "urn:ogc:def:crs:EPSG::4267",
+            "urn:ogc:def:crs:EPSG::4269"
+        );
+    
+        Set<String> longLatCRSIdentifiers = Set.of(
+            "urn:ogc:def:crs:OGC:1.3:CRS84"
+        );
+    
+        if (longLatCRSIdentifiers.contains(crsIdentifier)) {
+            return true; 
+        } else if (latLongCRSIdentifiers.contains(crsIdentifier)) {
+            return false;
+        } else {
+            ConsoleLogger.log(LogLevel.FATAL, "Invalid CRS identifier: " + crsIdentifier, new Exception().getStackTrace()[0]);
+            throw new RuntimeException();
+        }
+    }
+    
+
     // Public method to provide access to the instance
     public static synchronized CoordinateTransformeHelper getInstance() {
         if (instance == null) {
@@ -74,77 +121,161 @@ public class CoordinateTransformeHelper {
 
     private CoordinateTransform getTransform(String sourceCRS, String targetCRS) {
         if (!validSrsName.containsKey(sourceCRS) || !validSrsName.containsKey(targetCRS)) {
-            throw new IllegalArgumentException("Invalid CRS provided.");
+            ConsoleLogger.log(LogLevel.FATAL, "Invalid source or target CRS: " + sourceCRS + ", " + targetCRS, new Exception().getStackTrace()[0]);
+            throw new RuntimeException();
         }
     
         String key = sourceCRS + ":" + targetCRS;
     
         transformMap.computeIfAbsent(key, k -> {
+            ConsoleLogger.log(LogLevel.DEBUG, "Creating new CoordinateTransform for key: " + k, new Exception().getStackTrace()[0]);
             CoordinateReferenceSystem source = validSrsName.get(sourceCRS);
             CoordinateReferenceSystem target = validSrsName.get(targetCRS);
             return ctFactory.createTransform(source, target);
         });
-    
+        
+        ConsoleLogger.log(LogLevel.DEBUG, "Returning CoordinateTransform for key: " + key, new Exception().getStackTrace()[0]);
         return transformMap.get(key);
     }
 
-    private Coordinate transform(String sourceCRS, String targetCRS, Coordinate sourceCoordinate) {
-        CoordinateTransform transform = getTransform(sourceCRS, targetCRS);
-        if (sourceCoordinate.getZ() == Double.NaN) {
-            // GML does latitute, longitude in that order
-            // Proj4j expects longitude, latitude  in that order
-            ProjCoordinate source = new ProjCoordinate(sourceCoordinate.getY(), sourceCoordinate.getX());
-            ProjCoordinate target = new ProjCoordinate();
-            transform.transform(source, target);
-            return new Coordinate(target.x, target.y);
-        } else {
-            // GML does latitute, longitude, altitude in that order
-            // Proj4j expects longitude, latitude, altitude  in that order
-            ProjCoordinate source = new ProjCoordinate(sourceCoordinate.getY(), sourceCoordinate.getX(), sourceCoordinate.getZ());
-            ProjCoordinate target = new ProjCoordinate();
-            transform.transform(source, target);
-            return new Coordinate(target.x, target.y, target.z);
-        }
-    }
-
     private List<Coordinate> transform(String sourceCRS, String targetCRS, List<Coordinate> sourceCoordinates) {
+        ConsoleLogger.log(LogLevel.DEBUG, "sourceCRS: " + sourceCRS + ", targetCRS: " + targetCRS + ", sourceCoordinates: " + sourceCoordinates, new Exception().getStackTrace()[0]);
         CoordinateTransform transform = getTransform(sourceCRS, targetCRS);
+        
+        // Check if the CRS expects lat-long or long-lat
+        boolean sourceIsLongLat = isLongLatCRS(sourceCRS); // Custom function to determine if the source CRS uses lat-long order
+        boolean targetIsLongLat = isLongLatCRS(targetCRS); // Custom function to determine if the target CRS uses lat-long order
+
+        ConsoleLogger.log(LogLevel.DEBUG, "sourceIsLongLat: " + sourceIsLongLat + ", targetIsLongLat: " + targetIsLongLat, new Exception().getStackTrace()[0]);
+    
+        ProjCoordinate source;
+        ProjCoordinate target = new ProjCoordinate();
+
         List<Coordinate> targetCoordinates = new ArrayList<>();
         for (Coordinate sourceCoordinate : sourceCoordinates) {
-            // GML does latitute, longitude, altitude in that order
-            // Proj4j expects longitude, latitude, altitude  in that order
-            ProjCoordinate source = new ProjCoordinate(sourceCoordinate.getY(), sourceCoordinate.getX());
-            ProjCoordinate target = new ProjCoordinate();
+            if (sourceIsLongLat) {
+                source = new ProjCoordinate(sourceCoordinate.getX(), sourceCoordinate.getY()); // Swap for Proj4j
+            } else {
+                source = new ProjCoordinate(sourceCoordinate.getY(), sourceCoordinate.getX());
+            }
+
             transform.transform(source, target);
-            targetCoordinates.add(new Coordinate(target.x, target.y));
+
+            if (targetIsLongLat) {
+                targetCoordinates.add(new Coordinate(target.y, target.x)); // Swap back for output
+            } else {
+                targetCoordinates.add(new Coordinate(target.x, target.y));
+            }
         }
         return targetCoordinates;
     }
 
+    private Coordinate ProjectPoint(Coordinate sourceCoordinate, double radius, double bearing) {
+        System.out.println("sourceCoordinate: " + sourceCoordinate + ", radius: " + radius + ", bearing: " + bearing);
+        double A = 6378137.0;
+        double F = 1 / 298.257223563;
+        double B = A * (1 - F);
+
+        double lat = Math.toRadians(sourceCoordinate.getY());
+        double lon = Math.toRadians(sourceCoordinate.getX());
+        double distance = radius / A;
+
+        double new_lat = Math.asin(Math.sin(lat) * Math.cos(distance) + Math.cos(lat) * Math.sin(distance) * Math.cos(bearing));
+        double new_lon = lon + Math.atan2(Math.sin(bearing) * Math.sin(distance) * Math.cos(lat), Math.cos(distance) - Math.sin(lat) * Math.sin(lat));
+
+        return new Coordinate(Math.toDegrees(new_lon), Math.toDegrees(new_lat));
+    
+    }
+
+    private Coordinate transform(String sourceCRS, String targetCRS, Coordinate sourceCoordinate) {
+        CoordinateTransform transform = getTransform(sourceCRS, targetCRS);
+        
+        // Check if the CRS expects lat-long or long-lat
+        boolean sourceIsLongLat = isLongLatCRS(sourceCRS); // Custom function to determine if the source CRS uses lat-long order
+        boolean targetIsLongLat = isLongLatCRS(targetCRS); // Custom function to determine if the target CRS uses lat-long order
+    
+        ProjCoordinate source;
+        ProjCoordinate target = new ProjCoordinate();
+    
+        if (sourceCoordinate.getZ() == Double.NaN) {
+            // Handle 2D coordinate transformation
+            if (sourceIsLongLat) {
+                source = new ProjCoordinate(sourceCoordinate.getX(), sourceCoordinate.getY()); // Swap for Proj4j
+            } else {
+                source = new ProjCoordinate(sourceCoordinate.getY(), sourceCoordinate.getX());
+            }
+            
+            transform.transform(source, target);
+    
+            if (targetIsLongLat) {
+                return new Coordinate(target.y, target.x); // Swap back for output
+            } else {
+                return new Coordinate(target.x, target.y);
+            }
+        } else {
+            // Handle 3D coordinate transformation
+            if (sourceIsLongLat) {
+                source = new ProjCoordinate(sourceCoordinate.getX(), sourceCoordinate.getY(), sourceCoordinate.getZ());
+            } else {
+                source = new ProjCoordinate(sourceCoordinate.getY(), sourceCoordinate.getX(), sourceCoordinate.getZ());
+            }
+    
+            transform.transform(source, target);
+    
+            if (targetIsLongLat) {
+                return new Coordinate(target.y, target.x, target.z); // Swap back for output
+            } else {
+                return new Coordinate(target.x, target.y, target.z);
+            }
+        }
+    }
+
     public static Point transformToPoint(String sourceCRS, String targetCRS, Coordinate sourceCoordinate) {
+        ConsoleLogger.log(LogLevel.DEBUG, "sourceCRS: " + sourceCRS + ", targetCRS: " + targetCRS + ", sourceCoordinate: " + sourceCoordinate, new Exception().getStackTrace()[0]);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         Coordinate targetCoordinate = instance.transform(sourceCRS, targetCRS, sourceCoordinate);
-        return geometryFactory.createPoint(targetCoordinate);
+        Point point = geometryFactory.createPoint(targetCoordinate);
+        ConsoleLogger.log(LogLevel.DEBUG, "point: " + point, new Exception().getStackTrace()[0]);
+        return point;
     }
 
     public static LineString transformToLineString(String sourceCRS, String targetCRS, List<Coordinate> sourceCoordinates) {
+        ConsoleLogger.log(LogLevel.DEBUG, "sourceCRS: " + sourceCRS + ", targetCRS: " + targetCRS + ", sourceCoordinates: " + sourceCoordinates, new Exception().getStackTrace()[0]);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         List<Coordinate> targetCoordinatesList = instance.transform(sourceCRS, targetCRS, sourceCoordinates);
         Coordinate[] targetCoordinates = targetCoordinatesList.toArray(new Coordinate[0]);
-        return geometryFactory.createLineString(targetCoordinates);
+        LineString line = geometryFactory.createLineString(targetCoordinates);
+        ConsoleLogger.log(LogLevel.DEBUG, "line: " + line, new Exception().getStackTrace()[0]);
+        return line;
+    }
+
+    public static LineString transformToLineString(String sourceCRS, String targetCRS, Coordinate sourceCoordinate, double distance, double bearing1, double bearing2) {
+        ConsoleLogger.log(LogLevel.DEBUG, "sourceCRS: " + sourceCRS + ", targetCRS: " + targetCRS + ", sourceCoordinate: " + sourceCoordinate + ", distance: " + distance + ", bearing1: " + bearing1 + ", bearing2: " + bearing2, new Exception().getStackTrace()[0]);
+        CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
+        Coordinate targetCoordinate = instance.transform(sourceCRS, targetCRS, sourceCoordinate);
+        Coordinate targetCoordinate1 = instance.ProjectPoint(targetCoordinate, distance, bearing1);
+        Coordinate targetCoordinate2 = instance.ProjectPoint(targetCoordinate, distance, bearing2);
+        Coordinate[] targetCoordinates = {targetCoordinate1, targetCoordinate, targetCoordinate2};
+        LineString line =  geometryFactory.createLineString(targetCoordinates);
+        ConsoleLogger.log(LogLevel.DEBUG, "line: " + line, new Exception().getStackTrace()[0]);
+        return line;
     }
 
     public static LineString transformToLineString(HashMap<Coordinate, String> sourceCoordinates, String targetCRS) {
+        ConsoleLogger.log(LogLevel.DEBUG, "sourceCoordinates: " + sourceCoordinates + ", targetCRS: " + targetCRS, new Exception().getStackTrace()[0]);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         List<Coordinate> targetCoordinatesList = new ArrayList<>();
         for (Map.Entry<Coordinate, String> entry : sourceCoordinates.entrySet()) {
             targetCoordinatesList.add(instance.transform(entry.getValue(), targetCRS, entry.getKey()));
         }
         Coordinate[] targetCoordinates = targetCoordinatesList.toArray(new Coordinate[0]);
-        return geometryFactory.createLineString(targetCoordinates);
+        LineString line = geometryFactory.createLineString(targetCoordinates);
+        ConsoleLogger.log(LogLevel.DEBUG, "line: " + line, new Exception().getStackTrace()[0]);
+        return line;
     }
 
     public static Polygon transformToPolygon(String sourceCRS, String targetCRS, List<Coordinate> shell, List<List<Coordinate>> holes) {
+        ConsoleLogger.log(LogLevel.DEBUG, "sourceCRS: " + sourceCRS + ", targetCRS: " + targetCRS + ", shell: " + shell + ", holes: " + holes, new Exception().getStackTrace()[0]);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         List<Coordinate> targetShell = instance.transform(sourceCRS, targetCRS, shell);
         LinearRing[] targetHoles = new LinearRing[holes.size()];
@@ -157,12 +288,17 @@ public class CoordinateTransformeHelper {
 
         Coordinate[] targetShellArray = targetShell.toArray(new Coordinate[0]);
         LinearRing targetShellRing = geometryFactory.createLinearRing(targetShellArray);
-        return geometryFactory.createPolygon(targetShellRing, targetHoles);
+        Polygon polygon = geometryFactory.createPolygon(targetShellRing, targetHoles);
+        ConsoleLogger.log(LogLevel.DEBUG, "polygon: " + polygon, new Exception().getStackTrace()[0]);
+        return polygon;
     }
 
     public static MultiPolygon mergeToMultiPolygon(List<Polygon> polygons) {
+        ConsoleLogger.log(LogLevel.DEBUG, "polygons: " + polygons, new Exception().getStackTrace()[0]);
         Polygon[] polygonArray = polygons.toArray(new Polygon[0]);
-        return geometryFactory.createMultiPolygon(polygonArray);
+        MultiPolygon multiPolygon = geometryFactory.createMultiPolygon(polygonArray);
+        ConsoleLogger.log(LogLevel.DEBUG, "multiPolygon: " + multiPolygon, new Exception().getStackTrace()[0]);
+        return multiPolygon;
     }
 
 }

@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDistanceType {
 
     @XmlValue
-    @Column(name = "distance", nullable = true, unique = false)
+    @Column(name = "distancebasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "distance_uom", nullable = true, unique = false)
+    @Column(name = "distancetype_uom", nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "distance_nil_reason", nullable = true, unique = false)
+    @Column(name = "distancetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

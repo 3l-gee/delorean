@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -68,7 +69,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "proceduredmetimeslicetype", schema = "public")
 public class ProcedureDMETimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -76,27 +78,38 @@ public class ProcedureDMETimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "critical_dme")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "critical_dme_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "criticaldme_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "criticaldme"))
     })
     protected CodeYesNoType criticalDME;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "satisfactory")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "satisfactory_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "satisfactory_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "satisfactory"))
     })
     protected CodeYesNoType satisfactory;
-    @XmlElementRef(name = "DME", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DMEPropertyType> dme;
-    @XmlElementRef(name = "segmentLeg", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SegmentLegPropertyType> segmentLeg;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @XmlElement(name = "DME", nillable = true)
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "dme_id", referencedColumnName = "id")
+    protected DMEPropertyType dme;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "segmentleg_id", referencedColumnName = "id")
+    protected SegmentLegPropertyType segmentLeg;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "proceduredmepropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "proceduredmepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ProcedureDMETimeSliceType.Extension> extension;
@@ -162,10 +175,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
+     *     {@link DMEPropertyType }
      *     
      */
-    public JAXBElement<DMEPropertyType> getDME() {
+    public DMEPropertyType getDME() {
         return dme;
     }
 
@@ -174,10 +187,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DMEPropertyType }{@code >}
+     *     {@link DMEPropertyType }
      *     
      */
-    public void setDME(JAXBElement<DMEPropertyType> value) {
+    public void setDME(DMEPropertyType value) {
         this.dme = value;
     }
 
@@ -190,10 +203,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SegmentLegPropertyType }{@code >}
+     *     {@link SegmentLegPropertyType }
      *     
      */
-    public JAXBElement<SegmentLegPropertyType> getSegmentLeg() {
+    public SegmentLegPropertyType getSegmentLeg() {
         return segmentLeg;
     }
 
@@ -202,10 +215,10 @@ public class ProcedureDMETimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SegmentLegPropertyType }{@code >}
+     *     {@link SegmentLegPropertyType }
      *     
      */
-    public void setSegmentLeg(JAXBElement<SegmentLegPropertyType> value) {
+    public void setSegmentLeg(SegmentLegPropertyType value) {
         this.segmentLeg = value;
     }
 
@@ -324,8 +337,10 @@ public class ProcedureDMETimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractproceduredmeextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractProcedureDMEExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

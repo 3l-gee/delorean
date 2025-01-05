@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,7 +69,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "sectordesigntype", schema = "public")
 public class SectorDesignType
     extends AbstractAIXMObjectType
 {
@@ -74,36 +78,41 @@ public class SectorDesignType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turn_direction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "turn_direction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turndirection_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "turndirection"))
     })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "design_gradient")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "design_gradient_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designgradient_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designgradient"))
     })
     protected ValSlopeType designGradient;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "termination_altitude")),
-        @AttributeOverride(name = "uom", column = @Column(name = "termination_altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "termination_altitude_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "terminationaltitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "terminationaltitude_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "terminationaltitude"))
     })
     protected ValDistanceVerticalType terminationAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turn_permitted")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "turn_permitted_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turnpermitted_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "turnpermitted"))
     })
     protected CodeYesNoType turnPermitted;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "sectordesignpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "sectordesignpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<SectorDesignType.Extension> extension;
@@ -331,8 +340,10 @@ public class SectorDesignType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractsectordesignextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSectorDesignExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

@@ -42,10 +42,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValLCNType {
 
     @XmlValue
-    @Column(name = "lcn", nullable = true, unique = false)
+    @Column(name = "lcnbasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "lcn_nil_reason", nullable = true, unique = false)
+    @Column(name = "lcntype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

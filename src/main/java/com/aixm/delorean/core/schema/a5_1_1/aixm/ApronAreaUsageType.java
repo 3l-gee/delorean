@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,7 +71,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "apronareausagetype", schema = "public")
 public class ApronAreaUsageType
     extends AbstractUsageConditionType
 {
@@ -76,32 +80,43 @@ public class ApronAreaUsageType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeUsageLimitationType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "prior_permission")),
-        @AttributeOverride(name = "uom", column = @Column(name = "prior_permission_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "prior_permission_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "priorpermission_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "priorpermission_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "priorpermission"))
     })
     protected ValDurationType priorPermission;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "usageconditionpropertygroup_contact", joinColumns = {
+        @JoinColumn(name = "usageconditionpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "contactinformationpropertytype_id")
+    })
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "selection_id", referencedColumnName = "id")
     protected ConditionCombinationPropertyType selection;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "usageconditionpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "usageconditionpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ApronAreaUsageType.Extension> extension;
@@ -343,13 +358,16 @@ public class ApronAreaUsageType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractusageconditionextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractUsageConditionExtension;
         @XmlElement(name = "AbstractApronAreaUsageExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractapronareausageextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractApronAreaUsageExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

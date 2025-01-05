@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeWorkAreaType {
 
     @XmlValue
-    @Column(name = "work_area", nullable = true, unique = false)
+    @Column(name = "workareabasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "work_area_nil_reason", nullable = true, unique = false)
+    @Column(name = "workareatype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

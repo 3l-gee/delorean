@@ -10,10 +10,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -61,7 +64,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "aerialrefuellingtracktype", schema = "public")
 public class AerialRefuellingTrackType
     extends AbstractAIXMObjectType
 {
@@ -70,21 +74,37 @@ public class AerialRefuellingTrackType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected CurvePropertyType extent;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "aerialrefuellingtrackpropertygroup_point", joinColumns = {
+        @JoinColumn(name = "aerialrefuellingtrackpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "aerialrefuellingpointpropertytype_id")
+    })
     protected List<AerialRefuellingPointPropertyType> point;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "aerialrefuellingtrackpropertygroup_verticalextent", joinColumns = {
+        @JoinColumn(name = "aerialrefuellingtrackpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airspacelayerpropertytype_id")
+    })
     protected List<AirspaceLayerPropertyType> verticalExtent;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "aerialrefuellingtrackpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "aerialrefuellingtrackpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AerialRefuellingTrackType.Extension> extension;
@@ -308,8 +328,10 @@ public class AerialRefuellingTrackType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractaerialrefuellingtrackextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAerialRefuellingTrackExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

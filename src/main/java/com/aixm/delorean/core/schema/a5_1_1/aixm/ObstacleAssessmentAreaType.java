@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -74,7 +77,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "obstacleassessmentareatype", schema = "public")
 public class ObstacleAssessmentAreaType
     extends AbstractAIXMObjectType
 {
@@ -82,85 +86,102 @@ public class ObstacleAssessmentAreaType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeObstacleAssessmentSurfaceType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "section_number")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "section_number_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "sectionnumber_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "sectionnumber"))
     })
     protected NoNumberType sectionNumber;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "slope")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "slope_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "slope_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "slope"))
     })
     protected ValSlopeType slope;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "assessed_altitude")),
-        @AttributeOverride(name = "uom", column = @Column(name = "assessed_altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "assessed_altitude_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "assessedaltitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "assessedaltitude_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "assessedaltitude"))
     })
     protected ValDistanceVerticalType assessedAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "slope_lower_altitude")),
-        @AttributeOverride(name = "uom", column = @Column(name = "slope_lower_altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "slope_lower_altitude_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "slopeloweraltitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "slopeloweraltitude_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "slopeloweraltitude"))
     })
     protected ValDistanceVerticalType slopeLowerAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "gradient_low_high")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "gradient_low_high_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "gradientlowhigh_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "gradientlowhigh"))
     })
     protected ValSlopeType gradientLowHigh;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "surface_zone")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "surface_zone_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "surfacezone_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "surfacezone"))
     })
     protected CodeObstructionIdSurfaceZoneType surfaceZone;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "safety_regulation")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "safety_regulation_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "safetyregulation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "safetyregulation"))
     })
     protected TextNameType safetyRegulation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "obstacleassessmentareapropertygroup_aircraftcategory", joinColumns = {
+        @JoinColumn(name = "obstacleassessmentareapropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
+    })
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "obstacleassessmentareapropertygroup_significantobstacle", joinColumns = {
+        @JoinColumn(name = "obstacleassessmentareapropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "obstructionpropertytype_id")
+    })
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "surface_id", referencedColumnName = "id")
     protected SurfacePropertyType surface;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "startingcurve_id", referencedColumnName = "id")
     protected CurvePropertyType startingCurve;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "obstacleassessmentareapropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "obstacleassessmentareapropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ObstacleAssessmentAreaType.Extension> extension;
@@ -636,8 +657,10 @@ public class ObstacleAssessmentAreaType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractobstacleassessmentareaextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractObstacleAssessmentAreaExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

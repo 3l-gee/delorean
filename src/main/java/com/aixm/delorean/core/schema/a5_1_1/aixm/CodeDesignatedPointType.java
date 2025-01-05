@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDesignatedPointType {
 
     @XmlValue
-    @Column(name = "designated_point", nullable = true, unique = false)
+    @Column(name = "designatedpointbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "designated_point_nil_reason", nullable = true, unique = false)
+    @Column(name = "designatedpointtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRouteAvailabilityType {
 
     @XmlValue
-    @Column(name = "route_availability", nullable = true, unique = false)
+    @Column(name = "routeavailabilitybasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "route_availability_nil_reason", nullable = true, unique = false)
+    @Column(name = "routeavailabilitytype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLoadingBridgeType {
 
     @XmlValue
-    @Column(name = "loading_bridge", nullable = true, unique = false)
+    @Column(name = "loadingbridgebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "loading_bridge_nil_reason", nullable = true, unique = false)
+    @Column(name = "loadingbridgetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

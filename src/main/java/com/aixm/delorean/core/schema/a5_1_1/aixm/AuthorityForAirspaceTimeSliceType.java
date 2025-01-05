@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -67,7 +68,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "authorityforairspacetimeslicetype", schema = "public")
 public class AuthorityForAirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -75,20 +77,31 @@ public class AuthorityForAirspaceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeAuthorityType type;
-    @XmlElementRef(name = "responsibleOrganisation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<OrganisationAuthorityPropertyType> responsibleOrganisation;
-    @XmlElementRef(name = "assignedAirspace", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirspacePropertyType> assignedAirspace;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "responsibleorganisation_id", referencedColumnName = "id")
+    protected OrganisationAuthorityPropertyType responsibleOrganisation;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "assignedairspace_id", referencedColumnName = "id")
+    protected AirspacePropertyType assignedAirspace;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "authorityforairspacepropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "authorityforairspacepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AuthorityForAirspaceTimeSliceType.Extension> extension;
@@ -126,10 +139,10 @@ public class AuthorityForAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public JAXBElement<OrganisationAuthorityPropertyType> getResponsibleOrganisation() {
+    public OrganisationAuthorityPropertyType getResponsibleOrganisation() {
         return responsibleOrganisation;
     }
 
@@ -138,10 +151,10 @@ public class AuthorityForAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link OrganisationAuthorityPropertyType }{@code >}
+     *     {@link OrganisationAuthorityPropertyType }
      *     
      */
-    public void setResponsibleOrganisation(JAXBElement<OrganisationAuthorityPropertyType> value) {
+    public void setResponsibleOrganisation(OrganisationAuthorityPropertyType value) {
         this.responsibleOrganisation = value;
     }
 
@@ -154,10 +167,10 @@ public class AuthorityForAirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
+     *     {@link AirspacePropertyType }
      *     
      */
-    public JAXBElement<AirspacePropertyType> getAssignedAirspace() {
+    public AirspacePropertyType getAssignedAirspace() {
         return assignedAirspace;
     }
 
@@ -166,10 +179,10 @@ public class AuthorityForAirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirspacePropertyType }{@code >}
+     *     {@link AirspacePropertyType }
      *     
      */
-    public void setAssignedAirspace(JAXBElement<AirspacePropertyType> value) {
+    public void setAssignedAirspace(AirspacePropertyType value) {
         this.assignedAirspace = value;
     }
 
@@ -288,8 +301,10 @@ public class AuthorityForAirspaceTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractauthorityforairspaceextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAuthorityForAirspaceExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,36 +71,54 @@ import jakarta.xml.bind.annotation.XmlType;
     "signalType",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "navaidoperationalstatustype", schema = "public")
 public class NavaidOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "navaidoperationalstatustype_timeinterval", joinColumns = {
+        @JoinColumn(name = "navaidoperationalstatustype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "timesheetpropertytype_id")
+    })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "navaidoperationalstatustype_annotation", joinColumns = {
+        @JoinColumn(name = "navaidoperationalstatustype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "navaidoperationalstatustype_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "navaidoperationalstatustype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertytype_id")
+    })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "operational_status")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "operational_status_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operationalstatus_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "operationalstatus"))
     })
     protected CodeStatusNavaidType operationalStatus;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "signal_type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "signal_type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "signaltype_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "signaltype"))
     })
     protected CodeRadioSignalType signalType;
     @Transient
@@ -352,13 +373,16 @@ public class NavaidOperationalStatusType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractpropertieswithscheduleextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractNavaidOperationalStatusExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractnavaidoperationalstatusextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNavaidOperationalStatusExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeComparisonType {
 
     @XmlValue
-    @Column(name = "comparison", nullable = true, unique = false)
+    @Column(name = "comparisonbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "comparison_nil_reason", nullable = true, unique = false)
+    @Column(name = "comparisontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

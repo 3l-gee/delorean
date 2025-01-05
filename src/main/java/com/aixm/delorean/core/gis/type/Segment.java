@@ -8,30 +8,40 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.SequenceGenerator;
-import jakarta.xml.bind.annotation.XmlTransient;
+import jakarta.persistence.Index;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 
 @Entity
-@Table(name = "segment", schema = "public")
+@Table(
+    name = "segment",
+    schema = "public",
+    indexes = {
+        @Index(name = "idx_order", columnList = "sequence"),
+        @Index(name = "idx_interpretation", columnList = "interpretation")
+    }
+)
 public class Segment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "segment_seq")
     @SequenceGenerator(name = "segment_seq", sequenceName = "segment_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
-    @XmlTransient
     protected Long dbid;
 
     @Column(name = "linestring", columnDefinition = "geometry(LineString, 4326)")
+    // @JdbcTypeCode(SqlTypes.OTHER)
     protected LineString lineString;
 
     @Column(name = "sequence")
-    protected Long order;
+    protected long sequence;
 
     public enum Interpretation {
         GEODESIC,
         LINESTRING,
-        ARCBYCENTER
+        ARCBYCENTER,
+        CIRCLEBYCENTER
     }
 
     @Column(name = "interpretation")
@@ -44,14 +54,6 @@ public class Segment {
     public void setId(Long value) {
         this.dbid = value;
     }
-
-    // public String getFeatureId() {
-    //     return featureId;
-    // }
-
-    // public void setFeatureId(String value) {
-    //     this.featureId = value;
-    // }
 
     public LineString getLineString() {
         return lineString;
@@ -69,6 +71,11 @@ public class Segment {
         this.interpretation = value;
     }
 
+    public long getSequence() {
+        return sequence;
+    }
 
-
+    public void setSequence(long value) {
+        this.sequence = value;
+    }
 }

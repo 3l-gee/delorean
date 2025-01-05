@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -69,42 +72,65 @@ import jakarta.xml.bind.annotation.XmlType;
     "usage",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "manoeuvringareaavailabilitytype", schema = "public")
 public class ManoeuvringAreaAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "manoeuvringareaavailabilitytype_timeinterval", joinColumns = {
+        @JoinColumn(name = "manoeuvringareaavailabilitytype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "timesheetpropertytype_id")
+    })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "manoeuvringareaavailabilitytype_annotation", joinColumns = {
+        @JoinColumn(name = "manoeuvringareaavailabilitytype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "manoeuvringareaavailabilitytype_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "manoeuvringareaavailabilitytype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertytype_id")
+    })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "operational_status")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "operational_status_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operationalstatus_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "operationalstatus"))
     })
     protected CodeStatusAirportType operationalStatus;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "warning")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "warning_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "warning_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "warning"))
     })
     protected CodeAirportWarningType warning;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "manoeuvringareaavailabilitytype_usage", joinColumns = {
+        @JoinColumn(name = "manoeuvringareaavailabilitytype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "manoeuvringareausagepropertytype_id")
+    })
     protected List<ManoeuvringAreaUsagePropertyType> usage;
     @Transient
     protected List<ManoeuvringAreaAvailabilityType.Extension> extension;
@@ -398,13 +424,16 @@ public class ManoeuvringAreaAvailabilityType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractpropertieswithscheduleextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractManoeuvringAreaAvailabilityExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractmanoeuvringareaavailabilityextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractManoeuvringAreaAvailabilityExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

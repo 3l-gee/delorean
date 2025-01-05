@@ -9,12 +9,15 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -48,13 +51,15 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "SecondarySurveillanceRadarTimeSlicePropertyType", propOrder = {
     "secondarySurveillanceRadarTimeSlice"
 })
-@Embeddable
+@Entity
+@Table(name = "secondarysurveillanceradartimeslicepropertytype", schema = "public")
 public class SecondarySurveillanceRadarTimeSlicePropertyType {
 
     @XmlElement(name = "SecondarySurveillanceRadarTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "secondarysurveillanceradartimeslice_id", referencedColumnName = "id")
     protected SecondarySurveillanceRadarTimeSliceType secondarySurveillanceRadarTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,6 +67,7 @@ public class SecondarySurveillanceRadarTimeSlicePropertyType {
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")
+    @Transient
     protected Boolean owns;
 
     /**

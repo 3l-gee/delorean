@@ -278,6 +278,7 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.VisualGlideSlopeIndicatorType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.WorkAreaTimeSliceType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.WorkAreaType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -319,6 +320,7 @@ public class ArrayAssociationType {
     @XmlElementRef(name = "AbstractObject", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected List<JAXBElement<?>> abstractObject;
     @XmlAttribute(name = "owns")
+    @Transient
     protected java.lang.Boolean owns;
 
     /**

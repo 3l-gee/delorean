@@ -337,8 +337,7 @@ class Machinery:
                 res.append(Annotation.Annox.field_add(Annotation.Jpa.attribute_main_override(temp)))
                 return res 
 
-            res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.one_to_many()))
-            print()
+            res.append(Annotation.Annox.field_add(Annotation.Jpa.relation.many_to_many()))
             res.append(Annotation.Annox.field_add(Annotation.Relation.join_table(
                 parent.attrib["name"], element.attrib["name"], parent.attrib["name"], element.attrib["type"])))
             join_column_name = element.attrib.get("name") if element.attrib.get("name") else element.attrib.get("ref")

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSideType {
 
     @XmlValue
-    @Column(name = "side", nullable = true, unique = false)
+    @Column(name = "sidebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "side_nil_reason", nullable = true, unique = false)
+    @Column(name = "sidetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

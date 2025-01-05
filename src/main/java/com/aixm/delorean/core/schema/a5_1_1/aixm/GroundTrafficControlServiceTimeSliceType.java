@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -81,7 +82,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "clientAirport",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "groundtrafficcontrolservicetimeslicetype", schema = "public")
 public class GroundTrafficControlServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -89,93 +91,127 @@ public class GroundTrafficControlServiceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flight_operations")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flight_operations_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flightoperations_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "flightoperations"))
     })
     protected CodeFlightDestinationType flightOperations;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "rank")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "rank_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "rank_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "rank"))
     })
     protected CodeFacilityRankingType rank;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "compliant_icao")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "compliant_icao_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "complianticao_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "complianticao"))
     })
     protected CodeYesNoType compliantICAO;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "name"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
-    @XmlElementRef(name = "serviceProvider", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<UnitPropertyType> serviceProvider;
-    @XmlElement(name = "call-sign", nillable = true)
-    @OneToMany(cascade = {
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "serviceprovider_id", referencedColumnName = "id")
+    protected UnitPropertyType serviceProvider;
+    @XmlElement(name = "call-sign", nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundtrafficcontrolservicetimeslicetype_call-sign", joinColumns = {
+        @JoinColumn(name = "groundtrafficcontrolservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "callsigndetailpropertytype_id")
+    })
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundtrafficcontrolservicetimeslicetype_radiocommunication", joinColumns = {
+        @JoinColumn(name = "groundtrafficcontrolservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "radiocommunicationchannelpropertytype_id")
+    })
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundtrafficcontrolservicetimeslicetype_groundcommunication", joinColumns = {
+        @JoinColumn(name = "groundtrafficcontrolservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "contactinformationpropertytype_id")
+    })
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundtrafficcontrolservicetimeslicetype_availability", joinColumns = {
+        @JoinColumn(name = "groundtrafficcontrolservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "serviceoperationalstatuspropertytype_id")
+    })
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundtrafficcontrolservicetimeslicetype_annotation", joinColumns = {
+        @JoinColumn(name = "groundtrafficcontrolservicetimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "radar_assisted")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "radar_assisted_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "radarassisted_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "radarassisted"))
     })
     protected CodeYesNoType radarAssisted;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "data_link_enabled")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "data_link_enabled_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "datalinkenabled_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "datalinkenabled"))
     })
     protected CodeYesNoType dataLinkEnabled;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "data_link_channel")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "data_link_channel_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "datalinkchannel_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "datalinkchannel"))
     })
     protected CodeCommunicationChannelType dataLinkChannel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeServiceGroundControlType type;
-    @XmlElementRef(name = "clientAirport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> clientAirport;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "clientairport_id", referencedColumnName = "id")
+    protected AirportHeliportPropertyType clientAirport;
     @Transient
     protected List<GroundTrafficControlServiceTimeSliceType.Extension> extension;
 
@@ -324,10 +360,10 @@ public class GroundTrafficControlServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link UnitPropertyType }{@code >}
+     *     {@link UnitPropertyType }
      *     
      */
-    public JAXBElement<UnitPropertyType> getServiceProvider() {
+    public UnitPropertyType getServiceProvider() {
         return serviceProvider;
     }
 
@@ -336,10 +372,10 @@ public class GroundTrafficControlServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link UnitPropertyType }{@code >}
+     *     {@link UnitPropertyType }
      *     
      */
-    public void setServiceProvider(JAXBElement<UnitPropertyType> value) {
+    public void setServiceProvider(UnitPropertyType value) {
         this.serviceProvider = value;
     }
 
@@ -664,10 +700,10 @@ public class GroundTrafficControlServiceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getClientAirport() {
+    public AirportHeliportPropertyType getClientAirport() {
         return clientAirport;
     }
 
@@ -676,10 +712,10 @@ public class GroundTrafficControlServiceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setClientAirport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setClientAirport(AirportHeliportPropertyType value) {
         this.clientAirport = value;
     }
 
@@ -762,18 +798,22 @@ public class GroundTrafficControlServiceTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractgroundtrafficcontrolserviceextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGroundTrafficControlServiceExtension;
         @XmlElement(name = "AbstractTrafficSeparationServiceExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstracttrafficseparationserviceextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTrafficSeparationServiceExtension;
         @XmlElement(name = "AbstractServiceExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractserviceextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractServiceExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

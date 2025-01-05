@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSystemActivationType {
 
     @XmlValue
-    @Column(name = "system_activation", nullable = true, unique = false)
+    @Column(name = "systemactivationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "system_activation_nil_reason", nullable = true, unique = false)
+    @Column(name = "systemactivationtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

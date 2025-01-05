@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message:AIXMBasicMessage 
+	xmlns:message="http://www.aixm.aero/schema/5.1.1/message" 
+	xmlns:gts="http://www.isotc211.org/2005/gts" 
+	xmlns:gco="http://www.isotc211.org/2005/gco" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:gml="http://www.opengis.net/gml/3.2" 
+	xmlns:gss="http://www.isotc211.org/2005/gss" 
+	xmlns:aixm="http://www.aixm.aero/schema/5.1.1" 
+	xmlns:gsr="http://www.isotc211.org/2005/gsr" 
+	xmlns:gmd="http://www.isotc211.org/2005/gmd" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.aixm.aero/schema/5.1.1/message 
+	http://www.aixm.aero/schema/5.1.1/message/AIXM_BasicMessage.xsd" 
+	gml:id="1">
+	<gml:boundedBy>
+    </gml:boundedBy>
+    <aixm:messageMetadata>
+    </aixm:messageMetadata>
+	<message:hasMember>	
+		<!-- A.1 : EPSG:4326 / LineStringSegment :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) 
+			to 
+		The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)-->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-000000000000">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-000000000000</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_A.1">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_A.1">
+							<gml:segments>
+								<gml:LineStringSegment>
+									<gml:posList>52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</gml:posList>
+								</gml:LineStringSegment>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>
+	<message:hasMember>	
+		<!-- A.2 : EPSG:4326 / LineStringSegment :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) 
+			to 
+		The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)-->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-000000000001">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-000000000001</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_A.2">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_A.2">
+							<gml:segments>
+								<gml:LineStringSegment>
+								 	<gml:pos>52.51630693440871 13.377717264214601</gml:pos>
+									<gml:pos>38.89763528280979 -77.03654820204511</gml:pos>
+								</gml:LineStringSegment>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>
+	<message:hasMember>	
+		<!-- B.1 : EPSG:4326 / Geodesic :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) 
+			to 
+		The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)-->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-100000000000">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-100000000000</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_B.1">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_B.1">
+							<gml:segments>
+								<gml:Geodesic interpolation="geodesic">
+									<gml:posList>52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</gml:posList>
+								</gml:Geodesic>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>	
+	<message:hasMember>	
+		<!-- B.2 : EPSG:4326 / LineStringSegment :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) 
+			to 
+		The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)-->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-100000000001">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-100000000001</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_B.2">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_B.2">
+							<gml:segments>
+								<gml:Geodesic>
+								 	<gml:pos>52.51630693440871 13.377717264214601</gml:pos>
+									<gml:pos>38.89763528280979 -77.03654820204511</gml:pos>
+								</gml:Geodesic>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>
+	<message:hasMember>	
+		<!-- C.1 : EPSG:4326 / GeodesicString :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) 
+			to 
+		The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)-->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-200000000000">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-200000000000</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_C.1">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_C.1">
+							<gml:segments>
+								<gml:GeodesicString>
+									<gml:posList>52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</gml:posList>
+								</gml:GeodesicString>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>
+	<message:hasMember>	
+		<!-- C.2 : EPSG:4326 / GeodesicString :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) 
+			to 
+		The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)-->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-200000000001">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-200000000001</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_C.2">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_C.2">
+							<gml:segments>
+								<gml:GeodesicString>
+									<gml:pos>52.51630693440871 13.377717264214601</gml:pos>
+									<gml:pos>38.89763528280979 -77.03654820204511</gml:pos>
+								</gml:GeodesicString>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>
+	<message:hasMember>	
+		<!-- D.1 : EPSG:4326 / ArcByCenterPoint :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) arc from N to E radius 20NM -->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-300000000000">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-300000000000</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_D.1">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_D.1">
+							<gml:segments>
+								<gml:ArcByCenterPoint numArc="1">
+									<gml:pos>52.51630693440871 13.377717264214601</gml:pos>
+									<gml:radius uom="NM">20</gml:radius>
+									<gml:startAngle uom="deg">0.00000</gml:startAngle>
+									<gml:endAngle uom="deg">90.00000</gml:endAngle>
+								</gml:ArcByCenterPoint>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>
+	<message:hasMember>	
+		<!-- E.1 : EPSG:4326 / LineStringSegment (3) :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) 
+			to 
+		The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)
+		    to
+		Extremely Large Telescope, Atacama, Chili (EPSG:4325 : lat -24.589287528217096 lon -70.1916580926402) -->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-400000000000">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-400000000000</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_E.1">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_E.1">
+							<gml:segments>
+								<gml:LineStringSegment>
+									<gml:posList>52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</gml:posList>
+								</gml:LineStringSegment>
+								<gml:LineStringSegment>
+									<gml:pos> 38.89763528280979 -77.03654820204511</gml:pos>
+									<gml:pos> -24.589287528217096 -70.1916580926402</gml:pos>
+								</gml:LineStringSegment>
+								<gml:LineStringSegment>
+									<gml:posList>-24.589287528217096 -70.1916580926402 -33.85704607534651 151.21496554537183</gml:posList>
+								</gml:LineStringSegment>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>
+	<message:hasMember>	
+		<!-- E.2 : EPSG:4326 / LineStringSegment (3) :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) 
+			to 
+		The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)
+		    to
+		Extremely Large Telescope, Atacama, Chili (EPSG:4325 : lat -24.589287528217096 lon -70.1916580926402) -->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-400000000001">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-400000000001</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_E.2">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_E.2">
+							<gml:segments>
+								<gml:LineStringSegment>
+									<gml:posList srsName="urn:ogc:def:crs:OGC:1.3:CRS84">13.377717264214601 52.51630693440871 -77.03654820204511 38.89763528280979</gml:posList>
+								</gml:LineStringSegment>
+								<gml:LineStringSegment>
+									<gml:posList>38.89763528280979 -77.03654820204511 -24.589287528217096 -70.1916580926402</gml:posList>
+								</gml:LineStringSegment>
+								<gml:LineStringSegment>
+									<gml:posList srsName="urn:ogc:def:crs:OGC:1.3:CRS84">-70.1916580926402 -24.589287528217096 151.21496554537183 -33.85704607534651</gml:posList>
+								</gml:LineStringSegment>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>
+	<message:hasMember>	
+		<!-- E.3 : EPSG:4326 / LineStringSegment :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) 
+			to 
+		The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)
+		    to
+		Extremely Large Telescope, Atacama, Chili (EPSG:4325 : lat -24.589287528217096 lon -70.1916580926402) -->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-400000000002">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-400000000002</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_E.3">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_E.3">
+							<gml:segments>
+								<gml:LineStringSegment>
+									<gml:posList>52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</gml:posList>
+								</gml:LineStringSegment>
+								<gml:GeodesicString>
+									<gml:posList>38.89763528280979 -77.03654820204511 -24.589287528217096 -70.1916580926402</gml:posList>
+								</gml:GeodesicString>
+								<gml:Geodesic interpolation="geodesic">
+									<gml:posList>-24.589287528217096 -70.1916580926402 -33.85704607534651 151.21496554537183</gml:posList>
+								</gml:Geodesic>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>
+	<message:hasMember>	
+		<!-- F.1 : EPSG:4326 / CircleByCenterPoint :
+		Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) -->
+		<aixm:RouteSegment gml:id="uuid.00000000-0000-4000-9001-500000000001">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-500000000001</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RouteSegmentTimeSlice gml:id="Curve_F.1">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="lt21178">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:curveExtent>
+						<aixm:Curve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Curve_F.1">
+							<gml:segments>
+								<gml:CircleByCenterPoint numArc="1">
+									<gml:posList>52.51630693440871 13.377717264214601</gml:posList>
+									<gml:radius uom="NM">20.0</gml:radius>
+								</gml:CircleByCenterPoint>
+							</gml:segments>
+						</aixm:Curve>
+					</aixm:curveExtent>
+				</aixm:RouteSegmentTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RouteSegment>
+	</message:hasMember>
+</message:AIXMBasicMessage>

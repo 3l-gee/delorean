@@ -43,7 +43,7 @@ public class CodeOrganisationDesignatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "organisation_designator_nil_reason", nullable = true, unique = false)
+    @Column(name = "organisationdesignatortype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

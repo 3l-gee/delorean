@@ -28,14 +28,14 @@ public enum DatabaseConfig {
         }
     ),
     AIXM_5_1_1(
-        "a5_1_1",                                    // version
+        "a5_1_1",                                // version
         "jdbc:postgresql://localhost:5432/delorean", // Default URL
         "postgres",                             // Default username
         "postgres",                             // Default password
         5,                         // Connection pool min size
         20,                        // Connection pool max size
-        false,                                    // Hibernate show_sql
-        "create",                            // Hibernate hbm2ddl.auto
+        false,                                   // Hibernate show_sql
+        "update",                       // Hibernate hbm2ddl.auto
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.Segment.class,

@@ -10,18 +10,16 @@ import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.xml.XMLBinding;
 import com.aixm.delorean.core.xml.XMLConfig;
 
-import java.io.Console;
 import java.util.Scanner;
 
 public class Main {
     ContainerWarehouse containerWarehouse = new ContainerWarehouse();
-    ConsoleLogger logger = new ConsoleLogger(LogLevel.INFO);
     private boolean unsafe = false;
     private boolean testOption = false;
 
     public static void main(String[] args) {
         Main mainInstance = new Main();  // Create an instance of Main
-
+        ConsoleLogger.setGlobalLogLevel(LogLevel.INFO);
         for (String arg : args) {
             switch (arg) {
                 case "--test":
@@ -30,8 +28,7 @@ public class Main {
                     break;
                 case "--verbose":
                 case "-v":
-                mainInstance.logger.setLevel(LogLevel.DEBUG);
-
+                ConsoleLogger.setGlobalLogLevel(LogLevel.DEBUG);
                     break;
                 case "--unsafe":
                 case "-u":
@@ -51,23 +48,22 @@ public class Main {
     private void run() {
         Scanner scanner = new Scanner(System.in);
         String command;
-
-        logger.log(LogLevel.INFO, "Delorean 1.0.0- alpha");
+        ConsoleLogger.log(LogLevel.INFO, "Delorean 1.0.0- alpha");
 
         while (true) {
             System.out.print("> ");
             command = scanner.nextLine().trim();
 
             if (command.equalsIgnoreCase("exit")) {
-                logger.log(LogLevel.INFO, "Exiting...");
+                ConsoleLogger.log(LogLevel.INFO, "Exiting...");
                 break;
             }
 
             try {
                 executeCommand(command);
             } catch (IllegalArgumentException e) {
-                logger.log(LogLevel.ERROR,"Invalid arguments: " + e.getMessage());
-                logger.log(LogLevel.INFO,"Please try again.");
+                ConsoleLogger.log(LogLevel.ERROR,"Invalid arguments: " + e.getMessage());
+                ConsoleLogger.log(LogLevel.INFO,"Please try again.");
             }
         }
 
@@ -75,44 +71,49 @@ public class Main {
     }
 
     private void testRun() {
-        logger.log(LogLevel.INFO, "new a5_1_1");
+        ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
         executeNewCommand("a5_1_1");
 
-        logger.log(LogLevel.INFO, "xml_config - a5_1_1");
+        ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
         excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
 
-        logger.log(LogLevel.INFO, "xml - load src/main/resources/a5_1_1/a5_1_1_dataset.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLpoint.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLpoint.xml");
+
+        // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        ConsoleLogger.log(LogLevel.INFO, "xml - load src/main/resources/a5_1_1/a5_1_1_dataset.xm");
         executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/main/resources/a5_1_1/a5_1_1_dataset.xml");
 
-        // logger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
-        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/importExport.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/export.xml");
         
-        logger.log(LogLevel.INFO, "db_config - a5_1_1");
+        ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
         executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", "");
 
-        logger.log(LogLevel.INFO, "db - startup");
+        ConsoleLogger.log(LogLevel.INFO, "db - startup");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
 
-        logger.log(LogLevel.INFO, "db - load");
+        ConsoleLogger.log(LogLevel.INFO, "db - load");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"load", "");
 
-        // logger.log(LogLevel.INFO, "new a5_1_1");
+        // ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
         // executeNewCommand("a5_1_1");
 
-        // logger.log(LogLevel.INFO, "xml_config - a5_1_1");
+        // ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
         // excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
 
-        // logger.log(LogLevel.INFO, "db_config - a5_1_1");
+        // ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
         // executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", "");
 
-        // logger.log(LogLevel.INFO, "db - startup");
+        // ConsoleLogger.log(LogLevel.INFO, "db - startup");
         // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
 
-        // logger.log(LogLevel.INFO, "db - retrieve 1");
+        // ConsoleLogger.log(LogLevel.INFO, "db - retrieve 1");
         // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"retrieve", "1");
 
-        // logger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
-        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/retriveExport.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/retrive.xml");
 
         // logger.log(LogLevel.INFO, "Exiting...");
 

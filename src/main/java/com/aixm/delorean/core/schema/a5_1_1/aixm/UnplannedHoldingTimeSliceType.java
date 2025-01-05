@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,7 +70,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "unplannedholdingtimeslicetype", schema = "public")
 public class UnplannedHoldingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -75,41 +79,47 @@ public class UnplannedHoldingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "unplanned_holding")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "unplanned_holding_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "unplannedholding_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "unplannedholding"))
     })
     protected CodeApprovalType unplannedHolding;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "authorized_altitude")),
-        @AttributeOverride(name = "uom", column = @Column(name = "authorized_altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "authorized_altitude_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "authorizedaltitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "authorizedaltitude_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "authorizedaltitude"))
     })
     protected ValDistanceVerticalType authorizedAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudereference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitudereference"))
     })
     protected CodeVerticalReferenceType altitudeReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "controlled_airspace")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "controlled_airspace_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "controlledairspace_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "controlledairspace"))
     })
     protected CodeYesNoType controlledAirspace;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "holdingpoint_id", referencedColumnName = "id")
     protected SegmentPointPropertyType holdingPoint;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "unplannedholdingpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "unplannedholdingpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<UnplannedHoldingTimeSliceType.Extension> extension;
@@ -365,8 +375,10 @@ public class UnplannedHoldingTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractunplannedholdingextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractUnplannedHoldingExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

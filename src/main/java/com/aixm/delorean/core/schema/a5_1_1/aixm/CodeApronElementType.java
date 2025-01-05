@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeApronElementType {
 
     @XmlValue
-    @Column(name = "apron_element", nullable = true, unique = false)
+    @Column(name = "apronelementbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "apron_element_nil_reason", nullable = true, unique = false)
+    @Column(name = "apronelementtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

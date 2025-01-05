@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeServiceGroundControlType {
 
     @XmlValue
-    @Column(name = "service_ground_control", nullable = true, unique = false)
+    @Column(name = "servicegroundcontrolbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "service_ground_control_nil_reason", nullable = true, unique = false)
+    @Column(name = "servicegroundcontroltype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

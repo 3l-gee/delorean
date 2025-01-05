@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProtectAreaSectionType {
 
     @XmlValue
-    @Column(name = "protect_area_section", nullable = true, unique = false)
+    @Column(name = "protectareasectionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "protect_area_section_nil_reason", nullable = true, unique = false)
+    @Column(name = "protectareasectiontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -42,10 +42,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValAngleType {
 
     @XmlValue
-    @Column(name = "angle", nullable = true, unique = false)
+    @Column(name = "anglebasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "angle_nil_reason", nullable = true, unique = false)
+    @Column(name = "angletype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

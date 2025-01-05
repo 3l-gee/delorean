@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProcedureCodingStandardType {
 
     @XmlValue
-    @Column(name = "procedure_coding_standard", nullable = true, unique = false)
+    @Column(name = "procedurecodingstandardbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "procedure_coding_standard_nil_reason", nullable = true, unique = false)
+    @Column(name = "procedurecodingstandardtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

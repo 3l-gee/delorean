@@ -7,7 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -43,7 +44,8 @@ import jakarta.xml.bind.annotation.XmlType;
     TaxiwayMarkingType.class,
     TouchDownLiftOffMarkingType.class
 })
-@Embeddable
+@Entity
+@Table(name = "abstractmarkingtype", schema = "public")
 public abstract class AbstractMarkingType
     extends AbstractAIXMFeatureType
 {

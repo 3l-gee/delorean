@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePilotControlledLightingType {
 
     @XmlValue
-    @Column(name = "pilot_controlled_lighting", nullable = true, unique = false)
+    @Column(name = "pilotcontrolledlightingbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "pilot_controlled_lighting_nil_reason", nullable = true, unique = false)
+    @Column(name = "pilotcontrolledlightingtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -13,7 +13,6 @@ import com.aixm.delorean.core.gis.type.Segment;
 public class AixmCurveType extends AixmGeometryType {
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "segment_id")
     protected List<Segment> segments;
 
     public List<Segment> getSegments() {

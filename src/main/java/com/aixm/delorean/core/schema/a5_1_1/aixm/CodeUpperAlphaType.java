@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeUpperAlphaType {
 
     @XmlValue
-    @Column(name = "upper_alpha", nullable = true, unique = false)
+    @Column(name = "upperalphabasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "upper_alpha_nil_reason", nullable = true, unique = false)
+    @Column(name = "upperalphatype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

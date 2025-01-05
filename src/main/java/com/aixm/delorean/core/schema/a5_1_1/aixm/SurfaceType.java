@@ -16,7 +16,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -59,15 +61,20 @@ public class SurfaceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "horizontal_accuracy")),
-        @AttributeOverride(name = "uom", column = @Column(name = "horizontal_accuracy_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "horizontal_accuracy_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "horizontalaccuracy_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "horizontalaccuracy_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "horizontalaccuracy"))
     })
     protected ValDistanceType horizontalAccuracy;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "surfacepropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "surfacepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
 
     /**

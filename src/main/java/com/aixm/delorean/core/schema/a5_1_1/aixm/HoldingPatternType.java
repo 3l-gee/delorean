@@ -10,9 +10,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -42,15 +45,21 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "HoldingPatternType", propOrder = {
     "timeSlice"
 })
-@Embeddable
+@Entity
+@Table(name = "holdingpatterntype", schema = "public")
 public class HoldingPatternType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "holdingpatterntype_timeslice", joinColumns = {
+        @JoinColumn(name = "holdingpatterntype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "holdingpatterntimeslicepropertytype_id")
+    })
     protected List<HoldingPatternTimeSlicePropertyType> timeSlice;
 
     /**
