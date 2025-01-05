@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,36 +71,54 @@ import jakarta.xml.bind.annotation.XmlType;
     "facsimile",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "telephonecontacttype", schema = "public")
 public class TelephoneContactType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "telephonecontacttypep_timeinterval", joinColumns = {
+        @JoinColumn(name = "telephonecontacttype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "timesheetpropertytype_id")
+    })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "telephonecontacttype_annotation", joinColumns = {
+        @JoinColumn(name = "telephonecontacttype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "telephonecontacttype_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "telephonecontacttype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertytype_id")
+    })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "voice")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "voice_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "voice_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "voice"))
     })
     protected TextPhoneType voice;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "facsimile")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "facsimile_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "facsimile_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "facsimile"))
     })
     protected TextPhoneType facsimile;
     @Transient
@@ -352,13 +373,16 @@ public class TelephoneContactType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractpropertieswithscheduleextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractTelephoneContactExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstracttelephonecontactextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTelephoneContactExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

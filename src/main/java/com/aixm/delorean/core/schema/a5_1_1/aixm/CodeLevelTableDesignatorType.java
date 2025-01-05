@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLevelTableDesignatorType {
 
     @XmlValue
-    @Column(name = "level_table_designator", nullable = true, unique = false)
+    @Column(name = "leveltabledesignatorbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "level_table_designator_nil_reason", nullable = true, unique = false)
+    @Column(name = "leveltabledesignatortype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

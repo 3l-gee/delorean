@@ -13,20 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -97,7 +96,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "route_segment_time_slice_type")
+@Table(name = "routesegmenttimeslicetype", schema = "public")
 public class RouteSegmentTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -105,217 +104,229 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "level")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "level_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "level_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "level"))
     })
     protected CodeLevelType level;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit")),
-        @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "upperlimit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimit_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "upperlimit"))
     })
     protected ValDistanceVerticalType upperLimit;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimitreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "upperlimitreference"))
     })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit")),
-        @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "lowerlimit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimit_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lowerlimit"))
     })
     protected ValDistanceVerticalType lowerLimit;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimitreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lowerlimitreference"))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_obstacle_clearance_altitude")),
-        @AttributeOverride(name = "uom", column = @Column(name = "minimum_obstacle_clearance_altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_obstacle_clearance_altitude_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "minimumobstacleclearancealtitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumobstacleclearancealtitude_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimumobstacleclearancealtitude"))
     })
     protected ValDistanceVerticalType minimumObstacleClearanceAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "path_type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "path_type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "pathtype_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "pathtype"))
     })
     protected CodeRouteSegmentPathType pathType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "true_track")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "true_track_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "truetrack_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "truetrack"))
     })
     protected ValBearingType trueTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "magnetic_track")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_track_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magnetictrack_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "magnetictrack"))
     })
     protected ValBearingType magneticTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "reverse_true_track")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "reverse_true_track_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "reversetruetrack_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "reversetruetrack"))
     })
     protected ValBearingType reverseTrueTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "reverse_magnetic_track")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "reverse_magnetic_track_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "reversemagnetictrack_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "reversemagnetictrack"))
     })
     protected ValBearingType reverseMagneticTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "length"))
     })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_left")),
-        @AttributeOverride(name = "uom", column = @Column(name = "width_left_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "width_left_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "widthleft_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "widthleft_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "widthleft"))
     })
     protected ValDistanceType widthLeft;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_right")),
-        @AttributeOverride(name = "uom", column = @Column(name = "width_right_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "width_right_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "widthright_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "widthright_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "widthright"))
     })
     protected ValDistanceType widthRight;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turn_direction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "turn_direction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turndirection_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "turndirection"))
     })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "signal_gap")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "signal_gap_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "signalgap_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "signalgap"))
     })
     protected CodeYesNoType signalGap;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_enroute_altitude")),
-        @AttributeOverride(name = "uom", column = @Column(name = "minimum_enroute_altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_enroute_altitude_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "minimumenroutealtitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumenroutealtitude_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimumenroutealtitude"))
     })
     protected ValDistanceVerticalType minimumEnrouteAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end")),
-        @AttributeOverride(name = "uom", column = @Column(name = "minimum_crossing_at_end_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_crossing_at_end_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "minimumcrossingatend_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumcrossingatend_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimumcrossingatend"))
     })
     protected ValDistanceVerticalType minimumCrossingAtEnd;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_crossing_at_end_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_crossing_at_end_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumcrossingatendreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimumcrossingatendreference"))
     })
     protected CodeVerticalReferenceType minimumCrossingAtEndReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end")),
-        @AttributeOverride(name = "uom", column = @Column(name = "maximum_crossing_at_end_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "maximum_crossing_at_end_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "maximumcrossingatend_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "maximumcrossingatend_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "maximumcrossingatend"))
     })
     protected ValDistanceVerticalType maximumCrossingAtEnd;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "maximum_crossing_at_end_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "maximum_crossing_at_end_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "maximumcrossingatendreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "maximumcrossingatendreference"))
     })
     protected CodeVerticalReferenceType maximumCrossingAtEndReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "navigation_type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "navigation_type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "navigationtype_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "navigationtype"))
     })
     protected CodeRouteNavigationType navigationType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "required_navigation_performance")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "required_navigation_performance_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "requirednavigationperformance_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "requirednavigationperformance"))
     })
     protected CodeRNPType requiredNavigationPerformance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_suffix")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_suffix_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designatorsuffix_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designatorsuffix"))
     })
     protected CodeRouteDesignatorSuffixType designatorSuffix;
     @XmlElement(nillable = true)
-    // @OneToOne(cascade = {
-    //     CascadeType.ALL
-    // }, fetch = FetchType.EAGER)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "start_id", referencedColumnName = "id")
     protected EnRouteSegmentPointPropertyType start;
-    @XmlElementRef(name = "routeFormed", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RoutePropertyType> routeFormed;
     @XmlElement(nillable = true)
-    // @OneToOne(cascade = {
-    //     CascadeType.ALL
-    // }, fetch = FetchType.EAGER)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "routeformed_id", referencedColumnName = "id")
+    protected RoutePropertyType routeFormed;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "evaluationarea_id", referencedColumnName = "id")
     protected ObstacleAssessmentAreaPropertyType evaluationArea;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "curveextent_id", referencedColumnName = "id")
     protected CurvePropertyType curveExtent;
     @XmlElement(nillable = true)
-    // @OneToOne(cascade = {
-    //     CascadeType.ALL
-    // }, fetch = FetchType.EAGER)
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "end_id", referencedColumnName = "id")
     protected EnRouteSegmentPointPropertyType end;
     @XmlElement(nillable = true)
-    // @OneToMany(cascade = {
-    //     CascadeType.ALL
-    // }, fetch = FetchType.EAGER)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "routesegmentpropertygroup_availability", joinColumns = {
+        @JoinColumn(name = "routesegmentpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "routeavailabilitypropertytype_id")
+    })
     protected List<RouteAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    // @OneToMany(cascade = {
-    //     CascadeType.ALL
-    // }, fetch = FetchType.EAGER)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "routesegmentpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "routesegmentpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RouteSegmentTimeSliceType.Extension> extension;
@@ -1025,10 +1036,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
+     *     {@link RoutePropertyType }
      *     
      */
-    public JAXBElement<RoutePropertyType> getRouteFormed() {
+    public RoutePropertyType getRouteFormed() {
         return routeFormed;
     }
 
@@ -1037,10 +1048,10 @@ public class RouteSegmentTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
+     *     {@link RoutePropertyType }
      *     
      */
-    public void setRouteFormed(JAXBElement<RoutePropertyType> value) {
+    public void setRouteFormed(RoutePropertyType value) {
         this.routeFormed = value;
     }
 
@@ -1283,8 +1294,10 @@ public class RouteSegmentTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractroutesegmentextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRouteSegmentExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

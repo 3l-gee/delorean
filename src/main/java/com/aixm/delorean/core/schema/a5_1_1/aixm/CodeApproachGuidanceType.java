@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeApproachGuidanceType {
 
     @XmlValue
-    @Column(name = "approach_guidance", nullable = true, unique = false)
+    @Column(name = "approachguidancebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "approach_guidance_nil_reason", nullable = true, unique = false)
+    @Column(name = "approachguidancetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

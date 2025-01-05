@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValPressureType {
 
     @XmlValue
-    @Column(name = "pressure", nullable = true, unique = false)
+    @Column(name = "pressurebasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "pressure_uom", nullable = true, unique = false)
+    @Column(name = "pressuretype_uom", nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "pressure_nil_reason", nullable = true, unique = false)
+    @Column(name = "pressuretype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

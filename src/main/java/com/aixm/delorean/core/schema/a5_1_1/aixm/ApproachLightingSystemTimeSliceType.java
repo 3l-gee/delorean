@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -76,7 +77,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "servedRunwayDirection",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "approachlightingsystemtimeslicetype", schema = "public")
 public class ApproachLightingSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -84,78 +86,96 @@ public class ApproachLightingSystemTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "emergency_lighting")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "emergency_lighting_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emergencylighting_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "emergencylighting"))
     })
     protected CodeYesNoType emergencyLighting;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "intensity_level")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_level_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensitylevel_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "intensitylevel"))
     })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "colour")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "colour"))
     })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundlightsystempropertygroup_element", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "lightelementpropertytype_id")
+    })
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundlightsystempropertygroup_availability", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "groundlightingavailabilitypropertytype_id")
+    })
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "groundlightsystempropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "class_icao")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "class_icao_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "classicao_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "classicao"))
     })
     protected CodeApproachLightingICAOType classICAO;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeApproachLightingType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "length"))
     })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "sequenced_flashing")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "sequenced_flashing_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "sequencedflashing_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "sequencedflashing"))
     })
     protected CodeYesNoType sequencedFlashing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "alignment_indicator")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "alignment_indicator_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "alignmentindicator_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "alignmentindicator"))
     })
     protected CodeYesNoType alignmentIndicator;
-    @XmlElementRef(name = "servedRunwayDirection", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayDirectionPropertyType> servedRunwayDirection;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "servedrunwaydirection_id", referencedColumnName = "id")
+    protected RunwayDirectionPropertyType servedRunwayDirection;
     @Transient
     protected List<ApproachLightingSystemTimeSliceType.Extension> extension;
 
@@ -508,10 +528,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public JAXBElement<RunwayDirectionPropertyType> getServedRunwayDirection() {
+    public RunwayDirectionPropertyType getServedRunwayDirection() {
         return servedRunwayDirection;
     }
 
@@ -520,10 +540,10 @@ public class ApproachLightingSystemTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayDirectionPropertyType }{@code >}
+     *     {@link RunwayDirectionPropertyType }
      *     
      */
-    public void setServedRunwayDirection(JAXBElement<RunwayDirectionPropertyType> value) {
+    public void setServedRunwayDirection(RunwayDirectionPropertyType value) {
         this.servedRunwayDirection = value;
     }
 
@@ -604,13 +624,16 @@ public class ApproachLightingSystemTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractapproachlightingsystemextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractApproachLightingSystemExtension;
         @XmlElement(name = "AbstractGroundLightSystemExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractgroundlightsystemextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGroundLightSystemExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

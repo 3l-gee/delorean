@@ -43,7 +43,7 @@ public class TextSIDSTARDesignatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "sidstar_designator_nil_reason", nullable = true, unique = false)
+    @Column(name = "sidstardesignatortype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

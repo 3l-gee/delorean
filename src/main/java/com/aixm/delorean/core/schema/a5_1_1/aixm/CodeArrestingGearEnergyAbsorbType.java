@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeArrestingGearEnergyAbsorbType {
 
     @XmlValue
-    @Column(name = "arresting_gear_energy_absorb", nullable = true, unique = false)
+    @Column(name = "arrestinggearenergyabsorbbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "arresting_gear_energy_absorb_nil_reason", nullable = true, unique = false)
+    @Column(name = "arrestinggearenergyabsorbtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

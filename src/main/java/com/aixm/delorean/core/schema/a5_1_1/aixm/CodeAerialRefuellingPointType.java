@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAerialRefuellingPointType {
 
     @XmlValue
-    @Column(name = "aerial_refuelling_point", nullable = true, unique = false)
+    @Column(name = "aerialrefuellingpointbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "aerial_refuelling_point_nil_reason", nullable = true, unique = false)
+    @Column(name = "aerialrefuellingpointtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,7 +71,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "airspacelayertype", schema = "public")
 public class AirspaceLayerType
     extends AbstractAIXMObjectType
 {
@@ -78,47 +80,55 @@ public class AirspaceLayerType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit")),
-        @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "upperlimit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimit_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "upperlimit"))
     })
     protected ValDistanceVerticalType upperLimit;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimitreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "upperlimitreference"))
     })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit")),
-        @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "lowerlimit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimit_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lowerlimit"))
     })
     protected ValDistanceVerticalType lowerLimit;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimitreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lowerlimitreference"))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_interpretation")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_interpretation_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeinterpretation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitudeinterpretation"))
     })
     protected CodeAltitudeUseType altitudeInterpretation;
-    @XmlElementRef(name = "discreteLevelSeries", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<StandardLevelColumnPropertyType> discreteLevelSeries;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "discretelevelseries_id", referencedColumnName = "id")
+    protected StandardLevelColumnPropertyType discreteLevelSeries;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airspacelayerpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "airspacelayerpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AirspaceLayerType.Extension> extension;
@@ -268,10 +278,10 @@ public class AirspaceLayerType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link StandardLevelColumnPropertyType }{@code >}
+     *     {@link StandardLevelColumnPropertyType }
      *     
      */
-    public JAXBElement<StandardLevelColumnPropertyType> getDiscreteLevelSeries() {
+    public StandardLevelColumnPropertyType getDiscreteLevelSeries() {
         return discreteLevelSeries;
     }
 
@@ -280,10 +290,10 @@ public class AirspaceLayerType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link StandardLevelColumnPropertyType }{@code >}
+     *     {@link StandardLevelColumnPropertyType }
      *     
      */
-    public void setDiscreteLevelSeries(JAXBElement<StandardLevelColumnPropertyType> value) {
+    public void setDiscreteLevelSeries(StandardLevelColumnPropertyType value) {
         this.discreteLevelSeries = value;
     }
 
@@ -402,8 +412,10 @@ public class AirspaceLayerType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractairspacelayerextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceLayerExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeIntegrityLevelILSType {
 
     @XmlValue
-    @Column(name = "integrity_level_ils", nullable = true, unique = false)
+    @Column(name = "integritylevelilsbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "integrity_level_ils_nil_reason", nullable = true, unique = false)
+    @Column(name = "integritylevelilstype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

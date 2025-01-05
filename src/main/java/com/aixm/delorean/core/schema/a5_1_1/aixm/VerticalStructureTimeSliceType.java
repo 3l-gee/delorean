@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -84,7 +85,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightingAvailability",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "verticalstructuretimeslicetype", schema = "public")
 public class VerticalStructureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -92,114 +94,181 @@ public class VerticalStructureTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "name"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeVerticalStructureType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lighted")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lighted_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lighted_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lighted"))
     })
     protected CodeYesNoType lighted;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "marking_icao_standard")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "marking_icao_standard_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "markingicaostandard_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "markingicaostandard"))
     })
     protected CodeYesNoType markingICAOStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "group")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "group_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "group__nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "group_"))
     })
     protected CodeYesNoType group;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "length"))
     })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "width"))
     })
     protected ValDistanceType width;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "radius")),
         @AttributeOverride(name = "uom", column = @Column(name = "radius_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "radius_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "radius_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "radius"))
     })
     protected ValDistanceType radius;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lighting_icao_standard")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lighting_icao_standard_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lightingicaostandard_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lightingicaostandard"))
     })
     protected CodeYesNoType lightingICAOStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "synchronised_lighting")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "synchronised_lighting_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "synchronisedlighting_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "synchronisedlighting"))
     })
     protected CodeYesNoType synchronisedLighting;
-    @XmlElementRef(name = "marker", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<MarkerBeaconPropertyType> marker;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "marker_id", referencedColumnName = "id")
+    protected MarkerBeaconPropertyType marker;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "verticalstructurepropertygroup_part", joinColumns = {
+        @JoinColumn(name = "verticalstructurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "verticalstructurepartpropertytype_id")
+    })
     protected List<VerticalStructurePartPropertyType> part;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "verticalstructurepropertygroup_hostedpassengerservice", joinColumns = {
+        @JoinColumn(name = "verticalstructurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "passengerservicepropertytype_id")
+    })
     protected List<PassengerServicePropertyType> hostedPassengerService;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "verticalstructurepropertygroup_supportedgroundlight", joinColumns = {
+        @JoinColumn(name = "verticalstructurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "groundlightsystempropertytype_id")
+    })
     protected List<GroundLightSystemPropertyType> supportedGroundLight;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "verticalstructurepropertygroup_hostednavaidequipment", joinColumns = {
+        @JoinColumn(name = "verticalstructurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "navaidequipmentpropertytype_id")
+    })
     protected List<NavaidEquipmentPropertyType> hostedNavaidEquipment;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "verticalstructurepropertygroup_hostedspecialnavstation", joinColumns = {
+        @JoinColumn(name = "verticalstructurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "specialnavigationstationpropertytype_id")
+    })
     protected List<SpecialNavigationStationPropertyType> hostedSpecialNavStation;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "verticalstructurepropertygroup_hostedunit", joinColumns = {
+        @JoinColumn(name = "verticalstructurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "unitpropertytype_id")
+    })
     protected List<UnitPropertyType> hostedUnit;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "verticalstructurepropertygroup_hostedorganisation", joinColumns = {
+        @JoinColumn(name = "verticalstructurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertytype_id")
+    })
     protected List<OrganisationAuthorityPropertyType> hostedOrganisation;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "verticalstructurepropertygroup_supportedservice", joinColumns = {
+        @JoinColumn(name = "verticalstructurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "servicepropertytype_id")
+    })
     protected List<ServicePropertyType> supportedService;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "verticalstructurepropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "verticalstructurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "verticalstructurepropertygroup_lightingavailability", joinColumns = {
+        @JoinColumn(name = "verticalstructurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "verticalstructurelightingstatuspropertytype_id")
+    })
     protected List<VerticalStructureLightingStatusPropertyType> lightingAvailability;
     @Transient
     protected List<VerticalStructureTimeSliceType.Extension> extension;
@@ -489,10 +558,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link MarkerBeaconPropertyType }{@code >}
+     *     {@link MarkerBeaconPropertyType }
      *     
      */
-    public JAXBElement<MarkerBeaconPropertyType> getMarker() {
+    public MarkerBeaconPropertyType getMarker() {
         return marker;
     }
 
@@ -501,10 +570,10 @@ public class VerticalStructureTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link MarkerBeaconPropertyType }{@code >}
+     *     {@link MarkerBeaconPropertyType }
      *     
      */
-    public void setMarker(JAXBElement<MarkerBeaconPropertyType> value) {
+    public void setMarker(MarkerBeaconPropertyType value) {
         this.marker = value;
     }
 
@@ -983,8 +1052,10 @@ public class VerticalStructureTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractverticalstructureextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractVerticalStructureExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

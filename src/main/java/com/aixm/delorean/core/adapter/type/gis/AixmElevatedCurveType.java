@@ -13,7 +13,6 @@ import jakarta.persistence.OneToMany;
 public class AixmElevatedCurveType extends AixmElevatedGeometryType {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    // @JoinColumn(name = "segment_id")
     protected List<Segment> segments;
 
     public List<Segment> getSegments() {

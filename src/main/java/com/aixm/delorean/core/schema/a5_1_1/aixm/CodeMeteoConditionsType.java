@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMeteoConditionsType {
 
     @XmlValue
-    @Column(name = "meteo_conditions", nullable = true, unique = false)
+    @Column(name = "meteoconditionsbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "meteo_conditions_nil_reason", nullable = true, unique = false)
+    @Column(name = "meteoconditionstype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

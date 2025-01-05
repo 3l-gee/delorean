@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTimeReferenceType {
 
     @XmlValue
-    @Column(name = "time_reference", nullable = true, unique = false)
+    @Column(name = "timereferencebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "time_reference_nil_reason", nullable = true, unique = false)
+    @Column(name = "timereferencetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNavaidPurposeType {
 
     @XmlValue
-    @Column(name = "navaid_purpose", nullable = true, unique = false)
+    @Column(name = "navaidpurposebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "navaid_purpose_nil_reason", nullable = true, unique = false)
+    @Column(name = "navaidpurposetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

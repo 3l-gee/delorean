@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValTemperatureType {
 
     @XmlValue
-    @Column(name = "temperature", nullable = true, unique = false)
+    @Column(name = "temperaturebasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "temperature_uom", nullable = true, unique = false)
+    @Column(name = "temperaturetype_uom", nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "temperature_nil_reason", nullable = true, unique = false)
+    @Column(name = "temperaturetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

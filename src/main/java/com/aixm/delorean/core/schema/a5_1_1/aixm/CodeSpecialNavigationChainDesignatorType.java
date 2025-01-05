@@ -43,7 +43,7 @@ public class CodeSpecialNavigationChainDesignatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "special_navigation_chain_designator_nil_reason", nullable = true, unique = false)
+    @Column(name = "specialnavigationchaindesignatortype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

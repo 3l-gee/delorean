@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTaxiwaySectionType {
 
     @XmlValue
-    @Column(name = "taxiway_section", nullable = true, unique = false)
+    @Column(name = "taxiwaysectionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "taxiway_section_nil_reason", nullable = true, unique = false)
+    @Column(name = "taxiwaysectiontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

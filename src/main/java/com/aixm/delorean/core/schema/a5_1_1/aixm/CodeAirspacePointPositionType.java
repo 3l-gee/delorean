@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAirspacePointPositionType {
 
     @XmlValue
-    @Column(name = "airspace_point_position", nullable = true, unique = false)
+    @Column(name = "airspacepointpositionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "airspace_point_position_nil_reason", nullable = true, unique = false)
+    @Column(name = "airspacepointpositiontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

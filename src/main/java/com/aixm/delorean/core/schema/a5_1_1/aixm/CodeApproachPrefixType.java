@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeApproachPrefixType {
 
     @XmlValue
-    @Column(name = "approach_prefix", nullable = true, unique = false)
+    @Column(name = "approachprefixbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "approach_prefix_nil_reason", nullable = true, unique = false)
+    @Column(name = "approachprefixtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

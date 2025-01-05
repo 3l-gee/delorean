@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProcedureDistanceType {
 
     @XmlValue
-    @Column(name = "procedure_distance", nullable = true, unique = false)
+    @Column(name = "proceduredistancebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "procedure_distance_nil_reason", nullable = true, unique = false)
+    @Column(name = "proceduredistancetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

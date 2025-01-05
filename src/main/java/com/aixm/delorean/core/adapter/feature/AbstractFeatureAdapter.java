@@ -4,6 +4,8 @@ import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 import jakarta.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.*;
 
 public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends AbstractAIXMFeatureType>, AbstractAIXMFeatureType> {
@@ -12,6 +14,288 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
     public AbstractAIXMFeatureType unmarshal(JAXBElement<? extends AbstractAIXMFeatureType> v) throws Exception {
         if (v != null) {
             Class<? extends AbstractAIXMFeatureType> clazz = v.getDeclaredType();
+
+            if (AbstractMarkingType.class.isAssignableFrom(clazz)) {
+                if (clazz.equals(AirportProtectionAreaMarkingType.class)){
+                    return (AirportProtectionAreaMarkingType) v.getValue();
+                } 
+
+                if (clazz.equals(ApronMarkingType.class)){
+                    return (ApronMarkingType) v.getValue();
+                }
+
+                if (clazz.equals(DeicingAreaMarkingType.class)){
+                    return (DeicingAreaMarkingType) v.getValue();
+                }
+
+                if (clazz.equals(GuidanceLineMarkingType.class)){
+                    return (GuidanceLineMarkingType) v.getValue();
+                }
+
+                if (clazz.equals(RunwayMarkingType.class)){
+                    return (RunwayMarkingType) v.getValue();
+                }
+
+                if (clazz.equals(StandMarkingType.class)){
+                    return (StandMarkingType) v.getValue();
+                }
+
+                if (clazz.equals(TaxiHoldingPositionMarkingType.class)){
+                    return (TaxiHoldingPositionMarkingType) v.getValue();
+                }
+
+                if (clazz.equals(TaxiwayMarkingType.class)){
+                    return (TaxiwayMarkingType) v.getValue();
+                }
+
+                if (clazz.equals(TouchDownLiftOffMarkingType.class)){
+                    return (TouchDownLiftOffMarkingType) v.getValue();
+                }
+
+                else {
+                    ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractMarkingType : " + clazz.getName(), new Exception());
+                }
+
+            }
+
+            if (AbstractAirportHeliportProtectionAreaType.class.isAssignableFrom(clazz)) {
+                if (clazz.equals(TouchDownLiftOffSafeAreaType.class)){
+                    return (TouchDownLiftOffSafeAreaType) v.getValue();
+                }
+
+                if (clazz.equals(RunwayProtectAreaType.class)){
+                    return (RunwayProtectAreaType) v.getValue();
+                }
+
+                else {
+                    ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractAirportHeliportProtectionAreaTypes : " + clazz.getName(), new Exception());
+                }
+            }
+
+            if (AbstractGroundLightSystemType.class.isAssignableFrom(clazz)) {
+                if (clazz.equals(ApproachLightingSystemType.class)){
+                    return (ApproachLightingSystemType) v.getValue();
+                }
+
+                if (clazz.equals(ApronLightSystemType.class)){
+                    return (ApronLightSystemType) v.getValue();
+                }
+
+                if (clazz.equals(GuidanceLineLightSystemType.class)){
+                    return (GuidanceLineLightSystemType) v.getValue();
+                }
+
+                if (clazz.equals(RunwayDirectionLightSystemType.class)){
+                    return (RunwayDirectionLightSystemType) v.getValue();
+                }
+
+                if (clazz.equals(RunwayProtectAreaLightSystemType.class)){
+                    return (RunwayProtectAreaLightSystemType) v.getValue();
+                }
+
+                if (clazz.equals(TaxiHoldingPositionLightSystemType.class)){
+                    return (TaxiHoldingPositionLightSystemType) v.getValue();
+                }
+
+                if (clazz.equals(TaxiwayLightSystemType.class)){
+                    return (TaxiwayLightSystemType) v.getValue();
+                }
+
+                if (clazz.equals(TouchDownLiftOffLightSystemType.class)){
+                    return (TouchDownLiftOffLightSystemType) v.getValue();
+                }
+
+                if (clazz.equals(VisualGlideSlopeIndicatorType.class)){
+                    return (VisualGlideSlopeIndicatorType) v.getValue();
+                }
+
+                else {
+                    ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractGroundLightSystemType : " + clazz.getName(), new Exception());
+                }
+            }
+
+            if (AbstractNavigationSystemCheckpointType.class.isAssignableFrom(clazz)) {
+                if (clazz.equals(CheckpointINSType.class)){
+                    return (CheckpointINSType) v.getValue();
+                }
+
+                if (clazz.equals(CheckpointVORType.class)){
+                    return (CheckpointVORType) v.getValue();
+                }
+
+                else {
+                    ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractNavigationSystemCheckpointType : " + clazz.getName(), new Exception());
+                }
+            }
+
+            if (AbstractNavaidEquipmentType.class.isAssignableFrom(clazz)) {
+                if (clazz.equals(AzimuthType.class)){
+                    return (AzimuthType) v.getValue();
+                }
+
+                if (clazz.equals(DirectionFinderType.class)){
+                    return (DirectionFinderType) v.getValue();
+                }
+
+                if (clazz.equals(DMEType.class)){
+                    return (DMEType) v.getValue();
+                }
+
+                if (clazz.equals(ElevationType.class)){
+                    return (ElevationType) v.getValue();
+                }
+
+                if (clazz.equals(GlidepathType.class)){
+                    return (GlidepathType) v.getValue();
+                }
+
+                if (clazz.equals(LocalizerType.class)){
+                    return (LocalizerType) v.getValue();
+                }
+
+                if (clazz.equals(MarkerBeaconType.class)){
+                    return (MarkerBeaconType) v.getValue();
+                }
+
+                if (clazz.equals(NDBType.class)){
+                    return (NDBType) v.getValue();
+                }
+
+                if (clazz.equals(SDFType.class)){
+                    return (SDFType) v.getValue();
+                }
+
+                if (clazz.equals(TACANType.class)){
+                    return (TACANType) v.getValue();
+                }
+
+                if (clazz.equals(VORType.class)){
+                    return (VORType) v.getValue();
+                }
+
+                else {
+                    ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractNavaidEquipmentType : " + clazz.getName(), new Exception());
+                }
+            }
+
+            if (AbstractProcedureType.class.isAssignableFrom(clazz)) {
+                if (clazz.equals(InstrumentApproachProcedureType.class)){
+                    return (InstrumentApproachProcedureType) v.getValue();
+                }
+
+                if (clazz.equals(StandardInstrumentArrivalType.class)){
+                    return (StandardInstrumentArrivalType) v.getValue();
+                }
+
+                if (clazz.equals(StandardInstrumentDepartureType.class)){
+                    return (StandardInstrumentDepartureType) v.getValue();
+                }
+
+                else {
+                    ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractProcedureType : " + clazz.getName(), new Exception());
+                }
+            }
+
+            if (AbstractSegmentLegType.class.isAssignableFrom(clazz)) {
+                if (clazz.equals(ArrivalLegType.class)){
+                    return (ArrivalLegType) v.getValue();
+                }
+
+                if (clazz.equals(ArrivalLegType.class)){
+                    return (ArrivalLegType) v.getValue();
+                }
+
+                if (clazz.equals(DepartureLegType.class)){
+                    return (DepartureLegType) v.getValue();
+                }
+
+                else {
+                    ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractSegmentLegType : " + clazz.getName(), new Exception());
+                }
+            }
+
+            if (AbstractServiceType.class.isAssignableFrom(clazz)) {
+                if (clazz.equals(AirTrafficManagementServiceType.class)){
+                    return (AirTrafficManagementServiceType) v.getValue();
+                }
+
+                if (AbstractTrafficSeparationServiceType.class.isAssignableFrom(clazz)){
+                    if (clazz.equals(AirTrafficControlServiceType.class)){
+                        return (AirTrafficControlServiceType) v.getValue();
+                    }
+
+                    if (clazz.equals(GroundTrafficControlServiceType.class)){
+                        return (GroundTrafficControlServiceType) v.getValue();
+                    }
+
+                    else {
+                        ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractTrafficSeparationServiceType : " + clazz.getName(), new Exception());
+                    }
+                }
+
+                if (clazz.equals(InformationServiceType.class)){
+                    return (InformationServiceType) v.getValue();
+                }
+
+                if (AbstractAirportGroundServiceType.class.isAssignableFrom(clazz)){
+                    if (clazz.equals(AircraftGroundServiceType.class)){
+                        return (AircraftGroundServiceType) v.getValue();
+                    }
+
+                    if (clazz.equals(AirportClearanceServiceType.class)){
+                        return (AirportClearanceServiceType) v.getValue();
+                    }
+
+                    if (clazz.equals(AirportSuppliesServiceType.class)){
+                        return (AirportSuppliesServiceType) v.getValue();
+                    }
+
+                    if (clazz.equals(FireFightingServiceType.class)){
+                        return (FireFightingServiceType) v.getValue();
+                    }
+
+                    if (clazz.equals(PassengerServiceType.class)){
+                        return (PassengerServiceType) v.getValue();
+                    }
+
+                    else {
+                        ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractAirportGroundServiceType : " + clazz.getName(), new Exception());
+                    }
+                }
+
+                if (clazz.equals(SearchRescueServiceType.class)){
+                    return (SearchRescueServiceType) v.getValue();
+                }
+
+                else {
+                    ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractServiceType : " + clazz.getName(), new Exception());
+                }
+            }
+
+            if (AbstractRadarEquipmentType.class.isAssignableFrom(clazz)) {
+                if (clazz.equals(PrecisionApproachRadarType.class)){
+                    return (PrecisionApproachRadarType) v.getValue();
+                }
+
+                if (AbstractRadarEquipmentType.class.isAssignableFrom(clazz)) {
+                    if (clazz.equals(PrimarySurveillanceRadarType.class)){
+                        return (PrimarySurveillanceRadarType) v.getValue();
+                    }
+
+                    if (clazz.equals(SecondarySurveillanceRadarType.class)){
+                        return (SecondarySurveillanceRadarType) v.getValue();
+                    }
+
+                    else {
+                        ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractRadarEquipmentType : " + clazz.getName(), new Exception());
+                    }
+
+                }
+
+                else {
+                    ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractRadarEquipmentType : " + clazz.getName(), new Exception());
+                }
+            }
         
             if (clazz.equals(AerialRefuellingType.class)) {
                 return (AerialRefuellingType) v.getValue();
@@ -72,10 +356,6 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
                 return (TouchDownLiftOffType) v.getValue();
             }
 
-            if (clazz.equals(AbstractMarkingType.class)) {
-                return (AbstractMarkingType) v.getValue();
-            }
-
             if (clazz.equals(ArrestingGearType.class)) {
                 return (ArrestingGearType) v.getValue();
             }
@@ -100,16 +380,8 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
                 return (RunwayElementType) v.getValue();
             }
 
-            if (clazz.equals(AbstractAirportHeliportProtectionAreaType.class)) {
-                return (AbstractAirportHeliportProtectionAreaType) v.getValue();
-            }
-
             if (clazz.equals(RunwayVisualRangeType.class)) {
                 return (RunwayVisualRangeType) v.getValue();
-            }
-
-            if (clazz.equals(AbstractGroundLightSystemType.class)) {
-                return (AbstractGroundLightSystemType) v.getValue();
             }
 
             if (clazz.equals(FloatingDockSiteType.class)) {
@@ -164,10 +436,6 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
                 return (UnplannedHoldingType) v.getValue();
             }
 
-            if (clazz.equals(AbstractNavigationSystemCheckpointType.class)) {
-                
-                return (AbstractNavigationSystemCheckpointType) v.getValue();
-            }
             if (clazz.equals(NavaidType.class)) {
                 return (NavaidType) v.getValue();
             }
@@ -178,10 +446,6 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
 
             if (clazz.equals(SpecialNavigationSystemType.class)) {
                 return (SpecialNavigationSystemType) v.getValue();
-            }
-
-            if (clazz.equals(AbstractNavaidEquipmentType.class)) {
-                return (AbstractNavaidEquipmentType) v.getValue();
             }
 
             if (clazz.equals(AngleIndicationType.class)) {
@@ -232,16 +496,8 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
                 return (NavigationAreaType) v.getValue();
             }
 
-            if (clazz.equals(AbstractProcedureType.class)) {
-                return (AbstractProcedureType) v.getValue();
-            }
-
             if (clazz.equals(SafeAltitudeAreaType.class)) {
                 return (SafeAltitudeAreaType) v.getValue();
-            }
-
-            if (clazz.equals(AbstractSegmentLegType.class)) {
-                return (AbstractSegmentLegType) v.getValue();
             }
 
             if (clazz.equals(NavigationAreaRestrictionType.class)) {
@@ -288,10 +544,6 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
                 return (RadioCommunicationChannelType) v.getValue();
             }
 
-            if (clazz.equals(AbstractServiceType.class)) {
-                return (AbstractServiceType) v.getValue();
-            }
-
             if (clazz.equals(RadioFrequencyAreaType.class)) {
                 return (RadioFrequencyAreaType) v.getValue();
             }
@@ -320,15 +572,12 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
                 return (RadarSystemType) v.getValue();
             }
 
-            if (clazz.equals(AbstractRadarEquipmentType.class)) {
-                return (AbstractRadarEquipmentType) v.getValue();
-            }
-
-            throw new IllegalArgumentException("Unsupported feature type: " + clazz.getName());
+            ConsoleLogger.log(LogLevel.FATAL, "unknown class " + clazz.getName(), new Exception());
         } else {
-            System.out.println("FeatureAdapter.unmarshal: null");
-            return null;
+            ConsoleLogger.log(LogLevel.FATAL, "class is null ", new Exception());
+            throw new RuntimeException("class is null");
         }
+        return null;
     }
     
 

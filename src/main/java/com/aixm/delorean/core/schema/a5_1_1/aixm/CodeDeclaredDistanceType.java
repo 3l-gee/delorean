@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDeclaredDistanceType {
 
     @XmlValue
-    @Column(name = "declared_distance", nullable = true, unique = false)
+    @Column(name = "declareddistancebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "declared_distance_nil_reason", nullable = true, unique = false)
+    @Column(name = "declareddistancetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

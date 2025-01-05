@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class TextPhoneType {
 
     @XmlValue
-    @Column(name = "phone", nullable = true, unique = false)
+    @Column(name = "phonebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "phone_nil_reason", nullable = true, unique = false)
+    @Column(name = "phonetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

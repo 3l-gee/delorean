@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,7 +67,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "theSegmentLeg",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "proceduretransitionlegtype", schema = "public")
 public class ProcedureTransitionLegType
     extends AbstractAIXMObjectType
 {
@@ -72,16 +76,24 @@ public class ProcedureTransitionLegType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "seq_number_arinc")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "seq_number_arinc_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "seqnumberarinc_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "seqnumberarinc"))
     })
     protected NoSequenceType seqNumberARINC;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "proceduretransitionlegpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "proceduretransitionlegpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "thesegmentleg_id", referencedColumnName = "id")
     protected SegmentLegPropertyType theSegmentLeg;
     @Transient
     protected List<ProcedureTransitionLegType.Extension> extension;
@@ -253,8 +265,10 @@ public class ProcedureTransitionLegType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractproceduretransitionlegextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractProcedureTransitionLegExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

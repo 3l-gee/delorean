@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointType;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -49,6 +50,7 @@ public class PointArrayPropertyType {
     @XmlElementRef(name = "Point", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends com.aixm.delorean.core.schema.a5_1_1.org.gml.PointType>> point;
     @XmlAttribute(name = "owns")
+    @Transient
     protected java.lang.Boolean owns;
 
     /**

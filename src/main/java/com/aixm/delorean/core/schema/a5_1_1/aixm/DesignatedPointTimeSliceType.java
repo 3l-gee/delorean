@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,7 +72,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "designatedpointtimeslicetype", schema = "public")
 public class DesignatedPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -79,42 +81,57 @@ public class DesignatedPointTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator"))
     })
     protected CodeDesignatedPointDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeDesignatedPointType type;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "name"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected PointPropertyType location;
-    @XmlElementRef(name = "aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> aimingPoint;
-    @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
-    @XmlElementRef(name = "runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> runwayPoint;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "aimingpoint_id", referencedColumnName = "id")
+    protected TouchDownLiftOffPropertyType aimingPoint;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "airportheliport_id", referencedColumnName = "id")
+    protected AirportHeliportPropertyType airportHeliport;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "runwaypoint_id", referencedColumnName = "id")
+    protected RunwayCentrelinePointPropertyType runwayPoint;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "designatedpointpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "designatedpointpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<DesignatedPointTimeSliceType.Extension> extension;
@@ -236,10 +253,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getAimingPoint() {
+    public TouchDownLiftOffPropertyType getAimingPoint() {
         return aimingPoint;
     }
 
@@ -248,10 +265,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setAimingPoint(TouchDownLiftOffPropertyType value) {
         this.aimingPoint = value;
     }
 
@@ -264,10 +281,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAirportHeliport() {
+    public AirportHeliportPropertyType getAirportHeliport() {
         return airportHeliport;
     }
 
@@ -276,10 +293,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAirportHeliport(AirportHeliportPropertyType value) {
         this.airportHeliport = value;
     }
 
@@ -292,10 +309,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getRunwayPoint() {
         return runwayPoint;
     }
 
@@ -304,10 +321,10 @@ public class DesignatedPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.runwayPoint = value;
     }
 
@@ -426,8 +443,10 @@ public class DesignatedPointTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractdesignatedpointextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractDesignatedPointExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

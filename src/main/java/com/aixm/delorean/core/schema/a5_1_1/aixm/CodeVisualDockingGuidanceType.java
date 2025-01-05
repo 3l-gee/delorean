@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVisualDockingGuidanceType {
 
     @XmlValue
-    @Column(name = "visual_docking_guidance", nullable = true, unique = false)
+    @Column(name = "visualdockingguidancebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "visual_docking_guidance_nil_reason", nullable = true, unique = false)
+    @Column(name = "visualdockingguidancetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

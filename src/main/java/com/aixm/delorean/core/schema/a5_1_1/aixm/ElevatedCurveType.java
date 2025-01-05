@@ -16,6 +16,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -72,32 +73,32 @@ public class ElevatedCurveType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "elevation")),
         @AttributeOverride(name = "uom", column = @Column(name = "elevation_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "elevation_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "elevation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "elevation"))
     })
     protected ValDistanceVerticalType elevation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "geoid_undulation")),
-        @AttributeOverride(name = "uom", column = @Column(name = "geoid_undulation_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "geoid_undulation_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "geoidundulation_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "geoidundulation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "geoidundulation"))
     })
     protected ValDistanceSignedType geoidUndulation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "vertical_datum")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_datum_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "verticaldatum_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "verticaldatum"))
     })
     protected CodeVerticalDatumType verticalDatum;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "vertical_accuracy")),
-        @AttributeOverride(name = "uom", column = @Column(name = "vertical_accuracy_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_accuracy_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "verticalaccuracy_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "verticalaccuracy_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "verticalaccuracy"))
     })
     protected ValDistanceType verticalAccuracy;
     @Transient
@@ -286,8 +287,10 @@ public class ElevatedCurveType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractelevatedcurveextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractElevatedCurveExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

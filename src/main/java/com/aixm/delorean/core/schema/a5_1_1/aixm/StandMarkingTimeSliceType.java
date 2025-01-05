@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -69,7 +70,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "markedStand",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "standmarkingtimeslicetype", schema = "public")
 public class StandMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -77,30 +79,43 @@ public class StandMarkingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "marking_icao_standard")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "marking_icao_standard_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "markingicaostandard_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "markingicaostandard"))
     })
     protected CodeYesNoType markingICAOStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "condition")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "condition_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "condition_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "condition"))
     })
     protected CodeMarkingConditionType condition;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "markingpropertygroup_element", joinColumns = {
+        @JoinColumn(name = "markingpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "markingelementpropertytype_id")
+    })
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "markingpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "markingpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "markedStand", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AircraftStandPropertyType> markedStand;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "markedstand_id", referencedColumnName = "id")
+    protected AircraftStandPropertyType markedStand;
     @Transient
     protected List<StandMarkingTimeSliceType.Extension> extension;
 
@@ -245,10 +260,10 @@ public class StandMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AircraftStandPropertyType }{@code >}
+     *     {@link AircraftStandPropertyType }
      *     
      */
-    public JAXBElement<AircraftStandPropertyType> getMarkedStand() {
+    public AircraftStandPropertyType getMarkedStand() {
         return markedStand;
     }
 
@@ -257,10 +272,10 @@ public class StandMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AircraftStandPropertyType }{@code >}
+     *     {@link AircraftStandPropertyType }
      *     
      */
-    public void setMarkedStand(JAXBElement<AircraftStandPropertyType> value) {
+    public void setMarkedStand(AircraftStandPropertyType value) {
         this.markedStand = value;
     }
 
@@ -341,13 +356,16 @@ public class StandMarkingTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractstandmarkingextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractStandMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractmarkingextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

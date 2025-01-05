@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -74,7 +75,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "taxiwaytimeslicetype", schema = "public")
 public class TaxiwayTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -82,70 +84,89 @@ public class TaxiwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator"))
     })
     protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeTaxiwayType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width")),
         @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "width"))
     })
     protected ValDistanceType width;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "width_shoulder")),
-        @AttributeOverride(name = "uom", column = @Column(name = "width_shoulder_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "width_shoulder_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "widthshoulder_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "widthshoulder_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "widthshoulder"))
     })
     protected ValDistanceType widthShoulder;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "length"))
     })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "abandoned")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "abandoned"))
     })
     protected CodeYesNoType abandoned;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "surfaceproperties_id", referencedColumnName = "id")
     protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElementRef(name = "associatedAirportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> associatedAirportHeliport;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "associatedairportheliport_id", referencedColumnName = "id")
+    protected AirportHeliportPropertyType associatedAirportHeliport;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "taxiwaypropertygroup_contaminant", joinColumns = {
+        @JoinColumn(name = "taxiwaypropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "taxiwaycontaminationpropertytype_id")
+    })
     protected List<TaxiwayContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "taxiwaypropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "taxiwaypropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "taxiwaypropertygroup_availability", joinColumns = {
+        @JoinColumn(name = "taxiwaypropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "manoeuvringareaavailabilitypropertytype_id")
+    })
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
     @Transient
     protected List<TaxiwayTimeSliceType.Extension> extension;
@@ -351,10 +372,10 @@ public class TaxiwayTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAssociatedAirportHeliport() {
+    public AirportHeliportPropertyType getAssociatedAirportHeliport() {
         return associatedAirportHeliport;
     }
 
@@ -363,10 +384,10 @@ public class TaxiwayTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAssociatedAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAssociatedAirportHeliport(AirportHeliportPropertyType value) {
         this.associatedAirportHeliport = value;
     }
 
@@ -565,8 +586,10 @@ public class TaxiwayTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstracttaxiwayextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTaxiwayExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

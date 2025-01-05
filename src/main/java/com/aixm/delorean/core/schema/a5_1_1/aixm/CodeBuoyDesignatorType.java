@@ -43,7 +43,7 @@ public class CodeBuoyDesignatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "buoy_designator_nil_reason", nullable = true, unique = false)
+    @Column(name = "buoydesignatortype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

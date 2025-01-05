@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMinimumAltitudeType {
 
     @XmlValue
-    @Column(name = "minimum_altitude", nullable = true, unique = false)
+    @Column(name = "minimumaltitudebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "minimum_altitude_nil_reason", nullable = true, unique = false)
+    @Column(name = "minimumaltitudetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -70,50 +73,68 @@ import jakarta.xml.bind.annotation.XmlType;
     "eMail",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "onlinecontacttype", schema = "public")
 public class OnlineContactType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "onlinecontacttype_timeinterval", joinColumns = {
+        @JoinColumn(name = "onlinecontacttype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "timesheetpropertytype_id")
+    })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "onlinecontacttype_annotation", joinColumns = {
+        @JoinColumn(name = "onlinecontacttype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "onlinecontacttype_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "onlinecontacttype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertytype_id")
+    })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "network")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "network_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "network_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "network"))
     })
     protected CodeTelecomNetworkType network;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "linkage")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "linkage_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "linkage_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "linkage"))
     })
     protected TextAddressType linkage;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "protocol")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "protocol_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "protocol_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "protocol"))
     })
     protected TextNameType protocol;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "e_mail")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "e_mail_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "email_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "email"))
     })
     protected TextAddressType eMail;
     @Transient
@@ -424,13 +445,16 @@ public class OnlineContactType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractpropertieswithscheduleextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractOnlineContactExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractonlinecontactextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractOnlineContactExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

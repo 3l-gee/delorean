@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -67,29 +70,47 @@ import jakarta.xml.bind.annotation.XmlType;
     "operationalStatus",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "radiocommunicationoperationalstatustype", schema = "public")
 public class RadioCommunicationOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "radiocommunicationoperationalstatustype_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "timesheetpropertytype_id")
+    })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "radiocommunicationoperationalstatustype_annotation", joinColumns = {
+        @JoinColumn(name = "radiocommunicationoperationalstatustype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "radiocommunicationoperationalstatustype_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "radiocommunicationoperationalstatustype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertytype_id")
+    })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "operational_status")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "operational_status_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operationalstatus_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "operationalstatus"))
     })
     protected CodeStatusServiceType operationalStatus;
     @Transient
@@ -316,13 +337,16 @@ public class RadioCommunicationOperationalStatusType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractpropertieswithscheduleextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractRadioCommunicationOperationalStatusExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractradiocommunicationoperationalstatusextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRadioCommunicationOperationalStatusExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

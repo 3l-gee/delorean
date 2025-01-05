@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNotePurposeType {
 
     @XmlValue
-    @Column(name = "note_purpose", nullable = true, unique = false)
+    @Column(name = "notepurposebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "note_purpose_nil_reason", nullable = true, unique = false)
+    @Column(name = "notepurposetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

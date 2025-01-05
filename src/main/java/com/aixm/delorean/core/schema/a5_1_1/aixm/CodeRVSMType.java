@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRVSMType {
 
     @XmlValue
-    @Column(name = "rvsm", nullable = true, unique = false)
+    @Column(name = "rvsmbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "rvsm_nil_reason", nullable = true, unique = false)
+    @Column(name = "rvsmtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

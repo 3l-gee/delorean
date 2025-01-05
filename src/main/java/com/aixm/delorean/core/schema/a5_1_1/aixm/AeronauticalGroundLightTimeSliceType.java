@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,7 +72,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "aeronauticalgroundlighttimeslicetype", schema = "public")
 public class AeronauticalGroundLightTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -79,46 +81,58 @@ public class AeronauticalGroundLightTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "name"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeGroundLightingType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "colour")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "colour"))
     })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flashing")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flashing_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flashing_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "flashing"))
     })
     protected CodeYesNoType flashing;
-    @XmlElementRef(name = "structureBeacon", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<VerticalStructurePropertyType> structureBeacon;
-    @XmlElementRef(name = "aerodromeBeacon", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> aerodromeBeacon;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    protected ElevatedPointPropertyType location;
+    @JoinColumn(name = "structurebeacon_id", referencedColumnName = "id")
+    protected VerticalStructurePropertyType structureBeacon;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "aerodromebeacon_id", referencedColumnName = "id")
+    protected AirportHeliportPropertyType aerodromeBeacon;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    protected ElevatedPointPropertyType location;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "aeronauticalgroundlightpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "aeronauticalgroundlightpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AeronauticalGroundLightTimeSliceType.Extension> extension;
@@ -240,10 +254,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link VerticalStructurePropertyType }{@code >}
+     *     {@link VerticalStructurePropertyType }
      *     
      */
-    public JAXBElement<VerticalStructurePropertyType> getStructureBeacon() {
+    public VerticalStructurePropertyType getStructureBeacon() {
         return structureBeacon;
     }
 
@@ -252,10 +266,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link VerticalStructurePropertyType }{@code >}
+     *     {@link VerticalStructurePropertyType }
      *     
      */
-    public void setStructureBeacon(JAXBElement<VerticalStructurePropertyType> value) {
+    public void setStructureBeacon(VerticalStructurePropertyType value) {
         this.structureBeacon = value;
     }
 
@@ -268,10 +282,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAerodromeBeacon() {
+    public AirportHeliportPropertyType getAerodromeBeacon() {
         return aerodromeBeacon;
     }
 
@@ -280,10 +294,10 @@ public class AeronauticalGroundLightTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAerodromeBeacon(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAerodromeBeacon(AirportHeliportPropertyType value) {
         this.aerodromeBeacon = value;
     }
 
@@ -430,8 +444,10 @@ public class AeronauticalGroundLightTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractaeronauticalgroundlightextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAeronauticalGroundLightExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

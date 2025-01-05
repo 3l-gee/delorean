@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeCardinalDirectionType {
 
     @XmlValue
-    @Column(name = "cardinal_direction", nullable = true, unique = false)
+    @Column(name = "cardinaldirectionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "cardinal_direction_nil_reason", nullable = true, unique = false)
+    @Column(name = "cardinaldirectiontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

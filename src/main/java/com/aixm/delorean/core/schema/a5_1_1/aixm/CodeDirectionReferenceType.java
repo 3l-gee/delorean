@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDirectionReferenceType {
 
     @XmlValue
-    @Column(name = "direction_reference", nullable = true, unique = false)
+    @Column(name = "directionreferencebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "direction_reference_nil_reason", nullable = true, unique = false)
+    @Column(name = "directionreferencetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

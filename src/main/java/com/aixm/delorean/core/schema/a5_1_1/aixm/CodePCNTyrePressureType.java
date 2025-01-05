@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePCNTyrePressureType {
 
     @XmlValue
-    @Column(name = "pcn_tyre_pressure", nullable = true, unique = false)
+    @Column(name = "pcntyrepressurebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "pcn_tyre_pressure_nil_reason", nullable = true, unique = false)
+    @Column(name = "pcntyrepressuretype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

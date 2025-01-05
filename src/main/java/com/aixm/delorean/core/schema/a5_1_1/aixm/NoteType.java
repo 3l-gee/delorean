@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,7 +67,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "translatedNote",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "notetype", schema = "public")
 public class NoteType
     extends AbstractAIXMObjectType
 {
@@ -72,21 +76,26 @@ public class NoteType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "property_name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "property_name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "propertyname_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "propertyname"))
     })
     protected TextPropertyNameType propertyName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "purpose")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "purpose"))
     })
     protected CodeNotePurposeType purpose;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "notepropertygroup_translatednote", joinColumns = {
+        @JoinColumn(name = "notepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "linguisticnotepropertytype_id")
+    })
     protected List<LinguisticNotePropertyType> translatedNote;
     @Transient
     protected List<NoteType.Extension> extension;
@@ -258,8 +267,10 @@ public class NoteType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractnoteextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNoteExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

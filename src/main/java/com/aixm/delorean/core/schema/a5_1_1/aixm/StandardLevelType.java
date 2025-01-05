@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -63,7 +66,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "standardleveltype", schema = "public")
 public class StandardLevelType
     extends AbstractAIXMObjectType
 {
@@ -71,15 +75,20 @@ public class StandardLevelType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "vertical_distance")),
-        @AttributeOverride(name = "uom", column = @Column(name = "vertical_distance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_distance_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "verticaldistance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "verticaldistance_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "verticaldistance"))
     })
     protected ValDistanceVerticalType verticalDistance;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "standardlevelpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "standardlevelpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<StandardLevelType.Extension> extension;
@@ -223,8 +232,10 @@ public class StandardLevelType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractstandardlevelextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractStandardLevelExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

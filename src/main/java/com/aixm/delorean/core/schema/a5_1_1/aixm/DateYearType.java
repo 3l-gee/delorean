@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class DateYearType {
 
     @XmlValue
-    @Column(name = "year", nullable = true, unique = false)
+    @Column(name = "yearbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "year_nil_reason", nullable = true, unique = false)
+    @Column(name = "yeartype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

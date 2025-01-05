@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -77,7 +80,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "informationProvision",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "directionfindertimeslicetype", schema = "public")
 public class DirectionFinderTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -85,93 +89,121 @@ public class DirectionFinderTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator"))
     })
     protected CodeNavaidDesignatorType designator;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "name"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "emission_class")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "emission_class_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emissionclass_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "emissionclass"))
     })
     protected CodeRadioEmissionType emissionClass;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "mobile")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "mobile_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "mobile_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "mobile"))
     })
     protected CodeYesNoType mobile;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_variation_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magneticvariation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "magneticvariation"))
     })
     protected ValMagneticVariationType magneticVariation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "magnetic_variation_accuracy")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_variation_accuracy_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magneticvariationaccuracy_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "magneticvariationaccuracy"))
     })
     protected ValAngleType magneticVariationAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "date_magnetic_variation")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "date_magnetic_variation_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "datemagneticvariation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "datemagneticvariation"))
     })
     protected DateYearType dateMagneticVariation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flight_checked")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flight_checked_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flightchecked_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "flightchecked"))
     })
     protected CodeYesNoType flightChecked;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "directionfindertimeslicetype_authority", joinColumns = {
+        @JoinColumn(name = "directionfindertimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "authorityfornavaidequipmentpropertytype_id")
+    })
     protected List<AuthorityForNavaidEquipmentPropertyType> authority;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "directionfindertimeslicetype_monitoring", joinColumns = {
+        @JoinColumn(name = "directionfindertimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "navaidequipmentmonitoringpropertytype_id")
+    })
     protected List<NavaidEquipmentMonitoringPropertyType> monitoring;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "directionfindertimeslicetype_availability", joinColumns = {
+        @JoinColumn(name = "directionfindertimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "navaidoperationalstatuspropertytype_id")
+    })
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "directionfindertimeslicetype_annotation", joinColumns = {
+        @JoinColumn(name = "directionfindertimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "doppler")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "doppler_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "doppler_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "doppler"))
     })
     protected CodeYesNoType doppler;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "directionfindertimeslicetype_informationprovision", joinColumns = {
+        @JoinColumn(name = "directionfindertimeslicetype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "informationservicepropertytype_id")
+    })
     protected List<InformationServicePropertyType> informationProvision;
     @Transient
     protected List<DirectionFinderTimeSliceType.Extension> extension;
@@ -729,13 +761,16 @@ public class DirectionFinderTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractdirectionfinderextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractDirectionFinderExtension;
         @XmlElement(name = "AbstractNavaidEquipmentExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractnavaidequipmentextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNavaidEquipmentExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

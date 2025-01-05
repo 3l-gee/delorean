@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSegmentPathType {
 
     @XmlValue
-    @Column(name = "segment_path", nullable = true, unique = false)
+    @Column(name = "segmentpathbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "segment_path_nil_reason", nullable = true, unique = false)
+    @Column(name = "segmentpathtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

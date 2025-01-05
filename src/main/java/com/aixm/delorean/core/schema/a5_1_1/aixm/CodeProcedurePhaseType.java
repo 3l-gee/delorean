@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProcedurePhaseType {
 
     @XmlValue
-    @Column(name = "procedure_phase", nullable = true, unique = false)
+    @Column(name = "procedurephasebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "procedure_phase_nil_reason", nullable = true, unique = false)
+    @Column(name = "procedurephasetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

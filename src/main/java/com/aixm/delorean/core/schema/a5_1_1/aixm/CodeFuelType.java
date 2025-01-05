@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeFuelType {
 
     @XmlValue
-    @Column(name = "fuel", nullable = true, unique = false)
+    @Column(name = "fuelbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "fuel_nil_reason", nullable = true, unique = false)
+    @Column(name = "fueltype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

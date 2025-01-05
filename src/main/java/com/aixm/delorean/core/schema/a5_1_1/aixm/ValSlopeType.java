@@ -42,10 +42,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValSlopeType {
 
     @XmlValue
-    @Column(name = "slope", nullable = true, unique = false)
+    @Column(name = "slopebasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "slope_nil_reason", nullable = true, unique = false)
+    @Column(name = "slopetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

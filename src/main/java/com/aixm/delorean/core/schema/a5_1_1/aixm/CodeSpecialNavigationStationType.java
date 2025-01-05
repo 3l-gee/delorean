@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSpecialNavigationStationType {
 
     @XmlValue
-    @Column(name = "special_navigation_station", nullable = true, unique = false)
+    @Column(name = "specialnavigationstationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "special_navigation_station_nil_reason", nullable = true, unique = false)
+    @Column(name = "specialnavigationstationtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

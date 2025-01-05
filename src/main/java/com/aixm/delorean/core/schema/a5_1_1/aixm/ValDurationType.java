@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDurationType {
 
     @XmlValue
-    @Column(name = "duration", nullable = true, unique = false)
+    @Column(name = "durationbasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "duration_uom", nullable = true, unique = false)
+    @Column(name = "durationtype_uom", nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "duration_nil_reason", nullable = true, unique = false)
+    @Column(name = "durationtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

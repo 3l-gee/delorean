@@ -10,9 +10,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -42,15 +45,21 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "RunwayMarkingType", propOrder = {
     "timeSlice"
 })
-@Embeddable
+@Entity
+@Table(name = "runwaymarkingtype", schema = "public")
 public class RunwayMarkingType
     extends AbstractMarkingType
 {
 
     @XmlElement(required = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "runwaymarkingtype_timeslice", joinColumns = {
+        @JoinColumn(name = "runwaymarkingtype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "runwaymarkingtimeslicepropertytype_id")
+    })
     protected List<RunwayMarkingTimeSlicePropertyType> timeSlice;
 
     /**

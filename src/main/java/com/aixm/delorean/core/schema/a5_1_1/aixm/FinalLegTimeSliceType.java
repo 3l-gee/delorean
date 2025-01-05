@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -116,7 +117,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "fasData",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "finallegtimeslicetype", schema = "public")
 public class FinalLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -124,312 +126,364 @@ public class FinalLegTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "end_condition_designator")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "end_condition_designator_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "endconditiondesignator_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "endconditiondesignator"))
     })
     protected CodeSegmentTerminationType endConditionDesignator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "leg_path")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "leg_path_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "legpath_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "legpath"))
     })
     protected CodeTrajectoryType legPath;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "leg_type_arinc")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "leg_type_arinc_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "legtypearinc_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "legtypearinc"))
     })
     protected CodeSegmentPathType legTypeARINC;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "course_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "course_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "course"))
     })
     protected ValBearingType course;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "course_type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "coursetype_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "coursetype"))
     })
     protected CodeCourseType courseType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_direction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "course_direction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "coursedirection_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "coursedirection"))
     })
     protected CodeDirectionReferenceType courseDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "turn_direction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "turn_direction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turndirection_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "turndirection"))
     })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_limit")),
-        @AttributeOverride(name = "uom", column = @Column(name = "speed_limit_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "speed_limit_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "speedlimit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speedlimit_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "speedlimit"))
     })
     protected ValSpeedType speedLimit;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "speed_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speedreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "speedreference"))
     })
     protected CodeSpeedReferenceType speedReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "speed_interpretation")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "speed_interpretation_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speedinterpretation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "speedinterpretation"))
     })
     protected CodeAltitudeUseType speedInterpretation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "bank_angle")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "bank_angle_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "bankangle_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "bankangle"))
     })
     protected ValAngleType bankAngle;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "length")),
         @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "length"))
     })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "duration")),
         @AttributeOverride(name = "uom", column = @Column(name = "duration_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "duration_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "duration_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "duration"))
     })
     protected ValDurationType duration;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "procedure_turn_required")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "procedure_turn_required_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "procedureturnrequired_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "procedureturnrequired"))
     })
     protected CodeYesNoType procedureTurnRequired;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_altitude")),
-        @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_altitude_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "upperlimitaltitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimitaltitude_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "upperlimitaltitude"))
     })
     protected ValDistanceVerticalType upperLimitAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimitreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "upperlimitreference"))
     })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_altitude")),
-        @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_altitude_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "lowerlimitaltitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimitaltitude_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lowerlimitaltitude"))
     })
     protected ValDistanceVerticalType lowerLimitAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimitreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lowerlimitreference"))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_interpretation")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_interpretation_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeinterpretation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitudeinterpretation"))
     })
     protected CodeAltitudeUseType altitudeInterpretation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_override_atc")),
-        @AttributeOverride(name = "uom", column = @Column(name = "altitude_override_atc_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_override_atc_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "altitudeoverrideatc_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeoverrideatc_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitudeoverrideatc"))
     })
     protected ValDistanceVerticalType altitudeOverrideATC;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_override_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_override_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeoverridereference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitudeoverridereference"))
     })
     protected CodeVerticalReferenceType altitudeOverrideReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "vertical_angle")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "vertical_angle_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "verticalangle_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "verticalangle"))
     })
     protected ValAngleType verticalAngle;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "startpoint_id", referencedColumnName = "id")
     protected TerminalSegmentPointPropertyType startPoint;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "endpoint_id", referencedColumnName = "id")
     protected TerminalSegmentPointPropertyType endPoint;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "trajectory_id", referencedColumnName = "id")
     protected CurvePropertyType trajectory;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "arccentre_id", referencedColumnName = "id")
     protected TerminalSegmentPointPropertyType arcCentre;
-    @XmlElementRef(name = "angle", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AngleIndicationPropertyType> angle;
-    @XmlElementRef(name = "distance", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DistanceIndicationPropertyType> distance;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "angle_id", referencedColumnName = "id")
+    protected AngleIndicationPropertyType angle;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "distance_id", referencedColumnName = "id")
+    protected DistanceIndicationPropertyType distance;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "segmentlegpropertygroup_aircraftcategory", joinColumns = {
+        @JoinColumn(name = "segmentlegpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
+    })
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "holding_id", referencedColumnName = "id")
     protected HoldingUsePropertyType holding;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "segmentlegpropertygroup_designsurface", joinColumns = {
+        @JoinColumn(name = "segmentlegpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "obstacleassessmentareapropertytype_id")
+    })
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "segmentlegpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "segmentlegpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "approach", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<InstrumentApproachProcedurePropertyType> approach;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "approach_id", referencedColumnName = "id")
+    protected InstrumentApproachProcedurePropertyType approach;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "guidance_system")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "guidance_system_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "guidancesystem_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "guidancesystem"))
     })
     protected CodeFinalGuidanceType guidanceSystem;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "landing_system_category")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "landing_system_category_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "landingsystemcategory_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "landingsystemcategory"))
     })
     protected CodeApproachGuidanceType landingSystemCategory;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "minimum_baro_vnav_temperature")),
-        @AttributeOverride(name = "uom", column = @Column(name = "minimum_baro_vnav_temperature_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "minimum_baro_vnav_temperature_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "minimumbarovnavtemperature_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumbarovnavtemperature_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "minimumbarovnavtemperature"))
     })
     protected ValTemperatureType minimumBaroVnavTemperature;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "rnp_dme_authorized")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "rnp_dme_authorized_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "rnpdmeauthorized_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "rnpdmeauthorized"))
     })
     protected CodeYesNoType rnpDMEAuthorized;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_offset_angle")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "course_offset_angle_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "courseoffsetangle_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "courseoffsetangle"))
     })
     protected ValBearingType courseOffsetAngle;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_offset_side")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "course_offset_side_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "courseoffsetside_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "courseoffsetside"))
     })
     protected CodeSideType courseOffsetSide;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_centreline_distance")),
-        @AttributeOverride(name = "uom", column = @Column(name = "course_centreline_distance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "course_centreline_distance_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "coursecentrelinedistance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "coursecentrelinedistance_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "coursecentrelinedistance"))
     })
     protected ValDistanceType courseCentrelineDistance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_offset_distance")),
-        @AttributeOverride(name = "uom", column = @Column(name = "course_offset_distance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "course_offset_distance_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "courseoffsetdistance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "courseoffsetdistance_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "courseoffsetdistance"))
     })
     protected ValDistanceType courseOffsetDistance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_centreline_intersect")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "course_centreline_intersect_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "coursecentrelineintersect_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "coursecentrelineintersect"))
     })
     protected CodeRelativePositionType courseCentrelineIntersect;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "finallegpropertygroup_condition", joinColumns = {
+        @JoinColumn(name = "finallegpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "approachconditionpropertytype_id")
+    })
     protected List<ApproachConditionPropertyType> condition;
-    @XmlElementRef(name = "finalPathAlignmentPoint_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> finalPathAlignmentPointFixDesignatedPoint;
-    @XmlElementRef(name = "finalPathAlignmentPoint_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NavaidPropertyType> finalPathAlignmentPointNavaidSystem;
+    @XmlElement(name = "finalPathAlignmentPoint_fixDesignatedPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "finalpathalignmentpoint_fixdesignatedpoint_id", referencedColumnName = "id")
+    protected DesignatedPointPropertyType finalPathAlignmentPointFixDesignatedPoint;
+    @XmlElement(name = "finalPathAlignmentPoint_navaidSystem", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "finalpathalignmentpoint_navaidsystem_id", referencedColumnName = "id")
+    protected NavaidPropertyType finalPathAlignmentPointNavaidSystem;
     @XmlElement(name = "finalPathAlignmentPoint_position", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "finalpathalignmentpoint_position_id", referencedColumnName = "id")
     protected PointPropertyType finalPathAlignmentPointPosition;
-    @XmlElementRef(name = "finalPathAlignmentPoint_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> finalPathAlignmentPointRunwayPoint;
-    @XmlElementRef(name = "finalPathAlignmentPoint_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> finalPathAlignmentPointAimingPoint;
-    @XmlElementRef(name = "finalPathAlignmentPoint_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> finalPathAlignmentPointAirportReferencePoint;
+    @XmlElement(name = "finalPathAlignmentPoint_runwayPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "finalpathalignmentpoint_runwaypoint_id", referencedColumnName = "id")
+    protected RunwayCentrelinePointPropertyType finalPathAlignmentPointRunwayPoint;
+    @XmlElement(name = "finalPathAlignmentPoint_aimingPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "finalpathalignmentpoint_aimingpoint_id", referencedColumnName = "id")
+    protected TouchDownLiftOffPropertyType finalPathAlignmentPointAimingPoint;
+    @XmlElement(name = "finalPathAlignmentPoint_airportReferencePoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "finalpathalignmentpoint_airportreferencepoint_id", referencedColumnName = "id")
+    protected AirportHeliportPropertyType finalPathAlignmentPointAirportReferencePoint;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "visualdescentpoint_id", referencedColumnName = "id")
     protected TerminalSegmentPointPropertyType visualDescentPoint;
     @XmlElement(name = "FASData", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "fasdata_id", referencedColumnName = "id")
     protected FASDataBlockPropertyType fasData;
     @Transient
     protected List<FinalLegTimeSliceType.Extension> extension;
@@ -1167,10 +1221,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AngleIndicationPropertyType }{@code >}
+     *     {@link AngleIndicationPropertyType }
      *     
      */
-    public JAXBElement<AngleIndicationPropertyType> getAngle() {
+    public AngleIndicationPropertyType getAngle() {
         return angle;
     }
 
@@ -1179,10 +1233,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AngleIndicationPropertyType }{@code >}
+     *     {@link AngleIndicationPropertyType }
      *     
      */
-    public void setAngle(JAXBElement<AngleIndicationPropertyType> value) {
+    public void setAngle(AngleIndicationPropertyType value) {
         this.angle = value;
     }
 
@@ -1195,10 +1249,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DistanceIndicationPropertyType }{@code >}
+     *     {@link DistanceIndicationPropertyType }
      *     
      */
-    public JAXBElement<DistanceIndicationPropertyType> getDistance() {
+    public DistanceIndicationPropertyType getDistance() {
         return distance;
     }
 
@@ -1207,10 +1261,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DistanceIndicationPropertyType }{@code >}
+     *     {@link DistanceIndicationPropertyType }
      *     
      */
-    public void setDistance(JAXBElement<DistanceIndicationPropertyType> value) {
+    public void setDistance(DistanceIndicationPropertyType value) {
         this.distance = value;
     }
 
@@ -1371,10 +1425,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public JAXBElement<InstrumentApproachProcedurePropertyType> getApproach() {
+    public InstrumentApproachProcedurePropertyType getApproach() {
         return approach;
     }
 
@@ -1383,10 +1437,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link InstrumentApproachProcedurePropertyType }{@code >}
+     *     {@link InstrumentApproachProcedurePropertyType }
      *     
      */
-    public void setApproach(JAXBElement<InstrumentApproachProcedurePropertyType> value) {
+    public void setApproach(InstrumentApproachProcedurePropertyType value) {
         this.approach = value;
     }
 
@@ -1691,10 +1745,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getFinalPathAlignmentPointFixDesignatedPoint() {
+    public DesignatedPointPropertyType getFinalPathAlignmentPointFixDesignatedPoint() {
         return finalPathAlignmentPointFixDesignatedPoint;
     }
 
@@ -1703,10 +1757,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setFinalPathAlignmentPointFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setFinalPathAlignmentPointFixDesignatedPoint(DesignatedPointPropertyType value) {
         this.finalPathAlignmentPointFixDesignatedPoint = value;
     }
 
@@ -1719,10 +1773,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getFinalPathAlignmentPointNavaidSystem() {
+    public NavaidPropertyType getFinalPathAlignmentPointNavaidSystem() {
         return finalPathAlignmentPointNavaidSystem;
     }
 
@@ -1731,10 +1785,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setFinalPathAlignmentPointNavaidSystem(JAXBElement<NavaidPropertyType> value) {
+    public void setFinalPathAlignmentPointNavaidSystem(NavaidPropertyType value) {
         this.finalPathAlignmentPointNavaidSystem = value;
     }
 
@@ -1775,10 +1829,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getFinalPathAlignmentPointRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getFinalPathAlignmentPointRunwayPoint() {
         return finalPathAlignmentPointRunwayPoint;
     }
 
@@ -1787,10 +1841,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setFinalPathAlignmentPointRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setFinalPathAlignmentPointRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.finalPathAlignmentPointRunwayPoint = value;
     }
 
@@ -1803,10 +1857,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getFinalPathAlignmentPointAimingPoint() {
+    public TouchDownLiftOffPropertyType getFinalPathAlignmentPointAimingPoint() {
         return finalPathAlignmentPointAimingPoint;
     }
 
@@ -1815,10 +1869,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setFinalPathAlignmentPointAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setFinalPathAlignmentPointAimingPoint(TouchDownLiftOffPropertyType value) {
         this.finalPathAlignmentPointAimingPoint = value;
     }
 
@@ -1831,10 +1885,10 @@ public class FinalLegTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getFinalPathAlignmentPointAirportReferencePoint() {
+    public AirportHeliportPropertyType getFinalPathAlignmentPointAirportReferencePoint() {
         return finalPathAlignmentPointAirportReferencePoint;
     }
 
@@ -1843,10 +1897,10 @@ public class FinalLegTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setFinalPathAlignmentPointAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setFinalPathAlignmentPointAirportReferencePoint(AirportHeliportPropertyType value) {
         this.finalPathAlignmentPointAirportReferencePoint = value;
     }
 
@@ -1985,18 +2039,22 @@ public class FinalLegTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractfinallegextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractFinalLegExtension;
         @XmlElement(name = "AbstractApproachLegExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractapproachlegextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractApproachLegExtension;
         @XmlElement(name = "AbstractSegmentLegExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractsegmentlegextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractSegmentLegExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

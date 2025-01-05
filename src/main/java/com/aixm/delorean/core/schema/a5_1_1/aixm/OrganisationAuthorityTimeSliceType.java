@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -68,7 +71,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "organisationauthoritytimeslicetype", schema = "public")
 public class OrganisationAuthorityTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -76,45 +80,60 @@ public class OrganisationAuthorityTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "name"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator"))
     })
     protected CodeOrganisationDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeOrganisationType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "military")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "military_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "military_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "military"))
     })
     protected CodeMilitaryOperationsType military;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "organisationauthoritypropertygroup_contact", joinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "contactinformationpropertytype_id")
+    })
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "organisationauthoritypropertygroup_relatedorganisationauthority", joinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "organisationauthorityassociationpropertytype_id")
+    })
     protected List<OrganisationAuthorityAssociationPropertyType> relatedOrganisationAuthority;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "organisationauthoritypropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<OrganisationAuthorityTimeSliceType.Extension> extension;
@@ -422,8 +441,10 @@ public class OrganisationAuthorityTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractorganisationauthorityextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractOrganisationAuthorityExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

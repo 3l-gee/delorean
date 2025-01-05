@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,7 +67,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "theRadarEquipment",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "radarcomponenttype", schema = "public")
 public class RadarComponentType
     extends AbstractAIXMObjectType
 {
@@ -72,16 +76,24 @@ public class RadarComponentType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "collocation_group")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "collocation_group_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "collocationgroup_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "collocationgroup"))
     })
     protected NoSequenceType collocationGroup;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "radarcomponentpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "radarcomponentpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
-    @Transient
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "theradarequipment_id", referencedColumnName = "id")
     protected RadarEquipmentPropertyType theRadarEquipment;
     @Transient
     protected List<RadarComponentType.Extension> extension;
@@ -253,8 +265,10 @@ public class RadarComponentType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractradarcomponentextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRadarComponentExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

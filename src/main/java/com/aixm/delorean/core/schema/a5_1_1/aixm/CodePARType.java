@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePARType {
 
     @XmlValue
-    @Column(name = "par", nullable = true, unique = false)
+    @Column(name = "parbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "par_nil_reason", nullable = true, unique = false)
+    @Column(name = "partype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

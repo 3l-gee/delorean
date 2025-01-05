@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -75,7 +76,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "airspacetimeslicetype", schema = "public")
 public class AirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -83,75 +85,98 @@ public class AirspaceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeAirspaceType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator"))
     })
     protected CodeAirspaceDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "local_type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "local_type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "localtype_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "localtype"))
     })
     protected TextNameType localType;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "name"))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_icao")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_icao_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designatoricao_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designatoricao"))
     })
     protected CodeYesNoType designatorICAO;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "control_type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "control_type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "controltype_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "controltype"))
     })
     protected CodeMilitaryOperationsType controlType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_lower_separation")),
-        @AttributeOverride(name = "uom", column = @Column(name = "upper_lower_separation_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_lower_separation_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "upperlowerseparation_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlowerseparation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "upperlowerseparation"))
     })
     protected ValFLType upperLowerSeparation;
     @XmlElement(name = "class", nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airspacepropertygroup_class", joinColumns = {
+        @JoinColumn(name = "airspacepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airspacelayerclasspropertytype_id")
+    })
     protected List<AirspaceLayerClassPropertyType> clazz;
-    @XmlElementRef(name = "protectedRoute", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RoutePropertyType> protectedRoute;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "protectedroute_id", referencedColumnName = "id")
+    protected RoutePropertyType protectedRoute;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airspacepropertygroup_geometrycomponent", joinColumns = {
+        @JoinColumn(name = "airspacepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airspacegeometrycomponentpropertytype_id")
+    })
     protected List<AirspaceGeometryComponentPropertyType> geometryComponent;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airspacepropertygroup_activation", joinColumns = {
+        @JoinColumn(name = "airspacepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airspaceactivationpropertytype_id")
+    })
     protected List<AirspaceActivationPropertyType> activation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "airspacepropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "airspacepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AirspaceTimeSliceType.Extension> extension;
@@ -397,10 +422,10 @@ public class AirspaceTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
+     *     {@link RoutePropertyType }
      *     
      */
-    public JAXBElement<RoutePropertyType> getProtectedRoute() {
+    public RoutePropertyType getProtectedRoute() {
         return protectedRoute;
     }
 
@@ -409,10 +434,10 @@ public class AirspaceTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RoutePropertyType }{@code >}
+     *     {@link RoutePropertyType }
      *     
      */
-    public void setProtectedRoute(JAXBElement<RoutePropertyType> value) {
+    public void setProtectedRoute(RoutePropertyType value) {
         this.protectedRoute = value;
     }
 
@@ -611,8 +636,10 @@ public class AirspaceTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractairspaceextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractAirspaceExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

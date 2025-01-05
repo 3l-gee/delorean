@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValFrequencyType {
 
     @XmlValue
-    @Column(name = "frequency", nullable = true, unique = false)
+    @Column(name = "frequencybasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "frequency_uom", nullable = true, unique = false)
+    @Column(name = "frequencytype_uom", nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "frequency_nil_reason", nullable = true, unique = false)
+    @Column(name = "frequencytype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -72,7 +73,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "changeoverpointtimeslicetype", schema = "public")
 public class ChangeOverPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -80,40 +82,62 @@ public class ChangeOverPointTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "distance")),
         @AttributeOverride(name = "uom", column = @Column(name = "distance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "distance"))
     })
     protected ValDistanceType distance;
-    @XmlElementRef(name = "location_fixDesignatedPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> locationFixDesignatedPoint;
-    @XmlElementRef(name = "location_navaidSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NavaidPropertyType> locationNavaidSystem;
+    @XmlElement(name = "location_fixDesignatedPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_fixdesignatedpoint_id", referencedColumnName = "id")
+    protected DesignatedPointPropertyType locationFixDesignatedPoint;
+    @XmlElement(name = "location_navaidSystem", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_navaidsystem_id", referencedColumnName = "id")
+    protected NavaidPropertyType locationNavaidSystem;
     @XmlElement(name = "location_position", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_position_id", referencedColumnName = "id")
     protected PointPropertyType locationPosition;
-    @XmlElementRef(name = "location_runwayPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayCentrelinePointPropertyType> locationRunwayPoint;
-    @XmlElementRef(name = "location_aimingPoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> locationAimingPoint;
-    @XmlElementRef(name = "location_airportReferencePoint", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> locationAirportReferencePoint;
+    @XmlElement(name = "location_runwayPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_runwaypoint_id", referencedColumnName = "id")
+    protected RunwayCentrelinePointPropertyType locationRunwayPoint;
+    @XmlElement(name = "location_aimingPoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_aimingpoint_id", referencedColumnName = "id")
+    protected TouchDownLiftOffPropertyType locationAimingPoint;
+    @XmlElement(name = "location_airportReferencePoint", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_airportreferencepoint_id", referencedColumnName = "id")
+    protected AirportHeliportPropertyType locationAirportReferencePoint;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "applicablerouteportion_id", referencedColumnName = "id")
     protected RoutePortionPropertyType applicableRoutePortion;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "changeoverpointpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "changeoverpointpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ChangeOverPointTimeSliceType.Extension> extension;
@@ -151,10 +175,10 @@ public class ChangeOverPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getLocationFixDesignatedPoint() {
+    public DesignatedPointPropertyType getLocationFixDesignatedPoint() {
         return locationFixDesignatedPoint;
     }
 
@@ -163,10 +187,10 @@ public class ChangeOverPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setLocationFixDesignatedPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setLocationFixDesignatedPoint(DesignatedPointPropertyType value) {
         this.locationFixDesignatedPoint = value;
     }
 
@@ -179,10 +203,10 @@ public class ChangeOverPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getLocationNavaidSystem() {
+    public NavaidPropertyType getLocationNavaidSystem() {
         return locationNavaidSystem;
     }
 
@@ -191,10 +215,10 @@ public class ChangeOverPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setLocationNavaidSystem(JAXBElement<NavaidPropertyType> value) {
+    public void setLocationNavaidSystem(NavaidPropertyType value) {
         this.locationNavaidSystem = value;
     }
 
@@ -235,10 +259,10 @@ public class ChangeOverPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public JAXBElement<RunwayCentrelinePointPropertyType> getLocationRunwayPoint() {
+    public RunwayCentrelinePointPropertyType getLocationRunwayPoint() {
         return locationRunwayPoint;
     }
 
@@ -247,10 +271,10 @@ public class ChangeOverPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayCentrelinePointPropertyType }{@code >}
+     *     {@link RunwayCentrelinePointPropertyType }
      *     
      */
-    public void setLocationRunwayPoint(JAXBElement<RunwayCentrelinePointPropertyType> value) {
+    public void setLocationRunwayPoint(RunwayCentrelinePointPropertyType value) {
         this.locationRunwayPoint = value;
     }
 
@@ -263,10 +287,10 @@ public class ChangeOverPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getLocationAimingPoint() {
+    public TouchDownLiftOffPropertyType getLocationAimingPoint() {
         return locationAimingPoint;
     }
 
@@ -275,10 +299,10 @@ public class ChangeOverPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setLocationAimingPoint(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setLocationAimingPoint(TouchDownLiftOffPropertyType value) {
         this.locationAimingPoint = value;
     }
 
@@ -291,10 +315,10 @@ public class ChangeOverPointTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getLocationAirportReferencePoint() {
+    public AirportHeliportPropertyType getLocationAirportReferencePoint() {
         return locationAirportReferencePoint;
     }
 
@@ -303,10 +327,10 @@ public class ChangeOverPointTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setLocationAirportReferencePoint(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setLocationAirportReferencePoint(AirportHeliportPropertyType value) {
         this.locationAirportReferencePoint = value;
     }
 
@@ -453,8 +477,10 @@ public class ChangeOverPointTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractchangeoverpointextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractChangeOverPointExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

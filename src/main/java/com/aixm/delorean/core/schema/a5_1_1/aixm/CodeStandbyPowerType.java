@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeStandbyPowerType {
 
     @XmlValue
-    @Column(name = "standby_power", nullable = true, unique = false)
+    @Column(name = "standbypowerbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "standby_power_nil_reason", nullable = true, unique = false)
+    @Column(name = "standbypowertype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -79,7 +80,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "runwaydirectiontimeslicetype", schema = "public")
 public class RunwayDirectionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -87,104 +89,120 @@ public class RunwayDirectionTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator"))
     })
     protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "true_bearing")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "true_bearing_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "truebearing_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "truebearing"))
     })
     protected ValBearingType trueBearing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "true_bearing_accuracy")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "true_bearing_accuracy_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "truebearingaccuracy_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "truebearingaccuracy"))
     })
     protected ValAngleType trueBearingAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "magnetic_bearing")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "magnetic_bearing_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magneticbearing_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "magneticbearing"))
     })
     protected ValBearingType magneticBearing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "pattern_vfr")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "pattern_vfr_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "patternvfr_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "patternvfr"))
     })
     protected CodeDirectionTurnType patternVFR;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "slope_tdz")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "slope_tdz_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "slopetdz_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "slopetdz"))
     })
     protected ValSlopeType slopeTDZ;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "elevation_tdz")),
-        @AttributeOverride(name = "uom", column = @Column(name = "elevation_tdz_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "elevation_tdz_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "elevationtdz_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "elevationtdz_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "elevationtdz"))
     })
     protected ValDistanceVerticalType elevationTDZ;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "elevation_tdz_accuracy")),
-        @AttributeOverride(name = "uom", column = @Column(name = "elevation_tdz_accuracy_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "elevation_tdz_accuracy_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "elevationtdzaccuracy_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "elevationtdzaccuracy_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "elevationtdzaccuracy"))
     })
     protected ValDistanceType elevationTDZAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "approach_marking_type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "approach_marking_type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approachmarkingtype_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "approachmarkingtype"))
     })
     protected CodeRunwayMarkingType approachMarkingType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "approach_marking_condition")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "approach_marking_condition_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approachmarkingcondition_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "approachmarkingcondition"))
     })
     protected CodeMarkingConditionType approachMarkingCondition;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "class_lighting_jar")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "class_lighting_jar_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "classlightingjar_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "classlightingjar"))
     })
     protected CodeLightingJARType classLightingJAR;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "precision_approach_guidance")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "precision_approach_guidance_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "precisionapproachguidance_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "precisionapproachguidance"))
     })
     protected CodeApproachGuidanceType precisionApproachGuidance;
-    @XmlElementRef(name = "usedRunway", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayPropertyType> usedRunway;
-    @XmlElementRef(name = "startingElement", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RunwayElementPropertyType> startingElement;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "usedrunway_id", referencedColumnName = "id")
+    protected RunwayPropertyType usedRunway;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "startingelement_id", referencedColumnName = "id")
+    protected RunwayElementPropertyType startingElement;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "runwaydirectionpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "runwaydirectionpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "runwaydirectionpropertygroup_availability", joinColumns = {
+        @JoinColumn(name = "runwaydirectionpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "manoeuvringareaavailabilitypropertytype_id")
+    })
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
     @Transient
     protected List<RunwayDirectionTimeSliceType.Extension> extension;
@@ -530,10 +548,10 @@ public class RunwayDirectionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayPropertyType }{@code >}
+     *     {@link RunwayPropertyType }
      *     
      */
-    public JAXBElement<RunwayPropertyType> getUsedRunway() {
+    public RunwayPropertyType getUsedRunway() {
         return usedRunway;
     }
 
@@ -542,10 +560,10 @@ public class RunwayDirectionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayPropertyType }{@code >}
+     *     {@link RunwayPropertyType }
      *     
      */
-    public void setUsedRunway(JAXBElement<RunwayPropertyType> value) {
+    public void setUsedRunway(RunwayPropertyType value) {
         this.usedRunway = value;
     }
 
@@ -558,10 +576,10 @@ public class RunwayDirectionTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RunwayElementPropertyType }{@code >}
+     *     {@link RunwayElementPropertyType }
      *     
      */
-    public JAXBElement<RunwayElementPropertyType> getStartingElement() {
+    public RunwayElementPropertyType getStartingElement() {
         return startingElement;
     }
 
@@ -570,10 +588,10 @@ public class RunwayDirectionTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RunwayElementPropertyType }{@code >}
+     *     {@link RunwayElementPropertyType }
      *     
      */
-    public void setStartingElement(JAXBElement<RunwayElementPropertyType> value) {
+    public void setStartingElement(RunwayElementPropertyType value) {
         this.startingElement = value;
     }
 
@@ -732,8 +750,10 @@ public class RunwayDirectionTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractrunwaydirectionextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRunwayDirectionExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

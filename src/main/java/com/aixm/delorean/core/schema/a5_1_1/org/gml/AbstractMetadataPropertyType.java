@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.FeatureMetadataPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.FeatureTimeSliceMetadataPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.MessageMetadataPropertyType;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -51,6 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public abstract class AbstractMetadataPropertyType {
 
     @XmlAttribute(name = "owns")
+    @Transient
     protected java.lang.Boolean owns;
 
     /**

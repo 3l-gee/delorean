@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeObstructionIdSurfaceZoneType {
 
     @XmlValue
-    @Column(name = "obstruction_id_surface_zone", nullable = true, unique = false)
+    @Column(name = "obstructionidsurfacezonebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "obstruction_id_surface_zone_nil_reason", nullable = true, unique = false)
+    @Column(name = "obstructionidsurfacezonetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

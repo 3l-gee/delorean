@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVerticalStructureMaterialType {
 
     @XmlValue
-    @Column(name = "vertical_structure_material", nullable = true, unique = false)
+    @Column(name = "verticalstructurematerialbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "vertical_structure_material_nil_reason", nullable = true, unique = false)
+    @Column(name = "verticalstructurematerialtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -42,10 +42,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValFrictionType {
 
     @XmlValue
-    @Column(name = "friction", nullable = true, unique = false)
+    @Column(name = "frictionbasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "friction_nil_reason", nullable = true, unique = false)
+    @Column(name = "frictiontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePCNMethodType {
 
     @XmlValue
-    @Column(name = "pcn_method", nullable = true, unique = false)
+    @Column(name = "pcnmethodbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "pcn_method_nil_reason", nullable = true, unique = false)
+    @Column(name = "pcnmethodtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

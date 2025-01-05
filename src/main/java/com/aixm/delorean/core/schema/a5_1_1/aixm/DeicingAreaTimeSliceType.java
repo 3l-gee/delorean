@@ -10,17 +10,18 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -66,39 +67,61 @@ import jakarta.xml.bind.annotation.XmlType;
     "availability",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "deicingareatimeslicetype", schema = "public")
 public class DeicingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElementRef(name = "associatedApron", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<ApronPropertyType> associatedApron;
-    @XmlElementRef(name = "taxiwayLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TaxiwayPropertyType> taxiwayLocation;
-    @XmlElementRef(name = "standLocation", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AircraftStandPropertyType> standLocation;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "associatedapron_id", referencedColumnName = "id")
+    protected ApronPropertyType associatedApron;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "taxiwaylocation_id", referencedColumnName = "id")
+    protected TaxiwayPropertyType taxiwayLocation;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "standlocation_id", referencedColumnName = "id")
+    protected AircraftStandPropertyType standLocation;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "surfaceproperties_id", referencedColumnName = "id")
     protected SurfaceCharacteristicsPropertyType surfaceProperties;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "deicingareapropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "deicingareapropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "deicingareapropertygroup_availability", joinColumns = {
+        @JoinColumn(name = "deicingareapropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "apronareaavailabilitypropertytype_id")
+    })
     protected List<ApronAreaAvailabilityPropertyType> availability;
     @Transient
     protected List<DeicingAreaTimeSliceType.Extension> extension;
@@ -108,10 +131,10 @@ public class DeicingAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
+     *     {@link ApronPropertyType }
      *     
      */
-    public JAXBElement<ApronPropertyType> getAssociatedApron() {
+    public ApronPropertyType getAssociatedApron() {
         return associatedApron;
     }
 
@@ -120,10 +143,10 @@ public class DeicingAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ApronPropertyType }{@code >}
+     *     {@link ApronPropertyType }
      *     
      */
-    public void setAssociatedApron(JAXBElement<ApronPropertyType> value) {
+    public void setAssociatedApron(ApronPropertyType value) {
         this.associatedApron = value;
     }
 
@@ -136,10 +159,10 @@ public class DeicingAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
+     *     {@link TaxiwayPropertyType }
      *     
      */
-    public JAXBElement<TaxiwayPropertyType> getTaxiwayLocation() {
+    public TaxiwayPropertyType getTaxiwayLocation() {
         return taxiwayLocation;
     }
 
@@ -148,10 +171,10 @@ public class DeicingAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TaxiwayPropertyType }{@code >}
+     *     {@link TaxiwayPropertyType }
      *     
      */
-    public void setTaxiwayLocation(JAXBElement<TaxiwayPropertyType> value) {
+    public void setTaxiwayLocation(TaxiwayPropertyType value) {
         this.taxiwayLocation = value;
     }
 
@@ -164,10 +187,10 @@ public class DeicingAreaTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AircraftStandPropertyType }{@code >}
+     *     {@link AircraftStandPropertyType }
      *     
      */
-    public JAXBElement<AircraftStandPropertyType> getStandLocation() {
+    public AircraftStandPropertyType getStandLocation() {
         return standLocation;
     }
 
@@ -176,10 +199,10 @@ public class DeicingAreaTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AircraftStandPropertyType }{@code >}
+     *     {@link AircraftStandPropertyType }
      *     
      */
-    public void setStandLocation(JAXBElement<AircraftStandPropertyType> value) {
+    public void setStandLocation(AircraftStandPropertyType value) {
         this.standLocation = value;
     }
 
@@ -394,8 +417,10 @@ public class DeicingAreaTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractdeicingareaextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractDeicingAreaExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLevelType {
 
     @XmlValue
-    @Column(name = "level", nullable = true, unique = false)
+    @Column(name = "levelbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "level_nil_reason", nullable = true, unique = false)
+    @Column(name = "leveltype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

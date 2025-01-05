@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -72,7 +75,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "guidancelinetimeslicetype", schema = "public")
 public class GuidanceLineTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -80,56 +84,97 @@ public class GuidanceLineTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator"))
     })
     protected TextNameType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "type"))
     })
     protected CodeGuidanceLineType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "max_speed")),
-        @AttributeOverride(name = "uom", column = @Column(name = "max_speed_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "max_speed_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "maxspeed_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "maxspeed_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "maxspeed"))
     })
     protected ValSpeedType maxSpeed;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "usage_direction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "usage_direction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "usagedirection_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "usagedirection"))
     })
     protected CodeDirectionType usageDirection;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "guidancelinepropertygroup_connectedtouchdownliftoff", joinColumns = {
+        @JoinColumn(name = "guidancelinepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "touchdownliftoffpropertytype_id")
+    })
     protected List<TouchDownLiftOffPropertyType> connectedTouchDownLiftOff;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "guidancelinepropertygroup_connectedrunwaycentrelinepoint", joinColumns = {
+        @JoinColumn(name = "guidancelinepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "runwaycentrelinepointpropertytype_id")
+    })
     protected List<RunwayCentrelinePointPropertyType> connectedRunwayCentrelinePoint;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "guidancelinepropertygroup_connectedapron", joinColumns = {
+        @JoinColumn(name = "guidancelinepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "apronpropertytype_id")
+    })
     protected List<ApronPropertyType> connectedApron;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "guidancelinepropertygroup_connectedstand", joinColumns = {
+        @JoinColumn(name = "guidancelinepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "aircraftstandpropertytype_id")
+    })
     protected List<AircraftStandPropertyType> connectedStand;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedCurvePropertyType extent;
     @XmlElement(nillable = true)
-    @Transient
-    protected List<TaxiwayPropertyType> connectedTaxiway;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "guidancelinepropertygroup_connectedtaxiway", joinColumns = {
+        @JoinColumn(name = "guidancelinepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "taxiwaypropertytype_id")
+    })
+    protected List<TaxiwayPropertyType> connectedTaxiway;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "guidancelinepropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "guidancelinepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<GuidanceLineTimeSliceType.Extension> extension;
@@ -585,8 +630,10 @@ public class GuidanceLineTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractguidancelineextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractGuidanceLineExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDMEChannelType {
 
     @XmlValue
-    @Column(name = "dme_channel", nullable = true, unique = false)
+    @Column(name = "dmechannelbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "dme_channel_nil_reason", nullable = true, unique = false)
+    @Column(name = "dmechanneltype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -45,6 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public abstract class AbstractMemberType {
 
     @XmlAttribute(name = "owns")
+    @Transient
     protected java.lang.Boolean owns;
 
     /**

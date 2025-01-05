@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAirspaceDependencyType {
 
     @XmlValue
-    @Column(name = "airspace_dependency", nullable = true, unique = false)
+    @Column(name = "airspacedependencybasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "airspace_dependency_nil_reason", nullable = true, unique = false)
+    @Column(name = "airspacedependencytype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

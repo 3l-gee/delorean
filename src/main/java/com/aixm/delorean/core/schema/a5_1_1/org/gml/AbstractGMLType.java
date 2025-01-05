@@ -104,7 +104,7 @@ public abstract class AbstractGMLType {
     @XmlID
     @XmlSchemaType(name = "ID")
     @Column(name = "xml_id")
-    protected String id;
+    protected String xmlId;
 
     /**
      * Gets the value of the metaDataProperty property.
@@ -271,31 +271,31 @@ public abstract class AbstractGMLType {
     }
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the xmlId property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getId() {
-        return id;
+    public String getXmlId() {
+        return xmlId;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the xmlId property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setId(String value) {
-        this.id = value;
+    public void setXmlId(String value) {
+        this.xmlId = value;
     }
 
-    public boolean isSetId() {
-        return (this.id!= null);
+    public boolean isSetXmlId() {
+        return (this.xmlId!= null);
     }
 
 }

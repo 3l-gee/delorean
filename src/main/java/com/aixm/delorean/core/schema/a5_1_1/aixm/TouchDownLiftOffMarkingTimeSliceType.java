@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,7 +71,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "markedTouchDownLiftOff",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "touchdownliftoffmarkingtimeslicetype", schema = "public")
 public class TouchDownLiftOffMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -78,37 +80,50 @@ public class TouchDownLiftOffMarkingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "marking_icao_standard")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "marking_icao_standard_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "markingicaostandard_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "markingicaostandard"))
     })
     protected CodeYesNoType markingICAOStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "condition")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "condition_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "condition_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "condition"))
     })
     protected CodeMarkingConditionType condition;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "markingpropertygroup_element", joinColumns = {
+        @JoinColumn(name = "markingpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "markingelementpropertytype_id")
+    })
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "markingpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "markingpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "marking_location")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "marking_location_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "markinglocation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "markinglocation"))
     })
     protected CodeTLOFSectionType markingLocation;
-    @XmlElementRef(name = "markedTouchDownLiftOff", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<TouchDownLiftOffPropertyType> markedTouchDownLiftOff;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "markedtouchdownliftoff_id", referencedColumnName = "id")
+    protected TouchDownLiftOffPropertyType markedTouchDownLiftOff;
     @Transient
     protected List<TouchDownLiftOffMarkingTimeSliceType.Extension> extension;
 
@@ -281,10 +296,10 @@ public class TouchDownLiftOffMarkingTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public JAXBElement<TouchDownLiftOffPropertyType> getMarkedTouchDownLiftOff() {
+    public TouchDownLiftOffPropertyType getMarkedTouchDownLiftOff() {
         return markedTouchDownLiftOff;
     }
 
@@ -293,10 +308,10 @@ public class TouchDownLiftOffMarkingTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TouchDownLiftOffPropertyType }{@code >}
+     *     {@link TouchDownLiftOffPropertyType }
      *     
      */
-    public void setMarkedTouchDownLiftOff(JAXBElement<TouchDownLiftOffPropertyType> value) {
+    public void setMarkedTouchDownLiftOff(TouchDownLiftOffPropertyType value) {
         this.markedTouchDownLiftOff = value;
     }
 
@@ -377,13 +392,16 @@ public class TouchDownLiftOffMarkingTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstracttouchdownliftoffmarkingextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractTouchDownLiftOffMarkingExtension;
         @XmlElement(name = "AbstractMarkingExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractmarkingextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMarkingExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

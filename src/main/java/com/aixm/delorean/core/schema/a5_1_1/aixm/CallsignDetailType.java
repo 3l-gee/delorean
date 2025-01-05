@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -64,7 +67,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "callsigndetailtype", schema = "public")
 public class CallsignDetailType
     extends AbstractAIXMObjectType
 {
@@ -72,21 +76,26 @@ public class CallsignDetailType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "call_sign")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "call_sign_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "callsign_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "callsign"))
     })
     protected TextNameType callSign;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "language")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "language_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "language_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "language"))
     })
     protected CodeLanguageType language;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "callsigndetailpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "callsigndetailpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<CallsignDetailType.Extension> extension;
@@ -258,8 +267,10 @@ public class CallsignDetailType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractcallsigndetailextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractCallsignDetailExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

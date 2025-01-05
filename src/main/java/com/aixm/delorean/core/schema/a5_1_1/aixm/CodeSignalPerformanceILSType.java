@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSignalPerformanceILSType {
 
     @XmlValue
-    @Column(name = "signal_performance_ils", nullable = true, unique = false)
+    @Column(name = "signalperformanceilsbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "signal_performance_ils_nil_reason", nullable = true, unique = false)
+    @Column(name = "signalperformanceilstype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

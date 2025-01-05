@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -76,7 +77,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "checkPointFacility",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "checkpointvortimeslicetype", schema = "public")
 public class CheckpointVORTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -84,78 +86,90 @@ public class CheckpointVORTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "category")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "category_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "category_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "category"))
     })
     protected CodeCheckpointCategoryType category;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit")),
-        @AttributeOverride(name = "uom", column = @Column(name = "upper_limit_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "upperlimit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimit_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "upperlimit"))
     })
     protected ValDistanceVerticalType upperLimit;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "upper_limit_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upper_limit_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimitreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "upperlimitreference"))
     })
     protected CodeVerticalReferenceType upperLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit")),
-        @AttributeOverride(name = "uom", column = @Column(name = "lower_limit_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "lowerlimit_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimit_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lowerlimit"))
     })
     protected ValDistanceVerticalType lowerLimit;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "lower_limit_reference")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lower_limit_reference_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimitreference_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "lowerlimitreference"))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitude_interpretation")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_interpretation_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeinterpretation_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "altitudeinterpretation"))
     })
     protected CodeAltitudeUseType altitudeInterpretation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "distance")),
         @AttributeOverride(name = "uom", column = @Column(name = "distance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "distance"))
     })
     protected ValDistanceType distance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "angle")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "angle_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "angle_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "angle"))
     })
     protected ValBearingType angle;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType position;
-    @XmlElementRef(name = "airportHeliport", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "airportheliport_id", referencedColumnName = "id")
+    protected AirportHeliportPropertyType airportHeliport;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "navigationsystemcheckpointpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "navigationsystemcheckpointpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "checkPointFacility", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<VORPropertyType> checkPointFacility;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "checkpointfacility_id", referencedColumnName = "id")
+    protected VORPropertyType checkPointFacility;
     @Transient
     protected List<CheckpointVORTimeSliceType.Extension> extension;
 
@@ -416,10 +430,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public JAXBElement<AirportHeliportPropertyType> getAirportHeliport() {
+    public AirportHeliportPropertyType getAirportHeliport() {
         return airportHeliport;
     }
 
@@ -428,10 +442,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link AirportHeliportPropertyType }{@code >}
+     *     {@link AirportHeliportPropertyType }
      *     
      */
-    public void setAirportHeliport(JAXBElement<AirportHeliportPropertyType> value) {
+    public void setAirportHeliport(AirportHeliportPropertyType value) {
         this.airportHeliport = value;
     }
 
@@ -484,10 +498,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link VORPropertyType }{@code >}
+     *     {@link VORPropertyType }
      *     
      */
-    public JAXBElement<VORPropertyType> getCheckPointFacility() {
+    public VORPropertyType getCheckPointFacility() {
         return checkPointFacility;
     }
 
@@ -496,10 +510,10 @@ public class CheckpointVORTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link VORPropertyType }{@code >}
+     *     {@link VORPropertyType }
      *     
      */
-    public void setCheckPointFacility(JAXBElement<VORPropertyType> value) {
+    public void setCheckPointFacility(VORPropertyType value) {
         this.checkPointFacility = value;
     }
 
@@ -580,13 +594,16 @@ public class CheckpointVORTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractcheckpointvorextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractCheckpointVORExtension;
         @XmlElement(name = "AbstractNavigationSystemCheckpointExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractnavigationsystemcheckpointextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractNavigationSystemCheckpointExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

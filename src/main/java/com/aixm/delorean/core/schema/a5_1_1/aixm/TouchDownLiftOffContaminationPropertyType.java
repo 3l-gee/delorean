@@ -8,9 +8,11 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -40,7 +42,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "TouchDownLiftOffContaminationPropertyType", propOrder = {
     "touchDownLiftOffContamination"
 })
-@Embeddable
+@Entity
+@Table(name = "touchdownliftoffcontaminationpropertytype", schema = "public")
 public class TouchDownLiftOffContaminationPropertyType
     extends AbstractAIXMPropertyType
 {
@@ -49,6 +52,7 @@ public class TouchDownLiftOffContaminationPropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "touchdownliftoffcontamination_id", referencedColumnName = "id")
     protected TouchDownLiftOffContaminationType touchDownLiftOffContamination;
 
     /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeHoldingUsageType {
 
     @XmlValue
-    @Column(name = "holding_usage", nullable = true, unique = false)
+    @Column(name = "holdingusagebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "holding_usage_nil_reason", nullable = true, unique = false)
+    @Column(name = "holdingusagetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

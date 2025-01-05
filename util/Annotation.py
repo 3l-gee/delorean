@@ -1,6 +1,8 @@
 import re
 from enum import Enum
 
+TABLE = []
+
 class Xpath(Enum):
     RELATIVE= "/xs:"
     ABSOLUTE= "xs:"
@@ -416,6 +418,7 @@ class Jpa:
     @staticmethod
     def table(name, schema, prefix=None):
         if prefix is None:
+            
             return f'@jakarta.persistence.Table(name = "{Util.snake_case(name)}", schema = "{schema}")'
         else:
             return f'@jakarta.persistence.Table(name = "{Util.snake_case(prefix) + "_" + Util.snake_case_table(name)}", schema = "{schema}")'

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVORType {
 
     @XmlValue
-    @Column(name = "vor", nullable = true, unique = false)
+    @Column(name = "vorbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "vor_nil_reason", nullable = true, unique = false)
+    @Column(name = "vortype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

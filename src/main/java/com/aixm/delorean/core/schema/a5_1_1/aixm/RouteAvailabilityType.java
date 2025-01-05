@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -70,49 +73,72 @@ import jakarta.xml.bind.annotation.XmlType;
     "levels",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "routeavailabilitytype", schema = "public")
 public class RouteAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "routeavailabilitytype_timeinterval", joinColumns = {
+        @JoinColumn(name = "routeavailabilitytype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "timesheetpropertytype_id")
+    })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "routeavailabilitytype_annotation", joinColumns = {
+        @JoinColumn(name = "routeavailabilitytype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "routeavailabilitytype_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "routeavailabilitytype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "organisationauthoritypropertytype_id")
+    })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "direction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "direction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "direction_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "direction"))
     })
     protected CodeDirectionType direction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "cardinal_direction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "cardinal_direction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "cardinaldirection_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "cardinaldirection"))
     })
     protected CodeCardinalDirectionType cardinalDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "status")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "status"))
     })
     protected CodeRouteAvailabilityType status;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "routeavailabilitytype_levels", joinColumns = {
+        @JoinColumn(name = "routeavailabilitytype_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airspacelayerpropertytype_id")
+    })
     protected List<AirspaceLayerPropertyType> levels;
     @Transient
     protected List<RouteAvailabilityType.Extension> extension;
@@ -434,13 +460,16 @@ public class RouteAvailabilityType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractpropertieswithscheduleextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPropertiesWithScheduleExtension;
         @XmlElement(name = "AbstractRouteAvailabilityExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractrouteavailabilityextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRouteAvailabilityExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

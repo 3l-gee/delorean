@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeOrganisationHierarchyType {
 
     @XmlValue
-    @Column(name = "organisation_hierarchy", nullable = true, unique = false)
+    @Column(name = "organisationhierarchybasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "organisation_hierarchy_nil_reason", nullable = true, unique = false)
+    @Column(name = "organisationhierarchytype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

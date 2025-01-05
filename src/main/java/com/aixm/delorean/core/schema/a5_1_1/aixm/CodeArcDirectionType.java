@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeArcDirectionType {
 
     @XmlValue
-    @Column(name = "arc_direction", nullable = true, unique = false)
+    @Column(name = "arcdirectionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "arc_direction_nil_reason", nullable = true, unique = false)
+    @Column(name = "arcdirectiontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

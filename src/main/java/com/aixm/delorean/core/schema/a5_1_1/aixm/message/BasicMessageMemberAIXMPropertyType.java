@@ -73,7 +73,7 @@ public class BasicMessageMemberAIXMPropertyType
     @OneToOne(cascade = {
         CascadeType.ALL
     })
-    // @JoinColumn(name = "abstract_aixm_feature_id")
+    @JoinColumn(name = "abstract_aixm_feature_id")
     @XmlElementRef(name = "AbstractAIXMFeature", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     protected AbstractAIXMFeatureType abstractAIXMFeature;
     @Id
@@ -82,14 +82,16 @@ public class BasicMessageMemberAIXMPropertyType
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "nilReason")
+    @Column(name = "nilReason")
     protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
+    @Transient
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
     public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    @Transient
+    @Column(name = "href")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
     @Transient

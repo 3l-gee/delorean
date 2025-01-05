@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -66,7 +69,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "missedapproachgrouptype", schema = "public")
 public class MissedApproachGroupType
     extends AbstractAIXMObjectType
 {
@@ -74,32 +78,44 @@ public class MissedApproachGroupType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction"))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "alternate_climb_instruction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "alternate_climb_instruction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "alternateclimbinstruction_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "alternateclimbinstruction"))
     })
     protected TextInstructionType alternateClimbInstruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "alternate_climb_altitude")),
-        @AttributeOverride(name = "uom", column = @Column(name = "alternate_climb_altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "alternate_climb_altitude_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "alternateclimbaltitude_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "alternateclimbaltitude_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "alternateclimbaltitude"))
     })
     protected ValDistanceVerticalType alternateClimbAltitude;
     @XmlElement(nillable = true)
-    @Transient
-    protected List<AltimeterSourcePropertyType> altimeter;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "missedapproachgrouppropertygroup_altimeter", joinColumns = {
+        @JoinColumn(name = "missedapproachgrouppropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "altimetersourcepropertytype_id")
+    })
+    protected List<AltimeterSourcePropertyType> altimeter;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "missedapproachgrouppropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "missedapproachgrouppropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<MissedApproachGroupType.Extension> extension;
@@ -339,8 +355,10 @@ public class MissedApproachGroupType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractmissedapproachgroupextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractMissedApproachGroupExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

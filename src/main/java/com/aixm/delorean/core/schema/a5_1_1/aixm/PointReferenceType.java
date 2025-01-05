@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -71,7 +72,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "pointreferencetype", schema = "public")
 public class PointReferenceType
     extends AbstractAIXMObjectType
 {
@@ -79,46 +81,67 @@ public class PointReferenceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "role")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "role"))
     })
     protected CodeReferenceRoleType role;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "prior_fix_tolerance")),
-        @AttributeOverride(name = "uom", column = @Column(name = "prior_fix_tolerance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "prior_fix_tolerance_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "priorfixtolerance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "priorfixtolerance_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "priorfixtolerance"))
     })
     protected ValDistanceSignedType priorFixTolerance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "post_fix_tolerance")),
-        @AttributeOverride(name = "uom", column = @Column(name = "post_fix_tolerance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "post_fix_tolerance_nilreason"))
+        @AttributeOverride(name = "uom", column = @Column(name = "postfixtolerance_uom")),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "postfixtolerance_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "postfixtolerance"))
     })
     protected ValDistanceSignedType postFixTolerance;
-    @XmlElementRef(name = "point", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<DesignatedPointPropertyType> point;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "point_id", referencedColumnName = "id")
+    protected DesignatedPointPropertyType point;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "pointreferencepropertygroup_facilityangle", joinColumns = {
+        @JoinColumn(name = "pointreferencepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "angleusepropertytype_id")
+    })
     protected List<AngleUsePropertyType> facilityAngle;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "pointreferencepropertygroup_facilitydistance", joinColumns = {
+        @JoinColumn(name = "pointreferencepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "distanceindicationpropertytype_id")
+    })
     protected List<DistanceIndicationPropertyType> facilityDistance;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "fixtolerancearea_id", referencedColumnName = "id")
     protected SurfacePropertyType fixToleranceArea;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "pointreferencepropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "pointreferencepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<PointReferenceType.Extension> extension;
@@ -212,10 +235,10 @@ public class PointReferenceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public JAXBElement<DesignatedPointPropertyType> getPoint() {
+    public DesignatedPointPropertyType getPoint() {
         return point;
     }
 
@@ -224,10 +247,10 @@ public class PointReferenceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DesignatedPointPropertyType }{@code >}
+     *     {@link DesignatedPointPropertyType }
      *     
      */
-    public void setPoint(JAXBElement<DesignatedPointPropertyType> value) {
+    public void setPoint(DesignatedPointPropertyType value) {
         this.point = value;
     }
 
@@ -454,8 +477,10 @@ public class PointReferenceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractpointreferenceextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractPointReferenceExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

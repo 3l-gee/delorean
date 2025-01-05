@@ -42,13 +42,13 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValFLType {
 
     @XmlValue
-    @Column(name = "fl", nullable = true, unique = false)
+    @Column(name = "flbasetype", nullable = true, unique = false)
     protected long value;
     @XmlAttribute(name = "uom")
-    @Column(name = "fl_uom", nullable = true, unique = false)
+    @Column(name = "fltype_uom", nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "fl_nil_reason", nullable = true, unique = false)
+    @Column(name = "fltype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

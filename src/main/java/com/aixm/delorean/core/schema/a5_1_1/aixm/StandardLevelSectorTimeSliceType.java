@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -70,7 +71,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "standardlevelsectortimeslicetype", schema = "public")
 public class StandardLevelSectorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -78,41 +80,56 @@ public class StandardLevelSectorTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flight_rule")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flight_rule_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flightrule_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "flightrule"))
     })
     protected CodeFlightRuleType flightRule;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "from_track")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "from_track_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "fromtrack_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "fromtrack"))
     })
     protected ValBearingType fromTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "to_track")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "to_track_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "totrack_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "totrack"))
     })
     protected ValBearingType toTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "angle_type")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "angle_type_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "angletype_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "angletype"))
     })
     protected CodeNorthReferenceType angleType;
     @XmlElement(nillable = true)
-    @Transient
-    protected List<AirspacePropertyType> applicableAirspace;
-    @XmlElementRef(name = "applicableLevelColumn", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<StandardLevelColumnPropertyType> applicableLevelColumn;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "standardlevelsectorpropertygroup_applicableairspace", joinColumns = {
+        @JoinColumn(name = "standardlevelsectorpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airspacepropertytype_id")
+    })
+    protected List<AirspacePropertyType> applicableAirspace;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "applicablelevelcolumn_id", referencedColumnName = "id")
+    protected StandardLevelColumnPropertyType applicableLevelColumn;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "standardlevelsectorpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "standardlevelsectorpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<StandardLevelSectorTimeSliceType.Extension> extension;
@@ -274,10 +291,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link StandardLevelColumnPropertyType }{@code >}
+     *     {@link StandardLevelColumnPropertyType }
      *     
      */
-    public JAXBElement<StandardLevelColumnPropertyType> getApplicableLevelColumn() {
+    public StandardLevelColumnPropertyType getApplicableLevelColumn() {
         return applicableLevelColumn;
     }
 
@@ -286,10 +303,10 @@ public class StandardLevelSectorTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link StandardLevelColumnPropertyType }{@code >}
+     *     {@link StandardLevelColumnPropertyType }
      *     
      */
-    public void setApplicableLevelColumn(JAXBElement<StandardLevelColumnPropertyType> value) {
+    public void setApplicableLevelColumn(StandardLevelColumnPropertyType value) {
         this.applicableLevelColumn = value;
     }
 
@@ -408,8 +425,10 @@ public class StandardLevelSectorTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractstandardlevelsectorextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractStandardLevelSectorExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

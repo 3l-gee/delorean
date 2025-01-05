@@ -29,6 +29,8 @@ import com.aixm.delorean.core.adapter.type.gis.AixmElevatedPointType;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedSurfaceType;
 import com.aixm.delorean.core.adapter.type.gis.AixmPointType;
 import com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType;
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
@@ -104,7 +106,8 @@ public class GisHelper {
         } else if (target == AixmSurfaceType.class) {
             obj = target.cast(new AixmSurfaceType());
         } else {
-            throw new IllegalArgumentException("Unsupported target type: " + target.getName());
+            ConsoleLogger.log(LogLevel.FATAL, "Unsupported target type: " + target.getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException();
         }
             
         if (id != null) {
@@ -138,7 +141,8 @@ public class GisHelper {
         } else if (target == AixmElevatedSurfaceType.class) {
             obj = target.cast(new AixmElevatedSurfaceType());
         } else {
-            throw new IllegalArgumentException("Unsupported target type: " + target.getName());
+            ConsoleLogger.log(LogLevel.FATAL, "Unsupported target type: " + target.getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException();
         }
 
         if (id != null) {
@@ -184,6 +188,7 @@ public class GisHelper {
     }
 
     public static AixmPointType parseAIXMPoint (com.aixm.delorean.core.schema.a5_1_1.aixm.PointType value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         AixmPointType aixmPoint = aixmGeometryAttributesFactory(
             AixmPointType.class, 
             value.getXmlId(), 
@@ -191,10 +196,12 @@ public class GisHelper {
             );
 
         aixmPoint.setPoint(PointGmlHelper.parseGMLPoint(value));
+        ConsoleLogger.log(LogLevel.DEBUG, "Aixmpoint : " + aixmPoint.toString(), new Exception().getStackTrace()[0]);
         return aixmPoint;
     }
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.PointType printAIXMPoint(AixmPointType value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         //output object
         com.aixm.delorean.core.schema.a5_1_1.aixm.PointType pointType = new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
         DirectPositionType pos = new DirectPositionType();
@@ -230,10 +237,12 @@ public class GisHelper {
         valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
         pointType.setHorizontalAccuracy(valDistance);
 
+        ConsoleLogger.log(LogLevel.DEBUG, "PointType : " + pointType.toString(), new Exception().getStackTrace()[0]);
         return pointType;
     }
 
     public static AixmElevatedPointType parseAIXMElevatedPoint (ElevatedPointType value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         AixmElevatedPointType aixmElevatedPoint = elevatedAixmGeometryAttributesFactory(
             AixmElevatedPointType.class, 
             value.getXmlId(), 
@@ -245,10 +254,12 @@ public class GisHelper {
             );
 
         aixmElevatedPoint.setPoint(PointGmlHelper.parseGMLPoint(value));
+        ConsoleLogger.log(LogLevel.DEBUG, "AixmElevatedPoint : " + aixmElevatedPoint.toString(), new Exception().getStackTrace()[0]);
         return aixmElevatedPoint;
     }
 
     public static ElevatedPointType printAIXMElevatedPoint(AixmElevatedPointType value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         // Output object
         ElevatedPointType elevatedPointType = new ElevatedPointType();
         DirectPositionType pos = new DirectPositionType();
@@ -311,6 +322,7 @@ public class GisHelper {
         valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
         elevatedPointType.setVerticalAccuracy(valDistanceVerticalAccuracy);
 
+        ConsoleLogger.log(LogLevel.DEBUG, "ElevatedPointType : " + elevatedPointType.toString(), new Exception().getStackTrace()[0]);
         return elevatedPointType;
     }
 

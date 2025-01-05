@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVerticalReferenceType {
 
     @XmlValue
-    @Column(name = "vertical_reference", nullable = true, unique = false)
+    @Column(name = "verticalreferencebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "vertical_reference_nil_reason", nullable = true, unique = false)
+    @Column(name = "verticalreferencetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

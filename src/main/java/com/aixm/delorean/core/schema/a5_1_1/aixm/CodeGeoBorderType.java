@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeGeoBorderType {
 
     @XmlValue
-    @Column(name = "geo_border", nullable = true, unique = false)
+    @Column(name = "geoborderbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "geo_border_nil_reason", nullable = true, unique = false)
+    @Column(name = "geobordertype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

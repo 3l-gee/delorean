@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLanguageType {
 
     @XmlValue
-    @Column(name = "language", nullable = true, unique = false)
+    @Column(name = "languagebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "language_nil_reason", nullable = true, unique = false)
+    @Column(name = "languagetype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

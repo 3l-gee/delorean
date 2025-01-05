@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTLOFSectionType {
 
     @XmlValue
-    @Column(name = "tlof_section", nullable = true, unique = false)
+    @Column(name = "tlofsectionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "tlof_section_nil_reason", nullable = true, unique = false)
+    @Column(name = "tlofsectiontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

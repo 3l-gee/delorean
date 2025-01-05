@@ -10,10 +10,13 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -60,21 +63,41 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "landingtakeoffareacollectiontype", schema = "public")
 public class LandingTakeoffAreaCollectionType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
-    @Transient
-    protected List<RunwayDirectionPropertyType> runway;
-    @XmlElement(name = "TLOF", nillable = true)
-    @Transient
-    protected List<TouchDownLiftOffPropertyType> tlof;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "landingtakeoffareacollectionpropertygroup_runway", joinColumns = {
+        @JoinColumn(name = "landingtakeoffareacollectionpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "runwaydirectionpropertytype_id")
+    })
+    protected List<RunwayDirectionPropertyType> runway;
+    @XmlElement(name = "TLOF", nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "landingtakeoffareacollectionpropertygroup_tlof", joinColumns = {
+        @JoinColumn(name = "landingtakeoffareacollectionpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "touchdownliftoffpropertytype_id")
+    })
+    protected List<TouchDownLiftOffPropertyType> tlof;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "landingtakeoffareacollectionpropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "landingtakeoffareacollectionpropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<LandingTakeoffAreaCollectionType.Extension> extension;
@@ -270,8 +293,10 @@ public class LandingTakeoffAreaCollectionType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractlandingtakeoffareacollectionextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractLandingTakeoffAreaCollectionExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

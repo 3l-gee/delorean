@@ -44,10 +44,10 @@ public class TextPropertyNameType {
 
     @XmlValue
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @Column(name = "property_name", nullable = true, unique = false)
+    @Column(name = "propertynamebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "property_name_nil_reason", nullable = true, unique = false)
+    @Column(name = "propertynametype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

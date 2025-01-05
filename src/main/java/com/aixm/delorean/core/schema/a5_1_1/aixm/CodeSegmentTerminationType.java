@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSegmentTerminationType {
 
     @XmlValue
-    @Column(name = "segment_termination", nullable = true, unique = false)
+    @Column(name = "segmentterminationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "segment_termination_nil_reason", nullable = true, unique = false)
+    @Column(name = "segmentterminationtype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

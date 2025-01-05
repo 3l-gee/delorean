@@ -13,18 +13,19 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -82,7 +83,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "arrival",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "standardinstrumentarrivaltimeslicetype", schema = "public")
 public class StandardInstrumentArrivalTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -90,98 +92,138 @@ public class StandardInstrumentArrivalTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "communication_failure_instruction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "communication_failure_instruction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "communicationfailureinstruction_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "communicationfailureinstruction"))
     })
     protected TextInstructionType communicationFailureInstruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction"))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "design_criteria")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "design_criteria_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designcriteria_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designcriteria"))
     })
     protected CodeDesignStandardType designCriteria;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "coding_standard")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "coding_standard_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "codingstandard_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "codingstandard"))
     })
     protected CodeProcedureCodingStandardType codingStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "flight_checked")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flight_checked_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flightchecked_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "flightchecked"))
     })
     protected CodeYesNoType flightChecked;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "name"))
     })
     protected TextNameType aixmName;
     @XmlElement(name = "RNAV", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "rnav")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "rnav_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "rnav_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "rnav"))
     })
     protected CodeYesNoType rnav;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "procedurepropertygroup_availability", joinColumns = {
+        @JoinColumn(name = "procedurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "procedureavailabilitypropertytype_id")
+    })
     protected List<ProcedureAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @Transient
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "procedurepropertygroup_airportheliport", joinColumns = {
+        @JoinColumn(name = "procedurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airportheliportpropertytype_id")
+    })
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "procedurepropertygroup_aircraftcharacteristic", joinColumns = {
+        @JoinColumn(name = "procedurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
+    })
     protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
     @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "procedurepropertygroup_flighttransition", joinColumns = {
+        @JoinColumn(name = "procedurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "proceduretransitionpropertytype_id")
+    })
     protected List<ProcedureTransitionPropertyType> flightTransition;
-    @XmlElementRef(name = "guidanceFacility_specialNavigationSystem", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SpecialNavigationSystemPropertyType> guidanceFacilitySpecialNavigationSystem;
-    @XmlElementRef(name = "guidanceFacility_radar", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<RadarSystemPropertyType> guidanceFacilityRadar;
-    @XmlElementRef(name = "guidanceFacility_navaid", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<NavaidPropertyType> guidanceFacilityNavaid;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @XmlElement(name = "guidanceFacility_specialNavigationSystem", nillable = true)
+    @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "guidancefacility_specialnavigationsystem_id", referencedColumnName = "id")
+    protected SpecialNavigationSystemPropertyType guidanceFacilitySpecialNavigationSystem;
+    @XmlElement(name = "guidanceFacility_radar", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "guidancefacility_radar_id", referencedColumnName = "id")
+    protected RadarSystemPropertyType guidanceFacilityRadar;
+    @XmlElement(name = "guidanceFacility_navaid", nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "guidancefacility_navaid_id", referencedColumnName = "id")
+    protected NavaidPropertyType guidanceFacilityNavaid;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "procedurepropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "procedurepropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
-    @XmlElementRef(name = "safeAltitude", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
-    @Transient
-    protected JAXBElement<SafeAltitudeAreaPropertyType> safeAltitude;
+    @XmlElement(nillable = true)
+    @OneToOne(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "safealtitude_id", referencedColumnName = "id")
+    protected SafeAltitudeAreaPropertyType safeAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "designator"))
     })
     protected TextSIDSTARDesignatorType designator;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "arrival_id", referencedColumnName = "id")
     protected LandingTakeoffAreaCollectionPropertyType arrival;
     @Transient
     protected List<StandardInstrumentArrivalTimeSliceType.Extension> extension;
@@ -547,10 +589,10 @@ public class StandardInstrumentArrivalTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     {@link SpecialNavigationSystemPropertyType }
      *     
      */
-    public JAXBElement<SpecialNavigationSystemPropertyType> getGuidanceFacilitySpecialNavigationSystem() {
+    public SpecialNavigationSystemPropertyType getGuidanceFacilitySpecialNavigationSystem() {
         return guidanceFacilitySpecialNavigationSystem;
     }
 
@@ -559,10 +601,10 @@ public class StandardInstrumentArrivalTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SpecialNavigationSystemPropertyType }{@code >}
+     *     {@link SpecialNavigationSystemPropertyType }
      *     
      */
-    public void setGuidanceFacilitySpecialNavigationSystem(JAXBElement<SpecialNavigationSystemPropertyType> value) {
+    public void setGuidanceFacilitySpecialNavigationSystem(SpecialNavigationSystemPropertyType value) {
         this.guidanceFacilitySpecialNavigationSystem = value;
     }
 
@@ -575,10 +617,10 @@ public class StandardInstrumentArrivalTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link RadarSystemPropertyType }{@code >}
+     *     {@link RadarSystemPropertyType }
      *     
      */
-    public JAXBElement<RadarSystemPropertyType> getGuidanceFacilityRadar() {
+    public RadarSystemPropertyType getGuidanceFacilityRadar() {
         return guidanceFacilityRadar;
     }
 
@@ -587,10 +629,10 @@ public class StandardInstrumentArrivalTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link RadarSystemPropertyType }{@code >}
+     *     {@link RadarSystemPropertyType }
      *     
      */
-    public void setGuidanceFacilityRadar(JAXBElement<RadarSystemPropertyType> value) {
+    public void setGuidanceFacilityRadar(RadarSystemPropertyType value) {
         this.guidanceFacilityRadar = value;
     }
 
@@ -603,10 +645,10 @@ public class StandardInstrumentArrivalTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public JAXBElement<NavaidPropertyType> getGuidanceFacilityNavaid() {
+    public NavaidPropertyType getGuidanceFacilityNavaid() {
         return guidanceFacilityNavaid;
     }
 
@@ -615,10 +657,10 @@ public class StandardInstrumentArrivalTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link NavaidPropertyType }{@code >}
+     *     {@link NavaidPropertyType }
      *     
      */
-    public void setGuidanceFacilityNavaid(JAXBElement<NavaidPropertyType> value) {
+    public void setGuidanceFacilityNavaid(NavaidPropertyType value) {
         this.guidanceFacilityNavaid = value;
     }
 
@@ -671,10 +713,10 @@ public class StandardInstrumentArrivalTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link SafeAltitudeAreaPropertyType }{@code >}
+     *     {@link SafeAltitudeAreaPropertyType }
      *     
      */
-    public JAXBElement<SafeAltitudeAreaPropertyType> getSafeAltitude() {
+    public SafeAltitudeAreaPropertyType getSafeAltitude() {
         return safeAltitude;
     }
 
@@ -683,10 +725,10 @@ public class StandardInstrumentArrivalTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link SafeAltitudeAreaPropertyType }{@code >}
+     *     {@link SafeAltitudeAreaPropertyType }
      *     
      */
-    public void setSafeAltitude(JAXBElement<SafeAltitudeAreaPropertyType> value) {
+    public void setSafeAltitude(SafeAltitudeAreaPropertyType value) {
         this.safeAltitude = value;
     }
 
@@ -823,13 +865,16 @@ public class StandardInstrumentArrivalTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractstandardinstrumentarrivalextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractStandardInstrumentArrivalExtension;
         @XmlElement(name = "AbstractProcedureExtension")
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractprocedureextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractProcedureExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRadioEmissionType {
 
     @XmlValue
-    @Column(name = "radio_emission", nullable = true, unique = false)
+    @Column(name = "radioemissionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "radio_emission_nil_reason", nullable = true, unique = false)
+    @Column(name = "radioemissiontype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

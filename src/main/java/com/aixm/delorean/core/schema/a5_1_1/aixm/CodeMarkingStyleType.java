@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMarkingStyleType {
 
     @XmlValue
-    @Column(name = "marking_style", nullable = true, unique = false)
+    @Column(name = "markingstylebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "marking_style_nil_reason", nullable = true, unique = false)
+    @Column(name = "markingstyletype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

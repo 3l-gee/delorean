@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeBuoyType {
 
     @XmlValue
-    @Column(name = "buoy", nullable = true, unique = false)
+    @Column(name = "buoybasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "buoy_nil_reason", nullable = true, unique = false)
+    @Column(name = "buoytype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

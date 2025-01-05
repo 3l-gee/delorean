@@ -10,6 +10,7 @@ package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 import java.util.ArrayList;
 import java.util.List;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -49,6 +50,7 @@ public class SurfaceArrayPropertyType {
     @XmlElementRef(name = "AbstractSurface", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends AbstractSurfaceType>> abstractSurface;
     @XmlAttribute(name = "owns")
+    @Transient
     protected java.lang.Boolean owns;
 
     /**

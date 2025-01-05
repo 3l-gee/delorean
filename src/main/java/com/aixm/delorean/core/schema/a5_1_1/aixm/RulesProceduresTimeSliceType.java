@@ -13,11 +13,14 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -69,7 +72,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "annotation",
     "extension"
 })
-@Embeddable
+@Entity
+@Table(name = "rulesprocedurestimeslicetype", schema = "public")
 public class RulesProceduresTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -77,30 +81,49 @@ public class RulesProceduresTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "category")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "category_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "category_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "category"))
     })
     protected CodeRuleProcedureType category;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "title")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "title_nilreason"))
+        @AttributeOverride(name = "nilReason", column = @Column(name = "title_nilreason")),
+        @AttributeOverride(name = "value", column = @Column(name = "title"))
     })
     protected CodeRuleProcedureTitleType title;
     @XmlElementRef(name = "content", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)
     @Transient
     protected JAXBElement<XHTMLType> content;
     @XmlElement(nillable = true)
-    @Transient
-    protected List<AirportHeliportPropertyType> affectedLocation;
-    @XmlElement(nillable = true)
-    @Transient
-    protected List<AirspacePropertyType> affectedArea;
-    @XmlElement(nillable = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "rulesprocedurespropertygroup_affectedlocation", joinColumns = {
+        @JoinColumn(name = "rulesprocedurespropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airportheliportpropertytype_id")
+    })
+    protected List<AirportHeliportPropertyType> affectedLocation;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "rulesprocedurespropertygroup_affectedarea", joinColumns = {
+        @JoinColumn(name = "rulesprocedurespropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "airspacepropertytype_id")
+    })
+    protected List<AirspacePropertyType> affectedArea;
+    @XmlElement(nillable = true)
+    @ManyToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "rulesprocedurespropertygroup_annotation", joinColumns = {
+        @JoinColumn(name = "rulesprocedurespropertygroup_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "notepropertytype_id")
+    })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<RulesProceduresTimeSliceType.Extension> extension;
@@ -380,8 +403,10 @@ public class RulesProceduresTimeSliceType
         @OneToOne(cascade = {
             CascadeType.ALL
         }, fetch = FetchType.EAGER)
+        @JoinColumn(name = "abstractrulesproceduresextension_id", referencedColumnName = "id")
         protected AbstractExtensionType abstractRulesProceduresExtension;
         @XmlAttribute(name = "owns")
+        @Transient
         protected Boolean owns;
 
         /**

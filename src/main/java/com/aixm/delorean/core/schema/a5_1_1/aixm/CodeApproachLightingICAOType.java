@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeApproachLightingICAOType {
 
     @XmlValue
-    @Column(name = "approach_lighting_icao", nullable = true, unique = false)
+    @Column(name = "approachlightingicaobasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "approach_lighting_icao_nil_reason", nullable = true, unique = false)
+    @Column(name = "approachlightingicaotype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

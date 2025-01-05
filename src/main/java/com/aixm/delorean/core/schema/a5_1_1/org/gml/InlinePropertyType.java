@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.org.gml;
 
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
@@ -43,6 +44,7 @@ public class InlinePropertyType {
     @XmlAnyElement(lax = true)
     protected Object any;
     @XmlAttribute(name = "owns")
+    @Transient
     protected java.lang.Boolean owns;
 
     /**

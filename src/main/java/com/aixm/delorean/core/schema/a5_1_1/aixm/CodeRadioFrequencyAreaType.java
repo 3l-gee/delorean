@@ -41,10 +41,10 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRadioFrequencyAreaType {
 
     @XmlValue
-    @Column(name = "radio_frequency_area", nullable = true, unique = false)
+    @Column(name = "radiofrequencyareabasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "radio_frequency_area_nil_reason", nullable = true, unique = false)
+    @Column(name = "radiofrequencyareatype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**

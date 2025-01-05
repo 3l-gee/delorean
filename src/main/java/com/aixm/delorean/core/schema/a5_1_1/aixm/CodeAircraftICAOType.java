@@ -43,7 +43,7 @@ public class CodeAircraftICAOType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "aircraft_icao_nil_reason", nullable = true, unique = false)
+    @Column(name = "aircrafticaotype_nilreason", nullable = true, unique = false)
     protected String nilReason;
 
     /**
