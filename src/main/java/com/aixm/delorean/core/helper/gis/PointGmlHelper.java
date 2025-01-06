@@ -73,20 +73,23 @@ public class PointGmlHelper {
     public static Coordinate parseDirectPositionToCoordinate (DirectPositionType value){
         ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         if (value == null) {
-            ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null", new Exception());
+            ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("DirectPositionType is null");
         }
 
         List<Double> coordinatesList = value.getValue();
 
         if (coordinatesList == null || coordinatesList.isEmpty()) {
-            ConsoleLogger.log(LogLevel.FATAL, "list<Double> value is null or empty", new Exception());
+            ConsoleLogger.log(LogLevel.FATAL, "list<Double> value is null or empty", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("DirectPositionType is null");
         }
 
         if (coordinatesList.size() == 2) {
             Double x = coordinatesList.get(0);
             Double y = coordinatesList.get(1);
             if (x == null || y == null) {
-                ConsoleLogger.log(LogLevel.FATAL, "x or y (in 2d config) is null", new Exception());
+                ConsoleLogger.log(LogLevel.FATAL, "x or y (in 2d config) is null", new Exception().getStackTrace()[0]);
+                throw new RuntimeException("DirectPositionType is null");
             }
             return  new Coordinate(x, y);
         } else if (coordinatesList.size() == 3) {
@@ -94,12 +97,13 @@ public class PointGmlHelper {
             Double y = coordinatesList.get(1);
             Double z = coordinatesList.get(2);
             if (x == null || y == null || z == null) {
-                ConsoleLogger.log(LogLevel.FATAL, "x or y or z (in 3d config) is null", new Exception());
-            }
+                ConsoleLogger.log(LogLevel.FATAL, "x or y or z (in 3d config) is null", new Exception().getStackTrace()[0]);
+                throw new RuntimeException("DirectPositionType is null");}
+
             return  new Coordinate(x, y, z);
         } else {
             ConsoleLogger.log(LogLevel.FATAL, "list<Double> value is not 2 or 3", new Exception());
-            return null;
+            throw new RuntimeException("DirectPositionType is null");
         }
     }
 }

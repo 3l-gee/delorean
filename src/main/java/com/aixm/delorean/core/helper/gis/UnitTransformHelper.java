@@ -3,6 +3,9 @@ package com.aixm.delorean.core.helper.gis;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
+
 
 
 public class UnitTransformHelper {
@@ -20,23 +23,25 @@ public class UnitTransformHelper {
         put("rad", 1.0);
     }};
 
-    public static double convertDistanceToMeters(double value, String unit) {
+    public static Double convertDistanceToMeters(Double value, String unit) {
         if (DISTANCE_UNIT_CONVERSION.containsKey(unit)) {
             return value * DISTANCE_UNIT_CONVERSION.get(unit);
         } else {
-            throw new IllegalArgumentException("Unsupported distance unit: " + unit);
+            ConsoleLogger.log(LogLevel.FATAL, "unsupported distance unit: " + unit, new Exception().getStackTrace()[0]);
+            throw new RuntimeException("Unsupported distance unit: " + unit);
         }
     }
 
-    public static double convertAngleToRadians(double value, String unit) {
+    public static Double convertAngleToRadians(Double value, String unit) {
         if (ANGLE_UNIT_CONVERSION.containsKey(unit)) {
             return value * ANGLE_UNIT_CONVERSION.get(unit);
         } else {
-            throw new IllegalArgumentException("Unsupported angle unit: " + unit);
+            ConsoleLogger.log(LogLevel.FATAL, "unsupported angle unit: " + unit, new Exception().getStackTrace()[0]);
+            throw new RuntimeException("Unsupported angle unit: " + unit);
         }
     }
 
-    public static double convertAngleToBearingInRadians(double angle, String unit, String srs) {
+    public static Double convertAngleToBearingInRadians(Double angle, String unit, String srs) {
         if (ANGLE_UNIT_CONVERSION.containsKey(unit)) {
             if (srs.equals("urn:ogc:def:crs:OGC:1.3:CRS84")) {
                 return 2 * Math.PI - (angle * ANGLE_UNIT_CONVERSION.get(unit)) + Math.PI / 2;
@@ -46,7 +51,8 @@ public class UnitTransformHelper {
                 return angle * ANGLE_UNIT_CONVERSION.get(unit);
             }
         } else {
-            throw new IllegalArgumentException("Unknown angle unit: " + unit);
+            ConsoleLogger.log(LogLevel.FATAL, "unsupported angle unit: " + unit, new Exception().getStackTrace()[0]);
+            throw new RuntimeException("Unknown angle unit: " + unit);
         }
     }
 }

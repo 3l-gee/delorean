@@ -1,45 +1,33 @@
 CREATE VIEW curve_view AS
 WITH 
-line (id, geom) AS (
-    SELECT id, linestring 
+center AS (
+    SELECT 
+		id, 
+		point,
+		radius,
+		start_angle,
+		end_angle,
+		(end_angle - start_angle) / 100 AS step_size
     FROM public.segment 
 	WHERE public.segment.interpretation = 2
-),
-radius AS (
-    SELECT 
-        line.id,
-        (ST_Distance(
-            ST_PointN(line.geom, 1)::geography, 
-            ST_PointN(line.geom, 2)::geography
-        ) 
-        +
-        ST_Distance(
-            ST_PointN(line.geom, 2)::geography, 
-            ST_PointN(line.geom, 3)::geography
-        )) / 2 AS dist
-    FROM line   
-),
-angles (id, start_angle, end_angle, step_size) AS (
-    SELECT 
-        line.id,
-        ST_Azimuth(ST_PointN(line.geom, 2), ST_PointN(line.geom, 1)) AS start_angle,
-        ST_Azimuth(ST_PointN(line.geom, 2), ST_PointN(line.geom, 3)) AS end_angle,
-        mod(
-            CAST(ST_Azimuth(ST_PointN(line.geom, 2), ST_PointN(line.geom, 3)) 
-            - ST_Azimuth(ST_PointN(line.geom, 2), ST_PointN(line.geom, 1)) + 2 * PI() AS numeric),
-            CAST(2 * PI() AS numeric)
-        ) / 100 AS step_size
-    FROM line
+	UNION ALL 
+	SELECT 
+		id, 
+		point,
+		radius,
+		0 as start_angle,
+		2*PI() as end_angle,
+		(0 - 2*PI()) / 100 AS step_size
+    FROM public.segment 
+	WHERE public.segment.interpretation = 3
 ),
 interpolated_points AS (
     SELECT 
-        line.id,
-		ST_Project(ST_PointN(line.geom, 2)::geography, radius.dist, start_angle + step_size * n)::geometry AS point_geom
+        center.id,
+		ST_Project(center.point::geography, center.radius, center.start_angle + center.step_size * n)::geometry AS point_geom
     FROM 
         generate_series(0, 100) AS n, 	
-        line
-    JOIN radius ON line.id = radius.id
-    JOIN angles ON line.id = angles.id
+        center
 ),
 arc_line AS (
     SELECT 
@@ -77,5 +65,3 @@ SELECT
     xml_id, 
     merged_geom as geom 
 FROM merged_segments;
-
-

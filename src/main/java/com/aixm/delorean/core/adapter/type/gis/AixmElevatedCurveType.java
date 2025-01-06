@@ -6,7 +6,6 @@ import com.aixm.delorean.core.gis.type.Segment;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 @Embeddable

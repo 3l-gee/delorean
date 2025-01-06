@@ -171,7 +171,7 @@ public class CoordinateTransformeHelper {
     }
 
     private Coordinate ProjectPoint(Coordinate sourceCoordinate, double radius, double bearing) {
-        System.out.println("sourceCoordinate: " + sourceCoordinate + ", radius: " + radius + ", bearing: " + bearing);
+        ConsoleLogger.log(LogLevel.DEBUG, "sourceCoordinate: " + sourceCoordinate + ", radius: " + radius + ", bearing: " + bearing, new Exception().getStackTrace()[0]);
         double A = 6378137.0;
         double F = 1 / 298.257223563;
         double B = A * (1 - F);

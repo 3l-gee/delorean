@@ -80,10 +80,10 @@ public class Main {
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLpoint.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLpoint.xml");
 
-        // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
-        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
-        ConsoleLogger.log(LogLevel.INFO, "xml - load src/main/resources/a5_1_1/a5_1_1_dataset.xm");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/main/resources/a5_1_1/a5_1_1_dataset.xml");
+        ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - load src/main/resources/a5_1_1/a5_1_1_dataset.xm");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/main/resources/a5_1_1/a5_1_1_dataset.xml");
 
         // ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/export.xml");

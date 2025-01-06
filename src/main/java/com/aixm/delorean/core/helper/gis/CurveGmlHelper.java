@@ -1,17 +1,14 @@
 package com.aixm.delorean.core.helper.gis;
 
 import java.util.List;
-import java.util.Random;
-import java.security.spec.RSAKeyGenParameterSpec;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
-import org.postgresql.shaded.com.ongres.scram.common.bouncycastle.pbkdf2.RuntimeCryptoException;
+import org.locationtech.jts.geom.Point;
 
 import jakarta.xml.bind.JAXBElement;
-import net.postgis.jdbc.geometry.Point;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionListType;
@@ -21,7 +18,7 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gml.OffsetCurveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.LineStringSegmentType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveSegmentArrayPropertyType;
-import com.aixm.delorean.core.gis.type.Segment;
+import com.aixm.delorean.core.gis.type.LinestringSegment;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractCurveSegmentType;
@@ -40,7 +37,7 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gml.CubicSplineType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcStringType;
 public class CurveGmlHelper {
 
-    public static List<Segment> parseGMLcurve (CurveType value) {
+    public static List<LinestringSegment> parseGMLcurve (CurveType value) {
         ConsoleLogger.log(LogLevel.DEBUG, "start parseGMLcurve" + new Exception().getStackTrace()[0]);
         if (value == null) {
             ConsoleLogger.log(LogLevel.FATAL, "CurveType is null", new Exception());
@@ -64,9 +61,9 @@ public class CurveGmlHelper {
     }
 
 
-    public static List<Segment> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value, String srsName) {
+    public static List<LinestringSegment> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value, String srsName) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString(), new Exception().getStackTrace()[0]);
-        List<Segment> segment = new ArrayList<>();
+        List<LinestringSegment> segment = new ArrayList<>();
         long counter = 0;
 
         for (JAXBElement<? extends AbstractCurveSegmentType> element : value.getAbstractCurveSegment()) {
@@ -157,7 +154,7 @@ public class CurveGmlHelper {
         return new CurveSegmentArrayPropertyType();
     }
 
-    public static Segment parseArcByCenterPoint(ArcByCenterPointType value, String srsName, long counter) {
+    public static LinestringSegment parseArcByCenterPoint(ArcByCenterPointType value, String srsName, long counter) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " counter : " + counter, new Exception().getStackTrace()[0]);
         LengthType radius = value.getRadius();
         AngleType startAngle = value.getStartAngle();
@@ -176,7 +173,15 @@ public class CurveGmlHelper {
             
         } else if (posList != null) {
             actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
-            coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1), posList.getValue().get(2));
+
+            if (posList.getValue().size() == 2) {
+                coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1));
+            } else if (posList.getValue().size() == 3) {
+                coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1), posList.getValue().get(2));
+            } else {
+                ConsoleLogger.log(LogLevel.FATAL, "Invalid number of coordinates" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+                throw new RuntimeException("Invalid number of coordinates" + value.getClass().getName());
+            }
             
         } else {
             ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -189,13 +194,16 @@ public class CurveGmlHelper {
 
         ConsoleLogger.log(LogLevel.DEBUG, "radius[m]: " + radius_m + " first bearing[rad]: " + startAngle_rad + " second bearing[rad]: " + endAngle_rad);
 
-        LineString lineString = CoordinateTransformeHelper.transformToLineString(actualSrsName, "urn:ogc:def:crs:EPSG::4326", coordinate, radius_m, startAngle_rad, endAngle_rad);
-        Segment segment = new Segment();
-        segment.setLineString(lineString);
-        segment.setInterpretation(Segment.Interpretation.ARCBYCENTER);
-        segment.setSequence(counter);
+        Point point = CoordinateTransformeHelper.transformToPoint(actualSrsName, "urn:ogc:def:crs:EPSG::4326", coordinate);
+        LinestringSegment linestringSegment = new LinestringSegment();
+        linestringSegment.setPoint(point);
+        linestringSegment.setRadius(radius_m);
+        linestringSegment.setStartAngle(startAngle_rad);
+        linestringSegment.setEndAngle(endAngle_rad);
+        linestringSegment.setInterpretation(LinestringSegment.Interpretation.ARCBYCENTER);
+        linestringSegment.setSequence(counter);
 
-        return segment;
+        return linestringSegment;
     }
 
 
@@ -213,16 +221,9 @@ public class CurveGmlHelper {
         return new ArcType();
     }
 
-    public static Segment parseCircleByCenterPoint(CircleByCenterPointType value, String srsName, long counter) {
+    public static LinestringSegment parseCircleByCenterPoint(CircleByCenterPointType value, String srsName, long counter) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " counter : " + counter, new Exception().getStackTrace()[0]);
         LengthType radius = value.getRadius();
-        AngleType startAngle = new AngleType();
-        startAngle.setValue(0);
-        startAngle.setUom("deg");
-
-        AngleType endAngle = new AngleType();
-        endAngle.setValue(360);
-        endAngle.setUom("deg");
 
         if (radius == null ) {
             ConsoleLogger.log(LogLevel.FATAL, "radius can't be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -238,7 +239,15 @@ public class CurveGmlHelper {
             
         } else if (posList != null) {
             actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
-            coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1), posList.getValue().get(2));
+
+            if (posList.getValue().size() == 2) {
+                coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1));
+            } else if (posList.getValue().size() == 3) {
+                coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1), posList.getValue().get(2));
+            } else {
+                ConsoleLogger.log(LogLevel.FATAL, "Invalid number of coordinates" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+                throw new RuntimeException("Invalid number of coordinates" + value.getClass().getName());
+            }
             
         } else {
             ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -246,18 +255,16 @@ public class CurveGmlHelper {
         }
 
         Double radius_m = UnitTransformHelper.convertDistanceToMeters(radius.getValue(), radius.getUom());
-        Double startAngle_rad = UnitTransformHelper.convertAngleToBearingInRadians(startAngle.getValue(), startAngle.getUom(), actualSrsName);
-        Double endAngle_rad = UnitTransformHelper.convertAngleToBearingInRadians(endAngle.getValue(), endAngle.getUom(), actualSrsName);
 
-        ConsoleLogger.log(LogLevel.DEBUG, "radius[m]: " + radius_m + " first bearing[rad]: " + startAngle_rad + " second bearing[rad]: " + endAngle_rad);
+        ConsoleLogger.log(LogLevel.DEBUG, "radius[m]: " + radius_m);
+        Point point = CoordinateTransformeHelper.transformToPoint(actualSrsName, "urn:ogc:def:crs:EPSG::4326", coordinate);
+        LinestringSegment linestringSegment = new LinestringSegment();
+        linestringSegment.setPoint(point);
+        linestringSegment.setRadius(radius_m);
+        linestringSegment.setInterpretation(LinestringSegment.Interpretation.CIRCLEBYCENTER);
+        linestringSegment.setSequence(counter);
 
-        LineString lineString = CoordinateTransformeHelper.transformToLineString(actualSrsName, "urn:ogc:def:crs:EPSG::4326", coordinate, radius_m, startAngle_rad, endAngle_rad);
-        Segment segment = new Segment();
-        segment.setLineString(lineString);
-        segment.setInterpretation(Segment.Interpretation.CIRCLEBYCENTER);
-        segment.setSequence(counter);
-
-        return segment;
+        return linestringSegment;
     }  
 
     public static CircleByCenterPointType printCircleByCenterPoint (LineString value) {
@@ -273,16 +280,16 @@ public class CurveGmlHelper {
         return new CircleType();
     }
 
-    public static Segment parseGeodesicString (GeodesicStringType value, String srsName, long counter) {
+    public static LinestringSegment parseGeodesicString (GeodesicStringType value, String srsName, long counter) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);   
         DirectPositionListType posList = value.getPosList();
         List<Object> geometricPositionGroup = value.getGeometricPositionGroup();
         
         if (posList != null) {
             String actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
-            return parseDirectPositionList(posList, actualSrsName, Segment.Interpretation.GEODESIC, counter);
+            return parseDirectPositionList(posList, actualSrsName, LinestringSegment.Interpretation.GEODESIC, counter);
         } else if (geometricPositionGroup != null) {
-            return parseListOfDirectPosition(geometricPositionGroup, srsName, Segment.Interpretation.GEODESIC, counter, null);
+            return parseListOfDirectPosition(geometricPositionGroup, srsName, LinestringSegment.Interpretation.GEODESIC, counter, null);
         }
 
         ConsoleLogger.log(LogLevel.FATAL, "DirectPositionListType and geometricPositionGroup is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -299,7 +306,7 @@ public class CurveGmlHelper {
         return geodesicString;
     }
 
-    public static Segment parseLineStringSegment (LineStringSegmentType value, String srsName, long counter) {
+    public static LinestringSegment parseLineStringSegment (LineStringSegmentType value, String srsName, long counter) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]); 
         DirectPositionListType posList = value.getPosList();
         List<JAXBElement<?>> posOrPointPropertyOrPointRep = value.getPosOrPointPropertyOrPointRep();
@@ -307,11 +314,11 @@ public class CurveGmlHelper {
             String actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
 
             ConsoleLogger.log(LogLevel.DEBUG, "end parseLineStringSegment : " + posList.toString() + " / " + actualSrsName);
-            return parseDirectPositionList(posList, actualSrsName, Segment.Interpretation.LINESTRING, counter);
+            return parseDirectPositionList(posList, actualSrsName, LinestringSegment.Interpretation.LINESTRING, counter);
         } else if (posOrPointPropertyOrPointRep != null) {
 
             ConsoleLogger.log(LogLevel.DEBUG, "end parseLineStringSegment : " + posOrPointPropertyOrPointRep.toString() + " / " + srsName);
-            return parseListOfDirectPosition(posOrPointPropertyOrPointRep, srsName, Segment.Interpretation.LINESTRING, counter);
+            return parseListOfDirectPosition(posOrPointPropertyOrPointRep, srsName, LinestringSegment.Interpretation.LINESTRING, counter);
 
         }  
         ConsoleLogger.log(LogLevel.FATAL, "DirectPositionListType and posOrPointPropertyOrPointRep is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -323,7 +330,7 @@ public class CurveGmlHelper {
         return new LineStringSegmentType();
     }
 
-    public static Segment parseDirectPositionList (DirectPositionListType value, String srsName, Segment.Interpretation interpretation, long counter) {
+    public static LinestringSegment parseDirectPositionList (DirectPositionListType value, String srsName, LinestringSegment.Interpretation interpretation, long counter) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsNam : " + srsName +  " interpretation :" + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);
         
         List<Double> posList = value.getValue();
@@ -355,11 +362,11 @@ public class CurveGmlHelper {
         ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinates.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter);
 
         LineString lineString = CoordinateTransformeHelper.transformToLineString(srsName, "urn:ogc:def:crs:EPSG::4326", coordinates);
-        Segment segment = new Segment();
-        segment.setLineString(lineString);
-        segment.setInterpretation(interpretation);
-        segment.setSequence(counter);
-        return segment;
+        LinestringSegment linestringSegment = new LinestringSegment();
+        linestringSegment.setLinestring(lineString);
+        linestringSegment.setInterpretation(interpretation);
+        linestringSegment.setSequence(counter);
+        return linestringSegment;
     }
 
     public static DirectPositionListType printDirectPositionList (List<Coordinate> value) {
@@ -384,7 +391,7 @@ public class CurveGmlHelper {
         return posList;
         }
 
-    public static Segment parseListOfDirectPosition(List<Object> value, String srsName, Segment.Interpretation interpretation, long counter, String type) {
+    public static LinestringSegment parseListOfDirectPosition(List<Object> value, String srsName, LinestringSegment.Interpretation interpretation, long counter, String type) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);
     
         HashMap<Coordinate, String> coordinates = new HashMap<>();
@@ -407,14 +414,14 @@ public class CurveGmlHelper {
         ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinates.toString() + " interpretation : " + interpretation + " counter : " + counter);
 
         LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinates, "urn:ogc:def:crs:EPSG::4326");
-        Segment segment = new Segment();
-        segment.setLineString(lineString);
-        segment.setInterpretation(interpretation);
-        segment.setSequence(counter);
-        return segment;
+        LinestringSegment linestringSegment = new LinestringSegment();
+        linestringSegment.setLinestring(lineString);
+        linestringSegment.setInterpretation(interpretation);
+        linestringSegment.setSequence(counter);
+        return linestringSegment;
     }
 
-    public static Segment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, Segment.Interpretation interpretation, long counter) {
+    public static LinestringSegment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, LinestringSegment.Interpretation interpretation, long counter) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);    
 
         HashMap<Coordinate, String> coordinates = new HashMap<>();
@@ -437,14 +444,10 @@ public class CurveGmlHelper {
         ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinates.toString() + " interpretation : " + interpretation + " counter : " + counter);
 
         LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinates, "urn:ogc:def:crs:EPSG::4326");
-        Segment segment = new Segment();
-        segment.setLineString(lineString);
-        segment.setInterpretation(interpretation);
-        segment.setSequence(counter);
-        return segment;
+        LinestringSegment linestringSegment = new LinestringSegment();
+        linestringSegment.setLinestring(lineString);
+        linestringSegment.setInterpretation(interpretation);
+        linestringSegment.setSequence(counter);
+        return linestringSegment;
     }
-
-
-
-
 }
