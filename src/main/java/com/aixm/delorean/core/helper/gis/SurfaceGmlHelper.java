@@ -2,24 +2,39 @@ package com.aixm.delorean.core.helper.gis;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.aixm.delorean.core.gis.type.LinestringSegment;
+import com.aixm.delorean.core.gis.type.PolygonSegment;
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
 
 import javax.xml.namespace.QName;
 
 import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.MultiPolygon;
+import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 
 import jakarta.xml.bind.JAXBElement;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicStringType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.LengthType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.LineStringSegmentType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.PolygonPatchType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.SurfaceType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.ConeType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.CubicSplineType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.CylinderType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionListType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.RectangleType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.SphereType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.TriangleType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.LinearRingType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.OffsetCurveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.RingType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractRingType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.CompositeCurveType;
@@ -27,39 +42,52 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gml.LineStringType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.OrientableCurveType;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveSegmentArrayPropertyType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractCurveSegmentType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractCurveType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractRingPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.SurfacePatchArrayPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractSurfacePatchType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.AngleType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcByBulgeType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcByCenterPointType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcStringByBulgeType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcStringType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.BSplineType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.BezierType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.CircleByCenterPointType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.CircleType;
+import com.aixm.delorean.core.schema.a5_1_1.org.gml.ClothoidType;
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurvePropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
 
 public class SurfaceGmlHelper {
-    
-
-    public static MultiPolygon parseGMLsurface(SurfaceType value) {
+    public static List<PolygonSegment> parseGMLsurface(SurfaceType value) {
         if (value == null) {
+            ConsoleLogger.log(LogLevel.WARN, "parseGMLsurface is null", new Exception().getStackTrace()[0]);
             return null;
         }
 
         SurfacePatchArrayPropertyType patches = value.getPatches().getValue();
         if (patches == null) {
-            throw new IllegalArgumentException("SurfacePatchArrayPropertyType is null" + value.getClass().getName());
+            ConsoleLogger.log(LogLevel.FATAL, "SurfacePatchArrayPropertyType is null", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("SurfacePatchArrayPropertyType is null" + value.getClass().getName());
         }
 
         String srsName = value.getSrsName();
         if (srsName == null) {
-            throw new IllegalArgumentException("srsName is null" + value.getClass().getName());
+            ConsoleLogger.log(LogLevel.FATAL, "srsName is null", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("srsName is null" + value.getClass().getName());
         }
 
         List<Polygon> polygons = new ArrayList<Polygon>();
         for (JAXBElement<? extends AbstractSurfacePatchType> patch : patches.getAbstractSurfacePatch()) {
-            List<Coordinate> exterior = parseSurfacePatchArrayProperty(patch, true).get(0);
-            List<List<Coordinate>> interior = parseSurfacePatchArrayProperty(patch, false);
-            polygons.add(CoordinateTransformeHelper.transformToPolygon(srsName, "urn:ogc:def:crs:EPSG::4326", exterior, interior));
+            List<PolygonSegment> exterior = parseSurfacePatchArrayProperty(patch, srsName, true).get(0);
+            List<List<PolygonSegment>> interior = parseSurfacePatchArrayProperty(patch, srsName,  false);
+            // polygons.add(CoordinateTransformeHelper.transformToPolygon(srsName, "urn:ogc:def:crs:EPSG::4326", exterior, interior));
         }
 
-        return CoordinateTransformeHelper.mergeToMultiPolygon(polygons);
+        // return CoordinateTransformeHelper.mergeToMultiPolygon(polygons);
     }
 
     public static SurfaceType printGMLsurface(Polygon value) {
@@ -67,28 +95,28 @@ public class SurfaceGmlHelper {
         return new SurfaceType();
     }
 
-    public static List<List<Coordinate>>  parseSurfacePatchArrayProperty (JAXBElement<? extends AbstractSurfacePatchType> element, Boolean isExterior) {
-        List<List<Coordinate>> coordinates =  new ArrayList<List<Coordinate>>();
-        if (element.getValue() instanceof ConeType) {
+    public static List<List<PolygonSegment>>  parseSurfacePatchArrayProperty (JAXBElement<? extends AbstractSurfacePatchType> element, String srsName, Boolean isExterior) {
+        List<List<PolygonSegment>> coordinates =  new ArrayList<List<PolygonSegment>>();
+        if (element.getValue().equals(ConeType.class)) {
             //AIXM-5.1_RULE-1A3ED3
 
-        } else if (element.getValue() instanceof CylinderType) {
+        } else if (element.getValue().equals(CylinderType.class)) {	
             //AIXM-5.1_RULE-1A3ED4
 
-        } else if (element.getValue() instanceof PolygonPatchType) {
+        } else if (element.getValue().equals(PolygonPatchType.class)) {
             if (isExterior) {
-                coordinates.add(parsePolygonPatchExterior((PolygonPatchType) element.getValue()));
+                coordinates.add(parsePolygonPatchExterior((PolygonPatchType) element.getValue(), srsName));
             } else {
-                coordinates.addAll(parsePolygonPatchInterior((PolygonPatchType) element.getValue()));
+                coordinates.addAll(parsePolygonPatchInterior((PolygonPatchType) element.getValue(), srsName));
             }
 
-        } else if (element.getValue() instanceof RectangleType) {
+        } else if (element.getValue().equals(RectangleType.class)) {
             //AIXM-5.1_RULE-1A3ED1
             
-        } else if (element.getValue() instanceof SphereType) {
+        } else if (element.getValue().equals(SphereType.class)) {
             //AIXM-5.1_RULE-1A3ED5
             
-        } else if (element.getValue() instanceof TriangleType) {
+        } else if (element.getValue().equals(TriangleType.class)) {
             //AIXM-5.1_RULE-1A3ED2
             
         } else {
@@ -97,23 +125,25 @@ public class SurfaceGmlHelper {
         return coordinates;
     }
 
-    public static List<Coordinate> parsePolygonPatchExterior (PolygonPatchType value) {
+    public static List<PolygonSegment> parsePolygonPatchExterior (PolygonPatchType value, String srsName) {
         AbstractRingPropertyType exterior = value.getExterior();
         if (exterior == null) {
             throw new IllegalArgumentException("exterior is null" + value.getClass().getName());
         }
-        return parseAbstractRingProperty(exterior);
+        return parseAbstractRingProperty(exterior, srsName, 0);
     }
 
-    public static List<List<Coordinate>> parsePolygonPatchInterior (PolygonPatchType value) {
+    public static List<List<PolygonSegment>> parsePolygonPatchInterior (PolygonPatchType value, String srsName) {
         List<AbstractRingPropertyType> interior = value.getInterior();
-        List<List<Coordinate>> coordinates = new ArrayList<List<Coordinate>>();
+        List<List<PolygonSegment>> coordinates = new ArrayList<List<PolygonSegment>>();
         if (interior == null) {
-            return new ArrayList<List<Coordinate>>();
+            return new ArrayList<List<PolygonSegment>>();
         }
 
+        long counter = 1;
         for (AbstractRingPropertyType ring : interior) {
-            coordinates.add(parseAbstractRingProperty(ring));
+            coordinates.add(parseAbstractRingProperty(ring, srsName, counter));
+            counter++;
         }
 
         return coordinates;
@@ -140,29 +170,31 @@ public class SurfaceGmlHelper {
         return polygonPatch;
     }
 
-    public static List<Coordinate> parseAbstractRingProperty(AbstractRingPropertyType value){
+    public static List<PolygonSegment> parseAbstractRingProperty(AbstractRingPropertyType value, String srsName, long counter) {
         JAXBElement<? extends AbstractRingType> element =  value.getAbstractRing();
-        if (element.getValue() instanceof LinearRingType) {
+        if (element.getValue().equals(LinearRingType.class)){
             //AIXM-5.1_RULE-1A3ED6
-            return new ArrayList<Coordinate>();
+            return new ArrayList<PolygonSegment>();
 
-        } else if (element.getValue() instanceof RingType) {
-            return parseRingType((RingType) element.getValue());
+        } else if (element.getValue().equals(RingType.class)){
+            
+            return parseRingType((RingType) element.getValue(), srsName, counter);
 
         } else {
             throw new IllegalArgumentException("Unsupported type " + element.getValue().getClass().getName());
         }
     }
 
-    public static List<Coordinate> parseRingType(RingType value){
-        List<Coordinate> coordinates = new ArrayList<Coordinate>();
+    public static List<PolygonSegment> parseRingType(RingType value, String srsName, long counter) {
+        String actualSrsName = value.getSrsName() != null ? value.getSrsName() : srsName;
+        List<PolygonSegment> coordinates = new ArrayList<PolygonSegment>();
         List<CurvePropertyType> curveMember = value.getCurveMember();
         if (curveMember == null) {
-            return new ArrayList<Coordinate>();
+            return new ArrayList<PolygonSegment>();
         }
 
         for (CurvePropertyType curve : curveMember) {
-            coordinates.addAll(parseCurveProperty(curve));
+            coordinates.addAll(parseCurveProperty(curve, actualSrsName, counter));
         }
         
         return coordinates;
@@ -181,40 +213,435 @@ public class SurfaceGmlHelper {
         return ringType;
     }
 
-    public static List<Coordinate> parseCurveProperty(CurvePropertyType value){
-        List<Coordinate> coordinates = new ArrayList<Coordinate>();
+    public static List<PolygonSegment> parseCurveProperty(CurvePropertyType value, String srsName, long counter) {
+        List<PolygonSegment> coordinates = new ArrayList<PolygonSegment>();
         JAXBElement<? extends AbstractCurveType> element =  value.getAbstractCurve();
         if (element.getValue() instanceof com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType) {
 
-        } else if (element.getValue() instanceof ElevatedCurveType){
+        } else if (element.getValue().equals(ElevatedCurveType.class)){
             //TODO is this allowed in AIXM?
 
-        } else if (element.getValue() instanceof CompositeCurveType){
+        } else if (element.getValue().equals(CompositeCurveType.class)){
             //TODO is this allowed in AIXM?
 
-        } else if (element.getValue() instanceof com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType){
-            // CurveType curveType = (CurveType) element.getValue();
-            // if (curveType == null || curveType.getSegments() == null) {
-            //     return coordinates;
-            // } else {
-            //     coordinates.addAll(CurveGmlHelper.parseCurveSegementArrayProperty(curveType.getSegments()));
-            // }
-        } else if (element.getValue() instanceof LineStringType){
+        } else if (element.getValue().equals(com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType.class)){
+            CurveType curveType = (CurveType) element.getValue();
+            if (curveType == null || curveType.getSegments() == null) {
+                return coordinates;
+            } else {
+                coordinates.addAll(parseCurveSegementArrayProperty(curveType.getSegments(), srsName, counter));
+            }
+        } else if (element.getValue().equals(LineStringType.class)){
             //TODO is this allowed in AIXM?
             
-        } else if (element.getValue() instanceof LinearRingType){
+        } else if (element.getValue().equals(LinearRingType.class)){
             //TODO is this allowed in AIXM?
             
-        } else if (element.getValue() instanceof OrientableCurveType){
+        } else if (element.getValue().equals(OrientableCurveType.class)){
             //TODO is this allowed in AIXM?
             
-        } else if (element.getValue() instanceof RingType){
+        } else if (element.getValue().equals(RingType.class)){
             //TODO is this allowed in AIXM?
             
         } else {
             throw new IllegalArgumentException("Unsupported type " + element.getValue().getClass().getName());
         }
         return coordinates;
+    }
+
+        public static List<PolygonSegment> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value, String srsName, long part) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString(), new Exception().getStackTrace()[0]);
+        List<PolygonSegment> segment = new ArrayList<>();
+        long counter = 0;
+
+        for (JAXBElement<? extends AbstractCurveSegmentType> element : value.getAbstractCurveSegment()) {
+            if (element.getValue() == null) {
+                ConsoleLogger.log(LogLevel.FATAL, "element is null", new Exception().getStackTrace()[0]);
+                throw new RuntimeException("element is null");
+
+            } else if (element.getValue() instanceof ArcByBulgeType) {
+                ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC2 : ArcByBulgeType is not supported", new Exception().getStackTrace()[0]);
+                continue;
+
+
+            } else if (element.getValue().getClass().equals(ArcByCenterPointType.class)) {
+                ConsoleLogger.log(LogLevel.DEBUG, "ArcByCenterPointType");
+                segment.add(parseArcByCenterPoint((ArcByCenterPointType) element.getValue(), srsName, counter, part));
+                counter++;
+                continue;
+
+            } else if (element.getValue().getClass().equals(ArcStringByBulgeType.class)) {
+                ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC1  : ArcStringByBulgeType is not supported", new Exception().getStackTrace()[0]);
+                continue;
+
+            } else if (element.getValue().getClass().equals(ArcStringType.class)) {
+                ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC3 : ArcStringType is not supported", new Exception().getStackTrace()[0]);
+                continue;
+
+            } else if (element.getValue().getClass().equals(ArcType.class)) {
+                ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC3 : ArcStringType is not supported", new Exception().getStackTrace()[0]);
+                continue;
+
+            } else if (element.getValue().getClass().equals(BSplineType.class)) {
+                ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC4 : BSplineType is not supported", new Exception().getStackTrace()[0]);
+                continue;
+
+            } else if (element.getValue().getClass().equals(BezierType.class)) {
+                ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC5 : BezierType is not supported", new Exception().getStackTrace()[0]);
+                continue;
+                
+            } else if (element.getValue().getClass().equals(CircleByCenterPointType.class)) {
+                segment.add(parseCircleByCenterPoint((CircleByCenterPointType) element.getValue(), srsName, counter, part));
+                counter++;
+
+            } else if (element.getValue().getClass().equals(CircleType.class)) {
+                ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC3 : ArcStringType is not supported", new Exception().getStackTrace()[0]);
+                continue;
+
+            } else if (element.getValue().getClass().equals(ClothoidType.class)) {
+                ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC7 : ClothoidType is not supported", new Exception().getStackTrace()[0]);
+                continue;
+
+            } else if (element.getValue().getClass().equals(CubicSplineType.class)) {
+                ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC9 : CubicSplineType is not supported", new Exception().getStackTrace()[0]);
+                continue;   
+
+            } else if (element.getValue().getClass().equals(GeodesicStringType.class)) {
+                ConsoleLogger.log(LogLevel.DEBUG, "GeodesicStringType");
+                segment.add(parseGeodesicString((GeodesicStringType) element.getValue(), srsName, counter, part));
+                counter++;
+                continue;
+
+            } else if (element.getValue().getClass().equals(GeodesicType.class)) {
+                ConsoleLogger.log(LogLevel.DEBUG, "GeodesicType");
+                segment.add(parseGeodesicString((GeodesicType) element.getValue(), srsName, counter, part));
+                counter++;
+                continue;
+
+            } else if (element.getValue().getClass().equals(LineStringSegmentType.class)) {
+                ConsoleLogger.log(LogLevel.DEBUG, "LineStringSegmentType");
+                segment.add(parseLineStringSegment((LineStringSegmentType) element.getValue(), srsName, counter, part));
+                counter++;
+                continue;
+
+            } else if (element.getValue().getClass().equals(OffsetCurveType.class)) {
+                ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC6 : OffsetCurveType is not supported", new Exception().getStackTrace()[0]);
+                continue;
+
+            } else {
+                ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
+                throw new RuntimeException("element is not supported");
+            }
+        }
+
+        return segment;
+    }
+
+    public static CurveSegmentArrayPropertyType printCurveSegmentArrayPropertyType (){
+
+        return new CurveSegmentArrayPropertyType();
+    }
+
+    public static PolygonSegment parseArcByCenterPoint(ArcByCenterPointType value, String srsName, long counter, long part) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " counter : " + counter, new Exception().getStackTrace()[0]);
+        LengthType radius = value.getRadius();
+        AngleType startAngle = value.getStartAngle();
+        AngleType endAngle = value.getEndAngle();
+        if (radius == null || startAngle == null || endAngle == null) {
+            ConsoleLogger.log(LogLevel.FATAL, "radius or startangle or endangle can't be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("radius or startangle or endangle can't be null" + value.getClass().getName());
+        }
+        DirectPositionType pos = value.getPos();
+        DirectPositionListType posList = value.getPosList();
+        Coordinate coordinate = null;
+        String actualSrsName = null;
+        if (pos != null) {
+            actualSrsName = pos.getSrsName() != null ? pos.getSrsName() : srsName;
+            coordinate = PointGmlHelper.parseDirectPositionToCoordinate(pos);
+            
+        } else if (posList != null) {
+            actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
+
+            if (posList.getValue().size() == 2) {
+                coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1));
+            } else if (posList.getValue().size() == 3) {
+                coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1), posList.getValue().get(2));
+            } else {
+                ConsoleLogger.log(LogLevel.FATAL, "Invalid number of coordinates" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+                throw new RuntimeException("Invalid number of coordinates" + value.getClass().getName());
+            }
+            
+        } else {
+            ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("DirectPositionType is null" + value.getClass().getName());
+        }
+
+        Double radius_m = UnitTransformHelper.convertDistanceToMeters(radius.getValue(), radius.getUom());
+        Double startAngle_rad = UnitTransformHelper.convertAngleToBearingInRadians(startAngle.getValue(), startAngle.getUom(), actualSrsName);
+        Double endAngle_rad = UnitTransformHelper.convertAngleToBearingInRadians(endAngle.getValue(), endAngle.getUom(), actualSrsName);
+
+        ConsoleLogger.log(LogLevel.DEBUG, "radius[m]: " + radius_m + " first bearing[rad]: " + startAngle_rad + " second bearing[rad]: " + endAngle_rad);
+
+        Point point = CoordinateTransformeHelper.transformToPoint(actualSrsName, "urn:ogc:def:crs:EPSG::4326", coordinate);
+        PolygonSegment polygonSegment = new PolygonSegment();
+        polygonSegment.setPoint(point);
+        polygonSegment.setRadius(radius_m);
+        polygonSegment.setStartAngle(startAngle_rad);
+        polygonSegment.setEndAngle(endAngle_rad);
+        polygonSegment.setInterpretation(PolygonSegment.Interpretation.ARCBYCENTER);
+        polygonSegment.setSequence(counter);
+        polygonSegment.setPart(part);
+
+        return polygonSegment;
+    }
+
+
+
+    public static ArcByCenterPointType printArcByCenterPoint (LineString value) {
+        return new ArcByCenterPointType();
+    }
+
+    //TODO: to implement
+    public static List<Coordinate> parseArc(ArcType value) {
+        return new ArrayList<Coordinate>();
+    }
+
+    public static ArcType printArc (LineString value) {
+        return new ArcType();
+    }
+
+public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType value, String srsName, long counter, long part) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " counter : " + counter, new Exception().getStackTrace()[0]);
+        LengthType radius = value.getRadius();
+
+        if (radius == null ) {
+            ConsoleLogger.log(LogLevel.FATAL, "radius can't be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("radius can't be null" + value.getClass().getName());
+        }
+        DirectPositionType pos = value.getPos();
+        DirectPositionListType posList = value.getPosList();
+        Coordinate coordinate = null;
+        String actualSrsName = null;
+        if (pos != null) {
+            actualSrsName = pos.getSrsName() != null ? pos.getSrsName() : srsName;
+            coordinate = PointGmlHelper.parseDirectPositionToCoordinate(pos);
+            
+        } else if (posList != null) {
+            actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
+
+            if (posList.getValue().size() == 2) {
+                coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1));
+            } else if (posList.getValue().size() == 3) {
+                coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1), posList.getValue().get(2));
+            } else {
+                ConsoleLogger.log(LogLevel.FATAL, "Invalid number of coordinates" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+                throw new RuntimeException("Invalid number of coordinates" + value.getClass().getName());
+            }
+            
+        } else {
+            ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("DirectPositionType is null" + value.getClass().getName());
+        }
+
+        Double radius_m = UnitTransformHelper.convertDistanceToMeters(radius.getValue(), radius.getUom());
+
+        ConsoleLogger.log(LogLevel.DEBUG, "radius[m]: " + radius_m);
+        Point point = CoordinateTransformeHelper.transformToPoint(actualSrsName, "urn:ogc:def:crs:EPSG::4326", coordinate);
+        PolygonSegment polygonSegment = new PolygonSegment();
+        polygonSegment.setPoint(point);
+        polygonSegment.setRadius(radius_m);
+        polygonSegment.setInterpretation(PolygonSegment.Interpretation.CIRCLEBYCENTER);
+        polygonSegment.setSequence(counter);
+        polygonSegment.setPart(part);
+
+        return polygonSegment;
+    }  
+
+    public static CircleByCenterPointType printCircleByCenterPoint (LineString value) {
+        return new CircleByCenterPointType();
+    }
+
+    //TODO: to implement
+    public static List<Coordinate> parseCircle(CircleType value) {
+        return new ArrayList<Coordinate>();
+    }
+
+    public static CircleType printCircle (LineString value) {
+        return new CircleType();
+    }
+
+    public static PolygonSegment parseGeodesicString (GeodesicStringType value, String srsName, long counter, long part) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);   
+        DirectPositionListType posList = value.getPosList();
+        List<Object> geometricPositionGroup = value.getGeometricPositionGroup();
+        
+        if (posList != null) {
+            String actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
+            return parseDirectPositionList(posList, actualSrsName, PolygonSegment.Interpretation.GEODESIC, counter, part);
+        } else if (geometricPositionGroup != null) {
+            return parseListOfDirectPosition(geometricPositionGroup, srsName, PolygonSegment.Interpretation.GEODESIC, counter, part, null);
+        }
+
+        ConsoleLogger.log(LogLevel.FATAL, "DirectPositionListType and geometricPositionGroup is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+        throw new RuntimeException("DirectPositionListType and geometricPositionGroup is null" + value.getClass().getName());
+    }
+
+    public static GeodesicStringType printGeodesicString (List<Coordinate> value) {
+        GeodesicStringType geodesicString = new GeodesicStringType();
+        if (value == null) {
+            throw new IllegalArgumentException("Coordinate values cannot be null" + value.getClass().getName());
+        }
+        DirectPositionListType posList = printDirectPositionList(value);
+        geodesicString.setPosList(posList);
+        return geodesicString;
+    }
+
+    public static PolygonSegment parseLineStringSegment (LineStringSegmentType value, String srsName, long counter, long part) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]); 
+        DirectPositionListType posList = value.getPosList();
+        List<JAXBElement<?>> posOrPointPropertyOrPointRep = value.getPosOrPointPropertyOrPointRep();
+        if (posList != null) {
+            String actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
+
+            ConsoleLogger.log(LogLevel.DEBUG, "end parseLineStringSegment : " + posList.toString() + " / " + actualSrsName);
+            return parseDirectPositionList(posList, actualSrsName, PolygonSegment.Interpretation.LINESTRING, counter, part);
+        } else if (posOrPointPropertyOrPointRep != null) {
+
+            ConsoleLogger.log(LogLevel.DEBUG, "end parseLineStringSegment : " + posOrPointPropertyOrPointRep.toString() + " / " + srsName);
+            return parseListOfDirectPosition(posOrPointPropertyOrPointRep, srsName, PolygonSegment.Interpretation.LINESTRING, counter, part);
+
+        }  
+        ConsoleLogger.log(LogLevel.FATAL, "DirectPositionListType and posOrPointPropertyOrPointRep is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+        throw new RuntimeException("DirectPositionListType and posOrPointPropertyOrPointRep is null" + value.getClass().getName());
+    }
+
+    public static LineStringSegmentType printLineStringSegment (LineString value) {
+
+        return new LineStringSegmentType();
+    }
+
+    public static PolygonSegment parseDirectPositionList (DirectPositionListType value, String srsName, PolygonSegment.Interpretation interpretation, long counter, long part) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsNam : " + srsName +  " interpretation :" + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);
+        
+        List<Double> posList = value.getValue();
+
+        if (posList == null || posList.isEmpty()) {
+            ConsoleLogger.log(LogLevel.FATAL, "list<Double> value is null or empty" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("list<Double> value is null or empty" + value.getClass().getName());
+        }
+        int srsDimension = value.getSrsDimension() != null ? value.getSrsDimension().intValue() : 2;
+        List<Coordinate> coordinates = new ArrayList<>();
+
+        for (int i = 0; i < posList.size(); i += srsDimension) {
+            if (posList.get(i) == null || posList.get(i + 1) == null) {
+                ConsoleLogger.log(LogLevel.FATAL, "Coordinate values cannot be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+                throw new RuntimeException("Coordinate values cannot be null" + value.getClass().getName());
+            }
+
+            if (srsDimension == 2) {
+                coordinates.add(new Coordinate(posList.get(i), posList.get(i + 1)));
+            } else if (srsDimension == 3) {
+                if (posList.get(i + 2) == null) {
+                    ConsoleLogger.log(LogLevel.FATAL, "Coordinate values cannot be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+                    throw new RuntimeException("Coordinate values cannot be null" + value.getClass().getName());
+                }
+                coordinates.add(new Coordinate(posList.get(i), posList.get(i + 1), posList.get(i + 2)));
+            }
+        }
+
+        ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinates.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter);
+
+        LineString lineString = CoordinateTransformeHelper.transformToLineString(srsName, "urn:ogc:def:crs:EPSG::4326", coordinates);
+        PolygonSegment polygonSegment = new PolygonSegment();
+        polygonSegment.setLinestring(lineString);
+        polygonSegment.setInterpretation(interpretation);
+        polygonSegment.setSequence(counter);
+        polygonSegment.setPart(part);
+        return polygonSegment;
+    }
+
+    public static DirectPositionListType printDirectPositionList (List<Coordinate> value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start printDirectPositionList : " + value.toString(), new Exception().getStackTrace()[0]);
+
+        DirectPositionListType posList = new DirectPositionListType();
+        for (Coordinate coordinate : value) {
+            if (coordinate == null) {
+                ConsoleLogger.log(LogLevel.FATAL, "Coordinate values cannot be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+                throw new RuntimeException("Coordinate values cannot be null" + value.getClass().getName());
+            }
+
+            //Posgis does latitute, longitude, altitude in that order
+            //GML expects longitude, latitude,altitude in that order
+            posList.getValue().add(coordinate.getY());
+            posList.getValue().add(coordinate.getX());
+            if (!Double.isNaN(coordinate.getZ())) {
+                posList.getValue().add(coordinate.getZ());
+            }
+        }
+
+        return posList;
+        }
+
+    public static PolygonSegment parseListOfDirectPosition(List<Object> value, String srsName, PolygonSegment.Interpretation interpretation, long counter, long part, String type) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);
+    
+        HashMap<Coordinate, String> coordinates = new HashMap<>();
+        for (Object element : value) {
+            if (element == null) {
+                ConsoleLogger.log(LogLevel.FATAL, "content of geometricPositionGroup can't be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+                throw new RuntimeException("content of geometricPositionGroup can't be null" + value.getClass().getName());
+            }
+
+            if (element.getClass().equals(DirectPositionType.class)) {
+                DirectPositionType pos = (DirectPositionType) element;
+                String actualSrsName = pos.getSrsName() != null ? pos.getSrsName() : srsName;
+                coordinates.put(PointGmlHelper.parseDirectPositionToCoordinate(pos), actualSrsName);
+            } else {
+                ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
+                throw new RuntimeException("element is not supported");
+            }
+        }
+
+        ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinates.toString() + " interpretation : " + interpretation + " counter : " + counter);
+
+        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinates, "urn:ogc:def:crs:EPSG::4326");
+        PolygonSegment polygonSegment = new PolygonSegment();
+        polygonSegment.setLinestring(lineString);
+        polygonSegment.setInterpretation(interpretation);
+        polygonSegment.setSequence(counter);
+        polygonSegment.setPart(part);
+        return polygonSegment;
+    }
+
+    public static PolygonSegment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, PolygonSegment.Interpretation interpretation, long counter, long part) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);    
+
+        HashMap<Coordinate, String> coordinates = new HashMap<>();
+        for (JAXBElement<?> element : value) {
+            if (element.getValue() == null) {
+                ConsoleLogger.log(LogLevel.FATAL, "JAXBElement<?> values cannot be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+                throw new RuntimeException("JAXBElement<?> values cannot be null" + value.getClass().getName());
+            }
+
+            if (element.getValue().getClass().equals(DirectPositionType.class)) {
+                DirectPositionType pos = (DirectPositionType) element.getValue();
+                String actualSrsName = pos.getSrsName() != null ? pos.getSrsName() : srsName;
+                coordinates.put(PointGmlHelper.parseDirectPositionToCoordinate(pos), actualSrsName);
+            } else {
+                ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
+                throw new RuntimeException("element is not supported");
+            }
+        }
+
+        ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinates.toString() + " interpretation : " + interpretation + " counter : " + counter);
+
+        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinates, "urn:ogc:def:crs:EPSG::4326");
+        PolygonSegment polygonSegment = new PolygonSegment();
+        polygonSegment.setLinestring(lineString);
+        polygonSegment.setInterpretation(interpretation);
+        polygonSegment.setSequence(counter);
+        polygonSegment.setPart(part);
+        return polygonSegment;
     }
 
 }

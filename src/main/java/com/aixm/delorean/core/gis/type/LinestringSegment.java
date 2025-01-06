@@ -1,5 +1,6 @@
 package com.aixm.delorean.core.gis.type;
 import org.locationtech.jts.geom.LineString;
+import org.locationtech.jts.geom.Point;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,30 +10,39 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Index;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 
 @Entity
 @Table(
-    name = "segment",
+    name = "linestring_segment",
     schema = "public",
     indexes = {
         @Index(name = "idx_order", columnList = "sequence"),
         @Index(name = "idx_interpretation", columnList = "interpretation")
     }
 )
-public class Segment {
+public class LinestringSegment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "segment_seq")
-    @SequenceGenerator(name = "segment_seq", sequenceName = "segment_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "linestring_segment_seq")
+    @SequenceGenerator(name = "linestring_segment_seq", sequenceName = "linestring_segment_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
     protected Long dbid;
 
-    @Column(name = "linestring", columnDefinition = "geometry(LineString, 4326)")
-    // @JdbcTypeCode(SqlTypes.OTHER)
+    @Column(name = "linestring", columnDefinition = "geometry(Linestring, 4326)")
     protected LineString lineString;
+
+    @Column(name = "point", columnDefinition = "geometry(Point, 4326)")
+    protected Point point;
+
+    @Column(name = "radius", nullable = true)
+    protected Double radius;
+
+    @Column(name = "start_angle", nullable = true)
+    protected Double startAngle;
+
+    @Column(name = "end_angle", nullable = true)
+    protected Double endAngle;
 
     @Column(name = "sequence")
     protected long sequence;
@@ -55,12 +65,44 @@ public class Segment {
         this.dbid = value;
     }
 
-    public LineString getLineString() {
+    public LineString getLinestring() {
         return lineString;
     }
 
-    public void setLineString(LineString value) {
+    public void setLinestring(LineString value) {
         this.lineString = value;
+    }
+
+    public Point getPoint() {
+        return point;
+    }
+
+    public void setPoint(Point value) {
+        this.point = value;
+    }
+
+    public Double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(Double value) {
+        this.radius = value;
+    }
+
+    public Double getStartAngle() {
+        return startAngle;
+    }
+
+    public void setStartAngle(Double value) {
+        this.startAngle = value;
+    }
+
+    public Double getEndAngle() {
+        return endAngle;
+    }
+
+    public void setEndAngle(Double value) {
+        this.endAngle = value;
     }
 
     public Interpretation getInterpretation() {
