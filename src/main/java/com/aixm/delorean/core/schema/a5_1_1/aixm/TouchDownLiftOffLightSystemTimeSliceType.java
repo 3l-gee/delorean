@@ -104,8 +104,8 @@ public class TouchDownLiftOffLightSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundlightsystempropertygroup_element", joinColumns = {
-        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    @JoinTable(name = "touchdownliftofflightsystemtimeslicetype_element", joinColumns = {
+        @JoinColumn(name = "touchdownliftofflightsystemtimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightelementpropertytype_id")
     })
@@ -114,8 +114,8 @@ public class TouchDownLiftOffLightSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundlightsystempropertygroup_availability", joinColumns = {
-        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    @JoinTable(name = "touchdownliftofflightsystemtimeslicetype_availability", joinColumns = {
+        @JoinColumn(name = "touchdownliftofflightsystemtimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "groundlightingavailabilitypropertytype_id")
     })
@@ -124,8 +124,8 @@ public class TouchDownLiftOffLightSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundlightsystempropertygroup_annotation", joinColumns = {
-        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    @JoinTable(name = "touchdownliftofflightsystemtimeslicetype_annotation", joinColumns = {
+        @JoinColumn(name = "touchdownliftofflightsystemtimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

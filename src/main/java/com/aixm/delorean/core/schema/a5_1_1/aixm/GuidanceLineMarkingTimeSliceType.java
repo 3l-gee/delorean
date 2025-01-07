@@ -94,8 +94,8 @@ public class GuidanceLineMarkingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "markingpropertygroup_element", joinColumns = {
-        @JoinColumn(name = "markingpropertygroup_id")
+    @JoinTable(name = "guidancelinemarkingtimeslicetype_element", joinColumns = {
+        @JoinColumn(name = "guidancelinemarkingtimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "markingelementpropertytype_id")
     })
@@ -104,8 +104,8 @@ public class GuidanceLineMarkingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "markingpropertygroup_annotation", joinColumns = {
-        @JoinColumn(name = "markingpropertygroup_id")
+    @JoinTable(name = "guidancelinemarkingtimeslicetype_annotation", joinColumns = {
+        @JoinColumn(name = "guidancelinemarkingtimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

@@ -109,8 +109,8 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundlightsystempropertygroup_element", joinColumns = {
-        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    @JoinTable(name = "visualglideslopeindicatortimeslicetype_element", joinColumns = {
+        @JoinColumn(name = "visualglideslopeindicatortimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightelementpropertytype_id")
     })
@@ -119,8 +119,8 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundlightsystempropertygroup_availability", joinColumns = {
-        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    @JoinTable(name = "visualglideslopeindicatortimeslicetype_availability", joinColumns = {
+        @JoinColumn(name = "visualglideslopeindicatortimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "groundlightingavailabilitypropertytype_id")
     })
@@ -129,8 +129,8 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundlightsystempropertygroup_annotation", joinColumns = {
-        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    @JoinTable(name = "visualglideslopeindicatortimeslicetype_annotation", joinColumns = {
+        @JoinColumn(name = "visualglideslopeindicatortimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

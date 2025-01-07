@@ -95,8 +95,8 @@ public class TouchDownLiftOffMarkingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "markingpropertygroup_element", joinColumns = {
-        @JoinColumn(name = "markingpropertygroup_id")
+    @JoinTable(name = "touchdownliftoffmarkingtimeslicetype_element", joinColumns = {
+        @JoinColumn(name = "touchdownliftoffmarkingtimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "markingelementpropertytype_id")
     })
@@ -105,8 +105,8 @@ public class TouchDownLiftOffMarkingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "markingpropertygroup_annotation", joinColumns = {
-        @JoinColumn(name = "markingpropertygroup_id")
+    @JoinTable(name = "touchdownliftoffmarkingtimeslicetype_annotation", joinColumns = {
+        @JoinColumn(name = "touchdownliftoffmarkingtimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

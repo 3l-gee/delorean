@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
-import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.geom.Point;     
 
 import jakarta.xml.bind.JAXBElement;
 

@@ -62,11 +62,13 @@ import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurvePropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
 
 public class SurfaceGmlHelper {
-    public static List<PolygonSegment> parseGMLsurface(SurfaceType value) {
+    public static List<PolygonSegment> parseGMLsurfaceExterior(SurfaceType value) {
         if (value == null) {
             ConsoleLogger.log(LogLevel.WARN, "parseGMLsurface is null", new Exception().getStackTrace()[0]);
             return null;
         }
+
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
 
         SurfacePatchArrayPropertyType patches = value.getPatches().getValue();
         if (patches == null) {
@@ -80,14 +82,39 @@ public class SurfaceGmlHelper {
             throw new RuntimeException("srsName is null" + value.getClass().getName());
         }
 
-        List<Polygon> polygons = new ArrayList<Polygon>();
+        List<PolygonSegment> exterior = new ArrayList<PolygonSegment>();
         for (JAXBElement<? extends AbstractSurfacePatchType> patch : patches.getAbstractSurfacePatch()) {
-            List<PolygonSegment> exterior = parseSurfacePatchArrayProperty(patch, srsName, true).get(0);
-            List<List<PolygonSegment>> interior = parseSurfacePatchArrayProperty(patch, srsName,  false);
-            // polygons.add(CoordinateTransformeHelper.transformToPolygon(srsName, "urn:ogc:def:crs:EPSG::4326", exterior, interior));
+            exterior.addAll(parseSurfacePatchArrayProperty(patch, srsName, true));
         }
 
-        // return CoordinateTransformeHelper.mergeToMultiPolygon(polygons);
+        return exterior;
+    }
+    public static List<PolygonSegment> parseGMLsurfaceInterior(SurfaceType value) {
+        if (value == null) {
+            ConsoleLogger.log(LogLevel.WARN, "parseGMLsurface is null", new Exception().getStackTrace()[0]);
+            return null;
+        }
+
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+
+        SurfacePatchArrayPropertyType patches = value.getPatches().getValue();
+        if (patches == null) {
+            ConsoleLogger.log(LogLevel.FATAL, "SurfacePatchArrayPropertyType is null", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("SurfacePatchArrayPropertyType is null" + value.getClass().getName());
+        }
+
+        String srsName = value.getSrsName();
+        if (srsName == null) {
+            ConsoleLogger.log(LogLevel.FATAL, "srsName is null", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("srsName is null" + value.getClass().getName());
+        }
+
+        List<PolygonSegment> interior = new ArrayList<PolygonSegment>();
+        for (JAXBElement<? extends AbstractSurfacePatchType> patch : patches.getAbstractSurfacePatch()) {
+            interior.addAll(parseSurfacePatchArrayProperty(patch, srsName,  false));
+        }
+
+        return interior;
     }
 
     public static SurfaceType printGMLsurface(Polygon value) {
@@ -95,54 +122,59 @@ public class SurfaceGmlHelper {
         return new SurfaceType();
     }
 
-    public static List<List<PolygonSegment>>  parseSurfacePatchArrayProperty (JAXBElement<? extends AbstractSurfacePatchType> element, String srsName, Boolean isExterior) {
-        List<List<PolygonSegment>> coordinates =  new ArrayList<List<PolygonSegment>>();
-        if (element.getValue().equals(ConeType.class)) {
+    public static List<PolygonSegment>  parseSurfacePatchArrayProperty (JAXBElement<? extends AbstractSurfacePatchType> element, String srsName, Boolean isExterior) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + element.toString() + " srsName : " + srsName + " isExterior : " + isExterior, new Exception().getStackTrace()[0]);
+        List<PolygonSegment> coordinates =  new ArrayList<PolygonSegment>();
+        if (element.getValue().getClass().equals(ConeType.class)) {
             //AIXM-5.1_RULE-1A3ED3
 
-        } else if (element.getValue().equals(CylinderType.class)) {	
+        } else if (element.getValue().getClass().equals(CylinderType.class)) {	
             //AIXM-5.1_RULE-1A3ED4
 
-        } else if (element.getValue().equals(PolygonPatchType.class)) {
+        } else if (element.getValue().getClass().equals(PolygonPatchType.class)) {
             if (isExterior) {
-                coordinates.add(parsePolygonPatchExterior((PolygonPatchType) element.getValue(), srsName));
+                coordinates.addAll(parsePolygonPatchExterior((PolygonPatchType) element.getValue(), srsName));
             } else {
                 coordinates.addAll(parsePolygonPatchInterior((PolygonPatchType) element.getValue(), srsName));
             }
 
-        } else if (element.getValue().equals(RectangleType.class)) {
+        } else if (element.getValue().getClass().equals(RectangleType.class)) {
             //AIXM-5.1_RULE-1A3ED1
             
-        } else if (element.getValue().equals(SphereType.class)) {
+        } else if (element.getValue().getClass().equals(SphereType.class)) {
             //AIXM-5.1_RULE-1A3ED5
             
-        } else if (element.getValue().equals(TriangleType.class)) {
+        } else if (element.getValue().getClass().equals(TriangleType.class)) {
             //AIXM-5.1_RULE-1A3ED2
             
         } else {
-            throw new IllegalArgumentException("Unsupported type " + element.getValue().getClass().getName());
+            ConsoleLogger.log(LogLevel.FATAL, "Unsupported type " + element.getValue().getClass().getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("Unsupported type " + element.getValue().getClass().getName());
         }
         return coordinates;
     }
 
     public static List<PolygonSegment> parsePolygonPatchExterior (PolygonPatchType value, String srsName) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName, new Exception().getStackTrace()[0]);
         AbstractRingPropertyType exterior = value.getExterior();
         if (exterior == null) {
-            throw new IllegalArgumentException("exterior is null" + value.getClass().getName());
+            ConsoleLogger.log(LogLevel.FATAL, "exterior is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("exterior is null" + value.getClass().getName());
         }
         return parseAbstractRingProperty(exterior, srsName, 0);
     }
 
-    public static List<List<PolygonSegment>> parsePolygonPatchInterior (PolygonPatchType value, String srsName) {
+    public static List<PolygonSegment> parsePolygonPatchInterior (PolygonPatchType value, String srsName) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName, new Exception().getStackTrace()[0]);
         List<AbstractRingPropertyType> interior = value.getInterior();
-        List<List<PolygonSegment>> coordinates = new ArrayList<List<PolygonSegment>>();
+        List<PolygonSegment> coordinates = new ArrayList<PolygonSegment>();
         if (interior == null) {
-            return new ArrayList<List<PolygonSegment>>();
+            return new ArrayList<PolygonSegment>();
         }
 
         long counter = 1;
         for (AbstractRingPropertyType ring : interior) {
-            coordinates.add(parseAbstractRingProperty(ring, srsName, counter));
+            coordinates.addAll(parseAbstractRingProperty(ring, srsName, counter));
             counter++;
         }
 
@@ -171,21 +203,23 @@ public class SurfaceGmlHelper {
     }
 
     public static List<PolygonSegment> parseAbstractRingProperty(AbstractRingPropertyType value, String srsName, long counter) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);
         JAXBElement<? extends AbstractRingType> element =  value.getAbstractRing();
-        if (element.getValue().equals(LinearRingType.class)){
-            //AIXM-5.1_RULE-1A3ED6
-            return new ArrayList<PolygonSegment>();
+        if (element.getValue().getClass().equals(LinearRingType.class)){
+            ConsoleLogger.log(LogLevel.FATAL, "AIXM-5.1_RULE-1A3ED6", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("AIXM-5.1_RULE-1A3ED6"); 
 
-        } else if (element.getValue().equals(RingType.class)){
-            
+        } else if (element.getValue().getClass().equals(RingType.class)){
             return parseRingType((RingType) element.getValue(), srsName, counter);
 
         } else {
-            throw new IllegalArgumentException("Unsupported type " + element.getValue().getClass().getName());
+            ConsoleLogger.log(LogLevel.FATAL, "Unsupported type " + element.getValue().getClass().getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("Unsupported type " + element.getValue().getClass().getName());
         }
     }
 
     public static List<PolygonSegment> parseRingType(RingType value, String srsName, long counter) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);
         String actualSrsName = value.getSrsName() != null ? value.getSrsName() : srsName;
         List<PolygonSegment> coordinates = new ArrayList<PolygonSegment>();
         List<CurvePropertyType> curveMember = value.getCurveMember();
@@ -201,6 +235,7 @@ public class SurfaceGmlHelper {
     }
     
     public static RingType printRingType(List<Coordinate> value){
+
         RingType ringType = new RingType();
         CurveType curveType = new CurveType();
         CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();
@@ -214,37 +249,39 @@ public class SurfaceGmlHelper {
     }
 
     public static List<PolygonSegment> parseCurveProperty(CurvePropertyType value, String srsName, long counter) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);
         List<PolygonSegment> coordinates = new ArrayList<PolygonSegment>();
         JAXBElement<? extends AbstractCurveType> element =  value.getAbstractCurve();
         if (element.getValue() instanceof com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType) {
 
-        } else if (element.getValue().equals(ElevatedCurveType.class)){
+        } else if (element.getValue().getClass().equals(ElevatedCurveType.class)){
             //TODO is this allowed in AIXM?
 
-        } else if (element.getValue().equals(CompositeCurveType.class)){
+        } else if (element.getValue().getClass().equals(CompositeCurveType.class)){
             //TODO is this allowed in AIXM?
 
-        } else if (element.getValue().equals(com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType.class)){
+        } else if (element.getValue().getClass().equals(com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType.class)){
             CurveType curveType = (CurveType) element.getValue();
             if (curveType == null || curveType.getSegments() == null) {
                 return coordinates;
             } else {
                 coordinates.addAll(parseCurveSegementArrayProperty(curveType.getSegments(), srsName, counter));
             }
-        } else if (element.getValue().equals(LineStringType.class)){
+        } else if (element.getValue().getClass().equals(LineStringType.class)){
             //TODO is this allowed in AIXM?
             
-        } else if (element.getValue().equals(LinearRingType.class)){
+        } else if (element.getValue().getClass().equals(LinearRingType.class)){
             //TODO is this allowed in AIXM?
             
-        } else if (element.getValue().equals(OrientableCurveType.class)){
+        } else if (element.getValue().getClass().equals(OrientableCurveType.class)){
             //TODO is this allowed in AIXM?
             
-        } else if (element.getValue().equals(RingType.class)){
+        } else if (element.getValue().getClass().equals(RingType.class)){
             //TODO is this allowed in AIXM?
             
         } else {
-            throw new IllegalArgumentException("Unsupported type " + element.getValue().getClass().getName());
+            ConsoleLogger.log(LogLevel.FATAL, "Unsupported type " + element.getValue().getClass().getName(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("Unsupported type " + element.getValue().getClass().getName());
         }
         return coordinates;
     }

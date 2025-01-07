@@ -2,25 +2,9 @@ package com.aixm.delorean.core.helper.gis;
 
 import java.math.BigDecimal;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import javax.xml.namespace.QName;
-
-
-import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.Point;
-import org.locationtech.jts.geom.Polygon;
-import org.locationtech.jts.geom.MultiPolygon;
-
-import jakarta.xml.bind.JAXBElement;
 
 import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicStringType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.PolygonPatchType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.SurfacePatchArrayPropertyType;
 import com.aixm.delorean.core.adapter.type.gis.AixmGeometryType;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedGeometryType;
 import com.aixm.delorean.core.adapter.type.gis.AixmCurveType;
@@ -31,7 +15,6 @@ import com.aixm.delorean.core.adapter.type.gis.AixmPointType;
 import com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointType;
@@ -475,137 +458,156 @@ public class GisHelper {
             value.getXmlId(), 
             value.getHorizontalAccuracy()
             );
-        aixmSurface.setMultiPolygon(SurfaceGmlHelper.parseGMLsurface(value));
+        aixmSurface.setExteriorlinestring(SurfaceGmlHelper.parseGMLsurfaceExterior(value));
+        aixmSurface.setInteriorlinestring(SurfaceGmlHelper.parseGMLsurfaceInterior(value));
 
         return aixmSurface;
     }
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType printAIXMSurface(AixmSurfaceType value){
-        //output object
-        com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType surfaceType = new com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType();
+        return null;
+    //     //output object
+    //     com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType surfaceType = new com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType();
 
-        if (value == null) {
-            return new com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType();
-        }
+    //     if (value == null) {
+    //         return new com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType();
+    //     }
 
-        // setting id
-        surfaceType.setXmlId(value.getId());
+    //     // setting id
+    //     surfaceType.setXmlId(value.getId());
 
-        //attributes extraction
-        MultiPolygon multiPolygon = value.getMultiPolygon();
+    //     //attributes extraction
+    //     MultiPolygon multiPolygon = value.getMultiPolygon();
 
-        if (multiPolygon == null) {
-            return surfaceType;
-        }
+    //     if (multiPolygon == null) {
+    //         return surfaceType;
+    //     }
 
-        // setting srsName
-        surfaceType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getMultiPolygon().getSRID());
+    //     // setting srsName
+    //     surfaceType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getMultiPolygon().getSRID());
 
-        for (int i = 0; i < multiPolygon.getNumGeometries(); i++) {
-            Polygon polygon = (Polygon) multiPolygon.getGeometryN(i);
-            List<Coordinate> exterior = Arrays.asList(polygon.getExteriorRing().getCoordinates());
-            List<List<Coordinate>> interior = new ArrayList<>();
-            for (int j = 0; j < polygon.getNumInteriorRing(); j++) {
-                interior.add(Arrays.asList(polygon.getInteriorRingN(j).getCoordinates()));
-            }
-            PolygonPatchType patch = SurfaceGmlHelper.printPolygonPatch(exterior, interior);
-            SurfacePatchArrayPropertyType patches = new SurfacePatchArrayPropertyType();
-            patches.getAbstractSurfacePatch().add(new JAXBElement<PolygonPatchType>(new QName("http://www.opengis.net/gml/3.2", "PolygonPatch"), PolygonPatchType.class, patch));
-            surfaceType.setPatches(new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.opengis.net/gml/3.2", "patches"), SurfacePatchArrayPropertyType.class, patches));
-        }
+    //     for (int i = 0; i < multiPolygon.getNumGeometries(); i++) {
+    //         Polygon polygon = (Polygon) multiPolygon.getGeometryN(i);
+    //         List<Coordinate> exterior = Arrays.asList(polygon.getExteriorRing().getCoordinates());
+    //         List<List<Coordinate>> interior = new ArrayList<>();
+    //         for (int j = 0; j < polygon.getNumInteriorRing(); j++) {
+    //             interior.add(Arrays.asList(polygon.getInteriorRingN(j).getCoordinates()));
+    //         }
+    //         PolygonPatchType patch = SurfaceGmlHelper.printPolygonPatch(exterior, interior);
+    //         SurfacePatchArrayPropertyType patches = new SurfacePatchArrayPropertyType();
+    //         patches.getAbstractSurfacePatch().add(new JAXBElement<PolygonPatchType>(new QName("http://www.opengis.net/gml/3.2", "PolygonPatch"), PolygonPatchType.class, patch));
+    //         surfaceType.setPatches(new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.opengis.net/gml/3.2", "patches"), SurfacePatchArrayPropertyType.class, patches));
+    //     }
 
 
-        // setting horizontal accuracy
-        ValDistanceType valDistance = new ValDistanceType();
-        valDistance.setValue(value.getHorizontalAccuracy());
-        valDistance.setUom(value.getHorizontalAccuracy_uom());
-        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
-        surfaceType.setHorizontalAccuracy(valDistance);
+    //     // setting horizontal accuracy
+    //     ValDistanceType valDistance = new ValDistanceType();
+    //     valDistance.setValue(value.getHorizontalAccuracy());
+    //     valDistance.setUom(value.getHorizontalAccuracy_uom());
+    //     valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
+    //     surfaceType.setHorizontalAccuracy(valDistance);
 
-        return surfaceType;
+    //     return surfaceType;
+    // }
+
+    // public static AixmElevatedSurfaceType parseAIXMElevatedSurface(ElevatedSurfaceType value) {
+    //     AixmElevatedSurfaceType aixmElevatedSurface = elevatedAixmGeometryAttributesFactory(
+    //         AixmElevatedSurfaceType.class,
+    //         value.getXmlId(),
+    //         value.getHorizontalAccuracy(),
+    //         value.getVerticalAccuracy(),
+    //         value.getElevation(),
+    //         value.getGeoidUndulation(),
+    //         value.getVerticalDatum()
+    //         );
+    //     aixmElevatedSurface.setMultiPolygon(SurfaceGmlHelper.parseGMLsurface(value));
+
+    //     return aixmElevatedSurface;
     }
 
     public static AixmElevatedSurfaceType parseAIXMElevatedSurface(ElevatedSurfaceType value) {
-        AixmElevatedSurfaceType aixmElevatedSurface = elevatedAixmGeometryAttributesFactory(
-            AixmElevatedSurfaceType.class,
-            value.getXmlId(),
+        AixmElevatedSurfaceType elevatedAixmSurface = elevatedAixmGeometryAttributesFactory(
+            AixmElevatedSurfaceType.class, 
+            value.getXmlId(), 
             value.getHorizontalAccuracy(),
             value.getVerticalAccuracy(),
             value.getElevation(),
             value.getGeoidUndulation(),
             value.getVerticalDatum()
             );
-        aixmElevatedSurface.setMultiPolygon(SurfaceGmlHelper.parseGMLsurface(value));
+        elevatedAixmSurface.setExteriorlinestring(SurfaceGmlHelper.parseGMLsurfaceExterior(value));
+        elevatedAixmSurface.setInteriorlinestring(SurfaceGmlHelper.parseGMLsurfaceInterior(value));
 
-        return aixmElevatedSurface;
+        return elevatedAixmSurface;
     }
 
     public static ElevatedSurfaceType printAIXMElevatedSurface(AixmElevatedSurfaceType value) {
-        //output object
-        ElevatedSurfaceType elevatedSurfaceType = new ElevatedSurfaceType();
+        return null;
+        // //output object
+        // ElevatedSurfaceType elevatedSurfaceType = new ElevatedSurfaceType();
 
-        if (value == null) {
-            return elevatedSurfaceType;
-        }
+        // if (value == null) {
+        //     return elevatedSurfaceType;
+        // }
 
-        // setting id
-        elevatedSurfaceType.setXmlId(value.getId());
+        // // setting id
+        // elevatedSurfaceType.setXmlId(value.getId());
 
-        //attributes extraction
-        MultiPolygon multiPolygon = value.getMultiPolygon();
+        // //attributes extraction
+        // MultiPolygon multiPolygon = value.getMultiPolygon();
 
-        if (multiPolygon == null) {
-            return elevatedSurfaceType;
-        }
+        // if (multiPolygon == null) {
+        //     return elevatedSurfaceType;
+        // }
 
-        // setting srsName
-        elevatedSurfaceType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getMultiPolygon().getSRID());
+        // // setting srsName
+        // elevatedSurfaceType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getMultiPolygon().getSRID());
 
-        for (int i = 0; i < multiPolygon.getNumGeometries(); i++) {
-            Polygon polygon = (Polygon) multiPolygon.getGeometryN(i);
-            List<Coordinate> exterior = Arrays.asList(polygon.getExteriorRing().getCoordinates());
-            List<List<Coordinate>> interior = new ArrayList<>();
-            for (int j = 0; j < polygon.getNumInteriorRing(); j++) {
-                interior.add(Arrays.asList(polygon.getInteriorRingN(j).getCoordinates()));
-            }
-            PolygonPatchType patch = SurfaceGmlHelper.printPolygonPatch(exterior, interior);
-            elevatedSurfaceType.getPatches().getValue().getAbstractSurfacePatch().add(new JAXBElement<PolygonPatchType>(new QName("http://www.opengis.net/gml/3.2", "PolygonPatch"), PolygonPatchType.class, patch));
-        }
+        // for (int i = 0; i < multiPolygon.getNumGeometries(); i++) {
+        //     Polygon polygon = (Polygon) multiPolygon.getGeometryN(i);
+        //     List<Coordinate> exterior = Arrays.asList(polygon.getExteriorRing().getCoordinates());
+        //     List<List<Coordinate>> interior = new ArrayList<>();
+        //     for (int j = 0; j < polygon.getNumInteriorRing(); j++) {
+        //         interior.add(Arrays.asList(polygon.getInteriorRingN(j).getCoordinates()));
+        //     }
+        //     PolygonPatchType patch = SurfaceGmlHelper.printPolygonPatch(exterior, interior);
+        //     elevatedSurfaceType.getPatches().getValue().getAbstractSurfacePatch().add(new JAXBElement<PolygonPatchType>(new QName("http://www.opengis.net/gml/3.2", "PolygonPatch"), PolygonPatchType.class, patch));
+        // }
 
-        // setting horizontal accuracy
-        ValDistanceType valDistance = new ValDistanceType();
-        valDistance.setValue(value.getHorizontalAccuracy());
-        valDistance.setUom(value.getHorizontalAccuracy_uom());
-        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
-        elevatedSurfaceType.setHorizontalAccuracy(valDistance);
+        // // setting horizontal accuracy
+        // ValDistanceType valDistance = new ValDistanceType();
+        // valDistance.setValue(value.getHorizontalAccuracy());
+        // valDistance.setUom(value.getHorizontalAccuracy_uom());
+        // valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
+        // elevatedSurfaceType.setHorizontalAccuracy(valDistance);
 
-        // setting vertical accuracy
-        ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
-        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
-        valDistanceVertical.setUom(value.getElevation_uom());
-        valDistanceVertical.setNilReason(value.getElevation_nilReason());
-        elevatedSurfaceType.setElevation(valDistanceVertical);
+        // // setting vertical accuracy
+        // ValDistanceVerticalType valDistanceVertical = new ValDistanceVerticalType();
+        // valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        // valDistanceVertical.setUom(value.getElevation_uom());
+        // valDistanceVertical.setNilReason(value.getElevation_nilReason());
+        // elevatedSurfaceType.setElevation(valDistanceVertical);
 
-        // setting geoid undulation
-        ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
-        valDistanceSigned.setValue(value.getGeoidUndulation());
-        valDistanceSigned.setUom(value.getGeoidUndulation_uom());
-        valDistanceSigned.setNilReason(value.getGeoidUndulation_nilReason());
-        elevatedSurfaceType.setGeoidUndulation(valDistanceSigned);
+        // // setting geoid undulation
+        // ValDistanceSignedType valDistanceSigned = new ValDistanceSignedType();
+        // valDistanceSigned.setValue(value.getGeoidUndulation());
+        // valDistanceSigned.setUom(value.getGeoidUndulation_uom());
+        // valDistanceSigned.setNilReason(value.getGeoidUndulation_nilReason());
+        // elevatedSurfaceType.setGeoidUndulation(valDistanceSigned);
 
-        // setting vertical datum
-        CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
-        codeVerticalDatum.setValue(value.getVerticalDatum());
-        codeVerticalDatum.setNilReason(value.getVerticalDatum_nilReason());
-        elevatedSurfaceType.setVerticalDatum(codeVerticalDatum);
+        // // setting vertical datum
+        // CodeVerticalDatumType codeVerticalDatum = new CodeVerticalDatumType();
+        // codeVerticalDatum.setValue(value.getVerticalDatum());
+        // codeVerticalDatum.setNilReason(value.getVerticalDatum_nilReason());
+        // elevatedSurfaceType.setVerticalDatum(codeVerticalDatum);
 
-        // setting vertical accuracy
-        ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
-        valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
-        valDistanceVerticalAccuracy.setUom(value.getVerticalAccuracy_uom());
-        valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
-        elevatedSurfaceType.setVerticalAccuracy(valDistanceVerticalAccuracy);
+        // // setting vertical accuracy
+        // ValDistanceType valDistanceVerticalAccuracy = new ValDistanceType();
+        // valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
+        // valDistanceVerticalAccuracy.setUom(value.getVerticalAccuracy_uom());
+        // valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
+        // elevatedSurfaceType.setVerticalAccuracy(valDistanceVerticalAccuracy);
 
-        return elevatedSurfaceType; 
+        // return elevatedSurfaceType; 
     }
 }
