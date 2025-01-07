@@ -1,10 +1,11 @@
-CREATE VIEW surface_view AS
+CREATE VIEW surface_test AS
 WITH
 segment_union AS (
     SELECT 
         id, 
-        linestring AS geom,
-        sequence
+		part,
+		sequence,
+        linestring AS geom
     FROM 
         public.polygon_segment 
     WHERE 
@@ -12,35 +13,65 @@ segment_union AS (
     UNION ALL 
     SELECT 
         id, 
-        ST_Segmentize((linestring::geography), 100000)::geometry AS geom,
-        sequence
+		part,
+		sequence,
+		ST_MakeLine(ARRAY[
+            ST_PointN(linestring, 1), 
+            ST_Segmentize((linestring::geography), 1000000)::geometry, 
+            ST_PointN(linestring, -1)
+        ]) AS geom
     FROM 
         public.polygon_segment 
     WHERE 
         public.polygon_segment.interpretation = 1
 ),
-ordered_segments AS (
-    SELECT 
-        id, 
-        geom
-    FROM 
-        segment_union
-    ORDER BY 
-        sequence		
-),
-merged_segments AS (
-    SELECT 
+segement_ownership AS (
+	SELECT 
         public.elevated_surface.xml_id,
-		ST_MakePolygon(ST_AddPoint(ordered_segments.geom, ST_StartPoint(ordered_segments.geom))) AS merged_geom
+		segment_union.part as part,
+		segment_union.sequence as sequence,
+		segment_union.geom AS geom
     FROM 
         public.elevated_surface
     INNER JOIN 
         public.elevatedsurface_exterior 
         ON public.elevated_surface.id = public.elevatedsurface_exterior.elevatedsurfacepropertytype_id
     INNER JOIN 
-        ordered_segments 
-        ON public.elevatedsurface_exterior.exteriorlinestring_id = ordered_segments.id
---     GROUP BY 
---         public.elevated_surface.xml_id
+        segment_union 
+        ON public.elevatedsurface_exterior.exteriorlinestring_id = segment_union.id
+),
+ordered_segments AS (
+    SELECT 
+		xml_id
+        id, 
+		part,
+		sequence,
+        geom
+    FROM 
+        segement_ownership
+    ORDER BY 
+        xml_id, part, sequence
 )
-SELECT * FROM merged_segments;
+-- merged_segments AS (
+--     SELECT 
+--         public.elevated_surface.xml_id,
+-- 		ordered_segments.geom AS geom
+--     FROM 
+--         public.elevated_surface
+--     INNER JOIN 
+--         public.elevatedsurface_exterior 
+--         ON public.elevated_surface.id = public.elevatedsurface_exterior.elevatedsurfacepropertytype_id
+--     INNER JOIN 
+--         ordered_segments 
+--         ON public.elevatedsurface_exterior.exteriorlinestring_id = ordered_segments.id
+--     -- GROUP BY 
+--     --     public.elevated_surface.xml_id
+-- )
+SELECT 
+	id, 
+	-- ST_AsText(ST_LineMerge(ST_Union(geom))) as geom
+	(ST_LineMerge(ST_Union(geom))) as geom
+FROM 
+	ordered_segments
+GROUP BY
+	id;

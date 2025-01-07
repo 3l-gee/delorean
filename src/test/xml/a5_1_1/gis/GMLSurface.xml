@@ -26,6 +26,7 @@
         to
         Extremely Large Telescope, Atacama, Chili (EPSG:4325 : lat -24.589287528217096 lon -70.1916580926402)
         to
+		DHL Stadium,  Cape Town Stadium (EPSG_4326 : lat -33.9034433595103/ 18.411155413722216)
         Sydney Opera House, Australia (EPSG:4326 : lat -33.85704607534651 / lon 151.21496554537183 )
         -->
 		<aixm:RunwayElement gml:id="uuid.00000000-0000-4000-9002-000000000000">
