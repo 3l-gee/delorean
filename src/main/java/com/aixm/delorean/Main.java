@@ -25,10 +25,12 @@ public class Main {
                 case "--test":
                 case "-t":
                     mainInstance.testOption = true;
+                    ConsoleLogger.log(LogLevel.WARN, "Test mode enabled");
                     break;
                 case "--verbose":
                 case "-v":
-                ConsoleLogger.setGlobalLogLevel(LogLevel.DEBUG);
+                    ConsoleLogger.setGlobalLogLevel(LogLevel.DEBUG);
+                    ConsoleLogger.log(LogLevel.WARN, "Verbose mode enabled");
                     break;
                 case "--unsafe":
                 case "-u":
@@ -80,8 +82,11 @@ public class Main {
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLpoint.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLpoint.xml");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
+
+        ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLSurface.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLSurface.xml");
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/main/resources/a5_1_1/a5_1_1_dataset.xm");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/main/resources/a5_1_1/a5_1_1_dataset.xml");
 

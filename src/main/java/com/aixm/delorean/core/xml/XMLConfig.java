@@ -10,10 +10,6 @@ public enum XMLConfig {
     AIXM_5_1_1(
         "a5_1_1", 
         "src/main/resources/a5_1_1/AIXM_BasicMessage.xsd"
-        ),
-    SCHOOL(
-        "school",
-        "src/main/resources/school/school.xsd"
     );
 
     private final String version;

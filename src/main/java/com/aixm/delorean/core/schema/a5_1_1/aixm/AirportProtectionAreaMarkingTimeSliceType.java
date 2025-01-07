@@ -95,8 +95,8 @@ public class AirportProtectionAreaMarkingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "markingpropertygroup_element", joinColumns = {
-        @JoinColumn(name = "markingpropertygroup_id")
+    @JoinTable(name = "airportprotectionareamarkingtimeslicetype_element", joinColumns = {
+        @JoinColumn(name = "airportprotectionareamarkingtimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "markingelementpropertytype_id")
     })
@@ -105,8 +105,8 @@ public class AirportProtectionAreaMarkingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "markingpropertygroup_annotation", joinColumns = {
-        @JoinColumn(name = "markingpropertygroup_id")
+    @JoinTable(name = "airportprotectionareamarkingtimeslicetype_annotation", joinColumns = {
+        @JoinColumn(name = "airportprotectionareamarkingtimeslicetype_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

@@ -17,8 +17,8 @@ import jakarta.persistence.Index;
     name = "linestring_segment",
     schema = "public",
     indexes = {
-        @Index(name = "idx_order", columnList = "sequence"),
-        @Index(name = "idx_interpretation", columnList = "interpretation")
+        @Index(name = "idx_linestring_segment_order", columnList = "sequence"),
+        @Index(name = "idx_linestring_segment_interpretation", columnList = "interpretation")
     }
 )
 public class LinestringSegment {

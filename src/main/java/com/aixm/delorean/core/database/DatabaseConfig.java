@@ -8,25 +8,6 @@ import java.util.List;
 
 public enum DatabaseConfig {
 
-    HOUSE(
-        "house",                                 // version
-        "jdbc:postgresql://localhost:5432/delorean", // Default URL
-        "postgres",                             // Default username
-        "postgres",                             // Default password
-        5,                         // Connection pool min size
-        20,                        // Connection pool max size
-        false,                                    // Hibernate show_sql
-        "create",                            // Hibernate hbm2ddl.auto
-        new Class<?>[]{
-            com.aixm.delorean.core.schema.house.House.class,
-            com.aixm.delorean.core.schema.house.Son.class,
-            com.aixm.delorean.core.schema.house.Dad.class,
-            com.aixm.delorean.core.schema.house.Mom.class,
-            com.aixm.delorean.core.schema.house.Cat.class,
-            com.aixm.delorean.core.schema.house.Dog.class,
-            com.aixm.delorean.core.schema.house.Bird.class
-        }
-    ),
     AIXM_5_1_1(
         "a5_1_1",                                // version
         "jdbc:postgresql://localhost:5432/delorean", // Default URL
@@ -38,7 +19,8 @@ public enum DatabaseConfig {
         "update",                       // Hibernate hbm2ddl.auto
         new Class<?>[]{
             // gis
-            com.aixm.delorean.core.gis.type.Segment.class,
+            com.aixm.delorean.core.gis.type.LinestringSegment.class,
+            com.aixm.delorean.core.gis.type.PolygonSegment.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.PointPropertyType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointPropertyType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.CurvePropertyType.class,
