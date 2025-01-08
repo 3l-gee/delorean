@@ -25,15 +25,20 @@ public class PointGmlHelper {
         DirectPositionType pos = value.getPos();
         if (pos == null) {
             ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null", new Exception());
+            return null;
         }
 
         String srsName = value.getSrsName();
         if (srsName == null) {
             ConsoleLogger.log(LogLevel.FATAL, "srsName is null", new Exception());
+            return null;
         }
-
-        // BigInteger srsDiemnesion = value.getSrsDimension();
-        return parseDirectPosition(pos, srsName);        
+        try {
+            return parseDirectPosition(pos, srsName);
+        } catch (Exception e) {
+            ConsoleLogger.log(LogLevel.FATAL, "parseDirectPosition failed : " + value.getClass().getName() + " id : " + value.getXmlId(), e);
+            return null;
+        }
     }
 
     public static Point parseDirectPosition (DirectPositionType value, String srsName){

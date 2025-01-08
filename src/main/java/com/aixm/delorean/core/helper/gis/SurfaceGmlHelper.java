@@ -3,6 +3,7 @@ package com.aixm.delorean.core.helper.gis;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import com.aixm.delorean.core.gis.type.LinestringSegment;
 import com.aixm.delorean.core.gis.type.PolygonSegment;
@@ -73,18 +74,22 @@ public class SurfaceGmlHelper {
         SurfacePatchArrayPropertyType patches = value.getPatches().getValue();
         if (patches == null) {
             ConsoleLogger.log(LogLevel.FATAL, "SurfacePatchArrayPropertyType is null", new Exception().getStackTrace()[0]);
-            throw new RuntimeException("SurfacePatchArrayPropertyType is null" + value.getClass().getName());
+            return null;
         }
-
         String srsName = value.getSrsName();
         if (srsName == null) {
             ConsoleLogger.log(LogLevel.FATAL, "srsName is null", new Exception().getStackTrace()[0]);
-            throw new RuntimeException("srsName is null" + value.getClass().getName());
+            return null;
         }
 
         List<PolygonSegment> exterior = new ArrayList<PolygonSegment>();
-        for (JAXBElement<? extends AbstractSurfacePatchType> patch : patches.getAbstractSurfacePatch()) {
-            exterior.addAll(parseSurfacePatchArrayProperty(patch, srsName, true));
+        try {
+            for (JAXBElement<? extends AbstractSurfacePatchType> patch : patches.getAbstractSurfacePatch()) {
+                exterior.addAll(parseSurfacePatchArrayProperty(patch, srsName, true));
+            }
+        } catch (Exception e) {
+            ConsoleLogger.log(LogLevel.FATAL, "parseSurfacePatchArrayProperty failed : " + value.getClass().getName() + " id : " + value.getXmlId(), e);
+            return null;
         }
 
         return exterior;
@@ -100,20 +105,24 @@ public class SurfaceGmlHelper {
         SurfacePatchArrayPropertyType patches = value.getPatches().getValue();
         if (patches == null) {
             ConsoleLogger.log(LogLevel.FATAL, "SurfacePatchArrayPropertyType is null", new Exception().getStackTrace()[0]);
-            throw new RuntimeException("SurfacePatchArrayPropertyType is null" + value.getClass().getName());
+            return null;
         }
 
         String srsName = value.getSrsName();
         if (srsName == null) {
             ConsoleLogger.log(LogLevel.FATAL, "srsName is null", new Exception().getStackTrace()[0]);
-            throw new RuntimeException("srsName is null" + value.getClass().getName());
+            return null;
         }
 
         List<PolygonSegment> interior = new ArrayList<PolygonSegment>();
-        for (JAXBElement<? extends AbstractSurfacePatchType> patch : patches.getAbstractSurfacePatch()) {
-            interior.addAll(parseSurfacePatchArrayProperty(patch, srsName,  false));
+        try {
+            for (JAXBElement<? extends AbstractSurfacePatchType> patch : patches.getAbstractSurfacePatch()) {
+                interior.addAll(parseSurfacePatchArrayProperty(patch, srsName,  false));
+            }
+        } catch (Exception e) {
+            ConsoleLogger.log(LogLevel.FATAL, "parseSurfacePatchArrayProperty failed : " + value.getClass().getName() + " id : " + value.getXmlId(), e);
+            return null;
         }
-
         return interior;
     }
 
@@ -622,7 +631,8 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
     public static PolygonSegment parseListOfDirectPosition(List<Object> value, String srsName, PolygonSegment.Interpretation interpretation, long counter, long part, String type) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);
     
-        HashMap<Coordinate, String> coordinates = new HashMap<>();
+        LinkedHashMap<Integer, Coordinate> coordinatesMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> srsNameMap = new LinkedHashMap<>();
         for (Object element : value) {
             if (element == null) {
                 ConsoleLogger.log(LogLevel.FATAL, "content of geometricPositionGroup can't be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -632,16 +642,17 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
             if (element.getClass().equals(DirectPositionType.class)) {
                 DirectPositionType pos = (DirectPositionType) element;
                 String actualSrsName = pos.getSrsName() != null ? pos.getSrsName() : srsName;
-                coordinates.put(PointGmlHelper.parseDirectPositionToCoordinate(pos), actualSrsName);
+                coordinatesMap.put(value.indexOf(element), PointGmlHelper.parseDirectPositionToCoordinate(pos));
+                srsNameMap.put(value.indexOf(element), actualSrsName);System.out.println();
             } else {
                 ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
                 throw new RuntimeException("element is not supported");
             }
         }
 
-        ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinates.toString() + " interpretation : " + interpretation + " counter : " + counter);
+        ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinatesMap.toString() + " srsNameMap : " + srsNameMap.toString() + " interpretation : " + interpretation + " counter : " + counter);
 
-        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinates, "urn:ogc:def:crs:EPSG::4326");
+        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinatesMap, srsNameMap, "urn:ogc:def:crs:EPSG::4326");
         PolygonSegment polygonSegment = new PolygonSegment();
         polygonSegment.setLinestring(lineString);
         polygonSegment.setInterpretation(interpretation);
@@ -651,9 +662,9 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
     }
 
     public static PolygonSegment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, PolygonSegment.Interpretation interpretation, long counter, long part) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);    
 
-        HashMap<Coordinate, String> coordinates = new HashMap<>();
+        LinkedHashMap<Integer, Coordinate> coordinatesMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> srsNameMap = new LinkedHashMap<>();
         for (JAXBElement<?> element : value) {
             if (element.getValue() == null) {
                 ConsoleLogger.log(LogLevel.FATAL, "JAXBElement<?> values cannot be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -663,16 +674,17 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
             if (element.getValue().getClass().equals(DirectPositionType.class)) {
                 DirectPositionType pos = (DirectPositionType) element.getValue();
                 String actualSrsName = pos.getSrsName() != null ? pos.getSrsName() : srsName;
-                coordinates.put(PointGmlHelper.parseDirectPositionToCoordinate(pos), actualSrsName);
+                coordinatesMap.put(value.indexOf(element), PointGmlHelper.parseDirectPositionToCoordinate(pos));
+                srsNameMap.put(value.indexOf(element), actualSrsName);
             } else {
                 ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
                 throw new RuntimeException("element is not supported");
             }
         }
 
-        ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinates.toString() + " interpretation : " + interpretation + " counter : " + counter);
+        ConsoleLogger.log(LogLevel.DEBUG, "coordinatesMap : " + coordinatesMap.toString() + " srsNameMap : " + srsNameMap.toString() + " interpretation : " + interpretation + " counter : " + counter);
 
-        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinates, "urn:ogc:def:crs:EPSG::4326");
+        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinatesMap, srsNameMap, "urn:ogc:def:crs:EPSG::4326");
         PolygonSegment polygonSegment = new PolygonSegment();
         polygonSegment.setLinestring(lineString);
         polygonSegment.setInterpretation(interpretation);

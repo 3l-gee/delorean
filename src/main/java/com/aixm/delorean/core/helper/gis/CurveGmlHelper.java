@@ -3,6 +3,7 @@ package com.aixm.delorean.core.helper.gis;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
@@ -47,17 +48,21 @@ public class CurveGmlHelper {
 
         CurveSegmentArrayPropertyType segments = value.getSegments();
         if (segments == null) {
-            ConsoleLogger.log(LogLevel.FATAL, "CurveSegmentArrayPropertyType is null" + value.getClass().getName(), new Exception());
+            ConsoleLogger.log(LogLevel.FATAL, "CurveSegmentArrayPropertyType is null" + value.getClass().getName() + " id : " + value.getXmlId(), new Exception());
             return null;
         }
 
         String srsName = value.getSrsName();
         if (srsName == null) {
-            ConsoleLogger.log(LogLevel.FATAL, "CurveSegmentArrayPropertyType is null" + value.getClass().getName(), new Exception());
+            ConsoleLogger.log(LogLevel.FATAL, "CurveSegmentArrayPropertyType is null" + value.getClass().getName() + " id : " + value.getXmlId(), new Exception());
             return null;
         }
-
-        return parseCurveSegementArrayProperty(segments, srsName);
+        try {
+            return parseCurveSegementArrayProperty(segments, srsName);
+        } catch (Exception e) {
+            ConsoleLogger.log(LogLevel.FATAL, "Error parsing CurveSegmentArrayPropertyType" + value.getClass().getName() + " id : " + value.getXmlId(), e);
+            return null;
+        }
     }
 
 
@@ -394,7 +399,8 @@ public class CurveGmlHelper {
     public static LinestringSegment parseListOfDirectPosition(List<Object> value, String srsName, LinestringSegment.Interpretation interpretation, long counter, String type) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);
     
-        HashMap<Coordinate, String> coordinates = new HashMap<>();
+        LinkedHashMap<Integer, Coordinate> coordinatesMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> srsNameMap = new LinkedHashMap<>();
         for (Object element : value) {
             if (element == null) {
                 ConsoleLogger.log(LogLevel.FATAL, "content of geometricPositionGroup can't be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -404,16 +410,17 @@ public class CurveGmlHelper {
             if (element.getClass().equals(DirectPositionType.class)) {
                 DirectPositionType pos = (DirectPositionType) element;
                 String actualSrsName = pos.getSrsName() != null ? pos.getSrsName() : srsName;
-                coordinates.put(PointGmlHelper.parseDirectPositionToCoordinate(pos), actualSrsName);
+                coordinatesMap.put(value.indexOf(element), PointGmlHelper.parseDirectPositionToCoordinate(pos));
+                srsNameMap.put(value.indexOf(element), actualSrsName);
             } else {
                 ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
                 throw new RuntimeException("element is not supported");
             }
         }
 
-        ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinates.toString() + " interpretation : " + interpretation + " counter : " + counter);
+        ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinatesMap.toString() + " srsNameMap : " + srsNameMap.toString() + " interpretation : " + interpretation + " counter : " + counter);
 
-        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinates, "urn:ogc:def:crs:EPSG::4326");
+        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinatesMap, srsNameMap, "urn:ogc:def:crs:EPSG::4326");
         LinestringSegment linestringSegment = new LinestringSegment();
         linestringSegment.setLinestring(lineString);
         linestringSegment.setInterpretation(interpretation);
@@ -424,7 +431,8 @@ public class CurveGmlHelper {
     public static LinestringSegment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, LinestringSegment.Interpretation interpretation, long counter) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);    
 
-        HashMap<Coordinate, String> coordinates = new HashMap<>();
+        LinkedHashMap<Integer, Coordinate> coordinatesMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> srsNameMap = new LinkedHashMap<>();
         for (JAXBElement<?> element : value) {
             if (element.getValue() == null) {
                 ConsoleLogger.log(LogLevel.FATAL, "JAXBElement<?> values cannot be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -434,16 +442,17 @@ public class CurveGmlHelper {
             if (element.getValue().getClass().equals(DirectPositionType.class)) {
                 DirectPositionType pos = (DirectPositionType) element.getValue();
                 String actualSrsName = pos.getSrsName() != null ? pos.getSrsName() : srsName;
-                coordinates.put(PointGmlHelper.parseDirectPositionToCoordinate(pos), actualSrsName);
+                coordinatesMap.put(value.indexOf(element), PointGmlHelper.parseDirectPositionToCoordinate(pos));
+                srsNameMap.put(value.indexOf(element), actualSrsName);
             } else {
                 ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
                 throw new RuntimeException("element is not supported");
             }
         }
 
-        ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinates.toString() + " interpretation : " + interpretation + " counter : " + counter);
+        ConsoleLogger.log(LogLevel.DEBUG, "coordinates : " + coordinatesMap.toString() + " srsNameMap : " + srsNameMap.toString() + " interpretation : " + interpretation + " counter : " + counter);
 
-        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinates, "urn:ogc:def:crs:EPSG::4326");
+        LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinatesMap, srsNameMap,  "urn:ogc:def:crs:EPSG::4326");
         LinestringSegment linestringSegment = new LinestringSegment();
         linestringSegment.setLinestring(lineString);
         linestringSegment.setInterpretation(interpretation);

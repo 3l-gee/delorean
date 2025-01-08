@@ -1,4 +1,4 @@
-CREATE VIEW surface_view AS
+CREATE OR REPLACE VIEW elevated_surface_view AS
 WITH
 center AS (
     SELECT 
@@ -79,32 +79,32 @@ segment_union AS (
 ),
 segement_ownership AS (
 	SELECT 
-        public.surface.xml_id,
+        public.elevated_surface.xml_id,
 		segment_union.part as part,
 		segment_union.sequence as sequence,
 		segment_union.geom AS geom
     FROM 
-        public.surface
+        public.elevated_surface
     INNER JOIN 
-        public.surface_exterior 
-        ON public.surface.id = public.surface_exterior.surfacepropertytype_id
+        public.elevatedsurface_exterior 
+        ON public.elevated_surface.id = public.elevatedsurface_exterior.elevatedsurfacepropertytype_id
     INNER JOIN 
         segment_union 
-        ON public.surface_exterior.exteriorlinestring_id = segment_union.id
+        ON public.elevatedsurface_exterior.exteriorlinestring_id = segment_union.id
 	UNION ALL
 	SELECT 
-        public.surface.xml_id,
+        public.elevated_surface.xml_id,
 		segment_union.part as part,
 		segment_union.sequence as sequence,
 		segment_union.geom AS geom
     FROM 
-        public.surface
+        public.elevated_surface
     INNER JOIN 
-        public.surface_interior 
-        ON public.surface.id = public.surface_interior.surfacepropertytype_id
+        public.elevatedsurface_interior 
+        ON public.elevated_surface.id = public.elevatedsurface_interior.elevatedsurfacepropertytype_id
     INNER JOIN 
         segment_union 
-        ON public.surface_interior.interiorlinestring_id = segment_union.id
+        ON public.elevatedsurface_interior.interiorlinestring_id = segment_union.id
 	
 ),
 ordered_segments AS (

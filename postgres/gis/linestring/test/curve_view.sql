@@ -8,8 +8,8 @@ center AS (
 		start_angle,
 		end_angle,
 		(end_angle - start_angle) / 100 AS step_size
-    FROM public.segment 
-	WHERE public.segment.interpretation = 2
+    FROM public.linestring_segment 
+	WHERE public.linestring_segment.interpretation = 2
 	UNION ALL 
 	SELECT 
 		id, 
@@ -18,8 +18,8 @@ center AS (
 		0 as start_angle,
 		2*PI() as end_angle,
 		(0 - 2*PI()) / 100 AS step_size
-    FROM public.segment 
-	WHERE public.segment.interpretation = 3
+    FROM public.linestring_segment 
+	WHERE public.linestring_segment.interpretation = 3
 ),
 interpolated_points AS (
     SELECT 
@@ -38,12 +38,12 @@ arc_line AS (
 ),
 segment_union AS (
     SELECT id, linestring AS geom
-    FROM public.segment 
-    WHERE public.segment.interpretation = 0
+    FROM public.linestring_segment 
+    WHERE public.linestring_segment.interpretation = 0
     UNION ALL 
     SELECT id, ST_Segmentize((linestring::geography), 1000)::geometry AS geom
-    FROM public.segment 
-    WHERE public.segment.interpretation = 1
+    FROM public.linestring_segment 
+    WHERE public.linestring_segment.interpretation = 1
     UNION ALL 
     SELECT id, arc_geom AS geom
     FROM arc_line
@@ -55,9 +55,9 @@ merged_segments AS (
     FROM 
         public.curve
     INNER JOIN 
-        public.curve_segment ON public.curve.id = public.curve_segment.curvepropertytype_id
+        public.curve_linestring_segment ON public.curve.id = public.curve_linestring_segment.curvepropertytype_id
     INNER JOIN 
-        segment_union ON public.curve_segment.segments_id = segment_union.id
+        segment_union ON public.curve_linestring_segment.segments_id = segment_union.id
     GROUP BY public.curve.xml_id
 )
 SELECT 
