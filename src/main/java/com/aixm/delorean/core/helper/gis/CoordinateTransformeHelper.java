@@ -19,6 +19,7 @@ import org.locationtech.proj4j.CoordinateTransform;
 import org.locationtech.proj4j.CoordinateTransformFactory;
 import org.locationtech.proj4j.ProjCoordinate;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 import com.aixm.delorean.core.log.ConsoleLogger;
@@ -261,13 +262,14 @@ public class CoordinateTransformeHelper {
         return line;
     }
 
-    public static LineString transformToLineString(HashMap<Coordinate, String> sourceCoordinates, String targetCRS) {
-        ConsoleLogger.log(LogLevel.DEBUG, "sourceCoordinates: " + sourceCoordinates + ", targetCRS: " + targetCRS, new Exception().getStackTrace()[0]);
+    public static LineString transformToLineString(LinkedHashMap<Integer, Coordinate> sourceCoordinates, LinkedHashMap<Integer, String> sourceCRSs,  String targetCRS) {
+        ConsoleLogger.log(LogLevel.DEBUG, "sourceCoordinates: " + sourceCoordinates + " sourceCRSs: " + sourceCRSs + ", targetCRS: " + targetCRS, new Exception().getStackTrace()[0]);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         List<Coordinate> targetCoordinatesList = new ArrayList<>();
-        for (Map.Entry<Coordinate, String> entry : sourceCoordinates.entrySet()) {
-            targetCoordinatesList.add(instance.transform(entry.getValue(), targetCRS, entry.getKey()));
+        for (Map.Entry<Integer, Coordinate> entry : sourceCoordinates.entrySet()) {
+            targetCoordinatesList.add(instance.transform(sourceCRSs.get(entry.getKey()), targetCRS, entry.getValue()));
         }
+
         Coordinate[] targetCoordinates = targetCoordinatesList.toArray(new Coordinate[0]);
         LineString line = geometryFactory.createLineString(targetCoordinates);
         ConsoleLogger.log(LogLevel.DEBUG, "line: " + line, new Exception().getStackTrace()[0]);

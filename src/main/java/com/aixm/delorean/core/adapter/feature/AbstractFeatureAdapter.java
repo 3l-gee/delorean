@@ -197,8 +197,31 @@ public class AbstractFeatureAdapter extends XmlAdapter<JAXBElement<? extends Abs
             }
 
             if (AbstractSegmentLegType.class.isAssignableFrom(clazz)) {
-                if (clazz.equals(ArrivalLegType.class)){
-                    return (ArrivalLegType) v.getValue();
+                if (AbstractApproachLegType.class.isAssignableFrom(clazz)) {
+                    if (clazz.equals(ArrivalFeederLegType.class)){
+                        return (ArrivalFeederLegType) v.getValue();
+                    }
+    
+                    if (clazz.equals(FinalLegType.class)){
+                        return (FinalLegType) v.getValue();
+                    }
+
+                    if (clazz.equals(InitialLegType.class)){
+                        return (InitialLegType) v.getValue();
+                    }
+
+                    if (clazz.equals(IntermediateLegType.class)){
+                        return (IntermediateLegType) v.getValue();
+                    }
+
+                    if (clazz.equals(MissedApproachLegType.class)){
+                        return (MissedApproachLegType) v.getValue();
+                    }
+
+                    else {
+                        ConsoleLogger.log(LogLevel.FATAL, "unknown class extension of AbstractApproachLegType : " + clazz.getName(), new Exception());
+                    }
+
                 }
 
                 if (clazz.equals(ArrivalLegType.class)){

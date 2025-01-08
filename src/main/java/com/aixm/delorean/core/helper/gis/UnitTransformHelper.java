@@ -10,7 +10,7 @@ import com.aixm.delorean.core.log.LogLevel;
 
 public class UnitTransformHelper {
     private static final Map<String, Double> DISTANCE_UNIT_CONVERSION = new HashMap<String, Double>() {{
-        put("nmi_i", 1852.0);
+        put("[nmi_i]", 1852.0);
         put("NM", 1852.0);
         put("KM", 1000.0);
         put("M", 1.0);
