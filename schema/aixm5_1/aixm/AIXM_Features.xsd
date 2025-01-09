@@ -21,7 +21,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		http://www.opensource.org/licenses/bsd-license.php
 	-->
 <!-- Component: AIXM: Features -->
-<schema xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.aixm.aero/schema/5.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.aixm.aero/schema/5.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
 	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="./ISO_19136_Schemas/gml.xsd"/>
 	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="./xlink/xlinks.xsd"/>
 	<include schemaLocation="./AIXM_DataTypes.xsd"/>
@@ -42,7 +42,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 - The AIXM Objects are abstractions of real world entities or, more frequently, properties of these entities, which do not exist outside of a feature. Objects are represented as classes with a stereotype {object}.</documentation>
 	</annotation>
 	<complexType name="RunwayProtectAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+        <!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RunwayProtectArea" type="aixm:RunwayProtectAreaType" substitutionGroup="aixm:AbstractAirportHeliportProtectionArea"/>
@@ -58,6 +62,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RunwayProtectAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RunwayProtectAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -90,7 +96,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRunwayProtectAreaExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RunwayDirectionPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RunwayDirection" type="aixm:RunwayDirectionType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -106,6 +116,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RunwayDirectionTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RunwayDirectionTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -149,7 +161,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRunwayDirectionExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RunwayCentrelinePointPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RunwayCentrelinePoint" type="aixm:RunwayCentrelinePointType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -165,6 +181,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RunwayCentrelinePointTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RunwayCentrelinePointTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -199,7 +217,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRunwayCentrelinePointExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RunwayPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Runway" type="aixm:RunwayType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -215,6 +237,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RunwayTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RunwayTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -259,7 +283,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRunwayExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ArrestingGearPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="ArrestingGear" type="aixm:ArrestingGearType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -275,6 +303,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ArrestingGearTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ArrestingGearTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -317,7 +347,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractArrestingGearExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RunwayElementPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RunwayElement" type="aixm:RunwayElementType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -333,6 +367,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RunwayElementTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RunwayElementTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -369,7 +405,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRunwayElementExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="VisualGlideSlopeIndicatorPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="VisualGlideSlopeIndicator" type="aixm:VisualGlideSlopeIndicatorType" substitutionGroup="aixm:AbstractGroundLightSystem"/>
@@ -385,6 +425,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="VisualGlideSlopeIndicatorTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:VisualGlideSlopeIndicatorTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -421,7 +463,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractVisualGlideSlopeIndicatorExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RunwayVisualRangePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RunwayVisualRange" type="aixm:RunwayVisualRangeType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -437,6 +483,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RunwayVisualRangeTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RunwayVisualRangeTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -468,7 +516,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRunwayVisualRangeExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RunwayBlastPadPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RunwayBlastPad" type="aixm:RunwayBlastPadType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -484,6 +536,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RunwayBlastPadTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RunwayBlastPadTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -696,7 +750,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractManoeuvringAreaUsageExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TaxiHoldingPositionPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TaxiHoldingPosition" type="aixm:TaxiHoldingPositionType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -712,6 +770,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TaxiHoldingPositionTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TaxiHoldingPositionTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -745,7 +805,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTaxiHoldingPositionExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TaxiwayPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Taxiway" type="aixm:TaxiwayType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -761,6 +825,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TaxiwayTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TaxiwayTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -799,7 +865,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTaxiwayExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TaxiwayElementPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TaxiwayElement" type="aixm:TaxiwayElementType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -815,6 +885,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TaxiwayElementTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TaxiwayElementTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -851,7 +923,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTaxiwayElementExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="GuidanceLinePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="GuidanceLine" type="aixm:GuidanceLineType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -867,6 +943,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="GuidanceLineTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:GuidanceLineTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -905,7 +983,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractGuidanceLineExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ApronPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Apron" type="aixm:ApronType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -921,6 +1003,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ApronTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ApronTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -955,7 +1039,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractApronExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ApronElementPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="ApronElement" type="aixm:ApronElementType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -971,6 +1059,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ApronElementTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ApronElementTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1011,7 +1101,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractApronElementExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AircraftStandPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AircraftStand" type="aixm:AircraftStandType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -1027,6 +1121,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AircraftStandTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AircraftStandTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1064,7 +1160,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAircraftStandExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RoadPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Road" type="aixm:RoadType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -1080,6 +1180,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RoadTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RoadTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1186,7 +1288,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractApronAreaUsageExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="DeicingAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="DeicingArea" type="aixm:DeicingAreaType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -1202,6 +1308,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="DeicingAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:DeicingAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1236,7 +1344,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractDeicingAreaExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="PassengerLoadingBridgePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="PassengerLoadingBridge" type="aixm:PassengerLoadingBridgeType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -1252,6 +1364,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="PassengerLoadingBridgeTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:PassengerLoadingBridgeTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1283,7 +1397,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractPassengerLoadingBridgeExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TouchDownLiftOffSafeAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TouchDownLiftOffSafeArea" type="aixm:TouchDownLiftOffSafeAreaType" substitutionGroup="aixm:AbstractAirportHeliportProtectionArea"/>
@@ -1299,6 +1417,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TouchDownLiftOffSafeAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TouchDownLiftOffSafeAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1329,7 +1449,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTouchDownLiftOffSafeAreaExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TouchDownLiftOffPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TouchDownLiftOff" type="aixm:TouchDownLiftOffType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -1345,6 +1469,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TouchDownLiftOffTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TouchDownLiftOffTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1386,7 +1512,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTouchDownLiftOffExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="GroundLightSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractGroundLightSystem" type="aixm:AbstractGroundLightSystemType" abstract="true" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -1407,7 +1537,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractGroundLightSystemExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ApronLightSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="ApronLightSystem" type="aixm:ApronLightSystemType" substitutionGroup="aixm:AbstractGroundLightSystem"/>
@@ -1423,6 +1557,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ApronLightSystemTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ApronLightSystemTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1454,7 +1590,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractApronLightSystemExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TaxiwayLightSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TaxiwayLightSystem" type="aixm:TaxiwayLightSystemType" substitutionGroup="aixm:AbstractGroundLightSystem"/>
@@ -1470,6 +1610,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TaxiwayLightSystemTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TaxiwayLightSystemTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1501,7 +1643,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTaxiwayLightSystemExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RunwayDirectionLightSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RunwayDirectionLightSystem" type="aixm:RunwayDirectionLightSystemType" substitutionGroup="aixm:AbstractGroundLightSystem"/>
@@ -1517,6 +1663,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RunwayDirectionLightSystemTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RunwayDirectionLightSystemTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1548,7 +1696,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRunwayDirectionLightSystemExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TouchDownLiftOffLightSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TouchDownLiftOffLightSystem" type="aixm:TouchDownLiftOffLightSystemType" substitutionGroup="aixm:AbstractGroundLightSystem"/>
@@ -1564,6 +1716,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TouchDownLiftOffLightSystemTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TouchDownLiftOffLightSystemTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1595,7 +1749,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTouchDownLiftOffLightSystemExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="GuidanceLineLightSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="GuidanceLineLightSystem" type="aixm:GuidanceLineLightSystemType" substitutionGroup="aixm:AbstractGroundLightSystem"/>
@@ -1611,6 +1769,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="GuidanceLineLightSystemTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:GuidanceLineLightSystemTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1641,7 +1801,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractGuidanceLineLightSystemExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RunwayProtectAreaLightSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RunwayProtectAreaLightSystem" type="aixm:RunwayProtectAreaLightSystemType" substitutionGroup="aixm:AbstractGroundLightSystem"/>
@@ -1657,6 +1821,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RunwayProtectAreaLightSystemTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RunwayProtectAreaLightSystemTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1688,7 +1854,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRunwayProtectAreaLightSystemExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TaxiHoldingPositionLightSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TaxiHoldingPositionLightSystem" type="aixm:TaxiHoldingPositionLightSystemType" substitutionGroup="aixm:AbstractGroundLightSystem"/>
@@ -1704,6 +1874,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TaxiHoldingPositionLightSystemTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TaxiHoldingPositionLightSystemTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1806,7 +1978,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractGroundLightingAvailabilityExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ApproachLightingSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="ApproachLightingSystem" type="aixm:ApproachLightingSystemType" substitutionGroup="aixm:AbstractGroundLightSystem"/>
@@ -1822,6 +1998,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ApproachLightingSystemTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ApproachLightingSystemTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1857,7 +2035,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractApproachLightingSystemExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="MarkingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractMarking" type="aixm:AbstractMarkingType" abstract="true" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -1916,7 +2098,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractMarkingElementExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TaxiwayMarkingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TaxiwayMarking" type="aixm:TaxiwayMarkingType" substitutionGroup="aixm:AbstractMarking"/>
@@ -1932,6 +2118,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TaxiwayMarkingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TaxiwayMarkingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -1964,7 +2152,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTaxiwayMarkingExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ApronMarkingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="ApronMarking" type="aixm:ApronMarkingType" substitutionGroup="aixm:AbstractMarking"/>
@@ -1980,6 +2172,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ApronMarkingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ApronMarkingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2011,7 +2205,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractApronMarkingExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirportProtectionAreaMarkingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AirportProtectionAreaMarking" type="aixm:AirportProtectionAreaMarkingType" substitutionGroup="aixm:AbstractMarking"/>
@@ -2027,6 +2225,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AirportProtectionAreaMarkingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AirportProtectionAreaMarkingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2058,7 +2258,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirportProtectionAreaMarkingExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TouchDownLiftOffMarkingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TouchDownLiftOffMarking" type="aixm:TouchDownLiftOffMarkingType" substitutionGroup="aixm:AbstractMarking"/>
@@ -2074,6 +2278,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TouchDownLiftOffMarkingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TouchDownLiftOffMarkingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2105,7 +2311,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTouchDownLiftOffMarkingExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RunwayMarkingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RunwayMarking" type="aixm:RunwayMarkingType" substitutionGroup="aixm:AbstractMarking"/>
@@ -2121,6 +2331,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RunwayMarkingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RunwayMarkingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2152,7 +2364,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRunwayMarkingExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="GuidanceLineMarkingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="GuidanceLineMarking" type="aixm:GuidanceLineMarkingType" substitutionGroup="aixm:AbstractMarking"/>
@@ -2168,6 +2384,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="GuidanceLineMarkingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:GuidanceLineMarkingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2198,7 +2416,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractGuidanceLineMarkingExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="DeicingAreaMarkingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="DeicingAreaMarking" type="aixm:DeicingAreaMarkingType" substitutionGroup="aixm:AbstractMarking"/>
@@ -2214,6 +2436,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="DeicingAreaMarkingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:DeicingAreaMarkingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2244,7 +2468,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractDeicingAreaMarkingExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TaxiHoldingPositionMarkingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TaxiHoldingPositionMarking" type="aixm:TaxiHoldingPositionMarkingType" substitutionGroup="aixm:AbstractMarking"/>
@@ -2260,6 +2488,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TaxiHoldingPositionMarkingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TaxiHoldingPositionMarkingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2290,7 +2520,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTaxiHoldingPositionMarkingExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="StandMarkingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="StandMarking" type="aixm:StandMarkingType" substitutionGroup="aixm:AbstractMarking"/>
@@ -2306,6 +2540,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="StandMarkingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:StandMarkingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2688,7 +2924,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirportHeliportContaminationExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="FloatingDockSitePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="FloatingDockSite" type="aixm:FloatingDockSiteType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -2704,6 +2944,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="FloatingDockSiteTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:FloatingDockSiteTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2733,7 +2975,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractFloatingDockSiteExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="MarkingBuoyPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="MarkingBuoy" type="aixm:MarkingBuoyType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -2749,6 +2995,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="MarkingBuoyTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:MarkingBuoyTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2782,7 +3030,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractMarkingBuoyExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SeaplaneLandingAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SeaplaneLandingArea" type="aixm:SeaplaneLandingAreaType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -2798,6 +3050,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SeaplaneLandingAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SeaplaneLandingAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2830,7 +3084,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSeaplaneLandingAreaExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SeaplaneRampSitePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SeaplaneRampSite" type="aixm:SeaplaneRampSiteType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -2846,6 +3104,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SeaplaneRampSiteTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SeaplaneRampSiteTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2876,7 +3136,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSeaplaneRampSiteExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="WorkAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="WorkArea" type="aixm:WorkAreaType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -2892,6 +3156,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="WorkAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:WorkAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -2925,7 +3191,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractWorkAreaExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SurveyControlPointPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SurveyControlPoint" type="aixm:SurveyControlPointType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -2941,6 +3211,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SurveyControlPointTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SurveyControlPointTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3017,7 +3289,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSurfaceCharacteristicsExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="NonMovementAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="NonMovementArea" type="aixm:NonMovementAreaType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -3033,6 +3309,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="NonMovementAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:NonMovementAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3124,7 +3402,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractUsageConditionExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirportHeliportProtectionAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractAirportHeliportProtectionArea" type="aixm:AbstractAirportHeliportProtectionAreaType" abstract="true" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -3146,7 +3428,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirportHeliportProtectionAreaExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirportHeliportCollocationPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AirportHeliportCollocation" type="aixm:AirportHeliportCollocationType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -3162,6 +3448,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AirportHeliportCollocationTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AirportHeliportCollocationTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3193,7 +3481,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirportHeliportCollocationExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirportHeliportPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AirportHeliport" type="aixm:AirportHeliportType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -3209,6 +3501,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AirportHeliportTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AirportHeliportTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3271,7 +3565,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirportHeliportExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AltimeterSourcePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AltimeterSource" type="aixm:AltimeterSourceType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -3287,6 +3585,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AltimeterSourceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AltimeterSourceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3354,7 +3654,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirportHeliportResponsibilityOrganisationExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirportHotSpotPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AirportHotSpot" type="aixm:AirportHotSpotType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -3370,6 +3674,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AirportHotSpotTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AirportHotSpotTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3583,7 +3889,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirportHeliportUsageExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AuthorityForAirspacePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AuthorityForAirspace" type="aixm:AuthorityForAirspaceType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -3599,6 +3909,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AuthorityForAirspaceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AuthorityForAirspaceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3630,7 +3942,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAuthorityForAirspaceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirspacePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Airspace" type="aixm:AirspaceType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -3646,6 +3962,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AirspaceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AirspaceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3841,7 +4159,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirspaceLayerClassExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="GeoBorderPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="GeoBorder" type="aixm:GeoBorderType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -3857,6 +4179,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="GeoBorderTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:GeoBorderTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -3926,7 +4250,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:Curve"/>
+					<!-- <element ref="aixm:Curve"/> -->
+					<!-- Gis Handeling -->
+					<element name="curve" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -3951,7 +4277,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:ElevatedCurve"/>
+					<!-- <element ref="aixm:ElevatedCurve"/> -->
+					<!-- Gis Handeling -->
+					<element name="curve" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -3987,7 +4315,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:ElevatedPoint"/>
+					<!-- <element ref="aixm:ElevatedPoint"/> -->
+					<!-- Gis Handeling -->
+					<element name="point" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -4023,7 +4353,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:ElevatedSurface"/>
+					<!-- <element ref="aixm:ElevatedSurface"/> -->
+					<!-- Gis Handeling -->
+					<element name="surface" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -4059,7 +4391,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:Point"/>
+					<!-- <element ref="aixm:Point"/> -->
+					<!-- Gis Handeling -->
+					<element name="point" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -4084,7 +4418,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMPropertyType">
 				<sequence>
-					<element ref="aixm:Surface"/>
+					<!-- <element ref="aixm:Surface"/> -->
+					<!-- Gis Handeling -->
+					<element name="surface" type="xs:string" />
 				</sequence>
 			</extension>
 		</complexContent>
@@ -4106,7 +4442,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		</sequence>
 	</group>
 	<complexType name="PrecisionApproachRadarPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="PrecisionApproachRadar" type="aixm:PrecisionApproachRadarType" substitutionGroup="aixm:AbstractRadarEquipment"/>
@@ -4122,6 +4462,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="PrecisionApproachRadarTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:PrecisionApproachRadarTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4155,7 +4497,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractPrecisionApproachRadarExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="PrimarySurveillanceRadarPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="PrimarySurveillanceRadar" type="aixm:PrimarySurveillanceRadarType" substitutionGroup="aixm:AbstractSurveillanceRadar"/>
@@ -4171,6 +4517,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="PrimarySurveillanceRadarTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:PrimarySurveillanceRadarTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4237,7 +4585,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRadarComponentExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RadarEquipmentPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractRadarEquipment" type="aixm:AbstractRadarEquipmentType" abstract="true" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -4269,7 +4621,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRadarEquipmentExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RadarSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RadarSystem" type="aixm:RadarSystemType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -4285,6 +4641,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RadarSystemTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RadarSystemTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4357,7 +4715,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractReflectorExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SecondarySurveillanceRadarPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SecondarySurveillanceRadar" type="aixm:SecondarySurveillanceRadarType" substitutionGroup="aixm:AbstractSurveillanceRadar"/>
@@ -4373,6 +4735,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SecondarySurveillanceRadarTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SecondarySurveillanceRadarTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4406,7 +4770,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSecondarySurveillanceRadarExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SurveillanceRadarPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractSurveillanceRadar" type="aixm:AbstractSurveillanceRadarType" abstract="true" substitutionGroup="aixm:AbstractRadarEquipment"/>
@@ -4588,7 +4956,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAltitudeAdjustmentExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="HoldingAssessmentPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="HoldingAssessment" type="aixm:HoldingAssessmentType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -4604,6 +4976,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="HoldingAssessmentTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:HoldingAssessmentTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4682,7 +5056,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractObstaclePlacementExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="StandardLevelTablePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="StandardLevelTable" type="aixm:StandardLevelTableType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -4698,6 +5076,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="StandardLevelTableTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:StandardLevelTableTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4728,7 +5108,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractStandardLevelTableExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="StandardLevelSectorPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="StandardLevelSector" type="aixm:StandardLevelSectorType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -4744,6 +5128,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="StandardLevelSectorTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:StandardLevelSectorTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4778,7 +5164,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractStandardLevelSectorExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="StandardLevelColumnPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="StandardLevelColumn" type="aixm:StandardLevelColumnType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -4794,6 +5184,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="StandardLevelColumnTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:StandardLevelColumnTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -4861,7 +5253,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractStandardLevelExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RadioFrequencyAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RadioFrequencyArea" type="aixm:RadioFrequencyAreaType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -4877,6 +5273,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RadioFrequencyAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RadioFrequencyAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5391,7 +5789,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractPropertiesWithScheduleExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SpecialDatePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SpecialDate" type="aixm:SpecialDateType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -5407,6 +5809,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SpecialDateTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SpecialDateTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5478,7 +5882,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractMeteorologyExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractService" type="aixm:AbstractServiceType" abstract="true" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -5504,7 +5912,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RadioCommunicationChannelPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RadioCommunicationChannel" type="aixm:RadioCommunicationChannelType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -5520,6 +5932,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RadioCommunicationChannelTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RadioCommunicationChannelTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5595,7 +6009,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractCallsignDetailExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="PilotControlledLightingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="PilotControlledLighting" type="aixm:PilotControlledLightingType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -5611,6 +6029,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="PilotControlledLightingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:PilotControlledLightingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5647,7 +6067,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractPilotControlledLightingExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="InformationServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="InformationService" type="aixm:InformationServiceType" substitutionGroup="aixm:AbstractService"/>
@@ -5663,6 +6087,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="InformationServiceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:InformationServiceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5703,7 +6129,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractInformationServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TrafficSeparationServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractTrafficSeparationService" type="aixm:AbstractTrafficSeparationServiceType" abstract="true" substitutionGroup="aixm:AbstractService"/>
@@ -5722,7 +6152,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTrafficSeparationServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="GroundTrafficControlServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="GroundTrafficControlService" type="aixm:GroundTrafficControlServiceType" substitutionGroup="aixm:AbstractTrafficSeparationService"/>
@@ -5738,6 +6172,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="GroundTrafficControlServiceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:GroundTrafficControlServiceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5770,7 +6206,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractGroundTrafficControlServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirTrafficControlServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AirTrafficControlService" type="aixm:AirTrafficControlServiceType" substitutionGroup="aixm:AbstractTrafficSeparationService"/>
@@ -5786,6 +6226,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AirTrafficControlServiceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AirTrafficControlServiceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5824,7 +6266,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirTrafficControlServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirTrafficManagementServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AirTrafficManagementService" type="aixm:AirTrafficManagementServiceType" substitutionGroup="aixm:AbstractService"/>
@@ -5840,6 +6286,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AirTrafficManagementServiceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AirTrafficManagementServiceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5873,7 +6321,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirTrafficManagementServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SearchRescueServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SearchRescueService" type="aixm:SearchRescueServiceType" substitutionGroup="aixm:AbstractService"/>
@@ -5889,6 +6341,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SearchRescueServiceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SearchRescueServiceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5921,7 +6375,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSearchRescueServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirportGroundServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractAirportGroundService" type="aixm:AbstractAirportGroundServiceType" abstract="true" substitutionGroup="aixm:AbstractService"/>
@@ -5938,7 +6396,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirportGroundServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="PassengerServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="PassengerService" type="aixm:PassengerServiceType" substitutionGroup="aixm:AbstractAirportGroundService"/>
@@ -5954,6 +6416,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="PassengerServiceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:PassengerServiceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -5985,7 +6449,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractPassengerServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AircraftGroundServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AircraftGroundService" type="aixm:AircraftGroundServiceType" substitutionGroup="aixm:AbstractAirportGroundService"/>
@@ -6001,6 +6469,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AircraftGroundServiceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AircraftGroundServiceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6032,7 +6502,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAircraftGroundServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="FireFightingServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="FireFightingService" type="aixm:FireFightingServiceType" substitutionGroup="aixm:AbstractAirportGroundService"/>
@@ -6048,6 +6522,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="FireFightingServiceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:FireFightingServiceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6080,7 +6556,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractFireFightingServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirportClearanceServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AirportClearanceService" type="aixm:AirportClearanceServiceType" substitutionGroup="aixm:AbstractAirportGroundService"/>
@@ -6096,6 +6576,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AirportClearanceServiceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AirportClearanceServiceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6127,7 +6609,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAirportClearanceServiceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirportSuppliesServicePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AirportSuppliesService" type="aixm:AirportSuppliesServiceType" substitutionGroup="aixm:AbstractAirportGroundService"/>
@@ -6143,6 +6629,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AirportSuppliesServiceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AirportSuppliesServiceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6536,7 +7024,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractEnRouteSegmentPointExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AngleIndicationPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AngleIndication" type="aixm:AngleIndicationType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -6552,6 +7044,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AngleIndicationTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AngleIndicationTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6595,7 +7089,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAngleIndicationExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="DistanceIndicationPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="DistanceIndication" type="aixm:DistanceIndicationType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -6611,6 +7109,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="DistanceIndicationTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:DistanceIndicationTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6756,7 +7256,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAuthorityForSpecialNavigationStationExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AzimuthPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Azimuth" type="aixm:AzimuthType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -6772,6 +7276,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AzimuthTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AzimuthTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6810,7 +7316,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAzimuthExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="CheckpointINSPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="CheckpointINS" type="aixm:CheckpointINSType" substitutionGroup="aixm:AbstractNavigationSystemCheckpoint"/>
@@ -6826,6 +7336,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="CheckpointINSTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:CheckpointINSTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6855,7 +7367,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractCheckpointINSExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="CheckpointVORPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="CheckpointVOR" type="aixm:CheckpointVORType" substitutionGroup="aixm:AbstractNavigationSystemCheckpoint"/>
@@ -6871,6 +7387,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="CheckpointVORTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:CheckpointVORTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6936,7 +7454,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAuthorityForSpecialNavigationSystemExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="DMEPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="DME" type="aixm:DMEType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -6952,6 +7474,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="DMETimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:DMETimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -6985,7 +7509,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractDMEExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ElevationPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Elevation" type="aixm:ElevationType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -7001,6 +7529,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ElevationTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ElevationTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7034,7 +7564,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractElevationExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="GlidepathPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Glidepath" type="aixm:GlidepathType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -7050,6 +7584,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="GlidepathTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:GlidepathTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7084,7 +7620,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractGlidepathExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="LocalizerPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Localizer" type="aixm:LocalizerType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -7100,6 +7640,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="LocalizerTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:LocalizerTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7138,7 +7680,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractLocalizerExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="MarkerBeaconPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="MarkerBeacon" type="aixm:MarkerBeaconType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -7154,6 +7700,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="MarkerBeaconTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:MarkerBeaconTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7187,7 +7735,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractMarkerBeaconExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="NavaidPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Navaid" type="aixm:NavaidType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -7203,6 +7755,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="NavaidTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:NavaidTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7282,7 +7836,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractNavaidComponentExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="NavaidEquipmentPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractNavaidEquipment" type="aixm:AbstractNavaidEquipmentType" abstract="true" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -7310,7 +7868,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractNavaidEquipmentExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="NavigationSystemCheckpointPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractNavigationSystemCheckpoint" type="aixm:AbstractNavigationSystemCheckpointType" abstract="true" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -7336,7 +7898,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractNavigationSystemCheckpointExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SDFPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SDF" type="aixm:SDFType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -7352,6 +7918,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SDFTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SDFTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7384,7 +7952,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSDFExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="NDBPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="NDB" type="aixm:NDBType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -7400,6 +7972,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="NDBTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:NDBTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7432,7 +8006,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractNDBExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SpecialNavigationStationPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SpecialNavigationStation" type="aixm:SpecialNavigationStationType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -7448,6 +8026,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SpecialNavigationStationTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SpecialNavigationStationTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7484,7 +8064,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSpecialNavigationStationExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="VORPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="VOR" type="aixm:VORType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -7500,6 +8084,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="VORTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:VORTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7533,7 +8119,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractVORExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TACANPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TACAN" type="aixm:TACANType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -7549,6 +8139,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TACANTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TACANTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7580,7 +8172,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTACANExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SpecialNavigationSystemPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SpecialNavigationSystem" type="aixm:SpecialNavigationSystemType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -7596,6 +8192,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SpecialNavigationSystemTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SpecialNavigationSystemTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7734,7 +8332,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSpecialNavigationStationStatusExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="DirectionFinderPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="DirectionFinder" type="aixm:DirectionFinderType" substitutionGroup="aixm:AbstractNavaidEquipment"/>
@@ -7750,6 +8352,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="DirectionFinderTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:DirectionFinderTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7781,7 +8385,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractDirectionFinderExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="DesignatedPointPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="DesignatedPoint" type="aixm:DesignatedPointType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -7797,6 +8405,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="DesignatedPointTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:DesignatedPointTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7832,7 +8442,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractDesignatedPointExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SignificantPointInAirspacePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SignificantPointInAirspace" type="aixm:SignificantPointInAirspaceType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -7848,6 +8462,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SignificantPointInAirspaceTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SignificantPointInAirspaceTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -7887,7 +8503,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSignificantPointInAirspaceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AeronauticalGroundLightPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AeronauticalGroundLight" type="aixm:AeronauticalGroundLightType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -7903,6 +8523,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AeronauticalGroundLightTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AeronauticalGroundLightTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8006,7 +8628,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractLinguisticNoteExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="OrganisationAuthorityPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="OrganisationAuthority" type="aixm:OrganisationAuthorityType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -8022,6 +8648,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="OrganisationAuthorityTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:OrganisationAuthorityTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8091,7 +8719,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractOrganisationAuthorityAssociationExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="UnitPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Unit" type="aixm:UnitType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -8107,6 +8739,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="UnitTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:UnitTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8267,7 +8901,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractVerticalStructurePartExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ObstacleAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="ObstacleArea" type="aixm:ObstacleAreaType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -8283,6 +8921,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ObstacleAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ObstacleAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8320,7 +8960,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractObstacleAreaExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="VerticalStructurePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="VerticalStructure" type="aixm:VerticalStructureType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -8336,6 +8980,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="VerticalStructureTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:VerticalStructureTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8455,7 +9101,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractCirclingRestrictionExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="CirclingAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="CirclingArea" type="aixm:CirclingAreaType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -8471,6 +9121,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="CirclingAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:CirclingAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8663,7 +9315,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractTerminalArrivalAreaSectorExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="TerminalArrivalAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="TerminalArrivalArea" type="aixm:TerminalArrivalAreaType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -8679,6 +9335,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="TerminalArrivalAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:TerminalArrivalAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -8920,7 +9578,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractFinalProfileExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="InstrumentApproachProcedurePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="InstrumentApproachProcedure" type="aixm:InstrumentApproachProcedureType" substitutionGroup="aixm:AbstractProcedure"/>
@@ -8936,6 +9598,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="InstrumentApproachProcedureTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:InstrumentApproachProcedureTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9056,7 +9720,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractApproachConditionExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="StandardInstrumentDeparturePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="StandardInstrumentDeparture" type="aixm:StandardInstrumentDepartureType" substitutionGroup="aixm:AbstractProcedure"/>
@@ -9072,6 +9740,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="StandardInstrumentDepartureTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:StandardInstrumentDepartureTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9104,7 +9774,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractStandardInstrumentDepartureExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="NavigationAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="NavigationArea" type="aixm:NavigationAreaType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -9120,6 +9794,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="NavigationAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:NavigationAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9274,7 +9950,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSectorDesignExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="StandardInstrumentArrivalPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="StandardInstrumentArrival" type="aixm:StandardInstrumentArrivalType" substitutionGroup="aixm:AbstractProcedure"/>
@@ -9290,6 +9970,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="StandardInstrumentArrivalTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:StandardInstrumentArrivalTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9356,7 +10038,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractProcedureAvailabilityExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ProcedurePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractProcedure" type="aixm:AbstractProcedureType" abstract="true" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -9389,7 +10075,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractProcedureExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="NavigationAreaRestrictionPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="NavigationAreaRestriction" type="aixm:NavigationAreaRestrictionType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -9405,6 +10095,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="NavigationAreaRestrictionTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:NavigationAreaRestrictionTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9437,7 +10129,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractNavigationAreaRestrictionExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SegmentLegPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractSegmentLeg" type="aixm:AbstractSegmentLegType" abstract="true" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -9562,7 +10258,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractHoldingUseExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ApproachLegPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AbstractApproachLeg" type="aixm:AbstractApproachLegType" abstract="true" substitutionGroup="aixm:AbstractSegmentLeg"/>
@@ -9579,7 +10279,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractApproachLegExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ArrivalFeederLegPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="ArrivalFeederLeg" type="aixm:ArrivalFeederLegType" substitutionGroup="aixm:AbstractApproachLeg"/>
@@ -9595,6 +10299,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ArrivalFeederLegTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ArrivalFeederLegTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9626,7 +10332,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractArrivalFeederLegExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ArrivalLegPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="ArrivalLeg" type="aixm:ArrivalLegType" substitutionGroup="aixm:AbstractSegmentLeg"/>
@@ -9642,6 +10352,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ArrivalLegTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ArrivalLegTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9673,7 +10385,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractArrivalLegExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="DepartureLegPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="DepartureLeg" type="aixm:DepartureLegType" substitutionGroup="aixm:AbstractSegmentLeg"/>
@@ -9689,6 +10405,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="DepartureLegTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:DepartureLegTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9722,7 +10440,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractDepartureLegExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="FinalLegPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="FinalLeg" type="aixm:FinalLegType" substitutionGroup="aixm:AbstractApproachLeg"/>
@@ -9738,6 +10460,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="FinalLegTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:FinalLegTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9788,7 +10512,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractFinalLegExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="InitialLegPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="InitialLeg" type="aixm:InitialLegType" substitutionGroup="aixm:AbstractApproachLeg"/>
@@ -9804,6 +10532,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="InitialLegTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:InitialLegTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9835,7 +10565,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractInitialLegExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="IntermediateLegPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="IntermediateLeg" type="aixm:IntermediateLegType" substitutionGroup="aixm:AbstractApproachLeg"/>
@@ -9851,6 +10585,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="IntermediateLegTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:IntermediateLegTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -9882,7 +10618,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractIntermediateLegExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="MissedApproachLegPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="MissedApproachLeg" type="aixm:MissedApproachLegType" substitutionGroup="aixm:AbstractApproachLeg"/>
@@ -9898,6 +10638,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="MissedApproachLegTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:MissedApproachLegTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10003,7 +10745,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractLandingTakeoffAreaCollectionExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ProcedureDMEPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="ProcedureDME" type="aixm:ProcedureDMEType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -10019,6 +10765,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ProcedureDMETimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ProcedureDMETimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10051,7 +10799,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractProcedureDMEExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="SafeAltitudeAreaPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="SafeAltitudeArea" type="aixm:SafeAltitudeAreaType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -10067,6 +10819,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="SafeAltitudeAreaTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:SafeAltitudeAreaTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10143,7 +10897,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractSafeAltitudeAreaSectorExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="HoldingPatternPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="HoldingPattern" type="aixm:HoldingPatternType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -10159,6 +10917,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="HoldingPatternTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:HoldingPatternTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10206,7 +10966,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractHoldingPatternExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="UnplannedHoldingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="UnplannedHolding" type="aixm:UnplannedHoldingType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -10222,6 +10986,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="UnplannedHoldingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:UnplannedHoldingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10323,7 +11089,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractHoldingPatternDistanceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AirspaceBorderCrossingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AirspaceBorderCrossing" type="aixm:AirspaceBorderCrossingType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -10339,6 +11109,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AirspaceBorderCrossingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AirspaceBorderCrossingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10585,7 +11357,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractFlightRestrictionLevelExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="FlightRestrictionPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="FlightRestriction" type="aixm:FlightRestrictionType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -10601,6 +11377,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="FlightRestrictionTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:FlightRestrictionTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10784,7 +11562,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractFlightConditionElementExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RouteSegmentPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RouteSegment" type="aixm:RouteSegmentType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -10800,6 +11582,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RouteSegmentTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RouteSegmentTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -10954,7 +11738,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRoutePortionExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RouteDMEPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RouteDME" type="aixm:RouteDMEType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -10970,6 +11758,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RouteDMETimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RouteDMETimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -11002,7 +11792,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRouteDMEExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RoutePropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="Route" type="aixm:RouteType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -11018,6 +11812,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RouteTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RouteTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -11058,7 +11854,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractRouteExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="ChangeOverPointPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="ChangeOverPoint" type="aixm:ChangeOverPointType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -11074,6 +11874,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="ChangeOverPointTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:ChangeOverPointTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -11112,7 +11914,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractChangeOverPointExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="AerialRefuellingPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="AerialRefuelling" type="aixm:AerialRefuellingType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -11128,6 +11934,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="AerialRefuellingTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:AerialRefuellingTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>
@@ -11328,7 +12136,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</group>
 	<element name="AbstractAuthorityForAerialRefuellingExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
 	<complexType name="RulesProceduresPropertyType">
-		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<!-- dbid field for persistence  -->
+		<sequence>
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
 		<attributeGroup ref="gml:AssociationAttributeGroup"/>
 	</complexType>
 	<element name="RulesProcedures" type="aixm:RulesProceduresType" substitutionGroup="aixm:AbstractAIXMFeature"/>
@@ -11344,6 +12156,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="RulesProceduresTimeSlicePropertyType">
 		<sequence>
 			<element ref="aixm:RulesProceduresTimeSlice"/>
+            <!-- dbid field for persistence  -->
+            <element name="dbid" type="xs:long"/>
 		</sequence>
 		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
 	</complexType>

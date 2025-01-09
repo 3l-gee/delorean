@@ -115,6 +115,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<documentation>It provides a basis for deriving AIXM feature/object properties. It defines the nilReason attribute and currently, it is only used for properties that are derived from association with an AIM object.</documentation>
 		</annotation>
 		<sequence>
+			<!-- Adding dbid as a new field -->
 			<element name="dbid" type="xs:long" minOccurs="0"/>
 		</sequence>
 		<attribute name="nilReason" type="gml:NilReasonEnumeration"/>

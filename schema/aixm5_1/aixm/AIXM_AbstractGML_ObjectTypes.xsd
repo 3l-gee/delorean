@@ -20,7 +20,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		provided by the Open Source Initiative:
 		http://www.opensource.org/licenses/bsd-license.php
 	-->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" targetNamespace="http://www.aixm.aero/schema/5.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" targetNamespace="http://www.aixm.aero/schema/5.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
 	<annotation>
 		<appinfo>
 			<gml:gmlProfileSchema>http://www.aixm.aero/schema/5.1/profile/gml4aixm.xsd</gml:gmlProfileSchema>
@@ -69,6 +69,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="aixm:AbstractAIXMFeatureBaseType">
 				<sequence>
 					<element name="featureMetadata" type="aixm:FeatureMetadataPropertyType" minOccurs="0"/>
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -78,7 +80,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<documentation>Substitution head for AIXM features.</documentation>
 		</annotation>
 	</element>
-	<complexType name="AbstractAIXMObjectType" abstract="true">
+	<complexType name="AbstractAIXMObjectBaseType" abstract="true">
 		<annotation>
 			<documentation>Base type for AIXM complex types that are NOT features. For example, City, ContactInformation, AirspaceVolume, etc. It derives from AbstractGMLType so that AIXM objects are recognised as GML objects, thus ensuring that GML-aware applications recognise them properly. Retains only the mandatory gml:id attribute.</documentation>
 		</annotation>
@@ -91,6 +93,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			</restriction>
 		</complexContent>
 	</complexType>
+	<complexType name="AbstractAIXMObjectType" abstract="true">
+		<annotation>
+			<documentation>Adds the FeatureMetadata, which is common to all AIXM features</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectBaseType">
+				<sequence>
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
 	<element name="AbstractAIXMObject" type="aixm:AbstractAIXMObjectType" abstract="true" substitutionGroup="gml:AbstractGML">
 		<annotation>
 			<documentation>Substitution head for AIXM objects.</documentation>
@@ -100,6 +115,10 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<annotation>
 			<documentation>It provides a basis for deriving AIXM feature/object properties. It defines the nilReason attribute and currently, it is only used for properties that are derived from association with an AIM object.</documentation>
 		</annotation>
+		<sequence>
+			<!-- Adding dbid as a new field -->
+			<element name="dbid" type="xs:long" minOccurs="0"/>
+		</sequence>
 		<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
 	</complexType>
 	<!--====================================================================-->
@@ -117,7 +136,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 						<annotation>
 							<documentation>The efffectivity of the TimeSlice.</documentation>
 						</annotation>
-						<element ref="gml:validTime"/>
+						<!-- <element ref="gml:validTime"/> -->
+						<element ref="gml:aixmValidTime"/>
 					</sequence>
 				</sequence>
 				<attribute ref="gml:id" use="required"/>
@@ -136,6 +156,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element ref="aixm:correctionNumber" minOccurs="0"/>
 					<element name="timeSliceMetadata" type="aixm:FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
 					<element ref="aixm:featureLifetime" minOccurs="0"/>
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -149,6 +171,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				<sequence>
 					<element ref="aixm:sequenceNumber" minOccurs="0"/>
 					<element name="messageMetadata" type="aixm:MessageMetadataPropertyType" minOccurs="0"/>
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -214,6 +238,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="gml:AbstractMetadataPropertyType">
 				<sequence minOccurs="0">
 					<element ref="gmd:MD_Metadata"/>
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -223,6 +249,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="gml:AbstractMetadataPropertyType">
 				<sequence minOccurs="0">
 					<element ref="gmd:MD_Metadata"/>
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -232,6 +260,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="gml:AbstractMetadataPropertyType">
 				<sequence minOccurs="0">
 					<element ref="gmd:MD_Metadata"/>
+					<!-- Adding dbid as a new field -->
+                	<element name="dbid" type="xs:long"/>
 				</sequence>
 			</extension>
 		</complexContent>

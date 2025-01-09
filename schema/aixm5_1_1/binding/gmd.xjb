@@ -14,7 +14,7 @@
         node="/xs:schema">
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.isotc211.gmd.v2007" /> -->
-            <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gmd"/>
+            <jaxb:package name="com.aixm.delorean.core.org.gmd.v2007"/>
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
@@ -22,7 +22,7 @@
         node="/xs:schema">
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.isotc211.gco.v2007" /> -->
-            <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gco"/>
+            <jaxb:package name="com.aixm.delorean.core.org.gco.v2007"/>
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
@@ -30,7 +30,7 @@
         node="/xs:schema">
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.isotc211.gsr.v2007" /> -->
-            <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gsr"/>
+            <jaxb:package name="com.aixm.delorean.core.org.gsr.v2007"/>
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
@@ -38,7 +38,7 @@
         node="/xs:schema">
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.isotc211.gss.v2007" /> -->
-            <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gss"/>
+            <jaxb:package name="com.aixm.delorean.core.org.gss.v2007"/>
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
@@ -46,7 +46,7 @@
         node="/xs:schema">
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.isotc211.gts.v2007" /> -->
-            <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.gts"/>
+            <jaxb:package name="com.aixm.delorean.core.org.gts.v2007"/>
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
@@ -54,7 +54,7 @@
         node="/xs:schema">
         <jaxb:schemaBindings>
             <!-- <jaxb:package name="org.w3.x2001" /> -->
-            <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.w3"/>
+            <jaxb:package name="com.aixm.delorean.core.org.w3.x2001"/>
         </jaxb:schemaBindings>
     </jaxb:bindings>
 </jaxb:bindings>

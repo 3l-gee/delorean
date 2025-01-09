@@ -22,7 +22,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		http://www.opensource.org/licenses/bsd-license.php
 	-->
 <!-- Component: AIXM: Basic Message -->
-<schema xmlns:message="http://www.aixm.aero/schema/5.1/message" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:aixm="http://www.aixm.aero/schema/5.1" targetNamespace="http://www.aixm.aero/schema/5.1/message" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:message="http://www.aixm.aero/schema/5.1/message" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:aixm="http://www.aixm.aero/schema/5.1" targetNamespace="http://www.aixm.aero/schema/5.1/message" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
 	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../ISO_19136_Schemas/gml.xsd"/>
 	<import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../AIXM_Features.xsd"/>
 	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="../xlink/xlinks.xsd"/>
@@ -48,9 +48,15 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<complexType name="BasicMessageMemberAIXMPropertyType">
 		<complexContent>
 			<extension base="gml:AbstractFeatureMemberType">
-				<choice>
-					<element ref="aixm:AbstractAIXMFeature"/>
-				</choice>
+				<sequence>
+					<choice>
+						<!-- <element ref="aixm:AbstractAIXMFeature"/> -->
+						<!-- Abstract feature Handeling -->
+						<element name="abstractAIXMFeature" type="xs:string" />
+					</choice>
+					<!-- Adding dbID as a new field inside the sequence -->
+					<element name="dbid" type="xs:long"/>
+				</sequence>
 				<attributeGroup ref="gml:AssociationAttributeGroup"/>
 			</extension>
 		</complexContent>

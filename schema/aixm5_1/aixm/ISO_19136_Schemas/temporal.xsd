@@ -48,6 +48,12 @@ The temporal schemas cover two interrelated topics and provide basic schema comp
 			<documentation>gml:validTime is a convenience property element.</documentation>
 		</annotation>
 	</element>
+	<!-- timelice / feature lifetime handeling-->
+	<element name="aixmValidTime" type="string">
+		<annotation>
+			<documentation>Delorean synthetic construct to allow seamless time slice persistence</documentation>
+		</annotation>
+	</element>
 	<complexType name="RelatedTimeType">
 		<annotation>
 			<documentation>gml:RelatedTimeType provides a content model for indicating the relative position of an arbitrary member of the substitution group whose head is gml:AbstractTimePrimitive. It extends the generic gml:TimePrimitivePropertyType with an XML attribute relativePosition, whose value is selected from the set of 13 temporal relationships identified by Allen (1983)</documentation>

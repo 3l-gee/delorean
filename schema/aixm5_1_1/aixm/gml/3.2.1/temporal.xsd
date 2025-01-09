@@ -54,7 +54,7 @@ To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 			<documentation>gml:validTime is a convenience property element.</documentation>
 		</annotation>
 	</element>
-	<!-- Timeslice handeling-->
+	<!-- timelice / feature lifetime handeling-->
 	<element name="aixmValidTime" type="string">
 		<annotation>
 			<documentation>Delorean synthetic construct to allow seamless time slice persistence</documentation>

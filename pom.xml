@@ -365,9 +365,9 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
 
-            <!-- <plugin>
+            <plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
 				<version>4.0.8</version>
@@ -431,6 +431,88 @@
                     </execution>
                 </executions>
             </plugin> -->
+
+            <plugin>
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
+                <version>4.0.8</version>
+                <configuration>
+                    <extension>true</extension>
+                    <args>
+                        <arg>-Xannotate</arg>
+                        <arg>-XremoveAnnotation</arg>
+                    </args>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb</groupId>
+                            <artifactId>jaxb-plugin-annotate</artifactId>
+                            <version>4.0.8</version>
+                        </plugin>
+                    </plugins>
+                    <verbose>true</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-aixm5_1_1</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <schemaDirectory>${project.basedir}/schema/aixm5_1_1/aixm/message</schemaDirectory>
+                            <schemaIncludes>
+                                <include>AIXM_BasicMessage.xsd</include>
+                            </schemaIncludes>
+                            <bindingDirectory>${project.basedir}/schema/aixm5_1_1/binding</bindingDirectory>
+                            <bindingIncludes>
+                                <include>*.xjb</include>
+                            </bindingIncludes>
+                            <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-aixm5_1</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <schemaDirectory>${project.basedir}/schema/aixm5_1/aixm/message</schemaDirectory>
+                            <schemaIncludes>
+                                <include>AIXM_BasicMessage.xsd</include>
+                            </schemaIncludes>
+                            <bindingDirectory>${project.basedir}/schema/aixm5_1/binding</bindingDirectory>
+                            <bindingIncludes>
+                                <include>*.xjb</include>
+                            </bindingIncludes>
+                            <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.fillumina</groupId>
+                        <artifactId>krasa-jaxb-tools</artifactId>
+                        <version>2.3.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb</groupId>
+                        <artifactId>jaxb-plugins</artifactId>
+                        <version>4.0.8</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb</groupId>
+                        <artifactId>jaxb-plugin-annotate</artifactId>
+                        <version>4.0.8</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb</groupId>
+                        <artifactId>hyperjaxb3-ejb-plugin</artifactId>
+                        <version>4.0.8</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
 
 			<!-- Added maven-shade-plugin to create a fat jar including dependencies -->
             <plugin>
