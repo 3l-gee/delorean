@@ -16,20 +16,156 @@ debug = {
 }
 
 schema = {
-    "aerial_refuelling"         : [],
-    "airport_heliport"          : [],
-    "airspace"                  : [],
-    "geometry"                  : [],
-    "navaids_points"            : [],
-    "notes"                     : [],
-    "obstacles"                 : [],
-    "organisation"              : [],
-    "procedure"                 : [],
-    "route"                     : [],
-    "rules_procedures"          : [],
-    "service"                   : [],
-    "shared"                    : [],
-    "surveillance"              : [],
+    "Aerial Refuelling" : {
+        "schema" : "aerial_refuelling",
+        "list" : [],
+    },
+    "Airport Heliport" : {
+        "schema" : "airport_heliport",
+        "list" : [],
+    },
+    "Apron " : {
+        "schema" : "apron",
+        "list" : [],
+    }, 
+    "TouchDownLiftOff" : {
+        "schema" : "touchdown_liftoff",
+        "list" : [],
+    },
+    "Lighting" : {
+        "schema" : "lighting",
+        "list" : [],
+    },
+    "Markings" : {
+        "schema" : "markings",
+        "list" : [],
+    },
+    "Runway" : {
+        "schema" : "runway",
+        "list" : [],
+    },
+    "Seaplanes" : {
+        "schema" : "seaplanes",
+        "list" : [],
+    },
+    "Surface Contamination" : {
+        "schema" : "surface_contamination",
+        "list" : [],
+    },
+    "Taxiway" : {
+        "schema" : "taxiway",
+        "list" : [],
+    },
+    "Airspace" : {
+        "schema" : "airspace",
+        "list" : [],
+    },
+    "Geometry" : {
+        "schema" : "geometry",
+        "list" : [],
+    },
+    "Holding" : {
+        "schema" : "holding",
+        "list" : [],
+    },
+    "Guidance Service" : {
+        "schema" : "guidance_service",
+        "list" : [],
+    },
+    "Navaids" : {
+        "schema" : "navaids",
+        "list" : [],
+    },
+    "Segment Points" : {
+        "schema" : "segment_points",
+        "list" : [],
+    },
+    "Significant Points" : {
+        "schema" : "significant_points",
+        "list" : [],
+    },
+    "Visual Navigation" : {
+        "schema" : "visual_navigation",
+        "list" : [],
+    },
+    "Notes" : {
+        "schema" : "notes",
+        "list" : [],
+    },
+    "Obstacles" : {
+        "schema" : "obstacles",
+        "list" : [],
+    },
+    "Organisation" : {
+        "schema" : "organisation",
+        "list" : [],
+    },
+    "Approach" : {
+        "schema" : "approach",
+        "list" : [],
+    },
+    "Terminal Arrival Area" : {
+        "schema" : "terminal_arrival_area",
+        "list" : [],
+    },
+    "Segment Leg" : {
+        "schema" : "segment_leg",
+        "list" : [],
+    },
+    "Circling" : {
+        "schema" : "circling",
+        "list" : [],
+    },
+    "Minima" : {
+        "schema" : "minima",
+        "list" : [],
+    },
+    "Arrival" : {
+        "schema" : "arrival",
+        "list" : [],
+    },
+    "Departure" : {
+        "schema" : "departure",
+        "list" : [],
+    },
+    "Safe Altitude" : {
+        "schema" : "safe_altitude",
+        "list" : [],
+    },
+    "Procedure Overview" : {
+        "schema" : "procedure",
+        "list" : [],
+    },
+    "Usage" : {
+        "schema" : "usage",
+        "list" : [],
+    },
+    "En Route" : {
+        "schema" : "en_route",
+        "list" : [],
+    },
+    "Flight Restrictions" : {
+        "schema" : "flight_restrictions",
+        "list" : [],
+    },
+    "Rules Procedures" : {
+        "schema" : "rules_procedures",
+        "list" : [],
+    },
+    "Service" : {
+        "schema" : "service",
+        "list" : [],
+    },
+    "Shared" : {
+        "schema" : "shared",
+        "list" : [],
+    },
+    "Surveillance" : {
+        "schema" : "surveillance",
+        "list" : [],
+    }
+
+
 }
 
 config = {
