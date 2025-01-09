@@ -13,7 +13,7 @@
     <jaxb:bindings schemaLocation="../xlink/xlink.xsd">
     	<jaxb:schemaBindings>
 			<!-- <jaxb:package name="org.w3.xlink.v1999" /> -->
-            <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink"/>
+            <jaxb:package name="com.aixm.delorean.core.org.w3.xlink.v1999"/>
 			<jaxb:nameXmlTransform>
 				<jaxb:elementName suffix="Element" />
 			</jaxb:nameXmlTransform>

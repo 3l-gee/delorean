@@ -88,6 +88,8 @@ The time slice can thus be viewed as event or process-oriented, whereas a snapsh
 		<complexContent>
 			<extension base="gml:AbstractGMLType">
 				<sequence>
+					<!-- <element ref="gml:validTime"/> -->
+					<!-- timelice / feature lifetime handeling-->
 					<element ref="gml:aixmValidTime"/>
 					<element ref="gml:dataSource" minOccurs="0"/>
 				</sequence>
