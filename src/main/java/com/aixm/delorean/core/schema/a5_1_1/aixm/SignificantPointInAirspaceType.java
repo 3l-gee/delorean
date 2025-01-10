@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "significantpointinairspacetype", schema = "public")
+@Table(name = "significantpointinairspacetype", schema = "points")
 public class SignificantPointInAirspaceType
     extends AbstractAIXMFeatureType
 {

@@ -2,10 +2,8 @@ package com.aixm.delorean.core.helper.gis;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import com.aixm.delorean.core.gis.type.LinestringSegment;
 import com.aixm.delorean.core.gis.type.PolygonSegment;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
@@ -14,52 +12,50 @@ import javax.xml.namespace.QName;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
-import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 
 import jakarta.xml.bind.JAXBElement;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicStringType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.LengthType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.LineStringSegmentType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.PolygonPatchType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.SurfaceType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ConeType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CubicSplineType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CylinderType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionListType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.RectangleType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.SphereType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TriangleType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.LinearRingType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.OffsetCurveType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.RingType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractRingType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CompositeCurveType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.LineStringType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.OrientableCurveType;
-
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveSegmentArrayPropertyType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractCurveSegmentType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractCurveType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractRingPropertyType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.SurfacePatchArrayPropertyType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractSurfacePatchType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AngleType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcByBulgeType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcByCenterPointType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcStringByBulgeType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcStringType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.BSplineType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.BezierType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CircleByCenterPointType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CircleType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ClothoidType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurvePropertyType;
+import com.aixm.delorean.core.org.gml.v_3_2.CurveType;
+import com.aixm.delorean.core.org.gml.v_3_2.GeodesicStringType;
+import com.aixm.delorean.core.org.gml.v_3_2.GeodesicType;
+import com.aixm.delorean.core.org.gml.v_3_2.LengthType;
+import com.aixm.delorean.core.org.gml.v_3_2.LineStringSegmentType;
+import com.aixm.delorean.core.org.gml.v_3_2.PolygonPatchType;
+import com.aixm.delorean.core.org.gml.v_3_2.SurfaceType;
+import com.aixm.delorean.core.org.gml.v_3_2.ConeType;
+import com.aixm.delorean.core.org.gml.v_3_2.CubicSplineType;
+import com.aixm.delorean.core.org.gml.v_3_2.CylinderType;
+import com.aixm.delorean.core.org.gml.v_3_2.DirectPositionListType;
+import com.aixm.delorean.core.org.gml.v_3_2.DirectPositionType;
+import com.aixm.delorean.core.org.gml.v_3_2.RectangleType;
+import com.aixm.delorean.core.org.gml.v_3_2.SphereType;
+import com.aixm.delorean.core.org.gml.v_3_2.TriangleType;
+import com.aixm.delorean.core.org.gml.v_3_2.LinearRingType;
+import com.aixm.delorean.core.org.gml.v_3_2.OffsetCurveType;
+import com.aixm.delorean.core.org.gml.v_3_2.RingType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractRingType;
+import com.aixm.delorean.core.org.gml.v_3_2.CompositeCurveType;
+import com.aixm.delorean.core.org.gml.v_3_2.LineStringType;
+import com.aixm.delorean.core.org.gml.v_3_2.OrientableCurveType;
+import com.aixm.delorean.core.org.gml.v_3_2.CurveSegmentArrayPropertyType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractCurveSegmentType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractCurveType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractRingPropertyType;
+import com.aixm.delorean.core.org.gml.v_3_2.SurfacePatchArrayPropertyType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractSurfacePatchType;
+import com.aixm.delorean.core.org.gml.v_3_2.AngleType;
+import com.aixm.delorean.core.org.gml.v_3_2.ArcByBulgeType;
+import com.aixm.delorean.core.org.gml.v_3_2.ArcByCenterPointType;
+import com.aixm.delorean.core.org.gml.v_3_2.ArcStringByBulgeType;
+import com.aixm.delorean.core.org.gml.v_3_2.ArcStringType;
+import com.aixm.delorean.core.org.gml.v_3_2.ArcType;
+import com.aixm.delorean.core.org.gml.v_3_2.BSplineType;
+import com.aixm.delorean.core.org.gml.v_3_2.BezierType;
+import com.aixm.delorean.core.org.gml.v_3_2.CircleByCenterPointType;
+import com.aixm.delorean.core.org.gml.v_3_2.CircleType;
+import com.aixm.delorean.core.org.gml.v_3_2.ClothoidType;
+import com.aixm.delorean.core.org.gml.v_3_2.CurvePropertyType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
 
 public class SurfaceGmlHelper {
@@ -229,7 +225,6 @@ public class SurfaceGmlHelper {
 
     public static List<PolygonSegment> parseRingType(RingType value, String srsName, long counter) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);
-        String actualSrsName = value.getSrsName() != null ? value.getSrsName() : srsName;
         List<PolygonSegment> coordinates = new ArrayList<PolygonSegment>();
         List<CurvePropertyType> curveMember = value.getCurveMember();
         if (curveMember == null) {
@@ -237,7 +232,7 @@ public class SurfaceGmlHelper {
         }
 
         for (CurvePropertyType curve : curveMember) {
-            coordinates.addAll(parseCurveProperty(curve, actualSrsName, counter));
+            coordinates.addAll(parseCurveProperty(curve, srsName, counter));
         }
         
         return coordinates;
@@ -269,7 +264,7 @@ public class SurfaceGmlHelper {
         } else if (element.getValue().getClass().equals(CompositeCurveType.class)){
             //TODO is this allowed in AIXM?
 
-        } else if (element.getValue().getClass().equals(com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType.class)){
+        } else if (element.getValue().getClass().equals(com.aixm.delorean.core.org.gml.v_3_2.CurveType.class)){
             CurveType curveType = (CurveType) element.getValue();
             if (curveType == null || curveType.getSegments() == null) {
                 return coordinates;

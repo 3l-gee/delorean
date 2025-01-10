@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "authorityforairspacetimeslicetype", schema = "public")
+@Table(name = "authorityforairspacetimeslicetype", schema = "airspace")
 public class AuthorityForAirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -97,7 +97,7 @@ public class AuthorityForAirspaceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "authorityforairspacepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "authorityforairspace_pg_annotation", joinColumns = {
         @JoinColumn(name = "authorityforairspacepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "obstacleareatimeslicetype", schema = "public")
+@Table(name = "obstacleareatimeslicetype", schema = "obstacles")
 public class ObstacleAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -120,7 +120,7 @@ public class ObstacleAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleareapropertygroup_obstacle", joinColumns = {
+    @JoinTable(name = "obstaclearea_pg_obstacle", joinColumns = {
         @JoinColumn(name = "obstacleareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "verticalstructurepropertytype_id")
@@ -130,7 +130,7 @@ public class ObstacleAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleareapropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "obstaclearea_pg_annotation", joinColumns = {
         @JoinColumn(name = "obstacleareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

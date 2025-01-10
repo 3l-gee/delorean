@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "authorityforspecialnavigationstationtype", schema = "public")
+@Table(name = "authorityforspecialnavigationstationtype", schema = "navaids")
 public class AuthorityForSpecialNavigationStationType
     extends AbstractAIXMObjectType
 {
@@ -84,7 +84,7 @@ public class AuthorityForSpecialNavigationStationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "authorityforspecialnavigationstationpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "authorityforspecialnavigationstation_pg_annotation", joinColumns = {
         @JoinColumn(name = "authorityforspecialnavigationstationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

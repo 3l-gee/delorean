@@ -80,7 +80,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "searchrescueservicetimeslicetype", schema = "public")
+@Table(name = "searchrescueservicetimeslicetype", schema = "service")
 public class SearchRescueServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -129,8 +129,8 @@ public class SearchRescueServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservicetimeslicetype_call-sign", joinColumns = {
-        @JoinColumn(name = "searchrescueservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_call-sign", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "callsigndetailpropertytype_id")
     })
@@ -139,8 +139,8 @@ public class SearchRescueServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservicetimeslicetype_radiocommunication", joinColumns = {
-        @JoinColumn(name = "searchrescueservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_radiocommunication", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "radiocommunicationchannelpropertytype_id")
     })
@@ -149,8 +149,8 @@ public class SearchRescueServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservicetimeslicetype_groundcommunication", joinColumns = {
-        @JoinColumn(name = "searchrescueservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_groundcommunication", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
     })
@@ -159,8 +159,8 @@ public class SearchRescueServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservicetimeslicetype_availability", joinColumns = {
-        @JoinColumn(name = "searchrescueservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_availability", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "serviceoperationalstatuspropertytype_id")
     })
@@ -169,8 +169,8 @@ public class SearchRescueServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservicetimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "searchrescueservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_annotation", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -186,8 +186,8 @@ public class SearchRescueServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservicetimeslicetype_clientairspace", joinColumns = {
-        @JoinColumn(name = "searchrescueservicetimeslicetype_id")
+    @JoinTable(name = "searchrescueservice_pg_clientairspace", joinColumns = {
+        @JoinColumn(name = "searchrescueservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacepropertytype_id")
     })
@@ -196,8 +196,8 @@ public class SearchRescueServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservicetimeslicetype_clientroute", joinColumns = {
-        @JoinColumn(name = "searchrescueservicetimeslicetype_id")
+    @JoinTable(name = "searchrescueservice_pg_clientroute", joinColumns = {
+        @JoinColumn(name = "searchrescueservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "routeportionpropertytype_id")
     })

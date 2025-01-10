@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "workareatimeslicetype", schema = "public")
+@Table(name = "workareatimeslicetype", schema = "airport_heliport")
 public class WorkAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -106,7 +106,7 @@ public class WorkAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "workareapropertygroup_activation", joinColumns = {
+    @JoinTable(name = "workarea_pg_activation", joinColumns = {
         @JoinColumn(name = "workareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "workareaactivitypropertytype_id")
@@ -116,7 +116,7 @@ public class WorkAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "workareapropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "workarea_pg_annotation", joinColumns = {
         @JoinColumn(name = "workareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

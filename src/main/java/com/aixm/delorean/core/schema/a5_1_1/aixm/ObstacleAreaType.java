@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "obstacleareatype", schema = "public")
+@Table(name = "obstacleareatype", schema = "obstacles")
 public class ObstacleAreaType
     extends AbstractAIXMFeatureType
 {

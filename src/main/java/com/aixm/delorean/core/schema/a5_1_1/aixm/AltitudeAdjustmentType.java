@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "altitudeadjustmenttype", schema = "public")
+@Table(name = "altitudeadjustmenttype", schema = "surface_assessment")
 public class AltitudeAdjustmentType
     extends AbstractAIXMObjectType
 {
@@ -108,7 +108,7 @@ public class AltitudeAdjustmentType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "altitudeadjustmentpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "altitudeadjustment_pg_annotation", joinColumns = {
         @JoinColumn(name = "altitudeadjustmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

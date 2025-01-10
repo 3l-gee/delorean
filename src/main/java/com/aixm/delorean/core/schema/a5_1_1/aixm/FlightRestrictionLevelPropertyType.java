@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "flightRestrictionLevel"
 })
 @Entity
-@Table(name = "flightrestrictionlevelpropertytype", schema = "public")
+@Table(name = "flightrestrictionlevelpropertytype", schema = "flight_restrictions")
 public class FlightRestrictionLevelPropertyType
     extends AbstractAIXMPropertyType
 {

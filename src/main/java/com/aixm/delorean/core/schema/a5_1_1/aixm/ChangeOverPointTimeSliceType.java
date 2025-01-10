@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "changeoverpointtimeslicetype", schema = "public")
+@Table(name = "changeoverpointtimeslicetype", schema = "en_route")
 public class ChangeOverPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -133,7 +133,7 @@ public class ChangeOverPointTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "changeoverpointpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "changeoverpoint_pg_annotation", joinColumns = {
         @JoinColumn(name = "changeoverpointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

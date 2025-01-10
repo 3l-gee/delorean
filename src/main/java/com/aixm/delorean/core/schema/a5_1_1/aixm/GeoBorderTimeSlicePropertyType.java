@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "geoBorderTimeSlice"
 })
 @Entity
-@Table(name = "geobordertimeslicepropertytype", schema = "public")
+@Table(name = "geobordertimeslicepropertytype", schema = "airspace")
 public class GeoBorderTimeSlicePropertyType {
 
     @XmlElement(name = "GeoBorderTimeSlice", required = true)

@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "dmeTimeSlice"
 })
 @Entity
-@Table(name = "dmetimeslicepropertytype", schema = "public")
+@Table(name = "dmetimeslicepropertytype", schema = "navaids")
 public class DMETimeSlicePropertyType {
 
     @XmlElement(name = "DMETimeSlice", required = true)

@@ -102,7 +102,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "departurelegtimeslicetype", schema = "public")
+@Table(name = "departurelegtimeslicetype", schema = "procedure")
 public class DepartureLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -307,7 +307,7 @@ public class DepartureLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_aircraftcategory", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_aircraftcategory", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
@@ -323,7 +323,7 @@ public class DepartureLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_designsurface", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_designsurface", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstacleassessmentareapropertytype_id")
@@ -333,7 +333,7 @@ public class DepartureLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_annotation", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
@@ -364,7 +364,7 @@ public class DepartureLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "departurelegpropertygroup_condition", joinColumns = {
+    @JoinTable(name = "departureleg_pg_condition", joinColumns = {
         @JoinColumn(name = "departurelegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "departurearrivalconditionpropertytype_id")

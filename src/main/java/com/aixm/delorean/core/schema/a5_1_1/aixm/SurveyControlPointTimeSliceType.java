@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "surveycontrolpointtimeslicetype", schema = "public")
+@Table(name = "surveycontrolpointtimeslicetype", schema = "airport_heliport")
 public class SurveyControlPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -97,7 +97,7 @@ public class SurveyControlPointTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surveycontrolpointpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "surveycontrolpoint_pg_annotation", joinColumns = {
         @JoinColumn(name = "surveycontrolpointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

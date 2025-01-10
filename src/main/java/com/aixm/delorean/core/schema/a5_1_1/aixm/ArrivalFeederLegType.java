@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "arrivalfeederlegtype", schema = "public")
+@Table(name = "arrivalfeederlegtype", schema = "procedure")
 public class ArrivalFeederLegType
     extends AbstractApproachLegType
 {

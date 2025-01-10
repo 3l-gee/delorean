@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "directionfindertype", schema = "public")
+@Table(name = "directionfindertype", schema = "navaids")
 public class DirectionFinderType
     extends AbstractNavaidEquipmentType
 {

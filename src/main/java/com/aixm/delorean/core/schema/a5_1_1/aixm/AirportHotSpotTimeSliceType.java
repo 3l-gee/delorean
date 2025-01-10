@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airporthotspottimeslicetype", schema = "public")
+@Table(name = "airporthotspottimeslicetype", schema = "airport_heliport")
 public class AirportHotSpotTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -105,7 +105,7 @@ public class AirportHotSpotTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airporthotspotpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "airporthotspot_pg_annotation", joinColumns = {
         @JoinColumn(name = "airporthotspotpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

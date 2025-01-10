@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "flightConditionCircumstance"
 })
 @Entity
-@Table(name = "flightconditioncircumstancepropertytype", schema = "public")
+@Table(name = "flightconditioncircumstancepropertytype", schema = "flight_restrictions")
 public class FlightConditionCircumstancePropertyType
     extends AbstractAIXMPropertyType
 {

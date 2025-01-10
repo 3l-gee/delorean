@@ -94,7 +94,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "secondarysurveillanceradartimeslicetype", schema = "public")
+@Table(name = "secondarysurveillanceradartimeslicetype", schema = "surveillance")
 public class SecondarySurveillanceRadarTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -203,7 +203,7 @@ public class SecondarySurveillanceRadarTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarequipmentpropertygroup_contact", joinColumns = {
+    @JoinTable(name = "radarequipment_pg_contact", joinColumns = {
         @JoinColumn(name = "radarequipmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
@@ -219,7 +219,7 @@ public class SecondarySurveillanceRadarTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarequipmentpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "radarequipment_pg_annotation", joinColumns = {
         @JoinColumn(name = "radarequipmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
@@ -273,7 +273,7 @@ public class SecondarySurveillanceRadarTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surveillanceradarpropertygroup_groundstation", joinColumns = {
+    @JoinTable(name = "surveillanceradar_pg_groundstation", joinColumns = {
         @JoinColumn(name = "surveillanceradarpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "surveillancegroundstationpropertytype_id")

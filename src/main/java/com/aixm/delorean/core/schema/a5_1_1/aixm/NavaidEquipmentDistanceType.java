@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaidequipmentdistancetype", schema = "public")
+@Table(name = "navaidequipmentdistancetype", schema = "runway")
 public class NavaidEquipmentDistanceType
     extends AbstractAIXMObjectType
 {
@@ -94,7 +94,7 @@ public class NavaidEquipmentDistanceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidequipmentdistancepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "navaidequipmentdistance_pg_annotation", joinColumns = {
         @JoinColumn(name = "navaidequipmentdistancepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

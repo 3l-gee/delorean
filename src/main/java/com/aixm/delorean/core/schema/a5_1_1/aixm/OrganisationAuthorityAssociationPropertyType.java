@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "organisationAuthorityAssociation"
 })
 @Entity
-@Table(name = "organisationauthorityassociationpropertytype", schema = "public")
+@Table(name = "organisationauthorityassociationpropertytype", schema = "organisation")
 public class OrganisationAuthorityAssociationPropertyType
     extends AbstractAIXMPropertyType
 {

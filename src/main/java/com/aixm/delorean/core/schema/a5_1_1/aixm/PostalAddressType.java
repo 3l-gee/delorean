@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "postaladdresstype", schema = "public")
+@Table(name = "postaladdresstype", schema = "address")
 public class PostalAddressType
     extends AbstractPropertiesWithScheduleType
 {
@@ -84,8 +84,8 @@ public class PostalAddressType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "ppostaladdresstype_timeinterval", joinColumns = {
-        @JoinColumn(name = "ropertieswithschedulepropertygroup_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -94,8 +94,8 @@ public class PostalAddressType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "ropertieswithschedulepropertygroup_annotation", joinColumns = {
-        @JoinColumn(name = "ropertieswithschedulepropertygroup_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -104,8 +104,8 @@ public class PostalAddressType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "ropertieswithschedulepropertygroup_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "ropertieswithschedulepropertygroup_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })

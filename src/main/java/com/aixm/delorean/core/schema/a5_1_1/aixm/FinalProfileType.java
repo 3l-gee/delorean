@@ -65,7 +65,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "finalprofiletype", schema = "public")
+@Table(name = "finalprofiletype", schema = "approach")
 public class FinalProfileType
     extends AbstractAIXMObjectType
 {
@@ -74,7 +74,7 @@ public class FinalProfileType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofilepropertygroup_altitude", joinColumns = {
+    @JoinTable(name = "finalprofile_pg_altitude", joinColumns = {
         @JoinColumn(name = "finalprofilepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "approachaltitudetablepropertytype_id")
@@ -84,7 +84,7 @@ public class FinalProfileType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofilepropertygroup_distance", joinColumns = {
+    @JoinTable(name = "finalprofile_pg_distance", joinColumns = {
         @JoinColumn(name = "finalprofilepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "approachdistancetablepropertytype_id")
@@ -94,7 +94,7 @@ public class FinalProfileType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofilepropertygroup_timing", joinColumns = {
+    @JoinTable(name = "finalprofile_pg_timing", joinColumns = {
         @JoinColumn(name = "finalprofilepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "approachtimingtablepropertytype_id")
@@ -104,7 +104,7 @@ public class FinalProfileType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofilepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "finalprofile_pg_annotation", joinColumns = {
         @JoinColumn(name = "finalprofilepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

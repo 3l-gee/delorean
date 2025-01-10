@@ -7,8 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gmd.MDMetadataType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractMetadataPropertyType;
+import com.aixm.delorean.core.org.gmd.v2007.MDMetadataType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractMetadataPropertyType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

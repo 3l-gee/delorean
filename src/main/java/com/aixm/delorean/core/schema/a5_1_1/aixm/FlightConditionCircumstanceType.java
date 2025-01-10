@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightconditioncircumstancetype", schema = "public")
+@Table(name = "flightconditioncircumstancetype", schema = "flight_restrictions")
 public class FlightConditionCircumstanceType
     extends AbstractAIXMObjectType
 {
@@ -91,7 +91,7 @@ public class FlightConditionCircumstanceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightconditioncircumstancepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "flightconditioncircumstance_pg_annotation", joinColumns = {
         @JoinColumn(name = "flightconditioncircumstancepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

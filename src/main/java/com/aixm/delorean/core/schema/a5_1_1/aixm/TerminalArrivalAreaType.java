@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "terminalarrivalareatype", schema = "public")
+@Table(name = "terminalarrivalareatype", schema = "terminal")
 public class TerminalArrivalAreaType
     extends AbstractAIXMFeatureType
 {

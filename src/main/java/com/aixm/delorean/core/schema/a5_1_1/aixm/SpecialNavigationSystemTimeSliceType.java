@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "specialnavigationsystemtimeslicetype", schema = "public")
+@Table(name = "specialnavigationsystemtimeslicetype", schema = "navaids")
 public class SpecialNavigationSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -106,7 +106,7 @@ public class SpecialNavigationSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialnavigationsystempropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "specialnavigationsystem_pg_annotation", joinColumns = {
         @JoinColumn(name = "specialnavigationsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

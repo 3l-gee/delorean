@@ -30,7 +30,7 @@
                     <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade = CascadeType.ALL)</annox:annotate>
                     <annox:annotate target="field">@jakarta.persistence.JoinColumn(name = "abstract_aixm_feature_id")</annox:annotate>
                     <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElementRef(name = "AbstractAIXMFeature", namespace = "http://www.aixm.aero/schema/5.1.1", type = jakarta.xml.bind.JAXBElement.class, required = false)</annox:annotate>
-                    <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.feature.AbstractFeatureAdapter.class)</annox:annotate>
+                    <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1_1.feature.AbstractFeatureAdapter.class)</annox:annotate>
                     <jaxb:property name="abstractAIXMFeature"/>
                 </jaxb:bindings>
             </jaxb:bindings>

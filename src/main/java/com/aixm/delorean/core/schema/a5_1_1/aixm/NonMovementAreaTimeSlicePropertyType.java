@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "nonMovementAreaTimeSlice"
 })
 @Entity
-@Table(name = "nonmovementareatimeslicepropertytype", schema = "public")
+@Table(name = "nonmovementareatimeslicepropertytype", schema = "airport_heliport")
 public class NonMovementAreaTimeSlicePropertyType {
 
     @XmlElement(name = "NonMovementAreaTimeSlice", required = true)

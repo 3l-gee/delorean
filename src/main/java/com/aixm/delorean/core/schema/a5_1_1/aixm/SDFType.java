@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "sdftype", schema = "public")
+@Table(name = "sdftype", schema = "navaids")
 public class SDFType
     extends AbstractNavaidEquipmentType
 {

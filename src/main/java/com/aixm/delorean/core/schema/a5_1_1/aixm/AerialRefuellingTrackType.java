@@ -65,7 +65,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerialrefuellingtracktype", schema = "public")
+@Table(name = "aerialrefuellingtracktype", schema = "aerial_refuelling")
 public class AerialRefuellingTrackType
     extends AbstractAIXMObjectType
 {
@@ -80,7 +80,7 @@ public class AerialRefuellingTrackType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingtrackpropertygroup_point", joinColumns = {
+    @JoinTable(name = "aerialrefuellingtrack_pg_point", joinColumns = {
         @JoinColumn(name = "aerialrefuellingtrackpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aerialrefuellingpointpropertytype_id")
@@ -90,7 +90,7 @@ public class AerialRefuellingTrackType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingtrackpropertygroup_verticalextent", joinColumns = {
+    @JoinTable(name = "aerialrefuellingtrack_pg_verticalextent", joinColumns = {
         @JoinColumn(name = "aerialrefuellingtrackpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayerpropertytype_id")
@@ -100,7 +100,7 @@ public class AerialRefuellingTrackType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingtrackpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "aerialrefuellingtrack_pg_annotation", joinColumns = {
         @JoinColumn(name = "aerialrefuellingtrackpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

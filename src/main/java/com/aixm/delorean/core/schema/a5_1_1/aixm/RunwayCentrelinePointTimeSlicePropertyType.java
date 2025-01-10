@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "runwayCentrelinePointTimeSlice"
 })
 @Entity
-@Table(name = "runwaycentrelinepointtimeslicepropertytype", schema = "public")
+@Table(name = "runwaycentrelinepointtimeslicepropertytype", schema = "runway")
 public class RunwayCentrelinePointTimeSlicePropertyType {
 
     @XmlElement(name = "RunwayCentrelinePointTimeSlice", required = true)

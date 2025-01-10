@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "note"
 })
 @Entity
-@Table(name = "notepropertytype", schema = "public")
+@Table(name = "notepropertytype", schema = "notes")
 public class NotePropertyType
     extends AbstractAIXMPropertyType
 {

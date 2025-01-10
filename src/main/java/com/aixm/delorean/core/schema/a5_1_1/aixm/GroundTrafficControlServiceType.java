@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "groundtrafficcontrolservicetype", schema = "public")
+@Table(name = "groundtrafficcontrolservicetype", schema = "service")
 public class GroundTrafficControlServiceType
     extends AbstractTrafficSeparationServiceType
 {

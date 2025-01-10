@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "surfacecontaminationlayertype", schema = "public")
+@Table(name = "surfacecontaminationlayertype", schema = "surface_contamination")
 public class SurfaceContaminationLayerType
     extends AbstractAIXMObjectType
 {
@@ -92,7 +92,7 @@ public class SurfaceContaminationLayerType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surfacecontaminationlayerpropertygroup_extent", joinColumns = {
+    @JoinTable(name = "surfacecontaminationlayer_pg_extent", joinColumns = {
         @JoinColumn(name = "surfacecontaminationlayerpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "elevatedsurfacepropertytype_id")
@@ -102,7 +102,7 @@ public class SurfaceContaminationLayerType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surfacecontaminationlayerpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "surfacecontaminationlayer_pg_annotation", joinColumns = {
         @JoinColumn(name = "surfacecontaminationlayerpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

@@ -81,7 +81,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "timesheettype", schema = "public")
+@Table(name = "timesheettype", schema = "schedules")
 public class TimesheetType
     extends AbstractAIXMObjectType
 {
@@ -197,7 +197,7 @@ public class TimesheetType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "timesheetpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "timesheet_pg_annotation", joinColumns = {
         @JoinColumn(name = "timesheetpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

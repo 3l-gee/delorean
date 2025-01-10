@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "sectorDesign"
 })
 @Entity
-@Table(name = "sectordesignpropertytype", schema = "public")
+@Table(name = "sectordesignpropertytype", schema = "departure")
 public class SectorDesignPropertyType
     extends AbstractAIXMPropertyType
 {

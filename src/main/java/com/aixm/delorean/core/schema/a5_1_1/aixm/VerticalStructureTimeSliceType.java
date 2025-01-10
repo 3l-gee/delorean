@@ -86,7 +86,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "verticalstructuretimeslicetype", schema = "public")
+@Table(name = "verticalstructuretimeslicetype", schema = "obstacles")
 public class VerticalStructureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -174,7 +174,7 @@ public class VerticalStructureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepropertygroup_part", joinColumns = {
+    @JoinTable(name = "verticalstructure_pg_part", joinColumns = {
         @JoinColumn(name = "verticalstructurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "verticalstructurepartpropertytype_id")
@@ -184,7 +184,7 @@ public class VerticalStructureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepropertygroup_hostedpassengerservice", joinColumns = {
+    @JoinTable(name = "verticalstructure_pg_hostedpassengerservice", joinColumns = {
         @JoinColumn(name = "verticalstructurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "passengerservicepropertytype_id")
@@ -194,7 +194,7 @@ public class VerticalStructureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepropertygroup_supportedgroundlight", joinColumns = {
+    @JoinTable(name = "verticalstructure_pg_supportedgroundlight", joinColumns = {
         @JoinColumn(name = "verticalstructurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "groundlightsystempropertytype_id")
@@ -204,7 +204,7 @@ public class VerticalStructureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepropertygroup_hostednavaidequipment", joinColumns = {
+    @JoinTable(name = "verticalstructure_pg_hostednavaidequipment", joinColumns = {
         @JoinColumn(name = "verticalstructurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "navaidequipmentpropertytype_id")
@@ -214,7 +214,7 @@ public class VerticalStructureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepropertygroup_hostedspecialnavstation", joinColumns = {
+    @JoinTable(name = "verticalstructure_pg_hostedspecialnavstation", joinColumns = {
         @JoinColumn(name = "verticalstructurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "specialnavigationstationpropertytype_id")
@@ -224,7 +224,7 @@ public class VerticalStructureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepropertygroup_hostedunit", joinColumns = {
+    @JoinTable(name = "verticalstructure_pg_hostedunit", joinColumns = {
         @JoinColumn(name = "verticalstructurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "unitpropertytype_id")
@@ -234,7 +234,7 @@ public class VerticalStructureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepropertygroup_hostedorganisation", joinColumns = {
+    @JoinTable(name = "verticalstructure_pg_hostedorganisation", joinColumns = {
         @JoinColumn(name = "verticalstructurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
@@ -244,7 +244,7 @@ public class VerticalStructureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepropertygroup_supportedservice", joinColumns = {
+    @JoinTable(name = "verticalstructure_pg_supportedservice", joinColumns = {
         @JoinColumn(name = "verticalstructurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "servicepropertytype_id")
@@ -254,7 +254,7 @@ public class VerticalStructureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "verticalstructure_pg_annotation", joinColumns = {
         @JoinColumn(name = "verticalstructurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
@@ -264,7 +264,7 @@ public class VerticalStructureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepropertygroup_lightingavailability", joinColumns = {
+    @JoinTable(name = "verticalstructure_pg_lightingavailability", joinColumns = {
         @JoinColumn(name = "verticalstructurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "verticalstructurelightingstatuspropertytype_id")

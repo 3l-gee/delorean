@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "apronAreaUsage"
 })
 @Entity
-@Table(name = "apronareausagepropertytype", schema = "public")
+@Table(name = "apronareausagepropertytype", schema = "apron")
 public class ApronAreaUsagePropertyType
     extends AbstractAIXMPropertyType
 {

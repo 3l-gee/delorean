@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "manoeuvringareausagetype", schema = "public")
+@Table(name = "manoeuvringareausagetype", schema = "runway")
 public class ManoeuvringAreaUsageType
     extends AbstractUsageConditionType
 {
@@ -97,7 +97,7 @@ public class ManoeuvringAreaUsageType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "usageconditionpropertygroup_contact", joinColumns = {
+    @JoinTable(name = "usagecondition_pg_contact", joinColumns = {
         @JoinColumn(name = "usageconditionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
@@ -113,7 +113,7 @@ public class ManoeuvringAreaUsageType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "usageconditionpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "usagecondition_pg_annotation", joinColumns = {
         @JoinColumn(name = "usageconditionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

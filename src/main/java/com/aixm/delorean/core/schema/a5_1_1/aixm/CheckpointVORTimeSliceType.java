@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "checkpointvortimeslicetype", schema = "public")
+@Table(name = "checkpointvortimeslicetype", schema = "navaids")
 public class CheckpointVORTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -158,7 +158,7 @@ public class CheckpointVORTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationsystemcheckpointpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "navigationsystemcheckpoint_pg_annotation", joinColumns = {
         @JoinColumn(name = "navigationsystemcheckpointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

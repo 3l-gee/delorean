@@ -81,7 +81,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "firefightingservicetimeslicetype", schema = "public")
+@Table(name = "firefightingservicetimeslicetype", schema = "service")
 public class FireFightingServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -130,8 +130,8 @@ public class FireFightingServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "firefightingservicetimeslicetype_call-sign", joinColumns = {
-        @JoinColumn(name = "firefightingservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_call-sign", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "callsigndetailpropertytype_id")
     })
@@ -140,8 +140,8 @@ public class FireFightingServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "firefightingservicetimeslicetype_radiocommunication", joinColumns = {
-        @JoinColumn(name = "firefightingservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_radiocommunication", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "radiocommunicationchannelpropertytype_id")
     })
@@ -150,8 +150,8 @@ public class FireFightingServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "firefightingservicetimeslicetype_groundcommunication", joinColumns = {
-        @JoinColumn(name = "firefightingservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_groundcommunication", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
     })
@@ -160,8 +160,8 @@ public class FireFightingServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "firefightingservicetimeslicetype_availability", joinColumns = {
-        @JoinColumn(name = "firefightingservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_availability", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "serviceoperationalstatuspropertytype_id")
     })
@@ -170,8 +170,8 @@ public class FireFightingServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "firefightingservicetimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "firefightingservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_annotation", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -180,8 +180,8 @@ public class FireFightingServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "firefightingservicetimeslicetype_airportheliport", joinColumns = {
-        @JoinColumn(name = "firefightingservicetimeslicetype_id")
+    @JoinTable(name = "airportgroundservice_pg_airportheliport", joinColumns = {
+        @JoinColumn(name = "airportgroundservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportpropertytype_id")
     })

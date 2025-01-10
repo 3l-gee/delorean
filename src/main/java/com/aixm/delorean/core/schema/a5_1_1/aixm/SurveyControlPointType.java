@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "surveycontrolpointtype", schema = "public")
+@Table(name = "surveycontrolpointtype", schema = "airport_heliport")
 public class SurveyControlPointType
     extends AbstractAIXMFeatureType
 {

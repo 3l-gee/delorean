@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "fueltype", schema = "public")
+@Table(name = "fueltype", schema = "service")
 public class FuelType
     extends AbstractAIXMObjectType
 {
@@ -83,7 +83,7 @@ public class FuelType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "fuelpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "fuel_pg_annotation", joinColumns = {
         @JoinColumn(name = "fuelpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

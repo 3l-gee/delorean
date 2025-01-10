@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "vorTimeSlice"
 })
 @Entity
-@Table(name = "vortimeslicepropertytype", schema = "public")
+@Table(name = "vortimeslicepropertytype", schema = "navaids")
 public class VORTimeSlicePropertyType {
 
     @XmlElement(name = "VORTimeSlice", required = true)

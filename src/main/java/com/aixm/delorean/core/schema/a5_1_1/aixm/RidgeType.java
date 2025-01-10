@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "ridgetype", schema = "public")
+@Table(name = "ridgetype", schema = "surface_contamination")
 public class RidgeType
     extends AbstractAIXMObjectType
 {
@@ -101,7 +101,7 @@ public class RidgeType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "ridgepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "ridge_pg_annotation", joinColumns = {
         @JoinColumn(name = "ridgepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

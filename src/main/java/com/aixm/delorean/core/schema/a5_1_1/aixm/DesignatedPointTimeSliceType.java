@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "designatedpointtimeslicetype", schema = "public")
+@Table(name = "designatedpointtimeslicetype", schema = "points")
 public class DesignatedPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -127,7 +127,7 @@ public class DesignatedPointTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "designatedpointpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "designatedpoint_pg_annotation", joinColumns = {
         @JoinColumn(name = "designatedpointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

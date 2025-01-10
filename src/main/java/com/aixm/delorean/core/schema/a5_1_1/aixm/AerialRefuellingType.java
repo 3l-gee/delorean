@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "aerialrefuellingtype", schema = "public")
+@Table(name = "aerialrefuellingtype", schema = "aerial_refuelling")
 public class AerialRefuellingType
     extends AbstractAIXMFeatureType
 {

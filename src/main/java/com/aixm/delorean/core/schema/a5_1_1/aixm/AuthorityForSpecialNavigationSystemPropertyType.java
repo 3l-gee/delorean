@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "authorityForSpecialNavigationSystem"
 })
 @Entity
-@Table(name = "authorityforspecialnavigationsystempropertytype", schema = "public")
+@Table(name = "authorityforspecialnavigationsystempropertytype", schema = "navaids")
 public class AuthorityForSpecialNavigationSystemPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -55,7 +55,7 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 @Embeddable
 public class SurfaceType
-    extends com.aixm.delorean.core.schema.a5_1_1.org.gml.SurfaceType
+    extends com.aixm.delorean.core.org.gml.v_3_2.SurfaceType
 {
 
     @XmlElement(nillable = true)
@@ -70,7 +70,7 @@ public class SurfaceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surfacepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "surface_pg_annotation", joinColumns = {
         @JoinColumn(name = "surfacepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

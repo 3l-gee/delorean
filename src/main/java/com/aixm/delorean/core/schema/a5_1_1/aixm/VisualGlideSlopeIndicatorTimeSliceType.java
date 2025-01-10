@@ -79,7 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "visualglideslopeindicatortimeslicetype", schema = "public")
+@Table(name = "visualglideslopeindicatortimeslicetype", schema = "runway")
 public class VisualGlideSlopeIndicatorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -109,8 +109,8 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "visualglideslopeindicatortimeslicetype_element", joinColumns = {
-        @JoinColumn(name = "visualglideslopeindicatortimeslicetype_id")
+    @JoinTable(name = "groundlightsystem_pg_element", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightelementpropertytype_id")
     })
@@ -119,8 +119,8 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "visualglideslopeindicatortimeslicetype_availability", joinColumns = {
-        @JoinColumn(name = "visualglideslopeindicatortimeslicetype_id")
+    @JoinTable(name = "groundlightsystem_pg_availability", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "groundlightingavailabilitypropertytype_id")
     })
@@ -129,8 +129,8 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "visualglideslopeindicatortimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "visualglideslopeindicatortimeslicetype_id")
+    @JoinTable(name = "groundlightsystem_pg_annotation", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

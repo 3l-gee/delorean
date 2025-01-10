@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "lightElement"
 })
 @Entity
-@Table(name = "lightelementpropertytype", schema = "public")
+@Table(name = "lightelementpropertytype", schema = "light_element")
 public class LightElementPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaycentrelinepointtimeslicetype", schema = "public")
+@Table(name = "runwaycentrelinepointtimeslicetype", schema = "runway")
 public class RunwayCentrelinePointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -107,7 +107,7 @@ public class RunwayCentrelinePointTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaycentrelinepointpropertygroup_associateddeclareddistance", joinColumns = {
+    @JoinTable(name = "runwaycentrelinepoint_pg_associateddeclareddistance", joinColumns = {
         @JoinColumn(name = "runwaycentrelinepointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runwaydeclareddistancepropertytype_id")
@@ -117,7 +117,7 @@ public class RunwayCentrelinePointTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaycentrelinepointpropertygroup_navaidequipment", joinColumns = {
+    @JoinTable(name = "runwaycentrelinepoint_pg_navaidequipment", joinColumns = {
         @JoinColumn(name = "runwaycentrelinepointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "navaidequipmentdistancepropertytype_id")
@@ -127,7 +127,7 @@ public class RunwayCentrelinePointTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaycentrelinepointpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "runwaycentrelinepoint_pg_annotation", joinColumns = {
         @JoinColumn(name = "runwaycentrelinepointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

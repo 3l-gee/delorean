@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.adapter.gis.ElevatedCurveTypeAdapter;
+import com.aixm.delorean.core.adapter.a5_1_1.gis.ElevatedCurveTypeAdapter;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedCurveType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

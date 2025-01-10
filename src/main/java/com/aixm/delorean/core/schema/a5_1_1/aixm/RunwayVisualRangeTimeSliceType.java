@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwayvisualrangetimeslicetype", schema = "public")
+@Table(name = "runwayvisualrangetimeslicetype", schema = "runway")
 public class RunwayVisualRangeTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -85,7 +85,7 @@ public class RunwayVisualRangeTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayvisualrangepropertygroup_associatedrunwaydirection", joinColumns = {
+    @JoinTable(name = "runwayvisualrange_pg_associatedrunwaydirection", joinColumns = {
         @JoinColumn(name = "runwayvisualrangepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runwaydirectionpropertytype_id")
@@ -101,7 +101,7 @@ public class RunwayVisualRangeTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayvisualrangepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "runwayvisualrange_pg_annotation", joinColumns = {
         @JoinColumn(name = "runwayvisualrangepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "directflightclasstype", schema = "public")
+@Table(name = "directflightclasstype", schema = "flight_restrictions")
 public class DirectFlightClassType
     extends AbstractDirectFlightType
 {
@@ -78,7 +78,7 @@ public class DirectFlightClassType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directflightpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "directflight_pg_annotation", joinColumns = {
         @JoinColumn(name = "directflightpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

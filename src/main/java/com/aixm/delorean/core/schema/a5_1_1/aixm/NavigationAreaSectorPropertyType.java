@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "navigationAreaSector"
 })
 @Entity
-@Table(name = "navigationareasectorpropertytype", schema = "public")
+@Table(name = "navigationareasectorpropertytype", schema = "departure")
 public class NavigationAreaSectorPropertyType
     extends AbstractAIXMPropertyType
 {

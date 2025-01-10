@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "specialDateTimeSlice"
 })
 @Entity
-@Table(name = "specialdatetimeslicepropertytype", schema = "public")
+@Table(name = "specialdatetimeslicepropertytype", schema = "schedules")
 public class SpecialDateTimeSlicePropertyType {
 
     @XmlElement(name = "SpecialDateTimeSlice", required = true)

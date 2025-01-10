@@ -23,6 +23,7 @@
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:attribute[@ref='gml:id']">
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "xml_id")</annox:annotate>
+			<jaxb:property name="xmlId"/>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:metaDataProperty']">
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -48,6 +49,15 @@
 		<jaxb:bindings node="xs:attributeGroup [@name='AggregationAttributeGroup']//xs:attribute[@name='aggregationType']">
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "aggregation_type")</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)</annox:annotate>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:attributeGroup[@name='AssociationAttributeGroup']//xs:attribute[@ref='gml:remoteSchema']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:attributeGroup[@name='AssociationAttributeGroup']//xs:attribute[@name='nilReason']">
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "nilReason")</annox:annotate>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:attributeGroup[@name='OwnershipAttributeGroup']//xs:attribute[@name='owns']">
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
 		</jaxb:bindings>
 	</jaxb:bindings>
 	
@@ -99,12 +109,12 @@
 			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "AbstractTimeSliceType", propOrder = {"validTime","dataSource"})</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
-		<!-- <jaxb:bindings node="xs:complexType[@name='AbstractTimeSliceType']//xs:element[@ref='gml:aixmValidTime']">
+		<jaxb:bindings node="xs:complexType[@name='AbstractTimeSliceType']//xs:element[@ref='gml:aixmValidTime']">
 			<annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-			<annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "validTime",required = true, type = com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePrimitivePropertyType.class)</annox:annotate>
+			<annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "validTime",required = true, type = com.aixm.delorean.core.org.gml.v_3_2.TimePrimitivePropertyType.class)</annox:annotate>
 			<annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.time.TimePrimitivePropertyTypeAdapter.class)</annox:annotate>
 			<jaxb:property name="validTime"/>
-        </jaxb:bindings> -->
+        </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractTimeSliceType']//xs:element[@ref='gml:dataSource']">
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
@@ -128,13 +138,13 @@
 		</jaxb:bindings>
 	</jaxb:bindings>
 
-	<!-- <jaxb:bindings schemaLocation="../aixm/ISO_19136_Schemas/temporal.xsd" node="/xs:schema">
+	<jaxb:bindings schemaLocation="../aixm/ISO_19136_Schemas/temporal.xsd" node="/xs:schema">
 		<jaxb:bindings>
 			<jaxb:bindings node="xs:element[@name='aixmValidTime']">
 			    <jaxb:javaType name="com.aixm.delorean.core.adapter.type.time.AixmTimeSliceType"/>
 			</jaxb:bindings>
 		</jaxb:bindings>
-	</jaxb:bindings> -->
+	</jaxb:bindings>
 
 
 

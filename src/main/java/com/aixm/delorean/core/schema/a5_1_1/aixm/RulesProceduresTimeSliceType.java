@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "rulesprocedurestimeslicetype", schema = "public")
+@Table(name = "rulesprocedurestimeslicetype", schema = "rules_procedures")
 public class RulesProceduresTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -99,7 +99,7 @@ public class RulesProceduresTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedurespropertygroup_affectedlocation", joinColumns = {
+    @JoinTable(name = "rulesprocedures_pg_affectedlocation", joinColumns = {
         @JoinColumn(name = "rulesprocedurespropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportpropertytype_id")
@@ -109,7 +109,7 @@ public class RulesProceduresTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedurespropertygroup_affectedarea", joinColumns = {
+    @JoinTable(name = "rulesprocedures_pg_affectedarea", joinColumns = {
         @JoinColumn(name = "rulesprocedurespropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacepropertytype_id")
@@ -119,7 +119,7 @@ public class RulesProceduresTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedurespropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "rulesprocedures_pg_annotation", joinColumns = {
         @JoinColumn(name = "rulesprocedurespropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

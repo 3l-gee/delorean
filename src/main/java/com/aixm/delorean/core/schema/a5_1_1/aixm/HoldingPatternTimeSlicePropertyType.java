@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "holdingPatternTimeSlice"
 })
 @Entity
-@Table(name = "holdingpatterntimeslicepropertytype", schema = "public")
+@Table(name = "holdingpatterntimeslicepropertytype", schema = "holding")
 public class HoldingPatternTimeSlicePropertyType {
 
     @XmlElement(name = "HoldingPatternTimeSlice", required = true)

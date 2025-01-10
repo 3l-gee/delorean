@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "landingtakeoffareacollectiontype", schema = "public")
+@Table(name = "landingtakeoffareacollectiontype", schema = "procedure")
 public class LandingTakeoffAreaCollectionType
     extends AbstractAIXMObjectType
 {
@@ -73,7 +73,7 @@ public class LandingTakeoffAreaCollectionType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "landingtakeoffareacollectionpropertygroup_runway", joinColumns = {
+    @JoinTable(name = "landingtakeoffareacollection_pg_runway", joinColumns = {
         @JoinColumn(name = "landingtakeoffareacollectionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runwaydirectionpropertytype_id")
@@ -83,7 +83,7 @@ public class LandingTakeoffAreaCollectionType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "landingtakeoffareacollectionpropertygroup_tlof", joinColumns = {
+    @JoinTable(name = "landingtakeoffareacollection_pg_tlof", joinColumns = {
         @JoinColumn(name = "landingtakeoffareacollectionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "touchdownliftoffpropertytype_id")
@@ -93,7 +93,7 @@ public class LandingTakeoffAreaCollectionType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "landingtakeoffareacollectionpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "landingtakeoffareacollection_pg_annotation", joinColumns = {
         @JoinColumn(name = "landingtakeoffareacollectionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

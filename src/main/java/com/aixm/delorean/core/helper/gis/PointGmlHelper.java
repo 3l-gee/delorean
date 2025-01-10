@@ -7,9 +7,8 @@ import org.locationtech.jts.geom.Point;
 
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionListType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.PointType;
+import com.aixm.delorean.core.org.gml.v_3_2.DirectPositionType;
+import com.aixm.delorean.core.org.gml.v_3_2.PointType;
 
 
 public class PointGmlHelper {

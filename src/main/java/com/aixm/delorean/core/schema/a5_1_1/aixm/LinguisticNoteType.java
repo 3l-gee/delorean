@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "linguisticnotetype", schema = "public")
+@Table(name = "linguisticnotetype", schema = "notes")
 public class LinguisticNoteType
     extends AbstractAIXMObjectType
 {

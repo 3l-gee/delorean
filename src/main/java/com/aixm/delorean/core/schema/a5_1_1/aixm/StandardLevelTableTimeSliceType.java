@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standardleveltabletimeslicetype", schema = "public")
+@Table(name = "standardleveltabletimeslicetype", schema = "standard_levels")
 public class StandardLevelTableTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -91,7 +91,7 @@ public class StandardLevelTableTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardleveltablepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "standardleveltable_pg_annotation", joinColumns = {
         @JoinColumn(name = "standardleveltablepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

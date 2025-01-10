@@ -84,7 +84,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "enroutesegmentpointtype", schema = "public")
+@Table(name = "enroutesegmentpointtype", schema = "point_reference")
 public class EnRouteSegmentPointType
     extends AbstractSegmentPointType
 {
@@ -121,7 +121,7 @@ public class EnRouteSegmentPointType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "enroutesegmentpointtype_facilitymakeup", joinColumns = {
+    @JoinTable(name = "segmentpoint_pg_facilitymakeup", joinColumns = {
         @JoinColumn(name = "segmentpointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "pointreferencepropertytype_id")
@@ -173,7 +173,7 @@ public class EnRouteSegmentPointType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentpointpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "segmentpoint_pg_annotation", joinColumns = {
         @JoinColumn(name = "segmentpointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

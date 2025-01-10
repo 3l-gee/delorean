@@ -7,8 +7,8 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import com.aixm.delorean.core.org.gml.v_3_2.AggregationType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AggregationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

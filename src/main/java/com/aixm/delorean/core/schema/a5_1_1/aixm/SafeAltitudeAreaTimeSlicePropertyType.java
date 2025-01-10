@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "safeAltitudeAreaTimeSlice"
 })
 @Entity
-@Table(name = "safealtitudeareatimeslicepropertytype", schema = "public")
+@Table(name = "safealtitudeareatimeslicepropertytype", schema = "safe_altitude")
 public class SafeAltitudeAreaTimeSlicePropertyType {
 
     @XmlElement(name = "SafeAltitudeAreaTimeSlice", required = true)

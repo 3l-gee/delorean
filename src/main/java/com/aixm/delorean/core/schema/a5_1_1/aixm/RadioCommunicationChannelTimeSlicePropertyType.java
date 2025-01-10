@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "radioCommunicationChannelTimeSlice"
 })
 @Entity
-@Table(name = "radiocommunicationchanneltimeslicepropertytype", schema = "public")
+@Table(name = "radiocommunicationchanneltimeslicepropertytype", schema = "service")
 public class RadioCommunicationChannelTimeSlicePropertyType {
 
     @XmlElement(name = "RadioCommunicationChannelTimeSlice", required = true)

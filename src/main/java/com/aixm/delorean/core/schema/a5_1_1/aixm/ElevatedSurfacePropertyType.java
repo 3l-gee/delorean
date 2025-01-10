@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.adapter.gis.ElevatedSurfaceTypeAdapter;
+import com.aixm.delorean.core.adapter.a5_1_1.gis.ElevatedSurfaceTypeAdapter;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedSurfaceType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

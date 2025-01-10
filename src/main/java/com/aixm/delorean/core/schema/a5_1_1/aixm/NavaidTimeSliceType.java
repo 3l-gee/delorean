@@ -80,7 +80,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaidtimeslicetype", schema = "public")
+@Table(name = "navaidtimeslicetype", schema = "navaids")
 public class NavaidTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -145,7 +145,7 @@ public class NavaidTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidpropertygroup_touchdownliftoff", joinColumns = {
+    @JoinTable(name = "navaid_pg_touchdownliftoff", joinColumns = {
         @JoinColumn(name = "navaidpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "touchdownliftoffpropertytype_id")
@@ -155,7 +155,7 @@ public class NavaidTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidpropertygroup_navaidequipment", joinColumns = {
+    @JoinTable(name = "navaid_pg_navaidequipment", joinColumns = {
         @JoinColumn(name = "navaidpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "navaidcomponentpropertytype_id")
@@ -171,7 +171,7 @@ public class NavaidTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidpropertygroup_runwaydirection", joinColumns = {
+    @JoinTable(name = "navaid_pg_runwaydirection", joinColumns = {
         @JoinColumn(name = "navaidpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runwaydirectionpropertytype_id")
@@ -181,7 +181,7 @@ public class NavaidTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidpropertygroup_servedairport", joinColumns = {
+    @JoinTable(name = "navaid_pg_servedairport", joinColumns = {
         @JoinColumn(name = "navaidpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportpropertytype_id")
@@ -191,7 +191,7 @@ public class NavaidTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidpropertygroup_availability", joinColumns = {
+    @JoinTable(name = "navaid_pg_availability", joinColumns = {
         @JoinColumn(name = "navaidpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "navaidoperationalstatuspropertytype_id")
@@ -201,7 +201,7 @@ public class NavaidTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "navaid_pg_annotation", joinColumns = {
         @JoinColumn(name = "navaidpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

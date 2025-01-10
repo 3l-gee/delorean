@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePrimitivePropertyType;
+import com.aixm.delorean.core.org.gml.v_3_2.TimePrimitivePropertyType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

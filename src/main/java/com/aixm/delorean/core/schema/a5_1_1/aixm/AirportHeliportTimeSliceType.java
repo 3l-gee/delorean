@@ -100,7 +100,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airportheliporttimeslicetype", schema = "public")
+@Table(name = "airportheliporttimeslicetype", schema = "airport_heliport")
 public class AirportHeliportTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -297,7 +297,7 @@ public class AirportHeliportTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportpropertygroup_contaminant", joinColumns = {
+    @JoinTable(name = "airportheliport_pg_contaminant", joinColumns = {
         @JoinColumn(name = "airportheliportpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportcontaminationpropertytype_id")
@@ -307,7 +307,7 @@ public class AirportHeliportTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportpropertygroup_servedcity", joinColumns = {
+    @JoinTable(name = "airportheliport_pg_servedcity", joinColumns = {
         @JoinColumn(name = "airportheliportpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "citypropertytype_id")
@@ -335,7 +335,7 @@ public class AirportHeliportTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportpropertygroup_altimetersource", joinColumns = {
+    @JoinTable(name = "airportheliport_pg_altimetersource", joinColumns = {
         @JoinColumn(name = "airportheliportpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "altimetersourcepropertytype_id")
@@ -345,7 +345,7 @@ public class AirportHeliportTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportpropertygroup_contact", joinColumns = {
+    @JoinTable(name = "airportheliport_pg_contact", joinColumns = {
         @JoinColumn(name = "airportheliportpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
@@ -355,7 +355,7 @@ public class AirportHeliportTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportpropertygroup_availability", joinColumns = {
+    @JoinTable(name = "airportheliport_pg_availability", joinColumns = {
         @JoinColumn(name = "airportheliportpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportavailabilitypropertytype_id")
@@ -365,7 +365,7 @@ public class AirportHeliportTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "airportheliport_pg_annotation", joinColumns = {
         @JoinColumn(name = "airportheliportpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

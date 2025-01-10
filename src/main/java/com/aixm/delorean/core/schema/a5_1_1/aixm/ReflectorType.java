@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "reflectortype", schema = "public")
+@Table(name = "reflectortype", schema = "surveillance")
 public class ReflectorType
     extends AbstractAIXMObjectType
 {
@@ -90,7 +90,7 @@ public class ReflectorType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "reflectorpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "reflector_pg_annotation", joinColumns = {
         @JoinColumn(name = "reflectorpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

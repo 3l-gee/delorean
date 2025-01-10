@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "verticalStructureTimeSlice"
 })
 @Entity
-@Table(name = "verticalstructuretimeslicepropertytype", schema = "public")
+@Table(name = "verticalstructuretimeslicepropertytype", schema = "obstacles")
 public class VerticalStructureTimeSlicePropertyType {
 
     @XmlElement(name = "VerticalStructureTimeSlice", required = true)

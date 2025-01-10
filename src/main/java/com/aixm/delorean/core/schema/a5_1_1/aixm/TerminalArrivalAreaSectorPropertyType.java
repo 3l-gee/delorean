@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "terminalArrivalAreaSector"
 })
 @Entity
-@Table(name = "terminalarrivalareasectorpropertytype", schema = "public")
+@Table(name = "terminalarrivalareasectorpropertytype", schema = "terminal")
 public class TerminalArrivalAreaSectorPropertyType
     extends AbstractAIXMPropertyType
 {

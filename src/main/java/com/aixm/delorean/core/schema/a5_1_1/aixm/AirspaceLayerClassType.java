@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspacelayerclasstype", schema = "public")
+@Table(name = "airspacelayerclasstype", schema = "airspace")
 public class AirspaceLayerClassType
     extends AbstractPropertiesWithScheduleType
 {
@@ -81,8 +81,8 @@ public class AirspaceLayerClassType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacelayerclasstype_timeinterval", joinColumns = {
-        @JoinColumn(name = "airspacelayerclasstype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -91,8 +91,8 @@ public class AirspaceLayerClassType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacelayerclasstype_annotation", joinColumns = {
-        @JoinColumn(name = "airspacelayerclasstype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -101,8 +101,8 @@ public class AirspaceLayerClassType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacelayerclasstype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "airspacelayerclasstype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })
@@ -118,8 +118,8 @@ public class AirspaceLayerClassType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacelayerclasstype_associatedlevels", joinColumns = {
-        @JoinColumn(name = "airspacelayerclasstype_id")
+    @JoinTable(name = "airspacelayerclass_pg_associatedlevels", joinColumns = {
+        @JoinColumn(name = "airspacelayerclasspropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayerpropertytype_id")
     })

@@ -9,9 +9,9 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
-import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
-import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.ActuateType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.ShowType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.TypeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "navigationareapropertytype", schema = "public")
+@Table(name = "navigationareapropertytype", schema = "departure")
 public class NavigationAreaPropertyType {
 
     @Id

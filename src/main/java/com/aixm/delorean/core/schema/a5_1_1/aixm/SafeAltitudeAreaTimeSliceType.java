@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "safealtitudeareatimeslicetype", schema = "public")
+@Table(name = "safealtitudeareatimeslicetype", schema = "safe_altitude")
 public class SafeAltitudeAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -127,7 +127,7 @@ public class SafeAltitudeAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudeareapropertygroup_sector", joinColumns = {
+    @JoinTable(name = "safealtitudearea_pg_sector", joinColumns = {
         @JoinColumn(name = "safealtitudeareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "safealtitudeareasectorpropertytype_id")
@@ -137,7 +137,7 @@ public class SafeAltitudeAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudeareapropertygroup_location", joinColumns = {
+    @JoinTable(name = "safealtitudearea_pg_location", joinColumns = {
         @JoinColumn(name = "safealtitudeareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportpropertytype_id")
@@ -147,7 +147,7 @@ public class SafeAltitudeAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudeareapropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "safealtitudearea_pg_annotation", joinColumns = {
         @JoinColumn(name = "safealtitudeareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

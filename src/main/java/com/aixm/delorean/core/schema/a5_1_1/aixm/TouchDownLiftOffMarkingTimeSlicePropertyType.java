@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "touchDownLiftOffMarkingTimeSlice"
 })
 @Entity
-@Table(name = "touchdownliftoffmarkingtimeslicepropertytype", schema = "public")
+@Table(name = "touchdownliftoffmarkingtimeslicepropertytype", schema = "markings")
 public class TouchDownLiftOffMarkingTimeSlicePropertyType {
 
     @XmlElement(name = "TouchDownLiftOffMarkingTimeSlice", required = true)

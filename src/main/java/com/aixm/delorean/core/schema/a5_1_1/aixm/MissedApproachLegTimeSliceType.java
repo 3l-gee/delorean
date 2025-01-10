@@ -105,7 +105,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "missedapproachlegtimeslicetype", schema = "public")
+@Table(name = "missedapproachlegtimeslicetype", schema = "procedure")
 public class MissedApproachLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -310,7 +310,7 @@ public class MissedApproachLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_aircraftcategory", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_aircraftcategory", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
@@ -326,7 +326,7 @@ public class MissedApproachLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_designsurface", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_designsurface", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstacleassessmentareapropertytype_id")
@@ -336,7 +336,7 @@ public class MissedApproachLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_annotation", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
@@ -381,7 +381,7 @@ public class MissedApproachLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "missedapproachlegpropertygroup_condition", joinColumns = {
+    @JoinTable(name = "missedapproachleg_pg_condition", joinColumns = {
         @JoinColumn(name = "missedapproachlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "approachconditionpropertytype_id")

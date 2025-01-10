@@ -86,7 +86,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerialrefuellingtimeslicetype", schema = "public")
+@Table(name = "aerialrefuellingtimeslicetype", schema = "aerial_refuelling")
 public class AerialRefuellingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -193,7 +193,7 @@ public class AerialRefuellingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingpropertygroup_availability", joinColumns = {
+    @JoinTable(name = "aerialrefuelling_pg_availability", joinColumns = {
         @JoinColumn(name = "aerialrefuellingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "routeavailabilitypropertytype_id")
@@ -203,7 +203,7 @@ public class AerialRefuellingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingpropertygroup_protectingairspace", joinColumns = {
+    @JoinTable(name = "aerialrefuelling_pg_protectingairspace", joinColumns = {
         @JoinColumn(name = "aerialrefuellingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacepropertytype_id")
@@ -213,7 +213,7 @@ public class AerialRefuellingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingpropertygroup_track", joinColumns = {
+    @JoinTable(name = "aerialrefuelling_pg_track", joinColumns = {
         @JoinColumn(name = "aerialrefuellingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aerialrefuellingtrackpropertytype_id")
@@ -223,7 +223,7 @@ public class AerialRefuellingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingpropertygroup_anchor", joinColumns = {
+    @JoinTable(name = "aerialrefuelling_pg_anchor", joinColumns = {
         @JoinColumn(name = "aerialrefuellingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aerialrefuellinganchorpropertytype_id")
@@ -239,7 +239,7 @@ public class AerialRefuellingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingpropertygroup_managingorganisation", joinColumns = {
+    @JoinTable(name = "aerialrefuelling_pg_managingorganisation", joinColumns = {
         @JoinColumn(name = "aerialrefuellingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "authorityforaerialrefuellingpropertytype_id")
@@ -249,7 +249,7 @@ public class AerialRefuellingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "aerialrefuelling_pg_annotation", joinColumns = {
         @JoinColumn(name = "aerialrefuellingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

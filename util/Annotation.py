@@ -3,6 +3,13 @@ from enum import Enum
 
 TABLE = []
 
+class Strategy(Enum):
+    abstract = "abstract"
+    feature = "feature"
+    data_type = "data_type"
+    other = "other"
+    debug = "debug"
+
 class Xpath(Enum):
     RELATIVE= "/xs:"
     ABSOLUTE= "xs:"
@@ -59,45 +66,14 @@ class Util:
 
     def short_name(name):  
         replacements = {
-            "TimeSlicePropertyType": "_Tspt",
+            "TimeSlicePropertyType": "_Tsp",
             "PropertyGroup": "_Pg",
-            "PropertyType": "_Pp",
-            "TimeSliceType": "_Tst",
-            "TimeSlice": "_Ts",
-            "Elevated": "Elv",
-            "Extension": "Ext",
-            "Abstract": "Abs",
-            "Element": "Elm",
-            "Association": "Asn",
-            "Equipment": "Eqp",
-            "Organisation" : "Org",
-            "Surveillance" : "Srv",
-            "Standard" : "Std",
-            "Communication" : "Com",
-            "Operational" : "Ops",
-            "Condition" : "Cnd",
-            "Runway" : "Rwy",
-            "Direction" : "Dir",
-            "Service" : "Svc",
-            "Surface" : "Srf",
-            "lighting" : "Lgt",
-            "Control" : "Ctl",
-            "Taxiway" : "Txw",
-            "Taxi" : "Tx",
-            "Holding" : "Hld",
-            "Position" : "Pos",
-            "Lighting" : "Lgt",
-            "System" : "Sys",
-            "Airports": "Apt",
-            "Heliports": "Hpt",
-            "Responsibility": "Rsp",
-            "Oragnisation": "Org",
-            "For": "",
-            "Type": "", 
+            "PropertyType": "_P",
+            "TimeSliceType": "_Ts",
         }
         
-        # for key, value in replacements.items():
-        #     name = name.replace(key, value)
+        for key, value in replacements.items():
+            name = name.replace(key, value)
 
         return name    
 
@@ -263,7 +239,6 @@ class Tag:
     documentation = _xs_namespace + "documentation"
     appinfo = _xs_namespace + "appinfo"
    
-
     #restriction 
     enumeration = _xs_namespace + "enumeration"
     fractionDigits = _xs_namespace + "fractionDigits"
@@ -351,7 +326,7 @@ class Relation:
         return f'@jakarta.persistence.OneToOne(cascade={cascade}, fetch={fetch})'
     
     @staticmethod
-    def one_to_one_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=True):   
+    def one_to_one_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=False):   
         return f'@jakarta.persistence.OneToOne(cascade={cascade}, fetch={fetch}, orphanRemoval={Util.bool_str(orphanRemoval)})'
 
     @staticmethod
@@ -359,7 +334,7 @@ class Relation:
         return f'@jakarta.persistence.OneToMany(cascade={cascade}, fetch={fetch})'
     
     @staticmethod
-    def one_to_many_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=True):   
+    def one_to_many_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=False):   
         return f'@jakarta.persistence.OneToMany(cascade={cascade}, fetch={fetch}, orphanRemoval={Util.bool_str(orphanRemoval)})'
     
     @staticmethod
@@ -367,7 +342,7 @@ class Relation:
         return f'@jakarta.persistence.ManyToOne(cascade={cascade}, fetch={fetch})'
 
     @staticmethod
-    def many_to_one_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=True):  
+    def many_to_one_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=False):  
         return f'@jakarta.persistence.ManyToOne(cascade={cascade}, fetch={fetch}, orphanRemoval={Util.bool_str(orphanRemoval)})'
     
     @staticmethod
@@ -375,7 +350,7 @@ class Relation:
         return f'@jakarta.persistence.ManyToMany(cascade={cascade}, fetch={fetch})'
     
     @staticmethod
-    def many_to_many_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=True):  
+    def many_to_many_with_orphan_removal(cascade="CascadeType.ALL", fetch="FetchType.EAGER", orphanRemoval=False):  
         return f'@jakarta.persistence.ManyToMany(cascade={cascade}, fetch={fetch}, orphanRemoval={Util.bool_str(orphanRemoval)})'
     
     @staticmethod

@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "apronelementtimeslicetype", schema = "public")
+@Table(name = "apronelementtimeslicetype", schema = "apron")
 public class ApronElementTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -156,7 +156,7 @@ public class ApronElementTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronelementpropertygroup_supplyservice", joinColumns = {
+    @JoinTable(name = "apronelement_pg_supplyservice", joinColumns = {
         @JoinColumn(name = "apronelementpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportsuppliesservicepropertytype_id")
@@ -166,7 +166,7 @@ public class ApronElementTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronelementpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "apronelement_pg_annotation", joinColumns = {
         @JoinColumn(name = "apronelementpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
@@ -176,7 +176,7 @@ public class ApronElementTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronelementpropertygroup_availability", joinColumns = {
+    @JoinTable(name = "apronelement_pg_availability", joinColumns = {
         @JoinColumn(name = "apronelementpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "apronareaavailabilitypropertytype_id")

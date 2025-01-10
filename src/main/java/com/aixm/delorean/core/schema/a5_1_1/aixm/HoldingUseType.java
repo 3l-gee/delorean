@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "holdingusetype", schema = "public")
+@Table(name = "holdingusetype", schema = "procedure")
 public class HoldingUseType
     extends AbstractAIXMObjectType
 {
@@ -109,7 +109,7 @@ public class HoldingUseType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingusepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "holdinguse_pg_annotation", joinColumns = {
         @JoinColumn(name = "holdingusepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

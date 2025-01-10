@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "unitdependencytype", schema = "public")
+@Table(name = "unitdependencytype", schema = "organisation")
 public class UnitDependencyType
     extends AbstractAIXMObjectType
 {
@@ -84,7 +84,7 @@ public class UnitDependencyType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unitdependencypropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "unitdependency_pg_annotation", joinColumns = {
         @JoinColumn(name = "unitdependencypropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

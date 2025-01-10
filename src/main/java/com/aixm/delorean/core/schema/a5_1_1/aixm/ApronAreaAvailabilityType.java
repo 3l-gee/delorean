@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "apronareaavailabilitytype", schema = "public")
+@Table(name = "apronareaavailabilitytype", schema = "apron")
 public class ApronAreaAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
@@ -82,8 +82,8 @@ public class ApronAreaAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronareaavailabilitytype_timeinterval", joinColumns = {
-        @JoinColumn(name = "apronareaavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -92,8 +92,8 @@ public class ApronAreaAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronareaavailabilitytype_annotation", joinColumns = {
-        @JoinColumn(name = "apronareaavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -102,8 +102,8 @@ public class ApronAreaAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronareaavailabilitytype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "apronareaavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })
@@ -126,8 +126,8 @@ public class ApronAreaAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronareaavailabilitytype_usage", joinColumns = {
-        @JoinColumn(name = "apronareaavailabilitytype_id")
+    @JoinTable(name = "apronareaavailability_pg_usage", joinColumns = {
+        @JoinColumn(name = "apronareaavailabilitypropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "apronareausagepropertytype_id")
     })

@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "proceduretransitionlegtype", schema = "public")
+@Table(name = "proceduretransitionlegtype", schema = "procedure")
 public class ProcedureTransitionLegType
     extends AbstractAIXMObjectType
 {
@@ -84,7 +84,7 @@ public class ProcedureTransitionLegType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "proceduretransitionlegpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "proceduretransitionleg_pg_annotation", joinColumns = {
         @JoinColumn(name = "proceduretransitionlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

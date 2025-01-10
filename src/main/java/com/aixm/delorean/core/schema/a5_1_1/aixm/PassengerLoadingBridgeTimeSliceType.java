@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "passengerloadingbridgetimeslicetype", schema = "public")
+@Table(name = "passengerloadingbridgetimeslicetype", schema = "apron")
 public class PassengerLoadingBridgeTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -91,7 +91,7 @@ public class PassengerLoadingBridgeTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "passengerloadingbridgepropertygroup_associatedstand", joinColumns = {
+    @JoinTable(name = "passengerloadingbridge_pg_associatedstand", joinColumns = {
         @JoinColumn(name = "passengerloadingbridgepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftstandpropertytype_id")
@@ -101,7 +101,7 @@ public class PassengerLoadingBridgeTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "passengerloadingbridgepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "passengerloadingbridge_pg_annotation", joinColumns = {
         @JoinColumn(name = "passengerloadingbridgepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

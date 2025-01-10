@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "obstacleAreaTimeSlice"
 })
 @Entity
-@Table(name = "obstacleareatimeslicepropertytype", schema = "public")
+@Table(name = "obstacleareatimeslicepropertytype", schema = "obstacles")
 public class ObstacleAreaTimeSlicePropertyType {
 
     @XmlElement(name = "ObstacleAreaTimeSlice", required = true)

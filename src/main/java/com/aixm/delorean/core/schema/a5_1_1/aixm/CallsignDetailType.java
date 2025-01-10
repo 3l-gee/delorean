@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "callsigndetailtype", schema = "public")
+@Table(name = "callsigndetailtype", schema = "service")
 public class CallsignDetailType
     extends AbstractAIXMObjectType
 {
@@ -91,7 +91,7 @@ public class CallsignDetailType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "callsigndetailpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "callsigndetail_pg_annotation", joinColumns = {
         @JoinColumn(name = "callsigndetailpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

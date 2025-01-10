@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "obstacleplacementtype", schema = "public")
+@Table(name = "obstacleplacementtype", schema = "surface_assessment")
 public class ObstaclePlacementType
     extends AbstractAIXMObjectType
 {
@@ -108,7 +108,7 @@ public class ObstaclePlacementType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleplacementpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "obstacleplacement_pg_annotation", joinColumns = {
         @JoinColumn(name = "obstacleplacementpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

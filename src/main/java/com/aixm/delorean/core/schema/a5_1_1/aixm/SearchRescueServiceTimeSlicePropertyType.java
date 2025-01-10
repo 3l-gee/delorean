@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "searchRescueServiceTimeSlice"
 })
 @Entity
-@Table(name = "searchrescueservicetimeslicepropertytype", schema = "public")
+@Table(name = "searchrescueservicetimeslicepropertytype", schema = "service")
 public class SearchRescueServiceTimeSlicePropertyType {
 
     @XmlElement(name = "SearchRescueServiceTimeSlice", required = true)

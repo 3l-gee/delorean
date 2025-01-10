@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "unittype", schema = "public")
+@Table(name = "unittype", schema = "organisation")
 public class UnitType
     extends AbstractAIXMFeatureType
 {

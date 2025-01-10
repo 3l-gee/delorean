@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "telephoneContact"
 })
 @Entity
-@Table(name = "telephonecontactpropertytype", schema = "public")
+@Table(name = "telephonecontactpropertytype", schema = "address")
 public class TelephoneContactPropertyType
     extends AbstractAIXMPropertyType
 {

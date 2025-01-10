@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "oxygen"
 })
 @Entity
-@Table(name = "oxygenpropertytype", schema = "public")
+@Table(name = "oxygenpropertytype", schema = "service")
 public class OxygenPropertyType
     extends AbstractAIXMPropertyType
 {

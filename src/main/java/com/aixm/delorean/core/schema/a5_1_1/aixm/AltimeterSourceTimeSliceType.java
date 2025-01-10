@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "altimetersourcetimeslicetype", schema = "public")
+@Table(name = "altimetersourcetimeslicetype", schema = "airport_heliport")
 public class AltimeterSourceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -92,7 +92,7 @@ public class AltimeterSourceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "altimetersourcepropertygroup_availability", joinColumns = {
+    @JoinTable(name = "altimetersource_pg_availability", joinColumns = {
         @JoinColumn(name = "altimetersourcepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "altimetersourcestatuspropertytype_id")
@@ -102,7 +102,7 @@ public class AltimeterSourceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "altimetersourcepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "altimetersource_pg_annotation", joinColumns = {
         @JoinColumn(name = "altimetersourcepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

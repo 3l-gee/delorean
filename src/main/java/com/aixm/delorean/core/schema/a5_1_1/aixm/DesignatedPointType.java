@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "designatedpointtype", schema = "public")
+@Table(name = "designatedpointtype", schema = "points")
 public class DesignatedPointType
     extends AbstractAIXMFeatureType
 {
