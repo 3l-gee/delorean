@@ -84,10 +84,7 @@ public class StandardLevelColumnTimeSliceType
     })
     protected CodeLevelSeriesType series;
     @XmlElement(nillable = true)
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "unitofmeasurement_id", referencedColumnName = "id")
+    @Column(name = "unitofmeasurement", nullable = true, unique = false)
     protected String unitOfMeasurement;
     @XmlElement(nillable = true)
     @Embedded

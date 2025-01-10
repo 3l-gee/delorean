@@ -142,10 +142,7 @@ public class FASDataBlockType
     })
     protected NoSequenceType approachPerformanceDesignator;
     @XmlElement(nillable = true)
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "routeindicator_id", referencedColumnName = "id")
+    @Column(name = "routeindicator", nullable = true, unique = false)
     protected String routeIndicator;
     @XmlElement(nillable = true)
     @Embedded
@@ -155,16 +152,10 @@ public class FASDataBlockType
     })
     protected NoSequenceType referencePathDataSelector;
     @XmlElement(nillable = true)
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "referencepathidentifier_id", referencedColumnName = "id")
+    @Column(name = "referencepathidentifier", nullable = true, unique = false)
     protected String referencePathIdentifier;
     @XmlElement(nillable = true)
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "codeicao_id", referencedColumnName = "id")
+    @Column(name = "codeicao", nullable = true, unique = false)
     protected String codeICAO;
     @XmlElement(nillable = true)
     @ManyToMany(cascade = {

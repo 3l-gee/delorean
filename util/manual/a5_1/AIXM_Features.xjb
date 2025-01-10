@@ -104,6 +104,10 @@
                 <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
                 <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="abstractterminalsegmentpointextension_id", referencedColumnName="id")</annox:annotate>
             </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='StandardLevelColumnPropertyGroup']//xs:element[@name='unitOfMeasurement']">
+                <jaxb:property generateElementProperty="false"/>
+                <annox:annotate target="field">@jakarta.persistence.Column(name = "unitofmeasurement", nullable = true, unique = false)</annox:annotate>
+            </jaxb:bindings>
         </jaxb:bindings>
     </jaxb:bindings>
 </jaxb:bindings>

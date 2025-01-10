@@ -89,7 +89,7 @@ public class RulesProceduresTimeSliceType
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "nilReason", column = @Column(name = "title_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "title"))
+        @AttributeOverride(name = "value", column = @Column(name = "title_"))
     })
     protected CodeRuleProcedureTitleType title;
     @XmlElementRef(name = "content", namespace = "http://www.aixm.aero/schema/5.1.1", type = JAXBElement.class, required = false)

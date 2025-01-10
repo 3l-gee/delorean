@@ -16,7 +16,7 @@ class Config:
         self.transient = config["transient"]
         self.embed = config["embed"]
         self.abstract = config["abstract"]
-        self.constraint_methode = "psql"
+        self.constraint_methode = "xjb"
         self.output_path = config["output_path"]
 
 class Debug:
@@ -184,6 +184,9 @@ class Machinery:
         totalDigits = restriction.find(Tag.totalDigits)
         whiteSpace = restriction.find(Tag.whiteSpace)
 
+        if restriction.attrib.get("base") in ["string"]:
+            res["Size"] = (Annox.field_add(Jpa.constraint.size(min = None, max = 2000)))
+
         if fractionDigits is not None:
             pass
 
@@ -206,7 +209,7 @@ class Machinery:
             res["Size"] = (Annox.field_add(Jpa.constraint.size(minLength.attrib["value"], maxLength.attrib["value"])))
 
         if pattern is not None:
-            res["Pattern"] = (Annox.field_add(Jpa.constraint.pattern(pattern.attrib["value"], "good luck bro...")))
+            res["Pattern"] = (Annox.field_add(Jpa.constraint.pattern(pattern.attrib["value"], "this field must match")))
 
         if totalDigits is not None:
             pass
@@ -267,8 +270,8 @@ class Machinery:
                 res.append(Annox.field_add(Jpa.attribute_main_override(temp)))
 
                 return res
-            elif type in ["AlphanumericType"] :
-                # res.append(Annox.field_add(Jpa.embedded))
+            elif type in ["AlphanumericType", "AlphaType"] :
+                res.append(Annox.field_add(Jpa.column(element.attrib["name"])))
             
             else:
                 res.append(Annox.field_add(Jpa.relation.one_to_one()))
@@ -404,6 +407,7 @@ class Machinery:
         """Process the simpleContent flow."""
         node = []
         simple_content = parent.find(Tag.simple_content)
+    
         if simple_content is not None:
             extension = simple_content.find(Tag.extension)
             restriction = simple_content.find(Tag.restriction)
@@ -474,6 +478,9 @@ class Machinery:
         node = []
         node.append(Jaxb.attribute(attribute.attrib.get("name"), parent=parent_xpath))
 
+        if str(parent.attrib.get("name","") + "." + attribute.attrib.get("name","")) in self.config.ignore:
+            return node
+
         if attribute.attrib.get("name") in self.config.transient or attribute.attrib.get("ref") in self.config.transient or attribute.attrib.get("type") in self.config.transient:
             node.append(Annox.field_add(Jpa.transient))
             node.append(Jaxb.end)
@@ -490,6 +497,10 @@ class Machinery:
     def handle_sequence_element(self, element, parent, embed, parent_xpath):
         """Handle elements in a sequence."""
         node = []
+
+        if str(parent.attrib.get("name","") + "." + element.attrib.get("name","")) in self.config.ignore:
+            return node
+    
         if element.attrib.get("ref") is not None and element.attrib.get("name") is None :
             node.append(Jaxb.element(element.attrib.get("ref"),parent=parent_xpath, xpath=Xpath.GLOBAL.value ,at="ref"))
             if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
@@ -529,6 +540,10 @@ class Machinery:
     def handle_sequence_attribute(self, attribute, parent, embed, parent_xpath):
         """Handle restrictions in content."""
         node = []
+
+        if str(parent.attrib.get("name","") + "." + attribute.parent.attrib.get("name","")) in self.config.ignore:
+            return node
+        
         if attribute.attrib.get("ref") is not None and attribute.attrib.get("name") is None :
             node.append(Jaxb.attribute(attribute.attrib.get("ref"), parent=parent_xpath, xpath=Xpath.GLOBAL.value, at="ref"))
             if attribute.attrib.get("name") in self.config.transient or attribute.attrib.get("ref") in self.config.transient or attribute.attrib.get("type") in self.config.transient:
@@ -556,6 +571,10 @@ class Machinery:
     def handle_complex_element(self, element, parent, embed, parent_xpath):
         """Handle attributes in a sequence."""
         node = []
+
+        if str(parent.attrib.get("name","") + "." + element.attrib.get("name","")) in self.config.ignore:
+            return node
+    
         if element.attrib.get("ref") is not None and element.attrib.get("name") is None :
             node.append(Jaxb.element(element.attrib.get("ref"), parent=parent_xpath, xpath=Xpath.GLOBAL.value, at="ref"))
             if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
@@ -593,6 +612,9 @@ class Machinery:
     def handle_complex_attribute(self, attribute, parent, embed, parent_xpath):
         """Handle elements in a sequence."""
         node = []
+
+        if str(parent.attrib.get("name","") + "." + attribute.attrib.get("name","")) in self.config.ignore:
+            return node
 
         if attribute.attrib.get("ref") is not None and attribute.attrib.get("name") is None :
             node.append(Jaxb.attribute(attribute.attrib.get("ref"), parent=parent_xpath, xpath=Xpath.GLOBAL.value, at="ref"))

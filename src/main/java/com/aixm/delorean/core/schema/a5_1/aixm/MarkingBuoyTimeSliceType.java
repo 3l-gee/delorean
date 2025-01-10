@@ -77,10 +77,7 @@ public class MarkingBuoyTimeSliceType
 {
 
     @XmlElement(nillable = true)
-    @OneToOne(cascade = {
-        CascadeType.ALL
-    }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "designator_id", referencedColumnName = "id")
+    @Column(name = "designator", nullable = true, unique = false)
     protected String designator;
     @XmlElement(nillable = true)
     @Embedded

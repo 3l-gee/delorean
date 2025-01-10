@@ -81,7 +81,7 @@ public class RunwayCentrelinePointTimeSliceType
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "role"))
+        @AttributeOverride(name = "value", column = @Column(name = "role_"))
     })
     protected CodeRunwayPointRoleType role;
     @XmlElement(nillable = true)
