@@ -111,7 +111,7 @@ public class AirportHeliportResponsibilityOrganisationType
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "role"))
+        @AttributeOverride(name = "value", column = @Column(name = "role_"))
     })
     protected CodeAuthorityRoleType role;
     @OneToOne(cascade = {

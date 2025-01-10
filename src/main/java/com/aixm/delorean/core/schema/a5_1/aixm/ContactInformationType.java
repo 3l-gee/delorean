@@ -87,7 +87,7 @@ public class ContactInformationType
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "nilReason", column = @Column(name = "title_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "title"))
+        @AttributeOverride(name = "value", column = @Column(name = "title_"))
     })
     protected TextNameType title;
     @XmlElement(nillable = true)

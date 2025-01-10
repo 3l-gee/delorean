@@ -14,8 +14,9 @@ public enum DatabaseConfig {
         "postgres",                             // Default password
         5,                         // Connection pool min size
         20,                        // Connection pool max size
-        false,                                   // Hibernate show_sql
-        "update",                       // Hibernate hbm2ddl.auto
+        true,                                   // Hibernate show_sql
+        "create",                           // Hibernate hbm2ddl.auto
+        "",                                 // Hibernate path
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
@@ -811,7 +812,8 @@ public enum DatabaseConfig {
         5,                         // Connection pool min size
         20,                        // Connection pool max size
         false,                                   // Hibernate show_sql
-        "update",                            // Hibernate hbm2ddl.auto
+        "create",                            // Hibernate hbm2ddl.auto
+        "src/main/resources/postgres/init/schema.sql", // Hibernate schemapath
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
@@ -1603,10 +1605,11 @@ public enum DatabaseConfig {
     private final int connectionPoolMaxSize;
     private final boolean showSql;
     private final String hbm2ddlAuto;
+    private final String schemapath;
     private final Class<?>[] mappingClasses;
     private final Configuration configuration;
 
-    DatabaseConfig(String version, String url, String username, String password, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String hbm2ddlAuto, Class<?>[] mappingClasses) {
+    DatabaseConfig(String version, String url, String username, String password, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String hbm2ddlAuto, String schemapath, Class<?>[] mappingClasses) {
         this.version = version;
         this.url = url;
         this.username = username;
@@ -1615,6 +1618,7 @@ public enum DatabaseConfig {
         this.connectionPoolMaxSize = connectionPoolMaxSize;
         this.showSql = showSql;
         this.hbm2ddlAuto = hbm2ddlAuto;
+        this.schemapath = schemapath;
         this.mappingClasses = mappingClasses;
         this.configuration = getHibernateConfiguration();
     }
@@ -1651,6 +1655,7 @@ public enum DatabaseConfig {
         configuration.setProperty("hibernate.generate_statistics", "true");  // Enables detailed statistics
         configuration.setProperty("hibernate.use_sql_comments", "true");  // Adds comments to the generated SQL for context
         configuration.setProperty("hibernate.hbm2ddl.auto", this.hbm2ddlAuto);
+        configuration.setProperty("hibernate.hbm2ddl.import_files", this.schemapath);
 
         //Set PostgreSQL dialect
         configuration.setProperty("hibernate.dialect.PostgreSQLDialect", "org.hibernate.spatial.dialect.postgis.PostgisDialect");

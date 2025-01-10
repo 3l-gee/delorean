@@ -645,6 +645,7 @@ machinery = Machinery(config, debug, schema, [data_types, feature, abstract, mes
 
 config = {
     "ignore": [
+        "StandardLevelColumnPropertyGroup.unitOfMeasurement",
         "XHTMLType",
         "AIXMBasicMessageType",
         "AIXMBasicMessagePropertyGroup",
