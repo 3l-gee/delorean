@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "runwayDeclaredDistanceValue"
 })
 @Entity
-@Table(name = "runwaydeclareddistancevaluepropertytype", schema = "public")
+@Table(name = "runwaydeclareddistancevaluepropertytype", schema = "runway")
 public class RunwayDeclaredDistanceValuePropertyType
     extends AbstractAIXMPropertyType
 {

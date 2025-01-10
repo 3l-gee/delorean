@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "airspaceBorderCrossingTimeSlice"
 })
 @Entity
-@Table(name = "airspacebordercrossingtimeslicepropertytype", schema = "public")
+@Table(name = "airspacebordercrossingtimeslicepropertytype", schema = "flight_restrictions")
 public class AirspaceBorderCrossingTimeSlicePropertyType {
 
     @XmlElement(name = "AirspaceBorderCrossingTimeSlice", required = true)

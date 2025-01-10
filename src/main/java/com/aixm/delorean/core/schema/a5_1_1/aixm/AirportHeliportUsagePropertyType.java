@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "airportHeliportUsage"
 })
 @Entity
-@Table(name = "airportheliportusagepropertytype", schema = "public")
+@Table(name = "airportheliportusagepropertytype", schema = "airport_heliport")
 public class AirportHeliportUsagePropertyType
     extends AbstractAIXMPropertyType
 {

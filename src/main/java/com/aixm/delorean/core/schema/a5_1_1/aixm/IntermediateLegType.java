@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "intermediatelegtype", schema = "public")
+@Table(name = "intermediatelegtype", schema = "procedure")
 public class IntermediateLegType
     extends AbstractApproachLegType
 {

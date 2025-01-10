@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "passengerservicetype", schema = "public")
+@Table(name = "passengerservicetype", schema = "service")
 public class PassengerServiceType
     extends AbstractAirportGroundServiceType
 {

@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "unitavailabilitytype", schema = "public")
+@Table(name = "unitavailabilitytype", schema = "organisation")
 public class UnitAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
@@ -80,8 +80,8 @@ public class UnitAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unitavailabilitytype_timeinterval", joinColumns = {
-        @JoinColumn(name = "unitavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -90,8 +90,8 @@ public class UnitAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unitavailabilitytype_annotation", joinColumns = {
-        @JoinColumn(name = "unitavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -100,8 +100,8 @@ public class UnitAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unitavailabilitytype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "unitavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })

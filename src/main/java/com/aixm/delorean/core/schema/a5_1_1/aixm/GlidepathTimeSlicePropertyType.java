@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "glidepathTimeSlice"
 })
 @Entity
-@Table(name = "glidepathtimeslicepropertytype", schema = "public")
+@Table(name = "glidepathtimeslicepropertytype", schema = "navaids")
 public class GlidepathTimeSlicePropertyType {
 
     @XmlElement(name = "GlidepathTimeSlice", required = true)

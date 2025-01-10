@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "organisationauthoritytimeslicetype", schema = "public")
+@Table(name = "organisationauthoritytimeslicetype", schema = "organisation")
 public class OrganisationAuthorityTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -109,7 +109,7 @@ public class OrganisationAuthorityTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "organisationauthoritypropertygroup_contact", joinColumns = {
+    @JoinTable(name = "organisationauthority_pg_contact", joinColumns = {
         @JoinColumn(name = "organisationauthoritypropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
@@ -119,7 +119,7 @@ public class OrganisationAuthorityTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "organisationauthoritypropertygroup_relatedorganisationauthority", joinColumns = {
+    @JoinTable(name = "organisationauthority_pg_relatedorganisationauthority", joinColumns = {
         @JoinColumn(name = "organisationauthoritypropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthorityassociationpropertytype_id")
@@ -129,7 +129,7 @@ public class OrganisationAuthorityTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "organisationauthoritypropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "organisationauthority_pg_annotation", joinColumns = {
         @JoinColumn(name = "organisationauthoritypropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

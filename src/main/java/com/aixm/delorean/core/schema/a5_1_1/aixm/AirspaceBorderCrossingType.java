@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "airspacebordercrossingtype", schema = "public")
+@Table(name = "airspacebordercrossingtype", schema = "flight_restrictions")
 public class AirspaceBorderCrossingType
     extends AbstractAIXMFeatureType
 {

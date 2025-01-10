@@ -77,7 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "unittimeslicetype", schema = "public")
+@Table(name = "unittimeslicetype", schema = "organisation")
 public class UnitTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -139,7 +139,7 @@ public class UnitTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unitpropertygroup_contact", joinColumns = {
+    @JoinTable(name = "unit_pg_contact", joinColumns = {
         @JoinColumn(name = "unitpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
@@ -149,7 +149,7 @@ public class UnitTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unitpropertygroup_relatedunit", joinColumns = {
+    @JoinTable(name = "unit_pg_relatedunit", joinColumns = {
         @JoinColumn(name = "unitpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "unitdependencypropertytype_id")
@@ -159,7 +159,7 @@ public class UnitTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unitpropertygroup_availability", joinColumns = {
+    @JoinTable(name = "unit_pg_availability", joinColumns = {
         @JoinColumn(name = "unitpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "unitavailabilitypropertytype_id")
@@ -169,7 +169,7 @@ public class UnitTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unitpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "unit_pg_annotation", joinColumns = {
         @JoinColumn(name = "unitpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

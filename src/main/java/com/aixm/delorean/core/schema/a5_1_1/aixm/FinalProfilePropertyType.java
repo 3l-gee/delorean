@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "finalProfile"
 })
 @Entity
-@Table(name = "finalprofilepropertytype", schema = "public")
+@Table(name = "finalprofilepropertytype", schema = "approach")
 public class FinalProfilePropertyType
     extends AbstractAIXMPropertyType
 {

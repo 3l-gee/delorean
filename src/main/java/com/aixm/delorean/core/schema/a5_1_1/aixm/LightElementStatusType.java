@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "lightelementstatustype", schema = "public")
+@Table(name = "lightelementstatustype", schema = "light_element")
 public class LightElementStatusType
     extends AbstractPropertiesWithScheduleType
 {
@@ -80,8 +80,8 @@ public class LightElementStatusType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "lightelementstatustype_timeinterval", joinColumns = {
-        @JoinColumn(name = "lightelementstatustype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -90,8 +90,8 @@ public class LightElementStatusType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "lightelementstatustype_annotation", joinColumns = {
-        @JoinColumn(name = "lightelementstatustype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -100,8 +100,8 @@ public class LightElementStatusType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "lightelementstatustype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "lightelementstatustype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })

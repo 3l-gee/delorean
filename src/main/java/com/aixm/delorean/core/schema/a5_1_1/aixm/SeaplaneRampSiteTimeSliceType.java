@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "seaplanerampsitetimeslicetype", schema = "public")
+@Table(name = "seaplanerampsitetimeslicetype", schema = "seaplanes")
 public class SeaplaneRampSiteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -85,7 +85,7 @@ public class SeaplaneRampSiteTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "seaplanerampsitepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "seaplanerampsite_pg_annotation", joinColumns = {
         @JoinColumn(name = "seaplanerampsitepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "angleusetype", schema = "public")
+@Table(name = "angleusetype", schema = "point_reference")
 public class AngleUseType
     extends AbstractAIXMObjectType
 {
@@ -84,7 +84,7 @@ public class AngleUseType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "angleusepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "angleuse_pg_annotation", joinColumns = {
         @JoinColumn(name = "angleusepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "roadtimeslicetype", schema = "public")
+@Table(name = "roadtimeslicetype", schema = "apron")
 public class RoadTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -123,7 +123,7 @@ public class RoadTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "roadpropertygroup_accessiblestand", joinColumns = {
+    @JoinTable(name = "road_pg_accessiblestand", joinColumns = {
         @JoinColumn(name = "roadpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftstandpropertytype_id")
@@ -139,7 +139,7 @@ public class RoadTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "roadpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "road_pg_annotation", joinColumns = {
         @JoinColumn(name = "roadpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

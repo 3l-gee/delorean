@@ -101,7 +101,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "arrivalfeederlegtimeslicetype", schema = "public")
+@Table(name = "arrivalfeederlegtimeslicetype", schema = "procedure")
 public class ArrivalFeederLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -306,7 +306,7 @@ public class ArrivalFeederLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_aircraftcategory", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_aircraftcategory", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
@@ -322,7 +322,7 @@ public class ArrivalFeederLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_designsurface", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_designsurface", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstacleassessmentareapropertytype_id")
@@ -332,7 +332,7 @@ public class ArrivalFeederLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_annotation", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

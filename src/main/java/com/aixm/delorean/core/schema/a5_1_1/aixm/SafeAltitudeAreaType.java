@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "safealtitudeareatype", schema = "public")
+@Table(name = "safealtitudeareatype", schema = "safe_altitude")
 public class SafeAltitudeAreaType
     extends AbstractAIXMFeatureType
 {

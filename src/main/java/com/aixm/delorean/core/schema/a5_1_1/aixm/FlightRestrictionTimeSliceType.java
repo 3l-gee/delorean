@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightrestrictiontimeslicetype", schema = "public")
+@Table(name = "flightrestrictiontimeslicetype", schema = "flight_restrictions")
 public class FlightRestrictionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -107,7 +107,7 @@ public class FlightRestrictionTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightrestrictionpropertygroup_regulatedroute", joinColumns = {
+    @JoinTable(name = "flightrestriction_pg_regulatedroute", joinColumns = {
         @JoinColumn(name = "flightrestrictionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "flightrestrictionroutepropertytype_id")
@@ -117,7 +117,7 @@ public class FlightRestrictionTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightrestrictionpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "flightrestriction_pg_annotation", joinColumns = {
         @JoinColumn(name = "flightrestrictionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

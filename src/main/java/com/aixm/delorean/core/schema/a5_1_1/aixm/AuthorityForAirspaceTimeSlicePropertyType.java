@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "authorityForAirspaceTimeSlice"
 })
 @Entity
-@Table(name = "authorityforairspacetimeslicepropertytype", schema = "public")
+@Table(name = "authorityforairspacetimeslicepropertytype", schema = "airspace")
 public class AuthorityForAirspaceTimeSlicePropertyType {
 
     @XmlElement(name = "AuthorityForAirspaceTimeSlice", required = true)

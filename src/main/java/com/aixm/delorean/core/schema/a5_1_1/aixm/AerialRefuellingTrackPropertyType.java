@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "aerialRefuellingTrack"
 })
 @Entity
-@Table(name = "aerialrefuellingtrackpropertytype", schema = "public")
+@Table(name = "aerialrefuellingtrackpropertytype", schema = "aerial_refuelling")
 public class AerialRefuellingTrackPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "proceduretransitiontype", schema = "public")
+@Table(name = "proceduretransitiontype", schema = "procedure")
 public class ProcedureTransitionType
     extends AbstractAIXMObjectType
 {
@@ -122,7 +122,7 @@ public class ProcedureTransitionType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "proceduretransitionpropertygroup_transitionleg", joinColumns = {
+    @JoinTable(name = "proceduretransition_pg_transitionleg", joinColumns = {
         @JoinColumn(name = "proceduretransitionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "proceduretransitionlegpropertytype_id")
@@ -132,7 +132,7 @@ public class ProcedureTransitionType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "proceduretransitionpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "proceduretransition_pg_annotation", joinColumns = {
         @JoinColumn(name = "proceduretransitionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

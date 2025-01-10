@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "radarsystemtype", schema = "public")
+@Table(name = "radarsystemtype", schema = "surveillance")
 public class RadarSystemType
     extends AbstractAIXMFeatureType
 {

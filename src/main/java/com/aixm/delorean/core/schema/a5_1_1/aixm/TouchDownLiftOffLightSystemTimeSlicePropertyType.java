@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "touchDownLiftOffLightSystemTimeSlice"
 })
 @Entity
-@Table(name = "touchdownliftofflightsystemtimeslicepropertytype", schema = "public")
+@Table(name = "touchdownliftofflightsystemtimeslicepropertytype", schema = "lighting")
 public class TouchDownLiftOffLightSystemTimeSlicePropertyType {
 
     @XmlElement(name = "TouchDownLiftOffLightSystemTimeSlice", required = true)

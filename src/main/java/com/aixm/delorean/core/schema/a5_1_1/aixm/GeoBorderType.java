@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "geobordertype", schema = "public")
+@Table(name = "geobordertype", schema = "airspace")
 public class GeoBorderType
     extends AbstractAIXMFeatureType
 {

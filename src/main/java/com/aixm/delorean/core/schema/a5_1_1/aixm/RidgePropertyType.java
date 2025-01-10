@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "ridge"
 })
 @Entity
-@Table(name = "ridgepropertytype", schema = "public")
+@Table(name = "ridgepropertytype", schema = "surface_contamination")
 public class RidgePropertyType
     extends AbstractAIXMPropertyType
 {

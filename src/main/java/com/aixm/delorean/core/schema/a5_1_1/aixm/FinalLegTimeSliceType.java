@@ -118,7 +118,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "finallegtimeslicetype", schema = "public")
+@Table(name = "finallegtimeslicetype", schema = "procedure")
 public class FinalLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -323,7 +323,7 @@ public class FinalLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_aircraftcategory", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_aircraftcategory", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
@@ -339,7 +339,7 @@ public class FinalLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_designsurface", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_designsurface", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstacleassessmentareapropertytype_id")
@@ -349,7 +349,7 @@ public class FinalLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentlegpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "segmentleg_pg_annotation", joinColumns = {
         @JoinColumn(name = "segmentlegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
@@ -431,7 +431,7 @@ public class FinalLegTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finallegpropertygroup_condition", joinColumns = {
+    @JoinTable(name = "finalleg_pg_condition", joinColumns = {
         @JoinColumn(name = "finallegpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "approachconditionpropertytype_id")

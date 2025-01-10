@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radiocommunicationoperationalstatustype", schema = "public")
+@Table(name = "radiocommunicationoperationalstatustype", schema = "service")
 public class RadioCommunicationOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {
@@ -80,7 +80,7 @@ public class RadioCommunicationOperationalStatusType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiocommunicationoperationalstatustype_timeinterval", joinColumns = {
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
         @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
@@ -90,8 +90,8 @@ public class RadioCommunicationOperationalStatusType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiocommunicationoperationalstatustype_annotation", joinColumns = {
-        @JoinColumn(name = "radiocommunicationoperationalstatustype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -100,8 +100,8 @@ public class RadioCommunicationOperationalStatusType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiocommunicationoperationalstatustype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "radiocommunicationoperationalstatustype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })

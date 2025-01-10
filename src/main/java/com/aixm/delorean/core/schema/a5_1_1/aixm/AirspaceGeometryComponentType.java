@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspacegeometrycomponenttype", schema = "public")
+@Table(name = "airspacegeometrycomponenttype", schema = "airspace")
 public class AirspaceGeometryComponentType
     extends AbstractAIXMObjectType
 {
@@ -92,7 +92,7 @@ public class AirspaceGeometryComponentType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacegeometrycomponentpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "airspacegeometrycomponent_pg_annotation", joinColumns = {
         @JoinColumn(name = "airspacegeometrycomponentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

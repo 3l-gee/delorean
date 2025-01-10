@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "workareaActivity"
 })
 @Entity
-@Table(name = "workareaactivitypropertytype", schema = "public")
+@Table(name = "workareaactivitypropertytype", schema = "airport_heliport")
 public class WorkareaActivityPropertyType
     extends AbstractAIXMPropertyType
 {

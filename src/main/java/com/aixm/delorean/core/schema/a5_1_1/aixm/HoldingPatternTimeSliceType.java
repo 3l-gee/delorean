@@ -83,7 +83,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "holdingpatterntimeslicetype", schema = "public")
+@Table(name = "holdingpatterntimeslicetype", schema = "holding")
 public class HoldingPatternTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -209,7 +209,7 @@ public class HoldingPatternTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingpatternpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "holdingpattern_pg_annotation", joinColumns = {
         @JoinColumn(name = "holdingpatternpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

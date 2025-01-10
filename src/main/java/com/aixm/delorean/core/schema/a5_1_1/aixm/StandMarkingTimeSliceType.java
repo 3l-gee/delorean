@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standmarkingtimeslicetype", schema = "public")
+@Table(name = "standmarkingtimeslicetype", schema = "markings")
 public class StandMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -94,8 +94,8 @@ public class StandMarkingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standmarkingtimeslicetype_element", joinColumns = {
-        @JoinColumn(name = "standmarkingtimeslicetype_id")
+    @JoinTable(name = "marking_pg_element", joinColumns = {
+        @JoinColumn(name = "markingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "markingelementpropertytype_id")
     })
@@ -104,8 +104,8 @@ public class StandMarkingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standmarkingtimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "standmarkingtimeslicetype_id")
+    @JoinTable(name = "marking_pg_annotation", joinColumns = {
+        @JoinColumn(name = "markingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

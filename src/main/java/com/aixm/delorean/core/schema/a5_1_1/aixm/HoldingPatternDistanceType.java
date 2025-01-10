@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "holdingpatterndistancetype", schema = "public")
+@Table(name = "holdingpatterndistancetype", schema = "holding")
 public class HoldingPatternDistanceType
     extends AbstractAIXMObjectType
 {
@@ -84,7 +84,7 @@ public class HoldingPatternDistanceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingpatterndistancepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "holdingpatterndistance_pg_annotation", joinColumns = {
         @JoinColumn(name = "holdingpatterndistancepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

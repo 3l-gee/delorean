@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approachlightingsystemtimeslicetype", schema = "public")
+@Table(name = "approachlightingsystemtimeslicetype", schema = "lighting")
 public class ApproachLightingSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -108,8 +108,8 @@ public class ApproachLightingSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachlightingsystemtimeslicetype_element", joinColumns = {
-        @JoinColumn(name = "approachlightingsystemtimeslicetype_id")
+    @JoinTable(name = "groundlightsystem_pg_element", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightelementpropertytype_id")
     })
@@ -118,8 +118,8 @@ public class ApproachLightingSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachlightingsystemtimeslicetype_availability", joinColumns = {
-        @JoinColumn(name = "approachlightingsystemtimeslicetype_id")
+    @JoinTable(name = "groundlightsystem_pg_availability", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "groundlightingavailabilitypropertytype_id")
     })
@@ -128,8 +128,8 @@ public class ApproachLightingSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachlightingsystemtimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "approachlightingsystemtimeslicetype_id")
+    @JoinTable(name = "groundlightsystem_pg_annotation", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

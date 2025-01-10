@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "conditioncombinationtype", schema = "public")
+@Table(name = "conditioncombinationtype", schema = "airport_heliport")
 public class ConditionCombinationType
     extends AbstractPropertiesWithScheduleType
 {
@@ -84,8 +84,8 @@ public class ConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombinationtype_timeinterval", joinColumns = {
-        @JoinColumn(name = "conditioncombinationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -94,8 +94,8 @@ public class ConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombinationtype_annotation", joinColumns = {
-        @JoinColumn(name = "conditioncombinationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -104,8 +104,8 @@ public class ConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombinationtype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "conditioncombinationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })
@@ -121,8 +121,8 @@ public class ConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombinationtype_weather", joinColumns = {
-        @JoinColumn(name = "conditioncombinationtype_id")
+    @JoinTable(name = "conditioncombination_pg_weather", joinColumns = {
+        @JoinColumn(name = "conditioncombinationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "meteorologypropertytype_id")
     })
@@ -131,8 +131,8 @@ public class ConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombinationtype_aircraft", joinColumns = {
-        @JoinColumn(name = "conditioncombinationtype_id")
+    @JoinTable(name = "conditioncombination_pg_aircraft", joinColumns = {
+        @JoinColumn(name = "conditioncombinationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
     })
@@ -141,8 +141,8 @@ public class ConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombinationtype_flight", joinColumns = {
-        @JoinColumn(name = "conditioncombinationtype_id")
+    @JoinTable(name = "conditioncombination_pg_flight", joinColumns = {
+        @JoinColumn(name = "conditioncombinationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "flightcharacteristicpropertytype_id")
     })
@@ -151,8 +151,8 @@ public class ConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombinationtype_subcondition", joinColumns = {
-        @JoinColumn(name = "conditioncombinationtype_id")
+    @JoinTable(name = "conditioncombination_pg_subcondition", joinColumns = {
+        @JoinColumn(name = "conditioncombinationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "conditioncombinationpropertytype_id")
     })

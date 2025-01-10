@@ -55,7 +55,7 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 @Embeddable
 public class CurveType
-    extends com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType
+    extends com.aixm.delorean.core.org.gml.v_3_2.CurveType
 {
 
     @XmlElement(nillable = true)
@@ -70,7 +70,7 @@ public class CurveType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "curvepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "curve_pg_annotation", joinColumns = {
         @JoinColumn(name = "curvepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

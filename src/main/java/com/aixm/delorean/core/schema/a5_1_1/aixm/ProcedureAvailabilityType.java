@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "procedureavailabilitytype", schema = "public")
+@Table(name = "procedureavailabilitytype", schema = "usage")
 public class ProcedureAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
@@ -80,8 +80,8 @@ public class ProcedureAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedureavailabilitytype_timeinterval", joinColumns = {
-        @JoinColumn(name = "procedureavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -90,8 +90,8 @@ public class ProcedureAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedureavailabilitytype_annotation", joinColumns = {
-        @JoinColumn(name = "procedureavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -100,8 +100,8 @@ public class ProcedureAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedureavailabilitytype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "procedureavailabilitytypep_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })

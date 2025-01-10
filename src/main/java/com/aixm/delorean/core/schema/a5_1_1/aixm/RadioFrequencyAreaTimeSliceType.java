@@ -76,7 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radiofrequencyareatimeslicetype", schema = "public")
+@Table(name = "radiofrequencyareatimeslicetype", schema = "radio_frequency_limitation")
 public class RadioFrequencyAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -136,7 +136,7 @@ public class RadioFrequencyAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyareapropertygroup_sector", joinColumns = {
+    @JoinTable(name = "radiofrequencyarea_pg_sector", joinColumns = {
         @JoinColumn(name = "radiofrequencyareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "circlesectorpropertytype_id")
@@ -146,7 +146,7 @@ public class RadioFrequencyAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyareapropertygroup_extent", joinColumns = {
+    @JoinTable(name = "radiofrequencyarea_pg_extent", joinColumns = {
         @JoinColumn(name = "radiofrequencyareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "surfacepropertytype_id")
@@ -156,7 +156,7 @@ public class RadioFrequencyAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyareapropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "radiofrequencyarea_pg_annotation", joinColumns = {
         @JoinColumn(name = "radiofrequencyareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

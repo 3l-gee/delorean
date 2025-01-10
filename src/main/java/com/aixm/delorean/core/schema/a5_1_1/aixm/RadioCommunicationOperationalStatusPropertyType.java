@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "radioCommunicationOperationalStatus"
 })
 @Entity
-@Table(name = "radiocommunicationoperationalstatuspropertytype", schema = "public")
+@Table(name = "radiocommunicationoperationalstatuspropertytype", schema = "service")
 public class RadioCommunicationOperationalStatusPropertyType
     extends AbstractAIXMPropertyType
 {

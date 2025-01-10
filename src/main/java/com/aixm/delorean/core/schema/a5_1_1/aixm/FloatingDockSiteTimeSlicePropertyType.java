@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "floatingDockSiteTimeSlice"
 })
 @Entity
-@Table(name = "floatingdocksitetimeslicepropertytype", schema = "public")
+@Table(name = "floatingdocksitetimeslicepropertytype", schema = "seaplanes")
 public class FloatingDockSiteTimeSlicePropertyType {
 
     @XmlElement(name = "FloatingDockSiteTimeSlice", required = true)

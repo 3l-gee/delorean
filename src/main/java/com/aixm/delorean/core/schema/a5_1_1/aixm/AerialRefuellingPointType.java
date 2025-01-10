@@ -82,7 +82,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerialrefuellingpointtype", schema = "public")
+@Table(name = "aerialrefuellingpointtype", schema = "aerial_refuelling")
 public class AerialRefuellingPointType
     extends AbstractSegmentPointType
 {
@@ -119,7 +119,7 @@ public class AerialRefuellingPointType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingpointtype_facilitymakeup", joinColumns = {
+    @JoinTable(name = "segmentpoint_pg_facilitymakeup", joinColumns = {
         @JoinColumn(name = "segmentpointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "pointreferencepropertytype_id")
@@ -171,7 +171,7 @@ public class AerialRefuellingPointType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentpointpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "segmentpoint_pg_annotation", joinColumns = {
         @JoinColumn(name = "segmentpointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

@@ -2,7 +2,6 @@ package com.aixm.delorean.core.helper.gis;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.locationtech.jts.geom.Coordinate;
@@ -11,31 +10,31 @@ import org.locationtech.jts.geom.Point;
 
 import jakarta.xml.bind.JAXBElement;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionListType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.DirectPositionType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicStringType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.OffsetCurveType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.GeodesicType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.LineStringSegmentType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CurveSegmentArrayPropertyType;
+import com.aixm.delorean.core.org.gml.v_3_2.CurveType;
+import com.aixm.delorean.core.org.gml.v_3_2.DirectPositionListType;
+import com.aixm.delorean.core.org.gml.v_3_2.DirectPositionType;
+import com.aixm.delorean.core.org.gml.v_3_2.GeodesicStringType;
+import com.aixm.delorean.core.org.gml.v_3_2.OffsetCurveType;
+import com.aixm.delorean.core.org.gml.v_3_2.GeodesicType;
+import com.aixm.delorean.core.org.gml.v_3_2.LineStringSegmentType;
+import com.aixm.delorean.core.org.gml.v_3_2.CurveSegmentArrayPropertyType;
 import com.aixm.delorean.core.gis.type.LinestringSegment;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractCurveSegmentType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcByBulgeType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcByCenterPointType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.LengthType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AngleType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcStringByBulgeType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.BSplineType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.BezierType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CircleByCenterPointType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CircleType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ClothoidType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.CubicSplineType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.ArcStringType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractCurveSegmentType;
+import com.aixm.delorean.core.org.gml.v_3_2.ArcByBulgeType;
+import com.aixm.delorean.core.org.gml.v_3_2.ArcByCenterPointType;
+import com.aixm.delorean.core.org.gml.v_3_2.LengthType;
+import com.aixm.delorean.core.org.gml.v_3_2.AngleType;
+import com.aixm.delorean.core.org.gml.v_3_2.ArcStringByBulgeType;
+import com.aixm.delorean.core.org.gml.v_3_2.ArcType;
+import com.aixm.delorean.core.org.gml.v_3_2.BSplineType;
+import com.aixm.delorean.core.org.gml.v_3_2.BezierType;
+import com.aixm.delorean.core.org.gml.v_3_2.CircleByCenterPointType;
+import com.aixm.delorean.core.org.gml.v_3_2.CircleType;
+import com.aixm.delorean.core.org.gml.v_3_2.ClothoidType;
+import com.aixm.delorean.core.org.gml.v_3_2.CubicSplineType;
+import com.aixm.delorean.core.org.gml.v_3_2.ArcStringType;
 public class CurveGmlHelper {
 
     public static List<LinestringSegment> parseGMLcurve (CurveType value) {

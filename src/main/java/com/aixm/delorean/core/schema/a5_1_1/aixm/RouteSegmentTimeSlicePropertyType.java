@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "routeSegmentTimeSlice"
 })
 @Entity
-@Table(name = "routesegmenttimeslicepropertytype", schema = "public")
+@Table(name = "routesegmenttimeslicepropertytype", schema = "en_route")
 public class RouteSegmentTimeSlicePropertyType {
 
     @XmlElement(name = "RouteSegmentTimeSlice", required = true)

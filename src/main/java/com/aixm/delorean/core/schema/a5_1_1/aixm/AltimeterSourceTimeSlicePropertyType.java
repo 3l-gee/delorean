@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "altimeterSourceTimeSlice"
 })
 @Entity
-@Table(name = "altimetersourcetimeslicepropertytype", schema = "public")
+@Table(name = "altimetersourcetimeslicepropertytype", schema = "airport_heliport")
 public class AltimeterSourceTimeSlicePropertyType {
 
     @XmlElement(name = "AltimeterSourceTimeSlice", required = true)

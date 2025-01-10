@@ -77,7 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "circlesectortype", schema = "public")
+@Table(name = "circlesectortype", schema = "circle_sector")
 public class CircleSectorType
     extends AbstractAIXMObjectType
 {
@@ -167,7 +167,7 @@ public class CircleSectorType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlesectorpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "circlesector_pg_annotation", joinColumns = {
         @JoinColumn(name = "circlesectorpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

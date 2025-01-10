@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "flightrestrictiontype", schema = "public")
+@Table(name = "flightrestrictiontype", schema = "flight_restrictions")
 public class FlightRestrictionType
     extends AbstractAIXMFeatureType
 {

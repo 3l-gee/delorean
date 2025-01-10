@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "unitTimeSlice"
 })
 @Entity
-@Table(name = "unittimeslicepropertytype", schema = "public")
+@Table(name = "unittimeslicepropertytype", schema = "organisation")
 public class UnitTimeSlicePropertyType {
 
     @XmlElement(name = "UnitTimeSlice", required = true)

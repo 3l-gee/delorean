@@ -55,7 +55,7 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 @Embeddable
 public class PointType
-    extends com.aixm.delorean.core.schema.a5_1_1.org.gml.PointType
+    extends com.aixm.delorean.core.org.gml.v_3_2.PointType
 {
 
     @XmlElement(nillable = true)
@@ -70,7 +70,7 @@ public class PointType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pointpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "point_pg_annotation", joinColumns = {
         @JoinColumn(name = "pointpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

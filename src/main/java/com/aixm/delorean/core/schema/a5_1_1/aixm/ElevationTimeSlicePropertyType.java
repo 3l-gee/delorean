@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "elevationTimeSlice"
 })
 @Entity
-@Table(name = "elevationtimeslicepropertytype", schema = "public")
+@Table(name = "elevationtimeslicepropertytype", schema = "navaids")
 public class ElevationTimeSlicePropertyType {
 
     @XmlElement(name = "ElevationTimeSlice", required = true)

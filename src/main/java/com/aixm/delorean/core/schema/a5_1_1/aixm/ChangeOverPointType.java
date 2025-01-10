@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "changeoverpointtype", schema = "public")
+@Table(name = "changeoverpointtype", schema = "en_route")
 public class ChangeOverPointType
     extends AbstractAIXMFeatureType
 {

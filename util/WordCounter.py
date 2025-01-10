@@ -21,6 +21,26 @@ def syllabify(word):
     
     return syllables
 
+def short_name(name):  
+        replacements = {
+            "Type": "", 
+            "TimeSlicePropertyType": "_tspt",
+            "PropertyGroup": "_pg",
+            "PropertyType": "_pp",
+            "TimeSliceType": "_tst",
+            "TimeSlice": "_ts",
+            # "TimeSlicePropertyType": "",
+            # "PropertyGroup": "",
+            # "PropertyType": "",
+            # "TimeSliceType": "",
+            # "TimeSlice": "",
+        }
+        
+        for key, value in replacements.items():
+            name = name.replace(key, value)
+
+        return name   
+
 def create_acronym(word):
     word_clean = word.strip().lower()  # Clean the word and lowercase
 
@@ -64,21 +84,22 @@ def count_word_frequency(file_paths):
             words = re.findall(r'name="([A-Z][a-zA-Z0-9]*)"', text)
             res = []
 
-            for word in words:
-                split_words = re.split(r'([A-Z][a-z0-9]*)', word)
-                split_words = [w for w in split_words if len(w) >= 3]
-                res += split_words
+            # for word in words:
+            #     split_words = re.split(r'([A-Z][a-z0-9]*)', short_name(word))
+            #     split_words = [w for w in split_words if len(w) >= 3]
+            #     res += split_words
             
-            overall_word_count.update(res)
-
+            overall_word_count.update(short_name(word) for word in words)
+ 
         except FileNotFoundError:
             print(f"Error: The file at {file_path} was not found.")
         except Exception as e:
             print(f"An error occurred while processing {file_path}: {e}")
 
-    print("Overall Word Frequencies:")
-    # for word, count in overall_word_count.most_common():
-    #     print(f"{word}: {create_acronym(word)}")
+    with open('util/wordfrequency.txt', 'w', encoding='utf-8') as output_file:
+        output_file.write("Overall Word Frequencies:\n")
+        for word in sorted(overall_word_count):
+            output_file.write(f"{word}: {overall_word_count[word]}\n")
 
 # Example usage
 if __name__ == "__main__":

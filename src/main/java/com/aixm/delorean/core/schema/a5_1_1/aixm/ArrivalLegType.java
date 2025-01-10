@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "arrivallegtype", schema = "public")
+@Table(name = "arrivallegtype", schema = "procedure")
 public class ArrivalLegType
     extends AbstractSegmentLegType
 {

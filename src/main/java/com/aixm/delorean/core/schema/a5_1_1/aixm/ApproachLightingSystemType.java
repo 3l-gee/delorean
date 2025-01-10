@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "approachlightingsystemtype", schema = "public")
+@Table(name = "approachlightingsystemtype", schema = "lighting")
 public class ApproachLightingSystemType
     extends AbstractGroundLightSystemType
 {

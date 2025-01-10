@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspacelayertype", schema = "public")
+@Table(name = "airspacelayertype", schema = "airspace_layer")
 public class AirspaceLayerType
     extends AbstractAIXMObjectType
 {
@@ -124,7 +124,7 @@ public class AirspaceLayerType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacelayerpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "airspacelayer_pg_annotation", joinColumns = {
         @JoinColumn(name = "airspacelayerpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

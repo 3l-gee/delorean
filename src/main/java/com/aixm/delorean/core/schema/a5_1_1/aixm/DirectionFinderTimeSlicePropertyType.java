@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "directionFinderTimeSlice"
 })
 @Entity
-@Table(name = "directionfindertimeslicepropertytype", schema = "public")
+@Table(name = "directionfindertimeslicepropertytype", schema = "navaids")
 public class DirectionFinderTimeSlicePropertyType {
 
     @XmlElement(name = "DirectionFinderTimeSlice", required = true)

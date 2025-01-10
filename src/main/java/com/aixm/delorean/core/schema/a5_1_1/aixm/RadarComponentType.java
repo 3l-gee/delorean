@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radarcomponenttype", schema = "public")
+@Table(name = "radarcomponenttype", schema = "surveillance")
 public class RadarComponentType
     extends AbstractAIXMObjectType
 {
@@ -84,7 +84,7 @@ public class RadarComponentType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarcomponentpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "radarcomponent_pg_annotation", joinColumns = {
         @JoinColumn(name = "radarcomponentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

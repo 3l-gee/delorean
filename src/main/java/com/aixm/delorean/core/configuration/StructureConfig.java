@@ -2,18 +2,13 @@ package com.aixm.delorean.core.configuration;
 
 
 public enum StructureConfig {
-    HOUSE(
-        "house", 
-        "com.aixm.delorean.core.schema.house.House"
-        ),
-
+    AIXM_5_1(
+        "a5_1", 
+        "com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType"
+    ),
     AIXM_5_1_1(
         "a5_1_1", 
         "com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType"
-        ),
-    SCHOOL(
-        "school",
-        "com.aixm.delorean.core.schema.school.School"
     );
 
     private final String version;

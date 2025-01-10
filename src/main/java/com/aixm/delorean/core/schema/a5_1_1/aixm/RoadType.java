@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "roadtype", schema = "public")
+@Table(name = "roadtype", schema = "apron")
 public class RoadType
     extends AbstractAIXMFeatureType
 {

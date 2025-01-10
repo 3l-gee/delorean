@@ -9,12 +9,12 @@ package com.aixm.delorean.core.schema.a5_1_1.aixm.message;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.adapter.feature.AbstractFeatureAdapter;
+import com.aixm.delorean.core.adapter.a5_1_1.feature.AbstractFeatureAdapter;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractFeatureMemberType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.ActuateType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.ShowType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.TypeType;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractFeatureMemberType;
-import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ActuateType;
-import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.ShowType;
-import com.aixm.delorean.core.schema.a5_1_1.org.w3.xlink.TypeType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

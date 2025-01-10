@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "nonmovementareatimeslicetype", schema = "public")
+@Table(name = "nonmovementareatimeslicetype", schema = "airport_heliport")
 public class NonMovementAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -85,7 +85,7 @@ public class NonMovementAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "nonmovementareapropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "nonmovementarea_pg_annotation", joinColumns = {
         @JoinColumn(name = "nonmovementareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "touchdownliftofftype", schema = "public")
+@Table(name = "touchdownliftofftype", schema = "helicopter_surfaces")
 public class TouchDownLiftOffType
     extends AbstractAIXMFeatureType
 {

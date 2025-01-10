@@ -83,7 +83,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airportsuppliesservicetimeslicetype", schema = "public")
+@Table(name = "airportsuppliesservicetimeslicetype", schema = "service")
 public class AirportSuppliesServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -132,8 +132,8 @@ public class AirportSuppliesServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservicetimeslicetype_call-sign", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_call-sign", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "callsigndetailpropertytype_id")
     })
@@ -142,8 +142,8 @@ public class AirportSuppliesServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "sairportsuppliesservicetimeslicetype_radiocommunication", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_radiocommunication", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "radiocommunicationchannelpropertytype_id")
     })
@@ -152,8 +152,8 @@ public class AirportSuppliesServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservicetimeslicetype_groundcommunication", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_groundcommunication", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
     })
@@ -162,8 +162,8 @@ public class AirportSuppliesServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservicetimeslicetype_availability", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_availability", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "serviceoperationalstatuspropertytype_id")
     })
@@ -172,8 +172,8 @@ public class AirportSuppliesServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservicetimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_annotation", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -182,8 +182,8 @@ public class AirportSuppliesServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aairportsuppliesservicetimeslicetype_airportheliport", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    @JoinTable(name = "airportgroundservice_pg_airportheliport", joinColumns = {
+        @JoinColumn(name = "airportgroundservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportpropertytype_id")
     })
@@ -192,8 +192,8 @@ public class AirportSuppliesServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservicetimeslicetype_fuelsupply", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    @JoinTable(name = "airportsuppliesservice_pg_fuelsupply", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "fuelpropertytype_id")
     })
@@ -202,8 +202,8 @@ public class AirportSuppliesServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservicetimeslicetype_oilsupply", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    @JoinTable(name = "airportsuppliesservice_pg_oilsupply", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "oilpropertytype_id")
     })
@@ -212,8 +212,8 @@ public class AirportSuppliesServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservicetimeslicetype_nitrogensupply", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    @JoinTable(name = "airportsuppliesservice_pg_nitrogensupply", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "nitrogenpropertytype_id")
     })
@@ -222,8 +222,8 @@ public class AirportSuppliesServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservicetimeslicetype_oxygensupply", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservicetimeslicetype_id")
+    @JoinTable(name = "airportsuppliesservice_pg_oxygensupply", joinColumns = {
+        @JoinColumn(name = "airportsuppliesservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "oxygenpropertytype_id")
     })

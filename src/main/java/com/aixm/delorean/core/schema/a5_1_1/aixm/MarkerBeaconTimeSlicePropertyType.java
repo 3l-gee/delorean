@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "markerBeaconTimeSlice"
 })
 @Entity
-@Table(name = "markerbeacontimeslicepropertytype", schema = "public")
+@Table(name = "markerbeacontimeslicepropertytype", schema = "navaids")
 public class MarkerBeaconTimeSlicePropertyType {
 
     @XmlElement(name = "MarkerBeaconTimeSlice", required = true)

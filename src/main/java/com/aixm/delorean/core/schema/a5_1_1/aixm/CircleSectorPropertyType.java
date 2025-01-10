@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "circleSector"
 })
 @Entity
-@Table(name = "circlesectorpropertytype", schema = "public")
+@Table(name = "circlesectorpropertytype", schema = "circle_sector")
 public class CircleSectorPropertyType
     extends AbstractAIXMPropertyType
 {

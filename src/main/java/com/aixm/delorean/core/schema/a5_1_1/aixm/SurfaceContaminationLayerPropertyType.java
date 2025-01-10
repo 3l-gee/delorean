@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "surfaceContaminationLayer"
 })
 @Entity
-@Table(name = "surfacecontaminationlayerpropertytype", schema = "public")
+@Table(name = "surfacecontaminationlayerpropertytype", schema = "surface_contamination")
 public class SurfaceContaminationLayerPropertyType
     extends AbstractAIXMPropertyType
 {

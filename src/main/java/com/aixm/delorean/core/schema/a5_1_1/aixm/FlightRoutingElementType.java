@@ -84,7 +84,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightroutingelementtype", schema = "public")
+@Table(name = "flightroutingelementtype", schema = "flight_restrictions")
 public class FlightRoutingElementType
     extends AbstractAIXMObjectType
 {
@@ -122,7 +122,7 @@ public class FlightRoutingElementType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightroutingelementpropertygroup_flightlevel", joinColumns = {
+    @JoinTable(name = "flightroutingelement_pg_flightlevel", joinColumns = {
         @JoinColumn(name = "flightroutingelementpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "flightrestrictionlevelpropertytype_id")
@@ -210,7 +210,7 @@ public class FlightRoutingElementType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightroutingelementpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "flightroutingelement_pg_annotation", joinColumns = {
         @JoinColumn(name = "flightroutingelementpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

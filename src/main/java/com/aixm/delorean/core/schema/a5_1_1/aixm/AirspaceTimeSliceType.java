@@ -77,7 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspacetimeslicetype", schema = "public")
+@Table(name = "airspacetimeslicetype", schema = "airspace")
 public class AirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -136,7 +136,7 @@ public class AirspaceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacepropertygroup_class", joinColumns = {
+    @JoinTable(name = "airspace_pg_class", joinColumns = {
         @JoinColumn(name = "airspacepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayerclasspropertytype_id")
@@ -152,7 +152,7 @@ public class AirspaceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacepropertygroup_geometrycomponent", joinColumns = {
+    @JoinTable(name = "airspace_pg_geometrycomponent", joinColumns = {
         @JoinColumn(name = "airspacepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacegeometrycomponentpropertytype_id")
@@ -162,7 +162,7 @@ public class AirspaceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacepropertygroup_activation", joinColumns = {
+    @JoinTable(name = "airspace_pg_activation", joinColumns = {
         @JoinColumn(name = "airspacepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspaceactivationpropertytype_id")
@@ -172,7 +172,7 @@ public class AirspaceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "airspace_pg_annotation", joinColumns = {
         @JoinColumn(name = "airspacepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

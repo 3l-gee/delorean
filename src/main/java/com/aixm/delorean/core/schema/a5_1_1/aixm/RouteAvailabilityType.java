@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "routeavailabilitytype", schema = "public")
+@Table(name = "routeavailabilitytype", schema = "en_route")
 public class RouteAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
@@ -83,8 +83,8 @@ public class RouteAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routeavailabilitytype_timeinterval", joinColumns = {
-        @JoinColumn(name = "routeavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -93,8 +93,8 @@ public class RouteAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routeavailabilitytype_annotation", joinColumns = {
-        @JoinColumn(name = "routeavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -103,8 +103,8 @@ public class RouteAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routeavailabilitytype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "routeavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })
@@ -134,8 +134,8 @@ public class RouteAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routeavailabilitytype_levels", joinColumns = {
-        @JoinColumn(name = "routeavailabilitytype_id")
+    @JoinTable(name = "routeavailability_pg_levels", joinColumns = {
+        @JoinColumn(name = "routeavailabilitypropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayerpropertytype_id")
     })

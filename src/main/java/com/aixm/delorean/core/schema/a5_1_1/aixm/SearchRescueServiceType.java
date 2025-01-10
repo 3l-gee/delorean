@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "searchrescueservicetype", schema = "public")
+@Table(name = "searchrescueservicetype", schema = "service")
 public class SearchRescueServiceType
     extends AbstractServiceType
 {

@@ -76,7 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "distanceindicationtimeslicetype", schema = "public")
+@Table(name = "distanceindicationtimeslicetype", schema = "point_reference")
 public class DistanceIndicationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -150,7 +150,7 @@ public class DistanceIndicationTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "distanceindicationpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "distanceindication_pg_annotation", joinColumns = {
         @JoinColumn(name = "distanceindicationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

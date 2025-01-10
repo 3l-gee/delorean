@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "standardinstrumentdeparturetype", schema = "public")
+@Table(name = "standardinstrumentdeparturetype", schema = "departure")
 public class StandardInstrumentDepartureType
     extends AbstractProcedureType
 {

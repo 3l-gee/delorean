@@ -82,7 +82,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "sdftimeslicetype", schema = "public")
+@Table(name = "sdftimeslicetype", schema = "navaids")
 public class SDFTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -153,8 +153,8 @@ public class SDFTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "sdftimeslicetype_authority", joinColumns = {
-        @JoinColumn(name = "sdftimeslicetype_id")
+    @JoinTable(name = "navaidequipment_pg_authority", joinColumns = {
+        @JoinColumn(name = "navaidequipmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "authorityfornavaidequipmentpropertytype_id")
     })
@@ -163,8 +163,8 @@ public class SDFTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "sdftimeslicetype_monitoring", joinColumns = {
-        @JoinColumn(name = "sdftimeslicetype_id")
+    @JoinTable(name = "navaidequipment_pg_monitoring", joinColumns = {
+        @JoinColumn(name = "navaidequipmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "navaidequipmentmonitoringpropertytype_id")
     })
@@ -173,8 +173,8 @@ public class SDFTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "sdftimeslicetype_availability", joinColumns = {
-        @JoinColumn(name = "sdftimeslicetype_id")
+    @JoinTable(name = "navaidequipment_pg_availability", joinColumns = {
+        @JoinColumn(name = "navaidequipmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "navaidoperationalstatuspropertytype_id")
     })
@@ -183,8 +183,8 @@ public class SDFTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "sdftimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "sdftimeslicetype_id")
+    @JoinTable(name = "navaidequipment_pg_annotation", joinColumns = {
+        @JoinColumn(name = "navaidequipmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "secondarySurveillanceRadarTimeSlice"
 })
 @Entity
-@Table(name = "secondarysurveillanceradartimeslicepropertytype", schema = "public")
+@Table(name = "secondarysurveillanceradartimeslicepropertytype", schema = "surveillance")
 public class SecondarySurveillanceRadarTimeSlicePropertyType {
 
     @XmlElement(name = "SecondarySurveillanceRadarTimeSlice", required = true)

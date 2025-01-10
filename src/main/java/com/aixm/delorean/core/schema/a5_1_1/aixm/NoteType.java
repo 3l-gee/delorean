@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "notetype", schema = "public")
+@Table(name = "notetype", schema = "notes")
 public class NoteType
     extends AbstractAIXMObjectType
 {
@@ -91,7 +91,7 @@ public class NoteType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "notepropertygroup_translatednote", joinColumns = {
+    @JoinTable(name = "note_pg_translatednote", joinColumns = {
         @JoinColumn(name = "notepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "linguisticnotepropertytype_id")

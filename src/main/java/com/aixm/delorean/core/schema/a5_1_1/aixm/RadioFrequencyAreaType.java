@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "radiofrequencyareatype", schema = "public")
+@Table(name = "radiofrequencyareatype", schema = "radio_frequency_limitation")
 public class RadioFrequencyAreaType
     extends AbstractAIXMFeatureType
 {

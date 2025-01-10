@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "passengerServiceTimeSlice"
 })
 @Entity
-@Table(name = "passengerservicetimeslicepropertytype", schema = "public")
+@Table(name = "passengerservicetimeslicepropertytype", schema = "service")
 public class PassengerServiceTimeSlicePropertyType {
 
     @XmlElement(name = "PassengerServiceTimeSlice", required = true)

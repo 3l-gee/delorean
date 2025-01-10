@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "onlinecontacttype", schema = "public")
+@Table(name = "onlinecontacttype", schema = "address")
 public class OnlineContactType
     extends AbstractPropertiesWithScheduleType
 {
@@ -83,8 +83,8 @@ public class OnlineContactType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "onlinecontacttype_timeinterval", joinColumns = {
-        @JoinColumn(name = "onlinecontacttype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -93,8 +93,8 @@ public class OnlineContactType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "onlinecontacttype_annotation", joinColumns = {
-        @JoinColumn(name = "onlinecontacttype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -103,8 +103,8 @@ public class OnlineContactType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "onlinecontacttype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "onlinecontacttype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })

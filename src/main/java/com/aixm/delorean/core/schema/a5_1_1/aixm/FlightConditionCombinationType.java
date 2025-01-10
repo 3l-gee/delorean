@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightconditioncombinationtype", schema = "public")
+@Table(name = "flightconditioncombinationtype", schema = "flight_restrictions")
 public class FlightConditionCombinationType
     extends AbstractPropertiesWithScheduleType
 {
@@ -81,8 +81,8 @@ public class FlightConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightconditioncombinationtype_timeinterval", joinColumns = {
-        @JoinColumn(name = "flightconditioncombinationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -91,8 +91,8 @@ public class FlightConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightconditioncombinationtypep_annotation", joinColumns = {
-        @JoinColumn(name = "flightconditioncombinationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -101,8 +101,8 @@ public class FlightConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightconditioncombinationtype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "flightconditioncombinationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })
@@ -118,8 +118,8 @@ public class FlightConditionCombinationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightconditioncombinationtype_element", joinColumns = {
-        @JoinColumn(name = "flightconditioncombinationtype_id")
+    @JoinTable(name = "flightconditioncombination_pg_element", joinColumns = {
+        @JoinColumn(name = "flightconditioncombinationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "flightconditionelementpropertytype_id")
     })

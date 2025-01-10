@@ -88,7 +88,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "informationservicetimeslicetype", schema = "public")
+@Table(name = "informationservicetimeslicetype", schema = "service")
 public class InformationServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -137,8 +137,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_call-sign", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_call-sign", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "callsigndetailpropertytype_id")
     })
@@ -147,8 +147,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_radiocommunication", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_radiocommunication", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "radiocommunicationchannelpropertytype_id")
     })
@@ -157,8 +157,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_groundcommunication", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_groundcommunication", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
     })
@@ -167,8 +167,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_availability", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_availability", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "serviceoperationalstatuspropertytype_id")
     })
@@ -177,8 +177,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_annotation", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -215,8 +215,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_navaidbroadcast", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "informationservice_pg_navaidbroadcast", joinColumns = {
+        @JoinColumn(name = "informationservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "vorpropertytype_id")
     })
@@ -225,8 +225,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_clientairspace", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "informationservice_pg_clientairspace", joinColumns = {
+        @JoinColumn(name = "informationservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacepropertytype_id")
     })
@@ -235,8 +235,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_clientairport", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "informationservice_pg_clientairport", joinColumns = {
+        @JoinColumn(name = "informationservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportpropertytype_id")
     })
@@ -245,8 +245,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_clientroute", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "informationservice_pg_clientroute", joinColumns = {
+        @JoinColumn(name = "informationservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "routeportionpropertytype_id")
     })
@@ -255,8 +255,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_clientprocedure", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "informationservice_pg_clientprocedure", joinColumns = {
+        @JoinColumn(name = "informationservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "procedurepropertytype_id")
     })
@@ -265,8 +265,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_clientholding", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetypep_id")
+    @JoinTable(name = "informationservice_pg_clientholding", joinColumns = {
+        @JoinColumn(name = "informationservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "holdingpatternpropertytype_id")
     })
@@ -275,8 +275,8 @@ public class InformationServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetimeslicetype_clientaerialrefuelling", joinColumns = {
-        @JoinColumn(name = "informationservicetimeslicetype_id")
+    @JoinTable(name = "informationservice_pg_clientaerialrefuelling", joinColumns = {
+        @JoinColumn(name = "informationservicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aerialrefuellingpropertytype_id")
     })

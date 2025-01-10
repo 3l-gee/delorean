@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "airporthotspottype", schema = "public")
+@Table(name = "airporthotspottype", schema = "airport_heliport")
 public class AirportHotSpotType
     extends AbstractAIXMFeatureType
 {

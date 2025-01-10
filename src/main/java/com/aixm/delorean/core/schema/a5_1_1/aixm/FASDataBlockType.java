@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "fasdatablocktype", schema = "public")
+@Table(name = "fasdatablocktype", schema = "segment_leg")
 public class FASDataBlockType
     extends AbstractAIXMObjectType
 {
@@ -173,7 +173,7 @@ public class FASDataBlockType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "fasdatablockpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "fasdatablock_pg_annotation", joinColumns = {
         @JoinColumn(name = "fasdatablockpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

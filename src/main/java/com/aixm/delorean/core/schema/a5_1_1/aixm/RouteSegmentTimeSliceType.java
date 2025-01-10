@@ -96,7 +96,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "routesegmenttimeslicetype", schema = "public")
+@Table(name = "routesegmenttimeslicetype", schema = "en_route")
 public class RouteSegmentTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -312,7 +312,7 @@ public class RouteSegmentTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routesegmentpropertygroup_availability", joinColumns = {
+    @JoinTable(name = "routesegment_pg_availability", joinColumns = {
         @JoinColumn(name = "routesegmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "routeavailabilitypropertytype_id")
@@ -322,7 +322,7 @@ public class RouteSegmentTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routesegmentpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "routesegment_pg_annotation", joinColumns = {
         @JoinColumn(name = "routesegmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

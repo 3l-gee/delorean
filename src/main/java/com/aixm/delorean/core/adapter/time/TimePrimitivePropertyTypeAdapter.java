@@ -2,7 +2,7 @@ package com.aixm.delorean.core.adapter.time;
 
 import com.aixm.delorean.core.adapter.type.time.AixmTimeSliceType;
 import com.aixm.delorean.core.helper.time.TimeSliceHelper;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePrimitivePropertyType;
+import com.aixm.delorean.core.org.gml.v_3_2.TimePrimitivePropertyType;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 

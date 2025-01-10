@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "radarComponent"
 })
 @Entity
-@Table(name = "radarcomponentpropertytype", schema = "public")
+@Table(name = "radarcomponentpropertytype", schema = "surveillance")
 public class RadarComponentPropertyType
     extends AbstractAIXMPropertyType
 {

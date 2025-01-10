@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navigationarearestrictiontimeslicetype", schema = "public")
+@Table(name = "navigationarearestrictiontimeslicetype", schema = "procedure")
 public class NavigationAreaRestrictionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -86,7 +86,7 @@ public class NavigationAreaRestrictionTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarearestrictionpropertygroup_procedure", joinColumns = {
+    @JoinTable(name = "navigationarearestriction_pg_procedure", joinColumns = {
         @JoinColumn(name = "navigationarearestrictionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "procedurepropertytype_id")
@@ -108,7 +108,7 @@ public class NavigationAreaRestrictionTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarearestrictionpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "navigationarearestriction_pg_annotation", joinColumns = {
         @JoinColumn(name = "navigationarearestrictionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

@@ -83,7 +83,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "groundtrafficcontrolservicetimeslicetype", schema = "public")
+@Table(name = "groundtrafficcontrolservicetimeslicetype", schema = "service")
 public class GroundTrafficControlServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -132,8 +132,8 @@ public class GroundTrafficControlServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundtrafficcontrolservicetimeslicetype_call-sign", joinColumns = {
-        @JoinColumn(name = "groundtrafficcontrolservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_call-sign", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "callsigndetailpropertytype_id")
     })
@@ -142,8 +142,8 @@ public class GroundTrafficControlServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundtrafficcontrolservicetimeslicetype_radiocommunication", joinColumns = {
-        @JoinColumn(name = "groundtrafficcontrolservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_radiocommunication", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "radiocommunicationchannelpropertytype_id")
     })
@@ -152,8 +152,8 @@ public class GroundTrafficControlServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundtrafficcontrolservicetimeslicetype_groundcommunication", joinColumns = {
-        @JoinColumn(name = "groundtrafficcontrolservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_groundcommunication", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
     })
@@ -162,8 +162,8 @@ public class GroundTrafficControlServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundtrafficcontrolservicetimeslicetype_availability", joinColumns = {
-        @JoinColumn(name = "groundtrafficcontrolservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_availability", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "serviceoperationalstatuspropertytype_id")
     })
@@ -172,8 +172,8 @@ public class GroundTrafficControlServiceTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundtrafficcontrolservicetimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "groundtrafficcontrolservicetimeslicetype_id")
+    @JoinTable(name = "service_pg_annotation", joinColumns = {
+        @JoinColumn(name = "servicepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

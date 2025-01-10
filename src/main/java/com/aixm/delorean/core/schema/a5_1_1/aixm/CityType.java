@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "citytype", schema = "public")
+@Table(name = "citytype", schema = "airport_heliport")
 public class CityType
     extends AbstractAIXMObjectType
 {
@@ -83,7 +83,7 @@ public class CityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "citypropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "city_pg_annotation", joinColumns = {
         @JoinColumn(name = "citypropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

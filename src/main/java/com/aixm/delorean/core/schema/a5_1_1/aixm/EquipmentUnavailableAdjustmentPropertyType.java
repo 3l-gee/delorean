@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "equipmentUnavailableAdjustment"
 })
 @Entity
-@Table(name = "equipmentunavailableadjustmentpropertytype", schema = "public")
+@Table(name = "equipmentunavailableadjustmentpropertytype", schema = "minima")
 public class EquipmentUnavailableAdjustmentPropertyType
     extends AbstractAIXMPropertyType
 {

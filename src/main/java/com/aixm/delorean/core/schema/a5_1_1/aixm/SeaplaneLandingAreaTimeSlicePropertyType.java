@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "seaplaneLandingAreaTimeSlice"
 })
 @Entity
-@Table(name = "seaplanelandingareatimeslicepropertytype", schema = "public")
+@Table(name = "seaplanelandingareatimeslicepropertytype", schema = "seaplanes")
 public class SeaplaneLandingAreaTimeSlicePropertyType {
 
     @XmlElement(name = "SeaplaneLandingAreaTimeSlice", required = true)

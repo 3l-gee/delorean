@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radarsystemtimeslicetype", schema = "public")
+@Table(name = "radarsystemtimeslicetype", schema = "surveillance")
 public class RadarSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -112,7 +112,7 @@ public class RadarSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystempropertygroup_radarequipment", joinColumns = {
+    @JoinTable(name = "radarsystem_pg_radarequipment", joinColumns = {
         @JoinColumn(name = "radarsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "radarcomponentpropertytype_id")
@@ -122,7 +122,7 @@ public class RadarSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystempropertygroup_office", joinColumns = {
+    @JoinTable(name = "radarsystem_pg_office", joinColumns = {
         @JoinColumn(name = "radarsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
@@ -138,7 +138,7 @@ public class RadarSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystempropertygroup_parrunway", joinColumns = {
+    @JoinTable(name = "radarsystem_pg_parrunway", joinColumns = {
         @JoinColumn(name = "radarsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runwaypropertytype_id")
@@ -154,7 +154,7 @@ public class RadarSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystempropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "radarsystem_pg_annotation", joinColumns = {
         @JoinColumn(name = "radarsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

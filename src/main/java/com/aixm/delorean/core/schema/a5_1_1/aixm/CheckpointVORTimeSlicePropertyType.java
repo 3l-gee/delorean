@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "checkpointVORTimeSlice"
 })
 @Entity
-@Table(name = "checkpointvortimeslicepropertytype", schema = "public")
+@Table(name = "checkpointvortimeslicepropertytype", schema = "navaids")
 public class CheckpointVORTimeSlicePropertyType {
 
     @XmlElement(name = "CheckpointVORTimeSlice", required = true)

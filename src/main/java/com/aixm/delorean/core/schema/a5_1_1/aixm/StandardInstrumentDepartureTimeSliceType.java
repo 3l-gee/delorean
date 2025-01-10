@@ -85,7 +85,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standardinstrumentdeparturetimeslicetype", schema = "public")
+@Table(name = "standardinstrumentdeparturetimeslicetype", schema = "departure")
 public class StandardInstrumentDepartureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -143,7 +143,7 @@ public class StandardInstrumentDepartureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedurepropertygroup_availability", joinColumns = {
+    @JoinTable(name = "procedure_pg_availability", joinColumns = {
         @JoinColumn(name = "procedurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "procedureavailabilitypropertytype_id")
@@ -153,7 +153,7 @@ public class StandardInstrumentDepartureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedurepropertygroup_airportheliport", joinColumns = {
+    @JoinTable(name = "procedure_pg_airportheliport", joinColumns = {
         @JoinColumn(name = "procedurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportpropertytype_id")
@@ -163,7 +163,7 @@ public class StandardInstrumentDepartureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedurepropertygroup_aircraftcharacteristic", joinColumns = {
+    @JoinTable(name = "procedure_pg_aircraftcharacteristic", joinColumns = {
         @JoinColumn(name = "procedurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
@@ -173,7 +173,7 @@ public class StandardInstrumentDepartureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedurepropertygroup_flighttransition", joinColumns = {
+    @JoinTable(name = "procedure_pg_flighttransition", joinColumns = {
         @JoinColumn(name = "procedurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "proceduretransitionpropertytype_id")
@@ -201,7 +201,7 @@ public class StandardInstrumentDepartureTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedurepropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "procedure_pg_annotation", joinColumns = {
         @JoinColumn(name = "procedurepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

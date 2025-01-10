@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "routedmetype", schema = "public")
+@Table(name = "routedmetype", schema = "en_route")
 public class RouteDMEType
     extends AbstractAIXMFeatureType
 {

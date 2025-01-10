@@ -1,16 +1,16 @@
 package com.aixm.delorean.core.helper.time;
 
 import com.aixm.delorean.core.adapter.type.time.AixmTimeSliceType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractTimeGeometricPrimitiveType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractTimePrimitiveType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.AbstractTimeTopologyPrimitiveType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimeEdgeType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimeInstantType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimeNodeType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePeriodType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePositionType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePrimitivePropertyType;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimeIndeterminateValueType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractTimeGeometricPrimitiveType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractTimePrimitiveType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractTimeTopologyPrimitiveType;
+import com.aixm.delorean.core.org.gml.v_3_2.TimeEdgeType;
+import com.aixm.delorean.core.org.gml.v_3_2.TimeInstantType;
+import com.aixm.delorean.core.org.gml.v_3_2.TimeNodeType;
+import com.aixm.delorean.core.org.gml.v_3_2.TimePeriodType;
+import com.aixm.delorean.core.org.gml.v_3_2.TimePositionType;
+import com.aixm.delorean.core.org.gml.v_3_2.TimePrimitivePropertyType;
+import com.aixm.delorean.core.org.gml.v_3_2.TimeIndeterminateValueType;
 
 import jakarta.xml.bind.JAXBElement;
 

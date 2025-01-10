@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radiocommunicationchanneltimeslicetype", schema = "public")
+@Table(name = "radiocommunicationchanneltimeslicetype", schema = "service")
 public class RadioCommunicationChannelTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -159,7 +159,7 @@ public class RadioCommunicationChannelTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiocommunicationchannelpropertygroup_location", joinColumns = {
+    @JoinTable(name = "radiocommunicationchannel_pg_location", joinColumns = {
         @JoinColumn(name = "radiocommunicationchannelpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "elevatedpointpropertytype_id")
@@ -169,7 +169,7 @@ public class RadioCommunicationChannelTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiocommunicationchannelpropertygroup_availability", joinColumns = {
+    @JoinTable(name = "radiocommunicationchannel_pg_availability", joinColumns = {
         @JoinColumn(name = "radiocommunicationchannelpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "radiocommunicationoperationalstatuspropertytype_id")
@@ -179,7 +179,7 @@ public class RadioCommunicationChannelTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiocommunicationchannelpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "radiocommunicationchannel_pg_annotation", joinColumns = {
         @JoinColumn(name = "radiocommunicationchannelpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

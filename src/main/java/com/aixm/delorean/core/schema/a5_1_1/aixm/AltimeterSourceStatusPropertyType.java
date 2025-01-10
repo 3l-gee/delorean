@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "altimeterSourceStatus"
 })
 @Entity
-@Table(name = "altimetersourcestatuspropertytype", schema = "public")
+@Table(name = "altimetersourcestatuspropertytype", schema = "airport_heliport")
 public class AltimeterSourceStatusPropertyType
     extends AbstractAIXMPropertyType
 {

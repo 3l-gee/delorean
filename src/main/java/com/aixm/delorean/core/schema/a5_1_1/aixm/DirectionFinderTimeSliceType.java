@@ -81,7 +81,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "directionfindertimeslicetype", schema = "public")
+@Table(name = "directionfindertimeslicetype", schema = "navaids")
 public class DirectionFinderTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -152,8 +152,8 @@ public class DirectionFinderTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfindertimeslicetype_authority", joinColumns = {
-        @JoinColumn(name = "directionfindertimeslicetype_id")
+    @JoinTable(name = "navaidequipment_pg_authority", joinColumns = {
+        @JoinColumn(name = "navaidequipmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "authorityfornavaidequipmentpropertytype_id")
     })
@@ -162,8 +162,8 @@ public class DirectionFinderTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfindertimeslicetype_monitoring", joinColumns = {
-        @JoinColumn(name = "directionfindertimeslicetype_id")
+    @JoinTable(name = "navaidequipment_pg_monitoring", joinColumns = {
+        @JoinColumn(name = "navaidequipmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "navaidequipmentmonitoringpropertytype_id")
     })
@@ -172,8 +172,8 @@ public class DirectionFinderTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfindertimeslicetype_availability", joinColumns = {
-        @JoinColumn(name = "directionfindertimeslicetype_id")
+    @JoinTable(name = "navaidequipment_pg_availability", joinColumns = {
+        @JoinColumn(name = "navaidequipmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "navaidoperationalstatuspropertytype_id")
     })
@@ -182,8 +182,8 @@ public class DirectionFinderTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfindertimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "directionfindertimeslicetype_id")
+    @JoinTable(name = "navaidequipment_pg_annotation", joinColumns = {
+        @JoinColumn(name = "navaidequipmentpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -199,8 +199,8 @@ public class DirectionFinderTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfindertimeslicetype_informationprovision", joinColumns = {
-        @JoinColumn(name = "directionfindertimeslicetype_id")
+    @JoinTable(name = "directionfinder_pg_informationprovision", joinColumns = {
+        @JoinColumn(name = "directionfinderpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "informationservicepropertytype_id")
     })

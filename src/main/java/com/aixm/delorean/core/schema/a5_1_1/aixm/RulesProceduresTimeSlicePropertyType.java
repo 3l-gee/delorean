@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "rulesProceduresTimeSlice"
 })
 @Entity
-@Table(name = "rulesprocedurestimeslicepropertytype", schema = "public")
+@Table(name = "rulesprocedurestimeslicepropertytype", schema = "rules_procedures")
 public class RulesProceduresTimeSlicePropertyType {
 
     @XmlElement(name = "RulesProceduresTimeSlice", required = true)

@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "pilotcontrolledlightingtype", schema = "public")
+@Table(name = "pilotcontrolledlightingtype", schema = "service")
 public class PilotControlledLightingType
     extends AbstractAIXMFeatureType
 {

@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "specialnavigationstationstatustype", schema = "public")
+@Table(name = "specialnavigationstationstatustype", schema = "navaids")
 public class SpecialNavigationStationStatusType
     extends AbstractPropertiesWithScheduleType
 {
@@ -80,8 +80,8 @@ public class SpecialNavigationStationStatusType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pspecialnavigationstationstatustype_timeinterval", joinColumns = {
-        @JoinColumn(name = "specialnavigationstationstatustype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -90,8 +90,8 @@ public class SpecialNavigationStationStatusType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialnavigationstationstatustypep_annotation", joinColumns = {
-        @JoinColumn(name = "specialnavigationstationstatustype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -100,8 +100,8 @@ public class SpecialNavigationStationStatusType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialnavigationstationstatustype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "specialnavigationstationstatustype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })

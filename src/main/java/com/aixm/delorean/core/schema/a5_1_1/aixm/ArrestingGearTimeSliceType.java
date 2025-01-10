@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "arrestinggeartimeslicetype", schema = "public")
+@Table(name = "arrestinggeartimeslicetype", schema = "runway")
 public class ArrestingGearTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -139,7 +139,7 @@ public class ArrestingGearTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "arrestinggearpropertygroup_runwaydirection", joinColumns = {
+    @JoinTable(name = "arrestinggear_pg_runwaydirection", joinColumns = {
         @JoinColumn(name = "arrestinggearpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runwaydirectionpropertytype_id")
@@ -173,7 +173,7 @@ public class ArrestingGearTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "arrestinggearpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "arrestinggear_pg_annotation", joinColumns = {
         @JoinColumn(name = "arrestinggearpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

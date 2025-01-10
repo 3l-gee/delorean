@@ -66,7 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navigationareasectortype", schema = "public")
+@Table(name = "navigationareasectortype", schema = "departure")
 public class NavigationAreaSectorType
     extends AbstractAIXMObjectType
 {
@@ -81,7 +81,7 @@ public class NavigationAreaSectorType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationareasectorpropertygroup_significantobstacle", joinColumns = {
+    @JoinTable(name = "navigationareasector_pg_significantobstacle", joinColumns = {
         @JoinColumn(name = "navigationareasectorpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstructionpropertytype_id")
@@ -97,7 +97,7 @@ public class NavigationAreaSectorType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationareasectorpropertygroup_sectorcriteria", joinColumns = {
+    @JoinTable(name = "navigationareasector_pg_sectorcriteria", joinColumns = {
         @JoinColumn(name = "navigationareasectorpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "sectordesignpropertytype_id")
@@ -107,7 +107,7 @@ public class NavigationAreaSectorType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationareasectorpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "navigationareasector_pg_annotation", joinColumns = {
         @JoinColumn(name = "navigationareasectorpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

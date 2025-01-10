@@ -1,4 +1,5 @@
-import Machinery
+from machinery import Machinery
+from annotation import Tag, Strategy
 
 # Snowflake : 
 # segmentpointpropertygroup_facilitymakeup (3)
@@ -18,151 +19,507 @@ debug = {
 schema = {
     "Aerial Refuelling" : {
         "schema" : "aerial_refuelling",
-        "list" : [],
+        "list" : [
+            "AerialRefuelling",
+            "AerialRefuellingAnchor",
+            "AerialRefuellingPoint",
+            "AerialRefuellingTrack",
+            "AuthorityForAerialRefuelling",
+        ],
     },
     "Airport Heliport" : {
         "schema" : "airport_heliport",
-        "list" : [],
+        "list" : [
+            "AirportHeliport",
+            "AirportHeliportAvailability",
+            "AirportHeliportCollocation",
+            "AirportHeliportProtectionArea",
+            "AirportHeliportResponsibilityOrganisation",
+            "AirportHeliportUsage",
+            "AirportHotSpot",
+            "AltimeterSource",
+            "AltimeterSourceStatus",
+            "City",
+            "ConditionCombination",
+            "NonMovementArea",
+            "SurfaceCharacteristics",
+            "SurveyControlPoint",
+            "UsageCondition",
+            "WorkArea",
+            "WorkareaActivity",
+        ],
     },
     "Apron " : {
         "schema" : "apron",
-        "list" : [],
+        "list" : [
+            "AircraftStand",
+            "Apron",
+            "ApronAreaAvailability",
+            "ApronAreaUsage",
+            "ApronElement",
+            "DeicingArea",
+            "PassengerLoadingBridge",
+            "Road",
+        ],
     }, 
-    "TouchDownLiftOff" : {
-        "schema" : "touchdown_liftoff",
-        "list" : [],
+    "Helicopter Surfaces" : {
+        "schema" : "helicopter_surfaces",
+        "list" : [
+            "TouchDownLiftOff",
+            "TouchDownLiftOffSafeArea",
+        ],
     },
     "Lighting" : {
         "schema" : "lighting",
-        "list" : [],
+        "list" : [
+            "ApproachLightingSystem",
+            "ApronLightSystem",
+            "GroundLightSystem",
+            "GroundLightingAvailability",
+            "GuidanceLineLightSystem",
+            "LightActivation",
+            "RunwayDirectionLightSystem",
+            "RunwayProtectAreaLightSystem",
+            "TaxiHoldingPositionLightSystem",
+            "TaxiwayLightSystem",
+            "TouchDownLiftOffLightSystem",
+        ],
     },
     "Markings" : {
         "schema" : "markings",
-        "list" : [],
+        "list" : [
+            "AirportProtectionAreaMarking",
+            "ApronMarking",
+            "DeicingAreaMarking",
+            "GuidanceLineMarking",
+            "Marking",
+            "MarkingElement",
+            "MarkingExtent",
+            "RunwayMarking",
+            "StandMarking",
+            "TaxiHoldingPositionMarking",
+            "TaxiwayMarking",
+            "TouchDownLiftOffMarking",
+        ],
     },
     "Runway" : {
         "schema" : "runway",
-        "list" : [],
+        "list" : [
+            "ArrestingGear",
+            "ArrestingGearExtent",
+            "ManoeuvringAreaAvailability",
+            "ManoeuvringAreaUsage",
+            "NavaidEquipmentDistance",
+            "Runway",
+            "RunwayBlastPad",
+            "RunwayCentrelinePoint",
+            "RunwayDeclaredDistance",
+            "RunwayDeclaredDistanceValue",
+            "RunwayDirection",
+            "RunwayElement",
+            "RunwayProtectArea",
+            "RunwayVisualRange",
+            "VisualGlideSlopeIndicator",
+        ],
     },
     "Seaplanes" : {
         "schema" : "seaplanes",
-        "list" : [],
+        "list" : [
+            "FloatingDockSite",
+            "MarkingBuoy",
+            "SeaplaneLandingArea",
+            "SeaplaneRampSite",
+        ],
     },
     "Surface Contamination" : {
         "schema" : "surface_contamination",
-        "list" : [],
+        "list" : [
+            "AircraftStandContamination",
+            "AirportHeliportContamination",
+            "ApronContamination",
+            "Ridge",
+            "RunwayContamination",
+            "RunwaySectionContamination",
+            "SurfaceContamination",
+            "SurfaceContaminationLayer",
+            "TaxiwayContamination",
+            "TouchDownLiftOffContamination",
+        ],
     },
     "Taxiway" : {
         "schema" : "taxiway",
-        "list" : [],
+        "list" : [
+            "GuidanceLine",
+            "TaxiHoldingPosition",
+            "Taxiway",
+            "TaxiwayElement",
+        ],
     },
     "Airspace" : {
         "schema" : "airspace",
-        "list" : [],
+        "list" : [
+            "Airspace",
+            "AirspaceActivation",
+            "AirspaceGeometryComponent",
+            "AirspaceLayerClass",
+            "AirspaceVolume",
+            "AirspaceVolumeDependency",
+            "AuthorityForAirspace",
+            "GeoBorder",
+        ],
     },
     "Geometry" : {
         "schema" : "geometry",
-        "list" : [],
+        "list" : [
+            "Curve",
+            "ElevatedCurve",
+            "ElevatedPoint",
+            "ElevatedSurface",
+            "Point",
+            "Surface",
+        ],
     },
     "Holding" : {
         "schema" : "holding",
-        "list" : [],
+        "list" : [
+            "HoldingPattern",
+            "HoldingPatternDistance",
+            "HoldingPatternDuration",
+            "HoldingPatternLength",
+            "UnplannedHolding",
+        ],
     },
     "Guidance Service" : {
         "schema" : "guidance_service",
-        "list" : [],
+        "list" : [
+            "GuidanceService",
+            ],
     },
     "Navaids" : {
         "schema" : "navaids",
-        "list" : [],
+        "list" : [
+            "AuthorityForNavaidEquipment",
+            "AuthorityForSpecialNavigationStation",
+            "AuthorityForSpecialNavigationSystem",
+            "Azimuth",
+            "CheckpointINS",
+            "CheckpointVOR",
+            "DME",
+            "DirectionFinder",
+            "Elevation",
+            "Glidepath",
+            "Localizer",
+            "MarkerBeacon",
+            "NDB",
+            "Navaid",
+            "NavaidComponent",
+            "NavaidEquipment",
+            "NavaidEquipmentMonitoring",
+            "NavaidOperationalStatus",
+            "NavigationSystemCheckpoint",
+            "SDF",
+            "SpecialNavigationStation",
+            "SpecialNavigationStationStatus",
+            "SpecialNavigationSystem",
+            "TACAN",
+            "VOR",
+        ],
     },
-    "Segment Points" : {
-        "schema" : "segment_points",
-        "list" : [],
+    "Point Reference" : {
+        "schema" : "point_reference",
+        "list" : [
+            "AngleIndication",
+            "AngleUse",
+            "DistanceIndication",
+            "EnRouteSegmentPoint",
+            "PointReference",
+            "SegmentPoint",
+            "TerminalSegmentPoint",
+        ],
     },
-    "Significant Points" : {
-        "schema" : "significant_points",
-        "list" : [],
+    "Points" : {
+        "schema" : "points",
+        "list" : [
+            "DesignatedPoint",
+            "SignificantPoint",
+            "SignificantPointInAirspace",
+        ],
     },
     "Visual Navigation" : {
         "schema" : "visual_navigation",
-        "list" : [],
+        "list" : [
+            "AeronauticalGroundLight",
+        ],
     },
     "Notes" : {
         "schema" : "notes",
-        "list" : [],
+        "list" : [
+            "LinguisticNote",
+            "Note"
+            ],
     },
     "Obstacles" : {
         "schema" : "obstacles",
-        "list" : [],
+        "list" : [
+            "ObstacleArea",
+            "ObstacleAreaOrigin",
+            "VerticalStructure",
+            "VerticalStructureLightingStatus",
+            "VerticalStructurePart",
+            "VerticalStructurePartGeometry",
+        ],
     },
     "Organisation" : {
         "schema" : "organisation",
-        "list" : [],
+        "list" : [
+            "OrganisationAuthority",
+            "OrganisationAuthorityAssociation",
+            "Unit",
+            "UnitAvailability",
+            "UnitDependency",
+        ],
     },
     "Approach" : {
         "schema" : "approach",
-        "list" : [],
+        "list" : [
+            "ApproachAltitudeTable",
+            "ApproachCondition",
+            "ApproachDistanceTable",
+            "ApproachTimingTable",
+            "FinalProfile",
+            "InstrumentApproachProcedure",
+            "MissedApproachGroup",
+
+        ],
     },
-    "Terminal Arrival Area" : {
-        "schema" : "terminal_arrival_area",
-        "list" : [],
+    "Terminal" : {
+        "schema" : "terminal",
+        "list" : [
+            "TerminalArrivalArea",
+            "TerminalArrivalAreaSector",
+        ],
     },
     "Segment Leg" : {
         "schema" : "segment_leg",
-        "list" : [],
+        "list" : [
+            "FASDataBlock"
+        ],
     },
     "Circling" : {
         "schema" : "circling",
-        "list" : [],
+        "list" : [
+            "CirclingArea",
+            "CirclingRestriction",
+        ],
     },
     "Minima" : {
         "schema" : "minima",
-        "list" : [],
+        "list" : [
+            "EquipmentUnavailableAdjustment",
+            "EquipmentUnavailableAdjustmentColumn",
+            "Minima",
+        ],
     },
     "Arrival" : {
         "schema" : "arrival",
-        "list" : [],
+        "list" : [
+            "StandardInstrumentArrival",
+        ],
     },
     "Departure" : {
         "schema" : "departure",
-        "list" : [],
+        "list" : [
+            "DepartureArrivalCondition",
+            "NavigationArea",
+            "NavigationAreaSector",
+            "SectorDesign",
+            "StandardInstrumentDeparture",
+        ],
     },
     "Safe Altitude" : {
         "schema" : "safe_altitude",
-        "list" : [],
+        "list" : [
+            "SafeAltitudeArea",
+            "SafeAltitudeAreaSector",
+        ],
     },
     "Procedure Overview" : {
         "schema" : "procedure",
-        "list" : [],
+        "list" : [
+            "ApproachLeg",
+            "ArrivalFeederLeg",
+            "ArrivalLeg",
+            "DepartureLeg",
+            "FinalLeg",
+            "HoldingUse",
+            "InitialLeg",
+            "IntermediateLeg",
+            "LandingTakeoffAreaCollection",
+            "MissedApproachLeg",
+            "NavigationAreaRestriction",
+            "Procedure",
+            "ProcedureDME",
+            "ProcedureTransition",  
+            "ProcedureTransitionLeg",
+            "SegmentLeg",
+        ],
     },
     "Usage" : {
         "schema" : "usage",
-        "list" : [],
+        "list" : [
+            "ProcedureAvailability",
+        ],
     },
     "En Route" : {
         "schema" : "en_route",
-        "list" : [],
+        "list" : [
+            "ChangeOverPoint",
+            "Route",
+            "RouteAvailability",
+            "RouteDME",
+            "RoutePortion",  
+            "RouteSegment",
+        ],
     },
     "Flight Restrictions" : {
         "schema" : "flight_restrictions",
-        "list" : [],
+        "list" : [
+            "AirspaceBorderCrossing",
+            "DirectFlight",
+            "DirectFlightClass",
+            "DirectFlightSegment",
+            "FlightConditionCircumstance",
+            "FlightConditionCombination",
+            "FlightConditionElement",
+            "FlightConditionElementChoice",
+            "FlightRestriction",
+            "FlightRestrictionLevel",
+            "FlightRestrictionRoute",
+            "FlightRoutingElement",
+            "FlightRoutingElementChoice",
+        ],
     },
     "Rules Procedures" : {
         "schema" : "rules_procedures",
-        "list" : [],
+        "list" : [
+            "RulesProcedures",
+        ],
     },
     "Service" : {
         "schema" : "service",
-        "list" : [],
+        "list" : [
+            "AirTrafficControlService",
+            "AirTrafficManagementService",
+            "AircraftGroundService",
+            "AirportClearanceService",
+            "AirportGroundService",
+            "AirportSuppliesService",
+            "CallsignDetail",
+            "FireFightingService",
+            "Fuel",
+            "GroundTrafficControlService",
+            "InformationService",
+            "Nitrogen",
+            "Oil",
+            "Oxygen",
+            "PassengerService",
+            "PilotControlledLighting",
+            "RadioCommunicationChannel",
+            "RadioCommunicationOperationalStatus",
+            "SearchRescueService",
+            "Service",
+            "ServiceOperationalStatus",
+            "TrafficSeparationService",
+        ],
     },
-    "Shared" : {
-        "schema" : "shared",
-        "list" : [],
+    "Address" : {
+        "schema" : "address",
+        "list" : [
+            "ContactInformation",
+            "OnlineContact",
+            "PostalAddress",
+            "TelephoneContact",
+        ],
+    },
+    "Aircraft And Flight" : {
+        "schema" : "aircraft_and_flight",
+        "list" : [
+            "AircraftCharacteristic",
+            "FlightCharacteristic",
+        ],
+    },
+    "Airspace Layer" : {
+        "schema" : "airspace_layer",
+        "list" : [
+            "AirspaceLayer",
+        ],
+    },
+    "Circle Sector" : {
+        "schema" : "circle_sector",
+        "list" : [
+            "CircleSector",
+        ],
+    },
+    "Light Element" : {
+        "schema" : "light_element",
+        "list" : [
+            "LightElement",
+            "LightElementStatus",
+        ],
+    },
+    "Meteorology" : {
+        "schema" : "meteorology",
+        "list" : [
+            "Meteorology",
+        ],
+    },
+    "Radio Frequency Limitation" : {
+        "schema" : "radio_frequency_limitation",
+        "list" : [
+            "EquipmentChoice",
+            "RadioFrequencyArea",
+        ],
+    },
+    "Schedules" : {
+        "schema" : "schedules",
+        "list" : [
+            "PropertiesWithSchedule",
+            "SpecialDate",
+            "Timesheet",
+        ],
+    },
+    "Standard Levels" : {
+        "schema" : "standard_levels",
+        "list" : [
+            "StandardLevel",
+            "StandardLevelColumn",
+            "StandardLevelSector",
+            "StandardLevelTable",
+        ],
+    },
+    "Surface Assessment" : {
+        "schema" : "surface_assessment",
+        "list" : [
+            "AltitudeAdjustment",
+            "HoldingAssessment",
+            "ObstacleAssessmentArea",
+            "ObstaclePlacement",
+            "Obstruction"
+        ],
     },
     "Surveillance" : {
         "schema" : "surveillance",
-        "list" : [],
+        "list" : [
+            "PrecisionApproachRadar",
+            "PrimarySurveillanceRadar",
+            "RadarComponent",
+            "RadarEquipment",
+            "RadarSystem",
+            "Reflector",
+            "SecondarySurveillanceRadar",
+            "SurveillanceGroundStation",
+            "SurveillanceRadar",
+        ],
     }
 
 
@@ -228,7 +585,26 @@ config = {
         "SurfaceType",
         "ElevatedSurfaceType",
         ],
-    "abstract": [],
+    "abstract": [
+        "AbstractMarkingType",
+        "AbstractAirportHeliportProtectionAreaType",
+        "AbstractGroundLightSystemType",
+        "AbstractNavigationSystemCheckpointType",
+        "AbstractNavaidEquipmentType",
+        "AbstractProcedureType",
+        "AbstractSegmentLegType",
+        "AbstractApproachLegType",
+        "AbstractServiceType",
+        "AbstractTrafficSeparationServiceType",
+        "AbstractAirportGroundServiceType",
+        "AbstractRadarEquipmentType",
+        "AbstractExtensionType",
+        "AbstractUsageConditionType",
+        "AbstractSurfaceContaminationType",
+        "AbstractSegmentPointType",
+        "AbstractDirectFlightType",
+        "AbstractPropertiesWithScheduleType",
+    ],
     "package": "com.aixm.delorean.core.schema.a5_1_1.aixm",
     "output_path": "schema/aixm5_1_1/binding/aixm.xjb"
 }
@@ -236,7 +612,7 @@ config = {
 feature = {
     "name" : "../aixm/AIXM_Features",
     "path" : "schema/aixm5_1_1/aixm/AIXM_Features.xsd",
-    "strategy" : Machinery.strategy.feature,
+    "strategy" : Strategy.feature,
     "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm",
     "manual" : "util/manual/a5_1_1/AIXM_Features.xjb"
 }
@@ -244,28 +620,28 @@ feature = {
 data_types = {
     "name" : "../aixm/AIXM_DataTypes",
     "path" : "schema/aixm5_1_1/aixm/AIXM_DataTypes.xsd",
-    "strategy" : Machinery.strategy.data_type,
+    "strategy" : Strategy.data_type,
     "manual" : "util/manual/a5_1_1/AIXM_DataTypes.xjb"
 }
 
 abstract = {
     "name" : "../aixm/AIXM_AbstractGML_ObjectTypes",
     "path" : "schema/aixm5_1_1/aixm/AIXM_AbstractGML_ObjectTypes.xsd",
-    "strategy" : Machinery.strategy.abstract,
+    "strategy" : Strategy.abstract,
     "manual" : "util/manual/a5_1_1/AIXM_AbstractGML_ObjectTypes.xjb"
 }
 
 message = {
     "name" : "../aixm/message/AIXM_BasicMessage",
     "path" : "schema/aixm5_1_1/aixm/message/AIXM_BasicMessage.xsd",
-    "strategy" : Machinery.strategy.other,
+    "strategy" : Strategy.other,
     "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm.message",
     "manual" : "util/manual/a5_1_1/AIXM_BasicMessage.xjb"
 }
 
 
 
-machinery = Machinery.runner(config, debug, [data_types, feature, abstract, message],)
+machinery = Machinery(config, debug, schema, [data_types, feature, abstract, message])
 
 config = {
     "ignore": [
@@ -327,7 +703,26 @@ config = {
         "SurfaceType",
         "ElevatedSurfaceType",
         ],
-    "abstract": [],
+    "abstract": [
+        "AbstractMarkingType",
+        "AbstractAirportHeliportProtectionAreaType",
+        "AbstractGroundLightSystemType",
+        "AbstractNavigationSystemCheckpointType",
+        "AbstractNavaidEquipmentType",
+        "AbstractProcedureType",
+        "AbstractSegmentLegType",
+        "AbstractApproachLegType",
+        "AbstractServiceType",
+        "AbstractTrafficSeparationServiceType",
+        "AbstractAirportGroundServiceType",
+        "AbstractRadarEquipmentType",
+        "AbstractExtensionType",
+        "AbstractUsageConditionType",
+        "AbstractSurfaceContaminationType",
+        "AbstractSegmentPointType",
+        "AbstractDirectFlightType",
+        "AbstractPropertiesWithScheduleType",
+    ],
     "package": "com.aixm.delorean.core.schema.a5_1.aixm",
     "output_path": "schema/aixm5_1/binding/aixm.xjb"
 }
@@ -335,7 +730,7 @@ config = {
 feature = {
     "name" : "../aixm/AIXM_Features",
     "path" : "schema/aixm5_1/aixm/AIXM_Features.xsd",
-    "strategy" : Machinery.strategy.feature,
+    "strategy" : Strategy.feature,
     "package" : "com.aixm.delorean.core.schema.a5_1.aixm",
     "manual" : "util/manual/a5_1/AIXM_Features.xjb"
 }
@@ -343,23 +738,23 @@ feature = {
 data_types = {
     "name" : "../aixm/AIXM_DataTypes",
     "path" : "schema/aixm5_1/aixm/AIXM_DataTypes.xsd",
-    "strategy" : Machinery.strategy.data_type,
+    "strategy" : Strategy.data_type,
     "manual" : "util/manual/a5_1/AIXM_DataTypes.xjb"
 }
 
 abstract = {
     "name" : "../aixm/AIXM_AbstractGML_ObjectTypes",
     "path" : "schema/aixm5_1/aixm/AIXM_AbstractGML_ObjectTypes.xsd",
-    "strategy" : Machinery.strategy.abstract,
+    "strategy" : Strategy.abstract,
     "manual" : "util/manual/a5_1/AIXM_AbstractGML_ObjectTypes.xjb"
 }
 
 message = {
     "name" : "../aixm/message/AIXM_BasicMessage",
     "path" : "schema/aixm5_1/aixm/message/AIXM_BasicMessage.xsd",
-    "strategy" : Machinery.strategy.other,
+    "strategy" : Strategy.other,
     "package" : "com.aixm.delorean.core.schema.a5_1.aixm.message",
     "manual" : "util/manual/a5_1/AIXM_BasicMessage.xjb"
 }
 
-machinery = Machinery.runner(config, debug, [data_types, feature, abstract, message],)
+machinery = Machinery(config, debug, schema, [data_types, feature, abstract, message],)

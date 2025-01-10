@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.DynamicFeatureType;
+import com.aixm.delorean.core.org.gml.v_3_2.DynamicFeatureType;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

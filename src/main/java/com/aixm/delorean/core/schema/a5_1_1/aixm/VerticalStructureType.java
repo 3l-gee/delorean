@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "verticalstructuretype", schema = "public")
+@Table(name = "verticalstructuretype", schema = "obstacles")
 public class VerticalStructureType
     extends AbstractAIXMFeatureType
 {

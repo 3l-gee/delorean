@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "touchdownliftoffmarkingtimeslicetype", schema = "public")
+@Table(name = "touchdownliftoffmarkingtimeslicetype", schema = "markings")
 public class TouchDownLiftOffMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -95,8 +95,8 @@ public class TouchDownLiftOffMarkingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftoffmarkingtimeslicetype_element", joinColumns = {
-        @JoinColumn(name = "touchdownliftoffmarkingtimeslicetype_id")
+    @JoinTable(name = "marking_pg_element", joinColumns = {
+        @JoinColumn(name = "markingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "markingelementpropertytype_id")
     })
@@ -105,8 +105,8 @@ public class TouchDownLiftOffMarkingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftoffmarkingtimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "touchdownliftoffmarkingtimeslicetype_id")
+    @JoinTable(name = "marking_pg_annotation", joinColumns = {
+        @JoinColumn(name = "markingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

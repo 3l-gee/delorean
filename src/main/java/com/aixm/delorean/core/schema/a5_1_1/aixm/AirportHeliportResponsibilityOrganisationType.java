@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airportheliportresponsibilityorganisationtype", schema = "public")
+@Table(name = "airportheliportresponsibilityorganisationtype", schema = "airport_heliport")
 public class AirportHeliportResponsibilityOrganisationType
     extends AbstractPropertiesWithScheduleType
 {
@@ -81,8 +81,8 @@ public class AirportHeliportResponsibilityOrganisationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportresponsibilityorganisationtype_timeinterval", joinColumns = {
-        @JoinColumn(name = "airportheliportresponsibilityorganisationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -91,8 +91,8 @@ public class AirportHeliportResponsibilityOrganisationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportresponsibilityorganisationtype_annotation", joinColumns = {
-        @JoinColumn(name = "airportheliportresponsibilityorganisationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -101,8 +101,8 @@ public class AirportHeliportResponsibilityOrganisationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportresponsibilityorganisationtype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "airportheliportresponsibilityorganisationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })

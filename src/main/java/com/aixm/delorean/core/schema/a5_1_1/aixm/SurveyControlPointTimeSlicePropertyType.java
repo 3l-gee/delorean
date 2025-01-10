@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "surveyControlPointTimeSlice"
 })
 @Entity
-@Table(name = "surveycontrolpointtimeslicepropertytype", schema = "public")
+@Table(name = "surveycontrolpointtimeslicepropertytype", schema = "airport_heliport")
 public class SurveyControlPointTimeSlicePropertyType {
 
     @XmlElement(name = "SurveyControlPointTimeSlice", required = true)

@@ -8,7 +8,7 @@
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
 import javax.xml.namespace.QName;
-import com.aixm.delorean.core.schema.a5_1_1.org.gml.TimePrimitivePropertyType;
+import com.aixm.delorean.core.org.gml.v_3_2.TimePrimitivePropertyType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlElementDecl;
 import jakarta.xml.bind.annotation.XmlRegistry;

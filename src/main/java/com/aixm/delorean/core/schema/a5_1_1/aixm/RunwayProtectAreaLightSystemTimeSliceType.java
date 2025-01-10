@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwayprotectarealightsystemtimeslicetype", schema = "public")
+@Table(name = "runwayprotectarealightsystemtimeslicetype", schema = "lighting")
 public class RunwayProtectAreaLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -104,8 +104,8 @@ public class RunwayProtectAreaLightSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayprotectarealightsystemtimeslicetype_element", joinColumns = {
-        @JoinColumn(name = "runwayprotectarealightsystemtimeslicetype_id")
+    @JoinTable(name = "groundlightsystem_pg_element", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightelementpropertytype_id")
     })
@@ -114,8 +114,8 @@ public class RunwayProtectAreaLightSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayprotectarealightsystemtimeslicetype_availability", joinColumns = {
-        @JoinColumn(name = "runwayprotectarealightsystemtimeslicetype_id")
+    @JoinTable(name = "groundlightsystem_pg_availability", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "groundlightingavailabilitypropertytype_id")
     })
@@ -124,8 +124,8 @@ public class RunwayProtectAreaLightSystemTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayprotectarealightsystemtimeslicetype_annotation", joinColumns = {
-        @JoinColumn(name = "runwayprotectarealightsystemtimeslicetype_id")
+    @JoinTable(name = "groundlightsystem_pg_annotation", joinColumns = {
+        @JoinColumn(name = "groundlightsystempropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })

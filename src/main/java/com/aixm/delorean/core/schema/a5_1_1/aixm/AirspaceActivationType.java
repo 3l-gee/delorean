@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspaceactivationtype", schema = "public")
+@Table(name = "airspaceactivationtype", schema = "airspace")
 public class AirspaceActivationType
     extends AbstractPropertiesWithScheduleType
 {
@@ -84,8 +84,8 @@ public class AirspaceActivationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspaceactivationtype_timeinterval", joinColumns = {
-        @JoinColumn(name = "airspaceactivationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -94,8 +94,8 @@ public class AirspaceActivationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspaceactivationtype_annotation", joinColumns = {
-        @JoinColumn(name = "airspaceactivationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -104,8 +104,8 @@ public class AirspaceActivationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspaceactivationtype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "airspaceactivationtype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })
@@ -128,8 +128,8 @@ public class AirspaceActivationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspaceactivationtype_levels", joinColumns = {
-        @JoinColumn(name = "airspaceactivationtype_id")
+    @JoinTable(name = "airspaceactivation_pg_levels", joinColumns = {
+        @JoinColumn(name = "airspaceactivationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayerpropertytype_id")
     })
@@ -138,8 +138,8 @@ public class AirspaceActivationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspaceactivationtype_user", joinColumns = {
-        @JoinColumn(name = "airspaceactivationtype_id")
+    @JoinTable(name = "airspaceactivation_pg_user", joinColumns = {
+        @JoinColumn(name = "airspaceactivationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })
@@ -148,8 +148,8 @@ public class AirspaceActivationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspaceactivationtype_aircraft", joinColumns = {
-        @JoinColumn(name = "airspaceactivationtype_id")
+    @JoinTable(name = "airspaceactivation_pg_aircraft", joinColumns = {
+        @JoinColumn(name = "airspaceactivationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
     })

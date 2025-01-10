@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "circlingrestrictiontype", schema = "public")
+@Table(name = "circlingrestrictiontype", schema = "circling")
 public class CirclingRestrictionType
     extends AbstractPropertiesWithScheduleType
 {
@@ -77,8 +77,8 @@ public class CirclingRestrictionType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingrestrictiontype_timeinterval", joinColumns = {
-        @JoinColumn(name = "circlingrestrictiontype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -87,8 +87,8 @@ public class CirclingRestrictionType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingrestrictiontype_annotation", joinColumns = {
-        @JoinColumn(name = "circlingrestrictiontype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -97,8 +97,8 @@ public class CirclingRestrictionType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingrestrictiontype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "circlingrestrictiontype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })

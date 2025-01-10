@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "circlingareatimeslicetype", schema = "public")
+@Table(name = "circlingareatimeslicetype", schema = "circling")
 public class CirclingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -88,7 +88,7 @@ public class CirclingAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingareapropertygroup_condition", joinColumns = {
+    @JoinTable(name = "circlingarea_pg_condition", joinColumns = {
         @JoinColumn(name = "circlingareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "approachconditionpropertytype_id")
@@ -104,7 +104,7 @@ public class CirclingAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingareapropertygroup_designsurface", joinColumns = {
+    @JoinTable(name = "circlingarea_pg_designsurface", joinColumns = {
         @JoinColumn(name = "circlingareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstacleassessmentareapropertytype_id")
@@ -114,7 +114,7 @@ public class CirclingAreaTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingareapropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "circlingarea_pg_annotation", joinColumns = {
         @JoinColumn(name = "circlingareapropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

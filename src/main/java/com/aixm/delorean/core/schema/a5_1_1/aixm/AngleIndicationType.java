@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "angleindicationtype", schema = "public")
+@Table(name = "angleindicationtype", schema = "point_reference")
 public class AngleIndicationType
     extends AbstractAIXMFeatureType
 {

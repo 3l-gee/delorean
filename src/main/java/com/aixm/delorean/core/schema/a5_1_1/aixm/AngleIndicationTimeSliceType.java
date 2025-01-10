@@ -79,7 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "angleindicationtimeslicetype", schema = "public")
+@Table(name = "angleindicationtimeslicetype", schema = "point_reference")
 public class AngleIndicationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -173,7 +173,7 @@ public class AngleIndicationTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "angleindicationpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "angleindication_pg_annotation", joinColumns = {
         @JoinColumn(name = "angleindicationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "unplannedholdingtype", schema = "public")
+@Table(name = "unplannedholdingtype", schema = "holding")
 public class UnplannedHoldingType
     extends AbstractAIXMFeatureType
 {

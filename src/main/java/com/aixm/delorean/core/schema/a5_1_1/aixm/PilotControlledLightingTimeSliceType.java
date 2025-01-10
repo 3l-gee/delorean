@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "pilotcontrolledlightingtimeslicetype", schema = "public")
+@Table(name = "pilotcontrolledlightingtimeslicetype", schema = "service")
 public class PilotControlledLightingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -127,7 +127,7 @@ public class PilotControlledLightingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlightingpropertygroup_controlledlightintensity", joinColumns = {
+    @JoinTable(name = "pilotcontrolledlighting_pg_controlledlightintensity", joinColumns = {
         @JoinColumn(name = "pilotcontrolledlightingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightactivationpropertytype_id")
@@ -137,7 +137,7 @@ public class PilotControlledLightingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlightingpropertygroup_activatedgroundlighting", joinColumns = {
+    @JoinTable(name = "pilotcontrolledlighting_pg_activatedgroundlighting", joinColumns = {
         @JoinColumn(name = "pilotcontrolledlightingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "groundlightsystempropertytype_id")
@@ -147,7 +147,7 @@ public class PilotControlledLightingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlightingpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "pilotcontrolledlighting_pg_annotation", joinColumns = {
         @JoinColumn(name = "pilotcontrolledlightingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

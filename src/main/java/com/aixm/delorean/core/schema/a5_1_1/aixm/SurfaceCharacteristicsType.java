@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "surfacecharacteristicstype", schema = "public")
+@Table(name = "surfacecharacteristicstype", schema = "airport_heliport")
 public class SurfaceCharacteristicsType
     extends AbstractAIXMObjectType
 {
@@ -174,7 +174,7 @@ public class SurfaceCharacteristicsType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surfacecharacteristicspropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "surfacecharacteristics_pg_annotation", joinColumns = {
         @JoinColumn(name = "surfacecharacteristicspropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

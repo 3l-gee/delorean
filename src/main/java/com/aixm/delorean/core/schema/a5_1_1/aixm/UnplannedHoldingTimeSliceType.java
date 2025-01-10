@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "unplannedholdingtimeslicetype", schema = "public")
+@Table(name = "unplannedholdingtimeslicetype", schema = "holding")
 public class UnplannedHoldingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -115,7 +115,7 @@ public class UnplannedHoldingTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unplannedholdingpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "unplannedholding_pg_annotation", joinColumns = {
         @JoinColumn(name = "unplannedholdingpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

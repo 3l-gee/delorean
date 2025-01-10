@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airportheliportusagetype", schema = "public")
+@Table(name = "airportheliportusagetype", schema = "airport_heliport")
 public class AirportHeliportUsageType
     extends AbstractUsageConditionType
 {
@@ -97,7 +97,7 @@ public class AirportHeliportUsageType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "usageconditionpropertygroup_contact", joinColumns = {
+    @JoinTable(name = "usagecondition_pg_contact", joinColumns = {
         @JoinColumn(name = "usageconditionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformationpropertytype_id")
@@ -113,7 +113,7 @@ public class AirportHeliportUsageType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "usageconditionpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "usagecondition_pg_annotation", joinColumns = {
         @JoinColumn(name = "usageconditionpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

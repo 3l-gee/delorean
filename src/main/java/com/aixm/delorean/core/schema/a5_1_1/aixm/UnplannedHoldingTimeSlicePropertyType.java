@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "unplannedHoldingTimeSlice"
 })
 @Entity
-@Table(name = "unplannedholdingtimeslicepropertytype", schema = "public")
+@Table(name = "unplannedholdingtimeslicepropertytype", schema = "holding")
 public class UnplannedHoldingTimeSlicePropertyType {
 
     @XmlElement(name = "UnplannedHoldingTimeSlice", required = true)

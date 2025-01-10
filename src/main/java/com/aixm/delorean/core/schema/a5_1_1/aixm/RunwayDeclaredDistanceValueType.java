@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaydeclareddistancevaluetype", schema = "public")
+@Table(name = "runwaydeclareddistancevaluetype", schema = "runway")
 public class RunwayDeclaredDistanceValueType
     extends AbstractPropertiesWithScheduleType
 {
@@ -81,8 +81,8 @@ public class RunwayDeclaredDistanceValueType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydeclareddistancevaluetype_timeinterval", joinColumns = {
-        @JoinColumn(name = "runwaydeclareddistancevaluetype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -91,8 +91,8 @@ public class RunwayDeclaredDistanceValueType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydeclareddistancevaluetype_annotation", joinColumns = {
-        @JoinColumn(name = "runwaydeclareddistancevaluetype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -101,8 +101,8 @@ public class RunwayDeclaredDistanceValueType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydeclareddistancevaluetype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "runwaydeclareddistancevaluetype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })

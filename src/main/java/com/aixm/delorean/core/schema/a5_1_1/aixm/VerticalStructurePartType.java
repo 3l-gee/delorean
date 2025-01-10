@@ -85,7 +85,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "verticalstructureparttype", schema = "public")
+@Table(name = "verticalstructureparttype", schema = "obstacles")
 public class VerticalStructurePartType
     extends AbstractPropertiesWithScheduleType
 {
@@ -94,8 +94,8 @@ public class VerticalStructurePartType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructureparttype_timeinterval", joinColumns = {
-        @JoinColumn(name = "verticalstructureparttype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -104,8 +104,8 @@ public class VerticalStructurePartType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructureparttypep_annotation", joinColumns = {
-        @JoinColumn(name = "verticalstructureparttype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -114,8 +114,8 @@ public class VerticalStructurePartType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructureparttype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "verticalstructureparttype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })
@@ -221,8 +221,8 @@ public class VerticalStructurePartType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructureparttype_lighting", joinColumns = {
-        @JoinColumn(name = "verticalstructureparttype_id")
+    @JoinTable(name = "verticalstructurepart_pg_lighting", joinColumns = {
+        @JoinColumn(name = "verticalstructurepartpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightelementpropertytype_id")
     })

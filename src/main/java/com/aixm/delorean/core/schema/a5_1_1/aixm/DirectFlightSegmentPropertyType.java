@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "directFlightSegment"
 })
 @Entity
-@Table(name = "directflightsegmentpropertytype", schema = "public")
+@Table(name = "directflightsegmentpropertytype", schema = "flight_restrictions")
 public class DirectFlightSegmentPropertyType
     extends AbstractAIXMPropertyType
 {

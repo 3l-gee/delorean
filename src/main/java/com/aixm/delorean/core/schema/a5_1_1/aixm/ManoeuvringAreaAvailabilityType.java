@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "manoeuvringareaavailabilitytype", schema = "public")
+@Table(name = "manoeuvringareaavailabilitytype", schema = "runway")
 public class ManoeuvringAreaAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
@@ -82,8 +82,8 @@ public class ManoeuvringAreaAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "manoeuvringareaavailabilitytype_timeinterval", joinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "timesheetpropertytype_id")
     })
@@ -92,8 +92,8 @@ public class ManoeuvringAreaAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "manoeuvringareaavailabilitytype_annotation", joinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
     })
@@ -102,8 +102,8 @@ public class ManoeuvringAreaAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "manoeuvringareaavailabilitytype_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailabilitytype_id")
+    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthoritypropertytype_id")
     })
@@ -126,8 +126,8 @@ public class ManoeuvringAreaAvailabilityType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "manoeuvringareaavailabilitytype_usage", joinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailabilitytype_id")
+    @JoinTable(name = "manoeuvringareaavailability_pg_usage", joinColumns = {
+        @JoinColumn(name = "manoeuvringareaavailabilitypropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "manoeuvringareausagepropertytype_id")
     })

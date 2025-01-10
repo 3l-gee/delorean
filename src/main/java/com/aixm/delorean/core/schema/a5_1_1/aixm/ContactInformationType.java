@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "contactinformationtype", schema = "public")
+@Table(name = "contactinformationtype", schema = "address")
 public class ContactInformationType
     extends AbstractAIXMObjectType
 {
@@ -94,7 +94,7 @@ public class ContactInformationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformationpropertygroup_address", joinColumns = {
+    @JoinTable(name = "contactinformation_pg_address", joinColumns = {
         @JoinColumn(name = "contactinformationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "postaladdresspropertytype_id")
@@ -104,7 +104,7 @@ public class ContactInformationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformationpropertygroup_networknode", joinColumns = {
+    @JoinTable(name = "contactinformation_pg_networknode", joinColumns = {
         @JoinColumn(name = "contactinformationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "onlinecontactpropertytype_id")
@@ -114,7 +114,7 @@ public class ContactInformationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformationpropertygroup_phonefax", joinColumns = {
+    @JoinTable(name = "contactinformation_pg_phonefax", joinColumns = {
         @JoinColumn(name = "contactinformationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "telephonecontactpropertytype_id")
@@ -124,7 +124,7 @@ public class ContactInformationType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformationpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "contactinformation_pg_annotation", joinColumns = {
         @JoinColumn(name = "contactinformationpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")

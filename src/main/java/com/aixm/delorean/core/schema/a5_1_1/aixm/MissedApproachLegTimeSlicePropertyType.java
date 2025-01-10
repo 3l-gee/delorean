@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "missedApproachLegTimeSlice"
 })
 @Entity
-@Table(name = "missedapproachlegtimeslicepropertytype", schema = "public")
+@Table(name = "missedapproachlegtimeslicepropertytype", schema = "procedure")
 public class MissedApproachLegTimeSlicePropertyType {
 
     @XmlElement(name = "MissedApproachLegTimeSlice", required = true)

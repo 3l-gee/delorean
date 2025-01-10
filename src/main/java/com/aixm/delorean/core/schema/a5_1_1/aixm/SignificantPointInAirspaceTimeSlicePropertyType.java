@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "significantPointInAirspaceTimeSlice"
 })
 @Entity
-@Table(name = "significantpointinairspacetimeslicepropertytype", schema = "public")
+@Table(name = "significantpointinairspacetimeslicepropertytype", schema = "points")
 public class SignificantPointInAirspaceTimeSlicePropertyType {
 
     @XmlElement(name = "SignificantPointInAirspaceTimeSlice", required = true)

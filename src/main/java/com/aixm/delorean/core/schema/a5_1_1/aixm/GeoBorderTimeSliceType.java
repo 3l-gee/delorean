@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "geobordertimeslicetype", schema = "public")
+@Table(name = "geobordertimeslicetype", schema = "airspace")
 public class GeoBorderTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -98,7 +98,7 @@ public class GeoBorderTimeSliceType
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "geoborderpropertygroup_annotation", joinColumns = {
+    @JoinTable(name = "geoborder_pg_annotation", joinColumns = {
         @JoinColumn(name = "geoborderpropertygroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "notepropertytype_id")
