@@ -4,7 +4,6 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.Arrays;
 import java.util.List;
-
 public enum DatabaseConfig {
 
     AIXM_5_1_1(
@@ -813,7 +812,7 @@ public enum DatabaseConfig {
         20,                        // Connection pool max size
         false,                                   // Hibernate show_sql
         "create",                            // Hibernate hbm2ddl.auto
-        "src/main/resources/postgres/init/schema.sql", // Hibernate schemapath
+        "resources/postgres/init/schema.sql", // Hibernate schemapath
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
