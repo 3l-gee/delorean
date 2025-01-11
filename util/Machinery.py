@@ -44,8 +44,17 @@ class Machinery:
 
         self.generate_xjb()
         self.export_xjb()
+        for key, value in self.content.items() :
+            self.export_file("types.txt", value["simple_type"]["type"])
+            self.export_file("graph.txt", value["simple_type"]["graph"])
+            self.export_file("transposition.txt", value["simple_type"]["transposition"])
         # self.print_entity_class(self.entity_feature)
         # Control.print_actions(True)
+
+    def export_file(self, file_path, content):
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, 'w') as f:
+            f.write(content)
 
     def init_embed_feature(self, content):
         res = {}
@@ -283,19 +292,19 @@ class Machinery:
             pass
 
         return res
-            
+                
     def generate_xjb(self):
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(
                 self.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"]))
 
-        for key, value in self.content.items() :
-            self.xjb[key]["auto"]["default"].extend(
-                self.generate_complex_types(value["complex_type"]["type"],self.embed_feature, self.config.abstract))
+        # for key, value in self.content.items() :
+        #     self.xjb[key]["auto"]["default"].extend(
+        #         self.generate_complex_types(value["complex_type"]["type"],self.embed_feature, self.config.abstract))
                         
-        for key, value in self.content.items() :
-            self.xjb[key]["auto"]["default"].extend(
-                self.generate_groupe_types(value["group"]["type"], self.embed_feature, self.config.abstract))
+        # for key, value in self.content.items() :
+        #     self.xjb[key]["auto"]["default"].extend(
+        #         self.generate_groupe_types(value["group"]["type"], self.embed_feature, self.config.abstract))
     
     def generate_simple_types(self, type, graph, transposition):
         res = []

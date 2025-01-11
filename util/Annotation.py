@@ -323,7 +323,7 @@ SQL_FORBIDEN_KEY_WORD = [
     "HIERARCHY",
     "HOLD",
     "HOUR",
-    "ID",
+    # "ID",
     "IDENTITY",
     "IF",
     "IGNORE",
@@ -1113,13 +1113,13 @@ class Constraint:
     @staticmethod
     def size(min, max):
         if min is None :
-            return f'@jakarta.persistence.Size(max={max})'
+            return f'@jakarta.validation.constraints.Size(max={max})'
 
         elif max is None :
-            return f'@jakarta.persistence.Size(min={min})'
+            return f'@jakarta.validation.constraints.Size(min={min})'
         
         else :
-            return f'@jakarta.persistence.Size(min={min}, max={max})'
+            return f'@jakarta.validation.constraints.Size(min={min}, max={max})'
         
     @staticmethod
     def pattern(value, message=""):
