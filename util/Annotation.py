@@ -807,7 +807,7 @@ SQL_FORBIDEN_KEY_WORD = [
     "VALID",
     "VALIDATE",
     "VALIDATOR",
-    "VALUE",
+    # "VALUE",
     "VALUES",
     "VALUE_OF",
     "VARBINARY",
@@ -878,23 +878,22 @@ class Util:
             pass
         s1 = re.sub('(.)([A-Z][a-z]+)', r'\1\2', value)
         result = re.sub('([a-z0-9])([A-Z])', r'\1\2', s1).lower()
-
         result = Util.modify_forbiden_key_word(result)
-            
         return result
 
     @staticmethod
     def snake_case_table(name):
-        value = Util.short_name(name)
+        value = name
+        # value = Util.short_name(name)
 
         try: 
             value = value.split(':')[-1]
         except:
             pass
         s1 = re.sub('(.)([A-Z][a-z]+)', r'\1\2', value)
-        s2 = re.sub('([a-z0-9])([A-Z])', r'\1\2', s1).lower()
-
-        return s2
+        result = re.sub('([a-z0-9])([A-Z])', r'\1\2', s1).lower()
+        result = Util.modify_forbiden_key_word(result)  
+        return result
 
     def short_name(name):  
         replacements = {
@@ -923,20 +922,17 @@ class Util:
 
     def snake_case_column(name):
         value = name
-        for prefix in ["PropertyType", "Code", "Val", "Date", "NoNumber", "NoSequence", "Text", ]:
-            value = value.replace(prefix, "")
+
         try: 
             value = value.split(':')[-1]
         except:
             pass
 
-        value = Util.short_name(value)
+        # value = Util.short_name(value)
 
         s1 = re.sub('(.)([A-Z][a-z]+)', r'\1\2', value)
         result = re.sub('([a-z0-9])([A-Z])', r'\1\2', s1).lower().replace("_base_type", "").replace("_type", "")
-
         result = Util.modify_forbiden_key_word(result)
-
         return result
     
     @staticmethod
@@ -1054,6 +1050,7 @@ class Tag:
     attribute = _xs_namespace + "attribute"
     complex_type = _xs_namespace + "complexType"
     simple_type = _xs_namespace + "simpleType"
+    simple_content = _xs_namespace + "simpleContent"
     group = _xs_namespace + "group"
     all = _xs_namespace + "all"
     any = _xs_namespace + "any"
@@ -1065,6 +1062,7 @@ class Tag:
     key = _xs_namespace + "key"
     keyref = _xs_namespace + "keyref"
     unique = _xs_namespace + "unique"
+    union = _xs_namespace + "union"
     attribute_group = _xs_namespace + "attributeGroup"
     complex_content = _xs_namespace + "complexContent"
     simple_content = _xs_namespace + "simpleContent"
@@ -1106,7 +1104,7 @@ class Xml:
         return f'@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter({name})'
 
 class Constraint: 
-    @staticmethod
+
     def fraction_digits(value):
         pass
 
@@ -1216,12 +1214,12 @@ class Jpa:
     embedded = '@jakarta.persistence.Embedded'
 
     @staticmethod
-    def column(name, nullable=True, unique=False):
-        return f'@jakarta.persistence.Column(name = "{Util.snake_case_column(name)}", nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
+    def column(name, length=255, nullable=True, unique=False):
+        return f'@jakarta.persistence.Column(name = "{Util.snake_case_column(name)}", length = {length}, nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
 
     @staticmethod
-    def column_with_definition(name, columnDefinition, is_simple_type=False, nullable=True, unique=False):
-        return f'@jakarta.persistence.Column(name = "{Util.snake_case_column(name, is_simple_type,)}", columnDefinition = "{columnDefinition}", nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
+    def column_with_definition(name, columnDefinition, length=255, nullable=True, unique=False):
+        return f'@jakarta.persistence.Column(name = "{Util.snake_case_column(name)}", length = {length}, columnDefinition = "{columnDefinition}", nullable = {Util.bool_str(nullable)}, unique = {Util.bool_str(unique)})'
         
     @staticmethod
     def table(name, schema, prefix=None):
@@ -1240,11 +1238,8 @@ class Jpa:
         return f'@jakarta.persistence.GeneratedValue(strategy = {strategy})'
     
     @staticmethod
-    def attribute_sub_override(attrib_name, column_name):
-        if attrib_name == "value" :
-            return f'@jakarta.persistence.AttributeOverride(name = "{attrib_name}", column = @jakarta.persistence.Column(name = "{Util.snake_case(column_name)}"))'
-        else : 
-            return f'@jakarta.persistence.AttributeOverride(name = "{attrib_name}", column = @jakarta.persistence.Column(name = "{Util.snake_case(column_name) + "_" + attrib_name.lower()}"))'
+    def attribute_sub_override(attrib_name, column):
+        return f'@jakarta.persistence.AttributeOverride(name = "{attrib_name}", column = {column})'
 
     @staticmethod
     def attribute_main_override(value):
