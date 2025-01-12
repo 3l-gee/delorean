@@ -36,6 +36,6 @@ class View:
         Control.log_action(
             what="",
             success=True,
-            why="",
+            why="self.feature_to_schema.get(name)",
         )     
         return self.feature_to_schema.get(name)

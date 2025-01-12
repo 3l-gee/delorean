@@ -577,14 +577,14 @@ config = {
         "aixm:FeatureTimeSliceMetadataPropertyType",
         "aixm:MessageMetadataPropertyType,",
     ],
-    "embed": [
-        "PointType",
-        "ElevatedPointType",
-        "CurveType",
-        "ElevatedCurveType",
-        "SurfaceType",
-        "ElevatedSurfaceType",
-        ],
+    "embed": {
+        "PointType" : {},
+        "ElevatedPointType" : {},
+        "CurveType" : {},
+        "ElevatedCurveType" : {},
+        "SurfaceType" : {},
+        "ElevatedSurfaceType" : {},
+    },
     "abstract": [
         "AbstractMarkingType",
         "AbstractAirportHeliportProtectionAreaType",
@@ -696,14 +696,14 @@ config = {
         "aixm:FeatureTimeSliceMetadataPropertyType",
         "aixm:MessageMetadataPropertyType,",
     ],
-    "embed": [
-        "PointType",
-        "ElevatedPointType",
-        "CurveType",
-        "ElevatedCurveType",
-        "SurfaceType",
-        "ElevatedSurfaceType",
-        ],
+    "embed": {
+        "PointType" : {"source" : "config"},
+        "ElevatedPointType" : {"source" : "config"},
+        "CurveType" : {"source" : "config"},
+        "ElevatedCurveType" : {"source" : "config"},
+        "SurfaceType" : {"source" : "config"},
+        "ElevatedSurfaceType" : {"source" : "config"},
+    },
     "abstract": [
         "AbstractMarkingType",
         "AbstractAirportHeliportProtectionAreaType",
@@ -727,6 +727,7 @@ config = {
     "package": "com.aixm.delorean.core.schema.a5_1.aixm",
     "output_path": "schema/aixm5_1/binding/aixm.xjb"
 }
+
 
 feature = {
     "name" : "../aixm/AIXM_Features",
@@ -759,3 +760,5 @@ message = {
 }
 
 machinery = Machinery(config, debug, schema, [data_types, feature, abstract, message],)
+
+# machinery = Machinery(config, debug, schema, [data_types],)

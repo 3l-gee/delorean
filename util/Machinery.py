@@ -3,10 +3,13 @@ import xml.etree.ElementTree as ET
 from lxml import etree
 from typing import List
 import os
+import json
 from annotation import Property, Annox, Strategy, Jpa, Relation, Xpath,Tag, Jaxb, Xml
 from control import Control
+from validation import Validation
 from xsd import Xsd
 from view import View
+
 
    # machinery.print_entity_class(machinery.entity_feature)
 
@@ -38,40 +41,21 @@ class Machinery:
         self.abstract_feature = {}
         self.entity_feature = [] # todo make it a dict
         self.ignore_feature = {}
-        self.embed_feature = self.init_embed_feature(self.content)
+        self.column_definition = {}
         self.folder = {}
         self.table_name = {}
 
         self.generate_xjb()
         self.export_xjb()
-        for key, value in self.content.items() :
-            self.export_file("types.txt", value["simple_type"]["type"])
-            self.export_file("graph.txt", value["simple_type"]["graph"])
-            self.export_file("transposition.txt", value["simple_type"]["transposition"])
+        # for key, value in self.content.items() :
+            # self.export_file("types.txt", value["simple_type"]["type"])
+
         # self.print_entity_class(self.entity_feature)
         # Control.print_actions(True)
 
     def export_file(self, file_path, content):
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, 'w') as f:
-            f.write(content)
-
-    def init_embed_feature(self, content):
-        res = {}
-        for key, value in content.items():
-            for simple_type in value["simple_type"]["type"]:
-                if simple_type.attrib["name"] in self.config.embed:
-                    res[simple_type.attrib.get("name", simple_type.attrib.get("ref"))] = simple_type
-
-            for complex_type in value["complex_type"]["type"]:
-                if complex_type.attrib["name"] in self.config.embed:
-                    res[complex_type.attrib.get("name", complex_type.attrib.get("ref"))] = complex_type
-
-            for group in value["group"]["type"]:
-                if group.attrib["name"] in self.config.embed:
-                    res[group.attrib.get("name", group.attrib.get("ref"))] = group
-
-        return res
+            f.write(json.dumps(content, indent=4))
     
     def init_content(self, xsds: List[Xsd]): 
         res = {}
@@ -81,7 +65,7 @@ class Machinery:
             attrib_graph = self.build_attribute_graph(xsd.get_complex_type())
             transposition = self.build_transposition(simple_type_content, inherit_graph)
             if xsd.strategy == Strategy.data_type:
-                self.config.embed.extend(self.extract_embed(xsd.root))
+                self.config.embed = {**self.config.embed, **self.extract_embed(xsd.root, transposition)}
 
             res[xsd.name] = {
                 "strategy" : xsd.strategy,
@@ -97,17 +81,40 @@ class Machinery:
                     "type" : xsd.get_complex_type(),
                     },
                 "group" : {
-                    "type" : xsd.get_groups()
+                    "type" : xsd.get_groups(),
                 }
             }
 
         return res
     
-    def extract_embed(self, root):
-        res = []
+    def extract_embed(self, root, transposition):
+        res = {}
         complexType = root.findall(Tag.complex_type) or []
         for element in complexType:
-            res.append(element.attrib["name"])
+            name = element.attrib["name"]
+            simple_content = element.find(Tag.simple_content)
+
+            if simple_content is None:
+                res[name] = {}
+                continue
+
+            base = simple_content.find(Tag.extension)
+            base_name = base.attrib["base"]
+            try : 
+                base_name = base_name.split(":")[-1]
+            except:
+                pass
+            res[name] = {"value" : transposition[base_name],}
+
+            attributes = base.findall(Tag.attribute) or []
+            for attribute in attributes:
+                type = attribute.attrib.get("type", attribute.attrib.get("ref"))
+                try : 
+                    type = type.split(":")[-1]
+                except:
+                    pass
+                res[name][attribute.attrib["name"]] = transposition.get(type, {})
+            
         return res
     
     def build_inheritance_graph(self, type):
@@ -147,18 +154,19 @@ class Machinery:
 
     def build_transposition(self, type: list,  graph):
         transposition = {}
-        for element in type : 
-            temp_transposition = {}
+        dict = {}
+        for element in type:
             name = element.attrib["name"]
+            constraints = Validation.generate_constraints(element)
+            transposition[name] = constraints
+
+        for element in type:
+            name = element.attrib["name"]
+            constraints = transposition[name]
             if name in graph.keys():
-                temp_transposition = self.graph_traversal(element, name, graph)
-
-            for key, value in temp_transposition.items():
-                if key in transposition:
-                    transposition[key].extend(value)
-                else :
-                    transposition[key] = value
-
+                for sub_name in graph[name]:
+                    transposition[sub_name] = {**transposition[sub_name], **transposition[name]}
+    
         return transposition
     
     def graph_traversal(self,element, name, graph, dict=None):
@@ -169,142 +177,28 @@ class Machinery:
            
             deep_dict = {}
             for item in graph[name]:
-                deep_dict.update({item : self.generate_constraints(element)})
+                deep_dict.update({item : Validation.generate_constraints(element)})
                 deep_dict.update(self.graph_traversal(element, item, graph))
                 
                 dict.update(deep_dict)
-        return dict        
-            
-    def generate_constraints(self, element) : 
-        res = {}
-        restriction = element.find(Tag.restriction)
-        if restriction is None:
-            return res
-
-        fractionDigits = restriction.find(Tag.fractionDigits)
-        length = restriction.find(Tag.length)
-        maxExclusive = restriction.find(Tag.maxExclusive)
-        minExclusive = restriction.find(Tag.minExclusive)
-        maxInclusive = restriction.find(Tag.maxInclusive)
-        minInclusive = restriction.find(Tag.minInclusive)
-        maxLength = restriction.find(Tag.maxLength)
-        minLength = restriction.find(Tag.minLength)
-        pattern = restriction.find(Tag.pattern)
-        totalDigits = restriction.find(Tag.totalDigits)
-        whiteSpace = restriction.find(Tag.whiteSpace)
-
-        if restriction.attrib.get("base") in ["string"]:
-            res["Size"] = (Annox.field_add(Jpa.constraint.size(min = None, max = 2000)))
-
-        if fractionDigits is not None:
-            pass
-
-        if length is not None:
-            pass
-
-        if maxExclusive is not None:
-            pass
-
-        if minExclusive is not None:
-            pass
-    
-        if maxInclusive is not None:
-            pass
-
-        if minInclusive is not None:
-            pass
-
-        if minLength is not None or maxLength is not None:
-            res["Size"] = (Annox.field_add(Jpa.constraint.size(minLength.attrib["value"], maxLength.attrib["value"])))
-
-        if pattern is not None:
-            res["Pattern"] = (Annox.field_add(Jpa.constraint.pattern(pattern.attrib["value"], "this field must match")))
-
-        if totalDigits is not None:
-            pass
-
-        if whiteSpace is not None:
-            pass        
-
-        return res
-    
-    def generate_cardinality(self, parent, element, embed):
-        res = []
-        type = element.attrib.get("type", "").replace("aixm:", "")
-        name = element.attrib.get("name")
-        ref = element.attrib.get("ref")
-        nillable = element.attrib.get("nillable", "false").lower() == "true"
-        minOccurs = int(element.attrib.get("minOccurs", "1"))
-        maxOccurs = element.attrib.get("maxOccurs", "1")  # Default is 1
-
-        if maxOccurs.lower() == "unbounded":
-            maxOccurs = "unbounded"
-        else:
-            maxOccurs = int(maxOccurs)
-
-        if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
-            res.append(Annox.field_add(Jpa.transient))
-            return res
-
-        if maxOccurs == "unbounded":
-            if type in embed.keys():
-                res.append(Annox.field_add(Jpa.relation.collection_element()))
-                res.append(Annox.field_add(Jpa.relation.collection_table(type)))
-                temp = [Jpa.attribute_sub_override("href", element.attrib["name"])]
-                temp.append(Jpa.attribute_sub_override("nilReason", element.attrib["name"]))
-                res.append(Annox.field_add(Jpa.attribute_main_override(temp)))
-                return res 
-
-            res.append(Annox.field_add(Jpa.relation.many_to_many()))
-            res.append(Annox.field_add(Relation.join_table(
-                parent.attrib["name"], element.attrib["name"], parent.attrib["name"], element.attrib["type"])))
-            join_column_name = element.attrib.get("name") if element.attrib.get("name") else element.attrib.get("ref")
-            return res
-
-        if maxOccurs == 1:
-            if type in embed.keys():
-                res.append(Annox.field_add(Jpa.embedded))
-                temp = []
-                for attribute in embed[type].findall(".//"+ Tag.attribute) or []:
-                    temp.append(Jpa.attribute_sub_override(attribute.attrib["name"], element.attrib["name"]))
-                
-                #PropertyType with Ownership and Association
-                if temp == []:
-                    temp.append(Jpa.attribute_sub_override("href", element.attrib["name"]))
-                    temp.append(Jpa.attribute_sub_override("nilReason", element.attrib["name"]))
-
-                else: 
-                    temp.append(Jpa.attribute_sub_override("value", element.attrib["name"]))
-
-                res.append(Annox.field_add(Jpa.attribute_main_override(temp)))
-
-                return res
-            elif type in ["AlphanumericType", "AlphaType"] :
-                res.append(Annox.field_add(Jpa.column(element.attrib["name"])))
-            
-            else:
-                res.append(Annox.field_add(Jpa.relation.one_to_one()))
-                join_column_name = element.attrib.get("name") if element.attrib.get("name") else element.attrib.get("ref")
-                res.append(Annox.field_add(Relation.join_column(join_column_name)))
-                return res
-
-        if nillable:
-            pass
-
-        return res
-                
+        return dict       
+                                                    
     def generate_xjb(self):
         for key, value in self.content.items() :
             self.xjb[key]["auto"]["default"].extend(
                 self.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"]))
-
-        # for key, value in self.content.items() :
-        #     self.xjb[key]["auto"]["default"].extend(
-        #         self.generate_complex_types(value["complex_type"]["type"],self.embed_feature, self.config.abstract))
+            
+            self.export_file("graph.txt", value["simple_type"]["graph"])
+            self.export_file("transposition.txt", value["simple_type"]["transposition"])
+            self.export_file("embed_feature.txt", self.config.embed)
+            
+        for key, value in self.content.items() :
+            self.xjb[key]["auto"]["default"].extend(
+                self.generate_complex_types(value["complex_type"]["type"], self.config.embed, self.config.abstract))
                         
-        # for key, value in self.content.items() :
-        #     self.xjb[key]["auto"]["default"].extend(
-        #         self.generate_groupe_types(value["group"]["type"], self.embed_feature, self.config.abstract))
+        for key, value in self.content.items() :
+            self.xjb[key]["auto"]["default"].extend(
+                self.generate_groupe_types(value["group"]["type"], self.config.embed, self.config.abstract))
     
     def generate_simple_types(self, type, graph, transposition):
         res = []
@@ -332,18 +226,25 @@ class Machinery:
                 node.append(Jaxb.end)
 
             else:
-                constraints = {**transposition.get(element.attrib["name"], {}), **self.generate_constraints(element)}
-                if self.config.constraint_methode == "xjb":
-                    node.extend(constraints.values())
+                constraints = {**transposition.get(element.attrib["name"], {}), **Validation.generate_constraints(element)}
+                
+                # if self.config.constraint_methode == "xjb":
+                #     size = constraints.get("size")
+                #     pattern = constraints.get("pattern")
+
+                #     if size is not None:
+                #         node.append(size)
+                #     if pattern is not None:
+                #         node.append(pattern)
 
                 if base is not None and base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean", "date", "dateTime"]:
                     if base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean"] :
-                        node.append(Annox.field_add(Jpa.column(element.attrib["name"])))
+                        # node.append(Annox.field_add(Jpa.column(element.attrib["name"], constraints.get("column_length"))))
                         node.append(Jaxb.end)
 
                     elif base.get("base") == "date":
                         node.append(Jaxb.java_type("java.sql.Timestamp"))
-                        node.append(Annox.field_add(Jpa.column(element.attrib["name"])))
+                        # node.append(Annox.field_add(Jpa.column(element.attrib["name"], constraints.get("column_length"))))
                         node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter.date.XMLGregorianCalendarAdapter.class")))
                         node.append(Jaxb.end)
                     
@@ -353,6 +254,8 @@ class Machinery:
 
                 elif base is not None and "aixm" in base.get("base",None) :
                     node = []
+                    # node.append(Annox.field_add(Jpa.column("value", constraints.get("column_length"))))
+                    # node.append(Jaxb.end)
                     
                 else:
                     print(element.attrib, base)
@@ -541,7 +444,7 @@ class Machinery:
         else :
             print(element.attrib)
 
-        node.extend(self.generate_cardinality(parent, element, embed))
+        node.extend(Validation.generate_cardinality(parent, element, embed))
         node.append(Jaxb.end)
 
         return node
@@ -572,7 +475,7 @@ class Machinery:
         else : 
             print(attribute.attrib)
 
-        node.extend(self.generate_cardinality(parent, attribute, embed))
+        node.extend(Validation.generate_cardinality(parent, attribute, embed))
         node.append(Jaxb.end)
 
         return node
@@ -613,7 +516,7 @@ class Machinery:
         else : 
             print(element.attrib)
 
-        node.extend(self.generate_cardinality(parent, element, embed))
+        node.extend(Validation.generate_cardinality(parent, element, embed))
         node.append(Jaxb.end)
 
         return node
@@ -645,7 +548,7 @@ class Machinery:
         else : 
             print(attribute.attrib)
 
-        node.extend(self.generate_cardinality(parent, attribute, embed))
+        node.extend(Validation.generate_cardinality(parent, attribute, embed))
         node.append(Jaxb.end)
 
         return node
