@@ -57,6 +57,9 @@ public class LinestringSegment {
     @Column(name = "interpretation")
     protected Interpretation interpretation;
 
+    @Column(name = "curve_ref")
+    protected String curveRef;
+
     public Long getId() {
         return dbid;
     }
@@ -119,5 +122,13 @@ public class LinestringSegment {
 
     public void setSequence(long value) {
         this.sequence = value;
+    }
+
+    public String getCurveRef() {
+        return curveRef;
+    }
+
+    public void setCurveRef(String value) {
+        this.curveRef = value;
     }
 }

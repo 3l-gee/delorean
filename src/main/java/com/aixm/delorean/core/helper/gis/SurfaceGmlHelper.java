@@ -131,10 +131,12 @@ public class SurfaceGmlHelper {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + element.toString() + " srsName : " + srsName + " isExterior : " + isExterior, new Exception().getStackTrace()[0]);
         List<PolygonSegment> coordinates =  new ArrayList<PolygonSegment>();
         if (element.getValue().getClass().equals(ConeType.class)) {
-            //AIXM-5.1_RULE-1A3ED3
+            ConsoleLogger.log(LogLevel.FATAL, "AIXM-5.1_RULE-1A3ED3", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("AIXM-5.1_RULE-1A3ED3");
 
         } else if (element.getValue().getClass().equals(CylinderType.class)) {	
-            //AIXM-5.1_RULE-1A3ED4
+            ConsoleLogger.log(LogLevel.FATAL, "AIXM-5.1_RULE-1A3ED4", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("AIXM-5.1_RULE-1A3ED4");
 
         } else if (element.getValue().getClass().equals(PolygonPatchType.class)) {
             if (isExterior) {
@@ -144,13 +146,16 @@ public class SurfaceGmlHelper {
             }
 
         } else if (element.getValue().getClass().equals(RectangleType.class)) {
-            //AIXM-5.1_RULE-1A3ED1
+            ConsoleLogger.log(LogLevel.FATAL, "AIXM-5.1_RULE-1A3ED1", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("AIXM-5.1_RULE-1A3ED1");
             
         } else if (element.getValue().getClass().equals(SphereType.class)) {
-            //AIXM-5.1_RULE-1A3ED5
+            ConsoleLogger.log(LogLevel.FATAL, "AIXM-5.1_RULE-1A3ED5", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("AIXM-5.1_RULE-1A3ED5");
             
         } else if (element.getValue().getClass().equals(TriangleType.class)) {
-            //AIXM-5.1_RULE-1A3ED2
+            ConsoleLogger.log(LogLevel.FATAL, "AIXM-5.1_RULE-1A3ED2", new Exception().getStackTrace()[0]);
+            throw new RuntimeException("AIXM-5.1_RULE-1A3ED2");
             
         } else {
             ConsoleLogger.log(LogLevel.FATAL, "Unsupported type " + element.getValue().getClass().getName(), new Exception().getStackTrace()[0]);
@@ -256,6 +261,21 @@ public class SurfaceGmlHelper {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);
         List<PolygonSegment> coordinates = new ArrayList<PolygonSegment>();
         JAXBElement<? extends AbstractCurveType> element =  value.getAbstractCurve();
+        if (element == null) {
+            String href = value.getHref();
+            if (href == null) {
+                return new ArrayList<PolygonSegment>();
+            } else {
+                ConsoleLogger.log(LogLevel.WARN, "href should be avoided at all cost" + value.getClass().getName(), new Exception().getStackTrace()[0]);
+                PolygonSegment polygonSegment = new PolygonSegment();
+                polygonSegment.setCurveRef(href);
+                polygonSegment.setSequence(counter);
+                polygonSegment.setPart(0);
+                coordinates.add(polygonSegment);
+                return coordinates;
+            }
+        }
+
         if (element.getValue() instanceof com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType) {
 
         } else if (element.getValue().getClass().equals(ElevatedCurveType.class)){
@@ -638,7 +658,7 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
                 DirectPositionType pos = (DirectPositionType) element;
                 String actualSrsName = pos.getSrsName() != null ? pos.getSrsName() : srsName;
                 coordinatesMap.put(value.indexOf(element), PointGmlHelper.parseDirectPositionToCoordinate(pos));
-                srsNameMap.put(value.indexOf(element), actualSrsName);System.out.println();
+                srsNameMap.put(value.indexOf(element), actualSrsName);
             } else {
                 ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
                 throw new RuntimeException("element is not supported");

@@ -13,7 +13,7 @@ public enum DatabaseConfig {
         "postgres",                             // Default password
         5,                         // Connection pool min size
         20,                        // Connection pool max size
-        true,                                   // Hibernate show_sql
+        false,                                   // Hibernate show_sql
         "create",                           // Hibernate hbm2ddl.auto
         "",                                 // Hibernate path
         new Class<?>[]{
