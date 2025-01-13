@@ -60,6 +60,9 @@ public class PolygonSegment {
     @Column(name = "interpretation")
     protected Interpretation interpretation;
 
+    @Column(name = "curve_ref")
+    protected String curveRef;
+
     public Long getId() {
         return dbid;
     }
@@ -130,5 +133,13 @@ public class PolygonSegment {
 
     public void setPart(long value) {
         this.part = value;
+    }
+
+    public String getCurveRef() {
+        return curveRef;
+    }
+
+    public void setCurveRef(String value) {
+        this.curveRef = value;
     }
 }

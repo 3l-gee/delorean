@@ -871,7 +871,7 @@ class Util:
 
     @staticmethod
     def snake_case(name):
-        value = name
+        value = Util.short_name(name)
         try: 
             value = value.split(':')[-1]
         except:
@@ -883,8 +883,7 @@ class Util:
 
     @staticmethod
     def snake_case_table(name):
-        value = name
-        # value = Util.short_name(name)
+        value = Util.short_name(name)
 
         try: 
             value = value.split(':')[-1]
@@ -899,9 +898,9 @@ class Util:
         replacements = {
             "TimeSlicePropertyType": "_Tsp",
             "PropertyGroup": "_Pg",
-            "PropertyType": "_P",
+            "PropertyType": "_Pt",
             "TimeSliceType": "_Ts",
-            "Type": "",
+            "Type": "_T",
         }
         
         for key, value in replacements.items():
@@ -921,14 +920,12 @@ class Util:
         return result
 
     def snake_case_column(name):
-        value = name
+        value = Util.short_name(name)
 
         try: 
             value = value.split(':')[-1]
         except:
             pass
-
-        # value = Util.short_name(value)
 
         s1 = re.sub('(.)([A-Z][a-z]+)', r'\1\2', value)
         result = re.sub('([a-z0-9])([A-Z])', r'\1\2', s1).lower().replace("_base_type", "").replace("_type", "")
