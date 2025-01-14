@@ -171,7 +171,8 @@ public class SurfaceGmlHelper {
             ConsoleLogger.log(LogLevel.FATAL, "exterior is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
             throw new RuntimeException("exterior is null" + value.getClass().getName());
         }
-        return parseAbstractRingProperty(exterior, srsName, 0);
+        long part = 0;
+        return parseAbstractRingProperty(exterior, srsName, part);
     }
 
     public static List<PolygonSegment> parsePolygonPatchInterior (PolygonPatchType value, String srsName) {
@@ -182,10 +183,10 @@ public class SurfaceGmlHelper {
             return new ArrayList<PolygonSegment>();
         }
 
-        long counter = 1;
+        long part = 1;
         for (AbstractRingPropertyType ring : interior) {
-            coordinates.addAll(parseAbstractRingProperty(ring, srsName, counter));
-            counter++;
+            coordinates.addAll(parseAbstractRingProperty(ring, srsName, part));
+            part++;
         }
 
         return coordinates;
@@ -212,15 +213,15 @@ public class SurfaceGmlHelper {
         return polygonPatch;
     }
 
-    public static List<PolygonSegment> parseAbstractRingProperty(AbstractRingPropertyType value, String srsName, long counter) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);
+    public static List<PolygonSegment> parseAbstractRingProperty(AbstractRingPropertyType value, String srsName, long part) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " part : " + part, new Exception().getStackTrace()[0]);
         JAXBElement<? extends AbstractRingType> element =  value.getAbstractRing();
         if (element.getValue().getClass().equals(LinearRingType.class)){
             ConsoleLogger.log(LogLevel.FATAL, "AIXM-5.1_RULE-1A3ED6", new Exception().getStackTrace()[0]);
             throw new RuntimeException("AIXM-5.1_RULE-1A3ED6"); 
 
         } else if (element.getValue().getClass().equals(RingType.class)){
-            return parseRingType((RingType) element.getValue(), srsName, counter);
+            return parseRingType((RingType) element.getValue(), srsName, part);
 
         } else {
             ConsoleLogger.log(LogLevel.FATAL, "Unsupported type " + element.getValue().getClass().getName(), new Exception().getStackTrace()[0]);
@@ -228,16 +229,18 @@ public class SurfaceGmlHelper {
         }
     }
 
-    public static List<PolygonSegment> parseRingType(RingType value, String srsName, long counter) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);
+    public static List<PolygonSegment> parseRingType(RingType value, String srsName, long part) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + part, new Exception().getStackTrace()[0]);
         List<PolygonSegment> coordinates = new ArrayList<PolygonSegment>();
         List<CurvePropertyType> curveMember = value.getCurveMember();
         if (curveMember == null) {
             return new ArrayList<PolygonSegment>();
         }
 
+        long member = 0;
         for (CurvePropertyType curve : curveMember) {
-            coordinates.addAll(parseCurveProperty(curve, srsName, counter));
+            coordinates.addAll(parseCurveProperty(curve, srsName, part, member));
+            member++;
         }
         
         return coordinates;
@@ -257,8 +260,8 @@ public class SurfaceGmlHelper {
         return ringType;
     }
 
-    public static List<PolygonSegment> parseCurveProperty(CurvePropertyType value, String srsName, long counter) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);
+    public static List<PolygonSegment> parseCurveProperty(CurvePropertyType value, String srsName, long part, long member) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " part : " + part + " member : " + member, new Exception().getStackTrace()[0]);
         List<PolygonSegment> coordinates = new ArrayList<PolygonSegment>();
         JAXBElement<? extends AbstractCurveType> element =  value.getAbstractCurve();
         if (element == null) {
@@ -269,8 +272,10 @@ public class SurfaceGmlHelper {
                 ConsoleLogger.log(LogLevel.WARN, "href should be avoided at all cost" + value.getClass().getName(), new Exception().getStackTrace()[0]);
                 PolygonSegment polygonSegment = new PolygonSegment();
                 polygonSegment.setCurveRef(href);
-                polygonSegment.setSequence(counter);
                 polygonSegment.setPart(0);
+                polygonSegment.setMember(member);
+                polygonSegment.setSequence(0);
+                polygonSegment.setInterpretation(PolygonSegment.Interpretation.CURVEREF);
                 coordinates.add(polygonSegment);
                 return coordinates;
             }
@@ -289,7 +294,7 @@ public class SurfaceGmlHelper {
             if (curveType == null || curveType.getSegments() == null) {
                 return coordinates;
             } else {
-                coordinates.addAll(parseCurveSegementArrayProperty(curveType.getSegments(), srsName, counter));
+                coordinates.addAll(parseCurveSegementArrayProperty(curveType.getSegments(), srsName, part, member));
             }
         } else if (element.getValue().getClass().equals(LineStringType.class)){
             //TODO is this allowed in AIXM?
@@ -310,8 +315,8 @@ public class SurfaceGmlHelper {
         return coordinates;
     }
 
-        public static List<PolygonSegment> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value, String srsName, long part) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString(), new Exception().getStackTrace()[0]);
+    public static List<PolygonSegment> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value, String srsName, long part, long member) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " part : " + part + " member : " + member, new Exception().getStackTrace()[0]);
         List<PolygonSegment> segment = new ArrayList<>();
         long counter = 0;
 
@@ -327,7 +332,7 @@ public class SurfaceGmlHelper {
 
             } else if (element.getValue().getClass().equals(ArcByCenterPointType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "ArcByCenterPointType");
-                segment.add(parseArcByCenterPoint((ArcByCenterPointType) element.getValue(), srsName, counter, part));
+                segment.add(parseArcByCenterPoint((ArcByCenterPointType) element.getValue(), srsName, part, member, counter));
                 counter++;
                 continue;
 
@@ -352,7 +357,7 @@ public class SurfaceGmlHelper {
                 continue;
                 
             } else if (element.getValue().getClass().equals(CircleByCenterPointType.class)) {
-                segment.add(parseCircleByCenterPoint((CircleByCenterPointType) element.getValue(), srsName, counter, part));
+                segment.add(parseCircleByCenterPoint((CircleByCenterPointType) element.getValue(), srsName, part, member, counter));
                 counter++;
 
             } else if (element.getValue().getClass().equals(CircleType.class)) {
@@ -369,19 +374,19 @@ public class SurfaceGmlHelper {
 
             } else if (element.getValue().getClass().equals(GeodesicStringType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "GeodesicStringType");
-                segment.add(parseGeodesicString((GeodesicStringType) element.getValue(), srsName, counter, part));
+                segment.add(parseGeodesicString((GeodesicStringType) element.getValue(), srsName, part, member, counter));
                 counter++;
                 continue;
 
             } else if (element.getValue().getClass().equals(GeodesicType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "GeodesicType");
-                segment.add(parseGeodesicString((GeodesicType) element.getValue(), srsName, counter, part));
+                segment.add(parseGeodesicString((GeodesicType) element.getValue(), srsName, part, member, counter));
                 counter++;
                 continue;
 
             } else if (element.getValue().getClass().equals(LineStringSegmentType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "LineStringSegmentType");
-                segment.add(parseLineStringSegment((LineStringSegmentType) element.getValue(), srsName, counter, part));
+                segment.add(parseLineStringSegment((LineStringSegmentType) element.getValue(), srsName, part, member, counter));
                 counter++;
                 continue;
 
@@ -403,8 +408,8 @@ public class SurfaceGmlHelper {
         return new CurveSegmentArrayPropertyType();
     }
 
-    public static PolygonSegment parseArcByCenterPoint(ArcByCenterPointType value, String srsName, long counter, long part) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " counter : " + counter, new Exception().getStackTrace()[0]);
+    public static PolygonSegment parseArcByCenterPoint(ArcByCenterPointType value, String srsName, long part, long member, long counter) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
         LengthType radius = value.getRadius();
         AngleType startAngle = value.getStartAngle();
         AngleType endAngle = value.getEndAngle();
@@ -450,8 +455,9 @@ public class SurfaceGmlHelper {
         polygonSegment.setStartAngle(startAngle_rad);
         polygonSegment.setEndAngle(endAngle_rad);
         polygonSegment.setInterpretation(PolygonSegment.Interpretation.ARCBYCENTER);
-        polygonSegment.setSequence(counter);
         polygonSegment.setPart(part);
+        polygonSegment.setMember(member);
+        polygonSegment.setSequence(counter);
 
         return polygonSegment;
     }
@@ -471,8 +477,8 @@ public class SurfaceGmlHelper {
         return new ArcType();
     }
 
-public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType value, String srsName, long counter, long part) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " counter : " + counter, new Exception().getStackTrace()[0]);
+public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType value, String srsName, long part, long member, long counter) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
         LengthType radius = value.getRadius();
 
         if (radius == null ) {
@@ -512,8 +518,9 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         polygonSegment.setPoint(point);
         polygonSegment.setRadius(radius_m);
         polygonSegment.setInterpretation(PolygonSegment.Interpretation.CIRCLEBYCENTER);
-        polygonSegment.setSequence(counter);
         polygonSegment.setPart(part);
+        polygonSegment.setMember(member);
+        polygonSegment.setSequence(counter);
 
         return polygonSegment;
     }  
@@ -531,16 +538,16 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         return new CircleType();
     }
 
-    public static PolygonSegment parseGeodesicString (GeodesicStringType value, String srsName, long counter, long part) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);   
+    public static PolygonSegment parseGeodesicString (GeodesicStringType value, String srsName, long part, long member, long counter) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);   
         DirectPositionListType posList = value.getPosList();
         List<Object> geometricPositionGroup = value.getGeometricPositionGroup();
         
         if (posList != null) {
             String actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
-            return parseDirectPositionList(posList, actualSrsName, PolygonSegment.Interpretation.GEODESIC, counter, part);
+            return parseDirectPositionList(posList, actualSrsName, PolygonSegment.Interpretation.GEODESIC, part, member, counter);
         } else if (geometricPositionGroup != null) {
-            return parseListOfDirectPosition(geometricPositionGroup, srsName, PolygonSegment.Interpretation.GEODESIC, counter, part, null);
+            return parseListOfDirectPosition(geometricPositionGroup, srsName, PolygonSegment.Interpretation.GEODESIC, part, member, counter, null);
         }
 
         ConsoleLogger.log(LogLevel.FATAL, "DirectPositionListType and geometricPositionGroup is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -557,19 +564,19 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         return geodesicString;
     }
 
-    public static PolygonSegment parseLineStringSegment (LineStringSegmentType value, String srsName, long counter, long part) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]); 
+    public static PolygonSegment parseLineStringSegment (LineStringSegmentType value, String srsName, long part, long member, long counter) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]); 
         DirectPositionListType posList = value.getPosList();
         List<JAXBElement<?>> posOrPointPropertyOrPointRep = value.getPosOrPointPropertyOrPointRep();
         if (posList != null) {
             String actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
 
             ConsoleLogger.log(LogLevel.DEBUG, "end parseLineStringSegment : " + posList.toString() + " / " + actualSrsName);
-            return parseDirectPositionList(posList, actualSrsName, PolygonSegment.Interpretation.LINESTRING, counter, part);
+            return parseDirectPositionList(posList, actualSrsName, PolygonSegment.Interpretation.LINESTRING, part, member, counter);
         } else if (posOrPointPropertyOrPointRep != null) {
 
             ConsoleLogger.log(LogLevel.DEBUG, "end parseLineStringSegment : " + posOrPointPropertyOrPointRep.toString() + " / " + srsName);
-            return parseListOfDirectPosition(posOrPointPropertyOrPointRep, srsName, PolygonSegment.Interpretation.LINESTRING, counter, part);
+            return parseListOfDirectPosition(posOrPointPropertyOrPointRep, srsName, PolygonSegment.Interpretation.LINESTRING, part, member, counter);
 
         }  
         ConsoleLogger.log(LogLevel.FATAL, "DirectPositionListType and posOrPointPropertyOrPointRep is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
@@ -581,8 +588,8 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         return new LineStringSegmentType();
     }
 
-    public static PolygonSegment parseDirectPositionList (DirectPositionListType value, String srsName, PolygonSegment.Interpretation interpretation, long counter, long part) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsNam : " + srsName +  " interpretation :" + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);
+    public static PolygonSegment parseDirectPositionList (DirectPositionListType value, String srsName, PolygonSegment.Interpretation interpretation, long part, long member, long counter) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsNam : " + srsName +  " interpretation :" + interpretation + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
         
         List<Double> posList = value.getValue();
 
@@ -616,8 +623,10 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         PolygonSegment polygonSegment = new PolygonSegment();
         polygonSegment.setLinestring(lineString);
         polygonSegment.setInterpretation(interpretation);
-        polygonSegment.setSequence(counter);
         polygonSegment.setPart(part);
+        polygonSegment.setMember(member);
+        polygonSegment.setSequence(counter);
+
         return polygonSegment;
     }
 
@@ -643,8 +652,8 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         return posList;
         }
 
-    public static PolygonSegment parseListOfDirectPosition(List<Object> value, String srsName, PolygonSegment.Interpretation interpretation, long counter, long part, String type) {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);
+    public static PolygonSegment parseListOfDirectPosition(List<Object> value, String srsName, PolygonSegment.Interpretation interpretation, long part, long member, long counter, String type) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
     
         LinkedHashMap<Integer, Coordinate> coordinatesMap = new LinkedHashMap<>();
         LinkedHashMap<Integer, String> srsNameMap = new LinkedHashMap<>();
@@ -671,12 +680,13 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         PolygonSegment polygonSegment = new PolygonSegment();
         polygonSegment.setLinestring(lineString);
         polygonSegment.setInterpretation(interpretation);
-        polygonSegment.setSequence(counter);
         polygonSegment.setPart(part);
+        polygonSegment.setMember(member);
+        polygonSegment.setSequence(counter);
         return polygonSegment;
     }
 
-    public static PolygonSegment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, PolygonSegment.Interpretation interpretation, long counter, long part) {
+    public static PolygonSegment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, PolygonSegment.Interpretation interpretation, long part, long member, long counter) {
 
         LinkedHashMap<Integer, Coordinate> coordinatesMap = new LinkedHashMap<>();
         LinkedHashMap<Integer, String> srsNameMap = new LinkedHashMap<>();
@@ -703,8 +713,9 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         PolygonSegment polygonSegment = new PolygonSegment();
         polygonSegment.setLinestring(lineString);
         polygonSegment.setInterpretation(interpretation);
-        polygonSegment.setSequence(counter);
         polygonSegment.setPart(part);
+        polygonSegment.setMember(member);
+        polygonSegment.setSequence(counter);
         return polygonSegment;
     }
 

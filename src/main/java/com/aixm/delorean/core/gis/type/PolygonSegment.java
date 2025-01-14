@@ -47,6 +47,9 @@ public class PolygonSegment {
     @Column(name = "sequence")
     protected long sequence;
 
+    @Column(name = "member")
+    protected long member;
+
     @Column(name = "part")
     protected long part;
 
@@ -54,7 +57,8 @@ public class PolygonSegment {
         GEODESIC,
         LINESTRING,
         ARCBYCENTER,
-        CIRCLEBYCENTER
+        CIRCLEBYCENTER,
+        CURVEREF
     }
 
     @Column(name = "interpretation")
@@ -125,6 +129,14 @@ public class PolygonSegment {
 
     public void setSequence(long value) {
         this.sequence = value;
+    }
+
+    public long getMember() {
+        return member;
+    }
+
+    public void setMember(long value) {
+        this.member = value;
     }
 
     public long getPart() {
