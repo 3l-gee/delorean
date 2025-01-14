@@ -1,13 +1,15 @@
-CREATE OR REPLACE VIEW elevated_surface_view AS
+-- CREATE OR REPLACE VIEW elevated_surface_view AS
 WITH
 segment_ref AS(
 	SELECT 
 		id, 
 		part,
+		member,
 		sequence,
+		interpretation,
 		SUBSTRING(curve_ref::text FROM POSITION('.' IN curve_ref::text) + 1) AS uuid
     FROM public.polygon_segment 
-	WHERE curve_ref IS NOT NULL
+	WHERE public.polygon_segment.interpretation = 4
 ),
 segment_value AS(
 	SELECT 
@@ -29,7 +31,9 @@ center AS (
     SELECT 
 		id, 
 		part,
+		member,
 		sequence,
+		interpretation,
 		point,
 		radius,
 		start_angle,
@@ -41,7 +45,9 @@ center AS (
 	SELECT 
 		id, 
 		part,
+		member,
 		sequence,
+		interpretation,
 		point,
 		radius,
 		0 as start_angle,
@@ -54,7 +60,9 @@ interpolated_points AS (
     SELECT 
         center.id,
 		part,
+		member,
 		sequence,
+		interpretation,
 		ST_Project(center.point::geography, center.radius, center.start_angle + center.step_size * n)::geometry AS point_geom
     FROM 
         generate_series(0, 256) AS n, 	
@@ -64,16 +72,20 @@ arc_line AS (
     SELECT 
         id,
 		part,
+		member,
 		sequence,
+		interpretation,
         ST_MakeLine(point_geom) AS geom
     FROM interpolated_points
-    GROUP BY id, part, sequence
+    GROUP BY id, part, member, sequence, interpretation
 ),
 segment_union AS (
     SELECT 
         id, 
 		part,
+		member,
 		sequence,
+		interpretation,
 		ST_ReducePrecision(linestring, 0.00001) AS geom,
 		ST_StartPoint(ST_ReducePrecision(linestring, 0.00001)) as first_point,
 		ST_EndPoint(ST_ReducePrecision(linestring, 0.00001)) as last_point
@@ -85,7 +97,9 @@ segment_union AS (
     SELECT 
         id, 
 		part,
+		member,
 		sequence,
+		interpretation,
         ST_Segmentize((ST_ReducePrecision(linestring, 0.00001)::geography), 10000)::geometry as geom,
 		ST_StartPoint(ST_ReducePrecision(linestring, 0.00001)) as first_point,
 		ST_EndPoint(ST_ReducePrecision(linestring, 0.00001)) as last_point
@@ -97,7 +111,9 @@ segment_union AS (
 	SELECT
 		id, 
 		part,
+		member,
 		sequence,
+		interpretation,
 		ST_ReducePrecision(geom, 0.00001) AS geom,
 		ST_StartPoint(ST_ReducePrecision(geom, 0.00001)) as first_point,
 		ST_EndPoint(ST_ReducePrecision(geom, 0.00001)) as last_point
@@ -107,7 +123,9 @@ segment_union AS (
 	SELECT
 		id,
 		part,
+		member,
 		sequence,
+		interpretation,
 		ST_ReducePrecision(geom, 0.00001) AS geom,
 		ST_StartPoint(ST_ReducePrecision(geom, 0.00001)) as first_point,
 		ST_EndPoint(ST_ReducePrecision(geom, 0.00001)) as last_point
@@ -118,8 +136,10 @@ segment_union AS (
 segement_ownership AS (
 	SELECT 
         public.elevated_surface.xml_id,
-		segment_union.part as part,
-		segment_union.sequence as sequence,
+		segment_union.part AS part,
+		segment_union.member AS member,
+		segment_union.sequence AS sequence,
+		segment_union.interpretation AS interpretation,
 		segment_union.geom AS geom,
 		segment_union.first_point as first_point,
 		segment_union.last_point as last_point
@@ -134,11 +154,13 @@ segement_ownership AS (
 	UNION ALL
 	SELECT 
         public.elevated_surface.xml_id,
-		segment_union.part as part,
-		segment_union.sequence as sequence,
+		segment_union.part AS part,
+		segment_union.member AS member,
+		segment_union.sequence AS sequence,
+		segment_union.interpretation AS interpretation,
 		segment_union.geom AS geom,
-		segment_union.first_point as first_point,
-		segment_union.last_point as last_point
+		segment_union.first_point AS first_point,
+		segment_union.last_point AS last_point
     FROM 
         public.elevated_surface
     INNER JOIN 
@@ -147,27 +169,30 @@ segement_ownership AS (
     INNER JOIN 
         segment_union 
         ON public.elevatedsurface_interior.interiorlinestring_id = segment_union.id
-	
 ),
 ordered_segments AS (
     SELECT 
         xml_id AS id, 
         part,
+		member,
         sequence,
-        geom AS geom,
+		interpretation,
+        geom,
         first_point, 
         last_point,
 		ST_IsClosed(segement_ownership.geom) AS closed
     FROM 
         segement_ownership
     ORDER BY 
-        xml_id, part, sequence
+        xml_id, part, member, sequence
 ),
 linked_segments AS (
     SELECT 
         id,
         part,
+		member,
         sequence,
+		interpretation,
         geom,
         first_point,
         last_point
@@ -177,7 +202,9 @@ linked_segments AS (
     SELECT 
         curr.id,
         curr.part,
+		curr.member,
         curr.sequence + 0.5 AS sequence, -- Adjust sequence for link
+		curr.interpretation,
         ST_MakeLine(curr.last_point, next.first_point) AS geom, -- Linking segment
         curr.last_point AS first_point,
         next.first_point AS last_point
@@ -191,9 +218,35 @@ linked_segments AS (
         AND curr.sequence + 1 = next.sequence
 	WHERE 
 		ST_IsClosed(curr.geom) = false
+		AND
+		curr.interpretation != 4
+    UNION ALL
+    SELECT 
+        curr.id,
+        curr.part,
+		curr.member + 0.5 AS member, -- Adjust sequence for link
+        curr.sequence,
+		curr.interpretation,
+        ST_MakeLine(curr.last_point, next.first_point) AS geom, -- Linking segment
+        curr.last_point AS first_point,
+        next.first_point AS last_point
+    FROM 
+        ordered_segments curr
+    JOIN 
+        ordered_segments next
+    ON 
+        curr.id = next.id
+        AND curr.part = next.part
+        AND curr.member + 1 = next.member
+	WHERE 
+		ST_IsClosed(curr.geom) = false
+		AND
+		curr.interpretation != 4
+    ORDER BY 
+        id, part, member, sequence
 	
 ),
-exterior_ring AS (
+exterior_ring_other AS (
     SELECT 
         id, 
 		ST_LineMerge(ST_Collect(geom)) AS geom
@@ -201,42 +254,62 @@ exterior_ring AS (
         linked_segments
     WHERE 
         part = 0
+		AND
+		interpretation != 4
     GROUP BY 
         id
 ),
-interior_rings AS (
+exterior_ring_geoborder AS (
     SELECT 
-        id, 
-        ST_LineMerge(ST_Collect(geom)) AS geom
+		points.id,
+		ST_LineMerge(ST_Collect(points.geom))
+		ST_Collect(points.points) AS points
+    FROM (
+			SELECT 
+				id,
+				geom,
+		        (ST_DumpPoints(geom)).geom as points
+		    FROM 
+				linked_segments
+		    WHERE 	
+		        linked_segments.part = 0
+				AND
+				interpretation = 4
+	) points
+	GROUP BY
+		id, geom
+),
+split_points AS (
+    SELECT 
+        exterior_ring_other.id,
+		ST_ClosestPoint(exterior_ring_geoborder.geom, ST_StartPoint(exterior_ring_other.geom)),
+		ST_ClosestPoint(exterior_ring_geoborder.geom, ST_EndPoint(exterior_ring_other.geom))
     FROM 
-        ordered_segments
-    WHERE 
-        part != 0
-    GROUP BY 
-        id
+        exterior_ring_other,
+        exterior_ring_geoborder
 )
--- interior_rings AS (
+SELECT * FROM split_points;
+
+-- split_geom AS (
 --     SELECT 
---         id,
---         ARRAY_AGG(geom) AS geoms
+--         exterior_ring_geoborder.id, 
+--         ST_Split(exterior_ring_geoborder.geom, split_points.points) AS geom
 --     FROM 
---         unioned_interior_rings
---     GROUP BY 
---         id
+--         exterior_ring_geoborder, 
+--         split_points
+--     WHERE 
+--         exterior_ring_geoborder.id = split_points.id
 -- )
-SELECT 
-    exterior_ring.id,
-	exterior_ring.geom as geom
---     ST_MakePolygon(
--- 		exterior_ring.geom,
--- 		COALESCE(interior_rings.geoms, ARRAY[]::geometry[])
--- 	) AS geom
-FROM 
-    exterior_ring
-LEFT JOIN 
-    interior_rings
-ON 
-    exterior_ring.id = interior_rings.id
-WHERE 
-    ST_IsClosed(exterior_ring.geom) = false 
-    AND ST_GeometryType(exterior_ring.geom) != 'ST_LineString';
+-- SELECT * FROM split_points;
+
+-- SELECT 
+-- 	ST_Split(exterior_ring_geoborder.geom, 
+-- 		ST_Collect(
+-- 			ST_ClosestPoint(exterior_ring_geoborder.geom,ST_StartPoint(exterior_ring.geom)),
+-- 			ST_ClosestPoint(exterior_ring_geoborder.geom,ST_EndPoint(exterior_ring.geom))
+-- 		)
+-- 	)
+-- FROM 
+-- 	exterior_ring,
+-- 	exterior_ring_geoborder
+

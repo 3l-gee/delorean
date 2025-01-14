@@ -62,5 +62,8 @@ __pycache__/
 # Python virtual environments
 .venv/
 
+# Data
+data/
+
 
 util/__pycache__/Annotation.cpython-311.pyc
