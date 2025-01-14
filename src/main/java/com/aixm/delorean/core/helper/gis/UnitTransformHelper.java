@@ -12,8 +12,11 @@ public class UnitTransformHelper {
     private static final Map<String, Double> DISTANCE_UNIT_CONVERSION = new HashMap<String, Double>() {{
         put("[nmi_i]", 1852.0);
         put("NM", 1852.0);
+        put("nm", 1852.0);
         put("KM", 1000.0);
+        put("km", 1000.0);
         put("M", 1.0);
+        put("m", 1.0);
         put("MI", 1609.34);
         put("FT", 0.3048);
     }};

@@ -900,7 +900,7 @@ class Util:
             "PropertyGroup": "_Pg",
             "PropertyType": "_Pt",
             "TimeSliceType": "_Ts",
-            "Type": "_T",
+            "Type": "",
         }
         
         for key, value in replacements.items():

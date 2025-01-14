@@ -1,4 +1,4 @@
-CREATE VIEW elevated_curve_view AS
+CREATE OR REPLACE VIEW elevated_curve_view AS
 WITH 
 center AS (
     SELECT 
@@ -37,31 +37,42 @@ arc_line AS (
     GROUP BY id
 ),
 segment_union AS (
-    SELECT id, linestring AS geom
-    FROM public.linestring_segment 
-    WHERE public.linestring_segment.interpretation = 0
+    SELECT 
+		id, 
+		ST_ReducePrecision(linestring,0.00001) AS geom
+    FROM
+		public.linestring_segment 
+    WHERE 
+		public.linestring_segment.interpretation = 0
     UNION ALL 
-    SELECT id, ST_Segmentize((linestring::geography), 1000)::geometry AS geom
-    FROM public.linestring_segment 
-    WHERE public.linestring_segment.interpretation = 1
+    SELECT 
+		id, 
+		ST_Segmentize((ST_ReducePrecision(linestring, 0.00001)::geography), 1000)::geometry AS geom
+    FROM 
+		public.linestring_segment 
+    WHERE 
+		public.linestring_segment.interpretation = 1
     UNION ALL 
-    SELECT id, arc_geom AS geom
-    FROM arc_line
+    SELECT 
+		id, 
+		ST_ReducePrecision(arc_geom, 0.00001) AS geom
+    FROM 
+		arc_line
 ),
 merged_segments AS (
     SELECT 
-        public.elevated_curve.xml_id,
-        ST_Union(segment_union.geom) AS merged_geom
+        public.elevated_curve.id,
+        ST_LineMerge(ST_Collect(segment_union.geom)) AS merged_geom
     FROM 
         public.elevated_curve
     INNER JOIN 
         public.elevated_curve_linestring_segment ON public.elevated_curve.id = public.elevated_curve_linestring_segment.elevatedcurvepropertytype_id
     INNER JOIN 
         segment_union ON public.elevated_curve_linestring_segment.segments_id = segment_union.id
-    GROUP BY public.elevated_curve.xml_id
+    GROUP BY public.elevated_curve.id
 )
 SELECT 
-	(row_number() OVER ())::integer AS id,
-    xml_id, 
+	(row_number() OVER ())::integer AS row,
+    merged_segments.id, 
     merged_geom as geom 
 FROM merged_segments;
